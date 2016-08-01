@@ -17,8 +17,6 @@ Available plug-ins are:
 * **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
 * **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
 
-> [Learn more about the Cordova plug-ins](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_cord_plugins.html) that compose the MobileFirst Cordova SDK in the user documentation.
-
 **Support level:**
 The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1** and **cordova-windows@4.2.0**.
 
@@ -48,12 +46,17 @@ The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For 
 #### cordova-plugin-mfp-push
 The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
 
+#### cordova-plugin-mfp-fips
+The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_using_FIPS_140-2_support.html?view=kc#c_using_FIPS_140-2_support).
+
+#### cordova-plugin-mfp-encrypt-utils
+The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).
+
 **Prerequisites:**
 
-Make sure that:
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and MobileFirst CLI are installed on the developer workstation.
+- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and MobileFirst CLI installed on the developer workstation.
 - A local or remote instance of MobileFirst Server is running.
-- You have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
 
 ## Adding the MobileFirst Cordova SDK
 Follow the instructions below to add the MobileFirst Cordova SDK to a new or existing Cordova project, and register it in the MobileFirst Server.
@@ -143,35 +146,144 @@ SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/pa
 ## Generated MobileFirst Cordova SDK artifacts
 
 ### config.xml
-After the MobileFirst Cordova SDK is added to the project, the Cordova-generated **config.xml** file receives a set of new settings that are identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the **config.xml** file:
+The Cordova configuration file is a mandatory XML file that contains application metadata, and is stored in the root directory of the app.  
+After the MobileFirst Cordova SDK is added to the project, the Cordova-generated **config.xml** file receives a set of new elements that are identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server.
+
+### example of MobileFirst settings added to the **config.xml** file:
 
 ```xml
-<mfp:android>
-    <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
-    <mfp:appChecksum>0</mfp:appChecksum>
-    <mfp:security>
-        <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
-    </mfp:security>
-</mfp:android>
-<mfp:platformVersion>8.0.0.00-20151214-1255</mfp:platformVersion>
-<mfp:clientCustomInit enabled="false" />
-<mfp:server runtime="mfp" url="http://10.0.0.1:9080" />
-<mfp:directUpdateAuthenticityPublicKey />
-<mfp:languagePreferences>en</mfp:languagePreferences>
+<?xml version='1.0'encoding='utf-8'?>
+<widget id="..." xmlns:mfp="http://www.ibm.com/mobilefirst/cordova-plugin-mfp">
+    <mfp:android>
+        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
+        <mfp:appChecksum>0</mfp:appChecksum>
+        <mfp:security>
+            <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
+        </mfp:security>
+    </mfp:android>
+    <mfp:windows>
+        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum> 
+       <mfp:windows10>
+          <mfp:sdkChecksum>...</mfp:sdkChecksum>          
+          <mfp:security>
+             <mfp:testWebResourcesChecksum/>
+          </mfp:security>
+    </mfp:windows>
+    <mfp:platformVersion>8.0.0.00-20151214-1255</mfp:platformVersion>
+    <mfp:clientCustomInit enabled="false" />
+    <mfp:server runtime="mfp" url="http://10.0.0.1:9080" />
+    <mfp:directUpdateAuthenticityPublicKey>the-key</mfp:directUpdateAuthenticityPublicKey>
+    <mfp:languagePreferences>en</mfp:languagePreferences>
+</widget>
 ```
 
-* **mfp:android:** Root element for settings that are specific to the Android platform
-* **mfp:ios:** Root element for settings that are specific to the iOS platform
-* **mfp:windows:** Root element for settings that are specific to the Windows platform
-* **mfp:sdkChecksum:** Checksum of the SDK in use
-* **mfp:appChecksum:** Checksum of the app
-* **mfp:security:** Root element for security configurations
-* **mfp:testWebResourcesChecksum:** Enables or disables the test for web resources checksum
-* **mfp:platformVersion:**  The version of the MobileFirst SDK in use
-* **mfp:clientCustomInit:** Enables or disables custom initialization, when the WL.Client.init method is not automatically executed
-* **mfp:server:** MobileFirst Server URL and runtime definition
-* **mfp:directUpdateAuthenticityPublicKey:** The public key used for direct update authenticity
-* **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
+<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="config-xml-properties">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Click for full list of config.xml properties</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-config-xml-properties" class="panel-collapse collapse" role="tabpanel" aria-labelledby="config-xml-properties">
+            <div class="panel-body">
+                    <table class="table table-striped">
+                    <tr>
+                        <td><b>Element</b></td>
+                        <td><b>Description</b></td>
+                        <td><b>Configuration</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>widget<b></td>
+                        <td>Root element of the <a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml document</a>. The element contains two required attributes: <ul><li><b>id</b>: This is the application package name that was specified when the Cordova project was created. If this value is manually changed after the application was registered with the MobileFirst Server, then the application must be registered again.</li><li><b>xmlns:mfp</b>: The MobileFirst plug-in XML namespace.</li></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:platformVersion</b></td>
+                        <td>Required. The product version on which the application was developed.</td>
+                        <td>Set by default. Must not be changed.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
+                        <td>Optional. When you enable the Direct Update Authenticity feature, the direct update package is digitally signed during deployment. After the client downloaded the package, a security check is run to validate the package authenticity. This string value is the public key that will be used to authenticate the direct update .zip file.</td>
+                        <td>Set with the <code>mfpdev app config direct_update_authenticity_public_key <value></code> command.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:languagePreferences</b></td>
+                        <td>Optional. Contains a comma-separated list of locales to display system messages.</td>
+                        <td>Set with the <code>mfpdev app config language_preferences <value></code> command.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:clientCustomInit</b></td>
+                        <td>Controls how the <code>WL.Client.init</code> method is called. By default, this value is set to false and the <code>WL.Client.init</code> method is automatically called after the MobileFirst plug-in is initialized. Set this value to <b>true</b> for the client code to explicitly control when <code>WL.Client.init</code> is called.</td>
+                        <td>Edited manually. You can set the <b>enabled</b> attribute value to either <b>true</b> or <b>false</b>.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:server</b></td>
+                        <td>Default remote server connection information, which the client application uses to communicate with the MobileFirst Server. <ul><li><b>url:</b> The url value specifies the MobileFirst Server protocol, host, and port values that the client will use to connect to the server by default.</li><li><b>runtime:</b> The runtime value specifies the MobileFirst Server runtime to which the application was registered. For more information about the MobileFirst runtime, see MobileFirst Server overview.</li></ul></td>
+                        <td><ul><li>The server url value is set with <code>the mfpdev app config server</code> command.</li><li>The server runtime value is set with the <code>mfpdev app config runtime</code> command.</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:ios</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for the iOS platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:android</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for the Android platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:windows</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for the Windows platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:windowsphone8</b></li><li><b>mfp:windows8</b></li><li><b>mfp:windows10</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:windows8</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for Windows 8.1 platforms.
+                        <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:windows10</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for Windows 10 platforms.
+                        <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:windowsphone8</b></td>
+                        <td>This element contains all MobileFirst-related client application configuration for Windows Phone 8.1 platforms.
+                        <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:appChecksum</b></td>
+                        <td>This value is the checksum of application web resources. It is calculated when <code>mfpdev app webupdate</code> is run.</td>
+                        <td>Not user-configurable. The checksum value is updated when the <code>mfpdev app webupdate</code> command is run. For more details about the <code>mfpdev app webupdate</code> command, type <code>mfpdev help app webupdate</code> in your command window.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:sdkChecksum</b></td>
+                        <td>This value is the IBM MobileFirst™ Platform SDK checksum that is used to identify unique IBM MobileFirst Platform SDK levels.</td>
+                        <td>Not user-configurable. This value is set by default.</td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:security</b></td>
+                        <td>This element contains the client application's platform-specific configuration for MobileFirst security. Contains<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>mfp:testWebResourcesChecksum</b></td>
+                        <td>Controls whether the application verifies the integrity of its web resources each time it starts running on the mobile device. Attributes: <ul><li><b>enabled:</b> Valid values are <b>true</b> and <b>false</b>. If this attribute is set to <b>true</b>, the application calculates the checksum of its web resources and compares this checksum with a value that was stored when the application was first run.</li><li><b>ignoreFileExtensions:</b> Checksum calculation can take a few seconds, depending on the size of the web resources. To make it faster, you can provide a list of file extensions to be ignored in this calculation. This value is ignored when the <b>enabled</b> attribute value is <b>false</b>.</td>
+                        <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum <value></code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions <value></code> command.</li></ul></td>
+                    </tr>
+                </table>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 ### Editing MobileFirst settings in the config.xml file
 You can use the MobileFirst CLI to edit the above settings by running the command:
