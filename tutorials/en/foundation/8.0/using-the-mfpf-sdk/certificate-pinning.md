@@ -33,7 +33,7 @@ The certificate must be placed in both the MobileFirst Server and in your applic
 * In your application:
     - Native iOS: add the certificate to the application **bundle**
     - Native Android: place the certificate in the **assets** folder
-    - Cordova: place the certificate in the **app-name\www\certificates** folder
+    - Cordova: place the certificate in the **app-name\www\certificates** folder (if the folder is not already there, create it)
 
 ## Certificate pinning API
 Certificate pinning consists of a single API method, that has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file.
