@@ -6,7 +6,8 @@ relevantTo: [javascript]
 weight: 6
 ---
 ## Overview
-In this tutorial, you learn how to register a web application with the MobileFirst Server, and to download and add the MobileFirst SDK to web applications.  
+You can develop mobile or Desktop MobileFirst web applications by using your preferred development environment and tools.  
+In this tutorial, you learn how to add the MobileFirst Web SDK to your web applicaiton, as well as how to register the web application with the MobileFirst Server
 
 The MobileFirst Web SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
 The SDK includes the following files:
@@ -52,7 +53,7 @@ Reference the **ibmmfpf.js** file in the `HEAD` element.
 </head>
 ```
 
-#### Using Require JS
+#### Using RequireJS
 
 **HTML**  
 
@@ -95,9 +96,9 @@ WL.Client.init(wlInitOptions).then (
 - **applicationId:** The application package name, as defined when you [register the application](#registering-the-web-application).
 
 ### Registering the web application
-<!-- You can register applications either from the MobileFirst Operations Console or from the MobileFirst CLI.
+You can register applications either from the MobileFirst Operations Console or from the MobileFirst CLI.
 
-#### From MobileFirst Operations Console -->
+#### From MobileFirst Operations Console
 
 1. Open your favorite browser and load the MobileFirst Operations Console by entering the `http://localhost:9080/mfpconsole/` URL.
 2. Click the **New** button next to **Applications** to create a new application.
@@ -106,11 +107,8 @@ WL.Client.init(wlInitOptions).then (
 
 ![Adding the Web platform](add-web-platform.png)
 
-<!-- #### From MobileFirst CLI
-
-1. From a **command-line** window, navigate to the root folder of the web application.
-2. Run the command: `mfpdev app register web com.sample.myapp`.
- - Replace "com.sample.myapp" with your application's identifier. -->
+#### From MobileFirst CLI
+From a **command-line** window, navigate to the root folder of the web application and run the command: `mfpdev app register`.
 
 ## Updating the MobileFirst Web SDK
 SDK releases can be found in the SDK [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
@@ -120,9 +118,7 @@ To update the MobileFirst Web SDK with the latest release:
 2. Run the command: `npm update ibm-mfp-web-sdk`.
 
 ## Same-origin policy
-If web resources are hosted on a different server machine than the one that MobileFirst Server is installed on, a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation is triggered.
-
-The same-origin policy is a restriction that is enforced on web browsers. For example, if an application is hosted on the domain **example.com**, that application is not allowed to also access context that is available on another server, or for that matter, from the MobileFirst Server.
+If web resources are hosted on a different server machine than the one that MobileFirst Server is installed on, a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation is triggered. The same-origin-policy security model is designed to protect against potential security threats from unverified sources. According to this policy, a browser allows web resources (such as scripts) to interact only with resources that stem from the same origin (which is defined as a combination of URI scheme, host name, and port number). For more information about the same-origin policy, see The [Web Origin Concept](https://tools.ietf.org/html/rfc6454) specification, and specifically [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3).
 
 Web apps that use the MobileFirst Web SDK must be handled in a supporting topology. For example, use a reverse proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
@@ -130,7 +126,7 @@ Web apps that use the MobileFirst Web SDK must be handled in a supporting topolo
 You can meet the policy requirements by using either of the following methods:
 
 - Serving the web application resources, for example, from the same WebSphere Application Server Liberty profile application server that is used in the MobileFirst Development Kit.
-- Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
+- Using Node.js as a reverse proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
 

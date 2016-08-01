@@ -17,10 +17,10 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Gradl
 > For instruction to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
-Make sure that:
-- Android Studio and MobileFirst CLI are installed on the developer workstation.  
+
+- Android Studio and MobileFirst CLI installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- You have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
 
 #### Jump to:
 
@@ -28,6 +28,7 @@ Make sure that:
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Support for Javadoc and Android Service](#support-for-javadoc-and-android-service)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
@@ -178,6 +179,9 @@ Located in the **./app/src/main/assets/** folder of the Android Studio project, 
 | wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
+
+## Support for Javadoc and Android Service
+For information about support for Javadoc and Android Service see the [Additional Information](additional-information) page.
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:

@@ -6,29 +6,29 @@ relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project. The pods correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
+The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 * **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore/ios/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS. For more information, review the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/devref/t_ios_frameworks.html).
 
-In this tutorial, you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the MobileFirst Server to recognize the application, and to find information about the MobileFirst configuration files that are added to the project.
+In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the MobileFirst Server to recognize the application.
 
 **Prerequisites:**
 
-Make sure that:
-
-- Xcode and MobileFirst CLI are installed on the developer workstation.  
+- Xcode and MobileFirst CLI installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- You have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
 
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)]
+- [Bitcode and TLS 1.2](#bitcode-and-tls-1-2)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
@@ -215,6 +215,9 @@ Located at the root of the project, this file defines the client-side properties
 | wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
+
+## Bitcode and TLS 1.2
+For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
