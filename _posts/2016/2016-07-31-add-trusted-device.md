@@ -4,11 +4,11 @@ date: 2016-07-31
 version:
 - 8.0
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Authentication
 - Adapters
 - QRCode
-- Trusted_Device
+- Trusted_Devices
 author:
   name: Ishai Borovoy
 additional_authors:
@@ -39,16 +39,16 @@ This blog will show you how simple it is to implement a feature which will let a
 <br>
 
 
->Note: Before dive into the technical details, it's recommended to have some knowledge about the following:
+> Note: Before diving into the technical details, it is recommended to have some knowledge about the following topics:
 
-* [Security In IBM MobileFirst Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/)
-* [Adapters In IBM MobileFirst Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/)
-* [Cordova with IBM MobileFirst Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
+* [Security In IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/)
+* [Adapters In IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/)
+* [Cordova with IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * [NodeJS](https://nodejs.org)
 * [socket.io](http://socket.io/)
 
 ## Running the sample
-In order to run this sample app, see the [sample's repository README.](https://github.com/mfpdev/trust-a-device-sample)
+To run this sample application, [see the sample's README.md](https://github.com/mfpdev/trust-a-device-sample).
 
 ## Architecture
 ![Add a trusted device]({{site.baseurl}}/assets/blog/2016-07-31-add-trusted-device/architecture.png)
@@ -71,10 +71,9 @@ In order to run this sample app, see the [sample's repository README.](https://g
 15. The web client is notified and sends an empty challenge answer.
 16. A token is returned to the web client and it can invoke the `/user` request successfully.
 
->Note: In the sample there is no mapped scope just for simplicity reason, while in real world it is recommended to map each security-check to a scope in the application security tab on the MobileFirst Foundation console.
- scope mapping will let you better control on resource protection. For more info about scope mapping read in the [following link](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/#scope).
+>Note: In the sample there is no mapped scope just for simplicity, while in real world it is recommended to map each security-check to a scope in the application security tab in the MobileFirst Operations Console. Scope mapping allows for better control on resource protection. [Read more about scope mapping](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/#scope).
 
-## So where the "magic" happens in the code?
+## So where does the "magic" happen in the code?
 
 ### Approve a device (web client) by finding the client UUID (custom attribute) in the Registration Service
 
@@ -134,6 +133,3 @@ app.get('/refresh/:uuid', function (req, res) {
 #### Food for Thought:
 
 By extension, you can also use MobileFirst Foundation to implement scenarios that allow a user to gain access to a device or a physical space by scanning a QR code from their mobile app. For instance, unlocking a hotel room or a city bike, or gaining access to a business lounge. There is one more added step to add to the implementation described in the blog above to validate the user’s identity and whether they are allowed access.
-
-## Supported Versions
-IBM MobileFirst Foundation 8.0
