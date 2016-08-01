@@ -17,11 +17,13 @@ IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-i
 
 * [Cordova application development](#cordova-application-development)
 * [MobileFirst APIs](#mobilefirst-apis)
+* [MobileFirst SDK Startup Flow](#mobilefirst-sdk-startup-flow)
 * [Cordova Application Security](#cordova-application-security)
 * [Cordova Application Resources](#cordova-application-resources)
 * [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
+* [Implementing JavaScript Code](#implementing-javascript-code)
 * [CrossWalk support for Android](#crosswalk-support-for-android)
-* [WKWebView support for ios](#wkwebview-support-for-ios)
+* [WKWebView support for iOS](#wkwebview-support-for-ios)
 * [Further reading](#further-reading)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -29,7 +31,8 @@ IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-i
 Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
 
 ### Hooks
-Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows. Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
+Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows.  
+Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
 
 ### Merges
 The Merges folder provides the ability to have platform-specific web resources (HTML, CSS and JavaScript files). These web resources are then deployed during the `cordova prepare` step to the appropriate native directory. Files placed under the **merges/** folder will override matching files in the **www/** folder of the relevant platform. Read more about [the Merges folder](https://github.com/apache/cordova-cli#merges).
@@ -59,6 +62,152 @@ After [adding the MobileFirst Cordova SDK](../../adding-the-mfpf-sdk/cordova) to
 
 > For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
+## MobileFirst SDK Startup Flow
+<div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="android-flow">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Android startup flow</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
+            <div class="panel-body">
+                <p>In Android Studio, you can review the start-up process of the Cordova app for Android with MobileFirst. The MobileFirst Cordova plug-in, <b>cordova-plugin-mfp</b>, has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main html file.</p>
+                
+                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> extending the <code>CordovaActivity</code> native code to perform the MobileFirst initialization.</p>
+                
+                <p>The application native code instrumentation consists of:</p>
+                <ul>
+                    <li>Adding <code>com.worklight.androidgap.api.WL</code> API calls to perform the MobileFirst initialization.</li>
+                    <li>In the <b>AndroidManifest.xml</b> file adding
+                        <ul>
+                            <li>An activity called <code>MFPLoadUrlActivity</code> to allow proper MobileFirst initialization in case the <b>cordova-plugin-crosswalk-webview</b> has been installed.</li>
+                            <li>A custom attribute <b>android:name="com.ibm.MFPApplication</b>" to the <code>application</code> element (see below).</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Implementing WLInitWebFrameworkListener and creating the WL object</h3>
+                <p>The <b>MainActivity.java</b> file creates the initial <code>MainActivity</code> class extending the <code>CordovaActivity</code> class. The <code>WLInitWebFrameworkListener</code> receives notification when the MobileFirst framework is initialized.</p>
+                
+{% highlight java %}
+public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
+{% endhighlight %}
+
+                <p>The <code>MFPApplication</code> class is called from within <code>onCreate</code> and creates a MobileFirst client instance (<code>com.worklight.androidgap.api.WL</code>) that is used throughout the app. The <code>onCreate</code> method initializes the <b>WebView framework</b>.</p>
+                
+{% highlight java %}
+@Overridepublic void onCreate(Bundle savedInstanceState){
+super.onCreate(savedInstanceState);
+
+if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
+           WL.getInstance().showSplashScreen(this);
+       } 
+   init();
+   WL.getInstance().initializeWebFramework(getApplicationContext(), this);
+}
+{% endhighlight %}
+
+                <p>The <code>MFPApplication</code> class has two functions:</ul>
+                <ul>
+                    <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</code>
+                    <li>Creates two listeners for enabling analytics. These listeners can be removed if not needed.</li>
+                </ul>
+                
+                <h3>Loading the WebView</h3>
+                <p>The <b>cordova-plugin-mfp</b> plug-in adds an activity to the <b>AndroidManifest.xml</b> file that is required for initializing the Crosswalks WebView:</p>
+
+{% highlight xml %}
+<activity android:name="com.ibm.MFPLoadUrlActivity" />
+{% endhighlight %}
+
+                <p>This activity is used to ensure the asynchronous initialization of the Crosswalk WebView as follows:</p>
+                
+                <p>After the MobileFirst framework is initialized and ready to load in the WebView, the <code>onInitWebFrameworkComplete</code> connects to the URL if <code>WLInitWebFrameworkResult</code> succeeds.</p>
+                
+{% highlight java %}
+public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
+if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
+super.loadUrl(WL.getInstance().getMainHtmlFilePath());
+   } else {
+      handleWebFrameworkInitFailure(result);
+   }
+}
+{% endhighlight %}
+
+
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="ios-flow">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>iOS startup flow</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-ios-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-flow">
+            <div class="panel-body">
+                <p>The MobileFirst framework is initialized in the iOS platform to display a WebView in the Cordova app with MobileFirst.</p>
+
+                <b>main.m</b>
+                <p>In the <code>main.m</code> file the MobileFirst plug-in replaces the default main application <code>AppDelegate</code> with <code>MFPAppDelegate</code>.</p>
+
+{% highlight objc %}
+#import <UIKit/UIKit.h>
+int main(int argc, char *argv[]) {
+ @autoreleasepool
+    {    
+        int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
+        return retVal; 
+    }
+}
+{% endhighlight %}
+
+                <b>MFPAppDelegate.m</b>
+                <p>The <code>MFPAppDelegate.m</code> file is found in the plugins folder. This replaces the default Cordova <code>AppDelegate.m</code> file and initializes the MobileFirst framework before the view controller loads the WebView.</p>
+
+                <p>The <code>didFinishLaunchingWithOptions</code> method initializes the framework:</p>
+
+{% highlight objc %}
+[[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
+{% endhighlight %}
+
+                <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the MobileFirst framework has been loaded, invokes <code>wlInitDidCompleteSuccessfully</code> and creates listeners for receiving data. <code>wlInitDidCompleteSuccessfully</code> creates a <code>cordovaViewController</code> that connects to the default <b>index.html</b> page.</p>
+
+                <p>Once the iOS Cordova app is built in Xcode without errors, you can proceed to add features to the native platform and WebView.</p>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="windows-flow">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Windows startup flow</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-windows-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows-flow">
+            <div class="panel-body">
+                <p>The MobileFirst Cordova plug-in, <b>cordova-plugin-mfp</b> has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main HTML file.</p>
+
+                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application adds the <b>index.html</b> file to the application's <b>appxmanifest</b> file. This extends the <code>CordovaActivity</code> native code to perform the MobileFirst initialization.</p>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 ## Cordova Application Security
 IBM MobileFirst Foundation provides security features that help you protect your Cordova apps.
 
@@ -70,7 +219,7 @@ Use the following features to improve security on your Cordova apps:
 
 * [Encrypting the web resources of your Cordova packages](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
     Encrypts the contents in the www folder of your Cordova app, and decrypts it when the app is installed and run for the first time. This encryption makes it more difficult for someone to view or modify the content in that folder while the app is packaged.
-* [Enabling the web resources checksum feature](securing-apps/enabling-the-web-resources-checksum-feature)  
+* [Enabling the web resources checksum feature](securing-apps/#enabling-the-web-resources-checksum-feature)  
     Ensures the integrity of the app when it starts by comparing the contents to the baseline checksum results that were gathered the first time the app was started. This test helps prevent the modification of an app that is already installed.
 * [Enabling FIPS 140-2](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/t_enabling_FIPS.html)  
     Ensures that the encryption algorithms that are used to encrypt data at rest and data in motion are compliant with the Federal Information Processing Standards (FIPS) 140-2 standard.
@@ -200,6 +349,19 @@ To run the application on a physical device, attached to the development worksta
 ```bash
 cordova run ios
 ```
+
+## Implementing JavaScript Code
+Editing the WebView resources is more convenient using an IDE that provides autocompletion for JavaScript.
+
+Xcode, Android Studio, and Visual Studio provide full editing capabilities for editing Objective C, Swift, C#, and Java, however they may be limited in how they assist the editing of JavaScript. To facilitate JavaScript editing, the MobileFirst Cordova project contains a defintion file for providing autocomplete for MobileFirst API elements.
+
+Each MobileFirst Cordova plug-in provides a `d.ts` configuration file for each MobileFirst JavaScript files. The `d.ts` file name matches the corresponding JavaScript file name and is located within the plug-in folder. For example for the main MobileFirst SDK the file is here: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+
+This definition provides autocomplete for all IDEs with TypeScript support: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
+
+The resources (HTML and JavaScript files) for the WebView are located in the **[myapp]\www** folder. When the project is built with the cordova build command, or the cordova prepare command is run, these resources are copied to the corresponding **www** folder in the **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, or **[myapp]\platforms\windows\www** folder.
+
+When you open the main app folder with one of the previous IDEs, the context is preserved. The IDE editor will now be linked to the relevant `d.ts` files and autocomplete the MobileFirst API elements as you type.
 
 ## CrossWalk support for Android
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
