@@ -26,13 +26,13 @@ A single store can have many collections, and each collection can have many docu
 
 #### Jump to
 * [General JSONStore terminology](#general-jsonstore-terminology)
-* [Features table](features-table)
+* [Features table](#features-table)
 * [Multiple User Support](#multiple-user-support)
 * [Security](#security)
 * [Performance](#performance)
 * [Concurrency](#concurrency)
 * [Analytics](#analytics)
-* [API Usage per Platform](#api-usage-per-platform)
+* [API Usage](#api-usage)
 
 ## General JSONStore Terminology
 ### Document
@@ -330,4 +330,5 @@ var options = {
 WL.JSONStore.init(..., options);
 ```
 
-## API Usage per Platform
+## API Usage
+Select a platform: 
