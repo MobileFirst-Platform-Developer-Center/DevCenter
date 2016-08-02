@@ -15,17 +15,21 @@ The MobileFirst `Logger` API is similar to commonly used logger APIs, such as `c
 #### Availability
 MobileFirst-provided `Logger` API methods can be used with iOS, Android and Cordova applications. 
 
-
 ## Logging levels
-Logging libraries typically have verbosity controls that are frequently called **levels**. From least to most verbose: ERROR, WARN, INFO, LOG and DEBUG. 
+Logging libraries typically have verbosity controls that are frequently called **levels**.  
+The logging levels from the most verbose to the least are as follows:
+
+* TRACE - used for method entry and exit points
+* DEBUG - used for method result output
+* LOG - used for class instantiation
+* INFO - used for reporting initialization
+* WARN - used to log deprecated usage warnings
+* ERROR - used for unexpected exceptions
+* FATAL - used for unrecoverable crashes or hangs
 
 > **Note:** Using FATAL will result in collecting an app crash. To not skew your app crash data we recommend not using this keyword.
 
-## Log Capture
-Client log capture can be controlled via several ways:
-
-*  By the client itself,
-*  Or by the MobileFirst Runtime Server. 
+The client SDKs are configured at the FATAL verbosity by default, which means little or no raw debug logs are output or captured. You can adjust the verbosity programmatically or adjust it by setting a configuration profile on the MobileFirst Operations Console, which must be retrieved explicitly by your app.
 
 ### Logging from client applications:
 
@@ -33,10 +37,32 @@ Client log capture can be controlled via several ways:
 * [Logging in iOS applications](ios/)
 * [Logging in Android applications](android/)
 
-### Crash capture
+### Adjusting log verbosity
+Once logging level is set, either by setting the client or retrieving the server profile, the client filters the logging messages it sends. If a message below the threshold is explicitly sent, the client ignores it.
+
+For example, to set the verbosity level to DEBUG:
+
+#### iOS
+
+```objc
+[OCLogger setLevel:OCLogger_DEBUG];
+```
+
+#### Android
+```java
+Logger.setLevel(Logger.LEVEL.DEBUG);
+```
+
+#### JavaScript (Cordova)
+
+```javascript
+WL.Logger.config({ level: 'DEBUG' });
+```
+
+#### JavaScript (Web)
+For the web SDK the default trace level cannot be changed from the client.
+
+## Crash capture
 The MobileFirst client SDK, on Android and iOS applications, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view. In Cordova applications, captures JavaScript global errors and if possible a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.
 
 Crashes, uncaught exceptions, and global errors are caught and logged automatically.
-
-## For more information
-> For more information about logging and log capture, see the user documentation.
