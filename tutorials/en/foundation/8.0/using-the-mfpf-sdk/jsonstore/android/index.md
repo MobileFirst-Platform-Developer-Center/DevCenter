@@ -3,7 +3,7 @@ layout: tutorial
 title: JSONStore in Android applications
 breadcrumb_title: Android
 relevantTo: [android]
-weight: 8
+weight: 3
 downloads:
   - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
