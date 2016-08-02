@@ -161,9 +161,11 @@ After creating the adapter the result will be a Maven project containing a **src
 ### Build
 
 * **Using the MobileFirst CLI** - Run the `mfpdev adapter build` command from the project's root folder.
+    * If you have multiple adapters in a filesystem folder and you'd like to build all of them, use `mfpdev adapter build all`.
 * **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
 
-This generates an **.adapter** archive file which can be found in the **target** folder:
+
+The outcome of this command is an **.adapter** archive file which can be found in the **target** folder of each adapter:
 
 ![java-adapter-result](adapter-result.png)
 
@@ -191,8 +193,9 @@ This generates an **.adapter** archive file which can be found in the **target**
         ```
         The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
         If the option is not used, the CLI will use the default server specified in the CLI settings.
-
-             > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+        * If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use `mfpdev adapter deploy all`.
+    
+        > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
  * **Using Maven**:
 
         ```bash
@@ -201,8 +204,6 @@ This generates an **.adapter** archive file which can be found in the **target**
 
 </br>
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
-
-**NOTE:** The deploy command is available only during development.
 
 ## Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
@@ -243,7 +244,7 @@ The following example uses the `cloudant-client artifactId`:
 > For more information about dependencies see the Maven documentation.
 
 ## Grouping Adapters in a Single Maven Project
-If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all and deploy all abilities, sharing dependencies etc.
+If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all, deploy all and sharing dependencies. You can also build all and deploy all adapters even if they are not grouped in a single Maven project using the `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands.
 
 To group adapters you need to:
 
