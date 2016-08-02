@@ -17,9 +17,9 @@ MobileFirst Server comes pre-instrumented with network infrastructure reporting.
 MobileFirst Operational Analytics supports:
 
 * Native iOS and Android clients
-* Cordova applications (iOS, Android).
-* Web applications.
-* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms.
+* Cordova applications (iOS, Android)
+* Web applications
+* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
 
 #### Jump to
 * [Operational Analytics Console](#operational-analytics-console)
