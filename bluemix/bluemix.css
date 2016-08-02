@@ -58,7 +58,23 @@ a {
     font: normal normal normal normal 16px / 16px "IBM Helvetica", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
     outline: rgb(255, 255, 255) none 0px;
     margin-top: 15px;
-    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.carousel .carousel-inner .item .screenshot:hover {
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    height: 150px;
+    width: 276.604px;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 138.292px 75px;
+    transform-origin: 138.292px 75px;
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 16px / 16px "IBM Helvetica", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    margin-top: 15px;
+    margin-right: 20px;
+    border:1px solid rgb(85, 150, 230);
 }
 
 .custom-mid-nav {
