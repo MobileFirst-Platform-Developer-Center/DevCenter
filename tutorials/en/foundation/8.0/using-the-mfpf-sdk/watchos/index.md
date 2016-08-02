@@ -20,7 +20,7 @@ To set up the development environment for watchOS 2, create the Xcode project, a
     ![WatchOS project in Xcode](WatchOSProject.jpg)
     
 2. Add the MobileFirst watchOS 2 framework.
-    * To install the necessary frameworks with CocoaPods, see [Adding the MobileFirst Native SDK](../adding-the-mfpf-sdk/ios/#adding-support-for-apple-watchos-2) tutorial.
+    * To install the necessary frameworks with CocoaPods, see [Adding the MobileFirst Native SDK](../../adding-the-mfpf-sdk/ios/#adding-support-for-apple-watchos-2) tutorial.
     * To install the necessary frameworks manually:
         * Obtain the watchOS 2 framework from MobileFirst Operations Console's Download Center.
         * Select the **[project name] WatchKit Extension** folder in the left navigation pane.
