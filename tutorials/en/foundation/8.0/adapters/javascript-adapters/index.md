@@ -154,13 +154,15 @@ MFP.Server.getPropertyValue("name");
 
 Use the `MFP.Server.getTokenIntrospectionData()` API to
 
-To get the current `AuthenticatedUser` use:
+To get the current User ID use:
 
 ```js
-var currentUser = MFP.Server.getTokenIntrospectionData() { 
-    securityContext.getAuthenticatedUser();
-    return "Hello " + user.getDisplayName();
- }
+function getAuthUserId(){
+   var securityContext = MFP.Server.getTokenIntrospectionData();
+   var user = securityContext.getAuthenticatedUser();
+ 
+   return "User ID: " + user.getId;
+}
 ```
 {% endcomment %}
 
