@@ -1,3 +1,12 @@
+// pause carousel on modal click
+
+$(document).ready(function(){
+  $('.modal').on('shown.bs.modal', function (e) {
+    $('.carousel').carousel('pause');
+  })
+});
+
+
 /* ---- particles.js config ---- */
 
 particlesJS("particles-js", {

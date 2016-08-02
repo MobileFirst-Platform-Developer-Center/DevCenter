@@ -63,8 +63,8 @@ title: IBM Bluemix - Mobile
                               Select a business solution or blank template to get started. Design your app using the visual tools available.
                               Easily add the mobile services, and download the native source code for iOS and Android.
                             </p>
-                            <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step31-1024x587.png" class="screenshot" />
-                            <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step4-1024x581.png" class="screenshot" />
+                            <img data-toggle="modal" data-target="#modal-mobile-dashboard-templates" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step31-1024x587.png" class="screenshot" />
+                            <img data-toggle="modal" data-target="#modal-mobile-dashboard-design" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step4-1024x581.png" class="screenshot" />
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ title: IBM Bluemix - Mobile
                           Use our lightweight SDK to add social or custom authentication to your app. Stay on top of your app’s performance in the wild with out of the box monitoring,
                           and instrument your code to stay aware of what you need.
                         </p>
-                        <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mca.png" class="screenshot" />
+                        <img data-toggle="modal" data-target="#modal-mobile-client-access" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mca.png" class="screenshot" />
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ title: IBM Bluemix - Mobile
                         <p class="custom-mid-nav">
                           Send your users the content they want to see. Use tags to manage subscriptions and content.
                         </p>
-                        <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/push.png" class="screenshot" />
+                        <img data-toggle="modal" data-target="#modal-mobile-push" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/push.png" class="screenshot" />
                     </div>
                   </div>
                 </div>
@@ -128,15 +128,108 @@ title: IBM Bluemix - Mobile
                         <p class="custom-mid-nav">
                           Measure the state, behavior, and context of your mobile apps, mobile users, and mobile devices quickly by adding our SDK.
                         </p>
-                        <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mobileanalytics.png" class="screenshot" />
+                        <img data-toggle="modal" data-target="#modal-mobile-analytics" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mobileanalytics.png" class="screenshot" />
                     </div>
                   </div>
                 </div>
             </div>
+
+          <!-- Modals -->
+          <div class="modal fade" id="modal-mobile-dashboard-templates" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 style="color:black" class="modal-title" id="myModalLabel">Select a template from the Mobile dashboard</h4>
+                </div>
+                <div class="modal-body">
+                  <img style="width:100%" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step31-1024x587.png" class="screenshot" />
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modal-mobile-dashboard-design" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 style="color:black" class="modal-title" id="myModalLabel">Design your application using the UI Builder</h4>
+                </div>
+                <div class="modal-body">
+                  <img style="width:100%" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/07/step4-1024x581.png" class="screenshot" />
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modal-mobile-client-access" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 style="color:black" class="modal-title" id="myModalLabel">Set up Mobile Client Access to secure your application</h4>
+                </div>
+                <div class="modal-body">
+                  <img style="width:100%" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mca.png" class="screenshot" />
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modal-mobile-push" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 style="color:black" class="modal-title" id="myModalLabel">Set up Push Notifications to send alerts</h4>
+                </div>
+                <div class="modal-body">
+                  <img style="width:100%" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/push.png" class="screenshot" />
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modal-mobile-analytics" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 style="color:black" class="modal-title" id="myModalLabel">Gather performance and crash data from your application</h4>
+                </div>
+                <div class="modal-body">
+                  <img style="width:100%" src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/06/mobileanalytics.png" class="screenshot" />
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
     </div>
     <!-- /.carousel -->
 </div>
 
 <!-- particles.js lib -->
 <script src='http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="../../bluemix/bluemix.js"></script>
