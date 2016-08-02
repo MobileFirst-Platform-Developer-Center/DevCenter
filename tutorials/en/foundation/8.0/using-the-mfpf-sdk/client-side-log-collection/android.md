@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Logging in Android Applications
+breadcrumb_title: Logging in Android
 relevantTo: [android]
 weight: 3
 ---
