@@ -1,18 +1,18 @@
 ---
-title: Integrate your Xamarin apps with MobileFirst Foundation on Bluemix
+title: Integrate your Xamarin apps with MobileFirst Foundation 8.0 on Bluemix
 date: 2016-08-02
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Xamarin
 version:
 - 8.0
 author:
   name: Srihari Kulkarni
 ---
-The MobileFirst SDK for Xamarin is now available for MobileFirst Platform Foundation v8! You can download the component from the [Xamarin Component Store](https://components.xamarin.com/view/ibm-worklight). 
+The MobileFirst SDK for Xamarin is now available for MobileFirst Foundation v8! You can download the component from the [Xamarin Component Store](https://components.xamarin.com/view/ibm-worklight). 
 
-### Get the goodness of MobileFirst Platform Foundation v8
-With this release of the SDK, your Xamarin apps can leverage all the  new features of MobileFirst Platform v8. To mention a few,  MobileFirst Foundation as a service on [IBM Bluemix](https://console.ng.bluemix.net/catalog/services/mobile-foundation) , improved DevOps support, web interface for all app settings etc. For a full list of new features, visit the [release notes](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/c_what_s_new.html).
+### Get the goodness of MobileFirst Foundation v8
+With this release of the SDK, your Xamarin apps can leverage all the  new features of MobileFirst Foundation v8. To mention a few,  MobileFirst Foundation as a service on [IBM Bluemix](https://console.ng.bluemix.net/catalog/services/mobile-foundation) , improved DevOps support, web interface for all app settings etc. For a full list of new features, visit the [release notes](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/c_what_s_new.html).
 
 ### Componentized SDKs
 Starting with this release, the Xamarin SDK is componentized into separate libraries for Core, JSON Store and Push. This means Push and JSON Store libraries are optional, leading to reduced footprint of your apps. After adding the Core SDK, add the other SDKs when you start using those features. 
@@ -32,7 +32,7 @@ To get started with MobileFirst on Bluemix and Xamarin, perform the following st
 * Open the sample project found in `ibm-worklight-8.0.0.0/samples/WorklightSample`
 * Login to [bluemix.net](https://bluemix.net) and add the [MobileFirst Foundation service](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) to your account. 
 * Build and deploy MobileFirst adapters to your console. To begin with, you can use the UserLogin and ResourceAdapter from the MobileFirst samples. See how to create and deploy adapters [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/credentials-validation/security-check/).
-* Run your app from Xamarin Studio / Visual Studio and get all the goodness of MobileFirst Platform v8 on Bluemix. 
+* Run your app from Xamarin Studio / Visual Studio and get all the goodness of MobileFirst Foundation v8 on Bluemix. 
 
 See the video below for a complete end-to-end demonstration of this process.
 
