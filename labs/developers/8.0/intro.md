@@ -45,8 +45,9 @@ Stay tuned for part 2!
 <br/>
 In this lab you will be:
 
-* Migrating from MobileFirst Foundation v7.1-based app to a v8.0 based app
+* Migrating from MobileFirst Platform Foundation v7.1-based Hybrid app to a MobileFirst Foundation v8.0-based Cordova app
 * Developing using CLI and Visual Studio Code
-* Using Ionic 1 for hybrid development
+* Using Ionic v1 for hybrid development
 * Securing backend APIs with user authentication
 * Implementing Push notification messaging
+* Using JSONStore

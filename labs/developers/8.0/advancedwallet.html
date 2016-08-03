@@ -26,7 +26,6 @@ tabs:
   <li>JSONStore</li>
 </ul>
 
-<p>Total labs: 3</p>
 <p>Time to complete: up to 3 hours</p>
 
 <div>
@@ -65,7 +64,7 @@ tabs:
                 <br>
                 <b>Lab helpers:</b>
                 <br>
-                <p>Initial MFP 7.1 application repository URL</p>
+                <p>Initial MobileFirst Platform Foundation 7.1 application repository URL</p>
                 <pre>https://github.com/andriivasylchenko/hybridWallet</pre>
                 <br>
                 <p>Mock server repository URL</p>
@@ -86,7 +85,7 @@ tabs:
         </div>
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
-                <b>Description:</b>Replace 7.1 adapter-based authentication mechanism based on classic security model with OAuth 2.0
+                <b>Description:</b>Replace v7.1 adapter-based authentication mechanism based on classic security model with OAuth 2.0
                 <br>
                 <b>Time to complete:</b> 50 minutes
                 <br>
@@ -103,7 +102,7 @@ tabs:
                 <b>Lab helpers:</b>
                 <br>
                 <p>safeApply factory</p>
-                {% highlight javascript %}
+{% highlight javascript %}
 .factory('safeApply', [function($rootScope) {
     return function($scope, fn) {
         var phase = $scope.$root.$$phase;
@@ -120,10 +119,10 @@ tabs:
         }
     }
 }])
-                {% endhighlight %}
+{% endhighlight %}
                 <br>
                 <p>initComplete function</p>
-                {% highlight javascript %}
+{% highlight javascript %}
 function initComplete() {
     console.log('---> WL init completed');
     var AuthRealmChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
@@ -157,7 +156,7 @@ function initComplete() {
 
   $scope.loadCards();
 };
-                {% endhighlight %}
+{% endhighlight %}
                 <br>
                 <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedwallet/tree/lab2.68">github repository branch</a>
@@ -191,7 +190,7 @@ function initComplete() {
                 <b>Lab helpers:</b>
                 <br>
                 <p>initPush function</p>
-                {% highlight javascript %}
+{% highlight javascript %}
 $scope.initPush = function() {
   MFPPush.initialize(
     function(success){
@@ -230,7 +229,7 @@ $scope.NotificationReceived = function(message) {
   console.log('--> push notification received', message)
   alert(message.alert);
 }
-                {% endhighlight %}
+{% endhighlight %}
                 <br>
                 <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedwallet/tree/lab2.69">github repository branch</a>
