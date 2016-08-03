@@ -5,7 +5,7 @@ We've open sourced our tutorials and samples so that if you will find an error i
 * For documentation, please use this very repository.
 * If you have a question about a sample or about the product, start a new question on [StackOverflow](https://stackoverflow.com/questions/ask) with the **ibm-mobilefirst** tag or join our [Slack community](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/).
   
-#### Pull requests
+#### Pull requests  
 Make small pull requests. The smaller a change is, the easier it is to confirm and accept it. When submitting a pull reuqest, be descriptive - what did you change, and why did you make the change.
 
 Learn more about pull requests: [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/)

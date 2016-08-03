@@ -39,7 +39,7 @@ Stay tuned for part 2!
 ---
 
 <div style="max-width: 200px">
-<a href="{{site.baseurl}}/labs/developers/8.0/advancedwallet"><img src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo_small.png"></a>
+<a href="{{site.baseurl}}/labs/developers/8.0/advancedwallet"><img src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo_small.png" alt="small logo for advanced wallet app"></a>
 </div>
 
 <br/>
