@@ -8,6 +8,8 @@ tabs:
     path: /labs/developers/8.0/setup/
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
+  - name: Advanced Wallet
+    path: /labs/developers/8.0/advancedwallet
 ---
 ### Introduction
 Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step video instructions.  
@@ -33,3 +35,18 @@ Before starting the lab series make sure to first follow through the setup instr
 * Adding JSONStore to organize local data storage
 
 Stay tuned for part 2!
+
+---
+
+<div style="max-width: 200px">
+<a href="{{site.baseurl}}/labs/developers/8.0/advancedwallet"><img src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo_small.png"></a>
+</div>
+
+<br/>
+In this lab you will be:
+
+* Migrating from MobileFirst Foundation v7.1-based app to a v8.0 based app
+* Developing using CLI and Visual Studio Code
+* Using Ionic 1 for hybrid development
+* Securing backend APIs with user authentication
+* Implementing Push notification messaging
