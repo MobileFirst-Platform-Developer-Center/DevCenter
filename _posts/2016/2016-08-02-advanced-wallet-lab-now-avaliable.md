@@ -1,6 +1,6 @@
 ---
-title: 'Labs: Advanced Wallet now available'
-date: 2016-07-13
+title: 'Labs: Advanced Wallet for MobileFirst Foundation 8.0 now available'
+date: 2016-08-02
 tags:
 - MobileFirst_Foundation
 - Cordova
@@ -11,8 +11,7 @@ version:
 author:
   name: Andrii Vasylchenko
 ---
-A new Advanced Wallet lab for MobileFirst Foundation 8.0 is [now available]({{site.baseurl}}/labs/developers/8.0/intro)!  
-During 3 hands-on lab sessions developers will become familiar with general steps needed to perform migration from MobileFirst Foundation 7.1 to MobileFirst Foundation 8.0
+A new Advanced Wallet lab for MobileFirst Foundation 8.0 is [now available]({{site.baseurl}}/labs/developers/8.0/intro)! During these three hands-on lab sessions developers will become familiar with the general steps needed to migrate from MobileFirst Platform Foundation 7.1 to MobileFirst Foundation 8.0.
 
 <div style="max-width: 200px">
   <a href="{{site.baseurl}}/labs/developers/8.0/advancedwallet"><img src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo_small.png"></a>
@@ -22,12 +21,12 @@ During 3 hands-on lab sessions developers will become familiar with general step
   <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/screenstory.jpg">
 </div>
 
-### Lab series highlights
+### Lab highlights
 
-* Moving existing MFP 7.1 app to MFP 8
+* Moving existing MobileFirst Platform Foundation 7.1 app to MobileFirst Foundation 8.0
 * Uses Ionic v1
-* Development using CLI and MS Visual Studio Code
-* Using javascript adapters for backend calls
+* Development using CLI and Visual Studio Code
+* Using JavaScript adapters for backend calls
 * User authentication
 * Push notifications messaging
 * JSONStore
