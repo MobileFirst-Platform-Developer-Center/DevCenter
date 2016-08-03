@@ -1,5 +1,5 @@
 ---
-title: MobileFirst Server Replication - Different ways of exporting and importing MobileFirst Foundation server artifacts
+title: Different ways of exporting and importing MobileFirst Foundation server artifacts
 date: 2016-07-25
 tags:
 - MobileFirst_Foundation
@@ -12,7 +12,6 @@ additional_authors:
   - Shinoj Zacharias
 ---
 ## Overview
-
 In this article we explain how to replicate an existing MobileFist server to a new MobileFirst Server. Traditional approach is to run some scripts (.sh/.bat) that will migrate the artifacts from source to destination (db/application). From MobileFirst Platform 8.0 onwards the admins/operators can export the artifacts in the form of JSON's and zip and then import it to the fresh MobileFirst server. The export or import operations can be done using console or direct REST calls. The various approaches are detailed below.
 
 
