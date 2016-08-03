@@ -8,6 +8,6 @@ We've open sourced our tutorials and samples so that if you will find an error i
 #### Pull requests
 Make small pull requests. The smaller a change is, the easier it is to confirm and accept it. When submitting a pull reuqest, be descriptive - what did you change, and why did you make the change.
 
-Learn more about pull requests:   [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/)
+Learn more about pull requests: [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/)
 
   
