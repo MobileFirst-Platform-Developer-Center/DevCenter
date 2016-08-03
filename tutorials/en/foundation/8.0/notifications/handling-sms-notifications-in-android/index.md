@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling SMS Notifications in Android
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 9
 downloads:

@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in iOS
+breadcrumb_title: Handling Notifications in iOS
 relevantTo: [ios]
 weight: 5
 downloads:

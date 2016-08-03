@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling SMS Notifications in Cordova
+breadcrumb_title: Handling SMS in Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
