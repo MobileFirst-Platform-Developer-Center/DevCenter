@@ -1,18 +1,18 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation service to set up MobileFirst Server on IBM Containers
+title: Using the Mobile Foundation service to set up MobileFirst Server
 breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 ## Overview
-This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on IBM Containers by using the **Mobile Foundation** service.  
-Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **IBM Containers**.
+This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on Bluemix by using the **Mobile Foundation** service.  
+Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
 
 The Mobile Foundation service offers two plan options:
 
-1. **Developer**: This plan provisions a Mobile Foundation server in a container in IBM Containers. The plan does not support the use of container groups or external databases *and is restricted to development and testing only*. The server instance allows you to register only a single (1) application.
-2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable container environment. The plan also requires a database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+1. **Developer**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
 
 > [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information regarding billing.
 
@@ -38,19 +38,17 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *developer* plan
 
-1. Agree to the Early license terms, provide your Bluemix user name and password, and click **Continue**.
-2. Start the MobileFirst Server.
+1. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
+    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
 ### Setting up the *Professional 1 Application* plan
 
-1. Agree to the Early license terms, provide your Bluemix user name and password, and click **Continue**.
-2. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB *Transactional plan* instance, enter your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB *Transactional plan* instance, select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
@@ -58,7 +56,7 @@ To set up the available plans, first follow these steps:
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
+    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
