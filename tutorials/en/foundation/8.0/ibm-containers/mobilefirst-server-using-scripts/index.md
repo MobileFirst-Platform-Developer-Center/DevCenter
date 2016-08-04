@@ -681,6 +681,8 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
                   <li><strong>RUNTIME_DB_SRV_NAME - </strong>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
                   <li><strong>RUNTIME_SCHEMA_NAME - </strong>Your schema name for runtime data. The default is MFPDATA.</li>
+                  <strong>Note:</strong> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.<br/>
+
               </ul>
               <h4>prepareserver.properties</h4>
               <ul>
@@ -774,7 +776,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                     </div>
                   </li>
                   <li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
-                  The <strong>prepareserverdbs.sh</strong> script is used to configure Run:
+                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -830,6 +832,12 @@ prepareserverdbs.sh --admindb MFPDashDBService
                             </div>
                         </div>
                     </div>
+                  </li>
+                  <li><strong>initenv.sh(Optional) – Logging in to Bluemix </strong><br />
+                      This step is required only if you need to create your containers in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <strong>initenv.sh</strong> script:
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
                   </li>
                   <li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
                   Run the <strong>prepareserver.sh</strong> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
