@@ -289,7 +289,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 {% endhighlight %}
                   </li>
                   <li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
-                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run:
+                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
