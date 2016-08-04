@@ -12,7 +12,6 @@ author:
 ---
 
 ## Introduction
-
 Many mobile applications require users to sign a license agreement before they can use the application. They have to first accept the terms &amp; conditions, and then they can proceed. In case  the license agreement changes, they are required to sign it again.
 
 With MobileFirst Foundation it is fairly straight forward to develop this functionality and make sure it is enforced. The security framework provides the infrastructure to orchestrate sending the license agreement only to users who haven't signed it, and resend when it changes. You can also update the terms &amp; conditions remotely from the Foundation console, and make sure your users sign the new version, without any downtime or code changes.
@@ -26,7 +25,7 @@ To implement the License Agreement functionality, I have created two artifacts:
 - The LicenseAgreementSecuirtyCheck which gets deployed on the server
 - The LicenseAgreementChallengeHandler which is used on the client to interact with the security check and the user. It is presented in a sample hybrid application.
 
-Source code for this security check and sample application can be found  [here](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/license-agreement)
+Source code for this security check and sample application can be found  [here](https://github.com/mfpdev/license-agreement-sample)
 
 ## The License Agreement Security Check
 

@@ -1,5 +1,5 @@
 ---
-title: Add trusted devices with IBM MobileFirst Foundation 8.0
+title: Add a Trusted Device with IBM MobileFirst Foundation 8.0
 date: 2016-07-31
 version:
 - 8.0
