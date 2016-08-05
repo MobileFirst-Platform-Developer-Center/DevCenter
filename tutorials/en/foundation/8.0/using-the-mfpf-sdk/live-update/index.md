@@ -29,7 +29,7 @@ The following video provides a demonstration of the Live Update feature.
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+        <iframe src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
     </div>
 </div>
 
@@ -60,11 +60,8 @@ The following system components function together in order to provide the Live U
 ## Adding Live Update to MobileFirst Server
 By default, Live Update Settings in the MobileFirst Operations Console is hidden. To enable, the provided Live Update adapter needs to be deployed.  
 
-<!-- 1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools tab**. 
-2. Download and deploy the Live Update adapter. -->
-1. [Click to download](https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true) the Live Update adapter.
-2. Deploy the adapter.
-
+1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools** tab. 
+2. Download and deploy the Live Update adapter.
 
 Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
 
@@ -426,38 +423,26 @@ Once a schmea and segments have been defined, the system administrator can expor
 #### Export schema
 
 ```bash 
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > schema.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > schema.txt
 ```
 
 #### Import schema
 
 ```bash
-curl -X PUT -d @schema.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+curl -X PUT -d @schema.txt --user admin:admin -H "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema
 ```
 
 * Replace "admin:admin" with your own (default is "admin")
 * Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.LiveUpdateDemo" with your own application's.
+* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 #### Export segment(s)
 
 ```bash
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/segment > segments.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment?embedObjects=true > segments.txt
 ```
 
 #### Import segment(s)
-If you have a single segment: 
-
-```bash
-curl -X POST -d @segment.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
-```
-
-* Replace "admin:admin" with your own (default is "admin")
-* Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.LiveUpdateDemo" with your own application's.
-
-If you have multiple segments, you can use for example this bash script that you can alter.  
-If Windows is used as the workstation, Python may need to be installed first.
 
 ```bash
 #!/bin/bash
@@ -465,11 +450,15 @@ segments_number=$(python -c 'import json,sys;obj=json.load(sys.stdin);print len(
 counter=0
 while [ $segments_number -gt $counter ]
 do
-   segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
-   echo $segment | curl -X POST -d @- --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.com.sample.LiveUpdateDemo/segment --header "Content-Type:application/json"
-   ((counter++))
+    segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
+    echo $segment | curl -X POST -d @- --user admin:admin --header "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment 
+    ((counter++))
 done
 ```
+
+* Replace "admin:admin" with your own (default is "admin")
+* Replace "localhost" and the port number with your own if needed
+* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 ### Caching
 Caching is enabled by default in order to avoid network letancy. This means that updates may not take place immediately.  
@@ -516,26 +505,21 @@ In the sample application you select a country flag and using Live Update the ap
 
 ### Sample usage
 
-1. Download and deploy the Live Update adapter [as instructed in the tutorial](#adding-live-update-to-mobilefirst-server).
+1. Download and deploy the Live Update adapter [as instructed in the **Adding Live Update to MobileFirst Server**](#adding-live-update-to-mobilefirst-server) section above.
 2. Add a scope mapping for **configuration-user-login** in **MobileFirst Operations Console → [your application] → Security tab → Scope-Elements Mapping**.
-3. Import the Live Update schema for the sample
-  * [Click to download](https://www.github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/blob/release80/scheme.txt) the scheme for the sample
-  * [Follow the instructions in the tutorial](#import-export) to upload the schema
-3. Add segments: In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, add the following segments IDs:
-  - DE
-  - FR
-  - ES
-  - UK
-  - IT
-  - US
+3. [Import the Live Update schema and segments](#import-export) for the sample application:
+ * [schema](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/schema.txt)
+ * [segments](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/segments.txt)
 
-    Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
-
-4. In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs to **FR**.
-  * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
-  * To see the map while using the app, you need to enable to `includeMap` feature.
-
-5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
+5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK (iOS) by running the command `pod update` from the project's root folder.
+
+#### Changing Live Update Settings
+Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
+
+In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
+  
+* Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
+* To see the map while using the app, you need to enable to `includeMap` feature.

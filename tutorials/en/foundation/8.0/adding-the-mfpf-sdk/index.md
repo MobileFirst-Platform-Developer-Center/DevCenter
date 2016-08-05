@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK
+title: Adding the MobileFirst SDK
 show_children: true
 show_disqus: false
 print_pdf: false

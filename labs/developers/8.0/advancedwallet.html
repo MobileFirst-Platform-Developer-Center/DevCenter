@@ -1,0 +1,240 @@
+---
+layout: labs
+title: MobileFirst Foundation 8.0 Developer Labs
+tabs:
+  - name: Introduction
+    path: /labs/developers/8.0/intro/
+  - name: Setup
+    path: /labs/developers/8.0/setup/
+  - name: Advanced Messenger
+    path: /labs/developers/8.0/advancedmessenger
+  - name: Advanced Wallet
+    path: /labs/developers/8.0/advancedwallet
+---
+<div>
+  <img alt="logo for advanced wallet" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo.png">
+</div>
+
+<h4>Lab highlights</h4>
+<ul>
+  <li>Migration from MobileFirst Platform 7.1 based app to 8.0</li>
+  <li>Hybrid, Ionic 1 based</li>
+  <li>Development using CLI and Visual Studio Code</li>
+  <li>User authentication</li>
+  <li>Backend mocks Node app</li>
+  <li>Push messaging</li>
+  <li>JSONStore</li>
+</ul>
+
+<p>Time to complete: up to 3 hours</p>
+
+<div>
+  <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/screenstory.jpg">
+</div>
+
+<br>
+<h4 class="no-anchor">Pre-requisites:</h4>
+<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
+<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.67 - 2.69)</p>
+<br>
+
+<div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Perform initial migration steps to move MFP 7.1 based project to 8.0</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Clone repository with 7.1 based Hybrid Wallet project and start migration of that app to 8.0
+                <br>
+                <b>Time to complete:</b> 70 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.67
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/glRkUsOaHHc"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Initial MobileFirst Platform Foundation 7.1 application repository URL</p>
+                <pre>https://github.com/andriivasylchenko/hybridWallet</pre>
+                <br>
+                <p>Mock server repository URL</p>
+                <pre>https://github.com/andriivasylchenko/AWMockServer</pre>
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedwallet/tree/lab2.67">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Change user authentication logic inside mobile app</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b>Replace v7.1 adapter-based authentication mechanism based on classic security model with OAuth 2.0
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.68
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WVORwpL0urk"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>safeApply factory</p>
+{% highlight javascript %}
+.factory('safeApply', [function($rootScope) {
+    return function($scope, fn) {
+        var phase = $scope.$root.$$phase;
+        if(phase == '$apply' || phase == '$digest') {
+            if (fn) {
+                $scope.$eval(fn);
+            }
+        } else {
+            if (fn) {
+                $scope.$apply(fn);
+            } else {
+                $scope.$apply();
+            }
+        }
+    }
+}])
+{% endhighlight %}
+                <br>
+                <p>initComplete function</p>
+{% highlight javascript %}
+function initComplete() {
+    console.log('---> WL init completed');
+    var AuthRealmChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
+    AuthRealmChallengeHandler.handleChallenge = function(response){
+        console.log('--> inside handleChallenge');
+        $scope.openModal();
+    		if (response.errorMsg) {
+            msg = response.errorMsg + "\n";
+          }
+        else {
+          msg = "Please enter username and password \n"
+        }
+
+        msg += "Remaining attempts: " + response.remainingAttempts;
+        $scope.errorText = msg;
+        $scope.displayError = true;
+    };
+
+   AuthRealmChallengeHandler.handleSuccess = function(response){
+        console.log('--> inside handleSuccess');
+        $scope.errorText = '';
+        $scope.user = {};
+        $scope.displayError = false;
+        $scope.closeModal();
+   }
+
+  $scope.doLogin = function () {
+    console.log('---> trying to perform auth with user ', $scope.user.name);
+    AuthRealmChallengeHandler.submitChallengeAnswer({"username": $scope.user.name, "password": $scope.user.password});
+  };
+
+  $scope.loadCards();
+};
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedwallet/tree/lab2.68">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Replace push notification related code and configure server side to send push messages</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Remove old push notification related code and using new Push API register device and subscribe for a custom tag to receive Push messages.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.69
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pofXqo9u2ak"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>initPush function</p>
+{% highlight javascript %}
+$scope.initPush = function() {
+  MFPPush.initialize(
+    function(success){
+      console.log('--> push init success');
+      MFPPush.registerNotificationsCallback($scope.NotificationReceived);
+      var options = {"phoneNumber": ""};
+      MFPPush.registerDevice(
+        options,
+        function(success){
+          console.log('--> push register success');
+          var tag = ['wallet'];
+          MFPPush.subscribe(
+            tag,
+            function(success){
+              console.log('--> push subscribe success');
+            },
+            function(failure){
+              console.log('--> push subscribe failure', failure);
+            }
+          )
+        },
+        function(failure){
+          console.log('--> push register failure', failure);
+        }
+      )
+    },
+    function(failure){
+      console.log('--> push init failure', failure);
+    }
+  )
+}
+                {% endhighlight %}
+                <p>NotificationReceived function</p>
+                {% highlight javascript %}
+$scope.NotificationReceived = function(message) {
+  console.log('--> push notification received', message)
+  alert(message.alert);
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedwallet/tree/lab2.69">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

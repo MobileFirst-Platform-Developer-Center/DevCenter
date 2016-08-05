@@ -2,11 +2,11 @@
 layout: tutorial
 title: Push Notifications Overview
 show_children: true
-relevantTo: [ios,android,cordova]
+relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
+IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
 
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)
@@ -19,10 +19,10 @@ Notifications are received regardless of whether the application is currently ru
 
 ### Notifications can take several forms:
 
-* **Alert (iOS, Android)** -  a pop-up text message
-* **Badge (iOS)** - a graphical representation that allows a short text or image
-* **Banner (iOS)** - a disappearing pop-up text message at the top of the device display
-* **Sound (iOS, Android)** - a sound file playing when a notification is received
+* **Alert (iOS, Android, Windows)** -  a pop-up text message
+* **Sound (iOS, Android, Windows)** - a sound file playing when a notification is received
+* **Badge (iOS), Tile (Windows)** - a graphical representation that allows a short text or image
+* **Banner (iOS), Toast (Windows)** - a disappearing pop-up text message at the top of the device display
 * **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
@@ -31,6 +31,7 @@ Push notifications are supported for the following platforms in MobileFirst Foun
 
 * iOS 8.x, 9.x
 * Android 4.x, 5.x, 6.x
+* Windows 8.1, Windows 10
 
 ## Push Notification Types 
 
@@ -53,3 +54,4 @@ Follow through the below required setup of the server-side and client-side in or
 * [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
 * [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
 * [Handling push notifications in Android applications](../handling-push-notifications-in-android)
+* [Handling push notifications in Windows applications](../handling-push-notifications-in-windows)
