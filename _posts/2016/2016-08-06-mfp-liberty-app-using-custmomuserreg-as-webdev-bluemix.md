@@ -2,7 +2,7 @@
 title: IBM MobileFirst Liberty buildpack app authentication using On-Premise CustomRegistry(as a WebDAV resource) on Bluemix
 date: 2016-08-05
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Authentication
 - WebDAV
 - Security
@@ -12,7 +12,7 @@ author:
   name: Vinod Appajanna
 ---
 
-## Introduction
+##Introduction
 
 This article walks you through on how a bluemix liberty app (in particular Mobile foundation) connects to a on premise filebased user repository that is published as a [WebDAV resource](http://www.webdav.org/) for authentication.
 
@@ -22,7 +22,7 @@ Basically WebDAV is a set of extensions to the HTTP protocol which allows users 
 ![-]({{site.baseurl}}/assets/blog/2016-08-06-mfp-liberty-app-using-custmomuserreg-as-webdav-resource-on-bluemix/MFPCustUserReg.png)
 <p style="text-align: center;">bluemix liberty app authenticating with on-prem custom userregistry</p>
 
-#### See in action
+####See in action
 ------------------
 Here is a YouTube demo that shows how to create/add a custom user registry as a liberty feature, configure a secure gateway & WebDAV for liberty app and login to the registry. I have also briefed the steps that are part of video in the below sections. If you want to skip some sections in the video and move directly to a particular section then you can do so by clicking the [video clip] links.
 
@@ -35,7 +35,7 @@ Here is a YouTube demo that shows how to create/add a custom user registry as a 
 </br>
 
 
-#### Create a Custom User registry as liberty feature
+####Create a Custom User registry as liberty feature
 ----------------------------------------------
 * Prerequisite (installations):
  - Install Libety buildtools/WebSphere Application developer tools in the eclipse
@@ -68,7 +68,7 @@ Here is a YouTube demo that shows how to create/add a custom user registry as a 
 
 So, now we are done with creating the liberty feature and adding it to the server.xml.
 
-#### Enabling WebDAV on remote machine [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=16m08s)
+####Enabling WebDAV on remote machine [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=16m08s)
 -----------------------------------------------------
 * Enabling IIS server and WEBDAV on Windows Machine
  - Under Windows features turn on the following features
@@ -78,14 +78,14 @@ So, now we are done with creating the liberty feature and adding it to the serve
    * Windows Authentication
 * Copy the users and groups file registries and expose the same as a WEBDAV resource.
 
-#### Configure Secured Gateway to connect to On-Prem [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=20m26s)
+####Configure Secured Gateway to connect to On-Prem [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=20m26s)
 -------------------------------------------------------------------
 * Create a SG service and add the destination
 * On the Client SG
   - Connect to the server by entering the SG ID
   - Add host and port to the Access list
 
-#### Update server.xml, prepare, push the liberty app to bluemix and login [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=24m35s)
+####Update server.xml, prepare, push the liberty app to bluemix and login [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=24m35s)
 ------------------------------------------------------------------------------
 * Update the userFile and groupFile attribute to point it to WebDAV resource/Custom user registry
 * Zip the App
@@ -94,11 +94,11 @@ So, now we are done with creating the liberty feature and adding it to the serve
 
 Note: To install the app on to bluemix you need to install [cloudfoundry] (https://console.ng.bluemix.net/docs/cli/cliplug-in.html) plugin on your system and then login.
 
-#### Sample
+####Sample
 -----------
 [Download sample for OSGi Liberty feature](https://github.com/vinapp/liberty-customreg-as-webdavres)
 
-#### References
+####References
 ---------------
 1. [WebDAV Introduction](http://www.webdav.org/)
 2. [Installing and Configuring WebDAV on linux/apache] (http://www.cyberciti.biz/faq/rhel-fedora-linux-apache-enable-webdav/)
