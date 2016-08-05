@@ -54,3 +54,7 @@ app.controller('LoginCtrl', function ($scope) {
   // other controller code
 });
 ```
+
+## Final Thoughts
+
+AngularJS is a very powerful framework and it's single page app design is ideal for MobileFirst Foundation Cordova applications. In this tutorial we covered the best practices of using Angular with a MobileFirst Cordova application, things like manual bootstrap and splash screen management. By following the steps mentioned above you can be sure that MobileFirst's APIs will be available when your Angular services, factories, and providers are initialized.
