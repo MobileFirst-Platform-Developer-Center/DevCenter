@@ -164,10 +164,5 @@ Make sure you have Node.js installed.
 2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
 3. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
 
-### Cordova Sample usage
-1. From a **Command-line** window, navigate to the project's root folder.
-2. Add a platform by running the `cordova platform add` command.
-3. Run the command: `mfpdev app register`.
-4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
-5. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
-6. Run the Cordova application by running the `cordova run` command.
+### Sample usage
+Follow the sample's README.md file for instructions.

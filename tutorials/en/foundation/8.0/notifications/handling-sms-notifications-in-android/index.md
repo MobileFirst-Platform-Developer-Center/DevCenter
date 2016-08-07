@@ -105,14 +105,4 @@ To send a notification, see the [sending notifications](../sending-push-notifica
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
 ### Sample usage
-
-1. From a **Command-line**, navigate to the project's root folder.
-2. Register the application by running the command: `mfpdev app register`.
-3. In the MobileFirst console, under **Applications** → **SMSNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
-4. Import the project to Android Studio, and run the sample by clicking the **Run** button.
-
-**Sending an SMS notification**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-
+Follow the sample's README.md file for instructions.

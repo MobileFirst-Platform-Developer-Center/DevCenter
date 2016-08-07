@@ -70,17 +70,4 @@ To send a notification, see the [sending notifications](../sending-push-notifica
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
 ### Sample usage
-
-1. From a **Command-line**, navigate to the project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. In the MobileFirst Operations Console
-    - Setup the MobileFirst Server with either GCM key and senderId, APNS certificate or WNS credentials, and define tags.
-    - Under **Applications** → **SMSNotificationsCordova** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
-5. Run the application by running the `cordova run` command.
-
-**[Sending a notification](../sending-push-notifications):**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-
+Follow the sample's README.md file for instructions.

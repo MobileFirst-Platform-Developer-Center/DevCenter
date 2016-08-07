@@ -504,17 +504,7 @@ In the sample application you select a country flag and using Live Update the ap
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
 
 ### Sample usage
-
-1. Download and deploy the Live Update adapter [as instructed in the **Adding Live Update to MobileFirst Server**](#adding-live-update-to-mobilefirst-server) section above.
-2. Add a scope mapping for **configuration-user-login** in **MobileFirst Operations Console → [your application] → Security tab → Scope-Elements Mapping**.
-3. [Import the Live Update schema and segments](#import-export) for the sample application:
- * [schema](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/schema.txt)
- * [segments](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/segments.txt)
-
-4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
-
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK (iOS) by running the command `pod update` from the project's root folder.
+Follow the sample's README.md file for instructions.
 
 #### Changing Live Update Settings
 Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.

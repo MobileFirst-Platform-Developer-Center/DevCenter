@@ -166,40 +166,4 @@ Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cord
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
 
 ### Sample usage
-**Users list**: See the `UserManager.java` file for a list of valid users.
-
-#### Deploy adapters
-* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy](../../adapters/creating-adapters/) the available **StepUp** and **ResourceAdapter** adapters.
-
-#### Register applications
-**Cordova**  
-From a **Command-line** window, navigate to the project's root folder and:
-
-* Add a platform by running the `cordova platform add` command.
-* Registering the application by running the `mfpdev app register` command.
-
-<br/>
-**Native**  
-From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
-
-<br/>
-**Web**  
-Make sure that Node.js is installed.  
-Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.stepupweb`.
-{% endcomment %}
-
-#### Scope mapping
-In **MobileFirst Operations Console → StepUpWeb → Security**, map scopes and security checks as follows:
-
-* Map the `accessRestricted` scope to the `StepUpUserLogin` security check.
-* Map the `transferPrivilege` scope to both the `StepUpUserLogin` and `StepUpPinCode` security checks.
-
-Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
-
-<br/>
-> **Note for web sample:**  
-> Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.  
-> In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+Follow the sample's README.md file for instructions.

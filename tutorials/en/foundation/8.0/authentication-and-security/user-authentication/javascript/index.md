@@ -144,34 +144,8 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 - [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80) the RememberMe Web project.
 - [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80) the PreemptiveLogin Web project.
 
-### Web sample usage
-Make sure that Node.js is installed.
-
-1. Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.remembermeweb` or `com.sample.preemptiveloginweb`.
-{% endcomment %}
-
-2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.
-3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-4. In **MobileFirst Console → PreemptiveLoginWeb / RememberMeWeb → Security**, map the `accessRestricted` scope to the `UserLogin` security check.
-5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
-
-### Cordova Sample usage
-1. Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-2. From a **Command-line** window, navigate to the project's root folder and:
-    * Add a platform by running the `cordova platform add` command.
-    * Register the application by running the `mfpdev app register` command.
-3. Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobileFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
-
-4. Back on the command line:
-    * Run the Cordova application by running the `cordova run` command.
-
+### Sample usage
+Follow the sample's README.md file for instructions.
 The username/password for the app must match, i.e. "john"/"john".
 
 ![sample application](sample-application.png)

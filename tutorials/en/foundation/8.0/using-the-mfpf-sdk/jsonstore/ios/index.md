@@ -349,8 +349,4 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
-4. Import the project to Xcode, and run the sample by clicking the **Run** button.
-
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK by running the command `pod update` from the project's root folder.
+Follow the sample's README.md file for instructions.

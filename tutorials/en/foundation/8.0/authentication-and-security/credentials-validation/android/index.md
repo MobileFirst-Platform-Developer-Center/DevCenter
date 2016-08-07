@@ -152,13 +152,6 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android project.
 
 ### Sample usage
-
-* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobileFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+Follow the sample's README.md file for instructions.
 
 ![Sample application](sample-application-android.png)
