@@ -30,14 +30,14 @@ Application developers protect access to their resources by defining the require
 ### Access Token
 A MobileFirst access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
 
-### Structure
+#### Structure
 The MobileFirst access token contains the following information:
 
 * **Client ID**: a unique identifier of the client.
 * **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope).
 * **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
 
-### Token expiration
+#### Token expiration
 The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
 
 <div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
@@ -70,7 +70,7 @@ The granted access token remains valid until its expiration time elapses. The ac
     "maxTokenExpiration": 7200
 }
 {% endhighlight %}</li>
-                        <li>Deploy the updated configuration JSON file by running the command: `mfpdev app push`.</li>
+                        <li>Deploy the updated configuration JSON file by running the command: <code>mfpdev app push</code>.</li>
                     </ol>
                 </li>
             </ul>
