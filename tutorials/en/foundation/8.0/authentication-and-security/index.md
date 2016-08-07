@@ -70,7 +70,7 @@ The granted access token remains valid until its expiration time elapses. The ac
     "maxTokenExpiration": 7200
 }
 {% endhighlight %}</li>
-                        <li>Deploy the updated configuration JSON file by running the command: `mfpdev app push`.</li>
+                        <li>Deploy the updated configuration JSON file by running the command: <code>mfpdev app push</code>.</li>
                     </ol>
                 </li>
             </ul>
