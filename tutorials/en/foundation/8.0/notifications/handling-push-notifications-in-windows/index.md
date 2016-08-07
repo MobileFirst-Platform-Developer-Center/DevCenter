@@ -119,7 +119,6 @@ if (Response.Success == true)
 }
 ```
 
-
 #### Subscribe
 Subscribe to desired tags.
 
@@ -138,7 +137,6 @@ else
 }
 ```
 
-
 #### Get subscriptions
 Retrieve tags the device is currently subscribed to.
 
@@ -153,7 +151,6 @@ else
     Message = new MessageDialog("Failed to get subcription list...");
 }
 ```
-
 
 #### Unsubscribe
 Unsubscribe from tags.
@@ -189,23 +186,21 @@ if (Response.Success == true)
 
 
 ## Handling a push notification
-
 In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing the following method.
 
 1. Create a class by using interface of type MFPPushNotificationListener
 
-```csharp
-internal class NotificationListner : MFPPushNotificationListener
-{
-    public async void onReceive(String properties, String payload)
-{
-   // Handle push notification here      
-}
-}
-```
+    ```csharp
+    internal class NotificationListner : MFPPushNotificationListener
+    {
+        public async void onReceive(String properties, String payload)
+    {
+       // Handle push notification here      
+    }
+    }
+    ```
 
 2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
-
 3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
 
 
@@ -224,18 +219,4 @@ WNS uses regular http or https requests.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
 
 ### Sample usage
-1. [Add the MobileFirst Windows SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/windows-8-10/#adding-the-sdk) to the sample.
-2. Configure the project with your bundleId (based on bundleId that you have created for your push notifications certificate .p12 file).
-3. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-4. Perform the required scope mapping for **push.mobileclient**.
-5. Run the app by clicking the **Run** button.
-
-
-**[Sending a notification](../sending-push-notifications)**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-* Authenticated notification:
-    * Deploy the [**UserLogin** sample Security Check](../../authentication-and-security/user-authentication/security-check).
-    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Follow the instructions for [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
+Follow the sample's README.md file for instructions.
