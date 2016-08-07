@@ -92,8 +92,8 @@ The granted access token remains valid until its expiration time elapses. The ac
 
         <div id="collapse-response-structure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure">
             <div class="panel-body">
-                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server; (actual access tokens are longer than shown in the example):</p>
-                
+                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server:</p>
+
 {% highlight json %}
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -111,11 +111,11 @@ Pragma: no-cache
 <ul>
     <li><b>token_type</b>: the token type is always <i>"Bearer"</i>, in accordance with the <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage specification</a>.</li>
     <li><b>expires_in</b>: the expiration time of the access token, in seconds.</li>
-    <li><b>access_token</b>: the generated access token.</li>
+    <li><b>access_token</b>: the generated access token (actual access tokens are longer than shown in the example).</li>
     <li><b>scope</b>: the requested scope.</li>
 </ul>
 
-<p>The <b>expires_in</b> and <b>scope</b> information is also contained in the token (<b>access_token</b>).</p>
+<p>The <b>expires_in</b> and <b>scope</b> information is also contained within the token itself (<b>access_token</b>).</p>
 
 <blockquote><b>Note:</b> The structure of a valid access-token response is relevant if you use the low-level <code>WLAuthorizationManager</code> class and manage the OAuth interaction between the client and the authorization and resource servers yourself, or if you use a confidential client. If you are using the high-level <code>WLResourceRequest</code> class, which encapsulates the OAuth flow for accessing protected resources, the security framework handles the processing of access-token responses for you. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">See Client security APIs</a> and <a href="confidential-clients">Confidential clients</a>.</blockquote>
 
