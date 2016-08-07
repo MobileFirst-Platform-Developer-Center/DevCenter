@@ -1,13 +1,10 @@
 ---
 layout: tutorial
 title: Advanced Samples
-show_children: false
-show_disqus: false
-print_pdf: false
 weight: 10
 ---
 ## Overview
-Discover advanced implementation examples for real-life use cases such as SMS One-Time-Password, LDAP server connectivity, Social Login, License agreement, and more...
+Discover advanced implementation examples for real-life use cases such as SMS One-Time-Password, LDAP server connectivity, Social Login, License agreement, Trusted Devices and more...
 
 ### Implementing Social Login Authentication with IBM MobileFirst Platform Foundation 8.0 - Part 1
 Social Login has become a common authentication method in many mobile apps. App owners and users understand the big value it gives them. Users can now sign in to apps from their favorite social platform, such as Facebook or Google. This method makes life easier for the users, and also can give the app owner the ability to leverage the information from the social platform (for example, profile picture, users friends, feed, etc). App owners can maximize the user engagements with such capabilities. [Continue reading...]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)
