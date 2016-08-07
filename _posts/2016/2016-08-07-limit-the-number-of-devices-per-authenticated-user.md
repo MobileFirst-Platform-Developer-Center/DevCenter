@@ -13,19 +13,18 @@ additional_authors:
 - Carmel Schindelhaim
 ---
 ## Introduction
-You are a CIO of a big Airlines company.  Your company just decided to buy new shiny In-flight entertainment system.  The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system.  To help growing the company revenue, the company decided to let the passengers buy premium entertainment program, so they will be able to watch the latest movies and series on their devices.
+Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices.
 
 ![login flow]({{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/cabin.jpg)
 
-After a few months all is set and working, but suddenly you realized that the revenue from the premium program is not as you expected. The reason is that users are able to see the premium programs with one account on more than one device, for example all family members can share the same account and enjoy the premium program for a low cost.  But you are not a low cost company, you give much value for your passengers and you want to see the value back.
+A few months after launch, you realize that the revenue from the premium program is not as you expected. Since you let users watch premium programs from the same account on multiple devices, users have been sharing their credentials with others. But you are not a low cost company. You give your passengers a great deal of value, and you expect to get value in return.
 
-Later in a board meeting the company has decided to try and increase the revenue from the premium program on the new In-flight entertainment system. The company has decided to control the number of devices that can connect to the In-flight entertainment system with the same account.
+During your next board meeting, you raise the issue, and the board decides to try to raise revenue by controlling the number of devices that can connect to the In-flight entertainment system from the same account.
 
-As a result the company is seeing a growth in the revenue.
+This move turns out to be successful, as your company starts seeing positive revenue growth from the in flight entertainment investment.
 
-With IBM MobileFirst Foundation v8 it is easy to enforce such policy, and you even can control the default configuration such as how many devices you want to let one account to use. You can also decide what action to take if a user has reached the limit. Should you block access, or force log-out from other devices.
-
-Using embedded components such Authorization Server, Security Framework and Registration service will simplified your development process, and shorten the amount of code you need to write yourself.
+With IBM MobileFirst Foundation v8 it is easy to enforce such policy, and you can even make aspects of the policy configurable, such as how many devices you allow one account to use, so you can adjust them dynamically, without having to publish a new version of the app. You can also decide what action to take if a user has reached the limit. Either block access on the current device, or force log-out from other devices.
+Using embedded MobileFirst Foundation components such the Authorization Server, Security Framework, and Registration service will simplify your development process, and shorten the amount of code you need to write yourself.
 
 ## Running the sample
 To run the sample application [see the sample's README.md](https://github.com/mfpdev/user-login-with-max-devices-sample).
@@ -39,19 +38,19 @@ To run the sample application [see the sample's README.md](https://github.com/mf
 <br>
 
 ## Technical overview
-The sample is based on the [UserLogin Security Check](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/security-check/).
 
 ### Configuration
-In addition to UserLogin Security Check this Security Check has two new attributes in the configuration which let you configure the default values for:
-- The maximum devices per authenticated user - `maxDevices`
-- Policy which define what action to take if the limit of devices per user has reached - `autoLogout`
+This sample uses a UserLoginWithMaxDevices Security Check that extends the [UserLogin Security Check](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/security-check/) Security Check, adding two new configurable attributes:
 
-To configure those values you can either before deployment in the [adapter.xml file](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/adapter-resources/adapter.xml) Or later from the MobileFirst Operations Console:
+- The maximum devices per authenticated user - `maxDevices`
+- The policy which defines what action to take if the number of devices per authenticated user reaches the allowed limit - `autoLogout`
+
+You can configure the values of those attributes either before deploying the adapter, in the [adapter.xml file](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/adapter-resources/adapter.xml) Or after deploying the adapter, from the MobileFirst Operations Console:
 
 ![login flow]({{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/console.png)
 
 ### Implementation
-Each call to `validateCredentials` checks the amount of the logged-in devices for the current user by lookup in the registration service.  
+Each call to `validateCredentials` checks how many devices the user is currently logged-in on by looking this up in the MobileFirst Foundation registration service.
 
 #### [UserLoginWithMaxDevices.java](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/java/com/github/mfpdev/sample/UserLoginWithMaxDevices.java)
 ``` java
@@ -68,7 +67,7 @@ Each call to `validateCredentials` checks the amount of the logged-in devices fo
 }
 ```
 
-If the maximum allowed devices has reached the defined limit, the Security Check persist it in the registration context public attributes, so it will be available for lookup later on `introspect` method. Depending on the `autoLogout` configuration, the Security Check either stop the current login process or enforce logout on another logged-in device and allows this device to login.
+If the maximum allowed devices has reached the defined limit, the Security Check persists this in the registration context public attributes, so it will be available for lookup later on using the `introspect` method. Depending on the `autoLogout` configuration, the Security Check either blocks the login process on the current device, or enforces a logout on another device to allow the user to login on the current device.
 
 ``` java
 private boolean isCurrentDeviceAllowedToLogin(String userName) {
