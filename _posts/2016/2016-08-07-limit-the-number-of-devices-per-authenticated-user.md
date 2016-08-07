@@ -13,9 +13,10 @@ additional_authors:
 - Carmel Schindelhaim
 ---
 ## Introduction
+
 Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices.
 
-![login flow]({{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/cabin.jpg)
+<img alt="In-flight Entertainment system in planes" src="{{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/cabin.jpg" style="float:right;margin: 10px"/>
 
 A few months after launch, you realize that the revenue from the premium program is not as you expected. Since you let users watch premium programs from the same account on multiple devices, users have been sharing their credentials with others. But you are not a low cost company. You give your passengers a great deal of value, and you expect to get value in return.
 
@@ -32,7 +33,7 @@ To run the sample application [see the sample's README.md](https://github.com/mf
 ## Short Demo Of The Sample
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/B_Hldzr8KAQ"></iframe>
+    <iframe src="https://www.youtube.com/embed/Hh11_AVWTVo"></iframe>
   </div>
 </div>   
 <br>
@@ -73,12 +74,18 @@ If the maximum allowed devices has reached the defined limit, the Security Check
 private boolean isCurrentDeviceAllowedToLogin(String userName) {
     boolean isAllowedToContinueWithLogin;
     ...
-      if (userLoginWithMaxDevicesConfig.isAutoLogout()) {
-          loggedInDevices.get(0).getPublicAttributes().put(ENFORCE_LOGOUT_ATTRIBUTE, true);
-          isAllowedToContinueWithLogin = true;
-      } else {
-          isAllowedToContinueWithLogin = false;
-      }
+    if (loggedInDevices.size() < userLoginWithMaxDevicesConfig.getNumOfAllowedDevices()) {
+        // There is no other logged in devices, so it's ok to continue with login process
+        isAllowedToContinueWithLogin = true;
+    } else {
+        //Check if need to logout other device or block the current login
+        if (userLoginWithMaxDevicesConfig.isAutoLogout()) {
+            loggedInDevices.get(0).getPublicAttributes().put(ENFORCE_LOGOUT_ATTRIBUTE, true);
+            isAllowedToContinueWithLogin = true;
+        } else {
+            isAllowedToContinueWithLogin = false;
+        }
+    }
     ...
     return isAllowedToContinueWithLogin;
 }
