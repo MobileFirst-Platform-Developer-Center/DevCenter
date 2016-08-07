@@ -15,9 +15,9 @@ additional_authors:
 ## Introduction
 Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices.
 
-A few months after launch, you realize that the revenue from the premium program is not as you expected. Since you let users watch premium programs from the same account on multiple devices, users have been sharing their credentials with others. But you are not a low cost company. You give your passengers a great deal of value, and you expect to get value in return.
-
 ![login flow]({{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/cabin.jpg)
+
+A few months after launch, you realize that the revenue from the premium program is not as you expected. Since you let users watch premium programs from the same account on multiple devices, users have been sharing their credentials with others. But you are not a low cost company. You give your passengers a great deal of value, and you expect to get value in return.
 
 During your next board meeting, you raise the issue, and the board decides to try to raise revenue by controlling the number of devices that can connect to the In-flight entertainment system from the same account.
 
