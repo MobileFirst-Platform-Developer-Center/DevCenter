@@ -42,7 +42,7 @@ You can also manually edit the application's configuration JSON file with the re
 Read the  [Credential Validation](../credentials-validation/) tutorial because its sample is used to configure Device SSO.  
 For this demonstration, the Cordova sample application is used, however you can do the same also with the iOS, Android, and Windows sample applications.
 
-1. Follow the [sample usage instructions](../credentials-validation/javascript/#cordova-sample-usage).
+1. Follow the [sample usage instructions](../credentials-validation/javascript/sample-usage).
 2. Repeat the steps with a different sample name and application identifier.
 3. Run both applications on the same device. Notice how in each application you are prompted for the pincode ("1234").
 4. In the MobileFirst Operations Console, set `Enable Device SSO` to `true` for each of the applications, as instructed above.
