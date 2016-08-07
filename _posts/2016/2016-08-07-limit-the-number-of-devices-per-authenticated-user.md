@@ -38,19 +38,19 @@ To run the sample application [see the sample's README.md](https://github.com/mf
 <br>
 
 ## Technical overview
-The sample is based on the [UserLogin Security Check](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/security-check/).
 
 ### Configuration
-In addition to UserLogin Security Check this Security Check has two new attributes in the configuration which let you configure the default values for:
-- The maximum devices per authenticated user - `maxDevices`
-- Policy which define what action to take if the limit of devices per user has reached - `autoLogout`
+This sample uses a UserLoginWithMaxDevices Security Check that extends the [UserLogin Security Check](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/security-check/) Security Check, adding two new configurable attributes:
 
-To configure those values you can either before deployment in the [adapter.xml file](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/adapter-resources/adapter.xml) Or later from the MobileFirst Operations Console:
+- The maximum devices per authenticated user - `maxDevices`
+- The policy which defines what action to take if the number of devices per authenticated user reaches the allowed limit - `autoLogout`
+
+You can configure the values of those attributes either before deploying the adapter, in the [adapter.xml file](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/adapter-resources/adapter.xml) Or after deploying the adapter, from the MobileFirst Operations Console:
 
 ![login flow]({{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/console.png)
 
 ### Implementation
-Each call to `validateCredentials` checks the amount of the logged-in devices for the current user by lookup in the registration service.  
+Each call to `validateCredentials` checks how many devices the user is currently logged-in on by looking this up in the MobileFirst Foundation registration service.
 
 #### [UserLoginWithMaxDevices.java](https://github.com/mfpdev/user-login-with-max-devices-sample/blob/master/UserLoginWithMaxDevicesSecurityCheck/src/main/java/com/github/mfpdev/sample/UserLoginWithMaxDevices.java)
 ``` java
@@ -67,7 +67,7 @@ Each call to `validateCredentials` checks the amount of the logged-in devices fo
 }
 ```
 
-If the maximum allowed devices has reached the defined limit, the Security Check persist it in the registration context public attributes, so it will be available for lookup later on `introspect` method. Depending on the `autoLogout` configuration, the Security Check either stop the current login process or enforce logout on another logged-in device and allows this device to login.
+If the maximum allowed devices has reached the defined limit, the Security Check persists this in the registration context public attributes, so it will be available for lookup later on using the `introspect` method. Depending on the `autoLogout` configuration, the Security Check either blocks the login process on the current device, or enforces a logout on another device to allow the user to login on the current device.
 
 ``` java
 private boolean isCurrentDeviceAllowedToLogin(String userName) {
