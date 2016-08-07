@@ -9,6 +9,8 @@ tags:
 - Adapters
 author:
   name: Ishai Borovoy
+additional_authors:
+- Carmel Schindelhaim
 ---
 ## Introduction
 You are a CIO of a big Airlines company.  Your company just decided to buy new shiny In-flight entertainment system.  The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system.  To help growing the company revenue, the company decided to let the passengers buy premium entertainment program, so they will be able to watch the latest movies and series on their devices.
