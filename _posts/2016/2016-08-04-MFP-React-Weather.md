@@ -9,7 +9,7 @@ author:
 ---
 
 # Weather App
-A MobileFirst Platform Foundation 8.0 Cordova app using ReactJS and Weather Services API from Bluemix.
+A MobileFirst Foundation 8.0 Cordova app using ReactJS and Weather Services API from Bluemix.
 
 ## Github Repo
 View the App and it's Adapter on [github](https://github.com/cshunger/WeatherProject).
@@ -26,7 +26,7 @@ Before starting this app you should have a good understanding of JavaScript usin
 
 It is important to understand Facebook's ReactJS Framework and how to create classes that render the appropriate objects. You can learn about ReactJS [here](https://facebook.github.io/react/).
 
-Lastly, have and understanding of the MobileFirst Foundation 8.0 JavaScript Framework. You can learn more about building a Cordova App [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
+Lastly, have an understanding of the MobileFirst Foundation 8.0 JavaScript Framework. You can learn more about building a Cordova App [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
 
 ## What you need
 
