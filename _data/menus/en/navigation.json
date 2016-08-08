@@ -1,4 +1,7 @@
 [{
+    "name": "Features",
+    "path": "/features"
+},{
     "name": "Tutorials",
     "path": "/tutorials/en",
     "children": [{
