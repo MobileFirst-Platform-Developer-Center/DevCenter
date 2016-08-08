@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Platform's Foundation 8.0 integration with Weather Service offered on Bluemix in combination with Facebook's ReactJS 
+title: IBM MobileFirst Foundation 8.0 integration with Weather Service offered on Bluemix in combination with Facebook's ReactJS 
 date: 2016-08-04 22:11:23.000000000 +02:00
 tags:
 - MobileFirst_Foundation
@@ -8,28 +8,29 @@ author:
   name: Chevy Hungerford
 ---
 
-# Weather Project
-A MobileFirst Platform Foundation 8.0 project using ReactJS and Weather Services API from Bluemix.
+# Weather App
+A MobileFirst Platform Foundation 8.0 Cordova app using ReactJS and Weather Services API from Bluemix.
+
+## Github Repo
+View the App and it's Adapter on [github](https://github.com/cshunger/WeatherProject).
 
 ## Overview
 
-This is a sample project that was created to show off how versatile MobileFirst Platform Foundation 8.0 is with UI Frameworks. In this example I demonstrate the ease of using Facebook's ReactJS with MobileFirst Platform Foundation 8.0.
-
-This app is going to display weather data for four areas; Austin, Ann Arbor, New York, and San Francisco. As you press the buttons at the top of the screen the weather will update to the most recent weather report and include a picture of the current weather.
+This is a sample app that was created to show off how versatile MobileFirst Foundation 8.0 is with UI Frameworks. In this example I demonstrate the ease of using Facebook's ReactJS with MobileFirst Foundation 8.0.
 
 ![Weather App]({{site.baseurl}}/assets/blog/2016-08-04-MFP-React-Weather/WeatherApp.png)
 
 ## What you should know
 
-Before starting this project you should have a good understanding of JavaScript using the latest features.
+Before starting this app you should have a good understanding of JavaScript using the latest features.
 
 It is important to understand Facebook's ReactJS Framework and how to create classes that render the appropriate objects. You can learn about ReactJS [here](https://facebook.github.io/react/).
 
-Lastly, have and understanding of the MobileFirst Platform Foundation 8.0 JavaScript Framework. You can learn more about building a Cordova Project [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
+Lastly, have and understanding of the MobileFirst Foundation 8.0 JavaScript Framework. You can learn more about building a Cordova App [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
 
 ## What you need
 
-MobileFirst Platform Foundation DevKit, read getting started for MobileFirst Platform Foundation:
+MobileFirst Foundation DevKit, read getting started for MobileFirst Foundation:
 
 https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/
 
@@ -43,13 +44,13 @@ Webpack: `npm install -g webpack`
 
 ## Before you begin 
 
-Start your MobileFirst Platform Foundation 8.0 server. Navigate to the root directory of your MobileFirst Server and execute the `run` script.
+Start your MobileFirst Foundation 8.0 server. Navigate to the root directory of your MobileFirst Server and execute the `run` script.
 
 From your Weather Services API, gather the host and password for your adapter. Place those values inside the `weatehrAPIUsername` and `weatherAPIPassword` variables in `JavaHttpResource.java` located `JavaHTTP/src/main/java/com/sample`
 
 ## Starting the App
 
-To get the App running on an android device navigate to the MFPReactApp project root and run the following commands:
+To get the App running on an android device navigate to the MFPReactApp root folder and run the following commands:
 
 `npm install`
 
@@ -57,7 +58,7 @@ To get the App running on an android device navigate to the MFPReactApp project 
 
 `webpack`
 
-Register your application with the MobileFirst Platform Foundation 8.0 server:
+Register your application with the MobileFirst Foundation 8.0 server:
 
 `mfpdev app register`
 
