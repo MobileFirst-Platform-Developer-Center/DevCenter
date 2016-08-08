@@ -26,6 +26,7 @@ Angular offers automatic and manual bootstrap for your application. In automatic
 Manual bootstrap is the recommended approach since it gives us the flexibility to initialize the Angular module at any time, in our case after we want to initialize Angular after the `wlCommonInit` function is called.
 
 **init.js**
+
 ```
 function wlCommonInit() {
 	angular.bootstrap(document, ['your-app']);
@@ -33,6 +34,7 @@ function wlCommonInit() {
 ```
 
 **app.js**
+
 ```
 var app = angular.module('your-app', []);
 ```
