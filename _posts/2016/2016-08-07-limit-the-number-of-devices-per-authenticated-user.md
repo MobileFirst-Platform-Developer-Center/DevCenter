@@ -14,7 +14,7 @@ additional_authors:
 ---
 ## Introduction
 
-Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow the passengers to bring their own devices and connect it to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices.
+Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow passengers to bring their own devices and connect them to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices.
 
 <img alt="In-flight Entertainment system in planes" src="{{site.baseurl}}/assets/blog/2016-08-07-limit-the-number-of-devices-per-authenticated-user/cabin.jpg" style="float:right;margin: 10px"/>
 
