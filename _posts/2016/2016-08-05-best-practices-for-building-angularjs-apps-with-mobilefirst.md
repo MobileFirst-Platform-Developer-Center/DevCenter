@@ -1,8 +1,8 @@
 ---
-title: 'Best Practices for building AngularJS apps with MobileFirst'
+title: 'Best Practices for building AngularJS apps with MobileFirst Foundation 8.0'
 date: 2016-08-05
 tags:
-  - MobileFirst_Platform
+  - MobileFirst_Foundation
   - Cordova
   - AngularJS
 author:
@@ -10,7 +10,7 @@ author:
 ---
 
 ## Overview
-In this tutorial we cover best practices for building AngularJS apps with MobileFirst. Starting with MobileFirst Foundation 7.1 support for Cordova apps was introduced and in MobileFirst Foundation 8.0 the classic Hybrid application was replaced with the Cordova application model.
+In this post we cover best practices for building AngularJS apps with MobileFirst. Starting with MobileFirst Foundation 7.1 support for Cordova apps was introduced and in MobileFirst Foundation 8.0 the classic Hybrid application was replaced with the Cordova application model.
 
 Cordova applications have a very crucial event `deviceready` that indicates the Cordova's API's are fully loaded and ready to use. MobileFirst Foundation APIs are loaded as Cordova plugins and therefore are only available after the `deviceready` event is fired. After the MobileFirst client SDK is loaded the `wlCommonInit` function is invoked. `wlCommonInit` is defined by the developer as part of the application's code.
 
@@ -59,4 +59,4 @@ app.controller('LoginCtrl', function ($scope) {
 
 ## Final Thoughts
 
-AngularJS is a very powerful framework and it's single page app design is ideal for MobileFirst Foundation Cordova applications. In this tutorial we covered the best practices of using Angular with a MobileFirst Cordova application, things like manual bootstrap and splash screen management. By following the steps mentioned above you can be sure that MobileFirst's APIs will be available when your Angular services, factories, and providers are initialized.
+AngularJS is a very powerful framework and it's single page app design is ideal for MobileFirst Foundation Cordova applications. In this post we covered the best practices of using Angular with a MobileFirst Cordova application, things like manual bootstrap and splash screen management. By following the steps mentioned above you can be sure that MobileFirst's APIs will be available when your Angular services, factories, and providers are initialized.
