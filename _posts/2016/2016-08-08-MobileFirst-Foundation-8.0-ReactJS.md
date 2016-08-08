@@ -10,7 +10,7 @@ author:
 ## Overview
 This is a sample app that was created to show off how versatile MobileFirst Foundation 8.0 is with UI Frameworks. In this example I demonstrate the ease of using Facebook's ReactJS with MobileFirst Foundation 8.0. For this purpose a  Cordova app was implemented using ReactJS and the MobileFirst SDK, using the Weather Services API from Bluemix.
 
-![Weather App]({{site.baseurl}}/assets/blog/2016-08-04-MFP-React-Weather/WeatherApp.png)
+![Weather App]({{site.baseurl}}/assets/blog/2016-08-08-mobilefirst-foundation-8.0-reactjs/WeatherApp.png)
 
 ### Github Repo
 View the app and its adapter [on GitHub.com](https://github.com/cshunger/WeatherProject).
