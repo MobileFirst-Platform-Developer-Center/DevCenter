@@ -100,17 +100,24 @@ The `<property>` element takes the following attributes:
 
 ![Console properties](console-properties.png)
 
-**Pull and Push Configurations**
+#### Pull and Push Configurations
 
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the `pull` and `push` commands described below.  For the properties to be shared, you need to *change the default values given to the properties*.
+To do so, use the `pull` and `push` commands described below using either Maven or the MobileFirst CLI. For the properties to be shared, you need to *change the default values given to the properties*.
 
-Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
+Run the commands from the root folder of the adapter Maven project:
 
-* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=<path to a file that will store the configuration>`.
-* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=<path to the file that stores the configuration>`.
+**Maven**  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:** The file can be of any file extension and if the file does not exist, it will be created.
+* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=config.json`.
+* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=config.json`.
+
+**MobileFirst CLI**  
+
+* To **pull** the configurations file - `mfpdev adapter pull`.
+* To **push** the configurations file - `mfpdev adapter push`.
+
+> Learn more in by using `mfpdev help adapter pull/push`.
 
 ### The js folder
 This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
