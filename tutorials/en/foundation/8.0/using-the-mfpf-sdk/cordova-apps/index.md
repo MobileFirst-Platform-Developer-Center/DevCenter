@@ -223,7 +223,7 @@ Use the following features to improve security on your Cordova apps:
     Ensures the integrity of the app when it starts by comparing the contents to the baseline checksum results that were gathered the first time the app was started. This test helps prevent the modification of an app that is already installed.
 * [Enabling FIPS 140-2](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/t_enabling_FIPS.html)  
     Ensures that the encryption algorithms that are used to encrypt data at rest and data in motion are compliant with the Federal Information Processing Standards (FIPS) 140-2 standard.
-* [Certificate Pinning](../certificate-pinning)  
+* [Certificate Pinning](../../authentication-and-security/certificate-pinning)  
     Helps you prevent man-in-the-middle attacks by associating a host with its expected public key.
 
 ## Cordova Application Resources
