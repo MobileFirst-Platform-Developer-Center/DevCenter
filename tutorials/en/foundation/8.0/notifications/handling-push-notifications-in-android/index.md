@@ -297,17 +297,4 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. In the MobileFirst console, under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
-3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
-
-**Note:** The latest version of Google Play Services is required to be installed on the device for the sample to run.
-
-**[Sending a notification](../sending-push-notifications):**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push screen**.
-* Authenticated notification:
-    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
-    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
+Follow the sample's README.md file for instructions.

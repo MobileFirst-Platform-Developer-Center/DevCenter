@@ -45,5 +45,5 @@ MobileFirst provides a unified push notification API which applies to SMS as wel
 ## Tutorials to follow next
 Follow through the below required setup of the server-side and client-side in order to be able to send and receive SMS notifications:
 
-* [Handling push notifications in Cordova applications](../handling-sms-notifications-in-cordova)
-* [Handling push notifications in Android applications](../handling-push-notifications-in-android)
+* [Handling SMS notifications in Cordova applications](../handling-sms-notifications-in-cordova)
+* [Handling SMS notifications in Android applications](../handling-sms-notifications-in-android)

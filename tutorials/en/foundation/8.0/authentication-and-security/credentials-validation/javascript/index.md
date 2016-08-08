@@ -129,32 +129,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 
-### Web sample usage
-Make sure that Node.js is installed.
-
-1. Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.pincodeweb`.
-{% endcomment %}
-
-2. Start the reverse proxy by running the command `npm install` followed by: `npm start`.
-3. Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-4. In the MobileFirst Operations Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
-5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
-
-### Cordova Sample usage
-1. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-2. From a **Command-line** window, navigate to the project's root folder and:
-    * Add a platform by running the `cordova platform add` command.
-    * Register the application: `mfpdev app register`.
-3. Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
-
-4. Back on the command-line:
-    * Run the Cordova application by entering the `cordova run` command.
+### Sample usage
+Follow the sample's README.md file for instructions.
 
 ![Sample application](pincode-attempts-cordova.png)
