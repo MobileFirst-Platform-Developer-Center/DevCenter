@@ -1,24 +1,26 @@
-hr { 
+.features {
+    hr { 
     margin: 25px 0 25px 0;
-}
-
-h3,h4 {
+    }
+    
+    h3,h4 {
     margin: 0
-}
+    }
 
-h3 {
-    font-weight: bold;
-}
+    h3 {
+        font-weight: bold;
+    }
 
-img {
-    float:right;
-    width: 210px;
-}
+    img {
+        float:right;
+        width: 210px;
+    }
 
-p {
-    margin-bottom: 20px;
-}
+    p {
+        margin-bottom: 20px;
+    }
 
-.feature {
-    margin: 10px 0 10px 0;
+    .feature {
+        margin: 10px 0 10px 0;
+    }
 }
