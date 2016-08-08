@@ -2,7 +2,7 @@
 layout: tutorial
 title: Certificate Pinning
 relevantTo: [ios,android,cordova]
-weight: 12
+weight: 10
 ---
 
 ## Overview
@@ -17,7 +17,7 @@ Certificate pinning is the process of associating a host with its expected publi
 
 A copy of the certificate is placed in the application and is used during the SSL handshake (the first request to the server). The MobileFirst client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
 
-**Important:**
+#### Important
 
 * Some mobile operating systems might cache the certificate validation check result. Therefore, your code should call the certificate pinning API method **before** making a secured request. Otherwise, any subsequent request might skip the certificate validation and pinning check.
 * Calling the certificate pinning API method a second time overrides the previous pinning operation.
