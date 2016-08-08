@@ -161,11 +161,12 @@ After creating the adapter the result will be a Maven project containing a **src
 ### Build
 
 * **Using the MobileFirst CLI** - Run the `mfpdev adapter build` command from the project's root folder.
-    * If you have multiple adapters in a filesystem folder and you'd like to build all of them, use `mfpdev adapter build all`.
 * **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
 
+### Build All
+If you have multiple adapters in a filesystem folder and you'd like to build all of them, use `mfpdev adapter build all`.
 
-The outcome of this command is an **.adapter** archive file which can be found in the **target** folder of each adapter:
+The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
 
 ![java-adapter-result](adapter-result.png)
 
@@ -193,7 +194,6 @@ The outcome of this command is an **.adapter** archive file which can be found i
         ```
         The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
         If the option is not used, the CLI will use the default server specified in the CLI settings.
-        * If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use `mfpdev adapter deploy all`.
     
         > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
  * **Using Maven**:
@@ -201,6 +201,9 @@ The outcome of this command is an **.adapter** archive file which can be found i
         ```bash
         mvn adapter:deploy
         ```
+
+### Deploy All
+If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use `mfpdev adapter deploy all`.
 
 </br>
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
