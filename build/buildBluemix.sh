@@ -20,8 +20,11 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
 rm -f _site/*.log
-#bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
-bundle exec htmlproofer ./_site --url-ignore '#'
+bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
+
+# Test also for external URLs
+#bundle exec htmlproofer ./_site --url-ignore '#'
+
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix
 
