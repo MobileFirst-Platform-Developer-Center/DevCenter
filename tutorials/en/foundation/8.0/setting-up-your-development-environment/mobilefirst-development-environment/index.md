@@ -28,6 +28,8 @@ Continue reading to learn more about the components of MobileFirst Foundation.
 ## MobileFirst Foundation Development Kit
 The Developer Kit provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
 
+> **Note:** If you need to set up your development environment on a computer that has no internet access, you can install components offline. See [How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment).
+
 ### Developer Kit Installer
 The Installer packages the components for local installation where Internet connectivity is not available.  
 The components are available through the MobileFirst Operations Console's Download Center.
@@ -77,11 +79,12 @@ A developer can:
 > Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../setting-up-your-development-environment/console/) tutorial.
 
 ### MobileFirst Command-line Interface
-The IBM MobileFirst command-line interface (CLI) tool enables developers to:
+You can use the IBM MobileFirst™ Platform Command Line Interface (CLI) to develop and manage applications, in addition to using the IBM MobileFirst Platform Operations Console. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
 
-- Manage MobileFirst Servers
-- Register and configure applications
-- Create, build, deploy and test adapters
+* Registering apps with the MobileFirst Server
+* Configuring your app
+* Creating, building, and deploying adapters
+* Previewing and updating Cordova apps
 
 > To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
@@ -93,19 +96,16 @@ MobileFirst Foundation provides client SDKs for Cordova applications as well as 
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
 
-#### Manual installation
-To use the client SDKs and adapter tooling that are provided as part of the Developer Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
-
 ## Applications and adapters development
 
-#### Applications
+### Applications
 * Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../).
 
     You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
     
 * Native applications require either Xcode, Android Studio or Visual Studio. Read more about [setting up the iOS/Android/Windows development environment](../).
 
-#### Adapters
+### Adapters
 Adapters require Apache Maven to be installed. Refer to the [Adapters](../../adapters/) category to learn more about adapters and how to create, develop and deploy.
 
 ## Tutorials to follow next

@@ -3,7 +3,7 @@ layout: tutorial
 title: Using the Mobile Foundation service to set up MobileFirst Server
 breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 2
 ---
 ## Overview
 This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on Bluemix by using the **Mobile Foundation** service.  
@@ -22,6 +22,7 @@ The Mobile Foundation service offers two plan options:
 * [Using the Mobile Foundation Service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
+* [Applying MobileFirst Server Fixes ](#applying-mobilefirst-server-fixes)
 * [Further reading](#further-reading)
 
 ## Setting up the Mobile Foundation Service
@@ -86,10 +87,14 @@ Through the **Configuration** tab, you can further customize the server instance
 * User registry
 * TrustStore
 * Operational Analytics configuration
-* DashDB transactional database selection (available in the *Professional 1 Application* plan)
+* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
 * VPN
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
+
+## Applying MobileFirst Server Fixes
+Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update.  
+When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Further reading
 Now that the MobileFirst Server instance is up and running, you can learn more

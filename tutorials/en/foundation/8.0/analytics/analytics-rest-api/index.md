@@ -2,8 +2,8 @@
 layout: tutorial
 title: Using Analytics Rest API
 breadcrumb_title: Analytics Rest API
-relevantTo: [ios,android,windows,cordova]
-weight: 3
+relevantTo: [ios,android,cordova]
+weight: 2
 ---
 ## Overview
 MobileFirst Foundation Operational Analytics provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
@@ -38,20 +38,15 @@ Network Transaction (POST) | /v3/networktransaction |  Creates a new network tra
 Server Log (POST) | /v3/serverlog | Creates a new server log.
 User (POST) | /v3/user | Creates a new user.
 
-> For more information about the analytics REST API, see the topic about analytics in the user documentation.
-
 ## Try it out on Swagger Docs
-Try out the analytics REST API on Swagger Docs. They are included with the REST API, which is already bundled with your analytics console at:
+Try out the analytics REST API on Swagger Docs.  
+In a MobileFirst Server configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
 
-URL: `<ipaddress>:<port>/analytics-service`
+![Mobile Foundation Operational Analytics Swagger Docs UI](analytics-swagger.png)
 
-Default: `localhost:9080/analytics-service/`
-
-
-![Swagger Docs](swagger-docs.png)
-
-By clicking **Expand Operations**, you can see the implementation notes, parameters, and response messages for each method.
-
-![Test Swagger Docs](test-swagger-docs.png)
+By clicking on **Expand Operations**, you can see the implementation notes, parameters, and response messages for each method.
 
 > Warning: Any data that you send by using **Try it out!** might interfere with data already in the data store. If you are not specifically trying to send data to your production environment, use a test name for the `x-mfp-analytics-api-key`.
+
+![Test Swagger Docs](test-swagger.png)
+

@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling SMS Notifications in Android
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 9
 downloads:
@@ -61,6 +62,8 @@ catch(Exception ex) {
     ex.printStackTrace();
 }
 ```
+
+> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
 
 #### Unregister Device
 

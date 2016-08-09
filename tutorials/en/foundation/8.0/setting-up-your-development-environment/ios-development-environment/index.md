@@ -6,7 +6,12 @@ relevantTo: [ios,javascript]
 weight: 3
 ---
 ## Overview
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
+This tutorial explains the steps a developer needs to follow in order to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
+
+#### Support level
+
+* Xcode 7.1 and later
+* iOS 8 and later
 
 **Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
 

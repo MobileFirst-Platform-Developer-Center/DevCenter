@@ -46,8 +46,6 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 ## Handling the challenge
 The minimum requirement from the `SecurityCheckChallengeHandler` class is to implement a constructor and a `HandleChallenge` method, that is responsible for asking the user to provide the credentials. The `HandleChallenge` method receives the challenge as an `Object`.
 
-> Learn more about the `SecurityCheckChallengeHandler` class in the user documentation.
-
 Add a constructor method:
 
 ```csharp

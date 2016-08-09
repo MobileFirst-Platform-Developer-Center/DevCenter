@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Cordova
+breadcrumb_title: Handling Notifications in Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
@@ -17,7 +18,7 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
-    * [Push Notifications Overview](../push-notifications-overview)
+    * [Push Notifications Overview](../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation

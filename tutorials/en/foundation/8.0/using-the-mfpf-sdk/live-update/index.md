@@ -2,7 +2,7 @@
 layout: tutorial
 title: Live Update
 relevantTo: [ios,android]
-weight: 10
+weight: 11
 downloads:
   - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80

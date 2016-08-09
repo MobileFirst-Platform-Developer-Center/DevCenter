@@ -17,16 +17,18 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Gradl
 > For instruction to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
-Make sure that:
-- Android Studio and MobileFirst CLI are installed on the developer workstation.  
+
+- Android Studio and MobileFirst CLI installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- You have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
 
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Support for Javadoc and Android Service](#support-for-javadoc-and-android-service)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
@@ -90,6 +92,48 @@ Create an Android Studio project or use an existing one.
 
 > If a Gradle Sync request appears, accept it.
 
+### Manually adding the MobileFirst Native SDK
+You can also manually add the MobileFirst SDK:
+  
+<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="android-sdk">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Click for instructions</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
+            <div class="panel-body">
+                <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b> tab. After completing the above steps, follow the below as well.</p>
+            
+                <ul>
+                    <li>Extract the downloaded .zip file and place the relevant aar files to the <b>app\libs</b> folder.</li>
+                    <li>Add the following to the <b>dependencies</b> closure:
+{% highlight xml %}
+compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+{% endhighlight %}
+                    </li>
+                    <li>Add the following to the <b>repositories</b> closure:
+{% highlight xml %}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+{% endhighlight %}
+                    </li>
+                </ul> 
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 ### Registering the application
 1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
 
@@ -126,13 +170,18 @@ SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/
 ## Generated MobileFirst Native SDK artifacts
 
 ### mfpclient.properties
-Located in the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
+Located in the **./app/src/main/assets/** folder of the Android Studio project, this file defines the client-side properties used for registering your Android app on the MobileFirst server.
 
-- `wlServerProtocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
-- `wlServerHost` – The host name of the MobileFirst Server instance.
-- `wlServerPort` – The port of the MobileFirst Server instance.
-- `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+| Property            | Description                                                         | Example values |
+|---------------------|---------------------------------------------------------------------|----------------|
+| wlServerProtocol    | The communication protocol with the MobileFirst Server.             | http or https  |
+| wlServerHost        | The host name of the MobileFirst Server.                            | 192.168.1.63   |
+| wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
+| wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
+| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+
+## Support for Javadoc and Android Service
+For information about support for Javadoc and Android Service see the [Additional Information](additional-information) page.
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
