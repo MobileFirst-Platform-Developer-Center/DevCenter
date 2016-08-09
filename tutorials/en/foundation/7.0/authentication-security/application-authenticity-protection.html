@@ -10,7 +10,7 @@ relevantTo: [hybrid,ios,android,windowsphone8,windows8]
 <p>This tutorial covers the following topics:</p>
 <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#project">Project-level setup</a></li>
+<li><a href="#project-level">Project-level setup</a></li>
 <li><a href="#environmentSpecific">Environment-specific setup</a></li>
 </ul>
 <h2 id="overview">Overview</h2>
@@ -36,10 +36,10 @@ relevantTo: [hybrid,ios,android,windowsphone8,windows8]
 <h3>Set up</h3>
 <p>To set up application authenticity protection, you go through the following 2 steps:</p>
 <ol>
-<li>Project-level setup</li>
+<li><a href="#project-level">Project-level setup</a></li>
 <li><a href="#environmentSpecific">Environment-specific setup</a></li>
 </ol>
-<h2 id="project">Project-level setup</h2>
+<h2 id="project-level">Project-level setup</h2>
 <h3 id="authenticityProtectionCheckFlow">Authenticity protection check flow</h3>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_check_flow.png"/><br />
 The challenge token is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.</p>
@@ -63,7 +63,7 @@ Extended authenticity protection requires additional steps, as explained in the 
 </li>
 <li>If a <code>customSecurityTest</code> is used, add the <code>wl_authenticityRealm</code> realm to it:<br />
 {% highlight xml linenos %}
-<customSecurityTest name="MyCustomAuthenticityTest" ><br />
+<customSecurityTest name="MyCustomAuthenticityTest" >
     <test realm="wl_authenticityRealm" step="1"/>
     <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/>
     <test realm="wl_deviceNoProvisioningRealm" step="2" isInternalDeviceID="true"/>
@@ -103,7 +103,7 @@ Use the <code>wladm</code> Ant task (provided in the MobileFirst installation di
 </ol>
 <h3 id="checkAuthenticityLevel">Check the application authenticity level by using the MobileFirst Operations Console</h3>
 <p>You can use the MobileFirst Operations Console to see the authenticity level of an application.<br />
-[caption id="attachment_7552" align="aligncenter" width="1000"]<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityIMG2.png"/> Check authenticity level through MobileFirst Console[/caption]</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityIMG2.png"/> Check authenticity level through MobileFirst Console[/caption]</p>
 
 <h2 id="environmentSpecific">Environment-specific setup</h2>
 <p>For basic authenticity, the following steps are required.<br />

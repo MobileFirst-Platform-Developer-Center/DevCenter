@@ -2,13 +2,16 @@
 layout: tutorial
 title: Setting up the Android development environment
 breadcrumb_title: Android environment
-relevantTo: [android,cordova]
-weight: 3
+relevantTo: [android,javascript]
+weight: 4
 ---
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
 
 **Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
+
+#### Support level
+MobileFirst SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
 
 ### Android Studio
 Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.

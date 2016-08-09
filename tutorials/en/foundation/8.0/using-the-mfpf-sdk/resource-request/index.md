@@ -2,9 +2,9 @@
 layout: tutorial
 title: Resource Requests in client applications
 breadcrumb_title: Resource Requests
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 3
+weight: 5
 ---
 ## Overview
 IBM MobileFirst-based applications can access resources using the `WLResourceRequest` REST API.  

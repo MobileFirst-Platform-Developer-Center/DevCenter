@@ -17,7 +17,7 @@ The REST API works with all adapters and external resources.
 **Prerequisites**:
 
 - Ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/android) to your Native Android project.
-- Learn how to [create adapters](../../../adapters/adapters-overview/).
+- Learn how to [create adapters](../../../adapters/creating-adapters).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -125,7 +125,4 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
-3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
-4. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+Follow the sample's README.md file for instructions.

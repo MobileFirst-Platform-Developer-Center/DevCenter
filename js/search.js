@@ -168,10 +168,10 @@ var MFPSEARCH = {
             protocol: 'https',
             hosts: 'mfpsearch.mybluemix.net'
         });
-        
+
         this.queryTerm = this.getParameterByName('q');
         this.queryAuthorName = this.getParameterByName('author');
-        
+
         if (this.queryTerm !== null) {
             this.body = {
                 "query": {
@@ -189,7 +189,7 @@ var MFPSEARCH = {
                     }
                 }
             };
-            this.executeSearch();
+            this.updateFilters();
         } else if (this.queryAuthorName !== null) {
             this.body = {
                 "query": {
@@ -200,10 +200,9 @@ var MFPSEARCH = {
                     }
                 }
             };
-            this.executeSearch();
-            
+            this.updateFilters();
         }
-        
+
         _this = this;
         $('#searchNextBtn a').bind('click', function() {
             _this.nextPage();

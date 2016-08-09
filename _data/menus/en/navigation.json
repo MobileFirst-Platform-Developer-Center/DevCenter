@@ -1,11 +1,14 @@
 [{
-    "name": "Tutorials",
+    "name": "Features",
+    "path": "/features"
+},{
+    "name": "Docs",
     "path": "/tutorials/en",
     "children": [{
         "name": "All Tutorials",
         "path": "",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/foundation/8.0/all-tutorials"
         }, {
             "name": "Foundation 7.1",
@@ -16,7 +19,7 @@
         }, {
             "name": "Foundation 6.3",
             "path": "/foundation/6.3/all-tutorials"
-        }, ]
+        }]
     }, {
         "name": "By Platform",
         "path": "",
@@ -32,6 +35,9 @@
         }, {
             "name": "Windows 8 and 10",
             "path": "/foundation/8.0/windows-8-10-tutorials"
+        }, {
+            "name": "Web apps",
+            "path": "/foundation/8.0/web-tutorials"
         }]
     }, {
         "name": "By Product",
@@ -53,7 +59,7 @@
         "name": "Product Integration",
         "path": "/product-integration",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/8.0"
         }, {
             "name": "Foundation 7.1",
@@ -65,7 +71,10 @@
             "name": "Foundation 6.3",
             "path": "/6.3"
         }]
-    } ]
+    }, {
+        "name": "Learn More",
+        "path": "../../../learn-more"
+    }]
 }, {
     "name": "Labs",
     "path": "/labs",
@@ -77,13 +86,13 @@
         "path": "",
         "children": [{
             "name": "Foundation 8.0 Labs",
-            "path": "/developers/8.0/intro",
-            }, {
+            "path": "/developers/8.0/intro"
+        }, {
             "name": "Foundation 7.1 Labs",
-            "path": "/developers/7.1/setup",
-            }, {
+            "path": "/developers/7.1/setup"
+        }, {
             "name": "Foundation 7.0 Labs",
-            "path": "/developers/7.0/setup",
+            "path": "/developers/7.0/setup"
         }]
     }, {
         "name": "Administrators",
@@ -94,21 +103,22 @@
         }]
     }]
 }, {
-    "name": "Learn More",
-    "path": "/learn-more",
-}, {
     "name": "Video Gallery",
-    "path": "/video-gallery",
+    "path": "/video-gallery"
 }, {
     "name": "Blog",
-    "path": "/blog",
+    "path": "/blog"
 }, {
     "name": "Help",
-    "path": "/help",
+    "path": "/help"
 }, {
     "name": "Downloads",
     "path": "/downloads",
+<<<<<<< HEAD
 }, {
     "name": "Try Bluemix",
     "path": "/bluemix"
+=======
+    "extraClasses": "hidden-xs"
+>>>>>>> master
 }]

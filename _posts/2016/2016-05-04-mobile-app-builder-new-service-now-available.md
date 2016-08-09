@@ -13,6 +13,8 @@ author:
 
 > As originally posted [in the Bluemix Developer Center](https://developer.ibm.com/bluemix/2016/05/03/mobile-app-builder-now-available/).
 
+**Update:** Mobile App Builder functionality has now been rolled into the Bluemix Mobile dashboard. The standalone Mobile App Builder service will be removed from the experimental catalog on August 11. <a href="https://new-console.ng.bluemix.net/mobile/projects?cm_sp=bluemixblog-_-content-_-cta">Try the Mobile Dashboard</a>.
+
 Want to take a mobile app from an idea to a working prototype in a few minutes all without writing a single line of code? Try Mobile App Builder, a new experimental service on Bluemix.
 
 **[Try Mobile App Builder](https://console.ng.bluemix.net/catalog/services/mobile-app-builder/?cm_sp=bluemixblog-_-content-_-cta)**
@@ -48,7 +50,7 @@ Here’s how to get started building an app using the Mobile App Builder service
     
     ![build app]({{site.baseurl}}/assets/blog/2016-05-04-mobile-app-builder-new-service-now-available/build-app.png)
     
-    ![generate app]({{site.baseurl}}/2assets/blog/016-05-04-mobile-app-builder-new-service-now-available/generate-app.png)
+    ![generate app]({{site.baseurl}}/assets/blog/2016-05-04-mobile-app-builder-new-service-now-available/generate-app.png)
     
 5. Install App
 

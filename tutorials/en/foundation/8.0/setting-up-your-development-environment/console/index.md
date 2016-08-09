@@ -2,11 +2,26 @@
 layout: tutorial
 title: Using the MobileFirst Operations Console
 breadcrumb_title: MobileFirst Operations Console
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
 ## Overview
-The MobileFirst Platform Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+The MobileFirst Foundation Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+
+#### As a developer
+* Develop applications for any environment and register them to MobileFirst Server.
+* See all your deployed applications and adapters at a glance. See the Dashboard.
+* Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
+* Set up push notification by deploying certificates, creating notification tags, and sending notification.
+* Create and deploy adapters.
+* Download samples.
+
+#### As an IT administrator
+* Monitor various services.
+* Search for devices that access MobileFirst Server and manage their access rights.
+* Update adapter configurations dynamically.
+* Adjust client logger configurations through log profiles.
+* Track how product licenses are used.
 
 #### Jump to:
 
@@ -54,17 +69,38 @@ The Dashboard provides a glance view of the deployed projects.
 
 ![Image of the console dashboard](dashboard.png)
 
+#### Actions dropdown
+The dropdown provides quick access to various console actions.
+
+![Image of Actions dropdown](actions-dropdown.png)
+
 ### Runtime settings
-Edit runtime properties such as Analytics server URL, global security variables, server keystore and confidential clients.
+Edit runtime properties, global security variables, server keystore and confidential clients.
 
 ![Image of the Runtime Settings screen ](runtime-settings.png)
 
+### Error log
+The Error log shows a list of the failed management operations that were initiated from the MobileFirst Operations Console, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+
+> For more information, see the topic about error log of operations on runtime environments in the user documentation.
+
+![Image of error logs screen](error-log.png)
+
+### Devices
+Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
+Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
+A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+
+> For more information, see the topic about device access management in the user documentation.
+
+![Image of device management screen](devices.png)
+
 ### Applications
 
-#### Creating applications
+#### Registering applications
 Provide basic application values and download Starter Code. 
 
-![Image of application registration screen](create-app.png)
+![Image of application registration screen](register-applications.png)
 
 #### Managing applications
 Manage and configure registered applications by use of [Direct Update](../../using-the-mfpf-sdk/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
@@ -77,6 +113,11 @@ Configure application security parameters, such as the default token expiration 
 > [Learn more](../../authentication-and-security/) about the MobileFirst security framework.
 
 ![Image of application security configuration screen](authentication-and-security.png)
+
+#### Application Settings
+Configure the display name of the application in the console as well as the application type and licensing.
+
+![Image of application settings screen](application-settings.png)
 
 #### Notifications
 Set-up [push notifications](../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
@@ -95,15 +136,6 @@ After an adapter is deployed, it can be configured in the console.
 
 ![Image of adapter configuration screen](adapter-configuration.png)
 
-### Devices
-Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
-
-> For more information, see the topic about device access management in the user documentation.
-
-![Image of device management screen](devices.png)
-
 ### Client logs
 Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
 
@@ -113,17 +145,10 @@ When an administrator creates a configuration profile, the log configuration is 
 
 ![Image of client logs screen](client-logs.png)
 
-### Error log
-The Error log shows a list of the failed management operations that were initiated from the MobileFirst Operations Console, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
-
-> For more information, see the topic about error log of operations on runtime environments in the user documentation.
-
-![Image of error logs screen](error-log.png)
-
 ### License tracking
 Accessible from the top Settings buttons.
 
-License terms vary depending on which edition (Enterprise or Consumer) of MobileFirst Platform Foundation is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of MobileFirst Platform is within the license entitlement levels and can prevent potential license violations.
+License terms vary depending on which edition (Enterprise or Consumer) of MobileFirst Foundation is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of MobileFirst Foundation is within the license entitlement levels and can prevent potential license violations.
 
 By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
 
@@ -132,7 +157,7 @@ By tracking the usage of client devices and determining whether the devices are 
 ![Image of client logs screen](license-tracking.png)
 
 ### Downloads
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Platform Foundation from the Downloads page.
+For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Foundation from the Download Center in the MobileFirst Console.
 
 ![Image of available artifacts](downloads.png)
 

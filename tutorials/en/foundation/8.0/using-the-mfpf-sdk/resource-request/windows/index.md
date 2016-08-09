@@ -19,7 +19,7 @@ The REST API works with all adapters and external resources.
 **Prerequisites**:
 
 - Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../adding-the-mfpf-sdk/windows-8-10).
-- Learn how to [create adapters](../../../adapters/adapters-overview/).
+- Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 The `WorklightResourceRequest` class handles resource requests to adapters or external resources.
@@ -115,7 +115,7 @@ In case of request failure, the response object also contains a `error` property
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="resource-request-success-Win8-10.PNG" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-win8-10.png" style="float:right"/>
 ## Sample application
 The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
@@ -125,7 +125,4 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
-3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
-4. import the project to Visual Studio, and run the sample by clicking the **Run* button.
+Follow the sample's README.md file for instructions.

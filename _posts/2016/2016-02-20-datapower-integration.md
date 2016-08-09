@@ -9,6 +9,8 @@ version:
 author:
   name: Nathan Hazout
 ---
+> **Note:** This article was written for MobileFirst Foundation 7.1. For a similar topic on 8.0 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower]({{site.baseurl}}/blog/2016/06/17/datapower-integration/)
+
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.
 
@@ -51,9 +53,9 @@ The challenge handler to handle the DataPower login form is the same that would 
 
 To learn more about form-based challenge handlers:
 
-- [Hybrid](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
-- [Native iOS](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
-- [Native Android](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
+- [Hybrid]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
+- [Native iOS]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
+- [Native Android]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
 
 Below is an example for Hybrid applications.
 
@@ -242,7 +244,7 @@ During development, if you wish to open a non-SSL (HTTP) port, you need to modif
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
 ## Samples &amp; Pattern
-You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
+You can download the samples and pattern from [GitHub](https://github.com/mfpdev/DataPowerLTPA/tree/release71).
 There are 3 samples available:
 
 - **DataPower** contains the MobileFirst project common to all 3 samples, as well as the Hybrid sample.

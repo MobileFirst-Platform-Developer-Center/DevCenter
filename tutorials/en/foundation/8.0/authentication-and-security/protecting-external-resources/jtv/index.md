@@ -2,27 +2,27 @@
 layout: tutorial
 title: Java Token Validator
 breadcrumb_title: Java Token Validator
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
-MobileFirst Platform Foundation provides a Java library to enforce security capabilities on external resources.  
-The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.jar**).
+MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
+The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
 
-This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope (`accessRestricted`).
+This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequesites:**
 
-* Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Platform Foundation security framework](../../).
+* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ![Flow](JTV_flow.jpg)
 
 ## Adding the .jar file dependency
-The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency**:
+The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven dependency**:
 
 ```xml
 <dependency>
@@ -32,14 +32,6 @@ The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency*
 </dependency>
 ```
 
-If Internet connectivity is not available while developing, prepare to work offline:
-
-1. Make sure you have first installed Apache Maven.
-2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
-5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-
 ## Instantiating the TokenValidationManager
 To be able to validate tokens, instantiate `TokenValidationManager`.
 
@@ -48,20 +40,22 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 ```
 
 - `authorizationURI`: the URI of the Authorization server, usually the MobileFirst Server. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID you configured in the MobileFirst Operations Console.
-- `clientSecret`: The confidential client secret you configured in the MobileFirst Operations Console.
+- `clientId`: The confidential client ID that you configured in the MobileFirst Operations Console.
+- `clientSecret`: The confidential client secret that you configured in the MobileFirst Operations Console.
+
+> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the MobileFirst Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
 ## Validating the credentials
-The `validate` API method will ask the authorization server to validate the authorization header:
+The `validate` API method asks the authorization server to validate the authorization header:
 
 ```java
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from a `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
+- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from an  `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
 - `expectedScope`: The scope to validate the token against, for example `accessRestricted`.
 
-You can query the resulting `TokenValidationResult` object for either an error or valid introspection data:
+You can query the resulting `TokenValidationResult` object for an error or for valid introspection data:
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
@@ -76,7 +70,7 @@ if (tokenValidationRes.getAuthenticationError() != null) {
 ```                    
 
 ## Introspection data
-The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the username of the currently active user:
+The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the user name of the currently active user:
 
 ```java
 httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
@@ -86,9 +80,6 @@ httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntr
 TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getAttribute("introspection-data");
 String username = introspectionData.getUsername();
 ```
-
-
-> For additional API methods, see the Java Token Validation JavaDoc in the user documentation.
 
 ## Cache
 The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
@@ -117,7 +108,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     }
     ```
 
-2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, that will validate the authorization header for a given scope:
+2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, which will validate the authorization header for a given scope:
 
     ```java
     public class JTVFilter implements Filter {
@@ -170,7 +161,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     }
     ```
 
-3. In the servlet's **web.xml**, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
+3. In the servlet's **web.xml** file, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
 
     ```xml
     <filter>
@@ -193,7 +184,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     ```
 
 ## Sample
-You can deploy the project on supported application servers (Tomcat, WebSphere Full profile and WebSphere Liberty profile).  
+You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  
 [Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
 
 ### Sample usage

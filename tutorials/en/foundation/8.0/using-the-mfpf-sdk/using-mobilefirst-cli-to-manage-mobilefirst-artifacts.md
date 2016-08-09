@@ -3,24 +3,27 @@ layout: tutorial
 title: Using MobileFirst CLI to Manage MobileFirst Artifacts
 breadcrumb_title: MobileFirst CLI
 weight: 1
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
-IBM MobileFirst Platform Foundation provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
+IBM MobileFirst Foundation provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
 Using the CLI you can manage Cordova-based applications that uses the MobileFirst Cordova plug-in, and Native applications that uses the MobileFirst Native SDK.
 
 You can also create, register, and manage MobileFirst adapters to either local or remote MobileFirst Server instances, and administer projects from the command line or via REST services, or from the MobileFirst Operations Console.
 
+The **mfpdev** commands have two modes: interactive mode and direct mode. In interactive mode, you enter the command without options, and you are prompted for responses. In direct mode, you enter the full command, including options, and prompts are not provided. When applicable, the prompts are context-sensitive to the target platform of the app, as determined by the directory from which you run the command. Use the up and down arrow keys on your keyboard to move through the selections, and press the Enter key when the selection you want is highlighted and preceded by a ">" character.
+
+**Tip:** Another set of commands, the **mfpadm** commands, are available for MobileFirst Server administration. For more information about these commands, see [Administering MobileFirst applications through the command line](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_command_line.html?view=kc#administeringworklightapplicationsthroughthecommandline).
+
 In this tutorial you will learn how to install the `mfpdev` Command Line Interface (CLI) and how to use it to manage MobileFirst Server instances, applications and adapters.
 
-> For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) category.
-
-> **Further reading:** Learn more about the MobileFirst CLI in the "MobileFirst Platform Command Line Interface" topic in the user documentation.
+> For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the MobileFirst Foundation SDK](../../adding-the-mfpf-sdk/) category.
 
 #### Jump to
 
 * [Prerequisites](#prerequisites)
 * [Installing the MobileFirst CLI](#installing-the-mobilefirst-cli)
+* [List of CLI commands](#list-of-cli-commands)
 * [Interactive and Direct modes](#interactive-and-direct-modes)
 * [Managing MobileFirst Server instances](#managing-mobilefirst-server-instances)
 * [Managing Applications](#managing-applications)
@@ -50,35 +53,67 @@ To install the Command Line Interface run the command:
 npm install -g mfpdev-cli
 ```
 
-If the CLI .zip file was downloaded from the MobileFirst Operations Console's Downloads page, use the command:
+If the CLI .zip file was downloaded from the MobileFirst Operations Console's Download Center, use the command:
 
 ```bash
 npm install -g <path-to-mfpdev-cli.tgz>
 ```
 
+- To install the CLI without optional depedencies add the `--no-optional` flag:  `npm install -g --no-optional path-to-mfpdev-cli.tgz`
+
 To confirm the installation, run the command `mfpdev` without any arguments and it will print the help text:
 
 ```shell
 NAME
-     IBM MobileFirst Platform Foundation Command Line Interface (CLI).
+     IBM MobileFirst Foundation Command Line Interface (CLI).
 
 SYNOPSIS
      mfpdev <command> [options]
 
 DESCRIPTION
-     The IBM MobileFirst Platform Foundation Command Line Interface (CLI) is a command-line
+     The IBM MobileFirst Foundation Command Line Interface (CLI) is a command-line
      for developing MobileFirst applications. The command-line can be used by itself, or in conjunction
-     with the IBM MobileFirst Platform Foundation Operations Console. Some functions are available from  
+     with the IBM MobileFirst Foundation Operations Console. Some functions are available from  
      the command-line only and not the console.
 
      For more information and a step-by-step example of using the CLI, see the IBM Knowledge Center for
-     your version of IBM MobileFirst Platform Foundation at
+     your version of IBM MobileFirst Foundation at
 
           https://www.ibm.com/support/knowledgecenter.
     ...
     ...
     ...
 ```
+
+## List of CLI commands
+
+| Command prefix                                                | Command action                               | Description                                                             |
+|---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
+| `mfpdev app`	                                                | register                                     | Registers your app with a MobileFirst Server.                           |
+|                                                               | config                                       | Enables you to specify the back-end server and runtime to use for your app. In addition, for Cordova apps, enables you to configure several additional aspects such as the default language for system messages and whether to do a checksum security check. Other configuration parameters are included for Cordova apps.                                                                                                                                                |
+|                                                               | pull                                         | Retrieves an existing app configuration from the server.                |
+|                                                               | push                                         | Sends an app's configuration to the server.                             |
+|                                                               | preview                                      | Enables you to preview your Cordova app without requiring an actual device of the target platform type. You can view the preview in either the Mobile Browser Simulator or your web browser.                                                                               |
+|                                                               | webupdate                                    | Packages the application resources contained in the www directory into a .zip file that can be used for the direct update process.                                                                                                                                     |
+| mfpdev server	                                                | info                                         | Displays information about the MobileFirst Server.                      |
+|                                                               | add                                          | Adds a new server definition to your environment                        |
+|                                                               | edit                                         | Enables you to edit a server definition.                                |
+|                                                               | remove                                       | Removes a server definition from your environment.                      |
+|                                                               | console                                      | Opens the MobileFirst Operations Console.                               |
+|                                                               | clean                                        | Unregisters apps and removes adapters from the MobileFirst Server.      |
+| mfpdev adapter                                                | create                                       | Creates an adapter.                                                     |
+|                                                               | build                                        | Builds an adapter.                                                      |
+|                                                               | build all                                    | Finds and builds all of the adapters in the current directory and its subdirectories. |
+|                                                               | deploy                                       | Deploys an adapter to the MobileFirst Server.                           |
+|                                                               | deploy all                                   | Finds all of the adapters in the current directory and its subdirectories, and deploys them to the MobileFirst Server. |
+|                                                               | call                                         | Calls an adapter's procedure on the MobileFirst Server.                 |
+| mfpdev                                                        | config                                       | Sets your configuration preferences for preview browser type, preview timeout value, and server timeout value for the mfpdev command-line interface.                                                                                                                   |
+|                                                               | info                                         | Displays information about your environment, including operating system, memory consumption, node version, and command-line interface version. If the current directory is a Cordova application, information provided by the Cordova cordova info command is also displayed. |
+|                                                               | -v                                           | Displays the version number of the MobileFirst Platform CLI currently in use. |
+|                                                               | -d, --debug                                  | Debug mode: Produces debug output.                                      |
+|                                                               | -dd, --ddebug                                | Verbose debug mode: Produces verbose debug output.                      |
+|                                                               | -no-color                                    | Suppresses use of color in command output.                              |
+| mfpdev help                                                   | name of command                              | Displays help for MobileFirst Platform CLI (mfpdev) commands. With a arguments, displays more specific help text for each command type or command. i.e "mfpdev help server add" |
 
 ## Interactive and Direct modes
 All commands can be executed in **interactive** or **direct mode**. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
@@ -143,7 +178,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'mybluemix' added successfully. 
+Server profile 'MyBluemixServer' added successfully. 
 ```
 
 - Replace the "fully qualified URL of this server" with your own.
@@ -238,7 +273,84 @@ mfpdev app config
 This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.  
 The attributes available will vary for each platform (Android, iOS, Windows).
 
-Available attributes are: the server and runtime the application will be deployed to, setting a public key for the Direct Update authenticity feature, and setting application default language.
+Available configuratons are:
+
+* The server and runtime the application will be registered to
+* Setting a public key for the Direct Update authenticity feature 
+* Setting application default language (default is English (en))
+* Whether or not to enable the web resources checksum test
+* What file extensions to ignore during the web resources checksum test
+
+<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="app-config-options">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Additional information about web resources checksum settings</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
+            <div class="panel-body">
+                <p>For the web resources checksum settings, each possible target platform (Android, iOS, Windows 8, Windows Phone 8, and Windows 10 UWP) has a platform-specific key for use in <b>mfpdev</b> direct mode. These keys begin with a string that represents the platform name. For example, <code>windows10_security_test_web_resources_checksum</code> is a true or false setting that specifies whether to enable the web resources checksum test for Windows10 UWP.</p>
+                
+                <table class="table table-striped">
+                    <tr>
+                        <td><b>Setting</b></td>
+                        <td><b>Description</b></td>
+                    </tr>
+                    <tr>
+                        <td><code>direct_update_authenticity_public_key</code></td>
+                        <td>Specifies the public key for direct update authentication. The key must be in Base64 format.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ios_security_test_web_resources_checksum</code></td>
+                        <td>If set to <code>true</code>, enables the test for web resources checksum for iOS Cordova apps. The default is <code>false</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>android_security_test_web_resources_checksum</code></td>
+                        <td>If set to <code>true</code>, enables the test for web resources checksum for Android Cordova apps. The default is <code>false</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>windows10_security_test_web_resources_checksum</code></td>
+                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows 10 UWP Cordova apps. The default is <code>false</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>windows8_security_test_web_resources_checksum</code></td>
+                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows 8.1 Cordova apps. The default is <code>false</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>windowsphone8_security_test_web_resources_checksum</code></td>
+                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows Phone 8.1 Cordova apps. The default is <code>false</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ios_security_ignore_file_extensions</code></td>
+                        <td>Specifies what file extensions to ignore during web resources checksum testing for iOS Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                    </tr>
+                    <tr>
+                        <td><code>android_security_ignore_file_extensions</code></td>
+                        <td>Specifies what file extensions to ignore during web resources checksum testing for Android Cordova apps. Separate multiple extensions with commas. For example:jpg, gif,pdf</td>
+                    </tr>
+                    <tr>
+                        <td><code>windows10_security_ignore_file_extensions</code></td>
+                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows 10 UWP Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                    </tr>
+                    <tr>
+                        <td><code>windows8_security_ignore_file_extensions</code></td>
+                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows 8.1 Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                    </tr>
+                    <tr>
+                        <td><code>windowsphone8_security_ignore_file_extensions</code></td>
+                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows Phone 8.1 Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                    </tr>
+                </table>
+ 
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
@@ -255,7 +367,7 @@ There are two options of preview: MBS and Browser.
 * MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more.
 * Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
 
-> For more details about the preview options see the [Cordova development tutorial](../mfpf-development-in-cordova-applications).
+> For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
 
 ### Update web resources for Direct Update
 

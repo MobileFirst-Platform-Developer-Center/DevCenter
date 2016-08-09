@@ -1,28 +1,19 @@
 ---
 layout: tutorial
 title: JSONStore in Cordova applications
-breadcrumb_title: JSONStore - Cordova
+breadcrumb_title: Cordova
 relevantTo: [cordova]
-weight: 6
+weight: 1
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
-## Overview
-IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+## Prerequisites
 
-#### Key features
-
-* Data indexing for efficient searching
-* Data encryption in production environments
-* Mechanism for tracking local-only changes to the stored data
-* Support for multiple users
-
-> **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
-
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/cordova/) tutorial.
+* Read the [JSONStore parent tutorial](../)
+* Make sure the MobileFirst Cordova SDK was added to the project. Follow the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova/) tutorial. 
 
 #### Jump to:
 
@@ -35,7 +26,7 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 To add JSONStore plug-in to your Cordova application:
 
 1. Open a **Command-line** window and navigate to your Cordova project folder.
-3. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
+2. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
 
 ![Add JSONStore feature](jsonstore-add-plugin.png)
 
@@ -220,6 +211,12 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
+#### Encryption
+*iOS only*. By default, the MobileFirst Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
+
+1. Add the cordova-plugin-mfp-encrypt-utils plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
+2. In the applicative logic, use: `WL.SecurityUtils.enableNativeEncryption(false)` to enable the OpenSSL option.
+
 ### Multiple User Support
 You can create multiple stores that contain different collections in a single MobileFirst application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
 
@@ -390,8 +387,4 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. Use either Maven or MobileFirst CLI to [build and deploy the **JSONStore** adapter](../../../adapters/creating-adapters/).
-2. From the command-line, navigate to the project's root folder.
-2. Add a platform by running the `cordova platform add` command.
-3. Ensure the application registered at the server by running the command: `mfpdev app register`.
-3. Run the Cordova application by running the `cordova run` command.
+Follow the sample's README.md file for instructions.
