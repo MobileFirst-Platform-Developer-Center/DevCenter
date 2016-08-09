@@ -132,7 +132,8 @@ hr {
 	font-size: 120%;
 }
 footer {
-	background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
+	//background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
+	background-color: #292a2d;
 	ul {
 		list-style-type: none;
 		margin: 21px 0 0 10px;
