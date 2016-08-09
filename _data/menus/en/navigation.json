@@ -1,6 +1,6 @@
 [{
-    "name": "Capabilities",
-    "path": "/product-capabilities"
+    "name": "Features",
+    "path": "/features"
 },{
     "name": "Docs",
     "path": "/tutorials/en",
