@@ -1,12 +1,13 @@
 /* ---- reset ---- */
 .bluemix {
     background:#2d3f49;
-    
+    h2 {
+        font-weight: bold;
+    }
     canvas {
       display: block;
       vertical-align: bottom;
     }
-
     a {
       color: white;
     }
@@ -16,9 +17,7 @@
       z-index:100;
       background:#2d3f49;
       color:white;
-      padding-bottom: 75px;
-      padding-left: 0px;
-      padding-right: 0px;
+      padding:0;
     }
 
     .img-circle {
@@ -150,5 +149,6 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50% 50%;
+      margin-top: -1px;
     }
 }
