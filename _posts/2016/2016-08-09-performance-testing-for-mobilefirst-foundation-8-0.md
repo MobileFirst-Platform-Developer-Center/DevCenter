@@ -181,7 +181,7 @@ This call demonstrates how to pass the access_token into the Authorization heade
 ![REST API call]({{site.baseurl}}/assets/blog/2016-08-09-performance-testing-for-mobilefirst-foundation-8-0/15restAPIcall.png)
 
 ### Attachment
-The zip file perftestfiles includes the following files:
+[This zip file](https://github.com/danisade/mfpperf80files/blob/master/package.zip) includes the following files:
 
 1.	JMeter script - Script file that demonstrates all the steps above
 2.	Grant code signer Java class - Java class that signs grant code
