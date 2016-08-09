@@ -114,11 +114,8 @@
 }, {
     "name": "Downloads",
     "path": "/downloads",
-<<<<<<< HEAD
+    "extraClasses": "hidden-xs"
 }, {
     "name": "Try Bluemix",
     "path": "/bluemix"
-=======
-    "extraClasses": "hidden-xs"
->>>>>>> master
 }]
