@@ -20,7 +20,7 @@ Coming soon: walkthrough for Ionic v2.
 You will need to install the following tools: MobileFirst CLI, Ionic CLI, Cordova CLI, as well as have a MobileFirst server running.  
 Ensure that you have [NodeJS](https://nodejs.org/en/) downloaded and installed. With NodeJS install you can then install all required CLIs using npm.
 
-To get up &amp; running with the MobileFirst Server you can either use the [Mobile Foundation Bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/) or [download the DevKit Installer]({{site.baseurl}}/downloads) for an on-prem installation.
+To get up &amp; running with the MobileFirst Server you can either use the [Mobile Foundation Bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/) or [download the DevKit Installer]({{site.baseurl}}/downloads) for an on-prem installation.
 
 #### Installing the CLIs
 
