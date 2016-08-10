@@ -12,7 +12,7 @@ These components are available from online repositories and can be installed usi
 
 Continue reading to learn more about the components of MobileFirst Foundation.
 
-> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
+> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
 
 #### Jump to:
 

@@ -32,7 +32,7 @@ MobileFirst Operational Analytics supports:
 
 ## Operational Analytics Console
 You can open the Analytics Console from the MobileFirst Operations Console by clicking on **Analytics Console** in the top-right navigation.  
-If you are using the [Mobile Foundation Bluemix service](../ibm-containers/using-mobile-foundation) and require Analytics integration, [see this blog post]({{site.baseurl}}/blog/2016/07/11/analytics-bm-service/). 
+If you are using the [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation) and require Analytics integration, [see this blog post]({{site.baseurl}}/blog/2016/07/11/analytics-bm-service/). 
 
 ![Analytics console button](analytics-console-button.png)
 

@@ -41,7 +41,7 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../ibm-containers/).
+The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../bluemix/).
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, 

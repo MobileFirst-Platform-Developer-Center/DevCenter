@@ -11,7 +11,7 @@ Below are several methods you can follow in order to secure your IBM Container w
 #### Jump to
 
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
-* [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-bluemix)
 * [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
