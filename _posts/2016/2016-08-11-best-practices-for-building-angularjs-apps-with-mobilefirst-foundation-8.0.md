@@ -1,6 +1,6 @@
 ---
 title: 'Best Practices for building AngularJS apps with MobileFirst Foundation 8.0'
-date: 2016-08-05
+date: 2016-08-11
 tags:
   - MobileFirst_Foundation
   - Cordova
@@ -18,6 +18,7 @@ Cordova applications have a very crucial event `deviceready` that indicates the 
 
 * [Bootstrap](#bootstrap)
 * [Splash Screen](#splash-screen)
+* [App Showcase](#app-showcase)
 * [Final Thoughts](#final-thoughts)
 
 ## Bootstrap
@@ -43,7 +44,7 @@ For more info on Angular bootstrap visit [AngularJS: Developer Guide: Bootstrap]
 
 ## Splash Screen
 
-By default the splash screen is hidden after the the `deviceready` event is fired and that is usually OK if your view is rendered at that time; however, since we are manually initializing Angular inside of the `wlCommonInit` function then your users will see Angular's double curly brace notation `{{ }}` a fraction of a second. That is an unpleasant experience for the user and we want to avoid it.
+By default the splash screen is hidden after the the `deviceready` event is fired and that is usually OK if your view is rendered at that time; however, since we are manually initializing Angular inside of the `wlCommonInit` function then your users will see Angular's double curly brace notation <code>&#123;&#123;&#125;&#125;</code> for a fraction of a second. That is an unpleasant experience for the user and we want to avoid it.
 
 To fix it we can simply set the `AutoHideSplashScreen` property to false in the `config.xml` by adding the following line `<preference name="AutoHideSplashScreen" value="false" />`. This will show the splash screen until we manually invoke the `navigator.splashscreen.hide()` function.
 
@@ -56,6 +57,13 @@ app.controller('LoginCtrl', function ($scope) {
   // other controller code
 });
 ```
+
+## App Showcase
+
+The MobileFirst Banking App was recently updated to use AngularJS and it follows the recommendations noted in this post. You can find the application by visiting [https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankCordova](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankCordova)
+
+<img src="{{site.baseurl}}/assets/blog/2016-08-11-best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/mobiefirst-bank-cordova.png" width="300px" title="MobileFirst Bank App Screenshot" />
+
 
 ## Final Thoughts
 
