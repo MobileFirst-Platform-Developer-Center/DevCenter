@@ -4,6 +4,9 @@ title: Using Direct Update in Cordova applications
 breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 8
+downloads:
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
@@ -41,9 +44,7 @@ At optimal conditions, a single MobileFirst Server can push data to clients at t
 - [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
 - [Delta and Full Direct Update](#delta-and-full-direct-update)
 - [Secure Direct Update](#secure-direct-update)
-{% comment %}
 - [Sample application](#sample-application)
-{% endcomment %}
 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst Server.
@@ -326,13 +327,8 @@ Any future Direct Update deliveries to client applications will be protected by 
 
 > To configure the application server with the updated keystore file, see [Implementing secure Direct Update](secure-direct-update)
 
-{% comment %}
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
 
 ### Sample usage
-1. From the command line, navigate to the Cordova project.
-2. Add a platform by running the `cordova platform add` command.
-3. Run the Cordova application by running the `cordova run` command.
-4. Alter the application web resources and upload them to the MobileFirst Server as [explained above](#creating-and-deploying-updated-web-resources).
-{% endcomment %}
+Follow the sample's README.md file for instructions.
