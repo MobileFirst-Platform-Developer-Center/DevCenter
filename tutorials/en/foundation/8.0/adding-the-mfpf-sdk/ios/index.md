@@ -63,7 +63,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
         ```
         - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
-4. Back in the command-line window, run the command: `pod install`, followed by `pod update`. These command add the MobileFirst Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
+4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the MobileFirst Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
     **Note:** The commands might take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
