@@ -3,55 +3,109 @@ layout: tutorial
 title: MobileFirst Foundation Operational Analytics
 breadcrumb_title: Operational Analytics
 show_disqus: true
+show_children: true
 print_pdf: true
-relevantTo: [ios,android,windows,javascript]
+relevantTo: [ios,android,javascript]
 weight: 8
 ---
 ## Overview
-IBM MobileFirst Foundation Operational Analytics collects data from app-to-server activities, client logs, client crashes, and server-side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client-side information.
+IBM MobileFirst Foundation Operational Analytics collects data from app-to-server activities, client logs, client crashes, and server-side logs from the MobileFirst Runtime Server and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and beyond.
 
-![architecture diagram](mfp_operational_analytics.jpg)
+MobileFirst Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the MobileFirst Analytics Server. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
+
+#### Platform support
+MobileFirst Operational Analytics supports:
+
+* Native iOS and Android clients
+* Cordova applications (iOS, Android)
+* Web applications
+* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
 
 #### Jump to
-
-* [MobileFirst Operational Analytics Console](#mobilefirst-operational-analytics-console)
+* [Operational Analytics Console](#operational-analytics-console)
+* [Operational Analytics Features](#operational-analytics-features)
+* [Enable/Disable Analytics Support](#enable-disable-analytics-support)
+* [Role-based Access Control](#role-based-access-control)
 * [Elasticsearch](#elasticsearch)
-* [Server Control of Client Log Capture](#server-control-of-client-log-capture)
-* [Forwarding Server Logs](#forwarding-server-logs)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Related Blog Posts](#related-blog-posts)
+* [Tutorials to Follow Next](#tutorials-to-follow-next)
 
-## MobileFirst Operational Analytics Console
-You can open the Analytics Console from the MobileFirst Operations Console, by clicking on **Analytics Console**.
+## Operational Analytics Console
+You can open the Analytics Console from the MobileFirst Operations Console by clicking on **Analytics Console** in the top-right navigation.  
+If you are using the [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation) and require Analytics integration, [see this blog post]({{site.baseurl}}/blog/2016/07/11/analytics-bm-service/). 
 
 ![Analytics console button](analytics-console-button.png)
 
-The default URL is for the MobileFirst Analytics Console is `http://localhost:9080/analytics/console`.  
 After navigating to the Analytics console, you see a dashboard like the following one (but with empty data).
 
 ![Analytics console](analytics-console.png)
 
-From the Analytics Console, you can then:
+### Dashboard
+In Dashboard you can review collected analytics data related to: application crashes, application sessions and server processing time. Additionally you can create custom charts as well as manage alerts.
 
-* [Create custom charts](#custom-charts)
-* [Manage alerts](#manage-alerts)
-* [Monitor App Crash](#monitor-app-crash)
-* [Monitor Network Data](#monitor-network-data)
+### Apps
+In Apps you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data and search through client logs and for specific devices.
+
+### Infrastructure
+In Infrastructure you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
+
+> Learn more in the [Analytics Workflows](workflows/) tutorial.
+
+## Operational Analytics Features
+
+### App Analytics
+You can view App Session charts and App Usage charts to find out which app is being used most by your users.
+
+### Built-in Analytics
+When you use the MobileFirst client SDK together with the MobileFirst Server, analytics data automatically gets collected for any request that your app makes to the MobileFirst Server. Basic device metadata gets collected and reported to the MobileFirst Analytics Server.
+
+### Custom Analytics
+You can have your app send custom data and create custom reports on your custom data.
+
+> Learn how to send custom analytics in the [Analytics API](analytics-api/) tutorial.
 
 ### Custom Charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Operational Analytics Console. This visualization feature is a powerful way to analyze business-critical data.
 
+> Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
+
 ### Manage Alerts
-You can set thresholds in alert definitions to better monitor your activities.
+Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.
 
-You can configure thresholds which, if exceeded, trigger alerts to notify the MobileFirst Operational Analytics Console monitor. You can visualize the triggered alerts on the console or handle them by using a custom webhook. A custom webhook allows you to control who is notified when an alert is triggered, and how.
+You can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom webhook. A custom webhook allows you to control who is notified when an alert is triggered, and how.
 
-### Monitor App Crash
+> Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
+
+### Monitor App Crashes
 App crashes are visualized on the Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
 ### Monitor Network Data
 The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
 
-> For more information about the data collected by MobileFirst Analytics, see the user documentation.
+## Enable/Disable Analytics Support
+The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
+
+1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
+2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the Edit button is not visible because you are not allowed to modify runtime properties.
+3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
+4. Click Save.
+5. Click the Read Only button to lock the properties again.
+
+<img class="gifplayer" alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
+
+## Role-based Access Control
+Content in the MobileFirst Analytics Console is restricted by predefined security roles.  
+The MobileFirst Analytics Console shows different content based on the security role of the logged-in user. The following table shows the security role and the access that is granted to it in the MobileFirst Analytics Console.
+
+| Role           | Role name                | Viewing Access                                                     | Editing Access  |
+|----------------|--------------------------|--------------------------------------------------------------------|-----------------|
+| Administrator  | analytics_administrator  | Everything.	                                                     | Everything.     |
+| Infrastructure | analytics_infrastructure	| Everything.	                                                     | Everything.     |
+| Developer      | analytics_developer	    | Everything except for the Administration pages.		             | Everything.     |
+| Support        | analytics_support        | Everything except for the Administration pages.		             | Everything.     |
+| Business       | analytics_business       | Everything except for the Administration and Infrastructure pages. | Everything.     |
+
+> For information on setting up roles, see the [Configuring user authentication for MobileFirst Server administration](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/c_configuration_of_the_wl_admin.html?view=kc) user documentation topic.
 
 ## Elasticsearch
 Behind the scenes, running search queries and storing data for Operational Analytics is **Elasticsearch 1.5x**.  
@@ -106,45 +160,8 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
-## Server Control of Client Log Capture
-Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → Log Filters**.  
-Through `Log Filters` you can create a filter level that you can log at.
-
-<img class="gifplayer" alt="Creating a log filter" src="add-log-filter.png"/>
-
-To use the server configuration, the client must use the `updateConfigFromServer` method in the `Logger` API.
-
-#### Android
-
-```java
-Logger.updateConfigFromServer();
-```
-
-#### iOS
-
-```objective-c
-[OCLogger updateConfigFromServer];
-```
-
-#### Cordova
-
-```javascript
-WL.Logger.updateConfigFromServer();
-```
-
-The `Logger` configuration values that the server returns take precedence over any values that are set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client receives an empty payload. In this case, the `Logger` configuration defaults to what was originally configured on the client.
-
-## Forwarding Server Logs
-The MobileFirst Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console.
-
-To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the Analytics console. This is useful for a user to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs.
-
-## Tutorials to follow next
-
-* [Analytics API](analytics-api)
-* [Analytics REST API](analytics-rest-api)
-
-### Related Blogposts
+## Related Blog Posts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+
+## Tutorials to Follow Next

@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: Sending Notifications
-show_children: true
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
@@ -12,8 +11,8 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 
 **Prerequisite**: 
 
-* For push notifications, make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
-* For SMS notifications, make sure to read the [SMS Notifications overview](../sms-notifications-overview/) tutorial.
+* For push notifications, make sure to read the [Push Notifications overview](../) tutorial.
+* For SMS notifications, make sure to read the [SMS Notifications overview](../) tutorial.
 
 #### Jump to
 
@@ -28,6 +27,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
     * [MobileFirst Operations Console](#mobilefirst-operations-console)
     * [REST APIs](#rest-apis)
     * [Customizing Notifications](#customizing-notifications)
+* [Proxy Support](#proxy-support)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Notifications
@@ -48,6 +48,8 @@ To setup GCM:
         > **Note:** Also availbe is the option to generate configuration files. This set-up step is not needed.
     - The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
 4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and **Server API Key** and click **Save**.
+
+> You can also setup GCM using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 
 #### Notes
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
@@ -79,6 +81,8 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
+> You can also setup APNS using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
 ### Windows Push Notifications Service
@@ -88,6 +92,8 @@ To setup WNS:
 1. Follow the [instructions as provided by Microsoft](http://localhost:4000/tutorials/en/foundation/8.0/notifications/sending-push-notifications/#google-cloud-messaging) to generate the **Package Security Identifier (SID)** and **Client secret** values.
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add these values and click **Save**.
 
+> You can also setup WNS using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
 ### Scope mapping
@@ -95,6 +101,96 @@ Map the **push.mobileclient** scope element to the application.
 
 1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
+
+    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="additional-scopes">
+                <h4 class="panel-title">
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Click for a list additional available scopes</b></a>
+                </h4>
+            </div>
+
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><b>Scope</b></td>
+                            <td><b>Description</b></td>
+                        </tr>
+                        <tr>
+                            <td>apps.read	</td>
+                            <td>Permission to read application resource.</td>
+                        </tr>
+                        <tr>
+                            <td>apps.write	</td>
+                            <td>Permission to create, update, delete application resource.</td>
+                        </tr>
+                        <tr>
+                            <td>gcmConf.read	</td>
+                            <td>Permission to read GCM configuration settings (API Key and SenderId).</td>
+                        </tr>
+                        <tr>
+                            <td>gcmConf.write	</td>
+                            <td>Permission to update, delete GCM configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>apnsConf.read	</td>
+                            <td>Permission to read APNs configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>apnsConf.write	</td>
+                            <td>Permission to update, delete APNs configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>devices.read	</td>
+                            <td>Permission to read device.</td>
+                        </tr>
+                        <tr>
+                            <td>devices.write	</td>
+                            <td>Permission to create, update delete device.</td>
+                        </tr>
+                        <tr>
+                            <td>subscriptions.read	</td>
+                            <td>Permission to read subscriptions.</td>
+                        </tr>
+                        <tr>
+                            <td>subscriptions.write	</td>
+                            <td>Permission to create, update, delete subscriptions.</td>
+                        </tr>
+                        <tr>
+                            <td>messages.write	</td>
+                            <td>Permission to send push notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>webhooks.read	</td>
+                            <td>Permission to read event-notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>webhooks.write	</td>
+                            <td>Permission to send event-notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>smsConf.read	</td>
+                            <td>Permission to read SMS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>smsConf.write	</td>
+                            <td>Permission to update, delete SMS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>wnsConf.read	</td>
+                            <td>Permission to read WNS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>wnsConf.write	</td>
+                            <td>Permission to update, delete WNS configuration settings.</td>
+                        </tr>
+                    </table>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Close section</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
@@ -113,6 +209,8 @@ In the MobileFirst Operations Console → **[your application] → Push → Tags
 Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
 <img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
+
+Subscriptions tie together a device registration and a tag. When a device is unregistered from a tag, all associated subscriptions are automatically unsubscribed from the device itself. In a scenario where there are multiple users of a device, subscriptions should be implemented in mobile applications based on user log-in criteria. For example, the subscribe call is made after a user successfully logs in to an application and the unsubscribe call is made explicitly as part of the logout action handling.
 
 ## Sending Push Notifications
 Push notifications can be sent either from the MobileFirst Operations Console or via REST APIs.
@@ -272,9 +370,14 @@ In the MobileFirst Operations Console → **[your application] → Push → Tags
 
 ![customizing push notifications](customizing-push-notifications.png)
 
+## Proxy Support
+You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list_push.html?view=kc#reference_itq_pvt_dv).
+
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
 
 * [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
 * [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
 * [Handling push notifications in Android applications](../handling-push-notifications-in-android)
+* [Handling SMS notifications in Cordova applications](../handling-sms-notifications-in-cordova)
+* [Handling SMS notifications in Android applications](../handling-sms-notifications-in-android)

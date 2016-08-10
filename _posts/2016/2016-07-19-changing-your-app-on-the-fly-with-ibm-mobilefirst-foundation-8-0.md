@@ -2,7 +2,7 @@
 title: Changing your app on the fly with IBM MobileFirst Foundation 8.0 Live Update
 date: 2016-07-19
 tags:
-- Live Update
+- Live_Update
 - MobileFirst_Foundation
 - Adapters
 - Development
@@ -13,7 +13,6 @@ author:
 ---
 
 ## Introduction
-
 If you have developed an Enterprise app before, you’ll know that it’s really hard to satisfy everyone. You’ll want to make your app dynamic & responsive for your users, so they enjoy engaging with your brand. You’ll want your app to provide the right experience to different types of users. And of course, you’ll want to get your code out faster for testing & feedback. And you may even want to let your product manager, designer, or business leader tweak the experience of the app without your help after you launch.
 
 The MobileFirst Foundation Live Update feature makes all of this simple. With Live Update, you can make new features or properties in your app configurable, and associate each configuration with a segment. Then, during runtime, the app can fetch the configuration from the server that fits the segment the user belongs to. So your business leader can turn features on or off after launch, or make your app behave differently for different users. This makes it easy to run A/B tests and gradually rollout new features to your users. Or dark launch a new feature before it is ready, so you can test it with internal users, and publish it to your users faster once it is ready.

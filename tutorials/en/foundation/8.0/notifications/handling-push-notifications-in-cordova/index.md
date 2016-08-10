@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Cordova
+breadcrumb_title: Handling Notifications in Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
@@ -17,7 +18,7 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
-    * [Push Notifications Overview](../push-notifications-overview)
+    * [Push Notifications Overview](../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation
@@ -216,21 +217,4 @@ var notificationReceived = function(message) {
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
 ### Sample usage
-
-1. From a **Command-line**, navigate to the project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. In the MobileFirst Operations Console
-    - Setup the MobileFirst Server with either GCM details or APNS certificate, and define tags.
-    - Under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
-5. Run the application by running the `cordova run` command.
-
-**[Sending a notification](../sending-push-notifications):**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-* Authenticated notification:
-    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
-    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Use either the [REST APIs](../sending-push-notifications#rest-apis) to send the notification, or send to a userId from the Push section in the MobileFirst Operations Console.
-
+Follow the sample's README.md file for instructions.

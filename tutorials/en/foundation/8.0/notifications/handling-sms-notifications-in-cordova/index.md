@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling SMS Notifications in Cordova
+breadcrumb_title: Handling SMS in Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
@@ -46,6 +47,8 @@ function registerDevice() {
 }
 ```
 
+> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+
 ## Using a SMS subscribe servlet
 REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
 
@@ -67,17 +70,4 @@ To send a notification, see the [sending notifications](../sending-push-notifica
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
 ### Sample usage
-
-1. From a **Command-line**, navigate to the project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. In the MobileFirst Operations Console
-    - Setup the MobileFirst Server with either GCM key and senderId, APNS certificate or WNS credentials, and define tags.
-    - Under **Applications** → **SMSNotificationsCordova** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
-5. Run the application by running the `cordova run` command.
-
-**[Sending a notification](../sending-push-notifications):**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-
+Follow the sample's README.md file for instructions.

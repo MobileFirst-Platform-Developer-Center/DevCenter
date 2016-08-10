@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript SQL Adapter
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -20,39 +21,79 @@ In this tutorial and in the accompanying sample, you learn how to use a MobileFi
 ## The XML File
 The XML file contains settings and metadata.
 
-1. In the adapter XML file, declare the following parameters:
+In the **adapter.xml** file, declare the following parameters:
+
  * JDBC Driver Class
  * Database URL
  * Username
  * Password<br/><br/>
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <mfp:adapter name="JavaScriptSQL"
-    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    	xmlns:mfp="http://www.ibm.com/mfp/integration"
-    	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<mfp:adapter name="JavaScriptSQL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
 
-    	<displayName>JavaScriptSQL</displayName>
-    	<description>JavaScriptSQL</description>
-    	<connectivity>
-    		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
-    			<dataSourceDefinition>
-    				<driverClass>com.mysql.jdbc.Driver</driverClass>
-    				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
-    			    <user>mobilefirst</user>
-        			<password>mobilefirst</password>
-    			</dataSourceDefinition>
-    		</connectionPolicy>
-    	</connectivity>
-    </mfp:adapter>
-    ```
+	<displayName>JavaScriptSQL</displayName>
+	<description>JavaScriptSQL</description>
+	<connectivity>
+		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+			<dataSourceDefinition>
+				<driverClass>com.mysql.jdbc.Driver</driverClass>
+				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
+			    <user>mobilefirst</user>
+    			<password>mobilefirst</password>
+			</dataSourceDefinition>
+		</connectionPolicy>
+	</connectivity>
+</mfp:adapter>
+```
 
-2. Declare a procedure in the adapter XML file.
+<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="adapter-xml">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+            </h4>
+        </div>
 
-    ```js
-    <procedure name="getAccountTransactions1"/>
-    ```
+        <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
+            <div class="panel-body">
+                <ul>
+                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be set to sql:SQLConnectionPolicy.</li>
+                    <li><b>dataSourceDefinition</b>: <i>Optional.</i> Contains the parameters that are needed to connect to a data source. The adapter creates a connection for each request. For example:
+
+{% highlight xml %}
+<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    <dataSourceDefinition>
+        <driverClass>com.mysql.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/mysqldbname</url>
+        <user>user_name</user>
+        <password>password</password>
+    </dataSourceDefinition>
+</connectionPolicy>
+{% endhighlight %}</li>
+
+                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing MobileFirst Server to an application server. For example:
+                    
+{% highlight xml %}                        
+<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
+</connectionPolicy>
+{% endhighlight %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+With the `connectionPolicy` configured, declare a procedure in the adapter XML file.
+
+```js
+<procedure name="getAccountTransactions1"/>
+```
 
 ## JavaScript implementation
 The adapter JavaScript file is used to implement the procedure logic.  

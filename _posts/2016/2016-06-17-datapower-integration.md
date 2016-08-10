@@ -9,7 +9,7 @@ version:
 author:
   name: Nathan Hazout
 ---
-> **Note:** This article was written for MobileFirst Foundation 8.0. For a similar topic on 7.1 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower](https://mobilefirstplatform.ibmcloud.com/blog/2016/02/20/datapower-integration/)
+> **Note:** This article was written for MobileFirst Foundation 8.0. For a similar topic on 7.1 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower]({{site.baseurl}}/blog/2016/02/20/datapower-integration/)
 
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.

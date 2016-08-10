@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Java SQL Adapter
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
