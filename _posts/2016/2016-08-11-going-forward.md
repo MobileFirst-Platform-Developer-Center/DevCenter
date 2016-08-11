@@ -12,7 +12,7 @@ author:
 ---
 ## Introduction
 
-We as a human being always look forwards to what the future will bring us - we depends on time, and still no one invent a time machine. Usually, we want to have the newest technology with us, we always want to have the latest software version or the latest mobile phone in our hand. There are many reasons for that and it varies from one person to other.  Some try to go forward like as long distance-runner do, and some as a short-distance runner - fast as they can to achieve the target and keep moving forward, and there are some who choose to walk. So in the end of the day, all of us going forward but in a different pace.
+We as a human being always look forward to what the future will bring us - we depend on time, and still no one has invented a time machine. Usually, we want to have the newest technology with us, we always want to have the latest software version or the latest mobile phone in our hand. There are many reasons for that and it varies from one person to another.  Some try to go forward like as long distance-runner do, and some as a short-distance runner - fast as they can to achieve the target and keep moving forward, and there are some who choose to walk. So in the end of the day, all of us going forward but in a different pace.
 
 <img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-08-11-going-forward/long-run.jpg" style="float:right;margin: 10px"/>
 
