@@ -10,6 +10,7 @@ version:
 - 8.0
 - 7.1
 - 7.0
+- 6.3
 author:
   name: Shubha S
 additional_authors:
@@ -20,7 +21,7 @@ The [Windows 10](https://www.microsoft.com/en-in/windows/features) Anniversary U
 ![Windows 10 Anniversary Update]({{site.baseurl}}/assets/blog/2016-08-02-mobilefirst-foundation-compatibility-for-windows-anniversary/windowsmfpcompatibility.png)
 
 
-Few of the features like app authenticity, adapter authentication, resource request shipped with MobileFirst foundation Windows SDK v7.0 and v8.0 plays well with the Windows 10 Anniversary update. 
+Few of the features like app authenticity, adapter authentication, resource request shipped with MobileFirst foundation Windows SDK v6.3 to v8.0 plays well with the Windows 10 Anniversary update. 
 
 > Windows 8 Universal
 > -
@@ -32,7 +33,7 @@ Few of the features like app authenticity, adapter authentication, resource requ
 > 	* Resource Request 
 
 
-> Windows 10 Universal Windows Platform Desktop (UWP)
+> Windows 10 Universal Windows Platform (UWP)
 > -
 > * Feature Validated 
 > 	* App Management
@@ -46,18 +47,11 @@ Few of the features like app authenticity, adapter authentication, resource requ
 > -
 > * Feature Validated 
 > 	* App Management
->   * App Authenticity
+>  * App Authenticity
+>  * Push Notification
+>  * Direct Update
 > 	* Security (Formbased and Adapter based authentication)
 > 	* Resource Request 
-
-
-> Windows 10 Universal Windows Platform Desktop (UWP)
-> -
-> * Feature Validated 
-> 	* App Management
-> 	* Push Notification
-> 	* Security (Formbased and Adapter based authentication)
-> 	* Resource Request  
 
 Other key features provided by the MobileFirst foundation Windows SDK is being validated with the Windows 10 Anniversary update.
 
