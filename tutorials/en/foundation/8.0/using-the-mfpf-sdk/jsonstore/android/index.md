@@ -1,28 +1,19 @@
 ---
 layout: tutorial
 title: JSONStore in Android applications
-breadcrumb_title: JSONStore - Android
+breadcrumb_title: Android
 relevantTo: [android]
-weight: 8
+weight: 3
 downloads:
   - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
-## Overview
-IBM MobileFirst Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+## Prerequisites
 
-#### Key features
-
-* Data indexing for efficient searching
-* Data encryption in production environments
-* Mechanism for tracking local-only changes to the stored data
-* Support for multiple users
-
-> **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Foundation user documentation website.
-
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android/) tutorial.
+* Read the [JSONStore parent tutorial](../)
+* Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android/) tutorial.
 
 #### Jump to:
 
@@ -364,6 +355,4 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
-3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+Follow the sample's README.md file for instructions.

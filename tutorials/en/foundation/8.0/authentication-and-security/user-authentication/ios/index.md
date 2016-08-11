@@ -82,7 +82,7 @@ If the client is already logged-in or is in the *remembered* state, the API trig
 
 The `obtainAccessTokenForScope` API takes in a **scope**. The scope can be the name of your **security check**.
 
-> Learn more about **scopes** in the [Authorization concepts](../../authorization-concepts) tutorial.
+> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
 
 ## Retrieving the authenticated user
 The challenge handler `handleSuccess` method receives a dictionary `success` as a parameter.
@@ -132,15 +132,8 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80) the Preemptive Login project.  
 
 ### Sample usage
-
-* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
-
+Follow the sample's README.md file for instructions.  
 The username/password for the app must match, i.e. "john"/"john".
 
 ![sample application](sample-application.png)
+

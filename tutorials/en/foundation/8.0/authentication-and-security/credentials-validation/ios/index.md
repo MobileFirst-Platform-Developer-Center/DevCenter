@@ -44,8 +44,6 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 ## Handling the challenge
 The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement the `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
 
-> Learn more about the `SecurityCheckChallengeHandler` protocol in the user documentation.
-
 In this example, an alert prompts the using-mobilefirst-cli-to-manage-mobilefirst-artifacts to enter the PIN code:
 
 ```swift
@@ -140,13 +138,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
 
 ### Sample usage
-
-* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+Follow the sample's README.md file for instructions.
 
 ![Sample application](sample-application.png)
+

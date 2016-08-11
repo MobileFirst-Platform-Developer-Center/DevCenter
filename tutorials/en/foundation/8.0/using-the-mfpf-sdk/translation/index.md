@@ -3,7 +3,7 @@ layout: tutorial
 title: Multilingual translation of JavaScript (Cordova, Web) applications
 breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
-weight: 8
+weight: 9
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
@@ -176,8 +176,6 @@ The result can then be seen in the device log, for example from Android Studio's
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Run the Cordova application by running the `cordova run` command.
+Follow the sample's README.md file for instructions.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.

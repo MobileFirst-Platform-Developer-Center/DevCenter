@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in iOS
+breadcrumb_title: Handling Notifications in iOS
 relevantTo: [ios]
 weight: 5
 downloads:
@@ -14,7 +15,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../push-notifications-overview)
+	* [Push Notifications Overview](../)
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment)
     * [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
@@ -263,19 +264,4 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
 
 ### Sample usage
-1. Import the project to Xcode using the .xcworkspace file.
-2. Configure the project with your bundleId (based on bundleId that you have created for your push notifications certificate .p12 file).
-3. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-4. Perform the required scope mapping for **push.mobileclient**.
-4. Run the app by clicking the **Run** button.
-
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK by running the command `pod update` from the project's root folder.
-
-**[Sending a notification](../sending-push-notifications):**
-
-* Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-* Authenticated notification:
-    * Deploy the [**UserLogin** sample Security Check](../../authentication-and-security/user-authentication/security-check).
-    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Follow the instructions for [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
+Follow the sample's README.md file for instructions.

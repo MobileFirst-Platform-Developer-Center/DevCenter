@@ -81,31 +81,49 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
     Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
     <ul>
-        <li><a href="../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/">MobileFirst Foundation SDK development in Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/cordova-apps/">MobileFirst Foundation SDK development in Cordova applications</a>
+            <ul>
+                <li><a href="../using-the-mfpf-sdk/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
+                <li><a href="../using-the-mfpf-sdk/cordova-apps/securing-apps">Securing Cordova Applications</a></li>
+            </ul>
+        </li>
         <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst CLI to manage MobileFirst artifacts</a></li>
         <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/">Using the MobileFirst CLI in Eclipse</a></li>
         <li><a href="../using-the-mfpf-sdk/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
         <li><a href="../using-the-mfpf-sdk/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/jsonstore/security-utilities/">JSONStore security utilities</a></li>
+        <li><a href="../using-the-mfpf-sdk/jsonstore/troubleshooting/">JSONStore troubleshooting</a></li>
+        <li><a href="../using-the-mfpf-sdk/jsonstore/code-examples/">JSONStore code examples</a></li>
         <li>Client-side log collection
             <ul>
                 <li><a href="../using-the-mfpf-sdk/client-side-log-collection/">Overview of client-side log collection</a></li>
                 <li><a href="../using-the-mfpf-sdk/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
             </ul>
         </li>
-        <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a>
+            <ul>
+                <li><a href="../using-the-mfpf-sdk/direct-update/cdn-support">Serving Direct Update requests from a CDN</a></li>
+                <li><a href="../using-the-mfpf-sdk/direct-update/secure-direct-update">Implementing Secure Direct Update</a></li>
+            </ul>
+        </li>
         <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
         <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/watchos/">Developing for Apple watchOS 2</a></li>
     </ul>
     
     <h3><a href="../adapters/">Developing Adapters</a></h3>
     Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
     <ul>
-        <li><a href="../adapters/adapters-overview/">Adapters overview</a></li>
+        <li><a href="../adapters/">Adapters overview</a></li>
         <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
         <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a></li>
             <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
+                    </ul>
+                </li>
                 <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
                 <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
             </ul>
@@ -135,8 +153,12 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
     Add various layers of protection to your applications.
 
     <ul>
-        <li><a href="../authentication-and-security/authorization-concepts/">Authorization concepts</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a></li>
+        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
+            </ul>
+        </li>
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
                 <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
@@ -162,6 +184,7 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         </li>
         <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
         <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
     </ul>
 
     <hr id="measure-and-engage"/>
@@ -170,8 +193,8 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
     Send notifications with IBM MobileFirst Foundation.  
 
     <ul>
-        <li><a href="../notifications/push-notifications-overview/">Push Notifications Overview</a></li>
-        <li><a href="../notifications/sms-notifications-overview/">SMS Notifications Overview</a></li>
+        <li><a href="../notifications/">Push Notifications Overview</a></li>
+        <li><a href="../notifications/">SMS Notifications Overview</a></li>
         <li><a href="../notifications/sending-push-notifications/">Sending Notifications</a></li>
         <li><a href="../notifications/handling-push-notifications-in-cordova/">Handling Push Notifications in Cordova applications</a></li>
         <li><a href="../notifications/handling-sms-notifications-in-cordova/">Handling SMS Notifications in Cordova applications</a></li>
@@ -184,15 +207,26 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="../analytics">Introduction to MobileFirst Foundation Operational Analytics</a></li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
         <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
+        <li><a href="../analytics/custom-charts/">Creating Custom Charts</a></li>
+        <li><a href="../analytics/alerts/">Managing Alerts</a></li>
+        <li><a href="../analytics/log-filters/">Configuring Log Filters</a></li>
+        <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
+        <li><a href="../analytics/troubleshooting/">Troubleshooting</a></li>
     </ul>
     
-    <h3><a href="../ibm-containers">Foundation on Bluemix</a></h3>
+    <h3><a href="../bluemix">Foundation on Bluemix</a></h3>
     Deploy MobileFirst Foundation to the cloud using IBM Containers on Bluemix.  
 
     <ul>
-        <li><a href="../ibm-containers/">Introduction to IBM MobileFirst Foundation on IBM Containers</a></li>
-        <li><a href="../ibm-containers/using-mobile-foundation/">Create a MobileFirst Server instance using the Mobile Foundation Bluemix service</a></li>
-        <li><a href="../ibm-containers/mobilefirst-server-using-scripts/">Create a MobileFirst Server instance on IBM Containers using IBM-provided scripts</a></li>
+        <li><a href="../bluemix/">Introduction to IBM MobileFirst Foundation on IBM Containers</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a MobileFirst Server instance using the Mobile Foundation Bluemix service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Create a MobileFirst Server instance on IBM Containers using IBM-provided scripts</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>
     </ul>
     
     <h3><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/">MobileFirst Quality Assurance</a></h3>

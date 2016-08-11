@@ -317,40 +317,5 @@ Sample applications are available for iOS (Swift), Android, Cordova, and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
-#### Deploy adapters
-* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy](../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
-
-#### Register applications
-**Cordova**  
-From a **Command-line** window, navigate to the project's root folder and:
-
-* Add a platform by running the `cordova platform add` command.
-* Registering the application by running the `mfpdev app register` command.
-
-<br/>
-**Native**  
-From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
-
-<br/>
-**Web**  
-Make sure that Node.js is installed.  
-Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.enrollmentweb`.
-{% endcomment %}
-
-#### Scope mapping
-In the MobileFirst Operations Console, click **EnrollmentWeb → Security** and map scopes to security checks as follows:
-
-* Map the `setPinCode` scope to the `EnrollmentUserLogin` security check.
-* Map the `accessRestricted` scope to the `IsEnrolled` security check.
-* Map the `unenroll` scope to the `IsEnrolled` security check.
-* Map the `transactions` scope to the `EnrollmentPinCode` and `IsEnrolled` security checks.
-
-Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
-
-<br/>
-> **Note for web sample:**  
-> Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.  
-> In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+### Sample usage
+Follow the sample's README.md file for instructions.
