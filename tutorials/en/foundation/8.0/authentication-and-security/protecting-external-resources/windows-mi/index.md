@@ -159,6 +159,42 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
+Todo!!!!!!!!
+Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior.
+
+Todo!!!!! add highlight
+
+```xml
+<services>
+      <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
+        <endpoint address="" behaviorConfiguration="webBehavior" binding="webHttpBinding"
+          contract="DotNetTokenValidator.IGetBalanceService" />
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:8732/GetBalanceService" />
+          </baseAddresses>
+        </host>
+      </service>
+    </services>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="webBehavior">
+          <webHttp />
+          <extBehavior />
+        </behavior>
+      </endpointBehaviors>
+      <serviceBehaviors>
+        <behavior name="Default">
+          <serviceMetadata httpGetEnabled="true" />
+        </behavior>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="false" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+```
+
 ## Message Inspector Implementation
 First we will define some constants as class members in our message inspector: MobileFirst server URL, our confidential client credentials and the `scope` we will use to protect our service with. We will also define a static variable to keep the token received from MobileFirst Authorization server, so it will be available to all users:
 
