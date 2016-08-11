@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Platform Foundation 7.1 And Ionic2 - Going forward while support backward
+title: IBM MobileFirst Platform Foundation 7.1 And Ionic2 - Going forward at your own pace
 date: 2016-08-11
 version:
 - 7.1
