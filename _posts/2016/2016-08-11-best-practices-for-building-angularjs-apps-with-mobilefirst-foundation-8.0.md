@@ -61,7 +61,7 @@ app.controller('LoginCtrl', function ($scope) {
 ## App Showcase
 The MobileFirst Banking App was recently updated to use AngularJS and it follows the recommendations noted in this post. You can find the application by visiting [https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankCordova](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankCordova)
 
-<img src="{{site.baseurl}}/assets/blog/2016-08-11-best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/mobiefirst-bank-cordova.png" width="300px" title="MobileFirst Bank App Screenshot" />
+<img src="{{site.baseurl}}/assets/blog/2016-08-11-best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/mobiefirst-bank-cordova.png" alt="mobilefirst banking app" width="300px" title="MobileFirst Bank App Screenshot" />
 
 
 ## Final Thoughts
