@@ -1,5 +1,5 @@
 ---
-title: Auto-Scaling service with Mobile Foundation Tile on Bluemix
+title: Using the Auto-Scaling Service with the Mobile Foundation tile on Bluemix
 date: 2016-08-11
 tags:
 - MobileFirst_Foundation
@@ -11,18 +11,18 @@ author:
   name: Vasanth Raghavan
 ---
 ## Overview
-MobileFirst Foundation can be setup on Bluemix in 2 ways. 
+MobileFirst Foundation can be setup on Bluemix in two ways. 
 1.	[Mobile Foundation Bluemix service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)
 2.	[Scripts that come with your License entitlement](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)
 
 > Note: With Scripts you can setup MobileFirst Foundation either in IBM containers or Liberty for Java runtime. 
 
-This blog explains the process of auto scaling with your MobileFirst Foundation service running on Liberty for Java runtime in Bluemix. Auto scaling can be achieved using the auto scaling [service](https://new-console.stage1.ng.bluemix.net/catalog/services/auto-scaling/) available on Bluemix. This enables you to automatically increase or decrease the compute capacity of your MobileFirst service. The number of application instances (nodes) are adjusted dynamically based on various operational parameters that you define in the auto-scaling policy.
+This blog explains the process of auto scaling with your MobileFirst Foundation tile running on Liberty for Java runtime on Bluemix. Auto scaling can be achieved using the [Auto-Scaling service](https://new-console.stage1.ng.bluemix.net/catalog/services/auto-scaling/) available on Bluemix. This enables you to automatically increase or decrease the compute capacity of your Mobile Foundation. The number of application instances (nodes) are adjusted dynamically based on various operational parameters that you define in the auto-scaling policy.
 
 ## Setup
 
 For the purposes of this blog, we will provision a single node with 1GB memory. Ensure you connect to a DashDB enterprise service plan on bluemix (for the Mobile Foundation Service It’s important to note that auto-scaling works only for the Professional plan)
-You can now associate the Auto-Scaling service with the Liberty for Java Cloudfoundry app that’s running the MobileFirst server. Search for “Auto-Scaling” service under “DevOps“ services in catalog. Select the same “Space” and “Application “(The mobilefirst tile service application) and click “Create”.
+You can now associate the Auto-Scaling service with the Liberty for Java Cloudfoundry app that is running the MobileFirst server. Search for “Auto-Scaling” service under “DevOps“ services in catalog. Select the same “Space” and “Application “(The mobilefirst foundation tile service application) and click “Create”.
 
 ![autoscaling-create]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-create.png)
 ![autoscaling-mainpage]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-mainpage.png)
