@@ -26,8 +26,8 @@ Ensure that you connect to a DashDB enterprise service plan on Bluemix (for the 
 
 You can associate the Auto-Scaling service with the Liberty for Java Cloudfoundry app that is running the MobileFirst Server. Search for the **Auto-Scaling** service under **DevOps** services in catalog. Select the same **Space** and **Application** (The MobileFirst Foundation tile service application) and click **Create**.
 
-![autoscaling-create]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-create.png)
-![autoscaling-mainpage]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-mainpage.png)
+![autoscaling-create]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-create.png)
+![autoscaling-mainpage]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-mainpage.png)
 
 ## Configuration
 The Auto-scaling service allows you to configure a policy based on which application server nodes are increased (scale out) or decreased (scale in). The “Policy Configuration” tab allows you to set the rules.
@@ -36,7 +36,7 @@ For the purpose of this blog post – the Mobile Foundation server was subject t
 
 In the production case, you will base this on the load subjected by mobile devices connected to the server. The “Metric Statistics” tab in the “Auto-Scaling” service gives you an overview of the various performance metrics. It provides a visual representation of different metric values. A meter shows the current specific metric value and a historical graph for the specific metric. 
 
-![autoscaling-throughput]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-throughput.png)
+![autoscaling-throughput]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-throughput.png)
 
 In the above example, we see the current “throughput” at 158 requests/second. The history graph on the right indicates the average throughput across nodes over approximately a one-and-a-half-hour time period. The “rules” specified are also displayed as the upper and the lower thresholds. 
 
@@ -49,7 +49,7 @@ Each rule allows you to specify a minimum and maximum default instance count and
 
 You can select a specific metric type and then specify conditions for a “Scale Out“ and “Scale In”. “Scale Out“ allows you to increase the number of application nodes (till the maximum default instance count) based on whether a specific metric exceeds a user defined value for a specified time limit. “Scale In” allows you to decrease the number of application nodes (till the minimum instance count) based on whether a specific metric falls below the user defined value for a specified time limit.
 
-![autoscaling-rule1]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-rule1.png)
+![autoscaling-rule1]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-rule1.png)
 
 You can specify different rules for different metrics.  
 In advanced configuration you can specify time buffers for various criteria. The “Statistic Window” enables you to specify the time period in seconds when the metrics are measured. The “Breach Duration” allows you to specify the time period after which the scaling action is triggered if the measured metric values always fall above or below the upper and the lower threshold specified by the user respectively. The “Cool down periods for scaling in and out” allows you to specify a time period after a scaling activity ends and before the next scaling activity starts.
@@ -57,34 +57,34 @@ In advanced configuration you can specify time buffers for various criteria. The
 ## Auto-Scaling example with throughput
 In our example we will configure an autoScaling policy based on throughput. In the example below, at a steady state load it seems like 225 requests/second seems to be around about the throughput that can be achieved with 1 node.
 
-![autoscaling-throughput2]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-throughput2.png)
+![autoscaling-throughput2]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-throughput2.png)
 
 At this time the memory graph looked like this:
 
-![autoscaling-memory]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-memory.png)
+![autoscaling-memory]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-memory.png)
 
-![autoscaling-jvm]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-jvm.png)
+![autoscaling-jvm]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-jvm.png)
 
-![autoscaling-throughput3]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-throughput3.png)
+![autoscaling-throughput3]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-throughput3.png)
 
 In the ”Policy Configuration” tab, we will specify the minimum and maximum instance count as 1 and 2 respectively.  We will choose “Metric Type” as “Throughput” and set our rule as follows:
 
-![autoscaling-rule2]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-rule2.png)
+![autoscaling-rule2]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-rule2.png)
 
 The rule is fairly self-explanatory. It specifies that if the average throughput across instances exceeds 200 requests/second for a time period of 300 seconds (the “Breach Duration”) then the number of liberty nodes will be increased by 1. If the average throughput falls below 100 requests/second, for a time period of 300 seconds (the “Breach Duration”) then the number of liberty nodes will be decreased by 1. Average throughput here is calculated taking into account the throughput across all current active nodes. Do not set this window to be too close as this may cause unwanted cycling of nodes.As we see the throughput load increasing and crossing the 200 requests/second mark specified in our rule, we see a new node being created after 300 seconds, when we navigate to the “Runtime” tab section, in “Instances”,after selecting our MobileFirst Foundation tile application under “Cloud Foundry Applications“.
 
 
-![autoscaling-app]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-app.png)
+![autoscaling-app]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-app.png)
 
 To recap, if the average throughput exceeds 200 requests/second for a period of 300 seconds (5 minutes -the specified “Breach Duration”), another instance is added. 
 
-![autoscaling-scaleout]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-scaleout.png)
+![autoscaling-scaleout]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-scaleout.png)
 
-![autoscaling-scaleout2]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-scaleout2.png)
+![autoscaling-scaleout2]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-scaleout2.png)
 
 As the average throughput drops to below 100 requests/second (achieved by merely stopping our jmeter client scripts), the new instance is removed and only 1 instance remains.
 
-![autoscaling-scalein]({{site.baseurl}}/assets/blog/2016-08-11-Auto-Scaling-service-with-Mobile-Foundation-Tile-on-Bluemix/autoscaling-scalein.png)
+![autoscaling-scalein]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-scalein.png)
 
 
 
