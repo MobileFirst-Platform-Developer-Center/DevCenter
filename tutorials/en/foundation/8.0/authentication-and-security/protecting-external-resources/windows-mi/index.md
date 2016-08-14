@@ -353,7 +353,7 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to `MobileFirst Authorization server`. It is being used by `getToken` to send request to the `token` endpoint, and by `introspectClientRequest` method to send a request to the `introspection` endpoint. This method returns an `HttpWebResponse` which we use in `getToken` method to extract the access_token from and store it as our token.
+The `sendRequest` method is a helper method that is responsible for sending requests to `MobileFirst Authorization server`. It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
 
 ```c#
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
