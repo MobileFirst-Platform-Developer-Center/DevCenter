@@ -31,11 +31,14 @@ There is ready sample which you can work with in the [following link](https://gi
 ## The technical challenges
 
 The challenges of combining MobileFirst Platform 7.1 with Ionic 2 are the following:
- 
+
+
 1. The Cordova version needs to be 3.7.0, since that is the version MobileFirst Platform 7.1 is compatible with.
  
-2. Ionic2 is based on AngularJS 2, and working with [TypeScript](https://www.typescriptlang.org/) is recommended until ESS6.0(http://www.ecma-international.org/ecma-262/6.0/ ) will be adopted on the major web browsers. This is a challenge because TypeScript works with .d.ts(http://definitelytyped.org/guides/best-practices.html ) files which are used by advanced editors (e.g: [Visual Code](https://www.visualstudio.com/en-us/products/code-vs.aspx )) and [transpilrers](https://www.wikiwand.com/en/Source-to-source_compiler ) (e.g: [gulp-typescript](https://www.npmjs.com/package/gulp-typescript )).
- 
+2. Ionic2 is based on AngularJS 2, and working with [TypeScript](https://www.typescriptlang.org/) is recommended until [ESS6.0](http://www.ecma-international.org/ecma-262/6.0/ ) will be adopted on the major web browsers. This is a challenge because TypeScript works with .d.ts(http://definitelytyped.org/guides/best-practices.html ) files which are used by advanced editors (e.g: [Visual Code](https://www.visualstudio.com/en-us/products/code-vs.aspx )) and [transpilrers](https://www.wikiwand.com/en/Source-to-source_compiler ) (e.g: [gulp-typescript](https://www.npmjs.com/package/gulp-typescript )).
+
+
+
 > How to deal with the above challenges is explained in the sample [README](https://github.com/mfpdev/mfp71-with-ionic2#how-to-create-a-blank-template-of-an-mfp-71-cordova-app-that-uses-ionic2 )
 
 
