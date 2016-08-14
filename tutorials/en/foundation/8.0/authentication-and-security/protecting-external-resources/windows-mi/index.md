@@ -26,7 +26,7 @@ Using this Message Inspector we will examine the incoming request and validate t
 * [Define a Message Inspector](#define-a-message-inspector)
 * [Message Inspector Implementation](#message-inspector-implementation)
     * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from MobileFirst Server](#obtain-access-token-from-mobilefirst-server)
+    * [Obtain Access Token from MobileFirst Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
     * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
     * [Post-process Validation](#post-process-validation)
 
@@ -159,40 +159,52 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
-Todo!!!!!!!!
-Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior.
-
-Todo!!!!! add highlight
+Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior:
 
 ```xml
-<services>
-      <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
-        <endpoint address="" behaviorConfiguration="webBehavior" binding="webHttpBinding"
-          contract="DotNetTokenValidator.IGetBalanceService" />
-        <host>
-          <baseAddresses>
-            <add baseAddress="http://localhost:8732/GetBalanceService" />
-          </baseAddresses>
-        </host>
-      </service>
-    </services>
-    <behaviors>
-      <endpointBehaviors>
-        <behavior name="webBehavior">
-          <webHttp />
-          <extBehavior />
-        </behavior>
-      </endpointBehaviors>
-      <serviceBehaviors>
-        <behavior name="Default">
-          <serviceMetadata httpGetEnabled="true" />
-        </behavior>
-        <behavior name="">
-          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
-          <serviceDebug includeExceptionDetailInFaults="false" />
-        </behavior>
-      </serviceBehaviors>
-    </behaviors>
+<behavior name="webBehavior">
+  <webHttp />
+  <extBehavior />
+</behavior>
+```
+
+Here is the whole serviceModel configuration:
+
+```xml
+<system.serviceModel>
+  <services>
+    <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
+      <endpoint address="" behaviorConfiguration="webBehavior" binding="webHttpBinding" contract="DotNetTokenValidator.IGetBalanceService" />
+      <host>
+        <baseAddresses>
+          <add baseAddress="http://localhost:8732/GetBalanceService" />
+        </baseAddresses>
+      </host>
+    </service>
+  </services>
+  <behaviors>
+    <endpointBehaviors>
+      <behavior name="webBehavior">
+        <webHttp />
+        <extBehavior />
+      </behavior>
+    </endpointBehaviors>
+    <serviceBehaviors>
+      <behavior name="Default">
+        <serviceMetadata httpGetEnabled="true" />
+      </behavior>
+      <behavior name="">
+        <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+        <serviceDebug includeExceptionDetailInFaults="false" />
+      </behavior>
+    </serviceBehaviors>
+  </behaviors>
+  <extensions>
+    <behaviorExtensions>
+      <add name="extBehavior" type="DotNetTokenValidator.Inspector.MyCustomBehaviorExtension, DotNetTokenValidator"/>
+    </behaviorExtensions>
+  </extensions>
+</system.serviceModel>
 ```
 
 ## Message Inspector Implementation
@@ -206,7 +218,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point method of the validation process that we will implement in our message inspector, and we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+Next we will create our `validateRequest` method which is the starting-point method of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
 
 ```c#
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -218,97 +230,125 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 Inside `validateRequest` there are mainly 3 steps that we will implement:
 
 1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the word **"Bearer"**.
-2. **Get token** from MobileFirst Token endpoint - This token will be used to authenticate the client's token against MobileFirst Authorization Server.
+2. **Get token** from MobileFirst Authorization Server - This token will be used to authenticate the client's token against MobileFirst Authorization Server.
 3. **Post-process validation** - check for **conflicts**, validate that the request asks for the right **scope**, and check that the request is **active**.
 
 ```c#
-private void validateRequest(Message request) {
+private void validateRequest(Message request)
+{
+  // Pre-process validation: Eextract the clientToken out of the request, check it is not empty and that it starts with "Bearer"
+  string clientToken = getClientTokenFromHeader(request);
 
-  // Extract the authorization header out of the request
-  var httpRequest = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
-  authHeader = httpRequest.Headers[HttpRequestHeader.Authorization];
-
-  OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
-
-  preProcess(response, authHeader);
-
-  // Get token as the resource filter from mfp authorization server
-  if (filterIntrospectionToken == null) {
-    filterIntrospectionToken = getToken();
+  // Get token          
+  if (filterIntrospectionToken == null)
+  {
+    filterIntrospectionToken = getIntrospectionToken();
   }
 
-  // Extract the Authorization header "Bearer <token>"
-  authHeaderWithoutBearer = authHeader.Substring("Bearer ".Length);
+  // Check client auth header against mfp authrorization server using the token I received in previous step
+  HttpWebResponse introspectionResponse = introspectClientRequest(clientToken);
 
-  // Check client authorization header against mfp authorization server using the token received in previous step
-  HttpWebResponse currentResponse = introspectClientRequest(authHeaderWithoutBearer);
+  // Check if introspectionToken has expired (401)
+  // - if so we should obtain a new token and resend the client request
+  if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
+  {
+    filterIntrospectionToken = getIntrospectionToken();
+    introspectionResponse = introspectClientRequest(clientToken);
+  }
 
-  postProcess(response, currentResponse, scope, request);
+  // Post-process validation: check that the MFP authrorization server response is valid and includes the requested scope
+  postProcess(introspectionResponse);
 }
 ```
 
 ## Pre-process Validation
-This method is based upon 2 checks:
+The pre-process validation is done as part of the getClientTokenFromHeader() method.
+This process is based upon 2 checks:
 
-1. Check that the authorization header of the request is not empty
-2. If it is not empty - check that the authorization header starts with the word "Bearer"
+1. Check that the authorization header of the request is not empty.
+2. If it is not empty - check that the authorization header starts with the "Bearer " prefix.
 
-In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header
+In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header.  
+After validating the authorization header this method returns the token received from the client application.
 
 ```c#
-private void preProcess(OutgoingWebResponseContext response, string authenticationHeader)
+private string getClientTokenFromHeader(Message request)
 {
-  if ((string.IsNullOrEmpty(authenticationHeader) || !authenticationHeader.StartsWith("Bearer", StringComparison.CurrentCulture))){
-    Console.WriteLine("preProcess()-authHeader is empty or does not start with Bearer");
-    response.StatusCode = HttpStatusCode.Unauthorized;
-    response.Headers.Add(HttpResponseHeader.WwwAuthenticate, "Bearer");
-    flushResponse();
+  string token = null;
+  string authHeader = null;
+
+  // Extract the authorization header from the request
+  var httpRequest = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
+  authHeader = httpRequest.Headers[HttpRequestHeader.Authorization];
+
+  // Pre-process validation         
+  if ((string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer", StringComparison.CurrentCulture)))
+  {
+    WebHeaderCollection webHeaderCollection = new WebHeaderCollection();
+    webHeaderCollection.Add(HttpResponseHeader.WwwAuthenticate, "Bearer");
+    returnErrorResponse(HttpStatusCode.Unauthorized, webHeaderCollection);
   }
+
+  // extract the token without the "Bearer " prefix
+  try {               
+    token = authHeader.Substring("Bearer ".Length);
+  }
+  catch (Exception ex) {
+    Console.WriteLine(ex);
+  }
+
+  return token;
 }
 ```
 
-`flushResponse` is a helper method that sends the header we set to the user and completes the request:
+`returnErrorResponse` is a helper method that receives an httpStatusCode and a WebHeaderCollection, prepares the response and sends it back to the client application. After sending the response to the client application it completes the request.
 
 ```c#
-private void flushResponse() {
+private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
+{
+  OutgoingWebResponseContext outgoingResponse = WebOperationContext.Current.OutgoingResponse;
+  outgoingResponse.StatusCode = httpStatusCode;
+  outgoingResponse.Headers.Add(headers);
   HttpContext.Current.Response.Flush();
   HttpContext.Current.Response.SuppressContent = true; //Prevent sending content - only headers will be sent
   HttpContext.Current.ApplicationInstance.CompleteRequest();
 }
 ```
 
-## Obtain Access Token from MobileFirst Server
+## Obtain Access Token from MobileFirst Authorization Server
 In order to authenticate the client token we should `obtain an access token` as the `message inspector` by making a request to the `token endpoint`.
 Later we will use this received token to pass the client token for introspection.
 
 ```c#
-private string getToken() {
+private string getIntrospectionToken()
+{
   string returnVal = null;
   string strResponse = null;
 
-  // Prepare the confidential client username and password in Base64 format (as part of the request post data).
   string Base64Credentials = Convert.ToBase64String(
     System.Text.ASCIIEncoding.ASCII.GetBytes(
       string.Format("{0}:{1}", filterUserName, filterPassword)
     )
   );
 
-  // Prepare Post Data - the credentials we prepared in previous step + "authorization.introspect" as the requested scope
+  // Prepare Post Data
   Dictionary<string, string> postParameters = new Dictionary<string, string> { };
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-  // Extract the access_token from the received response
-  HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
-  Stream dataStream = resp.GetResponseStream();
-  StreamReader reader = new StreamReader(dataStream);
-  strResponse = reader.ReadToEnd();
+  try {
+    HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
+    Stream dataStream = resp.GetResponseStream();
+    StreamReader reader = new StreamReader(dataStream);
+    strResponse = reader.ReadToEnd();
 
-  // Convert the extracted access_token to JSON
-  JToken token = JObject.Parse(strResponse);
-  returnVal = (string)token.SelectToken("access_token");
+    JToken token = JObject.Parse(strResponse);
+    returnVal = (string)token.SelectToken("access_token");
+  }
+  catch (Exception ex) {
+    Debug.WriteLine(ex);
+  }
 
-  // Return the received token as JSON
   return returnVal;
 }
 ```
