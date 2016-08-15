@@ -126,27 +126,27 @@ This is done using 2 classes: one that configures the message inspector to prote
 
 ```c#
 public class MyCustomBehavior : IEndpointBehavior
-    {
-        ...
-        public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
-        {
-            endpointDispatcher.DispatchRuntime.MessageInspectors.Add(new MyInspector());
-        }
-        ...
-    }
+{
+  ...
+  public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+  {
+    endpointDispatcher.DispatchRuntime.MessageInspectors.Add(new MyInspector());
+  }
+  ...
+}
 
-    public class MyCustomBehaviorExtension : BehaviorExtensionElement
-    {
-        public override Type BehaviorType
-        {
-            get { return typeof(MyCustomBehavior); }
-        }
+public class MyCustomBehaviorExtension : BehaviorExtensionElement
+{
+  public override Type BehaviorType
+  {
+    get { return typeof(MyCustomBehavior); }
+  }
 
-        protected override object CreateBehavior()
-        {
-            return new MyCustomBehavior();
-        }
-    }
+  protected override object CreateBehavior()
+  {
+    return new MyCustomBehavior();
+  }
+}
 ```
 
 In the `App.config` file we define a `behaviorExtension` and attach it to the behavior class we just created:
@@ -168,47 +168,8 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 </behavior>
 ```
 
-Here is the whole serviceModel configuration:
-
-```xml
-<system.serviceModel>
-  <services>
-    <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
-      <endpoint address="" behaviorConfiguration="webBehavior" binding="webHttpBinding" contract="DotNetTokenValidator.IGetBalanceService" />
-      <host>
-        <baseAddresses>
-          <add baseAddress="http://localhost:8732/GetBalanceService" />
-        </baseAddresses>
-      </host>
-    </service>
-  </services>
-  <behaviors>
-    <endpointBehaviors>
-      <behavior name="webBehavior">
-        <webHttp />
-        <extBehavior />
-      </behavior>
-    </endpointBehaviors>
-    <serviceBehaviors>
-      <behavior name="Default">
-        <serviceMetadata httpGetEnabled="true" />
-      </behavior>
-      <behavior name="">
-        <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
-        <serviceDebug includeExceptionDetailInFaults="false" />
-      </behavior>
-    </serviceBehaviors>
-  </behaviors>
-  <extensions>
-    <behaviorExtensions>
-      <add name="extBehavior" type="DotNetTokenValidator.Inspector.MyCustomBehaviorExtension, DotNetTokenValidator"/>
-    </behaviorExtensions>
-  </extensions>
-</system.serviceModel>
-```
-
 ## Message Inspector Implementation
-First we will define some constants as class members in our message inspector: MobileFirst server URL, our confidential client credentials and the `scope` we will use to protect our service with. We will also define a static variable to keep the token received from MobileFirst Authorization server, so it will be available to all users:
+First let's define some constants as class members in our message inspector: MobileFirst server URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from MobileFirst Authorization server, so it will be available to all users:
 
 ```c#
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -218,7 +179,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point method of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+Next we will create our `validateRequest` method which is the starting-point of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
 
 ```c#
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -227,11 +188,11 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-Inside `validateRequest` there are mainly 3 steps that we will implement:
+Inside `validateRequest` there are 3 main steps that we will implement:
 
-1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the word **"Bearer"**.
+1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
 2. **Get token** from MobileFirst Authorization Server - This token will be used to authenticate the client's token against MobileFirst Authorization Server.
-3. **Post-process validation** - check for **conflicts**, validate that the request asks for the right **scope**, and check that the request is **active**.
+3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
 
 ```c#
 private void validateRequest(Message request)
@@ -316,7 +277,7 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## Obtain Access Token from MobileFirst Authorization Server
-In order to authenticate the client token we should `obtain an access token` as the `message inspector` by making a request to the `token endpoint`.
+In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
 Later we will use this received token to pass the client token for introspection.
 
 ```c#
@@ -353,7 +314,8 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to `MobileFirst Authorization server`. It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
+The `sendRequest` method is a helper method that is responsible for sending requests to MobileFirst Authorization server.  
+It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
 
 ```c#
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -380,7 +342,8 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 ```
 
 ## Send request to Introspection Endpoint with client token
-Now after we are authorized by `MobileFirst Authorization Server` we can validate the `client token` content. Now we are sending a request to the `Introspection endpoint`, adding the token we received in the previous step to the request header and the `client token` in the `post data` of the request. Next we will examine the response from `MobileFirst Authorization Server` in `postProcess` method.
+Now that we are authorized by MobileFirst Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
+Next we will examine the response from MobileFirst Authorization Server in `postProcess` method.
 
 ```c#
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -394,63 +357,59 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 ```
 
 ## Post-process Validation
-Now we examine the response status:
-
-1. In case of **409 (Conflict response)** - we will forward this status to the client with the received headers.
-2. If the response status is **401 (Unauthorized)** it means that our token has expired, so we should obtain token again and start the process again with the new token. In order to do so, we set `filterIntrospectionToken` to null and call `validateRequest` again.
-3. At this point we are checking that the response equals to **200 OK** - if not we throw an exception that validation was not successful.
-4. Now that we know that the response status is OK there are 2 more checks left within the response, so first we initialize `azResponse`, which is a class we defined to reprisent the response with our current response, and then we examine the following:
-  1. We first make sure that this request is `active` (active==true)
-  2. Lastly we check that the request includes the right `scope`
+Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
+401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
 
 ```c#
-private void postProcess(OutgoingWebResponseContext response, HttpWebResponse currentResponse, string scope, Message request)
+if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 {
-  // Check Conflict response (409)
-  if (currentResponse.StatusCode == HttpStatusCode.Conflict)
-  {
-    response.StatusCode = HttpStatusCode.Conflict;
-    response.Headers.Add(currentResponse.Headers);
-    flushResponse();
-  }
+  filterIntrospectionToken = getIntrospectionToken();
+  introspectionResponse = introspectClientRequest(clientToken);
+}
+```
 
-  // Check if filterToken has expired (401) - if so we should obtain a new token and run validateRequest() again
-  else if (currentResponse.StatusCode == HttpStatusCode.Unauthorized)
-  {
-    filterIntrospectionToken = null;
-    validateRequest(request);
-    return; // stops the current instance of validateRequest
-  }
+The main purpose of the postProcess method is to examine the response we received from MobileFirst Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
+If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the MobileFirst Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
 
-  // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
-  else if (currentResponse.StatusCode != HttpStatusCode.OK)
+```c#
+private void postProcess(HttpWebResponse introspectionResponse)
+{
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
   {
-    throw new WebFaultException<string>("Authentication did not succeed, Please try again...", HttpStatusCode.BadRequest);
+    if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // We have a real problem since we already obtained a new token
+    {
+      throw new WebFaultException<string>("Authentication did not succeed, Please try again...", HttpStatusCode.BadRequest);
+    }
+    else if (introspectionResponse.StatusCode == HttpStatusCode.Conflict) // Check Conflict response (409)
+    {
+      returnErrorResponse(HttpStatusCode.Conflict, introspectionResponse.Headers);
+    }
+    else
+    {
+      throw new WebFaultException<string>("Authentication did not succeed, Please try again...", HttpStatusCode.BadRequest);
+    }
   }
+  else
+  {                
+    AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
+    WebHeaderCollection webHeaderCollection = new WebHeaderCollection();
 
-  // Create an object from the response
-  azResponse azResp = new azResponse(currentResponse);
-
-  // Check if active == false
-  if (!azResp.isActive)
-  {
-    response.StatusCode = HttpStatusCode.Unauthorized;
-    response.Headers.Add(HttpResponseHeader.WwwAuthenticate, "Bearer error=\"invalid_token\"");
-    flushResponse();
-  }
-
-  // Check scope
-  else if (!azResp.scope.Contains(scope))
-  {
-    response.StatusCode = HttpStatusCode.Forbidden;
-    response.Headers.Add(HttpResponseHeader.WwwAuthenticate, "Bearer error=\"insufficient_scope\", scope=\"" + scope + "\"");
-    flushResponse();
-  }
+    if (!azResp.isActive)
+    {                    
+      webHeaderCollection.Add(HttpResponseHeader.WwwAuthenticate, "Bearer error=\"invalid_token\"");
+      returnErrorResponse(HttpStatusCode.Unauthorized, webHeaderCollection);
+    }
+    else if (!azResp.scope.Contains(scope))
+    {
+      webHeaderCollection.Add(HttpResponseHeader.WwwAuthenticate, "Bearer error=\"insufficient_scope\", scope=\"" + scope + "\"");
+      returnErrorResponse(HttpStatusCode.Forbidden, webHeaderCollection);
+    }               
+  }           
 }
 ```
 
 ## Sample
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
+[Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
 
 ### Sample usage
 
