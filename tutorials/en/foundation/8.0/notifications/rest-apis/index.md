@@ -2,7 +2,7 @@
 layout: tutorial
 title: REST Services APIs 
 relevantTo: [ios,android,windows,cordova]
-weight: 9
+weight: 10
 ---
 ## REST APIs
 You can use REST Services APIs to work with notifications.
