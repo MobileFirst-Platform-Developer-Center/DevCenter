@@ -3,7 +3,7 @@ layout: tutorial
 title: Windows .NET Message Inspector
 breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
-weight: 3
+weight: 4
 downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
