@@ -20,7 +20,7 @@ The REST API works with all adapters and external resources.
 
 - If you are implementing a Cordova application, ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/cordova) to your Cordova application.
 - If you are implementing a Web application, ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/web) to your Web application.
-- Learn how to [create adapters](../../../adapters/adapters-overview/).
+- Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.

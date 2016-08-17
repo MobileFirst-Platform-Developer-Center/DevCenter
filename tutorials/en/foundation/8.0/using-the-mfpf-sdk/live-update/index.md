@@ -2,7 +2,7 @@
 layout: tutorial
 title: Live Update
 relevantTo: [ios,android]
-weight: 10
+weight: 11
 downloads:
   - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
@@ -323,6 +323,15 @@ The arguments that are provided by the application using the Live Update client 
 Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
 The below is sample code you can use.
 
+**Note:** Make sure to add the Gson dependency in your adapter's `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.7</version>
+</dependency>
+```
 
 **SampleSegmentResolverAdapterApplication.java**  
 
@@ -353,7 +362,7 @@ public class SampleSegmentResolverAdapter {
         // Get registration data such as device and application
         RegistrationData registrationData = data.getRegistrationData();
         ApplicationKey application = registrationData.getApplication();
-        MobileDeviceData deviceData = registrationData.getDevice();
+        DeviceData deviceData = registrationData.getDevice();
 
         // Based on the above context (arguments, authenticatedUser and registrationData) resolve the segment name.
         // Write your custom logic to resolve the segment name.

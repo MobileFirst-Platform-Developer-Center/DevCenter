@@ -85,7 +85,7 @@ If the client is already logged-in or is in the *remembered* state, the API trig
 
 The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
 
-> Learn more about **scopes** in the [Authorization concepts](../../authorization-concepts) tutorial.
+> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
 
 ## Retrieving the authenticated user
 The challenge handler `handleSuccess` method receives `data` as a parameter.

@@ -44,8 +44,6 @@ public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
 ## Handling the challenge
 The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement a constructor and a `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSONObject`.
 
-> Learn more about the `SecurityCheckChallengeHandler` protocol in the user documentation.
-
 Add a constructor method:
 
 ```java

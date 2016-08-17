@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Handling SMS Notifications in Android
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 9
 downloads:
@@ -62,6 +63,8 @@ catch(Exception ex) {
 }
 ```
 
+> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+
 #### Unregister Device
 
 Unregister the device from push notification service instance.
@@ -93,7 +96,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 
 > To review all Push Notifications REST APIs, see the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API runtime services</a> topic in the user documentation.
 
-To send a notification, see the [sending notifications](../sending-push-notifications) tutorial.
+To send a notification, see the [sending notifications](../sending-notifications) tutorial.
 
 <img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
 ## Sample application

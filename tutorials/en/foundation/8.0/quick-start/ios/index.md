@@ -24,7 +24,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
-Make sure you have [created a Mobile Foundation instance](../../ibm-containers/using-mobile-foundation), or  
+Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
 If using the [MobileFirst Foundation Development Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application

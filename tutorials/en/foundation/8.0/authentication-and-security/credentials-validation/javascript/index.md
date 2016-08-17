@@ -45,8 +45,6 @@ PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCode
 ## Handling the challenge
 The minimum requirement from the `createSecurityCheckChallengeHandler` protocol is to implement the `handleChallenge()` method, which is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
 
-> Learn more about the `createSecurityCheckChallengeHandler` protocol in the user documentation.
-
 In this example, an alert prompts the user to enter the PIN code:
 
 ```javascript

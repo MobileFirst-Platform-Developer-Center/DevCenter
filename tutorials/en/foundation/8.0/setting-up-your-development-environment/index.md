@@ -19,7 +19,7 @@ You can also find detailed step-by-step instructions [in this workstation instal
 * [Platform-specific instructions](#platform-specific-instructions)
 
 ### Server
-You can use the MobileFirst Server either via the [Mobile Foundation Bluemix service](../ibm-containers/using-mobile-foundation), or locally using the IBM Developer Kit (used for local development purposes). The MobileFirst Server requires Java 7 or 8 to run.
+You can use the MobileFirst Server either via the [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation), or locally using the IBM Developer Kit (used for local development purposes). The MobileFirst Server requires Java 7 or 8 to run.
 
 If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
 

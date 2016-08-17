@@ -3,7 +3,7 @@ layout: tutorial
 title: Multilingual translation of JavaScript (Cordova, Web) applications
 breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
-weight: 8
+weight: 9
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80

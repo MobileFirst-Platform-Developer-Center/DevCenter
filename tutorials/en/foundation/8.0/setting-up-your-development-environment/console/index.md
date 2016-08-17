@@ -8,6 +8,21 @@ weight: 7
 ## Overview
 The MobileFirst Foundation Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
 
+#### As a developer
+* Develop applications for any environment and register them to MobileFirst Server.
+* See all your deployed applications and adapters at a glance. See the Dashboard.
+* Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
+* Set up push notification by deploying certificates, creating notification tags, and sending notification.
+* Create and deploy adapters.
+* Download samples.
+
+#### As an IT administrator
+* Monitor various services.
+* Search for devices that access MobileFirst Server and manage their access rights.
+* Update adapter configurations dynamically.
+* Adjust client logger configurations through log profiles.
+* Track how product licenses are used.
+
 #### Jump to:
 
 * [Accessing the console](#accessing-the-console)
@@ -26,7 +41,7 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../ibm-containers/).
+The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../bluemix/).
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, 

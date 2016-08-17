@@ -20,7 +20,7 @@ Coming soon: walkthrough for Ionic v2.
 You will need to install the following tools: MobileFirst CLI, Ionic CLI, Cordova CLI, as well as have a MobileFirst server running.  
 Ensure that you have [NodeJS](https://nodejs.org/en/) downloaded and installed. With NodeJS install you can then install all required CLIs using npm.
 
-To get up &amp; running with the MobileFirst Server you can either use the [Mobile Foundation Bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/) or [download the DevKit Installer]({{site.baseurl}}/downloads) for an on-prem installation.
+To get up &amp; running with the MobileFirst Server you can either use the [Mobile Foundation Bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/) or [download the DevKit Installer]({{site.baseurl}}/downloads) for an on-prem installation.
 
 #### Installing the CLIs
 
@@ -181,7 +181,7 @@ Select the mobile browser simulator option.
 ![ionic-mbs]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/mbs.png)
 
 > **Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
-> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#previewing-an-application-39-s-web-resources).
+> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/cordova-apps/#previewing-an-application-39-s-web-resources).
 
 ## Implementing the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.

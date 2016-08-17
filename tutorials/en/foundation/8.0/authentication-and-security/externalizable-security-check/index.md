@@ -15,7 +15,7 @@ Three methods are required to be implemented by the subclasses: `initStateDurati
 
 This tutorial explains how to implement the class and demonstrates how to manage states.
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../authorization-concepts/) and [Creating a Security Check](../creating-a-security-check) tutorials.
+**Prerequisites:** Make sure to read the [Authorization concepts](../) and [Creating a Security Check](../creating-a-security-check) tutorials.
 
 #### Jump to:
 * [The initStateDurations Method](#the-initstatedurations-method)
