@@ -26,7 +26,7 @@ The passport-mfp-token-validation module provides an authentication mechanism to
 To install the module, run:
 
 ```bash
-npm install passport-mfp-token-validation
+npm install passport-mfp-token-validation@8.0.X
 ```
 
 ## Usage
