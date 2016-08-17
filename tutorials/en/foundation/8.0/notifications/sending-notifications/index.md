@@ -94,7 +94,7 @@ To setup WNS:
 
 <img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
-## SMS Notification Service
+### SMS Notification Service
 The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the MobileFirst Server with the SMS gateway configuration
 
 ```json
