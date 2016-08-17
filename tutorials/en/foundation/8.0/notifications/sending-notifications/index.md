@@ -17,6 +17,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
     * [Google Cloud Messaging](#google-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
+    * [SMS Notification Service](#sms-notification-service)
     * [Scope mapping](#scope-mapping)
     * [Authenticated Notifications](#authenticated-notifications)
 * [Defining Tags](#defining-tags)
@@ -93,7 +94,7 @@ To setup WNS:
 
 <img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
-#### SMS Notification Service
+### SMS Notification Service
 The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the MobileFirst Server with the SMS gateway configuration
 
 ```json
@@ -278,6 +279,7 @@ message | The alert message to be sent
 settings | The settings are the different attributes of the notification.
 target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
 deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
+notificationType | Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
 platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
 tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
 userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
