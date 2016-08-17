@@ -17,6 +17,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
     * [Google Cloud Messaging](#google-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
+    * [SMS Notification Service](#sms-notification-service)
     * [Scope mapping](#scope-mapping)
     * [Authenticated Notifications](#authenticated-notifications)
 * [Defining Tags](#defining-tags)
@@ -93,7 +94,7 @@ To setup WNS:
 
 <img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
-#### SMS Notification Service
+## SMS Notification Service
 The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the MobileFirst Server with the SMS gateway configuration
 
 ```json
