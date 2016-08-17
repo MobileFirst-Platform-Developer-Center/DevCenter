@@ -278,6 +278,7 @@ message | The alert message to be sent
 settings | The settings are the different attributes of the notification.
 target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
 deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
+notificationType | Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
 platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
 tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
 userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
