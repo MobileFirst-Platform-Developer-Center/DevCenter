@@ -267,7 +267,7 @@ Example URL:
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> To review all Push Notifications REST APIs, see the "REST API Runtime Services" topic in the user documentation.
+> To review all Push Notifications REST APIs, see the [REST API Runtime Services topic](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) in the user documentation.
 
 #### Notification payload
 The request can contain the following payload properties: 
@@ -319,7 +319,7 @@ phoneNumber | The phone number used for registering the device and receiving not
 ```json
 {
   "message": {
-    "alert": "Test Message11"
+    "alert": "Hello World from an SMS message"
   },
   "notificationType":3,
    "target" : {
@@ -327,6 +327,8 @@ phoneNumber | The phone number used for registering the device and receiving not
    }
 }
 ```
+
+
 
 #### Sending the notification
 The notification can be sent using different tools.  
