@@ -119,7 +119,7 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
     "phoneNumber" : "123456789",
     "platform" : "A",
     "token" : "12345-6789",
-    "userId" : "admin",
+    "userId" : "admin"
 }
 {% endhighlight %}
 
@@ -202,7 +202,7 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
   "deviceId" : "12345-6789",
   "phoneNumber" : "123456789",
   "platform" : "A",
-  "token" : "xyz",
+  "token" : "xyz"
 }
 {% endhighlight %}
                 
@@ -231,7 +231,7 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
   "platform" : "A",
   "token" : "xyz",
   "userAgent" : "TestUserAgent",
-  "userId" : "admin",
+  "userId" : "admin"
 }
 {% endhighlight %}   
 
@@ -312,14 +312,14 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
                 
                 <b>JSON example</b>
                 
-    {% highlight json %}
-    {
-        "deviceId" : "12345-6789",
-        "phoneNumber" : "123456789",
-        "token" : "xyz",
-        "userId" : "admin",
-    }
-    {% endhighlight %}
+{% highlight json %}
+{
+    "deviceId" : "12345-6789",
+    "phoneNumber" : "123456789",
+    "token" : "xyz",
+    "userId" : "admin"
+}
+{% endhighlight %}
                 
                 <h5>Payload properties:</h5>
                 <p>The payload has the following properties:</p>
@@ -336,18 +336,18 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
                 
                 <b>JSON example</b>
                 
-    {% highlight json %}
-    {
-        "createdMode" : "API",
-        "createdTime" : "2015-05-20T11:42:11Z",
-        "deviceId" : "12345-6789",
-        "lastUpdatedTime" : "2015-05-20T11:42:11Z",
-        "phoneNumber" : "123456789",
-        "platform" : "A",
-        "token" : "xyz",
-        "userId" : "admin",
-    }
-    {% endhighlight %}   
+{% highlight json %}
+{
+    "createdMode" : "API",
+    "createdTime" : "2015-05-20T11:42:11Z",
+    "deviceId" : "12345-6789",
+    "lastUpdatedTime" : "2015-05-20T11:42:11Z",
+    "phoneNumber" : "123456789",
+    "platform" : "A",
+    "token" : "xyz",
+    "userId" : "admin"
+}
+{% endhighlight %}   
 
                 <h5>Response properties</h5>
                 <p>The response has the following properties:</p>
@@ -388,7 +388,7 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
 
         <div id="collapse-device-registrations-get" class="panel-collapse collapse" role="tabpanel" aria-labelledby="device-registrations-get">
             <div class="panel-body">
-                <p>Retrieves all or a subset of existing device registration(s) of push.</p>
+                <p>Retrieves all or a subset of existing device registration(s).</p>
                 
                 <h5>Description:</h5>
                 <p>Device registrations for the push service are retrieved for the specified criteria.</p>
@@ -440,7 +440,7 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
       "phoneNumber" : "123456789",
       "platform" : "A",
       "token" : "xyz",
-      "userId" : "admin",
+      "userId" : "admin"
     },
     ...
   ],
@@ -448,8 +448,8 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
     "count" : "2",
     "next" : "",
     "previous" : "",
-    "totalCount" : "10",
-  },
+    "totalCount" : "10"
+  }
 }
 {% endhighlight %}
 
@@ -587,25 +587,25 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
                 
                 <b>JSON example</b>
                 
-    {% highlight json %}
+{% highlight json %}
+{
+  "devices" : [
     {
-      "devices" : [
-        {
-          "deviceId" : "12345-6789",
-          "platform" : "A",
-          "token" : "12345-6789",
-          "userId" : "admin",
-        },
-        ...
-      ],
-      "pageInfo" : {
-        "count" : "2",
-        "next" : "",
-        "previous" : "",
-        "totalCount" : "10",
-      },
-    }
-    {% endhighlight %}
+      "deviceId" : "12345-6789",
+      "platform" : "A",
+      "token" : "12345-6789",
+      "userId" : "admin"
+    },
+    ...
+  ],
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10"
+  }
+}
+{% endhighlight %}
 
                 <h5>Response Properties</h5>
                 <p>The response has the following properties:</p>
@@ -642,6 +642,265 @@ This REST API endpoint is protected by OAuth which requires the clients [to be c
                 
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#device-subscription-get" data-target="#collapse-device-subscription-get" aria-expanded="false" aria-controls="collapse-device-subscription-get"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="device-subscription-post">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#api-ref" data-target="#collapse-device-subscription-post" aria-expanded="false" aria-controls="collapse-device-subscription-post"><b>Push Device Subscription (POST)</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-device-subscription-post" class="panel-collapse collapse" role="tabpanel" aria-labelledby="device-subscription-post">
+            <div class="panel-body">
+                <p>Creates a new subscription for a tag.</p>
+                
+                <h5>Description:</h5>
+                <p>Given the <code>deviceId</code> and the tag name, the request creates a new subscription which subscribes the device to the tag specified.</p>
+                
+                <h5>Method:</h5>
+                <p><code>POST</code></p>
+                
+                <h5>Path:</h5>
+                <p><code>/apps/applicationId/subscriptions</code></p>
+                
+                <h5>Example:</h5>
+                <p><code>https://example.com:443/imfpush/v1/apps/myapp/subscriptions</code></p>
+                
+                <h5>Path Parameters:</h5>
+                <ul>
+                    <li><b>applicationId:</b> The name or identifier of the application</li>
+                </ul>
+                
+                <h5>Header Parameters:</h5>
+                <ul>
+                    <li><b>Accept-Language:</b> (Optional) The preferred language to use for error messages. Default: en-US</li>
+                    <li><b>Authorization:</b> (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.</li>
+                    <li><b>Content-Type:</b> (Mandatory) Specify the JSON content type. This parameter is mandatory.</li>
+                </ul>
+                
+                <h5>Consumes:</b>
+                <p>application/json</p>
+                
+                <h5>Produces:</h5>
+                <p>application/json</p>
+                
+                <h5>Payload:</h5>
+                <p>The details of the device and the tag name to which it has to subscribe.</p>
+                
+                <b>JSON example</b>
+                
+{% highlight json %}
+{
+    "deviceId" : "12345-6789",
+    "tagName" : "testTag"
+}
+{% endhighlight %}
+                
+                <h5>Payload properties:</h5>
+                <p>The payload has the following properties:</p>
+                
+                <ul>
+                    <li><b>deviceId:</b> The unique id of the device.</li>
+                    <li><b>tagName:</b> The tag name to subscribe.</li>
+                </ul>
+                
+                <h5>Response:</h5>
+                <p>The details of the device subscription that is updated.</p>
+                
+                <b>JSON example</b>
+                
+{% highlight json %}
+{
+    "deviceId" : "12345-6789",
+    "tagName" : "testTag"
+}
+{% endhighlight %}
+
+                <h5>Response Properties</h5>
+                <p>The response has the following properties:</p>
+                            
+                <ul>
+                    <li><b>deviceId:</b> The unique id of the device.</li>
+                    <li><b>tagName:</b> The tag name to subscribe.</li>
+                </ul>
+                
+                <h5>Errors:</h5>
+                <ul>
+                    <li><b>400:</b> A device registraion has userId longer than 254 characters.</li>
+                    <li><b>401:</b> Unauthorized - The caller is either not authenticated or not authorized to make this request.</li>
+                    <li><b>404:</b> A device registration with the specified deviceId is not found.</li>
+                    <li><b>405:</b> Unsupported Content type - The content type specified in Content-Type header is not application/json.</li>
+                    <li><b>406:</b> Unsupported Accept type - The content type specified in Accept header is not application/json.</li>
+                    <li><b>500:</b> An internal error occurred.</li>
+                </ul>
+                
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#device-subscription-post" data-target="#collapse-device-subscription-post" aria-expanded="false" aria-controls="collapse-device-subscription-post"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="device-subscriptions-get">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#api-ref" data-target="#collapse-device-subscriptions-get" aria-expanded="false" aria-controls="collapse-device-registration-get"><b>Push Device Subscriptions (GET)</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-device-subscriptions-get" class="panel-collapse collapse" role="tabpanel" aria-labelledby="device-subscriptions-get">
+            <div class="panel-body">
+                <p>Retrieves all or a subset of existing subscriptions.</p>
+                
+                <h5>Description:</h5>
+                <p>Retrieves subscriptions for the push service for the specified criteria.</p>
+                
+                <h5>Method:</h5>
+                <p><code>GET</code></p>
+                
+                <h5>Path:</h5>
+                <p><code>/apps/applicationId/subscriptions</code></p>
+                
+                <h5>Example:</h5>
+                <p><code>https://example.com:443/imfpush/v1/apps/myapp/subscriptions?deviceId=12345-6789&expand=true&filter=tagName=@tag&offset=0&size=10&tagName=sports&userId=user1</code></p>
+                
+                <h5>Path Parameters:</h5>
+                <ul>
+                    <li><b>applicationId:</b> The name or identifier of the application</li>
+                </ul>
+                
+                <h5>Query Parameters</h5>
+                <p>Query parameters are optional.</p>
+                
+                <ul>
+                    <li><b>expend:</b> Retrieves additional metadata for every device registration that is returned in the response.</li>
+                    <li><b>filter:</b> Search criteria filter. Refer to the filter section for detailed syntax.</li>
+                    <li><b>offset:</b> Pagination offset that is normally used along with the size.</li>
+                    <li><b>size:</b> Pagination size that is normally used along with the offset to retrieve a subset.</li>
+                    <li><b>tagName:</b> Retrieves subscriptions only for the specified tagName.</li>
+                    <li><b>userId:</b> Retrieves device registrations only for the specified user.</li>
+                </ul>
+                
+                <h5>Header Parameters:</h5>
+                <ul>
+                    <li><b>Accept-Language:</b> (Optional) The preferred language to use for error messages. Default: en-US</li>
+                    <li><b>Authorization:</b> (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.</li>
+                </ul>
+                
+                <h5>Produces:</h5>
+                <p>application/json</p>
+                
+                <h5>Response</h5>
+                <p>The details of the device subscription that is retrieved.</p>
+                
+                <b>JSON example</b>
+                
+{% highlight json %}
+{
+  "devices" : [
+    {
+      "deviceId" : "12345-6789",
+      "platform" : "A",
+      "token" : "12345-6789",
+      "userId" : "admin",
+    },
+    ...
+  ],
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+}
+{% endhighlight %}
+
+                <h5>Response Properties</h5>
+                <p>The response has the following properties:</p>
+                
+                <ul>
+                    <li><b>devices:</b> The array of device registrations with Push.</li>
+                    <li><b>pageInfo:</b> The pagination information.</li>
+                </ul>
+                
+                <p><code>devices</code> has the following properties:</p>
+                
+                <ul>
+                    <li><b>deviceId:</b> The unique id of the device.</li>
+                    <li><b>platform:</b> The device platform.</li>
+                    <li><b>token:</b> The unique push token of the device.</li>
+                    <li><b>userId:</b> The <code>userId</code> of the device.</li>                    
+                </ul>
+                
+                <p><code>pageInfo</code> has the following properties:</p>
+                
+                <ul>
+                    <li><b>count:</b> The number of device registration that are retrieved.</li>
+                    <li><b>next:</b> A hyperlink to the next page.</li>
+                    <li><b>previous:</b> A hyperlink to the previous page.</li>
+                    <li><b>totalCount:</b> The total number of device registration present for the given search criteria.</li>
+                </ul>
+                
+                <h5>Errors:</h5>
+                <ul>
+                    <li><b>401:</b> Unauthorized - The caller is either not authenticated or not authorized to make this request.</li>
+                    <li><b>406:</b> Unsupported Accept type - The content type specified in Accept header is not application/json.</li>
+                    <li><b>500:</b> An internal error occurred.</li>
+                </ul>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#device-subscriptions-get" data-target="#collapse-device-subscriptions-get" aria-expanded="false" aria-controls="collapse-device-subscriptions-get"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="device-tag-del">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#api-ref" data-target="#collapse-device-tag-del" aria-expanded="false" aria-controls="collapse-device-registration-get"><b>Push Tag (DELETE)</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-device-tag-del" class="panel-collapse collapse" role="tabpanel" aria-labelledby="device-tag-del">
+            <div class="panel-body">
+                <h5>Description:</h5>
+                <p>Delete the tag in the application.</p>
+                
+                <h5>Method:</h5>
+                <p><code>DELETE</code></p>
+                
+                <h5>Path:</h5>
+                <p><code>/apps/applicationId/tags/tagName</code></p>
+                
+                <h5>Example:</h5>
+                <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags/sports</code></p>
+                
+                <h5>Path Parameters:</h5>
+                <ul>
+                    <li><b>applicationId:</b> The name or identifier of the application</li>
+                    <li><b>tagName:</b> The name of the tag.</li>
+                </ul>
+                
+                <h5>Header Parameters:</h5>
+                <ul>
+                    <li><b>Accept-Language:</b> (Optional) The preferred language to use for error messages. Default: en-US</li>
+                    <li><b>Authorization:</b> (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.</li>
+                </ul>
+                
+                <h5>Produces:</h5>
+                <p>application/json</p>
+                
+                <h5>Errors:</h5>
+                <ul>
+                    <li><b>401:</b> Unauthorized - The caller is either not authenticated or not authorized to make this request.</li>
+                    <li><b>404:</b> The tag with the specified tagName is not found.</li>
+                    <li><b>500:</b> An internal error occurred.</li>
+                </ul>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#device-tag-del" data-target="#collapse-device-tag-del" aria-expanded="false" aria-controls="collapse-device-tag-del"><b>Close section</b></a>
             </div>
         </div>
     </div>
