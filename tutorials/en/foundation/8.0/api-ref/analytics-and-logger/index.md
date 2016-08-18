@@ -6,6 +6,8 @@ relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <br/>
+> <span class="glyphicon glyphicon glyphicon-fire" aria-hidden="true"></span> **Note:** This page is under construction. [Click for the existing API Reference](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html).
+
 The MobileFirst Analytics public REST API is documented in Swagger.  
 To view and interact with Swagger, deploy the analytics-service.war file and go to the context root in your browser:
 
