@@ -938,63 +938,162 @@ apis:
   payloadProperties:
       - name: message
         value: The alert message to be sent
+        children:
+            - name: alert
+              value: A string to be displayed in the alert.
       - name: notificationType
         value: Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
       - name: settings
         value: The settings are the different attributes of the notification.
+        children:
+            - name: apns
+              value: Attributes for sending message to an iOS device.
+              children:
+                  - name: badge
+                    value: An integer value to be displayed in a badge on the application icon.
+                  - name: category
+                    value: Name of the category for iOS (8 and above) interactive push notifications.
+                  - name: iosActionKey
+                    value: The label of the dialog box button that allows the user to open the app upon receiving the notification.
+                  - name: payload
+                    value: A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.
+                  - name: sound
+                    value: The name of a file to play when the notification arrives.
+                  - name: type
+                    value: Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT
+            - name: gcm
+              value: Attributes for sending message to an Android device.
+              children:
+                  - name: bridge
+                    value: (GCM) A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.
+                  - name: category
+                    value: A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'. Only applies to Android 5.0 or higher.
+                  - name: collapseKey
+                    value: A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered.
+                  - name: delayWhileIdle
+                    value: A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent. Default value is false.
+                  - name: payload
+                    value: A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.
+                  - name: sound
+                    value: The name of a file to play when the notification arrives.
+                  - name: priority
+                    value: A string value that indicates the priority of this notification. Allowed values are 'max', 'high', 'default', 'low' and 'min'. High/Max priority notifications along with 'sound' field may be used for Heads up notification in Android 5.0 or higher.
+                  - name: redact
+                    value: A string to be displayed in the alert as a redacted version of the original content when the visibility level is 'private'. Only applies to Android 5.0 or higher.
+                  - name: sync
+                    value: A Boolean value that indicates whether the notification should be sync'd between devices of the same user, that is, if a notification is handled on a device it gets dismissed on the other devices of the same user.
+                  - name: timeToLive
+                    value: The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.
+                  - name: visibility
+                    value: A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.  
+            - name: wns
+              value: Attributes for sending message to a windows device.
+              children:
+                  - name: target
+                    value: Set of targets can be user Ids, devices, platforms, or tags. Only one of the targets can be set.  
+                  - name: badge
+                    children:
+                        - name: value
+                          value: An optional numeric or string value that indicates a prrdefined glyph to be displayed.
+                        - name: version
+                          value: Optional. Version of the payload.
+                  - name: cachePolicy
+                    value: A boolean value that indicates if the notification should be cached or not.
+                  - name: expirationTime
+                    value: Optional. Expriry time of the notification.
+                  - name: raw
+                    children:
+                        - name: payload
+                          value: Optional. A JSON block that is transferred to the application only if the application is already open.
+                  - name: tile
+                    children:
+                        - name: tag
+                          value: Optional. A string value that is set as label for the notification. Used in notification cycling.
+                  - name: visual
+                    children:
+                        - name: addImageQuery
+                          value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
+                        - name: baseUri
+                          value: Optional. Base URI to be combined with the relative URIs.
+                        - name: binding
+                          value: For tile notifications, its a JSON array containing JSON blocks of binding attributes. For toast notification, its a JSON block of binding attributes.
+                        - name: branding
+                          value: Optional. Indicates whether logo or app's name to be shown. Default is None.
+                        - name: contentId
+                          value: Optional. A string value that identifies the notification content. Only applies to tile notifications.
+                        - name: lang
+                          value: Optional. Locale of the payload.
+                        - name: version
+                          value: Optional. Version of the payload
+                  - name: binding
+                    children:
+                        - name: addImageQuery
+                          value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
+                        - name: baseUri
+                          value: Optional. Base URI to be combined with the relative URIs.
+                        - name: branding
+                          value: Optional. Indicates whether logo or app's name to be shown. Default is None.
+                        - name: contentId
+                          value: Optional. A string value that identifies the notification content. Only applies to tile notifications.
+                        - name: fallback
+                          value: Optional. Template to be used as a fallback.
+                        - name: image
+                          value: Optional. A JSON array containing JSON blocks of following image attributes.
+                        - name: lang
+                          value: Optional. Locale of the payload.
+                        - name: template
+                          value: Mandatory. Template type of the notification.
+                        - name: text
+                          value: Optional. A JSON array containing JSON blocks of following text attributes.
+                  - name: image
+                    children:
+                        - name: addImageQuery
+                          value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
+                        - name: alt
+                          value: Optional. Image description.
+                        - name: src
+                          value: Mandatory. Image URI.
+                  - name: text
+                    children:
+                        - name: content
+                          value: Mandatory. A string value that is displayed in the toast.
+                        - name: lang
+                          value: Optional. Locale of the payload.
+                  - name: toast
+                    children:
+                        - name: audio
+                        - name: duration
+                          value: Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.
+                        - name: launch
+                          value: Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.
+                        - name: visual
+                  - name: visual
+                    children:
+                        - name: loop
+                          value: Optional. A boolean value to indicate if the sound should be repeated or not.
+                        - name: silent
+                          value: Optional. A boolean value to indicate if the sound should be played or not.
+                        - name: src
+                          value: Optional. A string value that specifies the notification sound type or path to local audio file.
       - name: target
-        value: Set of targets can be user Ids, devices, platforms, or tags. Only one of the targets can be set.
-      - name: alert
-        value: A string to be displayed in the alert.
-      - name: apns
-        value: Attributes for sending message to an iOS device.
-      - name: gcm
-        value: Attributes for sending message to an Android device.
-      - name: wns
-        value: Attributes for sending message to a windows device.
-      - name: badge
-        value: (APNS) An integer value to be displayed in a badge on the application icon.
-      - name: category
-        value: (APNS) Name of the category for iOS (8 and above) interactive push notifications.
-      - name: iosActionKey
-        value: (APNS) The label of the dialog box button that allows the user to open the app upon receiving the notification.
-      - name: payload
-        value: (APNS) A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.
-      - name: sound
-        value: (APNS, GCM, WNS) The name of a file to play when the notification arrives.
-      - name: type
-        value: (APNS) Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT
-      - name: bridge
-        value: (GCM) A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.
-      - name: category
-        value: (GCM) A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'. Only applies to Android 5.0 or higher.
-      - name: collapseKey
-        value: (GCM) A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered.
-      - name: delayWhileIdle
-        value: (GCM) A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent. Default value is false.
-      - name: payload
-        value: (GCM) A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.
-      - name: priority
-        value: (GCM) A string value that indicates the priority of this notification. Allowed values are 'max', 'high', 'default', 'low' and 'min'. High/Max priority notifications along with 'sound' field may be used for Heads up notification in Android 5.0 or higher.
-      - name: redact
-        value: (GCM) A string to be displayed in the alert as a redacted version of the original content when the visibility level is 'private'. Only applies to Android 5.0 or higher.
-      - name: sync
-        value: (GCM) A Boolean value that indicates whether the notification should be sync'd between devices of the same user, that is, if a notification is handled on a device it gets dismissed on the other devices of the same user.
-      - name: timeToLive
-        value: (GCM) The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.
-      - name: visibility
-        value: (GCM) A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.
-      - name: badge
-        value: (WNS) value. An optional numeric or string value that indicates a prdefined glyph to be displayed.
-        value: (WNS) version. Optional. A numeric or string value that indicates a prdefined glyph to be displayed.
-      - name: cachePolicy
-        value: (WNS) A boolean value that indicates if the notification should be cached or not.
-      - name: expirationTime
-        value: (WNS) Optional. Expriry time of the notification.
-      - name: raw, tile, toast
-      - name: 
-
-      
+        children:
+            - name: deviceIds
+              value: An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notificatio
+            - name: platforms
+              value: An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and W (Microsoft/Windows).
+            - name: tagNames
+              value: An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications
+            - name: userIds
+              value: An array of users represented by their userIds to send the notification. This is a unicast notification.
+  errors:
+      - name: 400
+        value: Invalid JSON
+      - name: 403
+        value: The user is not authorized to call this service.
+      - name: 404
+        value: The corresponding runtime is not found or not running.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Messages (POST)
 - name: Push Application (DELETE)
 - name: Push Application (GET)
