@@ -33,7 +33,7 @@ apis:
         value: An internal error occurred.
 - name: Push Device Registration (GET)
   description: Retrieves an existing device registration.
-  shortdesc: Retrieves an existing device registration of push
+  shortdesc: Retrieves an existing device registration of push.
   method: GET
   path: /apps/applicationId/devices/deviceId
   example: https://example.com:443/imfpush/v1/apps/myapp/devices/12345-6789
@@ -408,6 +408,132 @@ apis:
         value: A device registration with the specified deviceId is not found.
       - name: 500
         value: An internal error occurred.
+- name: Push Device Subscription (POST)
+  description: Given the <code>deviceId</code> and the tag name, the request creates a new subscription which subscribes the device to the tag specified.
+  shortdesc: Creates a new subscription for a tag.
+  method: GET
+  path: /apps/applicationId/subscriptions
+  example: https://example.com:443/imfpush/v1/apps/myapp/subscriptions
+  pathParams:
+      - name: applicationId
+        value: The name or identifier of the application
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token. 
+  consumes: application/json
+  produces: application/json
+  payload: The details of the device and the tag name to which it has to subscribe.
+  payloadJsonExample: |
+    {
+      "deviceId" : "12345-6789",
+      "tagName" : "testTag"
+    }
+  payloadProperties:
+      - name: deviceId
+        value: The unique id of the device
+      - name: tagName
+        value: The tag name to subscribe.
+  response: The details of the device subscription that is updated.
+  responseJsonExample: |
+    {
+      "deviceId" : "12345-6789",
+      "tagName" : "testTag"
+    }
+  responseProperties:
+      - name: deviceId
+        value: The unique id of the device.
+      - name: tagName
+        value: The tag name to subscribe.
+  errors:
+      - name: 400
+        value: A device registraion has userId longer than 254 characters.
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 404
+        value: A device registration with the specified deviceId is not found.
+      - name: 405 
+        value: Unsupported Content type - The content type specified in Content-Type header is not application/json.
+      - name: 406
+        value: Unsupported Accept type - The content type specified in Accept header is not application/json.
+      - name: 500 
+        value: An internal error occurred.
+- name: Push Device Subscriptions (GET)
+  description: Retrieves subscriptions for the push service for the specified criteria
+  shortdesc: Retrieves all or a subset of existing subscriptions.
+  method: GET
+  path: /apps/applicationId/subscriptions
+  example: https://example.com:443/imfpush/v1/apps/myapp/subscriptions?deviceId=12345-6789&expand=true&filter=tagName=@tag&offset=0&size=10&tagName=sports&userId=user1
+  pathParams:
+      - name: applicationId
+        value: The name or identifier of the application
+  queryParams:
+      - name: expend
+        value: Retrieves additional metadata for every device registration that is returned in the response.
+      - name: filter
+        value: Search criteria filter. Refer to the filter section for detailed syntax.
+      - name: offset
+        value: Pagination offset that is normally used along with the size.
+      - name: size
+        value: Pagination size that is normally used along with the offset to retrieve a subset.
+      - name: tagName
+        value: Retrieves subscriptions only for the specified tagName.
+      - name: userId
+        value: Retrieves device registrations only for the specified user.
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token. 
+  produces: application/json
+  response: The details of the device subscription that is retrieved.
+  responseJsonExample: |
+    {
+        "devices" : [
+        {
+            "deviceId" : "12345-6789",
+            "platform" : "A",
+            "token" : "12345-6789",
+            "userId" : "admin",
+        },
+        ...
+        ],
+        "pageInfo" : {
+            "count" : "2",
+            "next" : "",
+            "previous" : "",
+            "totalCount" : "10",
+        },
+    }
+  responseProperties:
+      - name: devices
+        value: The array of device registrations with Push.
+      - name: pageInfo
+        value: The pagination information.
+      - name: deviceId
+        value: The unique ID of the device.
+      - name: platform
+        value: The device platform.
+      - name: token
+        value: The unique push token of the device.
+      - name: userId
+        value: The <code>userId</code> of the device.
+      - name: count
+        value: The number of device registration that are retrieved.
+      - name: next
+        value: A hyperlink to the next page.
+      - name: previous
+        value: A hyperlink to the previous page.
+      - name: totalCount
+        value: The total number of device registration present for the given search criteria.
+  errors:
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 406
+        value: Unsupported Accept type - The content type specified in Accept header is not application/json.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Tag (GET)
   description: Retrieves all tags.
   method: GET
@@ -495,4 +621,4 @@ The REST API for the Push service in the MobileFirst runtime environment enables
 
 The Push service on the MobileFirst Server is exposed over a REST API endpoint that can be directly accessed by non-mobile clients. You can use the REST API runtime services for Push for registrations, subscriptions, messages, and retrieving tags. Paging and filtering is supported for database persistence in both Cloudant and SQL.
 
-This REST API endpoint is protected by OAuth which requires the clients [to be confidential clients]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/confidential-clients/) and also possess the required access scopes in their OAuth access tokens that is passed by a designated HTTP header.
+These REST API endpoints are protected by OAuth which requires the clients [to be confidential clients]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/confidential-clients/) and also possess the required scope(s) in their OAuth access tokens that is passed by a designated HTTP header.
