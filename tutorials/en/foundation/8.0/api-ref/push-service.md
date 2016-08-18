@@ -534,25 +534,41 @@ apis:
         value: Unsupported Accept type - The content type specified in Accept header is not application/json.
       - name: 500
         value: An internal error occurred.
+- name: Push Tag (DELETE)
+  description: Delete the tag in the application.
+  shortdesc: Delete the tag in the application.
+  method: DELETE
+  path: /apps/applicationId/tags/tagName
+  example: https://example.com:443/imfpush/v1/apps/myapp/tags/sports
+  pathParams:
+      - name: applicationId
+        vlaue: The name or identifier of the application
+      - name: tagName
+        value: The name of the tag.
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token. 
+  produces: application/json
+  errors:
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 404
+        value: The tag with the specified tagName is not found.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Tag (GET)
-  description: Retrieves all tags.
+  description: Retrieves an existing tag of push.
+  shortdesc: Retrieves an existing tag of push.
   method: GET
-  path: /apps/applicationId/tags
-  example: https://example.com:443/imfpush/v1/apps/myapp/tags?expand=true&filter=platform==A&offset=0&size=10&subscriptionCount=10
+  path: /apps/applicationId/tags/tagName
+  example: https://example.com:443/imfpush/v1/apps/myapp/tags/sports
   pathParams: 
       - name: applicationId
         value: The name or identifier of the application
-  queryParams:
-      - name: expend
-        value: Retrieves additional metadata for every device registration that is returned in the response.
-      - name: filter
-        value: Search criteria filter. Refer to the filter section for detailed syntax.
-      - name: offset
-        value: Pagination offset that is normally used along with the size.
-      - name: size
-        value: Pagination size that is normally used along with the offset to retrieve a subset.
-      - name: subscriptionCount
-        value: Retrieves the number of tag subscriptions.
+      - name: tagName
+        value: The name of the tag
   headerParams:
       - name: Accept-Language
         value: (Optional) The preferred language to use for error messages. Defaults to en-US
@@ -561,46 +577,20 @@ apis:
   produces: application/json
   response: The details of the tag that is retrieved.
   responseJsonExample: |
-      {
-        "pageInfo" : {
-          "count" : "2",
-          "next" : "",
-          "previous" : "",
-          "totalCount" : "10",
-        },
-        "tags" : [
-          {
-            "createdMode" : "API",
-            "createdTime" : "2015-08-22T18:19:58Z",
-            "description" : "Description about SampleTag",
-            "href" : "https://example.com:443/imfpush/v1/apps/testApp/tags/SampleTag",
-            "lastUpdatedTime" : "2015-08-22T18:19:58Z",
-            "name" : "SampleTag"
-          },
-          ...
-        ]
-      }
+    {
+        "createdMode" : "API",
+        "createdTime" : "2015-08-22T18:19:58Z",
+        "description" : "Description about SampleTag",
+        "lastUpdatedTime" : "2015-08-22T18:19:58Z",
+        "name" : "SampleTag"
+    }
   responseProperties:
-      - name: pageInfo
-        value: The pagination information.
-      - name: tags
-        value: The array of applications.
-      - name: count
-        value: The number of device registration that are retrieved.
-      - name: next
-        value: A hyperlink to the next page.
-      - name: previous
-        value: A hyperlink to the previous page.
-      - name: totalCount
-        value: The total number of device registration present for the given search criteria.
       - name: createdMode
-        value: Defaults to <code>API</code>.
+        value: Defaults to API.
       - name: createdTime
         value: The time at which the tag was created.
       - name: description
-        value: The description of the tag.
-      - name: href
-        value: The URL to the tag.
+        value: The decription of the tag.
       - name: lastUpdatedTime
         value: The time at which the tag was last updated.
       - name: name
@@ -609,11 +599,40 @@ apis:
       - name: 401
         value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
       - name: 404
-        value: A tag with the specified name is not found.
+        value: The tag with the specified <code>tagName</code> is not found.
       - name: 406
         value: Unsupported Accept type - The content type specified in Accept header is not application/json.
       - name: 500
         value: An internal error occurred.
+- name: Push Tag (POST)
+- name: Push Tag (PUT)
+- name: Push Tags (GET)
+- name: Push Message (DELETE)
+- name: Push Message (GET)
+- name: Push Message (POST)
+- name: Push Messages (POST)
+- name: Push Application (DELETE)
+- name: Push Application (GET)
+- name: Push Application (POST)
+- name: Push Application (PUT)
+- name: Push Applications (GET)
+- name: Push Application Settings (GET)
+- name: Push APNS Settings (DELETE)
+- name: Push APNS Settings (GET)
+- name: Push APNS Settings (POST)
+- name: Push GCM Settings (DELETE)
+- name: Push GCM Settings (GET)
+- name: Push GCM Settings (POST)
+- name: Push WNS Settings (DELETE)
+- name: Push WNS Settings (GET)
+- name: Push WNS Settings (POST)
+- name: Push SMS Settings (DELETE)
+- name: Push SMS Settings (GET)
+- name: Push SMS Settings (PUT)
+- name: Push Webhook (DELETE)
+- name: Push Webhooks (POST)
+- name: Push Webhooks (PUT)
+- name: Push Health Checker (GET)
 ---
 
 ## Overview
