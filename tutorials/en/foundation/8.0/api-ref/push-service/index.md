@@ -1146,7 +1146,52 @@ apis:
       - name: 500
         value: An internal error occurred.
 - name: Push Application (POST)
-- name: Push Application (PUT)
+  description: The <code>applicationId</code> is a unique application ID for this application. An application is a parent resource for devices, subscriptions, tags and messages. The application must be created before accessing any of the child resources. If the application is deleted, all the children are deleted. The application holds the configurations, such as the Apple Push Notification Service (APNS) and Google Cloud Message (GCM) configuration, which is required by the push service to send messages. The API first creates the application and then sets the APNS and GCM settings.
+  shortdesc: Creates a new server application for the push service.
+  method: POST
+  path: /apps
+  example: https://example.com:443/imfpush/v1/apps/
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US.
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.
+      - name: Content-Type
+        value: (Mandatory) Specify the JSON content type. For example application/json.
+  produces: application/json
+  payload: The details of the application.
+  payloadJsonExample: |
+    {
+        "applicationId" : "testApp",
+        "enabled" : "true",
+    }
+  payloadProperties:
+      - name: applicationId
+        value: The application Id.
+      - name: enabled
+        value: Optional. The status of the application. Default is true.
+  response: The details of the application.
+  responseJsonExample: |
+    {
+        "applicationId" : "testApp",
+        "enabled" : "true",
+    }
+  responseProperties:
+      - name: applicationId
+        value: The application Id.
+      - name: enabled
+        value: The status of the application.
+  errors: 
+      - name: 400
+        value: Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 405
+        value: Unsupported Content type - The content type specified in Content-Type header is not application/json.
+      - name: 406
+        value: Unsupported Accept type - The content type specified in Accept header is not application/json.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Applications (GET)
 - name: Push Application Settings (GET)
 - name: Push APNS Settings (DELETE)
