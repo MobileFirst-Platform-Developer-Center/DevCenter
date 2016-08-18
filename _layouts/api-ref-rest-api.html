@@ -83,7 +83,23 @@ layout: tutorial
                     {% if payloadProperty.children %}
                         <ul>
                             {% for payloadProperty in payloadProperty.children %}
-                            <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}</li>
+                            <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
+                            {% if payloadProperty.children2 %}
+                                <ul>
+                                    {% for payloadProperty in payloadProperty.children2 %}
+                                    <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
+                                    {% if payloadProperty.children3 %}
+                                        <ul>
+                                            {% for payloadProperty in payloadProperty.children3 %}
+                                            <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>     
+                            {% endif %}   
                             {% endfor %}
                         </ul>    
                     {% endif %}
