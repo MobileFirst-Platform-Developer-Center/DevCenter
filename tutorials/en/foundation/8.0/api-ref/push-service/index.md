@@ -1095,7 +1095,56 @@ apis:
       - name: 500
         value: An internal error occurred.
 - name: Push Application (DELETE)
+  description: After the application is deleted the tags, devices, subscriptions and message resources associated with the application are also deleted.
+  shortdesc: Deletes an application, which is referenced by the <code>applicationId</code> parameter.
+  method: DELETE
+  path: /apps/applicationId
+  example: https://example.com:443/imfpush/v1/apps/myapp
+  pathParams:
+      - name: applicationId
+      - value: The name or identifier of the application
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US.
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.
+  errors:
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 404
+        value: The application does not exist.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Application (GET)
+  description: Retrieves the application, which is referenced by the <code>applicationId</code> parameter.
+  shortdesc: Retrieves the application, which is referenced by the <code>applicationId</code> parameter.
+  method: GET
+  path: /apps/applicationId/status
+  example: https://example.com:443/imfpush/v1/apps/myapp/status
+  pathParams:
+      - name: applicationId
+        value: The name or identifier of the application
+  headerParams:
+      - name: Accept-Language
+        value: (Optional) The preferred language to use for error messages. Defaults to en-US.
+      - name: Authorization
+        value: (Mandatory) The token with the scope <code>devices.write</code> and <code>push.application.<applicationId></code> obtained using the confidential client in the format Bearer token.
+  produces: application/json
+  response: The status of the application.
+  responseJsonExample: |
+    {
+        "enabled" : "true",
+    }
+  responseProperties:
+      - name: enabled
+        value: The status of the application.
+  errors:
+      - name: 401
+        value: Unauthorized - The caller is either not authenticated or not authorized to make this request.
+      - name: 404
+        value: The application does not exist.
+      - name: 500
+        value: An internal error occurred.
 - name: Push Application (POST)
 - name: Push Application (PUT)
 - name: Push Applications (GET)
