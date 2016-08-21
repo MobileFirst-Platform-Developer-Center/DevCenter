@@ -82,8 +82,8 @@ Using the API Designer, configure the imported API.
    *  **mfp-oauth-type:** Leave the default value (`true`).  
    * **mfp-server-url:** PROTOCOL://SERVER_HOST:SERVER_PORT. The MobileFirst Server URL. For example `http://myMobileFirstServer:9080`.  Find this value in the `mfpclient.properties` file (`wlServerHost` and `wlServerPort`). The protocol is the `wlServerProtocol` value.  
    * **mfp-server-context:** MobileFirst server context as configured in its `server.xml`. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
-   * **mfp-client-id:** As configured in **Runtime Settings** of the MobileFirst Operations Console -> **Confidential Clients** for the `authorization.introspect` scope.  
-   * **mfp-client-secret:** As configured in **Runtime Settings** of the MobileFirst Operations Console-> **Confidential Clients** for the `authorization.introspect` scope.  
+   * **mfp-client-id:** As configured in **Runtime Settings** of the MobileFirst Operations Console in **Runtime Settings ->  Confidential Clients** for the `authorization.introspect` scope.  
+   * **mfp-client-secret:** As configured in the MobileFirst Operations Console  **Runtime Settings -> Confidential Clients** for the `authorization.introspect` scope.  
 
 To set the **mfp-client-id** and **mfp-client-secret**, in the MobileFirst Operations Console:
  1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
@@ -108,7 +108,7 @@ After adding the TLS Profile, go to the **proxy**  policy component in the **Ass
 Choose and configure a Catalog, and set the full path.
 1. Open the **Dashboard**.
 2. Choose a catalog (for example **Sandbox**) for your product.
-3. Go to **Settings** -> **Endpoints** and copy the **Base URL** which has the following format:
+3. Go to **Settings -> Endpoints** and copy the **Base URL** which has the following format:
 
   `https://{DataPowerGateway}/{organizationName}/{catalogName}`
 
