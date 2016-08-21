@@ -85,7 +85,7 @@ Using the API Designer, configure the imported API.
    * **mfp-client-id:** As configured in **Runtime Settings** of the MobileFirst Operations Console in **Runtime Settings ->  Confidential Clients** for the `authorization.introspect` scope.  
    * **mfp-client-secret:** As configured in the MobileFirst Operations Console  **Runtime Settings -> Confidential Clients** for the `authorization.introspect` scope.  
 
-To set the **mfp-client-id** and **mfp-client-secret**, in the MobileFirst Operations Console:
+To set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operations Console:
 
 1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
 2. Click the **New** button.
