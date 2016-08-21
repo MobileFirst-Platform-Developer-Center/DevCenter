@@ -90,10 +90,10 @@ To set the **mfp-client-id** and **mfp-client-secret**, in the MobileFirst Opera
 1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
 2. Click the **New** button.
 3. Provide the following values:
-**Display Name** `API Connect`
-**ID**: `apic`
-**Secret**: 1234
-**Allowed Scope**: `authorization.introspect`
+  * **Display Name** `API Connect`
+  * **ID**: `apic`
+  * **Secret**: 1234
+  * **Allowed Scope**: `authorization.introspect`
 
 ![Create Confidential Client](createConfClient.png)
 
