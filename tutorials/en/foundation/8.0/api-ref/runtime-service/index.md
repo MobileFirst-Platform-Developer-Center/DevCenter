@@ -1,7 +1,7 @@
 ---
 layout: api-ref-rest-api
-title: REST API for MobileFirst Server Push Service
-breadcrumb_title: Push Service
+title: REST API for MobileFirst Server Runtime Service
+breadcrumb_title: Runtime Service
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
