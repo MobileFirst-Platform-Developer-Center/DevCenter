@@ -36,6 +36,15 @@ layout: tutorial
                 </ul>
                 {% endif %}
                 
+                {% if item.formDataParams %}
+                <h5>Form-data Parameters:</h5>
+                <ul>
+                {% for formDataParam in item.formDataParams %}
+                    <li><b>{{formDataParam.name}}:</b> {{formDataParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
                 {% if item.queryParams %}
                 <h5>Query Parameters:</h5>
                 <p>Query parameters are optional.</p>
@@ -120,7 +129,14 @@ layout: tutorial
                 <p>The response has the following properties:</p>
                 <ul>
                 {% for responseProperty in item.responseProperties %}
-                    <li><b>{{responseProperty.name}}:</b> {{responseProperty.value}}</li>
+                    <li><b>{{responseProperty.name}}:</b> {{responseProperty.value}}
+                    {% if responseProperty.children %}
+                        <ul>
+                        {% for responseProperty in responseProperty.children %}
+                        <li><b>{{responseProperty.name}}:</b> {{responseProperty.value}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
                 {% endfor %}    
                 </ul>
                 {% endif %}
