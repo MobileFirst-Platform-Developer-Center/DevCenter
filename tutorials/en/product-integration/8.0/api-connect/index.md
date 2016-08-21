@@ -164,7 +164,7 @@ Add a Security Definition to API path.
 
 ### Update the `wlclient.properties` file
 
-After setting up the **PinCodeAndroid** sample (including the setup described in the readme file), the `wclient.properties` is configured to send all MobileFirst internal requests directly to MobileFirst server.  
+After setting up the **PinCodeAndroid** sample (including the setup described in the `readme` file), the `wclient.properties` is configured to send all MobileFirst internal requests directly to MobileFirst server.  
 
 However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints exposed by the MobileFirst OAuthProvider.  
 
