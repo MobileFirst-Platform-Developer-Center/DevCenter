@@ -60,7 +60,7 @@ After completing this tutorial and the PinCode sample you will have:
 From the API Designer, add the OAuthProvider REST API to your product by importing the Swagger template (`mobilefirst-ouath-provider_1.0.0.yaml`). See
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
 
-After importing, different configuration options are displayed. Got to the **Assemble** tab.
+After importing, different configuration options are displayed. Go to the **Assemble** tab.
 ![API Connect Designer API editor](initialMenu.png)
 
 You will see the following components in the assembly flow for the MobileFirst OAuth Provider API:
