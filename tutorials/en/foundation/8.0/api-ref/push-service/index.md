@@ -948,7 +948,7 @@ apis:
         children:
             - name: apns
               value: Attributes for sending message to an iOS device.
-              children2:
+              children:
                   - name: badge
                     value: An integer value to be displayed in a badge on the application icon.
                   - name: category
@@ -963,7 +963,7 @@ apis:
                     value: Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT
             - name: gcm
               value: Attributes for sending message to an Android device.
-              children2:
+              children:
                   - name: bridge
                     value: (GCM) A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.
                   - name: category
@@ -988,11 +988,11 @@ apis:
                     value: A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.  
             - name: wns
               value: Attributes for sending message to a windows device.
-              children2:
+              children:
                   - name: target
                     value: Set of targets can be user Ids, devices, platforms, or tags. Only one of the targets can be set.  
                   - name: badge
-                    children3:
+                    children:
                         - name: value
                           value: An optional numeric or string value that indicates a prrdefined glyph to be displayed.
                         - name: version
@@ -1002,15 +1002,15 @@ apis:
                   - name: expirationTime
                     value: Optional. Expriry time of the notification.
                   - name: raw
-                    children3:
+                    children:
                         - name: payload
                           value: Optional. A JSON block that is transferred to the application only if the application is already open.
                   - name: tile
-                    children3:
+                    children:
                         - name: tag
                           value: Optional. A string value that is set as label for the notification. Used in notification cycling.
                   - name: visual
-                    children3:
+                    children:
                         - name: addImageQuery
                           value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
                         - name: baseUri
@@ -1026,7 +1026,7 @@ apis:
                         - name: version
                           value: Optional. Version of the payload
                   - name: binding
-                    children3:
+                    children:
                         - name: addImageQuery
                           value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
                         - name: baseUri
@@ -1046,7 +1046,7 @@ apis:
                         - name: text
                           value: Optional. A JSON array containing JSON blocks of following text attributes.
                   - name: image
-                    children3:
+                    children:
                         - name: addImageQuery
                           value: Optional. A boolean value that indicates if the query string need to be appended to image URI.
                         - name: alt
@@ -1054,13 +1054,13 @@ apis:
                         - name: src
                           value: Mandatory. Image URI.
                   - name: text
-                    children3:
+                    children:
                         - name: content
                           value: Mandatory. A string value that is displayed in the toast.
                         - name: lang
                           value: Optional. Locale of the payload.
                   - name: toast
-                    children3:
+                    children:
                         - name: audio
                         - name: duration
                           value: Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.
@@ -1068,7 +1068,7 @@ apis:
                           value: Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.
                         - name: visual
                   - name: visual
-                    children3:
+                    children:
                         - name: loop
                           value: Optional. A boolean value to indicate if the sound should be repeated or not.
                         - name: silent
@@ -2007,7 +2007,7 @@ apis:
         children:
             - name: apns
               value: Attributes for sending message to an iOS device.
-              children2:
+              children:
                   - name: badge
                     value: An integer value to be displayed in a badge on the application icon.
                   - name: iosActionKey
@@ -2020,7 +2020,7 @@ apis:
                     value: Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT
             - name: gcm
               value: Attributes for sending message to an Android device.
-              children2:
+              children:
                   - name: delayWhileIdle
                     value: A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent.
                   - name: payload

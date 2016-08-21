@@ -6,6 +6,117 @@ relevantTo: [ios,android,windows,javascript]
 weight: 2
 apis:
   - name: Adapter (DELETE)
+    description: Retrieves metadata of a specific adapter.
+    shortdesc: Retrieves metadata of a specific adapter.
+    roles: 
+        - name: mfpadmin
+        - name: mfpdeployer
+        - name: mfpmonitor
+        - name: mfpoperator
+    method: GET
+    path: /management-apis/2.0/runtimes/runtime-name/adapters/adapter-name
+    example: https://www.example.com/mfpadmin/management-apis/2.0/runtimes/myruntime/adapters/myadapter?locale=de_DE
+    pathParams:
+        - name: runtime-name
+          value: The name of the runtime. This is the context root of the runtime web application, without the leading slash.
+        - name: adapter-name
+          value: The name of the adapter.
+    queryParams:
+        - name: locale
+          value: The locale used for error messages.
+    produces: application/json, application/xml, text/xml
+    response: The metadata of the specified adapter.
+    responseJsonExample: | 
+        {
+            "deployTime" : "2014-04-13T00:18:36.979Z",
+            "displayName" : "MyApplication",
+            "link" : "https://www.example.com/mfpadmin/management-apis/2.0/runtimes/{runtime-name}/applications/{app-name}/{app-env}/{app-version}",
+            "name" : "SampleAdapter",
+            "productVersion" : "8.0",
+            "project" : {
+                "name" : "myproject",
+            },
+            "resourceName" : "abc",
+            "resourceType" : "APP_DESCRIPTOR",
+            "runtimeInfo" : {
+                "descriptorXML" : "",
+                "resources" : {
+                    "basePath" : "/mfp/api/adapters/demoAdapter",
+                    "info" : {
+                        "description" : "The adapter for bank-end service",
+                        "title" : "demoAdapter"
+                    },
+                    "paths" : {
+                    },
+                    "swagger" : "2.0"
+                }
+            }
+        }
+    responseXmlExample: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <adapter
+          deployTime="2014-04-13T00:18:36.979Z"
+          displayName="MyApplication"
+          link="https://www.example.com/mfpadmin/management-apis/2.0/runtimes/{runtime-name}/applications/{app-name}/{app-env}/{app-version}"
+          name="SampleAdapter"
+          productVersion="8.0"
+          resourceName="abc"
+          resourceType="APP_DESCRIPTOR">
+          <project name="myproject"/>
+          <runtimeInfo descriptorXML="">
+            <resources
+              basePath="/mfp/api/adapters/demoAdapter"
+              swagger="2.0">
+              <info
+                description="The adapter for bank-end service"
+                title="demoAdapter"/>
+              <paths/>
+            </resources>
+          </runtimeInfo>
+        </adapter>
+    responseProperties:
+        - name: deployTime
+          value: The date in ISO 8601 format when the artifact was deployed.
+        - name: displayName
+          value: The optional display name of the artifact.
+        - name: link
+          value: The URL to access detailed information about the deployed artifacts such as application, adapter etc.
+        - name: name
+          value: The name of the adatper.
+        - name: productVersion
+          value: The exact product version.
+        - name: project
+          value: The project the artifact belong to.
+          children:
+              - name: name
+                value: The name of the project, which is the context root of the runtime.
+        - name: resourceName
+          value: The name of the artifact.
+        - name: resourceType
+          value: The type of the artifact.
+        - name: runtimeInfo
+          value: The runtime information of the adapter
+          children:
+              - name: basePath
+                value: The base api path to the adatper
+              - name: info
+                value: The information about the adapter
+                children: 
+                    - name: description
+                      value: The description of the adapter
+                    - name: title
+                      value: The title of the adapter
+              - name: paths
+                value: The adapter methods
+              - name: swagger
+                value: The Swagger version
+    errors:
+        - name: 403
+          value: The user is not authorized to call this service.
+        - name: 404
+          value: The corresponding runtime or the adapter is not found.
+        - name: 500
+          value: An internal error occurred.
   - name: Adapter (GET)
   - name: Adapter (POST)
   - name: Adapters (GET)
