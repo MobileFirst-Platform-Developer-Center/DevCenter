@@ -63,7 +63,7 @@ From the API Designer, create an OAuthProvider REST API by importing the Swagger
 
 [js where is the user to find the yaml file? can we put a link here?]
 
-After importing, different configuration options are displayed. Go to the **Assemble** tab.
+After importing, different configuration options are displayed and the **Design** tab is chosen. Go to the **Assemble** tab.
 ![API Connect Designer API editor](initialMenu.png)
 
 You will see the following components in the assembly flow for the MobileFirst OAuth Provider API:
