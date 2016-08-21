@@ -14,8 +14,8 @@ IBM API Connect is a  cloud-based API Management solution that allows you to des
 To learn more about IBM API Connect, visit the [IBM API Connect Developer Center](https://developer.ibm.com/apiconnect/).  
 
 Add IBM MobileFirst Platform Foundation security capabilities to your API Connect API by using the MobileFirst OAuthProvider Swagger template, which adds 2 capabilities:  
-1. Protect API Connect endpoints with the MobileFirst server as the authorization server.  
-2. Proxy MobileFirst client management requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
+ 1. Protect API Connect endpoints with the MobileFirst server as the authorization server.  
+ 2. Proxy MobileFirst client management requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 Note that API Connect supports only HTTPS endpoints. Therefore you must add the relevant certificate to your client application.  
@@ -52,9 +52,9 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 ## Protect the API Connect endpoint with MobileFirst as an authorization server
 
 After completing this tutorial and the PinCode sample you will have:  
-1. An Android application with the `PinCodeChallengeHandler` for the  `PinCodeAttempts` security check adapter.  
-2. A `ResourceAdapter` that protects the  `/balance` endpoint with the `accessRestricted` scope.  
-3. A `PinCodeAttempts` security check adapter which is mapped to `Scope Element` of `accessRestricted` for the Android application.  
+ 1. An Android application with the `PinCodeChallengeHandler` for the  `PinCodeAttempts` security check adapter.  
+ 2. A `ResourceAdapter` that protects the  `/balance` endpoint with the `accessRestricted` scope.  
+ 3. A `PinCodeAttempts` security check adapter which is mapped to `Scope Element` of `accessRestricted` for the Android application.  
 
 
 ### Import the MobileFirst OAuthProvider template
@@ -84,9 +84,9 @@ Using the API Designer, configure the imported API.
    * **mfp-client-secret:** As configured in **Runtime Settings** of the MobileFirst Operations Console-> **Confidential Clients** for the 'authorization.introspect' scope.  
 
 To set the **mfp-client-id** and **mfp-client-secret**, in the MobileFirst Operations Console:
-1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
-1. Click the **New** button.
-1. Provide the following values:
+ 1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
+ 1. Click the **New** button.
+ 1. Provide the following values:
 **Display Name** `API Connect`
 **ID**: `apic`
 **Secret**: 1234
