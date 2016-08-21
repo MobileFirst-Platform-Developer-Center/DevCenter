@@ -130,15 +130,15 @@ Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/author
 
 #### Security Definitions
 Create a  **Security Definition**.
+
 1. Choose **Security Definition** from the design list and add click the **+** to add a defintion of type **OAuth**.
     ![Add a Security Definition](addSecurityDefinition.png)
+
 1. Set the values.
 
-**Flow:** Choose **Implicit**.
-
-**Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`.
-
-**Scopes:** `accessRestricted`.
+   * **Flow:** Choose **Implicit**.
+   * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`.
+   * **Scopes:** `accessRestricted`.
 
   ![Choose the Security Definition](securityDef.png)
 
