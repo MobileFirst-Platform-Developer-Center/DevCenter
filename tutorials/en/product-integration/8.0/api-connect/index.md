@@ -114,7 +114,7 @@ Choose and configure a Catalog, and set the full path.
 
   `https://{DataPowerGateway}/{organizationName}/{catalogName}`
 
- 1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
+1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
 
 [js what is the **MobileFirst OAuthProvider** mfpProvider value from? I see it is in the Swagger template, but we don't refer to this before]
 
