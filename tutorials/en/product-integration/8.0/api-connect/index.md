@@ -40,7 +40,7 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 
 
 ## Prerequisites
-* Installed API Connect DataPower (Edge) version 5040 or later
+* API Connect DataPower (Edge) version 5040 or later
 * A MobileFirst Server  and MobileFirst Operations Console V8 installed locally
 * MobileFirst CLI and OpenSSL
 * A MobileFirst Android client application   
