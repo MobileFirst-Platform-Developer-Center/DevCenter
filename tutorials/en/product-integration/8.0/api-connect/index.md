@@ -20,7 +20,7 @@ Add IBM MobileFirst Platform Foundation security capabilities to your API Connec
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 Note that API Connect supports only HTTPS endpoints. Therefore you must add the relevant certificate to your client application.  
 
-This documentation assumes that the user is familiar with the MobileFirst tutorial and sample that demonstrate basic Android credential validation using the PinCode challenge. Other advanced security checkes (such as application authenticity, SMS, or others) can be used instead.  
+This documentation assumes that the user is familiar with the MobileFirst tutorial and sample that demonstrate basic Android credential validation using the PinCode challenge. Other advanced security checks (such as application authenticity, SMS, or others) can be used instead.  
 
 
 ### Jump to:
