@@ -61,6 +61,8 @@ After completing this tutorial and the PinCode sample you will have:
 From the API Designer, create an OAuthProvider REST API by importing the Swagger template (`mobilefirst-ouath-provider_1.0.0.yaml`). See
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
 
+[js where is the user to find the yaml file? can we put a link here?]
+
 After importing, different configuration options are displayed. Go to the **Assemble** tab.
 ![API Connect Designer API editor](initialMenu.png)
 
@@ -108,7 +110,7 @@ Choose and configure a Catalog, and set the full path.
 2. Choose a catalog (for example **Sandbox**) for your product.
 3. Go to **Settings** -> **Endpoints** and copy the **Base URL** which has the following format:
 
-  `https://{DataPowerGateway}/{organizationName}/{catalogName}`.
+  `https://{DataPowerGateway}/{organizationName}/{catalogName}`
 
 1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
 
@@ -116,7 +118,7 @@ Choose and configure a Catalog, and set the full path.
 
  The full URL of the of MobileFirst OAuthProvider should look like this:
 
- `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`.
+ `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`
 
 ### Create a simple REST API to protect with MobileFirst
 Create a REST API. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html ).
