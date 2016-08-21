@@ -25,7 +25,7 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 
 ### Jump to:
 * [Prerequisites](#prerequisites)
-* [Protect the API Connect endpoint with MobileFirst as an authorization server](#protect-the-apic-endpoint-with-mobilefirst-as-an-authorization-server)
+* [Protect the API Connect endpoint with MobileFirst as an authorization server](#protect-the-api-connect-endpoint-with-mobilefirst-as-an-authorization-server)
   * Import MobileFirst OAuthProvider template
   * Configure MobileFirst OAuthProvider template
   * Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
