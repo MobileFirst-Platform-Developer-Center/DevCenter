@@ -97,35 +97,8 @@ layout: tutorial
 {% endhighlight %}   
                 <h5 class="no-anchor">Payload properties:</h5>
                 <p>The payload has the following properties:</p>
-                <ul>
-                {% for payloadProperty in item.payloadProperties %}
-                    <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
-                    {% if payloadProperty.children %}
-                        <ul>
-                            {% for childPayloadProperty in payloadProperty.children %}
-                            <li><b>{{childPayloadProperty.name}}:</b> {{childPayloadProperty.value}}
-                            {% if childPayloadProperty.children %}
-                                <ul>
-                                    {% for grandchildPayloadProperty in childPayloadProperty.children %}
-                                    <li><b>{{grandchildPayloadProperty.name}}:</b> {{grandchildPayloadProperty.value}}
-                                    {% if grandchildPayloadProperty.children %}
-                                        <ul>
-                                            {% for greatGrandchildPayloadProperty in grandchildPayloadProperty.children %}
-                                            <li><b>{{greatGrandchildPayloadProperty.name}}:</b> {{greatGrandchildPayloadProperty.value}}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </li>     
-                            {% endif %}   
-                            {% endfor %}
-                        </ul>    
-                    {% endif %}
-                    </li>
-                {% endfor %}    
-                </ul>
+                {% include show-rest-api-children.html children=item.payloadProperties%}
+                
                 {% endif %}
                 
                 {% if item.response %}
@@ -145,26 +118,7 @@ layout: tutorial
                 {% endif %}
                 <h5 class="no-anchor">Response properties:</h5>
                 <p>The response has the following properties:</p>
-                <ul>
-                {% for responseProperty in item.responseProperties %}
-                    <li><b>{{responseProperty.name}}:</b> {{responseProperty.value}}
-                    {% if responseProperty.children %}
-                        <ul>
-                        {% for childResponseProperty in responseProperty.children %}
-                        <li><b>{{childResponseProperty.name}}:</b> {{childResponseProperty.value}}
-                        {% if responseProperty.children %}
-                            <ul>
-                                {% for grandchildResponseProperty in childResponseProperty.children %}
-                                <li><b>{{grandchildResponseProperty.name}}:</b> {{grandchildResponseProperty.value}}</li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endfor %}    
-                </ul>
+                {% include show-rest-api-children.html children=item.responseProperties%}
                 {% endif %}
                 
                 <h5 class="no-anchor">Errors:</h5>
