@@ -107,13 +107,14 @@ After adding the TLS Profile, go to the **proxy**  policy component in the **Ass
 
 ### Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
 Choose and configure a Catalog, and set the full path.
+
 1. Open the **Dashboard**.
 2. Choose a catalog (for example **Sandbox**) for your product.
 3. Go to **Settings -> Endpoints** and copy the **Base URL** which has the following format:
 
   `https://{DataPowerGateway}/{organizationName}/{catalogName}`
 
-1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
+ 1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
 
 [js what is the **MobileFirst OAuthProvider** mfpProvider value from? I see it is in the Swagger template, but we don't refer to this before]
 
