@@ -57,7 +57,7 @@ After completing this tutorial and the PinCode sample you will have:
 
 
 ### Import the MobileFirst OAuthProvider template
-From the API Designer, add the OAuthProvider REST API to your product by importing the Swagger template (`mobilefirst-ouath-provider_1.0.0.yaml`). See
+From the API Designer, create an OAuthProvider REST API by importing the Swagger template (`mobilefirst-ouath-provider_1.0.0.yaml`). See
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
 
 After importing, different configuration options are displayed. Go to the **Assemble** tab.
@@ -111,7 +111,7 @@ Choose and configure a Catalog, and set the full path.
 
 1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
 
-[js what is the **MobileFirst OAuthProvider** mfpProvider value from? I see it is in the swagger template, but we don't refer to this before]
+[js what is the **MobileFirst OAuthProvider** mfpProvider value from? I see it is in the Swagger template, but we don't refer to this before]
 
  The full URL of the of MobileFirst OAuthProvider should look like this:
 
