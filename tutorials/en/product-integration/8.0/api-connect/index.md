@@ -30,11 +30,11 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
   * Configure MobileFirst OAuthProvider template
   * Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
   * Create Simple REST API
-  * Protect API using the MobileFirst OAuth Security Definition]
-  * Add APIs to the product and publish it](#a
+  * Protect the API using the MobileFirst OAuth Security Definition
+  * Add APIs to the product and publish it
 * [Update the sample MobileFirst client application](#update-the-sample-pincodeandroid-mobilefirst-client-application)
-  * Update wlclient.properties
-  * Update the WLResourceRequest Request
+  * Update `wlclient.properties`
+  * Update the `WLResourceRequest` request
   * Add HTTPS Certificate for the API Connect endpoint
 * [Support for multiple MobileFirst OAuthProviders](#support-for-multiple-mobilefirst-oauthproviders)
 
@@ -105,7 +105,7 @@ If `mfp-server-url` uses the HTTPS protocol, a TLS profile must be configured in
 After adding the TLS Profile, go to the **proxy**  policy component in the **Assemble** tab. Choose the relevant value the **TLS Profile** property.
 
 
-### Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
+### Get the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`
 Choose and configure a Catalog, and set the full path.
 
 1. Open the **Dashboard**.
@@ -156,8 +156,8 @@ Add a Security Definition to API path.
 ### Add APIs to the product and publish it
 1. Create a new product or use existing product. See [Creating a Product in the API Designer](http://www.ibm.com/support/knowledgecenter/SSFS6T/com.ibm.apic.toolkit.doc/tapim_create_product.html).
 2. Add  the two APIs to the product: the MobileFirst OAuthProvider API and the new/existing API you want to protect with the MobileFirst OAuth Security Definition.
-3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html).
-4. Publish the Product: Go to Catalog **Dashboard** and choose the product to publish.
+3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html.).
+4. Publish the Product: Go to the Catalog **Dashboard** and choose the product to publish.
 
 
 ## Update the sample PinCodeAndroid MobileFirst client application
