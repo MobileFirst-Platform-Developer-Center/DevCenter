@@ -44,7 +44,7 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 * A MobileFirst Server  and MobileFirst Operations Console V8 installed locally
 * MobileFirst CLI and OpenSSL
 * A MobileFirst Android client application   
-    * Download the MobileFirst sample **PinCodeAndroid** app and set up the the sample according to the readme file:  [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80).  
+    * Download the MobileFirst sample **PinCodeAndroid** app and set up the the sample according to the `readme` file:  [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80).  
     * Follow the challenge handler tutorial to complete the application: 
     [Implementing the challenge handler in Android applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/credentials-validation/android/).  
 
