@@ -1,5 +1,5 @@
 ---
-title: 'Introducing Application Center on Bluemix experimental tutorial'
+title: 'Running MobileFirst Foundation 8.0’s Application Center on Bluemix'
 date: 2016-08-22
 tags:
 - MobileFirst_Foundation
@@ -12,7 +12,9 @@ version:
 author:
   name: Andrii Vasylchenko
 ---
-A new experimental tutorial is now available and demonstrates how to setup Application Center on Bluemix using Liberty and dashDB. It consist from 3 labs that will guide you though whole setup process. All labs were recorded on MacOS, but you can use also almost any Linux or Windows environment.
+Follow the steps detailed below to setup MobileFirst Foundation 8.0's Application Center on Bluemix using Liberty and dashDB. It consist from three sections that will guide you though the whole setup process. All instructions were recorded on macOS, but you can use also almost any Linux or Windows environment.
+
+> **Note:** The below is experimental in nature.
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
@@ -24,8 +26,7 @@ A new experimental tutorial is now available and demonstrates how to setup Appli
 
 **Time to complete:** 1 hour
 
-**Prereq:** To follow the labs you will need files from installed MobileFirst Foundation 8.0 Server location. If you do not have it installed, you will need to setup it first.
-Afterwards, you will need to access the content of ApplicationCenter folder inside server installation location (for example, default path for linux will be /opt/IBM/MobileFirst_Platform_Server/ApplicationCenter)
+**Prereq:** To follow the labs you will need files from installed MobileFirst Foundation 8.0 Server location. If you do not have it installed, you will need to setup it first. Afterwards, you will need to access the content of ApplicationCenter folder inside server installation location (for example, default path for linux will be /opt/IBM/MobileFirst_Platform_Server/ApplicationCenter).
 
 **Labs videos for offline watch:** [Dropbox](https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0) | [OneDrive](https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6)
 
