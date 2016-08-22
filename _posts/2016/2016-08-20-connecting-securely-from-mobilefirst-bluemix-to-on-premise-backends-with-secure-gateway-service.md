@@ -17,7 +17,9 @@ You can setup MobileFirst Foundation on Bluemix in two ways:
 1.	[Using the Mobile Foundation service on Bluemix](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)
 2.	[Using IBM-provided scripts downloaded from IBM passport advantage using your on-premise License entitlement](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)
 
-It is a common scenario that you would need to integrate the already existing Systems of Records (SoR) data from the on-premises data center with the MobileFirst Foundation server on Bluemix. If the MobileFirst server on Bluemix is running on a Liberty for Java runtime, you will need to use Secure Gateway service to connect to the on-premises endpoints. This blog provides details on accessing endpoints in your on-premise datacentre from MobileFirst Adapters running on Bluemix using the Secure Gateway service.
+When you build enterprise mobile apps, you often want to integrate your apps with existing systems of record. If you are building your mobile app on Bluemix, using the MobileFirst Foundation Service running on a Liberty for Java runtime, and you want to leverage data stored in your on-premise data center, you can use the Secure Gateway service to establish a secure connection between the two. The Secure Gateway service provides secure connectivity, and establishes a tunnel between your Bluemix organization, and the remote location that you want to connect to.
+
+This blog explains how to access endpoints in your on-premise data center from MobileFirst Foundation Adapters running on Bluemix, using the Secure Gateway service.
 
   ![Architecture Diagram]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/architecture_diagram.png)
 
