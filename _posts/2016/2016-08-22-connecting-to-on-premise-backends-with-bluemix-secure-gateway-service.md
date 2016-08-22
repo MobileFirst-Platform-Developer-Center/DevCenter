@@ -1,6 +1,6 @@
 ---
-title: Connecting securely from MobileFirst Foundation on Bluemix to on-premises systems using Secure Gateway service
-date: 2016-08-20
+title: Connecting Securely from MobileFirst Foundation on Bluemix to on-premises systems using the Secure Gateway service
+date: 2016-08-22
 tags:
 - Bluemix
 - Mobile_Foundation
@@ -21,37 +21,34 @@ When you build enterprise mobile apps, you often want to integrate your apps wit
 
 This blog explains how to access endpoints in your on-premise data center from MobileFirst Foundation Adapters running on Bluemix, using the Secure Gateway service.
 
-  ![Architecture Diagram]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/architecture_diagram.png)
+  ![Architecture Diagram]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/architecture_diagram.png)
 
 ### Prerequisties
-
 Let us assume that you already have a HTTP endpoint in the on-premises environment within the enterprise firewall that exposes the Systems of Record data. We will cover on how to configure the Mobile Foundation service to access this data via a MobileFirst HTTP adapter running on Bluemix.
 
 ## Configuring  Secure Gateway service instance
-
 [Secure Gateway service](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) provides secure connectivity from Bluemix to other applications and data sources running in on-premise environment.
 
 - Log into Bluemix environment and create an instance of the [Secure Gateway service](https://new-console.ng.bluemix.net/catalog/services/secure-gateway/) instance. You can create one instance of the service per Bluemix space.
 
-  ![Secure Gateway service image]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/secure_gateway_service.png)
+  ![Secure Gateway service image]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/secure_gateway_service.png)
 
 - In the Secure Gateway service console, click on “**Add Gateway**” option to create a new gateway by providing any gateway name.
 
-  ![Add Gateway]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/addgateway.png)
+  ![Add Gateway]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/addgateway.png)
 
 - Select the "MyCompanyGateway" that you just created & Click on “**Add Destination**” to configure the on-premise endpoint.
 
     The Secure Gateway service allows you to either connect to an on-premises endpoint from Bluemix environment or from an on-premises environment to a Cloud resource. For this scenario, select On-premises as the resource location and provide host name / IP and port of the on-premises resource. Also, provide any destination name of your choice.
 
-  ![Destination Configuration]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/destination_configuration.png)
+  ![Destination Configuration]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/destination_configuration.png)
 
 - The Secure Gateway service is now configured.
 
 ## Configuring the Secure Gateway Client in On-premises environment
-
 For the Secure Gateway service on Bluemix to talk to your on-premise network, a Gateway client has to be installed in your on-premises network. There are three different options to run the Secure Gateway client – either via an installer, a container running on Docker runtime or on IBM Datapower.
 
-![Secure Gateway Client]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/secure_gateway_client.png)
+![Secure Gateway Client]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/secure_gateway_client.png)
 
 - You can use any of the client of your choice and run the Secure Gateway client on your on-premises environment. The steps to setup the secure gateway client is available in the Secure gateway console.
 
@@ -66,25 +63,24 @@ For the Secure Gateway service on Bluemix to talk to your on-premise network, a 
 
 - Once the client is setup, the Secure Gateway console will reflect the connection status.
 
-  ![Secure Gateway Client connected]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/gateway_client_connected.png)
+  ![Secure Gateway Client connected]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/gateway_client_connected.png)
 
 - To enable the request to be forwarded from the Secure Gateway client to the resource endpoint, you would need to add the resource to the access list.
 
     Run the following command on the terminal of the Secure Gateway client (running as container on Docker runtime, in this scenario) to add the resource to access list.
 
-        acl allow <resourceHost>:<resourcePort>
+        `acl allow <resourceHost>:<resourcePort>`
 
     resourceHost and resourcePort refers to the details of the on-premise resource endpoint.
 
 - The destination is now configured. Secure Gateway service will populate Cloud host and port details which can be used to access the on-premises resource from the cloud environment.
 
-  ![Cloud host configuration]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/cloud_host_configuration.png)
+  ![Cloud host configuration]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/cloud_host_configuration.png)
 
 - Make a note of the Cloud host and port details to use it in the MobileFirst adapter in the next step.
 
 ## Configuring Mobile Foundation service and MobileFirst Adapter
-
-For this blog, we will use Mobile Foundation service on Bluemix to configure the MobileFirst server. The [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix helps to provision the IBM MobileFirst server on a Liberty runtime as a Cloudfoundry application. The Mobile foundation service allows you to take any MobileFirst project developed on a local environment and run it on IBM Bluemix.
+For this blog post, we will use Mobile Foundation service on Bluemix to configure the MobileFirst server. The [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix helps to provision the IBM MobileFirst server on a Liberty runtime as a Cloudfoundry application. The Mobile foundation service allows you to take any MobileFirst project developed on a local environment and run it on IBM Bluemix.
 
 - Create an instance of the [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/) from the Bluemix console.
 
@@ -98,7 +94,7 @@ For this blog, we will use Mobile Foundation service on Bluemix to configure the
 
 - Provide the Cloud host and port details from the previous section as the resource endpoint in the HTTP Adapter.
 
-  ![Adapter configuration]({{site.baseurl}}/assets/blog/2016-08-20-connecting-securely-from-mobilefirst-bluemix-to-on-premise-backends-with-secure-gateway-service/adapter_configuration.png)
+  ![Adapter configuration]({{site.baseurl}}/assets/blog/2016-08-22-connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/adapter_configuration.png)
 
 - The MobileFirst adapter is now configured and the Mobile Foundation service is now enabled to work with an on-premises system within the enterprise through the Secure Gateway service.
 
