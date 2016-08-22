@@ -193,14 +193,14 @@ The Live Update SDK provides developers with API to query runtime configuration 
 * [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
 * [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
 
-### Adding Cordova plugin
+### Adding the Cordova plugin
 
 1. in your Cordova application folder run:
-
-     cordova plugin add cordova-plugin-mfp-liveupdate.
-
-This will also import the MFP cordova plugin (cordova-plugin-mfp)
-
+```
+cordova plugin add cordova-plugin-mfp
+cordova plugin add cordova-plugin-mfp-liveupdate.
+```
+_note: adding the cordova-plugin-mfp along with liveupdate plugin is highly recommended for a good development experience._
 
 ### Adding the iOS SDK
 
@@ -314,11 +314,9 @@ To obtain the configuration by parameters, use the Live Update API to send the r
 
 #### Cordova
 
-#### Cordova
-
 ```javascript
-    var input = { deduceMap : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
-    LiveUpdate.getConfiguration(input,function(configuration) {
+var input = { deduceMap : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
+LiveUpdate.getConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example:
         // console.log(configuration.data.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
     } ,
@@ -518,18 +516,17 @@ done
 * Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 ### Caching
-Caching is enabled by default in order to avoid network letancy. This means that updates may not take place immediately.  
+Caching is enabled by default in order to avoid network latency. This means that updates may not take place immediately.  
 Caching can be disabled if more frequent updates are required.
 
 #### Cordova
 
-by default client side cache is on but you can do fine grain control when using the JavaScript API by providing
-an optional *useClientCache* boolean flag:
+controlling client side cache by using an optional _useClientCache_ boolean flag:
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };
         LiveUpdate.getConfiguration(input,function(configuration) {
-                // do something with resulting configration, for example:
+                // do something with resulting configuration, for example:
                 // console.log(configuration.data.properties.property-name);  
                 // console.log(configuration.data.features.feature-name);
         } ,
