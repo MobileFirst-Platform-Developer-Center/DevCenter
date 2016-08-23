@@ -139,16 +139,16 @@ Choose and configure a Catalog for your product, and set the full path:
  `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`
 
 ### Create a simple REST API to protect with MobileFirst
-Create a REST API. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
+Create a REST API.  In this example it is called 'Details'. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
 From the API Connect Designer:
 
 1. To create a REST API definition, click + Add and then click API under New. The "Add a new API" window opens.
 
 2. Configure the following parameters:
 
-	* **Title**: any title
+	* **Title**: Details
     
-	* In the **Base Path** field: any value in this format: /myapi
+	* In the **Base Path** field: any value in this format: /details
 
 	* Leave the **Version** field as 1.0.0.
 
@@ -165,23 +165,23 @@ From the API Connect Designer:
 7. Click the Assemble tab. The assemble view opens.
 
 1. Click the invoke policy that is a part of the assembly. The property sheet pane for the invoke component opens.
-Populate the Title, Description, and URL fields as in the following table. 
-![Operation Values](OperationValueTable.png)
+Populate the Title, Description, and URL fields. 
+[js how do they get the url value?]
 
 
-When called, your API now invokes the existing Branches API and uses its response. In this tutorial, no transformations are applied to the response of this API and so the entirety of the response is returned to the caller. You can see this response at https://apim-services.mybluemix.net/banka/v1/branches.
+
 
 ### Protect the API using the MobileFirst OAuth Security Definition
 Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, go to the **Design** tab in the API Connect Designer.
 
 #### Security Definitions
 Create a  **Security Definition**.
-
+[js which api are they in now? should I call this 'Details' api?]
 1. Choose **Security Definition** from the design list and add click the **+** to add a defintion of type **OAuth**.
     ![Add a Security Definition](addSecurityDefinition.png)
 
 1. Set the values.
-
+[details
    * **Flow:** Choose **Implicit**.
    * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`.
    * **Scopes:** `accessRestricted`.
@@ -189,10 +189,9 @@ Create a  **Security Definition**.
   ![Choose the Security Definition](securityDef.png)
 
 #### Add the Security Definition
-Add a Security Definition to API path.
-  1. Go to the **Paths** section and choose a path.
-  [js "choose the path of the API you want to protect?"]
-  1. Click **Add Operation** and choose a method and expand it.
+Add a Security Definition to Details API path.
+  1. Go to the **Paths** section and choose the Details path.
+  1. Click **Add Operation** and choose the GET method and expand it.
 
   ![Choose the method](chooseMethod4SD.png)
   1. In the **Security** section uncheck **Use API security definitions**. A list of defined Security Definitions appears. Check the Security Definition you created for MobileFirst.
@@ -201,7 +200,7 @@ Add a Security Definition to API path.
 
 ### Add APIs to the product and publish it
 1. Create a new product or use existing product. See [Creating a Product in the API Designer](http://www.ibm.com/support/knowledgecenter/SSFS6T/com.ibm.apic.toolkit.doc/tapim_create_product.html).
-2. Add  the two APIs to the product: the MobileFirst OAuthProvider API and the new/existing API you want to protect with the MobileFirst OAuth Security Definition.
+2. Add  the two APIs to the product: the MobileFirst OAuthProvider API and the new Details (or other) API you want to protect with the MobileFirst OAuth Security Definition.
 3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html.).
 4. Publish the Product: Go to the Catalog **Dashboard** and choose the product to publish.
 
