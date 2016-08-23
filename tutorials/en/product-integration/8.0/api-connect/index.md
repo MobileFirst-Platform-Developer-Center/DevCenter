@@ -166,7 +166,7 @@ From the API Connect Designer:
 
 1. Click the invoke policy that is a part of the assembly. The property sheet pane for the invoke component opens.
 Populate the Title, Description, and URL fields as in the following table. 
-![Operation Values](OperationValueTable.png width="850")
+![Operation Values](OperationValueTable.png)
 
 
 When called, your API now invokes the existing Branches API and uses its response. In this tutorial, no transformations are applied to the response of this API and so the entirety of the response is returned to the caller. You can see this response at https://apim-services.mybluemix.net/banka/v1/branches.
