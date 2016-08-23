@@ -18,7 +18,9 @@ Add IBM MobileFirst Platform Foundation security capabilities to your API Connec
  2. Proxy MobileFirst client management requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
-Note that API Connect supports only HTTPS endpoints. Therefore you must add the relevant certificate to your client application.  
+
+Note that API Connect supports only HTTPS endpoints which may require the addition of API Connect certificates to your client application.
+
 
 This documentation assumes that the user is familiar with the MobileFirst tutorial and sample that demonstrate basic Android credential validation using the PinCode challenge. Other advanced security checks (such as application authenticity, SMS, or others) can be used instead.  
 
@@ -42,7 +44,10 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 ## Prerequisites
 * API Connect DataPower (Edge) version 5040 or later
 * A MobileFirst Server  and MobileFirst Operations Console V8 installed locally
-* MobileFirst CLI and OpenSSL
+* MobileFirst CLI and OpenSSL.
+	To download MobileFirst CLI, see https://mobilefirstplatform.ibmcloud.com/downloads/. Or download it with NPM:
+
+	`npm install -g mfpdev-cli`
 * A MobileFirst Android client application   
     * Download the MobileFirst sample **PinCodeAndroid** app and set up the the sample according to the `readme` file:  [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80).  
     * Follow the challenge handler tutorial to complete the application: 
