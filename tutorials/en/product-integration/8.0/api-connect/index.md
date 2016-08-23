@@ -17,8 +17,8 @@ Add IBM MobileFirst Platform Foundation security capabilities to your API Connec
  1. Protect API Connect endpoints with the MobileFirst server as the authorization server.  
  2. Proxy MobileFirst client management requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
  
-![API Security](apic-mfp-security-hld.png = 150x150)
-<img src="apic-mfp-security-hld.png" width="350"/>
+
+<img src="apic-mfp-security-hld.png" width="450"/>
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 
