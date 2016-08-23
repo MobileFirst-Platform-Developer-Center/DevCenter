@@ -65,6 +65,20 @@ After completing this tutorial and the PinCode sample you will have:
  2. A `ResourceAdapter` that protects the  `/balance` endpoint with the `accessRestricted` scope.  
  3. A `PinCodeAttempts` security check adapter which is mapped to `Scope Element` of `accessRestricted` for the Android application.  
 
+## Defining the Confidential Clients in the MobileFirst Operations Console
+
+Set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operations Console:
+
+1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
+2. Click the **New** button.
+3. Provide the following values:
+  * **Display Name** `API Connect`
+  * **ID**: `apic`
+  * **Secret**: 1234
+  * **Allowed Scope**: `authorization.introspect`
+
+![Create Confidential Client](createConfClient.png)
+
 
 ### Import the MobileFirst OAuthProvider template
 From the API Designer, create an OAuthProvider REST API by importing the  [Swagger template YAML file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml)   (`mobilefirst-ouath-provider_1.0.0.yaml`). For more information, see
@@ -88,22 +102,10 @@ Using the API Designer, configure the imported API.
 1. From the **Assemble** tab choose the **MobileFirst Configuration** component.  
 2. In the **MobileFirst Configuration** component,  update the following variable values:  
    *  **mfp-oauth-type:** Leave the default value (`true`).  
-   * **mfp-server-url:** PROTOCOL://SERVER_HOST:SERVER_PORT. The MobileFirst Server URL. For example `http://myMobileFirstServer:9080`.  Find this value in the `mfpclient.properties` file (`wlServerHost` and `wlServerPort`). The protocol is the `wlServerProtocol` value.  
-   * **mfp-server-context:** MobileFirst server context as configured in its `server.xml`. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
+   * **mfp-server-url:** The MobileFirst Server URL in the format PROTOCOL://SERVER_HOST:SERVER_PORT.  For example `http://myMobileFirstServer:9080`.  Find this value in the `mfpclient.properties` file (`wlServerHost` and `wlServerPort`). The protocol is the `wlServerProtocol` value.  
+   * **mfp-server-context:** MobileFirst server context. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
    * **mfp-client-id:** As configured in **Runtime Settings** of the MobileFirst Operations Console in **Runtime Settings ->  Confidential Clients** for the `authorization.introspect` scope.  
    * **mfp-client-secret:** As configured in the MobileFirst Operations Console  **Runtime Settings -> Confidential Clients** for the `authorization.introspect` scope.  
-
-To set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operations Console:
-
-1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
-2. Click the **New** button.
-3. Provide the following values:
-  * **Display Name** `API Connect`
-  * **ID**: `apic`
-  * **Secret**: 1234
-  * **Allowed Scope**: `authorization.introspect`
-
-![Create Confidential Client](createConfClient.png)
 
 
 
