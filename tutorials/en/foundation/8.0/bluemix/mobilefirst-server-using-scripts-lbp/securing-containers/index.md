@@ -11,7 +11,6 @@ Below are several methods you can follow in order to secure your MobileFirst Ser
 #### Jump to
 
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
-* [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
