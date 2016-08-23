@@ -144,7 +144,7 @@ From the API Connect Designer:
 
 1. To create a REST API definition, click + Add and then click **New OpenAPI from scratch**.
 
-  ![New API](newAPIFromScratch.png)
+  ![New API](newAPIFromScratch75.png)
 
 2. Configure the following parameters:
 
