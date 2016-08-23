@@ -3,7 +3,7 @@ layout: tutorial
 title: Setting Up the MobileFirst Server on Bluemix using Scripts on Liberty for Java
 breadcrumb_title: Using scripts to setup MobileFirst Foundation - Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 
 ## Overview
