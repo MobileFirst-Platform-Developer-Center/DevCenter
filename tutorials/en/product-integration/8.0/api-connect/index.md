@@ -142,7 +142,9 @@ Choose and configure a Catalog for your product, and set the full path:
 Create a REST API.  In this example it is called 'Branches'. We will add this to the 'Bank' product. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
 From the API Connect Designer:
 
-1. To create a REST API definition, click + Add and then click API under New. The "Add a new API" window opens.
+1. To create a REST API definition, click + Add and then click **New OpenAPI from scratch**.
+
+  ![New API](newAPIFromScratch.png)
 
 2. Configure the following parameters:
 
