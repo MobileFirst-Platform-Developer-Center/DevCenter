@@ -43,11 +43,12 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 
 ## Prerequisites
 * API Connect DataPower (Edge) version 5040 or later
-* A MobileFirst Server  and MobileFirst Operations Console V8 installed locally
+* A MobileFirst Server V8 installed locally
 * MobileFirst CLI and OpenSSL.
 	To download MobileFirst CLI, see https://mobilefirstplatform.ibmcloud.com/downloads/. Or download it with NPM:
 
 	`npm install -g mfpdev-cli`
+* OpenSSL. See https://www.openssl.org/.
 * A MobileFirst Android client application   
     * Download the MobileFirst sample **PinCodeAndroid** app and set up the the sample according to the `readme` file:  [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80).  
     * Follow the challenge handler tutorial to complete the application: 
