@@ -110,13 +110,13 @@ Using the API Designer, configure the imported API.
 
 
 
-In order to send a request to a MobileFirst Server HTTPS endpoint, you must create a TLS profile for enabling secured connection between API Connect and MobileFirst. See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect.
+In order to send a request to a MobileFirst Server HTTPS endpoint, you must create a TLS profile for enabling secured connection between API Connect and MobileFirst.  Note that API Connect supports P12 and PEM certificate formats only. See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect.
 
-After adding the TLS Profile, go to the **proxy**  policy component in the **Assemble** tab. Choose the relevant value the **TLS Profile** property.
+After adding the TLS Profile, go to the **proxy**  policy component in the **Assemble** tab. Choose the newly created **TLS Profile** property.
 
 
 ### Get the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`
-Choose and configure a Catalog, and set the full path.
+Choose and configure a Catalog for your product, and set the full path:
 
 1. Open the **Dashboard**.
 2. Choose a catalog (for example **Sandbox**) for your product.
@@ -125,8 +125,6 @@ Choose and configure a Catalog, and set the full path.
   `https://{DataPowerGateway}/{organizationName}/{catalogName}`
 
 1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
-
-[js what is the **MobileFirst OAuthProvider** mfpProvider value from? I see it is in the Swagger template, but we don't refer to this before]
 
  The full URL of the of MobileFirst OAuthProvider should look like this:
 
