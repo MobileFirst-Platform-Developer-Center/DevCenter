@@ -141,16 +141,35 @@ Choose and configure a Catalog for your product, and set the full path:
 ### Create a simple REST API to protect with MobileFirst
 Create a REST API. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
 From the API Connect Designer:
+
 1. To create a REST API definition, click + Add and then click API under New. The "Add a new API" window opens.
+
 2. Configure the following parameters:
+
 	* Title: any title
-    	* In the Base Path field: any value in this format: /myapi
+    
+	* In the Base Path field: any value in this format: /myapi
+
     	* Leave the Version field as 1.0.0.
+
    	* In the Description field, any values.
+
 3. Click **Next**.
+
 4. Select **Don't add to a product** and then click **Add**. The **Design** tab of the REST API is displayed.
+
 5. In the **Base Path** section, in the **Base Path** field, enter your Base Path.
+
 6. To create a Path, click the **Add Path** icon (**+**).
+
+7. Click the Assemble tab. The assemble view opens.
+
+1. Click the invoke policy that is a part of the assembly. The property sheet pane for the invoke component opens.
+Populate the Title, Description, and URL fields as in the following table. 
+![Operation Values](OperationValueTable.png)
+
+
+When called, your API now invokes the existing Branches API and uses its response. In this tutorial, no transformations are applied to the response of this API and so the entirety of the response is returned to the caller. You can see this response at https://apim-services.mybluemix.net/banka/v1/branches.
 
 ### Protect the API using the MobileFirst OAuth Security Definition
 Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, go to the **Design** tab in the API Connect Designer.
