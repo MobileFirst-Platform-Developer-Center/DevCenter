@@ -48,7 +48,7 @@ This documentation assumes that the user is familiar with the MobileFirst tutori
 * API Connect DataPower (Edge) version 5040 or later
 * A MobileFirst Server V8 installed locally
 * MobileFirst CLI and OpenSSL.
-	To download MobileFirst CLI, see https://mobilefirstplatform.ibmcloud.com/downloads/. Or install it with NPM:
+	To download MobileFirst CLI, see https://mobilefirstplatform.ibmcloud.com/downloads/. For more info: https://www.npmjs.com/package/mfpdev-cli ..... Or install it with NPM:
 
 	`npm install -g mfpdev-cli`
 * OpenSSL. See https://www.openssl.org/.
