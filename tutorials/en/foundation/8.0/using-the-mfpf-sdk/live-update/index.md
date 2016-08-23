@@ -250,11 +250,13 @@ Replace "segment-name", "property-name" and "feature-name" with your own.
 #### Cordova
 
 ```javascript
-    var input = { segmentId :'segment-name' ,useClientCache : true };
+    var input = { segmentId :'segment-name' };
     LiveUpdate.getConfiguration(input,function(configuration) {
-        // do something with configration (JSON) object, for example:
-        // console.log(configuration.data.properties.property-name);
-        // console.log(configuration.data.features.feature-name);
+        // do something with configration (JSON) object, for example,
+        // if you defined in the server a feature named 'feature-name':
+        // if (configuration.features.feature-name) {
+        //   console.log(configuration.properties.property-name);
+	// }
     } ,
     function(err,msg) {
         if (err) {
