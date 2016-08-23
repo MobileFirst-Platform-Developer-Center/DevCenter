@@ -25,7 +25,7 @@ Currently the security integration of MobileFirst and API Connect is supported o
 Note that API Connect supports only HTTPS endpoints which may require the addition of API Connect certificates to your client application.
 
 
-This documentation assumes that the user is familiar with the MobileFirst tutorial and sample that demonstrate basic Android credential validation using the PinCode challenge. Other advanced security checks (such as application authenticity, SMS, or others) can be used instead.  
+This documentation assumes that the user is familiar with the MobileFirst tutorial. We use the PinCode challenge sample that demonstrate basic Android credential validation. 
 
 
 ### Jump to:
