@@ -74,7 +74,7 @@ Set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operation
 3. Provide the following values:
   * **Display Name** `API Connect`
   * **ID**: `apic`
-  * **Secret**: 1234
+  * **Secret**: YOUR_CLIENT_SECRET
   * **Allowed Scope**: `authorization.introspect`
 
 ![Create Confidential Client](createConfClient.png)
@@ -110,7 +110,7 @@ Using the API Designer, configure the imported API.
 
 
 
-If `mfp-server-url` uses the HTTPS protocol, a TLS profile must be configured in order to establish a secured connection between API Connect and MobileFirst. See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html).
+In order to send a request to a MobileFirst Server HTTPS endpoint, you must create a TLS profile for enabling secured connection between API Connect and MobileFirst. See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect.
 
 After adding the TLS Profile, go to the **proxy**  policy component in the **Assemble** tab. Choose the relevant value the **TLS Profile** property.
 
