@@ -40,22 +40,6 @@
             "path": "/foundation/8.0/web-tutorials"
         }]
     }, {
-        "name": "By Product",
-        "path": "",
-        "children": [{
-            "name": "Foundation",
-            "path": "/foundation"
-        }, {
-            "name": "Quality Assurance",
-            "path": "/quality-assurance"
-        }, {
-            "name": "Cloudant Data Layer",
-            "path": "/cloudant"
-        }, {
-            "name": "Application Scanning",
-            "path": "/application-scanning"
-        }]
-    }, {
         "name": "Product Integration",
         "path": "/product-integration",
         "children": [{
