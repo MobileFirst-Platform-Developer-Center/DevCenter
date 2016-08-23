@@ -251,7 +251,7 @@ Replace "segment-name", "property-name" and "feature-name" with your own.
 
 ```javascript
     var input = { segmentId :'segment-name' };
-    LiveUpdate.getConfiguration(input,function(configuration) {
+    LiveUpdate.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example,
         // if you defined in the server a feature named 'feature-name':
         // if (configuration.features.feature-name) {
@@ -318,9 +318,9 @@ To obtain the configuration by parameters, use the Live Update API to send the r
 
 ```javascript
 var input = { deduceMap : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
-LiveUpdate.getConfiguration(input,function(configuration) {
+LiveUpdate.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example:
-        // console.log(configuration.data.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
+        // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
     } ,
     function(err,msg) {
         if (err) {
