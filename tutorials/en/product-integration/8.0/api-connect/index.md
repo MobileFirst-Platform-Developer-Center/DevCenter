@@ -64,7 +64,7 @@ After completing this tutorial and the PinCode sample you will have:
 
 
 ### Import the MobileFirst OAuthProvider template
-From the API Designer, create an OAuthProvider REST API by importing the Swagger template [template file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml),  (`mobilefirst-ouath-provider_1.0.0.yaml`). See
+From the API Designer, create an OAuthProvider REST API by importing the  [Swagger template YAML file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml),  (`mobilefirst-ouath-provider_1.0.0.yaml`). For more information, see
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
 
 [js where is the user to find the yaml file? can we put a link here?]
