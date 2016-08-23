@@ -49,7 +49,7 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *Professional 1 Application* plan
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB *Transactional plan* instance, select your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
