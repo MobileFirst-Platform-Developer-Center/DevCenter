@@ -3,7 +3,8 @@ layout: tutorial
 title: Notifications
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 7
+weight: 8
+print_pdf: true
 ---
 ## Overview
 Notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
