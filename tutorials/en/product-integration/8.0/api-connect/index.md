@@ -197,7 +197,8 @@ Add a Security Definition to Details API path.
   1. In the **Security** section uncheck **Use API security definitions**. A list of defined Security Definitions appears. Check the newly created **MobileFirst OAuth Security Definition**.
 
     ![Choose the OAuth Definition](securityDef2.png)
-    Click the  ![Save](saveButton.png) button to add the Security Definition to the API.
+    
+   1. Click the  ![Save](saveButton.png) button to add the Security Definition to the API.
 
 ### Add APIs to the product and publish it
 1. Create a new product or use existing product. See [Creating a Product in the API Designer](http://www.ibm.com/support/knowledgecenter/SSFS6T/com.ibm.apic.toolkit.doc/tapim_create_product.html).
