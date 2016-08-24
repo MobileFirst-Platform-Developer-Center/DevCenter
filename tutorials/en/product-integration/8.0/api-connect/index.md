@@ -143,7 +143,7 @@ In this example we create an API called **Branches**. We will add this to the **
 
 From the API Connect Designer **APIs** tab:
 
-1. To create a REST API definition, click the Add icon ( ![Add](addIcon.png)) and then select **New OpenAPI from scratch**.
+1. To create a REST API definition, click the ![Add](addIcon.png) button and then select **New OpenAPI from scratch**.
 
   ![New API](newAPIFromScratch75.png)
 
@@ -161,7 +161,7 @@ From the API Connect Designer **APIs** tab:
 
 5. In the **Base Path** section, the **Base Path** field is already populated with '/branches'.
 
-6. To create a path, click the **Add Path** icon (**+**).
+6. To create a path, click the **Add Path** icon (![Add](addIcon.png)).
 
 7. In the **Path** field enter **/details**.
 
@@ -171,7 +171,7 @@ From the API Connect Designer **APIs** tab:
 
 1. Click the **invoke** policy component. The property sheet pane for the invoke component opens.
 
-1. Populate the **URL** field with the back-end resource URL to be protected. 
+1. Populate the **URL** field with the back-end resource URL to be protected with MobileFirst. 
  ![Invoke Configuration](invokeConfig.png)
 
 1. Click the  ![Save](saveButton.png) button.
@@ -182,7 +182,7 @@ Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/author
 #### Security Definitions
 Create a  **Security Definition**.
 [js which api are they in now? should I call this 'Details' api?]
-1. Choose **Security Definition** from the design list and add click the **+** to add a defintion of type **OAuth**.
+1. Choose **Security Definition** from the design list and add click the ![Add](addIcon.png) button to add a defintion of type **OAuth**.
     ![Add a Security Definition](addSecurityDefinition.png)
 
 1. Set the values.
