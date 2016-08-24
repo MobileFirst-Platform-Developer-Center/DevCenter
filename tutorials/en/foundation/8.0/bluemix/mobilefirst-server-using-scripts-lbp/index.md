@@ -37,7 +37,7 @@ After signing in to Bluemix, you are presented with the Bluemix Dashboard, which
 
 ## Set up your host machine
 To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.
-You can run the scripts using the macOS Terminal.app or a linux bash shell:
+You can run the scripts using the macOS Terminal.app or a Linux bash shell:
 
 ### Cloud Foundry CLI
 
