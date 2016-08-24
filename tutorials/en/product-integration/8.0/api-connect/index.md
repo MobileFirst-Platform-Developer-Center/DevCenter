@@ -165,11 +165,13 @@ From the API Connect Designer **APIs** tab:
 
 7. In the **Path** field enter **/details**.
 
-7. Click the Assemble tab. The assemble view opens.
+7. Click the **Assemble** tab. The **invoke** policy component appears in the Assemble pane.
 
-1. Click the invoke policy that is a part of the assembly. 
+ ![Invoke](invoke.png)
 
-  ![Invoke](invoke.png)
+1. Click the **invoke** policy component. 
+
+
 
   The property sheet pane for the invoke component opens.
 
