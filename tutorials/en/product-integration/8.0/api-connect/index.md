@@ -174,7 +174,7 @@ From the API Connect Designer **APIs** tab:
 1. Populate the **URL** field with the back-end resource URL to be protected with MobileFirst. 
  ![Invoke Configuration](invokeConfig.png)
 
-1. Click the  ![Save](saveButton.png) button.
+1. Click the  ![Save](saveButton.png) button to save the API definition.
 
 ### Protect the API using the MobileFirst OAuth Security Definition
 Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, go to the **Design** tab in the API Connect Designer.
