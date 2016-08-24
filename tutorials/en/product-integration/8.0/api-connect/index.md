@@ -143,7 +143,7 @@ In this example we create an API called **Branches**. We will add this to the **
 
 From the API Connect Designer **APIs** tab:
 
-1. To create a REST API definition, click the Add icon (**+**) and then select **New OpenAPI from scratch**.
+1. To create a REST API definition, click the Add icon ( ![Add](addIcon.png)) and then select **New OpenAPI from scratch**.
 
   ![New API](newAPIFromScratch75.png)
 
