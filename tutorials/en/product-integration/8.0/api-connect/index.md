@@ -196,7 +196,7 @@ Create a  **Security Definition**.
 #### Add the Security Definition
 Add a Security Definition to Details API path.
   1. Go to the **Paths** section and choose the Details path.
-  1. Click the GET method and expand it.
+  1. Click the **GET** method and expand it.
   1. In the **Security** section uncheck **Use API security definitions**. A list of defined Security Definitions appears. Check the newly created **MobileFirst OAuth Security Definition**.
 
     ![Choose the OAuth Definition](securityDef2.png)
@@ -204,8 +204,8 @@ Add a Security Definition to Details API path.
 
 ### Add APIs to the product and publish it
 1. Create a new product or use existing product. See [Creating a Product in the API Designer](http://www.ibm.com/support/knowledgecenter/SSFS6T/com.ibm.apic.toolkit.doc/tapim_create_product.html).
-2. Add  the two APIs to the product: the MobileFirst OAuthProvider API and the new Details (or other) API you want to protect with the MobileFirst OAuth Security Definition.
-3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html.).
+2. Add  the two APIs to the product: the **MobileFirst OAuthProvider API** and the new **Branches** API.
+3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html).
 4. Publish the Product: Go to the Catalog **Dashboard** and choose the product to publish.
 
 
@@ -213,13 +213,13 @@ Add a Security Definition to Details API path.
 
 ### Update the `wlclient.properties` file
 
-After setting up the **PinCodeAndroid** sample (including the setup described in the `readme` file), the `wclient.properties` is configured to send all MobileFirst internal requests directly to MobileFirst server.  
+After setting up the **PinCodeAndroid** sample, and completing the setup described in the `readme` file, the `wclient.properties` is configured to send all MobileFirst requests directly to MobileFirst server.  
 
 However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints exposed by the MobileFirst OAuthProvider.  
 
-To enable the proxy, change the following property values:   
+To enable the proxy,  the following changes are required in the `wclient.properties` file:   
 * **wlServerProtocol:** Change to `https`.    
-* **wlServerHost:** Change to DataPower GW hostname/IP (as it appears in the base URL).  
+* **wlServerHost:** Change to DataPower Gateway hostname/IP (as it appears in the base URL).  
 * **wlServerPort:** Change to 443.
 * **wlServerContext:** Change to the relative base path of the MobileFirst OAuthProvider. For example `/{organizationName}/{catalogName}/mfpProvider/`.  
 
@@ -237,7 +237,12 @@ with this:
     String apicPath = "YOUR_APIC_ENDPOINT_PATH_WHICH_IS_PROTECTED_BY_MOBILEFIRST";
     WLResourceRequest request = new WLResourceRequest(apicPath, WLResourceRequest.GET);
 ```
-Note: For API Connect endpoint path (`apicPath`), you must supply the full URL.
+
+
+Note: For API Connect endpoint path (`apicPath`), you must supply the full URL, constructed as follows:
+
+`https://{DataPowerGateway}/{organizationName}/{catalogName}/branches/details`
+
 
 ### Add an HTTPS certificate for API Connect endpoint
 To learn about HTTPS, SSL, and adding the necessary certificate for Android applications see [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). The code found there is the basis for the new `trustUnknownCertificateAuthority` method `PinCodeApplication.java` in the following section.
