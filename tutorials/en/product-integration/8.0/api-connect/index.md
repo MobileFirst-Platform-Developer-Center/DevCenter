@@ -181,8 +181,8 @@ Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/author
 
 #### Security Definitions
 Create a  **Security Definition**.
-[js which api are they in now? should I call this 'Details' api?]
-1. Choose **Security Definition** from the design list and add click the ![Add](addIcon.png) button to add a defintion of type **OAuth**.
+
+1. In the newly created Branches API, choose **Security Definition** from the design list and add click the ![Add](addIcon.png) button to add a defintion of type **OAuth**.
     ![Add a Security Definition](addSecurityDefinition.png)
 
 1. Set the values.
