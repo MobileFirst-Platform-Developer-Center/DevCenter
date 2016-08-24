@@ -236,12 +236,12 @@ with this:
 ```
 
 
-Note: For API Connect endpoint path (`apicPath`), you must supply the full URL, constructed as follows:
+Note: For the  API Connect endpoint path (`apicPath`), you must supply the full URL, constructed as follows:
 
 `https://{DataPowerGateway}/{organizationName}/{catalogName}/branches/details`
 
 
-### Add an HTTPS certificate for API Connect endpoint
+### Add an HTTPS certificate for the API Connect endpoint
 API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificates to your client applications in the development (but not production) environment.
 
 
