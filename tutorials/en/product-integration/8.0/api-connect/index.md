@@ -73,7 +73,7 @@ Set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operation
 
 2. Click the **New** button.
 
-3. Provide the following values:
+3. Provide the following values and save:
 
 	* **Display Name** `API Connect`
   
