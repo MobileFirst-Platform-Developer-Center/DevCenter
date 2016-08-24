@@ -141,9 +141,9 @@ Choose and configure a Catalog for your product, and set the full path:
 ### Create a simple REST API to protect with MobileFirst
 In this example we create an API called **Branches**. We will add this to the **Bank** product. For more information, see [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
 
-From the API Connect Designer:
+From the API Connect Designer **APIs** tab:
 
-1. To create a REST API definition, click the Add icon (**+**) and then click **New OpenAPI from scratch**.
+1. To create a REST API definition, click the Add icon (**+**) and then select **New OpenAPI from scratch**.
 
   ![New API](newAPIFromScratch75.png)
 
