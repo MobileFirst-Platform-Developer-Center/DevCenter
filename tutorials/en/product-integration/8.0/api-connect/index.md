@@ -139,10 +139,10 @@ Choose and configure a Catalog for your product, and set the full path:
  `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`
 
 ### Create a simple REST API to protect with MobileFirst
-Create a REST API.  In this example it is called 'Branches'. We will add this to the 'Bank' product. See [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
+In this example we create an API called **Branches**. We will add this to the **Bank** product. For more information, see [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
 From the API Connect Designer:
 
-1. To create a REST API definition, click + Add and then click **New OpenAPI from scratch**.
+1. To create a REST API definition, click the Add icon (**+**) and then click **New OpenAPI from scratch**.
 
   ![New API](newAPIFromScratch75.png)
 
@@ -150,11 +150,11 @@ From the API Connect Designer:
 
 	* **Title**: Branches
     
-	* In the **Base Path** field: any value in this format: /branches
+	* **Base Path**: /branches
 
-	* Leave the **Version** field as 1.0.0.
+	* **Version**: 1.0.0.
 
-   	* In the **Description** field, any values.
+   	* **Description** can be any value.
 
 3. Click **Next**.
 
