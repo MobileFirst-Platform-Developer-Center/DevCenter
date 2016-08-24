@@ -73,7 +73,7 @@ The archive file contains the files for building an file layout (**dependencies*
                     <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr</b> folder:
                         <ul>
-                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by the MobileFirst server.</li>
+                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by the MobileFirst Server.</li>
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
                             <li><b>mfpfproperties.xml</b> - configuration properties for MobileFirst Server. See the supported properties listed in these documentation topics:
                                 <ul>
@@ -168,7 +168,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 {% endhighlight %}
                   </li>
                   <li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
-                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst server with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst Server with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -250,8 +250,8 @@ You may need to apply changes to the server layout after you have deployed the s
 1. ./prepareserver.sh 
 2. ./startserver.sh 
 
-### Adding analytics server configuration to MobileFirst server
-If you have setup a Analytics server and want to connect it to this MobileFirst server then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with <> with correct values from yur deployment.
+### Adding analytics server configuration to MobileFirst Server
+If you have setup a Analytics server and want to connect it to this MobileFirst Server then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with <> with correct values from yur deployment.
 
 ```xml
     <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -277,7 +277,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 You can now build and deploy the updatd server.
 
 ## Removing the database service configuration from Bluemix	
-If you ran the **prepareserverdbs.sh** script during the configuration of the MobileFirst Server image, the configurations and database tables required for MobileFirst Server are created. This script also creates the database schema for the MobileFirst server.
+If you ran the **prepareserverdbs.sh** script during the configuration of the MobileFirst Server image, the configurations and database tables required for MobileFirst Server are created. This script also creates the database schema for the MobileFirst Server.
 
 To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
 
