@@ -249,84 +249,14 @@ The certificate can be created with OpenSSL:
 
    `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`  
 
-For setting up SSL on Android clients, see [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). 
+For information on setting up SSL on Android clients, see [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). 
 
 **Note:** MobileFirst HttpClient can be retrieved with `HttpClientManager.getInstance();`.
 
 
-Generally, for development you can add the self-signed certificate to the device via email or device storage [Work with Certificates](https://support.google.com/nexus/answer/2844832?hl=en).  
+Generally, for development you can add the self-signed certificate to the device via email or device storage, see [Work with Certificates](https://support.google.com/nexus/answer/2844832?hl=en).  
 
    
-
-
-### Create and call the new `trustUnknownCertificateAuthority` method
-
- In the existing `PinCodeApplication.java` file of the **PinCodeAndroid** sample create the new `trustUnknownCertificateAuthority` method.
-
-```java
-    public static void trustUnknownCertificateAuthority(Context ctx, String certFileName, String hostname) throws java.security.cert.CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        InputStream caInput = ctx.getAssets().open(certFileName);
-        java.security.cert.Certificate ca;
-        try {
-            ca = cf.generateCertificate(caInput);
-            System.out.println(ca.toString());
-        } finally {
-            caInput.close();
-        }
-
-        // Create a KeyStore containing our trusted CAs
-        String keyStoreType = KeyStore.getDefaultType();
-        KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-        keyStore.load(null, null);
-        keyStore.setCertificateEntry("ca", ca);
-
-        // Create a TrustManager that trusts the CAs in our KeyStore
-        String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-        tmf.init(keyStore);
-
-        // Create an SSLContext that uses our TrustManager
-        SSLContext context = SSLContext.getInstance("TLS");
-        context.init(null, tmf.getTrustManagers(), null);
-
-		// Note you should import com.worklight.wlclient.HttpClientManager;
-        HttpClientManager hcm = HttpClientManager.getInstance();
-        OkHttpClient ohc = hcm.getOkHttpClient();
-        ohc.setSslSocketFactory(context.getSocketFactory());
-
-        HostnameVerifier hostnameVerifier = new HostnameVerifier() {
-            @Override
-            public boolean verify(String hostname, SSLSession session) {
-                if (hostname.contentEquals(hostname)) {
-                    return true;
-                }
-                return false;
-            }
-        };
-        ohc.setHostnameVerifier(hostnameVerifier);
-    }
-4. Add the `trustUnknownCertificateAuthority` method.
-
-```
-
-In the same `PinCodeApplication.java` file, after this line:
-
-```java
-    WLClient client = WLClient.createInstance(this);
-```
-
-call the  `trustUnknownCertificateAuthority` method:
-
-```java
-    String DATAPOWER_GW_HOSTNAME = "YOUR DATAPOWER GW HOSTNAME";
-    try {
-        trustUnknownCertificateAuthority(getApplicationContext(), "apic-certificate.crt", DATAPOWER_GW_HOSTNAME);
-        } catch (Exception name) {
-            // handle the exception
-        }
-```
-
 ## Support for multiple MobileFirst OAuthProviders
 
 To add additional OAuthProviders, alter the Swagger template each time before re-importing:
