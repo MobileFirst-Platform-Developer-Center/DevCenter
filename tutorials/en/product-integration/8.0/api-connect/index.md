@@ -242,20 +242,17 @@ Note: For API Connect endpoint path (`apicPath`), you must supply the full URL, 
 
 
 ### Add an HTTPS certificate for API Connect endpoint
-API Connect supports HTTPS endpoint only, which may require adding self-signed SSL certificates to your client applications in the development (but not production) environment.
+API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificates to your client applications in the development (but not production) environment.
 To learn about HTTPS, SSL, and adding the necessary certificate for Android applications see [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). The code found there is the basis for the new `trustUnknownCertificateAuthority` method `PinCodeApplication.java` in the following section.
 
 For the MobileFirst Android sample you can use the following instructions:
 
-1. The certificate can be created with OpenSSL
+The certificate can be created with OpenSSL
    `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`  
-2. Copy the `apic-certificate.crt` file to the  `/app/src/main/assets`  Android project folder.  
-3. Create the new method `trustUnknownCertificateAuthority`.
-
-
+   
 For adding the certificate to Android clients see
 
-[Security with HTTPS and SSL](https://support.google.com/nexus/answer/2844832?hl=en/)
+[Work with certificates](https://support.google.com/nexus/answer/2844832?hl=en/).
 
 **Note:** MobileFirst HttpClient can be retrieved with `HttpClientManager.getInstance();`. In general, for development you can add the self-signed certificate to the device via email or device storage.  
 
