@@ -169,15 +169,10 @@ From the API Connect Designer **APIs** tab:
 
  ![Invoke](invoke.png)
 
-1. Click the **invoke** policy component. 
+1. Click the **invoke** policy component. The property sheet pane for the invoke component opens.
 
-
-
-  The property sheet pane for the invoke component opens.
-
-1. Populate the Title, Description, and URL fields. 
-[js how do they get the url value?]
-
+1. Populate the URL field with the back-end resource URL to be protected. 
+ ![Invoke Configuration](invokeConfig.png)
 
 
 
