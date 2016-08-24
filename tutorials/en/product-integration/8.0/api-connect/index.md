@@ -171,7 +171,7 @@ From the API Connect Designer **APIs** tab:
 
 1. Click the **invoke** policy component. The property sheet pane for the invoke component opens.
 
-1. Populate the **URL** field with the back-end resource URL to be protected with MobileFirst. 
+1. Populate the **URL** field with the back-end resource URL to be protected with MobileFirst. The other values are optional.
  ![Invoke Configuration](invokeConfig.png)
 
 1. Click the  ![Save](saveButton.png) button to save the API definition.
