@@ -167,8 +167,13 @@ From the API Connect Designer **APIs** tab:
 
 7. Click the Assemble tab. The assemble view opens.
 
-1. Click the invoke policy that is a part of the assembly. The property sheet pane for the invoke component opens.
-Populate the Title, Description, and URL fields. 
+1. Click the invoke policy that is a part of the assembly. 
+
+  ![Invoke](invoke.png)
+
+  The property sheet pane for the invoke component opens.
+
+1. Populate the Title, Description, and URL fields. 
 [js how do they get the url value?]
 
 
