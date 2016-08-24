@@ -161,20 +161,20 @@ From the API Connect Designer **APIs** tab:
 
 5. In the **Base Path** section, the **Base Path** field is already populated with '/branches'.
 
-6. To create a Path, click the **Add Path** icon (**+**).
+6. To create a path, click the **Add Path** icon (**+**).
 
 7. In the **Path** field enter **/details**.
 
-7. Click the **Assemble** tab. The **invoke** policy component appears in the Assemble pane.
+7. Click the **Assemble** tab. The **invoke** policy component appears in the **Assemble** pane.
 
  ![Invoke](invoke.png)
 
 1. Click the **invoke** policy component. The property sheet pane for the invoke component opens.
 
-1. Populate the URL field with the back-end resource URL to be protected. 
+1. Populate the **URL** field with the back-end resource URL to be protected. 
  ![Invoke Configuration](invokeConfig.png)
 
-
+1. Click the  ![Save](saveButton.png) button.
 
 ### Protect the API using the MobileFirst OAuth Security Definition
 Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, go to the **Design** tab in the API Connect Designer.
