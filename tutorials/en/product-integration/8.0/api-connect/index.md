@@ -159,8 +159,7 @@ From the API Connect Designer **APIs** tab:
 
 3. Click **Create API**. The **Design** tab of the REST API is displayed.
 
-5. In the **Base Path** section, in the **Base Path** field, enter your Base Path.
-[js how do they know it?
+5. In the **Base Path** section, the **Base Path** field is already populated with '/branches'.
 
 6. To create a Path, click the **Add Path** icon (**+**).
 
