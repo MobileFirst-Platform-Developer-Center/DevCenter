@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Labs
+title: FoundationLabs
 show_disqus: false
 ---
 <div class="container">
