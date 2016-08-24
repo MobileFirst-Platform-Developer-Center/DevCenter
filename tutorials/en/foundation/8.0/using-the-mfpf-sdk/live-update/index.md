@@ -251,14 +251,14 @@ Replace "segment-name", "property-name" and "feature-name" with your own.
 
 ```javascript
     var input = { segmentId :'segment-name' };
-    LiveUpdate.obtainConfiguration(input,function(configuration) {
+    LiveUpdateManager.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example,
         // if you defined in the server a feature named 'feature-name':
         // if (configuration.features.feature-name) {
         //   console.log(configuration.properties.property-name);
 	// }
     } ,
-    function(err,msg) {
+    function(err) {
         if (err) {
            alert('liveupdate error:'+err);
         }
@@ -317,12 +317,12 @@ To obtain the configuration by parameters, use the Live Update API to send the r
 #### Cordova
 
 ```javascript
-var input = { deduceMap : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
-LiveUpdate.obtainConfiguration(input,function(configuration) {
+var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
+LiveUpdateManager.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example:
         // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
     } ,
-    function(err,msg) {
+    function(err) {
         if (err) {
            alert('liveupdate error:'+err);
         }
@@ -527,12 +527,12 @@ controlling client side cache by using an optional _useClientCache_ boolean flag
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };
-        LiveUpdate.getConfiguration(input,function(configuration) {
+        LiveUpdateManager.getConfiguration(input,function(configuration) {
                 // do something with resulting configuration, for example:
                 // console.log(configuration.data.properties.property-name);  
                 // console.log(configuration.data.features.feature-name);
         } ,
-        function(err,msg) {
+        function(err) {
                 if (err) {
                    alert('liveupdate error:'+err);
                 }
