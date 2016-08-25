@@ -1,31 +1,51 @@
 .features {
-    hr { 
-    margin: 42px 0 35px 0;
-    border: 1px solid #c8d2d2 !important;
+    width: 70%;
+
+    h3 {
+        color: #1a76b9;
+        font-size: 30px;
     }
     
     h3,h4 {
-    margin: 0
+        margin: 0
     }
-
-    h3 {
+    
+    .tagline {
+        font-size: 115%;
+        color: #939598;
+    }
+    
+    ul li {
+        margin-bottom: 10px;
+        color: #4179b9;
+        font-weight: 100;
+    }
+    
+    .title {
+        color: #4179ba;
         font-weight: bold;
     }
 
     img {
-        float:right;
-        width: 190px;
+        width: 335px;
+        margin: 0 50px 50px 50px;
     }
 
     p {
         margin-bottom: 20px;
+        font-weight: 100;
+        
     }
 
     .feature {
-        margin: 10px 0 10px 0;
+        margin: 30px 0 30px 0;
     }
-    .tagline {
-        font-size: 115%;
-        font-weight: bold;
+    .feature a {
+        color: #30abdf;
+    }
+    
+    hr { 
+        margin: 42px 0 35px 0;
+        border: 1px solid #c8d2d2 !important;
     }
 }
