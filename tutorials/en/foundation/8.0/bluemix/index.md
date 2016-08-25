@@ -4,7 +4,8 @@ breadcrumb_title: Foundation on Bluemix
 show_disqus: true
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 9
+weight: 10
+print_pdf: true
 ---
 ## Overview
 IBM MobileFirst Foundation can be hosted on Bluemix, here is some information about Bluemix.
