@@ -3,7 +3,8 @@ layout: tutorial
 title: Notifications
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 7
+weight: 8
+print_pdf: true
 ---
 ## Overview
 Notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
@@ -53,6 +54,8 @@ Unicast notifications, or User Authenticated Notifications that are secured with
 
 ## SMS Notifications
 To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the MobileFirst Server upon receipt of the user approval. When a notification is retrieved from the MobileFirst Operations Console, it is processed and sent through a preconfigured SMS gateway.
+
+To configure a gateway, see the [Sending Notifications](sending-notifications) tutorial.
 
 ## Tutorials to follow next
 Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:

@@ -13,4 +13,3 @@ To get started, select from the list below the release you are using:
 
 * [MobileFirst Quality Assurance 6.3 and 7.0](https://www-01.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/mqa630_welcome.html)
 * [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
-* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/)
