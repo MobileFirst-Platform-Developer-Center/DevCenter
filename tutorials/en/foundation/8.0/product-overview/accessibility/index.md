@@ -56,6 +56,6 @@ TTY service
 (within North America)
 
 ### IBM and accessibility
-For more information about the commitment that IBM has to accessibility, see [IBM Accessibility](www.ibm.com/able).
+For more information about the commitment that IBM has to accessibility, see [IBM Accessibility](http://www.ibm.com/able).
 
 
