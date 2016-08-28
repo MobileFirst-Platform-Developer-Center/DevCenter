@@ -10,6 +10,7 @@ Consider carefully how removed features and API elements affect your IBM MobileF
 
 * [Discontinued features and features that are not included in v8.0](#discontinued-features-and-features-that-are-not-included-in-v8-0)
 * [Server-side API Changes](#server-side-api-changes)
+* [Client-side API Changes](#client-side-api-changes)
 
 ### Discontinued features and features that are not included in v8.0
 IBM MobileFirst Platform Foundation v8.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0. In most cases, an alternative way to implement the features is suggested. These features are marked discontinued. Some other features that exist in V7.1. are not in v8.0, but not as a consequence of the new design of v8.0. To distinguish these excluded features from the features that are discontinued from v8.0, they are marked not in v8.0.
@@ -199,13 +200,7 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 #### Security
 |API Element                         | Replacement Path                               |
 |------------------------------------|------------------------------------------------|
-| `WL.Server.getActiveUer`             | Use `MFP.Server.getAuthenticatedUser` instead. |
-| `WL.Server.getCurrentUserIdentity`   |                                                |
-| `WL.Server.getCurrentDeviceIdentity` |                                                |	
-| `WL.Server.setActiveUser`	         |                                                |
-| `WL.Server.getClientId	`             |                                                |
-| `WL.Server.getClientDeviceContext`	 |                                                |
-| `WL.Server.setApplicationContext`	 |                                                |
+| `WL.Server.getActiveUer`, `WL.Server.getCurrentUserIdentity`,  `WL.Server.getCurrentDeviceIdentity`, `WL.Server.setActiveUser`, `WL.Server.getClientId`, `WL.Server.getClientDeviceContext`, `WL.Server.setApplicationContext` | Use `MFP.Server.getAuthenticatedUser` instead. |
  
 #### Event Source
 |API Element                         | Replacement Path                               |
@@ -219,14 +214,7 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 #### Push
 |API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
-| `WL.Server.getUserNotificationSubscription`	| To migrate from Event source-based notifications to tag-based notifications, see Migrating to push notifications from event source-based notifications.                                                       |
-| `WL.Server.notifyAllDevices`                |                                                |
-| `WL.Server.sendMessage`                     |                                                |
-| `WL.Server.notifyDevice`                    |                                                |
-| `WL.Server.notifyDeviceSubscription`        |                                                |
-| `WL.Server.notifyAll`                       |                                                |
-| `WL.Server.createDefaultNotification`       |                                                |
-| `WL.Server.submitNotification`              |                                                |
+| `WL.Server.getUserNotificationSubscription`, `WL.Server.notifyAllDevices`, `WL.Server.sendMessage`, `WL.Server.notifyDevice`, `WL.Server.notifyDeviceSubscription`, `WL.Server.notifyAll`, `WL.Server.createDefaultNotification`, `WL.Server.submitNotification` 	| To migrate from Event source-based notifications to tag-based notifications, see Migrating to push notifications from event source-based notifications. |
 | `WL.Server.subscribeSMS`	                | Use the REST API Push Device Registration (POST) to register the device. To send and receive SMS notifications, provide the phoneNumber in the payload while invoking the API.                               |
 | `WL.Server.unsubscribeSMS`	                | Use the REST API Push Device Registration (DELETE) to unregister the device. |
 | `WL.Server.getSMSSubscription`	            | Use the REST API Push Device Registration GET) to get the device registrations. |
@@ -272,7 +260,75 @@ The following tables list the discontinued client-side API elements in V8.0.0, d
 ### JavaScript APIs
 These JavaScript APIs that affect the user interface are no longer supported in v8.0. They can be replaced with available third-party Cordova plug-ins, or by creating custom Cordova plug-ins.
 
-| API Element | Migration Path |
-|-------------|----------------|
-|
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Use Cordova plug-ins or HTML 5 elements. |
+| `WL.App.close` | Handle this event outside of MobileFirst. |
+| `WL.App.copyToClipboard()` | Use Cordova plug-ins providing this functionality. |
+| `WL.App.openUrl(url, target, options)` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the Cordova **InAppBrowser** plug-in provides this feature. |
+| `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the Cordova **backbutton** plug-in provides this feature. |
+| `WL.App.getDeviceLanguage()` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. | 
+| `WL.App.getDeviceLocale()` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. |
+| `WL.App.BackgroundHandler` | To run a custom handler function, use the standard Cordova pause event listener. Use a Cordova plug-in that provides privacy and prevents iOS and Android systems and users from taking snapshots or screen captures. For more information, see the description of the **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**. |
+| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | The functions were provided to support the Adobe AIR platform, which is not supported by IBM MobileFirst Platform V8.0.0. |
+| `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. |
+
+This set of APIs is no longer supported in v8.0.
+
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `WL.Client.checkForDirectUpdate(options)` | No replacement. **Note:** You can call `WLAuthorizationManager.obtainAccessToken` to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. | 
+| `WL.Client.setSharedToken({key: myName, value: myValue})`, `WL.Client.getSharedToken({key: myName})`, `WL.Client.clearSharedToken({key: myName})` | No replacement. |
+| `WL.Client.isConnected()`, `connectOnStartup` init option | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. | 
+| `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | No replacement. You can use an adapter and the `MFP.Server.getAuthenticatedUser` API to manage user preferences. | 
+| `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | No replacement. |
+| `WL.Client.logActivity(activityType)` | Use `WL.Logger`. | 
+| `WL.Client.login(realm, options)` | Use `WLAuthorizationManager.login`. To get started with authentication and security, see the Authentication and Security tutorials. |
+| `WL.Client.logout(realm, options)` | Use `WLAuthorizationManager.logout`. | 
+| `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Use `WLAuthorizationManager.obtainAccessToken`. |
+| `WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` | Create a custom adapter for receiving notifications of these events. |
+| `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | Use native API or third-party Cordova plug-ins for GeoLocation. | 
+| `WL.Client.makeRequest (url, options)` | Create a custom adapter that provides the same functionality | 
+| `WLDevice.getID(options)` | Use Cordova plug-ins providing this functionality. **Note:** For your information, `device.uuid` from the c**ordova-plugin-device** plug-in provides this feature. |
+| `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` | 
+| `WL.Device.setFriendlyName()` | Use `WL.Client.setDeviceDisplayName` |
+| `WL.Device.getNetworkInfo(callback)` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the **cordova-plugin-network-information** plug-in provides this feature. | 
+| `WLUtils.wlCheckReachability()` | Create a custom adapter to check server availability. |
+| `WL.EncryptedCache` | Use JSONStore to store encrypted data locally. JSONStore is in the **cordova-plugin-mfp-jsonstore** plug-in. For more information, see [JSONStore](../../../using-the-mfpf-sdk/jsonstore). | 
+| `WL.SecurityUtils.remoteRandomString(bytes)` | Create a custom adapter that provides the same functionality. |
+| `WL.Client.getAppProperty(property)` | You can retrieve the app version property by using the **cordova-plugin-appversion** plug-in. The version that is returned is the native app version (Android and iOS only). | 
+| `WL.Client.Push.*` | Use JavaScript client-side push API from the **cordova-plugin-mfp-push** plug-in. | 
+| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Use `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` to register the device for push and SMS. |
+| `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Use `WLAuthorizationManager.obtainAccessToken` to obtain a token for the required scope. |
+| `WLClient.getLastAccessToken(scope)` | Use `WLAuthorizationManager.obtainAccessToken` | 
+| `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | No replacement | 
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | Use `WLAuthorizationManager.isAuthorizationRequired` and `WLAuthorizationManager.getResourceScope`. | 
+| `WL.Client.isUserAuthenticated(realm)` | No replacement |
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | No replacement | 
+| `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | No replacement |
+| `WL.Client.createChallengeHandler(realmName)` | To create a challenge handler for handling custom gateway challenges, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. To create a challenge handler for handling MobileFirst security-check challenges, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
+| `WL.Client.createWLChallengeHandler(realmName)` | Use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
+| `challengeHandler.isCustomResponse()` where challengeHandler is a challenge-handler object that is returned by `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()` where `gatewayChallengeHandler` is a challenge-handler object that is returned by `WL.Client.createGatewayChallengeHandler()`. | 
+| `wlChallengeHandler.processSucccess()` where `wlChallengeHandler` is a challenge-handler object that is returned by `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()` where `securityCheckChallengeHandler` is a challenge-handler object that is returned by `WL.Client.createSecurityCheckChallengeHandler()`. | 
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use a challenge-handler object that is returned by `WL.Client.createGatewayChallengeHandler()`. For MobileFirst security-check challenge handlers, use a challenge-handler object that is returned by `WL.Client.createSecurityCheckChallengeHandler()`. | 
+| `WL.Client.AbstractChallengeHandler.submitFailure(err)` | Use `WL.Client.AbstractChallengeHandler.cancel()`. | 
+| `WL.Client.createProvisioningChallengeHandler()` | No replacement. Device provisioning is now handled automatically by the security framework. | 
+
+#### Deprecated JavaScript APIs
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`, `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | Use the `WLResourceRequest` instead. **Note:** The implementation of `invokeProcedure` uses `WLResourceRequest`. | 
+| `WLClient.getEnvironment` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the **device.platform** plug-in provides this feature. | 
+| `WLClient.getLanguage` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the **cordova-plugin-globalization** plug-in provides this feature. | 
+| `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
+
+### Android APIs
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| 
+
+
+
+
+
 
