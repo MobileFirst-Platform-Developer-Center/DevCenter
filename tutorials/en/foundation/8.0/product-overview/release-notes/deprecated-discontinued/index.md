@@ -266,3 +266,13 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 | `WLServerAPIProvider` class in the `com.worklight.adapters.rest.api` package | Use the JAX-RS `Context` annotation to access the MobileFirst API interfaces directly. | 
 
 ## Client-side API Changes
+The following changes in the APIs are relevant to migrating your MobileFirst client application.  
+The following tables list the discontinued client-side API elements in V8.0.0, deprecated client-side API elements in V8.0.0, and suggested migration paths.
+
+### JavaScript APIs
+These JavaScript APIs that affect the user interface are no longer supported in v8.0. They can be replaced with available third-party Cordova plug-ins, or by creating custom Cordova plug-ins.
+
+| API Element | Migration Path |
+|-------------|----------------|
+|
+
