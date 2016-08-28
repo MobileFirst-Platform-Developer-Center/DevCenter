@@ -37,18 +37,18 @@ From a command window:
 
 1. Create a folder called DevOps: `mkdir DevOps`
 2. Change to this folder: `cd DevOps`
-3. Clone the repo: `git clone --no-checkout https://hub.jazz.net/git/&lt;your-bluemix-id-up-to-@&gt;/AdapterDevOps`
+3. Clone the repo: `git clone --no-checkout https://hub.jazz.net/git/<your-bluemix-id-up-to-@>/AdapterDevOps`
 
 Now that you have cloned your Bluemix Git repo locally you will see an AdapterDevOps folder
 
 ### Push the adapter code to your Git repository in Bluemix
 Let's get some sample Adapter code that we can use for this DevOps pipeline. In the next steps we will use the sample code from this GitHub repo: [https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)
 
-1. In the same DevOps folder clone the repo: `git clone [https://github.com/MobileFirst-Platform-Developer-Center/Adapters.git](https://github.com/MobileFirst-Platform-Developer-Center/Adapters.git)`
+1. In the same DevOps folder clone the repo: `git clone https://github.com/MobileFirst-Platform-Developer-Center/Adapters.git`
     At this point under the DevOps folder you should have two subfolders Adapters (the sample code we will use for the pipeline) and AdapterDevOps (the local clone of your Bluemix repo).
 2. Copy the **Adapters/JavaAdapter** folder to the **AdapterDevOps** folder.
-3. From the **AdapterDevOps** folder we need to push the new code to our repo in Bluemix. Again make sure your run the following commands from the AdapterDevOps folder:
-  - `git add  \*`
+3. From the **AdapterDevOps** folder we need to push the new code to our repo in Bluemix. Again make sure you run the following commands from the AdapterDevOps folder:
+  - `git add  *`
   - `git commit -m 'first commit'`
   - `git push -u origin master`
 
