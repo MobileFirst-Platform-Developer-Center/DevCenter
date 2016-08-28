@@ -24,7 +24,15 @@ We encourage you to start testing your application(s) with Android N. Please see
 
 ### Known Issues
 ---
+##### JSONStore API
    The MobileFirst Platform Foundation's JSONStore API does not work as expected on Android N, with the [behavior changes](https://developer.android.com/preview/behavior-changes.html#ndk) introduced in for NDK applications. The change in Android N is to remove support for linking against non-public APIs. This requires an update to the [SQLCipher library](https://www.zetetic.net/blog/2016/6/23/sqlcipher-android-release-n-support/) used in the MobileFirst Platform Foundation's JSONStore library. More details on the changes to the SQLCipher library can be found [here](https://discuss.zetetic.net/t/sqlcipher-for-android-upcoming-changes-for-android-n-and-coordinated-beta-test-request/1315). The fix for MobileFirst Platform Foundation's JSONStore library is in progress and should be available soon. Watch this space for the link to download the ifix.
+   
+##### Cordova with Android N   
+
+* Android 7.0 does not allow the ``file://`` protocol to be used externally from the scope of the app. The error occurs when sharing file URIs across Intent.Even though other plugins use the file URIs, such as File plugin, out of the core Cordova plugins, only the camera plugin uses the Cross-Process communication of sharing file URIs. Hence the  **FILE_URI** and **NATIVE_URI** destination type of the Cordova camera plugin throws an ``android.os.FileUriExposedException``.
+For updates on these issue please follow this [thread](https://issues.apache.org/jira/browse/CB-11625).
+
+* Multi-Window Support is the big new feature of Android N and one that presents some minor problems for existing Cordova apps. When apps that are compiled with the pre-N SDK are put into multi-window mode, the user gets a message saying "App may not work in multi-window mode". Cordova apps definitely fall into the non-working category because they tend to either crash or randomly restart when placed into multi-window mode. More information [here](https://github.com/cordova/cordova-discuss/blob/master/proposals/android-n-support.md).
 
 ### Handling Secure Connections
 ---
