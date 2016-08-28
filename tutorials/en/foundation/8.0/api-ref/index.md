@@ -3,7 +3,7 @@ layout: tutorial
 title: API Reference
 breadcrumb_title: API Reference
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 0
 show_children: true
 ---
 <br/>
