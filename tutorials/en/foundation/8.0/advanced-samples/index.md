@@ -6,6 +6,8 @@ weight: 11
 ## Overview
 Discover advanced implementation examples for real-life use cases such as SMS One-Time-Password, LDAP server connectivity, Social Login, License agreement, Trusted Devices and more...
 
+Missing a sample? [Open an issue on GitHub.com](https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues) to let us know.
+
 ### Limit the Number of Devices per Authenticated User with IBM MobileFirst Foundation 8.0
 Imagine you are a CIO of a big airline company. Your company just decided to invest in a shiny new in-flight entertainment system. The system will allow passengers to bring their own devices and connect them to the In-flight entertainment system. To help grow the company revenue, you decide to let the passengers buy a premium entertainment package, so they will be able to watch the latest movies and series on their devices. [Continue reading...]({{site.baseurl}}/blog/2016/08/07/limit-the-number-of-devices-per-authenticated-user/)
 
