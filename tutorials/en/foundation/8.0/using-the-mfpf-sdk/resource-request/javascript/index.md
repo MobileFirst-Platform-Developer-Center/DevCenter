@@ -151,18 +151,5 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) the Web project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
-### Web sample usage
-Make sure you have Node.js installed.
-
-1. Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.resourcerequestweb`.
-{% endcomment %}
-
-
-2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
-3. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
-
 ### Sample usage
 Follow the sample's README.md file for instructions.
