@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the iOS development environment
-breadcrumb_title: iOS environment
+breadcrumb_title: iOS
 relevantTo: [ios,javascript]
 weight: 3
 ---

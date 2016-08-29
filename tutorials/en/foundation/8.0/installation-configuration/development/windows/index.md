@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the Windows 8.1 and Windows 10 development environment
-breadcrumb_title: Windows environments
+breadcrumb_title: Windows
 relevantTo: [windows,javascript]
 weight: 5
 ---

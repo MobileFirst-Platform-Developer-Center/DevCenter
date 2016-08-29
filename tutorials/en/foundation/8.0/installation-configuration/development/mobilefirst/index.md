@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the MobileFirst development environment
-breadcrumb_title: MobileFirst environment
+breadcrumb_title: MobileFirst
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

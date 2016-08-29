@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the Cordova development environment
-breadcrumb_title: Cordova environment
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
 ---
