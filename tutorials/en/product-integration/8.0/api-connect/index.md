@@ -10,12 +10,12 @@ downloads:
 ---
 
 ## Overview
-IBM API Connect is a  cloud-based API Management solution that allows you to design, control, secure, publish, manage, analyze, and scale your API with its simple-to-use configuration and coding platform.
+IBM API Connect is a cloud-based API Management solution that allows you to design, control, secure, publish, manage, analyze, and scale your API with its simple-to-use configuration and coding platform.
 To learn more about IBM API Connect, visit the [IBM API Connect Developer Center](https://developer.ibm.com/apiconnect/).  
 
-IBM MobileFirst Platform Foundation integrates its security capabilities with IBM API Connect by using the MobileFirst OAuth Provider API template, which enables the following capabilities:  
- 1. Protect API Connect endpoints with the MobileFirst server as the authorization server.  
- 2. Proxy MobileFirst client non-resource requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
+IBM MobileFirst Foundation integrates its security capabilities with IBM API Connect by using the MobileFirst OAuth Provider API template, which enables the following capabilities:  
+ 1. Protect API Connect endpoints with the MobileFirst Server as the authorization server.  
+ 2. Proxy MobileFirst client non-resource requests and responses through DataPower to the MobileFirst Server that is located behind the DMZ.  
  
 ![MobileFirst First OAuthProivder](cd_apic_mfpsecurityhld.png)
 
@@ -24,25 +24,13 @@ Currently the security integration of MobileFirst and API Connect is supported o
 ## Jump to:
 * [Prerequisites](#prerequisites)
 * [Protect the API Connect endpoint with MobileFirst as an authorization server](#protect-the-api-connect-endpoint-with-mobilefirst-as-an-authorization-server)
-  * Define Confidential Client in MobileFirst Operations Console
-  * Add API Connect TLS Profile for MobileFirst HTTPS endpoint
-  * Import MobileFirst OAuthProvider template
-  * Configure MobileFirst OAuthProvider template
-  * Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
-  * Create Simple REST API in API Connect
-  * Protect the API using the MobileFirst OAuth Security Definition
-  * Add APIs to product and publish it
 * [Update PinCodeAndroid sample client application](#update-pincodeandroid-sample-client-application)
-  * Update `wlclient.properties`
-  * Update the `WLResourceRequest` request
-  * Add SSL certificate to client for API Connect HTTPS endpoint
 * [Support for multiple MobileFirst OAuthProviders](#support-for-multiple-mobilefirst-oauthproviders)
 
 
 ## Prerequisites
 * API Connect DataPower (Edge) version 5040 or later
-* IBM® DataPower® Gateway 7.5 or later
-* MobileFirst Server V8
+* IBM® DataPower® Gateway 7.5.X or later
 * MobileFirst CLI - [MobileFirst Downloads CLI tab](https://mobilefirstplatform.ibmcloud.com/downloads/)
 * Completing [Implementing the challenge handler in Android applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/credentials-validation/android/) tutorial, which
 use [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) (Follow its `README` file to set it up).  
@@ -73,7 +61,7 @@ Go to MobileFirst Operations Console:
 
 ### Add API Connect TLS Profile for MobileFirst HTTPS endpoint
 This step is optional and necessary only if you want to send requests to MobileFirst HTTPS endpoint from API Connect. 
-In order to create API Connect TLS Profile, you should have your MobileFirst server certificate (and its password).
+In order to create API Connect TLS Profile, you should have your MobileFirst Server certificate (and its password).
 Follow [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect in the API Manager.
 
 ### Import MobileFirst OAuthProvider template
@@ -100,7 +88,7 @@ Using the API Designer, configure the imported API.
 
 * **mfp-oauth-type:** Leave the default value (`true`).  
 * **mfp-server-url:** The MobileFirst Server URL in the format PROTOCOL://SERVER_HOST:SERVER_PORT.  For example `http://myMobileFirstServer:9080`.  Find this value in the `mfpclient.properties` file (`wlServerProtocol`, `wlServerHost` and `wlServerPort` values).  
-* **mfp-server-context:** MobileFirst server context. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
+* **mfp-server-context:** MobileFirst Server context. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
 * **mfp-client-id:** `apic`, as configured in MobileFirst Operations Console **Runtime Settings ->  Confidential Clients** for the `authorization.introspect` scope.  
 * **mfp-client-secret:** `YOUR-CLIENT-SECRET` ,as configured in MobileFirst Operations Console  **Runtime Settings -> Confidential Clients** for the `authorization.introspect` scope.  
 
@@ -226,7 +214,7 @@ From the API Connect Designer **Products** tab:
 
 ### Update the `wlclient.properties` file
 
-After setting up the **PinCodeAndroid** sample and completing the setup described in the `README` file, the `wclient.properties` is configured to send all MobileFirst requests directly to MobileFirst server.  
+After setting up the **PinCodeAndroid** sample and completing the setup described in the `README` file, the `wclient.properties` is configured to send all MobileFirst requests directly to MobileFirst Server.  
 
 However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints which exposed by the MobileFirst OAuthProvider.  
 
