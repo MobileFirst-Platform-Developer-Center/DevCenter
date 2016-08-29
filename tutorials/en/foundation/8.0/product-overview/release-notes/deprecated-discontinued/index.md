@@ -322,12 +322,105 @@ This set of APIs is no longer supported in v8.0.
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
 
 ### Android APIs
+####  Discontinued Android API elements
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
-| 
+| `WLConfig WLClient.getConfig()` | No replacement. |
+| `WLDevice WLClient.getWLDevice()`, `WLClient.transmitEvent(org.json.JSONObject event)`, `WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)`, `WLClient.purgeEventTransmissionBuffer()` | Use Android API or third-party packages for GeoLocation. |
+| `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | No replacement. |
+| `WL.Client.getUserInfo(realm, key`, `WL.Client.updateUserInfo(options)` | No replacement. |
+| `WLClient.checkForNotifications()` | Use `WLAuthorizationManager.obtainAccessToken("", listener)` to check connectivity to the server and apply application management rules. |
+| `WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`, `WLClient.login(java.lang.String realmName, WLRequestListener listener)` | Use `AuthorizationManager.login()` |
+| `WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`, `WLClient.logout(java.lang.String realmName, WLRequestListener listener)` | Use `AuthorizationManager.logout()` |
+| `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | Use `WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)` to check connectivity to the server and apply application management rules |
+| `WLClient.getLastAccessToken()`, `WLClient.getLastAccessToken(java.lang.String scope)` | Use `AuthorizationManager` |
+| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | Use `AuthorizationManager` | 
+| `WLClient.logActivity(java.lang.String activityType)` | Use `com.worklight.common.Logger`. For more information, see Logger SDK. |
+| `WLAuthorizationPersistencePolicy` | No replacement. To implement authorization persistence, store the authorization token in the application code and create custom HTTP requests. |
+| `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | Use the Android APIs to share tokens across applications. |
+| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | No replacement |
+| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `BaseChallengeHandler.cancel()` | 
+| `ChallengeHandler` | For custom gateway challenges, use `GatewayChallengeHandler`. For MobileFirst security-check challenges, use `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.isCustomResponse()` | se `GatewayChallengeHandler.canHandleResponse()`. | 
+| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. |
 
+#### Deprecated Android APIs
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener)` | Deprecated. Use `WLResourceRequest`. **Note:** The implementation of `invokeProcedure` uses `WLResourceRequest`. |
+| `WLClient.connect(WLResponseListener responseListener)`, `WLClient.connect(WLResponseListener responseListener,WLRequestOptions options)` | Use `WLAuthorizationManager.obtainAccessToken("", listener)` to check connectivity to the server and apply application management rules. |
 
+#### Android APIs depending on the legacy org.apach.http APIs are no longer supported
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `org.apache.http.Header[]` is now deprecated. Therefore, the following methods are removed:||
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Use instead the new `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API. | 
+| `WLResourceRequest.addHeader(org.apache.http.Header header)` | Use instead the new `WLResourceRequest.addHeader(String name, String value)` API. | 
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Use instead the new `List<String> WLResourceRequest.getHeaders(String headerName)` API. | 
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use instead the new `WLResourceRequest.getHeaders(String headerName)` API. | 
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Replaced with `java.net.CookieStore getCookieStore WLClient.getCookieStore()` | 
+| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | No replacement. MFP Client allows circular redirects. | 
+| `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
 
+#### The `com.worklight.androidgap.api` package provides the Android platform functionality for Cordova apps. In MobileFirst, a number of changes were made to accommodate the Cordova integration.
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| The Android activity was replaced with the Android context. | |
+| `static WL.createInstance(android.app.Activity activity)` | `static WL.createInstance(android.content.Context context)` creates a shared instance. |
+| `static WL.getInstance()` |  `static WL.getInstance()` Gets an instance of the WL class. This method cannot be called before `WL.createInstance(Context)`. |
 
+### Objective-C APIs
+#### Discontinued iOS Objective C APIs
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` | Geolocation removed. Use native iOS or third-party packages for GeoLocation. |
+| `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | No replacement. |
+| `WL.Client.deleteUserPref(key, options)` | No replacement. You can use an adapter and the `MFP.Server.getAuthenticatedUser` API to manage user preferences. | 
+| `[WLClient getRequiredAccessTokenScopeFromStatus]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. |
+| `[WLClient login:withDelegate:]` | Use `WLAuthorizationManager login`. | 
+| `[WLClient logout:withDelegate:]` | Use `WLAuthorizationManager logout`. | 
+| `[WLClient lastAccessToken]`, `[WLClient lastAccessTokenForScope:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. | 
+| `[WLClient obtainAccessTokenForScope:withDelegate:]`, `[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. | 
+| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | Use Objective-C client-side push API for iOS apps from the IBMMobileFirstPlatformFoundationPush framework | 
+| `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | Use Objective-C client-side push API for iOS apps from the IBMMobileFirstPlatformFoundationPush framework. |
+| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Deprecated. Use `WLResourceRequest` instead. | 
+| `WLClient sendUrlRequest:delegate:]` | Use `[WLResourceRequest sendWithDelegate:delegate]` instead. | 
+| `[WLClient (void) logActivity:(NSString *) activityType]` | Removed. Use an Objective C logger. |
+| `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | Use the OS APIs to share tokens across applications. |
+| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use `BaseChallengeHandler.cancel()`. |
+| `BaseProvisioningChallengeHandler` | No replacement. Device provisioning is now handled automatically by the security framework. | 
+| `ChallengeHandler` | For custom gateway challenges, use `GatewayChallengeHandler`. For MobileFirst security-check challenges, use `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. | 
+| `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
+| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use ``GatewayChallengeHandler``. For MobileFirst security-check challenge handlers, use `SecurityCheckChallengeHandler`. |
 
+### Windows C# APIs
+#### Deprecated Windows C# API elements - Classes
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `ChallengeHandler` | For custom gateway challenges, use `GatewayChallengeHandler`. For MobileFirst security-check challenges, use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
+| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. For MobileFirst security-check challenge handlers, use `SecurityCheckChallengeHandler`. | 
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. For MobileFirst security-check challenge handlers, use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager` instead. | 
+| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `WLClient` | Use `WorklightClient` instead. |
+| `WLErrorCode` | Not supported. |
+| `WLFailResponse` | Use `WorklightResponse` instead. | 
+| `WLResponse` | Use `WorklightResponse` instead. | 
+| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData` instead. | 
+| `WLProcedureInvocationFailResponse` | Not supported. | 
+| `WLProcedureInvocationResult` | Not supported. |
+| `WLRequestOptions` | Not supported. |
+| `WLResourceRequest` | Not supported. |
 
+#### Deprecated Windows C# API elements - Interfaces
+| API Element           | Migration Path                           |
+|-----------------------|------------------------------------------|
+| `WLHttpResponseListener` | Not supported. |
+| `WLResponseListener` | The response will be available as a `WorklightResponse` object | 
+| `WLAuthorizationPersistencePolicy` | Not supported. | 
