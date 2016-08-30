@@ -1,21 +1,19 @@
 ---
-title: An example of how to automate UI (MFP Application Center in particular) using Appium/Selenium-Webdriver frameworks
+title: Using Appium to automate UI testing
 date: 2016-08-30
 tags:
 - MobileFirst_Foundation
-- Application Store
+- Application_Store
 - Automation
-- Mobile Automation
-- Automation frameworks
+- Mobile_Automation
+- Automation_frameworks
 version:
 - 8.0
 author:
   name: Vinod Appajanna
 ---
-
 ## Introduction
-
-One of the most widely used Web and Mobile UI Automation framework is Appium/Selenium-Webdriver, in this blog I will touch upon on how we can use this for MFP AppCenter application. Appium/Selenium-Webdriver  provides a single, free and open protocol for testing without having to recompile or modify the app. I will not get into in-depth details of Appium and Selenium-Webdriver since there are plenty of examples and documentation around the same. For more details please refer the reference section.
+One of the most widely used Web and Mobile UI Automation framework is Appium/Selenium-Webdriver, in this blog I will touch upon on how we can use this for MFP AppCenter application. Appium/Selenium-Webdriver  provides a single, free and open protocol for testing without having to recompile or modify the app. I will not get into in-depth details of Appium and Selenium-Webdriver since there are plenty of examples and documentation around the same. For more details see the reference section.
 
 I have taken up the the below use-case (AppCenter) for the automation
 
@@ -30,7 +28,6 @@ On the mobile side:
 * View the uploaded app
 
 ## Installation or the Prerequisites for the Automation
-
 The installation is very simple and straight forward.
 
 * From the development perspective we just need have the dependency
@@ -66,7 +63,6 @@ The installation is very simple and straight forward.
 * [Install Appium (server + inspector)] (http://appium.io)
 
 ## DOM inspectors
-
 Using inspector one can inspect the DOM elements of the Hybrid mobile App or the Web html. Here we use it for extracting the xpaths that is used in the code for setting and getting the values to or from the mobile or web elements.
 
 <div class="sizer">
@@ -77,7 +73,6 @@ Using inspector one can inspect the DOM elements of the Hybrid mobile App or the
 <p style="text-align: center;">Mobile app and Web inspectors</p>
 
 ## Running the tests from Eclipse studio
-
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
     <iframe src="https://www.youtube.com/embed/i_aFPaO2pq8"></iframe>
@@ -86,7 +81,6 @@ Using inspector one can inspect the DOM elements of the Hybrid mobile App or the
 <p style="text-align: center;">Running the TestNg tests from studio</p>
 
 ## Running the Automation using Jenkins (optional)
-
 * Go to http://jenkins-ci.org/and download correct package for your OS. Install Jenkins
 * Import the Maven project into Jenkins server
 * Trigger the builds manually or schedule it
@@ -100,7 +94,6 @@ Using inspector one can inspect the DOM elements of the Hybrid mobile App or the
 
 
 ## Sample
-
 The sample runs the following tests:
 
 * AppCenterClientLogin Class runs mobile login and list catalog test
@@ -113,7 +106,6 @@ The sample runs the following tests:
 By now you would have seen the ease and the power of using these defacto standard automation frameworks for running the UI tests. So now think of using this for your UI as well.
 
 ## References
-
 1. [Appium] (http://appium.io/)
 2. [Appium Getting Started] (http://appium.io/getting-started.html)
 3. [iOS Device - Appium] (https://testobject.com/blog/2016/01/how-to-test-ios-apps-with-appium-on-os-x.html)
