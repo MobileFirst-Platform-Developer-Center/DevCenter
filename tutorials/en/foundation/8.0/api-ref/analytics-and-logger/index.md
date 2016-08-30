@@ -16,6 +16,6 @@ To view and interact with Swagger, deploy the analytics-service.war file and go 
 ```
 
 Replace **protocol**, **host** and **port** with your server's values.  
-For example, for a local MobileFirst Server installation [via the Developer Kit]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/), typically these will be: [http://localhost:9080/analytics-service](http://localhost:9080/analytics-service).
+For example, for a local MobileFirst Server installation [via the Developer Kit]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/), typically these will be: [http://localhost:9080/analytics-service](http://localhost:9080/analytics-service).
 
 ![REST API for analytics in Swagger](analytics-swagger.png)

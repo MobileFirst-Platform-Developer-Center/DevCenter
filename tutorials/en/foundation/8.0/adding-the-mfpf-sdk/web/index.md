@@ -128,7 +128,7 @@ You can meet the policy requirements by using either of the following methods:
 - Serving the web application resources, for example, from the same WebSphere Application Server Liberty profile application server that is used in the MobileFirst Development Kit.
 - Using Node.js as a reverse proxy to redirect application requests to the MobileFirst Server.
 
-> Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
+> Learn more in [Setting up the Web development environmnt](../../installation-configuration/development/web) tutorial
 
 ## Secure-origins policy
 When you use Chrome during development, the browser might not allow an application to load if it uses both HTTP and a host that **is not** `localhost`. The cause is the secure-origins policy that is implemented and used by default in this browser.

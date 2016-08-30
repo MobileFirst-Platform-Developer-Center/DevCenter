@@ -99,6 +99,6 @@ When an update is availabe, a banner is displayed in the service's Dashboard pag
 ## Further reading
 Now that the MobileFirst Server instance is up and running, you can learn more
 
-* [MobileFirst Operations Console](../../setting-up-your-development-environment/console)
+* [MobileFirst Operations Console](../../product-overview/components/console)
 * Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start)
 * Or [read through all available tutorials](../../all-tutorials/)

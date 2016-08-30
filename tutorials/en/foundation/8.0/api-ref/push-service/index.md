@@ -2062,7 +2062,7 @@ These REST API endpoints are protected by OAuth which requires the clients [to b
 * [REST Endpoints](#rest-endpoints)
 
 ### Swagger UI
-The REST endpoints below are also accessible from a Swagger UI in the development environment provided by the [DevKit Installer](../../setting-up-your-development-environment/mobilefirst-development-environment). To access it, load the following URL: [http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json).
+The REST endpoints below are also accessible from a Swagger UI in the development environment provided by the [DevKit Installer](../../installation-configuration/development/mobilefirst). To access it, load the following URL: [http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json).
 
 ![Swagger UI for the Push Service REST endpoints](push-service-swagger.png)
 

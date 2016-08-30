@@ -8,7 +8,7 @@ weight: 5
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../installation-configuration/development/mobilefirst/) tutorial.
 
 ### Registration
 1. Register as a Windows developer

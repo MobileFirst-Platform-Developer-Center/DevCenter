@@ -9,7 +9,7 @@ weight: 2
 To get started with [Cordova (PhoneGap) development](https://cordova.apache.org/) the very basic required step is to install the Cordova CLI. The Cordova CLI is the tool enabling you to create Cordova applications. These applications can be further enhanced by using various 3rd party frameworks and tools such as Ionic, AngularJS, jQuery Mobile and many more. 
 With Cordova applications you can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others for implementing your applications and adapters.
 
-**Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
+**Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the MobileFirst development environment](../../installation-configuration/development/mobilefirst/) tutorial.
 
 ## Installing the Cordova CLI
 MobileFirst Foundation supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  

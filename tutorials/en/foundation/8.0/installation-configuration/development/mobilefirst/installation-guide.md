@@ -8,7 +8,7 @@ weight: 10
 Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.
 
 ## DevKit Installer
-The MobileFirst Foundation [Development Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
+The MobileFirst Foundation [Development Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
 
 **Prerequisite:**  
 The installer requires Java installed.
@@ -46,12 +46,12 @@ Open a command-line window and navigate to the extracted folder location.
 * To stop the server: `./stop.cmd`
 
 ### Accessing the MobileFirst Operations Console
-You can access the [MobileFirst Operations Console]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/) in the following ways:
+You can access the [MobileFirst Operations Console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) in the following ways:
 
 * From command-line, execute: `mfpdev server console`
 * From a browser, visit: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
 
-![console]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/dashboard.png)
+![console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
 ## MobileFirst CLI
 The [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the MobileFirst Server, pull/push application from/to the MobileFirst Server, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.

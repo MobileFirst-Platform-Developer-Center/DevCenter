@@ -25,7 +25,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 ### 1. Starting the MobileFirst Server
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [MobileFirst Foundation Development Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.cmd`.
+If using the [MobileFirst Foundation Development Kit](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
 
 ### 2. Creating an application
 

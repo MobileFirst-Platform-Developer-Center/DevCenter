@@ -13,7 +13,7 @@ This tutorial explains the steps a developer needs to follow in order to develop
 * Xcode 7.1 and later
 * iOS 8 and later
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../installation-configuration/development/mobilefirst/) tutorial.
 
 ### Registration
 1. Register as an iOS developer

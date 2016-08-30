@@ -27,7 +27,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
 
             <p>You can develop adapters with Apache Maven or a maven-enabled IDE such as Eclipse, IntelliJ, and others. For more information about developing adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapters category</a>. For more information about using Eclipse as a Maven enabled IDE, read the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Developing Adapters in Eclipse tutorial</a>.</p>
 
-            <p>Install IBM MobileFirst Platform Foundation Developer Kit to test adapters and applications with MobileFirst Development Server. You can also access MobileFirst development tools and SDKs if you do not want to download them from Internet-based repositories such as NPM, Maven, Cocoapod, or NuGet. For more information about IBM MobileFirst Platform Foundation Developer Kit, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">The IBM MobileFirst Platform Foundation Developer Kit</a>.
+            <p>Install IBM MobileFirst Platform Foundation Developer Kit to test adapters and applications with MobileFirst Development Server. You can also access MobileFirst development tools and SDKs if you do not want to download them from Internet-based repositories such as NPM, Maven, Cocoapod, or NuGet. For more information about IBM MobileFirst Platform Foundation Developer Kit, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">The IBM MobileFirst Platform Foundation Developer Kit</a>.
             </p></td>
     </tr>
     <tr>

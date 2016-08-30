@@ -98,7 +98,7 @@ The operations console is a web interface that you can use to view and edit the 
 
 The administration service is the main entry point for managing your apps. You can access the administration service through a web-based interface with the MobileFirst Operations Console. You can also access the administration service with the **mfpadm** command-line tool or the administration service REST API.
 
-> Learn more about the [MobileFirst Operations Console features](../setting-up-your-development-environment/console).
+> Learn more about the [MobileFirst Operations Console features](../product-overview/components/console).
 
 ### MobileFirst runtime
 The runtime is the main entry point for a MobileFirst client app. The runtime is also the default authorization server for the IBM MobileFirst Foundation OAuth implementation.

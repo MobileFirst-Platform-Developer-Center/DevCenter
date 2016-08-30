@@ -19,7 +19,7 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Nuget
 
 - Microsoft Visual Studio 2013 or 2015 and MobileFirst CLI installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../setting-up-your-development-environment/windows-8-10-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../installation-configuration/development/windows) tutorials.
 
 #### Jump to:
 
