@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Labs
+title: FoundationLabs
 show_disqus: false
 ---
 <div class="container">
-    <h2 class="no-anchor">Welcome to Labs</h2>
-    <p>“Labs” are video-based educational materials with step-by-step instructions.</p>
+    <h2 class="no-anchor">Welcome to FoundationLabs</h2>
+    <p>“FoundationLabs” are video-based educational materials with step-by-step instructions.</p>
 
     <ul>
         <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
