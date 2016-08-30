@@ -109,5 +109,5 @@ By now you would have seen the ease and the power of using these defacto standar
 1. [Appium] (http://appium.io/)
 2. [Appium Getting Started] (http://appium.io/getting-started.html)
 3. [iOS Device - Appium] (https://testobject.com/blog/2016/01/how-to-test-ios-apps-with-appium-on-os-x.html)
-4. [iOS Simulator - Appium] (www.youtube.com/watch?v=d1u58t-ko6s)
+4. [iOS Simulator - Appium] (https://www.youtube.com/watch?v=d1u58t-ko6s)
 5. [Maven, Jenkins and Selenium] (http://www.guru99.com/maven-jenkins-with-selenium-complete-tutorial.html)
