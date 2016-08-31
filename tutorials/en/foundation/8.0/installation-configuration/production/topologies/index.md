@@ -10,7 +10,7 @@ The components are deployed according to the server topology that you use. The n
 #### Jump to
 
 * [Network flows between the MobileFirst Server components](#network-flows-between-the-mobilefirst-server-components)
-* [Constraints on the MobileFirst Server components and MobileFirst Analytics](#constraints-on-the-mobileFirst-server-components-and-mobilefirsta-analytics)
+* [Constraints on the MobileFirst Server components and MobileFirst Analytics](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
 * [Multiple MobileFirst runtimes](#multiple-mobilefirst-runtimes)
 * [Multiple instances of MobileFirst Server on the same server or WebSphere Application Server cell](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
 
@@ -220,8 +220,8 @@ The following local JNDI properties are required for the administration services
 
 | JNDI properties        |	Values    |
 |------------------------|------------|
-|mfp.topology.platform   | Tomcat     |
-mfp.topology.clustermode | Standalone |
+| mfp.topology.platform   | Tomcat     |
+| mfp.topology.clustermode | Standalone |
 
 JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat]().
 
@@ -249,6 +249,385 @@ When you deploy several administration components, you must specify:
 * On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
 
 ### Server farm topology
+You can configure a farm of WebSphere® Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
+
+A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of MobileFirst applications to be distributed across several servers. Each server in the farm must be a Java™ virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
+
+In this topology, all the administration components (MobileFirst Operations Console, the administration service, and the live update service) and the runtimes are deployed on every server in the farm.
+
+![Topology for a server farm](server_farm_topology.jpg)
+
+This topology supports only symmetric deployment. The runtimes and the administration components must be deployed on every server in the farm. The deployment of this topology has the following characteristics:
+
+* One or several administration components can be deployed. Each instance of MobileFirst Operations Console communicates with one administration service and one live update service.
+* The administration components must be deployed on all servers in the farm.
+* One or several runtimes can be deployed.
+* The runtimes must be deployed on all servers in the farm.
+* One MobileFirst Operations Console can manage several runtimes.
+* One runtime is managed by only one MobileFirst Operations Console.
+* Each administration service uses its own administration database schema. All deployed instances of the same administration service share the same administration database schema.
+* Each live update service uses its own live update database schema. All deployed instances of the same live update service share the same live update database schema.
+* Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
+
+#### Configuration of JNDI properties
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](). For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime]().
+
+**WebSphere Application Server Liberty profile server farm**  
+The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+
+<table>
+    <tr>
+        <th>
+            JNDI properties
+        </th>
+        <th>
+            Values
+        </th>
+    </tr>
+    <tr>
+        <td>
+            mfp.topology.platform
+        </td>
+        <td>
+            Liberty
+        </td>
+    </tr>
+    <tr>
+        <td>
+            mfp.topology.clustermode
+        </td>
+        <td>
+            Farm
+        </td>
+    </tr>
+    <tr>
+        <td>
+            mfp.admin.jmx.host
+        </td>
+        <td>
+            The host name of the WebSphere Application Server Liberty profile server
+        </td>
+    </tr>
+    <tr>
+        <td>
+            mfp.admin.jmx.port
+        </td>
+        <td>
+            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code><httpEndpoint></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+
+{% highlight xml %}
+<httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
+{% endhighlight %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            mfp.admin.jmx.user
+        </td>
+        <td>
+            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
+            
+{% highlight xml %}
+<administrator-role>
+    <user>MfpRESTUser</user>
+</administrator-role>
+{% endhighlight %}        
+        </td>
+    </tr>
+    <tr>
+        <td>
+            mfp.admin.jmx.pwd
+        </td>
+        <td>
+            The password of the WebSphere Application Server Liberty administrator user.
+        </td>
+    </tr>
+</table>
+
+The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+
+Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+
+When you deploy several administration components, you must specify:
+
+* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
+* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+
+**Apache Tomcat server farm**  
+The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+
+| JNDI properties          |	Values |
+|--------------------------|-----------|
+| mfp.topology.platform	   | Tomcat    |
+| mfp.topology.clustermode | Farm      |
+
+JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat]().
+
+The **mfp.admin.serverid*** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+
+Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+
+When you deploy several administration components, you must specify:
+
+* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
+* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+
+**WebSphere Application Server full profile server farm**  
+The following global JNDI properties are required on each server in the farm for the administration services and the runtimes.
+
+| JNDI properties            | Values |
+|----------------------------|--------|
+| mfp.topology.platform	WAS  | WAS    |
+| mfp.topology.clustermode   | Farm   |
+| mfp.admin.jmx.connector    | SOAP   |
+
+The following JNDI properties are required for the administration service to manage the server farm configuration.
+
+| JNDI properties    | Values |
+|--------------------|--------|
+| mfp.admin.jmx.user | The user name of WebSphere Application Server. This user must be defined in the WebSphere Application Server user registry. |
+| mfp.admin.jmx.pwd	 | The password of the WebSphere Application Server user. |
+| mfp.admin.serverid | The server identifier, which must be different for each server in the farm and identical to the value of this property used for this server in the server farm configuration file. |
+
+Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+
+When you deploy several administration components, you must specify the following values:
+
+* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+
+### Liberty collective topology
+You can deploy the MobileFirst Server components in a Liberty collective topology.
+
+In the Liberty collective topology, the MobileFirst Server administration components (MobileFirst Operations Console, the administration service, and the live update service) are deployed in a collective controller and the MobileFirst runtimes in collective member. This topology supports only asymmetric deployment, the runtimes cannot be deployed in a collective controller.
+
+![Topology for Liberty Collective](liberty_collective_topology.jpg)
+
+The deployment of this topology has the following characteristics:
+
+* One or several administration components can be deployed in one or several controllers of the collective. Each instance of * * MobileFirst Operations Console communicates with one administration service and one live update service.
+* One or several runtimes can be deployed in the cluster members of the collective.
+* One MobileFirst Operations Console manages several runtimes that are deployed in the cluster members of the collective.
+* One runtime is managed by only one MobileFirst Operations Console.
+* Each administration service uses its own administration database schema.
+* Each live update service uses its own live update database schema.
+* Each runtime uses its own runtime database schema.
+
+#### Configuration of JNDI properties
+The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime](). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective]().
+
+The following global JNDI properties are required for the administration services:
+
+<table>
+    <tr>
+        <th>
+            JNDI properties
+        </th>
+        <th>
+            Values
+        </th>
+    </tr>
+    <tr>
+        <td>mfp.topology.platform</td>
+        <td>Liberty</td>
+    </tr>
+    <tr>
+        <td>mfp.topology.clustermode</td>
+        <td>Cluster</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.serverid</td>
+        <td>controller</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.host</td>
+        <td>The host name of the Liberty controller.</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.port</td>
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+
+{% highlight xml %}
+<httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
+{% endhighlight %}
+</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.user</td>
+        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+
+{% highlight xml %}
+<administrator-role> <user>MfpRESTUser</user> </administrator-role>
+{% endhighlight %}
+</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.pwd</td>
+        <td>The password of the Liberty controller administrator user.</td>
+    </tr>
+</table>
+
+Several administration components can be deployed to enable the controller to run separate administration components that manage different runtimes.
+
+When you deploy several administration components, you must specify on each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+
+The following global JNDI properties are required for the runtimes:
+
+<table>
+    <tr>
+        <th>
+            JNDI properties
+        </th>
+        <th>
+            Values
+        </th>
+    </tr>
+    <tr>
+        <td>mfp.topology.platform</td>
+        <td>Liberty</td>
+    </tr>
+    <tr>
+        <td>mfp.topology.clustermode</td>
+        <td>Cluster</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.serverid</td>
+        <td>A value that identifies uniquely the collective member. It must be different for each member in the collective. The value <code>controller</code> cannot be used as it is reserved for the collective controller.</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.host</td>
+        <td>The host name of the Liberty controller.</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.port</td>
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+
+{% highlight xml %}
+<httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
+{% endhighlight %}
+</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.user</td>
+        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+
+{% highlight xml %}
+<administrator-role> <user>MfpRESTUser</user> </administrator-role>
+{% endhighlight %}
+</td>
+    </tr>
+    <tr>
+        <td>mfp.admin.jmx.pwd</td>
+        <td>The password of the Liberty controller administrator user.</td>
+    </tr>
+</table>
+
+The following JNDI property is required for the runtime when several controllers (replicas) using the same administration components are used:
+
+| JNDI properties | Values | 
+|-----------------|--------|
+| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+
+When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
+
+### WebSphere Application Server Network Deployment topologies
+The administration components and the runtimes are deployed in servers or clusters of the WebSphere® Application Server Network Deployment cell.
+
+Examples of these topologies support either asymmetric or symmetric deployment, or both. You can, for example, deploy the administration components (MobileFirst Operations Console, the administration service, and the live update service) in one cluster and the runtimes managed by these components in another cluster.
+
+#### Symmetric deployment in the same server or cluster
+The diagram below shows symmetric deployment where the runtimes and the administration components are deployed in the same server or cluster.
+
+![A topology of WAS ND](was_nd_topology_1.jpg)
+
+The deployment of this topology has the following characteristics:
+
+* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * MobileFirst Operations Console communicates with one administration service and one live update service.
+* One or several runtimes can be deployed in the same server or cluster as the administration components that manage them.
+* One runtime is managed by only one MobileFirst Operations Console.
+* Each administration service uses its own administration database schema.
+* Each live update service uses its own live update database schema.
+* Each runtime uses its own runtime database schema.
+
+#### Asymmetric deployment with runtimes and administration services in different server or cluster
+The diagram below shows a topology where the runtimes are deployed in a different server or cluster from the administration services.
+
+![Topology for WAS ND](was_nd_topology_2.jpg)
+
+The deployment of this topology has the following characteristics:
+
+* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * MobileFirst Operations Console communicates with one administration service and one live update service.
+* One or several runtimes can be deployed in other servers or clusters of the cell.
+* One MobileFirst Operations Console manages several runtimes deployed in the other servers or clusters of the cell.
+* One runtime is managed by only one MobileFirst Operations Console.
+* Each administration service uses its own administration database schema.
+* Each live update service uses its own live update database schema.
+* Each runtime uses its own runtime database schema.
+
+This topology is advantageous, because it enables the runtimes to be isolated from the administration components and from other runtimes. It can be used to provide performance isolation, to isolate critical applications, and to enforce Service Level Agreement (SLA).
+
+#### Symmetric and asymmetric deployment
+The diagram below shows an example of symmetric deployment in Cluster1 and of asymmetric deployment in Cluster2, where Runtime2 and Runtime3 are deployed in a different cluster from the administration components. MobileFirst Operations Console manages the runtimes deployed in Cluster1 and Cluster2.
+
+![Topology for WAS ND](was_nd_topology_3.jpg)
+
+The deployment of this topology has the following characteristics:
+
+* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * MobileFirst Operations Console communicates with one administration service and one live update service.
+* One or several runtimes can be deployed in one or several servers or clusters of the cell.
+* One MobileFirst Operations Console can manage several runtimes deployed in the same or other servers or clusters of the cell.
+* One runtime is managed by only one MobileFirst Operations Console.
+* Each administration service uses its own administration database schema.
+* Each live update service uses its own live update database schema.
+* Each runtime uses its own runtime database schema.
+
+#### Configuration of JNDI properties
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime]().
+
+The following local JNDI properties are required for the administration services and for the runtimes:
+
+| JNDI properties |	Values |
+|-----------------|--------|
+| mfp.topology.platform	| WAS |
+| mfp.topology.clustermode | Cluster |
+| mfp.admin.jmx.connector |	The JMX connector type to connect with the deployment manager. The value can be SOAP or RMI. SOAP is the default and preferred value. You must use RMI if the SOAP port is disabled. |
+| mfp.admin.jmx.dmgr.host |	The host name of the deployment manager. |
+| mfp.admin.jmx.dmgr.port |	The RMI or the SOAP port used by the deployment manager, depending on the value of mfp.admin.jmx.connector. |
+
+Several administration components can be deployed to enable you to run the same server or cluster with separate administration components managing each of the different runtimes.
+
+When several administration components are deployed, you must specify:
+
+* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+* On each runtime, the same value for the local **mfp.admin.environmentid** as the value defined for the administration service that manages that runtime.
+
+If the virtual host that is mapped to an administration service application is not the default host, you must set the following properties on the administration service application:
+
+* **mfp.admin.jmx.user**: the user name of the WebSphere Application Server administrator
+* **mfp.admin.jmx.pwd**: the password of the WebSphere Application Server administrator
+
+### Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies
+You can use a reverse proxy with distributed topologies. If your topology uses a reverse proxy, configure the required JNDI properties for the administration service.
+
+You can use a reverse proxy, such as IBM® HTTP Server, to front server farm or WebSphere® Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
+
+You can call the reverse proxy from:
+
+* The browser when you access MobileFirst Operations Console.
+* The runtime when it calls the administration service.
+* The MobileFirst Operations Console component when it calls the administration service.
+
+If the reverse proxy is in a DMZ (a firewall configuration for securing local area networks) and a firewall is used between the DMZ and the internal network, this firewall must authorize all incoming requests from the application servers.
+
+When a reverse proxy is used in front of the application server infrastructure, the following JNDI properties must be defined for the administration service.
+
+| JNDI properties |	Values |
+|-----------------|--------|
+| mfp.admin.proxy.protocol | The protocol that is used to communicate with the reverse proxy. It can be HTTP or HTTPS. |
+| mfp.admin.proxy.host | The host name of the reverse proxy. |
+| mfp.admin.proxy.port | The port number of the reverse proxy. |
+
+The **mfp.admin.endpoint** property that references the URL of the reverse proxy is also required for MobileFirst Operations Console.
 
 ### Constraints on MobileFirst Server push service
 The push service can be on the same application server as the administration service or the runtime, or can be on a different application server. The URL used by the client apps to contact the push service is the same as the URL used by the client apps to contact the runtime, excepted that the context root of the runtime is replaced by imfpush. If you install the push service on a different server than the runtime, your HTTP server must direct the traffic to the /imfpush context root to a server where the push service runs.
