@@ -1,8 +1,7 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server From Command Line
-breadcrumb_title: Command Line
-weight: 2
+title: Installing MobileFirst Server From Command Line tutorial
+weight: 10
 ---
 ## Overview
 Use the command line mode of IBM® Installation Manager and Ant tasks to install MobileFirst Server.

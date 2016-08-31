@@ -3,8 +3,6 @@ layout: tutorial
 title: Setting Up the Development Environment
 breadcrumb_title: Development Environment
 show_children: true
-show_disqus: true
-print_pdf: true
 weight: 1
 ---
 ## Overview

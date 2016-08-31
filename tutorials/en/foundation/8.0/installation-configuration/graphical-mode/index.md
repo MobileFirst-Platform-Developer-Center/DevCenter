@@ -1,8 +1,7 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server in graphical mode
-breadcrumb_title: Graphical Mode
-weight: 1
+title: Installing MobileFirst Server in graphical mode tutorial
+weight: 9
 ---
 ## Overview
 Use the graphical mode of IBM® Installation Manager and the Server Configuration Tool to install MobileFirst Server.

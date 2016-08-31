@@ -3,8 +3,6 @@ layout: tutorial
 title: Installing MobileFirst Server for a Production Environment
 breadcrumb_title: Production Envrionment
 weight: 2
-show_disqus: true
-print_pdf: true
 ---
 ## Overview
 This section provides details to assist you in planning and preparing an installation for your specific environment.  
