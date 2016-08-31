@@ -74,7 +74,7 @@ You will see the following components in the assembly flow for the MobileFirst O
 * proxy
 * gatewayscript
 
-![Configuration Flow](configFlow.png)
+![Configuration Flow](assemble_tab.png)
 
 ### Configure the MobileFirst OAuthProvider template
 Using the API Designer, configure the imported API.  
@@ -106,7 +106,7 @@ In this example we create an API called **Branches** and a Product called **Bank
 From the API Connect Designer **APIs** tab:
 
 1. To create a REST API definition, click the <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> add button and then select **New OpenAPI from scratch**.
-2. Configure the following parameters and click on 'Add' button to create the API:
+2. Configure the following parameters and click on **Add** button to create the API:
 
 	**Title**: Branches      
     **Name**: branches  
@@ -118,16 +118,16 @@ From the API Connect Designer **APIs** tab:
 5. Go to **Paths** section and create a path by clicking the **Add Path** <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> icon.
 6. In the **Path** field enter **/details** (`GET` method is created by default).
 
-    ![New API](details-api-path.png)
+    ![New API](details_path.png)
 
 7. Go to the **Assemble** tab and click the **invoke** policy component that appears in the **Assemble** pane.
 
     ![Invoke](invoke.png)
 
 8. In the properties sheet pane, populate the **URL** field with the back-end resource URL to be protected with MobileFirst. The other values are optional. For this tutorial use `https://apim-services.mybluemix.net/banka/v1/branches`.
-    ![Invoke Configuration](invokeConfig.png)
+    ![Invoke Configuration](invoke_policy_api.png)
 
-9. Click the 'Save' button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> to save the API definition. 
+9. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> to save the API definition. 
 
 ### Protect the API using the MobileFirst OAuth Security Definition  
 Protect the API by defining a **Security Definition**.
@@ -138,10 +138,10 @@ Protect the API by defining a **Security Definition**.
 
 2. Set the values:
    * **Flow:** Choose **Implicit**.
-   * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`.
+   * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, which should be like `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`.
    * **Scopes:** `accessRestricted`.
 
-    ![Choose the Security Definition](mobilefirst-secdef.png)
+    ![Choose the Security Definition](mfp_sec_def_add.png)
 
 3. Go to the **Paths** section and choose the `/details` path.
 4. Click on the **GET** method and expand it.
