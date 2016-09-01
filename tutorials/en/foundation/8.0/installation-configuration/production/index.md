@@ -56,4 +56,4 @@ For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM
 * [Running IBM Installation Manager](installation-manager)
 * [Setting up databases](databases)
 * [Topologies and network flows](topologies)
-* Installing MobileFirst Server to an application server
+* [Installing MobileFirst Server to an application server](appserver)

@@ -33,7 +33,7 @@ The flows between the various MobileFirst Server components, IBM MobileFirst Ana
 9. [Mobile devices to MobileFirst runtime](#mobile-devices-to-mobilefirst-runtime)
 
 ### MobileFirst runtime to MobileFirst Server administration service
-The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from MobileFirst Operations Console or the administration service. On WebSphere® Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime]()). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
+The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from MobileFirst Operations Console or the administration service. On WebSphere® Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
 
 The protocols for JMX depend on the application server:
 
@@ -43,7 +43,7 @@ The protocols for JMX depend on the application server:
 
 For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites]().
 
-The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime]().
+The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime).
 
 To distinguish different installation of MobileFirst Server on the same application server or on the same WebSphere Application Server cell, you can use an environment ID, which is a JNDI variable. By default, this variable has an empty value. A runtime with a given environment ID communicates only with an administration service that has the same environment ID. For example, the administration service has an environment ID set to X, and the runtime has a different environment ID (for example, Y), then the two components do not see each other. The MobileFirst Operations Console shows no runtime available.
 
@@ -68,7 +68,7 @@ As described in [MobileFirst runtime to MobileFirst Server administration servic
 
 On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
 
-For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm].
+For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm]().
 
 ### MobileFirst Server administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
 On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service) and [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX]().
@@ -122,7 +122,7 @@ The JNDI properties of the administration service to configure this communicatio
 * **mfp.admin.authorization.client.id** - the client ID of the administration service, as an OAuth confidential client.
 * **mfp.admin.authorization.client.secret** - the secret code that is used to get the OAuth-based tokens.
 
-> Note: The mfp.push.authorization.client.id and mfp.push.authorization.client.secret properties of the administration service can be used to register the push service automatically as a confidential client when the administration service starts. The push service must be configured with the same values.
+> Note: The **mfp.push.authorization.client.id** and **mfp.push.authorization.client.secret** properties of the administration service can be used to register the push service automatically as a confidential client when the administration service starts. The push service must be configured with the same values.
 
 The JNDI properties of the push service to configure this communication are:
 
@@ -637,7 +637,7 @@ For more information about the JNDI properties that are needed to adapt the inst
 ## Multiple MobileFirst runtimes
 You can install multiple runtimes. Each runtime must have its own context root, and all of these runtimes are managed by the same MobileFirst Server administration service and MobileFirst Operations Console.
 
-The constraints as described in [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime]() applies. Each runtime (with its context root) must have its own database tables.
+The constraints as described in [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) applies. Each runtime (with its context root) must have its own database tables.
 
 ## Multiple instances of MobileFirst Server on the same server or WebSphere Application Server cell
 By defining a common environment ID, multiple instances of MobileFirst Server are possible to be installed on the same server.
