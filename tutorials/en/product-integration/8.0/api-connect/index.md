@@ -17,7 +17,7 @@ IBM MobileFirst Foundation integrates its security capabilities with IBM API Con
 1. Protect API Connect endpoints with the MobileFirst Server as the authorization server.  
 2. Proxy MobileFirst client non-resource requests and responses through DataPower to the MobileFirst Server that is located behind the DMZ.  
  
-![MobileFirst First OAuth Provider](cd_apic_mfpsecurityhld.png)
+![MobileFirst First OAuth Provider](mfpsecurityhld_diagram.jpg)
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 
