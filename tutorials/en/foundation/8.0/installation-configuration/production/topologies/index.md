@@ -22,15 +22,15 @@ The network flows between the components and the device can be illustrated by th
 
 The flows between the various MobileFirst Server components, IBM MobileFirst Analytics, the mobile devices, and the application server are explained in the following sections:
 
-* [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service)
-* [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers)
-* [MobileFirst Server administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
-* [MobileFirst Server push service and MobileFirst runtime to MobileFirst Analytics](#mobilefirst-server-push-service-and-mobilefirst-runtime-to-mobilefirst-analytics)
-* [MobileFirst Server administration service to MobileFirst Server live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
-* [MobileFirst Operations Console to MobileFirst Server administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
-* [MobileFirst Server administration service to MobileFirst Server push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
-* [MobileFirst Server push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
-* [Mobile devices to MobileFirst runtime](#mobile-devices-to-mobilefirst-runtime)
+1. [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service)
+2. [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers)
+3. [MobileFirst Server administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+4. [MobileFirst Server push service and MobileFirst runtime to MobileFirst Analytics](#mobilefirst-server-push-service-and-mobilefirst-runtime-to-mobilefirst-analytics)
+5. [MobileFirst Server administration service to MobileFirst Server live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
+6. [MobileFirst Operations Console to MobileFirst Server administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
+7. [MobileFirst Server administration service to MobileFirst Server push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
+8. [MobileFirst Server push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
+9. [Mobile devices to MobileFirst runtime](#mobile-devices-to-mobilefirst-runtime)
 
 ### MobileFirst runtime to MobileFirst Server administration service
 The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from MobileFirst Operations Console or the administration service. On WebSphere® Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime]()). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
@@ -97,7 +97,7 @@ The runtime sends data to MobileFirst Analytics through HTTP or HTTPS. The JNDI 
 ### MobileFirst Server administration service to MobileFirst Server live update service
 The administration service communicates with the live update service to store and retrieve configuration information about the MobileFirst artifacts. The communication is performed through HTTP or HTTPS.
 
-The URL to contact the live update service is automatically generated by the administration service. Both services must be on the same application server. The context root of the live update service must define in this way: `<adminContextRoot>config`. For example, if the context root of the administration service is **mfpadmin**, then the context root of the live update service must be **mfpadminconfig***. It is possible to override the default URL generation by defining the JNDI properties (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol**, and **mfp.admin.proxy.host**) in the administration service.
+The URL to contact the live update service is automatically generated by the administration service. Both services must be on the same application server. The context root of the live update service must define in this way: `<adminContextRoot>config`. For example, if the context root of the administration service is **mfpadmin**, then the context root of the live update service must be **mfpadminconfig**. It is possible to override the default URL generation by defining the JNDI properties (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol**, and **mfp.admin.proxy.host**) in the administration service.
 
 The JNDI properties to configure this communication between the two services are:
 
@@ -110,7 +110,7 @@ MobileFirst Operations Console is a web user interface and acts as the front end
 
 The JNDI properties to configure this communication are in [JNDI properties for the MobileFirst Operations Console]().
 
-> Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character (*) as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
+> Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character "\*" as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
 
 ### MobileFirst Server administration service to MobileFirst Server push service, and to the authorization server
 The administration service communicates with the push service to request various push operations. This communication is secured through the OAuth protocol. Both services need to be registered as confidential clients. An initial registration can be performed at installation time. In this process, both services need to contact an authorization server. This authorization server can be MobileFirst runtime.
@@ -642,4 +642,4 @@ The constraints as described in [Constraints on MobileFirst Server administratio
 ## Multiple instances of MobileFirst Server on the same server or WebSphere Application Server cell
 By defining a common environment ID, multiple instances of MobileFirst Server are possible to be installed on the same server.
 
-You can install multiple instances of MobileFirst Server administration service, MobileFirst Server live update service, and MobileFirst runtime on the same application server or WebSphere® Application Server cell. However, you must distinguish their installations with the JNDI variable: mfp.admin.environmentid, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for mfp.admin.environmentid are considered as part of the same installation.
+You can install multiple instances of MobileFirst Server administration service, MobileFirst Server live update service, and MobileFirst runtime on the same application server or WebSphere® Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.

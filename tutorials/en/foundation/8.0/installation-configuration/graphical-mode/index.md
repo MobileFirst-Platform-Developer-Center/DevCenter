@@ -15,7 +15,7 @@ Use the graphical mode of IBM® Installation Manager and the Server Configuratio
 
         **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst™ Platform Foundation eAssembly [on IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm).  
+        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly [on IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm).  
         
 * JDBC driver for your database:
     * For DB2, use the DB2 JDBC driver type 4.
@@ -25,10 +25,10 @@ Use the graphical mode of IBM® Installation Manager and the Server Configuratio
 * Java 7 or later.
 
 * Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Platform Foundation eAssembly on Passport Advantage:
+* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
 
 **MobileFirst Server installation repository**  
-IBM MobileFirst Platform Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
+IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
 
 **WebSphere Application Server Liberty profile**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
@@ -58,7 +58,7 @@ On other operating systems, you can still run the installation with Installation
 * [Testing the farm and see the changes in MobileFirst Operations Console](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ### Installing IBM Installation Manager
-You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Platform Foundation V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Foundation V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
 1. Extract the IBM Installation Manager archive that is downloaded. You can find the installer at [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 2. Install Installation Manager:
@@ -66,7 +66,7 @@ You must install Installation Manager V1.8.4 or later. The older versions of Ins
     * Run **userinst.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager.
 
 ### Installing WebSphere Application Server Liberty Core
-The installer for WebSphere Application Server Liberty Core is provided as part of the package for IBM MobileFirst Platform Foundation. In this task, Liberty profile is installed and a server instance is created so that you can install MobileFirst Server on it.
+The installer for WebSphere Application Server Liberty Core is provided as part of the package for IBM MobileFirst Foundation. In this task, Liberty profile is installed and a server instance is created so that you can install MobileFirst Server on it.
 
 1. Extract the compressed file for WebSphere Application Server Liberty Core that you downloaded.
 2. Launch Installation Manager.
@@ -108,7 +108,7 @@ Run Installation Manager to install the binary files of MobileFirst Server on yo
     * Go to **File → Preferences and click Add Repositories...**.
     * Browse for the repository file in the directory where the installer is extracted.
 
-        If you decompress the IBM MobileFirst Platform Foundation V8.0 .zip file for MobileFirst Server in **mfp_installer_directory** folder, the repository file can be found at **mfp_installer_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
+        If you decompress the IBM MobileFirst Foundation V8.0 .zip file for MobileFirst Server in **mfp_installer_directory** folder, the repository file can be found at **mfp_installer_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
 
         You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
     
@@ -122,7 +122,7 @@ Run Installation Manager to install the binary files of MobileFirst Server on yo
 6. Select **Do not activate token licensing with the Rational License Key Server ** option in the **Activate token licensing** section of the **General settings** panel.
 
     In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you have a contract to use token licensing with Rational® License Key Server, select Activate token licensing with the Rational License Key Server option. After you activate token licensing, you must do extra steps to configure MobileFirst Server.
-7. Keep the default option (No) as-is in the Install **IBM MobileFirst Platform Foundation for iOS** section of the **General settings** panel.
+7. Keep the default option (No) as-is in the Install **IBM MobileFirst Foundation for iOS** section of the **General settings** panel.
 8. Select No option in the **Choose configuration** panel so that Application Center is not installed. For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to MobileFirst Server from the updates to Application Center.
 9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
 

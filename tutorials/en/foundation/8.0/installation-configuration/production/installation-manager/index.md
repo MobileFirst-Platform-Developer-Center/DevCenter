@@ -7,7 +7,7 @@ show_disqus: true
 ## Overview
 IBM® Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
 
-You run Installation Manager to install the binary files of MobileFirst Server and the tools to deploy the MobileFirst Server applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of MobileFirst Server]().
+You run Installation Manager to install the binary files of MobileFirst Server and the tools to deploy the MobileFirst Server applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server).
 
 You need IBM Installation Manager V1.8.4 or later to run the MobileFirst Server installer. You can run it either in graphical mode or in command line mode.  
 Two main options are proposed during the installation process:
@@ -73,9 +73,9 @@ The decisions in the following two panes in the installation wizard are mandator
     * Go to **File → Preferences** and click **Add Repositories...**.
     * Browse for the repository file in the directory where the installer is extracted.
 
-        If you decompress the IBM MobileFirst Platform Foundation V8.0 .zip file for MobileFirst Server in **mfp_installer_directory** folder, the repository file can be found at **mfp_installer_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
+        If you decompress the IBM MobileFirst Foundation V8.0 .zip file for MobileFirst Server in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
-        You might also want to apply the latest fix pack that can be downloaded from the [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
+        You might also want to apply the latest fix pack that can be downloaded from the [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         **Note:** You cannot install the fix pack without the repository of the base version in the repositories of Installation Manager. The fix packs are incremental installers and need the repository of the base version to be installed.
     * Select the file and click **OK**.
@@ -83,7 +83,7 @@ The decisions in the following two panes in the installation wizard are mandator
 3. After you accept the license terms of the product, click **Next**.
 4. Choose the package group to install the product.
 
-    IBM MobileFirst Platform Foundation V8.0 is a replacement for the previous releases that have a different installation name:
+    IBM MobileFirst Foundation V8.0 is a replacement for the previous releases that have a different installation name:
     * Worklight for V5.0.6
     * IBM Worklight for V6.0 to V6.3
     
@@ -96,7 +96,7 @@ The decisions in the following two panes in the installation wizard are mandator
 6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
 
     If you have a contract to use token licensing with Rational® License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure MobileFirst Server. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
-7. Keep the default option (No) as-is in the **Install IBM MobileFirst Platform Foundation for iOS** section of the **General settings** panel.
+7. Keep the default option (No) as-is in the **Install IBM MobileFirst Foundation for iOS** section of the **General settings** panel.
 8. Decide whether to install Application Center in **Choose configuration** panel.
 
     For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to MobileFirst Server from the updates to Application Center. In this case, select No option in the Choose configuration panel so that Application Center is not installed.
@@ -120,10 +120,10 @@ You can also find some shortcuts for the Server Configuration Tool, Ant, and mfp
 1. Review the license agreement for MobileFirst Server. The license files can be viewed when you download the installation repository from Passport Advantage®.
 2. Extract the compressed file of MobileFirst Server repository, that you downloaded, to a folder.
 
-    You can download the repository from the IBM MobileFirst Platform Foundation eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Platform Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    You can download the repository from the IBM MobileFirst Foundation eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
-    In the steps that follow, the directory where you extract the installer is referred as **mfp_repository_dir**. It contains a **MobileFirst_Platform_Server/disk1** folder.
-3. Start a command line and go to **installation_manager_install_dir/tools/eclipse/**.
+    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
+3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
 
     If you accept the license agreement after the review in step 1, install MobileFirst Server.
     * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
@@ -146,7 +146,7 @@ You can also find some shortcuts for the Server Configuration Tool, Ant, and mfp
         
         This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
         
-        Set the value of the user.use.ios.edition property to false to install IBM MobileFirst Platform Foundation.
+        Set the value of the user.use.ios.edition property to false to install IBM MobileFirst Foundation.
         
 5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
 
@@ -648,7 +648,7 @@ The MobileFirst Server files and tools are installed in the MobileFirst Server i
 #### Files and subdirectories in the License subdirectory
 | Item | Description |
 |------|-------------|
-| **Text** | Contains the license for IBM MobileFirst Platform Foundation. | 
+| **Text** | Contains the license for IBM MobileFirst Foundation. | 
 
 #### Files and subdirectories in the MobileFirst Server installation directory
 | Item | Description |

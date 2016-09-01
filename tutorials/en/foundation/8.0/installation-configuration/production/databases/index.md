@@ -280,7 +280,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ## Create the database tables with the Server Configuration Tool
 The database tables for the MobileFirst Server applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install MobileFirst Server with the Server Configuration Tool.
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the MobileFirst Server components. For an overview of the installation process with the Server Configuration Tool, see [Installing MobileFirst Server in graphical mode](../../tutorials/graphical-mode).
+The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the MobileFirst Server components. For an overview of the installation process with the Server Configuration Tool, see [Installing MobileFirst Server in graphical mode](../../graphical-mode).
 
 After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
 
@@ -361,9 +361,9 @@ The database tables for the MobileFirst Server applications can be created manua
 
 You can find relevant information in this section about the setting up of the database if MobileFirst Server is installed with Ant Tasks.
 
-You can use Ant Tasks to set up the MobileFirst Server database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing MobileFirst Server in command line mode](../../tutorials/command-line).
+You can use Ant Tasks to set up the MobileFirst Server database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing MobileFirst Server in command line mode](../../command-line).
 
-A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp_install_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
+A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
 
 #### configure-<appserver>-<dbms>.xml
 The Ant files can do these tasks:
@@ -389,7 +389,7 @@ This command creates the tables in the specified database and schema for all Mob
 * On UNIX, it is in $HOME/.mobilefirst_platform_server/configuration-logs/ directory.
 
 ### Different users for the database tables creation and for run time
-The sample Ant files in **mfp_install_dir/MobileFirstServer/configurations-samples** use the same database user for:
+The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
 
 * All the MobileFirst Server applications (the administration service, the live update service, the push service, and the runtime)
 * The user that is used to create the database and the user at run time for the data source in the application server.
@@ -426,7 +426,7 @@ Use Ant tasks that are provided with MobileFirst Server installation to create t
 
 When you enter the Oracle user name in Ant file, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the **configureDatabase** Ant task considers it as another user. Unlike other tools for Oracle database, the **configureDatabase** Ant task protects the user name against automatic conversion to uppercase.
 
-The **configureDatabase** Ant task uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, the **oracle** element that is within the **configureDatabase** Ant task must use the attributes (**url**, **user**, and **password**) instead of these attributes (**database**, **server**, **port**, **user**, and **password**) attributes. For more information, see the table in [Ant **configuredatabase** task reference](). The sample Ant files in **mfp_install_dir/MobileFirstServer/configurations-samples** use the **database**, **server**, **port**, **user**, and **password** attributes in the **oracle** element. They must be modified if you need to connect to Oracle with a JDBC URL.
+The **configureDatabase** Ant task uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, the **oracle** element that is within the **configureDatabase** Ant task must use the attributes (**url**, **user**, and **password**) instead of these attributes (**database**, **server**, **port**, **user**, and **password**) attributes. For more information, see the table in [Ant **configuredatabase** task reference](). The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the **database**, **server**, **port**, **user**, and **password** attributes in the **oracle** element. They must be modified if you need to connect to Oracle with a JDBC URL.
 
 To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
 

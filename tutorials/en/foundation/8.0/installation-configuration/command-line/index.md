@@ -15,7 +15,7 @@ Use the command line mode of IBM® Installation Manager and Ant tasks to install
 
         > **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst™ Platform Foundation eAssembly on IBM Passport Advantage®.
+        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly on IBM Passport Advantage®.
 
 * JDBC driver for your database.
     * For DB2, use the DB2 JDBC driver type 4.
@@ -24,10 +24,10 @@ Use the command line mode of IBM® Installation Manager and Ant tasks to install
 * Java 7 or later.
 
 * Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Platform Foundation eAssembly on Passport Advantage:
+* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
 
 **MobileFirst Server installation repository**  
-IBM MobileFirst Platform Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
+IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
 
 **WebSphere Application Server Liberty profile**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
@@ -43,7 +43,7 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
 * [Testing the farm and see the changes in MobileFirst Operations Console](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ## Installing IBM Installation Manager
-You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Platform Foundation V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Foundation V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
 1. Extract the IBM Installation Manager archive file that is downloaded. You can find the installer at [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 2. Review the license agreement for IBM Installation Manager that is in unzip_IM_1.8.x/license directory.
@@ -52,7 +52,7 @@ You must install Installation Manager V1.8.4 or later. The older versions of Ins
     * Run **userinstc.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager. The executable ends with "c" (**userinstc**) for a command line installation without a graphical user interface. To install Installation Manager, enter **userinstc.exe -acceptLicence**.
     
 ## Installing WebSphere Application Server Liberty Core
-The installer for WebSphere Application Server Liberty Core is provided as part of the package for IBM MobileFirst Platform Foundation. In this task, Liberty profile is installed and a server instance is created so that you can install MobileFirst Server on it.
+The installer for WebSphere Application Server Liberty Core is provided as part of the package for IBM MobileFirst Foundation. In this task, Liberty profile is installed and a server instance is created so that you can install MobileFirst Server on it.
 
 1. Review the license agreement for WebSphere Application Server Liberty Core. The license files can be viewed when you download the installer from Passport Advantage.
 2. Extract the compressed file of WebSphere Application Server Liberty Core, that you downloaded, to a folder.
@@ -110,7 +110,7 @@ In this tutorial, you specify the properties as the parameters through the **imc
     * **user.database.preinstalled=false**
 
     This property indicates that token licensing is not activated: **user.licensed.by.tokens=false**.  
-    Set the value of the **user.use.ios.edition** property to false to install IBM MobileFirst Platform Foundation.
+    Set the value of the **user.use.ios.edition** property to false to install IBM MobileFirst Foundation.
 
 An installation directory that contains the resources to install MobileFirst components is installed.  
 You can find the resources in the following folders:
