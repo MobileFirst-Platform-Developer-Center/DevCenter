@@ -455,7 +455,7 @@ For example:
 ```
 
 #### Specify existing users
-By default, the installmobilefirstadmin Ant task creates users:
+By default, the **installmobilefirstadmin** Ant task creates users:
 
 * On WebSphere® Application Server Liberty to define a Liberty administrator for the JMX communication.
 * On any application server, to define a user that is used for the communication with the live update service.
@@ -539,3 +539,9 @@ The sample files such as **configure-wasnd-cluster-<dbms>.xml**, **configure-was
 
 #### Manual configuration of the RMI port on Apache Tomcat
 By default, the Ant tasks modify the **setenv.bat** file or the **setenv.sh** file to open the RMI port. If you prefer to open the RMI port manually, add the **tomcatSetEnvConfig** attribute with the value as false to the `<jmx>` element of the **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** tasks.
+
+## Installing the MobileFirst Server components manually
+You can also install the MobileFirst Server components to your application server manually.  
+The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
+
+
