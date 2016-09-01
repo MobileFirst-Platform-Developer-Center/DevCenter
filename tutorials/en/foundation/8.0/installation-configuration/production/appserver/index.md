@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Installing MobileFirst Server to an application server
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 ## Overview
@@ -544,4 +545,5 @@ By default, the Ant tasks modify the **setenv.bat** file or the **setenv.sh** fi
 You can also install the MobileFirst Server components to your application server manually.  
 The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
 
+### Manual installation on WebSphere Application Server Liberty
 
