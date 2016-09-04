@@ -13,6 +13,10 @@ Download and install the latest interim fix to obtain all of the fixes that are 
 
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
+### Licensing
+#### PVU licensing
+A new offering, IBM MobileFirst Platform Foundation Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for IBM MobileFirst Platform Foundation Extension, see [Licensing MobileFirst](../licensing).
+
 ### Web applications
 #### Registering web applications from the MobileFirst Platform CLI (APAR PI65327)
 You can now register client web applications to MobileFirst Server by using the IBM MobileFirst Platform Command Line Interface (CLI) (mfpdev) as an alternative to registration from the IBM MobileFirst Platform Operations Console. For more information, see Registering web applications from the MobileFirst Platform CLI.
