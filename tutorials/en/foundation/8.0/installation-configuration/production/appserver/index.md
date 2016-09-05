@@ -546,7 +546,7 @@ You can also install the MobileFirst Server components to your application serve
 The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
 
 * [Manual installation on WebSphere Application Server Liberty](#manual-installation-on-websphere-application-server-liberty)
-* [Manual installation on WebSphere® Application Server Liberty collective](#manual-installation-on-websphere-application-server-liberty-collective)
+* [Manual installation on WebSphere Application Server Liberty collective](#manual-installation-on-websphere-application-server-liberty-collective)
 * [Manual installation on Apache Tomcat](#manual-installation-on-apache-tomcat)
 * [Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment](#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment)
 
@@ -616,6 +616,7 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 > **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
 
 For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service]().  
+
 For a farm configuration, see also the following topics:
 
 * [Server farm topology](#server-farm-topology)
@@ -880,8 +881,348 @@ Copy the password decoder user feature to your Liberty profile. For example:
     </div>
 </div>
 
-### Manual installation on WebSphere® Application Server Liberty collective
+### Manual installation on WebSphere Application Server Liberty collective
+Make sure that you have also fulfilled the requirements as documented in [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites).
 
+* [Topology constraints](#topology-constraints-collective)
+* [Application server settings](#application-server-settings-collective)
+* [Liberty features required by the MobileFirst Server applications](#liberty-features-required-by-the-mobilefirst-server-applications-collective)
+* [Global JNDI entries](#global-jndi-entries-collective)
+* [Class loader](#class-loader-collective)
+* [Password decoder user feature](#password-decoder-user-feature-collective)
+* [Configuration details](#configuration-details-collective)
+
+<h4 id="topology-constraints-collective">Topology constraints</h4>
+The MobileFirst Server administration service, the MobileFirst Server live update service, and MobileFirst Operations Console must be installed in a Liberty collective controller. The MobileFirst runtime and the MobileFirst Server push service must be installed in every member of the Liberty collective cluster.
+
+The context root of the live update service must be defined as **<adminContextRoot>config**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime).
+
+<h4 id="application-server-settings-collective">Application server settings</h4>
+You must configure the **<webContainer>** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
+
+Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **<executor>** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
+
+```xml
+<executor id="default" name="LargeThreadPool"
+  coreThreads="200" maxThreads="400" keepAlive="60s"
+  stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
+```
+
+You might also configure the **<tcpOptions>** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
+
+<h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the MobileFirst Server applications</h4>
+
+You need to add the following features for Java™ EE 6 or Java EE 7.
+
+**MobileFirst Server administration service** 
+
+* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
+* **appSecurity-2.0**
+* **restConnector-1.0**
+* **usr:MFPDecoderFeature-1.0**
+
+**MobileFirst Server push service**  
+
+* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
+* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **ssl-1.0**
+* **usr:MFPDecoderFeature-1.0**
+
+**MobileFirst runtime**  
+
+* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
+* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **ssl-1.0**
+* **usr:MFPDecoderFeature-1.0**
+
+<h4 id="global-jndi-entries-collective">Global JNDI entries</h4>
+The following global JNDI entries are required to configure the JMX communication between the runtime and the administration service:
+
+* **mfp.admin.jmx.host**
+* **mfp.admin.jmx.port**
+* **mfp.admin.jmx.user**
+* **mfp.admin.jmx.pwd**
+* **mfp.topology.platform**
+* **mfp.topology.clustermode**
+* **mfp.admin.serverid**
+
+These global JNDI entries are set with this syntax and are not prefixed by a context root. For example: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
+
+> **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
+
+* For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service]().  
+* For more information about the JNDI properties for the runtime, see [List of JNDI properties for MobileFirst runtime]().
+
+<h4 id="class-loader-collective">Class loader</h4>
+For all applications, the class loader must have the parent last delegation. For example:
+
+```xml
+<application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
+  [...]
+  <classloader delegation="parentLast">
+  </classloader>
+</application>
+```
+
+<h4 id="password-decoder-user-features-collective">Password decoder user feature</h4>
+Copy the password decoder user feature to your Liberty profile. For example:
+
+* On UNIX and Linux systems:
+
+    ```bash
+    mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+    cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+    cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+    ```
+
+* On Windows systems:
+
+    ```bash
+    mkdir LIBERTY_HOME\wlp\usr\extension\lib
+    copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+    LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+    mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+    copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+    LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+    ```
+    
+<h4 id="configuration-details-collective">Configuration details</h4>
+<div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="admin-service-collective">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-admin-service-collective" aria-expanded="true" aria-controls="collapse-admin-service-collective"><b>MobileFirst Server administration service configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-admin-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-collective">
+            <div class="panel-body">
+                <p>The administration service is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller. 
+                <br/><br/>
+                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
+                <br/><br/>
+                The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
+                
+                <h3>Mandatory JNDI properties</h3>
+                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the administration service. The following example illustrates the case to declare <b>mfp.admin.push.url</b> whereby the administration service is installed with <b>/mfpadmin</b> as the context root:</p>
+{% highlight xml %}
+<jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
+{% endhighlight %}
+
+                <p>If the push service is installed, you must configure the following JNDI properties:</p>
+                <ul>
+                    <li><b>mfp.admin.push.url</b></li>
+                    <li><b>mfp.admin.authorization.server.url</b></li>
+                    <li><b>mfp.push.authorization.client.id</b></li>
+                    <li><b>mfp.push.authorization.client.secret</b></li>
+                    <li><b>mfp.admin.authorization.client.id</b></li>
+                    <li><b>mfp.admin.authorization.client.secret</b></li>
+                </ul>
+                <p>The JNDI properties for the communication with the configuration service are as follows:</p>
+                <ul>
+                    <li><b>mfp.config.service.user</b></li>
+                    <li><b>mfp.config.service.password</b></li>
+                </ul>
+                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                
+                <h3>Data source</h3>
+                <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=<contextRoot>/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
+                
+{% highlight xml %}
+<dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
+  [...] 
+</dataSource>
+{% endhighlight %}
+                
+                <h3>Security roles</h3>
+                <p>Declare the following roles in the <b><application-bnd></b> element of the application:</p>
+                <ul>
+                    <li>mfpadmin</li>
+                    <li>mfpdeployer</li>
+                    <li>mfpmonitor</li>
+                    <li>mfpoperator</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="live-update-service-collective">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-live-update-service-collective" aria-expanded="true" aria-controls="collapse-live-update-service-collective"><b>MobileFirst Server live update service configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
+            <div class="panel-body">
+                <p>The live update service is packaged as a WAR application for you to deploy to the liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberety collective controller.
+                <br/><br/>
+                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
+                <br/><br/>
+                The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/<adminContextRoot>config</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
+                
+                <h3>Data source</h3>
+                <p>The JNDI name of the data source for the live update service must be defined as <contextRoot>/jdbc/ConfigDS. The following example illustrates the case whereby the live update service is installed with the context root /mfpadminconfig, and that the service is using a relational database:</p>
+                
+{% highlight xml %}
+<dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
+  [...] 
+</dataSource>
+{% endhighlight %}
+
+                <h3>Security roles</h3>
+                <p>Declare the configadmin role in the <b><application-bnd></b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:
+                
+                <ul>
+                    <li><b>mfp.config.service.user</b></li>
+                    <li><b>mfp.config.service.password</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="console-configuration-collective">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-console-configuration-collective" aria-expanded="true" aria-controls="collapse-console-configuration-collective"><b>MobileFirst Operations Console configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
+            <div class="panel-body">
+                <p>The console is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller.
+                <br/><br/>Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.
+                <br/><br/>
+                The console WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. You can define the context root as you want. However, usually it is <b>/mfpconsole</b>.</p>
+                
+                <h3>Mandatory JNDI properties</h3>
+                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the console. The following example illustrates the case to declare <b>mfp.admin.endpoint</b> whereby the console is installed with <b>/mfpconsole</b> as the context root:</p>
+                
+{% highlight xml %}
+<jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
+{% endhighlight %}
+
+                <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/<adminContextRoot></b>.<br/>
+                For more information about the JNDI properties, see <a href="">JNDI properties for MobileFirst Operations Console</a>.</p>
+                
+                <h3>Security roles</h3>
+                <p>Declare the following roles in the <b><application-bnd></b> element of the application:</p>
+                <ul>
+                    <li><b>mfpadmin</b></li>
+                    <li><b>mfpdeployer</b></li>
+                    <li><b>mfpmonitor</b></li>
+                    <li><b>mfpoperator</b></li>
+                </ul>
+                Any user that is mapped to a security role of the console must also be mapped to the same security role of the administration service.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="runtime-configuration-collective">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-runtime-configuration-collective" aria-expanded="true" aria-controls="collapse-runtime-configuration-collective"><b>MobileFirst runtime configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
+            <div class="panel-body">
+                <p>The runtime is packaged as a WAR application for you to deploy to the Liberty collective cluster members. You need to make some specific configurations for this application in the <b>server.xml</b> file of every Liberty collective cluster member.
+                <br/><br/>
+                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
+                <br/><br/>
+                The runtime WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. You can define the context root as you want. However, it is <b>/mfp</b> by default.</p>
+                
+                <h3>Mandatory JNDI properties</h3>
+                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the runtime. The following example illustrates the case to declare <b>mfp.analytics.url</b> whereby the runtime is installed with <b>/mobilefirst</b> as the context root:</p>
+                
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
+{% endhighlight %}
+
+                <p>You must define the <b>mobilefirst/mfp.authorization.server</b> property. For example:</p>
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
+{% endhighlight %}
+
+                <p>If MobileFirst Analytics is installed, you need to define the following JNDI properties:</p>
+                <ul>   
+                    <li><b>mfp.analytics.url</b></li>
+                    <li><b>mfp.analytics.console.url</b></li>
+                    <li><b>mfp.analytics.username</b></li>
+                    <li><b>mfp.analytics.password</b></li>
+                </ul>
+                
+                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst runtime</a>.</p>
+                
+                <h3>Data source</h3>
+                <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=<contextRoot>/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
+
+{% highlight xml %}
+<dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
+  [...] 
+</dataSource>
+{% endhighlight %}
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="push-configuration">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>MobileFirst Server push service configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
+            <div class="panel-body">
+                <p>The push service is packaged as a WAR application for you to deploy to a Liberty collective cluster member or to a Liberty server. If you install the push service in a Liberty server, see <a href="#configuration-details">MobileFirst Server push service configuration details</a> under <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a>.
+                <br/><br/>
+                When the MobileFirst Server push service is installed in a Liberty collective, it can be installed in the same cluster than the runtime or in another cluster.
+                <br/><br/>
+                You need to make some specific configurations for this application in the <b>server.xml</b> file of every Liberty collective cluster member. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective </a> for the configuration details that are common to all services.    
+                <br/><br/>
+                The push service WAR file is in <b>mfp_install_dir/PushService/mfp-push-service.war</b>. You must define the context root as <b>/imfpush</b>. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.</p>
+                
+                <h3>Mandatory JNDI properties</h3>
+                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the push service. The following example illustrates the case to declare <b>mfp.push.analytics.user</b> whereby the push service is installed with <b>/imfpush</b> as the context root:</p>
+                
+{% highlight xml %}
+<jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
+{% endhighlight %}
+                
+                You need to define the following properties:
+                <ul>
+                    <li><b>mfp.push.authorization.server.url</b></li>
+                    <li><b>mfp.push.authorization.client.id</b></li>
+                    <li><b>mfp.push.authorization.client.secret</b></li>
+                    <li><b>mfp.push.services.ext.security</b> - the value must be <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
+                    <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
+                </ul>
+                
+                If MobileFirst Analytics is configured, define the following JNDI properties:
+                <ul>
+                    <li><b>mfp.push.analytics.endpoint</b></li>
+                    <li><b>mfp.analytics.username</b></li>
+                    <li><b>mfp.analytics.password</b></li>
+                    <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
+                </ul>
+                For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server push service</a>.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="artifacts-configuration-collective">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-artifacts-configuration-collective" aria-expanded="true" aria-controls="collapse-artifacts-configuration-collective"><b>MobileFirst Server artifacts configuration details</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-artifacts-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-collective">
+            <div class="panel-body">
+                <p>The artifacts component is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                
+                <p>The WAR file for this component is in <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. You must define the context root as <b>/mfp-dev-artifacts</b>.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 ### Manual installation on Apache Tomcat
 ### Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment
