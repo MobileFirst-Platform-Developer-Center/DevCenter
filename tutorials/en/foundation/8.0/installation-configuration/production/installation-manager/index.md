@@ -2,7 +2,6 @@
 layout: tutorial
 title: Running the IBM Installation Manager
 weight: 1
-show_disqus: true
 ---
 ## Overview
 IBM® Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
@@ -16,7 +15,7 @@ Two main options are proposed during the installation process:
 * Installation and deployment of IBM MobileFirst Platform Application Center
 
 ### Token licensing
-Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational® License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing]().
+Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational® License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing](token-licensing).
 
 ### IBM MobileFirst Platform Application Center
 Application Center is a component of IBM MobileFirst Foundation. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
