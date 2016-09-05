@@ -68,7 +68,7 @@ As described in [MobileFirst runtime to MobileFirst Server administration servic
 
 On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
 
-For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm]().
+For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
 
 ### MobileFirst Server administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
 On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service) and [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX]().
