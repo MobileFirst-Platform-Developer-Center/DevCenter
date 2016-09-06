@@ -466,7 +466,58 @@ The following table lists the MobileFirst properties that are always available a
 
 ### List of JNDI properties for MobileFirst Server push service
 
-
+| Property | Optional or mandatory | Description | 
+|----------|-----------------------|-------------|
+| mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB | 
+| mfp.push.db.queue.connections | Optional | Number of threads in the thread pool that does the database operation. Default: 3 | 
+| mfp.push.db.cloudant.url | Optional | The Cloudant® account URL. When this property is defined, the Cloudant DB will be directed to this URL. | 
+| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp_push_db | 
+| mfp.push.db.cloudant.username | Optional | The user name of the Cloudant account, used to store the database. when this property is not defined, a relational database is used. | 
+| mfp.push.db.cloudant.password | Optional | The password of the Cloudant account, used to store the database. This property must be set when mfp.db.cloudant.username is set. |
+| mfp.push.db.cloudant.doc.version | Optional | The Cloudant document version. | 
+| mfp.push.db.cloudant.socketTimeout | Optional	| A timeout for detecting the loss of a network connection for Cloudant, in milliseconds. A value of zero means an infinite timeout. A negative value means the default (no override). Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout | Optional	| A timeout for establishing a network connection for Cloudant, in milliseconds. A value of zero means an infinite timeout. A negative value means the default (no override). Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.maxConnections | Optional | The Cloudant connector's max connections. Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). | 
+| mfp.push.db.cloudant.ssl.authentication | Optional | A Boolean value (true or false) that specifies whether the SSL certificate chain validation and host name verification are enabled for HTTPS connections to the Cloudant database. Default: True | 
+| mfp.push.db.cloudant.ssl.configuration | Optional	| (WAS Full Profile only) For HTTPS connections to the Cloudant database: The name of an SSL configuration in the WebSphere® Application Server configuration, to use when no configuration is specified for the host and port. |
+| mfp.push.db.cloudant.proxyHost | Optional	| Cloudant connector's proxy host. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort | Optional	| Cloudant connector's proxy port. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security | Optional	| The security extension plugin. |
+| mfp.push.security.endpoint | Optional	| The endpoint URL for the authorization server. |
+| mfp.push.security.user | Optional	| The username to access the authorization server. | 
+| mfp.push.security.password | Optional	| The password to access the authorization server. |
+| mfp.push.services.ext.analytics | Optional | The analytics extension plugin. | 
+| mfp.push.analytics.endpoint | Optional | The endpoint URL for the analytics server. |
+| mfp.push.analytics.user | Optional | The username to access the analytics server. | 
+| mfp.push.analytics.password | Optional | The password to access the analytics server. |
+| mfp.push.analytics.events.appCreate | Optional | The analytic event when the application is created. Default: true | 
+| mfp.push.analytics.events.appDelete | Optional | The analytic event when the application is deleted. Default: true | 
+| mfp.push.analytics.events.deviceRegister | Optional | The analytic event when the device is registered. Default: true | 
+| mfp.push.analytics.events.deviceUnregister | Optional	| The analytic event when the device is unregistered. Default: true |
+| mfp.push.analytics.events.tagSubscribe | Optional | The analytic event when the device is subscribed to tag. Default: true | 
+| mfp.push.analytics.events.tagUnsubscribe | Optional | The analytic event when the device is unsubscribed from tag. Default: true | 
+| mfp.push.analytics.events.notificationSendSuccess | Optional | The analytic event when the notification is sent successfully. Default: true | 
+| mfp.push.analytics.events.notificationSendFailure | Optional | The analytic event when the notification is failed to send. Default: false | 
+| mfp.push.analytics.events.inactiveDevicePurge | Optional | The analytic event when the inactive devices are deleted. Default: true | 
+| mfp.push.analytics.events.msgReqAccepted | Optional | The analytic event when the notification is accepted for delivery. Default: true | 
+| mfp.push.analytics.events.msgDispatchFailed | Optional | The analytic event when the notification dispatch failed. Default: true | 
+| mfp.push.analytics.events.notificationDispatch | Optional	| The analytic event when the notification is about to be dispatched. Default: true | 
+| mfp.push.internalQueue.maxLength | Optional | The length of the queue which holds the notification tasks before dispatch. Default: 200000 | 
+| mfp.push.gcm.proxy.enabled | Optional	| Shows whether Google GCM must be accessed through a proxy. Default: false | 
+| mfp.push.gcm.proxy.protocol | Optional | Can be either http or https. |
+| mfp.push.gcm.proxy.host | Optional | GCM proxy host. Negative value means default port. | 
+| mfp.push.gcm.proxy.port | Optional | GCM proxy port. Default: -1 | 
+| mfp.push.gcm.proxy.user | Optional | Proxy user name, if the proxy requires authentication. Empty user name means no authentication. | 
+| mfp.push.gcm.proxy.password | Optional | Proxy password, if the proxy requires authentication. |
+| mfp.push.gcm.connections | Optional | Push GCM max connections. Default : 10 | 
+| mfp.push.apns.proxy.enabled | Optional | Shows whether APNs must be accessed through a proxy. Default: false | 
+| mfp.push.apns.proxy.type | Optional | APNs proxy type. | 
+| mfp.push.apns.proxy.host | Optional | APNs proxy host. | 
+| mfp.push.apns.proxy.port | Optional | APNs proxy port. Default: -1 | 
+| mfp.push.apns.proxy.user | Optional | Proxy user name, if the proxy requires authentication. Empty user name means no authentication. | 
+| mfp.push.apns.proxy.password | Optional | Proxy password, if the proxy requires authentication. | 
+| mfp.push.apns.connections | Optional | Push APNs max connections. Default : 3 | 
+| mfp.push.apns.connectionIdleTimeout | Optional | APNs Idle Connection Timeout. Default : 0 | 
 
 ## Configuring data sources
 Find out some data source configuration details pertaining to the supported databases.
