@@ -434,8 +434,39 @@ When you configure the MobileFirst Server live update service for your applicati
 To know how to set those properties, see [Setting up JNDI properties for MobileFirst Server web applications](#setting-up-jndi-properties-for-mobilefirst-server-web-applications).
 
 ### List of JNDI properties for MobileFirst runtime
+When you configure the MobileFirst Server runtime for your application server, you need to set the optional or mandatory JNDI properties.  
+The following table lists the MobileFirst properties that are always available as JNDI entries:
+
+| Property | Description | 
+|----------|-------------|
+| mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere® Application Server Network Deployment only. | 
+| mfp.admin.jmx.dmgr.port | Mandatory. The RMI or SOAP port of the deployment manager. WebSphere Application Server Network Deployment only. | 
+| mfp.admin.jmx.host | Liberty only. The host name for the JMX REST connection. For Liberty collective, use the host name of the controller. | 
+| mfp.admin.jmx.port | Liberty only. The port number for the JMX REST connection. For Liberty collective, the port of the REST connector must be identical to the value of the httpsPort attribute that is declared in the `<httpEndpoint>` element. This element is declared in the server.xml file of the Liberty controller. | 
+| mfp.admin.jmx.user | Optional. WebSphere Application Server farm: the user name of the SOAP connection.<br/><br/>Liberty collective: the user name of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. | 
+| mfp.admin.jmx.pwd | Optional. WebSphere Application Server farm: the user passsword of the SOAP connection.<br/><br/>Liberty collective: the password of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. | 
+| mfp.admin.serverid | Mandatory for server farms and Liberty collective, optional otherwise.<br/><br/>Server farm: the server identifier. Must be different for each server in the farm.<br/><br/>Liberty collective: the member identifier. The identifier must be different for each member in the collective. The value controller cannot be used as it is reserved for the collective controller. | 
+| mfp.topology.platform | Optional. The server type. Valid values are:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>If you do not set the value, the application tries to guess the server type. | 
+| mfp.topology.clustermode | Optional. In addition to the server type, specify here the server topology. Valid values:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>The default value is Standalone. | 
+| mfp.admin.jmx.replica | Optional. For Liberty collective only.<br/><br/>Set this property only when the administration components that manage this runtime are deployed in different Liberty controllers (replicas).<br/><br/>Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.analytics.console.url | Optional. The URL that is exposed by IBM MobileFirst™ Analytics that links to the Analytics console. Set this property if you want to access the Analytics console from the MobileFirst Operations Console. For example, `http://<hostname>:<port>/analytics/console` | 
+| mfp.analytics.password | The password that is used if the data entry point for the IBM MobileFirst Analytics is protected with basic authentication. | 
+| mfp.analytics.url | The URL that is exposed by the IBM MobileFirst Analytics that receives incoming analytics data. For example, `http://<hostname>:<port>/analytics-service/rest` |
+| mfp.analytics.username | The user name that is used if the data entry point for the IBM MobileFirst Analytics is protected with basic authentication.| 
+| mfp.device.decommissionProcessingInterval | Defines how often (in seconds) the decommissioning task is executed. Default: 86400, which is one day. | 
+| mfp.device.decommission.when | The number of days of inactivity after which a client device is decommissioned by the device decommissioning task. Default: 90 days. | 
+| mfp.device.archiveDecommissioned.when | The number of days of inactivity, after which a client device that has been decommissioned is archived.<br/><br/>This task writes the client devices that were decommissioned to an archive file. The archived client devices are written to a file in the MobileFirst Server **home\devices_archive** directory. The name of the file contains the time stamp when the archive file is created. Default: 90 days. |
+| mfp.licenseTracking.enabled | A value that is used to enable or disable device tracking in IBM MobileFirst Platform Foundation.<br/><br/>For performance reasons, you can disable device tracking when IBM MobileFirst Platform Foundation runs only Business-to-Consumer (B2C) apps. When device tracking is disabled, the license reports are also disabled and no license metrics are generated.<br/><br/>Possible values are true (default) and false. | 
+| mfp.runtime.temp.folder | Defines the runtime temporary files folder. Uses the default temporary folder location of the web container when not set. | 
+| mfp.adapter.invocation.url | The URL to be used for invoking adapter procedures from inside Java™ adapters, or JavaScript adapters that are invoked using the rest endpoint. If this property is not set, the URL of the currently executing request will be used (this is the default behavior). This value should contain the full URL, including the context root. | 
+| mfp.authorization.server | Authorization-server mode. Can be one of the following mode:<ul><li>embedded: Use the MobileFirst authorization server.</li><li>external: Use an external authorization server</li></ul>. When setting this value, you must also set the **mfp.external.authorization.server.secret** and **mfp.external.authorization.server.introspection.url** properties for your external server. | 
+| mfp.external.authorization.server.secret | Secret of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to external and is ignored otherwise. |
+| mfp.external.authorization.server.introspection.url | URL of the introspection endpoint of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to **external** and is ignored otherwise. | 
+| ssl.websphere.config | Used to configure the keystore for an HTTP adapter. When set to false (default), instructs the MobileFirst runtime to use the MobileFirst keystore. When set to true, instructs the MobileFirst runtime to use the WebSphere SSL configuration. For more information, see [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters). | 
 
 ### List of JNDI properties for MobileFirst Server push service
+
+
 
 ## Configuring data sources
 Find out some data source configuration details pertaining to the supported databases.
