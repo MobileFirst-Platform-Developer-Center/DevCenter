@@ -212,7 +212,70 @@ You must configure a shared library for the Rational® Common Licensing librarie
 * Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM® Rational License Key Center, see [IBM® Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
 * MobileFirst Server must be installed and configured with the option Activate token licensing with the Rational License Key Server on your Apache Tomcat as indicated in [Installation overview for token licensing](installation-overview-for-token-licensing).
 
+### Installing Rational Common Licensing library on a stand-alone server
 
+1. Define a shared library for the Rational Common Licensing library. This library uses native code and can be loaded only once by a class loader during the application server lifecycle. For this reason, the library is declared as a shared library and associated to all the application servers that run the MobileFirst Server administration service. For more information about the reasons to declare this library as a shared library, see [Configuring native libraries in shared libraries](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tcws_sharedlib_nativelib.html?view=kc).
+    * Choose the Rational Common Licensing native library. Depending on your operating system and the bit version of the Java™ Runtime Environment (JRE) on which your WebSphere Application Server is running, you must choose the correct native library in **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**.
+    
+        For example, for Linux x86 with a 64-bits JRE, the library can be found in **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
+    
+        To determine the bit version of the Java Runtime Environment for a stand-alone WebSphere Application Server or WebSphere Application Server Network Deployment installation, run **versionInfo.bat** on Windows or **versionInfo.sh** on UNIX from the **bin** directory. The **versionInfo.sh** file is in **/opt/IBM/WebSphere/AppServer/bin**. Look at the Architecture value in the **Installed Product** section. The Java Runtime Environment is 64-bit if the Architecture value mentions it explicitly or if it is suffixed with 64 or _64.
+    * Place the native library that corresponds to your platform in a folder of your operating system. For example, **/opt/IBM/RCL_Native_Library/**.
+    * Copy the **rcl_ibmratl.jar** file to **/opt/IBM/RCL_Native_Library/**. The **rcl_ibmratl.jar** file is a Rational Common Licensing Java library that can be found in **product_install_dir/MobileFirstServer/tokenLibs directory**.
+    
+        > **Important:** The Java virtual machine (JVM) of the application server needs read and execute privileges on the copied native and Java libraries. Both copied files must also be readable and executable at least for the application server process in your operating system.    
+    * Declare a shared library in WebSphere Application Server administrative console.
+        * Log in to WebSphere Application Server administrative console.
+        * Expand **Environment → Shared Libraries**.
+        * Select a scope that is visible by all servers that run the MobileFirst Server administration service. For example, a cluster.
+        * Click **New**.
+        * Enter a name for the library in the Name field. For example, "RCL Shared Library".
+        * In the Classpath field, enter the path to the **rcl_ibmratl.jar** file. For example, **/opt/IBM/RCL_Native_Library/rcl_ibmratl.jar**.
+        * Click **OK** and save the changes. This setting takes effect when the server is restarted.
+    
+        > **Note:** The native library path for this library is set in step 3 in the **ld.library.path** property of the server's Java virtual machine.
+    * Associate the shared library with all servers that run the MobileFirst Server administration service.
+    
+        Associating the shared library to a server allows the shared library to be used by several applications. If you need the Rational Common Licensing client only for the MobileFirst Server administration service, you can create a shared library with an isolated class loader and associate it with the administration service application.
+
+        The following instruction is to associate the library with a server. For WebSphere Application Server Network Deployment, you must complete this instruction for all the servers that run the MobileFirst Server administration service.    
+        * Set the class loader policy and mode.    
+            1. In WebSphere Application Server administrative console, click **Servers → Server Types → WebSphere application servers → server_name** to access the application server setting page.
+            2. Set the values for the application class-loader policy and class loading mode of the server:
+                * **Classloader policy**: Multiple
+                * **Class loading mode**: Classes loaded with parent class loader first
+            3. In the **Server Infrastructure** section, click **Java and Process Management → Class loader**.
+            4. Click **New** and ensure that class loader order is set to **Classes loaded with parent class loader first**.
+            5. Click **Apply** to create a new class loader ID.                
+        * Create a library reference for each shared library file that your application needs.
+            1. Click the name of the class loader that is created in the previous step.
+            2. In the **Additional properties** section, click **Shared library references**.
+            3. Click **Add**.
+            4. At the Library reference settings page, select the appropriate library reference. The name identifies the shared library file that your application uses. For example, RCL Shared Library.
+            5. Click **Apply** and then save the changes.
+2. Configure the environment entries for the MobileFirst Server administration service web application.
+    * In WebSphere Application Server administrative console, click **Applications → Application Types → WebSphere enterprise applications** and select the administration service application: **MobileFirst_Administration_Service**.
+    * In the **Web Module Properties** section, click **Environment entries for web modules**.
+    * Enter the values for **mfp.admin.license.key.server.host** and **mfp.admin.license.key.server.port**.
+        * **mfp.admin.license.key.server.host** is the host name of the Rational License Key Server.
+        * **mfp.admin.license.key.server.port** is the port of the Rational License Key Server. By default, the value is 27000.
+    * Click **OK** and save the changes.
+3. Configure the access to the Rational Common Licensing library by the application server JVM.
+    * In WebSphere Application Server administrative console, click **Servers → Server Types → WebSphere Application Servers** and select your server.
+    * In **Server Infrastructure** section, click **Java and Process Management → Process Definition → Java Virtual Machine → Custom Properties → New** to add a custom property.
+    * In the **Name** field, type the name of the custom property as **java.library.path**.
+    * In the **Value** field, enter the path of the folder where you place the native library file in Step 1b. For example, **/opt/IBM/RCL_Native_Library/**.
+    * Click **OK** and save the changes.
+4. Restart your application server.
+
+### Installing Rational Common Licensing library on WebSphere Application Server Network Deployment
+For installing the native library on a WebSphere Application Server Network Deployment, you must follow all the steps that are described in [Installing Rational Common Licensing library on a stand-alone server](#installing-rational-common-licensing-library-on-a-stand-alone-server) above. The servers or clusters that you configure must be restarted in order for the changes to take effect.
+
+Each node of your WebSphere Application Server Network Deployment must have a copy of the Rational Common Licensing native library.
+
+Each server where the MobileFirst Server administration service runs must be configured to have access to the native library copied on your local computer. These servers must also be configured to connect to Rational License Key Server.
+
+> **Important:** If you use a cluster with WebSphere Application Server Network Deployment, your cluster can change. You must configure each newly added server in your cluster, where the administration services are running.
 
 ## Limitations of supported platforms for token licensing
 The list of operating system, its version, and the hardware architecture that supports MobileFirst Server with token licensing enabled.
