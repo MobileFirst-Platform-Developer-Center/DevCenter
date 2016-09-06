@@ -2,7 +2,6 @@
 layout: tutorial
 title: Setting Up Databases
 weight: 2
-show_disqus: true
 ---
 ## Overview
 The following MobileFirst Server components need to store technical data into a database:

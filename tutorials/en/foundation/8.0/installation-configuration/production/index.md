@@ -8,7 +8,12 @@ weight: 2
 This section provides details to assist you in planning and preparing an installation for your specific environment.  
 For more information about the configuration of the MobileFirst Server, see [Configuring MobileFirst Server](configuring-mobilefirst-server).
 
-### Prerequisites
+#### Jump to
+
+* [Prerequisites](#prerequisites)
+* [Next topics](#next-topics)
+
+## Prerequisites
 For smooth installation of MobileFirst Server, ensure that you fulfill all the software prerequisites.
 
 **Database Management System (DBMS)**  
@@ -51,7 +56,7 @@ The IBM MobileFirst Foundation eAssembly includes the following installers:
 
 For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
 
-### Jump to
+## Next topics
 
 * [Running IBM Installation Manager](installation-manager)
 * [Setting up databases](databases)

@@ -56,7 +56,7 @@ If you need to test a non-production application on a production server with tok
 ## Installation overview for token licensing
 If you intend to use token licensing with IBM MobileFirst Foundation, make sure that you go through the following preliminary steps in this order.
 
-> **Important:** Your choice about token licensing (activating it or not) as part of an installation that supports token licensing cannot be modified. If later you need to change the token licensing option, you must uninstall IBM MobileFirst Platform Foundation and reinstall it.
+> **Important:** Your choice about token licensing (activating it or not) as part of an installation that supports token licensing cannot be modified. If later you need to change the token licensing option, you must uninstall IBM MobileFirst Foundation and reinstall it.
 
 1. Activate token licensing when you run IBM® Installation Manager to install IBM MobileFirst Foundation.
 
