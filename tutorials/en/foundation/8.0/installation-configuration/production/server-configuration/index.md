@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring MobileFirst Server
-weight: 6
+weight: 5
 ---
 ## Overview
 Consider your backup and recovery policy, optimize your MobileFirst Server configuration, and apply access restrictions and security options.
