@@ -107,11 +107,6 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Not in v8.0.</td>
     </tr>
     <tr><td>
-        Security: Simple data sharing. The WLSimpleDataSharing API is not included in v8.0. Therefore, using simple data sharing to configure device single sign-on with a reverse proxy (for example to exchange LTPA tokens between applications) is also not supported in v8.0.	</td>
-    <td>
-        Not in v8.0.</td>
-    </tr>
-    <tr><td>
         Security: Integration with IBM Trusteer®. v8.0 does not include any predefined security check or challenge to test IBM Trusteer risk factors.	</td>
     <td>
         Not in v8.0. Use IBM Trusteer Mobile SDK.</td>
