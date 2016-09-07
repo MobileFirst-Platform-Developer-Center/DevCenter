@@ -64,7 +64,7 @@ Javascript Function | Description
 --- | ---
 [`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance.
 [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications.
-[`MFPPush.registerDevice(success, failure)`](#register-device) | Registers the device with the Push Notifications Service.
+[`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service.
 [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance.
 [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag.
 [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to
