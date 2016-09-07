@@ -15,9 +15,9 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../)
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment)
-    * [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
+	* [Push Notifications Overview](../../)
+    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment)
+    * [Adding the MobileFirst Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
@@ -30,7 +30,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.  
-If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
+If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/ios) tutorial.
 
 
 ### Adding the Push SDK
@@ -80,7 +80,7 @@ Alternatively you can call `MFPPush.sharedInstance().methodName()` for each inst
 ### Challenge Handlers
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
 
-> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/ios) tutorial.
+> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
 
 ### Client-side
 
