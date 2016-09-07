@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Cordova
-breadcrumb_title: Handling Notifications in Cordova
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
@@ -16,9 +16,9 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
-    * [Push Notifications Overview](../)
+    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/)
+    * [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/cordova)
+    * [Push Notifications Overview](../../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation
@@ -32,7 +32,7 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 ## Notifications Configuration
 Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
 
-> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
+> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 
@@ -107,7 +107,7 @@ MFPPush.isPushSupported (
 ```
 
 #### Register device
-Register the device to the push notifications service.
+Register the device to the push notifications service. If no options are required, options can be set to `null`.
 
 
 ```javascript
@@ -122,8 +122,6 @@ MFPPush.registerDevice(
     }
 );
 ```
-
-> **Note:** Due to a defect, the `options` object for **Cordova-based Android** apps must currently contain an empty value as follows: `"phoneNumber":""`. Read more about the the `available options in the user documentation.
 
 #### Get tags
 Retrieve all the available tags from the push notification service.
