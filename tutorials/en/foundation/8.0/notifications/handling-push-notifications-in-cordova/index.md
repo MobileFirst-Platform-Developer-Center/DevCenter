@@ -123,8 +123,6 @@ MFPPush.registerDevice(
 );
 ```
 
-> **Note:** Due to a defect, the `options` object for **Cordova-based Android** apps must currently contain an empty value as follows: `"phoneNumber":""`. Read more about the the `available options in the user documentation.
-
 #### Get tags
 Retrieve all the available tags from the push notification service.
 
