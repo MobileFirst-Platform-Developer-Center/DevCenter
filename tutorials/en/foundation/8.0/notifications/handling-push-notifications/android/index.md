@@ -116,7 +116,7 @@ Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance 
 ### Challenge Handlers
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
 
-> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/android) tutorial.
+> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
 
 ### Client-side
 
