@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Android
-breadcrumb_title: Handling Notifications in Android
+breadcrumb_title: Android
 relevantTo: [android]
 downloads:
   - name: Download Android Studio project

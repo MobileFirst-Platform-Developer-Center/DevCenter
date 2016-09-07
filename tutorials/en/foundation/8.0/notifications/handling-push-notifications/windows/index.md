@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP
-breadcrumb_title: Handling Notifications in Windows
+breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:

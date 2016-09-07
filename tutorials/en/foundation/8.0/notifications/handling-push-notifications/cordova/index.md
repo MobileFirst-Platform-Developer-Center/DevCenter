@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Cordova
-breadcrumb_title: Handling Notifications in Cordova
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
