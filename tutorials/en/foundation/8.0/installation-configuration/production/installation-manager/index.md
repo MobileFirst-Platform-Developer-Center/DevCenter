@@ -324,7 +324,7 @@ For more information, see the IBM Installation Manager documentation at [Install
 5. Install MobileFirst Server by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
 
 ### Command-line (silent installation) parameters
-<table>
+<table style="word-break:break-all">
     <tr>
         <th>Key</th>
         <th>When necessary</th>
@@ -340,7 +340,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Always</td>
-        <td>Activation of token licensing. If you plan to use the product with the Rational® License Key Server, you must activate token licensing. In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>. If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
+        <td>Activation of token licensing. If you plan to use the product with the Rational® License Key Server, you must activate token licensing.<br/><br/>In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>.<br/><br/>If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
         <td><code>true</code> or <code>false</code></td>    
     </tr>
     <tr>
@@ -376,7 +376,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Type of set of servers into which to install the applications. <code>server</code> means a standalone server. <code>nd-cell</code> means a WebSphere Application Server Network Deployment cell. <code>nd-cluster</code> means a WebSphere Application Server Network Deployment cluster. <code>nd-node</code> means a WebSphere Application Server Network Deployment node (excluding clusters). <code>nd-server</code> means a managed WebSphere Application Server Network Deployment server.</td>
+        <td>Type of set of servers into which to install the applications.<br/><br/><code>server</code> means a standalone server.<br/><br/><code>nd-cell</code> means a WebSphere Application Server Network Deployment cell. <code>nd-cluster</code> means a WebSphere Application Server Network Deployment cluster.<br/><br/><code>nd-node</code> means a WebSphere Application Server Network Deployment node (excluding clusters).<br/><br/><code>nd-server</code> means a managed WebSphere Application Server Network Deployment server.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>
