@@ -107,7 +107,7 @@ MFPPush.isPushSupported (
 ```
 
 #### Register device
-Register the device to the push notifications service.
+Register the device to the push notifications service. If no options are required, options can be set to `null`.
 
 
 ```javascript
