@@ -27,7 +27,7 @@ In this blog I want to show how you can work with Ionic2 in an of MFP 7.1 Cordov
 
 There is ready sample which you can work with in the [following link](https://github.com/mfpdev/mfp71-with-ionic2).
 
-> Note: In case you are looking for a sample which shows MFP 7.1 + Angular 2 [here you go](https://github.com/mfpdev/mfp71-with-angular2).
+> Note: In case you are looking for a sample which shows MFP 7.1 + Angular 2 [here you go](https://github.com/mfpdev/mfp71-with-angular2). 
 
 ## The technical challenges
 The challenges of combining MobileFirst Platform 7.1 with Ionic 2 are the following:
