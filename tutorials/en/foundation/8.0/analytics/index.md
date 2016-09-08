@@ -19,7 +19,7 @@ MobileFirst Operational Analytics supports:
 * Native iOS and Android clients
 * Cordova applications (iOS, Android)
 * Web applications
-* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
+* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP platforms
 
 #### Jump to
 * [Operational Analytics Console](#operational-analytics-console)

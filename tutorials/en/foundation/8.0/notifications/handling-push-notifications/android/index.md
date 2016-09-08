@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handling Push Notifications in Android
-breadcrumb_title: Handling Notifications in Android
+breadcrumb_title: Android
 relevantTo: [android]
 downloads:
   - name: Download Android Studio project
@@ -14,9 +14,9 @@ Before Android applications are able to handle any received push notifications, 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
-    * [Push Notifications Overview](../)
+    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/)
+    * [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android)
+    * [Push Notifications Overview](../../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
@@ -29,7 +29,7 @@ Before Android applications are able to handle any received push notifications, 
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
+If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android) tutorial.
 
 ### Project setup
 
@@ -116,7 +116,7 @@ Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance 
 ### Challenge Handlers
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
 
-> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/android) tutorial.
+> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
 
 ### Client-side
 
