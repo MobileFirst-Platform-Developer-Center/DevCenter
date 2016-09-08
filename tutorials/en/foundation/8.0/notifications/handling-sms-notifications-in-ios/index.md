@@ -4,13 +4,13 @@ title: Handling SMS Notifications in iOS
 breadcrumb_title: Handling SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
+  - name: Download Xcode project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
 
 ## Overview
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../) tutorials.
+SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in iOS](../) tutorials.
 
 **Prerequisites:**
 
