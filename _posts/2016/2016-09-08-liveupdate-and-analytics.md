@@ -38,7 +38,7 @@ In this sample, you’ll see how to use the MobileFirst Foundation Live Update f
 <br>
 
 
-> You can find the app sample which you can work with in the [following link](https://github.com/mfpdev/mfp71-with-ionic2 ).
+> You can find the app sample which you can work with in the [following link](https://github.com/mfpdev/liveupdate-and-analytics).
 
 <br>
 
