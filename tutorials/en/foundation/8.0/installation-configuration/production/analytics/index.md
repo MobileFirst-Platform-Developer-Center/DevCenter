@@ -10,8 +10,8 @@ The MobileFirst Analytics Server is delivered as two separate WAR files. For con
 
 The analytics WAR and EAR files are included with the MobileFirst Server installation. For more information, see Distribution structure of MobileFirst Server. When you deploy the WAR file, the MobileFirst Analytics Console is available at: `http://<hostname>:<port>/analytics/console`, for example: `http://localhost:9080/analytics/console`.
 
-For more information about how to install MobileFirst Analytics Server, see [MobileFirst Analytics Server installation guide]().
-For more information about how to configure IBM MobileFirst™ Analytics, see [Configuration guide]().
+For more information about how to install MobileFirst Analytics Server, see [MobileFirst Analytics Server installation guide](installation).
+For more information about how to configure IBM MobileFirst™ Analytics, see [Configuration guide](configuration).
 
 
 
