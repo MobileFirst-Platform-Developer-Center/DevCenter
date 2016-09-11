@@ -1,6 +1,6 @@
 ---
-title: Wow your customers with Live Update And Analytics
-date: 2016-09-08
+title: Gradually Rollout New Features in your Mobile App with IBM MobileFirst Foundation 8.0
+date: 2016-09-11
 version:
 - 8.0
 tags:
@@ -36,13 +36,19 @@ In this sample, you’ll see how to use the MobileFirst Foundation Live Update f
 
 ## Demo
 
+<div class="sizer">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/OsfWxKXv7jo"></iframe>
+  </div>
+</div>
+
 ## Architecture
 
 ![Archticture]({{site.baseurl}}/assets/blog/2016-09-08-liveupdate-and-analytics/architecture.png)
 
 ## code
 
-***> Getting coupons from Live Update (iOS)***
+***> Retrieving coupons from the coupons adapter based on segmentation from Live Update (iOS)***
 
 ``` swift
 LiveUpdateManager.sharedInstance.obtainConfiguration([:]) { (configuration, error) in
@@ -56,7 +62,7 @@ LiveUpdateManager.sharedInstance.obtainConfiguration([:]) { (configuration, erro
 }
 ```
 
-***> Sending analytics of a coupon after clicked (iOS)***
+***> Sending custom analytics events when a coupon is collected (iOS)***
 
 ```swift
 if let annotation = self.annotation as? CouponARAnnotation  {
@@ -68,9 +74,9 @@ if let annotation = self.annotation as? CouponARAnnotation  {
 }
 ```
 
-***> Resolve the segment from user context (Java)***
+***> Resolve the segment from the user context (Java)***
 
-> For simplifying the sample the resolving is done by the take the username first character.
+> To simplify the sample, we resolve segments using the first character of the username.
 
 ```java
 @POST
@@ -81,7 +87,7 @@ public String getSegment(String body) throws Exception {
   ResolverAdapterData data = gson.fromJson(body, ResolverAdapterData.class);
   String segmentName = "";
 
-  // Get the authenticatedUser object 
+  // Get the authenticatedUser object
   AuthenticatedUser authenticatedUser = data.getAuthenticatedUser();
 
   char firstCharacter = authenticatedUser.getDisplayName().charAt(0);
