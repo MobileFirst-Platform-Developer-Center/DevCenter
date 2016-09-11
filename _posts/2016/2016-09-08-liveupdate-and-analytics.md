@@ -16,13 +16,15 @@ additional_authors:
 
 Let’s say you are a marketing director of a global retailer, and you have an amazing idea about how to get more customers into your stores. Your kids have been enthusiastically playing the new Pokemon Go game, running around your neighborhood to collect augmented reality Pokemon, and you are impressed with how addictive the game is. It occurred to you that you could build a game around coupon collection modeled after Pokemon GO, in which customers would use your app to collect AR coupons in their surroundings, that they can then redeem in store. How cool!
 
-<img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-09-08-liveupdate-and-analytics/pokemongo.jpg" style="float:right;margin: 10px"/>
+<img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-09-11-liveupdate-and-analytics/pokemongo.jpg" style="float:right;margin: 10px"/>
 
 You want to test out your idea while the Pokemon trend is still hot – you don’t want to spend ages developing your idea, only to discover that it’s not all that. You want to get early feedback from real users, and you want to release the new feature to a small group at first, so that if the feature is a flop, you don’t risk huge exposure.  Also, you know that there are many possible ways to design the game – what if you could play around with different options till you figure out what design your users will like most?
 
 Enter the new MobileFirst Live Update feature. With Live Update, you can make different aspects of your app configurable, so that you can turn features on or off, remotely, or dynamically change the values of variables, directly from the MobileFirst Console. And, you can create groups of users (target audiences), so that you can deliver different configurations to different audiences.
 
 This makes it possible to release a minimal viable version of your new AR coupon game feature to a small group of users first, and get feedback from them. And you can make parameters of your game configurable, such as the distance that the user needs to be near an AR coupon to be able to collect it, so that you can tweak the game to make it more fun for your users.
+
+<img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-09-11-liveupdate-and-analytics/ios.png" style="float:right;margin: 10px"/>
 
 And of course, with MobileFirst Foundation Analytics, you’ll be able to measure whether your idea was a good one.
 
@@ -32,7 +34,13 @@ If you created variations of the game for different audiences, for example for V
 
 In this sample, you’ll see how to use the MobileFirst Foundation Live Update feature to release your new feature to a subset of your users, and how to use Foundation Analytics to understand if your idea was a good one, and help you decide whether and how to continue to evolve it.
 
+<br>
+<br>
+
+
 > You can find the app sample which you can work with in the [following link](https://github.com/mfpdev/mfp71-with-ionic2 ).
+
+<br>
 
 ## Demo
 
@@ -44,7 +52,7 @@ In this sample, you’ll see how to use the MobileFirst Foundation Live Update f
 
 ## Architecture
 
-![Archticture]({{site.baseurl}}/assets/blog/2016-09-08-liveupdate-and-analytics/architecture.png)
+![Archticture]({{site.baseurl}}/assets/blog/2016-09-11-liveupdate-and-analytics/architecture.png)
 
 ## code
 
