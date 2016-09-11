@@ -50,6 +50,8 @@ In this sample, you’ll see how to use the MobileFirst Foundation Live Update f
   </div>
 </div>
 
+<br>
+
 ## Architecture
 
 ![Archticture]({{site.baseurl}}/assets/blog/2016-09-11-liveupdate-and-analytics/architecture.png)
@@ -106,6 +108,7 @@ public String getSegment(String body) throws Exception {
   return isVIPMember ? "vip" : isPremiumMember ? "premium"  : "regular";
 }
 ```
+<br>
 
 ## Building custom chart in analytics
 
