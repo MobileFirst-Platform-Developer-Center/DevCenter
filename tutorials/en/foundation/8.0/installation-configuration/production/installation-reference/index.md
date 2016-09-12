@@ -8,7 +8,7 @@ Reference information about Ant tasks and configuration sample files for the ins
 
 #### Jump to
 * [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
-* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update)
+* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
 * [Ant tasks for installation of MobileFirst Server push service](#ant-tasks-for-installation-of-mobilefirst-push-service)
 * [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 * [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
@@ -224,24 +224,61 @@ You cannot specify details of table allocation, such as the table space, by usin
 > **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current MobileFirst Server version. You do not have to specify the inner element `<dba>`.
 
 ## Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services
+The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of MobileFirst Operations Console, the artifacts component, the administration service, and the live update service.
 
+### Task effects
 
+#### installmobilefirstadmin
+The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the MobileFirst Operations Console. This task has the following effects:
 
+* It declares the administration service web application in the specified context root, by default /mfpadmin.
+* It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
+* For the relational databases, it declares data sources and on WebSphere® Application Server full profile, JDBC providers for the administration services.
+* It deploys the administration service and the live update service on the application server.
+* Optionally, it declaresMobileFirst Operations Console as a web application in the specified context root, by default /mfpconsole. If the MobileFirst Operations Console instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
 
+```xml
+<target name="adminstall">
+  <installmobilefirstadmin servicewar="${mfp.service.war.file}">
+    <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
+```
 
+* Optionally, it declares the MobileFirst Server artifacts web application in the specified context root /mfp-dev-artifacts when MobileFirst Operations Console is installed.
+* It configures the configuration properties for the administration service by using JNDI environment entries. These JNDI environment entries also give some additional information about the application server topology, for example whether the topology is a stand-alone configuration, a cluster, or a server farm.
+* Optionally, it configures users that it maps to roles used by MobileFirst Operations Console, and the administration and live update services web applications.
+* It configures the application server for use of JMX.
+* Optionally, it configures the communication with the MobileFirst Server push service.
+* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the MobileFirst Server administration part.
 
+#### updatemobilefirstadmin
+The **updatemobilefirstadmin** Ant task updates an already-configured MobileFirst Server web application on an application server. This task has the following effects:
 
+* It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+* It updates the live update service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+* It updates the MobileFirst Operations Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
 
+#### uninstallmobilefirstadmin
+The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
 
+* It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
+* It removes the WAR files of the administration and live update services, and MobileFirst Operations Console from the application server as an option.
+* For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile the JDBC providers for the administration and live update services.
+* For the relational DBMS, it removes the database drivers that were used by the administration and live update services from the application server.
+* It removes the associated JNDI environment entries.
+* On WebSphere Application Server Liberty and Apache Tomcat, it removes the users configured by the installmobilefirstadmin invocation.
+* It removes the JMX configuration.
 
+### Attributes and elements
+The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
 
-
-
-
-
-
-
-
-
+| Attribute      | Description                                                              | Required | Default | 
+|----------------|--------------------------------------------------------------------------|----------|---------|
+| contextroot	The common prefix for URLs to the administration service to get information about MobileFirst runtime environments, applications, and adapters.	No	/mfpadmin
+| id	To distinguish different deployments.	No	Empty
+| environmentId	To distinguish different MobileFirst environments.	No	Empty
+| servicewar	The WAR file for the administration service.	No	The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file.
+| shortcutsDir	The directory where to place shortcuts.	No	None
+| wasStartingWeight	The start order for WebSphere Application Server. Lower values start first.	No	1
 
 
