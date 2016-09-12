@@ -281,5 +281,254 @@ The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobi
 | shortcutsDir      | The directory where to place shortcuts.            | No | None | 
 | wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
 
+#### contextroot and id
+The **contextroot** and **id** attributes distinguish different deployments of MobileFirst Operations Console and the administration service.
+
+In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+
+#### environmentId
+Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the MobileFirst runtime projects use when they communicate through Java™ Management Extensions (JMX).
+
+#### servicewar
+Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+
+#### shortcutsDir
+The **shortcutsDir** attribute specifies where to place shortcuts to the MobileFirst Operations Console. If you set this attribute, you can add the following files to that directory:
+
+* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the MobileFirst Operations Console in a browser.
+* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the MobileFirst Operations Console in a browser.
+* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the MobileFirst projects that can be managed in JSON format. For each listed MobileFirst project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the MobileFirst project runtime is running or idle.
+* **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
+
+#### wasStartingWeight
+Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other MobileFirst runtime projects. If MobileFirst projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
+
+The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
+
+| Element               | Description                                      | Count |
+|-----------------------|--------------------------------------------------|-------|
+| `<applicationserver>` | The application server.                          | 1     |
+| `<configuration>`     | The live update service.	                       | 1     |
+| `<console>`           | The administration console.                      | 0..1  |
+| `<database>`          | The databases.                                   | 1     |
+| `<jmx>`               | To enable Java Management Extensions.	           | 1     |
+| `<property>`          | The properties.	                               | 0..   |
+| `<push>`              | The push service.	                               | 0..1  |
+| `<user>`              | The user to be mapped to a security role.	       | 0..   |
+
+### To specify a MobileFirst Operations Console
+The `<console>` element collects information to customize the installation of the MobileFirst Operations Console. This element has the following attributes:
+
+| Attribute         | Description                                                               | Required | Default     | 
+|-------------------|---------------------------------------------------------------------------|----------|-------------|
+| contextroot       | The URI of the MobileFirst Operations Console.                            | No       | /mfpconsole |
+| install           | To indicate whether the MobileFirst Operations Console must be installed. | No       | Yes         |
+| warfile           | The console WAR file.	                                                    |No        | The mfp-admin-ui.war file is in the same directory as  themfp-ant-deployer.jar file. |
+
+The `<console>` element supports the following element:
+
+| Element               | Description                                      | Count |
+|-----------------------|--------------------------------------------------|-------|
+| `<artifacts>`         | The MobileFirst Server artifacts.                | 0..1  |
+| `<property>`	        | The properties.	                               | 0..   |
+
+The `<artifacts>` element has the following attributes:
+
+| Attribute         | Description                                                               | Required | Default     | 
+|-------------------|---------------------------------------------------------------------------|----------|-------------|
+| install           | To indicate whether the artifacts component must be installed.            | No       | true        |
+| warFile           | The artifacts WAR file.                                                   | No       | The mfp-dev-artifacts.war file is in the same directory as the mfp-ant-deployer.jar file |
+
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files.
+
+The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+
+| Attribute  | Description                | Required | Default | 
+|------------|----------------------------|----------|---------|
+| name       | The name of the property.  | Yes      | None    | 
+| value	     | The value of the property. |	Yes      | None    |
+
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files.
+
+For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list.html?view=kc).
+
+### To specify an application server
+Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+
+| Element                                   | Description                                      | Count |
+|-------------------------------------------|--------------------------------------------------|-------|
+| `<websphereapplicationserver>` or `<was>` | The parameters for WebSphere Application Server. <br/><br/>The `<websphereapplicationserver>` element (or `was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment.               | 0..1  |
+| `<tomcat>`                                | The parameters for Apache Tomcat.	               | 0..1  |
+
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+
+| Element                  | Description                      | Count |
+|--------------------------|----------------------------------|-------|
+| `<collectiveController>` | A Liberty collective controller. |	0..1  |
+
+The `<collectiveController>` element has the following attributes:
+
+| Attribute                | Description                            | Required | Default | 
+|--------------------------|----------------------------------------|----------|---------|
+| serverName               | The name of the collective controller.	| Yes      | None    |
+| controllerAdminName      | The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the   collective.                                                         | Yes      | None    |
+| controllerAdminPassword  | The administrative user password.	    | Yes      | None    |
+| createControllerAdmin    | To indicate whether the administrative user must be created in the basic registry of the collective controller. Possible values are true or false.                                                              | No	   | true    |
+
+### To specify the live update service configuration
+Use the `<configuration>` element to define the parameters that depend on the live update service. The `<configuration>` element has the following attributes.
+
+| Attribute                | Description                                                    | Required | Default | 
+|--------------------------|----------------------------------------------------------------|----------|---------|
+| install                  | To indicate whether the live update service must be installed.	| Yes | true |
+| configAdminUser	       | The administrator for the live update service.	                | No. However, it is required for a server farm topology. |If not defined, a user is generated. In a server farm topology, the user name must be the same for all the members of the farm. |
+| configAdminPassword      | The administrator password for live update service user.       | If a user is specified for **configAdminUser**. | None. In a server farm topology, the password must be the same for all the members of the farm. |
+| createConfigAdminUser	   | To indicate whether to create an admin user in the basic registry of the application server, if it is missing. | No | true |
+| warFile                  | The live update service WAR file.	                            | No         | The mfp-live-update.war file is in the same directory as the mfp-ant-deployer.jar file. |
+
+The `<configuration>` element supports the following elements:
+
+| Element      | Description                           | Count |
+|--------------|---------------------------------------|-------|
+| `<user>`     | The user for the live update service. | 0..1  |
+| `<property>` | The properties.	                   | 0..   |
+
+The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+
+| Attribute   | Description                                                             | Required | Default | 
+|-------------|-------------------------------------------------------------------------|----------|---------|
+| role	      | A valid security role for the application. Possible value: configadmin.	| Yes      | None    |
+| name	      | The user name.	                                                        | Yes      | None    |
+| password	  | The password if the user needs to be created.	                        | No       | None    |
+
+After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in MobileFirst Operations Console: `configadmin`.
+
+For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for MobileFirst Server administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+
+> **Tip:** If the users exist in an external LDAP directory, set only the **role** and **name** attributes but do not define any passwords.
+
+The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+
+| Attribute  | Description                | Required | Default | 
+|------------|----------------------------|----------|---------|
+| name       | The name of the property.  | Yes      | None    | 
+| value	     | The value of the property. |	Yes      | None    |
+
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files. For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+
+### To specify an application server
+Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+
+| Element      | Description                                              | Count |
+|--------------|--------------------------------------------------------- |-------|
+| `<websphereapplicationserver>` or `<was>`	| The parameters for WebSphere Application Server.<br/><br/>The <websphereapplicationserver> element (or <was> in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1  | 
+| `<tomcat>`   | The parameters for Apache Tomcat.                        | 0..1  |
+
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+However, for the inner element of the <was> element for Liberty collective, see the following table:
+
+| Element               | Description                  | Count |
+|-----------------------|----------------------------- |-------|
+| `<collectiveMember>`	| A Liberty collective member. | 0..1  |
+
+The `<collectiveMember>` element has the following attributes:
+
+| Attribute   | Description                                             | Required | Default | 
+|-------------|---------------------------------------------------------|----------|---------|
+| serverName  |	The name of the collective member.                      | Yes      | None    |
+| clusterName |	The cluster name that the collective member belongs to. | Yes	   | None    |
+
+> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
+
+### To specify Analytics
+The `<analytics>` element indicates that you want to connect the MobileFirst push service to an already installed MobileFirst Analytics service. It has the following attributes:
+
+| Attribute     | Description                                                               | Required | Default | 
+|---------------|---------------------------------------------------------------------------|----------|---------|
+| install	    | To indicate whether to connect the push service to MobileFirst Analytics. | No       | false   |
+| analyticsURL 	| The URL of MobileFirst Analytics services.	                            | Yes	   | None    |
+| username	    | The user name.	                                                        | Yes	   | None    |
+| password	    | The password.	                                                            | Yes	   | None    |
+| validate	    | To validate whether MobileFirst Analytics Console is accessible or not.	| No	   | true    |
+
+**install**  
+Use the install attribute to indicate that this push service must be connected and send events to MobileFirst Analytics. Valid values are true or false.
+
+**analyticsURL**  
+Use the analyticsURL attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.
+
+For example: `http://<hostname>:<port>/analytics-service/rest`
+
+**username**  
+Use the username attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+**password**  
+Use the password attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+**validate**  
+Use the validate attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+
+### To specify a connection to the push service database
+The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+
+You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+
+The `<database>` element has the following attributes:
+
+| Attribute     | Description                                     | Required | Default | 
+|---------------|-------------------------------------------------|----------|---------|
+| kind          | The kind of database (Push).	                  | Yes	     | None    |
+| validate	    | To validate whether the database is accessible. | No       | true    |
+
+The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+| Element            | Description                                                      | Count |
+|--------------------|----------------------------------------------------------------- |-------|
+| <db2>	             | The parameter for DB2® databases.	                            | 0..1  |
+| <derby>	         | The parameter for Apache Derby databases.	                    | 0..1  | 
+| <mysql>	         | The parameter for MySQL databases.                               | 0..1  |
+| <oracle>	         | The parameter for Oracle databases.	                            | 0..1  |
+| <cloudant>	     | The parameter for Cloudant databases.	                        | 0..1  |
+| <driverclasspath>	 | The parameter for JDBC driver class path (relational DBMS only). | 0..1  |
+
+> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+
+| Attribute     | Description                                     | Required | Default                   | 
+|---------------|-------------------------------------------------|----------|---------------------------|
+| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com
+| user          | The user name of the Cloudant account.	      | Yes	     | None                      |
+| password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
+| dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
