@@ -9,7 +9,7 @@ Reference information about Ant tasks and configuration sample files for the ins
 #### Jump to
 * [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
 * [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of MobileFirst Server push service](#ant-tasks-for-installation-of-mobilefirst-push-service)
+* [Ant tasks for installation of MobileFirst Server push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 * [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
 * [Ant tasks for installation of MobileFirst Analytics](#ant-tasks-for-installation-of-mobilefirst-analytics)
@@ -496,38 +496,117 @@ The `<database>` element supports the following elements. For more information a
 
 | Attribute     | Description                                     | Required | Default                   | 
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com
+| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com |
 | user          | The user name of the Cloudant account.	      | Yes	     | None                      |
 | password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
 | dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
 
+## Ant tasks for installation of MobileFirst Server push service
+Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
 
+### Task effects
 
+#### installmobilefirstruntime
+The **installmobilefirstruntime** Ant task configures an application server to run a MobileFirst runtime WAR file as a web application. This task has the following effects.
 
+* It declares the MobileFirst web application in the specified context root, by default /mfp.
+* It deploys the runtime WAR file on the application server.
+* It declares data sources and on WebSphere® Application Server full profile JDBC providers for the runtime.
+* It deploys the database drivers in the application server.
+* It sets MobileFirst configuration properties through JNDI environment entries.
+* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the runtime.
 
+#### updatemobilefirstruntime
+The **updatemobilefirstruntime** Ant task updates a MobileFirst runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
 
+#### uninstallmobilefirstruntime
+The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
 
+* It removes the configuration of the MobileFirst web application with the specified context root. The task also removes the settings that are added manually to that application.
+* It removes the runtime WAR file from the application server.
+* It removes the data sources and on WebSphere Application Server full profile the JDBC providers for the runtime.
+* It removes the associated JNDI environment entries.
 
+### Attributes and elements
+The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks have the following attributes:
 
+| Attribute         | Description                                                                 | Required   | Default                   | 
+|-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
+| contextroot       | The common prefix in URLs to the application (context root).                | No | /mfp  |
+| id	            | To distinguish different deployments.                                       | No | Empty |
+| environmentId	    | To distinguish different MobileFirst environments.                          | No | Empty |
+| warFile	        | The WAR file for MobileFirst runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
+| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           | 
 
+#### contextroot and id
+The **contextroot** and **id** attributes distinguish different MobileFirst projects.
 
+In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
 
+#### environmentId
+Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
 
+#### warFile
+Use the **warFile** attribute to specify a different directory for the MobileFirst runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
+#### wasStartingWeight
+Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the MobileFirst Server administration service web application is deployed and started before any other MobileFirst runtime projects. If MobileFirst projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your MobileFirst projects.
 
+The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
 
+| Element               | Description                                      | Count |
+|-----------------------|--------------------------------------------------|-------|
+| `<property>`          | The properties.	                               | 0..   |
+| `<applicationserver>` | The application server.                          | 1     |
+| `<database>`          | The databases.                                   | 1     |
+| `<analytics>`         | The analytics.                                   | 0..1  |
 
+The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
 
-    
+| Attribute | Description                | Required | Default | 
+|-----------|----------------------------|----------|---------|
+| name      | The name of the property.	 | Yes      | None    |
+| value	    | The value for the property.| Yes	    | None    |  
 
+The `<applicationserver>` element describes the application server to which the MobileFirst application is deployed. It is a container for one of the following elements:
 
+| Element                                    | Description                                      | Count |
+|--------------------------------------------|--------------------------------------------------|-------|
+| `<websphereapplicationserver>` or `<was>`  | The parameters for WebSphere Application Server.	| 0..1  |
+| `<tomcat>`                                 | The parameters for Apache Tomcat.                | 0..1  |
 
+The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. The `<websphereapplicationserver>` element has the following attributes:
 
+| Attribute       | Description                                            | Required                 | Default | 
+|-----------------|--------------------------------------------------------|--------------------------|---------|
+| installdir      |	WebSphere Application Server installation directory.   | Yes                      | None    |
+| profile         |	WebSphere Application Server profile, or Liberty.      | Yes	                  | None    |
+| user	WebSphere Application Server administrator name.	               | Yes, except for Liberty  | None    |
+| password        | WebSphere Application Server administrator password.   | No	Queried interactively |         | 
+| libertyEncoding |	The algorithm to encode data source passwords for WebSphere Application Server Liberty. The possible values are none, xor, and aes. Whether the xor or aes encoding is used, the clear password is passed as argument to the securityUtility program, which is called through an external process. You can see the password with a ps command, or in the /proc file system on UNIX operating systems.                                                         | No                       |	xor     |
+| jeeVersion      |	For Liberty profile. To specify whether to install the features of the JEE6 web profile or the JEE7 web profile. Possible values are 6, 7, or auto.| No | auto |
+| configureFarm   |	For WebSphere Application Server Liberty, and WebSphere Application Server full profile (not for WebSphere Application Server Network Deployment edition and Liberty collective). To specify whether the server is a server farm member. Possible values are true or false. | No	      | false   |
+| farmServerId    |	A string that uniquely identify a server in a server farm. The MobileFirst Server administration services and all the MobileFirst runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
 
+It supports the following element for single-server deployment:
 
+| Element     | Description      | Count |
+|-------------|------------------|-------|
+| `<server>`  | A single server. | 0..1  |
 
+The <server> element, which is used in this context, has the following attribute:
 
+| Attribute | Description      | Required | Default | 
+|-----------|------------------|----------|---------|
+| name	    | The server name. | Yes      | None    |
 
+It supports the following elements for Liberty collective:
+
+| Element               | Description                  | Count |
+|-----------------------|------------------------------|-------|
+| `<collectiveMember>`  | A Liberty collective member. | 0..1  |
+
+The `<collectiveMember>` element has the following attributes:
 
 
 
