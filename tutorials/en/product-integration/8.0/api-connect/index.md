@@ -17,9 +17,11 @@ IBM MobileFirst Foundation integrates its security capabilities with IBM API Con
 1. Protect API Connect endpoints with the MobileFirst Server as the authorization server.  
 2. Proxy MobileFirst client non-resource requests and responses through DataPower to the MobileFirst Server that is located behind the DMZ.  
  
-![MobileFirst First OAuth Provider](mfpsecurityhld_diagram.jpg)
+![MobileFirst First OAuth Provider](mfpsecurityhld_diagram.png)
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
+
+The security integration is suppored for both [API Connect on-premise deployment] (http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect BlueMix Service] (https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
 
 #### Jump to
 * [Prerequisites](#prerequisites)
@@ -215,18 +217,52 @@ with this:
 > **Note:** For the API Connect endpoint path (`apicPath`) you must supply the full URL, constructed as follows: `https://{DataPowerGateway}/{organizationName}/{catalogName}/branches/details`
 
 ### Add SSL certificate to client for API Connect HTTPS endpoint
-API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificates to your device/emulator while developing and testing your client application (**but not in production**).
+If you use API Connect BlueMix Service, please skip this step.
 
-The certificate can be created using OpenSSL:
+API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificate to your device/emulator while developing your client application.
+For example in Android, you may see the following Exception:
 
-```bash
-openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt
+```java
+javax.net.ssl.SSLHandshakeException: java.security.cert.CertPathValidatorException: Trust anchor for certification path not found
 ```
 
-> See [Configuring SSL by using untrusted certificates](http://www.ibm.com/support/knowledgecenter/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/c_ssl_config.html) for more details on how to add untrusted certificate to your client application.  
+For on-premise deployement, API Connect uses by default its own self-signed SSL certificate, which currently isn't signed with v3\_ca extension.
+Self-signed SSL certificate without v3\_ca extension can't be added to some of the mobile devices (like Android).  
 
-For Android clients (like the **PinCodeAndroid** sample), you can follow the [Using custom certificates and hosts file with Android emulator](https://www.ibm.com/blogs/sweeden/using-custom-certificates-and-hosts-file-with-android-emulator) blog post, or
-read more information on [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). 
+In order to avoid the SSL exception, you can do one the following:  
+
+1. **Replace the default API Connect SSL certificate with your own**:
+    * Create self-signed certificate using OpenSSL:
+
+    ```bash
+        #!/bin/sh
+        #
+        # Replace DATAPOWER_GW_HOSTNAME with real hostname
+        HOST=DATAPOWER_GW_HOSTNAME
+        PRIVATEKEY=${HOST}_private.pem
+        PUBLICKEY=${HOST}_public.pem
+        P12FILE=$HOST.p12
+        P12PWD=passw0rd
+        P12LABEL=$HOST
+        # This creates the public and private keys in PEM format
+        openssl req -x509 -nodes -days 999 -newkey rsa:2048 -keyout "$PRIVATEKEY" -out "$PUBLICKEY" -reqexts v3_req -extensions v3_ca -subj /C=us/O=ibm/CN=$HOST
+        # This creates a password-protected pkcs12 file so that the private key that can be imported into API Connect
+        openssl pkcs12 -export -in "$PUBLICKEY" -inkey "$PRIVATEKEY" -out "$P12FILE" -passout pass:"$P12PWD" -name "$P12LABEL"
+    ```
+    * You should have three output files, however only the following will be used:
+        * **DATAPOWER\_GW\_HOSTNAME.p12** – Password-protected pkcs12 file for importing it to API Connect TLS Profile.
+        * **DATAPOWER\_GW\_HOSTNAME\_public.pem** – Public certificate to install into the device as a trusted CA.
+    * Create TLS Profile for it in CMC (Use the password you set on `P12PWD`). See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html)
+    * Bind the TLS Profile you created with the gateway service. See [Binding a TLS profile to an existing gateway service](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/bind_ssl_existing_gateway.html) 
+    * Install the certifcae you created **DATAPOWER\_GW\_HOSTNAME\_public.pem** on the device. See [Installing the root CA on Android](http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_android.html) or [Installing the root CA on iOS](http://www.ibm.com/support/knowledgecenter/en/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_iOS.html) for more details.
+
+2. **Adding API Connect default certificate to TrustStore in the client application code (for development)**:
+    * Fetch the default API Connect certificate using OpenSSL: 
+
+        `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`
+    * Add relevant code to your client application to trust API Connect certficate and its hostname. You can follow [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html) for more details in Android.
+
+> See [Configuring SSL by using untrusted certificates](http://www.ibm.com/support/knowledgecenter/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/c_ssl_config.html) for more details on how to add untrusted certificate to your client application.  
    
 ## Support for multiple MobileFirst OAuthProviders
 To add additional OAuthProviders, alter the Swagger template each time before re-importing:
