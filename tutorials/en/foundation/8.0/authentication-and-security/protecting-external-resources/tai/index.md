@@ -17,9 +17,9 @@ The Java library is provided as a JAR file (**com.ibm.mfp.oauth.tai-8.0.0.jar**)
 This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequisite:**
-Make sure that:
-* You read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* You are familiar with the [MobileFirst Foundation security framework](../../).
+
+* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
+* Be familiar with the [MobileFirst Foundation security framework](../../).
 
 ![Flow](TAI_flow.jpg)
 
@@ -76,15 +76,15 @@ Modify the WebSphere Application Server `server.xml` file to your external resou
 
 If you are using servlet-2.x , you need to define the security role in your web.xml file:
 
-    ```xml
-    <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
-       <application-bnd>
-          <security-role name="TAIUserRole">
-             <special-subject type="ALL_AUTHENTICATED_USERS"/>
-          </security-role>
-       </application-bnd>
-    </application>
-    ```
+```xml
+<application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
+   <application-bnd>
+      <security-role name="TAIUserRole">
+         <special-subject type="ALL_AUTHENTICATED_USERS"/>
+      </security-role>
+   </application-bnd>
+</application>
+```
 
 * Configure OAuthTAI. This is where URLs are set to be protected:
 
