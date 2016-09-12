@@ -76,7 +76,7 @@ Modify the WebSphere Application Server `server.xml` file to your external resou
 
 If you are using servlet-2.x , you need to define the security role in your web.xml file:
 
-```xml
+    ```xml
     <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
        <application-bnd>
           <security-role name="TAIUserRole">

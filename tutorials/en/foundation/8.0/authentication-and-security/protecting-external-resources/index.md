@@ -13,6 +13,7 @@ In this tutorial, you learn how to protect an external **resource server** by im
 You can implement such protection either entirely with custom code, or by using one of the MobileFirst Foundation helper libraries that encapsulate part of the flow.
 
 **Prerequesite:**  
+
 * Understanding of the [MobileFirst Foundation security framework](../).
 
 ## Flow
