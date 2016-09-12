@@ -245,4 +245,3 @@ You cannot specify details of table allocation, such as the table space, by usin
 
 
 
-
