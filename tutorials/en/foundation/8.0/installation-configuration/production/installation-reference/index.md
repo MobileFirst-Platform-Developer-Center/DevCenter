@@ -272,13 +272,14 @@ The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run 
 ### Attributes and elements
 The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
 
-| Attribute      | Description                                                              | Required | Default | 
-|----------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot	The common prefix for URLs to the administration service to get information about MobileFirst runtime environments, applications, and adapters.	No	/mfpadmin
-| id	To distinguish different deployments.	No	Empty
-| environmentId	To distinguish different MobileFirst environments.	No	Empty
-| servicewar	The WAR file for the administration service.	No	The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file.
-| shortcutsDir	The directory where to place shortcuts.	No	None
-| wasStartingWeight	The start order for WebSphere Application Server. Lower values start first.	No	1
+| Attribute         | Description                                                              | Required | Default | 
+|-------------------|--------------------------------------------------------------------------|----------|---------|
+| contextroot       | The common prefix for URLs to the administration service to get information about MobileFirst runtime environments, applications, and adapters. | No | /mfpadmin | 
+| id                | To distinguish different deployments.              | No | Empty | 
+| environmentId     | To distinguish different MobileFirst environments. | No | Empty | 
+| servicewar        | The WAR file for the administration service.       | No | The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file. | 
+| shortcutsDir      | The directory where to place shortcuts.            | No | None | 
+| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
+
 
 
