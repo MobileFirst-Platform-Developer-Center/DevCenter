@@ -53,7 +53,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the MobileFirst Operations Console.</li>
 					<li><b>connectivity</b>: <i>Mandatory.</i> Defines the mechanism by which the adapter connects to the back-end application. It contains the <code>connectionPolicy</code> subelement.
                         <ul>
-                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-sql-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
+                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-http-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
                         </ul>
                     </li>
                     <li><b>procedure</b>: <i>Mandatory.</i> Defines a process for accessing a service that is exposed by a back-end application.
