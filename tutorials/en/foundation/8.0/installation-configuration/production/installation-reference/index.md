@@ -999,3 +999,124 @@ The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`
 | name       | The name of the property.	              | Yes      | None    |
 | type	     | Java™ type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
 | value	     | The value for the property.	              | Yes      |  None   |
+
+## Ant tasks for installation of Application Center
+The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` Ant tasks are provided for the installation of the Application Center Console and Services.
+
+### Task effects
+### <installApplicationCenter>
+The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
+
+* It declares the Application Center Services web application in the /applicationcenter context root.
+* It declares data sources, and on WebSphere® Application Server full profile, it declares also JDBC providers for Application Center Services.
+* It deploys the Application Center Services web application on the application server.
+* It declares the Application Center Console as a web application in the /appcenterconsole context root.
+* It deploys the Application Center Console WAR file on the application server.
+* It configures configuration properties for Application Center Services by using JNDI environment entries. The JNDI environment entries that are related to the endpoint and proxies are commented. You must uncomment them in some cases.
+* It configures users that it maps to roles used by the Application Center Console and Services web applications.
+* On WebSphere Application Server, it configures the necessary custom property for the web container.
+
+#### <updateApplicationCenter>
+The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
+
+* It updates the Application Center Services WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+* It updates the Application Center Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed. 
+
+The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, and user-to-role mappings. This task applies only to an installation that is performed by using the <installApplicationCenter> task that is described in this topic.
+
+> **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
+
+#### <uninstallApplicationCenter>
+The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
+
+* It removes the configuration of the Application Center Services web application with the **/applicationcenter** context root. As a consequence, the task also removes the settings that were added manually to that application.
+* It removes both the Application Center Services and Console WAR files from the application server.
+* It removes the data sources and, on WebSphere Application Server full profile, it also removes the JDBC providers for the Application Center Services.
+* It removes the database drivers that were used by Application Center Services from the application server.
+* It removes the associated JNDI environment entries.
+* It removes the users who are configured by the `<installApplicationCenter>` invocation.
+
+### Attributes and elements
+The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks have the following attributes:
+
+| Attribute    | Description                                | Required | Default | 
+|--------------|--------------------------------------------|----------|---------|
+| id	       | It distinguishes different deployments in WebSphere Application Server full profile.	| No | Empty |
+| servicewar   | The WAR file for the Application Center Services. | No | The applicationcenter.war file is in the application Center console directory: **product_install_dir/ApplicationCenter/console.** |
+| shortcutsDir | The directory where you place the shortcuts. | No | None |
+| aaptDir | The directory that contains the aapt program, from the Android SDK platform-tools package. | No | None |
+
+#### id
+In WebSphere Application Server full profile environments, the **id** attribute is used to distinguish different deployments of Application Center Console and Services. Without this **id** attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+
+#### servicewar
+Use the **servicewar** attribute to specify a different directory for the Application Center Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+
+#### shortcutsDir
+The **shortcutsDir** attribute specifies where to place shortcuts to the Application Center Console. If you set this attribute, the following files are added to this directory:
+
+* **appcenter-console.url**: This file is a Windows shortcut. It opens the Application Center Console in a browser.
+* **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
+
+#### aaptDir
+The **aapt** program is part of the IBM MobileFirst Foundation distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
+If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
+
+The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks support the following elements:
+
+| Element           | Description	                            | Count | 
+|-------------------|-------------------------------------------|-------|
+| applicationserver	| The application server.                   | 1     |
+| console           | The Application Center console.	        | 1     |
+| database          | The databases.	                        | 1     | 
+| user	            | The user to be mapped to a security role. | 0..∞  |
+
+### To specify an Application Center console
+The `<console>` element collects information to customize the installation of the Application Center Console. This element has the following attributes:
+
+| Attribute    | Description                                      | Required | Default | 
+|--------------|--------------------------------------------------|----------|---------|
+| warfile      | The WAR file for the Application Center Console. |	No       | The appcenterconsole.war file is in the Application Center console directory:  **product_install_dir/ApplicationCenter/console**. |
+
+### To specify an application server
+Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+
+| Element           | Description	                            | Count | 
+|-------------------|-------------------------------------------|-------|
+| **websphereapplicationserver** or **was**	| The parameters for WebSphere Application Server. The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core. Liberty collective is not supported for Application Center. | 0..1 | 
+| tomcat            | The parameters for Apache Tomcat. | 0..1 |
+
+The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+### To specify a connection to the services database
+The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
+
+You must declare a single database: `<database kind="ApplicationCenter">`. You specify the `<database>` element similarly to the `<configuredatabase>` Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+
+The `<database>` element has the following attributes:
+
+| Attribute    | Description                                            | Required | Default | 
+|--------------|--------------------------------------------------------|----------|---------|
+| kind         | The kind of database (ApplicationCenter).              | Yes      | None    |
+| validate	   | To validate whether the database is accessible or not. | No       | True    |
+
+The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+| Element           | Description	                            | Count | 
+|-------------------|-------------------------------------------|-------|
+| db2	            | The parameter for DB2® databases.	        | 0..1  |
+| derby             | The parameter for Apache Derby databases.	| 0..1  |
+| mysql             | The parameter for MySQL databases.	    | 0..1  |
+| oracle	        | The parameter for Oracle databases.	    | 0..1  |
+| driverclasspath   | The parameter for JDBC driver class path.	| 0..1  |
+
+### To specify a user and a security role
+The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+
+| Attribute    | Description                                            | Required | Default | 
+|--------------|--------------------------------------------------------|----------|---------|
+| role         | The user role appcenteradmin. | Yes | None |
+| name	       | The user name. | Yes | None |
+| password	   | The password, if you must create the user.	| No | None |
+
+## Ant tasks for installation of MobileFirst Analytics
