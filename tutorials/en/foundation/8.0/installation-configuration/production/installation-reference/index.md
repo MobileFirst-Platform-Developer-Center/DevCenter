@@ -470,6 +470,7 @@ Use the password attribute to specify the password that is used if the data entr
 Use the validate attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
 
 ### To specify a connection to the push service database
+
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
 
 You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
@@ -502,6 +503,170 @@ The `<database>` element supports the following elements. For more information a
 | dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
 
 ## Ant tasks for installation of MobileFirst Server push service
+The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
+
+### Task effects
+#### installmobilefirstpush
+The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
+It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
+For the relational databases, it declares data sources and, on WebSphere® Application Server Full Profile, JDBC providers for push service.
+It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the MobileFirst authorization server, MobileFirst Analytics, and with Cloudant® in case Cloudant is used.
+
+#### updatemobilefirstpush
+The **updatemobilefirstpush** Ant task updates an already-configured MobileFirst Server web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+
+#### uninstallmobilefirstpush
+The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
+It removes the configuration of the push service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
+It removes the push service WAR file from the application server as an option.
+For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile – the JDBC providers for the push service.
+It removes the associated JNDI environment entries.
+
+### Attributes and elements
+The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks have the following attributes:
+
+| Attribute | Description                           | Required | Default     | 
+|-----------|---------------------------------------|----------|-------------|
+| id        | To distinguish different deployments.	| No	   | Empty
+| warFile	| The WAR file for the push service.	| No	   | The ../PushService/mfp-push-service.war file is relative to the MobileFirstServer directory that contains the  mfp-ant-deployer.jar file. |
+
+### Id
+The **id** attribute distinguishes different deployments of the push service in the same WebSphere Application Server cell. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+
+### warFile
+Use the **warFile** attribute to specify a different directory for the push service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+
+The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks support the following elements:
+
+| Element               | Description             | Count |
+|-----------------------|-------------------------|-------|
+| `<applicationserver>` | The application server. | 1     |
+| `<analytics>`	        | The Analytics.	      | 0..1  | 
+| `<authorization>`	    | The authorization server for authenticating the communication with other MobileFirst Server components. | 1 |
+| `<database>`	        | The databases.	      | 1     |
+| `<property>`	        | The properties.	      | 0..∞  | 
+
+### To specify the authorization server
+The `<authorization>` element collects information to configure the authorization server for the authentication communication with other MobileFirst Server components. This element has the following attributes:
+
+| Attribute          | Description                           | Required | Default     | 
+|--------------------|---------------------------------------|----------|-------------|
+| auto               | To indicate whether the authorization server URL is computed. The possible values are true or false.	| Required on a WebSphere Application Server Network Deployment cluster or node.   	 | true | 
+| authorizationURL   | The URL of the authorization server.	 | If mode is not auto. | The context root of the runtime on the local server. |
+| runtimeContextRoot | The context root of the runtime.	     | No	     | /mfp       | 
+| pushClientID	     | The push service confidential ID in the authorization server.  | Yes | None |
+| pushClientSecret	 | The push service confidential client password in the authorization server. | Yes | None |
+
+#### auto
+If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
+
+#### authorizationURL
+The URL of the authorization server. If the authorization server is the MobileFirst runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
+
+#### runtimeContextRoot
+The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
+#### pushClientID
+The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from MobileFirst Operations Console.
+
+#### pushClientSecret
+The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from MobileFirst Operations Console.
+
+The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+
+| Attribute  | Description                | Required | Default | 
+|------------|----------------------------|----------|---------|
+| name       | The name of the property.  |	Yes	     | None    |
+| value	     | The value of the property. |	Yes	     | None    |
+
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the push service WAR file.
+
+For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+
+### To specify an application server
+Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+
+| Element                               | Description                                      | Count |
+|---------------------------------------|--------------------------------------------------|-------|
+| <websphereapplicationserver> or <was>	| The parameters for WebSphere Application Server. | The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1 |
+| `<tomcat>` | The parameters for Apache Tomcat. | 0..1 |
+
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+
+| Element              | Description                  | Count |
+|----------------------|------------------------------|-------|
+| `<collectiveMember>` | A Liberty collective member. |	0..1  |
+
+The `<collectiveMember>` element has the following attributes:
+
+| Attribute   | Description                        | Required | Default | 
+|-------------|------------------------------------|----------|---------|
+| serverName  | The name of the collective member. | Yes      | None    |
+| clusterName |	The cluster name that the collective member belongs to. | Yes | None |
+
+> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
+
+### To specify Analytics
+The `<analytics>` element indicates that you want to connect the MobileFirst push service to an already installed MobileFirst Analytics service. It has the following attributes:
+
+| Attribute    | Description                        | Required | Default | 
+|--------------|------------------------------------|----------|---------|
+| install	   | To indicate whether to connect the push service to MobileFirst Analytics. | No | false | 
+| analyticsURL | The URL of MobileFirst Analytics services. | Yes | None | 
+| username	   | The user name. | Yes | None | 
+| password	   | The password. | Yes | None | 
+| validate	   | To validate whether MobileFirst Analytics Console is accessible or not. | No | true | 
+
+#### install
+Use the **install** attribute to indicate that this push service must be connected and send events to MobileFirst Analytics. Valid values are true or false.
+
+#### analyticsURL
+Use the **analyticsURL** attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.  
+For example: `http://<hostname>:<port>/analytics-service/rest`
+
+#### username
+Use the **username** attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+#### password
+Use the **password** attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+#### validate
+Use the **validate** attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+
+### To specify a connection to the push service database
+The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+
+You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+
+The `<database>` element has the following attributes:
+
+| Attribute    | Description                  | Required | Default | 
+|--------------|------------------------------|----------|---------|
+| kind         | The kind of database (Push). | Yes      | None    |
+| validate	   | To validate whether the database is accessible. | No | true |
+
+The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+| Element              | Description                               | Count |
+|----------------------|-------------------------------------------|-------|
+| `<db2>`	           | The parameter for DB2® databases.         | 0..1  | 
+| `<derby>`	           | The parameter for Apache Derby databases. | 0..1  | 
+| `<mysql>`	           | The parameter for MySQL databases.        | 0..1  | 
+| `<oracle>`           | The parameter for Oracle databases.       | 0..1  |
+| `<cloudant>`	       | The parameter for Cloudant databases.     | 0..1  | 
+| `<driverclasspath>`  | The parameter for JDBC driver class path (relational DBMS only). | 0..1 |
+
+> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+
+| Attribute    | Description                            | Required   | Default | 
+|--------------|----------------------------------------|------------|---------|
+| url	       | The URL of the Cloudant account.       | No         | https://user.cloudant.com | 
+| user	       | The user name of the Cloudant account. | Yes | None |
+| password	   | The password of the Cloudant account.	| No  | Queried interactively |
+| dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
+
+## Ant tasks for installation of MobileFirst runtime environments
 Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
 
 ### Task effects
@@ -608,6 +773,229 @@ It supports the following elements for Liberty collective:
 
 The `<collectiveMember>` element has the following attributes:
 
+| Attribute               | Description      | Required | Default | 
+|-------------------------|------------------|----------|---------|
+| serverName              |	The name of the collective member.                       | Yes | None | 
+| clusterName             |	The cluster name that the collective member belongs to.  | Yes | None | 
+| serverId                |	A string that uniquely identifies the collective member. | Yes | None | 
+| controllerHost          |	The name of the collective controller.                   | Yes | None | 
+| controllerHttpsPort     |	The HTTPS port of the collective controller.             | Yes | None | 
+| controllerAdminName     |	The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the collective. | Yes | None | 
+| controllerAdminPassword |	The administrative user password.	                     | Yes | None | 
+| createControllerAdmin   |	To indicate whether the administrative user must be created in the basic registry of the collective member. Possible values are true or false. | No | true |
 
+It supports the following elements for Network Deployment:
 
+| Element     | Description                                   | Count |
+|-------------|-----------------------------------------------|-------|
+| `<cell>`    |	The entire cell.	                          | 0..1  |
+| `<cluster>` |	All the servers of a cluster.                 |	0..1  |
+| `<node>`    |	All the servers in a node, clusters excluded. | 0..1  |
+| `<server>`  |	A single server.	                          | 0..1  |
 
+The `<cell>` element has no attributes.
+
+The `<cluster>` element has the following attribute:
+
+| Attribute | Description       | Required | Default | 
+|-----------|-------------------|----------|---------|
+| name      | The cluster name. | Yes	   | None    |
+
+The `<node>` element has the following attribute:
+
+| Attribute | Description    | Required | Default | 
+|-----------|----------------|----------|---------|
+| name      | The node name. | Yes	    | None    |
+
+The `<server>` element, which is used in a Network Deployment context, has the following attributes:
+
+| Attribute  | Description      | Required | Default | 
+|------------|------------------|----------|---------|
+| nodeName   | The node name.   | Yes	   | None    |
+| serverName | The server name. | Yes      | None    |
+
+The `<tomcat>` element denotes an Apache Tomcat server. It has the following attribute:
+
+| Attribute     | Description      | Required | Default | 
+|---------------|------------------|----------|---------|
+| installdir    | The installation directory of Apache Tomcat. For a Tomcat installation that is split between a CATALINA_HOME directory and a CATALINA_BASE directory, specify the value of the CATALINA_BASE environment variable.     | Yes | None    | 
+| configureFarm | To specify whether the server is a server farm member. Possible values are true or false.	| No | false |
+| farmServerId	| A string that uniquely identify a server in a server farm. The MobileFirst Server administration services and all the MobileFirst runtimes that communicate with it must share the same value. | Yes | None |
+
+The `<database>` element specifies what information is necessary to access a particular database. The `<database>` element is specified like the configuredatabase Ant task, except that it does not have the `<dba>` and `<client>` elements. However, it might have `<property>` elements. The `<database>` element has the following attributes:
+
+| Attribute | Description                                | Required | Default | 
+|-----------|--------------------------------------------|----------|---------|
+| kind      | The kind of database (MobileFirstRuntime). | Yes | None |
+| validate  | To validate whether the database is accessible or not. The possible values are true or false. | No | true |
+
+The `<database>` element supports the following elements:
+
+| Element             | Description	                | Count | 
+|---------------------|-----------------------------|-------|
+| `<derby>`           | The parameters for Derby.   | 0..1  | 
+| `<db2>`             |	The parameters for DB2.     | 0..1  | 
+| `<mysql>`           |	The parameters for MySQL.   | 0..1  | 
+| `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
+| `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
+
+The `<analytics>` element indicates that you want to connect the MobileFirst runtime to an already installed MobileFirst Analytics console and services. It has the following attributes:
+
+| Attribute    | Description                                                                      | Required | Default | 
+|--------------|----------------------------------------------------------------------------------|----------|---------|
+| install      | To indicate whether to connect the MobileFirst runtime to MobileFirst Analytics. | No       | false   |
+| analyticsURL | The URL of MobileFirst Analytics services.	                                      | Yes      | None    |
+| consoleURL   | The URL ofMobileFirst Analytics Console.	                                      | Yes      | None    |
+| username     | The user name.	                                                                  | Yes      | None    |
+| password     | The password.	                                                                  | Yes      | None    |
+| validate     | To validate whether MobileFirst Analytics Console is accessible or not.	      | No	     | true    |
+| tenant       | The tenant for indexing data that is collected from a MobileFirst runtime.	      | No       | Internal identifier |
+
+#### install
+Use the **install** attribute to indicate that this MobileFirst runtime must be connected and send events to MobileFirst Analytics. Valid values are **true** or **false**.
+
+#### analyticsURL
+Use the **analyticsURL** attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.  
+For example: `http://<hostname>:<port>/analytics-service/rest`
+
+#### consoleURL
+Use the **consoleURL** attribute to the URL that is exposed by MobileFirst Analytics, which links to the MobileFirst Analytics console.  
+For example: `http://<hostname>:<port>/analytics/console`
+
+#### username
+Use the **username** attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+#### password
+Use the **password** attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+
+#### validate
+Use the **validate** attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
+
+#### tenant
+For more information about this attribute, see [Configuration properties](../analytics/configuration/#configurtion-properties).
+
+### To specify an Apache Derby database
+The <derby> element has the following attributes: 
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| database	 | The database name.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
+| datadir	 | The directory that contains the databases. |	Yes	     | None    |
+| schema     |	The schema name.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+
+The `<derby>` element supports the following element:
+
+| Element       | Description	                | Count | 
+|---------------|-------------------------------|-------|
+| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+
+For more information about the available properties, see the documentation for Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html). See also the documentation for [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html).
+
+For more information about the available properties for a Liberty server, see the documentation for `properties.derby.embedded` at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+
+When the **mfp-ant-deployer.jar** file is used within the installation directory of IBM MobileFirst Foundation, a `<driverclasspath>` element is not necessary.
+
+### To specify a DB2 database
+The `<db2>` element has the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| database   | The database name. | No	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
+| server     | The host name of the database server.      | Yes	     | None    | 
+| port       | The port on the database server.           | No	     | 50000   | 
+| user       | The user name for accessing databases.     | This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges                                 | that are listed in Database users and privileges. | Yes	None | 
+| password   | The password for accessing databases.      | No       | Queried interactively | 
+| schema     | The schema name.                           | No       | Depends on the user | 
+
+For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
+The `<db2>` element supports the following element:
+
+| Element       | Description	                | Count | 
+|---------------|-------------------------------|-------|
+| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+
+For more information about the available properties, see [Properties for the IBM® Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
+
+For more information about the available properties for a Liberty server, see the **properties.db2.jcc** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+
+The `<driverclasspath>` element must contain JAR files for the DB2 JDBC driver and the associated license. You can download DB2 JDBC drivers from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+
+### To specify a MySQL database
+The `<mysql>` element has the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| database	 | The database name.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
+| server	 | The host name of the database server.	  | Yes      | None    |
+| port	     | The port on the database server.           | No	     | 3306    |
+| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges | that are listed in Database users and privileges. | Yes | None |
+| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+
+Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| url	     | The URL for connection to the database.	  | Yes	     | None    |
+| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. | Yes  | None |
+| password	 | The password for accessing databases.	  | No       | Queried interactively |
+
+For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
+
+The `<mysql>` element supports the following element:
+
+| Element       | Description	                | Count | 
+|---------------|-------------------------------|-------|
+| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+
+For more information about the available properties, see the documentation at [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
+
+For more information about the available properties for a Liberty server, see the properties section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+
+The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download it from [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
+
+### To specify an Oracle database
+The `<oracle>` element has the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| database   | The database name, or Oracle service name. Note: You must always use a service name to connect to a PDB database. | No | ORCL |
+| server	 | The host name of the database server.	Yes	None
+| port	     | The port on the database server.	No	1521
+| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
+| password	 | The password for accessing databases.	  | No       | Queried interactively |
+
+> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+
+Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| url	     | The URL for connection to the database.	  | Yes      | None    |
+| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
+| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+
+> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+
+For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).
+
+For more information about Oracle database connection URLs, see the **Database URLs and Database Specifiers** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+
+It supports the following element:
+
+| Element       | Description	                | Count | 
+|---------------|-------------------------------|-------|
+| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+
+For more information about the available properties, see the **Data Sources and URLs** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+
+For more information about the available properties for a Liberty server, see the **properties.oracle** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+
+The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+
+The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`, or `<oracle>` elements, has the following attributes:
+
+| Attribute  | Description                                | Required | Default | 
+|------------|--------------------------------------------|----------|---------|
+| name       | The name of the property.	              | Yes      | None    |
+| type	     | Java™ type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
+| value	     | The value for the property.	              | Yes      |  None   |
