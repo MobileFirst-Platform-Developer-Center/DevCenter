@@ -12,12 +12,9 @@ Protected resources can run on the MobileFirst Server (such as **Adapters**), or
 In this tutorial, you learn how to protect an external **resource server** by implementing a **filter** that validates a MobileFirst **access token**.  
 You can implement such protection either entirely with custom code, or by using one of the MobileFirst Foundation helper libraries that encapsulate part of the flow.
 
-**Prerequesite:**
+**Prerequesite:**  
 
-* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Foundation security framework](../../).
-
-
+* Understanding of the [MobileFirst Foundation security framework](../).
 
 ## Flow
 ![Protecting external resources diagram](external_resources_flow.jpg)
