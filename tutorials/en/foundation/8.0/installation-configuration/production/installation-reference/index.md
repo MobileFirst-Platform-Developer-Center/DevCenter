@@ -23,8 +23,8 @@ Reference information for the configuredatabase Ant task. This reference informa
 The **configuredatabase** Ant task creates the relational databases that are used by MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, MobileFirst runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
 
 * Checks whether the MobileFirst tables exist and creates them if necessary.
-* If the tables exist for an older version of IBM MobileFirst™ Platform Foundation, migrates them to the current version.
-* If the tables exist for the current version of IBM MobileFirst Platform Foundation, does nothing.
+* If the tables exist for an older version of IBM MobileFirst Foundation, migrates them to the current version.
+* If the tables exist for the current version of IBM MobileFirst Foundation, does nothing.
 
 In addition, if one of the following conditions is met:
 
@@ -50,7 +50,7 @@ The **configuredatabase** task has the following attributes:
 | execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true | 
 
 #### kind
-IBM MobileFirst Platform Foundation V8.0.0 supports four kinds of database: MobileFirst runtime uses **MobileFirstRuntime** database. MobileFirst Server administration service uses the **MobileFirstAdmin** database. MobileFirst Server's Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. MobileFirst Server push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
+IBM MobileFirst Foundation V8.0.0 supports four kinds of database: MobileFirst runtime uses **MobileFirstRuntime** database. MobileFirst Server administration service uses the **MobileFirstAdmin** database. MobileFirst Server's Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. MobileFirst Server push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
 
 #### includeConfigurationTables
 The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.

@@ -35,8 +35,8 @@ Afterwards you'll have a working MobileFirst Server. However, you need to config
 
 **Additions**  
 
-* To add MobileFirst Analytics Server to your installation, see [MobileFirst Analytics Server installation guide]().  
-* To install IBM MobileFirst Platform Application Center, see [Installing and configuring the Application Center]().
+* To add MobileFirst Analytics Server to your installation, see [MobileFirst Analytics Server installation guide](production/analytics/installation/).  
+* To install IBM MobileFirst Platform Application Center, see [Installing and configuring the Application Center](production/appcenter).
 
 ### Deploying MobileFirst Server to the cloud
 If you plan to deploy MobileFirst Server to the cloud, see [Deploying MobileFirst Server to the cloud]().

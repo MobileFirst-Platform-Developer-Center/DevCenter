@@ -245,7 +245,7 @@ You must run the Ant task on the computer where the application server is instal
 > Note: The **mf_server_install_dir** placeholder is the directory where you installed MobileFirst Server.
 
 1. Edit the Ant script that you use later to deploy MobileFirst Analytics WAR files.
-    * Review the sample configuration files in [Sample configuration files for MobileFirst Analytics]().
+    * Review the sample configuration files in [Sample configuration files for MobileFirst Analytics](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
     * Replace the placeholder values with the properties at the beginning of the file.
 
     > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:

@@ -401,9 +401,9 @@ For other topologies that are supported in [Topologies and network flows](../top
 
 The references to the Ant tasks are as follows:
 
-* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services]()
-* [Ant tasks for installation of MobileFirst Server push service]()
-* [Ant tasks for installation of MobileFirst runtime environments]()
+* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Ant tasks for installation of MobileFirst Server push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Ant tasks for installation of MobileFirst runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
 For an overview of installing with the sample configuration file and tasks, see [Installing MobileFirst Server in command line mode](../command-line).
 
@@ -443,9 +443,9 @@ The following sections provide the details on how you can modify the sample Ant 
 #### Specify extra JNDI properties
 The **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks declare the values for the JNDI properties that are required for the components to function. These JNDI properties are used to define the JMX communication, and also the links to other components (such the live update service, the push service, the analytics service, or the authorization server). However, you can also define values for other JNDI properties. Use the `<property>` element that exists for these three tasks. For a list of JNDI properties, see:
 
-* [List of JNDI properties for MobileFirst Server administration service]()
-* [List of JNDI properties for MobileFirst Server push service]()
-* [List of JNDI properties for MobileFirst runtime]()
+* [List of JNDI properties for MobileFirst Server administration service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [List of JNDI properties for MobileFirst Server push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [List of JNDI properties for MobileFirst runtime](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 For example:
 
@@ -523,7 +523,7 @@ To run the Ant tasks on a computer where MobileFirst Server is not installed, yo
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-For more information, see the Ant tasks to install each MobileFirst Server component at [Installation reference]().
+For more information, see the Ant tasks to install each MobileFirst Server component at [Installation reference](../installation-reference).
 
 #### Specify WebSphere Application Server Network Deployment targets
 To install on WebSphere Application Server Network Deployment, the specified WebSphere Application Server profile must be the deployment manager. You can deploy on the following configurations:
@@ -533,7 +533,7 @@ To install on WebSphere Application Server Network Deployment, the specified Web
 * A cell (all the servers of a cell)
 * A node (all the servers of a node)
 
-The sample files such as **configure-wasnd-cluster-<dbms>.xml**, **configure-wasnd-server-<dbms>.xml**, and **configure-wasnd-node-<dbms>.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each MobileFirst Server component in the [Installation reference]().
+The sample files such as **configure-wasnd-cluster-<dbms>.xml**, **configure-wasnd-server-<dbms>.xml**, and **configure-wasnd-node-<dbms>.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each MobileFirst Server component in the [Installation reference](../installation-reference).
 
 > Note: As of V8.0.0, the sample configuration file for the WebSphere Application Server Network Deployment cell is not provided.
 
@@ -615,7 +615,7 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 
 > **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
 
-For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service]().  
+For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
 For a farm configuration, see also the following topics:
 
@@ -689,7 +689,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
@@ -950,8 +950,8 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 
 > **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
 
-* For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service]().  
-* For more information about the JNDI properties for the runtime, see [List of JNDI properties for MobileFirst runtime]().
+* For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+* For more information about the JNDI properties for the runtime, see [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 <h4 id="class-loader-collective">Class loader</h4>
 For all applications, the class loader must have the parent last delegation. For example:
@@ -1290,7 +1290,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The data source (jdbc/mfpAdminDS) is declared as a resource in the <Context> element. For example:</p>
@@ -1566,7 +1566,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>Create a data source for the administration service and map it to <b>jdbc/mfpAdminDS</b>.</p>
@@ -2163,4 +2163,4 @@ You can configure the heartbeat rate and timeout values by defining the followin
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-For more information about JNDI properties, see [List of JNDI properties for MobileFirst Server administration service]().
+For more information about JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
