@@ -289,7 +289,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                             <li>For an installation on WebSphere Application Server Liberty:
                                 <ul>
                                     <li>Enter the installation directory of Liberty and the name of the server where you want to install MobileFirst Server.</li>
-                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                     <li>Select the deployment type: <b>Standalone deployment</b> (default), <b>Server farm deployment</b>, or <b>Liberty collective deployment</b>.</li>
                                 </ul>
                                 
@@ -326,7 +326,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                                 <ul>
                                                     <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
                                                     <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the security roles of the administration service and MobileFirst Operations Console. See <a href="">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                                    <li>Map one or more users to the security roles of the administration service and MobileFirst Operations Console. See <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -337,7 +337,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                 <ul>
                                     <li>Enter the installation directory of Apache Tomcat.</li>
                                     <li>Enter the port that is used for the JMX communication with RMI. By default, the value is 8686. The Server Configuration Tool modifies the <b>tomcat_install_dir/bin/setenv.bat</b> or <b>tomcat_install_dir/bin/setenv.sh</b> file to open this port. If you want to open the port manually, or have already some code that opens the port in <b>setenv.bat</b> or <b>setenv.sh</b>, do not use the tool. Install with Ant tasks instead. An option to open the RMI port manually is provided for an installation with Ant tasks.</li>
-                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -764,7 +764,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
@@ -811,7 +811,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
@@ -860,7 +860,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
             </div>
         </div>
     </div>
@@ -1023,7 +1023,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
@@ -1101,7 +1101,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
@@ -1150,7 +1150,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
@@ -1203,7 +1203,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
             </div>
         </div>
     </div>
@@ -1357,7 +1357,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                 <h3>Mandatory JNDI properties</h3>
                 <p>You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-                For more information about the JNDI properties, see <a href="">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>The security roles available for the application are:</p>
@@ -1406,7 +1406,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jdbc/mfpDS</b>. Declare it as a resource in the <b><Context></b> element.</p>
@@ -1443,7 +1443,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
             </div>
         </div>
     </div>
@@ -1636,7 +1636,7 @@ To set the class loader delegation to parent last after an application is instal
                 <br/><br/>
                 You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-                For more information about the JNDI properties, see <a href="">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>The security roles available for the application are:</p>
@@ -1695,7 +1695,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
                 
                 <h3>Start order</h3>
                 <p>The runtime application must start after the administration service application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.</p>
@@ -1737,7 +1737,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="">List of JNDI properties for MobileFirst Server push service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.</p>
 
                 <h3>Data source</h3>
                 <p>Create the data source for the push service and map it to <b>jdbc/imfPushDS</b>.</p>
@@ -1950,7 +1950,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             </li>
                             <li>For each server, run the following commands where <b>configure-appserver-database-ant-file.xml</b> must be replaced with the actual Ant file name that you chose: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> and <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
                             <br/><br/>
-                            These commands run the <b>installmobilefirstadmin</b> and <b>installmobilefirstruntime</b> Ant tasks. For more information about these tasks, see <a href="">Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services</a> and <a href="">Ant tasks for installation of MobileFirst runtime environments</a>.
+                            These commands run the <b>installmobilefirstadmin</b> and <b>installmobilefirstruntime</b> Ant tasks. For more information about these tasks, see <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services</a> and <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant tasks for installation of MobileFirst runtime environments</a>.
                             </li>
                             <li>Optionally, if you want to install another runtime, do the following steps:
                                 <ul>
