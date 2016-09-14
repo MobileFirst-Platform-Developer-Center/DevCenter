@@ -350,7 +350,7 @@ The `<property>` element specifies a deployment property to be defined in the ap
 
 By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files.
 
-For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list.html?view=kc).
+For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### To specify an application server
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
@@ -875,7 +875,7 @@ Use the **validate** attribute to validate whether the MobileFirst Analytics Con
 For more information about this attribute, see [Configuration properties](../analytics/configuration/#configurtion-properties).
 
 ### To specify an Apache Derby database
-The <derby> element has the following attributes: 
+The `<derby>` element has the following attributes: 
 
 | Attribute  | Description                                | Required | Default | 
 |------------|--------------------------------------------|----------|---------|
@@ -1120,3 +1120,329 @@ The `<user>` element collects the parameters about a user to include in a certai
 | password	   | The password, if you must create the user.	| No | None |
 
 ## Ant tasks for installation of MobileFirst Analytics
+The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of MobileFirst Analytics.
+
+The purpose of these Ant Tasks is to configure the MobileFirst Analytics console and the MobileFirst Analytics service with the appropriate storage for the data on an application server.
+The task installs MobileFirst Analytics nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
+
+### Task effects
+#### installanalytics
+The **installanalytics** Ant task configures an application server to run IBM MobileFirst™ Analytics. This task has the following effects:
+
+* It deploys the MobileFirst Analytics Service and the MobileFirst Analytics Console WAR files on the application server.
+* It declares the MobileFirst Analytics Service web application in the specified context root /analytics-service.
+* It declares the MobileFirst Analytics Console web application in the specified context root /analytics.
+* It sets MobileFirst Analytics Console and MobileFirst Analytics Services configuration properties through JNDI environment entries.
+* On WebSphere® Application Server Liberty profile, it configures the web container.
+* Optionally, it creates users to use the MobileFirst Analytics Console.
+
+#### updateanalytics
+The **updateanalytics** Ant task updates the already configured MobileFirst Analytics Service and MobileFirst Analytics Console web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
+
+The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
+
+#### uninstallanalytics
+The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
+
+* It removes the configuration of both the MobileFirst Analytics Service and the MobileFirst Analytics Console web applications with their respective context roots.
+* It removes the MobileFirst Analytics Service and the MobileFirst Analytics Console WAR files from the application server.
+* It removes the associated JNDI environment entries.
+
+### Attributes and elements
+The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks have the following attributes:
+
+| Attribute    | Description                                            | Required | Default | 
+|--------------|--------------------------------------------------------|----------|---------|
+| serviceWar   | The WAR file for the MobileFirst Analytics Service     | No       | The analytics-service.war file is in the directory Analytics. |
+
+#### serviceWar
+Use the **serviceWar** attribute to specify a different directory for the MobileFirst Analytics Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+
+The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
+
+| Attribute         | Description                               | Required | Default | 
+|-------------------|-------------------------------------------|----------|---------|
+| console	        | MobileFirst Analytics   	                | Yes	   | 1       |
+| user	            | The user to be mapped to a security role.	| No	   | 0..     |
+| storage	        | The type of storage.	                    | Yes 	   | 1       |
+| applicationserver	| The application server.	                | Yes	   | 1       |
+| property          | Properties.	                            | No 	   | 0..     |
+
+### To specify a MobileFirst Analytics Console
+The `<console>` element collects information to customize the installation of the MobileFirst Analytics Console. This element has the following attributes:
+
+| Attribute    | Description                                  | Required | Default | 
+|--------------|----------------------------------------------|----------|---------|
+| warfile	   | The console WAR file	                      | No	     | The analytics-ui.war file is in the Analytics directory. |
+| shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
+
+#### warFile
+Use the **warFile** attribute to specify a different directory for the MobileFirst Analytics Console WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+
+#### shortcutsDir
+The **shortcutsDir** attribute specifies where to place shortcuts to the MobileFirst Analytics Console. If you set this attribute, you can add the following files to that directory:
+
+* **analytics-console.url**: This file is a Windows shortcut. It opens the MobileFirst Analytics Console in a browser.
+* **analytics-console.sh**: This file is a UNIX shell script. It opens the MobileFirst Analytics Console in a browser.
+
+> Note: These shortcuts do not include the ElasticSearch tenant parameter.
+
+The `<console>` element supports the following nested element:
+
+| Element  | Description	| Count | 
+|----------|----------------|-------|
+| property | Properties	    | 0..   |
+
+With this element, you can define your own JNDI properties.
+
+The `<property>` element has the following attributes:
+
+| Attribute  | Description                | Required | Default | 
+|------------|----------------------------|----------|---------|
+| name       | The name of the property.  | Yes      | None    | 
+| value	     | The value of the property. |	Yes      | None    |
+
+### To specify a user and a security role
+The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+
+| Attribute   | Description                                   | Required | Default | 
+|-------------|-----------------------------------------------|----------|---------|
+| role	      | A valid security role for the application.    | Yes      | None    |
+| name	      | The user name.	                              | Yes      | None    |
+| password	  | The password if the user needs to be created. | No       | None    |
+
+After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the MobileFirst Operations Console:
+
+* **mfpmonitor**
+* **mfpoperator**
+* **mfpdeployer**
+* **mfpadmin**
+
+### To specify a type of storage for MobileFirst Analytics
+The `<storage>` element indicates which underlying type of storage MobileFirst Analytics uses to store the information and data it collects.
+
+It supports the following element:
+
+| Element       | Description	| Count   | 
+|---------------|---------------|---------|
+| elasticsearch	| ElasticSearch | cluster |
+
+The `<elasticsearch>` element collects the parameters about an ElasticSearch cluster.
+
+| Attribute        | Description                                   | Required | Default   | 
+|------------------|-----------------------------------------------|----------|-----------|
+| clusterName	   | The ElasticSearch cluster name.	           | No       | worklight | 
+| nodeName	       | The ElasticSearch node name. This name must be unique in an ElasticSearch cluster.	| No | `worklightNode_<random number>` |
+| mastersList	   | A comma-delimited string that contains the host name and ports of the ElasticSearch master nodes in the ElasticSearch cluster (For example: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depends on the topology |
+| dataPath	       | The ElasticSearch cluster location.	       | No	      | Depends on the application server |
+| shards	       | The number of shards that the ElasticSearch cluster creates. This value can be set only by the master nodes that are created in the ElasticSearch cluster.	| No | 5 |
+| replicasPerShard | The number of replicas for each shard in the ElasticSearch cluster. This value can be set only by the master nodes that are created in the ElasticSearch cluster. | No | 1 |
+| transportPort	   | The port used for node-to-node communication in the ElasticSearch cluster.	| No | 9600 | 
+
+#### clusterName
+Use the **clusterName** attribute to specify a name of your choice for the ElasticSearch cluster.
+
+An ElasticSearch cluster consists of one or more nodes that share the same cluster name so you might specify the same value for the **clusterName** attribute if you configure several nodes.
+
+#### nodeName
+Use the **nodeName** attribute to specify a name of your choice for the node to configure in the ElasticSearch cluster. Each node name must be unique in the ElasticSearch cluster even if nodes span on several machines.
+
+#### mastersList
+Use the **mastersList** attribute to provide a comma-separated list of the master nodes in your ElasticSearch cluster. Each master node in this list must be identified by its host name, and the ElasticSearch node-to-node communication port. This port is 9600 by default, or it is the port number that you specified with the attribute **transportPort** when you configured that master node.
+
+For example: `hostname1:transport-port1, hostname2:transport-port2`.
+
+**Note:**
+
+* If you specify a **transportPort** that is different than the default value 9600, you must also set this value with the attribute **transportPort**. By default, when the attribute **mastersList** is omitted, an attempt is made to detect the host name and the ElasticSearch transport port on all supported application servers.
+* If the target application server is WebSphere Application Server Network Deployment cluster, and if you add or remove a server from this cluster at a later point in time, you must edit this list manually to keep in sync with the ElasticSearch cluster.
+
+#### dataPath
+Use the **dataPath** attribute to specify a different directory to store ElasticsSearch data. You can specify an absolute path or a relative path.
+
+If the attribute **dataPath** is not specified, then ElasticSearch cluster data is stored in a default directory that is called **analyticsData**, whose location depends on the application server:
+
+* For WebSphere Application Server Liberty profile, the location is `${wlp.user.dir}/servers/serverName/analyticsData`.
+* For Apache Tomcat, the location is `${CATALINA_HOME}/bin/analyticsData`.
+* For WebSphere Application Server and WebSphere Application Server Network Deployment, the location is `${was.install.root}/profiles/<profileName>/analyticsData`.
+
+The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the MobileFirst Analytics Service component receives events.
+
+#### shards
+Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
+
+#### replicasPerShard
+Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
+
+Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the MobileFirst Analytics. A replica shard can never be started on the same node as its shard.
+
+#### transportPort
+Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
+
+### To specify an application server
+Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+
+**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+
+| Element                                   | Description	| Count   | 
+|-------------------------------------------|---------------|---------|
+| **websphereapplicationserver** or **was** | The parameters for WebSphere Application Server.	| 0..1 |
+| tomcat	                                | The parameters for Apache Tomcat.	| 0..1 |
+
+### To specify custom JNDI properties
+The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` elements support the following element:
+
+| Element  | Description | Count | 
+|----------|-------------|-------|
+| property | Properties	 | 0..   |
+
+By using this element, you can define your own JNDI properties.
+
+This element has the following attributes:
+
+| Attribute  | Description                | Required | Default | 
+|------------|----------------------------|----------|---------|
+| name       | The name of the property.  | Yes      | None    | 
+| value	     | The value of the property. |	Yes      | None    |
+
+## Internal runtime databases
+Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
+
+### Database used by MobileFirst Server runtime
+The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
+
+| Relational database table name | Description | Order of magnitude |
+|--------------------------------|-------------|--------------------|
+| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
+| ADDRESSABLE_DEVICE	         | Stores the addressable device metrics daily. An entry is also added each time that a cluster is started.	| About 400 rows. Entries older than 13 months are deleted daily. |
+| MFP_PERSISTENT_DATA	         | Stores instances of client applications that have registered with the OAuth server, including information about the device, the application, users associated with the client and the device status. | One row per device and application pair. |
+| MFP_PERSISTENT_CUSTOM_ATTR	 | Custom attributes that are associated with instances of client applications. Custom attributes are application-specific attributes that were registered by the application per each client instance. | Zero or more rows per device and application pair |
+| MFP_TRANSIENT_DATA	         | Authentication context of clients and devices | Two rows per device and application pair; if using device single sign-on an extra two rows per device. For more information about SSO, see [Configuring device single sign-on (SSO)](../../../authentication-and-security/device-sso). |
+| SERVER_VERSION	             | The product version.	| One row |
+
+### Database used by MobileFirst Server administration service
+The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
+
+| Relational database table name | Description | Order of magnitude |
+|--------------------------------|-------------|--------------------|
+| ADMIN_NODE	                 | Stores information about the servers that run the administration service. In a stand-alone topology with only one server, this entity is not used. | One row per server; empty if a stand-alone server is used. |
+| AUDIT_TRAIL	                 | Stores an audit trail of all administrative actions performed with the administration service. | Thousands of rows. | 
+| CONFIG_LINKS	                 | Stores the links to the live update service. Adapters and applications might have configurations that are stored in the live update service, and the links are used to find those configurations.	| Hundreds of rows. Per adapter, 2-3 rows are used. Per application, 4-6 rows are used. |
+| FARM_CONFIG	                 | Stores the configuration of farm nodes when a server farm is used. | Tens of rows; empty if no server farm is used. |
+| GLOBAL_CONFIG	                 | Stores some global configuration data. | 1 row. |
+| PROJECT	                     | Stores the names of the deployed projects. | Tens of rows. |
+| PROJECT_LOCK	                 | Internal cluster synchronization tasks. | Tens of rows. | 
+| TRANSACTIONS	                 | Internal cluster synchronization table; stores the state of all current administrative actions. | Tens of rows. |
+| MFPADMIN_VERSION	             | The product version.	| One row. |
+
+### Database used by MobileFirst Server live update service
+The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
+
+| Relational database table name | Description | Order of magnitude |
+|--------------------------------|-------------|--------------------|
+| CS_SCHEMAS	                 | Stores the versioned schemas that exist in the platform.	| One row per schema. |
+| CS_CONFIGURATIONS	             | Stores instances of configurations for each versioned schema. | One row per configuration | 
+| CS_TAGS	                     | Stores the searchable fields and values for each configuration instance.	| Row for each field name and value for each searchable field in configuration. |
+| CS_ATTACHMENTS	             | Stores the attachments for each configuration instance. | One row per attachment. |
+| CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. | 
+
+### Database used by MobileFirst Server push service
+The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
+
+| Relational database table name | Description | Order of magnitude |
+|--------------------------------|-------------|--------------------|
+| PUSH_APPS	                     | Push notification table; stores details of push applications. | One row per application. |
+| PUSH_ENV	                     | Push notification table; stores details of push environments. | Tens of rows. |
+| PUSH_TAGS	                     | Push notification table; stores details of defined tags.	     | Tens of rows. | 
+| PUSH_DEVICES	                 | Push notification table. Stores a record per device.	         | One row per device. | 
+| PUSH_SUBSCRIPTIONS	         | Push notification table. Stores a record per tag subscription. | One row per device subscription. |
+| PUSH_MESSAGES	                 | Push notification table; stores details of push messages.	 | Tens of rows. | 
+| PUSH_MESSAGE_SEQUENCE_TABLE	 | Push notification table; stores the generated sequence ID.	 | One row. |
+| PUSH_VERSION	                 | The product version.	                                         | One row. |
+
+For more information about setting up the databases, see [Setting up databases](../databases).
+
+## Sample configuration files
+IBM MobileFirst Foundation includes a number of sample configuration files to help you get started with the Ant tasks to install the MobileFirst Server.
+
+The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the MobileFirst Server distribution. For more information about installing MobileFirst Server with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+
+### List of sample configuration files
+Pick the appropriate sample configuration file. The following files are provided.
+
+| Task                                                     | Derby                     | DB2®                    | MySQL                     | Oracle                      | 
+|----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
+| Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
+| Install MobileFirst Server on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
+| Install MobileFirst Server on WebSphere® Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
+| Install MobileFirst Server on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
+| Install MobileFirst Server on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| Install MobileFirst Server on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+
+**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM® DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+
+**Note on configuration files for WebSphere Application Server Network Deployment:** The configuration files for **wasnd** contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-derby.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+
+* **cluster**: To deploy to a cluster.
+* **server**: To deploy to a single server that is managed by the deployment manager.
+* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
+* **cell**: To deploy to all the servers on a cell.
+
+## Sample configuration files for MobileFirst Analytics
+BM MobileFirst Foundation includes a number of sample configuration files to help you get started with the Ant tasks to install the MobileFirst Analytics Services, and the MobileFirst Analytics Console.
+
+The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the MobileFirst Server distribution.
+
+### Step 1
+Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
+
+| Task | Application server |
+|------|--------------------|
+| Install MobileFirst Analytics Services and Console on WebSphere® Application Server Liberty profile | configure-liberty-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml | 
+
+**Note on configuration files for WebSphere Application Server Network Deployment:**  
+The configuration files for wasnd contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-analytics.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+
+* **cluster**: To deploy to a cluster.
+* **server**: To deploy to a single server that is managed by the deployment manager.
+* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
+* **cell**: To deploy to all the servers on a cell.
+
+### Step 2
+Change the file access rights of the sample file to be as restrictive as possible. Step 3 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
+
+On UNIX: `chmod 600 configure-file.xml`
+On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+
+### Step 3
+Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
+
+* For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
+* For Apache Tomcat: **conf/server.xml**
+
+### Step 4
+Replace the placeholder values for the properties at the beginning of the file.
+
+**Note:**  
+The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+
+* The dollar sign (`$`) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax `${variable}`, as described in Properties section of the Apache Ant Manual.
+* The ampersand character (`&`) must be written as `&amp;`, unless you explicitly want to reference an XML entity.
+* Double quotation marks (`"`) must be written as `&quot;`, except when it is inside a string that is enclosed in single quotation marks.
+
+### Step 5
+Run the command: `ant -f configure-file.xml install`
+
+This command installs your MobileFirst Analytics Services and MobileFirst Analytics Console components in the application server.
+To install updated MobileFirst Analytics Services and MobileFirst Analytics Console components, for example if you apply a MobileFirst Server fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
+
+To reverse the installation step, run the command: `ant -f configure-file.xml uninstall`
+
+This command uninstalls the MobileFirst Analytics Services and MobileFirst Analytics Console components.
+
