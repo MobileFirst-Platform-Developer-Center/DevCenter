@@ -12,7 +12,7 @@ version:
 author: 
   name: Vittal R Pai
 ---
-The MobileFirst Platform Foundation v6.3 to v8.0 are supported on iOS 10. Read more on our support plan [here](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/05/support-plan-for-ios-10/). 
+The MobileFirst Platform Foundation v6.3 to v8.0 are supported on iOS 10. Read more on our support plan [here](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/05/support-plan-for-ios-10/).
 
 The blog inscribes the steps that developers and IT administrators might have to incorporate in their applications.
 
@@ -53,5 +53,12 @@ Existing application(s) that were created using MobileFirst Platform v8.0 watchO
 Steps to be followed while developing watchOS application(s) and the limitations can be found [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/using-the-mfpf-sdk/watchos)
 
 <br>
+###MobileFirst Xamarin Application
+
+Similar to the Mobilefirst native iOS SDK, the [IBM MobileFirst SDK for Xamarin](https://components.xamarin.com/view/ibm-worklight?version=8.0.0.1) has also been successfully validated with iOS 10. Existing application(s) created using the IBM MobileFirst SDK for Xamarin will work on iOS 10.
+
+<br>
 ####Additional Information
 [WWDC 2016.](https://developer.apple.com/videos/wwdc2016/)
+
+> **Note:** For compatibility results between iOS 10 and MobileFirst Platform releases, see the blog post: [Compatibility tests for iOS 10 with supported MobileFirst Platform Foundation releases]({{site.baseurl}}/blog/2016/07/01/compatibility-tests-for-ios-10/).
