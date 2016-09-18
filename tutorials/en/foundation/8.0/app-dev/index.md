@@ -6,10 +6,11 @@ show_children: true
 weight: 5
 ---
 ## Development Concepts and Overview
+When you develop your app with the MobileFirst Foundation set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly. 
 
-When you develop your app with the MobileFirst Foundation set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly. In addition to getting familiar with these concepts, you will also learn about MobileFirst-provided APIs for Native, Cordova and Web  applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the MobileFirst CLI.
+In addition to getting familiar with these concepts, you will also learn about MobileFirst-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the MobileFirst CLI.
 
-Continue reading to learn more about the MobileFirst Components or select a tutorial from the sidebar navigation.
+You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various MobileFirst components.
 
 #### Jump to
 * [Applications](#applications)
@@ -26,25 +27,25 @@ Applications are identified by the following elements:
 * A version number
 * A target deployment platform
 
-**Note:** The version number is not applicable to web applications. You cannot have multiple versions of the same web application.
+> **Note:** The version number is not applicable to web applications. You cannot have multiple versions of the same web application.
 
 These identifiers are used on both the client-side and the server-side to ensure that apps are deployed correctly and use only resources that are assigned to them. Different parts of IBM MobileFirst Foundation use various combinations of these identifiers in different ways.
 
 The app ID depends on the target deployment platform:
 
 **Android**  
-For Android apps, the identifier is the application package name.
+The identifier is the application package name.
 
 **iOS**  
-For iOS apps, the identifier is the application bundle ID.
+The identifier is the application bundle ID.
 
 **Windows**  
-For Windows apps, the identifier is application assembly name.
+The identifier is the application assembly name.
 
 **Web**  
-For web apps, the identifier is a unique ID that is assigned by the developer.
+The identifier is a unique ID that is assigned by the developer.
 
-If apps for different target platforms all have the same app ID, then the MobileFirst Server considers all of these apps to be the same app with different platform instances. For example, the following apps are considered to be different platform instances of the same app:
+If apps for different target platforms all have the same app ID, then the MobileFirst Server considers all of these apps to be the same app with different platform instances. For example, the following apps are considered to be different platform instances of *the same app*:
 
 * An iOS app with a bundle ID of `com.mydomain.mfp`.
 * An Android app with a package name of `com.mydomain.mfp`.
@@ -57,9 +58,14 @@ The target deployment platform for the app is independent of whether the app was
 * An iOS app that you develop with Cordova cross-platform development technologies
 
 ### Application configuration
-As mentioned, an application is configured on both the client-side and the server-side. For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../app-dev/sdk/web). The client configuration properties include the application ID and information such as the URL of the MobileFirst Server runtime and security keys that are required to access to the server. The server configuration for the app includes information like app management status, web resources for Direct Update, configured security scopes, and log configuration.
+As mentioned, an application is configured on both the client-side and the server-side.  
 
-> Learn how to add the MobileFirst Client SDKs in the [Adding the MobileFirst Foundation SDK tutorials](../app-dev/sdk)
+For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../app-dev/sdk/web).
+
+The client configuration properties include the application ID and information such as the URL of the MobileFirst Server runtime and security keys that are required to access to the server.  
+The server configuration for the app includes information like app management status, web resources for Direct Update, configured security scopes, and log configuration.
+
+> Learn how to add the MobileFirst Client SDKs in the [Adding the MobileFirst Foundation SDK tutorials](sdk).
 
 The client configuration must be defined before you build the application. The client-app configuration properties must match the properties that are defined for this app in the MobileFirst Server runtime. For example, security keys in the client configuration must match the keys on the server. For non-web apps, you can change the client configuration with the MobileFirst CLI.
 
@@ -71,7 +77,7 @@ The server configuration for an app is tied to the combination of app ID, versio
 
 You can also use these methods to automate configuring your MobileFirst Server.
 
-**Remember:** You can modify the server configuration even while a MobileFirst Server is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
+> **Remember:** You can modify the server configuration even while a MobileFirst Server is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
 
 On a production server, the app version typically corresponds to the version of the application published to an app store. Some server configuration elements like the configuration for app authenticity, are unique to the app published to the store.
 
@@ -127,10 +133,10 @@ After the initial installation and configuration, you do not need to access any 
 When you deploy your app to production, you can deploy your app to the following MobileFirst Server production environments:
 
 #### On-premises
-For information about installing and configuring MobileFirst Server for your on-premises environment, see [Installing IBM MobileFirst Server](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/c_installation.html#installation).
+> For information about installing and configuring MobileFirst Server for your on-premises environment, see [Installing IBM MobileFirst Server](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/c_installation.html#installation).
 
 #### On the cloud
-For information, see [Deploying MobileFirst Server to the cloud](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html#deployment).
+> For information, see [Deploying MobileFirst Server to the cloud](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html#deployment).
 
 ## Adapters
 Adapters in IBM MobileFirst Foundation securely connect your back-end systems to client applications and cloud services.  
