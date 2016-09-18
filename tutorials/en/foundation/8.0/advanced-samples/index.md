@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Advanced Samples
-weight: 11
+weight: 12
 ---
 ## Overview
 Discover advanced implementation examples for real-life use cases such as SMS One-Time-Password, LDAP server connectivity, Social Login, License agreement, Trusted Devices and more...
