@@ -56,10 +56,6 @@
             "path": "/6.3"
         }]
     }, {
-            "name": "API Reference",
-            "path": "/foundation/8.0/api-ref",
-        
-    }, {
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
