@@ -302,9 +302,9 @@ Set the JNDI environment entries in one of the following ways:
 
     In **mfp_install_dir/MobileFirstServer/configuration-samples**, edit the configuration XML file for the Ant tasks, and declare the values for the JNDI properties by using the property element inside the following tags:
     
-    * `<installmobilefirstadmin>`, for MobileFirst Server administration, MobileFirst Operations Console, and live update services. For more information, see [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services]().
-    * `<installmobilefirstruntime>`, for MobileFirst runtime configuration properties. For more information, see [Ant tasks for installation of MobileFirst runtime environments]().
-    * `<installmobilefirstpush>`, for configuration of the push service. For more information, see [Ant tasks for installation of MobileFirst Server push service]().
+    * `<installmobilefirstadmin>`, for MobileFirst Server administration, MobileFirst Operations Console, and live update services. For more information, see [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+    * `<installmobilefirstruntime>`, for MobileFirst runtime configuration properties. For more information, see [Ant tasks for installation of MobileFirst runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+    * `<installmobilefirstpush>`, for configuration of the push service. For more information, see [Ant tasks for installation of MobileFirst Server push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
     For example: 
     
@@ -754,7 +754,7 @@ For more information about IBM License Metric Tool reports, see [Integration wit
 ## WebSphere Application Server SSL configuration and HTTP adapters
 By setting a property, you can let HTTP adapters benefit from WebSphere® SSL configuration.
 
-By default, HTTP adapters do not use WebSphere SSL by concatenating the Java™ Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates]().
+By default, HTTP adapters do not use WebSphere SSL by concatenating the Java™ Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates]().
 
 To have HTTP adapters use the WebSphere SSL configuration, set the **ssl.websphere.config** JNDI property to true. The setting has the following effects in order of precedence:
 

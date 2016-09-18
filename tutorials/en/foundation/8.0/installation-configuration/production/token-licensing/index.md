@@ -119,7 +119,7 @@ You must install the Rational® Common Licensing native and Java™ libraries on
     * **rlks_hostname** is the host name of the Rational License Key Server.
     * **rlks_port** is the port of the Rational License Key Server. By default, the value is **27000**.
 
-For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing]().
+For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing](../server-configuration/#jndi-properties-for-administration-service-licensing).
 
 ### Installing on Apache Tomcat server farm
 For configuring the connection of MobileFirst Server on Apache Tomcat server farm, you must follow all the steps that are described in [Installing Rational Common Licensing libraries](#installing-rational-common-licensing-libraries) for each node of your server farm where the MobileFirst Server administration service is running. For more information about server farm, see [Server farm topology](../topologies/#server-farm-topology) and [Installing a server farm](../appserver/#installing-a-server-farm).
@@ -200,7 +200,7 @@ You must install the Rational® Common Licensing native and Java™ libraries on
     * **rlks_hostname** is the host name of the Rational License Key Server.
     * **rlks_port** is the port of the Rational License Key Server. By default, the value is 27000.
 
-    For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing]().
+    For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing](../server-configuration/#jndi-properties-for-administration-service-licensing).
 
 ### Installing on Liberty profile server farm
 For configuring the connection of MobileFirst Server on Liberty profile server farm, you must follow all the steps that are described in [Installing Rational Common Licensing libraries](#installing-rational-common-licensing-libraries) for each node of your server farm where the MobileFirst Server administration service is running. For more information about server farm, see [Server farm topology](../topologies/#server-farm-topology) and [Installing a server farm](../appserver/#installing-a-server-farm).

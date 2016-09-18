@@ -41,7 +41,7 @@ The protocols for JMX depend on the application server:
 * WebSphere Application Server Liberty - HTTPS (with the REST connector)
 * WebSphere Application Server - SOAP or RMI
 
-For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites]().
+For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites](../appserver/#application-server-prerequisites).
 
 The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime).
 
@@ -55,13 +55,13 @@ The JNDI properties that are used for the communication between the runtime and 
 
 #### MobileFirst Server administration service
 
-* [JNDI properties for administration services: JMX]()
-* [JNDI properties for administration services: proxies]()
-* [JNDI properties for administration services: topologies]()
+* [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [JNDI properties for administration services: topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
 
 #### MobileFirst runtime
 
-* [List of JNDI properties for MobileFirst runtime]()
+* [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### MobileFirst Server administration service to MobileFirst runtime in other servers
 As described in [MobileFirst runtime to MobileFirst Server administration service](mobilefirst-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
@@ -71,7 +71,7 @@ On WebSphere Application Server Network Deployment, this communication can occur
 For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
 
 ### MobileFirst Server administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
-On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service) and [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX]().
+On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [MobileFirst runtime to MobileFirst Server administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service) and [MobileFirst Server administration service to MobileFirst runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
 
 The deployment manager must be running to allow the operations that require JMX communication between the runtime and the administration service. Such operations can be a runtime initialization, or the notification of a modification performed through the administration service.
 
@@ -103,12 +103,12 @@ The JNDI properties to configure this communication between the two services are
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* And those properties in [JNDI properties for administration services: proxies]().
+* And those properties in [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
 
 ### MobileFirst Operations Console to MobileFirst Server administration service
 MobileFirst Operations Console is a web user interface and acts as the front end to the administration service. It communicates with the REST services of the administration service through HTTP or HTTPS. The users who are allowed to use the console, must also be allowed to use the administration service. Each user that is mapped to a certain security role of the console must also be mapped to the same security role of the service. With this setup, the requests from the console can thus be accepted by the service.
 
-The JNDI properties to configure this communication are in [JNDI properties for the MobileFirst Operations Console]().
+The JNDI properties to configure this communication are in [JNDI properties for the MobileFirst Operations Console](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
 
 > Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character "\*" as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
 
@@ -136,7 +136,7 @@ The push service generates outbound traffic to the external notification service
 * **push.apns.proxy.***
 * **push.gcm.proxy.***
 
-For more information, see [List of JNDI properties for MobileFirst Server push service]().
+For more information, see [List of JNDI properties for MobileFirst Server push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### Mobile devices to MobileFirst runtime
 The mobile devices contact the runtime. The security of this communication is determined by the configuration of the application and the adapters that are requested. For more information, see [MobileFirst security framework](../../../authentication-and-security).
@@ -194,7 +194,7 @@ With one JVM, only symmetric deployment is possible with the following character
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime]().
+Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Stand-alone WebSphere Application Server Liberty profile server**  
 The following global JNDI properties are required for the administration services and the runtimes.
@@ -223,9 +223,9 @@ The following local JNDI properties are required for the administration services
 | mfp.topology.platform   | Tomcat     |
 | mfp.topology.clustermode | Standalone |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat]().
+JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
-If the Apache Tomcat server is running behind a firewall, the **mfp.admin.rmi.registryPort** and **mfp.admin.rmi.serverPort** JNDI properties are required for the administration service. See [Configuring JMX connection for Apache Tomcat]().
+If the Apache Tomcat server is running behind a firewall, the **mfp.admin.rmi.registryPort** and **mfp.admin.rmi.serverPort** JNDI properties are required for the administration service. See [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
 Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
 When you deploy several administration components, you must specify:
@@ -270,7 +270,7 @@ This topology supports only symmetric deployment. The runtimes and the administr
 * Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](). For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime]().
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../http://localhost:4000/tutorials/en/foundation/8.0/installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **WebSphere Application Server Liberty profile server farm**  
 The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
@@ -361,9 +361,9 @@ The following global JNDI properties are required in each server of the farm for
 | mfp.topology.platform	   | Tomcat    |
 | mfp.topology.clustermode | Farm      |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat]().
+JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
-The **mfp.admin.serverid*** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
 
 Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
 
@@ -414,7 +414,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime](). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective]().
+The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for MobileFirst runtime](server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 The following global JNDI properties are required for the administration services:
 
@@ -582,7 +582,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for MobileFirst Server administration service]() and [List of JNDI properties for MobileFirst runtime]().
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for MobileFirst Server administration service](server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 The following local JNDI properties are required for the administration services and for the runtimes:
 
