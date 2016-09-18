@@ -28,6 +28,8 @@ The recently released IBM MobileFirst Foundation 8.0 provides an opporunity to u
 * [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/)
 
 <br/>
+For IBM MobileFirst Platform Foundation Support for iOS 10, read the blog post [here]({{site.baseurl}}/blog/2016/09/16/mfp-support-for-ios10/).
+
 For compatibility results between iOS 10 and MobileFirst Platform releases, see the blog post: [Compatibility tests for iOS 10 with supported MobileFirst Platform Foundation releases]({{site.baseurl}}/blog/2016/07/01/compatibility-tests-for-ios-10/).
 
 *Note: IBM statements regarding its plans, directions, and intent are subject to change or withdrawal without notice at the sole discretion of IBM. Information regarding potential future products is intended to outline our general product direction and it should not be relied on in making a purchasing decision. The information mentioned regarding potential future products is not a commitment, promise, or legal obligation to deliver any material, code or functionality. Information about potential future products may not be incorporated into any contract. The development, release, and timing of any future features or functionality described for our products remains at our sole discretion.*
