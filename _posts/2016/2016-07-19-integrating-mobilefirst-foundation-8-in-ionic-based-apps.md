@@ -30,7 +30,7 @@ To get up &amp; running with the MobileFirst Server you can either use the [Mobi
 npm install -g mfpdev-cli
 ```
 
-> Learn more about the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)
+> Learn more about the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)
 
 **Ionic CLI**  
 
@@ -75,7 +75,7 @@ You can confirm the installed plug-ins by entering `ionic plugin list`
 
 ![ionic-plugin]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/plugins.png)
 
-> Learn more about the [MobileFirst Cordova SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/cordova/)
+> Learn more about the [MobileFirst Cordova SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/sdk/cordova/)
 
 ## Previewing the App
 You can preview the app in a number of ways.
@@ -181,7 +181,7 @@ Select the mobile browser simulator option.
 ![ionic-mbs]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/mbs.png)
 
 > **Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
-> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/cordova-apps/#previewing-an-application-39-s-web-resources).
+> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/cordova-apps/#previewing-an-application-39-s-web-resources).
 
 ## Implementing the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.

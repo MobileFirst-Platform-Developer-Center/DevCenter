@@ -104,7 +104,7 @@ MobileFirst Platform Foundation 8.0 Beta provides a SecurityCheck sample, but no
 As we saw, the SecurityCheck sends a challenge in the format of `{"captcha" : "X + Y" , "message" : errorMsg}`.  
 This means we need to create a challenge Handler in our client, register that client, and create some UI for our User to answer the captcha challenge.
 
-Create a new Xcode project and [add the MobileFirst Platform Foundation SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/ios).
+Create a new Xcode project and [add the MobileFirst Platform Foundation SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/sdk/ios).
 
 #### Create the SecurityCheckChallengeHandler
 In our XCode app, lets create a new Cocoa class called "SimpleCaptchaChallengeHandler".          

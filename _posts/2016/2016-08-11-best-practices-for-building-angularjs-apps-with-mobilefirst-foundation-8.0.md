@@ -12,7 +12,7 @@ author:
 ## Overview
 In this blog post we cover best practices for building AngularJS apps with MobileFirst. Starting with MobileFirst Platform Foundation 7.1 support for Cordova apps was introduced and in MobileFirst Foundation 8.0 the classic Hybrid application was replaced with the Cordova application model.
 
-Cordova applications have a very crucial event, `deviceready`, that indicates the Cordova's API's are fully loaded and ready to use. MobileFirst Foundation 8.0 APIs are loaded as [Cordova plugins]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/cordova) and therefore are only available after the `deviceready` event is fired. After the MobileFirst client SDK is loaded, the `wlCommonInit` function is invoked. `wlCommonInit` is defined by the developer as part of the application's code.
+Cordova applications have a very crucial event, `deviceready`, that indicates the Cordova's API's are fully loaded and ready to use. MobileFirst Foundation 8.0 APIs are loaded as [Cordova plugins]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/sdk/cordova) and therefore are only available after the `deviceready` event is fired. After the MobileFirst client SDK is loaded, the `wlCommonInit` function is invoked. `wlCommonInit` is defined by the developer as part of the application's code.
 
 > **NOTE:** If you try to access MobileFirst APIs such as `WL.Client.createSecurityCheckChallengeHandler`, `WLResourceRequest`, `WL.Analytics.log`, etc. before `wlCommonInit` is called, a `$function is not defined exception` will be thrown.
 

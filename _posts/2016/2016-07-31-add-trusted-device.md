@@ -43,7 +43,7 @@ This blog will show you how simple it is to implement a feature which will let a
 
 * [Security In IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/)
 * [Adapters In IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/)
-* [Cordova with IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/cordova-apps/)
+* [Cordova with IBM MobileFirst Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/cordova-apps/)
 * [NodeJS](https://nodejs.org)
 * [socket.io](http://socket.io/)
 
