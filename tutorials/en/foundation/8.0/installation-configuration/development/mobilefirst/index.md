@@ -87,12 +87,12 @@ You can use the IBM MobileFirst™ Platform Command Line Interface (CLI) to deve
 * Previewing and updating Cordova apps
 
 > To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### MobileFirst Foundation client SDKs and adapter tooling
 MobileFirst Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
 
-* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
+* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../app-dev/sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
 

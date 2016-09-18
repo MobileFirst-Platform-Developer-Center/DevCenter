@@ -11,7 +11,7 @@ Developers can use their IDE of choice, and any framework(s) that suits their ne
 
 However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
-[Web apps that are to use the MobileFirst Web SDK](../../adding-the-mfpf-sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+[Web apps that are to use the MobileFirst Web SDK](../../app-dev/sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
 The policy requirements can be satisfied by using either of the following methods:
 
@@ -115,6 +115,6 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
 ## Next steps
 To continue with MobileFirst development in Web applications, the MobileFirst Web SDK need to be added to the Web application.
 
-* Learn how to add the [MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web/).
-* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
+* Learn how to add the [MobileFirst SDK to Web applications](../../app-dev/sdk/web/).
+* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../app-dev/) tutorials.
 * For adapters develpment, refer to the [Adapters](../../adapters/) category.

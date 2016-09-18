@@ -139,7 +139,7 @@ The adapter response is then displayed in an alert.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Using the MobileFirst Foundation](../../app-dev/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review [All Tutorials](../../all-tutorials)

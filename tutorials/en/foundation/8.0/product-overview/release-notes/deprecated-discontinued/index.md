@@ -23,7 +23,7 @@ IBM MobileFirst Platform Foundation v8.0 is radically simplified compared to the
     <tr>
         <td>MobileFirst Studio is replaced by MobileFirst Studio plug-in for Eclipse.</td>
         <td><p>Replaced by MobileFirst Studio plug-in for Eclipse empowered by standard and community-base Eclipse plug-ins.
-You can develop hybrid applications directly with the Apache Cordova CLI or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.For more information about using eclipse as a Cordova enabled IDE, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/">IBM MobileFirst Studio plug-in for managing Cordova projects in Eclipse</a>.</p>
+You can develop hybrid applications directly with the Apache Cordova CLI or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.For more information about using eclipse as a Cordova enabled IDE, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/using-mobilefirst-cli-in-eclipse/">IBM MobileFirst Studio plug-in for managing Cordova projects in Eclipse</a>.</p>
 
             <p>You can develop adapters with Apache Maven or a maven-enabled IDE such as Eclipse, IntelliJ, and others. For more information about developing adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapters category</a>. For more information about using Eclipse as a Maven enabled IDE, read the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Developing Adapters in Eclipse tutorial</a>.</p>
 
@@ -44,7 +44,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
     <tr>
         <td>The encrypted cache is discontinued.</td>
         <td>
-            <p>Discontinued. To store encrypted data locally, use JSONStore. For more information about JSONStore, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/jsonstore">JSONStore tutorial</a>.</p></td>
+            <p>Discontinued. To store encrypted data locally, use JSONStore. For more information about JSONStore, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/jsonstore">JSONStore tutorial</a>.</p></td>
     </tr>
     <tr>        
         <td>
@@ -289,7 +289,7 @@ This set of APIs is no longer supported in v8.0.
 | `WL.Device.setFriendlyName()` | Use `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | Use Cordova plug-ins providing this functionality. **Note:** For your information, the **cordova-plugin-network-information** plug-in provides this feature. | 
 | `WLUtils.wlCheckReachability()` | Create a custom adapter to check server availability. |
-| `WL.EncryptedCache` | Use JSONStore to store encrypted data locally. JSONStore is in the **cordova-plugin-mfp-jsonstore** plug-in. For more information, see [JSONStore](../../../using-the-mfpf-sdk/jsonstore). | 
+| `WL.EncryptedCache` | Use JSONStore to store encrypted data locally. JSONStore is in the **cordova-plugin-mfp-jsonstore** plug-in. For more information, see [JSONStore](../../../app-dev/jsonstore). | 
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Create a custom adapter that provides the same functionality. |
 | `WL.Client.getAppProperty(property)` | You can retrieve the app version property by using the **cordova-plugin-appversion** plug-in. The version that is returned is the native app version (Android and iOS only). | 
 | `WL.Client.Push.*` | Use JavaScript client-side push API from the **cordova-plugin-mfp-push** plug-in. | 

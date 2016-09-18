@@ -19,7 +19,7 @@ The commands, all prefaced with **mfpdev**, support the following types of tasks
 * Configuring your app
 * Creating, building, and deploying adapters
 * Previewing and updating Cordova apps
-* For more information, see the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+* For more information, see the [Using CLI to manage MobileFirst artifacts](../../app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### MobileFirst Server
 The MobileFirst Server provides secured backend connectivity, application management, push notification support and analytics capabilities and monitoring to MobileFirst applications. It is not an application server in the Java™ Platform, Enterprise Edition (Java EE) sense. It acts as a container for IBM MobileFirst Foundation application packages, and is in fact a collection of web applications, optionally packaged as an EAR (enterprise archive) file that run on top of traditional application servers.
