@@ -3,7 +3,7 @@
     "path": "/tutorials/en/foundation/8.0",
     "children": [
         {
-            "name": "Tutorials by platform",
+            "name": "Docs by platform",
             "path": "",
             "children": [{
                 "name": "Cordova",
@@ -23,6 +23,9 @@
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"
+            }, {
+                "name": "For Admins",
+                "path": "/admin-tutorials"
             }]
         }]
     }
