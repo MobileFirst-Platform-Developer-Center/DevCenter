@@ -16,7 +16,7 @@ You can either navigate to the relevant topic from the sidebar navigation, or co
 * [Applications](#applications)
 * [MobileFirst Server](#mobilefirst-server)
 * [Adapters](#adapters)
-* [Tutorials to Follow Next](#tutorials-to-follow-next)
+* [Client-side tutorials to follow](#client-side-tutorials-to-follow)
 
 ### Applications
 Applications are built for a target MobileFirst Server and have a server-side configuration on the target server. You must register your applications on the MobileFirst Server before you can configure them.
@@ -75,7 +75,7 @@ The server configuration for an app is tied to the combination of app ID, versio
 * Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering MobileFirst applications through the command line](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_command_line.html?view=kc#administeringworklightapplicationsthroughthecommandline) and [Administering MobileFirst applications through Ant](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_ant.html?view=kc#administeringibmworklightapplicationsthroughant).
 * Use the REST API of the MobileFirst administration service. For information about the REST API, see [REST API for the MobileFirst Server administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
 
-You can also use these methods to automate configuring your MobileFirst Server.
+You can also use these methods to automate configuration of the MobileFirst Server.
 
 > **Remember:** You can modify the server configuration even while a MobileFirst Server is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
 
@@ -97,7 +97,7 @@ You need to use MobileFirst Server throughout your app's lifecycle from developm
 
 > A preconfigured server is available for you to use when you develop your app. For information about the MobileFirst Development Server to use when you develop your app, see [Setting up the MobileFirst Development Environment](../setting-up-your-development-environment).
 
-MobileFirst Server consists of the following components. All of these components are also included in the MobileFirst Development Server. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these MobileFirst Server components, see [Topologies and network flows](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/c_mfp_server_topologies.html).
+MobileFirst Server consists of the following components. All of these components are also included in the MobileFirst Development Server. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these MobileFirst Server components, see [Topologies and network flows](../installation-configuration/production/topologies).
 
 ### MobileFirst Operations Console and the MobileFirst Server administration service
 The operations console is a web interface that you can use to view and edit the MobileFirst Server configurations. You can also access the MobileFirst Analytics Console from here. The context root for the operations console in the development server is **/mfpconsole**.
@@ -133,7 +133,7 @@ After the initial installation and configuration, you do not need to access any 
 When you deploy your app to production, you can deploy your app to the following MobileFirst Server production environments:
 
 #### On-premises
-> For information about installing and configuring MobileFirst Server for your on-premises environment, see [Installing IBM MobileFirst Server](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/c_installation.html#installation).
+> For information about installing and configuring MobileFirst Server for your on-premises environment, see [Installing IBM MobileFirst Server](../installation-configuration/production/appserver).
 
 #### On the cloud
 > For information, see [Deploying MobileFirst Server to the cloud](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html#deployment).
@@ -152,4 +152,4 @@ You can deploy an adapter to a MobileFirst runtime from the MobileFirst Operatio
 
 > Learn more about adapters and how to develop JavaScript and Java adapters in the [Adapters category](../adapters).
 
-## Tutorials to Follow Next
+## Client-side tutorials to follow
