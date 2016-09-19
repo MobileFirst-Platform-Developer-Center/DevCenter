@@ -197,10 +197,8 @@ The Live Update SDK provides developers with API to query runtime configuration 
 
 1. in your Cordova application folder run:
 ```
-cordova plugin add cordova-plugin-mfp
 cordova plugin add cordova-plugin-mfp-liveupdate.
 ```
-_note: adding the cordova-plugin-mfp along with liveupdate plugin is highly recommended for a good development experience._
 
 ### Adding the iOS SDK
 
