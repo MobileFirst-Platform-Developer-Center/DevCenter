@@ -21,7 +21,7 @@
             "path": "/foundation/6.3/all-tutorials"
         }]
     }, {
-        "name": "By Platform",
+        "name": "Developers",
         "path": "",
         "children": [{
             "name": "Cordova",
@@ -38,6 +38,16 @@
         }, {
             "name": "Web apps",
             "path": "/foundation/8.0/web-tutorials"
+        }]
+    }, {
+        "name": "Admins",
+        "path": "",
+        "children": [{
+            "name": "Installation and Configuration",
+            "path": "/foundation/8.0/installation-configuration"
+        }, {
+            "name": "Administration",
+            "path": "/foundation/8.0/administering-apps"
         }]
     }, {
         "name": "Product Integration",
