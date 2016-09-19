@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Deploying MobileFirst applications to test and production environments
+title: Deploying applications to test and production environments
 weight: 1
 ---
 ## Overview

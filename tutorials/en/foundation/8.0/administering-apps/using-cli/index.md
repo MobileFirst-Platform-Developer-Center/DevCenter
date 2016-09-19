@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Administrating MobileFirst applications through the Command-line
+title: Administrating applications through the Command-line
 weight: 4
 ---
 ## Overview

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Administrating MobileFirst applications through Ant
+title: Administrating applications through Ant
 weight: 3
 ---
 ## Overview
