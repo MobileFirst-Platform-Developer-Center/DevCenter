@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Administering MobileFirst Applications
-weight: 11
+title: Administering Applications
+weight: 3
 show_children: true
 ---
 ## Overview
