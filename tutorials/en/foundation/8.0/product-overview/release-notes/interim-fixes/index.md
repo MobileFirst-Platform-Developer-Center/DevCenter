@@ -23,4 +23,4 @@ You can now register client web applications to MobileFirst Server by using the 
 
 ### Adapters
 #### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
-You can use IBM MobileFirst Platform Command Line Interface (CLI) to push Java™ and JavaScript adapter configurations to the MobileFirst Server and pull adapter configurations from the MobileFirst Server.
+You can use IBM MobileFirst Platform Command Line Interface (CLI) to push Java and JavaScript adapter configurations to the MobileFirst Server and pull adapter configurations from the MobileFirst Server.

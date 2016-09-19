@@ -123,7 +123,7 @@ Ensure that you fulfill the following criteria:
 
 * Use a supported version of Liberty. See [System requirements](../../../product-overview/requirements).
 * Liberty must be run with JRE 7.0 or later. JRE 6.0 is not supported.
-* Some versions of Liberty support both the features of Java™ EE 6 and Java EE 7. For example, jdbc-4.0 Liberty feature is part of Java EE 6, whereas jdbc-4.1 Liberty feature is part of Java EE 7. MobileFirst Server V8.0.0 can be installed with Java EE 6 or Java EE 7 features. However, if you want to run an older version of MobileFirst Server on the same Liberty server, you must use the Java EE 6 features. MobileFirst Server V7.1.0 and earlier, does not support the Java EE 7 features.
+* Some versions of Liberty support both the features of Java EE 6 and Java EE 7. For example, jdbc-4.0 Liberty feature is part of Java EE 6, whereas jdbc-4.1 Liberty feature is part of Java EE 7. MobileFirst Server V8.0.0 can be installed with Java EE 6 or Java EE 7 features. However, if you want to run an older version of MobileFirst Server on the same Liberty server, you must use the Java EE 6 features. MobileFirst Server V7.1.0 and earlier, does not support the Java EE 7 features.
 * JMX must be configured as documented in **Configuring JMX connection for WebSphere Application Server Liberty profile** below.
 * For an installation in a production environment, you might want to start the Liberty server as a service on Windows, Linux, or UNIX systems so that:
 The MobileFirst Server components are started automatically when the computer starts.
@@ -162,7 +162,7 @@ IBM MobileFirst Server has some requirements for the configuration of WebSphere�
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of WebSphere Application Server. See [System requirements](../../../product-overview/requirements).
-* The application server must be run with JRE 7.0. By default, WebSphere Application Server uses Java™ 6.0 SDK. To switch to Java 7.0 SDK, see [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
+* The application server must be run with JRE 7.0. By default, WebSphere Application Server uses Java 6.0 SDK. To switch to Java 7.0 SDK, see [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
 * The administrative security must be turned on. MobileFirst Operations Console, the MobileFirst Server administration service, and the MobileFirst Server configuration service are protected by security roles. For more information, see [Enabling security](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
 * The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses SOAP. For WebSphere Application Server Network Deployment, RMI can be used. For more information, see **Configuring JMX connection for WebSphere Application Server and WebSphere Application Server Network Deployment** below.
 
@@ -578,7 +578,7 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
 You might also configure the **<tcpOptions>** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Liberty features required by the MobileFirst Server applications
-You can use the following features for Java™ EE 6 or Java EE 7.
+You can use the following features for Java EE 6 or Java EE 7.
 
 **MobileFirst Server administration service** 
 
@@ -912,7 +912,7 @@ You might also configure the **<tcpOptions>** element and set the **soReuseAddr*
 
 <h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the MobileFirst Server applications</h4>
 
-You need to add the following features for Java™ EE 6 or Java EE 7.
+You need to add the following features for Java EE 6 or Java EE 7.
 
 **MobileFirst Server administration service** 
 
@@ -2085,7 +2085,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                 <br/>
                                 You can configure the truststore by using IBM® utilities such as Keytool or iKeyman.
                                 <ul>
-                                    <li>For more information about Keytool, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> in the IBM SDK, Java™ Technology Edition.</li>
+                                    <li>For more information about Keytool, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> in the IBM SDK, Java Technology Edition.</li>
                                     <li>For more information about iKeyman, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> in the IBM SDK, Java Technology Edition.</li>
                                 </ul>
                                 The locations of keystore and truststore are defined in the <b>server.xml</b> file. See the <b>keyStoreRef</b> and <b>trustStoreRef</b> attributes in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL configuration attributes</a>. By default, the keystore of Liberty profile is at <b>${server.config.dir}/resources/security/key.jks</b>. If the truststore reference is missing or not defined in the <b>server.xml</b> file, the keystore that is specified by keyStoreRef is used. The server uses the default keystore and the file is created the first time that the server runs. In that case, a default certificate is created with a validity period of 365 days. For production, you might consider using your own certificate (including the intermediate ones, if needed) or changing the expiration date of the generated certificate.

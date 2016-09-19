@@ -52,7 +52,7 @@ The default device status is **Active**, which indicates that access from this d
 The **Expired** status is a special status that is set by MobileFirst Server after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
 
 ### Device display name
-MobileFirst Server identifies devices by a unique device ID, which is assigned by the MobileFirst client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the setDeviceDisplayName method of the WLClient class to set the device display name. See the WLClient documentation in [MobileFirst client-side API]. (The JavaScript class is **WL.Client.**) Java™ adapter developers (including security-check developers) can also set the device display name by using the setDeviceDisplayName method of the `com.ibm.mfp.server.registration.external.model` **MobileDeviceData** class. See [MobileDeviceData]().
+MobileFirst Server identifies devices by a unique device ID, which is assigned by the MobileFirst client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the setDeviceDisplayName method of the WLClient class to set the device display name. See the WLClient documentation in [MobileFirst client-side API]. (The JavaScript class is **WL.Client.**) Java adapter developers (including security-check developers) can also set the device display name by using the setDeviceDisplayName method of the `com.ibm.mfp.server.registration.external.model` **MobileDeviceData** class. See [MobileDeviceData]().
 
 ### Managing device access in MobileFirst Operations Console
 To monitor and manage device access to your resources, select the Devices tab in the MobileFirst Operations Console dashboard.
@@ -169,7 +169,7 @@ Expand the row that refers to the failed operation to access more information ab
 ## Audit log of administration operations
 In the MobileFirst Operations Console, you can refer to an audit log of administration operations.
 
-MobileFirst Operations Console provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java™ Naming and Directory Interface (JNDI) property on the web application of the MobileFirst administration service to **false**.
+MobileFirst Operations Console provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the MobileFirst administration service to **false**.
 
 To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
 

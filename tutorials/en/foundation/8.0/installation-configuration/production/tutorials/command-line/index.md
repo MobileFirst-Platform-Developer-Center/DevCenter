@@ -7,7 +7,7 @@ weight: 0
 Use the command line mode of IBM® Installation Manager and Ant tasks to install MobileFirst Server.
 
 #### Before you begin
-* Make sure that one of the following databases and a supported Java™ version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
+* Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
         * DB2®
         * MySQL

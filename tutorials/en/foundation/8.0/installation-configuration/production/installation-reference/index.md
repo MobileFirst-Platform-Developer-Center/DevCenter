@@ -287,7 +287,7 @@ The **contextroot** and **id** attributes distinguish different deployments of M
 In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
 
 #### environmentId
-Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the MobileFirst runtime projects use when they communicate through Java™ Management Extensions (JMX).
+Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the MobileFirst runtime projects use when they communicate through Java Management Extensions (JMX).
 
 #### servicewar
 Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
@@ -997,7 +997,7 @@ The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`
 | Attribute  | Description                                | Required | Default | 
 |------------|--------------------------------------------|----------|---------|
 | name       | The name of the property.	              | Yes      | None    |
-| type	     | Java™ type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
+| type	     | Java type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
 | value	     | The value for the property.	              | Yes      |  None   |
 
 ## Ant tasks for installation of Application Center

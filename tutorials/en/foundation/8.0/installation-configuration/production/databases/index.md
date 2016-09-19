@@ -174,7 +174,7 @@ The database tables for the MobileFirst Server applications can be created manua
 ### Creating the DB2 database tables manually
 Use the SQL scripts that are provided in the MobileFirst Server installation to create the DB2® database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java™ application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
 
 #### Installation with the Server Configuration Tool
 The same schema is used for all components (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst runtime)
@@ -213,7 +213,7 @@ If the tables are created by mfpuser, this user has the privileges on the tables
 ### Creating the Oracle database tables manually
 Use the SQL scripts that are provided in the MobileFirst Server installation to create the Oracle database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java™ application server. The details are described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
 
 The tables must be created in the default schema of the runtime user. The scripts to create the tables are as follows:
 
@@ -240,7 +240,7 @@ If the tables are created by MFPUSER, this user has the privileges on the tables
 ### Creating the MySQL database tables manually
 Use the SQL scripts that are provided in the MobileFirst Server installation to create the MySQL database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java™ application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
 
 #### Installation with the Server Configuration Tool
 The same database is used for all components (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst runtime)

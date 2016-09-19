@@ -48,7 +48,7 @@ The steps to configure MobileFirst Server to enable Transport Layer Security (TL
 * If MobileFirst Server communicates directly with devices, the steps to enable TLS V1.2 depend on whether your application serveris Apache Tomcat, WebSphere® Application Server Liberty profile, or WebSphere Application Server full profile.
 
 ### Apache Tomcat
-1. Confirm that the Java™ Runtime Environment (JRE) supports TLS V1.2.
+1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
     Ensure that you have one of the following JRE versions:
     * Oracle JRE 1.7.0_75 or later
     * Oracle JRE 1.8.0_31 or later
@@ -84,7 +84,7 @@ MobileFirst Server administration requires user authentication. You can configur
 
 You must configure authentication after the installer deploys the MobileFirst Server administration web applications in the web application server.
 
-The MobileFirst Server administration has the following Java™ Platform, Enterprise Edition (Java EE) security roles defined:
+The MobileFirst Server administration has the following Java Platform, Enterprise Edition (Java EE) security roles defined:
 
 * mfpadmin
 * mfpdeployer
@@ -138,7 +138,7 @@ Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, 
 If you choose to use an authentication method through a user repository such as LDAP, you can configure the MobileFirst Server administration so that you can use users and groups with the user repository to define the Access Control List (ACL) of the MobileFirst Server administration. This procedure depends on the type and version of the web application server that you use.
 
 ### Configuring WebSphere Application Server full profile for MobileFirst Server administration
-Configure security by mapping the MobileFirst Server administration Java™ EE roles to a set of users for both web applications.
+Configure security by mapping the MobileFirst Server administration Java EE roles to a set of users for both web applications.
 
 You define the basics of user configuration in the WebSphere® Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`
 
@@ -210,7 +210,7 @@ Then, to maintain good response times with a large number of installed applicati
 ```
 
 ### Configuring Apache Tomcat for MobileFirst Server administration
-You must configure the Java™ EE security roles for the MobileFirst Server administration on the Apache Tomcat web application server.
+You must configure the Java EE security roles for the MobileFirst Server administration on the Apache Tomcat web application server.
 
 1. If you installed the MobileFirst Server administration manually, declare the following roles in the **conf/tomcat-users.xml** file:
 
@@ -315,7 +315,7 @@ Set the JNDI environment entries in one of the following ways:
     ```
         
 ### List of JNDI properties for MobileFirst Server administration service
-When you configure MobileFirst Server administration service and MobileFirst Operations Console for your application server, you set optional or mandatory JNDI properties, in particular for Java™ Management Extensions (JMX).
+When you configure MobileFirst Server administration service and MobileFirst Operations Console for your application server, you set optional or mandatory JNDI properties, in particular for Java Management Extensions (JMX).
 
 The following properties can be set on the administration service web application mfp-admin-service.war.
 
@@ -458,7 +458,7 @@ The following table lists the MobileFirst properties that are always available a
 | mfp.device.archiveDecommissioned.when | The number of days of inactivity, after which a client device that has been decommissioned is archived.<br/><br/>This task writes the client devices that were decommissioned to an archive file. The archived client devices are written to a file in the MobileFirst Server **home\devices_archive** directory. The name of the file contains the time stamp when the archive file is created. Default: 90 days. |
 | mfp.licenseTracking.enabled | A value that is used to enable or disable device tracking in IBM MobileFirst Foundation.<br/><br/>For performance reasons, you can disable device tracking when IBM MobileFirst Foundation runs only Business-to-Consumer (B2C) apps. When device tracking is disabled, the license reports are also disabled and no license metrics are generated.<br/><br/>Possible values are true (default) and false. | 
 | mfp.runtime.temp.folder | Defines the runtime temporary files folder. Uses the default temporary folder location of the web container when not set. | 
-| mfp.adapter.invocation.url | The URL to be used for invoking adapter procedures from inside Java™ adapters, or JavaScript adapters that are invoked using the rest endpoint. If this property is not set, the URL of the currently executing request will be used (this is the default behavior). This value should contain the full URL, including the context root. | 
+| mfp.adapter.invocation.url | The URL to be used for invoking adapter procedures from inside Java adapters, or JavaScript adapters that are invoked using the rest endpoint. If this property is not set, the URL of the currently executing request will be used (this is the default behavior). This value should contain the full URL, including the context root. | 
 | mfp.authorization.server | Authorization-server mode. Can be one of the following mode:<ul><li>embedded: Use the MobileFirst authorization server.</li><li>external: Use an external authorization server</li></ul>. When setting this value, you must also set the **mfp.external.authorization.server.secret** and **mfp.external.authorization.server.introspection.url** properties for your external server. | 
 | mfp.external.authorization.server.secret | Secret of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to external and is ignored otherwise. |
 | mfp.external.authorization.server.introspection.url | URL of the introspection endpoint of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to **external** and is ignored otherwise. | 
@@ -581,7 +581,7 @@ For more information about how to configure a connection to an HADR-enabled DB2 
 ### Handling stale connections
 Configure your application server to avoid database timeout issues.
 
-A **StaleConnectionException** is an exception that is generated by the Java™ application server profile database connection code when a JDBC driver returns an unrecoverable error from a connection request or operation. The **StaleConnectionException** is raised when the database vendor issues an exception to indicate that a connection currently in the connection pool is no longer valid. This exception can happen for many reasons. The most common cause of **StaleConnectionException** is due to retrieving connections from the database connection pool and finding out that the connection has timed out or dropped when it was unused for a long time.
+A **StaleConnectionException** is an exception that is generated by the Java application server profile database connection code when a JDBC driver returns an unrecoverable error from a connection request or operation. The **StaleConnectionException** is raised when the database vendor issues an exception to indicate that a connection currently in the connection pool is no longer valid. This exception can happen for many reasons. The most common cause of **StaleConnectionException** is due to retrieving connections from the database connection pool and finding out that the connection has timed out or dropped when it was unused for a long time.
 
 You can configure your application server to avoid this exception.
 
@@ -747,14 +747,14 @@ You can configure the location and management of those files with the following 
 * **license.metric.logger.file.size**: Maximum size of an SLMT file before a rotation is performed. The default size is 1 MB.
 * **license.metric.logger.file.number**: Maximum number of SLMT archive files to keep in rotations. The default number is 10.
 
-To change the default values, you must create a Java™ property file, with the format **key=value**, and provide the path to the properties file through the **license_metric_logger_configuration** JVM property.
+To change the default values, you must create a Java property file, with the format **key=value**, and provide the path to the properties file through the **license_metric_logger_configuration** JVM property.
 
 For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool]().
 
 ## WebSphere Application Server SSL configuration and HTTP adapters
 By setting a property, you can let HTTP adapters benefit from WebSphere® SSL configuration.
 
-By default, HTTP adapters do not use WebSphere SSL by concatenating the Java™ Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates]().
+By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates]().
 
 To have HTTP adapters use the WebSphere SSL configuration, set the **ssl.websphere.config** JNDI property to true. The setting has the following effects in order of precedence:
 

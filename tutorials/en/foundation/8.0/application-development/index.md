@@ -141,7 +141,7 @@ When you deploy your app to production, you can deploy your app to the following
 ## Adapters
 Adapters in IBM MobileFirst Foundation securely connect your back-end systems to client applications and cloud services.  
 
-You can write adapters in either JavaScript or Java™, and you can build and deploy adapters as Maven projects.  
+You can write adapters in either JavaScript or Java, and you can build and deploy adapters as Maven projects.  
 Adapters are deployed to a MobileFirst runtime in MobileFirst Server.
 
 In a production system, adapters typically run in a cluster of application servers. Implement your adapters as REST services with no session information and stored locally on the server to ensure that your adapter works well in a clustered environment.

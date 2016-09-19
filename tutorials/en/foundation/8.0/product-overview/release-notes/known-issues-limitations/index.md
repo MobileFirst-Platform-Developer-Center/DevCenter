@@ -20,7 +20,7 @@ If you are developing globalized apps, the following restrictions apply:
 
 Although translation into Hebrew is provided for IBM MobileFirst Foundation core functionality, some GUI elements are not mirrored.
 
-* Constraints on adapter names: Names of adapters must be valid names to create a Java™ class name. In addition, they must be composed only of the following characters:
+* Constraints on adapter names: Names of adapters must be valid names to create a Java class name. In addition, they must be composed only of the following characters:
     * Uppercase and lowercase letters (A-Z and a-z)
     * Digits (0-9)
     * Underscore (_)

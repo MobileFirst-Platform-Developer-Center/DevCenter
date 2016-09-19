@@ -24,7 +24,7 @@ Adapters can be uploaded, updated, or configured while a production server is ru
 
     The same adapter can be used by multiple applications, or by multiple versions of the same application, that are already published to the store and used. Before you update the adapter in a production environment, run non-regression tests in a test server against the new adapter and copies of the apps that are built for the test server.
 
-2. For Java™ adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the MobileFirst Server keystore.
+2. For Java adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the MobileFirst Server keystore.
         
     For more information, see [Using SSL in HTTP adapters](). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates).
 

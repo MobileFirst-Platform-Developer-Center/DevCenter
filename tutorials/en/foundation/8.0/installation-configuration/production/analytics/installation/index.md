@@ -4,7 +4,7 @@ title: MobileFirst Analytics Server installation guide
 weight: 1
 ---
 ## Overview 
-MobileFirst Analytics Server is implemented and shipped as a set of two Java™ EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere® Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+MobileFirst Analytics Server is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere® Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 
 MobileFirst Analytics Server uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
 
@@ -34,7 +34,7 @@ MobileFirst Analytics Server uses an embedded Elasticsearch library for the data
 * IcedTea OpenJDK 1.7.0.55+
 
 ### Hardware
-* RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java™ uses memory for pointers.
+* RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java uses memory for pointers.
 * Disk: Use SSDs when possible, or fast spinning traditional disks in RAID 0 configuration if SSDs are not possible.
 * CPU: CPU tends not to be the performance bottleneck. Use systems with 2 to 8 cores.
 * Network: When you cross into the need to scale out horizontally, you need a fast, reliable, data center with 1 GbE to 10 GbE supported speeds.
@@ -154,7 +154,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
 ## Installing MobileFirst Analytics on Tomcat
-Ensure that you already have the MobileFirst Analytics WAR files. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java™ 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+Ensure that you already have the MobileFirst Analytics WAR files. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
 
 1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
 2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.

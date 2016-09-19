@@ -42,7 +42,7 @@ These scripts are ready to run, which means that they do not require specific en
 You can use the **mfpadm** Ant task on a different computer than the one on which you installed MobileFirst Server.
 
 * Copy the file **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** to the computer.
-* Make sure that a supported version of Apache Ant and a Java™ runtime environment are installed on the computer.
+* Make sure that a supported version of Apache Ant and a Java runtime environment are installed on the computer.
 
 To use the **mfpadm** Ant task, add this initialization command to the Ant script:
 

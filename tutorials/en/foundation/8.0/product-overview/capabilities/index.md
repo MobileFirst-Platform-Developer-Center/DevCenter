@@ -9,7 +9,7 @@ With IBM MobileFirst Foundation, you can use capabilities such as development, t
 ### Development
 IBM MobileFirst Foundation provides a framework that enables the development, optimization, integration, and management of secure mobile applications (apps). IBM MobileFirst Foundation does not introduce a proprietary programming language or model that users must learn.
 
-You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java™ or Objective-C). IBM MobileFirst Foundation provides an SDK that includes libraries that you can access from native code.
+You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java or Objective-C). IBM MobileFirst Foundation provides an SDK that includes libraries that you can access from native code.
 
 ### Back-end connections
 Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. IBM MobileFirst Foundation can act as this middleware solution and make communication with back-end services easier.

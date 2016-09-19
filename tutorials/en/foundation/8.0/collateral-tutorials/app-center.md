@@ -77,7 +77,7 @@ You can either open the resulting native project (in **iphone\native**) manually
 
 ### For Blackberry
 
-* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java™ plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
 A BlackBerry project is provided in: **install_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
 

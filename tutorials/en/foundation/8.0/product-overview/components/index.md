@@ -22,7 +22,7 @@ The commands, all prefaced with **mfpdev**, support the following types of tasks
 * For more information, see the [Using CLI to manage MobileFirst artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### MobileFirst Server
-The MobileFirst Server provides secured backend connectivity, application management, push notification support and analytics capabilities and monitoring to MobileFirst applications. It is not an application server in the Java™ Platform, Enterprise Edition (Java EE) sense. It acts as a container for IBM MobileFirst Foundation application packages, and is in fact a collection of web applications, optionally packaged as an EAR (enterprise archive) file that run on top of traditional application servers.
+The MobileFirst Server provides secured backend connectivity, application management, push notification support and analytics capabilities and monitoring to MobileFirst applications. It is not an application server in the Java Platform, Enterprise Edition (Java EE) sense. It acts as a container for IBM MobileFirst Foundation application packages, and is in fact a collection of web applications, optionally packaged as an EAR (enterprise archive) file that run on top of traditional application servers.
 
 MobileFirst Server integrates into your enterprise environment and uses existing resources and infrastructure. This integration is based on adapters that are server-side software components responsible for channeling back-end enterprise systems and cloud-based services to the user device. You can use adapters to retrieve and update data from information sources, and to allow users to perform transactions and start other services and applications.
 

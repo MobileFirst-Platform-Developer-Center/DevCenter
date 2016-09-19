@@ -179,7 +179,7 @@ Asymmetric deployment is only supported for WebSphere Application Server Network
 
 ### Stand-alone server topology
 You can configure a stand-alone topology for WebSphere® Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
-In this topology, all the administration components and the runtimes are deployed in a single Java™ Virtual Machine (JVM).
+In this topology, all the administration components and the runtimes are deployed in a single Java Virtual Machine (JVM).
 
 ![Stand-alone topology](standalone_topology.jpg)
 
@@ -251,7 +251,7 @@ When you deploy several administration components, you must specify:
 ### Server farm topology
 You can configure a farm of WebSphere® Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
 
-A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of MobileFirst applications to be distributed across several servers. Each server in the farm must be a Java™ virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
+A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of MobileFirst applications to be distributed across several servers. Each server in the farm must be a Java virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
 
 In this topology, all the administration components (MobileFirst Operations Console, the administration service, and the live update service) and the runtimes are deployed on every server in the farm.
 

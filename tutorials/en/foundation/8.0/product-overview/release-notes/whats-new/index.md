@@ -81,7 +81,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>In v8.0, back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.
 
                 <h3>New Java server-side API</h3>
-                <p>IBM MobileFirst Foundation v8.0 provides new Java™ server-side API, which you can use to extend MobileFirst Server.
+                <p>IBM MobileFirst Foundation v8.0 provides new Java server-side API, which you can use to extend MobileFirst Server.
 
                 <h4>New Java server-side API for security</h4>
                 <p>The new security API package, <code>com.ibm.mfp.server.security.external</code>, and its contained packages, include the interfaces that are required for developing security checks and adapters that use the security-check context.</p>
@@ -154,7 +154,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>On the server side, the multiple building blocks of the framework were replaced with security checks (implemented in adapters), allowing for simplified development with new APIs. Sample implementations and predefined security checks are provided. See Security checks. Security checks can be configured in the adapter descriptor, and customized by making runtime adapter or application configuration changes, without redeploying the adapter or disrupting the flow. The configurations can be done from the redesigned MobileFirst Operations Console security interfaces. You can also edit the configuration files manually, or use the MobileFirst CLI or mfpadm tools.</p>
                 
                 <h3>Application-authenticity security check</h3>
-                <p>MobileFirst application-authenticity validation is now implemented as a predefined security check that replaces the previous "extended application authenticity checking". You can dynamically enable, disable, and configure application-authenticity validation by using either MobileFirst Operations Console or mfpadm. A stand-alone MobileFirst application-authenticity Java™ tool (mfp-app-authenticity-tool.jar) is provided for generating an application-authenticity file.</p>
+                <p>MobileFirst application-authenticity validation is now implemented as a predefined security check that replaces the previous "extended application authenticity checking". You can dynamically enable, disable, and configure application-authenticity validation by using either MobileFirst Operations Console or mfpadm. A stand-alone MobileFirst application-authenticity Java tool (mfp-app-authenticity-tool.jar) is provided for generating an application-authenticity file.</p>
 
                 <h3>Confidential clients</h3>
                 <p>The support for confidential clients was redesigned and reimplemented using the new OAuth security framework.</p>

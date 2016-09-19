@@ -17,7 +17,7 @@ For production-level security, during the move from development to production th
     *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
 
 ## Setup
-1. Create a Java™ keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your MobileFirst Server. If you already have an appropriate keystore file, skip to the next step.
+1. Create a Java keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your MobileFirst Server. If you already have an appropriate keystore file, skip to the next step.
 
     > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
 
