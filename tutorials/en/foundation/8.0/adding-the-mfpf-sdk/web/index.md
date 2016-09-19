@@ -15,7 +15,17 @@ The SDK includes the following files:
 - **ibmmfpf.js** - The core of the SDK.
 - **ibmmfpfanalytics.js** - Provides support for MobileFirst Foundation Analytics.
 
-**Prerequisite:** To run NPM commands, [Node.js](https://nodejs.org) is required.
+**Prerequisite:**  
+To run NPM commands, [Node.js](https://nodejs.org) is required.
+
+#### SDK Limitations
+The numbers in the table specify the first browser version that are fully supported.
+
+|      Browser      | Chrome | Safari* | Internet Explorer | Edge | Firefox | Blackberry Browser* | Android Browser |
+|:-----------------:|:------:|:-------:|:-----------------:|:----:|:-------:|:------------------:|:---------------:|
+| Supported Version |   43+  |    8+   |        10+        |  20+ |  38+  |      Z series      |   Android 4.3+  |
+
+(*) Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
 
 #### Jump to:
 

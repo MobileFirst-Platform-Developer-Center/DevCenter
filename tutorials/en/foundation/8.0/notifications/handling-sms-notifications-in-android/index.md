@@ -3,7 +3,7 @@ layout: tutorial
 title: Handling SMS Notifications in Android
 breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
-weight: 9
+weight: 10
 downloads:
   - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
