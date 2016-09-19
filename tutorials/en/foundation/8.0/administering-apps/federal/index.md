@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Federal standards support in IBM MobileFirst Foundation
+title: Federal standards support in MobileFirst Foundation
 breadcrumb_title: Federal standards support
 weight: 5
 ---
