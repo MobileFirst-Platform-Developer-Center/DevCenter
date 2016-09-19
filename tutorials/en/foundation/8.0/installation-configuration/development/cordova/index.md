@@ -21,6 +21,6 @@ To install:
 ## Next steps
 To continue with MobileFirst development in Cordova applications, the MobileFirst Cordova SDK/plug-ins need to be added to the Cordova application.
 
-* Learn how to add the [MobileFirst SDK to Cordova applications](../../app-dev/sdk/cordova/).
-* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../app-dev/) tutorials.
+* Learn how to add the [MobileFirst SDK to Cordova applications](../../application-development/sdk/cordova/).
+* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../application-development/) tutorials.
 * For adapters develpment, refer to the [Adapters](../../adapters/) category.

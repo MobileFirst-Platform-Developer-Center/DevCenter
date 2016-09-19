@@ -55,7 +55,7 @@ Now the spring extension module is installed on your local Maven repository.
 
 ## Creating a Spring based Java adapter
 1. Start by creating a new MobileFirst Java adapter.  
-    Here I use Maven commands, however the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) can be used as well.
+    Here I use Maven commands, however the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) can be used as well.
 
     ```
     mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=adapter-maven-archetype-java  -DgroupId=com.sample -DartifactId=my-spring-xml-adapter -Dpackage=com.sample

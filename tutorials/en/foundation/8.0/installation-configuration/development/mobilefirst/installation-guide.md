@@ -54,7 +54,7 @@ You can access the [MobileFirst Operations Console]({{site.baseurl}}/tutorials/e
 ![console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
 ## MobileFirst CLI
-The [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the MobileFirst Server, pull/push application from/to the MobileFirst Server, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
+The [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the MobileFirst Server, pull/push application from/to the MobileFirst Server, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
 
 **Prerequisite:**  
 1. NodeJS is a requirement before you can install the MobileFirst CLI.  

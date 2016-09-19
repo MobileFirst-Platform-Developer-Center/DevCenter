@@ -27,7 +27,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 You can modify the server-side configuration of your apps and adapters without stopping the MobileFirst Server.</p>
 
                 <ul>
-                    <li>For more information about the new development process, see <a href="http://localhost:4000/tutorials/en/foundation/8.0/app-dev/">Development concepts and overview</a></li>
+                    <li>For more information about the new development process, see <a href="http://localhost:4000/tutorials/en/foundation/8.0/application-development/">Development concepts and overview</a></li>
                     <li>For more information about the migration of existing applications, see <a href="../../../migration-cookbook">the Migrating Cookbook</a>.</li>
                     <li>For more information about administering MobileFirst applications, see Administering MobileFirst applications.</li>
                 </ul>

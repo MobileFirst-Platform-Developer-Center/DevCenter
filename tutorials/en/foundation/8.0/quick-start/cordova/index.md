@@ -110,7 +110,7 @@ Alternatively, click the **New** button next to **Adapters**.
     * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
     * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 4. Run the command: `cordova run`.
 
@@ -127,7 +127,7 @@ The adapter response is then displayed in an alert.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Foundation](../../app-dev/) tutorials
+- Review the [Using the MobileFirst Foundation](../../application-development/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)

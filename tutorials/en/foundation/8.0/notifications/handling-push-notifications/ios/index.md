@@ -17,7 +17,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
     * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment)
-    * [Adding the MobileFirst Foundation SDK to iOS applications](../../../app-dev/sdk/ios)
+    * [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
@@ -30,7 +30,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.  
-If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../../app-dev/sdk/ios) tutorial.
+If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
 
 
 ### Adding the Push SDK

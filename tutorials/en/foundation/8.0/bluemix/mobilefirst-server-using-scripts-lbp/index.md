@@ -240,7 +240,7 @@ prepareserver.sh --name APP_NAME
 
 
 Launch the MobileFirst Console by loading the following URL: http://APP_HOST.mybluemix.net/mfpconsole (it may take a few moments).  
-Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With MobileFirst Server running on IBM Bluemix, you can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
 

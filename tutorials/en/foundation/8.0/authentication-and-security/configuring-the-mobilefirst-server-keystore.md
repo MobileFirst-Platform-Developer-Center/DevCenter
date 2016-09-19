@@ -10,10 +10,10 @@ A keystore is a repository of security keys and certificates that is used to ver
 For production-level security, during the move from development to production the administrator must configure MobileFirst Server to use a user-defined keystore. The default MobileFirst Server keystore is intended to be used only during development.
 
 ### Notes
-* To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the MobileFirst Server identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../app-dev/direct-update).
+* To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the MobileFirst Server identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
 * Reconfiguring the MobileFirst Server keystore after production should be considered carefully. Changing the configuration has the following potential effects:
     * The client might need to acquire a new OAuth token in place of a token signed with the previous keystore. In most cases, this process is transparent to the application.
-    * If the client application is bound to a public key that does not match the MobileFirst Server identity in the new keystore configuration, Direct Update fails. To continue getting updates, bind the application with the new public key, and republish the application. Alternatively, change the keystore configuration again to match the public key to which the application is bound. See [Implementing secure Direct Update on the client side](../../app-dev/direct-update).
+    * If the client application is bound to a public key that does not match the MobileFirst Server identity in the new keystore configuration, Direct Update fails. To continue getting updates, bind the application with the new public key, and republish the application. Alternatively, change the keystore configuration again to match the public key to which the application is bound. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
     *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
 
 ## Setup

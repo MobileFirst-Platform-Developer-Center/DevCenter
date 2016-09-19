@@ -60,7 +60,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../app-dev/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## Navigating the console
 
@@ -103,7 +103,7 @@ Provide basic application values and download Starter Code.
 ![Image of application registration screen](register-applications.png)
 
 #### Managing applications
-Manage and configure registered applications by use of [Direct Update](../../app-dev/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
+Manage and configure registered applications by use of [Direct Update](../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
 
 ![Image of application management screen](application-management.png)
 

@@ -50,7 +50,7 @@ To support watchOS 3, MobileFirst Platform provides a framework `IBMMobileFirstP
 The watch application, as any regular iOS application, should be registered as a separate application in the MobileFirst Operations Console using the Bundle Identifier of the WatchKit Extension. That application is independent from its iPhone counterpart and has its own security. It should define its own Challenge Handler just like a native iOS application.
 
 Existing application(s) that were created using MobileFirst Platform v8.0 watchOS `IBMMobileFirstPlatformFoundationWatchOS` framework will work on WatchOS 3.0 as they did on watchOS 2e.
-Steps to be followed while developing watchOS application(s) and the limitations can be found [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/app-dev/watchos)
+Steps to be followed while developing watchOS application(s) and the limitations can be found [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/watchos)
 
 <br>
 ###MobileFirst Xamarin Application
