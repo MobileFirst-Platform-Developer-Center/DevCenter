@@ -387,28 +387,6 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Commands for adapters
 ### Commands for apps
 ### Commands for devices
