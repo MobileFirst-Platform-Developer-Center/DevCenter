@@ -1,5 +1,5 @@
 ---
-title: MobileFirst Foundation 8.0 Obfuscating Android Code With Proguard
+title: Obfuscating Android code using Proguard in MobileFirst Foundation 8.0
 date: 2016-09-19
 tags:
 - MobileFirst_Foundation
@@ -11,6 +11,9 @@ version:
 author:
   name: S.A.Norton Stanley
 ---
+Obfuscation helps protecting your application against reverse engineering by others.  
+
+You can use the Android ProGuard tool to obfuscate, shrink, and optimize your code. ProGuard renames classes, fields, and methods with semantically obscure names and removes unused code. [Learn more about Proguard](https://developer.android.com/studio/build/shrink-code.html).
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
@@ -18,40 +21,34 @@ author:
     </div>
 </div>
 
+### Obfuscating a Cordova-based Android application
 
-Obfuscation is required to provide security to your Android code against reverse engineering.
+Create a hybrid application as described [in the Cordova Quick Start tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/cordova/). The application created will have the structure as seen below
 
-You can use the Android ProGuard tool to obfuscate, shrink, and optimize your code. Obfuscated code can be more difficult for other people to reverse engineer. ProGuard renames classes, fields, and methods with semantically obscure names and removes unused code. More information [here](https://developer.android.com/studio/build/shrink-code.html).
-
-###Obfuscating a Hybrid MobileFirst Foundation 8.0 Android application
-
-Create a hybrid application as described [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/cordova/). The application created will have the structure as seen below
 ![Hybrid Project Structure]({{site.baseurl}}/assets/blog/2016-09-19-mobilefirst-foundation-80-obfuscating- android-code-with-proguard/hybridappstructure.png)
 
-Import the Android application created into Android Studio 
+Import the Android application into Android Studio 
+
 ![Hybrid Project Android Studio Structure]({{site.baseurl}}/assets/blog/2016-09-19-mobilefirst-foundation-80-obfuscating- android-code-with-proguard/androidstudiostructure.png)
 
+### Enabling proguard and obfuscating the apk
+The application contains a file name **proguard-project.txt** or **proguard-rules.pro**. This file contains the optimal rules required to obfuscate an Android application. This file can be further modified to include more rules if one requires further obfuscation. 
 
-
-###Enabling proguard and obfuscating the apk
-
-The application contains a file name **proguard-project.txt** or **proguard-rules.pro**. This file contains the optimal rules required to obfuscate an MobileFirst Foundation 8.0 Android application. This file can be further modified to include more rules if one requires further obfuscation. 
-
-In the rules provided comment out the following :
-
-`#-injars      bin/classes` 
-
-`#-injars      libs`
-
-`#-outjars     bin/classes-processed.jar`
-
+In the rules provided comment out the following.
 These are not required since the default proguard configuration already handles this.
 
- MobileFirst Foundation 8.0 uses OkHttp library we will need to inform proguard not to warn us about the files not being present directly. To do this include the following into **proguard-project.txt** file.
+```xml
+#-injars      bin/classes
+#-injars      libs
+#-outjars     bin/classes-processed.jar
+```
 
-`-dontwarn okio.**`
+MobileFirst Foundation 8.0 uses OkHttp library, so we will need to inform Proguard not to warn us about the files not being present directly. To do this include the following into **proguard-project.txt** file.
 
-`-dontwarn com.squareup.okhttp.**`
+```
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.**
+```
 
 The final **proguard-project.txt** should look as below:
 
@@ -165,47 +162,51 @@ The final **proguard-project.txt** should look as below:
 ################################################################################
 ```
 
-
-Next is to enable proguard in the **build.gradle** file of the app module. To enable proguard include the following within the `android {}` tag of the **build.gradle** file
+The next step is to enable Proguard in the **build.gradle** file of the app module. To enable Proguard include the following within the `android {}` tag of the **build.gradle** file
 
 ```
 buildTypes {
-release {
-minifyEnabled true
-proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-}
+    release {
+        minifyEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+    }
 }
 ```
-This indicates that proguard is to be enabled in release mode, and the rules to be used are the default Android rules and the rules provided by the MobileFirst Foundation 8.0 project.
 
-The final step is to disable missing translation check in Lint. Lint tool checks your Android project source files for potential bugs and optimization improvements for correctness, security, performance, usability, accessibility, and internationalization. More information [here](https://developer.android.com/studio/write/lint.html). The default project generated does not contain certain tranlation text for all languages, hence we will need to inform lint to disable the check for missing translation. To do this, in the build.gradle file of the app module look for lintoptions, the default setting would be as below:
+This indicates that Proguard is to be enabled in release mode, and the rules to be used are the default Android rules as well as those mentioned above.
+
+The final step is to disable the missing translation check in Lint.  
+Tne Lint tool checks your Android project source files for potential bugs and optimization improvements for correctness, security, performance, usability, accessibility, and internationalization. More information [in the Lint page](https://developer.android.com/studio/write/lint.html).
+
+The default Cordova project does not contain certain tranlation text for all languages, hence we will need to inform Lint to disable the check for missing translation. To do this, in the **build.gradle** file of the app module look for **lintoptions**. The default setting would be as below:
 
 ```
- lintOptions {
-        abortOnError false;
-  }
+lintOptions {
+    abortOnError false;
+}
 ```
 
 Modify this to disable the missing transaltions as below:
 
 ```
- lintOptions {
-        abortOnError false;
-        disable 'MissingTranslation'
-    }
+lintOptions {
+    abortOnError false;
+    disable 'MissingTranslation'
+}
 ```
-In case the lintoptions tag is not present, include this within the `android{}` tag.
 
-Now clean, rebuild the project and generating a signed apk should provide an apk obfuscated with the rules provided. The obfuscated apk contents will be as shown here
+In case the **lintOptions** tag is not present, include this within the `android{}` tag.
+
+Now clean and re-build the project and generate a signed .apk. The generated .apk file should be obfuscated with the rules provided. The obfuscated apk contents will be as shown here:
 
 ![Obfuscated Structure]({{site.baseurl}}/assets/blog/2016-09-19-mobilefirst-foundation-80-obfuscating- android-code-with-proguard/obfuscated.png)
 
 
-###Obfuscating a native MobileFirst Foundation 8.0 Android application
+### Obfuscating a native Android application
 
-Create a native Android application as described [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/android/). 
+Create a native Android application as described [in the Android Quick Start tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/android/). 
 
-Import the Android application created into Android Studio. The project structure will look as below
+Import the Android application created into Android Studio. The project structure will look as below.
 
 ![Android Studio Structure]({{site.baseurl}}/assets/blog/2016-09-19-mobilefirst-foundation-80-obfuscating- android-code-with-proguard/androidstudionativestructure.png)
 
@@ -213,29 +214,28 @@ The default project generated will not contain the default rules for obfuscation
 
 Follow all steps mentioned in **Enabling proguard and obfuscating the apk** section above to generate an obfuscated apk.
 
-###Restoring an obfuscated stack trace
+### Restoring an obfuscated stack trace
 
 The ProGuard obfuscation process results in an obfuscated stack trace, this would lead to ambiguity in identifying errors while debugging the application stack trace. To debug application stack trace it is important to keep a copy of the mapping.txt file, which is generated as a part of the obfuscation process. The mapping.txt file contains all details on how the obfuscation was performed to the apk file. This file is can be located under build/outputs/mapping/release folder of the project.
 
-**Note: For each build for which you might need to restore a stack trace, copy the mapping.txt file or save it under a new name because subsequent builds will overwrite the file.**
+> **Note:** For each build for which you might need to restore a stack trace, copy the **mapping.txt** file or save it under a new name because subsequent builds will overwrite the file.
 
-#####Procedure
-Navigate to the directory where ProGuard is installed. (Usually `sdk_root/tools/proguard/bin/`).
-    Run the following command, as appropriate to your operating system:
+#### Procedure
+* Navigate to the directory where ProGuard is installed. (Usually `sdk_root/tools/proguard/bin/`).
+* Run the following command, as appropriate to your operating system:
 
-    retrace.bat|retrace.sh [-verbose] mapping.txt [stacktrace_file] > stacktrace_out.txt
+```bash
+retrace.bat|retrace.sh [-verbose] mapping.txt [stacktrace_file] > stacktrace_out.txt
+```
 
-    where
+Where:
 
-    stacktrace_file is the name of the stack trace file that you want to restore to readable form.
+* **stacktrace_file** is the name of the stack trace file that you want to restore to readable form.
+* **mapping.txt** file is the instance of this file that you saved for the specific release build.
+* **stacktrace_out.txt** is the file that contains the unobfuscated stack trace.
 
-    mapping.txt file is the instance of this file that you saved for the specific release build.
-
-    stacktrace_out.txt is the file that contains the unobfuscated stack trace.
-
-#####Results
-
-A readable stack trace is written to stacktrace_out.txt.
+#### Results
+A readable stack trace is written to **stacktrace_out.txt**.
 
 Another approach is to use the **proguardgui.jar** tool present usually under `sdk_root/tools/proguard/bin/`. 
 
