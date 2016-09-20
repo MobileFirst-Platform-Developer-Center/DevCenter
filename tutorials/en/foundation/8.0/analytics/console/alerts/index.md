@@ -5,7 +5,7 @@ breadcrumb_title: Alerts
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 5
+weight: 1
 ---
 ## Overview
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.  
