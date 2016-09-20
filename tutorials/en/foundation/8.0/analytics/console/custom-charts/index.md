@@ -5,7 +5,7 @@ breadcrumb_title: Custom charts
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 4
+weight: 3
 ---
 ## Overview
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Operational Analytics Console. This visualization feature is a powerful way to analyze business-critical data.

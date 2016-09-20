@@ -30,6 +30,7 @@ The security integration is suppored for both [API Connect on-premise deployment
 * [Support for multiple MobileFirst OAuthProviders](#support-for-multiple-mobilefirst-oauthproviders)
 
 ## Prerequisites
+
 * API Connect DataPower (Edge) version 5040 or later
 * IBM® DataPower® Gateway 7.5.X or later
 * MobileFirst CLI
@@ -192,7 +193,8 @@ After setting up the **PinCodeAndroid** sample and completing the setup describe
 
 However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints which is exposed by the MobileFirst OAuthProvider.
 
-In order to enable the proxy, the following changes are required in the `wclient.properties` file:   
+In order to enable the proxy, the following changes are required in the `wclient.properties` file: 
+  
 * **wlServerProtocol:** Change to `https`.    
 * **wlServerHost:** Change to DataPower Gateway hostname (or IP) as it appears in the base URL.  
 * **wlServerPort:** Change to 443.  
