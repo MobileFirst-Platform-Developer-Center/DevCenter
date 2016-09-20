@@ -5,14 +5,10 @@ breadcrumb_title: Analytics consoles
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
-
-
-# Overview
-
+## Overview
 Configure the way the  client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## Analytics Console
-
 From the Analytics Console, view and configure the Analytics reports.
 
 You can open the Analytics Console from the MobileFirst Operations Console by clicking the  **Analytics Console**  link in the top-right navigation bar.  
@@ -35,9 +31,9 @@ In Infrastructure you can review analytics data related to: session processing t
 
 > Learn more in the [Analytics Workflows](workflows/) tutorial.
 
-# Analytics Features
+## Analytics Features
 
-## App Analytics
+### App Analytics
 You can view App Session charts and App Usage charts to find out which app is being used most by your users.
 
 ### Built-in Analytics
@@ -66,11 +62,11 @@ App crashes are visualized on the Analytics Console, where you can quickly view 
 ### Monitor Network Data
 The MobileFirst Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
 
-# MobileFirst Operations Console
+## MobileFirst Operations Console
 
 Configure and administer the Analytics server with the Operations Console.
 
-## Enable/Disable Analytics Support
+### Enable/Disable Analytics Support
 The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
 
 1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
@@ -81,7 +77,7 @@ The collection of data for analysis by the Analytics server is enabled by defaul
 
 <img class="gifplayer" alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
 
-## Role-based Access Control
+### Role-based Access Control
 Content in the MobileFirst Analytics Console is restricted by predefined security roles.  
 The MobileFirst Analytics Console shows different content based on the security role of the logged-in user. The following table shows the security role and the access that is granted to it in the MobileFirst Analytics Console.
 
@@ -148,6 +144,6 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
-# Related Blog Posts
+## Related Blog Posts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
