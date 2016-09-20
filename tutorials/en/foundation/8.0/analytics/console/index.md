@@ -1,18 +1,17 @@
 ---
 layout: tutorial
 title: Operations and Analytics Consoles
-breadcrumb_title: Analytics consoles
+breadcrumb_title: Analytics console
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
 ## Overview
-Configure the way the  client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
+Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## Analytics Console
 From the Analytics Console, view and configure the Analytics reports.
 
-You can open the Analytics Console from the MobileFirst Operations Console by clicking the  **Analytics Console**  link in the top-right navigation bar.  
-If you are using the [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation) and require Analytics integration, [see this blog post]({{site.baseurl}}/blog/2016/07/11/analytics-bm-service/). 
+You can open the Analytics Console from the MobileFirst Operations Console by clicking the  **Analytics Console**  link in the top-right navigation bar.
 
 ![Analytics console button](analytics-console-button.png)
 
@@ -29,7 +28,7 @@ In Apps you can review in-depth analytics data related to: usage and devices (su
 ## Infrastructure
 In Infrastructure you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
 
-> Learn more in the [Analytics Workflows](workflows/) tutorial.
+> Learn more in the [Analytics Workflows](../workflows/) tutorial.
 
 ## Analytics Features
 
@@ -42,7 +41,7 @@ When you use the MobileFirst client SDK together with the MobileFirst Server, an
 ### Custom Analytics
 You can have your app send custom data and create custom reports on your custom data.
 
-> Learn how to send custom analytics in the [Analytics API](analytics-api/) tutorial.
+> Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
 
 ### Custom Charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Analytics Console. This visualization feature is a powerful way to analyze business-critical data.
