@@ -5,7 +5,7 @@ breadcrumb_title: Workflows
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 6
+weight: 5
 ---
 ## Overview
 Leverage MobileFirst Analytics to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
@@ -16,6 +16,32 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 
 
 ## App Usage Analytics
+### Initializing your client app to capture app usage
+App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
+
+You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener.
+
+On iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
+
+  ```Objective-C
+    WLAnalytics *analytics = [WLAnalytics sharedInstance];
+    [analytics addDeviceEventListener:LIFECYCLE];
+ ```
+ 
+ Similarly, on Android, add the following code in your Application subclass `onCreate` method.
+ 
+ ```Java
+    WLAnalytics.init(this)
+    WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
+ ```
+ 
+For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. 
+    
+For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
+
+    logger.config({analyticsCapture: true});
+
+
 ### Default Usage and Devices charts
 In the Usage and Devices page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
 
@@ -66,8 +92,66 @@ The duration of an app session is a valuable metric to visualize. With any app, 
 ## Crash Capture
 MobileFirst Analytics includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
 
+
+An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the MobileFirst Analytics SDK logs a crash event. This data is sent to the server with the next logger send call.
+
+### Initializing your app to capture crash data
+To ensure that crash data is collected and included in the MobileFirst Analytics Console reports, make sure the crash data is sent to the server.
+
+Ensure that you are collecting app lifecycle events as described in Initializing your app to capture app usage.
+The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash.
+    
+iOS
+
+  ```Objective-C
+        - (void)sendMFPAnalyticData {
+          [OCLogger send];
+          [[WLAnalytics sharedInstance] send];
+        }
+
+        // then elsewhere in the same implementation file:
+
+        [NSTimer scheduledTimerWithTimeInterval:60
+          target:self
+          selector:@selector(sendMFPAnalyticData)
+          userInfo:nil
+          repeats:YES]
+  ```
+  
+
+Android
+
+  ```Java
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+          @Override
+          public void run() {
+            Logger.send();
+            WLAnalytics.send();
+          }
+        }, 0, 60000);
+  ```
+  
+  Cordova
+
+  ```Java
+        setInterval(function() {
+          WL.Logger.send();
+          WL.Analytics.send();
+        }, 60000)
+  ```
+  
+Web
+        
+  ```Java
+        setInterval(function() {
+          ibmmfpfanalytics.logger.send();
+        }, 60000);
+  ```
+
+
 ### App crash monitoring
-You can quickly see information about your app crashes in the Dashboard section of the MobileFirst Analytics Console.  
+After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the MobileFirst Analytics Console.  
 In the **Overview** page of the **Dashboard** section, the Crashes bar graph shows a histogram of crashes over time.
 
 The data can be shown in two ways:
