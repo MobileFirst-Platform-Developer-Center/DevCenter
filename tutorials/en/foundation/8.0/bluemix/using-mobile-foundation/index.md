@@ -101,7 +101,7 @@ You can add MobileFirst Foundation Operational Analytics support to your Mobile 
 This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
 
 When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
-When using the **Proffessional 1** plan this action will require additional input from you, such as selecting a storage location.
+When using the **Proffessional 1 Application** plan this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
 
 Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
 
