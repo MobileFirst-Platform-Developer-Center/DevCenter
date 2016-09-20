@@ -52,7 +52,7 @@ The following system components function together in order to provide the Live U
 * **Live Update adapter:** an adapter which provides:
  - Application schema and segments management
  - Serving configurations to applications
-* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context. 
+* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context.
 * **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the MobileFirst Server.
 * **MobileFirst Operations Console:** used for configuring the Live Update adapter and settings.
 * **Configuration Service:** *Internal*. Provides configuration management services for the Live Update adapter.
@@ -60,7 +60,7 @@ The following system components function together in order to provide the Live U
 ## Adding Live Update to MobileFirst Server
 By default, Live Update Settings in the MobileFirst Operations Console is hidden. To enable, the provided Live Update adapter needs to be deployed.  
 
-1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools** tab. 
+1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools** tab.
 2. Download and deploy the Live Update adapter.
 
 Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
@@ -87,13 +87,13 @@ A schema is where features and properties are defined.
 * Using "features" you can define configurable application features and set their default value.  
 * Using "properties" you can define configurable application properties and set their default value.
 
-#### Segments 
+#### Segments
 Segments define unique application behaviors by customizing the default features and properties defined by the schema.
 
 ### Adding Schema and Segments
-Before adding a schema and segments for an applicaiton, the developer or product management team need to reach a decision about several aspects: 
+Before adding a schema and segments for an applicaiton, the developer or product management team need to reach a decision about several aspects:
 
-* The set of **features** to utilize Live Update for as well as their default state 
+* The set of **features** to utilize Live Update for as well as their default state
 * The set of configurable string **properties** and their default value
 * The market segments for the application
 
@@ -136,7 +136,7 @@ To add, click **New** and provide the requested values.
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="segment">
             <h4 class="panel-title">
@@ -157,7 +157,7 @@ To add, click **New** and provide the requested values.
                         </ul>
                     </li>
                 </ul>
-                
+
                 <blockquote><b>Note:</b><br/>
                     <ul>
                         <li>When a feature or property is added to a schema, a corresponding feature or property is automatically added to all segments of an application (with the default value)</li>
@@ -189,8 +189,16 @@ Override the default value of a property.
 ## Adding Live Update SDK to applications
 The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the MobileFirst Operations Console.
 
+* [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
 * [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
 * [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
+
+### Adding the Cordova plugin
+
+1. in your Cordova application folder run:
+```
+cordova plugin add cordova-plugin-mfp-liveupdate.
+```
 
 ### Adding the iOS SDK
 
@@ -220,7 +228,7 @@ The Live Update SDK provides developers with API to query runtime configuration 
         version: '8.0.+',
         ext: 'aar',
         transitive: true
-    
+
         compile group: 'com.ibm.mobile.foundation',
         name: 'ibmmobilefirstplatformfoundationliveupdate',
         version: '8.0.0',
@@ -229,12 +237,33 @@ The Live Update SDK provides developers with API to query runtime configuration 
     }   
     ```
 
+
 ## Using the Live Update SDK
 There are several approaches to using the Live Update SDK.
 
 ### Pre-determined Segment
 Implement logic to retrieve a configuration for a relevant segment.  
 Replace "segment-name", "property-name" and "feature-name" with your own.
+
+#### Cordova
+
+```javascript
+    var input = { segmentId :'segment-name' };
+    LiveUpdateManager.obtainConfiguration(input,function(configuration) {
+        // do something with configration (JSON) object, for example,
+        // if you defined in the server a feature named 'feature-name':
+        // if (configuration.features.feature-name) {
+        //   console.log(configuration.properties.property-name);
+	// }
+    } ,
+    function(err) {
+        if (err) {
+           alert('liveupdate error:'+err);
+        }
+  });
+```
+
+
 
 #### iOS
 
@@ -282,6 +311,23 @@ To use a Segment Resolver adapter:
 The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
 
 To obtain the configuration by parameters, use the Live Update API to send the request:
+
+#### Cordova
+
+```javascript
+var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
+LiveUpdateManager.obtainConfiguration(input,function(configuration) {
+        // do something with configration (JSON) object, for example:
+        // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
+    } ,
+    function(err) {
+        if (err) {
+           alert('liveupdate error:'+err);
+        }
+  });
+```
+
+
 
 #### iOS
 
@@ -351,7 +397,7 @@ public class SampleSegmentResolverAdapter {
     public String getSegment(String body) throws Exception {
         ResolverAdapterData data = gson.fromJson(body, ResolverAdapterData.class);
         String segmentName = "";
-        
+
         // Get the custom arguments
         Map<String, List<String>> arguments = data.getQueryArguments();
 
@@ -411,16 +457,16 @@ public class ResolverAdapterData {
 **Request**
 
 | ***Attribute*** |  ***Value***                                                                                      |  
-|:----------------|:--------------------------------------------------------------------------------------------------| 
-| *URL*           | /segment                                                                                          | 
+|:----------------|:--------------------------------------------------------------------------------------------------|
+| *URL*           | /segment                                                                                          |
 | *Method*        | POST                                                                                              |               
 | *Content-type*  | application/json                                                                                  |
 | *Body*          | &lt;JSON object containing all required information for segment resolving&gt;                     |
-     
+
 **Response**
 
 |  ***Attribute***   |  ***Value***                                |
-|:-------------------|:--------------------------------------------| 
+|:-------------------|:--------------------------------------------|
 | *Content-type*     | text/plain                                  |                                                                          
 | *Body*             |  &lt;string describing the segment ID&gt;   |
 
@@ -431,7 +477,7 @@ Once a schmea and segments have been defined, the system administrator can expor
 
 #### Export schema
 
-```bash 
+```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > schema.txt
 ```
 
@@ -460,7 +506,7 @@ counter=0
 while [ $segments_number -gt $counter ]
 do
     segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
-    echo $segment | curl -X POST -d @- --user admin:admin --header "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment 
+    echo $segment | curl -X POST -d @- --user admin:admin --header "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment
     ((counter++))
 done
 ```
@@ -470,8 +516,27 @@ done
 * Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 ### Caching
-Caching is enabled by default in order to avoid network letancy. This means that updates may not take place immediately.  
+Caching is enabled by default in order to avoid network latency. This means that updates may not take place immediately.  
 Caching can be disabled if more frequent updates are required.
+
+#### Cordova
+
+controlling client side cache by using an optional _useClientCache_ boolean flag:
+
+```javascript
+	var input = { segmentId :'18' ,useClientCache : false };
+        LiveUpdateManager.getConfiguration(input,function(configuration) {
+                // do something with resulting configuration, for example:
+                // console.log(configuration.data.properties.property-name);  
+                // console.log(configuration.data.features.feature-name);
+        } ,
+        function(err) {
+                if (err) {
+                   alert('liveupdate error:'+err);
+                }
+  });
+```
+
 
 #### iOS
 ```swift
@@ -519,6 +584,6 @@ Follow the sample's README.md file for instructions.
 Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
 
 In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
-  
+
 * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
 * To see the map while using the app, you need to enable to `includeMap` feature.
