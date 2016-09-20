@@ -40,7 +40,7 @@ The sample application demonstrated below [is available on GitHub](https://githu
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/OsfWxKXv7jo"></iframe>
+    <iframe src="https://www.youtube.com/embed/8CSD92vS0oM"></iframe>
   </div>
 </div>
 
