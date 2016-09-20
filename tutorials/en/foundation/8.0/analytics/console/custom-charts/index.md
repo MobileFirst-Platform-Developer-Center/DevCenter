@@ -116,9 +116,9 @@ Because not all properties are required for specific event types, null values ca
 You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
 The log information also includes contextual information about the device, including environment, app name, and app version.
 
-> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../analytics-api/#custom-events).
+> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
 
-1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../analytics-api/#sending-analytics-data).
+1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
 2. In the MobileFirst Analytics Console, click the **Custom Charts** tab and continue to a create a chart:
     * **Chart Title**: Application and Log Levels
     * **Event Type**: Client Logs
