@@ -38,7 +38,7 @@ Review the following sections to learn what actions you need to take so that you
 * If your application uses the `KeyChain` implementation, your app might crash because of `KeyChain` - It happens because Apple changed the way of working with keychain in iOS 10. To fix this issue you simply should go to Targets->Capabilities and enable keychain sharing.
 * If your application is using `Push notification` feature, Make sure sure you have turned on Push Capability in you project.
    - If you have developed an application which uses push feature on or below Xcode v7 and whenever opened a same project in Xcode 8, Please make sure that Push capability feature is enabled in XCode Project.
-* Hybrid iOS Application which has FIPS feature enabled does not send request/connect to MFP server over HTTPS. This is a known issue, it needs an interim fix to be applied to the Client Application.
+* Hybrid iOS Application which has FIPS feature enabled does not send request/connect to MFP server over HTTPS. This is a known issue, it needs an interim fix ([PI69371](https://www-945.ibm.com/support/fixcentral)) to be applied to the Client Application.
 * `NSContactsUsageDescription` or `NSMicrophoneUsageDescription` keys are now mandatory in the plist file while accessing contacts or microphone in cordova/hybrid iOS application. This affects users who use `cordova-plugin-contact` or `cordova-plugin-media` API's. The fix is simply to include those keys in application plist file.
 * iOS applications written in Swift need to be migrated to Swift 3.0 or Swift 2.3. This can be easily done using the migration guide [provided by Apple](https://swift.org/migration-guide).
 
