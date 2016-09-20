@@ -11,7 +11,6 @@ IBM MobileFirst Foundation supports Federal Desktop Core Configuration (FDCC), a
 
 * [FDCC and USGCB support](#fdcc-and-usgcb-support)
 * [FIPS-140-2-support](#fips-140-2-support)
-* [References](#references)
 * [Enabling FIPS 140-2](#enabling-fips-140-2)
 * [Configure FIPS 140-2 mode for HTTPS and JSONStore encryption](#configure-fips-140-2-mode-for-https-and-jsonstore-encryption)
 * [Configuring FIPS 140-2 for existing applications](#configuring-fips-140-2-for-existing-applications)
