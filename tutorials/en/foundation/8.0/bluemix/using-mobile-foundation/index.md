@@ -22,6 +22,7 @@ The Mobile Foundation service offers two plan options:
 * [Using the Mobile Foundation Service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
+* [Adding Analytics support](#adding-analytics-support)
 * [Applying MobileFirst Server Fixes ](#applying-mobilefirst-server-fixes)
 * [Further reading](#further-reading)
 
@@ -66,7 +67,10 @@ With the MobileFirst Server now running, you are presented with the following Da
 
 ![Image of Mobile Foundation setup](service-dashboard.png)
 
-Click on **Launch Console** to open the MobileFirst Operations Console.  The use name is "admin" and the password can be revealed by clicking on the "eye" icon.
+Click on **Add Analytics** to add MobileFirst Foundation Operational Analytics support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+
+Click on **Launch Console** to open the MobileFirst Operations Console.  The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
 
 ![Image of Mobile Foundation setup](dashboard.png)
 
@@ -92,13 +96,24 @@ Through the **Configuration** tab, you can further customize the server instance
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
 
+## Adding Analytics support
+You can add MobileFirst Foundation Operational Analytics support to your Mobile Foundation service instance by clicking on **Add Analytics** from the service's Dashboard page.  
+This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
+
+When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
+When using the **Proffessional 1** plan this action will require additional input from you, such as selecting a storage location.
+
+Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
+
+> Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
+
 ## Applying MobileFirst Server Fixes
 Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update.  
 When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Further reading
-Now that the MobileFirst Server instance is up and running, you can learn more
+Now that the MobileFirst Server instance is up and running:
 
-* [MobileFirst Operations Console](../../setting-up-your-development-environment/console)
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start)
-* Or [read through all available tutorials](../../all-tutorials/)
+* Familiarize with the [MobileFirst Operations Console](../../setting-up-your-development-environment/console).
+* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
+* Read through all [available tutorials](../../all-tutorials/).
