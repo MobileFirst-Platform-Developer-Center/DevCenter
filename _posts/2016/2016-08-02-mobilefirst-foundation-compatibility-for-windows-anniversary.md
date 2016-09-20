@@ -38,6 +38,7 @@ Few of the features like app authenticity, adapter authentication, resource requ
 > * Feature Validated 
 > 	* App Management
 > 	* Push Notification
+> 	* App Authenticity
 > 	* Security (Formbased and Adapter based authentication)
 > 	* Resource Request 
 > 

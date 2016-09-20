@@ -1,0 +1,194 @@
+---
+layout: tutorial
+title: MobileFirst Application Scanning
+show_breadcrumb: true
+---
+<h2>Overview</h2>
+Identify and fix security vulnerabilities in your MobileFirst (6.3 - 7.1) projects early in the software development lifecycle, thereby reducing risks and lowering support costs for your mobile apps. MobileFirst Application Scanning assesses native client-side Android and iOS source code, in addition to most user-written JavaScript client-side code. (MobileFirst Application Scanning does not scan server-side JavaScript code, such as MobileFirst adapter code.)
+
+<h2>Jump to:</h2>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#install">Install IBM MobileFirst Application Scanning to MobileFirst Platform Foundation</a>
+    <ul>
+      <li><a href="#install_eclipse">Install the AppScan® Source for Development Eclipse plug-in</a></li>
+      <li><a href="#install_eclipse_apply">Install the AppScan Source for Development Eclipse plug-in into Eclipse</a></li>
+    </ul>
+  </li>
+  <li><a href="#scan">Scan your MobileFirst project</a></li>
+  <li><a href="#open">Open the findings in MobileFirst Platform Foundation</a>
+    <ul>
+      <li><a href="#explore">Explore the findings</a></li>
+      <li><a href="#trace">Open finding details in the Trace view</a></li>
+      <li><a href="#view">View the vulnerability in the source code and fix it in place</a></li>
+    </ul>
+  </li>
+  <li><a href="#information">More information</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+IBM MobileFirst Application Scanning scans your MobileFirst projects and assesses them for security vulnerabilities. MobileFirst Application Scanning supports native client-side Android and iOS source code, in addition to most user-written JavaScript client-side code. MobileFirst Application Scanning does not scan server-side JavaScript code such as MobileFirst Adapter code.
+
+To learn how to download MobileFirst Application Scanning, see:
+
+<a href="http://www.ibm.com/support/docview.wss?uid=swg24037819" title="http://www.ibm.com/support/docview.wss?uid=swg24037819" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg24037819</a>
+
+Note that MobileFirst Application Scanning is also referred to as the AppScan Source for Development Eclipse plug-in.
+
+<h2 id="install">Installing IBM MobileFirst Application Scanning to IBM MobileFirst Platform Foundation</h2>
+
+The IBM Security AppScan Source installer is used to install MobileFirst Application Scanning.
+
+In the installer, MobileFirst Application Scanning is called AppScan Source for Development.
+
+After installing MobileFirst Application Scanning, you need to install it into the Eclipse development environment that you have installed MobileFirst Platform Foundation on.
+
+<h2 id="install_eclipse">Install the AppScan Source for Development Eclipse plug-in</h2>
+
+<ol>
+  <li>In the first installation panel, choose the national language that you want to have appear in the remaining installation panels:
+      <img alt="missing_alt" src="application-scanning//wl_install_1_902.gif" class="img-responsive" />
+  </li>
+  <li>After clicking <strong>Next</strong> in the Welcome panel, choose to install the AppScan Source for Development for Eclipse, RAD, MobileFirst component in the Component Selection panel:
+      <img alt="missing_alt" src="application-scanning//wl_install_3_902.gif" class="img-responsive" />
+  </li>
+  <li>The remaining installation panels are self-explanatory:
+    <ul>
+      <li>In the Installation Target Specification page, specify the installation directory.</li>
+      <li>In the language pack selection panel, choose the language packs to install. When you install a language pack, the AppScan Source user interface will display in that language when it runs on an operating system that is running that locale.</li>
+      <li>Review and accept the terms of the license agreement and then click <strong>Next</strong> to continue.</li>
+      <li>Review the summary of installation options before proceeding. If you are satisfied with your installation choices, click <strong>Install</strong>.</li>
+    </ul>
+  </li>
+  <li>In the Installation Complete panel, you can initiate product activation immediately after exiting the installation wizard by selecting <strong>Launch IBM Security AppScan Source License Manager</strong>. Click <strong>Done</strong> to complete the standard installation and exit the Installation Wizard.</li>
+  <li>In the License Manager utility:
+    <ul>
+      <li>To apply a license file, click <strong>Import</strong> and then browse to your downloaded AppScan Source license.</li>
+      <li>To apply a floating license, click <strong>Configure license servers</strong> and then click <strong>Add</strong>. Enter the information for the host machine that contains the floating license.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="install_eclipse_apply">Install the AppScan Source for Development Eclipse plug-in into Eclipse</h2>
+
+<ol>
+  <li>The application of the AppScan Source for Development Eclipse plug-in depends on the application of some Eclipse tools (the Graphical Editing Framework (GEF) and Draw2d). Ensure that these are installed before proceeding.</li>
+  <li>In the Eclipse to which you have installed MobileFirst Platform Foundation, select <strong>Help > Install New Software</strong>:
+      <img alt="missing_alt" src="application-scanning/wl_apply_1.gif" class="img-responsive" />
+  </li>
+  <li>In the Install dialog box Available Software page, click <strong>Add</strong> and then, in the Add Site dialog box, specify a name for the update site in the <strong>Name</strong> field:
+      <img alt="missing_alt" src="application-scanning/wl_apply_2_callout.gif" class="img-responsive" />
+  </li>
+  <li>Follow these instructions for adding a site in the Add Repository dialog box, depending on your operating system:
+    <ul>
+      <li><strong>Windows and Linux</strong>: Click <strong>Local</strong>. In the Browse for Folder dialog box, navigate to the AppScan Source installation. Click <strong>OK</strong> to return to the Add Site dialog box and then click <strong>OK</strong> to add the update site.</li>
+      <li><strong>OS X</strong>: In the <strong>Location</strong> field, enter <code>file:/Applications/AppScanSource.app/</code> and then click <strong>OK</strong><strong> to add the update site.</strong></li>
+    </ul>
+  </li>
+  <li>Select the check box next to the <strong>IBM Security AppScan Source Security Analysis Feature</strong> local site and then click Next:
+      <img alt="missing_alt" src="application-scanning//wl_apply_4_902.gif" class="img-responsive" />
+  </li>
+  <li>The remaining pages are self-explanatory:
+    <ul>
+      <li>In the Install Details page, review the item to be installed and then click <strong>Next</strong>.</li>
+      <li>Review and accept the terms of the license agreement and then click <strong>Finish</strong>.</li>
+    </ul>
+  </li><li>When prompted, restart Eclipse. The <strong>Security Analysis</strong> menu appears after the installation completes.</li>
+</ol>
+
+<h2 id="scan">Scan your MobileFirst project</h2>
+
+If you are scanning an IBM MobileFirst project that contains files that have been modified, you must rebuild the project using IBM MobileFirst before scanning.
+
+You can launch a scan of your workspace or a selected project from the <strong>Security Analysis</strong> menu:
+
+<img alt="missing_alt" src="application-scanning/wl_scan_11.gif" class="img-responsive" />
+
+You can also launch a project scan from its context menu:
+
+<img alt="missing_alt" src="application-scanning/wl_scan_21.gif" class="img-responsive" />
+
+Individual applications can also be scanned:
+
+<img alt="missing_alt" src="application-scanning/wl_scan_31.gif" class="img-responsive" />
+
+You can also scan the <strong>android</strong>, <strong>ipad</strong>, and <strong>iphone</strong> environments:
+
+<img alt="missing_alt" src="application-scanning/wl_scan_4_callout.gif" class="img-responsive" />
+
+If you are running MobileFirst Application Scanning on OS X, you can also scan the Xcode project beneath the <strong>ipad</strong> or <strong>iphone</strong> environments.
+
+In order to scan the <strong>ipad</strong> or <strong>iphone</strong> environments, or any Xcode project beneath one of those environments, the project for the iOS device must be built a single time in Xcode. In Xcode, open the project and choose <strong>iOS Device</strong> as the active scheme. Then invoke <strong>Product > Build For > Profiling</strong>.
+
+You can even scan individual files:
+
+<img alt="missing_alt" src="application-scanning/wl_scan_51.gif" class="img-responsive"/>
+
+<h2 id="open">Open the findings in MobileFirst Platform Foundation</h2>
+
+When the scan completes, you can open the results right in MobileFirst Platform Foundation:
+
+<img alt="missing_alt" src="application-scanning/wl_findings_11.gif" class="img-responsive" />
+
+The Security Analysis perspective in the AppScan Source for Development Eclipse plug-in offers a variety of views that allow you to explore and triage security findings.
+
+<h2 id="explore">Explore the findings</h2>
+
+The Findings view displays all of the security vulnerabilities that were discovered during the scan:
+
+<img alt="missing_alt" src="application-scanning/wl_findings_2.gif" class="img-responsive" />
+
+From the Findings view, you can open the finding in the code editor, exclude findings, modify findings, view findings with different groupings, and search the findings for specific items.
+
+Some views, such as the Vulnerability Matrix and Assessment Summary views, allow you to get an overall picture of all findings. You can also filter findings from these views:
+
+<img alt="missing_alt" src="application-scanning/wl_findings_3_4_callout.gif" class="img-responsive" />
+
+When a finding is selected in the Findings view, the Remediation view provides context-specific intelligence for the vulnerability. The view tells you what the vulnerability is, why it is insecure, how to fix it, and how to avoid it in the future:
+
+<img alt="missing_alt" src="application-scanning/wl_findings_5.gif" class="img-responsive" />
+
+Other views allow you to:
+<ul>
+  <li>Edit findings.</li>
+  <li>Create, edit, and apply filters, allowing you to streamline the list of findings.</li>
+  <li>Display excluded, modified, and fixed findings.</li>
+  <li>Create and modify custom findings.</li>
+  <li>Display search results.</li>
+  <li>Organize findings according to a variety of audit reports that measure compliance with software security best practices and regulatory requirements.</li>
+</ul>
+
+<h2 id="trace">Open finding details in the trace view</h2>
+
+Notice in the Findings view that there is a Trace column. If that column contains a trace icon, you can select the finding to open it in the Trace view:
+
+<img alt="missing_alt" src="application-scanning/wl_trace_1_callout.gif" class="img-responsive" />
+
+Double-clicking the finding opens the tainted data flow in the Trace View. Double-click any node to see the related source code.
+
+<img alt="missing_alt" src="application-scanning/wl_trace_2_callout1.gif" class="img-responsive" />
+
+Double-clicking the node allows you to view the source code that is causing the vulnerability – and fix it in place:
+
+<img alt="missing_alt" src="application-scanning/wl_trace_31.gif" class="img-responsive" />
+
+Hover help in the editor reveals a cross-site scripting vulnerability in this line of code:
+
+<img alt="missing_alt" src="application-scanning/wl_trace_41.gif" class="img-responsive" />
+
+<h2 id="view">View the vulnerability in the source code and fix it in place</h2>
+
+The line of code exposed by the trace is vulnerable to a cross-site scripting attack because unsanitized input from a third party is echoed back to the web page without first properly sanitizing the data. In this case, the data is the <code>dName</code> variable, which is completed by a third party or customer. If left unmitigated, this vulnerability could allow an attacker to run malicious JavaScript on the customer’s device.
+
+To resolve this problem, simply use an HTML sanitization routine, such as <code>window.escape()</code>. Or, if you are using a framework like JQuery, sanitize with <code>$.text()</code>.
+
+<h2 id="information">For more information</h2>
+For more information about IBM MobileFirst Application Scanning, see the user documentation at:
+
+<a href="http://www.ibm.com/support/knowledgecenter/SSS9LM_9.0.2/com.ibm.rational.appscansrc.developer.doc/topics/eclipse_intro_mobilefirst.html" title="http://www.ibm.com/support/knowledgecenter/SSS9LM_9.0.2/com.ibm.rational.appscansrc.developer.doc/topics/eclipse_intro_mobilefirst.html" target="_blank">http://www.ibm.com/support/knowledgecenter/SSS9LM_9.0.2/com.ibm.rational.appscansrc.developer.doc/topics/eclipse_intro_mobilefirst.html</a>
+
+To learn about IBM Security AppScan Source for Development (Eclipse plug-in) system requirements, see:
+
+<a href="http://www.ibm.com/support/docview.wss?uid=swg27027486" title="http://www.ibm.com/support/docview.wss?uid=swg27027486" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg27027486</a>

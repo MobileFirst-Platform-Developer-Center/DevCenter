@@ -3,7 +3,7 @@ layout: tutorial
 title: Developing Applications
 print_pdf: true
 show_children: true
-weight: 4
+weight: 5
 ---
 ## Development Concepts and Overview
 

@@ -23,6 +23,8 @@ MobileFirst Platform Foundation 7.1 allows you to develop your app as a Cordova 
 
 [Ionic](http://ionicframework.com/) is a leading platform for hybrid mobile app development. It provides an easy way to build beautiful and interactive mobile apps using HTML5 and AngularJS. Now [Ionic2](http://ionic.io/2) is out in beta, and it’s getting a lot of attention. Ionic2 is based on the newest version of AngularJS, version 2, which is very different from a development perspective, because it is much more [component](http://learnangular2.com/components/) oriented than [controller] (https://docs.angularjs.org/guide/controller ) oriented. There is already good lab about working with [IBM MobileFirst 8.0 and Ionic2](https://mobilefirstplatform.ibmcloud.com/labs/developers/8.0/advancedmessenger/).
 
+> **Note:** In case you are looking for a sample which shows MFP 7.1 + Angular 2 [here you go](https://github.com/mfpdev/mfp71-with-angular2).
+
 In this blog I want to show how you can work with Ionic2 in an of MFP 7.1 Cordova app.
 
 There is ready sample which you can work with in the [following link](https://github.com/mfpdev/mfp71-with-ionic2).

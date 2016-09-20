@@ -3,7 +3,8 @@ layout: tutorial
 title: Developing Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 5
+weight: 6
+print_pdf: true
 ---
 ## Overview
 MobileFirst Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  

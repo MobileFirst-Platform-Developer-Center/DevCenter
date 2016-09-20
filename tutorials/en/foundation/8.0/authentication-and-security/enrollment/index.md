@@ -303,6 +303,7 @@ private transient EnrollmentUserLogin userLogin;
     ```
     In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
 
+<img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
 ## Sample Applications
 
 ### Security check

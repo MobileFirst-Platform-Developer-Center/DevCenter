@@ -19,10 +19,8 @@ Before starting the lab series make sure to first follow through the setup instr
 <a href="{{site.baseurl}}/labs/developers/8.0/advancedmessenger"><img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo_small.png"></a>
 </div>
 
-<div class="sizer">
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iDe2EhiOn94"></iframe>
-    </div>
+<div>
+<img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/screenstory.png">
 </div>
 
 <br/>
@@ -34,12 +32,26 @@ Before starting the lab series make sure to first follow through the setup instr
 * Adding Push notifications capabilities and sending push using GCM
 * Adding JSONStore to organize local data storage
 
-Stay tuned for part 2!
+<br/>
+**Part 2:** In this lab you will be:
+
+* Authenticating external resources
+* Using Direct Update and Remote Disable
+* Using Mobile Operational Analytics
+* Performing a security scan of application binary
+* Doing a bug reporting and checking user sentiment analysis
+* Moving Node.js app to Bluemix using Cloud Foundry Node runtime
+* Creating MobileFirst Foundation instance on Bluemix
+* Preparing mobile application for distribution
 
 ---
 
 <div style="max-width: 200px">
 <a href="{{site.baseurl}}/labs/developers/8.0/advancedwallet"><img src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo_small.png" alt="small logo for advanced wallet app"></a>
+</div>
+
+<div>
+<img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/screenstory.jpg">
 </div>
 
 <br/>

@@ -6,93 +6,69 @@ downloads:
     url: https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml
   - name: Download Sample Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-
 ---
 
 ## Overview
-IBM API Connect is a  cloud-based API Management solution that allows you to design, control, secure, publish, manage, analyze, and scale your API with its simple-to-use configuration and coding platform.
+IBM API Connect is a cloud-based API Management solution that allows you to design, control, secure, publish, manage, analyze, and scale your API with its simple-to-use configuration and coding platform.
 To learn more about IBM API Connect, visit the [IBM API Connect Developer Center](https://developer.ibm.com/apiconnect/).  
 
-Add IBM MobileFirst Platform Foundation security capabilities to your API Connect API by using the MobileFirst OAuthProvider Swagger template, which adds 2 capabilities:  
- 1. Protect API Connect endpoints with the MobileFirst server as the authorization server.  
- 2. Proxy MobileFirst client management requests and responses through DataPower to the MobileFirst server that is located behind the DMZ.  
- 
+IBM MobileFirst Foundation integrates its security capabilities with IBM API Connect by using the MobileFirst OAuth Provider API template, which allows you to:  
 
-<img src="cd_apic_mfpsecurityhld.png" width="700"/>
+1. Protect API Connect endpoints with the MobileFirst Server as the authorization server.  
+2. Proxy MobileFirst client non-resource requests and responses through DataPower to the MobileFirst Server that is located behind the DMZ.  
+ 
+![MobileFirst First OAuth Provider](mfpsecurityhld_diagram.png)
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 
+The security integration is suppored for both [API Connect on-premise deployment] (http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect BlueMix Service] (https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
 
-This documentation assumes that the user is familiar with the MobileFirst tutorial. We use the PinCode challenge sample that demonstrates basic Android credential validation. 
-
-
-### Jump to:
+#### Jump to
 * [Prerequisites](#prerequisites)
 * [Protect the API Connect endpoint with MobileFirst as an authorization server](#protect-the-api-connect-endpoint-with-mobilefirst-as-an-authorization-server)
-  * Import MobileFirst OAuthProvider template
-  * Configure MobileFirst OAuthProvider template
-  * Get the full URL path of MobileFirst OAuthProvider for /oauth2/authorize
-  * Create Simple REST API
-  * Protect the API using the MobileFirst OAuth Security Definition
-  * Add APIs to the product and publish it
-* [Update the sample MobileFirst client application](#update-the-sample-pincodeandroid-mobilefirst-client-application)
-  * Update `wlclient.properties`
-  * Update the `WLResourceRequest` request
-  * Add HTTPS Certificate for the API Connect endpoint
+* [Update PinCodeAndroid sample client application](#update-pincodeandroid-sample-client-application)
 * [Support for multiple MobileFirst OAuthProviders](#support-for-multiple-mobilefirst-oauthproviders)
-
 
 ## Prerequisites
 * API Connect DataPower (Edge) version 5040 or later
-* A MobileFirst Server V8 installed locally
-* MobileFirst CLI 
-	To download MobileFirst CLI, see https://mobilefirstplatform.ibmcloud.com/downloads/. For more info: https://www.npmjs.com/package/mfpdev-cli ..... Or install it with NPM:
-
-	`npm install -g mfpdev-cli`
-* A MobileFirst Android client application   
-    * Download the MobileFirst sample **PinCodeAndroid** app and set up the the sample according to the `readme` file:  [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80).  
-    * Follow the challenge handler tutorial to complete the application: 
-     [Implementing the challenge handler in Android applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/credentials-validation/android/).  
-
+* IBM® DataPower® Gateway 7.5.X or later
+* MobileFirst CLI
+* Completing the [Implementing the challenge handler in Android applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/credentials-validation/android/) tutorial, which
+uses the [PinCodeAndroid sample](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80)
 
 ## Protect the API Connect endpoint with MobileFirst as an authorization server
-
 After completing this tutorial and the PinCode sample you will have:  
- 1. An Android application with the `PinCodeChallengeHandler` for the  `PinCodeAttempts` security check adapter.  
- 2. A `ResourceAdapter` that protects the  `/balance` endpoint with the `accessRestricted` scope.  
- 3. A `PinCodeAttempts` security check adapter which is mapped to `Scope Element` of `accessRestricted` for the Android application.  
 
-## Defining the Confidential Clients in the MobileFirst Operations Console
+1. An Android application with the `PinCodeChallengeHandler` for the  `PinCodeAttempts` security check adapter.  
+2. A `ResourceAdapter` that protects the  `/balance` endpoint with the `accessRestricted` scope.  
+3. A `PinCodeAttempts` security check adapter which is mapped to the `accessRestricted` scope for the Android application.  
 
-Set the **mfp-client-id** and **mfp-client-secret** in the MobileFirst Operations Console:
+### Define Confidential Client in MobileFirst Operations Console
+Go to MobileFirst Operations Console:
 
-1. In the **Runtime Settings** choose the  **Confidential Clients** tab.
-
+1. In the **Runtime Settings** choose the **Confidential Clients** tab.
 2. Click the **New** button.
-
 3. Provide the following values and save:
-
-	* **Display Name** `API Connect`
-  
-	* **ID**: `apic`
-  
-	* **Secret**: YOUR_CLIENT_SECRET
-  
-	* **Allowed Scope**: `authorization.introspect`
+    * **Display Name**: `API Connect`
+    * **ID**: `apic`
+    * **Secret**: YOUR-CLIENT-SECRET
+    * **Allowed Scope**: `authorization.introspect`
 	
+<img class="gifplayer" alt="Creating a Confidential Client for APIC" src="create-a-confidential-client.png"/>
 
+### Add the API Connect TLS Profile for the MobileFirst HTTPS endpoint
+This step is optional and necessary only if you want to send requests to the MobileFirst HTTPS endpoint from API Connect. 
+In order to create an API Connect TLS Profile, you should have your MobileFirst Server certificate (and its password). 
 
-![Create Confidential Client](createConfClient.png)
-
+> See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect in the API Manager.
 
 ### Import the MobileFirst OAuthProvider template
-From the API Designer, create an OAuthProvider REST API by importing the  [Swagger template YAML file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml)   (`mobilefirst-ouath-provider_1.0.0.yaml`). For more information, see
+From the API Designer, create an OAuthProvider REST API by importing the [Swagger template YAML file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml)   (`mobilefirst-ouath-provider_1.0.0.yaml`). 
+
+> For more information, see
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
 
-
-After importing, different configuration options are displayed and the **Design** tab is selected. Go to the **Assemble** tab.
-![API Connect Designer API editor](initialMenu.png)
-
+After importing, different configuration options are displayed and the **Design** tab is selected. Navigate to the **Assemble** tab.  
 You will see the following components in the assembly flow for the MobileFirst OAuth Provider API:
 
 * MobileFirst Configuration
@@ -100,172 +76,200 @@ You will see the following components in the assembly flow for the MobileFirst O
 * proxy
 * gatewayscript
 
-![Configuration Flow](configFlow.png)
+![Configuration Flow](assemble_tab.png)
 
-#### Configure the MobileFirst OAuthProvider template
+### Configure the MobileFirst OAuthProvider template
 Using the API Designer, configure the imported API.  
+
 1. From the **Assemble** tab choose the **MobileFirst Configuration** component.  
-2. In the **MobileFirst Configuration** component,  update the following variable values:  
-   *  **mfp-oauth-type:** Leave the default value (`true`).  
-   * **mfp-server-url:** The MobileFirst Server URL in the format PROTOCOL://SERVER_HOST:SERVER_PORT.  For example `http://myMobileFirstServer:9080`.  Find this value in the `mfpclient.properties` file (`wlServerHost` and `wlServerPort`). The protocol is the `wlServerProtocol` value.  
-   * **mfp-server-context:** MobileFirst server context. Find this value in the `mfpclient.properties` file (`wlServerContext`).  
-   * **mfp-client-id:** As configured in **Runtime Settings** of the MobileFirst Operations Console in **Runtime Settings ->  Confidential Clients** for the `authorization.introspect` scope.  
-   * **mfp-client-secret:** As configured in the MobileFirst Operations Console  **Runtime Settings -> Confidential Clients** for the `authorization.introspect` scope.  
+2. In the **MobileFirst Configuration** component, update the following variable values:  
 
+* **mfp-oauth-type:** Leave the default value (**true**).  
+* **mfp-server-url:** The MobileFirst Server URL in the format `protocol://server-host:port`. For example **http://myMobileFirstServer:9080**. You can find this value in the `mfpclient.properties` file (see the `wlServerProtocol`, `wlServerHost` and `wlServerPort` properties).  
+* **mfp-server-context:** The MobileFirst Server context. Find this value in the `mfpclient.properties` file (see the `wlServerContext` property).  
+* **mfp-client-id:** `apic`, as configured in the MobileFirst Operations Console. **Runtime Settings → Confidential Clients** for the `authorization.introspect` scope.  
+* **mfp-client-secret:** `YOUR-CLIENT-SECRET`, as configured in the MobileFirst Operations Console. **Runtime Settings → Confidential Clients** for the `authorization.introspect` scope.  
 
-
-
-In order to send a request to a MobileFirst Server HTTPS endpoint, you must create a TLS profile for enabling secured connection between API Connect and MobileFirst.  Note that API Connect supports P12 and PEM certificate formats only. See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect.
-
-After adding the TLS Profile, go to the **proxy**  policy component in the **Assemble** tab. Choose the newly created **TLS Profile** property.
-
+> **Note:** If you configured HTTPS protocol in the previous step for `mfp-server-url`, configure API Connect with a TLS Profile in the **proxy** policy component. Go to the **proxy** policy component in the **Assemble** tab and select for the **TLS Profile** property the profile you previously created in **"Add API Connect TLS Profile for MobileFirst HTTPS endpoint"**.
 
 ### Get the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`
 Choose and configure a Catalog for your product, and set the full path:
 
 1. Open the **Dashboard**.
 2. Choose a catalog (for example **Sandbox**) for your product.
-3. Go to **Settings -> Endpoints** and copy the **Base URL** which has the following format:
+3. Go to **Settings → Endpoints** and copy the **Base URL** which has the following format: `https://{DataPowerGateway}/{organizationName}/{catalogName}`
+4. To determine full URL path of MobileFirst OAuthProvider for **/oauth2/authorize**, concatenate the `Base Path` value of the **MobileFirst OAuthProvider**  (`/mfpProvider`) and the `/oauth2/authorize` endpoint.
 
-  `https://{DataPowerGateway}/{organizationName}/{catalogName}`
+ The full URL of the MobileFirst OAuthProvider should look like this: `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`
 
-1. To determine full URL path of MobileFirst OAuthProvider for /oauth2/authorize, concatenate the `Base URL`,  the **MobileFirst OAuthProvider** value (`/mfpProvider`), and the `/oauth2/authorize` endpoint.
-
- The full URL of the of MobileFirst OAuthProvider should look like this:
-
- `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`
-
-### Create a simple REST API to protect with MobileFirst
-In this example we create an API called **Branches**. We will add this to the **Bank** product. For more information, see [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html).
+### Create a Simple REST API in API Connect
+In this example we create an API called **Branches** and a Product called **Bank** (Based on API Connect's tutorial for [Creating an invoke REST API definition](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_apionprem_apiproxy.html)).
 
 From the API Connect Designer **APIs** tab:
 
-1. To create a REST API definition, click the ![Add](addIcon.png) button and then select **New OpenAPI from scratch**.
+1. To create a REST API definition, click the <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> add button and then select **New OpenAPI from scratch**.
+2. Configure the following parameters and click on **Add** button to create the API:
 
-  ![New API](newAPIFromScratch75.png)
+	**Title**: Branches      
+    **Name**: branches  
+	**Base Path**: /branches  
+	**Version**: 1.0.0  
 
-2. Configure the following parameters:
+3. The **Design** tab of the REST API will be displayed.
+4. In the **Base Path** section, verify the field is already populated with '/branches'.
+5. Go to **Paths** section and create a path by clicking the **Add Path** <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> icon.
+6. In the **Path** field enter **/details** (`GET` method is created by default).
 
-	* **Title**: Branches
-    
-	* **Base Path**: /branches
+    ![New API](details_path.png)
 
-	* **Version**: 1.0.0.
+7. Go to the **Assemble** tab and click the **invoke** policy component that appears in the **Assemble** pane.
 
-   	* **Description** can be any value.
+    ![Invoke](invoke.png)
 
-3. Click **Create API**. The **Design** tab of the REST API is displayed.
+8. In the properties sheet pane, populate the **URL** field with the back-end resource URL to be protected with MobileFirst. The other values are optional. For this tutorial use `https://apim-services.mybluemix.net/banka/v1/branches`.
+    ![Invoke Configuration](invoke_policy_api.png)
 
-5. In the **Base Path** section, the **Base Path** field is already populated with '/branches'.
+9. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> to save the API definition. 
 
-6. To create a path, click the **Add Path** icon (![Add](addIcon.png)).
+### Protect the API using the MobileFirst OAuth Security Definition  
+Protect the API by defining a **Security Definition**.
 
-7. In the **Path** field enter **/details**.
-
-7. Click the **Assemble** tab. The **invoke** policy component appears in the **Assemble** pane.
-
- ![Invoke](invoke.png)
-
-1. Click the **invoke** policy component. The property sheet pane for the invoke component opens.
-
-1. Populate the **URL** field with the back-end resource URL to be protected with MobileFirst. The other values are optional. For this tutorial use `https://apim-services.mybluemix.net/banka/v1/branches`.
- ![Invoke Configuration](invokeConfig.png)
-
-1. Click the  ![Save](saveButton.png) button to save the API definition.
-
-### Protect the API using the MobileFirst OAuth Security Definition
-Once you have the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, go to the **Design** tab in the API Connect Designer.
-
-#### Security Definitions
-Create a  **Security Definition**.
-
-1. In the newly created Branches API, choose **Security Definition** from the design list click the ![Add](addIcon.png) button to add a defintion of type **OAuth**.
+1. In the newly created Branches API, choose **Security Definition** from the design list click the <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> button to add a defintion of the type **OAuth**.
 
     ![Add a Security Definition](addSecurityDefinition.png)
 
-1. Set the values.
-[details
+2. Set the values:
    * **Flow:** Choose **Implicit**.
-   * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`.
+   * **Authorization URL:** Use the full URL path of MobileFirst OAuthProvider for `/oauth2/authorize`, which should be like `https://{DataPowerGateway}/{organizationName}/{catalogName}/mfpProvider/oauth2/authorize`.
    * **Scopes:** `accessRestricted`.
 
-  ![Choose the Security Definition](securityDef.png)
+    ![Choose the Security Definition](mfp_sec_def_add.png)
 
-#### Add the Security Definition
-Add a Security Definition to Details API path.
-  1. Go to the **Paths** section and choose the Details path.
-  1. Click the **GET** method and expand it.
-  1. In the **Security** section uncheck **Use API security definitions**. A list of defined Security Definitions appears. Check the newly created **MobileFirst OAuth Security Definition**.
+3. Go to the **Paths** section and choose the `/details` path.
+4. Click on the **GET** method and expand it.
+5. In the **Security** section, uncheck **Use API security definitions** and check the newly created **MobileFirst OAuth Security Definition** from the list.
 
-    ![Choose the OAuth Definition](securityDef2.png)
+    ![Choose the OAuth Definition](path-secuirty.png)
     
-   1. Click the  ![Save](saveButton.png) button to add the Security Definition to the API.
+6. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> .
 
-### Add APIs to the product and publish it
-1. Create a new product or use existing product. See [Creating a Product in the API Designer](http://www.ibm.com/support/knowledgecenter/SSFS6T/com.ibm.apic.toolkit.doc/tapim_create_product.html).
-2. Add  the two APIs to the product: the **MobileFirst OAuthProvider API** and the new **Branches** API.
-3. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html).
-4. Publish the Product: Go to the Catalog **Dashboard** and choose the product to publish.
+### Add the APIs to product and publish it
+From the API Connect Designer **Products** tab:  
 
+1. To create a Product definition, click the <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> add button and then select **New Product from scratch**.
 
-## Update the sample PinCodeAndroid MobileFirst client application
+2. Configure the following parameters:  
 
+	**Title**: Bank  
+    **Name**: bank  
+	**Version**: 1.0.0  
+
+3. Click the **Create product** button to create the API. The **Design** tab of the Product will be displayed.
+
+4. Go to the **APIs** section click **Add** <img alt="save button" style="margin:0;display:inline" src="addIcon.png"/> .
+
+    ![Prodcut add APIs](product_add_apis.png)
+
+5. Add the two newly created APIs: **MobileFirst OAuthProvider** and **Branches**.
+
+    ![Prodcut add APIs](product_select_apis.png)
+
+6. Save the Product. <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/>
+
+7. Stage the Product. See [Staging a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html) for more details.
+
+    ![Prodcut Stage](product_stage.png)
+    ![Prodcut Stage Success](product_stage_success.png)
+
+8. Publish the Product: Go to the Catalog **Dashboard** and choose **Bank** product to publish. See [Publish a Product](http://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/publishing_a_product.html) for more details.
+
+    ![Prodcut Publish](product_publish.png)
+    ![Prodcut Publish Success](product_publish_success.png)
+
+## Update PinCodeAndroid sample client application
 ### Update the `wlclient.properties` file
+After setting up the **PinCodeAndroid** sample and completing the setup described in the `README` file, the `wclient.properties` is configured to send all MobileFirst requests directly to MobileFirst Server.  
 
-After setting up the **PinCodeAndroid** sample, and completing the setup described in the `readme` file, the `wclient.properties` is configured to send all MobileFirst requests directly to MobileFirst server.  
+However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints which is exposed by the MobileFirst OAuthProvider.
 
-However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints exposed by the MobileFirst OAuthProvider.  
-
-To enable the proxy,  the following changes are required in the `wclient.properties` file:   
+In order to enable the proxy, the following changes are required in the `wclient.properties` file:   
 * **wlServerProtocol:** Change to `https`.    
-* **wlServerHost:** Change to DataPower Gateway hostname/IP (as it appears in the base URL).  
-* **wlServerPort:** Change to 443.
+* **wlServerHost:** Change to DataPower Gateway hostname (or IP) as it appears in the base URL.  
+* **wlServerPort:** Change to 443.  
 * **wlServerContext:** Change to the relative base path of the MobileFirst OAuthProvider. For example `/{organizationName}/{catalogName}/mfpProvider/`.  
 
-
 ### Update the WLResourceRequest request
-In the MobileFirst tutorial sample code, change the following in the `PinCodeApplication.java` code.
+In the MobileFirst tutorial sample code, change the following in the `MainActivity.java` code.  
+Replace this:
 
-Replace this:  
 ```java
     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
 ```
+
 with this:   
 
 ```java
     String apicPath = "YOUR_APIC_ENDPOINT_PATH_WHICH_IS_PROTECTED_BY_MOBILEFIRST";
-    WLResourceRequest request = new WLResourceRequest(apicPath, WLResourceRequest.GET);
+    URI apicPathUri = new URI(apicPath);
+    WLResourceRequest request = new WLResourceRequest(apicPathUri, WLResourceRequest.GET);
 ```
 
+> **Note:** For the API Connect endpoint path (`apicPath`) you must supply the full URL, constructed as follows: `https://{DataPowerGateway}/{organizationName}/{catalogName}/branches/details`
 
-Note: For the  API Connect endpoint path (`apicPath`), you must supply the full URL, constructed as follows:
+### Add SSL certificate to client for API Connect HTTPS endpoint
+If you use API Connect BlueMix Service, please skip this step.
 
-`https://{DataPowerGateway}/{organizationName}/{catalogName}/branches/details`
+API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificate to your device/emulator while developing your client application.
+For example in Android, you may see the following Exception:
 
+```java
+javax.net.ssl.SSLHandshakeException: java.security.cert.CertPathValidatorException: Trust anchor for certification path not found
+```
 
-### Add an HTTPS certificate for the API Connect endpoint
-API Connect supports HTTPS endpoints only, which may require adding self-signed SSL certificates to your client applications in the development (but not production) environment.
+For on-premise deployement, API Connect uses by default its own self-signed SSL certificate, which currently isn't signed with v3\_ca extension.
+Self-signed SSL certificate without v3\_ca extension can't be added to some of the mobile devices (like Android).  
 
+In order to avoid the SSL exception, you can do one the following:  
 
-The certificate can be created with OpenSSL:
+1. **Replace the default API Connect SSL certificate with your own**:
+    * Create self-signed certificate using OpenSSL:
 
-   `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`  
+    ```bash
+        #!/bin/sh
+        #
+        # Replace DATAPOWER_GW_HOSTNAME with real hostname
+        HOST=DATAPOWER_GW_HOSTNAME
+        PRIVATEKEY=${HOST}_private.pem
+        PUBLICKEY=${HOST}_public.pem
+        P12FILE=$HOST.p12
+        P12PWD=passw0rd
+        P12LABEL=$HOST
+        # This creates the public and private keys in PEM format
+        openssl req -x509 -nodes -days 999 -newkey rsa:2048 -keyout "$PRIVATEKEY" -out "$PUBLICKEY" -reqexts v3_req -extensions v3_ca -subj /C=us/O=ibm/CN=$HOST
+        # This creates a password-protected pkcs12 file so that the private key that can be imported into API Connect
+        openssl pkcs12 -export -in "$PUBLICKEY" -inkey "$PRIVATEKEY" -out "$P12FILE" -passout pass:"$P12PWD" -name "$P12LABEL"
+    ```
+    * You should have three output files, however only the following will be used:
+        * **DATAPOWER\_GW\_HOSTNAME.p12** – Password-protected pkcs12 file for importing it to API Connect TLS Profile.
+        * **DATAPOWER\_GW\_HOSTNAME\_public.pem** – Public certificate to install into the device as a trusted CA.
+    * Create TLS Profile for it in CMC (Use the password you set on `P12PWD`). See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html)
+    * Bind the TLS Profile you created with the gateway service. See [Binding a TLS profile to an existing gateway service](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/bind_ssl_existing_gateway.html) 
+    * Install the certifcae you created **DATAPOWER\_GW\_HOSTNAME\_public.pem** on the device. See [Installing the root CA on Android](http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_android.html) or [Installing the root CA on iOS](http://www.ibm.com/support/knowledgecenter/en/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_iOS.html) for more details.
 
-For information on setting up SSL on Android clients, see [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html). 
+2. **Adding API Connect default certificate to TrustStore in the client application code (for development)**:
+    * Fetch the default API Connect certificate using OpenSSL: 
 
-**Note:** MobileFirst HttpClient can be retrieved with `HttpClientManager.getInstance();`.
+        `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`
+    * Add relevant code to your client application to trust API Connect certficate and its hostname. You can follow [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html) for more details in Android.
 
-
-Generally, for development you can add the self-signed certificate to the device via email or device storage, see [Work with Certificates](https://support.google.com/nexus/answer/2844832?hl=en).  
-
+> See [Configuring SSL by using untrusted certificates](http://www.ibm.com/support/knowledgecenter/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/c_ssl_config.html) for more details on how to add untrusted certificate to your client application.  
    
 ## Support for multiple MobileFirst OAuthProviders
-
 To add additional OAuthProviders, alter the Swagger template each time before re-importing:
 
-1. **x-ibm-name:** Change "mobilefirst-ouath-provider" to another unique name (only lower case is allowed).  
-1. **basePath:** Change "/mfpProvider" to another unique path.  
-1. **title:** Change "MobileFirstOAuthProvider" to a unique title.
-1. **description:** Change "MobileFirst OAuthProvider Template" to a unique description.  
+1. **x-ibm-name:** Change "mobilefirst-ouath-provider" to another unique name (using only lowercase). 
+2. **basePath:** Change "/mfpProvider" to another unique path.  
+3. **title:** Change "MobileFirstOAuthProvider" to a unique title.
+4. **description:** Change "MobileFirst OAuthProvider Template" to a unique description.  
 
 For each additonal OAuthProvider, use the new base path value to replace the `/mfpProvider` value.

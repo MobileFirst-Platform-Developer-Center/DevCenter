@@ -4,7 +4,7 @@ title: Installation and Configuration
 show_children: true
 show_disqus: false
 print_pdf: true
-weight: 1
+weight: 2
 ---
 ## Overview
 Before starting to develop client and server code using MobileFirst Foundation, the development environment needs to be set-up first. This includes installing various required software and tools. The following is a list of software you may need to install on your developer workstation, depending on your needs.

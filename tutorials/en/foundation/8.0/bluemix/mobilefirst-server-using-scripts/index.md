@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Server on IBM Containers using Scripts
-breadcrumb_title: Using scripts to setup MobileFirst Foundation
+title: Setting Up the MobileFirst Server on IBM Containers using Scripts on IBM Container Service
+breadcrumb_title: Using scripts to setup MobileFirst Foundation - Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -10,14 +10,14 @@ weight: 2
 Follow the instructions below to configure a MobileFirst Server instance as well as MobileFirst Analytics instance on IBM Bluemix. To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
-* Setup your Bluemix environment
+* Setup your Bluemix account
 * Build a MobileFirst Server image and push it to the Bluemix repository.
 
 Finally, you will run the image on IBM Containers as a single Container or a Container group, and register your applications as well as deploy your adapters.
 
 **Notes:**  
 
-* Windows OS is currently not supported.  
+* Windows OS is currently not supported for running these scripts.  
 * The MobileFirst Server Configuration tools cannot be used for deployments to IBM Containers.
 
 #### Jump to:
