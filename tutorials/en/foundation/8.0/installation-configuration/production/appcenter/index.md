@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Installing and configuring the Application Center	
+title: Installing and configuring the IBM MobileFirst Foundation Application Center	
 weight: 8
 ---
 ## Overview 
@@ -316,19 +316,306 @@ On application servers other than Apache Tomcat, you can deploy Application Cent
 
 #### Jump to
 
-* [Configuring the DB2 database manually for IBM MobileFirst Platform Application Center]()
-* [Configuring the Apache Derby database manually for Application Center]()
-* [Configuring the MySQL database manually for Application Center]()
-* [Configuring the Oracle database manually for IBM MobileFirst Platform Application Center]()
-* [Deploying the Application Center WAR files and configuring the application server manually]()
-* [Deploying the Application Center EAR file and configuring the application server manually]()
+* [Configuring the DB2 database manually for Application Center](#configuring-the-db2-database-manually-for-application-center)
+* [Configuring the Apache Derby database manually for Application Center](#configuring-the-apache-derby-database-manually-for-application-center)
+* [Configuring the MySQL database manually for Application Center](#configuring-the-mysql-database-manually-for-application-center)
+* [Configuring the Oracle database manually for Application Center](#configuring-the-oracle-database-manually-for-application-center)
+* [Deploying the Application Center WAR files and configuring the application server manually](#deploying-the-application-center-war-files-and-configuring-the-application-server-manually)
+* [Deploying the Application Center EAR file and configuring the application server manually](#deploying-the-application-center-ear-file-and-configuring-the-application-server-manually)
 
-### Configuring the DB2 database manually for IBM MobileFirst Platform Application Center
+### Configuring the DB2 database manually for Application Center
+You configure the DB2® database manually by creating the database, creating the database tables, and then configuring the relevant application server to use this database setup.
+
+1. Create the database. This step is described in [Creating the DB2 database for Application Center](#creating-the-db2-database-for-application-center).
+2. Create the tables in the database. This step is described in [Setting up your DB2 database manually for Application Center](#setting-up-your-db2-database-manually-for-application-center).
+3. Perform the application server-specific setup as the following list shows.
+
+#### Jump to
+
+* [Setting up your DB2 database manually for Application Center](#setting-up-your-db2-database-manually-for-application-center)
+* [Configuring Liberty profile for DB2 manually for Application Center](#configuring-liberty-profile-for-db2-manually-for-application-center)
+* [Configuring WebSphere Application Server for DB2 manually for Application Center](#configuring-websphere-application-server-for-db2-manually-for-application-center)
+* [Configuring Apache Tomcat for DB2 manually for Application Center](#configuring-apache-tomcat-for-db2-manually-for-application-center)
+
+#### Setting up your DB2 database manually for Application Center
+Set up your DB2 database for Application Center by creating the database schema.
+
+1. Create a system user, **worklight**, in a DB2 admin group such as **DB2USERS**, by using the appropriate commands for your operating system. Give it the password **worklight**. For more information, see the DB2 documentation and the documentation for your operating system.
+
+> **Important:** You can name your user differently, or set a different password, but ensure that you enter the appropriate user name and password correctly across the DB2 database setup. DB2 has a user name and password length limit of 8 characters for UNIX and Linux systems, and 30 characters for Windows.
+
+2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions:
+    * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
+    * On Linux or UNIX systems, go to **~/sqllib/bin** and enter `./db2`.
+
+3. Enter the following database manager and SQL statements to create a database that is called **APPCNTR**:
+
+    ```bash
+    CREATE DATABASE APPCNTR COLLATE USING SYSTEM PAGESIZE 32768 
+    CONNECT TO APPCNTR 
+    GRANT CONNECT ON DATABASE TO USER worklight 
+    QUIT
+    ```
+    
+4. Run DB2 with the following commands to create the **APPCNTR** tables, in a schema named **APPSCHM** (the name of the schema can be changed). This command can be run on an existing database that has a page size compatible with the one defined in step 3.
+    
+    ```bash
+    db2 CONNECT TO APPCNTR
+    db2 SET CURRENT SCHEMA = 'APPSCHM'
+    db2 -vf product_install_dir/ApplicationCenter/databases/create-appcenter-db2.sql -t
+    ```
+    
+#### Configuring Liberty profile for DB2 manually for Application Center
+You can set up and configure your DB2® database manually for Application Center with WebSphere® Application Server Liberty profile.  
+Complete the DB2 Database Setup procedure before continuing.
+
+1. Add the DB2 JDBC driver JAR file to **$LIBERTY\_HOME/wlp/usr/shared/resources/db2**.
+
+    If that directory does not exist, create it. You can retrieve the file in one of two ways:
+    * Download it from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+    * Fetch it from the **db2\_install\_dir/java** on the DB2 server directory.
+
+2. Configure the data source in the **$LIBERTY_HOME/wlp/usr/servers/worklightServer/server.xml** file as follows:
+
+    In this path, you can replace **worklightServer** by the name of your server.
+
+    ```xml
+    <library id="DB2Lib">
+        <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
+    </library>
+    
+    <!-- Declare the IBM Application Center database. -->
+    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
+      <jdbcDriver libraryRef="DB2Lib"/>
+      <properties.db2.jcc databaseName="APPCNTR"  currentSchema="APPSCHM"
+            serverName="db2server" portNumber="50000"
+            user="worklight" password="worklight"/>
+    </dataSource> 
+    ```
+    
+    The **worklight** placeholder after **user=** is the name of the system user with **CONNECT** access to the **APPCNTR** database that you have previously created.  
+    The **worklight** placeholder after **password=** is this user's password. If you have defined either a different user name, or a different password, or both, replace **worklight** accordingly. Also, replace **db2server** with the host name of your DB2 server (for example, **localhost**, if it is on the same computer).
+
+    DB2 has a user name and password length limit of 8 characters for UNIX and Linux systems, and 30 characters for Windows.
+
+3. You can encrypt the database password with the securityUtility program in **liberty\_install\_dir/bin**.
+
+#### Configuring WebSphere Application Server for DB2 manually for Application Center
+You can set up and configure your DB2® database manually for Application Center with WebSphere® Application Server.
+
+1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory.
+    * For a stand-alone server, you can use a directory such as **was\_install\_dir/optionalLibraries/IBM/Worklight/db2**.
+    * For deployment to a WebSphere Application Server ND cell, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/Worklight/db2**.
+    * For deployment to a WebSphere Application Server ND cluster, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/Worklight/db2**.
+    * For deployment to a WebSphere Application Server ND node, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/nodes/node-name/Worklight/db2**.
+    * For deployment to a WebSphere Application Server ND server, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/Worklight/db2**.
+
+    If this directory does not exist, create it.
+    
+2. Add the DB2 JDBC driver JAR file and its associated license files, if any, to the directory that you determined in step 1.  
+    You can retrieve the driver file in one of two ways:
+    * Download it from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+    * Fetch it from the **db2\_install\_dir/java** directory on the DB2 server.
+
+3. In the WebSphere Application Server console, click **Resources → JDBC → JDBC Providers**.  
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Set **Database type** to **DB2**.
+    * Set **Provider type** to **DB2 Using IBM JCC Driver**.
+    * Set **Implementation Type** to **Connection pool data source**.
+    * Set **Name** to **DB2 Using IBM JCC Driver**.
+    * Click **Next**.
+    * Set the class path to the set of JAR files in the directory that you determined in step 1, replacing **was\_install\_dir/profiles/profile-name** with the WebSphere Application Server variable reference `${USER_INSTALL_ROOT}`.
+    * Do not set **Native library path**.
+    * Click **Next**.
+    * Click **Finish**.
+    * The JDBC provider is created.
+    * Click **Save**.
+
+4. Create a data source for the Application Center database:
+    * Click **Resources → JDBC → Data sources**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New** to create a data source.
+    * Set the **Data source name** to **Application Center Database**.
+    * Set **JNDI Name** to **jdbc/AppCenterDS**.
+    * Click **Next**.
+    * Enter properties for the data source, for example:
+        * **Driver type**: 4
+        * **Database Name**: APPCNTR
+        * **Server name**: localhost
+        * **Port number**: 50000 (default)
+    * Click **Next**.
+    * Create JAAS-J2C authentication data, specifying the DB2 user name and password as its properties. If necessary, go back to the data source creation wizard, by repeating steps 4.a to 4.h.
+    * Select the authentication alias that you created in the **Component-managed authentication alias** combination box (not in the **Container-managed authentication alias** combination box).
+    * Click **Next** and **Finish**.
+    * Click **Save**.
+    * In **Resources → JDBC → Data sources**, select the new data source.
+    * Click **WebSphere Application Server data source properties**.
+    * Select the **Non-transactional data source** check box.
+    * Click **OK**.
+    * Click **Save**.
+    * Click **Custom properties for the data source**, select the property **currentSchema**, and set the value to the schema used to create the Application Center tables (APPSCHM in this example).
+5. Test the data source connection by selecting **Data Source** and clicking **Test Connection**.
+
+Leave **Use this data source in (CMP)** selected.
+
+#### Configuring Apache Tomcat for DB2 manually for Application Center
+If you want to manually set up and configure your DB2® database for Application Center with Apache Tomcat server, use the following procedure.  
+Before you continue, complete the DB2 database setup procedure.
+
+1. Add the DB2 JDBC driver JAR file.
+
+    You can retrieve this JAR file in one of the following ways:
+    * Download it from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+    * Or fetch it from the directory **db2\_install\_dir/java** on the DB2 server) to **$TOMCAT_HOME/lib**.
+
+2. Prepare an XML statement that defines the data source, as shown in the following code example.
+
+    ```xml
+    <Resource auth="Container"
+            driverClassName="com.ibm.db2.jcc.DB2Driver"
+            name="jdbc/AppCenterDS"
+            username="worklight"
+            password="password"
+            type="javax.sql.DataSource"
+            url="jdbc:db2://server:50000/APPCNTR:currentSchema=APPSCHM;"/>
+    ```
+    
+    The **worklight** parameter after **username=** is the name of the system user with "CONNECT" access to the **APPCNTR** database that you have previously created. The **password** parameter after **password=** is this user's password. If you have defined either a different user name, or a different password, or both, replace these entries accordingly.
+
+    DB2 enforces limits on the length of user names and passwords.
+    * For UNIX and Linux systems: 8 characters
+    * For Windows: 30 characters
+
+3. Insert this statement in the server.xml file, as indicated in [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually).
+
 ### Configuring the Apache Derby database manually for Application Center
+You configure the Apache Derby database manually by creating the database and database tables, and then configuring the relevant application server to use this database setup.
+
+1. Create the database and the tables within them. This step is described in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-database-manually-for-application-center).
+2. Configure the application server to use this database setup. Go to one of the following topics.
+
+#### Jump to
+
+* [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-derby-database-manually-for-application-center)
+* [Configuring Liberty profile for Derby manually for Application Center](#configuring-liberty-profile-for-derby-manually-for-application-center)
+* [Configuring WebSphere Application Server for Derby manually for Application Center](#configuring-websphere-application-server-for-derby-manually-for-application-center)
+* [Configuring Apache Tomcat for Derby manually for Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
+
+#### Setting up your Apache Derby database manually for Application Center
+Set up your Apache Derby database for Application Center by creating the database schema.
+
+1. In the location where you want the database to be created, run **ij.bat** on Windows systems or **ij.sh** on UNIX and Linux systems.
+
+    > **Note:** The ij program is part of Apache Derby. If you do not already have it installed, you can download it from [Apache Derby: Downloads](http://db.apache.org/derby/derby_downloads).
+
+    For supported versions of Apache Derby, see [System requirements](../../../product-overview/requirements).  
+    The script displays ij version number.
+    
+2. At the command prompt, enter the following commands:
+
+    ```bash
+    connect 'jdbc:derby:APPCNTR;user=APPCENTER;create=true';
+    run '<product_install_dir>/ApplicationCenter/databases/create-appcenter-derby.sql';
+    quit;
+    ```
+
+#### Configuring Liberty profile for Derby manually for Application Center
+If you want to manually set up and configure your Apache Derby database for Application Center with WebSphere® Application Server Liberty profile, use the following procedure. Complete the Apache Derby database setup procedure before continuing.
+
+Configure the data source in the $LIBERTY_HOME/usr/servers/worklightServer/server.xml file (worklightServer may be replaced in this path by the name of your server) as follows:
+
+```xml
+<!-- Declare the jar files for Derby access through JDBC. -->
+<library id="derbyLib">
+  <fileset dir="C:/Drivers/derby" includes="derby.jar" />
+</library>
+
+<!-- Declare the IBM Application Center database. -->
+<dataSource jndiName="jdbc/AppCenterDS" transactional="false" statementCacheSize="10">
+  <jdbcDriver libraryRef="derbyLib" 
+              javax.sql.ConnectionPoolDataSource="org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40"/>
+  <properties.derby.embedded databaseName="DERBY_DATABASES_DIR/APPCNTR" user="APPCENTER"
+                             shutdownDatabase="false" connectionAttributes="upgrade=true"/>
+  <connectionManager connectionTimeout="180" 
+                     maxPoolSize="10" minPoolSize="1" 
+                     reapTime="180" maxIdleTime="1800" 
+                     agedTimeout="7200" purgePolicy="EntirePool"/>
+</dataSource>
+```
+
+#### Configuring WebSphere Application Server for Derby manually for Application Center
+You can set up and configure your Apache Derby database manually for Application Center with WebSphere® Application Server. Complete the Apache Derby database setup procedure before continuing.
+
+1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory. If this directory does not exist, create it.
+    * For a standalone server, you can use a directory such as **was\_install\_dir/optionalLibraries/IBM/Worklight/derby**.
+    * For deployment to a WebSphere Application Server ND cell, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/Worklight/derby**.
+    * For deployment to a WebSphere Application Server ND cluster, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/Worklight/derby**.
+    * For deployment to a WebSphere Application Server ND node, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/nodes/node-name/Worklight/derby**.
+    * For deployment to a WebSphere Application Server ND server, use **was\_install\_dir/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/Worklight/derby**.
+2. Add the **Derby** JAR file from **product\_install\_dir/ApplicationCenter/tools/lib/derby.jar** to the directory determined in step 1.
+3. Set up the JDBC provider.
+    * In the WebSphere Application Server console, click **Resources → JDBC → JDBC Providers**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Set **Database Type** to **User-defined**.
+    * Set **class Implementation name** to **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**.
+    * Set **Name** to **Worklight - Derby JDBC Provider**.
+    * Set **Description** to **Derby JDBC provider for Worklight**.
+    * Click **Next**.
+    * Set the **Class path** to the JAR file in the directory determined in step 1, replacing **was\_install\_dir/profiles/profile-name** with the WebSphere Application Server variable reference **${USER\_INSTALL\_ROOT}**.
+    * Click **Finish**.
+4. Create the data source for the **Worklight** database.
+    * In the WebSphere Application Server console, click **Resources → JDBC → Data sources**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Set **Data source Name** to **Application Center Database**.
+    * Set **JNDI** name to **jdbc/AppCenterDS**.
+    * Click **Next**.
+    * Select the existing JDBC Provider that is named **Worklight - Derby JDBC Provider**.
+    * Click **Next**.
+    * Click **Next**.
+    * Click **Finish**.
+    * Click **Save**.
+    * In the table, click the **Application Center Database** data source that you created.
+    * Under **Additional Properties**, click **Custom properties**.
+    * Click **databaseName**.
+    * Set **Value** to the path to the **APPCNTR** database that is created in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-derby-manually-for-application-center).
+    * Click **OK**.
+    * Click **Save**.
+    * At the top of the page, click **Application Center Database**.
+    * Under **Additional Properties**, click **WebSphere Application Server data source properties**.
+    * Select **Non-transactional datasource**.
+    * Click **OK**.
+    * Click **Save**.
+    * In the table, select the **Application Center Database** data source that you created.
+    * Optional: Only if you are not on the console of a WebSphere Application Server Deployment Manager, click **test connection**.
+
+#### Configuring Apache Tomcat for Derby manually for Application Center
+You can set up and configure your Apache Derby database manually for Application Center with the Apache Tomcat application server. Complete the Apache Derby database setup procedure before continuing.
+
+1. Add the **Derby** JAR file from **product\_install\_dir/ApplicationCenter/tools/lib/derby.jar** to the directory **$TOMCAT\_HOME/lib**.
+2. Prepare an XML statement that defines the data source, as shown in the following code example.
+
+    ```xml
+    <Resource auth="Container"
+            driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+            name="jdbc/AppCenterDS"
+            username="APPCENTER"
+            password=""
+            type="javax.sql.DataSource"
+            url="jdbc:derby:DERBY_DATABASES_DIR/APPCNTR"/>
+    ```
+
+3. Insert this statement in the **server.xml** file, as indicated in [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually).
+
 ### Configuring the MySQL database manually for Application Center
-### Configuring the Oracle database manually for IBM MobileFirst Platform Application Center
+You configure the MySQL database manually by creating the database, creating the database tables, and then configuring the relevant application server to use this database setup.
+
+
+
+### Configuring the Oracle database manually for Application Center
 ### Deploying the Application Center WAR files and configuring the application server manually
 ### Deploying the Application Center EAR file and configuring the application server manually
-
 
 ## Configuring Application Center after installation
