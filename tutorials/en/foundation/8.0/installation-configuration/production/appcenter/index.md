@@ -612,6 +612,11 @@ You can set up and configure your Apache Derby database manually for Application
 ### Configuring the MySQL database manually for Application Center
 You configure the MySQL database manually by creating the database, creating the database tables, and then configuring the relevant application server to use this database setup.
 
+1. Create the database. This step is described in [Creating the MySQL database for Application Center](#creating-the-mysql-database-for-application-center).
+2. Create the tables in the database. This step is described in [Setting up your MySQL database manually for Application Center](#setting-up-your-mysql).
+3. Perform the application server-specific setup as the following list shows.
+
+
 
 
 ### Configuring the Oracle database manually for Application Center
