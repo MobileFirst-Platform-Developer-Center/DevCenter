@@ -616,11 +616,766 @@ You configure the MySQL database manually by creating the database, creating the
 2. Create the tables in the database. This step is described in [Setting up your MySQL database manually for Application Center](#setting-up-your-mysql).
 3. Perform the application server-specific setup as the following list shows.
 
+#### Jump to
+
+* [Setting up your MySQL database manually for Application Center](#setting-up-your-mysql-database-manually-for-application-center)
+* [Configuring Liberty profile for MySQL manually for Application Center](#configuring-liberty-profile-for-mysql-manually-for-application-center)
+* [Configuring WebSphere Application Server for MySQL manually for Application Center](#configuring-websphere-application-server-for-mysql-manually-for-application-center)
+* [Configuring Apache Tomcat for MySQL manually for Application Center](#configuring-apache-tomcat-for-mysql-manually-for-application-center)
+
+#### Setting up your MySQL database manually for Application Center
+Complete the following procedure to set up your MySQL database.
+
+1. Create the database schema.
+    * Run a MySQL command line client with the option `-u root`.
+    * Enter the following commands:
+
+    ```bash
+    CREATE DATABASE APPCNTR CHARACTER SET utf8 COLLATE utf8_general_ci;
+    GRANT ALL PRIVILEGES ON APPCNTR.* TO 'worklight'@'Worklight-host'IDENTIFIED BY 'worklight';
+    GRANT ALL PRIVILEGES ON APPCNTR.* TO 'worklight'@'localhost' IDENTIFIED BY 'worklight';
+    FLUSH PRIVILEGES;
+
+    USE APPCNTR;
+    SOURCE product_install_dir/ApplicationCenter/databases/create-appcenter-mysql.sql;
+    ```
+    
+    Where **worklight** before the "at" sign (@) is the user name, **worklight** after `IDENTIFIED BY` is its password, and **Worklight-host** is the name of the host on which IBM MobileFirst Foundation runs.
+
+2. Add the following property to your MySQL option file: max_allowed_packet=256M.  
+    For more information about option files, see the MySQL documentation at MySQL.
+
+3. Add the following property to your MySQL option file: innodb_log_file_size = 250M  
+    For more information about the innodb_log_file_size property, see the MySQL documentation, section innodb_log_file_size.
+
+#### Configuring Liberty profile for MySQL manually for Application Center
+If you want to manually set up and configure your MySQL database for Application Center with WebSphere® Application Server Liberty profile, use the following procedure. Complete the MySQL database setup procedure before continuing.
+
+> **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM® DB2® or another database supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+
+1. Add the MySQL JDBC driver JAR file to **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**. If that directory does not exist, create it.
+2. Configure the data source in the **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** file (**worklightServer** may be replaced in this path by the name of your server) as follows:
+
+```xml
+<!-- Declare the jar files for MySQL access through JDBC. -->
+<library id="MySQLLib">
+  <fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
+</library>
 
 
+<!-- Declare the IBM Application Center database. -->
+<dataSource jndiName="jdbc/AppCenterDS" transactional="false">
+  <jdbcDriver libraryRef="MySQLLib"/>
+  <properties databaseName="APPCNTR" 
+              serverName="mysqlserver" portNumber="3306" 
+              user="worklight" password="worklight"/>
+</dataSource>
+```
+
+where **worklight** after **user=** is the user name, **worklight** after **password=** is this user's password, and **mysqlserver** is the host name of your MySQL server (for example, localhost, if it is on the same machine).
+
+3. You can encrypt the database password with the securityUtility program in `<liberty_install_dir>/bin`.
+
+#### Configuring WebSphere Application Server for MySQL manually for Application Center
+If you want to manually set up and configure your MySQL database for Application Center with WebSphere® Application Server, use the following procedure. Complete the MySQL database setup procedure before continuing.
+
+> **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). We suggest that you use IBM® DB2® or another database supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+
+1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory.
+    * For a standalone server, you can use a directory such as **WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql**.
+    * For deployment to a WebSphere Application Server ND cell, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/Worklight/mysql**.
+    * For deployment to a WebSphere Application Serverr ND cluster, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/Worklight/mysql**.
+    * For deployment to a WebSphere Application Server ND node, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/Worklight/mysql**.
+    * For deployment to a WebSphere Application Server ND server, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/Worklight/mysql**.
+
+    If this directory does not exist, create it.
+    
+2. Add the MySQL JDBC driver JAR file downloaded from [Download Connector/J](http://dev.mysql.com/downloads/connector/j/) to the directory determined in step 1.
+3. Set up the JDBC provider:
+    * In the WebSphere Application Server console, click **Resources → JDBC → JDBC Providers**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Create a **JDBC provider** named **MySQL**.
+    * Set **Database type** to **User defined**.
+    * Set **Scope** to **Cell**.
+    * Set **Implementation class** to **com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource**.
+    * Set **Database classpath** to the **JAR file** in the directory determined in step 1, replacing **WAS\_INSTALL\_DIR/profiles/profile-name** with the WebSphere Application Server variable reference **${USER_INSTALL_ROOT}**.
+    * Save your changes.
+4. Create a data source for the IBM Application Center database:
+    * Click **Resources → JDBC → Data sources**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New** to create a data source.
+    * Type any name (for example, Application Center Database).
+    * Set **JNDI Name** to **jdbc/AppCenterDS**.
+    * Use the existing JDBC Provider MySQL, defined in the previous step.
+    * Set **Scope** to **New**.
+    * On the **Configuration** tab, select **Non-transactional data source**.
+    * Click **Next** a number of times, leaving all other settings as defaults.
+    * Save your changes.
+5. Set the custom properties of the new data source.
+    * Select the new data source.
+    * Click **Custom properties**.
+    Set the following properties:
+    
+    ```xml
+    portNumber = 3306
+    relaxAutoCommit=true
+    databaseName = APPCNTR
+    serverName = the host name of the MySQL server
+    user = the user name of the MySQL server
+    password = the password associated with the user name
+    ```
+
+6. Set the WebSphere Application Server custom properties of the new data source.
+    * In **Resources → JDBC → Data sources**, select the **new data source**.
+    * Click **WebSphere Application Server data source properties**.
+    * Select **Non-transactional data source**.
+    * Click **OK**.
+    * Click **Save**.
+
+#### Configuring Apache Tomcat for MySQL manually for Application Center
+If you want to manually set up and configure your MySQL database for Application Center with the Apache Tomcat server, use the following procedure. Complete the MySQL database setup procedure before continuing.
+
+1. Add the MySQL Connector/J JAR file to the **$TOMCAT_HOME/lib** directory.
+2. Prepare an XML statement that defines the data source, as shown in the following code example. Insert this statement in the server.xml file, as indicated in [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually).
+
+```xml
+<Resource name="jdbc/AppCenterDS"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxActive="100"
+            maxIdle="30"
+            maxWait="10000"
+            username="worklight"
+            password="worklight"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://server:3306/APPCNTR"/>
+```
 
 ### Configuring the Oracle database manually for Application Center
+You configure the Oracle database manually by creating the database, creating the database tables, and then configuring the relevant application server to use this database setup.
+
+1. Create the database. This step is described in [Creating the Oracle database for Application Center](#creating-the-oracle-database-for-application-center).
+2. Create the tables in the database. This step is described in [Setting up your Oracle database manually for Application Center](#setting-up-your-oracle-database-manually-for-application-center).
+3. Perform the application server-specific setup as the following list shows.
+
+#### Jump to
+
+* [Setting up your Oracle database manually for Application Center](#setting-up-your-oracle-database-manually-for-application-center)
+* [Configuring Liberty profile for Oracle manually for Application Center](#configuring-liberty-profile-for-oracle-manually-for-application-center)
+* [Configuring WebSphere Application Server for Oracle manually for Application Center](#configuring-websphere-application-server-for-oracle-manually-for-application-center)
+* [Configuring Apache Tomcat for Oracle manually for Application Center](#configuring-apache-tomcat-for-oracle-manually-for-application-center)
+
+#### Setting up your Oracle database manually for Application Center
+Complete the following procedure to set up your Oracle database.
+
+1. Ensure that you have at least one Oracle database.
+
+    In many Oracle installations, the default database has the SID (name) ORCL. For best results, specify **Unicode (AL32UTF8)** as the character set of the database.
+
+    If the Oracle installation is on a UNIX or Linux computer, make sure that the database is started next time the Oracle installation is restarted. To this effect, make sure that the line in /etc/oratab that corresponds to the database ends with a Y, not with an N.
+    
+2. Create the user APPCENTER, either by using Oracle Database Control, or by using the Oracle SQLPlus command-line interpreter.
+    * To create the user for the Application Center database/schema, by using Oracle Database Control, proceed as follows:
+        * Connect as **SYSDBA**.
+        * Go to the Users page.
+        * Click **Server**, then **Users** in the Security section.
+        * Create a user, named **APPCENTER** with the following attributes:
+
+        ```bash
+        Profile: DEFAULT
+        Authentication: password
+        Default tablespace: USERS
+        Temporary tablespace: TEMP
+        Status: Unlocked
+        Add system privilege: CREATE SESSION
+        Add system privilege: CREATE SEQUENCE
+        Add system privilege: CREATE TABLE
+        Add quota: Unlimited for tablespace USERS
+        ```
+    *  To create the user by using Oracle SQLPlus, enter the following commands:
+
+        ```bash
+        CONNECT SYSTEM/<SYSTEM_password>@ORCL
+        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+        GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
+        DISCONNECT;
+        ```
+
+3. Create the tables for the Application Center database:
+    * Using the Oracle SQLPlus command-line interpreter, create the tables for the Application Center database by running the **create-appcenter-oracle.sql** file:
+
+    ```bash
+    CONNECT APPCENTER/APPCENTER_password@ORCL
+    @product_install_dir/ApplicationCenter/databases/create-appcenter-oracle.sql
+    DISCONNECT;
+    ```
+
+4. Download and configure the Oracle JDBC driver:
+    * Download the JDBC driver from the Oracle website at [Oracle: JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+    * Ensure that the Oracle JDBC driver is in the system path. The driver file is **ojdbc6.jar**.
+
+#### Configuring Liberty profile for Oracle manually for Application Center
+You can set up and configure your Oracle database manually for Application Center with WebSphere® Application Server Liberty profile by adding the JAR file of the Oracle JDBC driver. Before continuing, set up the Oracle database.
+
+1. Add the JAR file of the Oracle JDBC driver to **$LIBERTY_HOME/wlp/usr/shared/resources/oracle**. If that directory does not exist, create it.
+2. If you are using JNDI, configure the data sources in the **$LIBERTY_HOME/wlp/usr/servers/mobileFirstServer/server.xml** file as shown in the following JNDI code example:
+
+    **Note:** In this path, you can replace mobileFirstServer with the name of your server.
+    
+    ```xml
+    <!-- Declare the jar files for Oracle access through JDBC. -->
+    <library id="OracleLib">
+      <fileset dir="${shared.resource.dir}/oracle" includes="*.jar"/>
+    </library>
+
+    <!-- Declare the IBM Application Center database. -->
+    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
+      <jdbcDriver libraryRef="OracleLib"/>
+      <properties.oracle driverType="thin"
+                         serverName="oserver" portNumber="1521"
+                         databaseName="ORCL"
+                         user="APPCENTER" password="APPCENTER_password"/>
+    </dataSource>
+    ```
+    
+    where:
+    * **APPCENTER** after **user=** is the user name,
+    * **APPCENTER_password** after **password=** is this user's password, and
+    * **oserver** is the host name of your Oracle server (for example, localhost if it is on the same machine).
+
+    > **Note:** For more information on how to connect the Liberty server to the Oracle database with a service name, or with a URL, see the [WebSphere Application Server Liberty Core 8.5.5 documentation](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0), section **properties.oracle**.
+
+3. You can encrypt the database password with the securityUtility program in **liberty\_install\_dir/bin**.
+
+
+#### Configuring WebSphere Application Server for Oracle manually for Application Center
+If you want to manually set up and configure your Oracle database for Application Center with WebSphere® Application Server, use the following procedure. Complete the Oracle database setup procedure before continuing.
+
+1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory.
+    * For a standalone server, you can use a directory such as WAS_INSTALL_DIR/optionalLibraries/IBM/Worklight/oracle.
+    * For deployment to a WebSphere Application Server ND cell, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/Worklight/oracle**.
+    * For deployment to a WebSphere Application Server ND cluster, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/Worklight/oracle**.
+    * For deployment to a WebSphere Application Server ND node, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/Worklight/oracle**.
+    * For deployment to a WebSphere Application Server ND server, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/Worklight/oracle**.
+
+    If this is directory does not exist, create it.
+
+2. Add the Oracle ﻿**ojdbc6.jar** file downloaded from [JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) to the directory determined in step 1.
+3. Set up the JDBC provider:
+    * In the WebSphere Application Server console, click **Resources → JDBC → JDBC Providers**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Complete the **JDBC Provider** fields as indicated in the following table:
+
+        | Field | Value |
+        |-------|-------|
+        | Databasetype | Oracle |
+        | Provider type | Oracle JDBC Driver |
+        | Implementation type | Connection pool data source |
+        | Name | Oracle JDBC Driver |
+    * Click **Next**.
+    * Set the **class path** to the JAR file in the directory determined in step 1, replacing **WAS\_INSTALL\_DIR/profiles/profile-name** with the WebSphere Application Server variable reference **${USER_INSTALL_ROOT}**
+    * Click **Next**.
+
+    The JDBC provider is created.
+
+4. Create a data source for the Worklight database:
+    * Click **Resources → JDBC → Data sources**.
+    * Select the appropriate scope from the **Scope** combination box.
+    * Click **New**.
+    * Set **Data source name** to **Oracle JDBC Driver DataSource**.
+    * Set **JNDI name** to **jdbc/AppCenterDS**.
+    * Click **Next**.
+    * Click **Select an existing JDBC provider** and select **Oracle JDBC driver** from the list.
+    * Click **Next**.
+    * Set the **URL** value to **jdbc:oracle:thin:@oserver:1521:ORCL**, where **oserver** is the host name of your Oracle server (for example, **localhost**, if it is on the same machine).
+    * Click **Next** twice.
+    * Click **Resources → JDBC → Data sources → Oracle JDBC Driver DataSource → Custom properties**.
+    * Set **oracleLogPackageName** to **oracle.jdbc.driver**.
+    * Set **user = APPCENTER**.
+    * Set **password = APPCENTER_password**.
+    * Click **OK** and save the changes.
+    * In **Resources → JDBC → Data sources**, select the new data source.
+    * Click **WebSphere Application Server data source properties**.
+    * Select the **Non-transactional data source** check box.
+    * Click **OK**.
+    * Click **Save**.
+
+#### Configuring Apache Tomcat for Oracle manually for Application Center
+If you want to manually set up and configure your Oracle database for Application Center with the Apache Tomcat server, use the following procedure. Complete the Oracle database setup procedure before continuing.
+
+1. Add the Oracle JDBC driver JAR file to the directory **$TOMCAT_HOME/lib**.
+2. Prepare an XML statement that defines the data source, as shown in the following code example. Insert this statement in the server.xml file, as indicated in [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually)
+  
+```xml
+<Resource name="jdbc/AppCenterDS"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="oracle.jdbc.driver.OracleDriver"
+        url="jdbc:oracle:thin:@oserver:1521:ORCL"
+        username="APPCENTER"
+        password="APPCENTER_password"/>
+```
+
+Where **APPCENTER** after **username=** is the name of the system user with "CONNECT" access to the **APPCNTR** database that you have previously created, and **APPCENTER_password** after password= is this user's password. If you have defined either a different user name, or a different password, or both, replace these values accordingly.
+
 ### Deploying the Application Center WAR files and configuring the application server manually
+The procedure to manually deploy the Application Center WAR files manually to an application server depends on the type of application server being configured.  
+These manual instructions assume that you are familiar with your application server.
+
+> **Note:** Using the MobileFirst Server installer to install Application Center is more reliable than installing manually, and should be used whenever possible.
+
+If you prefer to use the manual process, follow these steps to configure your application server for Application Center. You must deploy the appcenterconsole.war and applicationcenter.war files to your Application Center. The files are located in **product\_install\_dir/ApplicationCenter/console**.
+
+#### Jump to
+
+* [Configuring the Liberty profile for Application Center manually](#configuring-the-liberty-profile-for-application-center-manually)
+* [Configuring WebSphere Application Server for Application Center manually](#configuring-websphere-application-server-for-application-center-manually)
+* [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually)
+
+#### Configuring the Liberty profile for Application Center manually
+To configure WebSphere® Application Server Liberty profile manually for Application Center, you must modify the **server.xml** file.  
+In addition to modifications for the databases that are described in [Manually installing Application Center](#manually-installing-application-center), you must make the following modifications to the **server.xml** file.
+
+1. Ensure that the `<featureManager>` element contains at least the following `<feature>` elements:
+
+    ```xml
+    <feature>jdbc-4.0</feature>
+    <feature>appSecurity-2.0</feature>
+    <feature>servlet-3.0</feature>
+    <feature>usr:MFPDecoderFeature-1.0</feature>
+    ```
+
+2. Add the following declarations for Application Center:
+
+    ```xml
+    <!-- The directory with binaries of the 'aapt' program, from the Android SDK's
+         platform-tools package. -->
+    <jndiEntry jndiName="android.aapt.dir" value="product_install_dir/ApplicationCenter/tools/android-sdk"/>
+    <!-- Declare the Application Center Console application. -->
+    <application id="appcenterconsole"
+                 name="appcenterconsole"
+                 location="appcenterconsole.war"
+                 type="war">
+      <application-bnd>
+        <security-role name="appcenteradmin">
+          <group name="appcentergroup"/>
+        </security-role>
+      </application-bnd>
+      <classloader delegation="parentLast">
+      </classloader>
+    </application>
+
+    <!-- Declare the IBM Application Center Services application. -->
+    <application id="applicationcenter" 
+                 name="applicationcenter"
+                 location="applicationcenter.war" 
+                 type="war"> 
+      <application-bnd>
+        <security-role name="appcenteradmin">
+          <group name="appcentergroup"/>
+        </security-role>
+      </application-bnd>
+      <classloader delegation="parentLast">           
+      </classloader>
+    </application>
+
+    <!-- Declare the user registry for the IBM Application Center. -->
+    <basicRegistry id="applicationcenter-registry"
+                   realm="ApplicationCenter">
+      <!-- The users defined here are members of group "appcentergroup",
+           thus have role "appcenteradmin", and can therefore perform
+           administrative tasks through the Application Center Console. -->
+      <user name="appcenteradmin" password="admin"/>
+      <user name="demo" password="demo"/>
+      <group name="appcentergroup">
+        <member name="appcenteradmin"/>
+        <member name="demo"/>
+      </group>
+    </basicRegistry>
+    ```
+    
+    The groups and users that are defined in the `basicRegistry` are example logins that you can use to test Application Center. Similarly, the groups that are defined in the `<security-role name="appcenteradmin">` for the Application Center console and the Application Center service are examples. For more information about how to modify these groups, see [Configuring the Java EE security roles on WebSphere Application Server Liberty profile]().
+    
+3. If the database is Oracle, add the **commonLibraryRef** attribute to the class loader of the Application Center service application.
+
+    ```xml
+    ...
+    <classloader delegation="parentLast"  commonLibraryRef="OracleLib">
+    ...
+    ```
+    
+    The name of the library reference (`OracleLib` in this example) must be the ID of the library that contains the JDBC JAR file. This ID is declared in the procedure that is documented in [Configuring Liberty profile for Oracle manually for Application Center](#configuring-liberty-profile-for-oracle-manually-for-application-center).
+
+4. Copy the Application Center WAR files to your Liberty server.
+    * On UNIX and Linux systems:
+    
+        ```bash
+        mkdir -p LIBERTY_HOME/wlp/usr/servers/server_name/apps
+        cp product_install_dir/ApplicationCenter/console/*.war LIBERTY_HOME/wlp/usr/servers/server_name/apps/
+        ```
+    * On Windows systems:
+
+        ```bash
+        mmkdir LIBERTY_HOME\wlp\usr\servers\server_name\apps
+        copy /B product_install_dir\ApplicationCenter\console\appcenterconsole.war 
+        LIBERTY_HOME\wlp\usr\servers\server_name\apps\appcenterconsole.war
+        copy /B product_install_dir\ApplicationCenter\console\applicationcenter.war 
+        LIBERTY_HOME\wlp\usr\servers\server_name\apps\applicationcenter.war
+        ```
+        
+5. Copy the password decoder user feature.
+    * On UNIX and Linux systems:
+
+        ```bash
+        mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+        cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+        cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+        ```
+    * On Windows systems:
+
+        ```bash
+        mkdir LIBERTY_HOME\wlp\usr\extension\lib
+        copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+        LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+        mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+        copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+        LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+        ```
+
+6. Start the Liberty server.
+
+#### Configuring WebSphere Application Server for Application Center manually
+To configure WebSphere® Application Server for Application Center manually, you must configure variables, custom properties, and class loading policies. Make sure that a WebSphere Application Server profile exists.
+
+1. Log on to the WebSphere Application Server administration console for your IBM MobileFirst  Server.
+2. Enable application security.
+    * Click **Security → Global Security**.
+    * Ensure that **Enable administrative security** is selected. Application security can be enabled only if administrative security is enabled.
+    * Ensure that **Enable application security** is selected.
+    * Click **OK**.
+    * Save the changes.
+
+    For more information, see [Enabling security](http://ibm.biz/knowctr#SSEQTP_7.0.0/com.ibm.websphere.base.doc/info/aes/ae/tsec_csec2.html).
+
+3. Create the Application Center JDBC data source and provider. See the appropriate section in [Manually installing Application Center](#manually-installing-application-center).
+4. Install the Application Center console WAR file.
+    * Depending on your version of WebSphere Application Server, click one of the following options:
+        * **Applications → New → New Enterprise Application**
+        * **Applications → New Application → New Enterprise Application**
+    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Select **appcenterconsole.war** and click **Next**.
+    * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
+    * On the **Application Security Warnings** page, click **Continue**.
+    * Click **Next** until you reach the "Map context roots for web modules" page.
+    * In the **Context Root** field, type **/appcenterconsole**.
+    * Click **Next** until you reach the "Map security roles to users or groups" page.
+    * Select all roles, click **Map Special Subjects** and select **All Authenticated in Application's Realm**.
+    * Click **Next** until you reach the Summary page.
+    * Click **Finish** and save the configuration.
+
+5. Configure the class loader policies and then start the application:
+    * Click **Applications → Application types → WebSphere Enterprise Applications**.
+    * From the list of applications, click **appcenterconsole\_war**.
+    * In the **Detail Properties** section, click the **Class loading and update detection** link.
+    * In the **Class loader order** pane, click **Classes loaded with local class loader first (parent last)**.
+    * Click **OK**.
+    * In the **Modules section**, click **Manage Modules**.
+    * From the list of modules, click **ApplicationCenterConsole**.
+    * In the **Class loader order** pane, click **Classes loaded with local class loader first (parent last)**.
+    * Click **OK** twice.
+    * Click **Save**.
+    * Select **appcenterconsole_war** and click (Start).
+
+6. Install the WAR file for Application Center services.
+    * Depending on your version of WebSphere Application Server, click one of the following options:
+        * **Applications → New → New Enterprise Application**
+        * **Applications → New Application → New Enterprise Application**
+    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Select **applicationcenter.war** and click **Next**.
+    * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
+    * On the **Application Security Warnings** page, click **Continue**.
+    * Click **Next** until you reach the "Map resource references to resources" page.
+    * Click **Browser** and select the data source with the **jdbc/AppCenterDS** JNDI name.
+    * Click **Apply**.
+    * In the **Context Root** field, type **/applicationcenter**.
+    * Click **Next** until you reach the "Map security roles to users or groups" page.
+    * Select **all roles**, click **Map Special Subjects**, and select **All Authenticated in Application's Realm**.
+    * Click **Next** until you reach the **Summary** page.
+    * Click **Finish** and save the configuration.
+
+7. Repeat step 5.
+    * Select **applicationcenter.war** from the list of applications in substeps b and k.
+    * Select **ApplicationCenterServices** in substep g.
+
+8. Review the server class loader policy: Depending on your version of WebSphere Application Server, click **Servers → Server Types → Application Servers or Servers → Server Types → WebSphere application servers** and then select the server.
+    * If the class loader policy is set to **Multiple**, do nothing.
+    * If the class loader policy is set to **Single** and **Class loading mode** is set to **Classes loaded with local class loader first (parent last)**, do nothing.
+    * If **Classloader policy** is set to **Single** and **Class loading mode** is set to **Classes loaded with parent class loader first**, set **Classloader policy** to **Multiple** and set the **classloader policy** of all applications other than MobileFirst applications to **Classes loaded with parent class loader first**.
+
+9. Save the configuration.
+
+10. Configure a JNDI environment entry to indicate the directory with binary files of the aapt program, from the Android SDK platform-tools package.
+    * Determine a suitable directory for the aapt binary files in the WebSphere Application Server installation directory.
+        * For a stand-alone server, you can use a directory such as **WAS\_INSTALL\_DIR/optionalLibraries/IBM/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment cell, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment cluster, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment node, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment server, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/mobilefirst/android-sdk**.
+    * Copy the **product\_install\_dir/ApplicationCenter/tools/android-sdk** directory to the directory that you determined in Substep a.
+    * For WebSphere Application Server Network Deployment, click **System administration → Nodes**, select the nodes, and click **Full Synchronize**.
+    * Configure the environment entry (JNDI property) android.aapt.dir, and set as its value the directory that you determined in Substep a. The **WAS\_INSTALL\_DIR/profiles/profile-name** profile is replaced with the WebSphere Application Server variable reference **${USER\_INSTALL\_ROOT}**.
+
+You can now access the Application Center at `http://<server>:<port>/appcenterconsole`, where server is the host name of your server and port is the port number (by default 9080).
+
+#### Configuring Apache Tomcat for Application Center manually
+To configure Apache Tomcat for Application Center manually, you must copy JAR and WAR files to Tomcat, add database drivers, edit the **server.xml** file, and then start Tomcat.
+
+1. Add the database drivers to the Tomcat lib directory. See the instructions for the appropriate DBMS in [Manually installing Application Center](#manually-installing-application-center).
+2. Edit **tomcat\_install\_dir/conf/server.xml**.
+    * Uncomment the following element, which is initially commented out: `<Valve className="org.apache.catalina.authenticator.SingleSignOn" />`.
+    * Declare the Application Center console and services applications and a user registry: 
+
+        ```xml
+        <!-- Declare the IBM Application Center Console application. -->
+        <Context path="/appcenterconsole" docBase="appcenterconsole">
+
+          <!-- Define the AppCenter services endpoint in order for the AppCenter
+               console to be able to invoke the REST service.
+               You need to enable this property if the server is behind a reverse
+               proxy or if the context root of the Application Center Services
+               application is different from '/applicationcenter'. -->
+          <!-- <Environment name="ibm.appcenter.services.endpoint"
+                            value="http://proxy-host:proxy-port/applicationcenter"
+                            type="java.lang.String" override="false"/>
+          -->
+
+        </Context>
+
+        <!-- Declare the IBM Application Center Services application. -->
+        <Context path="/applicationcenter" docBase="applicationcenter">
+          <!-- The directory with binaries of the 'aapt' program, from
+               the Android SDK's platform-tools package. -->
+          <Environment name="android.aapt.dir"
+                       value="product_install_dir/ApplicationCenter/tools/android-sdk"
+                       type="java.lang.String" override="false"/>
+          <!-- The protocol of the application resources URI.
+               This property is optional. It is only needed if the protocol
+               of the external and internal URI are different. -->
+          <!-- <Environment name="ibm.appcenter.proxy.protocol"
+                            value="http" type="java.lang.String" override="false"/>
+          -->
+
+          <!-- The host name of the application resources URI. -->
+          <!-- <Environment name="ibm.appcenter.proxy.host"
+                            value="proxy-host"
+                            type="java.lang.String" override="false"/>
+          -->
+
+          <!-- The port of the application resources URI.
+               This property is optional. -->
+          <!-- <Environment name="ibm.appcenter.proxy.port"
+                            value="proxy-port"
+                            type="java.lang.Integer" override="false"/> -->
+
+          <!-- Declare the IBM Application Center Services database. -->
+          <!-- <Resource name="jdbc/AppCenterDS" type="javax.sql.DataSource" ... -->
+
+        </Context>
+
+        <!-- Declare the user registry for the IBM Application Center.
+             The MemoryRealm recognizes the users defined in conf/tomcat-users.xml.
+             For other choices, see Apache Tomcat's "Realm Configuration HOW-TO"
+             http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html . -->
+        <Realm className="org.apache.catalina.realm.MemoryRealm"/>
+        ```
+    where you fill in the `<Resource>` element as described in one of the sections:
+        * [Configuring Apache Tomcat for DB2 manually for Application Center](#configuring-apache-tomcat-for-db2-manually-for-application-center)
+        * [Configuring Apache Tomcat for Derby manually for Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
+        * [Configuring Apache Tomcat for MySQL manually for Application Center](#configuring-apache-tomcat-for-mysql-manually-for-application-center)
+        * [Configuring Apache Tomcat for Oracle manually for Application Center](#configuring-apache-tomcat-for-oracle-manually-for-application-center)
+3. Copy the Application Center WAR files to Tomcat.
+    * On UNIX and Linux systems:
+
+        ```bash
+        cp product_install_dir/ApplicationCenter/console/*.war TOMCAT_HOME/webapps/
+        ```
+    * On Windows systems:
+
+        ```bash
+        copy /B product_install_dir\ApplicationCenter\console\appcenterconsole.war tomcat_install_dir\webapps\appcenterconsole.war
+        copy /B product_install_dir\ApplicationCenter\console\applicationcenter.war tomcat_install_dir\webapps\applicationcenter.war
+        ```
+4. Start Tomcat.
+
 ### Deploying the Application Center EAR file and configuring the application server manually
+As an alternative to the MobileFirst Server installer procedure, you can use a manual procedure to deploy the Application Center EAR file and configure your WebSphere® application server manually. These manual instructions assume that you are familiar with your application server.
+
+The procedure to deploy the Application Center EAR file manually to an application server depends on the type of application server. Manual deployment is supported only for WebSphere Application Server Liberty profile and WebSphere Application Server.
+
+> **Tip:** It is more reliable to install Application Center through the MobileFirst Server installer than manually. Therefore, whenever possible, use the MobileFirst Server installer. If, however, you prefer the manual procedure, deploy the **appcentercenter.ear** file, which you can find in the **product\_install\_dir/ApplicationCenter/console** directory.
+
+#### Configuring the Liberty profile for Application Center manually
+After you deploy the Application Center EAR file, to configure WebSphere® Application Server Liberty profile manually for Application Center, you must modify the server.xml file.
+
+In addition to modifications for the databases that are described in [Manually installing Application Center](#manually-installing-application-center), you must make the following modifications to the **server.xml** file.
+
+1. Ensure that the `<featureManager>` element contains at least the following `<feature>` elements:
+    
+    ```xml
+    <feature>jdbc-4.0</feature>
+    <feature>appSecurity-2.0</feature>
+    <feature>servlet-3.0</feature>
+    <feature>usr:MFPDecoderFeature-1.0</feature>
+    ```
+
+2. Add the following declarations for Application Center:
+
+    ```xml
+    <!-- The directory with binaries of the 'aapt' program, from the Android SDK's platform-tools package. -->
+    <jndiEntry jndiName="android.aapt.dir" value="product_install_dir/ApplicationCenter/tools/android-sdk"/>
+
+    <!-- Declare the IBM Application Center application. -->
+    <application id="applicationcenter" 
+                 name="applicationcenter"
+                 location="applicationcenter.ear" 
+                 type="ear"> 
+      <application-bnd>
+        <security-role name="appcenteradmin">
+          <group name="appcentergroup"/>
+        </security-role>
+      </application-bnd>
+      <classloader delegation="parentLast">           
+      </classloader>
+    </application>
+
+    <!-- Declare the user registry for the IBM Application Center. -->
+    <basicRegistry id="applicationcenter-registry"
+                   realm="ApplicationCenter">
+      <!-- The users defined here are members of group "appcentergroup",
+           thus have role "appcenteradmin", and can therefore perform
+           administrative tasks through the Application Center Console. -->
+      <user name="appcenteradmin" password="admin"/>
+      <user name="demo" password="demo"/>
+      <group name="appcentergroup">
+        <member name="appcenteradmin"/>
+        <member name="demo"/>
+      </group>
+    </basicRegistry>
+    ```
+
+    The groups and users that are defined in the **basicRegistry** element are example logins, which you can use to test Application Center. Similarly, the groups that are defined in the `<security-role name="appcenteradmin">` element are examples. For more information about how to modify these groups, see [Configuring the Java EE security roles on WebSphere Application Server Liberty profile]().
+
+3. If the database is Oracle, add the **commonLibraryRef** attribute to the class loader of the Application Center application.
+
+    ```xml
+    ...
+    <classloader delegation="parentLast"  commonLibraryRef="OracleLib">
+    ...
+    ```
+    
+    The name of the library reference (**OracleLib** in this example) must be the ID of the library that contains the JDBC JAR file. This ID is declared in the procedure that is documented in [Configuring Liberty profile for Oracle manually for Application Center](#configuring-liberty-profile-for-oracle-manually-for-application-center).
+
+4. Copy the Application Center EAR files to your Liberty server.
+    * On UNIX and Linux systems:
+
+        ```bash
+        mkdir -p LIBERTY_HOME/wlp/usr/servers/server_name/apps
+        cp product_install_dir/ApplicationCenter/console/*.ear LIBERTY_HOME/wlp/usr/servers/server_name/apps/
+        ```
+    * On Windows systems:
+
+        ```bash
+        mkdir LIBERTY_HOME\wlp\usr\servers\server_name\apps
+        copy /B product_install_dir\ApplicationCenter\console\applicationcenter.ear 
+        LIBERTY_HOME\wlp\usr\servers\server_name\apps\applicationcenter.ear
+        ```
+        
+5. Copy the password decoder user feature.
+    * On UNIX and Linux systems:
+
+        ```bash
+        mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+        cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+        cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+        ```
+    * On Windows systems:
+
+        ```bash
+        mkdir LIBERTY_HOME\wlp\usr\extension\lib
+        copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+        LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+        mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+        copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+        LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+        ```
+        
+6. Start the Liberty server.
+
+#### Configuring WebSphere Application Server for Application Center manually
+After you deploy the Application Center EAR file, to configure WebSphere® Application Server profile manually for Application Center, you must configure variables, custom properties, and class loader policies. Make sure that a WebSphere Application Server profile exists.
+
+1. Log on to the WebSphere Application Server administration console for your IBM MobileFirst  Server.
+2. Enable application security.
+    * Click **Security → Global Security**.
+    * Ensure that **Enable administrative security** is selected. Application security can be enabled only if administrative security is enabled.
+    * Ensure that **Enable application security** is selected.
+    * Click **OK**.
+    * Save the changes.
+
+    For more information, see [Enabling security](http://ibm.biz/knowctr#SSEQTP_7.0.0/com.ibm.websphere.base.doc/info/aes/ae/tsec_csec2.html).
+
+3. Create the Application Center JDBC data source and provider. See the appropriate section in [Manually installing Application Center](#manually-installing-application-center).
+4. Install the Application Center console WAR file.
+    * Depending on your version of WebSphere Application Server, click one of the following options:
+        * **Applications → New → New Enterprise Application**
+        * **Applications → New Application → New Enterprise Application**
+    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Select **appcenterconsole.war** and click **Next**.
+    * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
+    * On the **Application Security Warnings** page, click **Continue**.
+    * Click **Next** until you reach the "Map context roots for web modules" page.
+    * In the **Context Root** field, type **/appcenterconsole**.
+    * Click **Next** until you reach the "Map security roles to users or groups" page.
+    * Select all roles, click **Map Special Subjects** and select **All Authenticated in Application's Realm**.
+    * Click **Next** until you reach the Summary page.
+    * Click **Finish** and save the configuration.
+
+5. Configure the class loader policies and then start the application:
+    * Click **Applications → Application types → WebSphere Enterprise Applications**.
+    * From the list of applications, click **AppCenterEAR**.
+    * In the **Detail Properties** section, click the **Class loading and update detection** link.
+    * In the **Class loader order** pane, click **Classes loaded with local class loader first (parent last)**.
+    * Click **OK**.
+    * In the **Modules section**, click **Manage Modules**.
+    * From the list of modules, click **ApplicationCenterConsole**.
+    * In the **Class loader order** pane, click **Classes loaded with local class loader first (parent last)**.
+    * Click **OK**.
+    * From the list of modules, click **ApplicationCenterServices**.
+    * In the **Class loader order** pane, click **Classes loaded with local class loader first (parent last)**.
+    * Click **OK** twice.
+    * Click **Save**.
+    * Select **appcenterconsoleEAR** and click **Start**.
+6. Review the server class loader policy:
+
+    Depending on your version of WebSphere Application Server, click **Servers → Server Types → Application Servers or Servers → Server Types → WebSphere application servers** and then select the server.
+        * If the class loader policy is set to **Multiple**, do nothing.
+        * If the class loader policy is set to **Single** and **Class loading mode** is set to **Classes loaded with local class loader first (parent last)**, do nothing.
+        * If **Classloader policy** is set to **Single** and **Class loading mode** is set to **Classes loaded with parent class loader first**, set **Classloader policy** to **Multiple** and set the **classloader policy** of all applications other than MobileFirst applications to **Classes loaded with parent class loader first**.
+
+7. Save the configuration.
+8. Configure a JNDI environment entry to indicate the directory with binary files of the **aapt** program, from the Android SDK **platform-tools** package.
+    * Determine a suitable directory for the aapt binary files in the WebSphere Application Server installation directory.
+        * For a stand-alone server, you can use a directory such as **WAS\_INSTALL\_DIR/optionalLibraries/IBM/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment cell, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment cluster, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/clusters/cluster-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment node, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/mobilefirst/android-sdk**.
+        * For deployment to a WebSphere Application Server Network Deployment server, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/mobilefirst/android-sdk**.
+    * Copy the **product\_install\_dir/ApplicationCenter/tools/android-sdk** directory to the directory that you determined in Substep a.
+    * For WebSphere Application Server Network Deployment, click **System administration → Nodes**, select the nodes, and click **Full Synchronize**.
+    * Configure the environment entry (JNDI property) **android.aapt.dir** and set as its value the directory that you determined in Substep a. The **WAS\_INSTALL\_DIR/profiles/profile-name** profile is replaced with the WebSphere Application Server variable reference **${USER_INSTALL_ROOT}**.
+
+    You can now access the Application Center at http://<server>:<port>/appcenterconsole, where server is the host name of your server and port is the port number (by default 9080).
 
 ## Configuring Application Center after installation
