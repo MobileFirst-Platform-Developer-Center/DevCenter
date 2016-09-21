@@ -25,7 +25,7 @@ The IBM distribution of OpenSSL is embedded in the MobileFirst Platform Foundati
 
 Applications that are built using MobileFirst Studio from the following iFixes, will have the build ID embedded in them. Google will use the Build ID to identify IBM MobileFirst apps. This in turn will ensure Google will not block the applications from the Google Play Store.
 
-* 7.1.0 IF20160421-0604 and later builds
+* 7.1.0 IF20160724-1420 and later builds
 * 7.0.0 IF20160423-2222 and later builds
 * 6.3.0 IF20160427-1829 and later builds
 * 6.2.0 IF20160423-1301 and later builds
