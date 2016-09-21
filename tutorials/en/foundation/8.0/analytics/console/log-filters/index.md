@@ -46,4 +46,4 @@ The `Logger` configuration values that the server returns take precedence over a
 The MobileFirst Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console.
 
 To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the Analytics console. This is useful for a user to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs.
+The collected logs can then be viewed in the Analytics Console. This is useful for a user to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs.

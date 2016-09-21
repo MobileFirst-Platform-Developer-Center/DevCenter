@@ -16,10 +16,10 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 
 
 ## App Usage Analytics
-### Initializing your client app to capture app usage
+###Initializing your client app to capture app usage
 App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
 
-You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener.
+You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
 
 On iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
 
@@ -27,6 +27,12 @@ On iOS, add the following code in your Application Delegate `application:didFini
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
     [analytics addDeviceEventListener:LIFECYCLE];
  ```
+
+ To send the analytics:
+
+ ```Objective-C
+  [[WLAnalytics sharedInstance] send];
+```
  
  Similarly, on Android, add the following code in your Application subclass `onCreate` method.
  
@@ -34,13 +40,24 @@ On iOS, add the following code in your Application Delegate `application:didFini
     WLAnalytics.init(this)
     WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
  ```
- 
-For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. 
+ To send the analytic data:
+
+ ```Java
+    WLAnalytics.send();
+ ```
+
+For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
+
+```javascript
+    WL.Analytics.send();
+```
     
 For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
 
-    logger.config({analyticsCapture: true});
-
+```javascript                                    
+  ibmmfpfanalytics.logger.config({analyticsCapture: true});                
+  ibmmfpfanalytics.send();
+```
 
 ### Default Usage and Devices charts
 In the Usage and Devices page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
@@ -92,14 +109,14 @@ The duration of an app session is a valuable metric to visualize. With any app, 
 ## Crash Capture
 MobileFirst Analytics includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
 
-
 An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the MobileFirst Analytics SDK logs a crash event. This data is sent to the server with the next logger send call.
 
 ### Initializing your app to capture crash data
 To ensure that crash data is collected and included in the MobileFirst Analytics Console reports, make sure the crash data is sent to the server.
 
-Ensure that you are collecting app lifecycle events as described in Initializing your app to capture app usage.
-The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash.
+Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
+
+The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
     
 iOS
 

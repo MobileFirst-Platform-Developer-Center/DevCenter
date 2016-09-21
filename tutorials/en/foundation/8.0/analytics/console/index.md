@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Operations and Analytics Consoles
-breadcrumb_title: Analytics console
+breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
@@ -15,25 +15,25 @@ You can open the Analytics Console from the MobileFirst Operations Console by cl
 
 ![Analytics console button](analytics-console-button.png)
 
-After navigating to the Analytics console, a dashboard appears (but with no data).
+After navigating to the Analytics Console, a dashboard appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated.
 
 ![Analytics console](analytics-console.png)
 
 ## Dashboard
-In Dashboard you can review collected analytics data related to: application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
+In the **Dashboard** panel, you can review collected analytics data related to: application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
 
 ## Apps
-In Apps you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices.
+In the **Apps** panel, you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices.
 
 ## Infrastructure
-In Infrastructure you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
+In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
 
 > Learn more in the [Analytics Workflows](../workflows/) tutorial.
 
 ## Analytics Features
 
 ### App Analytics
-You can view App Session charts and App Usage charts to find out which app is being used most by your users.
+You can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
 
 ### Built-in Analytics
 When you use the MobileFirst client SDK together with the MobileFirst Server, analytics data automatically gets collected for any request that your app makes to the MobileFirst Server. Basic device metadata gets collected and reported to the MobileFirst Analytics Server.
@@ -56,7 +56,7 @@ You can configure thresholds which, if exceeded, trigger alerts to notify admini
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
 ### Monitor App Crashes
-App crashes are visualized on the Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default. When crash logs are sent to the analytics server, they automatically populate the crash charts.
+App crashes are visualized on the Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
 ### Monitor Network Data
 The MobileFirst Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
@@ -69,10 +69,10 @@ Configure and administer the Analytics server with the Operations Console.
 The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
 
 1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
-2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the Edit button is not visible because you are not allowed to modify runtime properties.
+2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the **Edit** button is not visible because you are not allowed to modify runtime properties.
 3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
-4. Click Save.
-5. Click the Read Only button to lock the properties again.
+4. Click **Save**.
+5. Click the **Read Only** button to lock the properties again.
 
 <img class="gifplayer" alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
 
@@ -115,27 +115,31 @@ One of the more useful JNDI properties to get started with viewing the Elasticse
 
 > **Note**: This setting is not secure and should not be enabled on a production environment.
 
-*Viewing data**  
-You can view all your data by visiting the tenant's search REST endpoint.  
+### Elasticsearch REST API 
 Being able to access an Elasticsearch instance provides the ability to run custom queries and view more detailed information about the Elasticsearch cluster.
+
+**Search and view data**
+
+You can view all your data by visiting the tenant's `_search` REST endpoint.  
+
 
 ```
 http://localhost:9500/*/_search
 ```
 
-*View cluster health**
+**View cluster health**
 
 ```
 http://localhost:9500/_cluster/health
 ```
 
-*View information on current nodes**
+**View information on current nodes**
 
 ```
 http://localhost:9500/_nodes
 ```
 
-*View the current mappings**
+**View the current mappings**
 
 ```
 http://localhost:9500/*/_mapping
