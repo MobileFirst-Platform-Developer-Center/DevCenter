@@ -46,7 +46,7 @@ You can have your app send custom data and create custom reports on your custom 
 ### Custom Charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Analytics Console. This visualization feature is a powerful way to analyze business-critical data.
 
-> Learn how to create custom charts in the [Creating Custom Charts](console/custom-charts/) tutorial.
+> Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
 
 ### Manage Alerts
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.

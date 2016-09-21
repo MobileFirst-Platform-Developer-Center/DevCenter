@@ -46,7 +46,7 @@ IBM MobileFirst Foundation provides the Analytics and Operations consoles. The M
 
 > Learn more in the [Operations Console](console) tutorial.
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](custom-charts) tutorial.
+> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
 
 ## Tutorials to Follow Next
 
