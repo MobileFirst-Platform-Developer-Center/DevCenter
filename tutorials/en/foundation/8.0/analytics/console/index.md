@@ -30,7 +30,7 @@ In the **Infrastructure** panel you can review analytics data related to: sessio
 
 > Learn more in the [Analytics Workflows](../workflows/) tutorial.
 
-## Analytics Features
+## Analytics features
 
 ### App Analytics
 You can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
@@ -43,29 +43,28 @@ You can have your app send custom data and create custom reports on your custom 
 
 > Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
 
-### Custom Charts
+### Custom charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Analytics Console. This visualization feature is a powerful way to analyze business-critical data.
 
 > Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
 
-### Manage Alerts
+### Manage alerts
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.
 
 You can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom webhook. A custom webhook allows you to control who is notified when an alert is triggered, and how.
 
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
-### Monitor App Crashes
+### Monitor app crashes
 App crashes are visualized on the Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
-### Monitor Network Data
+### Monitor network data
 The MobileFirst Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
 
 ## MobileFirst Operations Console
-
 Configure and administer the Analytics server with the Operations Console.
 
-### Enable/Disable Analytics Support
+### Enable/disable Analytics support
 The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
 
 1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
@@ -76,7 +75,7 @@ The collection of data for analysis by the Analytics server is enabled by defaul
 
 <img class="gifplayer" alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
 
-### Role-based Access Control
+### Role-based access control
 Content in the MobileFirst Analytics Console is restricted by predefined security roles.  
 The MobileFirst Analytics Console shows different content based on the security role of the logged-in user. The following table shows the security role and the access that is granted to it in the MobileFirst Analytics Console.
 
@@ -115,7 +114,7 @@ One of the more useful JNDI properties to get started with viewing the Elasticse
 
 > **Note**: This setting is not secure and should not be enabled on a production environment.
 
-### Elasticsearch REST API 
+### Elasticsearch REST API
 Being able to access an Elasticsearch instance provides the ability to run custom queries and view more detailed information about the Elasticsearch cluster.
 
 **Search and view data**
@@ -147,6 +146,6 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
-## Related Blog Posts
+## Related blog posts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

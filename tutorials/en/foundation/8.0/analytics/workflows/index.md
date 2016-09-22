@@ -15,7 +15,8 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 * [Crash Capture](#crash-capture)
 
 
-## App Usage Analytics
+## App usage Analytics
+
 ###Initializing your client app to capture app usage
 App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
 
@@ -33,13 +34,14 @@ On iOS, add the following code in your Application Delegate `application:didFini
  ```Objective-C
   [[WLAnalytics sharedInstance] send];
 ```
- 
+
  Similarly, on Android, add the following code in your Application subclass `onCreate` method.
- 
+
  ```Java
     WLAnalytics.init(this)
     WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
  ```
+
  To send the analytic data:
 
  ```Java
@@ -51,7 +53,7 @@ For Cordova apps, the listener must be created in the native platform code, simi
 ```javascript
     WL.Analytics.send();
 ```
-    
+
 For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
 
 ```javascript                                    
@@ -60,16 +62,16 @@ For Web apps, no listeners are required. Analytics can be enabled and disabled t
 ```
 
 ### Default Usage and Devices charts
-In the Usage and Devices page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
+In the **Usage and Devices** page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
 
 #### Total Devices
-The Total Devices chart shows the number of total devices.
+The **Total Devices** chart shows the number of total devices.
 
 #### Total App Sessions
-The Total App Sessions chart shows the number of total app sessions. An app session is recorded when an app is brought to the foreground of a device.
+The **Total App Sessions** chart shows the number of total app sessions. An app session is recorded when an app is brought to the foreground of a device.
 
 #### Active Users
-The Active Users chart shows an interactive multi-line graph of the following data:
+The **Active Users** chart shows an interactive multi-line graph of the following data:
 
 * Active Users - unique users for the displayed time frame.
 * New Users - new users for the displayed time frame.
@@ -79,19 +81,19 @@ The default displayed time frame is one day with a data point for each hour. If 
 To see the most accurate data in the line graph, you must instrument your app code to provide the `userID` by calling the `setUserContext` API. If you want to provide anonymity for the `userID` values, you must hash the value first. If the `userID` is not provided, the ID of the device is used by default. If one device is used by multiple users and the `userID` is not provided, the line graph does not reflect accurate data because the ID of the device counts as one user.
 
 #### App Sessions
-The App Sessions chart shows a bar graph of app sessions over time.
+The **App Sessions** chart shows a bar graph of app sessions over time.
 
 #### App Usage
-The App Usage chart shows a pie chart of the percentage of app sessions for each app.
+The **App Usage** chart shows a pie chart of the percentage of app sessions for each app.
 
 #### New Devices
-The New Devices chart shows a bar graph of new devices over time.
+The **New Devices** chart shows a bar graph of new devices over time.
 
 #### Model Usage
-The Model Usage chart shows a pie chart of the percentage of app sessions for each device model.
+The **Model Usage** chart shows a pie chart of the percentage of app sessions for each device model.
 
 #### Operating System Usage
-The Operating System Usage chart shows a pie chart of the percentage of app sessions for each device operating system.
+The **Operating System Usage** chart shows a pie chart of the percentage of app sessions for each device operating system.
 
 ### Creating a custom chart for average session duration
 The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
@@ -106,7 +108,7 @@ The duration of an app session is a valuable metric to visualize. With any app, 
 8. Select **Duration** for **Property**.
 9. Click Save.
 
-## Crash Capture
+## Crash capture
 MobileFirst Analytics includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
 
 An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the MobileFirst Analytics SDK logs a crash event. This data is sent to the server with the next logger send call.
@@ -117,7 +119,7 @@ To ensure that crash data is collected and included in the MobileFirst Analytics
 Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
 
 The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
-    
+
 iOS
 
   ```Objective-C
@@ -134,7 +136,6 @@ iOS
           userInfo:nil
           repeats:YES]
   ```
-  
 
 Android
 
@@ -148,8 +149,8 @@ Android
           }
         }, 0, 60000);
   ```
-  
-  Cordova
+
+Cordova
 
   ```Java
         setInterval(function() {
@@ -157,15 +158,14 @@ Android
           WL.Analytics.send();
         }, 60000)
   ```
-  
+
 Web
-        
+
   ```Java
         setInterval(function() {
           ibmmfpfanalytics.logger.send();
         }, 60000);
   ```
-
 
 ### App crash monitoring
 After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the MobileFirst Analytics Console.  
