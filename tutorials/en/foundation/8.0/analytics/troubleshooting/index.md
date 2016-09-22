@@ -25,7 +25,7 @@ Check the following possibilities.
     /analytics-service
     /analytics
     ```
-    
+
 * Check that you are calling the send method.
     * iOS: `[[WLAnalytics sharedInstance] send];`
     * Android: `WLAnalytics.send();`
@@ -44,29 +44,28 @@ Configure your apps to collect analytics on the Network device event.
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
     [analytics addDeviceEventListener:NETWORK];
     ```
-  
+
 * To enable the capture of network analytic data in Android, add the following code in your Application subclass `onCreate` method.
 
     ```java
     WLAnalytics.init(this);
     WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
     ```
-    
+
 ### Why is there no data for app sessions?
 Configure your apps to collect analytics using the Lifecycle device event listener.
 
 * For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.
 * To enable the capture of network analytic data in iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
-    
+
     ```objc
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
     [analytics addDeviceEventListener:LIFECYCLE];
     ```
-    
+
 * To enable the capture of network analytic data in Android, add the following code in your Application subclass `onCreate` method.
-    
+
     ```java
     WLAnalytics.init(this);
     WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
     ```
-    

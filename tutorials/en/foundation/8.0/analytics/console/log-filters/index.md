@@ -17,33 +17,29 @@ For the application to fetch the configuration overrides that are set on the ser
 
 
 #### Android
-
 ```java
 Logger.updateConfigFromServer();
 ```
 
 #### iOS
-
 ```objective-c
 [OCLogger updateConfigFromServer];
 ```
 
 #### Cordova
-
 ```javascript
 WL.Logger.updateConfigFromServer();
 ```
 
 #### Web
-
 ```javascript
 ibmmfpfanalytics.logger.updateConfigFromServer();
 ```
 
 The `Logger` configuration values that the server returns take precedence over any values that are set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client receives an empty payload. In this case, the `Logger` configuration defaults to what was originally configured on the client.
 
-## Forwarding Server Logs
+## Forwarding server logs
 The MobileFirst Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console.
 
 To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the Analytics console. This is useful for a user to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs.
+The collected logs can then be viewed in the Analytics Console. This is useful for a user to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs.

@@ -13,7 +13,6 @@ Custom charts allow you to visualize the collected analytics data in your analyt
 Available custom chart types: App Session, Network Transactions, Push Notifications, Client Logs, Server Logs, Custom Data
 
 #### Jump to
-
 * [Creating a custom chart](#creating-a-custom-chart)
 * [Chart types](#chart-types)
 * [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
@@ -23,16 +22,16 @@ Available custom chart types: App Session, Network Transactions, Push Notificati
 ## Creating a custom chart
 The custom charts creation builder takes you through four main stages:
 
-### 1. General Settings
+### 1. General settings
 Click the **Create Chart** button in the **Custom Charts** tab.  
 
 In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
 After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
 
-### 2. Chart Definition
+### 2. The Chart Definition tab
 Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
 
-### 3. Chart Filters
+### 3. The Chart Filters tab
 **Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
 For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
 
@@ -43,19 +42,19 @@ For example, if you are interested in seeing the average app session duration fo
 
 The app name filter is added to the table of filters for your chart.
 
-### 4. Chart Properties
+### 4. Chart properties
 Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
 
-If you created a Table chart, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field. 
- 
-If you created a Bar Graph or Line Graph chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
+If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
+
+If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
 
 <img class="gifplayer" alt="Creating a custom chart" src="creating-custom-charts.png"/>
 
 ## Chart types
 
-### Bar Graph
-The bar graph allows for visualization of numeric data over an x-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
+### Bar graph
+The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
 
 * **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
 * **Property** - choose Property if you want to see a count breakdown for the specific property. If you choose Property for X-Axis, then Total is implicitly chosen for Y-Axis. For example, choose Property for X-Axis and Application Name for Property to see a count for a specified event type, which is broken down by app name.
@@ -68,7 +67,7 @@ After you define a value for X-Axis, you can define a value for Y-Axis. If you c
 
 After you define the chart axes, you must choose a value for Property.
 
-### Line Graph
+### Line graph
 The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
 
 * **Average** - averages a numeric property in the supplied event type.
@@ -77,7 +76,7 @@ The line graph allows for the visualization of some metric over time. This type 
 
 After you define the measurement, you must choose a value for Property.
 
-### Flow Chart
+### Flow chart
 The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
 
 * **Source** - the value of a source node in the diagram.
@@ -90,7 +89,7 @@ With the flow chart, you can see the density breakdown of various sources that f
 * Select Log Level for Destination.
 * Select the name of your app for Property.
 
-### Metric Group
+### Metric group
 The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
 
 * **Average** - averages a numeric property in the supplied event type.
@@ -99,7 +98,7 @@ The metric group can be used to visualize a single metric that is measured as ei
 
 After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
 
-### Pie Chart
+### Pie chart
 The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
 
 * Select App Session for Event Type.
@@ -151,5 +150,3 @@ You can export and import custom chart definitions in the MobileFirst Analytics 
 2. Click **Export Charts** to download a JSON file with your chart definition.
 3. Choose a location to save the JSON file.
 4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the MobileFirst Analytics Console shows duplicate custom charts.
-
-
