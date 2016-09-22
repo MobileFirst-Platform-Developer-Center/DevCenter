@@ -125,7 +125,7 @@ From the mobile client, you can take the following actions:
 
 The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirst platform.To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build MobileFirst applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/appcenter).
+The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirst platform.To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build MobileFirst applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
 
 ## Preliminary information
 To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst™ Platform Foundation is installed, start the Application Center console, and log in.
@@ -134,7 +134,7 @@ When you install IBM MobileFirst Platform Foundation, the Application Center is 
 
 If you install the Application Center in WebSphere® Application Server Liberty profile, the server is created in **installation-directory/server**.
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/appcenter#configuing-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/appcenter/#manaing-users-with-ldap).
+After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuing-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#manaing-users-with-ldap).
 
 ### Example: starting the server and the Application Center console on Liberty profile
 
