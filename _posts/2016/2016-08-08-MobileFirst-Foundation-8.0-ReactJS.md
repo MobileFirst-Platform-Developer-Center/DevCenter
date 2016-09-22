@@ -23,7 +23,7 @@ It is important to understand Facebook's ReactJS Framework and how to create cla
 Lastly, have an understanding of the MobileFirst Foundation 8.0 JavaScript Framework. You can learn more about building a Cordova App [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
 
 ## What you need
-* MobileFirst Foundation DevKit or an instance of the Mobile Foundation Bluemix service. [Read this tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/)
+* MobileFirst Foundation DevKit or an instance of the Mobile Foundation Bluemix service. [Read this tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/)
 * An instance of Weather Services from Bluemix with the password and host. [Follow these instructions.](https://console.ng.bluemix.net/docs/services/Weather/index.html).
 * Cordova: `npm install -g cordova`
 * MobileFirst CLI: `npm install -g mfpdev-cli`

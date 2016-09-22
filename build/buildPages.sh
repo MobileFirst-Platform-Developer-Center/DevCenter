@@ -20,7 +20,7 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
-bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
+# bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master

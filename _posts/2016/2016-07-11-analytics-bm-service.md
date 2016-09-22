@@ -45,8 +45,8 @@ Here, go to the go to the JNDI section in the "Server Configuration" tab. If its
     <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.authorization.server" value='"embedded"'/>
 
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_PUSH_ROOT}"'/>
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_RUNTIME_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_PUSH_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_RUNTIME_ROOT}"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.id" value='"push"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.secret" value='"hsup"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.client.id" value='"admin"'/>
@@ -86,8 +86,8 @@ Now your JNDI entries should look like following
     <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.authorization.server" value='"embedded"'/>
 
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_PUSH_ROOT}"'/>
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_RUNTIME_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_PUSH_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_RUNTIME_ROOT}"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.id" value='"push"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.secret" value='"hsup"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.client.id" value='"admin"'/>

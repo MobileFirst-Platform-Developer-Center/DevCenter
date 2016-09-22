@@ -4,7 +4,8 @@ breadcrumb_title: Foundation on Bluemix
 show_disqus: true
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 9
+weight: 10
+print_pdf: true
 ---
 ## Overview
 IBM MobileFirst Foundation can be hosted on Bluemix, here is some information about Bluemix.
@@ -14,7 +15,7 @@ IBM MobileFirst Foundation can be hosted on Bluemix, here is some information ab
 > Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://www.ng.bluemix.net/docs/overview/overview.html).
 
 ### How does it work?
-In a nutshell: THere are 2 ways to run IBM MobileFirst Foundation on Bluemix based on what kind of a license entitlement. 
+In a nutshell: There are 2 ways to run IBM MobileFirst Foundation on Bluemix based on what kind of a license entitlement. 
 
 * Bluemix subscription or PayGo license: Mobile Foundation Bluemix Service 
 * On Prem license: Use IBM provided scripts to setup a MFP instance on IBM Containers or Liberty for Java runtime. 

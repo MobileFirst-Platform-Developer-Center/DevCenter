@@ -14,17 +14,25 @@ author:
   name: S.A.Norton Stanley
 ---
 ![Android N]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-compatibility-for-android-n/mfpcompatibilityandroidn.png)
-Google rolled out the final SDK version of [Android 7.0 Nougat](https://developer.android.com/preview/index.html), earlier this month. To run and test your app on the new platform you need to set up an [Android N runtime environment](http://developer.android.com/preview/download.html).
+Google has rolled out the final version of [Android 7.0 Nougat](http://android-developers.blogspot.in/2016/08/taking-final-wrapper-off-of-nougat.html). 
 
-The final developer preview version provides a flavour of the new [features](http://developer.android.com/preview/api-overview.html) like Multi-window support, Notification enhancements, Doze on the go, Data Saver.
+Android 7.0 has a whole bunch of new [features](https://www.android.com/versions/nougat-7-0/) like Multi-window support, Notification enhancements, Doze on the go, Data Saver.
 
-MobileFirst Platform Foundation v6.3 to v8.0 has embraced Android Nougat very well. A bunch of powerful features like adapter based authentication, custom authentication, form based authentication, invoking adapter procedures, application management, direct update that are offered by the MobileFirst Platform Foundation has been verified to work without any issues on the [developer preview 5](https://developer.android.com/preview/index.html) version of Android 7.0. A sanity check has been performed to ensure that all the existing native Android and hybrid apps built on Android Marshmallow work on Android Nougat platform.
+MobileFirst Platform Foundation v6.3 to v8.0 has embraced Android 7.0 very well. A bunch of powerful features like adapter based authentication, custom authentication, form based authentication, invoking adapter procedures, application management, direct update, push notification that are offered by the MobileFirst Platform Foundation has been verified to work without any issues on the final version of Android 7.0. A sanity check has been performed to ensure that all the existing native Android and hybrid apps built on Android Marshmallow work on Android Nougat platform.
 
 We encourage you to start testing your application(s) with Android N. Please see [IBM MobileFirst Platform Foundation's support plan for Android 7.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/07/14/support-plan-for-android-n/).
 
 ### Known Issues
 ---
+##### JSONStore API
    The MobileFirst Platform Foundation's JSONStore API does not work as expected on Android N, with the [behavior changes](https://developer.android.com/preview/behavior-changes.html#ndk) introduced in for NDK applications. The change in Android N is to remove support for linking against non-public APIs. This requires an update to the [SQLCipher library](https://www.zetetic.net/blog/2016/6/23/sqlcipher-android-release-n-support/) used in the MobileFirst Platform Foundation's JSONStore library. More details on the changes to the SQLCipher library can be found [here](https://discuss.zetetic.net/t/sqlcipher-for-android-upcoming-changes-for-android-n-and-coordinated-beta-test-request/1315). The fix for MobileFirst Platform Foundation's JSONStore library is in progress and should be available soon. Watch this space for the link to download the ifix.
+   
+##### Cordova with Android N   
+
+* Android 7.0 does not allow the ``file://`` protocol to be used externally from the scope of the app. The error occurs when sharing file URIs across Intent.Even though other plugins use the file URIs, such as File plugin, out of the core Cordova plugins, only the camera plugin uses the Cross-Process communication of sharing file URIs. Hence the  **FILE_URI** and **NATIVE_URI** destination type of the Cordova camera plugin throws an ``android.os.FileUriExposedException``.
+For updates on these issue please follow this [thread](https://issues.apache.org/jira/browse/CB-11625).
+
+* Multi-Window Support is the big new feature of Android N and one that presents some minor problems for existing Cordova apps. When apps that are compiled with the pre-N SDK are put into multi-window mode, the user gets a message saying "App may not work in multi-window mode". Cordova apps definitely fall into the non-working category because they tend to either crash or randomly restart when placed into multi-window mode. More information [here](https://github.com/cordova/cordova-discuss/blob/master/proposals/android-n-support.md).
 
 ### Handling Secure Connections
 ---

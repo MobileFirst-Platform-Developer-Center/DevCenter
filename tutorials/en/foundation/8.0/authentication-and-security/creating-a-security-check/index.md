@@ -189,7 +189,7 @@ You can also manually edit the adapter's configuration JSON file with the requir
 These predefined security checks are also available:
 
 - [Application Authenticity](../application-authenticity/)
-- [Direct Update](../../using-the-mfpf-sdk/direct-update)
+- [Direct Update](../../application-development/direct-update)
 - LTPA
 
 ## Tutorials to follow next

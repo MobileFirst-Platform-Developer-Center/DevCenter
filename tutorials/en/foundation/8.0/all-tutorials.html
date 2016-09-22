@@ -1,7 +1,8 @@
 ---
 layout: tutorial
-title: All Tutorials
-weight: 1
+title: Documentation and Tutorials
+breadcrumb_title: All Tutorials
+weight: 0
 show_disqus: false
 print_pdf: false
 indexed: false
@@ -48,21 +49,75 @@ Develop your applications by following the tutorials bellow: set-up your develop
     </div>
 </div>
 
+<hr />
+
 <div>
-    <hr id="start-here"/>
-    
-    <h3><a href="../setting-up-your-development-environment/">Installation and Configuration</a></h3>
-    Set up your development environment to work with IBM MobileFirst Foundation.
+    <h3><a href="../product-overview/">Product Overview</a></h3>
+    Learn about the MobileFirst Foundation offering.
     
     <ul>
-        <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a></li>
-        <li><a href="../setting-up-your-development-environment/cordova-development-environment/">Setting up the Cordova development environment</a></li>
-        <li><a href="../setting-up-your-development-environment/ios-development-environment/">Setting up the iOS development environment</a></li>
-        <li><a href="../setting-up-your-development-environment/android-development-environment/">Setting up the Android development environment</a></li>
-        <li><a href="../setting-up-your-development-environment/windows-8-10-development-environment/">Setting up the Windows 8.1 Universal and Windows 10 UWP development environments</a></li>
-        <li><a href="../setting-up-your-development-environment/web-development-environment/">Setting up the Web development environment</a></li>
-        <li><a href="../setting-up-your-development-environment/console/">Using the MobileFirst Foundation Operations Console</a></li>
+        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
+        <li><a href="../product-overview/components">Product Components</a>
+            <ul>
+                <li><a href="../product-overview/components/server">MobileFirst Server</a></li>
+                <li><a href="../product-overview/components/console">MobileFirst Operations Console</a></li>
+            </ul>
+        </li>
+        <li><a href="../product-overview/requirements">System Requirements</a></li>
+        <li><a href="../product-overview/licensing">Licensing in MobileFirst Server</a></li>
+        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
+        <li><a href="../product-overview/accessibility">Accessibility features for IBM MobileFirst Foundation</a></li>
+        <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>
+    
+    <h3><a href="../installation-configuration/">Installation and Configuration</a></h3>
+    Set up your development or production environment to work with IBM MobileFirst Foundation.
+    
+    <ul>
+        <li><a href="../installation-configuration/development">Setting up the development environment</a>
+            <ul>
+                <li><a href="../installation-configuration/development/mobilefirst/">MobileFirst environment</a></li>
+                <li><a href="../installation-configuration/development/cordova/">Cordova environment</a></li>
+                <li><a href="../installation-configuration/development/ios/">iOS environment</a></li>
+                <li><a href="../installation-configuration/development/android/">Android environment</a></li>
+                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal and Windows 10 UWP environments</a></li>
+                <li><a href="../installation-configuration/development/web/">Web environment</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production">Setting up the production environment</a>
+            <ul>
+                <li><a href="../installation-configuration/tutorials">Production installation tutorials</a>
+                    <ul>
+                        <li><a href="../installation-configuration/graphical-mode">Installing MobileFirst Server in graphical mode</a></li>
+                        <li><a href="../installation-configuration/command-line">Installing MobileFirst Server From Command Line</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/production/installation-manager">Running the IBM Installation Manager</a></li>
+                <li><a href="../installation-configuration/production/databases">Setting Up Databases</a></li>
+                <li><a href="../installation-configuration/production/topologies">Topologies and Network flows</a></li>
+                <li><a href="../installation-configuration/production/appserver">Installing the MobileFirst Server</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">Configuring the MobileFirst Server</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">Installing and configuring for token licensing</a></li>
+                <li><a href="../installation-configuration/production/analytics">Installing and configuring the MobileFirst Analytics server</a></li>
+                <li><a href="../installation-configuration/production/appcenter">Installing and configuring the Application Center</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">Installation Reference</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3><a href="../adminstering-apps/">Administering Applications</a></h3>
+    IBM MobileFirst Foundation provides several ways to administer MobileFirst applications in development or in production
+    
+    <ul>
+        <li><a href="../administering-apps/deploying-apps">Deploying applications to test and production environments</a></li>
+        <li><a href="../administering-apps/using-console/">Administrating applications through the MobileFirst Operations Console</a></li>
+        <li><a href="../administering-apps/using-ant/">Administrating applications through Ant</a></li>
+        <li><a href="../administering-apps/using-cli/">Administrating applications through the Command-line</a></li>
+        <li><a href="../administering-apps/federal/">Federal standards support in MobileFirst Foundation</a></li>
+        <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
+    </ul> 
+    
+    <hr id="start-here"/>
     
     <h3><a href="../quick-start/">Quick Start</a></h3>
     Get a feel of MobileFirst Foundation.
@@ -75,67 +130,69 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../quick-start/web/">Quick Start with Web app</a></li>
     </ul>
     
-    <h3><a href="../adding-the-mfpf-sdk">Adding the MobileFirst SDK</a></h3>
+    <h3><a href="../application-development/sdk">Adding the MobileFirst SDK</a></h3>
     Add the MobileFirst Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
     <ul>
-        <li><a href="../adding-the-mfpf-sdk/cordova/">Adding the MobileFirst Foundation SDK to Cordova applications</a></li>
-        <li><a href="../adding-the-mfpf-sdk/ios/">Adding the MobileFirst Foundation SDK to iOS applications</a></li>
-        <li><a href="../adding-the-mfpf-sdk/android/">Adding the MobileFirst Foundation SDK to Android applications</a></li>
-        <li><a href="../adding-the-mfpf-sdk/windows-8-10/">Adding the MobileFirst Foundation SDK to Windows 8.1 Universal and Windows 10 UWP applications</a></li>
-        <li><a href="../adding-the-mfpf-sdk/web/">Adding the MobileFirst Foundation SDK to Web applications</a></li>
+        <li><a href="../application-development/sdk/cordova/">Adding the MobileFirst Foundation SDK to Cordova applications</a></li>
+        <li><a href="../application-development/sdk/ios/">Adding the MobileFirst Foundation SDK to iOS applications</a></li>
+        <li><a href="../application-development/sdk/android/">Adding the MobileFirst Foundation SDK to Android applications</a></li>
+        <li><a href="../application-development/sdk/windows-8-10/">Adding the MobileFirst Foundation SDK to Windows 8.1 Universal and Windows 10 UWP applications</a></li>
+        <li><a href="../application-development/sdk/web/">Adding the MobileFirst Foundation SDK to Web applications</a></li>
     </ul>
     
     <hr id="get-sdk-and-apis"/>
 
-    <h3><a href="../using-the-mfpf-sdk">Developing Applications</a></h3>
-    Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
+    <h3><a href="../application-development">Developing Applications</a></h3>
+    Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, MobileFirst CLI and more...
 
     <ul>
-        <li><a href="../using-the-mfpf-sdk/cordova-apps/">MobileFirst Foundation SDK development in Cordova applications</a>
+        <li><a href="../application-development/cordova-apps/">MobileFirst Foundation SDK development in Cordova applications</a>
             <ul>
-                <li><a href="../using-the-mfpf-sdk/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
-                <li><a href="../using-the-mfpf-sdk/cordova-apps/securing-apps">Securing Cordova Applications</a></li>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Securing Cordova Applications</a></li>
             </ul>
         </li>
-        <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst CLI to manage MobileFirst artifacts</a></li>
-        <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/">Using the MobileFirst CLI in Eclipse</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst CLI to manage MobileFirst artifacts</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Using the MobileFirst CLI in Eclipse</a></li>
         <li>Resource Request from client applications
             <ul>
-                <li><a href="../using-the-mfpf-sdk/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request/ios/">Resource request from iOS applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request/android/">Resource request from Android applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request/windows/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
+                <li><a href="../application-development/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
+                <li><a href="../application-development/resource-request/ios/">Resource request from iOS applications</a></li>
+                <li><a href="../application-development/resource-request/android/">Resource request from Android applications</a></li>
+                <li><a href="../application-development/resource-request/windows/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
             </ul>
         </li>
         <li>JSONStore
             <ul>
-                <li><a href="../using-the-mfpf-sdk/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/jsonstore/ios/">JSONStore in iOS applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/jsonstore/android/">JSONStore in Android applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/jsonstore/security-utilities/">Security utilities</a></li>
-                <li><a href="../using-the-mfpf-sdk/jsonstore/troubleshooting/">Troubleshooting</a></li>
-                <li><a href="../using-the-mfpf-sdk/jsonstore/code-examples/">Code examples</a></li>
+                <li><a href="../application-development/jsonstore/">JSONStore Overview</a></li>
+                <li><a href="../application-development/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
+            	<li><a href="../application-development/jsonstore/ios/">JSONStore in iOS applications</a></li>
+            	<li><a href="../application-development/jsonstore/android/">JSONStore in Android applications</a></li>
+                <li><a href="../application-development/jsonstore/security-utilities/">Security utilities</a></li>
+                <li><a href="../application-development/jsonstore/troubleshooting/">Troubleshooting</a></li>
+                <li><a href="../application-development/jsonstore/code-examples/">Code examples</a></li>
             </ul>
         </li>
         <li>Client-side log collection
             <ul>
-                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/">Overview of client-side log collection</a></li>
-                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/client-side-log-collection/android/">Log collection in Android applications</a></li>
+                <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Log collection in Android applications</a></li>
             </ul>
         </li>
-        <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a>
+        <li><a href="../application-development/direct-update/">Using Direct Update in Cordova Applications</a>
             <ul>
-                <li><a href="../using-the-mfpf-sdk/direct-update/cdn-support">Serving Direct Update requests from a CDN</a></li>
-                <li><a href="../using-the-mfpf-sdk/direct-update/secure-direct-update">Implementing Secure Direct Update</a></li>
+                <li><a href="../application-development/direct-update/cdn-support">Serving Direct Update requests from a CDN</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">Implementing Secure Direct Update</a></li>
             </ul>
         </li>
-        <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/live-update/">Live Update</a></li>
-        <li><a href="../using-the-mfpf-sdk/watchos/">Developing for Apple watchOS 2</a></li>
+        <li><a href="../application-development/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../application-development/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../application-development/live-update/">Live Update</a></li>
+        <li><a href="../application-development/watchos/">Developing for Apple watchOS 2</a></li>
+        <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
     </ul>
     
     <h3><a href="../adapters/">Developing Adapters</a></h3>
@@ -219,6 +276,8 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
         <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
         <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
+        <li><a href="../authentication-and-security/datapower-as-authorization-server/">Configuring IBM WebSphere DataPower as the OAuth authorization server</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the MobileFirst Server Keystore</a></li>
     </ul>
 
     <hr id="measure-and-engage"/>
@@ -229,10 +288,10 @@ Develop your applications by following the tutorials bellow: set-up your develop
     <ul>
         <li><a href="../notifications/">Notifications Overview</a></li>
         <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications-in-cordova/">Handling Push Notifications in Cordova applications</a></li>
-        <li><a href="../notifications/handling-push-notifications-in-ios/">Handling Push Notifications in iOS applications</a></li>
-        <li><a href="../notifications/handling-push-notifications-in-android/">Handling Push Notifications in Android applications</a></li>
-        <li><a href="../notifications/handling-push-notifications-in-windows/">Handling Push Notifications in Windows applications</a></li>
+        <li><a href="../notifications/handling-push-notifications/cordova/">Handling Push Notifications in Cordova applications</a></li>
+        <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a></li>
+        <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
+        <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
         <li><a href="../notifications/handling-sms-notifications-in-cordova/">Handling SMS Notifications in Cordova applications</a></li>
         <li><a href="../notifications/handling-sms-notifications-in-android/">Handling SMS Notifications in Android applications</a></li>
     </ul>
@@ -244,38 +303,34 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../analytics">Introduction to MobileFirst Foundation Operational Analytics</a></li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
         <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
-        <li><a href="../analytics/custom-charts/">Creating Custom Charts</a></li>
-        <li><a href="../analytics/alerts/">Managing Alerts</a></li>
-        <li><a href="../analytics/log-filters/">Configuring Log Filters</a></li>
+        <li><a href="../analytics/console/custom-charts/">Creating Custom Charts</a></li>
+        <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
+        <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
         <li><a href="../analytics/troubleshooting/">Troubleshooting</a></li>
     </ul>
     
     <h3><a href="../bluemix">Foundation on Bluemix</a></h3>
-    Deploy MobileFirst Foundation to the cloud using IBM Containers on Bluemix.  
+    Deploy MobileFirst Foundation to the cloud using Bluemix.  
 
     <ul>
-        <li><a href="../bluemix/">Introduction to IBM MobileFirst Foundation on IBM Containers</a></li>
+        <li><a href="../bluemix/">Introduction to IBM MobileFirst Foundation on Bluemix</a></li>
         <li><a href="../bluemix/using-mobile-foundation/">Create a MobileFirst Server instance using the Mobile Foundation Bluemix service</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Create a MobileFirst Server instance on IBM Containers using IBM-provided scripts</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the MobileFirst Server on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
             </ul>
         </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the MobileFirst Server on Bluemix using Scripts on Liberty for Java</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>
     </ul>
-    
-    <h3><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/">MobileFirst Quality Assurance</a></h3>
-    Add testing capabilities to your application.  
 
-    <ul>
-        <li><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/">MobileFirst Quality Assurance Overview</a></li>
-        <li><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/">MobileFirst Quality Assurance in Cordova applications</a></li>
-        <li><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/">MobileFirst Quality Assurance in iOS applications</a></li>
-        <li><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/">MobileFirst Quality Assurance in Android applications</a></li>
-    </ul>
-    
     <h3>Collateral materials</h3>
 
     <ul>

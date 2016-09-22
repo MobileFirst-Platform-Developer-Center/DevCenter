@@ -1,7 +1,8 @@
 ---
 layout: tutorial
 title: Authentication and Security
-weight: 6
+weight: 7
+print_pdf: true
 ---
 ## Overview
 The MobileFirst Foundation security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
@@ -135,7 +136,7 @@ A security check typically issues security challenges that require the client to
 The following predefined security checks are available:
 
 - [Application Authenticity](application-authenticity/)
-- [Direct Update](../using-the-mfpf-sdk/direct-update)
+- [Direct Update](../application-development/direct-update)
 - LTPA
 
 ### Challenge Handler
@@ -195,7 +196,7 @@ You can also manually edit the application's configuration JSON file with the re
     ```
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
-> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Protecting resources
 In the OAuth model, a protected resource is a resource that requires an access token. You can use the MobileFirst security framework to protect both resources that are hosted on an instance of MobileFirst Server, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
@@ -226,7 +227,7 @@ You can also manually edit the application's configuration JSON file with the re
     ```
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
-> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ### Resource-level
 #### Java adapters
@@ -278,7 +279,7 @@ If you want to disable protection, you can use `secured="false"`.
 An unprotected resource is a resource that does not require an access token. The MobileFirst security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
 
 ### External resources
-To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate MobileFirst access tokens before granting the OAuth client access to the resources. You can use the [MobileFirst REST API for the MobileFirst runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided MobileFirst extensions for protecting external Java™ resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
+To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate MobileFirst access tokens before granting the OAuth client access to the resources. You can use the [MobileFirst REST API for the MobileFirst runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided MobileFirst extensions for protecting external Java resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
 
 ## Authorization flow
 The authorization flow has two phases:

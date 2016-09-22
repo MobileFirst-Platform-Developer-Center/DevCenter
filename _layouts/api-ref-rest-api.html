@@ -18,6 +18,17 @@ layout: tutorial
                 <h5 class="no-anchor">Description:</h5>
                 <p>{{item.description}}</p>
                 
+                {% if item.roles %}
+                <h5 class="no-anchor">Roles:</h5>
+                <p>Users in the following roles are authorized to perform this operation:</p>
+                
+                <ul>
+                {% for role in item.roles %}
+                    <li><b>{{role.name}}</b></li>
+                {% endfor %}
+                </ul>
+                {% endif %}    
+                
                 <h5 class="no-anchor">Method:</h5>
                 <p><code>{{item.method}}</code></p>
                 
@@ -32,6 +43,15 @@ layout: tutorial
                 <ul>
                 {% for pathParam in item.pathParams %}
                     <li><b>{{pathParam.name}}:</b> {{pathParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
+                {% if item.formDataParams %}
+                <h5>Form-data Parameters:</h5>
+                <ul>
+                {% for formDataParam in item.formDataParams %}
+                    <li><b>{{formDataParam.name}}:</b> {{formDataParam.value}}</li>
                 {% endfor %}
                 </ul>
                 {% endif %}
@@ -77,35 +97,8 @@ layout: tutorial
 {% endhighlight %}   
                 <h5 class="no-anchor">Payload properties:</h5>
                 <p>The payload has the following properties:</p>
-                <ul>
-                {% for payloadProperty in item.payloadProperties %}
-                    <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
-                    {% if payloadProperty.children %}
-                        <ul>
-                            {% for payloadProperty in payloadProperty.children %}
-                            <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
-                            {% if payloadProperty.children2 %}
-                                <ul>
-                                    {% for payloadProperty in payloadProperty.children2 %}
-                                    <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}
-                                    {% if payloadProperty.children3 %}
-                                        <ul>
-                                            {% for payloadProperty in payloadProperty.children3 %}
-                                            <li><b>{{payloadProperty.name}}:</b> {{payloadProperty.value}}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </li>     
-                            {% endif %}   
-                            {% endfor %}
-                        </ul>    
-                    {% endif %}
-                    </li>
-                {% endfor %}    
-                </ul>
+                {% include show-rest-api-children.html children=item.payloadProperties%}
+                
                 {% endif %}
                 
                 {% if item.response %}
@@ -116,13 +109,16 @@ layout: tutorial
 {% highlight json %}
 {{item.responseJsonExample}}
 {% endhighlight %}
+
+                {% if item.responseXmlExample %}
+                <b>JSON example</b>
+{% highlight xml %}
+{{item.responseXmlExample}}
+{% endhighlight %}                
+                {% endif %}
                 <h5 class="no-anchor">Response properties:</h5>
                 <p>The response has the following properties:</p>
-                <ul>
-                {% for responseProperty in item.responseProperties %}
-                    <li><b>{{responseProperty.name}}:</b> {{responseProperty.value}}</li>
-                {% endfor %}    
-                </ul>
+                {% include show-rest-api-children.html children=item.responseProperties%}
                 {% endif %}
                 
                 <h5 class="no-anchor">Errors:</h5>

@@ -21,18 +21,17 @@ MobileFirst Operational Analytics supports:
 * Web applications
 * Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
 
-
 IBM MobileFirst Foundation Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
 
-## Client Development
-Two client classes work together to send raw data to the server: the Logger and Analytics classes. 
+## Client development
+Two client classes work together to send raw data to the server: the Logger and Analytics classes.
 
 ### The Analytics API
-The Analytics client API collects data on a wide range of events and sends them to the MobileFirst Analytics Server. 
+The Analytics client API collects data on a wide range of events and sends them to the MobileFirst Analytics Server.
 > Learn more in the [Analytics Client Development](analytics-api) tutorial.
 
 ### The Logger API
-The logger functions as a standard logger. From the client you can also send logger data to the MobileFirst Analytics Server at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
+The Logger functions as a standard logger. From the client you can also send logger data to the MobileFirst Analytics Server at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
 
 Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
 
@@ -46,8 +45,6 @@ IBM MobileFirst Foundation provides the Analytics and Operations consoles. The M
 
 > Learn more in the [Operations Console](console) tutorial.
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](custom-charts) tutorial.
+> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
 
-## Tutorials to Follow Next
-
-
+## Tutorials to follow next
