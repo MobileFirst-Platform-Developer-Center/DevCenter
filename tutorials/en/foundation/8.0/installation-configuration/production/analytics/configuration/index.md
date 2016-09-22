@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server configuration guide
+breadcrumb_title: Configuration guide
 weight: 2
 ---
 ## Overview 

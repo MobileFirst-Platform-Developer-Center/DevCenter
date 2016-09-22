@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Installing and configuring the IBM MobileFirst Foundation Application Center	
+breadcrumb_title: Installing and configuring Application Center	
 weight: 8
 ---
 ## Overview 
@@ -185,23 +186,20 @@ The login **appcenteradmin** is created with a password that is generated and di
 
 All users authenticated in the application realm are also authorized to access the **appcenteradmin** role. This is not meant for a production environment, especially if WebSphere® Application Server is configured with a single security domain.
 
-For more information about how to modify these logins, see [Configuring the Java EE security roles on WebSphere Application Server full profile]().
+For more information about how to modify these logins, see [Configuring the Java EE security roles on WebSphere Application Server full profile](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile).
 
 #### WebSphere Application Server Liberty profile
 * The login demo is created in the basicRegistry with the password demo.
 * The login appcenteradmin is created in the basicRegistry with the password admin.
 
-For more information about how to modify these logins, see [Configuring the Java EE security roles on WebSphere Application Server Liberty profile]().
+For more information about how to modify these logins, see [Configuring the Java EE security roles on WebSphere Application Server Liberty profile](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
 
 #### Apache Tomcat
 * The login demo is created with the password demo.
 * The login guest is created with the password guest.
 * The login appcenteradmin is created with the password admin.
 
-For more information about how to modify these logins, see [Configuring the Java EE security roles on Apache Tomcat]().
-
-
-
+For more information about how to modify these logins, see [Configuring the Java EE security roles on Apache Tomcat](#configuring-the-java-ee-security-roles-on-apache-tomcat).
 
 ## Installing the Application Center with Ant tasks
 Learn about the Ant tasks that you can use to install Application Center.
@@ -337,7 +335,7 @@ You configure the DB2® database manually by creating the database, creating the
 * [Configuring WebSphere Application Server for DB2 manually for Application Center](#configuring-websphere-application-server-for-db2-manually-for-application-center)
 * [Configuring Apache Tomcat for DB2 manually for Application Center](#configuring-apache-tomcat-for-db2-manually-for-application-center)
 
-#### Setting up your DB2 database manually for Application Center
+##### Setting up your DB2 database manually for Application Center
 Set up your DB2 database for Application Center by creating the database schema.
 
 1. Create a system user, **worklight**, in a DB2 admin group such as **DB2USERS**, by using the appropriate commands for your operating system. Give it the password **worklight**. For more information, see the DB2 documentation and the documentation for your operating system.
@@ -365,7 +363,7 @@ Set up your DB2 database for Application Center by creating the database schema.
     db2 -vf product_install_dir/ApplicationCenter/databases/create-appcenter-db2.sql -t
     ```
     
-#### Configuring Liberty profile for DB2 manually for Application Center
+##### Configuring Liberty profile for DB2 manually for Application Center
 You can set up and configure your DB2® database manually for Application Center with WebSphere® Application Server Liberty profile.  
 Complete the DB2 Database Setup procedure before continuing.
 
@@ -400,7 +398,7 @@ Complete the DB2 Database Setup procedure before continuing.
 
 3. You can encrypt the database password with the securityUtility program in **liberty\_install\_dir/bin**.
 
-#### Configuring WebSphere Application Server for DB2 manually for Application Center
+##### Configuring WebSphere Application Server for DB2 manually for Application Center
 You can set up and configure your DB2® database manually for Application Center with WebSphere® Application Server.
 
 1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory.
@@ -459,7 +457,7 @@ You can set up and configure your DB2® database manually for Application Center
 
 Leave **Use this data source in (CMP)** selected.
 
-#### Configuring Apache Tomcat for DB2 manually for Application Center
+##### Configuring Apache Tomcat for DB2 manually for Application Center
 If you want to manually set up and configure your DB2® database for Application Center with Apache Tomcat server, use the following procedure.  
 Before you continue, complete the DB2 database setup procedure.
 
@@ -502,7 +500,7 @@ You configure the Apache Derby database manually by creating the database and da
 * [Configuring WebSphere Application Server for Derby manually for Application Center](#configuring-websphere-application-server-for-derby-manually-for-application-center)
 * [Configuring Apache Tomcat for Derby manually for Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
 
-#### Setting up your Apache Derby database manually for Application Center
+##### Setting up your Apache Derby database manually for Application Center
 Set up your Apache Derby database for Application Center by creating the database schema.
 
 1. In the location where you want the database to be created, run **ij.bat** on Windows systems or **ij.sh** on UNIX and Linux systems.
@@ -520,7 +518,7 @@ Set up your Apache Derby database for Application Center by creating the databas
     quit;
     ```
 
-#### Configuring Liberty profile for Derby manually for Application Center
+##### Configuring Liberty profile for Derby manually for Application Center
 If you want to manually set up and configure your Apache Derby database for Application Center with WebSphere® Application Server Liberty profile, use the following procedure. Complete the Apache Derby database setup procedure before continuing.
 
 Configure the data source in the $LIBERTY_HOME/usr/servers/worklightServer/server.xml file (worklightServer may be replaced in this path by the name of your server) as follows:
@@ -544,7 +542,7 @@ Configure the data source in the $LIBERTY_HOME/usr/servers/worklightServer/serve
 </dataSource>
 ```
 
-#### Configuring WebSphere Application Server for Derby manually for Application Center
+##### Configuring WebSphere Application Server for Derby manually for Application Center
 You can set up and configure your Apache Derby database manually for Application Center with WebSphere® Application Server. Complete the Apache Derby database setup procedure before continuing.
 
 1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory. If this directory does not exist, create it.
@@ -591,7 +589,7 @@ You can set up and configure your Apache Derby database manually for Application
     * In the table, select the **Application Center Database** data source that you created.
     * Optional: Only if you are not on the console of a WebSphere Application Server Deployment Manager, click **test connection**.
 
-#### Configuring Apache Tomcat for Derby manually for Application Center
+##### Configuring Apache Tomcat for Derby manually for Application Center
 You can set up and configure your Apache Derby database manually for Application Center with the Apache Tomcat application server. Complete the Apache Derby database setup procedure before continuing.
 
 1. Add the **Derby** JAR file from **product\_install\_dir/ApplicationCenter/tools/lib/derby.jar** to the directory **$TOMCAT\_HOME/lib**.
@@ -623,7 +621,7 @@ You configure the MySQL database manually by creating the database, creating the
 * [Configuring WebSphere Application Server for MySQL manually for Application Center](#configuring-websphere-application-server-for-mysql-manually-for-application-center)
 * [Configuring Apache Tomcat for MySQL manually for Application Center](#configuring-apache-tomcat-for-mysql-manually-for-application-center)
 
-#### Setting up your MySQL database manually for Application Center
+##### Setting up your MySQL database manually for Application Center
 Complete the following procedure to set up your MySQL database.
 
 1. Create the database schema.
@@ -648,7 +646,7 @@ Complete the following procedure to set up your MySQL database.
 3. Add the following property to your MySQL option file: innodb_log_file_size = 250M  
     For more information about the innodb_log_file_size property, see the MySQL documentation, section innodb_log_file_size.
 
-#### Configuring Liberty profile for MySQL manually for Application Center
+##### Configuring Liberty profile for MySQL manually for Application Center
 If you want to manually set up and configure your MySQL database for Application Center with WebSphere® Application Server Liberty profile, use the following procedure. Complete the MySQL database setup procedure before continuing.
 
 > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM® DB2® or another database supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
@@ -676,7 +674,7 @@ where **worklight** after **user=** is the user name, **worklight** after **pass
 
 3. You can encrypt the database password with the securityUtility program in `<liberty_install_dir>/bin`.
 
-#### Configuring WebSphere Application Server for MySQL manually for Application Center
+##### Configuring WebSphere Application Server for MySQL manually for Application Center
 If you want to manually set up and configure your MySQL database for Application Center with WebSphere® Application Server, use the following procedure. Complete the MySQL database setup procedure before continuing.
 
 > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). We suggest that you use IBM® DB2® or another database supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
@@ -733,7 +731,7 @@ If you want to manually set up and configure your MySQL database for Application
     * Click **OK**.
     * Click **Save**.
 
-#### Configuring Apache Tomcat for MySQL manually for Application Center
+##### Configuring Apache Tomcat for MySQL manually for Application Center
 If you want to manually set up and configure your MySQL database for Application Center with the Apache Tomcat server, use the following procedure. Complete the MySQL database setup procedure before continuing.
 
 1. Add the MySQL Connector/J JAR file to the **$TOMCAT_HOME/lib** directory.
@@ -766,7 +764,7 @@ You configure the Oracle database manually by creating the database, creating th
 * [Configuring WebSphere Application Server for Oracle manually for Application Center](#configuring-websphere-application-server-for-oracle-manually-for-application-center)
 * [Configuring Apache Tomcat for Oracle manually for Application Center](#configuring-apache-tomcat-for-oracle-manually-for-application-center)
 
-#### Setting up your Oracle database manually for Application Center
+##### Setting up your Oracle database manually for Application Center
 Complete the following procedure to set up your Oracle database.
 
 1. Ensure that you have at least one Oracle database.
@@ -815,7 +813,7 @@ Complete the following procedure to set up your Oracle database.
     * Download the JDBC driver from the Oracle website at [Oracle: JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
     * Ensure that the Oracle JDBC driver is in the system path. The driver file is **ojdbc6.jar**.
 
-#### Configuring Liberty profile for Oracle manually for Application Center
+##### Configuring Liberty profile for Oracle manually for Application Center
 You can set up and configure your Oracle database manually for Application Center with WebSphere® Application Server Liberty profile by adding the JAR file of the Oracle JDBC driver. Before continuing, set up the Oracle database.
 
 1. Add the JAR file of the Oracle JDBC driver to **$LIBERTY_HOME/wlp/usr/shared/resources/oracle**. If that directory does not exist, create it.
@@ -849,7 +847,7 @@ You can set up and configure your Oracle database manually for Application Cente
 3. You can encrypt the database password with the securityUtility program in **liberty\_install\_dir/bin**.
 
 
-#### Configuring WebSphere Application Server for Oracle manually for Application Center
+##### Configuring WebSphere Application Server for Oracle manually for Application Center
 If you want to manually set up and configure your Oracle database for Application Center with WebSphere® Application Server, use the following procedure. Complete the Oracle database setup procedure before continuing.
 
 1. Determine a suitable directory for the JDBC driver JAR file in the WebSphere Application Server installation directory.
@@ -902,7 +900,7 @@ If you want to manually set up and configure your Oracle database for Applicatio
     * Click **OK**.
     * Click **Save**.
 
-#### Configuring Apache Tomcat for Oracle manually for Application Center
+##### Configuring Apache Tomcat for Oracle manually for Application Center
 If you want to manually set up and configure your Oracle database for Application Center with the Apache Tomcat server, use the following procedure. Complete the Oracle database setup procedure before continuing.
 
 1. Add the Oracle JDBC driver JAR file to the directory **$TOMCAT_HOME/lib**.
@@ -934,7 +932,7 @@ If you prefer to use the manual process, follow these steps to configure your ap
 * [Configuring WebSphere Application Server for Application Center manually](#configuring-websphere-application-server-for-application-center-manually)
 * [Configuring Apache Tomcat for Application Center manually](#configuring-apache-tomcat-for-application-center-manually)
 
-#### Configuring the Liberty profile for Application Center manually
+##### Configuring the Liberty profile for Application Center manually
 To configure WebSphere® Application Server Liberty profile manually for Application Center, you must modify the **server.xml** file.  
 In addition to modifications for the databases that are described in [Manually installing Application Center](#manually-installing-application-center), you must make the following modifications to the **server.xml** file.
 
@@ -1046,7 +1044,7 @@ In addition to modifications for the databases that are described in [Manually i
 
 6. Start the Liberty server.
 
-#### Configuring WebSphere Application Server for Application Center manually
+##### Configuring WebSphere Application Server for Application Center manually
 To configure WebSphere® Application Server for Application Center manually, you must configure variables, custom properties, and class loading policies. Make sure that a WebSphere Application Server profile exists.
 
 1. Log on to the WebSphere Application Server administration console for your IBM MobileFirst  Server.
@@ -1129,7 +1127,7 @@ To configure WebSphere® Application Server for Application Center manually, you
 
 You can now access the Application Center at `http://<server>:<port>/appcenterconsole`, where server is the host name of your server and port is the port number (by default 9080).
 
-#### Configuring Apache Tomcat for Application Center manually
+##### Configuring Apache Tomcat for Application Center manually
 To configure Apache Tomcat for Application Center manually, you must copy JAR and WAR files to Tomcat, add database drivers, edit the **server.xml** file, and then start Tomcat.
 
 1. Add the database drivers to the Tomcat lib directory. See the instructions for the appropriate DBMS in [Manually installing Application Center](#manually-installing-application-center).
@@ -1374,8 +1372,1031 @@ After you deploy the Application Center EAR file, to configure WebSphere® Appli
         * For deployment to a WebSphere Application Server Network Deployment server, use **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/mobilefirst/android-sdk**.
     * Copy the **product\_install\_dir/ApplicationCenter/tools/android-sdk** directory to the directory that you determined in Substep a.
     * For WebSphere Application Server Network Deployment, click **System administration → Nodes**, select the nodes, and click **Full Synchronize**.
-    * Configure the environment entry (JNDI property) **android.aapt.dir** and set as its value the directory that you determined in Substep a. The **WAS\_INSTALL\_DIR/profiles/profile-name** profile is replaced with the WebSphere Application Server variable reference **${USER_INSTALL_ROOT}**.
+    * Configure the environment entry (JNDI property) **android.aapt.dir** and set as its value the directory that you determined in Substep a. The **WAS\_INSTALL\_DIR/profiles/profile-name** profile is replaced with the WebSphere Application Server variable reference **${USER\_INSTALL\_ROOT}**.
 
-    You can now access the Application Center at http://<server>:<port>/appcenterconsole, where server is the host name of your server and port is the port number (by default 9080).
+    You can now access the Application Center at `http://<server>:<port>/appcenterconsole`, where server is the host name of your server and port is the port number (by default 9080).
 
 ## Configuring Application Center after installation
+After you install Application Center in the web application server that you designated, you have additional configuration to do.
+
+#### Jump to
+* [Configuring user authentication for Application Center](#configuring-user-authentication-for-application-center)
+* [Managing users with LDAP](#managing-users-with-ldap)
+* [Configuring properties of DB2 JDBC driver in WebSphere Application Server](#configuring-properties-of-db2-jdbc-driver-in-websphere-application-server)
+* [Managing the DB2 transaction log size](#managing-the-db2-transaction-log-size)
+* [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources)
+* [Configuring Secure Sockets Layer (SSL)](#configuring-secure-sockets-layer-ssl)
+* [JNDI properties for Application Center](#jndi-properties-for-application-center)
+* [Configuring WebSphere Application Server to support applications in public app stores](#configuring-websphere-application-server-to-support-applications-in-public-app-stores)
+
+### Configuring user authentication for Application Center
+You configure user authentication and choose an authentication method. The configuration procedure depends on the web application server that you use. **Application Center requires user authentication**.
+
+You must perform some configuration after the installer deploys Application Center web applications in the web application server.
+Application Center has two Java™ Platform, Enterprise Edition (Java EE) security roles defined:  
+
+* The **appcenteruser** role that represents an ordinary user of Application Center who can install mobile applications from the catalog to a mobile device belonging to that user.
+* The **appcenteradmin** role that represents a user who can perform administrative tasks through the Application Center console.
+
+You must map the roles to the corresponding sets of users.
+
+![Java EE security roles in Application Center](ac_jee_security_roles.jpg)
+
+If you choose to use an authentication method through a user repository such as LDAP, you can configure Application Center so that you can use users and groups with the user repository to define the Access Control List (ACL) of Application Center. This procedure is conditioned by the type and version of the web application server that you use. See [Managing users with LDAP](#managing-users-with-ldap) for information about LDAP used with Application Center.
+
+After you configure authentication of the users of Application Center, which includes configuring LDAP if you plan to use it, you can, if necessary, define the endpoint of the application resources. You must then build the Application Center mobile client. The mobile client is used to install applications on mobile devices. See [Preparations for using the mobile client]() for how to build the Application Center mobile client.
+
+#### Jump to
+* [Configuring the Java EE security roles on WebSphere Application Server full profile](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)
+* [Configuring the Java EE security roles on WebSphere Application Server Liberty profile](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)
+* [Configuring the Java EE security roles on Apache Tomcat](#configuring-the-java-ee-security-roles-on-apache-tomcat)
+
+##### Configuring the Java EE security roles on WebSphere Application Server full profile
+Configure security by mapping the Application Center Java™ EE roles to a set of users for both web applications.
+
+You define the basics of user configuration in the WebSphere® Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`.
+
+1. Select **Security → Global Security**.
+2. Select **Security Configuration Wizard** to configure users.  
+    You can manage individual user accounts by selecting **Users and Groups → Manage Users**.
+
+3. If you deployed WAR files, map the **appcenteruser** and **appcenteradmin** roles to a set of users as follows:
+    * Select **Servers → Server Types → WebSphere application servers**.
+    * Select the server.
+    * In the Configuration tab, select **Applications → Enterprise applications**.
+
+        ![Mapping the application center roles](ac_ws_full_maproles.jpg)
+    * Select **IBM\_Application\_Center\_Services**.
+    * In the Configuration tab, select **Details → Security role to user/group mapping**.
+        ![Mapping the application center roles to user groups](ac_ws_full_usergrp.jpg)    
+    * Perform the necessary customization.
+    * Click **OK**.
+    * Repeat the steps to map the roles for the console web application; select **IBM\_Application\_Center\_Console**.
+    * Click **Save** to save the changes.
+
+4. If you deployed an EAR file, map the appcenteruser and appcenteradmin roles to a set of users as follows:
+    * Select **Applications → Application Types → WebSphere application servers**.
+    * Click **AppCenterEAR**.
+    * In the **Detail Properties** section, click **Security role to user/group mapping**.
+    * Customize as necessary.
+    * Click **OK**.
+    * Click **Save**.    
+    
+##### Configuring the Java EE security roles on WebSphere Application Server Liberty profile
+Configure the Java™ EE security roles of the Application Center and the data source in the **server.xml** file.
+
+To configure the security roles, you must edit the **server.xml** file. In the `<application-bnd>` element of each `<application>` element, create two `<security-role>` elements. One `<security-role>` element is for the **appcenteruser** role and the other is for the **appcenteradmin** role. Map the roles to the appropriate user group name **appcenterusergroup** or **appcenteradmingroup**. These groups are defined through the `<basicRegistry>` element. You can customize this element or replace it entirely with an `<ldapRegistry>` element or a `<safRegistry>` element.
+
+Then, to maintain good response times with a large number of installed applications, for example with 80 applications, you should configure a connection pool for the Application Center database.
+
+1. Edit the **server.xml** file. For example:
+
+    ```xml
+    <security-role name="appcenteradmin">
+      <group name="appcenteradmingroup"/>
+    </security-role>
+    <security-role name="appcenteruser">
+      <group name="appcenterusergroup"/>
+    </security-role>
+    ```
+    You must include this example in the following location:  
+    * If you deployed WAR files, in the `<application-bnd>` element of each `<application>` element: the **appcenterconsole** and **applicationcenter** applications.
+    * If you deployed an EAR file, in the `<application-bnd>` element of the **applicationcenter** application. 
+    
+    Replace the `<security-role>` elements that have been created during installation for test purposes.
+    
+    ```xml
+    <basicRegistry id="appcenter">
+      <user name="admin" password="admin"/>
+      <user name="guest" password="guest"/>
+      <user name="demo" password="demo"/>
+      <group name="appcenterusergroup">
+        <member name="guest"/>
+        <member name="demo"/>
+      </group>
+      <group name="appcenteradmingroup">
+        <member name="admin" id="admin"/>
+      </group>
+    </basicRegistry>
+    ```
+    
+    This example shows a definition of users and groups in the `basicRegistry` of WebSphere Application Server Liberty. For more information about configuring a user registry for WebSphere Application Server Liberty profile, see [Configuring a user registry for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_sec_registries.html).
+
+2. Edit the **server.xml** file to define the `AppCenterPool` size.
+
+    ```xml
+    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
+    ```
+    
+3. In the `<dataSource>` element, define a reference to the connection manager:
+
+    ```xml
+    <dataSource id="APPCNTR" jndiName="jdbc/AppCenterDS" connectionManagerRef="AppCenterPool">
+    ...
+    </dataSource>
+    ```
+        
+##### Configuring the Java EE security roles on Apache Tomcat
+You must configure the Java™ EE security roles for the Application Center on the Apache Tomcat web application server.
+
+1. In the Apache Tomcat web application server, you configure the roles of **appcenteruser** and **appcenteradmin** in the **conf/tomcat-users.xml** file. The installation creates the following users:
+
+    ```xml
+    <user username="appcenteradmin" password="admin" roles="appcenteradmin"/>
+    <user username="demo" password="demo" roles="appcenteradmin"/>
+    <user username="guest" password="guest" roles="appcenteradmin"/>
+    ```
+
+2. You can define the set of users as described in the Apache Tomcat documentation, [Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+
+### Managing users with LDAP
+Use the Lightweight Directory Access Protocol (LDAP) registry to manage users.
+
+LDAP is a way to centralize the user management for multiple web applications in an LDAP Server that maintains a user registry. It can be used instead of specifying one by one the users for the security roles **appcenteradmin** and **appcenteruser**.
+
+If you plan to use an LDAP registry with the Application Center, you must configure your WebSphere® Application Server or your Apache Tomcat server to use an LDAP registry to authenticate users.
+
+In addition to authentication of users, configuring the Application Center for LDAP also enables you to use LDAP to define the users and groups who can install mobile applications through the Application Center. The means of defining these users and groups is the Access Control List (ACL).
+
+Since IBM® Worklight® V6.0, use the JNDI environment entries for defining LDAP configuration properties.
+
+Expert users could configure the application servers to use LDAP authentication by using the methods that were documented in releases before IBM Worklight V6.0.
+
+#### Jump to
+* [LDAP with WebSphere Application Server V8.x](#ldap-with-websphere-application-server-v8-x)
+* [LDAP with Liberty profile](#ldap-with-liberty-profile)
+* [LDAP with Apache Tomcat](#ldap-with-apache-tomcat)
+
+##### LDAP with WebSphere Application Server V8.x
+LDAP authentication is based on the federated repository configuration. ACL management configuration of the Application Center uses the Virtual Member Manager API.
+
+You must configure LDAP based on the federated repository configuration. The stand-alone LDAP registry is not supported.
+
+Several different repositories, LDAP and non-LDAP, can be configured in the federated repository.
+
+For information about configuring federated repositories, see the [WebSphere® Application Server V8.0](http://ibm.biz/knowctr#/SSEQTP_8.0.0/as_ditamaps/welcome_base.html) user documentation or the [WebSphere Application Server V8.5](http://ibm.biz/knowctr#SSEQTP_8.5.5/as_ditamaps/was855_welcome_base_dist_iseries.html) user documentation, depending on your version.
+
+##### Configuration of the Application Center for ACL management with LDAP
+Some configuration details of ACL management are specific to the Application Center, because it uses the Virtual Member Manager (VMM) API.
+
+The Application Center refers to these VMM attributes for users:
+
+* **uid** represents the user login name.
+* **sn** represents the full name of the user.
+* For groups, the Application Center refers only to the VMM attribute **cn**.
+
+If VMM attributes are not identical in LDAP, you must map the VMM attributes to the corresponding LDAP attributes.
+
+* [Configuring LDAP authentication for WebSphere Application Server V8.x](#configuring-ldap-authentication-for-websphere-application-server-v8-x)
+* [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8-x)
+
+##### Configuring LDAP authentication for WebSphere Application Server V8.x
+You can configure LDAP based on the federated repository configuration only. This procedure shows you how to use LDAP to define the roles appcenteradmin and appcenteruser in WebSphere® Application Server V8.x.
+
+1. Log in to the WebSphere Application Server console.
+2. Select **Security → Global security** and verify that administrative security and application security are enabled.
+3. In the "User account repository" section, select **Federated repositories**.
+4. Click **Configure**.
+5. Add a repository and configure it.
+    * Click **Add Base entry to Realm**.
+    * Specify the value of **Distinguished name of a base entry that uniquely identifies entries in the realm** and click **Add Repository**.
+    * Select **LDAP Repository**.
+    * Give this repository a name and enter the values that are required to connect to your LDAP server.
+    * Under **Additional Properties**, click **LDAP entity types**.
+    * Configure the **Group**, **OrgContainer**, and **PersonAccount** properties. These configuration details depend on your LDAP server.
+6. Save the configuration, log out, and restart the server.
+7. If you deployed WAR files, in the WebSphere Application Server console, map the security roles to users and groups.
+    * In the **Configuration** tab, select **Applications → WebSphere Enterprise applications**.
+    * Select **IBM_Application_Center_Services**.
+    * In the **Configuration** tab, select **Details → Security role to user/group mapping**.
+    * For **appcenteradmin** and **appcenteruser** roles, select **Map groups**. This selection enables you to select users and groups inside the WebSphere user repository, including LDAP users and groups. The selected users can access the Application Center as **appcenteradmin** or **appcenteruser**. You can also map the roles to **Special Subjects** “All authenticated in application realm” to give everyone in the WebSphere user repository, including everyone registered in the LDAP registry, access to the Application Center.
+8. Repeat step 7 for **IBM_Application_Center_Console**.
+
+    Make sure that you select **IBM_Application_Center_Console** in step 7.b instead of **IBM_Application_Center_Services**.
+
+9. If you deployed an EAR file, in the WebSphere Application Server console, map the security roles to users and groups.
+    * Click **Applications → Application Types → WebSphere enterprise applications**.
+    * From the list of applications, click **AppCenterEAR**.
+    * In the **Detail Properties** section, click **Security role to user/group mapping**.
+    * For **appcenteradmin** and **appcenteruser** roles, select **Map groups** or **Map users** to select users or groups inside the WebSphere user repository, including LDAP users and groups.
+    
+    The selected users can access the Application Center as **appcenteradmin** or **appcenteruser**. You can also map the roles to **Special Subjects** “All authenticated in application realm” to give access to the Application Center to everyone in the WebSphere user repository, including everyone registered in the LDAP registry.
+
+10. Click **Save** to save your changes.
+
+##### Configuring LDAP ACL management for WebSphere Application Server V8.x
+To configure ACL with LDAP, you define three properties: **uid**, **sn**, and **cn**. These properties enable the login name and the full name of users and the name of user groups to be identified in the Application Center. Then you enable ACL management with VMM. You can configure LDAP based on the federated repository configuration only.
+
+1. Log in to the WebSphere® Application Server console.
+2. Select **Security → Global security**.
+3. In the **User account repository** section, select **Configure**.
+4. Select your LDAP repository entry.
+5. Under **Additional Properties**, select **LDAP attributes** (WebSphere Application Server V8.0) or **Federated repositories property names to LDAP attributes mapping** (WebSphere Application Server V8.5).
+6. Select **Add → Supported**.
+7. Enter these property values:
+    * For **Name** enter your LDAP login attribute.
+    * For **Property** name enter **uid**.
+    * For **Entity types** enter the LDAP entity type.
+    * Click **OK**.
+
+    ![Associating LDAP login with uid property](ac_ldap__mail_w8.jpg)
+    
+8. Select **Add → Supported**.
+    * For **Name** enter your LDAP attribute for full user name.
+    * For **Property** name enter **sn**.
+    * For **Entity types** enter the LDAP entity type.
+    * Click **OK**.
+
+    ![Associating LDAP full user name and password with sn property](ac_ldap_sn.jpg)
+    
+9. Select **Add → Supported** to configure a group name:
+    * For **Name** enter the LDAP attribute for your group name.
+    * For **Property** name enter **cn**.
+    * For **Entity types** enter the LDAP entity type.
+    * Click **OK**.
+
+10. Enable ACL management with LDAP:
+    * Select **Servers → Server Types → WebSphere application servers**.
+    * Select the appropriate application server.  
+        In a clustered environment you must configure all the servers in the cluster in the same way.
+    * In the **Configuration** tab, under **Server Infrastructure**, click the **Java and Process Management** tab and select **Process definition**.
+    * In the **Configuration** tab, under **Additional Properties**, select **Java Virtual Machine**,
+    * In the **Configuration** tab, under **Additional Properties**, select **Custom properties**.
+    * Enter the required property-value pairs in the form. To enter each pair, click **New**, enter the property and its value, and click **OK**.  
+        Property-value pairs:
+        * ibm.appcenter.ldap.vmm.active = true
+        * ibm.appcenter.ldap.active = true
+        * ibm.appcenter.ldap.cache.expiration.seconds = delay_in_seconds
+    * Enter the delay in seconds before the LDAP cache expires. If you do not enter a value, the default value is 86400, which is equal to 24 hours.
+
+    Changes to users and groups on the LDAP server become visible to the Application Center after a delay, which is specified by **ibm.appcenter.ldap.cache.expiration.seconds**. The Application Center maintains a cache of LDAP data and the changes become visible only after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call this command to clear the cache of LDAP data:
+    
+    ```xml
+    acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password
+    ```
+    
+    See [Using the stand-alone tool to clear the LDAP cache]() for details.
+
+The following figure shows an example of custom properties with the correct settings.
+
+![ACL management for Application Center with LDAP on WebSphere Application server v8](ac_ldap_props_w8.jpg)
+
+**What to do next**  
+
+1. Save the configuration and restart the server.
+2. To use the VMM API, you must assign the **IdMgrReader** role to the users who run the VMM code, or to the group owners of these users. You must assign this role to all users and groups who have the **appcenteruser** or **appcenteradminroles**.
+3. In the **was\_home\bin** directory, where **was_home** is the home directory of your WebSphere Application Server, run the **wsadmin** command.
+4. After connecting with the WebSphere Application Server administrative user, run the following command:
+
+    ```bash
+    $AdminTask mapIdMgrGroupToRole {-roleName IdMgrReader -groupId your_LDAP_group_id}
+    ```
+
+5. Run the same command for all the groups mapped to the **appcenteruser** and **appcenteradminroles**. For individual users who are not members of groups, run the following command:
+
+    ```bash
+    $AdminTask mapIdMgrUserToRole {-roleName IdMgrReader -userId your_LDAP_user_id}
+    ```
+    
+    You can assign the special subject "All Authenticated in Application's Realm" as roles for appcenteruser and appcenteradmin. If you choose to assign this special subject, IdMgrReader must be configured in the following way:
+
+    ```bash
+    $AdminTask mapIdMgrGroupToRole {-roleName IdMgrReader -groupId ALLAUTHENTICATED}
+    ```
+    
+6. Enter **exit** to end **wsadmin**.
+
+##### LDAP with Liberty profile
+Use LDAP to authenticate users and to define the users and groups who can install mobile applications with the Application Center by using the JNDI environment.
+
+Using LDAP with Liberty profile requires you to configure LDAP authentication and LDAP ACL management.
+
+* [Configuring LDAP authentication for the Liberty profile](#coniguring-ldap-authentication-for-the-liberty-profile)
+* [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile)
+
+##### Configuring LDAP authentication for the Liberty profile
+You can configure LDAP authentication of users and groups in the **server.xml** file by defining an LDAP registry or, since WebSphere® Application Server Liberty profile V8.5.5, a federated registry that uses several LDAP registries. Then, you map users and groups to Application Center roles. The mapping configuration is the same for LDAP authentication and basic authentication.
+
+1. To open the **server.xml** descriptor file, enter **{server.config.dir}/server.xml**
+2. Insert one or several LDAP registry definitions after the `<httpEndpoint>` element. Example for the LDAP registry:
+
+    ```xml
+    <ldapRegistry baseDN="o=ibm.com" host="employees.com" id="Employees"
+                  ldapType="IBM Tivoli Directory Server" port="389" realm="AppCenterLdap"
+                  recursiveSearch="true">
+      <idsFilters 
+          groupFilter="(&amp;(cn=%v)(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))) " id="Employees" 
+          userFilter="(&amp;(emailAddress=%v)(objectclass=ibmPerson))" 
+          groupMemberIdMap="ibm-allGroups:member;ibm-allGroups:uniqueMember" 
+          userIdMap="*:emailAddress"/>
+    </ldapRegistry>
+    ```
+    
+    For information about the parameters that are used in this example, see the [WebSphere Application Server V8.5](http://ibm.biz/knowctr#SSEQTP_8.5.5/as_ditamaps/was855_welcome_base_dist_iseries.html) user documentation.
+
+3. Insert a security role definition after each Application Center application definition.
+    * If you deployed WAR files: **applicationcenter** and **appcenterconsole**
+    * If you deployed an EAR file: **applicationcenter**
+
+    **Group names unique within LDAP**  
+    This sample code shows how to use the group names **ldapGroupForAppcenteruser** and **ldapGroupForAppcenteradmin** when they exist and are unique within LDAP.
+    
+    ```xml
+    <application-bnd> 
+         <security-role name="appcenteruser" id="appcenteruser"> 
+           <group name="ldapGroupForAppcenteruser" /> 
+         </security-role> 
+         <security-role name="appcenteradmin" id="appcenteradmin"> 
+           <group name="ldapGroupForAppcenteradmin" /> 
+         </security-role> 
+    </application-bnd>
+    ```
+    
+    **Group names not unique within LDAP**  
+    This sample code shows how to code the mapping when the group names are not unique within LDAP. The groups must be specified with the **access-id** attribute. The **access-id** attribute must refer to the realm name that is used to specify the LDAP realm. In this sample code, the realm name is **AppCenterLdap**. The remainder of the **access-id** attribute specifies one of the LDAP groups named **ldapGroup** in a way that makes it unique.
+    
+    ```xml
+    <application-bnd> 
+         <security-role name="appcenteruser" id="appcenteruser"> 
+           <group name="ldapGroup" 
+                  id="ldapGroup"
+                  access-id="group:AppCenterLdap/CN=ldapGroup,OU=myorg,
+                             DC=mydomain,DC=AD,DC=myco,DC=com"/>
+         </security-role> 
+         ...
+    </application-bnd>
+    ```
+    
+    If applicable, use similar code to map the **appcenteradmin** role.
+
+##### Configuring LDAP ACL management (Liberty profile)
+You enable ACL management after you configure LDAP and map users and groups to Application Center roles. Only the simple type of LDAP authentication is supported.
+
+To be able to define JNDI entries, the following feature must be defined in the **server.xml** file:
+
+```xml
+<feature>jndi-1.0</feature>
+```
+
+Add an entry for each property in the `<server>` section of the **server.xml** file. This entry should have the following syntax:
+
+```xml
+<jndiEntry jndiName="JNDI_property_name" value="property_value"/>
+```
+
+Where: 
+
+* **JNDI\_property\_name** is the name of the property you are adding.
+* **property\_value** is the value of the property you are adding.
+
+| Property | Description | 
+|----------|-------------|
+| ibm.appcenter.ldap.active | Set to true to enable LDAP; set to false to disable LDAP. |
+| ibm.appcenter.ldap.federated.active | Since WebSphere® Application Server Liberty profile V8.5.5: set to true to enable use of the federated registry; set to false to disable use of the federated registry, which is the default setting. | 
+| ibm.appcenter.ldap.connectionURL | LDAP connection URL. | 
+| ibm.appcenter.ldap.user.base | Search base of users. | 
+| ibm.appcenter.ldap.user.loginName | LDAP login attribute. |
+| ibm.appcenter.ldap.user.displayName | LDAP attribute for the user name to be displayed, for example, a person's full name. |
+| ibm.appcenter.ldap.group.base | Search base of groups. |
+| ibm.appcenter.ldap.group.name | LDAP attribute for the group name. |
+| ibm.appcenter.ldap.group.uniquemember | LDAP attribute that identifies the members of a group. |
+| ibm.appcenter.ldap.user.groupmembership | LDAP attribute that identifies the groups to which a user belongs. |
+| ibm.appcenter.ldap.group.nesting | Management of nested groups: if nested groups are not managed, set the value to false. |
+| ibm.appcenter.ldap.user.filter |  LDAP user search filter for the attribute of user login name. Use %v as the placeholder for the login name attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.displayName.filter | LDAP user search filter for the attribute of user display name. Use %v as the placeholder for the display name attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.group.filter | LDAP group search filter. Use %v as the placeholder for the group attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.security.sasl | The value of the security authentication mechanism when the LDAP external SASL authentication mechanism is required to bind to the LDAP server. The value depends on the LDAP server; usually, it is set to "EXTERNAL". | 
+| ibm.appcenter.ldap.security.binddn | Property that identifies the distinguished name of the user permitted to search the LDAP directory. Use this property only if security binding is required. |
+| ibm.appcenter.ldap.security.bindpwd | Property that identifies the password of the user who is allowed to search the LDAP directory. Use this property only if security binding is required. The password can be encoded with the "Liberty profile securityUtility" tool. Run the tool and then set the value of this property to the encoded password generated by the tool. The supported encoding types are xor and aes. Edit the Liberty profile server.xml file to check whether the classloader is enabled to load the JAR file that decodes the password. | 
+| ibm.appcenter.ldap.cache.expiration.seconds | elay in seconds before the LDAP cache expires. If no value is entered, the default value is 86400, which is equal to 24 hours. Changes to users and groups on the LDAP server become visible to the Application Center after a delay, which is specified by **ibm.appcenter.ldap.cache.expiration.seconds**. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call this command to clear the cache of LDAP data: `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` See [Using the stand-alone tool to clear the LDAP cache](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.appcenter.doc/appcenter/t_ac_ant_clear_ldapcache.html?view=kc#usingthestand-alonetooltocleartheldapcache) for details. | 
+| ibm.appcenter.ldap.referral | Property that indicates whether referrals are supported by the JNDI API. If no value is given, the JNDI API will not handle LDAP referrals. Possible values are: <ul><li>ignore: ignores referrals found in the LDAP server.</li><li>follow: automatically follows any referrals found in the LDAP server.</li><li>throw: causes an exception to occur for each referral found in the LDAP server.</li></ul> | 
+
+See [JNDI properties for Application Center](#jndi-properties-for-application-center) for a complete list of LDAP properties that you can set.
+
+**Example of setting properties for ACL management with LDAP**  
+This example shows the settings of the properties in the server.xml file required for ACL management with LDAP.
+
+```xml
+<jndiEntry jndiName="ibm.appcenter.ldap.active" value="true"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.connectionURL" value="ldap://employees.com:636"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.loginName" value="uid"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.base" value="dc=ibm,dc=com"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.group.base" value="dc=ibm,dc=com"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.displayName" value="sn"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.group.name" value="cn"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.group.uniquemember" value="uniqueMember"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.groupmembership" value="ibm-allGroups"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.cache.expiration.seconds" value="43200"/>
+<jndiEntry jndiName="ibm.appcenter.ldap.security.sasl" value='"EXTERNAL"'/>
+<jndiEntry jndiName="ibm.appcenter.ldap.referral" value='"follow"'/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.filter" value='"(&amp;(uid=%v)(objectclass=inetOrgPerson))"'/>
+<jndiEntry jndiName="ibm.appcenter.ldap.user.displayName.filter" value='"(&amp;(cn=%v)(objectclass=inetOrgPerson))"'/>
+<jndiEntry jndiName="ibm.appcenter.ldap.group.filter" value='"(&amp;(cn=%v)(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames)))"'/>
+```
+
+#### LDAP with Apache Tomcat
+Configure the Apache Tomcat application server for LDAP authentication and configure security (Java™ Platform, Enterprise Edition) in the web.xml file of the Application Center.
+
+To configure ACL management of the Application Center, configure LDAP for user authentication, map the Java™ EE roles of the Application Center to the LDAP roles, and configure the Application Center properties for LDAP authentication. Only the simple type of LDAP authentication is supported.
+
+* [Configuration of LDAP authentication (Apache Tomcat)](#configuration-of-ldap-authentication-apache-tomcat)
+* [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)
+
+##### Configuration of LDAP authentication (Apache Tomcat)
+Define the users who can access the Application Center console and the users who can log in with the mobile client by mapping Java™ Platform, Enterprise Edition roles to LDAP roles.
+
+To configure ACL management of the Application Center, follow this process:
+
+* Configure LDAP for user authentication.
+* Map the Java Platform, Enterprise Edition (Java EE) roles of the Application Center to the LDAP roles.
+* Configure theApplication Center properties for LDAP authentication.
+
+**Restriction:** Only the simple type of LDAP authentication is supported.
+
+You configure the Apache Tomcat server for LDAP authentication and configure security (Java™ Platform, Enterprise Edition) in the web.xml file of theApplication Center Services web application (**applicationcenter.war**) and of the Application Center Console web application (**appcenterconsole.war**).
+
+**LDAP user authentication**  
+You must configure a **JNDIRealm** in the **server.xml** file in the `<Host>` element. For more information about configuring a realm, see the Realm Component on the Apache Tomcat website.
+
+**Example of configuration on Apache Tomcat to authenticate against an LDAP server**  
+This example shows how to configure user authentication on an Apache Tomcat server by comparing with the authorization of these users on a server enabled for LDAP authentication.
+
+```xml
+<Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
+ ...
+<Realm className="org.apache.catalina.realm.JNDIRealm"
+       connectionURL="ldap://bluepages.ibm.com:389"
+       userSubtree="true"
+       userBase="ou=bluepages,o=ibm.com"
+       userSearch="(emailAddress={0})"
+       roleBase="ou=ibmgroups,o=ibm.com"
+       roleName="cn"
+       roleSubtree="true"
+       roleSearch="(uniqueMember={0})"
+       allRolesMode="authOnly"
+       commonRole="appcenter"/>
+ ...
+</Host>
+```
+
+The value of **connectionURL** is the LDAP URL of your LDAP server.
+
+The **userSubtree**, **userBase**, and **userSearch** attributes define how to use the name that is given to the Application Center in login form (in the browser message box) to match an LDAP user entry.
+
+In the example, the definition of **userSearch** specifies that the user name is used to match the email address of an LDAP user entry.
+
+The basis or scope of the search is defined by the value of the **userBase** attribute. In LDAP, an information tree is defined; the user base indicates a node in that tree.
+
+Set the value of **userSubtree** to true; if it is set to **false**, the search runs only on the direct child nodes of the user base. It is important that the search penetrates the subtree and does not stop at the first level.
+
+For authentication, you define only the **userSubtree**, **userBase**, and **userSearch** attributes. The Application Center also uses Java EE security roles. Therefore, you must map LDAP attributes to some Java EE roles. These attributes are used for mapping LDAP attributes to security roles:
+
+* **roleBase**
+* **roleName**
+* **roleSubtree**
+* **roleSearch**
+
+In this example, the value of the **roleSearch** attribute matches all LDAP entries with a **uniqueMember** attribute whose value is the **Distinguished Name (DN)** of the authenticated user.
+
+* The **roleBase** attribute specifies a node in the LDAP tree below which the roles are defined.
+* The **roleSubtree** attribute indicates whether the LDAP search should search the entire subtree, whose root is defined by the value of **roleBase**, or only the direct child nodes.
+* The **roleName** attribute defines the name of the LDAP attribute.
+* The **allRolesMode** attribute specifies that you can use the asterisk (\*) character as the value of **role-name** in the 
+**web.xml** file. This attribute is optional.
+* The **commonRole** attribute adds a role that is shared by all authenticated users. This attribute is optional.
+
+**Mapping the Java EE roles of the Application Center to LDAP roles**  
+After you define the LDAP request for the Java EE roles, you must change the **web.xml** file of the Application Center Services web application (**applicationcenter.war**) and of the Application Center Console web application (**appcenterconsole.war**) to map the Java EE roles of **appcenteradmin** and **appcenteruser** to the LDAP roles.
+
+These examples, where LDAP users have LDAP roles, called **MyLdapAdmin** and **MyLdapUser**, show where and how to change the web.xml file. Replace the names **MyLdapAdmin** and **MyLdapUser** with the roles that are defined in your LDAP. Modify the following files:
+
+* **tomcat\_install\_dir/webapps/appcenterconsole/WEB-INF/web.xml**
+* **tomcat\_install\_dir/webapps/applicationcenter/WEB-INF/web.xml**
+
+**The security-role-ref element in the JAX_RS servlet**  
+
+```xml
+<servlet>
+    <servlet-name>...</servlet-name>
+    <servlet-class>...</servlet-class>
+        <init-param>
+            ...		
+        </init-param>
+       <load-on-startup>1</load-on-startup>
+       <security-role-ref>
+           <role-name>appcenteradmin</role-name>
+           <role-link>MyLdapAdmin</role-link>
+       </security-role-ref>
+       <security-role-ref>
+           <role-name>appcenteruser</role-name>
+           <role-link>MyLdapUser</role-link>
+       </security-role-ref>
+</servlet>
+```
+
+**The security-role element**  
+
+```xml
+<security-role>
+    <role-name>MyLdapAdmin</role-name>
+</security-role>
+<security-role>
+    <role-name>MyLdapUser</role-name>
+</security-role>
+```
+
+**The auth-constraint element**  
+After you edit the **security-role-ref** and the **security-role** elements, you can use the roles that are defined in the **auth-constraint** elements to protect the web resources. Edit these roles for the **appcenteradminConstraint** element in both the **web.xml** file of both **appcenterconsole** and **applicationcenter**, and for the **appcenteruserConstraint** element in the **appcenterconsole** **web.xml** file.
+
+```xml
+<security-constraint>
+        <display-name>appcenteradminConstraint</display-name>
+        <web-resource-collection>
+            ...
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>MyLdapAdmin</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            ...
+        </user-data-constraint>
+</security-constraint>
+```
+
+and
+
+```xml
+<security-constraint>
+        <display-name>appcenteruserConstraint</display-name>
+        <web-resource-collection>
+            ...
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>MyLdapUser</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            ... 
+        </user-data-constraint>
+</security-constraint>
+```
+
+#### Configuring LDAP ACL management (Apache Tomcat)
+Use LDAP to define the users and groups who can install mobile applications with the Application Center by defining the Application Center LDAP properties through JNDI.
+
+To configure LDAP ACL management of the Application Center; add an entry for each property in the `<context>` section of the IBM® Application Center Services application in the server.xml file. This entry should have the following syntax:
+
+```xml
+<Environment name="JNDI_property_name" value="property_value" type="java.lang.String" override="false"/>
+```
+
+Where: 
+
+* **JNDI\_property\_name** is the name of the property you are adding.
+* **property\_value** is the value of the property you are adding.
+
+| Property | Description | 
+|----------|-------------|
+| ibm.appcenter.ldap.active | Set to true to enable LDAP; set to false to disable LDAP. |
+| ibm.appcenter.ldap.federated.active | Since WebSphere® Application Server Liberty profile V8.5.5: set to true to enable use of the federated registry; set to false to disable use of the federated registry, which is the default setting. | 
+| ibm.appcenter.ldap.connectionURL | LDAP connection URL. | 
+| ibm.appcenter.ldap.user.base | Search base of users. | 
+| ibm.appcenter.ldap.user.loginName | LDAP login attribute. |
+| ibm.appcenter.ldap.user.displayName | LDAP attribute for the user name to be displayed, for example, a person's full name. |
+| ibm.appcenter.ldap.group.base | Search base of groups. |
+| ibm.appcenter.ldap.group.name | LDAP attribute for the group name. |
+| ibm.appcenter.ldap.group.uniquemember | LDAP attribute that identifies the members of a group. |
+| ibm.appcenter.ldap.user.groupmembership | LDAP attribute that identifies the groups to which a user belongs. |
+| ibm.appcenter.ldap.group.nesting | Management of nested groups: if nested groups are not managed, set the value to false. |
+| ibm.appcenter.ldap.user.filter |  LDAP user search filter for the attribute of user login name. Use %v as the placeholder for the login name attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.displayName.filter | LDAP user search filter for the attribute of user display name. Use %v as the placeholder for the display name attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.group.filter | LDAP group search filter. Use %v as the placeholder for the group attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
+| ibm.appcenter.ldap.security.sasl | The value of the security authentication mechanism when the LDAP external SASL authentication mechanism is required to bind to the LDAP server. The value depends on the LDAP server; usually, it is set to "EXTERNAL". | 
+| ibm.appcenter.ldap.security.binddn | Property that identifies the distinguished name of the user permitted to search the LDAP directory. Use this property only if security binding is required. |
+| ibm.appcenter.ldap.security.bindpwd | Property that identifies the password of the user who is allowed to search the LDAP directory. Use this property only if security binding is required. The password can be encoded with the "Liberty profile securityUtility" tool. Run the tool and then set the value of this property to the encoded password generated by the tool. The supported encoding types are xor and aes. Edit the Liberty profile server.xml file to check whether the classloader is enabled to load the JAR file that decodes the password. | 
+| ibm.appcenter.ldap.cache.expiration.seconds | elay in seconds before the LDAP cache expires. If no value is entered, the default value is 86400, which is equal to 24 hours. Changes to users and groups on the LDAP server become visible to the Application Center after a delay, which is specified by **ibm.appcenter.ldap.cache.expiration.seconds**. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call this command to clear the cache of LDAP data: `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` See [Using the stand-alone tool to clear the LDAP cache](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.appcenter.doc/appcenter/t_ac_ant_clear_ldapcache.html?view=kc#usingthestand-alonetooltocleartheldapcache) for details. | 
+| ibm.appcenter.ldap.referral | Property that indicates whether referrals are supported by the JNDI API. If no value is given, the JNDI API will not handle LDAP referrals. Possible values are: <ul><li>ignore: ignores referrals found in the LDAP server.</li><li>follow: automatically follows any referrals found in the LDAP server.</li><li>throw: causes an exception to occur for each referral found in the LDAP server.</li></ul> | 
+
+See [JNDI properties for Application Center](#jndi-properties-for-application-center) for a complete list of LDAP properties that you can set.
+
+The example shows properties defined in the **server.xml** file.
+
+```xml
+<Environment name="ibm.appcenter.ldap.active" value="true" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.connectionURL" value="ldaps://employees.com:636" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.base" value="dc=ibm,dc=com" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.loginName" value="uid" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.displayName" value="cn" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.groupmembership" value="ibm-allGroups" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.group.base" value="dc=ibm,dc=com" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.group.name" value="cn" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.group.uniquemember" value="uniquemember" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.cache.expiration.seconds" value="43200" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.security.sasl" value="EXTERNAL" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.security.referral" value="follow" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.filter" value="(&amp;(uid=%v)(objectclass=inetOrgPerson))" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.user.displayName.filter" value="(&amp;(cn=%v)(objectclass=inetOrgPerson))" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.ldap.group.filter" value="(&amp;(cn=%v)(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames)))" type="java.lang.String" override="false"/>
+```
+
+### Configuring properties of DB2 JDBC driver in WebSphere Application Server
+Add some JDBC custom properties to avoid DB2® exceptions from a WebSphere® Application Server that uses the IBM® DB2 database.
+
+When you use WebSphere Application Server with an IBM DB2 database, this exception could occur:
+
+```bash
+Invalid operation: result set is closed. ERRORCODE=-4470, SQLSTATE=null
+```
+
+To avoid such exceptions, you must add custom properties in WebSphere Application Server at the Application Center data source level.
+
+1. Log in to the WebSphere Application Server administration console.
+2. Select **Resources → JDBC → Data sources → Application Center DataSource name → Custom properties** and click **New**.
+3. In the **Name** field, enter **allowNextOnExhaustedResultSet**.
+4. In the **Value** field, type **1**.
+5. Change the type to **java.lang.Integer**.
+6. Click **OK**.
+7. Click **New**.
+8. In the **Name** field, enter **resultSetHoldability**.
+9. In the **Value** field, type **1**.
+10. Change the type to **java.lang.Integer**.
+11. Click **OK** and save your changes.
+
+### Managing the DB2 transaction log size
+When you upload an application that is at least 40 MB with IBM MobileFirst™ Platform Application Center console, you might receive a transaction log full error.
+
+The following system output is an example of the **transaction log full** error code.
+
+```bash
+DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
+```
+
+The content of each application is stored in the Application Center database.
+
+The active log files are defined in number by the **LOGPRIMARY** and **LOGSECOND** database configuration parameters, and in size by the LOGFILSIZ database configuration parameter. A single transaction cannot use more log space than **LOGFILSZ * (LOGPRIMARY + LOGSECOND) * 4096 KB**.
+
+The `DB2 GET DATABASE CONFIGURATION` command includes information about the log file size, and the number of primary and secondary log files.
+
+Depending on the largest size of the MobileFirst application that is deployed, you might need to increase the DB2® log space.
+
+Using the `DB2 update db cfg` command, increase the **LOGSECOND** parameter. Space is not allocated when the database is activated. Instead, the space is allocated only as needed.
+
+### Defining the endpoint of the application resources
+When you add a mobile application from the Application Center console, the server-side component creates Uniform Resource Identifiers (URI) for the application resources (package and icons). The mobile client uses these URI to manage the applications on your device.
+
+To manage the applications on your device, the Application Center console must be able to locate the Application Center REST services and to generate the required number of URI that enable the mobile client to find the Application Center REST services.
+
+By default, the URI protocol, host name, and port are the same as those defined in the web application server used to access the Application Center console; the context root of the Application Center REST services is **applicationcenter**. When the context root of the Application Center REST services is changed or when the internal URI of the web application server is different from the external URI that can be used by the mobile client, the externally accessible endpoint (protocol, host name, and port) of the application resources must be defined by configuring the web application server. (Reasons for separating internal and external URI could be, for example, a firewall or a secured reverse proxy that uses HTTP redirection.)
+
+The following figure shows a configuration with a secured reverse proxy that hides the internal address (192.168...). The mobile client must use the external address (**appcntr.net**).
+
+![Configuration with secured reverse proxy](ac_proxyconfig_hiddenintadd.jpg)
+
+#### Endpoint properties
+
+| Property name | Purpose | Example |
+|---------------|---------|---------|
+| ibm.appcenter.services.endpoint | This property enables the Application Center console to locate the Application Center REST services. The value of this property must be specified as the external address and context root of the applicationcenter.war web application. You can use the asterisk (\*) character as wildcard to specify that the Application Center REST services use the same value as the Application Center console. For example: *://*:*/appcenter means use the same protocol, host, and port as the Application Center console, but use appcenter as context root. This property must be specified for the Application Center console application. | https://appcntr.net:443/applicationcenter | 
+| ibm.appcenter.proxy.protocol | This property specifies the protocol required for external applications to connect to the Application Center. | https | 
+| ibm.appcenter.proxy.host | This property specifies the host name required for external applications to connect to the Application Center. | appcntr.net | 
+| ibm.appcenter.proxy.port | This property specifies the port required for external applications to connect to the Application Center. | 443 | 
+
+#### Jump to
+* [Configuring the endpoint of application resources (full profile)](#configuring-the-endpoint-of-application-resources-full-profile)
+* [Configuring the endpoint of the application resources (Liberty profile)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
+* [Configuring the endpoint of the application resources (Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
+
+#### Configuring the endpoint of application resources (full profile)
+For the WebSphere® Application Server full profile, configure the endpoint of the application resources in the environment entries of the Application Center services and the Application Center console applications. The procedure differs depending on whether you deployed WAR files or an EAR file.
+
+##### If you deployed WAR files
+Follow this procedure when you must change the URI protocol, host name, and port used by the mobile client to manage the applications on your device. Since IBM® Worklight® V6.0, you use JNDI environment entries.
+
+For a complete list of JNDI properties, see [JNDI properties for Application Center](#jndi-properties-for-application-center).
+
+1. Log in to the WebSphere Application Server console.
+2. Select **Applications → Application Types → WebSphere enterprise applications**.
+3. Click **IBM Application Center Services**.
+4. In the **Web Module Properties** section, select **Environment entries for Web modules**.
+5. Assign the appropriate values for the following environment entries:
+    * For **ibm.appcenter.proxy.host**, assign the host name.
+    * For **ibm.appcenter.proxy.port**, assign the port number.
+    * For **ibm.appcenter.proxy.protocol**, assign the external protocol.
+    * Click **OK** and save the configuration.
+6. Select **Applications → Application Types → WebSphere enterprise applications**.
+7. Click **IBM Application Center Console**.
+8. In the **Web Module Properties** section, select **Environment entries for Web modules**.
+9. For **ibm.appcenter.services.endpoint**, assign the full URI of the Application Center REST services (the URI of the **applicationcenter.war** file).
+    * In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN.
+    * You can use the asterisk (\*) character as wildcard to specify that the Application Center REST services use the same value as the Application Center console.
+    
+    For example: `*://*:*/appcenter` means use the same protocol, host, and port as the Application Center console, but use appcenter as the context root.
+10. Click **OK** and save the configuration.
+
+##### If you deployed an EAR file
+
+1. Log in to the WebSphere Application Server console.
+2. Select **Applications → Application Types → WebSphere enterprise applications**.
+3. Click **AppCenterEAR**.
+4. In the **Web Module Properties** section, select **Environment entries for Web modules**.
+5. Assign the appropriate values for the following environment entries:
+    * For **ibm.appcenter.proxy.host**, assign the host name.
+    * For **ibm.appcenter.proxy.port**, assign the port number.
+    * For **ibm.appcenter.proxy.protocol**, assign the external protocol.
+6. For **ibm.appcenter.services.endpoint**, assign the full URI of the Application Center REST services (the URI of the **applicationcenter.war** file).
+    * In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN.
+    * You can use the asterisk (\*) character as wildcard to specify that the Application Center REST services use the same value as the Application Center console.
+
+    For example: `*://*:*/appcenter` means use the same protocol, host, and port as the Application Center console, but use appcenter as the context root.
+7. Click OK and save the configuration.
+
+#### Configuring the endpoint of the application resources (Liberty profile)
+For the Liberty profile, configure the endpoint of the application resources through the JNDI environment.
+
+Since IBM® Worklight® V6.0, follow this procedure when you must change the URI protocol, host name, and port used by the Application Center client to manage the applications on your device.
+
+Edit the **server.xml** file. To be able to define JNDI entries, the `<feature>` element must be defined correctly in the **server.xml** file:
+
+```xml
+<feature>jndi-1.0</feature>
+```
+
+Add an entry for each property in the `<server>` section of the **server.xml** file. This entry should have the following syntax:
+
+```xml
+<jndiEntry jndiName="JNDI_property_name" value="property_value"/>
+```
+
+Where:
+
+* **JNDI\_property\_name** is the name of the property that you are adding.
+* **property\_value** is the value of the property that you are adding.
+
+| Property | Description | 
+|----------|-------------|
+| ibm.appcenter.services.endpoint | The URI of the Application Center REST services. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN. | 
+| ibm.appcenter.proxy.protocol	The protocol of the application resources URI. This property is optional. It is only needed if the protocol of the external and of the internal URI are different. | 
+| ibm.appcenter.proxy.host | The host name of the application resources URI. | 
+| ibm.appcenter.proxy.port | The port of the application resources URI. This property is optional. It is only needed if the protocol of the external and of the internal URI are different. | 
+
+For a complete list of LAPD properties that you can set, see [JNDI properties for Application Center](#jndi-properties-for-application-center).
+
+##### Example of setting properties for configuring the endpoint
+This example shows the settings of the properties in the **server.xml** file required for configuring the endpoint of the application resources.
+
+```xml
+<jndiEntry jndiName="ibm.appcenter.services.endpoint" value=" https://appcntr.net:443/applicationcenter" />
+<jndiEntry jndiName="ibm.appcenter.proxy.protocol" value="https" />
+<jndiEntry jndiName="ibm.appcenter.proxy.host" value="appcntr.net" />
+<jndiEntry jndiName="ibm.appcenter.proxy.port"  value=" 443"/>
+```
+
+You can use the asterisk (\*) character as wildcard to specify that the Application Center REST services use the same value as the Application Center console. For example: `*://*:*/appcenter` means use the same protocol, host, and port as the Application Center console, but use **appcenter** as context root.
+
+#### Configuring the endpoint of the application resources (Apache Tomcat)
+For the Apache Tomcat server, configure the endpoint of the application resources in the **server.xml** file.
+
+Since IBM® Worklight® V6.0, follow this procedure when you must change the URI protocol, host name, and port used by the Application Center client to manage the applications on your device.
+
+Edit the **server.xml** file in the conf directory of your Apache Tomcat installation.  
+Add an entry for each property in the `<context>` section of the corresponding application. This entry should have the following syntax:
+
+```xml
+<Environment name="JNDI_property_name" value="property_value" type="property_type" override="false"/>
+```
+
+Where:
+
+* **JNDI\_property\_name** is the name of the property you are adding.
+* **property\_value** is the value of the property you are adding.
+* **property\_type** is the type of the property you are adding.
+
+| Property | Type | Description |
+|----------|------|-------------|
+| ibm.appcenter.services.endpoint | java.lang.String | The URI of the Application Center REST services (applicationcenter.war). In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN. | 
+| ibm.appcenter.proxy.protocol | java.lang.String | The protocol of the application resources URI. This property is optional. It is only needed if the protocol of the external and of the internal URI are different. | 
+| ibm.appcenter.proxy.host | java.lang.String | The host name of the application resources URI. | 
+| ibm.appcenter.proxy.port | java.lang.Integer | The port of the application resources URI. This property is optional. It is only needed if the protocol of the external and of the internal URI are different. | 
+
+For a complete list of JNDI properties that you can set, see [JNDI properties for Application Center](#jndi-properties-for-application-center).
+
+##### Example of setting server.xml properties for configuring the endpoint
+This example shows the settings of the properties in the **server.xml** file required for configuring the endpoint of the application resources.
+
+In the `<context>` section of the Application Center console application:
+
+```xml
+<Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
+```
+
+You can use the asterisk (\*) character as wildcard to specify that the Application Center REST services use the same value as the Application Center console. For example: `*://*:*/appcenter` means use the same protocol, host, and port as the Application Center console, but use appcenter as context root.
+
+In the `<context>` section of the Application Center services application:
+
+```xml
+<Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.proxy.protocol" value="https" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.proxy.host" value="appcntr.net" type="java.lang.String" override="false"/>
+<Environment name="ibm.appcenter.proxy.port"  value="443" type="java.lang.Integer" override="false"/>
+```
+
+### Configuring Secure Sockets Layer (SSL)
+Learn about configuring SSL for the Application Center on supported application servers and the limitations of certificate verification on mobile operating systems.
+
+You can configure the Application Center with SSL or without SSL, **unless** you intend to install applications on iOS devices. For iOS applications, you must configure the Application Center server with SSL.
+
+SSL transmits data over the network in a secured channel. You must purchase an official SSL certificate from an SSL certificate authority. The SSL certificate must be compatible with Android and iOS. Self-signed certificates do not work with the Application Center.
+
+When the client accesses the server through SSL, the client verifies the server through the SSL certificate. If the server address matches the address that is filed in the SSL certificate, the client accepts the connection. For the verification to be successful, the client must know the root certificate of the certificate authority. Many root certificates are preinstalled on Android and iOS devices. The exact list of pre-installed root certificates varies between versions of mobile operating systems.
+
+For information about the mobile operating system versions that support its certificates, consult the SSL certificate authority.
+
+If the SSL certificate verification fails, a normal web browser requests confirmation to contact an untrusted site. The same behavior occurs when you use a self-signed certificate that was not purchased from a certificate authority. When mobile applications are installed, this control is not performed by a normal web browser, but by operating system calls.
+
+Some versions of Android, iOS, and Windows Phone operating systems do not support this confirmation dialog in system calls. This limitation is a reason to avoid self-signed certificates or SSL certificates that are not suited to mobile operating systems. On Android, iOS, and Windows Phone operating systems, you can install a self-signed CA certificate on the device to enable the device to handle system calls regarding this self-signed certificate. This practice is not appropriate for Application Center in a production environment, but it can be suitable during the testing period. For details, see [Managing and installing self-signed CA certificates in an Application Center test environment]().
+
+#### Jump to
+* [Configuring SSL for WebSphere Application Server full profile](#configuring-ssl-for-websphere-application-full-profile)
+* [Configuring SSL for Liberty profile](#configuring-ssl-for-liberty-profile)
+* [Configuring SSL for Apache Tomcat](#configuring-ssl-apache-tomcat)
+* [Managing and installing self-signed CA certificates in an Application Center test environment](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)
+
+##### Configuring SSL for WebSphere Application Server full profile
+Request a Secure Sockets Layer (SSL) certificate and process the received documents to import them into the keystore.  
+This procedure indicates how to request an SSL certificate and import it and the chain certificate into your keystore.
+
+1. Create a request to a certificate authority; in the WebSphere® administrative console, select **Security → SSL certificate and key management → Key stores and certificates → keystore → Personal certificate requests → New**, where **keystore** identifies your keystore.
+
+    The request is sent to the certificate authority.
+
+2. When you receive the SSL certificate, import it and the corresponding chain certificate into your keystore by following the instructions provided by the certificate authority. In the WebSphere administrative console, you can find the corresponding option in **Security → SSL certificate and key management → Manage endpoint security configurations → node SSL settings → Key stores and certificates → keystore → Personal certificates → certificate → Receive a certificate from a certificate authority**.
+
+    Where:  
+    * **node SSL settings** shows the SSL settings of the nodes in your configuration.
+    * **keystore** identifies your keystore.
+    * **certificate** identifies the certificate that you received.
+
+3. Create an SSL configuration. See the instructions in the user documentation that corresponds to the version of the WebSphere Application Server full profile that supports your applications.
+
+You can find configuration details in the WebSphere administrative console at **Security → SSL certificate and key management → Manage endpoint security configurations → SSL Configurations**.
+
+##### Configuring SSL for Liberty profile
+Create a keystore, import the Secure Socket Layer (SSL) certificate, and edit the server.xml file to configure SSL on Liberty profile.  
+Follow the steps in this procedure to configure SSL on Liberty profile.
+
+1. Create a keystore for your web server; use the **securityUtility** with the **createSSLCertificate** option. See [Enabling SSL communication for the Liberty profile]() for more information.
+2. Import the SSL certificate and the corresponding chain certificate into your keystore by following the instructions provided by the certificate authority.
+3. Enable the ssl-1.0 Liberty feature in the **server.xml** file.
+
+    ```xml
+    <featureManager>
+      <feature>ssl-1.0</feature>
+    </featureManager>
+    ```
+
+4. Add the keystore service object entry to the server.xml file. The **keyStore** element is called **defaultKeyStore** and contains the keystore password. For example:
+
+    ```xml
+    <keyStore id="defaultKeyStore" location="/path/to/myKeyStore.p12"
+          password="myPassword" type="PKCS12"/>
+    ```
+    
+5. Make sure that the value of the **httpEndpoint** element in the **server.xml** file defines the httpsPort attribute. For example:
+
+    ```xml
+    <httpEndpoint id="defaultHttpEndpoint” host="*" httpPort="9080” httpsPort="9443" >
+    ```
+    
+6. Restart the web server. Now you can access the web server by `https://myserver:9443/...`
+
+##### Configuring SSL for Apache Tomcat
+Create a keystore, import the Secure Socket Layer (SSL) certificate, and edit the **conf/server.xml** file to define a connector for SSL on Apache Tomcat.
+Follow the steps in this procedure to configure SSL on Apache Tomcat. See [SSL Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html) for more details and examples of configuring SSL for Apache Tomcat.
+
+1. Create a keystore for your web server. You can use the Java™ **keytool** command to create a keystore.
+    
+    ```bash
+    keytool -genkey -alias tomcat -keyalg RSA -keystore /path/to/keystore.jks
+    ```
+    
+2. Import the SSL certificate and the corresponding chain certificate into your keystore by following the instructions provided by the certificate authority.
+3. Edit the **conf/server.xml** file to define a connector to use SSL. This connector must point to your keystore.
+    
+    ```xml
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"
+               keystoreFile="/path/to/keystore.jks"
+               keystorePass="mypassword" />
+    ```
+           
+4. Restart the web server. Now you can access the web server by `https://myserver:8443/...`
+
+##### Managing and installing self-signed CA certificates in an Application Center test environment
+Use self-signed certificate authority (CA) certificates in test environments to install applications with Application Center on a mobile device from a secured server.
+
+**Uploading or deleting a certificate**  
+When you install the Application Center mobile client from OTA (the bootstrap page), the device user must upload and install the self-signed CA file before the Application Center mobile client is installed.
+
+When you use Application Center for a test installation, the administrator might not have a real Secure Sockets Layer (SSL) certificate available. You might want to use a self-signed CA certificate. Such certificates work if they get installed on the device as root certificate.
+As an administrator, you can easily distribute self-signed CA certificates to devices.
+
+The following procedure focuses mostly on the iOS and Android environments. Support for X.509 certificates comes from the individual mobile platforms, not from IBM MobileFirst™ Platform Foundation. For more information about specific requirements for X.509 certificates, see the documentation of each mobile platform.
+
+Managing self-signed certificates: in your role of administrator of Application Center, you can access the list of registered self-signed CA certificates to upload or delete certificates.
+
+1. To display Application Center settings, click the gear icon Icon to access Application Center settings.
+2. To display the list of registered certificates, select **Self Signed Certificates**.
+3. Upload or delete a certificate.
+    * To upload a self-signed CA certificate, in the Application Center console, click **Upload a certificate** and select a certificate file.
+
+    **Note:** The certificate file must be in PEM file format. Typical file name suffixes for this type of file are **.pem, .key, .cer, .cert**. The certificate must be a self-signed one, that is, the values of the **Issuer** and **Subject** fields must be the same. And the certificate must be a CA certificate, that is, it must have the X509 extension named **BasicConstraint** set to **CA:TRUE**.
+
+* To delete a certificate, click the trash can icon on the right of the certificate file name in the list.
+
+**Installing a self-signed CA certificate on a device**  
+Registered self-signed CA certificates are available through the bootstrap page at `http://hostname:portnumber/appcenterconsole/installers.html`.
+
+Where: 
+
+* **hostname** is the name of the server that hosts the Application Center console.
+* **portnumber** is the corresponding port number.
+
+1. Click the **SSL Certificates** tab.
+2. To display the details of a certificate, select the appropriate registered certificate.
+3. To download and install the certificate on the device, click **Install**.
+
+### JNDI properties for Application Center
+You can configure some JNDI properties for Application Center.
+
+| Property | Description | 
+|----------|-------------|
+| appcenter.database.type | The database type, which is required only when the database is not specified in appcenter.jndi.name. | 
+| appcenter.jndi.name | The JNDI name of the database. This parameter is the normal mechanism to specify the database. The default value is java:comp/env/jdbc/AppCenterDS. | 
+| appcenter.openjpa.ConnectionDriverName | The fully qualified class name of the database connection driver class. This property is needed only when the database is not specified in appcenter.jndi.name. | 
+| appcenter.openjpa.ConnectionPassword | The password for the database connection. Set this property only when the database is not specified in appcenter.jndi.name. |
+| appcenter.openjpa.ConnectionURL | The URL for the database connection driver class. Set this property only when the database is not specified in appcenter.jndi.name. | 
+| appcenter.openjpa.ConnectionUserName | The user name or the database connection. Set this property only when the database is not specified in appcenter.jndi.name. | 
+
+
+
+### Configuring WebSphere Application Server to support applications in public app stores
+Configure WebSphere® Application Server full profile and Liberty profile before access to public app stores through application links, because of the use of SSL connections.
+
+The constraint imposed by the use of SSL connections requires the root certificates of public app stores to exist in the WebSphere truststore before you can use application links to access these public stores. The configuration requirement applies to both WebSphere Application Server full profile and Liberty profile.
+
+The root certificate of Google play must be imported into the WebSphere truststore before you can use application links to Google play.  
+The root certificate of Apple iTunes must be imported into the WebSphere truststore before you can use application links to iTunes.
+
+#### Jump to
+* [Configuring WebSphere Application Server to support applications in Google play](#configuring-websphere-application-server-to-support-applications-in-google-play)
+* [Configuring WebSphere Application Server to support applications in Apple iTunes](#configuring-websphere-application-server-to-support-applications-in-apple-itunes)
+* [Configuring Liberty profile when IBM JDK is used](#configuring-liberty-profile-when-ibm-jdk-is-used)
+
+#### Configuring WebSphere Application Server to support applications in Google play
+Configure WebSphere® Application Server to enable links in the Application Center console to access applications in Google play.
+
+Follow this procedure to import the root certificate of Google play into the WebSphere truststore. You must import this certificate before the Application Center can support links to applications stored in Google Play.
+
+1. Log in to the WebSphere Application Server console and navigate to **Security → SSL certificate and key management → Key stores and certificates → NodeDefaultTrustStore → Signer certificates**.
+2. Click **Retrieve from port**.
+3. In the **Host** field, enter **play.google.com**.
+4. In the **Port** field, enter **443**.
+5. In the **Alias** field, enter **play.google.com**.
+6. Click **Retrieve signer information**.
+7. Click **OK** and save the configuration.
+
+#### Configuring WebSphere Application Server to support applications in Apple iTunes
+Configure WebSphere® Application Server to enable links in the Application Center console to access applications in Apple iTunes.
+
+Follow this procedure to import the root certificate of Apple iTunes into the WebSphere truststore. You must import this certificate before the Application Center can support links to applications stored in iTunes.
+
+1. Log in to the WebSphere Application Server console and navigate to **Security → SSL certificate and key management → Key stores and certificates → NodeDefaultTrustStore → Signer certificates**.
+2. Click **Retrieve from port**.
+3. In the **Host** field, enter **itunes.apple.com**.
+4. In the **Port** field, enter 443.
+5. In the **Alias** field, enter **itunes.apple.com**.
+6. Click **Retrieve signer information**.
+7. Click **OK** and save the configuration.
+
+#### Configuring Liberty profile when IBM JDK is used
+Configure Liberty profile to use default JSSE socket factories instead of SSL socket factories of WebSphere® Application Server when IBM® JDK is used.
+
+The purpose is to configure the IBM JDK SSL factories to be compatible with Liberty profile. This configuration is required only when IBM JDK is used. The configuration does not apply for use of Oracle JDK. By default, IBM JDK uses the SSL socket factories of WebSphere Application Server. These factories are not supported by Liberty profile.
+
+##### Exception when WebSphere Application Server SSL socket factories are used
+If you use the IBM JDK of WebSphere Application Server, this exception could occur because this JDK uses SSL socket factories that are not supported by the Liberty profile. In this case, follow the requirements documented in [Troubleshooting tips](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_trouble.html?view=kc).
+
+```bash
+java.net.SocketException: java.lang.ClassNotFoundException: Cannot find the specified class com.ibm.websphere.ssl.protocol.SSLSocketFactory
+      at javax.net.ssl.DefaultSSLSocketFactory.a(SSLSocketFactory.java:11)
+      at javax.net.ssl.DefaultSSLSocketFactory.createSocket(SSLSocketFactory.java:6)
+      at com.ibm.net.ssl.www2.protocol.https.c.afterConnect(c.java:161)
+      at com.ibm.net.ssl.www2.protocol.https.d.connect(d.java:36)
+      at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1184)
+      at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:390)
+      at com.ibm.net.ssl.www2.protocol.https.b.getResponseCode(b.java:75)
+      at com.ibm.ws.jmx.connector.client.rest.internal.RESTMBeanServerConnection.loadJMXServerInfo(RESTMBeanServerConnection.java:142)
+      at com.ibm.ws.jmx.connector.client.rest.internal.RESTMBeanServerConnection.<init>(RESTMBeanServerConnection.java:114)
+      at com.ibm.ws.jmx.connector.client.rest.internal.Connector.connect(Connector.java:315)
+      at com.ibm.ws.jmx.connector.client.rest.internal.Connector.connect(Connector.java:103)
+```

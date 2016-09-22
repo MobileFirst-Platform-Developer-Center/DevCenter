@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Installing and configuring for token licensing
+breadcrumb_title: Token licensing
 weight: 6
 ---
 ## Overview
