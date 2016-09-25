@@ -40,11 +40,9 @@ If you do not have a database installed, the installation process can also insta
 
 1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
-    > For more information, see the topic about installing MobileFirst Server, in the user documentation.
+    > For more information, see the topic about [installing MobileFirst Server](../installation-configuration).
 
     Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
-
-    > For more information, see the topic about configuring Secure Sockets Layer (SSL), in the user documentation.
 
 2. After Application Center is installed with IBM Installation Manager, open the console: `http://localhost:9080/appcenterconsole`
 
@@ -52,13 +50,13 @@ If you do not have a database installed, the installation process can also insta
 
 4. At this point, you can configure user authentication. For example, you can connect to an LDAP repository.
 
-    > For more information, see the topic about configuring the Application Center after installation, in the user documentation.
+    > For more information, see the topic about [configuring the Application Center after installation](../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
 5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8, as explained in  [Preparing mobile clients](http://ibm.biz/knowctr#SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/appcenter/c_configuration_of_the_applicati.html).
 
 The mobile client is the mobile application that you use to browse the catalog and install the application.
 
-> **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center. For more information, see the user documentation.
+> **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
 ## Preparing mobile clients
 ### For Android phones and tablets
@@ -68,7 +66,7 @@ The mobile client is delivered as a compiled application (APK) and is located at
 
 1. Compile and sign the client application provided in source code. This is mandatory.
 
-2. In MobileFirst Studio, open the IBMAppCenter Project at: **install_dir/ApplicationCenter/installer**
+2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
 
 3. Use **Run As > Run on MobileFirst Development Server** to build the project.
 
@@ -79,14 +77,14 @@ You can either open the resulting native project (in **iphone\native**) manually
 
 * To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-A BlackBerry project is provided in: **install_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
 
 ### For Windows Phone 8
 
 1.  Register a company account with Microsoft.  
 Application Center manages only company applications that are signed with the company certificate that comes with your company account.
 
-2. The Windows Phone version of the mobile client is included at: **install_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
+2. The Windows Phone version of the mobile client is included at: **install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
 
 * Make sure that also the Application Center mobile client is signed with this company certificate.
 
@@ -103,7 +101,7 @@ Application Center manages only company applications that are signed with the co
 
 ### For Windows Store Apps for Windows 8.1 Pro
 
-* The **install_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
+* The **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
 
 * Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
@@ -174,7 +172,7 @@ You must add Application Center mobile client applications to the catalog.
 4. In the Application Details page, select **Installer** to indicate that this application is a mobile client.
 5. Click **Done** to add the Application Center app to the catalog.
 
-The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
+The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
 
 ### Windows Phone 8
 On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
