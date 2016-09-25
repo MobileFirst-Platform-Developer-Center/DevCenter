@@ -24,11 +24,7 @@ In Cordova applications, no setup is required and initialization is built-in.
 ### JavaScript (Web)
 In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web) tutorial.  
 Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
-<<<<<<< HEAD
-	
-	Reference Analytics in the `HEAD` element:
-=======
->>>>>>> 24d1bc6530524ccf9bbe7737c282bafc582c2c92
+
 
 Reference MobileFirst Analytics in the `HEAD` element:
 
@@ -55,11 +51,8 @@ Or, if using RequireJS, write:
 	});
 ```
 
-<<<<<<< HEAD
-
-=======
 Note that you can select your own namespace to replace "ibmmfpfanalytics".
->>>>>>> 24d1bc6530524ccf9bbe7737c282bafc582c2c92
+
 
 ```javascript
 	ibmmfpfanalytics.logger.config({analyticsCapture: true});
@@ -93,11 +86,8 @@ Inside the `onCreate` method of your main activity include:
 WLAnalytics.init(this.getApplication());
 ```
 
-<<<<<<< HEAD
-## Enabling/Disabling Client Event Types
-=======
+
 ## Enabling/disabling client event types
->>>>>>> 24d1bc6530524ccf9bbe7737c282bafc582c2c92
 The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their Analytics Console.
 
 The MobileFirst Analytics API allows for the capturing of the following metrics.
@@ -164,13 +154,11 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 To enable client lifecycle event logging:
 
 **Objective-C:**
-
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
 **Swift:**
-
 ```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
@@ -178,13 +166,11 @@ WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 To disable client lifecycle event logging:
 
 **Objective-C:**
-
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
 **Swift:**
-
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
@@ -223,19 +209,16 @@ To enable the capture of the network events, it must be initialized in the nativ
 To enable client network-event logging:
 
 **Objective-C:**
-
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
 **Swift:**
-
 ```
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
 To disable client network-event logging:
-
 **Objective-C:**
 
 ```objc
@@ -243,7 +226,6 @@ To disable client network-event logging:
 ```
 
 **Swift:**
-
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
@@ -285,7 +267,6 @@ For the web API, custom data is sent with the `addEvent` method.
 ```javascript
 ibmmfpfanalytics.addEvent({'Purchases':'radio'});
 ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
->>>>>>> 24d1bc6530524ccf9bbe7737c282bafc582c2c92
 ```
 
 #### Android
@@ -308,7 +289,6 @@ WLAnalytics.log("Message", json);
 After importing WLAnalytics, you can now use the API to collect custom data, as follows:
 
 **Objective-C:**
-
 ```objc
 NSDictionary *inventory = @{
     @"property" : @"value",
@@ -319,7 +299,6 @@ NSDictionary *inventory = @{
 ```
 
 **Swift:**
-
 ```swift
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
@@ -382,14 +361,8 @@ WLAnalytics.sharedInstance().unsetUserContext
 WLAnalytics.unsetUserContext();
 ```
 
-<<<<<<< HEAD
-
 ## Sending Analytics Data
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
-=======
-## Sending Analytics data
-Sending Analytics data is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
->>>>>>> 24d1bc6530524ccf9bbe7737c282bafc582c2c92
 
 Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
 
