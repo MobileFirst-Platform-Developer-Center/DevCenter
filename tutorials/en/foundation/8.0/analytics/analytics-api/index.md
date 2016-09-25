@@ -249,16 +249,6 @@ Use the following API methods to create custom events.
 #### JavaScript (Cordova)
 ```javascript
 WL.Analytics.log({"key" : 'value'});
-<<<<<<< HEAD
-
-```
-
-#### JavaScript (Web)
-Depending on how you have referenced the Web SDK:
-
-```javascript
-WLAnalytics.log({"key" : 'value'});
-=======
 ```
 
 #### JavaScript (Web)
