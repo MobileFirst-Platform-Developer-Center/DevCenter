@@ -17,8 +17,14 @@ By default, log capture is enabled. Log capture saves logs to the client and can
 
 To disable log capturing:
 
+### Cordova
 ```javascript
-WL.Logger.config({capture: false})
+WL.Logger.config({capture: false});
+```
+
+### Web
+```javascript
+ibmmfpfanalytics.logger.enable(false);
 ```
 
 ## Sending captured logs
@@ -55,13 +61,12 @@ WL.Logger.config({ maxFileSize: 150000 });
 ```
 
 #### Web apps
-The maximum file size for the web API is 5 mb and cannot be changed.
+The maximum file size for the Web API is 5 mb and cannot be changed.
 
-## Auto Log Sending
+## Auto log sending
 By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
 
 #### Cordova apps
-
 To enable:
 
 ```javascript
@@ -75,7 +80,6 @@ WL.Logger.config({autoSendLogs: false});
 ```
 
 #### Web apps
-
 To enable:
 
 ```javascript
@@ -94,12 +98,12 @@ The MobileFirst client-side SDK makes internal use of the Logger API. By default
 As an example to capture logs only where the level is ERROR for the `myApp` package name, follow these steps.
 
 #### Cordova apps
-1. Use a `logger` instance with the `myApp` package name.
+1. Use a `WL.Logger` instance with the `myApp` package name.
 
     ```javascript
     var logger = WL.Logger.create({ pkg: 'MyApp' });
     ```
-    
+
 2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
 
     ```javascript
@@ -109,14 +113,15 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
         }
     });
     ```
-    
+
 3. **Optional:** Control the filters remotely by fetching a server configuration profile.
 
 #### Web apps
-For the web SDK the level cannot be set by the client. All logging is sent to the server until the client retrieves the server profile.
+For the Web SDK the level cannot be set by the client. All logging is sent to the server until the configuration is changed by retrieving the server configuration profile.
+
 
 ## Fetching server configuration profiles
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the MobileFirst Operations Console, a log level can be set globally (all logger instances) or for a specific package or packages. For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Logging levels can be set by the client or by retrieving configuration profiles from the server. From the MobileFirst Operations Console, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the MobileFirst Operations Console, see [Configuring log filters](../../../analytics/console/log-filters/).  For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
 
 #### Cordova apps
 
@@ -133,6 +138,7 @@ ibmmfpfanalytics.logger.updateConfigFromServer();
 ## Logging example
 Outputs to a browser JavaScript console, LogCat, or Xcode console.
 
+### Cordova
 ```javascript
 var MathUtils = function(){
    var logger = WL.Logger.create({pkg: 'MathUtils'});
@@ -143,3 +149,12 @@ var MathUtils = function(){
    };
 }();
 ```
+
+### Web
+For logging with Web applications, use the preceding example and replace
+
+`var logger = WL.Logger.create({pkg: 'MathUtils'});`
+
+with
+
+`var logger = ibmmfpfanalytics.logger.create({pkg: 'MathUtils'});`
