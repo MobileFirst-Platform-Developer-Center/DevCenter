@@ -14,7 +14,7 @@ branches:
   - content-migration    
   - master
 rvm:
-- 2.1.2 # version of `ruby'
+- 2.2.2 # version of `ruby'
 git:
   depth: 3
 notifications:
