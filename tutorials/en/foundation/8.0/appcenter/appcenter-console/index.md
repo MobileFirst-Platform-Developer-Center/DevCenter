@@ -354,11 +354,103 @@ If the Application Center is connected to an LDAP repository, the search for the
 
 To remove a member from a group, click the cross icon to the right of the user name.
 
+## Access control
+You can decide whether installation of an application on mobile devices is open to any users or whether you want to restrict the ability to install an application.
 
+Installation of applications on a mobile device can be limited to specific users or available to any users.
 
+Access control is defined at the application level and not at the version level.
 
+By default, after an application is uploaded, any user has the right to install the application on a mobile device.
 
+The current access control for an application is displayed in Available Applications for each application. The unrestricted or restricted access status for installation is shown as a link to the page for editing access control.
 
+Installation rights are only about the installation of the application on the mobile device. If access control is not enabled, everybody has access to the application.
 
+## Managing access control
+You can add or remove access for users or groups to install an application on mobile devices.  
+You can edit access control:
 
+1. In Application Management under Available Applications, click the unrestricted or restricted state of Installation of an application.
 
+    ![Where to click on unrestricted or restricted mode](ac_app_access_state.jpg)
+
+2. Select **Access control enabled** to enable access control.
+3. Add users or groups to the access list.
+
+To add a single user or group, enter a name, select the entry in the matching entries found, and click **Add**.
+
+If the Application Center is connected to an LDAP repository, you can search for users and groups in the repository as well as locally defined groups. If the repository is not LDAP, you can search only local groups and registered users. Local groups are exclusively defined in the **Users/Groups** tab. When you use the Liberty profile federated registry, you can only search for users by using the login name; the result is limited to a maximum of 15 users and 15 groups (instead of 50 users and 50 groups).
+
+To register a user at the same time as you add the user to the access list, enter the name and click **Add**. Then you must specify the login name and the display name of the user.
+
+To add all the users of an application, click **Add users from application** and select the appropriate application.  
+To remove access from a user or group, click the cross icon on the right of the name.
+
+![Adding or removing users to the access list](ac_instal_access.jpg)
+
+## Device Management
+You can see the devices that connected to the Application Center from the Application Center mobile client and their properties.
+
+**Device Management** shows under the **Registered Devices** the list of devices that have connected to the Application Center at least once from the Application Center mobile client.
+
+![The device list](ac_reg_devices.jpg)
+
+### Device properties
+Click a device in the list of devices to view the properties of the device or the applications installed on that device.
+
+![Device properties](ac_edit_deviceprops.jpg)
+
+Select **Properties** to view the device properties.
+
+**Name**  
+The name of the device. You can edit this property.
+
+> **Note:** on iOS, the user can define this name in the settings of the device in Settings > General > Information > Name. The same name is displayed on iTunes.
+
+**User Name**  
+The name of the first user who logged into the device.
+
+**Manufacturer**  
+The manufacturer of the device.
+
+**Model**  
+The model identifier.
+
+**Operating System**  
+The operating system of the mobile device.
+
+**Unique identifier**  
+The unique identifier of the mobile device.
+
+If you edit the device name, click **OK** to save the name and return to Registered Devices or **Apply** to save and keep Edit Device Properties open.
+
+### Applications installed on device
+Select **Applications installed on device** to list all the applications installed on the device.
+
+![Applications installed on a device](ac_apps_on_device.jpg)
+
+## Application enrollment tokens in Windows 8 Universal
+The Windows 8 Universal operating system requires users to enroll each device with the company before users can install company applications on their devices. One way to enroll devices is by using an application enrollment token.
+
+Application enrollment tokens enable you to install company applications on a Windows 8 Universal device. You must first install the enrollment token for a specified company on the device to enroll the device with the company. Then, you can install applications that are created and signed by the corresponding company.
+The Application Center simplifies the delivery of the enrollment token. In your role of administrator of the Application Center catalog, you can manage the enrollment tokens from the Application Center console. Once the enrollment tokens are declared in the Application Center console, they are available for Application Center users to enroll their devices.
+
+The enrollment tokens interface available from the Application Center console in the Settings view enables you to manage application enrollment tokens for Windows 8 Universal by registering, updating, or deleting them.
+
+### Managing application enrollment tokens
+In your role of administrator of the Application Center, you can access the list of registered tokens by clicking the gear icon in the screen header to display Application Center Settings. Then, select **Enrollment Tokens** to display the list of registered tokens.
+
+To enroll a device, the device user must upload and install the token file before installing the Application Center mobile client. The mobile client is also a company application. Therefore, the device must be enrolled before the mobile client can be installed.
+
+The registered tokens are available through the bootstrap page at `http://hostname:portnumber/applicationcenter/installers.html`, where **hostname** is the host name of the server hosting the Application Center and **portnumber** is the corresponding port number.
+
+To register a token in the Application Center console, click **Upload Token** and select a token file. The token file extension is aetx.  
+To update the certificate subject of a token, select the token name in the list, change the value, and click OK.  
+To delete a token, click the trash can icon on the right side of the token in the list.
+
+## Signing out of the Application Center console
+For security purposes, you must sign out of the console when you have finished your administrative tasks.
+
+To log out of the secure sign-on to the Application Center console.  
+To sign out of the Application Center console, click **Sign out** next to the Welcome message that is displayed in the banner of every page.
