@@ -17,13 +17,13 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 
 ## App usage Analytics
 
-###Initializing your client app to capture app usage
+### Initializing your client app to capture app usage
 App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
 
 You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
 
 
-####iOS
+#### iOS
 
 Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
 
@@ -57,7 +57,7 @@ WLAnalytics.sharedInstance().send;
 ```
 
 
-####Android
+#### Android
 
 Add the following code in your Application subclass `onCreate` method.
 
@@ -72,7 +72,7 @@ Add the following code in your Application subclass `onCreate` method.
     WLAnalytics.send();
  ```
 
-####Cordova
+#### Cordova
 
 For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
 
@@ -80,7 +80,7 @@ For Cordova apps, the listener must be created in the native platform code, simi
     WL.Analytics.send();
 ```
 
-####Web apps
+#### Web apps
 
 For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
 
@@ -148,7 +148,7 @@ Ensure that you are collecting app lifecycle events as described in [Initializin
 
 The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
 
-####iOS
+#### iOS
 
 **Objective-C**
 
@@ -187,7 +187,7 @@ overridefuncviewDidLoad() {
 ```
 
 
-####Android
+#### Android
 
   ```Java
         Timer timer = new Timer();
@@ -200,7 +200,7 @@ overridefuncviewDidLoad() {
         }, 0, 60000);
   ```
 
-####Cordova
+#### Cordova
 
   ```Java
         setInterval(function() {
@@ -209,7 +209,7 @@ overridefuncviewDidLoad() {
         }, 60000)
   ```
 
-####Web
+#### Web
 
   ```Java
         setInterval(function() {
