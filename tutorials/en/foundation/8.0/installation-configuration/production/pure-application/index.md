@@ -433,7 +433,135 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
 
 ## Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server
+You use a predefined template to deploy a single-node MobileFirst Server to a WebSphere® Application Server full profile server.
 
+This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+
+**Token licensing requirements:** If you use token licensing to license IBM MobileFirst Foundation, review the requirements outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+
+Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
+
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS single node) template](#mobilefirst-platform-was-single-node-template).
+
+1. Create a pattern from the predefined template:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
+    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
+    * In the **Name** field, provide a name for the pattern.
+    * In the **Version** field, specify the version number of the pattern.
+    * Click **Start Building**.
+2. Mandatory for AIX®: In IBM PureApplication System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
+    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
+    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
+    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
+    * Select the **Default AIX add disk** component and specify the following attributes:
+        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
+        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
+        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
+        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
+    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
+    * Save the pattern.
+3. Optional: Configure MobileFirst Server administration. You can skip this step if you want to specify the user credential with MobileFirst Server administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+
+    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
+    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
+    * If you use token licensing to license IBM MobileFirst Platform Foundation, complete the following fields. If you do not use token licensing, leave these fields blank.
+
+    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
+    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
+    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
+    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+
+    A default administration account for MobileFirst Server is created during pattern deployment.
+
+4. Optional: Configure MobileFirst Server runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 9. To specify the context root name now, complete these steps:
+    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
+    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+
+5. Upload application and adapter artifacts:
+
+    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
+    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
+    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
+    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
+    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty MobileFirst Operations Console deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it. 
+
+6. Optional: Add more application or adapter artifacts for deployment:
+    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Paltform Server node in the canvas. Rename it **MobileFirst App\_X** or **MobileFirst Adatper\_X** (where **X** stands for a unique number for differentiation).
+    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
+    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
+    * Repeat step 7 to add more applications and adapters for deployment.
+
+7. Optional: Configure application and adapter deployment to MobileFirst Server. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
+    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
+    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
+    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+
+8. Configure base scaling policy:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
+    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
+    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
+    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
+    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+
+        Supply the following information in the fields provided:
+        
+        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
+        **WebSphere administrative user name**  
+        Admin user ID for WebSphere administration console login. Default value: virtuser.
+
+        **WebSphere administrative password**  
+        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        
+        **admin\_user**  
+        Not visible if configured in step 3. Create a default MobileFirst Server administrator account. Default value: demo.
+        
+        **admin\_password**  
+        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        
+        **ACTIVATE\_TOKEN\_LICENSE**  
+        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        
+        **LICENSE\_SERVER\_HOSTNAME**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        
+        **LMGRD\_PORT**   
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
+        The default license manager daemon port is 27000.
+
+        **IBMRATL\_PORT**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
+        The default vendor daemon port is typically 27001.
+
+        **runtime\_contextRoot**  
+        Not visible if configured in step 5. Context root name for the MobileFirst Server runtime. The name must start with "/".
+        
+        **deployer\_user**  
+        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        
+        **deployer\_password**  
+        Not visible if configured in step 8. User password for the user with deployment privilege.
+        
+        **MFP Vms Password(root)**  
+        Root password for the MobileFirst Platform Server and MobileFirst Platform DB nodes. Default value: passw0rd.
+        
+        **MFP DB Password(Instance owner)**  
+        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.
+
+        **Important restriction:**  
+        When you set these attrbutes, do not change the following attributes in the MobileFirst Platform Server section:
+        
+        * Cell name
+        * Node name
+        * Profile name
+
+        If you change any of these attributes, your pattern deployment will fail.
+
+    * Click Quick Deploy to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to Patterns > Virtual System Instances to open the Virtual System Instances page and search for your pattern there.
+9. 
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.
 
