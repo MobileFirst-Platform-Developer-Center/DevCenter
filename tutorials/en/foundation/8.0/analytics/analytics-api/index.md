@@ -5,6 +5,7 @@ breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
+
 ## Overview
 MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 
@@ -64,12 +65,25 @@ Note that you can select your own namespace to replace "ibmmfpfanalytics".
 
 #### Import the WLAnalytics library
 
+**Objective-C**
+
 ```objc
 import "WLAnalytics.h"
 ```
 
+**Swift**
+
+```Swift
+import IBMMobileFirstPlatformFoundation
+```
+
+
 #### Initialize Analytics
+**Objective-C**
 No setup required. Pre-initialized by default.
+
+**Swift**
+Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
 
 ### Android
 
@@ -102,8 +116,7 @@ The initialization of the analytics API must be written in native code, even in 
  * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
  * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events
-) and [Client Network Events](#client-lifecycle-events) on disabling events.
+**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events) on disabling events.
 
 ### Client lifecycle events
 After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in MobileFirst Operational Analytics is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
@@ -125,17 +138,15 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 **Cordova**  
 To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
 
-To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
-
 * For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes →  AppDelegate.m** file
+	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
 	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 * For the Android platform:
-	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java**
+	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 #### Android
 To enable client lifecycle event logging:
@@ -154,11 +165,13 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 To enable client lifecycle event logging:
 
 **Objective-C:**
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
 **Swift:**
+
 ```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
@@ -166,11 +179,13 @@ WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 To disable client lifecycle event logging:
 
 **Objective-C:**
+
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
 **Swift:**
+
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
@@ -196,29 +211,32 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
 
 * For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes → AppDelegate.m** file.
+	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
 	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 * For the Android platform: navigate to the subactivity of the main activity to disable.
 	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 #### iOS
 To enable client network-event logging:
 
 **Objective-C:**
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
 **Swift:**
+
 ```
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
 To disable client network-event logging:
+
 **Objective-C:**
 
 ```objc
@@ -226,6 +244,7 @@ To disable client network-event logging:
 ```
 
 **Swift:**
+
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
@@ -279,6 +298,7 @@ WLAnalytics.log("Message", json);
 After importing WLAnalytics, you can now use the API to collect custom data, as follows:
 
 **Objective-C:**
+
 ```objc
 NSDictionary *inventory = @{
     @"property" : @"value",
@@ -289,6 +309,7 @@ NSDictionary *inventory = @{
 ```
 
 **Swift:**
+
 ```swift
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
@@ -351,7 +372,7 @@ WLAnalytics.sharedInstance().unsetUserContext
 WLAnalytics.unsetUserContext();
 ```
 
-## Sending Analytics Data
+## Sending Analytics data
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
 
 Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
@@ -371,13 +392,13 @@ wlanalytics.send();
 ```
 
 ### iOS
-In an iOS application, use the following *Objective-C* API method:
+*Objective-C*
 
 ```objc
 [[WLAnalytics sharedInstance] send];
 ```
 
-or for *Swift* use the API method:
+*Swift*
 
 ```swift
 WLAnalytics.sharedInstance().send();
