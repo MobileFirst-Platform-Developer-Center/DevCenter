@@ -16,8 +16,8 @@ IBM MobileFirst Platform Foundation in combination with IBM PureApplication Syst
 * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
 * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
 * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile)
-* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile)
+* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
 * [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
 * [Configuring an external database with a IBM MobileFirst Foundation System Pattern](#configuring-an-external-database-with-a-ibm-mobilefirst-foundation-system-pattern)
 * [Deploying and configuring MobileFirst Analytics](#deploying-and-configuring-mobilefirst-analytics)
@@ -160,7 +160,7 @@ You can find the vsys.mobilefirst-8.0.0.0.tgz file in the mobilefirst_patterns_8
 7. In the Status row, click **Enable**. The pattern type is now listed as being enabled.
 8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
 
-## Token licensing requirements for IBM MobileFirst Platform Foundation System Pattern
+## Token licensing requirements for IBM MobileFirst Foundation System Pattern
 If you use token licensing to license IBM MobileFirst™ Platform Foundation, you must install IBM® Rational® License Key Server and configure with your licenses before you deploy the MobileFirst Platform Pattern.
 
 > **Important:** The **MobileFirst Platform (WAS ND)** pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the MobileFirst Platform (WAS ND) pattern template. All other pattern templates support token licensing.
@@ -715,7 +715,7 @@ You can use a predefined template to deploy MobileFirst Server on clusters of We
 
 This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-If you are running the System Monitoring for WebSphere Application Server shared service, the MobileFirst runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the IBM MobileFirst™ Platform runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-runtime-synchronization-limitation-with-websphere-application-server-network-deployment).
+If you are running the System Monitoring for WebSphere Application Server shared service, the MobileFirst runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the IBM MobileFirst™ Platform runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
 
 **Important token licensing restriction:** This pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the MobileFirst Platform (WAS ND) pattern template.
 
@@ -723,13 +723,769 @@ Some parameters of script packages in the template are configured with recommend
 
 For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS ND) template](#mobilefirst-platform-was-nd-pattern-template).
 
+1. Create a pattern from the predefined template:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
+    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS ND)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
+    * In the **Name** field, provide a name for the pattern.
+    * In the **Version** field, specify the version number of the pattern.
+    * Click **Start Building**.
+2. Mandatory for AIX®: In IBM PureApplication System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
+    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
+    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
+    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
+    * Select the **Default AIX add disk** component and specify the following attributes:
+        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
+        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
+        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
+        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
+    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
+    * Save the pattern.
+3. Optional: Configure MobileFirst Server administration. You can skip this step if you want to specify the user credential with MobileFirst Server administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
 
+    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
+    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
+    * If you use token licensing to license IBM MobileFirst Platform Foundation, complete the following fields. If you do not use token licensing, leave these fields blank.
 
+    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
+    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
+    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
+    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
 
+    A default administration account for MobileFirst Server is created during pattern deployment.
 
+4. Optional: Configure MobileFirst Server runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
+    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
+    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
 
+5. Optional: Adjust the number of application server nodes in your WebSphere Application Server Network Deployment clusters for the MobileFirst Administration component and the MobileFirst runtime environment.
 
+    By default, the Administration component and runtime environment each have two application server nodes in their respective clusters.
+    * In the DmgrNode node, click the **MFP Server Administration** component. The properties of the component are displayed next to the canvas.
+    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the MobileFirst Administration component.
+    * In the DmgrNode node, click the **MFP Server Runtime Deployment** component. The properties of the component are displayed next to the canvas.
+    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the MobileFirst runtime environment.
+    * In the CustomNode node, click the **Base Scaling Policy** component.
+    * Adjust the **Number of Instances** value to account for the total number of application server nodes that you entered in the **NUMBER\_OF\_CLUSTERMEMBERS** field for each component.
+    The minimum value for **Number of Instances** is the total number of server nodes for the MobileFirst Administration component and the MobileFirst runtime environments.
 
+    For example, the default value for **Number of Instances** is 4 for the default topology with two nodes for the administration component and two nodes for the runtime environment. If you change **NUMBER\_OF\_CLUSTERMEMBERS** values for the administration component to 3 and for the runtime environment to 5, the minimum value for Number of Instances is 8.
+
+6. Upload application and adapter artifacts:
+
+    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
+    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
+    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
+    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
+    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty MobileFirst Operations Console deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+
+7. Optional: Add more application or adapter artifacts for deployment:
+    * From the **Components** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Paltform Server node in the canvas. Rename it **MobileFirst App\_X** or **MobileFirst Adatper\_X** (where **X** stands for a unique number for differentiation).
+    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
+    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
+    * In the **Additional file **field, click the **Browse** button to locate and upload the application or adapter artifact.
+    * In the **Target path** field, specify the full path for storing the artifact, including its file name. For example, **/opt/tmp/deploy/HelloWorld-common.wlapp**.
+
+    Repeat this step if you want to add more applications and adapters for deployment.
+
+8. Optional: Configure application and adapter deployment to MobileFirst Server. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 10. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
+    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
+    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
+    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+
+9. Configure base scaling policy:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
+    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
+    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
+    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
+    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+
+        Supply the following information in the fields provided:
+        
+        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
+        **WebSphere administrative user name**  
+        Admin user ID for WebSphere administration console login. Default value: virtuser.
+
+        **WebSphere administrative password**  
+        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        
+        **admin\_user**  
+        Not visible if configured in step 3. Create a default MobileFirst Server administrator account. Default value: demo.
+        
+        **admin\_password**  
+        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        
+        **ACTIVATE\_TOKEN\_LICENSE**  
+        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        
+        **LICENSE\_SERVER\_HOSTNAME**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        
+        **LMGRD\_PORT**   
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
+        The default license manager daemon port is 27000.
+
+        **IBMRATL\_PORT**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
+        The default vendor daemon port is typically 27001.
+
+        **runtime\_contextRoot**  
+        Not visible if configured in step 5. Context root name for the MobileFirst Server runtime. The name must start with "/".
+        
+        **deployer\_user**  
+        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        
+        **deployer\_password**  
+        Not visible if configured in step 8. User password for the user with deployment privilege.
+        
+        **MFP Vms Password(root)**  
+        Root password for the MobileFirst Platform Server and MobileFirst Platform DB nodes. Default value: passw0rd.
+        
+        **MFP VMs Password(virtuser)**  
+        Password for the virtuser user of the DmgrNode, CustomNode, IHSNode and MobileFirst Platform DB nodes. Default value: passw0rd.
+        
+        **Open firewall ports for WAS**  
+        The WebSphere Application Server nodes that are deployed in the CustomNode VM nodes require open firewall ports to connect to the database server and the LDAP server (if configured for LDAP). If you need to specify multiple port numbers, separate the port numbers with a semicolon (;). For example, 50000;636The default value is 50000 (the default port for DB2® server).
+
+        **Important restriction:**  
+        When you set these attrbutes, do not change the following attributes in the MobileFirst Platform Server section:
+        
+        * Cell name
+        * Node name
+        * Profile name
+
+        If you change any of these attributes, your pattern deployment will fail.
+    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+
+10. Access the MobileFirst Operations Console:
+    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
+    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
+    * Find the MobileFirst Server VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
+    * In the browser, open the MobileFirst Operations Console by composing its URL with one of the following formats:
+        * `http://{MFP Server VM Public IP}:9080/mfpconsole`
+        * `https://{MFP Server VM Public IP}:9443/mfpconsole`
+    * Log in to the Console with admin user and password specified in step 3 or step 9.
+
+    If the console does not display the MobileFirst runtimes, restart the IBM MobileFirst Platform runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the IBM MobileFirst Platform runtime from the WebSphere Application Server administrative console](#restarting-the-ibm-mobilefirst-platform-runtime-from-the-websphere-application-server-administrative-console).
+
+### MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment
+If you deploy a PureApplication® pattern based on the **MobileFirst Platform (WAS ND)** template and run the System Monitoring for WebSphere® Application Server shared service, the MobileFirst runtime environment might fail to start correctly, when you deploy the pattern.
+
+A PureApplication virtual system pattern based on the **MobileFirst Platform (WAS ND)** template deploys the MobileFirst administration service and the IBM MobileFirst™ Platform runtime into different WebSphere Application Server Network Deployment clusters. For the IBM MobileFirst Platform runtime to work correctly, it must be started after the MobileFirst administration service. If the IBM MobileFirst Platform runtime starts first, the runtime service fails to detect the MobileFirst administration service, which causes errors in the runtime service.
+
+When the deployment of a PureApplication pattern is almost complete, the System Monitoring for WebSphere Application Server shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, so the nodes that contain the IBM MobileFirst Platform runtime might be restarted before the nodes that contain the MobileFirst administration service.
+
+You must stop the System Monitoring for WebSphere Application Server shared service before you deploy the pattern. If you cannot stop the shared service, you might need to restart the IBM MobileFirst Platform runtime from the WebSphere Application Server administrative console to fix the problem.
+
+### Restarting the IBM MobileFirst Platform runtime from the WebSphere Application Server administrative console
+If your MobileFirst Operations Console is empty after you deploy a PureApplication® System pattern based on the MobileFirst Platform (WAS ND) template, you might need to restart the IBM MobileFirst runtime from the WebSphere® Application Server administrative console.
+
+This procedure applies only when you are deploying PureApplication virtual system patterns based on the **MobileFirst Platform (WAS ND)** template when you are running the System Monitoring for WebSphere Application Server shared service. If you do not use this shared service or are deploying a pattern based on a different template, this procedure does not apply to you.
+
+You must deploy your pattern before you do this procedure.
+
+To work correctly, the MobileFirst administration service nodes must be started before the IBM MobileFirst Platform runtime nodes. If the System Monitoring for WebSphere Application Server shared service is running when you deploy a pattern, the shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, which means that the IBM MobileFirst Platform runtime nodes might be started before the MobileFirst administration service nodes.
+
+1. Confirm that the System Monitoring for WebSphere Application Server shared service is deployed and running:
+    * In the PureApplication System dashboard, click Patterns and then under Pattern Instances, click Shared Services.
+
+        > **Important:** Shared Services appears twice in the **Patterns** menu, ensure that you click **Shared Services** under **Pattern Instances** and not under Patterns.
+    * On the **Shared Service Instances** page, look for a name that starts with **System Monitoring for WebSphere Application Server**. Click that name to expand its entry
+    
+        If you do not see an entry for **System Monitoring for WebSphere Application Server**, the System Monitoring for WebSphere Application Server shared service is not deployed and you do not need to continue with this procedure.
+    * Check the **Status** column for the service.
+    
+        If **Status** says `Stopped`, the System Monitoring for WebSphere Application Server shared service is stopped and you do not need to continue with this procedure.  
+        If **Status** says `Started`, the System Monitoring for WebSphere Application Server shared service is running. Continue with the rest of this procedure.
+
+2. Confirm that your pattern is running, and access the MobileFirst Operations Console from the PureApplication System dashboard.
+
+    For instructions about how access the MobileFirst Operations Console from the PureApplication System dashboard, see step 10 in [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers).
+    
+3. If the console appears empty or is otherwise not displaying MobileFirst runtimes, restart the IBM MobileFirst Platform runtime node from the WebSphere Application Server administrative console:
+    * In the **PureApplication System** dashboard, click **Patterns → Virtual System Instances**.
+    * On the **Virtual System Instances** page, find your pattern instance and confirm that it is running. If it is not running, start the pattern instance.
+    * Click the name of your pattern instance and in the details panel, find the **Virtual machine perspective** section.
+    * In the **Virtual machine perspective** section, find the virtual machine whose name starts with **DmgrNode** and note its public IP address.
+    * Open the WebSphere Application Server administrative console at the following URL:
+    
+        ```bash
+        https://{DmgrNode VM public IP address}:9043/ibm/console
+        ```
+    
+        Use the user ID and password that you specified for the WebSphere Application Server administrative console when you deployed the pattern.
+    * In the WebSphere Application Server administrative console, expand **Applications** and click **All applications**.
+    * Restart the IBM MobileFirst Platform runtime:
+        * In the list of applications, select the application with name that begins with IBM\_Worklight\_project\_runtime\_MFP.
+        * In the **Action** column, select **Stop**.
+        * Click **Submit Action**.
+        * Wait until the application status in the **Status** column shows the stopped icon.
+        * In the **Action** column, select **Start**.
+        * Click S**ubmit Action**.
+
+        Repeat this step for each IBM MobileFirst Platform runtime application in the list.
+
+4. Access the MobileFirst Operations Console again and confirm that your IBM MobileFirst Platform runtimes are now visible.
+
+## Deploying MobileFirst Application Center on a single-node WebSphere Application Server Liberty profile server
+You use a predefined template to deploy MobileFirst Application Center on a single-node WebSphere® Application Server Liberty profile server.
+
+This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+
+**Token licensing requirements: **If you use token licensing to license IBM MobileFirst™ Platform Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+
+Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
+
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform Application Center (Liberty single node) template](#mobilefirst-platform-application-center-liberty-single-node-template).
+
+1. Create a pattern from the predefined template:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
+    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
+    * In the **Name** field, provide a name for the pattern.
+    * In the **Version** field, specify the version number of the pattern.
+    * Click **Start Building**.
+2. Mandatory for AIX®: In IBM PureApplication System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
+    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
+    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
+    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
+    * Select the **Default AIX add disk** component and specify the following attributes:
+        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
+        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
+        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
+        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
+    * In the MFP AppCenter DB node, select the **Default add disk** component, and then click the bin icon to delete it.
+    * Save the pattern.
+3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+    
+    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    * In the M**FP AppCenter Server** node, click the **MFP Server Application Center** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
+    * In the **admin_user** and **admin_password** fields, specify the administration user name and password.
+    * Next to the **db_user** and **db_password** fields, click the **Delete** button to clear their pattern level parameter settings.
+    * In the **db_user** and **db_password** fields, specify the database user name and password.
+    * In the **db_name**, **db_instance**, **db_ip**, and **db_port** fields, specify the database user name, password, instance name, IP, and port number.
+
+    A default administration account for MobileFirst Server is created during pattern deployment.
+
+4. Configure and launch the pattern deployment:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
+    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * In the toolbar above the panel that displays the detailed information about the pattern, click the **Deploy** button.
+    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
+    * In the middle column, click Pattern attributes to display attributes such as user names and passwords.
+
+    Supply the following information in the fields provided:
+
+    > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    
+    **admin\_user**  
+    Not visible if configured in step 3. Create a default MobileFirst Server administrator account. Default value: demo.
+    
+    **admin\_password**  
+    Not visible if configured in step 3. Default admin account password. Default value: demo.
+    
+    **ACTIVATE\_TOKEN\_LICENSE**  
+    Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+    
+    **LICENSE\_SERVER\_HOSTNAME**  
+    Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+    
+    **LMGRD\_PORT**   
+    Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
+    The default license manager daemon port is 27000.
+
+    **IBMRATL\_PORT**  
+    Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
+    The default vendor daemon port is typically 27001.
+
+    **runtime\_contextRoot**  
+    Not visible if configured in step 5. Context root name for the MobileFirst Server runtime. The name must start with "/".
+    
+    **deployer\_user**  
+    Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+    
+    **deployer\_password**  
+    Not visible if configured in step 8. User password for the user with deployment privilege.
+    
+    **MFP Vms Password(root)**  
+    Root password for the MobileFirst Platform Server and MobileFirst Platform DB nodes. Default value: passw0rd.
+    
+    **MFP DB Password(Instance owner)**  
+    Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
+* Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+
+5. To access the MobileFirst Operations Console perform the following steps:
+    * Click **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
+    * Find the MobileFirst Server VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
+    * In the browser, open the MobileFirst Operations Console by composing its URL with one of the following formats:
+        * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
+        * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
+    * Log in to the Console with admin user and password specified in step 3.
+
+## Deploying MobileFirst Application Center on a single-node WebSphere Application Server full profile server
+You use a predefined template to deploy a single-node MobileFirst Application Center to a WebSphere® Application Server full profile server.
+
+This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+
+**Token licensing requirements:** If you use token licensing to license IBM MobileFirst Foundation, review the requirements outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+
+Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
+
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform Application Center (WAS single node) template](#mobilefirst-platform-application-center-was-single-node-template).
+
+1. Create a pattern from the predefined template:
+    * In **the IBM PureApplication System** dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
+    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the More information tab.
+    * In the **Name** field, provide a name for the pattern.
+    * In the **Version** field, specify the version number of the pattern.
+    * Click **Start Building**.
+2. Mandatory for AIX®: In IBM PureApplication System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
+    * In the Pattern Builder, select the **MFP AppCenter DB** node.
+    * Click the **Add a Component** Add-on button (the button is visible above the component box when you hover the cursor over the **MFP AppCenter** DB node).
+    * From the Add Add-ons list, select **Default AIX** add disk. The component is added as the lowest component of the MobileFirst Platform DB node.
+    * Select the **Default AIX** add disk component and specify the following attributes:
+        
+        **DISK\_SIZE\_GB**  
+        Storage size (measured in GB) to be extended to the DB server. Following is the example value: 10.
+
+        **FILESYSTEM\_TYPE**  
+        Supported file system in AIX. Following is the default value: **jfs2**.
+
+        **MOUNT\_POINT**  
+        Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Following is the example value: /dbinst.
+
+        **VOLUME\_GROUP**  
+        Following is the example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
+    * In the **MFP AppCenter DB** node, select the **Default add disk** component, and then click the bin icon to delete it.
+    * Save the pattern.
+
+3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+
+    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    * In the **MFP AppCenter Server** node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
+    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
+    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
+    * If you use token licensing to license IBM MobileFirst Platform Foundation, complete the following fields. If you do not use token licensing, leave these fields blank.
+
+    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
+    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
+    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
+    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+
+    A default administration account for MobileFirst Server is created during pattern deployment.
+
+4. Configure and launch the pattern deployment:
+    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
+    * On the Virtual System Patterns page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
+    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
+    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+
+        Supply the following information in the fields provided:
+
+        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        
+        **admin\_user**  
+        Not visible if configured in step 3. Create a default MobileFirst Server administrator account. Default value: demo.
+        
+        **admin\_password**  
+        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        
+        **ACTIVATE\_TOKEN\_LICENSE**  
+        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        
+        **LICENSE\_SERVER\_HOSTNAME**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        
+        **LMGRD\_PORT**   
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
+        The default license manager daemon port is 27000.
+
+        **IBMRATL\_PORT**  
+        Not visible if configured in step 3. If you use token licensing to license IBM MobileFirst Platform Foundation, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
+        The default vendor daemon port is typically 27001.
+
+        **runtime\_contextRoot**  
+        Not visible if configured in step 5. Context root name for the MobileFirst Server runtime. The name must start with "/".
+        
+        **deployer\_user**  
+        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        
+        **deployer\_password**  
+        Not visible if configured in step 8. User password for the user with deployment privilege.
+        
+        **MFP Vms Password(root)**  
+        Root password for the MobileFirst Platform Server and MobileFirst Platform DB nodes. Default value: passw0rd.
+        
+        **MFP DB Password(Instance owner)**  
+        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
+    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+
+5. To access the MobileFirst Operations Console perform the following steps:
+    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
+    * Find the MobileFirst Server VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
+    * In the browser, open the MobileFirst Operations Console by composing its URL with one of the following formats:
+        * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
+        * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
+    * Log in to the Console with admin user and password specified in step 3.
+
+## Configuring MobileFirst administration security with an external LDAP repository
+You can configure MobileFirst administration security to enable connecting out to an external LDAP repository. The configuration is common for both WebSphere® Application Server Liberty profile and full profile.
+
+This procedure involves configuring the LDAP parameters for connecting to the external user registry server. Before you begin, ensure the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+
+**Important:**  
+When the LDAP repository configuration is enabled, a default user for MobileFirst administration is not automatically created. Instead, you must specify the administration user name and password that are stored in the LDAP repository. This information is required by WebSphere Application Server Liberty profile and a server farm of WebSphere Application Server full profile.
+
+If the runtime to be deployed in the pattern is configured to use LDAP for application authentication, make sure that the LDAP server configured in the runtime is the same as the LDAP server that is configured for the MobileFirst Administration; different LDAP servers are not supported. Also, the protocol and port for LDAP connection must be identical. For example, if connections from the runtime to the LDAP server are configured to use the SSL protocol and port is 636, connections from the MobileFirst Administration to the LDAP server must use the SSL protocol and port 636 as well.
+
+1. Build a pattern with any topology you need. For more information, see the following topics:
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+2. Mandatory for AIX®: In IBM® PureApplication® System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
+    * In the **Pattern Builder**, select the **MobileFirst Platform DB** node.
+    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
+    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
+    * Select the Default AIX add disk component and specify the following attributes:
+
+        **DISK\_SIZE\_GB**  
+        Storage size (measured in GB) to be extended to the DB server. Example value: 10.
+        
+        **FILESYSTEM\_TYPE**  
+        Supported file system in AIX. Default value: jfs2.
+        
+        **MOUNT\_POINT**  
+        Align with the attribute **Mount point for instance owner** in the **Database Server component** in the **MobileFirst Platform DB** node. Example value: `/dbinst`.
+        
+        **VOLUME\_GROUP**  
+        Example value: `group1`. Contact your IBM PureApplication System administrator for the correct value.
+    * In the MobileFirst Platform DB node, select the Default add disk component, and then click the bin icon to delete it.
+    * Save the pattern.
+
+3. Configure MobileFirst Server administration:
+    * In IBM PureApplication System, in the dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
+    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
+    * In the MobileFirst Platform Server node (or the DmgrNode node when using the MobileFirst Platform (WAS ND) template), select the MFP Server Administration component. The properties of the selected component are displayed next to the canvas.
+    * Supply the following LDAP information in the fields provided:
+
+    **admin_user**  
+    User ID of the account that has MobileFirst Server administration privilege. This value is stored in the LDAP repository. Not required if the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.
+    
+    **admin_password**  
+    Admin user password. This value is stored in the LDAP repository. Not required if the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.
+    
+    **LDAP_TYPE**  
+    LDAP server type of your user registry. One of the following values:  
+    --- **None**  
+    LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.  
+    --- **TivoliDirectoryServer**  
+    Select this if the LDAP repository is an IBM Tivoli® Directory Server.  
+    --- **ActiveDirectory**  
+    Select this if the LDAP repository is a Microsoft Active Directory.  
+    Default value: None.
+    
+    **LDAP_IP**  
+    LDAP server IP address.
+    
+    **LDAP_SSL_PORT**  
+    LDAP port for secure connection.
+    
+    **LDAP_PORT**  
+    LDAP port for non-secure connection.
+    
+    **BASE_DN**  
+    Base DN.
+    
+    **BIND_DN**  
+    Bind DN.
+    
+    **BIND_PASSWORD**  
+    Bind DN password.
+    
+    **REQUIRE_SSL**  
+    Select true for secure connection to the LDAP server. Default value: false.
+    
+    **USER_FILTER**  
+    LDAP user filter that applies when searching the existing user registry for users.
+    
+    **GROUP_FILTER**  
+    LDAP group filter that applies when searching the existing user registry for groups.
+    
+    **LDAP\_REPOSITORY\_NAME**  
+    LDAP server name.
+    
+    **CERT\_FILE\_PATH**  
+    Target path of the uploaded LDAP server certification.
+    
+    **mfpadmin**  
+    Admin role for MobileFirst Server. One of the following values:
+    --- **None**  
+        No user.  
+    --- **AllAuthenticatedUsers**  
+        Authenticated users  
+    --- **Everyone**  
+        All users.  
+        
+    Default value: None. For more information about security roles, see [Configuring user authentication for MobileFirst Server administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    
+    **mfpdeployer**  
+    Deployer role for MobileFirst Server. One of the following values:
+    --- **None**  
+        No user.  
+    --- **AllAuthenticatedUsers**  
+        Authenticated users  
+    --- **Everyone**  
+        All users.
+    
+    Default value: None. For more information about security roles, see [Configuring user authentication for MobileFirst Server administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    
+    **mfpmonitor**  
+    Monitor role for MobileFirst Server. One of the following values:    
+    --- **None**  
+        No user.  
+    --- **AllAuthenticatedUsers**  
+        Authenticated users     
+    --- **Everyone**  
+        All users.
+    
+    Default value: None. For more information about security roles, see [[Configuring user authentication for MobileFirst Server administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    
+    **mfpoperator**  
+    Operator role for MobileFirst Server. One of the following values:
+    --- **None**  
+        No user.  
+    --- **AllAuthenticatedUsers**  
+        Authenticated users  
+    --- **Everyone**  
+        All users.
+
+    Default value: None. For more information about security roles, see [Configuring user authentication for MobileFirst Server administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+
+4. Optional: Configure the LDAP SSL connection. This step is required only if you set **REQUIRE_SSL** to true in the previous step to use secure connections to the LDAP server:
+    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the **MobileFirst Server** node in the canvas. Rename the component "MobileFirst LDAP Cert", for example.
+    * Hover the cursor over the newly added component, and then click the **Move up** and **Move down** buttons to adjust the position of the component in the node. Make sure that it is placed between the **MFP Server Prerequisite** component and the **MFP Server Administration** component.
+    * Click the **MobileFirst LDAP Cert** component. The properties of the selected component are displayed next to the canvas. Upload the LDAP certification artifact in the **Additional file** field by clicking the **Browse** button to locate it
+    * In the **Target** path field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/tdscert.der**.
+    * In the **MobileFirst Server** node (or the DmgrNode node when using the MobileFirst Platform (WebSphere Application Server Network Deployment), select the MFP Server Administration component, and then click the **Add reference** button next to the **CERT\_FILE\_PATH** field. In the pop-up window, click the **component-level parameter** tab. From the Component list, select **MobileFirst LDAP Cert**. In the **Output** attribute list, select **target\_path**. Click the **Add** button to refresh the **Output value** field, and then click **OK**.
+
+5. Configure and launch the pattern deployment. On the Deploy Pattern page, in the Nodes list, you can adjust your LDAP configurations by clicking **MobileFirst Server** (or **DmgrNode** when using the MobileFirst Platform (WAS ND) template) and then expanding **MFP Server Administration**. For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in one of the following topics depending on the topology you selected when creating the pattern:
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+
+6. Access the MobileFirst Operations Console. Use the administrator user name and password to log in to the MobileFirst Operations Console through your LDAP configuration. For more information, see the "Access the MobileFirst Operations Console:" step in one of the following topics depending on the topology you selected when creating the pattern;
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 10.
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 10.
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
+
+## Configuring an external database with a IBM MobileFirst Platform Foundation System Pattern
+You can configure IBM MobileFirst Foundation System Patterns to enable connecting out to an external database. IBM® DB2® is the only supported external database. The configuration is common for all the supported patterns.
+
+Before you begin,  
+This procedure involves configuring the external database parameters for connecting to the external database. Before you begin, ensure the following:
+
+* Configure the external database instance on your installed IBM DB2.
+* Make a note of the database instance name, database user name, database password, database host name or IP and database instance port.
+
+1. Build a pattern with any topology you need. For more information, see the following topics:
+    [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+
+2. Select the **MobileFirst Platform DB** and click **Remove component**.
+3. Configure MobileFirst Server administration:
+    * In IBM PureApplication® System, in the dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
+    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
+    * In the MobileFirst Platform Server node (or the DmgrNode node when using the MobileFirst Platform (WAS ND) template), select the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
+    * Check the option **USE\_EXTERNAL\_DATABASE** and configure the following parameters:
+
+        **db_instance**  
+        External database instance name.
+        
+        **db_user**  
+        External database user name.
+        
+        **db_name**  
+        External database name.
+        
+        **db_password**  
+        External database password.
+        
+        **db_ip**  
+        External database IP.
+        
+        **db_port**  
+        External database port number.
+        
+        > **Note:** If you are using the MobileFirstPlatform (WAS ND) pattern template, you will need to additionally configure the attribute **Open firewall ports for WAS** to the external database port number.
+    * In the MobileFirst Server node (or the DmgrNode node when using the MobileFirst Platform (WAS ND) template), select the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
+    * Under the **USE\_EXTERNAL\_DATABASE** configure the following parameters:
+
+        **rtdb_instance**  
+        External database instance name.
+        
+        **rtdb_user**  
+        External runtime database user name.
+        
+        **rtdb_name**  
+        External runtime database name, which will be created.
+        
+        **rtdb_password**
+        External runtime database password.
+
+## Deploying and configuring MobileFirst Analytics
+You can deploy and configure the MobileFirst Analytics on both WebSphere® Application Server Liberty profile and full profile to enable the Analytics features in the pattern.
+
+Before you begin,  
+If you intend to use an LDAP repository to protect the Analytics Console, ensure that the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+
+> **Important:** When the LDAP repository configuration is enabled in the Analytics component, a default administration user is not created for MobileFirst Analytics. Instead, you must specify the administration user name and password values that are stored in the LDAP repository. These values are required to protect the Analytics Console.
+
+1. Build a pattern with the topology you need. For more information, see the following topics:
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+
+2. Add and configure MobileFirst Analytics:
+    * In the IBM® PureApplication® System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
+    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
+    * From the **Assets** list, expand **Software Components**, and then drag and drop one of the following components onto the canvas:
+
+        **Liberty profile server**  
+        Select this component if you want to deploy MobileFirst Analytics on WebSphere Application Server Liberty profile.
+        
+        **Standalone server**  
+        Select this component if you want to deploy MobileFirst Analytics on WebSphere Application Server full profile.
+
+        A new node is created with the name "OS Node". Rename it "MobileFirst Foundation Analytics".
+    * Make the following configuration changes depending on the type of application server you want to deploy Analytics to:
+        * If you are deploying MobileFirst Analytics to WebSphere Application Server Liberty profile, click **Liberty profile server** in the MobileFirst Platform Analytics node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/Liberty** and specify the administrative user name and password. Use the default values for the other parameters.
+        * If you are deploying MobileFirst Analytics to WebSphere Application Server full profile, click **Standalone server** in the MobileFirst Platform Analytics node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/AppServer/Profiles**, change Profile name to **AppSrv01**, and specify the administrative user name and password. Use the default values for the other parameters.
+    
+        > **Important:** The WebSphere Application Server administrative user will be created in the WebSphere Application Server user repository. If LDAP will be configured for the Analytics server, avoid user name conflicts with the WebSphere Application Server administrative user. For example, if "user1" will be introduced by the LDAP server through its configuration, do not set "user1" as the WebSphere Application Server administrative user name.
+    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Server Prerequisite** component and a MFP WAS SDK Level component onto the MobileFirst Foundation Analytics node on the canvas.
+    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Analytics** component onto the MobileFirst Foundation Analytics node on the canvas. Make sure the MFP Analytics component is positioned after the Liberty profile server component (or the Standalone server component).
+    * Supply the following MobileFirst Analytics information in the fields provided:
+        
+        The LDAP parameters are exactly the same as the MFP Server Administration parameters. For more information, see the "Configure MFP Server Administration" step in 3:
+        
+        > **Important:** For LDAP SSL connection configuration in MobileFirst Analytics, make sure that in step 4b in [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), the dragged-in MobileFirst LDAP Cert component in the MobileFirst Foundation Analytics node must be moved to between the Liberty profile server (or Stanalone server) and the MFP Analytics script package.
+        
+    #### WAS_ROOT
+    * If MobileFirst Analytics is being installed on WebSphere Application Server Liberty profile, specify the installation directory of the Liberty profile for Analytics:
+        * Click the **Add reference** button next to the **WAS_ROOT** field and in the pop-up window, click the **component-level parameter** tab.
+        * In the **Component** field, select **Liberty profile server** (it might be called **Liberty profile server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server Liberty profile).
+        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
+    * If MobileFirst Analytics is being installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics:
+        * Click the **Add reference** button next to the WAS_ROOT field and in the pop-up window, click the **component-level parameter** tab.
+        * In the **Component** field, select **Standalone server** (it might be called **Standalone server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server full profile)
+        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
+        
+    #### HEAP\_MIN\_SIZE
+    Applicable to WebSphere Application Server full profile only.
+
+    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger minimum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MIN\_SIZE**. Consider setting a value equal to **HEAP\_MAX\_SIZE**.
+    
+    Default value: 4096 MB.
+
+    #### HEAP\_MAX\_SIZE
+    Applicable to WebSphere Application Server full profile only.
+
+    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger maximum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MAX\_SIZE**. Consider setting a value equal to **HEAP\_MIN\_SIZE**.
+
+    Default value: 4096 MB.
+    
+    #### WAS\_admin\_user
+    * Applicable to WebSphere Application Server full profile only.  
+    WebSphere Application Server full profile admin user ID for the Analytics server.
+        * Click the **Add reference** button next to the **WAS\_admin\_user** field and in the pop-up window, click the **component-level** parameter tab.
+        * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the MobileFirst Server is also deployed on WebSphere Application Server full profile)
+        * In the **Output attribute** field, select **was\_admin**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+    
+    For Liberty profile, the default value can be used.
+    
+    #### WAS\_admin\_password
+    Applicable to WebSphere Application Server full profile only.
+
+    WebSphere Application Server full profile admin user ID for the Analytics server.
+    * Click the **Add reference** button next to the **WAS\_admin\_password** field and in the pop-up window, click the **component-level parameter** tab.
+    * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the MobileFirst Server is also deployed on WebSphere Application Server full profile)
+    * In the **Output** attribute field, select **was\_admin\_password**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+    
+    For Liberty profile, the default value can be used.
+
+    #### admin_user
+    * If an LDAP repository is not enabled, create a default administration user for MobileFirst Analytics console protection.
+    * If an LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.
+
+    #### admin_password
+    * If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.
+    * If an LDAP repository is enabled, specify the administration user password. The value is stored in the LDAP repository.
+    
+    Optional: Enable the LDAP repository for MobileFirst Analytics console protection. The LDAP parameters in MobileFirst Analytics are exactly the same as those for MobileFirst Server Administration. For more information, see “Configure MFP Server Administration” (step 3) in [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
+3. Configure MobileFirst Server runtime deployment for MobileFirst Analytics connection:
+    * In the MobileFirst Platform Server node (or the DmgrNode node when using the MobileFirst Platform (WAS ND) template), select the **MFP Server Runtime Deployment** component.
+    * Drag a link from the MFP Server Runtime Deployment component to the Liberty profile server component or to the Standalone server component in the MobileFirst Platform Analytics node, depending on the type of application server being used. The Configure Data Dependencies pop-up window opens.
+    * Configure the data dependencies:
+        * In the Configure Data Dependencies window, clear any existing recommended data dependency entries by clicking the **X** button next to each entry.
+        * Below **MFP Server Runtime Deployment** component, select **analytics_ip** and below **Liberty profile server** or **Standalone server**, select **IP**.
+        * Click the **Add** button to add the new data dependency.
+        * Click **OK** to save your changes.
+
+            ![Adding link from MFP Server Runtime component to the Liberty server](pureapp_analytics_link_1.jpg)
+            
+            The link from the MFP Server Runtime Deployment component to the Liberty profile server component (or the Standalone server component) is built.
+    * Drag another link from the MFP Server Runtime Deployment component to the MFP Analytics component in the MobileFirst Platform Analytics node. The Configure Data Dependencies pop-up window opens.
+    * Configure the data dependencies:
+        * In the Configure Data Dependencies window, clear all the recommended data dependencies entries by clicking the **X** button next to each entry.
+        * Below **MFP Server Runtime Deployment** component, select **analytics\_admin\_user** and below **MFP Analytics**, select **admin_user**.
+        * Click the **Add** button to add the new data dependency.
+        * Repeat the process to configure a data dependency from **analytics\_admin\_password** to **admin_password**.
+        * Click **OK** to save your changes.
+            
+            ![Adding link from MFP Server Runtime Deployment component to the MFP Analytics component](pureapp_analytics_link_2.jpg)
+            
+    The following figure shows an example of a MobileFirst Platform Analytics node added to a MobileFirst Platform WAS ND pattern:
+
+    ![MobileFirst Platform Analytics node added to a MobileFirst Platform WAS ND pattern](pureapp_analytics_node.jpg)
+
+4. Configure and launch the pattern deployment.
+
+    On the Deploy Pattern page, you can adjust your MobileFirst Analytics configuration settings by clicking the MobileFirst Platform Analytics component under the Nodes list in the middle column and then expanding MFP Analytics.
+
+    For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in the following topics depending on the topology you selected when creating the pattern:
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+
+5. Access MobileFirst Analytics through the MobileFirst Operations Console.
+
+    For more information, see the "Access the MobileFirst Operations Console" step in one of the following topics depending on the topology you selected when creating the pattern:
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 10.
+    * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 10.
+    * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
+    
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.
 
@@ -738,3 +1494,4 @@ To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contai
 3. Upload the IBM MobileFirst Application Pattern .tgz file that contains the updates.
 4. Enable the plugins you have uploaded.
 5. Redeploy the pattern.
+
