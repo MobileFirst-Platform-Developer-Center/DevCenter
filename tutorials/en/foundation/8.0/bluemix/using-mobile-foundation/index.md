@@ -120,7 +120,11 @@ Updates to the Mobile Foundation Bluemix services are applied automatically with
 ## Troubleshooting
 The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
 
-* Every time you make any changes server-side changes, such as deploying an adapter, updating a property value via the console or perform any security configuration (scope-mapping and alike), run the following from the command-line to download your configuration to a .zip file:
+* Every time you make any of the following server-side actions:
+    * Deploy an adapter or update any adapter configuration or property value
+    * Perform any security configuration such scope-mapping and alike
+    
+    Run the following from the command-line to download your configuration to a .zip file:
 
     ```bash
     $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
