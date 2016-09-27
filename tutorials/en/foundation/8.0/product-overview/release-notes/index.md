@@ -7,7 +7,8 @@ weight: 7
 Identify the latest information about this product release and all its fix packs.
 
 ### What's new in v8.0
-IBM MobileFirst Foundation v8.0 brings significant changes that modernize your MobileFirst application development, deployment, and management experience. [Read what's new](whats-new/).
+IBM MobileFirst Foundation v8.0 brings significant changes that modernize your MobileFirst application development, deployment, and management experience.  
+[Read what's new](whats-new/).
 
 ### What's new in v8.0 interim fixes
 Interim fixes provide patches and updates to correct problems and keep IBM MobileFirst Foundation current for new releases of mobile operating systems.  
