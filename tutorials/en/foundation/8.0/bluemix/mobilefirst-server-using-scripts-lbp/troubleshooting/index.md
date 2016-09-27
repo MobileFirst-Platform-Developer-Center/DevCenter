@@ -10,7 +10,7 @@ When you are unable to resolve a problem encountered while working with IBM Mobi
 
 To help expedite the troubleshooting process, gather the following information:
 
-* The version of IBM MobileFirst Platform Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
+* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
 * The Liberty for Java runtime size selected. For example, 2GB.
 * The Bluemix® dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
 * The mfpconsole route

@@ -13,7 +13,7 @@ Consider carefully how removed features and API elements affect your IBM MobileF
 * [Client-side API Changes](#client-side-api-changes)
 
 ### Discontinued features and features that are not included in v8.0
-IBM MobileFirst Platform Foundation v8.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0. In most cases, an alternative way to implement the features is suggested. These features are marked discontinued. Some other features that exist in V7.1. are not in v8.0, but not as a consequence of the new design of v8.0. To distinguish these excluded features from the features that are discontinued from v8.0, they are marked not in v8.0.
+IBM MobileFirst Foundation v8.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0. In most cases, an alternative way to implement the features is suggested. These features are marked discontinued. Some other features that exist in V7.1. are not in v8.0, but not as a consequence of the new design of v8.0. To distinguish these excluded features from the features that are discontinued from v8.0, they are marked not in v8.0.
 
 <table class="table table-striped">
     <tr>
@@ -27,7 +27,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
 
             <p>You can develop adapters with Apache Maven or a maven-enabled IDE such as Eclipse, IntelliJ, and others. For more information about developing adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapters category</a>. For more information about using Eclipse as a Maven enabled IDE, read the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Developing Adapters in Eclipse tutorial</a>.</p>
 
-            <p>Install IBM MobileFirst Platform Foundation Developer Kit to test adapters and applications with MobileFirst Development Server. You can also access MobileFirst development tools and SDKs if you do not want to download them from Internet-based repositories such as NPM, Maven, Cocoapod, or NuGet. For more information about IBM MobileFirst Platform Foundation Developer Kit, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">The IBM MobileFirst Platform Foundation Developer Kit</a>.
+            <p>Install IBM MobileFirst Foundation Developer Kit to test adapters and applications with MobileFirst Development Server. You can also access MobileFirst development tools and SDKs if you do not want to download them from Internet-based repositories such as NPM, Maven, Cocoapod, or NuGet. For more information about IBM MobileFirst Foundation Developer Kit, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">The IBM MobileFirst Foundation Developer Kit</a>.
             </p></td>
     </tr>
     <tr>
@@ -160,7 +160,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Not in v8.0.</td>
     </tr>
     <tr><td>
-        Geolocation: The geolocation support is discontinued in IBM MobileFirst Platform Foundation v8.0. The REST API for beacons and for mediators is discontinued. The client-side and server-side API WL.Geo and WL.Device are discontinued.	</td>
+        Geolocation: The geolocation support is discontinued in IBM MobileFirst Foundation v8.0. The REST API for beacons and for mediators is discontinued. The client-side and server-side API WL.Geo and WL.Device are discontinued.	</td>
     <td>
         Discontinued. Use the native device API or third-party Cordova plug-ins for geolocation.</td>
     </tr>
@@ -170,17 +170,17 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Discontinued. For more information about replacing the IMFData and CloudantToolkit APIs in your apps, see Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK.</td>
     <tr/>
     <tr><td>
-        The IBM Tealeaf® SDK is no longer bundled with IBM MobileFirst Platform Foundation.	</td>
+        The IBM Tealeaf® SDK is no longer bundled with IBM MobileFirst Foundation.	</td>
     <td>
         Discontinued. Use IBM Tealeaf SDK. For more information, see <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> and <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a> in the IBM Tealeaf Customer Experience documentation.</td>
     </tr>
     <tr><td>
-        IBM MobileFirst Platform Test Workbench is not bundled with IBM MobileFirst Platform Foundation	</td>
+        IBM MobileFirst Platform Test Workbench is not bundled with IBM MobileFirst Foundation	</td>
     <td>
         Discontinued.</td>
     </tr>
     <tr><td>
-        BlackBerry, Adobe AIR, Windows Silverlight are not supported by IBM MobileFirst Platform Foundation v8.0. No SDK is provided for these platforms.	</td>
+        BlackBerry, Adobe AIR, Windows Silverlight are not supported by IBM MobileFirst Foundation v8.0. No SDK is provided for these platforms.	</td>
     <td>
         Discontinued.</td>
     </tr>

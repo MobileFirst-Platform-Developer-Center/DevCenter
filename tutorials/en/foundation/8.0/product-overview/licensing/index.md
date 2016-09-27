@@ -12,7 +12,7 @@ If you have purchased Perpetual licenses, you can consume what you have purchase
 If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the MobileFirst Operations Console and through License Tracking report.
 
 ### Processor value unit (PVU) licensing
-Processor value unit (PVU) licensing is available if you have purchased IBM MobileFirst Platform Foundation Extension (see http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument), but only after the purchase of IBM® WebSphere® Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
+Processor value unit (PVU) licensing is available if you have purchased IBM MobileFirst Foundation Extension (see http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument), but only after the purchase of IBM® WebSphere® Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
 
 The PVU license pricing structure is responsive to both the type and number of processors that are available to installed products. Entitlements can be full capacity or subcapacity. Under the processor value unit licensing structure, you license software based on the number of value units assigned to each processor core.
 

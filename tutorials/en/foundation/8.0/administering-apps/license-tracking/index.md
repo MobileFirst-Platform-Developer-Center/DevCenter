@@ -4,7 +4,7 @@ title: License tracking
 weight: 6
 ---
 ## Overview
-License tracking is enabled by default in IBM MobileFirst Foundation, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of IBM MobileFirst Platform Foundation is within the license entitlement levels and can prevent potential license violations.
+License tracking is enabled by default in IBM MobileFirst Foundation, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of IBM MobileFirst Foundation is within the license entitlement levels and can prevent potential license violations.
 
 Also, by tracking the usage of client devices, and determining whether the devices are active, MobileFirst administrators can decommission devices that are no longer accessing the IBM MobileFirst Platform. This situation might arise if an employee leaves the company, for example.
 
@@ -18,13 +18,13 @@ Also, by tracking the usage of client devices, and determining whether the devic
 ## Setting the application license information
 Learn how to set the application license information for the apps you register to MobileFirst Server.
 
-License terms distinguish IBM MobileFirst Foundation, IBM MobileFirst Platform Foundation Consumer, IBM MobileFirst Foundation Enterprise, and IBM MobileFirst Additional Brand Deployment. Set the license information of an application when you register it to a server so that license tracking reports generate the right license information. If your server is configured for token licensing, the license information is used to check out the right feature from the license server.
+License terms distinguish IBM MobileFirst Foundation, IBM MobileFirst Foundation Consumer, IBM MobileFirst Foundation Enterprise, and IBM MobileFirst Additional Brand Deployment. Set the license information of an application when you register it to a server so that license tracking reports generate the right license information. If your server is configured for token licensing, the license information is used to check out the right feature from the license server.
 
 You set the Application Type and the Token License Type.
 The possible values for Application Type are:  
 
-* **B2C**: Use this application type if your application is licensed as IBM MobileFirst Platform Foundation Consumer.
-* **B2E**: Use this application type if your application is licensed as IBM MobileFirst Platform Foundation Enterprise.
+* **B2C**: Use this application type if your application is licensed as IBM MobileFirst Foundation Consumer.
+* **B2E**: Use this application type if your application is licensed as IBM MobileFirst Foundation Enterprise.
 * **UNDEFINED**: Use this application type if you don't need to track compliance against the Addressable Device metric.
 
 The possible values for Token License Type are:
@@ -116,7 +116,7 @@ License validation might fail when the application is registered or deleted, in 
 * Sufficient tokens are not available.
 * The license expired.
 
-### IBM® Rational License Key Server feature name used by IBM MobileFirst Platform Foundation
+### IBM® Rational License Key Server feature name used by IBM MobileFirst Foundation
 Depending on the token license type of an application, the following features are used.
 
 | Token License Type | Feature name | 
@@ -131,7 +131,7 @@ The IBM® License Metric Tool allows you to evaluate your compliance with your I
 If you have not installed a version of IBM License Metric Tool that supports IBM Software License Metric Tag or SWID (software identification) files, you can review the license usage with the License Tracking reports in MobileFirst Operations Console. For more information, see [License Tracking report](#license-tracking-report).
 
 ### About PVU-based licensing using SWID files
-If you have purchased IBM MobileFirst Platform Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
+If you have purchased IBM MobileFirst Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
 
 The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installls MobileFirst or MobileFirst Analytics Server. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
 
@@ -142,7 +142,7 @@ The PVU license for Foundation Extension can only be purchased together with the
 For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 
 ### SLMT tags
-IBM MobileFirst Platform Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for MobileFirst Server, and to configure the generation of the IBM Software License Metric Tag files.
+IBM MobileFirst Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for MobileFirst Server, and to configure the generation of the IBM Software License Metric Tag files.
 
 Each instance of a running MobileFirst runtime environment generates an IBM Software License Metric Tag file. The metrics monitored are `CLIENT_DEVICE`, `ADDRESSABLE_DEVICE`, and `APPLICATION`. Their values are refreshed every 24 hours.
 

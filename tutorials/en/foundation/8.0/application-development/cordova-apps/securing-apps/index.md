@@ -7,13 +7,13 @@ weight: 1
 ---
 
 ### Encrypting the web resources of your Cordova packages
-To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the IBM MobileFirst Platform Foundation mfpdev app webencrypt command or the mfpwebencrypt flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
+To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the IBM MobileFirst Foundation mfpdev app webencrypt command or the mfpwebencrypt flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
 
 **Prerequisites:**
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
 * You must have the MobileFirst Platform CLI installed.
-* You must have the IBM MobileFirst Platform Foundation plug-in.
+* You must have the IBM MobileFirst Foundation plug-in.
 
 The best time to complete this procedure is after finishing your app development and are ready to deploy the app. If you run any of the following commands after you complete the web resources encryption procedure, the content that was encrypted becomes decrypted:
 
@@ -53,7 +53,7 @@ When it is enabled, the web resources checksum feature compares the original web
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
 * You must have the MobileFirst Platform CLI installed. 
-* You must have the IBM MobileFirst Platform Foundation plugin.
+* You must have the IBM MobileFirst Foundation plugin.
 * You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows]` command.
 
 To enable the web resources checksum feature for a Cordova app, complete the following steps:

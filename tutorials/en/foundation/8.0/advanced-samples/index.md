@@ -18,12 +18,12 @@ Imagine you are a CIO of a big airline company. Your company just decided to inv
 
 <span style="font-size:90%;margin:0">*Authentication, Device management*</span>
 
-### Implementing Social Login Authentication with IBM MobileFirst Platform Foundation 8.0 - Part 1
+### Implementing Social Login Authentication with IBM MobileFirst Foundation 8.0 - Part 1
 Social Login has become a common authentication method in many mobile apps. App owners and users understand the big value it gives them. Users can now sign in to apps from their favorite social platform, such as Facebook or Google. This method makes life easier for the users, and also can give the app owner the ability to leverage the information from the social platform (for example, profile picture, users friends, feed, etc). App owners can maximize the user engagements with such capabilities. [Continue reading...]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)
 
 <span style="font-size:90%;margin:0">*Authentication*</span>
 
-### Leverage Social Login In IBM MobileFirst Platform Foundation 8.0 - Part 2
+### Leverage Social Login In IBM MobileFirst Foundation 8.0 - Part 2
 Social Login by itself is good and gives values to app owners and users. In addition, you can leverage social login and get more value from it. Facebook, for example, lets you query their Graph API to get more contents such as user feeds, user friends, pictures. Some of the API requires additional permissions from the user, but sometimes basic info like profile picture is enough from the app users. [Continue reading...]({{site.baseurl}}/blog/2016/04/12/leverage-the-social-login/)
 
 <span style="font-size:90%;margin:0">*Authentication*</span>
@@ -38,7 +38,7 @@ SMS One-Time-Password(OTP) is essential authentication method in every modern mo
 
 <span style="font-size:90%;margin:0">*Authentication, SMS*</span>
 
-### Working with LDAP and LTPA in IBM MobileFirst Platform Foundation 8.0
+### Working with LDAP and LTPA in IBM MobileFirst Foundation 8.0
 The ability to connect an application to a user registry is an important ability. You might want your users to be able to connect to your back-end systems with the same credentials that they use to connect to other resources in the enterprise, or you just need to connect the user to the registry. LDAP is an established protocol for connecting to a user registry. [Continue reading...]({{site.baseurl}}/blog/2016/04/21/using-ldap-as-user-registry/)
 
 <span style="font-size:90%;margin:0">*Authentication, LTPA, LDAP*</span>

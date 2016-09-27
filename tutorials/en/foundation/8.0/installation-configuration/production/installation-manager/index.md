@@ -17,7 +17,7 @@ Two main options are proposed during the installation process:
 ### Token licensing
 Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational® License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
 
-### IBM MobileFirst Platform Application Center
+### IBM MobileFirst Foundation Application Center
 Application Center is a component of IBM MobileFirst Foundation. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
 
 If you choose to install Application Center with Installation Manager, you must provide the database and the application server parameters so that Installation Manager configures the databases and deploys Application Center to the application server. If you choose not to install Application Center with Installation Manager, Installation Manager saves the WAR file and the resources of Application Center to your disk. It does not set up the databases nor deploys Application Center WAR file to your application server. You can do this later by using Ant tasks or manually. This option to install Application Center is a convenient way to discover Application Center because you are guided during the installation process by the graphical Install wizard.

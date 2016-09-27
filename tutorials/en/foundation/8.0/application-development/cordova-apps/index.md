@@ -211,7 +211,7 @@ int main(int argc, char *argv[]) {
 ## Cordova Application Security
 IBM MobileFirst Foundation provides security features that help you protect your Cordova apps.
 
-Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Platform Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
+Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
 
 > Learn more about the [MobileFirst security framework](../../authentication-and-security)
 

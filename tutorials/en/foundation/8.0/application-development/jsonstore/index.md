@@ -191,7 +191,7 @@ JSONStore uses SQLCipher on all platforms. On Android and iOS a free, open sourc
 
 Instead, JSONStore for Windows 8 Universal include SQLite as the underlying database. If you need to encrypt data for either of these platforms, you need to acquire your own version of SQLCipher and swap out the SQLite version that is included in IBM MobileFirst Foundation.
 
-If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in IBM MobileFirst Platform Foundation.
+If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in IBM MobileFirst Foundation.
 
 #### Replacing SQLite with SQLCipher for Windows Universal and Windows UWP
 

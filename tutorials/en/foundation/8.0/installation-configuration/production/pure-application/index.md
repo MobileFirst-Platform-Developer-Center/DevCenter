@@ -6,7 +6,7 @@ weight: 10
 ## Overview
 IBM MobileFirst Foundation provides the capability to deploy and manage IBM MobileFirst Server and MobileFirst applications on IBM® PureApplication® System and IBM PureApplication Service on SoftLayer®.
 
-IBM MobileFirst Platform Foundation in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of IBM MobileFirst Platform Foundation System Pattern provides MobileFirst runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
+IBM MobileFirst Platform Foundation in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of IBM MobileFirst Foundation System Pattern provides MobileFirst runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
 
 #### Jump to
 * [Installing IBM MobileFirst Foundation System Pattern](#installing-ibm-mobilefirst-foundation-system-pattern)
@@ -111,7 +111,7 @@ If you change any of these attributes, your pattern deployment fails.
 The following limitations apply:
 
 * Dynamic scaling for WebSphere Application Server Liberty profile server farms and WebSphere Application Server full profile server farms is not supported. The number of server farm nodes can be specified in the pattern by setting the scaling policy but cannot be changed during run time.
-* The IBM MobileFirst Foundation System Pattern Extension for MobileFirst Studio and Ant command-line interface that is supported in versions earlier than V7.0 are not available in this version of IBM MobileFirst Platform Foundation System Pattern.
+* The IBM MobileFirst Foundation System Pattern Extension for MobileFirst Studio and Ant command-line interface that is supported in versions earlier than V7.0 are not available in this version of IBM MobileFirst Foundation System Pattern.
 * IBM MobileFirst Foundation System Pattern depends on WebSphere Application Server Patterns, which has its own restrictions. For more information, see [Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html).
 * Due to restrictions in the uninstallation of Virtual System Patterns, you must delete the script packages manually after you delete the pattern type. In IBM PureApplication System, go to **Catalog → Script Packages** to delete the script packages that are listed in the **Components** section.
 * The MobileFirst (WebSphere Application Server Network Deployment) pattern template does not support token licensing. If you want to use this pattern, you must use perpetual licensing. All other patterns support token licensing.

@@ -225,7 +225,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>IBM MobileFirst Foundation v8.0 introduces support for Windows 10 Universal apps as well as Apple watchOS 2.IBM MobileFirst Foundation v8.0 introduces support for bitcode builds as well as Apple watchOS 2.</p>
 
                 <h3>Support for universal applications for Windows 10 Native</h3>
-                <p>With IBM MobileFirst Platform Foundation, you can now write native C# Universal App Platform applications to use the MobileFirst SDK within your app.</p>
+                <p>With IBM MobileFirst Foundation, you can now write native C# Universal App Platform applications to use the MobileFirst SDK within your app.</p>
 
                 <h3>Support for Windows hybrid environments</h3>
                 <p>Windows 10 Universal Windows Platform (UWP) support for Windows hybrid environments. For more information on how to get started.</p>
@@ -269,10 +269,10 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 
                 <p>Development artifacts that you upload to the server include adapters and their configuration, security configurations for your apps, push notification certificates, and log filters.</p>
 
-                <h3>Running applications that were created on IBM Bluemix on IBM MobileFirst Platform Foundation</h3>
-                <p>Developers can migrate IBM Bluemix applications to run on IBM MobileFirst Platform Foundation. Migration requires that you make configuration changes to your client application to match IBM MobileFirst Platform Foundation APIs.</p>
+                <h3>Running applications that were created on IBM Bluemix on IBM MobileFirst Foundation</h3>
+                <p>Developers can migrate IBM Bluemix applications to run on IBM MobileFirst Foundation. Migration requires that you make configuration changes to your client application to match IBM MobileFirst Foundation APIs.</p>
 
-                <h3>IBM MobileFirst Platform Foundation as a service on IBM Bluemix</h3>
+                <h3>IBM MobileFirst Foundation as a service on IBM Bluemix</h3>
                 <p>You can now use the IBM Mobile Foundation for Bluemix® service on IBM Bluemix to create and run your enterprise mobile apps.</p>
 
                 <h3>No .wlapp files</h3>
@@ -280,7 +280,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
 
                 <ul>
                     <li>You register an app in MobileFirst Server by deploying an application descriptor JSON file.</li>
-                    <li>To update Cordova applications by using Direct Update, you upload an archive (.zip file) of the modified web resource to the server. The archive file no longer contains the web preview files or skins that were possible in previous versions of IBM MobileFirst Platform Foundation. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.</li>
+                    <li>To update Cordova applications by using Direct Update, you upload an archive (.zip file) of the modified web resource to the server. The archive file no longer contains the web preview files or skins that were possible in previous versions of IBM MobileFirst Foundation. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.</li>
                 </ul>
                 
                 <p>To enable Direct Update of client Cordova apps that are installed on end-user devices, you must now deploy the modified web resources as an archive (.zip file) to the server. To enable secure Direct Update, a user-defined keystore file must be deployed in MobileFirst Server and a copy of the matching public key must be included in the deployed client application.</p>
@@ -307,15 +307,15 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <h4>Support for JAX-RS 2.0</h4>
                 <p>JAX-RS 2.0 introduces new server-side functionality: server-side asynchronous HTTP, filters and interceptors. MobileFirst adapters can now exploit these new features.</p>
                 
-                <h3>IBM MobileFirst Platform Foundation on IBM Containers</h3>
-                <p>IBM MobileFirst Platform Foundation on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of IBM MobileFirst Platform Foundation on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Bluemix.</p>
+                <h3>IBM MobileFirst Foundation on IBM Containers</h3>
+                <p>IBM MobileFirst Foundation on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of IBM MobileFirst Foundation on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Bluemix.</p>
 
-                <p><b>Note:</b> See the prerequisites for deploying IBM MobileFirst Platform Foundation on IBM Containers.</p>
+                <p><b>Note:</b> See the prerequisites for deploying IBM MobileFirst Foundation on IBM Containers.</p>
 
                 <h3>Deploying MobileFirst Server V8.0.0 on IBM PureApplication System</h3>
-                <p>You can now deploy and configure MobileFirst Server V8.0.0 to the supported IBM MobileFirst Platform Foundation System Pattern on IBM PureApplication® System.</p>
+                <p>You can now deploy and configure MobileFirst Server V8.0.0 to the supported IBM MobileFirst Foundation System Pattern on IBM PureApplication® System.</p>
 
-                <p>All supported IBM MobileFirst Platform Foundation System Pattern now include support for an existing IBM DB2® database. IBM MobileFirst Platform Application Center is now supported on a Virtual System Pattern.</p>
+                <p>All supported IBM MobileFirst Foundation System Pattern now include support for an existing IBM DB2® database. IBM MobileFirst Platform Application Center is now supported on a Virtual System Pattern.</p>
             </div>
         </div>
     </div>
@@ -344,7 +344,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
 
                 <p>MobileFirst Server artifacts provide resources for MobileFirst Operations Console.</p>
 
-                <p>Along with the redesign of MobileFirst Server, more installation options are now provided. In addition to the manual installation, IBM MobileFirst Platform Foundation gives you two options to install MobileFirst Server in a server farm. You can also install MobileFirst Server in Liberty collective.</p>
+                <p>Along with the redesign of MobileFirst Server, more installation options are now provided. In addition to the manual installation, IBM MobileFirst Foundation gives you two options to install MobileFirst Server in a server farm. You can also install MobileFirst Server in Liberty collective.</p>
 
                 <p>Starting with v8.0, you can now install the MobileFirst Server components in a server farm by using Ant tasks, or with the Server Configuration Tool. For more information, see the following topics:</p>
 
@@ -428,16 +428,16 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 </ul>
                 
                 <h3>Security for push notification service</h3>
-                <p>IBM MobileFirst Platform Foundation authorization server enforces the OAuth protocol to secure push notification service.</p>
+                <p>IBM MobileFirst Foundation authorization server enforces the OAuth protocol to secure push notification service.</p>
 
                 <h3>Push notification service model</h3>
-                <p>With IBM MobileFirst Foundation v8.0, the event source-based model is not supported. The push notification capability is enabled on IBM MobileFirst Platform Foundation by the push service model.</h3>
+                <p>With IBM MobileFirst Foundation v8.0, the event source-based model is not supported. The push notification capability is enabled on IBM MobileFirst Foundation by the push service model.</h3>
 
                 <h3>Push REST API</h3>
                 <p>You can enable back-end server applications that are deployed outside MobileFirst Server to access push notification functions by using REST API for push in the IBM MobileFirst Foundation runtime.</p>
 
                 <h3>Upgrading from existing event source-based notification model</h3>
-                <p>With the IBM MobileFirst Platform Foundation V8.0.0, the event source-based model is not supported. The push notification capability is enabled entirely by the push service model. All existing event source-based applications need to be migrated to the new push service model.</p>
+                <p>With the IBM MobileFirst Foundation V8.0.0, the event source-based model is not supported. The push notification capability is enabled entirely by the push service model. All existing event source-based applications need to be migrated to the new push service model.</p>
 
                 <h3>Sending push notifications</h3>
                 <p>You can choose to send an event-source based, tag-based, or broadcast-enabled push notification from the server.</p>

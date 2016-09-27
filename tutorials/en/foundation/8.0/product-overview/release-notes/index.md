@@ -24,7 +24,7 @@ Consider carefully how removed features and API elements affect your IBM MobileF
 
 ### Known issues and limitations
 You can identify the latest known issues and their resolutions, for this product release and all its fix packs, by browsing this dynamic list of documents.  
-General limitations apply to IBM MobileFirst Platform Foundation as detailed here. Limitations that apply to specific features are explained in the topics that describe these features.  
+General limitations apply to IBM MobileFirst Foundation as detailed here. Limitations that apply to specific features are explained in the topics that describe these features.  
 
 [Read about known issues and limitations](known-issues-limitations).
 

@@ -130,7 +130,7 @@ The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirs
 ## Preliminary information
 To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst™ Platform Foundation is installed, start the Application Center console, and log in.
 
-When you install IBM MobileFirst Platform Foundation, the Application Center is automatically installed in the specified application server.
+When you install IBM MobileFirst Foundation, the Application Center is automatically installed in the specified application server.
 
 If you install the Application Center in WebSphere® Application Server Liberty profile, the server is created in **installation-directory/server**.
 
