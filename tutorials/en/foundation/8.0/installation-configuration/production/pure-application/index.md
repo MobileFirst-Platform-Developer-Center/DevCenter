@@ -1590,6 +1590,192 @@ The "MobileFirst Platform Application Center (WAS single node)" template is comp
 IBM MobileFirst Foundation System Pattern provides script packages that are the building blocks to compose various pattern topologies.  
 The following sections list and describe the parameters for each script package.
 
+#### Jump to
+* [MFP Administration DB](#mfp-administration-db)
+* [MFP Analytics](#mfp-analytics)
+* [MFP IHS Configuration](#mfp-ihs-configuration)
+* [MFP Open Firewall Ports for WAS](#mfp-open-firewall-ports-for-was)
+* [MFP WAS SDK Level](#mfp-was-sdk-level)
+* [MFP Runtime DB](#mfp-runtime-db)
+* [MFP Server Administration](#mfp-server-administration)
+* [MFP Server Application Adapter Deployment](#mfp-server-application-adapter-deployment)
+* [MFP Server Application Center](#mfp-server-application-center)
+* [MFP Server Prerequisite](#mfp-server-prerequisite)
+* [MFP Server Runtime Deployment](#mfp-server-runtime-deployment)
+
+### MFP Administration DB
+This script package sets up the administration database schema in a DB2® database. It must be used with the Database Server (DB2) software component.
+
+| Parameter | Description | 
+|-----------|-------------|
+| db_user   | Mandatory. User name to create the Administration database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. |
+| db_name	| Mandatory. Database name to create the Administration database. Default value: WLADM. |
+| db_password |	Mandatory. User password to create the Administration database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). |
+| other\_db\_args | Mandatory. Four parameters to create the Administration database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. |
+
+### MFP Analytics
+This script package sets up the MobileFirst Analytics server in a WebSphere® Application Server full profile or WebSphere Application Server Liberty profile server, and sets up the connection and mapping of Analytics administration security roles to an external TDS or AD server. It must be used with the WebSphere Application Server Liberty profile server or WebSphere Application Server full profile (display name: Standalone server) software component . It must be installed after the Liberty profile or Standalone server software component.
+
+| Parameter | Description | 
+|-----------|-------------|
+| WAS_ROOT  | Mandatory.<ul><li>If Analytics is installed on WebSphere Application Server Liberty profile, specify the installation directory of the WebSphere Application Server Liberty profile for Analytics.</li><li>If Analytics is installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics.</li></ul> | 
+| HEAP\_MIN\_SIZE | WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger minimum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of MobileFirst Analytics is larger than this. It is recommended to set the same value as HEAP_MAX_SIZE.<br/><br/>Default value: 4096 (MB). | 
+| HEAP\_MAX\_SIZE	| WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger maximum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of MobileFirst Analytics is larger than this. It is recommended to set the same value asHEAP_MIN_SIZE.<br/><br/>Default value: 4096 (MB). | 
+| WAS\_admin\_user | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
+| WAS\_admin\_password | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user password for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
+| admin_user | Mandatory.<ul><li>If LDAP repository not enabled, create a default administration user for MobileFirst Analytics console protection.</li><li>If LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.</li></ul> |
+| admin_password | Mandatory.<ul><li>If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.</li><li>If an LDAP repository is enabled, specify the admin user password. The value is stored in the LDAP repository.</li></ul> | 
+| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM® Tivoli® Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
+| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
+| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
+| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
+| BASE_DN | (LDAP parameter) Base DN. | 
+| BIND_DN | (LDAP parameter) Bind DN. | 
+| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
+| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
+| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
+| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
+| mfpadmin | (LDAP parameter) Admin role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpdeployer | (LDAP parameter) Deployer role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpmonitor | (LDAP parameter) Monitor role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpoperator | (LDAP parameter) Operator role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+
+### MFP IHS Configuration
+This script package configures the IBM HTTP Server to work as a load balancer for multiple instances of MobileFirst Server. It must be used with the IBM HTTP servers software component . It must be installed after the IBM HTTP servers software component.
+
+| Parameter | Description | 
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attributeinstall_directory of Liberty profile server, Standalone server, or Deployment manager. | 
+| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment.<br/><br/>In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or sa_profile_name of Standalone server. | 
+| runtime\_contextRoot\_list | Mandatory. Runtime context root list that allows IHS to route requests that have matching context roots. Use semicolons (;) to separate the runtime context roots. For example, HelloMobileFirst;HelloWorld<br/><br/>Important: It must align with the context root specified in the MFP Server Runtime Deployment. Otherwise, IHS cannot correctly route requests that contain the Runtime context root. | 
+| http_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTP transport from IHS Server to MobileFirst Server. Must be 9080. | 
+| https_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTPS transport from IHS Server to MobileFirst Server. Must be 9443. | 
+| server_hostname | Mandatory. Host name of IBM HTTP servers. It is mapped to the host output attribute of IBM HTTP servers in the pattern template. | 
+
+### MFP Open Firewall Ports for WAS
+This script package is only applicable for Custom nodes in the MobileFirst (WAS ND) pattern template (WebSphere Application Server Network Deployment). Its purpose is to open the necessary firewall ports of the Custom nodes that host the MobileFirst Administration Services and runtime. As well as defining some WebSphere Application Server predefined ports, you need to specify the other ports for connecting to the DB2 server and the LDAP server.
+
+| Parameter | Description | 
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Network Deployment Custom nodes in the CustomNode node. In the pattern templates, it is mapped to output attribute install_directory of Custom nodes server. |
+| profile_name | Mandatory. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute cn_profile_name of Custom nodes. | 
+| WAS\_admin\_user | Mandatory. It is mapped to the was_admin output attribute of Custom nodes in the pattern template. | 
+| Ports	| Mandatory. Other ports that need to be opened for connecting to DB2 server and LDAP server (optional). Port values can be separated by semicolons; for example, '50000;636'<br/><br/>Default value: 50000. | 
+
+### MFP WAS SDK Level
+This script package is only applicable where ever the WAS Profiles are available in the pattern template (WebSphere Application Server Network Deployment).
+
+| Parameter | Description | 
+|-----------|-------------|
+| WAS_ROOT | Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute **install_directory** of Liberty profile server, Standalone server, or Deployment manager. |
+| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or **sa\_profile\_name** of Standalone server. | 
+| SDK_name | Name of the SDK that needs to be enabled for this WebSphere installation | 
+
+### MFP Runtime DB
+This script package sets up the runtime database schema in a DB2 database.
+
+| Parameter | Description | 
+|-----------|-------------|
+| db_user | Mandatory. User name to create the Runtime database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. | 
+| db_name | Mandatory. Database name to create the Runtime database. Default value: WLRTIME. | 
+| db_password | Mandatory. User password to create the Runtime database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). | 
+| other\_db\_args |	Mandatory. Four parameters to create the Runtime database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. | 
+
+### MFP Server Administration
+This script package sets up the MobileFirst Administration component (including the MobileFirst Operations Console) in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and setting up the connection and mapping administration security roles to an external TDS or AD server.
+
+The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the MFP Server Prerequisite but prior to any other MFP * Script Packages in the MobileFirst Platform Server VM node.
+
+| Parameter | Description |
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attributeinstall_directory of Liberty profile server, Standalone server, or Deployment manager. | 
+| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr_profile_name of Deployment manager or sa_profile_name of Standalone server. | 
+| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the MobileFirst Platform (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy the MFP administration service. Default value: 2. | 
+| db_user | Mandatory. User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
+| db_name | Mandatory. Name of the Administration database. It is mapped to thedb_name output attribute of the MFP Administration DB script package in the pattern template. | 
+| db_password |	Mandatory. password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template.| 
+| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
+| db_port |  Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
+| admin_user | User name that has MobileFirst Server administration privilege.<ul><li>When LDAP_TYPE is None, create the default admin user.</li><li>When LDAP_TYPE is set to TivoliDirectoryServer or ActiveDirectory and other LDAP parameters are specified according to your LDAP server configuration, the admin_user value should be taken from the configured LDAP user repository. Not required when the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
+| admin_password | Password of the admin user.<ul><li>When LDAP_TYPE is None, create the default admin user password.</li><li>When an external LDAP server is configured, the user password is taken from the LDAP repository. Not required when the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
+| install_console | Whether the MobileFirst Operations Console is to be deployed in the MobileFirst Platform Server node. Default value: Selected. (Check box) |
+| WAS\_admin\_user | Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
+| WAS\_admin\_password | Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was\_admin\_password output attribute of Deployment manager in the pattern template. | 
+| server_hostname | Mandatory. Host name of the MobileFirst Server or Deployment manager. Mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. | 
+| server\_farm\_mode | Mandatory. Whether the MobileFirst Server is to be deployed in server farm mode. Must be selected for a server farm topology and must be cleared for a standalone topology. Default value: set according to the topology defined in the pattern template. | 
+| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, this parameter is mapped to the IP output attribute of IBM HTTP servers. | 
+| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry. One of the following values:<ul>None – LDAP connection is disabled. When this value is selected, all the other LDAP parameters are treated as placeholders only.</li><li>TivoliDirectoryServer: Select this value if the LDAP repository is IBM Tivoli Directory Server</li><li>ActiveDirectory: Select this value if the LDAP repository is Microsoft Active Directory</li></ul>Default value: None. | 
+| LDAP_IP | (LDAP parameter) LDAP server IP address. | 
+| LDAP_SSL_PORT | (LDAP parameter) LDAP port for secure connection. | 
+| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
+| BASE_DN | (LDAP parameter) Base DN. | 
+| BIND_DN | (LDAP parameter) Bind DN. | 
+| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
+| REQUIRE_SSL | (LDAP parameter) Set to true for secure connection to LDAP server.<ul><li>When true, the LDAP\_SSL\_PORT is used and CERT\_FILE\_PATH is required to locate the certification file of the LDAP server.</li><li>When false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| USER_FILTER | (LDAP parameter) User filter that searches the existing user registry for users. | 
+| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
+| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
+| mfpadmin | Admin role for MobileFirst Server. One of the following values:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpdeployer | (LDAP parameter) Deployer role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpmonitor | (LDAP parameter) Monitor role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| mfpoperator | (LDAP parameter) Operator role for MobileFirst Server:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+
+### MFP Server Application Adapter Deployment
+This script package deploys applications and adapters to the MobileFirst Server. It must be installed after the corresponding MFP Server Runtime Deployment script package that installed the runtime where the application and adapter are to be deployed.
+
+| Parameter | Description | 
+|-----------|-------------|
+| artifact_dir | Mandatory. Installation path of application and adapter for deployment. It is mapped to the target_pathoutput attribute of the MobileFirst App component in the pattern template. | 
+| admin_context | Mandatory. Must be mfpadmin. | 
+| runtime_context | Mandatory. Align with the runtime context root specified in the MFP Server Runtime Deployment component. It is mapped to runtime_contextRoot output attribute of the MFP Server Runtime Deployment component. | 
+| deployer_user | Mandatory. User account with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
+| deployer_password | Mandatory. User password with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
+| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, it is mapped to the same output attribute of MFP Server Administration. | 
+
+### MFP Server Application Center
+This script package sets up the MobileFirst Application Center server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. It must be used with the WebSphere Application Server Liberty profile server and MFP Server Prerequisite or WebSphere Application Server full profile (Standalone server), MFP WAS SDK Level and MFP Server Prerequisite. It must be installed after the Liberty profile or Standalone server software component.
+
+| Parameter | Description | 
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node. In the pattern templates, it is mapped to output attributeinstall_directory of Liberty profile server or Standalone server. | 
+| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute sa_profile_name of Standalone server. | 
+| db_instance | Name of the database instance. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
+| db_user | User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
+| db_name | Name of the Administration database. It is mapped to thedb_name output attribute of the MFP Administration DB script package in the pattern template. |
+| db_password | Password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template. | 
+| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
+| db_port | Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template.|
+| admin_user | User name that has MobileFirst Server administration privilege.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| admin_password | admin user password.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| WAS\_admin\_user | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template.<br/><br/>When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
+| WAS\_admin\_password | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. |
+| server_hostname | Host name of the MobileFirst Server. It is mapped to the host output attribute of Liberty profile server or Standalone Server. |
+| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM® Tivoli® Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
+| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
+| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
+| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
+| BASE_DN | (LDAP parameter) Base DN. | 
+| BIND_DN | (LDAP parameter) Bind DN. | 
+| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
+| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
+| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
+| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
+| appcenteradmin | Admin role for MobileFirst Application Center. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>Default value: None | 
+
+### MFP Server Prerequisite
+This script package includes all prerequisites that are required to install the MobileFirst Server, including the DB2 JDBC driver and Apache Ant. The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the server software component but prior to any other MFP* script packages in the MobileFirst Platform Server node.
+
+| Parameter | Description |
+|-----------|-------------|
+| None | No parameters for this script package. | 
+
+### MFP Server Runtime Deployment
+
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.
 
