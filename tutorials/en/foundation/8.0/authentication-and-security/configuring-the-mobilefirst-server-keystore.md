@@ -39,7 +39,7 @@ For production-level security, during the move from development to production th
 
     To use the keystore for mutual SSL authentication between a MobileFirst adapter and a back-end server, also add a MobileFirst SSL-client identity alias to the keystore. You can do this by using the same method that you used to create the keystore file with the MobileFirst Server identity alias, but provide instead the alias and password for the SSL-client identity.
 
-2. Configure MobileFirst Server to use your keystore: in the IBM MobileFirst™ Platform Operations Console navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined MobileFirst Server keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your MobileFirst Server identity alias, and the alias password. 
+2. Configure MobileFirst Server to use your keystore: in the IBM MobileFirst Foundation Operations Console navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined MobileFirst Server keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your MobileFirst Server identity alias, and the alias password. 
 
 When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
 

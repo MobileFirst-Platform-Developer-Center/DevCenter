@@ -2022,7 +2022,7 @@ To avoid such exceptions, you must add custom properties in WebSphere Applicatio
 11. Click **OK** and save your changes.
 
 ### Managing the DB2 transaction log size
-When you upload an application that is at least 40 MB with IBM MobileFirst™ Platform Application Center console, you might receive a transaction log full error.
+When you upload an application that is at least 40 MB with IBM MobileFirst Foundation Application Center console, you might receive a transaction log full error.
 
 The following system output is an example of the **transaction log full** error code.
 
@@ -2300,7 +2300,7 @@ When you install the Application Center mobile client from OTA (the bootstrap pa
 When you use Application Center for a test installation, the administrator might not have a real Secure Sockets Layer (SSL) certificate available. You might want to use a self-signed CA certificate. Such certificates work if they get installed on the device as root certificate.
 As an administrator, you can easily distribute self-signed CA certificates to devices.
 
-The following procedure focuses mostly on the iOS and Android environments. Support for X.509 certificates comes from the individual mobile platforms, not from IBM MobileFirst™ Platform Foundation. For more information about specific requirements for X.509 certificates, see the documentation of each mobile platform.
+The following procedure focuses mostly on the iOS and Android environments. Support for X.509 certificates comes from the individual mobile platforms, not from IBM MobileFirst Foundation. For more information about specific requirements for X.509 certificates, see the documentation of each mobile platform.
 
 Managing self-signed certificates: in your role of administrator of Application Center, you can access the list of registered self-signed CA certificates to upload or delete certificates.
 

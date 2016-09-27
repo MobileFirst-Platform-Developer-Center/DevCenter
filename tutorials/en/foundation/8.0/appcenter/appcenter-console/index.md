@@ -24,25 +24,25 @@ Use the Application Center console to:
 
 #### Jump to
 
-* Starting the Application Center console
-* Troubleshooting a corrupted login page (Apache Tomcat)
-* Troubleshooting a corrupted login page in Safari browsers
-* Application Management
-* Adding a mobile application
-* Adding an application from a public app store
-* Application properties
-* Editing application properties
-* Upgrading a mobile application in MobileFirst Server and the Application Center
-* Downloading an application file
+* [Starting the Application Center console](#starting-the-application-center-console)
+* [Troubleshooting a corrupted login page (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
+* [Troubleshooting a corrupted login page in Safari browsers](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
+* [Application Management](#application-management)
+* [Adding a mobile application](#adding-a-mobile-application)
+* [Adding an application from a public app store](#adding-an-application-from-a-public-app-store)
+* [Application properties](#application-properties)
+* [Editing application properties](#editing-application-properties)
+* [Upgrading a mobile application in MobileFirst Server and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [Downloading an application file](#downloading-an-application-file)
 
 In the Application Center console, you can see reviews about mobile application versions sent by users.
 
-* User and group management
-* Access control
-* Managing access control
-* Device Management
-* Application enrollment tokens in Windows 8 Universal
-* Signing out of the Application Center console
+* [User and group management](#user-and-group-management)
+* [Access control](#access-control)
+* [Managing access control](#managing-access-control)
+* [Device Management](#device-management)
+* [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
+* [Signing out of the Application Center console](#signing-out-of-the-application-center-console)
 
 ## Starting the Application Center console
 You can start the Application Center with your web browser and log in if you have the administrator role.

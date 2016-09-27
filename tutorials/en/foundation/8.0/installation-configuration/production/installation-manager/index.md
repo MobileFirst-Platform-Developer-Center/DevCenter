@@ -29,7 +29,7 @@ However, for production installation, use Ant tasks to install Application Cente
 * Disadvantages of installing Application Center with Installation Manager.
     * If Installation Manager is run with the root user on UNIX or Linux, it might create files that are owned by root in the directory of the application server where Application Center is deployed. As a result, you must run the application server as root.
     * You have no access to the database scripts and cannot provide them to your database administrator to create the tables before you run the installation procedure. Installation Manager creates the database tables for you with default settings.
-    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other MobileFirst Server components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installsMobileFirst Server. For more information about Application Center, see [Installing and configuring the Application Center]().
+    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other MobileFirst Server components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installsMobileFirst Server. For more information about Application Center, see [Installing and configuring the Application Center](../../../appcenter).
 
 > **Important:** The MobileFirst Server installer installs only the MobileFirst Server binary files and tools on your disk. It does not deploy the MobileFirst Server applications to your application server. After you run the installation with Installation Manager, you must set up the databases and deploy the MobileFirst Server applications to your application server.  
 > Similarly, when you run Installation Manager to update an existing installation, it updates only the files on your disk. You need to perform more actions to update the applications that are deployed to your application servers.
@@ -287,7 +287,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>IBM MobileFirst™ Platform Server V6.x or later</td>
+            <td>IBM MobileFirst Server V6.x or later</td>
             <td>uninstall-initially-mfpserver.xml</td>
         </tr>
     </table>

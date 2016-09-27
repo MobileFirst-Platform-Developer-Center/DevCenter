@@ -39,9 +39,12 @@ Afterwards you'll have a working MobileFirst Server. However, you need to config
 * To install IBM MobileFirst Platform Application Center, see [Installing and configuring the Application Center](production/appcenter).
 
 ### Deploying MobileFirst Server to the cloud
-If you plan to deploy MobileFirst Server to the cloud, see [Deploying MobileFirst Server to the cloud]().
+If you plan to deploy MobileFirst Server to the cloud, see the following options:
+
+* [Using MobileFirst Server on IBM Bluemix](../bluemix).
+* [Using MobileFirst Server on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions
-For information about upgrading existing installations and applications to a newer version, see [Upgrading to IBM MobileFirst Foundation v8.0]().
+For information about upgrading existing installations and applications to a newer version, see [Upgrading to IBM MobileFirst Foundation v8.0](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/topics/t_upgrading.html).
 
 

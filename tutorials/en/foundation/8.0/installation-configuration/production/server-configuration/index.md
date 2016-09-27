@@ -754,7 +754,7 @@ For more information about IBM License Metric Tool reports, see [Integration wit
 ## WebSphere Application Server SSL configuration and HTTP adapters
 By setting a property, you can let HTTP adapters benefit from WebSphere® SSL configuration.
 
-By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates]().
+By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](../../../administering-apps/deployment/#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates).
 
 To have HTTP adapters use the WebSphere SSL configuration, set the **ssl.websphere.config** JNDI property to true. The setting has the following effects in order of precedence:
 

@@ -15,7 +15,7 @@ It is better to provide more information than to risk not providing enough infor
 * Operating system and version. For example, Windows XP SP3 Virtual Machine or Mac OSX 10.8.3.
 * Eclipse version. For example, Eclipse Indigo 3.7 Java EE.
 * JDK version. For example, Java SE Runtime Environment (build 1.7).
-* IBM MobileFirst™ Platform Foundation version. For example, IBM® Worklight® V5.0.6 Developer Edition.
+* IBM MobileFirst Foundation version. For example, IBM® Worklight® V5.0.6 Developer Edition.
 * iOS version. For example, iOS Simulator 6.1 or iPhone 4S iOS 6.0 (deprecated, see Deprecated features and API elements).
 * Android version. For example, Android Emulator 4.1.1 or Samsung Galaxy Android 4.0 API Level 14.
 * Windows version. For example, Windows 8, Windows 8.1, or Windows Phone 8.1.

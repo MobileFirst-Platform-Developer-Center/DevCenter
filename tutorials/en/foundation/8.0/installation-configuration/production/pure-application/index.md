@@ -161,7 +161,7 @@ You can find the vsys.mobilefirst-8.0.0.0.tgz file in the mobilefirst_patterns_8
 8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
 
 ## Token licensing requirements for IBM MobileFirst Foundation System Pattern
-If you use token licensing to license IBM MobileFirst™ Platform Foundation, you must install IBM® Rational® License Key Server and configure with your licenses before you deploy the MobileFirst Platform Pattern.
+If you use token licensing to license IBM MobileFirst Foundation, you must install IBM® Rational® License Key Server and configure with your licenses before you deploy the MobileFirst Platform Pattern.
 
 > **Important:** The **MobileFirst Platform (WAS ND)** pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the MobileFirst Platform (WAS ND) pattern template. All other pattern templates support token licensing.
 
@@ -715,7 +715,7 @@ You can use a predefined template to deploy MobileFirst Server on clusters of We
 
 This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-If you are running the System Monitoring for WebSphere Application Server shared service, the MobileFirst runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the IBM MobileFirst™ Platform runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
+If you are running the System Monitoring for WebSphere Application Server shared service, the MobileFirst runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the IBM MobileFirst Foundation runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
 
 **Important token licensing restriction:** This pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the MobileFirst Platform (WAS ND) pattern template.
 
@@ -874,7 +874,7 @@ For more information about the composition and configuration options of the pred
 ### MobileFirst runtime synchronization limitation with WebSphere Application Server Network Deployment
 If you deploy a PureApplication® pattern based on the **MobileFirst Platform (WAS ND)** template and run the System Monitoring for WebSphere® Application Server shared service, the MobileFirst runtime environment might fail to start correctly, when you deploy the pattern.
 
-A PureApplication virtual system pattern based on the **MobileFirst Platform (WAS ND)** template deploys the MobileFirst administration service and the IBM MobileFirst™ Platform runtime into different WebSphere Application Server Network Deployment clusters. For the IBM MobileFirst Platform runtime to work correctly, it must be started after the MobileFirst administration service. If the IBM MobileFirst Platform runtime starts first, the runtime service fails to detect the MobileFirst administration service, which causes errors in the runtime service.
+A PureApplication virtual system pattern based on the **MobileFirst Platform (WAS ND)** template deploys the MobileFirst administration service and the IBM MobileFirst Foundation runtime into different WebSphere Application Server Network Deployment clusters. For the IBM MobileFirst Platform runtime to work correctly, it must be started after the MobileFirst administration service. If the IBM MobileFirst Platform runtime starts first, the runtime service fails to detect the MobileFirst administration service, which causes errors in the runtime service.
 
 When the deployment of a PureApplication pattern is almost complete, the System Monitoring for WebSphere Application Server shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, so the nodes that contain the IBM MobileFirst Platform runtime might be restarted before the nodes that contain the MobileFirst administration service.
 
@@ -935,7 +935,7 @@ You use a predefined template to deploy MobileFirst Application Center on a sing
 
 This procedure involves uploading certain artifacts to IBM® PureApplication® System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements: **If you use token licensing to license IBM MobileFirst™ Platform Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**Token licensing requirements: **If you use token licensing to license IBM MobileFirst Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
 
 Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 

@@ -263,7 +263,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
-                        <td>This value is the IBM MobileFirst™ Platform SDK checksum that is used to identify unique IBM MobileFirst Platform SDK levels.</td>
+                        <td>This value is the IBM MobileFirst Foundation SDK checksum that is used to identify unique IBM MobileFirst Platform SDK levels.</td>
                         <td>Not user-configurable. This value is set by default.</td>
                     </tr>
                     <tr>

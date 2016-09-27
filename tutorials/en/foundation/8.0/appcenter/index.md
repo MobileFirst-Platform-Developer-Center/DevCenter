@@ -128,7 +128,7 @@ The Application Center supports applications for Android, iOS, Windows Phone 8, 
 The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirst platform.To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build MobileFirst applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
 
 ## Preliminary information
-To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst™ Platform Foundation is installed, start the Application Center console, and log in.
+To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst Foundation is installed, start the Application Center console, and log in.
 
 When you install IBM MobileFirst Foundation, the Application Center is automatically installed in the specified application server.
 

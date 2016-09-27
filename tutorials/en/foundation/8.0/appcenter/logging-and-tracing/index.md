@@ -8,7 +8,7 @@ weight: 6
 ## Overview
 You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
 
-You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, IBM MobileFirst™ Platform Foundation provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
+You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, IBM MobileFirst Foundation provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
 
 #### Jump to
 * [Enabling logging and tracing in WebSphere Application Server full profile](#enabling-logging-and-tracing-in-websphere-application-server-full-profile)

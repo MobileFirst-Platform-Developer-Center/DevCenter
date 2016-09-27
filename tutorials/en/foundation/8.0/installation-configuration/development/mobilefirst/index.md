@@ -79,7 +79,7 @@ A developer can:
 > Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../product-overview/components/console/) tutorial.
 
 ### MobileFirst Command-line Interface
-You can use the IBM MobileFirst™ Platform Command Line Interface (CLI) to develop and manage applications, in addition to using the IBM MobileFirst Platform Operations Console. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
+You can use the IBM MobileFirst Foundation Command Line Interface (CLI) to develop and manage applications, in addition to using the IBM MobileFirst Platform Operations Console. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
 
 * Registering apps with the MobileFirst Server
 * Configuring your app

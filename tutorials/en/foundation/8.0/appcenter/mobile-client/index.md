@@ -50,7 +50,7 @@ You can install the mobile client, or any signed application marked with the ins
     * Tap the **SSL-Certificate** tab and select the certificate.
     * Tap **Install**. You must only perform this action once for the device. You can verify whether the certificate is installed by looking in **Settings → Security → Trusted Credentials → User on the device**. This view shows the SSL certificates that the user has installed on the device. If the self-signed CA certificate is not installed on the device, the Android operating system prevents you from downloading the mobile client in the following steps.
 
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties]().
+    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
 
     ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
     
@@ -117,7 +117,7 @@ Installing the mobile client on an iOS device is similar to installing it on And
     * Tap the SSL-Certificate tab and select the certificate.
     * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
     
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties]().
+    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
     
 5. Tap the **Installers** tab and select an item in the list to display the application details.
 6. Tap **Install** to download the mobile client.
@@ -160,7 +160,7 @@ After the trust is confirmed, no application that uses that provisioning profile
 ## Installing the client on a Windows Phone 8 Universal mobile device
 You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the IBM MobileFirst™ Platform Server. It is uploaded to the MobileFirst Server by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal]() for details.
+Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the IBM MobileFirst Foundation Server. It is uploaded to the MobileFirst Server by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal]() for details.
 
 1. Start the browser on your mobile device.
 2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
@@ -291,7 +291,7 @@ On Android, iOS, and Windows Phone clients, the following details of the applica
 
 * The name of the application.
 * Commercial version: the published version of the application.
-* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties]() for technical details about this property on all operating systems.
+* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties](../appcenter-console/#application-properties) for technical details about this property on all operating systems.
 * Update date.
 * Approximate size of the application file.
 * Rating of the version and number of ratings received.
@@ -452,7 +452,7 @@ The following steps describe how to perform the installation of a Windows Store 
 ## Installing applications through public app stores
 You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](). You can install these applications through the mobile client on your compatible device.
+The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-form-a-public-app-store). You can install these applications through the mobile client on your compatible device.
 
 Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
 
