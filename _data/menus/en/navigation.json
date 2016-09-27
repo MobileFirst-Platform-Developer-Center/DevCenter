@@ -48,6 +48,9 @@
         }, {
             "name": "Administering Applications",
             "path": "/foundation/8.0/administering-apps"
+        }, {
+            "name": "Application Center",
+            "path": "/foundation/8.0/appcenter"
         }]
     }, {
         "name": "Product Integration",

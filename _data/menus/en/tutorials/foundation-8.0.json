@@ -37,6 +37,9 @@
             }, {
                 "name": "Administering Applications",
                 "path": "/adminstering-apps"
+            }, {
+                "name": "Application Center",
+                "path": "/appcenter"
             }]
         }]
     }
