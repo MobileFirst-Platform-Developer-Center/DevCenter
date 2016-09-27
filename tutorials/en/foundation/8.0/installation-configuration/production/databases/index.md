@@ -100,7 +100,7 @@ Review the database requirement for Oracle. Follow the steps to create user, dat
 
 Ensure that you set the database character set as Unicode character set (AL32UTF8) and the national character set as UTF8 - Unicode 3.0 UTF-8.  
 
-The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the MobileFirst services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/internal-runtime-databases).
+The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the MobileFirst services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
 
 The tables are expected to be created in the default schema of the runtime user. The Ant tasks and the Server Configuration Tool create the tables in the default schema of the user passed as argument. For more information about the creation of tables, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
 
@@ -279,7 +279,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ## Create the database tables with the Server Configuration Tool
 The database tables for the MobileFirst Server applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install MobileFirst Server with the Server Configuration Tool.
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the MobileFirst Server components. For an overview of the installation process with the Server Configuration Tool, see [Installing MobileFirst Server in graphical mode](../../graphical-mode).
+The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the MobileFirst Server components. For an overview of the installation process with the Server Configuration Tool, see [Installing MobileFirst Server in graphical mode](../tutorials/graphical-mode).
 
 After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
 
@@ -360,32 +360,32 @@ The database tables for the MobileFirst Server applications can be created manua
 
 You can find relevant information in this section about the setting up of the database if MobileFirst Server is installed with Ant Tasks.
 
-You can use Ant Tasks to set up the MobileFirst Server database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing MobileFirst Server in command line mode](../../command-line).
+You can use Ant Tasks to set up the MobileFirst Server database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing MobileFirst Server in command line mode](../tutorials/command-line).
 
 A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
 
-#### configure-<appserver>-<dbms>.xml
+#### configure-appserver-dbms.xml
 The Ant files can do these tasks:
 
 * Create the tables in a database if the database and database user exist. The requirements for the database are listed in [Database requirements](#database-requirements).
 * Deploy the WAR files of the MobileFirst Server components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all theMobileFirst Server applications.
 
-#### create-database-<dbms>.xml
+#### create-database-dbms.xml
 The Ant files can create a database if needed on the supported database management system (DBMS), and then create the tables in the database. However, as the database is created with default settings, it is not meant to be used for production.
 
-In the Ant files, you can find the predefined targets that use the **configureDatabase** Ant task to set up the database. For more information, see [Ant configuredatabase] task reference.
+In the Ant files, you can find the predefined targets that use the **configureDatabase** Ant task to set up the database. For more information, see [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) task reference.
 
 ### Using the sample Ant files
 The sample Ant files have predefined targets. Follow this procedure to use the files.
 
 1. Copy the Ant file according to your application server and database configuration in a working directory.
 2. Edit the file and enter the values for your configuration in the `<! -- Start of Property Parameters -->` section for the Ant file.
-3. Run the Ant file with the databases target: mfp_install_dir/shortcuts/ant -f your_ant_file databases.
+3. Run the Ant file with the databases target: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
 This command creates the tables in the specified database and schema for all MobileFirst Server applications (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst Server runtime). A log for the operations is produced and stored in your disk.
 
 * On Windows, it is in C:\Users\user_name\Documents\IBM MobileFirst Platform Server Data\Configuration Logs\ directory.
-* On UNIX, it is in $HOME/.mobilefirst_platform_server/configuration-logs/ directory.
+* On UNIX, it is in $HOME/.mobilefirst\_platform\_server/configuration-logs/ directory.
 
 ### Different users for the database tables creation and for run time
 The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
@@ -393,7 +393,7 @@ The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-sam
 * All the MobileFirst Server applications (the administration service, the live update service, the push service, and the runtime)
 * The user that is used to create the database and the user at run time for the data source in the application server.
 
-If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../../installation-reference).
+If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
 
 For DB2® and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
 

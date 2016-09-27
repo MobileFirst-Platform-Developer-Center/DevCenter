@@ -12,7 +12,7 @@ These components are available from online repositories and can be installed usi
 
 Continue reading to learn more about the components of MobileFirst Foundation.
 
-> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
+> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
 
 #### Jump to:
 
@@ -87,27 +87,27 @@ You can use the IBM MobileFirst Foundation Command Line Interface (CLI) to devel
 * Previewing and updating Cordova apps
 
 > To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### MobileFirst Foundation client SDKs and adapter tooling
 MobileFirst Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
 
-* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../application-development/sdk/) tutorials category.  
-* To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
-* To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
+* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../../application-development/sdk/) tutorials category.  
+* To develop adapters, visit the [Adapters](../../../adapters/) tutorials category.  
+* To develop security checks, visit the [Authentication and security](../../../authentication-and-security/) tutorials category.  
 
 ## Applications and adapters development
 
 ### Applications
-* Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../).
+* Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../cordova).
 
     You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
     
 * Native applications require either Xcode, Android Studio or Visual Studio. Read more about [setting up the iOS/Android/Windows development environment](../).
 
 ### Adapters
-Adapters require Apache Maven to be installed. Refer to the [Adapters](../../adapters/) category to learn more about adapters and how to create, develop and deploy.
+Adapters require Apache Maven to be installed. Refer to the [Adapters](../../../adapters/) category to learn more about adapters and how to create, develop and deploy.
 
 ## Tutorials to follow next
-Visit the [All Tutorials](../../all-tutorials/) page and select a tutorials category to follow next.
+Visit the [All Tutorials](../../../all-tutorials/) page and select a tutorials category to follow next.
 

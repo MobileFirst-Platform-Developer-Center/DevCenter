@@ -490,7 +490,7 @@ Before you continue, complete the DB2 database setup procedure.
 ### Configuring the Apache Derby database manually for Application Center
 You configure the Apache Derby database manually by creating the database and database tables, and then configuring the relevant application server to use this database setup.
 
-1. Create the database and the tables within them. This step is described in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-database-manually-for-application-center).
+1. Create the database and the tables within them. This step is described in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-derby-database-manually-for-application-center).
 2. Configure the application server to use this database setup. Go to one of the following topics.
 
 #### Jump to
@@ -578,7 +578,7 @@ You can set up and configure your Apache Derby database manually for Application
     * In the table, click the **Application Center Database** data source that you created.
     * Under **Additional Properties**, click **Custom properties**.
     * Click **databaseName**.
-    * Set **Value** to the path to the **APPCNTR** database that is created in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-derby-manually-for-application-center).
+    * Set **Value** to the path to the **APPCNTR** database that is created in [Setting up your Apache Derby database manually for Application Center](#setting-up-your-apache-derby-database-manually-for-application-center).
     * Click **OK**.
     * Click **Save**.
     * At the top of the page, click **Application Center Database**.
@@ -611,7 +611,7 @@ You can set up and configure your Apache Derby database manually for Application
 You configure the MySQL database manually by creating the database, creating the database tables, and then configuring the relevant application server to use this database setup.
 
 1. Create the database. This step is described in [Creating the MySQL database for Application Center](#creating-the-mysql-database-for-application-center).
-2. Create the tables in the database. This step is described in [Setting up your MySQL database manually for Application Center](#setting-up-your-mysql).
+2. Create the tables in the database. This step is described in [Setting up your MySQL database manually for Application Center](#setting-up-your-mysql-database-manually-for-application-center).
 3. Perform the application server-specific setup as the following list shows.
 
 #### Jump to
@@ -1384,7 +1384,7 @@ After you install Application Center in the web application server that you desi
 * [Managing users with LDAP](#managing-users-with-ldap)
 * [Configuring properties of DB2 JDBC driver in WebSphere Application Server](#configuring-properties-of-db2-jdbc-driver-in-websphere-application-server)
 * [Managing the DB2 transaction log size](#managing-the-db2-transaction-log-size)
-* [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources)
+* [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources-resources)
 * [Configuring Secure Sockets Layer (SSL)](#configuring-secure-sockets-layer-ssl)
 * [JNDI properties for Application Center](#jndi-properties-for-application-center)
 * [Configuring WebSphere Application Server to support applications in public app stores](#configuring-websphere-application-server-to-support-applications-in-public-app-stores)
@@ -1671,7 +1671,7 @@ Use LDAP to authenticate users and to define the users and groups who can instal
 
 Using LDAP with Liberty profile requires you to configure LDAP authentication and LDAP ACL management.
 
-* [Configuring LDAP authentication for the Liberty profile](#coniguring-ldap-authentication-for-the-liberty-profile)
+* [Configuring LDAP authentication for the Liberty profile](#configuring-ldap-authentication-for-the-liberty-profile)
 * [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile)
 
 ##### Configuring LDAP authentication for the Liberty profile
@@ -2217,7 +2217,7 @@ Some versions of Android, iOS, and Windows Phone operating systems do not suppor
 #### Jump to
 * [Configuring SSL for WebSphere Application Server full profile](#configuring-ssl-for-websphere-application-full-profile)
 * [Configuring SSL for Liberty profile](#configuring-ssl-for-liberty-profile)
-* [Configuring SSL for Apache Tomcat](#configuring-ssl-apache-tomcat)
+* [Configuring SSL for Apache Tomcat](#configuring-ssl-for-apache-tomcat)
 * [Managing and installing self-signed CA certificates in an Application Center test environment](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)
 
 ##### Configuring SSL for WebSphere Application Server full profile
@@ -2346,7 +2346,7 @@ You can configure some JNDI properties for Application Center.
 | ibm.appcenter.ldap.cache.expiration.seconds | The Application Center maintains a cache of LDAP data and the changes become visible only after the cache expires. Specify the number of seconds during which an entry in the LDAP cache is valid. Set this property to a value greater than 3600 (1 hour) to reduce the amount of LDAP requests. If no value is entered, the default value is 86400, which is equal to 24 hours. If you need to clear the cache of LDAP data manually, enter this command: `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`. See [Using the stand-alone tool to clear the LDAP cache](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache). |
 | ibm.appcenter.ldap.connectionURL | The URL to access the LDAP server when no Virtual Member Manager (VMM) is used. See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
 | ibm.appcenter.ldap.federated.active | Specifies whether Application Center is configured for LDAP with federated repositories. Since WebSphere® Application Server Liberty profile V8.5.5., set this property to true to enable use of the federated registry. Set this property to false to disable use of the federated registry, which is the default setting. See [Managing users with LDAP](#managing-users-with-ldap). | 
-| ibm.appcenter.ldap.group.base | The search base to find groups when you use LDAP without Virtual Member Manager (VMM). See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
+| ibm.appcenter.ldap.group.base | The search base to find groups when you use LDAP without Virtual Member Manager (VMM). See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
 | ibm.appcenter.ldap.group.filter | LDAP group search filter. Use **%v** as the placeholder for the group attribute. This property is only required when LDAP users and groups are defined in the same subtree; that is, when the properties **ibm.appcenter.ldap.user.base** and **ibm.appcenter.ldap.group.base** have the same value. | 
 | ibm.appcenter.ldap.group.name | The group name attribute when you use LDAP without Virtual Member Manager (VMM). See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
 | ibm.appcenter.ldap.group.nesting | Specifies whether the LDAP contains nested groups (that is, groups in groups) when you use LDAP without Virtual Member Manager (VMM). Setting this property to false speeds up LDAP access because the groups are not searched recursively. See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
@@ -2367,13 +2367,13 @@ You can configure some JNDI properties for Application Center.
 | ibm.appcenter.logging.formatjson | This property has an effect only when ibm.appcenter.logging.tosystemerror is set to true. If this property is enabled, it formats JSON responses in logging messages that are directed to System.Error. Setting this property is helpful when you debug the server. | 
 | ibm.appcenter.logging.tosystemerror | Specifies whether all logging messages are also directed to System.Error. Setting this property is helpful when you debug the server. | 
 | ibm.appcenter.openjpa.Log | This property is passed to OpenJPA and enables JPA logging. For details, see the [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html). | 
-| ibm.appcenter.proxy.host | If the Application Center server is behind a firewall or reverse proxy, this property specifies the address of the host. Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is the address of the proxy. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application). |
-| ibm.appcenter.proxy.port | If the Application Center server is behind a firewall or reverse proxy, this property specifies the address of the host. Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is the port of the proxy, for example 443. It is needed only if the protocol of the external URI and the protocol of the internal URI are different. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application). |
-| ibm.appcenter.proxy.protocol | If the Application Center server is behind a firewall or reverse proxy, this property specifies the protocol (http or https). Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is set to the protocol of the proxy. For example, appcntr.net. This property is needed only if the protocol of the external and of the internal URI are different. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application). |
+| ibm.appcenter.proxy.host | If the Application Center server is behind a firewall or reverse proxy, this property specifies the address of the host. Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is the address of the proxy. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.proxy.port | If the Application Center server is behind a firewall or reverse proxy, this property specifies the address of the host. Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is the port of the proxy, for example 443. It is needed only if the protocol of the external URI and the protocol of the internal URI are different. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.proxy.protocol | If the Application Center server is behind a firewall or reverse proxy, this property specifies the protocol (http or https). Setting this property allows a user outside the firewall to reach the Application Center server. Typically, this property is set to the protocol of the proxy. For example, appcntr.net. This property is needed only if the protocol of the external and of the internal URI are different. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.proxy.scheme | This property is just an alternative name for ibm.appcenter.proxy.protocol. | 
 | ibm.appcenter.push.schedule.period.amount | Specifies the time schedule when you send push notifications of application updates. When applications are frequently changed on the server, set this property to send batches of notifications. For example, send all notifications that happened within the past hour, instead of sending each individual notification. | 
 | ibm.appcenter.push.schedule.period.unit | Specifies the unit for the time schedule when you send push notifications of application updates. | 
-| ibm.appcenter.services.endpoint | Enables the Application Center console to locate the Application Center REST services. Specify the external address and context root of the applicationcenter.war web application. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN. For example, https://appcntr.net:443/applicationcenter. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application). |
+| ibm.appcenter.services.endpoint | Enables the Application Center console to locate the Application Center REST services. Specify the external address and context root of the applicationcenter.war web application. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN. For example, https://appcntr.net:443/applicationcenter. See [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.services.iconCacheMaxAge | Specifies the number of seconds during which cached icons remain valid for the Application Center console and the client. Application icons rarely change, therefore they are cached. Specify values larger than 600 (10 min) to reduce the amount of data transfer for the icons. | 
 | mfp.jndi.configuration | Optional. If the JNDI configuration is injected into the WAR files or provided as a shared library, the value of this property is the name of the JNDI configuration. You can also specify this value as a system property. | 
 | mfp.jndi.file | Optional. If the JNDI configuration is stored as an external file, the value of this property is the path of a file that describes the JNDI configuration. You can also specify this value as a system property. | 

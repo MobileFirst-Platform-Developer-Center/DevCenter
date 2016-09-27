@@ -12,18 +12,18 @@ IBM MobileFirst Platform Foundation in combination with IBM PureApplication Syst
 * [Installing IBM MobileFirst Foundation System Pattern](#installing-ibm-mobilefirst-foundation-system-pattern)
 * [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern)
 * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+* [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
 * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-* [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+* [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
 * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 * [Deploying MobileFirst Application Center on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
 * [Deploying MobileFirst Application Center on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
 * [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
-* [Configuring an external database with a IBM MobileFirst Foundation System Pattern](#configuring-an-external-database-with-a-ibm-mobilefirst-foundation-system-pattern)
+    * [Configuring an external database with a IBM MobileFirst Platform Foundation System Pattern](#configuring-an-external-database-with-a-ibm-mobilefirst-platform-foundation-system-pattern)
 * [Deploying and configuring MobileFirst Analytics](#deploying-and-configuring-mobilefirst-analytics)
 * [Predefined templates for MobileFirst Platform Pattern](#predefined-templates-for-mobilefirst-platform-pattern)
 * [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server)
-* [Upgrading IBM MobileFirst Foundation System Pattern](#upgrading-ibm-mobilefirst-foundation-system-pattern)
+* [Upgrading IBM MobileFirst Platform Foundation System Pattern](#upgrading-ibm-mobilefirst-platform-foundation-system-pattern)
 
 ### Key benefits
 IBM MobileFirst  Foundation System Pattern provides the following benefits:
@@ -187,7 +187,7 @@ This procedure involves uploading certain artifacts to IBM® PureApplication® S
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (Liberty single node) template](#mobilefirst-liberty-single-node-template).
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (Liberty single node) template](#mobilefirst-platform-liberty-single-node-template).
 
 1. Create a pattern from the predefined template:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
@@ -312,7 +312,7 @@ This procedure involves uploading certain artifacts to IBM® PureApplication® S
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (Liberty server farm) template](#mobilefirst-liberty-server-farm-template).
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (Liberty server farm) template](#mobilefirst-platform-liberty-server-farm-template).
 
 1. Create a pattern from the predefined template:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
@@ -721,7 +721,7 @@ If you are running the System Monitoring for WebSphere Application Server shared
 
 Some parameters of script packages in the template are configured with recommended values and are not covered in this topic. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS ND) template](#mobilefirst-platform-was-nd-pattern-template).
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS ND) template](#mobilefirst-platform-was-nd-template).
 
 1. Create a pattern from the predefined template:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
@@ -1146,9 +1146,9 @@ If the runtime to be deployed in the pattern is configured to use LDAP for appli
 
 1. Build a pattern with any topology you need. For more information, see the following topics:
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 2. Mandatory for AIX®: In IBM® PureApplication® System running on Power®, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
     * In the **Pattern Builder**, select the **MobileFirst Platform DB** node.
@@ -1278,16 +1278,16 @@ If the runtime to be deployed in the pattern is configured to use LDAP for appli
 
 5. Configure and launch the pattern deployment. On the Deploy Pattern page, in the Nodes list, you can adjust your LDAP configurations by clicking **MobileFirst Server** (or **DmgrNode** when using the MobileFirst Platform (WAS ND) template) and then expanding **MFP Server Administration**. For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in one of the following topics depending on the topology you selected when creating the pattern:
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
 
 6. Access the MobileFirst Operations Console. Use the administrator user name and password to log in to the MobileFirst Operations Console through your LDAP configuration. For more information, see the "Access the MobileFirst Operations Console:" step in one of the following topics depending on the topology you selected when creating the pattern;
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 10.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 10.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
 
 ## Configuring an external database with a IBM MobileFirst Platform Foundation System Pattern
@@ -1301,9 +1301,9 @@ This procedure involves configuring the external database parameters for connect
 
 1. Build a pattern with any topology you need. For more information, see the following topics:
     [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
 2. Select the **MobileFirst Platform DB** and click **Remove component**.
@@ -1357,9 +1357,9 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
 
 1. Build a pattern with the topology you need. For more information, see the following topics:
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server)
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
 2. Add and configure MobileFirst Analytics:
@@ -1472,18 +1472,18 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
 
     For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in the following topics depending on the topology you selected when creating the pattern:
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 9.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
 
 5. Access MobileFirst Analytics through the MobileFirst Operations Console.
 
     For more information, see the "Access the MobileFirst Operations Console" step in one of the following topics depending on the topology you selected when creating the pattern:
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-liberty-profile-server), step 10.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
     * [Deploying MobileFirst Server on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 10.
+    * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
     
 ## Predefined templates for MobileFirst Platform Pattern

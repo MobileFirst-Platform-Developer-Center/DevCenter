@@ -27,7 +27,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 You can modify the server-side configuration of your apps and adapters without stopping the MobileFirst Server.</p>
 
                 <ul>
-                    <li>For more information about the new development process, see <a href="http://localhost:4000/tutorials/en/foundation/8.0/application-development/">Development concepts and overview</a></li>
+                    <li>For more information about the new development process, see <a href="../../../application-development/">Development concepts and overview</a></li>
                     <li>For more information about the migration of existing applications, see <a href="../../../migration-cookbook">the Migrating Cookbook</a>.</li>
                     <li>For more information about administering MobileFirst applications, see Administering MobileFirst applications.</li>
                 </ul>
@@ -55,7 +55,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>Starting with Cordova 4.0 the pluggable WebView allows the default web runtime to be replaced. Crosswalk is now supported by Cordova applications with IBM MobileFirst Foundation. Using the Crosswalk WebView for Android allows high performance and consistent user experience across a wide range of mobile devices. To take advantage of the Crosswalk capabilities, apply the Cordova Crosswalk plug-in.</p>
 
                 <h3>Distributing MobileFirst SDK for Windows 8 and Windows 10 Universal apps with NuGet</h3>
-                <p>The MobileFirst SDK for Windows 8 and Windows 10 Universal apps is available from NuGet at https://www.nuget.org/packages. To get started.</p>
+                <p>The MobileFirst SDK for Windows 8 and Windows 10 Universal apps is available from NuGet at [https://www.nuget.org/packages](https://www.nuget.org/packages). To get started.</p>
 
                 <h3>org.apache.http replaced by okHttp</h3>
                 <p><code>org.apache.http</code> has been removed from the Android SDK. okHttp will be used as the http dependency.</p>
@@ -122,10 +122,10 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>With this new method, you can set the display name of a device in the MobileFirst Server registration data.</p>
 
                 <h3>New Objective-C client-side APIs for iOS</h3>
-                <h4>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</h4>
+                <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
                 <p>With this new method, you can get the display name of a device from the MobileFirst Server registration data.</p>
                 
-                <h4>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</h4>
+                <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>With this new method, you can set the display name of a device in the MobileFirst Server registration data.</p>
 
                 <h3>Updated REST API for the administration service</h3>
@@ -395,7 +395,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 </ul>
 
                 <p>The MobileFirst Analytics Console now shows different content based on the security role of the logged-in user.<br/>
-                For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/conosle/#role-based-access-control">Role-based access control</a>.</p>
+                For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Role-based access control</a>.</p>
 
                 <p>Starting with v8.0, the MobileFirst Analytics Server uses Elasticsearch v1.7.5.</p>
 

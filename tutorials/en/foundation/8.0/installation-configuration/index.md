@@ -31,7 +31,7 @@ Learn about the MobileFirst Server installation process by walking through the i
 * [By using the graphical mode of IBM® Installation Manager](production/tutorials/graphical-mode) and the Server Configuration Tool.
 * [By using the command line tool](production/tutorials/command-line).
 
-Afterwards you'll have a working MobileFirst Server. However, you need to configure it, in particular for security, before you use the server. For more information, see [Configuring MobileFirst Server](production/configuring-mobilefirst-server).
+Afterwards you'll have a working MobileFirst Server. However, you need to configure it, in particular for security, before you use the server. For more information, see [Configuring MobileFirst Server](production/server-configuration).
 
 **Additions**  
 

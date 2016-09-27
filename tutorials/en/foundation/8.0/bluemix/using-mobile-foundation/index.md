@@ -139,6 +139,6 @@ The Developer plan does not offer a persistent database, which could cause at ti
 ## Further reading
 Now that the MobileFirst Server instance is up and running:
 
-* Familiarize with the [MobileFirst Operations Console](../../setting-up-your-development-environment/console).
+* Familiarize with the [MobileFirst Operations Console](../../product-overview/components/console).
 * Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
 * Read through all [available tutorials](../../all-tutorials/).

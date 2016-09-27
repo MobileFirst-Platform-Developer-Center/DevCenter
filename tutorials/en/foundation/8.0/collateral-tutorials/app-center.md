@@ -40,7 +40,7 @@ If you do not have a database installed, the installation process can also insta
 
 1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
-    > For more information, see the topic about [installing MobileFirst Server](../installation-configuration).
+    > For more information, see the topic about [installing MobileFirst Server](../../installation-configuration).
 
     Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
 
@@ -50,7 +50,7 @@ If you do not have a database installed, the installation process can also insta
 
 4. At this point, you can configure user authentication. For example, you can connect to an LDAP repository.
 
-    > For more information, see the topic about [configuring the Application Center after installation](../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > For more information, see the topic about [configuring the Application Center after installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
 5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8
 
