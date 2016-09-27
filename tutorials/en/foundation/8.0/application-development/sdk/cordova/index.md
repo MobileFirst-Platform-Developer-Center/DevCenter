@@ -47,7 +47,7 @@ The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For 
 The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
 
 #### cordova-plugin-mfp-fips
-The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_using_FIPS_140-2_support.html?view=kc#c_using_FIPS_140-2_support).
+The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](../../administering-apps/federal/#fips-140-2-support).
 
 #### cordova-plugin-mfp-encrypt-utils
 The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).

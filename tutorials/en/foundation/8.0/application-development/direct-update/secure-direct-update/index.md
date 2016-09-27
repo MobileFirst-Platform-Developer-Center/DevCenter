@@ -9,7 +9,7 @@ weight: 2
 ## Overview
 For secure Direct Update to work, a user-defined keystore file must be deployed in MobileFirst Server and a copy of the matching public key must be included in the deployed client application.
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in MobileFirst Server, see [Configuring the MobileFirst Server keystore](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/t_mfp_server_keystore_configuring.html?view=kc#t_mfp_server_keystore_configuring).
+This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in MobileFirst Server, see [Configuring the MobileFirst Server keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
 

@@ -72,7 +72,7 @@ The client configuration must be defined before you build the application. The c
 The server configuration for an app is tied to the combination of app ID, version number, and target platform. You must register your app to a MobileFirst Server runtime before you can add server-side configurations for the app. Configuring the server side of an app is typically done with the MobileFirst Operations Console. You can also configure the server side of an app with the following methods:
 
 * Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
-* Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering MobileFirst applications through the command line](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_command_line.html?view=kc#administeringworklightapplicationsthroughthecommandline) and [Administering MobileFirst applications through Ant](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_ant.html?view=kc#administeringibmworklightapplicationsthroughant).
+* Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering MobileFirst applications through the command line](../administering-apps/using-cli) and [Administering MobileFirst applications through Ant](../administering-apps/using-ant).
 * Use the REST API of the MobileFirst administration service. For information about the REST API, see [REST API for the MobileFirst Server administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
 
 You can also use these methods to automate configuration of the MobileFirst Server.
@@ -136,7 +136,8 @@ When you deploy your app to production, you can deploy your app to the following
 > For information about installing and configuring MobileFirst Server for your on-premises environment, see [Installing IBM MobileFirst Server](../installation-configuration/production/appserver).
 
 #### On the cloud
-> For information, see [Deploying MobileFirst Server to the cloud](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html#deployment).
+* [Using MobileFirst Server on IBM Bluemix](../bluemix).
+* [Using MobileFirst Server on IBM PureApplication](production/pure-application).
 
 ## Adapters
 Adapters in IBM MobileFirst Foundation securely connect your back-end systems to client applications and cloud services.  

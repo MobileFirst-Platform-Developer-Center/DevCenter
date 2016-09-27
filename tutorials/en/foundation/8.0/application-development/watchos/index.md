@@ -74,7 +74,7 @@ The optional frameworks that add features to the MobileFirst app are not provide
 | Usernames/password security check | use the CredentialsValidation security check |
 
 ### Remote Disable/Notify
-With the IBM MobileFirst Platform Operations Console, you can configure the IBM MobileFirst Platform Server to disable access (and return a message) to client applications based on the version they are running (see [Remotely disabling application access to protected resources](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/t_denying_access_to_older_app_versions.html?view=kc)). Two options provide default UI alerts:
+With the IBM MobileFirst Platform Operations Console, you can configure the IBM MobileFirst Platform Server to disable access (and return a message) to client applications based on the version they are running (see [Remotely disabling application access to protected resources](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources). Two options provide default UI alerts:
 
 * when the app is active but a messages is sent: **Active and Notifying**
 * when the app is outdated and access is denied: **Access Denied**

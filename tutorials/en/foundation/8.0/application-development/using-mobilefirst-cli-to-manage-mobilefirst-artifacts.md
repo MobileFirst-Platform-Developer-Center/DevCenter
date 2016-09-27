@@ -13,8 +13,6 @@ You can also create, register, and manage MobileFirst adapters to either local o
 
 The **mfpdev** commands have two modes: interactive mode and direct mode. In interactive mode, you enter the command without options, and you are prompted for responses. In direct mode, you enter the full command, including options, and prompts are not provided. When applicable, the prompts are context-sensitive to the target platform of the app, as determined by the directory from which you run the command. Use the up and down arrow keys on your keyboard to move through the selections, and press the Enter key when the selection you want is highlighted and preceded by a ">" character.
 
-**Tip:** Another set of commands, the **mfpadm** commands, are available for MobileFirst Server administration. For more information about these commands, see [Administering MobileFirst applications through the command line](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/c_administering_ibm_worklight_applications_through_command_line.html?view=kc#administeringworklightapplicationsthroughthecommandline).
-
 In this tutorial you will learn how to install the `mfpdev` Command Line Interface (CLI) and how to use it to manage MobileFirst Server instances, applications and adapters.
 
 > For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the MobileFirst Foundation SDK](../../application-development/sdk/) category.

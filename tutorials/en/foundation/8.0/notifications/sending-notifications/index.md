@@ -389,7 +389,7 @@ In the MobileFirst Operations Console → **[your application] → Push → Tags
 ![customizing push notifications](customizing-push-notifications.png)
 
 ## Proxy Support
-You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list_push.html?view=kc#reference_itq_pvt_dv).
+You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.

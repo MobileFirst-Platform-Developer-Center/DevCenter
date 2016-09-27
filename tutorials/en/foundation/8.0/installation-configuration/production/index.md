@@ -23,7 +23,7 @@ A DBMS is needed to store the technical data of MobileFirst Server components. Y
 * MySQL
 * Oracle
 
-For more information about the versions of DBMS that are supported by the product, see [System requirements](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html?view=kc). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by MobileFirst Server installer. Make sure that you have the JDBC driver.
+For more information about the versions of DBMS that are supported by the product, see [System requirements](../../product-overview/requirements). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by MobileFirst Server installer. Make sure that you have the JDBC driver.
 
 * For DB2, use the DB2 JDBC driver V4.0 (db2jcc4.jar).
 * For MySQL, use the Connector/J JDBC driver.
@@ -37,7 +37,7 @@ A Java application server is needed to run the MobileFirst Server applications. 
 * WebSphere Application Server
 * Apache Tomcat
 
-For more information about the versions of application servers that are supported by the product, see [System requirements](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html?view=kc). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run MobileFirst Server
+For more information about the versions of application servers that are supported by the product, see [System requirements](../../product-overview/requirements). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run MobileFirst Server
 
 **IBM Installation Manager V1.8.4 or later**  
 Installation Manager is used to run the installer of MobileFirst Server. You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Foundation V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.

@@ -52,7 +52,7 @@ If you do not have a database installed, the installation process can also insta
 
     > For more information, see the topic about [configuring the Application Center after installation](../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
-5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8, as explained in  [Preparing mobile clients](http://ibm.biz/knowctr#SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/appcenter/c_configuration_of_the_applicati.html).
+5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8
 
 The mobile client is the mobile application that you use to browse the catalog and install the application.
 

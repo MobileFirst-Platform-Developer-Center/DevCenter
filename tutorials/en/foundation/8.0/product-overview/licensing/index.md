@@ -6,7 +6,7 @@ weight: 4
 ## Overview
 The IBM MobileFirst Server supports two different licensing methods based on what you have purchased.
 
-If you have purchased Perpetual licenses, you can consume what you have purchased and verify your usage and compliance through the **License tracking page** in the MobileFirst Operations Console and through [License Tracking report](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.admin.doc/admin/r_license_tracking_report.html?view=kc#r_license_tracking_report). If you have purchased Token licenses, configure your MobileFirst Server to communicate with a remote token license server.
+If you have purchased Perpetual licenses, you can consume what you have purchased and verify your usage and compliance through the **License tracking page** in the MobileFirst Operations Console and through [License Tracking report](../../administering-apps/license-tracking/#license-tracking-report). If you have purchased Token licenses, configure your MobileFirst Server to communicate with a remote token license server.
 
 ### Application or Addressable Device licenses
 If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the MobileFirst Operations Console and through License Tracking report.
