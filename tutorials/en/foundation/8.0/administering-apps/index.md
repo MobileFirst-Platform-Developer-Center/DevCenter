@@ -34,16 +34,16 @@ In this role, a user can perform the same operations as the Operator, but can al
 **Administrator**  
 In this role, a user can perform all application administration operations.
 
-> For more information about MobileFirst administration roles, see [Configuring user authentication for MobileFirst Server administration]().
+> For more information about MobileFirst administration roles, see [Configuring user authentication for MobileFirst Server administration](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 ## Administration tools
 MobileFirst Operations Console is not the only way to administer MobileFirst applications. IBM MobileFirst Foundation also provides other tools to incorporate administration operations into your build and deployment process.
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the MobileFirst Server administration service]().
+A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the MobileFirst Server administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
 
 With this set of REST services, you can perform the same operations that you can do in MobileFirst Operations Console. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
 
-MobileFirst applications can also be administered by using Ant tasks or with the **mfpadm** command line tool. See [Administering MobileFirst applications through Ant]() or [Administering MobileFirst applications through the command line]().
+MobileFirst applications can also be administered by using Ant tasks or with the **mfpadm** command line tool. See [Administering MobileFirst applications through Ant](using-ant) or [Administering MobileFirst applications through the command line](using-cli).
 
 Similar to the web-based console, the REST services, Ant tasks, and command line tools are secured and require you to provide your administrator credentials.
 

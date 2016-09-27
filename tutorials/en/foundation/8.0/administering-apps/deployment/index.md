@@ -26,17 +26,14 @@ Adapters can be uploaded, updated, or configured while a production server is ru
 
 2. For Java adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the MobileFirst Server keystore.
         
-    For more information, see [Using SSL in HTTP adapters](). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates).
+    For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates).
 
     > **Note:** If the application server is WebSphere® Application Server Liberty, then the certificates must also be in the Liberty truststore.
 
 3. Verify the server-side configuration of the adapter.
-
-    For more information about adapter configuration, see [Configuring adapters]().
-
 4. Use the `mfpadm deploy adapter` and `mfpadm adapter set user-config` commands to upload the adapter and its configuration.
 
-    For more information about **mfpadm** for adapters, see [Commands for adapters]().
+    For more information about **mfpadm** for adapters, see [Commands for adapters](../using-cli/#commands-for-adapters).
         
 ## Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates
 You can configure SSL between MobileFirst adapters and back-end servers by importing the server self-signed SSL certificate to the MobileFirst keystore.
