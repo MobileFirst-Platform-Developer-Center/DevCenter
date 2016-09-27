@@ -9,14 +9,14 @@ When you finish a development cycle of your application, deploy it to a testing 
 ### Jump to
 
 * [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment)
-* [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates)
+* [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-back-end-servers-by-using-self-signed-certificates)
 * [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment)
 * [Registering an application to a production environment](#registering-an-application-to-a-production-environment)
 * [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server)
 * [Updating MobileFirst apps in production](#updating-mobilefirst-apps-in-production)
 
 ## Deploying or updating an adapter to a production environment
-Adapters contain the server-side code of applications that are deployed on and serviced by IBM MobileFirst Foundation. Read this checklist before you deploy or update an adapter to a production environment. For more information about creating and building adapters, see [Developing the server side of a MobileFirst application](../adapters).
+Adapters contain the server-side code of applications that are deployed on and serviced by IBM MobileFirst Foundation. Read this checklist before you deploy or update an adapter to a production environment. For more information about creating and building adapters, see [Developing the server side of a MobileFirst application](../../adapters).
 
 Adapters can be uploaded, updated, or configured while a production server is running. After all the nodes of a server farm receive the new adapter or configuration, all incoming requests to the adapter use the new settings.
 
@@ -26,7 +26,7 @@ Adapters can be uploaded, updated, or configured while a production server is ru
 
 2. For Java adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the MobileFirst Server keystore.
         
-    For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-backend-servers-by-using-self-signed-certificates).
+    For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
     > **Note:** If the application server is WebSphere® Application Server Liberty, then the certificates must also be in the Liberty truststore.
 
@@ -43,7 +43,7 @@ You can configure SSL between MobileFirst adapters and back-end servers by impor
     > **Note:** Export back-end public certificates from the back-end keystore by using keytool or openssl lib. Do not use the export feature in a web browser.
 
 2. Import the back-end server certificate into the MobileFirst keystore.
-3. Deploy the new the MobileFirst keystore. For more information, see [Configuring the MobileFirst Server keystore](../authentication-and-security/configuring-the-mobilefirst-server-keystore).
+3. Deploy the new the MobileFirst keystore. For more information, see [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore).
 
 ### Example
 The **CN** name of the back-end certificate must match what is configured in the adapter-descriptor **adapter.xml** file. For example, consider an **adapter.xml** file that is configured as follows:

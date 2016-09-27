@@ -23,9 +23,6 @@
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"
-            }, {
-                "name": "For Admins",
-                "path": "/admin-tutorials"
             }]
         },
         {
@@ -36,7 +33,7 @@
                 "path": "/installation-configuration"
             }, {
                 "name": "Administering Applications",
-                "path": "/adminstering-apps"
+                "path": "/administering-apps"
             }, {
                 "name": "Application Center",
                 "path": "/appcenter"
