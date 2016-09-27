@@ -64,7 +64,7 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 </taskdef>
 ```
 
-For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../../installation-configuration/production/installation-manager/).
+For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
 

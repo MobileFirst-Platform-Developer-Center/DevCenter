@@ -6,7 +6,7 @@ weight: 2
 ---
 ## Overview
 This section provides details to assist you in planning and preparing an installation for your specific environment.  
-For more information about the configuration of the MobileFirst Server, see [Configuring MobileFirst Server](configuring-mobilefirst-server).
+For more information about the configuration of the MobileFirst Server, see [Configuring MobileFirst Server](server-configuration).
 
 #### Jump to
 

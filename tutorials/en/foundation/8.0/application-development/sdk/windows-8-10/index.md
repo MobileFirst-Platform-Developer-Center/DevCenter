@@ -17,7 +17,7 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Nuget
 
 - Microsoft Visual Studio 2013 or 2015 and MobileFirst CLI installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../installation-configuration/development/windows) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
 
 #### Jump to:
 
@@ -65,7 +65,7 @@ NuGet is the package manager for the Microsoft development platform, including .
     ```bash
     mfpdev app register
     ```
-    - If you use a remote server, [use the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - If you use a remote server, [use the command `mfpdev server add`](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, then updates the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adds to it the metadata that identifies the MobileFirst Server.
 
@@ -98,7 +98,8 @@ Located in the `strings` folder of the project, this file contains server connec
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
 
-- Review the [Adapters development tutorials](../../adapters/)
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../)
+- Review the [Adapters development tutorials](../../../adapters/)
+- Review the [Authentication and security tutorials](../../../authentication-and-security/)
+- Review the [Notifications tutorials](../../../notifications/)
+- Review [All Tutorials](../../../all-tutorials)

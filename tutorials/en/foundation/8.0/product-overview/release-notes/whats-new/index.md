@@ -395,7 +395,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 </ul>
 
                 <p>The MobileFirst Analytics Console now shows different content based on the security role of the logged-in user.<br/>
-                For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/#role-based-access-control">Role-based access control</a>.</p>
+                For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/conosle/#role-based-access-control">Role-based access control</a>.</p>
 
                 <p>Starting with v8.0, the MobileFirst Analytics Server uses Elasticsearch v1.7.5.</p>
 

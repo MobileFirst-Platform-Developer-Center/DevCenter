@@ -59,7 +59,7 @@ If you previously made the changes that are described in the tutorial, you must 
 
 ![FIPS diagram](FIPS.jpg)
 
-> For more information about JSONStore, see [JSONStore overview](../../application-developmenet/jsonstore).
+> For more information about JSONStore, see [JSONStore overview](../../application-development/jsonstore).
 
 
 ## References
@@ -132,13 +132,3 @@ enableFIPS : true
 ```
 
 Re-build the Android platform.
-
-
-
-
-
-
-
-
-
-

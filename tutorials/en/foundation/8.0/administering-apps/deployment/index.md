@@ -43,7 +43,7 @@ You can configure SSL between MobileFirst adapters and back-end servers by impor
     > **Note:** Export back-end public certificates from the back-end keystore by using keytool or openssl lib. Do not use the export feature in a web browser.
 
 2. Import the back-end server certificate into the MobileFirst keystore.
-3. Deploy the new the MobileFirst keystore. For more information, see [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore).
+3. Deploy the new the MobileFirst keystore. For more information, see [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### Example
 The **CN** name of the back-end certificate must match what is configured in the adapter-descriptor **adapter.xml** file. For example, consider an **adapter.xml** file that is configured as follows:
@@ -127,7 +127,7 @@ The following example demonstrates how you complete the configuration by using t
 To build an application for a test or production environment, you must configure it for its target server. To build an application for a production environment, additional steps apply.
 
 1. Make sure that the target server keystore is configured.
-For more information, see [Configuring the MobileFirst Server keystore](../authentication-and-security/configuring-the-mobilefirst-server-keystore).
+For more information, see [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 2. If you plan to distribute the app installable artifact, increment the app version.
 3. Before you build your app, configure it for the target server.
@@ -166,13 +166,13 @@ For more information, see [Configuring the MobileFirst Server keystore](../authe
 When you register an application to a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity.
 
 #### Before you begin
-* Verify that MobileFirst Server keystore is configured and is not the default keystore. Do not use a server in production with a default keystore. The MobileFirst Server keystore defines the identity of MobileFirst Server instances, and is used to digitally sign OAuth tokens and Direct Update packages. You must configure the server's keystore with a secret key before you use it in production. For more information, see [Configuring the MobileFirst Server keystore](../authentication-and-security/configuring-the-mobilefirst-server-keystore).
+* Verify that MobileFirst Server keystore is configured and is not the default keystore. Do not use a server in production with a default keystore. The MobileFirst Server keystore defines the identity of MobileFirst Server instances, and is used to digitally sign OAuth tokens and Direct Update packages. You must configure the server's keystore with a secret key before you use it in production. For more information, see [Configuring the MobileFirst Server keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 * Deploy the adapters used by the app. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
 * Build the application for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
 
 When you register an application with a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity. You might also define your update strategy if an older version of your app is already deployed. Read the following procedure to learn about important steps, and about ways to automate them with the **mfpadm** program.
 
-1. If your MobileFirst Server is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/token-licensing/#planning-for-the-use-of-token-licensing).
+1. If your MobileFirst Server is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
 
     > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
 
@@ -261,7 +261,7 @@ You download the application descriptor from the server where the application is
 
 2. Download the application descriptor from the server where the application is configured. You can download it by using the REST API or **mfpadm**.
 
-    > **Note:** You can also export an application or application version from the MobileFirst Operations Console. See [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations).
+    > **Note:** You can also export an application or application version from the MobileFirst Operations Console. See [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
     * To download the application descriptor with the REST API, use the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API.
 
         The following URL returns the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The call is made to MobileFirst Development Server: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`

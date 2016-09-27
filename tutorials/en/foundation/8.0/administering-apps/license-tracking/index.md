@@ -35,7 +35,7 @@ The possible values for Token License Type are:
 
 > **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
 
-**Note:** If your server is configured for token licensing and if you plan to register an application with Token License Type ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION, set the application license information before you register the first version of the application. With mfpadm program, you can set the license information for an application before any version is registered. After the license information is set, the right number of tokens is checked out when you register the first version of the app. For more information about token validation, see Token license validation.
+**Note:** If your server is configured for token licensing and if you plan to register an application with Token License Type ADDITIONAL\_BRAND\_DEPLOYMENT or NON_PRODUCTION, set the application license information before you register the first version of the application. With mfpadm program, you can set the license information for an application before any version is registered. After the license information is set, the right number of tokens is checked out when you register the first version of the app. For more information about token validation, see Token license validation.
 
 To set the license type with IBM MobileFirst Platform Operations Console
 
@@ -111,7 +111,7 @@ The license is checked in for every deployed application, during a server shutdo
 License validation might fail when the application is registered or deleted, in the following cases:
 
 * The Rational® Common Licensing native library is not installed and configured.
-* The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../../installation-configuration/production/token-licensing).
+* The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../installation-configuration/production/token-licensing).
 * Rational License Key Server is not accessible.
 * Sufficient tokens are not available.
 * The license expired.
@@ -151,11 +151,11 @@ The `CLIENT_DEVICE` metric can have the following subtypes:
 
 * Active Devices
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were not decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were not decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
 
 * Inactive Devices
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
 
 The following cases are specific:
 
@@ -181,5 +181,5 @@ The following cases are specific:
 
 For more information about configuring license tracking using metrics, see
 
-* [Configuring license tracking for client device and addressable device](../../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
-* [Configuring IBM License Metric Tool log files](../../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)
+* [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
+* [Configuring IBM License Metric Tool log files](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)

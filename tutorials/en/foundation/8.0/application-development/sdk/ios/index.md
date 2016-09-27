@@ -10,8 +10,8 @@ The MobileFirst Foundation SDK consists of a collection of pods that are availab
 The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../application-development/jsonstore/ios/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../notifications/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../jsonstore/ios/).
+* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
 
 In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the MobileFirst Server to recognize the application.
@@ -20,7 +20,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 
 - Xcode and MobileFirst CLI installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../installation-configuration/development/ios) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
 
 #### Jump to:
 
@@ -146,7 +146,7 @@ You can also manually add the MobileFirst SDK:
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - If a remote server is used, [use the command `mfpdev server add`](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
     You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
 
@@ -245,7 +245,8 @@ For information about support for Bitcode and TLS 1.2 see the [Additional Inform
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
 
-- Review the [Adapters development tutorials](../../adapters/)
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../)
+- Review the [Adapters development tutorials](../../../adapters/)
+- Review the [Authentication and security tutorials](../../../authentication-and-security/)
+- Review the [Notifications tutorials](../../../notifications/)
+- Review [All Tutorials](../../../all-tutorials)

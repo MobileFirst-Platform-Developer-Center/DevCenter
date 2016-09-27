@@ -15,7 +15,7 @@ Where an APAR number is listed, you can confirm that an interim fix has that fea
 
 ### Licensing
 #### PVU licensing
-A new offering, IBM MobileFirst Foundation Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for IBM MobileFirst Foundation Extension, see [Licensing MobileFirst](../licensing).
+A new offering, IBM MobileFirst Foundation Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for IBM MobileFirst Foundation Extension, see [Licensing MobileFirst](../../licensing).
 
 ### Web applications
 #### Registering web applications from the MobileFirst Platform CLI (APAR PI65327)

@@ -13,7 +13,7 @@ Reference information about Ant tasks and configuration sample files for the ins
 * [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 * [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
 * [Ant tasks for installation of MobileFirst Analytics](#ant-tasks-for-installation-of-mobilefirst-analytics)
-* [Internal runtime databases](#interanl-runtime-databases)
+* [Internal runtime databases](#internal-runtime-databases)
 * [Sample configuration files](#sample-configuration-files)
 * [Sample configuration files for MobileFirst Analytics](#sample-configuration-files-for-mobilefirst-analytics)
 
@@ -872,7 +872,7 @@ Use the **password** attribute to specify the password that is used if the data 
 Use the **validate** attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
 
 #### tenant
-For more information about this attribute, see [Configuration properties](../analytics/configuration/#configurtion-properties).
+For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
 
 ### To specify an Apache Derby database
 The `<derby>` element has the following attributes: 

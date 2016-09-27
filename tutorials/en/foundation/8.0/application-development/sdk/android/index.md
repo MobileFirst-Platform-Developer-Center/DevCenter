@@ -9,8 +9,8 @@ weight: 3
 The MobileFirst Foundation SDK consists of a collection of dependencies that are available through [Maven Central](http://search.maven.org/), and which you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../application-development/jsonstore/android/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../jsonstore/android/).
+* **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../../notifications/).
 
 In this tutorial, you learn how to add the MobileFirst Native SDK by using Gradle to a new or existing Android Studio application. You also learn how to configure the MobileFirst Server to recognize the application, and to find information about the MobileFirst configuration files that are added to the project.
 
@@ -18,7 +18,7 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Gradl
 
 - Android Studio and MobileFirst CLI installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../installation-configuration/development/mobilefirst) and [Setting up your Android development environment](../../installation-configuration/development/android) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Android development environment](../../../installation-configuration/development/android) tutorials.
 
 #### Jump to:
 
@@ -140,7 +140,7 @@ repositories {
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - If a remote server is used, [use the command `mfpdev server add`](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and to add to it the metadata that identifies the MobileFirst Server.
 
@@ -184,7 +184,8 @@ For information about support for Javadoc and Android Service see the [Additiona
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
 
-- Review the [Adapters development tutorials](../../adapters/)
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../)
+- Review the [Adapters development tutorials](../../../adapters/)
+- Review the [Authentication and security tutorials](../../../authentication-and-security/)
+- Review the [Notifications tutorials](../../../notifications/)
+- Review [All Tutorials](../../../all-tutorials)

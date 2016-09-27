@@ -38,7 +38,7 @@ The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** d
 These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable **JAVA_HOME** is set, the scripts accept it.  
 To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/** directory into your PATH environment variable, or reference its absolute file name in each call.
 
-For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../../installation-configuration/production/installation-manager/).
+For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
 
@@ -167,7 +167,7 @@ The command history is enabled in terminal emulator windows if the rlwrap packag
 **On OS X**  
 The command history is enabled in the Terminal program if the rlwrap package is installed and found in PATH. To install the rlwrap package:
 
-1. Install MacPorts by using the installer from [www.macports.org](www.macports.org).
+1. Install MacPorts by using the installer from [www.macports.org](http://www.macports.org).
 2. Run the command: `sudo /opt/local/bin/port install rlwrap`
 3. Then, to make the rlwrap program available in PATH, use this command in a Bourne-compatible shell: `PATH=/opt/local/bin:$PATH`
 
@@ -323,7 +323,7 @@ This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/su
 
 <br/>
 #### The `show confidential-clients` command
-The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../../authentication-and-security/confidetnial-clients).
+The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidetnial-clients).
 
 Syntax: `show confidential-clients [--xml] [runtime-name]`
 
@@ -349,7 +349,7 @@ This command is based on the [Confidential Clients (GET)](http://www.ibm.com/sup
 
 <br/>
 #### The `set confidential-clients` command
-The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../../authentication-and-security/confidential-clients).
+The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `set confidential-clients [runtime-name] file`
 
@@ -370,7 +370,7 @@ This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/sup
 
 <br/>
 #### The `set confidential-clients-rule` command
-The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../../authentication-and-security/confidential-clients).
+The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 

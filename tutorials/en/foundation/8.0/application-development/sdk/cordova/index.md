@@ -41,13 +41,13 @@ The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and 
 >    - cordova-plugin-okhttp
 
 #### cordova-plugin-mfp-jsonstore
-The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information about JSONstore, see the [JSONStore tutorial](../../application-development/jsonstore/cordova/).  
+The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information about JSONstore, see the [JSONStore tutorial](../jsonstore/cordova/).  
 
 #### cordova-plugin-mfp-push
-The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
+The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../../notifications/push-notifications-overview/).
 
 #### cordova-plugin-mfp-fips
-The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](../../administering-apps/federal/#fips-140-2-support).
+The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
 
 #### cordova-plugin-mfp-encrypt-utils
 The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).
@@ -56,7 +56,7 @@ The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for
 
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and MobileFirst CLI installed on the developer workstation.
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../installation-configuration/development/cordova) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
 
 ## Adding the MobileFirst Cordova SDK
 Follow the instructions below to add the MobileFirst Cordova SDK to a new or existing Cordova project, and register it in the MobileFirst Server.
@@ -81,7 +81,7 @@ Consider creating the project by using the MobileFirst Cordova **application tem
      - "HelloWorld" is the Name of the application.
      - --template modifies the application with MobileFirst-specific additions.
 
-    > The templated **index.js** enables you to use additional MobileFirst features as such [Multilingual application  translation](../../application-development/translation) and initialization options (see the user documentation for more information).
+    > The templated **index.js** enables you to use additional MobileFirst features as such [Multilingual application  translation](../translation) and initialization options (see the user documentation for more information).
 
 2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
@@ -123,7 +123,7 @@ Use this function to call the various MobileFirst API methods.
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - If a remote server is used, [use the command `mfpdev server add`](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, then updates the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server.
 
@@ -295,8 +295,8 @@ mfpdev app config
 ## Tutorials to follow next
 With the MobileFirst Cordova SDK now integrated, you can now:
 
-- Review the [Using the MobileFirst Foundation SDK tutorials](../../application-development/)
-- Review the [Adapters development tutorials](../../adapters/)
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../)
+- Review the [Adapters development tutorials](../../../adapters/)
+- Review the [Authentication and security tutorials](../../../authentication-and-security/)
+- Review the [Notifications tutorials](../../../notifications/)
+- Review [All Tutorials](../../../all-tutorials)

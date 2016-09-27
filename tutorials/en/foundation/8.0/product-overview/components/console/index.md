@@ -41,7 +41,7 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../bluemix/).
+The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, 
@@ -60,7 +60,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## Navigating the console
 
@@ -103,14 +103,14 @@ Provide basic application values and download Starter Code.
 ![Image of application registration screen](register-applications.png)
 
 #### Managing applications
-Manage and configure registered applications by use of [Direct Update](../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
+Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/authorization-concepts/).
 
 ![Image of application management screen](application-management.png)
 
 #### Authentication and Security
 Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
 
-> [Learn more](../../authentication-and-security/) about the MobileFirst security framework.
+> [Learn more](../../../authentication-and-security/) about the MobileFirst security framework.
 
 ![Image of application security configuration screen](authentication-and-security.png)
 
@@ -120,14 +120,14 @@ Configure the display name of the application in the console as well as the appl
 ![Image of application settings screen](application-settings.png)
 
 #### Notifications
-Set-up [push notifications](../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+Set-up [push notifications](../../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
 
 ![Image of push notifications setup scren](push-notifications.png)
 
 ### Adapters
 
 #### Creating adapters
-Register a [MobileFirst adapter](../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+Register a [MobileFirst adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
 ![Image of adapter registration screen](create-adapter.png)
 

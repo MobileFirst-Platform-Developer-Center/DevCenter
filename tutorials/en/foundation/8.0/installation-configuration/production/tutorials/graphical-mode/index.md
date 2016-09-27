@@ -54,7 +54,7 @@ On other operating systems, you can still run the installation with Installation
 * [Creating a database](#creating-a-database)
 * [Running the Server Configuration Tool](#running-the-server-configuration-tool)
 * [Testing the installation](#testing-the-installation)
-* [Creating a farm of two Liberty servers that run MobileFirst Server](#cerating-a-farm-of-two-livberty-servers-that-run-mobilefirst-server)
+* [Creating a farm of two Liberty servers that run MobileFirst Server](#cerating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
 * [Testing the farm and see the changes in MobileFirst Operations Console](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ### Installing IBM Installation Manager
@@ -91,11 +91,11 @@ The installer for WebSphere Application Server Liberty Core is provided as part 
     For example, on Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Create a Liberty server that will be used to install the first node of MobileFirst Server at the later part of the tutorial.
     * Start a command line.
-    * Go to l**iberty_install_dir/bin**, and enter `server create mfp1`.
+    * Go to l**iberty\_install\_dir/bin**, and enter `server create mfp1`.
     
-    This command creates a Liberty server instance named mfp1. You can see its definition at **liberty_install_dir/usr/servers/mfp1** or **WLP_USER_DIR/servers/mfp1** (if you modify the directory as described in step 6).
+    This command creates a Liberty server instance named mfp1. You can see its definition at **liberty\_install\_dir/usr/servers/mfp1** or **WLP\_USER\_DIR/servers/mfp1** (if you modify the directory as described in step 6).
     
-After the server is created, you can start this server with `server start mfp1` from **liberty_install_dir/bin/**. To stop the server, enter the command: `server stop mfp1` from **liberty_install_dir/bin/**.  
+After the server is created, you can start this server with `server start mfp1` from **liberty\_install\_dir/bin/**. To stop the server, enter the command: `server stop mfp1` from **liberty\_install\_dir/bin/**.  
 The default home page can be viewed at http://localhost:9080.
 
 > **Note:** For production, you need to make sure that the Liberty server is started as a service when the host computer starts. Making the Liberty server start as a service is not part of this tutorial.
@@ -108,7 +108,7 @@ Run Installation Manager to install the binary files of MobileFirst Server on yo
     * Go to **File → Preferences and click Add Repositories...**.
     * Browse for the repository file in the directory where the installer is extracted.
 
-        If you decompress the IBM MobileFirst Foundation V8.0 .zip file for MobileFirst Server in **mfp_installer_directory** folder, the repository file can be found at **mfp_installer_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
+        If you decompress the IBM MobileFirst Foundation V8.0 .zip file for MobileFirst Server in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
     
@@ -148,7 +148,7 @@ The database is used to store the technical data that is used by the various Mob
 
 In this tutorial, the tables for all the components are placed under the same schema. The Server Configuration Tool creates the tables in the same schema. For more flexibility, you might want to use Ant tasks or a manual installation.
 
-> **Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../installing-mobilefirst-server/databases/requirements).
+> **Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../../databases/#database-requirements).
 
 1. Log on to the computer that is running the DB2 server. It is assumed that a DB2 user, for example named as **mfpuser**, exists.
 2. Verify that this DB2 user has the access to a database with a page size 32768 or more, and is allowed to create implicit schemas and tables in that database.
@@ -159,7 +159,7 @@ In this tutorial, the tables for all the components are placed under the same sc
     * Open a session with a user that has `SYSADM` or `SYSCTRL` permissions. For example, use the user **db2inst1** that is the default admin user that is created by the DB2 installer.
     * Open a DB2 command line processor:
         * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-        * On Linux or UNIX systems, go to **~/sqllib/bin** (or **db2_install_dir/bin** if **sqllib** is not created in the administrator's home directory) and enter `./db2`.
+        * On Linux or UNIX systems, go to **~/sqllib/bin** (or **db2\_install\_dir/bin** if **sqllib** is not created in the administrator's home directory) and enter `./db2`.
         * Enter the following SQL statements to create a database that is called **MFPDATA**:
         
         ```sql
@@ -193,7 +193,7 @@ This application can be used to distribute mobile apps internally to the employe
 1. Start the Server Configuration Tool.
     * On Linux, from **application shortcuts Applications → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On macOS, open a shell console. Go to **mfp_server_install_dir/shortcuts and type ./configuration-tool.sh**.
+    * On macOS, open a shell console. Go to **mfp_server\_install\_dir/shortcuts and type ./configuration-tool.sh**.
     
     The mfp_server_install_dir directory is where you installed MobileFirst Server.
 2. Select **File → New Configuration...** to create a MobileFirst Server Configuration.
@@ -208,7 +208,7 @@ This application can be used to distribute mobile apps internally to the employe
 8. In the **DB2 Database Settings** panel, complete the details:
     * Enter the host name that runs your DB2 server. If it is running on your computer, you can enter **localhost**.
     * Change the port number if the DB2 instance you plan to use is not listening to the default port (50000).
-    * Enter the path to the DB2 JDBC driver. For DB2, the file that is named as **db2jcc4.jar** is expected. It is also needed to have the **db2jcc_license_cu.jar** file in the same directory. In a standard DB2 distribution, these files are found in **db2_install_dir/java**.
+    * Enter the path to the DB2 JDBC driver. For DB2, the file that is named as **db2jcc4.jar** is expected. It is also needed to have the **db2jcc\_license\_cu.jar** file in the same directory. In a standard DB2 distribution, these files are found in **db2\_install\_dir/java**.
     * Click **Next**.
 
     If the DB2 server cannot be reached with the credentials that are entered, the Server Configuration Tool disables the **Next** button and displays an error. The **Next** button is also disabled if the JDBC driver does not contain the expected classes. If everything is correct, the **Next** button is enabled.
@@ -273,14 +273,14 @@ Take note of the following database factors:
 In the Server Configuration Tool, only one database user is needed. This user is used to create the tables, but is also used as the data source user in the application server at run time. In production environment, you might want to restrict the privileges of the user that is used at run time to the strict minimum (`SELECT / INSERT / DELETE / UPDATE)`, and thus provide a different user for deployment in the application server. The Ant files that are provided as examples also use the same users for both cases. However, in the case of DB2, you might want to create your own versions of files. As such, you can distinguish the user that is used to create the databases from the user that is used for the data source in the application server with the Ant tasks.
 
 #### Database tables creation
-For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp_server_install_dir/MobileFirstServer/databases** and **mfp_server_install_dir/PushService/databases**. For more information, see [Creating the database tables manually](../installing-mobilefirst-server/databases/create-manually).
+For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
 
 The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX®, use the command `diff server.xml server.xml.bak` to find the differences.
 
 #### Modification of the application server settings (specific to Liberty):
 1. The Liberty features are added.
 
-    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../topologies/constraints). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
+    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../../topologies/constraints). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
     
 2. `host='*'` is added in the `httpEndPoint` declaration.
 
@@ -314,7 +314,7 @@ The following applications are installed:
 * **mobilefirs**t, MobileFirst runtime component
 * **imfpush**, the push service
 
-The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../topologies).  
+The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../../topologies).  
 For an installation on different servers, you cannot use the Server Configuration Tool. Use Ant tasks or install the product manually.
 
 #### Administration service
@@ -322,24 +322,24 @@ The administration service is the service for managing MobileFirst applications,
 
 The class loader is set with delegation parent last for Liberty profile and WebSphere Application Server, and for all MobileFirst applications. This setting is to avoid conflicts between the classes packaged in the MobileFirst applications and the classes of the application server. Forgetting to set the class loader delegation to parent last is a frequent source of error in manual installation. For Apache Tomcat, this declaration is not needed.
 
-In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for MobileFirst Server administration service](../configuring-mobilefirst-server/jndi).
+In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for MobileFirst Server administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 The Server Configuration Tool also defines the JNDI properties (the URL and the OAuth parameters to register the confidential clients) for the communication with the push service.  
 The data source to the database that contains the tables for the administration service is declared, as well as a library for its JDBC driver.
 
 #### Live update service
-The live update service stores information about the runtime and application configurations. It is controlled by the administration service and must always run on the same server as the administration service. The context root is **context_root_of_admin_serverconfig**. As such, it is **mfpadminconfig**. The administration service assumes that this convention is respected to create the URL of its requests to the REST services of the live update service.
+The live update service stores information about the runtime and application configurations. It is controlled by the administration service and must always run on the same server as the administration service. The context root is **context\_root\_of\_admin\_serverconfig**. As such, it is **mfpadminconfig**. The administration service assumes that this convention is respected to create the URL of its requests to the REST services of the live update service.
 
 The class loader is set with delegation parent last as discussed in the administration service section.
 
-The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../configuring-mobilefirst-server/jndi) and [List of JNDI properties for MobileFirst Server live update service](../configuring-mobilefirst-server/jndi).
+The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for MobileFirst Server live update service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context_root_of_config_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_config\_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
 #### MobileFirst Operations Console
 MobileFirst Operations Console is declared with the same security roles as the administration service. The users that are mapped to the security roles of MobileFirst Operations Console must also be mapped to the same security role of the administration service. Indeed, MobileFirst Operations Console runs queries to the administration service on the behalf of the console user.
 
-The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is **'*://*:*/mfpadmin'**. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../configuring-mobilefirst-server/jndi).
+The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 The class loader is set with delegation parent last as discussed in the administration service section.
 
@@ -348,7 +348,7 @@ This application is not secured by a security role. It is not required to log in
 
 The class loader is set with delegation parent last as discussed in the administration service section.
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context_root_of_runtime/jdbc/mfpDS**. In this tutorial, it is defined as **mobilefirst/jdbc/mfpDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the runtime are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_runtime/jdbc/mfpDS**. In this tutorial, it is defined as **mobilefirst/jdbc/mfpDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the runtime are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
 #### Push service
 This application is secured by OAuth. The valid OAuth tokens must be included in any HTTP request to the service.
@@ -365,7 +365,7 @@ The Liberty profile jvm.options file is modified. A property (com.ibm.ws.jmx.con
 ### Testing the installation
 After the installation is complete, you can use this procedure to test the components that are installed.
 
-1. Start the server by using the command **server start mfp1**. The binary file for the server is in **liberty_install_dir/bin**.
+1. Start the server by using the command **server start mfp1**. The binary file for the server is in **liberty\_install\_dir/bin**.
 2. Test MobileFirst Operations Console with a web browser. Go to [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). By default, the server runs on port 9080. However, you can verify the port in the element `<httpEndpoint>` as defined in the **server.xml** file. A login screen is displayed.
 
 ![The console's login screen](mfpconsole_signin.jpg)
@@ -387,9 +387,9 @@ When you create a farm, you also need to configure an HTTP server to send querie
 
 1. Create a second Liberty server on the same computer.
     * Start a command line.
-    * Go to **liberty_install_dir/bin**, and enter **server create mfp2**.
+    * Go to **liberty\_install\_dir/bin**, and enter **server create mfp2**.
 2. Modify the HTTP and HTTPS ports of the server mfp2 so that they do not conflict with the ports of server mfp1.
-    * Go to the second server directory. The directory is **liberty_install_dir/usr/servers/mfp2** or **WLP_USER_DIR/servers/mfp2** (if you modify the directory as described in step 6 of [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)).
+    * Go to the second server directory. The directory is **liberty\_install\_dir/usr/servers/mfp2** or **WLP\_USER\_DIR/servers/mfp2** (if you modify the directory as described in step 6 of [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)).
     * Edit the **server.xml** file. Replace
 
     ```xml
@@ -446,18 +446,18 @@ When you create a farm, you also need to configure an HTTP server to send querie
         server stop mfp2
         ```
     * Copy the LTPA keys of server mfp1 to server mfp2.
-        From **liberty_install_dir/usr/servers** or **WLP_USER_DIR/servers**, run the following command depending on your operating system. 
+        From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system. 
         * On UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * On Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
     * Restart the servers. Switch from one browser tab to another other does not require you to relogin. In a Liberty server farm, all servers must have the same LTPA keys.
 5. Enable the JMX communication between the Liberty servers.
 
-    The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP_USER_DIR/servers/server_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
+    The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
     
     > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
-    * In **WLP_USER_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
+    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
     * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
-    * In **WLP_USER_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
+        * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
     * In the same directory, import the certificate of server mfp1 with the command: `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. The certificate of server mfp1 is imported into the keystore of server mfp2 so that server mfp2 can trust the HTTPS connections to server mfp1. You are asked to confirm that you trust the certificate.
     * In **WLP_USER_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
 
