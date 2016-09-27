@@ -9,7 +9,7 @@ weight: 3
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## Analytics Console
-From the Analytics Console, view and configure the Analytics reports.
+From the Analytics Console, view and configure the Analytics reports. Manage alerts and view client logs.
 
 You can open the Analytics Console from the MobileFirst Operations Console by clicking the  **Analytics Console**  link in the top-right navigation bar.
 
@@ -23,10 +23,11 @@ After navigating to the Analytics Console, the default **Dashboard** panel appea
 In the **Dashboard** panel, you can review collected analytics data related to: application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
 
 ### Apps
-In the **Apps** panel, you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices.
+In the **Apps** panel, you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
+
 
 ### Infrastructure
-In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
+In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time, and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
 
 > Learn more in the [Analytics Workflows](../workflows/) tutorial.
 
@@ -56,13 +57,35 @@ From **Dashboard → Alert Management** you can configure thresholds which, if e
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
 ### Monitor app crashes
-App crashes are visualized on the Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
+App crashes are visualized on the Analytics Console (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
-### Monitor network data
-The MobileFirst Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
+### Monitor server and network data
+The MobileFirst Analytics Console monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+
+
+### Collect, search, and report on client logs
+Client logs can be sent to the server and included in analytics reports.
+
+To include logging information in a report:
+
+1. In the Analytics Console, choose **Dashboard → Custom Charts**.
+
+2. Choose **Client Logs** from the **Event Type** pull-down menu.
+
+For more information on **Custom Charts**, see [Creating Custom Charts](custom-charts/).
+
+Logging data can be filtered. Log filters can be configured and saved on the Analytics Server, and then retrieved by client applications.
+
+For information on configuring log filters, see [Client log searches](log-filters/) tutorial.
+
+For more information on sending logs from the client, see [Client log collection](../../application-development/client-side-log-collection/).
+
+
 
 ## MobileFirst Operations Console
-Configure and administer the Analytics server with the Operations Console.
+Configure and administer the Analytics Server with the Operations Console.
+
+If you are in the Analytics Console, access the Operations Console by clicking the **Operations Console** button in the top navigation bar.
 
 ### Enable/disable Analytics support
 The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
@@ -74,6 +97,7 @@ The collection of data for analysis by the Analytics server is enabled by defaul
 5. Click the **Read Only** button to lock the properties again.
 
 <img class="gifplayer" alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
+
 
 ### Role-based access control
 Content in the MobileFirst Analytics Console is restricted by predefined security roles.  
