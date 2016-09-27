@@ -21,7 +21,7 @@ IBM MobileFirst Platform Foundation in combination with IBM PureApplication Syst
 * [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
 * [Configuring an external database with a IBM MobileFirst Foundation System Pattern](#configuring-an-external-database-with-a-ibm-mobilefirst-foundation-system-pattern)
 * [Deploying and configuring MobileFirst Analytics](#deploying-and-configuring-mobilefirst-analytics)
-* [Predefined templates for MobileFirst Pattern](#predefined-templates-for-mobilefirst-pattern)
+* [Predefined templates for MobileFirst Platform Pattern](#predefined-templates-for-mobilefirst-platform-pattern)
 * [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server)
 * [Upgrading IBM MobileFirst Foundation System Pattern](#upgrading-ibm-mobilefirst-foundation-system-pattern)
 
@@ -1486,6 +1486,110 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     * [Deploying MobileFirst Server on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multi-node-websphere-application-server-full-profile-server), step 10.
     * [Deploying MobileFirst Server on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
     
+## Predefined templates for MobileFirst Platform Pattern
+IBM MobileFirst Foundation System Pattern includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
+The following templates are available:
+
+#### Jump to
+* [MobileFirst Platform (Liberty single node) template](#mobilefirst-platform-liberty-single-node-template)
+* [MobileFirst Platform (Liberty server farm) template](#mobilefirst-platform-liberty-server-farm-template)
+* [MobileFirst Platform (WAS single node) template](#mobilefirst-platform-was-single-node-template)
+* [MobileFirst Platform (WAS server farm) template](#mobilefirst-platform-was-server-farm-template)
+* [MobileFirst Platform (WAS ND) template](#mobilefirst-platform-was-nd-template)
+* [MobileFirst Platform Application Center (Liberty single node) template](#mobilefirst-platform-application-center-liberty-single-node-template)
+* [MobileFirst Platform Application Center (WAS single node) template](#mobilefirst-platform-application-center-was-single-node-template)
+
+### MobileFirst Platform (Liberty single node) template
+The below diagram shows the composition of the "MobileFirst Platform (Liberty single node)" template.
+
+![MobileFirst Platform (Liberty single node) template](pureapp_templ_Lib_single_node.jpg)
+
+The "MobileFirst Platform (Liberty single node)" template is composed of the following nodes and components:
+
+| Node | Components | 
+|------|------------|
+| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere® Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2® database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+
+### MobileFirst Platform (Liberty server farm) template
+The diagram below shows the composition of the "MobileFirst Platform (Liberty server farm)" template.
+
+![MobileFirst Platform (Liberty server farm) template](pureapp_templ_Lib_server_farm.jpg)
+
+The "MobileFirst Platform (Liberty server farm)" template is composed of the following nodes and components:
+
+| Node | Components | 
+|------|------------|
+| IHS Server | **IBM® HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
+| **MobileFirst Platform Server** | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+
+### MobileFirst Platform (WAS single node) template
+The diagram below shows the composition of the "MobileFirst Platform (WAS single node)" template.
+
+![MobileFirst Platform (WAS single node) template](pureapp_templ_WAS_single_node.jpg)
+
+The "MobileFirst Platform (WAS single node)" template is composed of the following nodes and components:
+
+| Node | Components | 
+|------|------------|
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction:<br/>Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration. MobileFirst Operations Console.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+
+### MobileFirst Platform (WAS server farm) template
+The diagram below shows the composition of the "MobileFirst Platform (WAS server farm)" template.
+
+![MobileFirst Platform (WAS server farm) template](pureapp_templ_WAS_server_farm.jpg)
+
+| Node | Components | 
+|------|------------|
+| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+
+### MobileFirst Platform (WAS ND) template
+The diagram below shows the composition of the "MobileFirst Platform (WAS ND)" template.
+
+![MobileFirst Platform (WAS ND) template](pureapp_templ_WAS_ND.jpg)
+
+The "MobileFirst Platform (WAS ND)" template is composed of the following nodes and components:
+
+| Node | Components | 
+|------|------------|
+| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
+| DmgrNode | **Deployment manager**<br/>WebSphere Application Server deployment manager installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Runtime**<br/>Runtime WAR file.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Application**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MFP Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
+
+### MobileFirst Platform Application Center (Liberty single node) template
+The diagram below shows the composition of the "MobileFirst Platform Application Center (Liberty single node)" template.
+
+![MobileFirst Platform Application Center (Liberty single node) template](pureapp_templ_appC_Lib_single_node.jpg)
+
+The "MobileFirst Platform Application Center (Liberty single node)" template is composed of the following nodes and components:
+
+| Node | Components |
+|------|------------|
+| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the MobileFirst Application Center server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+
+### MobileFirst Platform Application Center (WAS single node) template
+The diagram shows the composition of the "MobileFirst Platform Application Center (WAS single node)" template.
+
+![MobileFirst Platform Application Center (WAS single node) template](pureapp_templ_appC_WAS_single_node.jpg)
+
+The "MobileFirst Platform Application Center (WAS single node)" template is composed of the following nodes and components:
+
+| Node | Components | 
+|------|------------|
+| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP WAS SDK Level**<br/>Purpose of this script is to set the required SDK level as the default SDK for the WAS Profile<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the MobileFirst Application Center server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+
+
+## Script packages for MobileFirst Server
+IBM MobileFirst Foundation System Pattern provides script packages that are the building blocks to compose various pattern topologies.  
+The following sections list and describe the parameters for each script package.
+
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.
 
