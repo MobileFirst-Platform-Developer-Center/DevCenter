@@ -701,7 +701,7 @@ When the audit log is enabled, you can download it from MobileFirst Operations C
 To diagnose login and authentication issues, enable the package **com.ibm.mfp.server.security** for trace and set the log level to **FINEST**.
 
 ## Configuring license tracking
-License tracking is enabled by default. Read the following topics to learn how you can configure license tracking. For more information about license tracking, see [License tracking]().
+License tracking is enabled by default. Read the following topics to learn how you can configure license tracking. For more information about license tracking, see [License tracking](../../../administering-apps/license-tracking).
 
 * [Configuring license tracking for client device and addressable device](#configuring-license-tracking-for-client-device-and-addressable-device)
 * [Configuring IBM License Metric Tool log files](#configuring-ibm-license-metric-tool-log-files)
@@ -749,7 +749,7 @@ You can configure the location and management of those files with the following 
 
 To change the default values, you must create a Java property file, with the format **key=value**, and provide the path to the properties file through the **license_metric_logger_configuration** JVM property.
 
-For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool]().
+For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool](../../../administering-apps/license-tracking/#integration-with-ibm-license-metric-tool).
 
 ## WebSphere Application Server SSL configuration and HTTP adapters
 By setting a property, you can let HTTP adapters benefit from WebSphere® SSL configuration.

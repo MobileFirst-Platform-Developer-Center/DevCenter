@@ -50,9 +50,9 @@ After MobileFirst Server is installed, you must manually configure the server fo
 The MobileFirst Server is not functional before you complete this manual configuration. The Rational Common Licensing client library is to be installed in your application server, and you define the location of the Rational License Key Server.
 
 ### Operations
-After you install and configure IBM MobileFirst Platform Server for token licensing, the server validates licenses during various scenarios. For more information about the retrieval of tokens during operations, see [Token license validation]().
+After you install and configure IBM MobileFirst Platform Server for token licensing, the server validates licenses during various scenarios. For more information about the retrieval of tokens during operations, see [Token license validation](../../../administering-apps/license-tracking/#token-license-validation).
 
-If you need to test a non-production application on a production server with token licensing enabled, you can declare the application as non-production. For more information about declaring the application type, see [Setting the application license information]().
+If you need to test a non-production application on a production server with token licensing enabled, you can declare the application as non-production. For more information about declaring the application type, see [Setting the application license information](../../../administering-apps/license-tracking/#setting-the-application-license-information).
 
 ## Installation overview for token licensing
 If you intend to use token licensing with IBM MobileFirst Foundation, make sure that you go through the following preliminary steps in this order.

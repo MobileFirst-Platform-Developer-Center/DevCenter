@@ -30,7 +30,7 @@ The possible values for Application Type are:
 The possible values for Token License Type are:
 
 * **APPLICATION**: Use APPLICATION for most applications. This is the default.
-* **ADDITIONAL_BRAND_DEPLOYMENT**: Use this ADDITIONAL_BRAND_DEPLOYMENT if your application is licensed as IBM MobileFirst Platform Additional Brand Deployment.
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Use this ADDITIONAL\_BRAND\_DEPLOYMENT if your application is licensed as IBM MobileFirst Platform Additional Brand Deployment.
 * **NON_PRODUCTION**: Use NON_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
 
 > **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
@@ -122,7 +122,7 @@ Depending on the token license type of an application, the following features ar
 | Token License Type | Feature name | 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL_BRAND_DEPLOYMENT |	ibmmfpabd | 
+| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
 | NON_PRODUCTION	| (no feature) | 
 
 ## Integration with IBM License Metric Tool
@@ -133,13 +133,13 @@ If you have not installed a version of IBM License Metric Tool that supports IBM
 ### About PVU-based licensing using SWID files
 If you have purchased IBM MobileFirst Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
 
-The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installls MobileFirst or MobileFirst Analytics Server. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
+The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installls MobileFirst or MobileFirst Analytics Server. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
 
 The number of Application Center installations is not limited by PVU-based licensing.
 
 The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere® Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool. For more information on IBM MobileFirst Foundation Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
-For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 
 ### SLMT tags
 IBM MobileFirst Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for MobileFirst Server, and to configure the generation of the IBM Software License Metric Tag files.

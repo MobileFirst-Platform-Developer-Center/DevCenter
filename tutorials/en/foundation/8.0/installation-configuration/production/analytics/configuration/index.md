@@ -16,7 +16,7 @@ Some configuration for the MobileFirst Analytics Server is required. Some of the
 ### Properties
 For a complete list of configuration properties and how to set them in your application server, see [Configuration properties](#configuration-properties).
 
-* The **discovery.zen.minimum_master_nodes** property must be set to **ceil((number of master-eligible nodes in the cluster / 2) + 1)** to avoid split-brain syndrome.
+* The **discovery.zen.minimum\_master\_nodes** property must be set to **ceil((number of master-eligible nodes in the cluster / 2) + 1)** to avoid split-brain syndrome.
     * Elasticsearch nodes in a cluster that are master-eligible must establish a quorum to decide which master-eligible node is the master.
     * If you add a master eligible node to the cluster, the number of master-eligible nodes changes, and thus the setting must change. You must modify the setting if you introduce new master-eligible nodes to the cluster. For more information about how to manage your cluster, see [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch).
 * Give your cluster a name by setting the **clustername** property in all of your nodes.
