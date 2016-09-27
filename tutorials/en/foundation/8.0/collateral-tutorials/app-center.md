@@ -68,10 +68,10 @@ The mobile client is delivered as a compiled application (APK) and is located at
 
 2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
 
-3. Use **Run As > Run on MobileFirst Development Server** to build the project.
+3. Use **Run As → Run on MobileFirst Development Server** to build the project.
 
 4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
-You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As > Xcode project**. This action generats the project and opens it in Xcode.
+You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
 
 ### For Blackberry
 
@@ -90,7 +90,7 @@ Application Center manages only company applications that are signed with the co
 
 * To install company applications on a device, first enroll the device with the company by installing a company enrollment token.
 
-> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website > Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
+> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website → Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
 
 > For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
 
