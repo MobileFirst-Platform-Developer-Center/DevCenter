@@ -31,7 +31,7 @@ The possible values for Token License Type are:
 
 * **APPLICATION**: Use APPLICATION for most applications. This is the default.
 * **ADDITIONAL\_BRAND\_DEPLOYMENT**: Use this ADDITIONAL\_BRAND\_DEPLOYMENT if your application is licensed as IBM MobileFirst Platform Additional Brand Deployment.
-* **NON_PRODUCTION**: Use NON_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
+* **NON_PRODUCTION**: Use NON\_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
 
 > **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
 

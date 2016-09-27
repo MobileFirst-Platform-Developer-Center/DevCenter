@@ -149,7 +149,7 @@ For more information, see [Configuring the MobileFirst Server keystore](../authe
     
 6. Configure the app for production use.
     * Consider disabling printing to the device log.
-    * If you plan to use IBM MobileFirst Analytics, verify that your app sends collected data to the MobileFirst Server. For more information, see [Sending analytics]().
+    * If you plan to use IBM MobileFirst Analytics, verify that your app sends collected data to the MobileFirst Server.
     * Consider disabling features of your app that call the setServerURL API, unless you plan to make a single build for multiple test servers.
 
 7. If you build for a production server and plan to distribute the installable artifact, archive the app source code to be able to run non regression-tests for this app on a test server.
@@ -172,33 +172,33 @@ When you register an application to a production server, you upload its applicat
 
 When you register an application with a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity. You might also define your update strategy if an older version of your app is already deployed. Read the following procedure to learn about important steps, and about ways to automate them with the **mfpadm** program.
 
-1. If your MobileFirst Server is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation]() and [Planning for the use of token licensing]().
+1. If your MobileFirst Server is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/token-licensing/#planning-for-the-use-of-token-licensing).
 
-    > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information]().
+    > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
 
 2. Transfer the application descriptor from a test server to the production server.
 
-    This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server]().
+    This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server).
 
-3. Set the application license information For more information, see [Setting the application license information]().
-4. Configure the application-authenticity security check. For more information about configuring the application-authenticity security check, see [Configuring the application-authenticity security check]().
+3. Set the application license information For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
+4. Configure the application-authenticity security check. For more information about configuring the application-authenticity security check, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
 
-    > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check]().
+    > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
 
 5. If your application uses push notification, upload the push notification certificates to the server. You can upload the push certificates for your application with MobileFirst Operations Console. The certificates are common to all versions of an application.
 
     > **Note:** You might not be able to test the push notification for your app with production certificates before your app is published to the store.
 
 6. Verify the following items before you publish the application to the store.
-    * Test any mobile application management feature that you plan to use, such as disabling remote applications or displaying of an administrator message. For more information, see [Mobile-application management]().
-    * In the case of an update, define the update strategy. For more information, see [Updating MobileFirst apps in production]().
+    * Test any mobile application management feature that you plan to use, such as disabling remote applications or displaying of an administrator message. For more information, see [Mobile-application management](../using-console/#mobile-application-management).
+    * In the case of an update, define the update strategy. For more information, see [Updating MobileFirst apps in production](#updating-mobilefirst-apps-in-production).
 
 ## Transferring server-side artifacts to a test or production server
 You can transfer an application configuration from a one server to another by using command-line tools or a REST API.
 
 The application descriptor file is a JSON file that contains the description and configuration of your application. When you run an app that connects to a MobileFirst Server instance, the app must be registered with that server and configured. After you define a configuration for your app, you can transfer the application descriptor to another server, for example to a test server or to a production server. After you transfer the application descriptor to the new server, the app is registered with the new server. Different procedures are available, depending on whether you develop mobile applications and have access to the code, or whether you administer servers and do not have access to the code of the mobile app.
 
-> **Important:** If you import an application that includes authenticity data, and if the application itself has been recompiled since the authenticity data was generated, you must refresh the authenticity data. For more information, see [Configuring the application-authenticity security check]().
+> **Important:** If you import an application that includes authenticity data, and if the application itself has been recompiled since the authenticity data was generated, you must refresh the authenticity data. For more information, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
 
 * If you have access to the code of the mobile app, use the `mfpdev app pull` and `mfpdev app push` commands.
 * If you do not have access to the code of the mobile app, use the administration service.
@@ -216,7 +216,7 @@ After you have developed an application, you can transfer it from your developme
 * You must have an existing MobileFirst app on your local computer. The app must be registered to a MobileFirst Server. For information about creating a server profile, run **mfpdev app register**, or the topic about registering your type of app in the Developing applications section of this documentation.
 * You must have connectivity from your local computer to the server that your app is currently registered to and to the server that you want to transfer your app to.
 * You must have a server profile on the local computer for both the original MobileFirst Server and the server that you want to transfer your app to. For information about creating a server profile, run **mfpdev server add**.
-* You must have the IBM MobileFirst Command Line Interface (CLI) installed. For more information, see [Installing the MobileFirst CLI]().
+* You must have the IBM MobileFirst Command Line Interface (CLI) installed.
 
 You use the **mfpdev app pull** command to send a copy of the server-side configuration files for your app to your local computer. Then you use the **mfpdev app push** command to send it to another MobileFirst Server. The **mfpdev app push** command also registers the app on the specified server.
 
@@ -290,7 +290,7 @@ You download the application descriptor from the server where the application is
             * mfpadmin is the context root of the administration service. This context root is mfpadmin in MobileFirst Development Server.
             * --secure false indicates that the server's SSL certificate is accepted even if self-signed or if created for a different host name from the server's host name used in the URL.
 
-        For more information about the **mfpadm** program, see [Administering MobileFirst applications through the command line]().
+        For more information about the **mfpadm** program, see [Administering MobileFirst applications through the command line](../using-cli).
     
 3. Upload the application descriptor to the new server to register the app or update its configuration.
 You can upload it by using the REST API or **mfpadm**.
@@ -399,20 +399,20 @@ The most common upgrade path, used when you introduce new features or modify nat
 3. Register the app to MobileFirst Server and configure it.
 4. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
 5. Wait for review and approval, and for the apps to become available.
-6. Optional - send notification message to users of the old version, announcing the new version. See [Displaying an administrator message]() and [Defining administrator messages in multiple languages]().
+6. Optional - send notification message to users of the old version, announcing the new version. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
 
 
 ### Deploying a new app version and blocking the old version
 This upgrade path is used when you want to force users to upgrade to the new version, and block their access to the old version. Consider following these steps:
 
-1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message]() and [Defining administrator messages in multiple languages]().
+1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
 2. Increment the app version number.
-3. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+3. Build and test your application. For more information, see [Building an application for a test or production environment](../using-console/#building-an-application-for-a-test-or-production-environment).
 4. Register the app to MobileFirst Server and configure it.
 5. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
 6. Wait for review and approval, and for the apps to become available.
 7. Copy links to the new app version.
-8. Block the old version of the app in MobileFirst Operations Console, supplying a message and link to the new version. See [Remotely disabling application access to protected resources]().
+8. Block the old version of the app in MobileFirst Operations Console, supplying a message and link to the new version. See [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
 > **Note:** If you disable the old app, it is no longer able to communicate with MobileFirst Server. Users can still start the app and work with it offline unless you force a server connection on app startup.
 
