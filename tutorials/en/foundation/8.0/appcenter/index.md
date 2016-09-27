@@ -65,7 +65,7 @@ To use a company hub, Windows Phone requires you to register a company account w
 
 You must enroll all mobile devices through an application enrollment token that is associated with your company account.
 
-Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details]().
+Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
 
 Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
 
@@ -99,10 +99,10 @@ Several services compose the Application Center server-side component; for examp
 A database that stores information such as which application is installed on which devices, the feedback about applications, and the mobile application binary files. The Application Center application is associated with the database when you configure the Application Center for a particular web application server and a supported database.
 
 ### Administration console
-A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console]().
+A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console](appcenter-console).
 
 ### Mobile client application
-You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client]().
+You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client](mobile-client).
 
 The following figure shows an overview of the architecture.
 
@@ -150,14 +150,14 @@ After the installation is complete, you must configure the security settings for
     * **appcenteradmin** with password **admin**
 
 ### For more information
-To use the Application Center console, refer to [The Application Center console]().
+To use the Application Center console, refer to [The Application Center console](appcenter-console).
 
 To install and run the mobile client on the following operating systems, see:
 
-* Android: See [Installing the client on an Android mobile device]().
-* iOS operating system: See [Installing the client on an iOS mobile device]().
-* Windows Phone 8: See [Installing the client on Windows 8 Universal]().
-* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project]().
+* Android: See [Installing the client on an Android mobile device](mobile-client/#installing-an-application-on-an-android-device).
+* iOS operating system: See [Installing the client on an iOS mobile device](mobile-client/#installing-an-application-on-an-ios-device).
+* Windows Phone 8: See [Installing the client on Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
+* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project](preparations/#microsoft-windows-8-building-the-project).
 
 ## Next topics to follow
 Follow these topics to use the appcenter mobile client; send notifications to installed applications; learn about the appcenter console, command-line tool, the mobile client; and setting log levels.

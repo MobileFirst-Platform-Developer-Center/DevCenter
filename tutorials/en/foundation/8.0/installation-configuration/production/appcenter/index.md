@@ -176,7 +176,7 @@ To restart these servers with the deployment manager console, select **Applicati
 
 * You do not have to restart the deployment manager or the node agents.
 
-> **Note:** Only the Application Center is installed in the application server. A MobileFirst Operations Console is not installed by default. To install a MobileFirst Operations Console, you need to follow the steps in [Deploying MobileFirst Server to the cloud]().
+> **Note:** Only the Application Center is installed in the application server. A MobileFirst Operations Console is not installed by default. To install a MobileFirst Operations Console.
 
 ### Default logins and passwords created by IBM Installation Manager for the Application Center
 IBM® Installation Manager creates the logins by default for the Application Center, according to your application server. You can use these logins to test the Application Center.
