@@ -35,7 +35,7 @@ Continue reading for the server-side setup, or jump to [Client-side setup](#tuto
 On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
 
 ### Google Cloud Messaging / Firebase Cloud Messaging
-> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Existing GCM configurations will continue to function.
+> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
 
 Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
 To setup FCM:
