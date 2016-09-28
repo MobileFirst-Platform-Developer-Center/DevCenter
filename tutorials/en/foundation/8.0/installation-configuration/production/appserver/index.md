@@ -1474,7 +1474,7 @@ Make sure that you have fulfilled the requirements as documented in <a href="#we
 
 <h4 id="topology-constraints-nd">Topology constraints</h4>
 <b>On a stand-alone WebSphere Application Server</b>  
-The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <b>On WebSphere Application Server Network Deployment</b>  
 The deployment manager must be running while MobileFirst Server is running. The deployment manager is used for the JMX communication between the runtime and the administration service. The administration service and the live update service must be installed on the same application server. The runtime can be installed on different servers than the administration service, but it must be on the same cell.
@@ -1774,7 +1774,7 @@ You can install your server farm by running Ant tasks, with the Server Configura
 ### Planning the configuration of a server farm
 To plan the configuration of a server farm, choose the application server, configure the MobileFirst databases, and deploy the WAR files of the MobileFirst Server components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
 
-When you intend to plan a server farm installation, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) first, and in particular see [Server farm topology](#server-farm-topology).
+When you intend to plan a server farm installation, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
 
 In IBM MobileFirst Foundation, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. MobileFirst Server internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
 

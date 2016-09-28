@@ -9,7 +9,7 @@ Some configuration for the MobileFirst Analytics Server is required. Some of the
 
 #### Jump to
 
-* [Configuring properties](#configuring-properties)
+* [Configuration properties](#configuration-properties)
 * [Backing up Analytics data](#backing-up-analytics-data)
 * [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch)
 
@@ -42,7 +42,7 @@ The combination of the previous settings means that Elasticsearch waits for the 
 * Avoid clusters that span data centers and definitely avoid clusters that span large geographic distances. The latency between nodes is a severe performance bottleneck.
 * Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
 
-## Configuring properties
+## Configuration properties
 The MobileFirst Analytics Server can start successfully without any additional configuration.
 
 Configuration is done through JNDI properties on both the MobileFirst Server and the MobileFirst Analytics Server. Additionally, the MobileFirst Analytics Server supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
