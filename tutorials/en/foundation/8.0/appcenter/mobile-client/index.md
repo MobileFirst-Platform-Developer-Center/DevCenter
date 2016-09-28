@@ -569,5 +569,36 @@ Mark your favorite apps or unmark an app to have it removed from the favorites l
 An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
 
 To mark or unmark an application as a favorite app, tap the Favorites icon <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Icon in the shape of a star that indicates a favorite app"/>. in the header of the **Details** view.  
+
 An installed application is automatically marked as a favorite app.
 
+## Submitting a review for an installed application
+You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
+
+1. In the **Details** view, initiate your review.
+    * On iOS phones and tablets, tap **Review version X**.
+    * On Android phones and tablets, tap **Review version X**.
+2. Enter a nonzero star rating.
+
+    On mobile devices with touchscreens, tap 1 to 5 stars to represent your approval rating of the version of the application. One star represents the lowest level of appreciation and five stars represent the highest level of appreciation.
+
+3. Enter a comment about this version of the application.
+4. Tap **Submit** to send your review to the Application Center.
+
+## Viewing reviews
+You can view reviews of a specific version of an application or of all versions of an application.  
+
+Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
+
+### Viewing reviews of a specific version
+The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
+In the **Details** view of an application version:
+
+* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the Reviews view.
+* On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
+
+### Viewing reviews of all versions of an application
+In the **Details** view of an application version:
+
+* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.
+* On a tablet, tap **All Reviews**.
