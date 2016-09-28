@@ -13,7 +13,7 @@ IBM MobileFirst Foundation v8.0 introduces new concepts for application developm
 * [Migrating a Cordova or hybrid application](#migrating-a-cordova-or-hybrid-application)
 * [Migrating a native application](#migrating-a-native-application)
 * [Migrating adapters and security](#migrating-adapters-and-security)
-* [Migrating push notification](#migrating-push-notifications-support)
+* [Migrating push notifications support](#migrating-push-notifications-support)
 * [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
 * [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
 
@@ -72,7 +72,7 @@ You can externalize adapter properties to configure adapters for the context whe
 * For more information about server-side API changes, see [Server-side API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) changes in v8.0.
 * For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
 
-## Migrating push notification support
+## Migrating push notifications support
 The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#scenarios).
 
 Starting with v8.0, you configure the push service on the server side. The push certificates are stored on the server. You can set them from the MobileFirst Operations Console or you can automate certificate uploads by using a command-line tool or the push service REST API. You can also send push notifications from the MobileFirst Operations Console.

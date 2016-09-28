@@ -142,7 +142,97 @@ The migration assistance tool does not modify or move any developer code or comm
 ### Completing migration of a MobileFirst hybrid app
 After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
 
+* You must have already run the mfpmigrate migration assistance tool on your existing hybrid app. For more information, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms if you need to install any additional Cordova plug-ins. (See step 6.) For more information, see The [Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova web site.
+* You must have internet access if you need to download a new version of JQuery (step 1c) or if you need to install any additional Cordova plug-ins (step 6).
+* You must have node.js version 4.0.0 or later installed if you need to install additional Cordova plug-ins (step 6).
 
+Complete the steps in this task to finish migrating your MobileFirst hybrid application from IBM MobileFirst Platform Foundation 7.1 to a Cordova application that includes support for IBM MobileFirst Platform Foundation 8.0.
+
+After you complete the migration, your app can use Cordova platforms and plug-ins that you obtain independently of IBM MobileFirst Platform Foundation, and you can continue to develop the app with your preferred Cordova development tools.
+
+1. Update the **www/index.html** file.
+    * Add the following CSS code to the head of your index.html file, before your CSS code that is already there.
+    
+        ```html
+        <link rel="stylesheet" href="worklight/worklight.css">
+        <link rel="stylesheet" href="css/main.css">
+        ```
+        
+        > **Note:** The **worklight.css** file sets the body attribute to relative. If this affects the style of your app, then declare a different value for the position in your own CSS code. For example:
+
+        ```css
+        body {
+            position: absolute;
+        }
+        ```    
+    * Add Cordova JavaScript to the head of the file after the CSS definitions.
+    
+        ```html
+        <script type="text/javascript" src="cordova.js"></script>
+        ```    
+    * Remove the following line of code if it is present.
+
+        ```html
+        <script>window.$ = window.jQuery = WLJQ;</script>
+        ```
+        You can download your own version of JQuery, and load it as shown in the following code line.
+
+        ```html
+        <script src="lib/jquery.min.js"></script>
+        ```
+        
+        You do not have to move the optional jQuery addition to the **lib** folder. You can move this addition anywhere you want to, but you must correctly reference it in the **index.html** file.
+
+2. Update the **www/js/InitOptions.js** file to call `WL.Client.init` automatically.
+    * Remove the following code from **InitOptions.js**
+
+        The function `WL.Client.init` is called automatically with the global variable **wlInitOptions**.
+        
+        ```javascript
+        if (window.addEventListener) {
+            window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+        }
+        ```
+        
+3. Optional: Update the **www/InitOptions.js** to call `WL.Client.init` manually.
+    * Edit the **config.xml** file and set the `<mfp:clientCustomInit>` element's enabled attribute to true.
+    * If you are using the MobileFirst hybrid default template, replace this code:
+    
+        ```javascript
+        if (window.addEventListener) {
+            window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+        }
+        ```
+    
+        with the following code:
+        
+        ```javascript
+        if (document.addEventListener) {
+            document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
+        } else if (window.attachEvent) {
+            document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
+        }
+        ```
+4. Optional: If you have logic specific to a hybrid environment, for example in Your **app/iphone/js/main.js**, copy the function `wlEnvInit()` and append it at the end of **www/main.js**.
+
+    ```javascript
+    // This wlEnvInit method is invoked automatically by MobileFirst runtime after successful initialization.
+    function wlEnvInit() {
+        wlCommonInit();
+        if (cordova.platformId === "ios") {
+            // Environment initialization code goes here for ios
+        } else if (cordova.platformId === "android") {
+            // Environment initialization code goes here for android
+        }
+    }
+    ```
+5. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
+6. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the `cordova plugin add` command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 
 ### Completing migration of a MobileFirst Cordova app
 After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
@@ -172,7 +262,7 @@ You now have a Cordova app that you can continue to develop with your preferred 
 ## Migrating encryption for iOS Cordova
 If your iOS Hybrid or Cordova application used OpenSSL encryption, you may want to migrate your app to the new V8.0.0 native encryption. If you want to continue using OpenSSL you need to add an additional Cordova plug-in.
 
-For more information on the iOS Cordova encryption options for migration see the [Migration options](../../application-development/sdk/cordova/additional-information/#migration-options) section within the [Enabling OpenSSL in Cordova Applications](../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications) topic.
+For more information on the iOS Cordova encryption options for migration see the [Migration options](../../../application-development/sdk/cordova/additional-information/#migration-options) section within the [Enabling OpenSSL in Cordova Applications](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications) topic.
 
 ## Migrating Direct Update
 Direct Update is triggered after the first access to a protected resource. The process to deploy new web resources has changed in v8.0.
@@ -184,9 +274,25 @@ Unlike in previous versions, in v8.0, if an application does not access a secure
 
 To use Direct Update: Starting with v8.0, you no longer upload a **.wlapp** file to MobileFirst Server. Instead, you upload a smaller web resource archive (.zip file). The archive file no longer contains the web preview files or skins that were widely used in previous versions. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.
 
-> For more information, see the [Direct Update documentation](../../application-development/direct-update).
+> For more information, see the [Direct Update documentation](../../../application-development/direct-update).
 
 ## Upgrading the WebView
+IBM MobileFirs Foundation v8.0 Cordova SDK (JavaScript) introduced numerous changes that require adaptations of your code.
+
+The manual migration process involves a few stages:
+
+* Creating a new Cordova MobileFirst project
+* Replacing the necessary web resource elements with the code from your previous version
+* Making the necessary changes to your JavaScript code to conform to SDK changes
+
+Many MobileFirst API elements were removed in v8.0. Removed elements are clearly marked as non-existent in an IDE that supports autocorrect for JavaScript.
+
+The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
+
+
+
+
+
 ## Removed components
 The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the MobileFirst API no longer supports these features.
 
@@ -263,8 +369,3 @@ In this example, using the before_prepare hook event, a script is run for minify
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />
 ```
-
-
-
-
-
