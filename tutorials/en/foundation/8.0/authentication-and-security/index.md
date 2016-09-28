@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Authentication and Security
-weight: 7
+weight: 6
 print_pdf: true
 ---
 ## Overview

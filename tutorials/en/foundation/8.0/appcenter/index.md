@@ -3,7 +3,7 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 11
+weight: 12
 ---
 ## Overview
 Learn about the Application Center: what it is for, the different components and features, and how to use the console and the client.

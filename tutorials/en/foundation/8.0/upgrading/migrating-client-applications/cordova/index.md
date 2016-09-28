@@ -58,6 +58,11 @@ Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova 
 ## Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0
 You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst™ Platform Foundation version 6.2 or later to Cordova apps that are supported by IBM MobileFirst Foundation v8.0.
 
+#### Jump to
+* [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
+* [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
+
 ### Starting the Cordova app migration with the migration assistance tool
 The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of IBM MobileFirst Foundation for migraiton by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
 
@@ -115,7 +120,7 @@ The migration assistance tool does not modify or move any developer code or comm
 4. Resolve the API issues in the new Cordova app.
     * Review the **api-report.html** file that is created in the **destination_directory** directory. Each row of the table in this file identifies a deprecated, changed, or removed API that is used in the app that is not compatible with version 8.0. This file also specifies the replacement for removed APIs, when one is available.
 
-    | File path | Line number | API | Line content | Category of API change | Description of change with instructions<br/> about how to resolve the API change. |
+    | File path | Line number | API | Line content | Category of API change | Description and action item | 
     |-----------|-------------|-----|--------------|------------|-----------|
     |c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | `document.getElementById('app_version')`<br/> `textContent=WL.Client.getAppProperty("APP_VERSION");` | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
     * Address the API issues that are identified in the **api-report.html** file.
