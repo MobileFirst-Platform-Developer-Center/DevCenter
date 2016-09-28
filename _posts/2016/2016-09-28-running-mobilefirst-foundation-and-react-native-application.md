@@ -1,11 +1,11 @@
 ---
-title: Building a React Native Application With MobileFirst Foundation 8.0
+title: Building a React Native Application With IBM MobileFirst Foundation 8.0
 date: 2016-09-28
 version:
 - 8.0
 tags:
 - MobileFirst_Foundation
-- React Native
+- React_Native
 author:
   name: Ishai Borovoy
 additional_authors:
