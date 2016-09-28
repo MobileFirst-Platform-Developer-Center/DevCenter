@@ -315,7 +315,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 | API | Migration path | 
 |-----|----------------|
-| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`,  `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. | 
+| <ul><li>`WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`</li><li>  `WL.Client.invokeProcedure(invocationData, options)`</li><li>`WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`</li><li>`WLProcedureInvocationResult`</li></ul> | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. | 
 | `WLClient.getEnvironment` | Use Cordova plug-ins providing this functionality. Note: For your information, the device.platform plug-in provides this feature. | 
 | `WL.Client.getLanguage` | Use Cordova plug-ins providing this functionality. Note: For your information, the **cordova-plugin-globalization** plug-in provides this feature. | 
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. | 
