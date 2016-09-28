@@ -76,7 +76,7 @@ A developer can:
 - Send Push Notifications to iOS and Android devices
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 
-> Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../product-overview/components/console/) tutorial.
+> Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../../product-overview/components/console/) tutorial.
 
 ### MobileFirst Command-line Interface
 You can use the IBM MobileFirst Foundation Command Line Interface (CLI) to develop and manage applications, in addition to using the IBM MobileFirst Platform Operations Console. The CLI command are prefixed with `mfpdev` and support the following types of tasks:

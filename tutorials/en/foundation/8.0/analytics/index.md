@@ -35,7 +35,7 @@ The Logger functions as a standard logger. From the client you can also send log
 
 Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
 
-> Learn more in the [Client Logging](../using-the-mfpf-sdk/client-side-log-collection/) tutorial.
+> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
 
 In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the MobileFirst Analytics Server.
 

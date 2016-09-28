@@ -407,7 +407,7 @@ This upgrade path is used when you want to force users to upgrade to the new ver
 
 1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
 2. Increment the app version number.
-3. Build and test your application. For more information, see [Building an application for a test or production environment](../using-console/#building-an-application-for-a-test-or-production-environment).
+3. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
 4. Register the app to MobileFirst Server and configure it.
 5. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
 6. Wait for review and approval, and for the apps to become available.

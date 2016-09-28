@@ -8,7 +8,7 @@ weight: 1
 ## Overview
 Before starting to develop client and server code using MobileFirst Foundation, the development environment needs to be set-up first. This includes installing various required software and tools. The following is a list of software you may need to install on your developer workstation, depending on your needs.
 
-You can also find detailed step-by-step instructions [in this workstation installation guide](mobilefirst-development-environment/installation-guide/).
+You can also find detailed step-by-step instructions [in this workstation installation guide](mobilefirst/installation-guide/).
 
 #### Jump to:
 
@@ -18,7 +18,7 @@ You can also find detailed step-by-step instructions [in this workstation instal
 * [Platform-specific instructions](#platform-specific-instructions)
 
 ### Server
-You can use the MobileFirst Server either via the [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation), or locally using the IBM Developer Kit (used for local development purposes). The MobileFirst Server requires Java 7 or 8 to run.
+You can use the MobileFirst Server either via the [Mobile Foundation Bluemix service](../../bluemix/using-mobile-foundation), or locally using the IBM Developer Kit (used for local development purposes). The MobileFirst Server requires Java 7 or 8 to run.
 
 If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
 

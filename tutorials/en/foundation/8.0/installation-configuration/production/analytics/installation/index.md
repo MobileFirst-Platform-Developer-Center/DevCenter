@@ -13,7 +13,7 @@ MobileFirst Analytics Server uses an embedded Elasticsearch library for the data
 
 * [System requirements](#system-requirements)
 * [Capacity considerations](#capacity-considerations)
-* [Installing MobileFirst Analytics on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-server-liberty)
+* [Installing MobileFirst Analytics on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
 * [Installing MobileFirst Analytics on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
 * [Installing MobileFirst Analytics on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
 * [Installing MobileFirst Analytics with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
@@ -80,7 +80,7 @@ The same principle applies to **replicas**. Only set **replicas** to something g
 For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
 
 ## Installing MobileFirst Analytics on WebSphere Application Server Liberty
-Ensure that you already have the MobileFirst Analytics EAR file. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM® developerWorks®.
+Ensure that you already have the MobileFirst Analytics EAR file. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM® developerWorks®.
 
 1. Create a server by running the following command in your **./wlp/bin** folder.
 
@@ -155,7 +155,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
 ## Installing MobileFirst Analytics on Tomcat
-Ensure that you already have the MobileFirst Analytics WAR files. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+Ensure that you already have the MobileFirst Analytics WAR files. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
 
 1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
 2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
@@ -202,7 +202,7 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
     For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
 
 ## Installing MobileFirst Analytics on WebSphere Application Server
-For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing MobileFirst Server to an application server](../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
+For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing MobileFirst Server to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
 
 The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
 
@@ -239,7 +239,7 @@ The following steps describe how to install and run the Analytics EAR file on We
 9. Start the MobileFirst Analytics application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
 
 ## Installing MobileFirst Analytics with Ant tasks
-Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
+Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
 
 You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere® Application Server Network Deployment. If you want to start the Ant task from a computer on which MobileFirst Server is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
 
@@ -268,7 +268,7 @@ You must run the Ant task on the computer where the application server is instal
     
     **Note:** If you add a node to a cluster of MobileFirst Analytics, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
 
-## Installing MobileFirst Analytics Server V8.0.0 on servers running previous versions
+## Installing MobileFirst Analytics Server on servers running previous versions
 Although there is no option to upgrade previous versions of the MobileFirst Analytics Server, when you install MobileFirst Analytics Server V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
 
 For servers previously running earlier of versions of MobileFirst Analytics Server update the analytics data and the JNDI properties.

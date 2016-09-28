@@ -54,7 +54,7 @@ On other operating systems, you can still run the installation with Installation
 * [Creating a database](#creating-a-database)
 * [Running the Server Configuration Tool](#running-the-server-configuration-tool)
 * [Testing the installation](#testing-the-installation)
-* [Creating a farm of two Liberty servers that run MobileFirst Server](#cerating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
+* [Creating a farm of two Liberty servers that run MobileFirst Server](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
 * [Testing the farm and see the changes in MobileFirst Operations Console](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ### Installing IBM Installation Manager

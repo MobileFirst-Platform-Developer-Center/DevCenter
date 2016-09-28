@@ -134,7 +134,7 @@ When you install IBM MobileFirst Foundation, the Application Center is automatic
 
 If you install the Application Center in WebSphere® Application Server Liberty profile, the server is created in **installation-directory/server**.
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuing-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#manaing-users-with-ldap).
+After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
 
 ### Example: starting the server and the Application Center console on Liberty profile
 

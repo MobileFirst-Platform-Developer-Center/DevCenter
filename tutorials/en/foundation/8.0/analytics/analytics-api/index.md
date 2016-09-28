@@ -23,7 +23,7 @@ Before you can start collecting the predefined data that MobileFirst Operational
 In Cordova applications, no setup is required and initialization is built-in.  
 
 ### JavaScript (Web)
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web) tutorial.  
+In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../application-development/sdk/web) tutorial.  
 
 Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
 
@@ -378,34 +378,34 @@ Sending Analytics is a crucial step to see client-side analytics on the Analytic
 
 Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
 
-### JavaScript (Cordova)
+#### JavaScript (Cordova)
 In a Cordova application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
 ```
 
-### JavaScript (Web)
+#### JavaScript (Web)
 In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
 
 ```javascript
 wlanalytics.send();
 ```
 
-### iOS
-*Objective-C*
+#### iOS
+**Objective-C**
 
 ```objc
 [[WLAnalytics sharedInstance] send];
 ```
 
-*Swift*
+**Swift**
 
 ```swift
 WLAnalytics.sharedInstance().send();
 ```
 
-### Android
+#### Android
 In an Android application, use the following Java API method:
 
 ```java

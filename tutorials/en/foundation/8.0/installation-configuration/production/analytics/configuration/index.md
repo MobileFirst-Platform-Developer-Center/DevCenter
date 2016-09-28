@@ -9,7 +9,7 @@ Some configuration for the MobileFirst Analytics Server is required. Some of the
 
 #### Jump to
 
-* [Configuring properties](#configurtion-properties)
+* [Configuring properties](#configuring-properties)
 * [Backing up Analytics data](#backing-up-analytics-data)
 * [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch)
 
@@ -171,13 +171,13 @@ In the following sample instructions, do not configure the node to be a master n
 
 **Notes:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](#system-requirements).
+* Remember to configure the hardware and operating system of this node according to the [System requirements](../../../../product-overview/requirements).
 * Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
 
 1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the MobileFirst Analytics Server to any of the supported app servers.
-    * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-server-liberty)
-    * [Installing MobileFirst Analytics on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
-    * [Installing MobileFirst Analytics on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
+    * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-server-liberty)
+    * [Installing MobileFirst Analytics on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [Installing MobileFirst Analytics on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
     
 2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
 
@@ -203,7 +203,7 @@ In the following sample instructions, do not configure the node to be a master n
 
 **Notes:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](#system-requirements).
+* Remember to configure the hardware and operating system of this node according to the [System requirements](../../../../product-overview/requirements).
 * Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
 
 1. Download Elasticsearch from [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).

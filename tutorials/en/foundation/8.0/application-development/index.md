@@ -137,7 +137,7 @@ When you deploy your app to production, you can deploy your app to the following
 
 #### On the cloud
 * [Using MobileFirst Server on IBM Bluemix](../bluemix).
-* [Using MobileFirst Server on IBM PureApplication](production/pure-application).
+* [Using MobileFirst Server on IBM PureApplication](../installation-configuration/production/pure-application).
 
 ## Adapters
 Adapters in IBM MobileFirst Foundation securely connect your back-end systems to client applications and cloud services.  

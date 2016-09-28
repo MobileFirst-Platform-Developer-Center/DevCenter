@@ -323,7 +323,7 @@ This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/su
 
 <br/>
 #### The `show confidential-clients` command
-The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidetnial-clients).
+The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `show confidential-clients [--xml] [runtime-name]`
 

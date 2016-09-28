@@ -579,7 +579,7 @@ This procedure involves uploading certain artifacts to IBM® PureApplication® S
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS server farm) template](#mobilefirst-platform-was-server-farm).
+For more information about the composition and configuration options of the predefined template that is used in this procedure, see [MobileFirst Platform (WAS server farm) template](#mobilefirst-platform-was-server-farm-template).
 
 1. Create a pattern from the predefined template:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.

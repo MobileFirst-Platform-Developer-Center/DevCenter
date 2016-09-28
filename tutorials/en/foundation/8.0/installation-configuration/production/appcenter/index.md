@@ -1384,7 +1384,7 @@ After you install Application Center in the web application server that you desi
 * [Managing users with LDAP](#managing-users-with-ldap)
 * [Configuring properties of DB2 JDBC driver in WebSphere Application Server](#configuring-properties-of-db2-jdbc-driver-in-websphere-application-server)
 * [Managing the DB2 transaction log size](#managing-the-db2-transaction-log-size)
-* [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources-resources)
+* [Defining the endpoint of the application resources](#defining-the-endpoint-of-the-application-resources)
 * [Configuring Secure Sockets Layer (SSL)](#configuring-secure-sockets-layer-ssl)
 * [JNDI properties for Application Center](#jndi-properties-for-application-center)
 * [Configuring WebSphere Application Server to support applications in public app stores](#configuring-websphere-application-server-to-support-applications-in-public-app-stores)
@@ -2215,7 +2215,7 @@ If the SSL certificate verification fails, a normal web browser requests confirm
 Some versions of Android, iOS, and Windows Phone operating systems do not support this confirmation dialog in system calls. This limitation is a reason to avoid self-signed certificates or SSL certificates that are not suited to mobile operating systems. On Android, iOS, and Windows Phone operating systems, you can install a self-signed CA certificate on the device to enable the device to handle system calls regarding this self-signed certificate. This practice is not appropriate for Application Center in a production environment, but it can be suitable during the testing period. For details, see [Managing and installing self-signed CA certificates in an Application Center test environment](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) below.
 
 #### Jump to
-* [Configuring SSL for WebSphere Application Server full profile](#configuring-ssl-for-websphere-application-full-profile)
+* [Configuring SSL for WebSphere Application Server full profile](#configuring-ssl-for-websphere-application-server-full-profile)
 * [Configuring SSL for Liberty profile](#configuring-ssl-for-liberty-profile)
 * [Configuring SSL for Apache Tomcat](#configuring-ssl-for-apache-tomcat)
 * [Managing and installing self-signed CA certificates in an Application Center test environment](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)
