@@ -33,7 +33,7 @@ Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova 
 | 
 
 
-## Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0
+## Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0
 ## Migrating encryption for iOS Cordova
 If your iOS Hybrid or Cordova application used OpenSSL encryption, you may want to migrate your app to the new V8.0.0 native encryption. If you want to continue using OpenSSL you need to add an additional Cordova plug-in.
 
