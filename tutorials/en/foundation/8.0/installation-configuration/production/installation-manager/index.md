@@ -616,7 +616,7 @@ The MobileFirst Server files and tools are installed in the MobileFirst Server i
 #### Files and subdirectories in the Analytics subdirectory
 | Item | Description |
 |------|-------------|
-| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install IBM MobileFirst™ Analytics. |
+| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install IBM MobileFirst Analytics. |
 | **configuration-samples** | Contains the sample Ant files to install MobileFirst Analytics with Ant tasks. |
 
 #### Files and subdirectories in the ApplicationCenter subdirectory

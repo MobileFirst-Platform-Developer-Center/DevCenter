@@ -1817,7 +1817,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
                 <ol>
                     <li>Prepare the application servers that must be configured as the server farm members.
                         <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst™ Foundation supports the following application servers in server farms:
+                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                                 <ul>
                                     <li>WebSphere® Application Server full profile<br/>
                                     <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
@@ -1869,7 +1869,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                 <ol>
                     <li>Prepare the application servers that must be configured as the server farm members.
                         <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst™ Foundation supports the following application servers in server farms:
+                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                                 <ul>
                                     <li>WebSphere® Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
                                     <li>WebSphere Application Server Liberty profile</li>
@@ -1985,7 +1985,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
         <div id="collapse-manual" class="panel-collapse collapse" role="tabpanel" aria-labelledby="manual">
             <div class="panel-body">
                 <ol>
-                    <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst™ Foundation supports the following application servers in server farms:
+                    <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                         <ul>
                             <li>WebSphere® Application Server full profile<br/>
                             <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>

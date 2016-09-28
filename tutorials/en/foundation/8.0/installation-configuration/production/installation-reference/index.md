@@ -1127,7 +1127,7 @@ The task installs MobileFirst Analytics nodes that act as a master and data. For
 
 ### Task effects
 #### installanalytics
-The **installanalytics** Ant task configures an application server to run IBM MobileFirst™ Analytics. This task has the following effects:
+The **installanalytics** Ant task configures an application server to run IBM MobileFirst Analytics. This task has the following effects:
 
 * It deploys the MobileFirst Analytics Service and the MobileFirst Analytics Console WAR files on the application server.
 * It declares the MobileFirst Analytics Service web application in the specified context root /analytics-service.

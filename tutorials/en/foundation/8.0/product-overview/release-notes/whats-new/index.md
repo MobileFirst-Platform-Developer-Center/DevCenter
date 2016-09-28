@@ -374,7 +374,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
 
         <div id="collapse-mobilefirst-analytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics">
             <div class="panel-body">
-                <p>IBM MobileFirst™ Analytics introduces a redesigned console with information presentation improvements and role-based access controls. The console is also now available in a number of different languages.</p>
+                <p>IBM MobileFirst Analytics introduces a redesigned console with information presentation improvements and role-based access controls. The console is also now available in a number of different languages.</p>
 
                 <p>The MobileFirst Analytics Console was redesigned to present information in an intuitive and more meaningful fashion, and uses summarized data for some event types.</p>
 
