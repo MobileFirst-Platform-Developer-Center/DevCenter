@@ -2,6 +2,7 @@
 layout: tutorial
 title: Distributing mobile applications with IBM Application Center
 relevantTo: [ios,android,windows8,cordova]
+weight: 7
 ---
 ## Overview
 IBM MobileFirst Platform Application Center is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
