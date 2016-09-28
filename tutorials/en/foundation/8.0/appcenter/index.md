@@ -15,7 +15,7 @@ You can use the Application Center as an enterprise application store. With the 
 
 A development team can also use the Application Center during the development phase of an application to share applications with testers, designers, or executives in the company. In such a scenario, it makes collaboration easier between all the people who are involved in the development process.
 
-> You can also review [the Application Center tutorial](../collateral-tutorials/app-center).
+> You can also review [the Application Center tutorial](app-center-tutorial).
 
 #### Jump to
 * [Concept of Application Center](#concept-of-application-center)
