@@ -31,7 +31,7 @@ show_in_nav: false
         <div class="row">
             <div id="migrationPaths">
                 <div class="col-md-3">
-                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
                         <h3 class="setupAndTools no-anchor">Setup<br/> &amp; Tools</h3>
 
                         <ul class="topics">
@@ -41,7 +41,7 @@ show_in_nav: false
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
                         <h3 class="migratingApplications no-anchor">Migrating<br/>Applications</h3>
 
                         <ul class="topics">
@@ -52,7 +52,7 @@ show_in_nav: false
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                    <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
                         <h3 class="migratingAdapters no-anchor">Migrating<br/>Adapters</h3>
 
                         <ul class="topics">
@@ -64,7 +64,7 @@ show_in_nav: false
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
                         <h3 class="devTopics no-anchor">Development<br/>Topics</h3>
 
                         <ul class="topics">
@@ -98,7 +98,7 @@ show_in_nav: false
             <li>From the MobileFirst Operations Console, click on the Download Center link at the bottom of the sidebar navigation. Follow the instructions to install the Migration Assistance tool, either from NPM or by downloading a .zip file.</li>
         </ol>
 
-        <img alt="Download the migration tool from the Mobilefirst Operations Console" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/get-migration-tool.png"/>
+        <img alt="Download the migration tool from the Mobilefirst Operations Console" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/get-migration-tool.png"/>
     </div>
 
     <br id="applications"><br/>
@@ -143,7 +143,7 @@ show_in_nav: false
 
                         <blockquote>You can read more about what the Migration Assistance tool does <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html" target="_blank">in this user documentation topic</a>.</blockquote>
 
-                        <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/cordova-migration.png"/>
+                        <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/cordova-migration.png"/>
 
                         <p>After the Migration Assistance tool has run successfully, you can observe the following effects:</p>
 
@@ -152,7 +152,7 @@ show_in_nav: false
                             <li>If the <b>client</b> command was used, an API report, <b>{app-name}-api-report.html</b>, was generated. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
 
-                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/api-report-cordova.png"/>
+                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-cordova.png"/>
 
                         <h4>Step 2</h4>
                         <p>Before you can act on the generated API report, you must copy the application source code over from the classic hybrid app to the Cordova app.</p>
@@ -391,7 +391,7 @@ if (document.addEventListener) {
                             <li>Replace <b>platform</b> with a supported platform: <code>ios</code>, <code>android</code>, or <code>windows</code>.</li>
                         </ul>
 
-                        <img alt="Generate API report for native apps" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/native-migration.png"/>
+                        <img alt="Generate API report for native apps" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
 
                         <p>After the Migration Assistance tool has run successfully, you can observe the following effects:</p>
 
@@ -399,7 +399,7 @@ if (document.addEventListener) {
                             <li>An API report, <b>{app-name}-api-report.html</b>, was generated. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
 
-                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/api-report-native.png"/>
+                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
 
                         <h4>Step 2</h4>
                         <p>After you have handled the API report, you can replace the old Native SDK with the new Native SDK.</p>
@@ -756,7 +756,7 @@ export MVN_PATH="/usr/local/bin"
                             <li>If you create a Java adapter, make sure to specify the same <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">Package Name</a> that you have previously used (for example, "com.sample").</li>
                         </ul>
 
-                        <img alt="Create an adapter template" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/creating-an-adapter.png"/>
+                        <img alt="Create an adapter template" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/creating-an-adapter.png"/>
 
                     </div>
                 </div>
@@ -924,7 +924,7 @@ export MVN_PATH="/usr/local/bin"
                         <h3>Building the migrated adapter</h3>
                         <p>From a command-line window, navigate to the adapter's folder and run the command: <code>mfpdev adapter build</code></p>
 
-                        <img alt="Building adapters in command line - failures" src="{{site.baseurl}}/tutorials/en/foundation/8.0upgrading/migration-cookbook/compilation-errors.png"/>
+                        <img alt="Building adapters in command line - failures" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/compilation-errors.png"/>
 
                         <p>To resolve such errors, it is recommended to import the Maven project into an IDE, such as IntelliJ, and build the project there.
                         With an IDE at your disposal, it is easier to iterate through the build errors and resolve them one by one. <a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">Learn more about using IntelliJ and MobileFirst adapters</a>.</p>
