@@ -122,7 +122,7 @@ The migration assistance tool does not modify or move any developer code or comm
 
     | File path | Line number | API | Line content | Category of API change | Description and action item | 
     |-----------|-------------|-----|--------------|------------|-----------|
-    |c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | `document.getElementById('app_version')`<br/> `textContent=WL.Client.getAppProperty("APP_VERSION");` | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
+    |c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | <ul><li>`document.getElementById('app_version')`</li><li>`textContent = WL.Client.getAppProperty("APP_VERSION");`</li></ul> | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
     * Address the API issues that are identified in the **api-report.html** file.
 5. Manually copy the developer code from the initial app structure into the correct location in the new Cordova structure. Copy the content in the following directories, according to the type of the source IBM MobileFirst Platform Foundation app:
     * **IBM MobileFirst Platform Foundation hybrid app**  
@@ -294,9 +294,31 @@ Many MobileFirst API elements were removed in v8.0. Removed elements are clearly
 
 The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
 
+#### Discontinued JavaScript UI elements
+| API element | Migration path | 
+|-------------|----------------|
+| `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Use Cordova plug-ins or HTML 5 elements. | 
+| `WL.App.close()` | Handle this event outside of MobileFirst. | 
+| `WL.App.copyToClipboard()` | Use Cordova plug-ins providing this functionality. |
+| `WL.App.openUrl(url, target, options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova InAppBrowser plug-in provides this feature. | 
+| `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova backbutton plug-in provides this feature. | 
+| `WL.App.getDeviceLanguage()` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. | 
+| `WL.App.getDeviceLocale()` | Use Cordova plug-ins providing this functionality.<br/><br/> Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. | 
+| `WL.App.BackgroundHandler` | To run a custom handler function, use the standard Cordova pause event listener. Use a Cordova plug-in that provides privacy and prevents iOS and Android systems and users from taking snapshots or screen captures. For more information, see the description of the PrivacyScreenPlugin at [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). | 
+| `WL.Client.close()`, `WL.Client.restore()`, `WL.Client.minimize()` | The functions were provided to support the Adobe AIR platform, which is not supported by IBM MobileFirst Foundation v8.0 | 
+| `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. | 
+
+#### Other Discontinued JavaScript elements
 
 
+#### Deprecated JavaScript APIs
 
+| API | Migration path | 
+|-----|----------------|
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`,  `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. | 
+| `WLClient.getEnvironment` | Use Cordova plug-ins providing this functionality. Note: For your information, the device.platform plug-in provides this feature. | 
+| `WL.Client.getLanguage` | Use Cordova plug-ins providing this functionality. Note: For your information, the **cordova-plugin-globalization** plug-in provides this feature. | 
+| `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. | 
 
 ## Removed components
 The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the MobileFirst API no longer supports these features.
