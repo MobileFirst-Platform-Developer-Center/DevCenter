@@ -22,7 +22,7 @@ Fortunately, there are several technologies that allow you produce native apps w
 
 One framework that is gaining a lot of buzz among front-end developers is [React Native](https://facebook.github.io/react-native/), developed by Facebook. It was released a year and a half ago, and nowadays it's' looking a lot more mature. React Native is designed for building native iOS & Android applications, and is not meant to be a cross platform write once, run anywhere tool. Rather it's moto is "learn once, write anywhere."
 
-<img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-09-28-running-mobilefirst-foundation-and-react-native-application/React.png" style="float:right;margin: 10px"/>
+<img alt="React" src="{{site.baseurl}}/assets/blog/2016-09-28-running-mobilefirst-foundation-and-react-native-application/react.png" style="float:right;margin: 10px"/>
 
 So what's so great about React Native? The main advantage is that it allows you to develop applications with a highly responsive UI, overcoming the compromises typically associated with html5 UI. With React Native, you write your application logic in JavaScript, whereas your application UI is fully native.
 
