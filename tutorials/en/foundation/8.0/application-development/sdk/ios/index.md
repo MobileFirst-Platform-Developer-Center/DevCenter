@@ -10,7 +10,7 @@ The MobileFirst Foundation SDK consists of a collection of pods that are availab
 The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../../jsonstore/ios/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../jsonstore/ios/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
 
@@ -146,7 +146,7 @@ You can also manually add the MobileFirst SDK:
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
     You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
 

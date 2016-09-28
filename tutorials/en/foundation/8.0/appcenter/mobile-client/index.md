@@ -28,7 +28,7 @@ Your system administrator must give you a user name and password before you can 
 * [Updating an application](#updating-an-application)
 * [Upgrading the Application Center client automatically](#upgrading-the-application-center-client-automatically)
 * [Reverting an installed application](#reverting-an-installed-application)
-* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favoriate-app)
+* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favorite-app)
 * [Submitting a review for an installed application](#submitting-a-review-for-an-installed-application)
 * [Viewing reviews](#viewing-reviews)
 
@@ -83,13 +83,13 @@ The installation might be blocked for one of the following reasons:
 ## Installing the client on an iOS mobile device
 You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
 
 The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM® Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
 
 When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
 
-The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the ibm.appcenter.proxy.host property. See [Defining the endpoint of the application resources](../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
+The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the **ibm.appcenter.proxy.host property**. See [Defining the endpoint of the application resources](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
 
 Installing the mobile client on an iOS device is similar to installing it on Android, but with some differences. The installer is automatically started directly after download. Your user name and password credentials are requested for almost all the installation steps.
 
@@ -112,7 +112,7 @@ Installing the mobile client on an iOS device is similar to installing it on And
 
 4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device.
 
-    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](..//installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
+    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
 
     * Tap the SSL-Certificate tab and select the certificate.
     * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
@@ -339,7 +339,7 @@ From the **Details** view, you can install an application version on your iOS mo
 
 ![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
 
 1. In the **Details** view, tap **Install**. You are requested to confirm the download and installation of the application version.
 2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
@@ -452,7 +452,7 @@ The following steps describe how to perform the installation of a Windows Store 
 ## Installing applications through public app stores
 You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-form-a-public-app-store). You can install these applications through the mobile client on your compatible device.
+The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
 
 Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
 
@@ -506,7 +506,7 @@ If a more up-to-date version of an installed application is available on the ser
 3. **Android and Windows 8 Universal**: On Android and Windows 8 Universal devices, tap **Update**.
 4. **iOS only**: On iOS devices, tap **Install latest**.
 5. Follow the appropriate application installation procedure.
-    * [Installing an application on an Android device](#installing-an-applicaiton-on-an-android-device)
+    * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
     * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
     * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
     * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)

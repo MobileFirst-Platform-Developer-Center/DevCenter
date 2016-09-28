@@ -24,7 +24,7 @@ Depending on your choice of the application server, select one of the following 
 
 * [Apache Tomcat prerequisites](#apache-tomcat-prerequisites)
 * [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites)
-* [WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites](#websphere-application-server-and-websphere-application-server-network-deployment)
+* [WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites](#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites)
 
 ### Apache Tomcat prerequisites
 MobileFirst Server has some requirements for the configuration of Apache Tomcat that are detailed in the following topics.  
@@ -289,7 +289,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                             <li>For an installation on WebSphere Application Server Liberty:
                                 <ul>
                                     <li>Enter the installation directory of Liberty and the name of the server where you want to install MobileFirst Server.</li>
-                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                     <li>Select the deployment type: <b>Standalone deployment</b> (default), <b>Server farm deployment</b>, or <b>Liberty collective deployment</b>.</li>
                                 </ul>
                                 
@@ -326,7 +326,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                                 <ul>
                                                     <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
                                                     <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the security roles of the administration service and MobileFirst Operations Console. See <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                                    <li>Map one or more users to the security roles of the administration service and MobileFirst Operations Console. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -337,7 +337,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                 <ul>
                                     <li>Enter the installation directory of Apache Tomcat.</li>
                                     <li>Enter the port that is used for the JMX communication with RMI. By default, the value is 8686. The Server Configuration Tool modifies the <b>tomcat_install_dir/bin/setenv.bat</b> or <b>tomcat_install_dir/bin/setenv.sh</b> file to open this port. If you want to open the port manually, or have already some code that opens the port in <b>setenv.bat</b> or <b>setenv.sh</b>, do not use the tool. Install with Ant tasks instead. An option to open the RMI port manually is provided for an installation with Ant tasks.</li>
-                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -443,9 +443,9 @@ The following sections provide the details on how you can modify the sample Ant 
 #### Specify extra JNDI properties
 The **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks declare the values for the JNDI properties that are required for the components to function. These JNDI properties are used to define the JMX communication, and also the links to other components (such the live update service, the push service, the analytics service, or the authorization server). However, you can also define values for other JNDI properties. Use the `<property>` element that exists for these three tasks. For a list of JNDI properties, see:
 
-* [List of JNDI properties for MobileFirst Server administration service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [List of JNDI properties for MobileFirst Server push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [List of JNDI properties for MobileFirst runtime](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [List of JNDI properties for MobileFirst Server push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 For example:
 
@@ -619,7 +619,7 @@ For more information about the JNDI properties for the administration service, s
 
 For a farm configuration, see also the following topics:
 
-* [Server farm topology](#server-farm-topology)
+* [Server farm topology](../topologies/#server-farm-topology)
 * [Topologies and network flows](../topologies)
 * [Installing a server farm](#installing-a-server-farm)
 
@@ -964,7 +964,7 @@ For all applications, the class loader must have the parent last delegation. For
 </application>
 ```
 
-<h4 id="password-decoder-user-features-collective">Password decoder user feature</h4>
+<h4 id="password-decoder-user-feature-collective">Password decoder user feature</h4>
 Copy the password decoder user feature to your Liberty profile. For example:
 
 * On UNIX and Linux systems:

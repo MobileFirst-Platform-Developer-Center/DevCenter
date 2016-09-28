@@ -94,7 +94,7 @@ To enable Google Cloud Messaging (GCM) for an application, you must attach the G
     ```
 
     The JNDI property must be defined in accordance with your application server requirements.  
-    See [JNDI properties for Application Center](../../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
+    See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
     
 **Important:**
 
@@ -139,7 +139,7 @@ The examples in the table show how the JNDI properties are defined in the server
 | ibm.appcenter.apns.p12.certificate.password | A string value that defines the password needed to access the certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
 | ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	A boolean value (identified as true or false) that defines whether or not the provisioning profile used to generate the authentication certificate was a development certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
-See [JNDI properties for Application Center](../../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of JNDI properties that you can set.
+See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of JNDI properties that you can set.
 
 ## Building a version of the mobile client that does not depend on the GCM API
 You can remove the dependency on Google Cloud Messaging (GCM) API from the Android version of the client to comply with constraints in some territories. Push notifications do not work on this version of the client.

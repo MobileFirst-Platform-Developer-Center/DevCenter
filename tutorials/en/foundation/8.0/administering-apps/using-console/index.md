@@ -12,11 +12,11 @@ You can start the console by entering one of the following URLs:
 * Secure mode for production or test: `https://hostname:secure_port/mfpconsole`
 * Development: `http://server_name:port/mfpconsole`
 
-You must have a login and password that grant you authorization to access the MobileFirst Operations Console. For more information, see [Configuring user authentication for MobileFirst Server administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+You must have a login and password that grant you authorization to access the MobileFirst Operations Console. For more information, see [Configuring user authentication for MobileFirst Server administration](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 You can use the MobileFirst Operations Console to manage your applications.
 
-From the MobileFirst Operations Console, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the MobileFirst Operations Console](../../../analytics/console/#enable-disable-analytics-support).
+From the MobileFirst Operations Console, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the MobileFirst Operations Console](../../analytics/console/#enable-disable-analytics-support).
 
 #### Jump to
 

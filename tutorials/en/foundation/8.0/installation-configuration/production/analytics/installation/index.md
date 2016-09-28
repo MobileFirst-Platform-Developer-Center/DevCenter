@@ -42,7 +42,7 @@ MobileFirst Analytics Server uses an embedded Elasticsearch library for the data
 
 ### Hardware configuration
 * Give your JVM half of the available RAM, but do not cross 32 GB
-    * Setting the **ES_HEAP_SIZE** environment variable to 32g.
+    * Setting the **ES\_HEAP\_SIZE** environment variable to 32g.
     * Setting the JVM flags by using -Xmx32g -Xms32g.
 * Turn off disk swap. Allowing the operating system to swap heap on and off disk significantly degrades performance.
     * Temporarily: `sudo swapoff -a`
@@ -53,7 +53,7 @@ MobileFirst Analytics Server uses an embedded Elasticsearch library for the data
     * Consult your operating system documentation for how to permanently increase this value to something much larger, like 64,000.
 * Elasticsearch also uses a mix of NioFS and MMapFS for the various files. Increase the maximum map count so plenty of virtual memory is available for mmapped files.
     * Temporarily: `sysctl -w vm.max_map_count=262144`
-    * Permanently: Modify the **vm.max_map_count** setting in your **/etc/sysctl.conf**.
+    * Permanently: Modify the **vm.max\_map\_count** setting in your **/etc/sysctl.conf**.
 * If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
 
 ## Capacity considerations

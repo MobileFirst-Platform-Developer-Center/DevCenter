@@ -42,7 +42,7 @@ The combination of the previous settings means that Elasticsearch waits for the 
 * Avoid clusters that span data centers and definitely avoid clusters that span large geographic distances. The latency between nodes is a severe performance bottleneck.
 * Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
 
-## Configuration properties
+## Configuring properties
 The MobileFirst Analytics Server can start successfully without any additional configuration.
 
 Configuration is done through JNDI properties on both the MobileFirst Server and the MobileFirst Analytics Server. Additionally, the MobileFirst Analytics Server supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
@@ -121,7 +121,7 @@ These values can be set by using basic time units as follows.
 * 1s = 1 second
 * 1ms = 1 millisecond
 
-> Note: If you are migrating from previous versions of MobileFirst Analytics Server and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of MobileFirst Analytics Server](..installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+> Note: If you are migrating from previous versions of MobileFirst Analytics Server and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of MobileFirst Analytics Server](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 The underlying storage and clustering technology that serves the MobileFirst Analytics Console is Elasticsearch.  
@@ -171,11 +171,11 @@ In the following sample instructions, do not configure the node to be a master n
 
 **Notes:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../../../../product-overview/requirements).
+* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
 * Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
 
 1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the MobileFirst Analytics Server to any of the supported app servers.
-    * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-server-liberty)
+    * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
     * [Installing MobileFirst Analytics on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
     * [Installing MobileFirst Analytics on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
     
@@ -203,7 +203,7 @@ In the following sample instructions, do not configure the node to be a master n
 
 **Notes:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../../../../product-overview/requirements).
+* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
 * Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
 
 1. Download Elasticsearch from [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).
