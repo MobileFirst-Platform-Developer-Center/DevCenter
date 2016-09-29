@@ -7,7 +7,6 @@ weight: 4
 ---
 
 ## Overview
-
 Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
 
 THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
@@ -62,7 +61,6 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 
 
 ## Creating a Cordova project
-
 In this section we will discuss how to create a new Cordova project using THyM.
 
 1. While in Eclipse click **File → New → Other...**
@@ -78,7 +76,6 @@ In this section we will discuss how to create a new Cordova project using THyM.
 
 
 ## Importing an existing Cordova project
-
 In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
 
 1. While in Eclipse click **File → Import...**
@@ -89,7 +86,6 @@ In this section we will discuss how to import an existing Cordova project that h
 
 
 ## Adding the MobileFirst SDK to Cordova project
-
 Once you have [installed THyM](#installing-the-thym-plug-in) and the [MobileFirst CLI plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plugin.
 
 1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
@@ -99,7 +95,6 @@ Once you have [installed THyM](#installing-the-thym-plug-in) and the [MobileFirs
 
 
 ## MobileFirst Commands
-
 To access MobileFirst Foundation's shortcuts right click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
 
 | Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
@@ -115,36 +110,28 @@ To access MobileFirst Foundation's shortcuts right click the root project direct
 
 ## Tips and Tricks
 
+<img src="runAsContextMenu.png" alt="context-menu in Eclipse to open in External IDEs" style="float:right;width:35%;margin-left: 10px"/>
 ### External IDE's
-
 If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
 
 **Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
 
 In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
 
-![Context Menu](runAsContextMenu.png)
-
 ### Debug mode
-
 Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
 
 1. Open Eclipse's Preferences.
 2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
 3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
 
-
 ### Live update
-
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
 
-
 ### Integrating MobileFirst Server into Eclipse
-
 Using the MobileFirst Foundation Development Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../installation-configuration/development/mobilefirst#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
 
 ### Demo Video
-
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
    		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
