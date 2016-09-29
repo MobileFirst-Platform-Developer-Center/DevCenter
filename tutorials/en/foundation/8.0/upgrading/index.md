@@ -85,4 +85,4 @@ MobileFirst Server enables changes to app security, connectivity and push withou
 Because of these changes, IBM MobileFirst Platform Foundation does not include automated scripts to migrate your databases from earlier versions to V8.0.0 or to upgrade an existing server installation. To move new versions of your apps to V8.0.0, install a new server that you can run side by side with your previous server. Then, upgrade your apps and adapters to V8.0.0 and deploy them to the new server.
 
 ## Storing mobile data in Cloudant
-Storing mobile data in Cloudant® with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK.
+Storing mobile data in Cloudant® with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
