@@ -99,7 +99,8 @@ git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --depth 1
 rm -rf ../generated-pdf/release63/*
 mkdir -p ../generated-pdf/release63/tutorials/en/foundation/6.3 && cp -R _site/pdf/tutorials/en/foundation/6.3/* ../generated-pdf/release63/tutorials/en/foundation/6.3/
 mkdir -p ../generated-pdf/release63/tutorials/en/product-integration/6.3 && cp -R _site/pdf/tutorials/en/product-integration/6.3/* ../generated-pdf/release63/tutorials/en/product-integration/6.3/
-cp -R _site/pdf/tutorials/en/application-scanning.pdf ../generated-pdf/release63/tutorials/en/application-scanning.pdf
+cp -R _site/pdf/tutorials/en/production-integration/6.3/application-scanning.pdf ../generated-pdf/release63/tutorials/en/application-scanning.pdf
+
 # copy the index file
 cp _site/pdf/6.3.html ../generated-pdf/release63/index.html
 # commit and push generated content
