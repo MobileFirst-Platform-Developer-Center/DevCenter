@@ -25,16 +25,19 @@ rm -rf ../generated-pdf
 
 ## Push the `8.0`
 pwd
+
 #clone pdf repository
 git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --depth 1 --branch release80 --single-branch ../generated-pdf/release80
+
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
 mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80/tutorials/en/foundation/8.0/
 mkdir -p ../generated-pdf/release80/tutorials/en/product-integration/8.0 && cp -R _site/pdf/tutorials/en/product-integration/8.0/* ../generated-pdf/release80/tutorials/en/product-integration/8.0/
 mkdir -p ../generated-pdf/release80/tutorials/en/quality-assurance/8.0 && cp -R _site/pdf/tutorials/en/quality-assurance/8.0/* ../generated-pdf/release80/tutorials/en/quality-assurance/8.0/
-cp -R _site/pdf/tutorials/en/application-scanning.pdf ../generated-pdf/release80/tutorials/en/application-scanning.pdf
+
 # copy the index file
 cp _site/pdf/8.0.html ../generated-pdf/release80/index.html
+
 # commit and push generated content
 cd ../generated-pdf/release80
 git config user.email "nathanh@il.ibm.com"
