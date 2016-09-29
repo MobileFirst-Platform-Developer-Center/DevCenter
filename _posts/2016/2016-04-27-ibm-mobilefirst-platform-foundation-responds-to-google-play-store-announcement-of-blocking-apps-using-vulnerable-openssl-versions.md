@@ -15,7 +15,7 @@ author:
   name: Nana Amfo
 ---
 
-> [UPDATE Sept. 29, 2016] Update to a iFix level 6.3.0.00.20160526-2153 or later to avoid OpenSSL issues on MobileFirst Platform Foundation 6.3.
+> [UPDATE Sept. 29, 2016] Update to iFix level 6.3.0.00.20160526-2153 or later to avoid OpenSSL issues on MobileFirst Platform Foundation 6.3.
 
 The Google Play Store has sent the following notification to app developers:
 
