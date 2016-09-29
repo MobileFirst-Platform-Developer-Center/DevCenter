@@ -62,7 +62,7 @@ By default MobileFirst provides native encryption/decryption, without using Open
 
 * WL.SecurityUtils.enableNativeEncryption(true)
 
-##Option 2: Enabling OpenSSL
+## Option 2: Enabling OpenSSL
 MobileFirst provided OpenSSL is disabled by default.
 
 To install the necessary frameworks for supporting OpenSSL, first install the Cordova plug-in:
