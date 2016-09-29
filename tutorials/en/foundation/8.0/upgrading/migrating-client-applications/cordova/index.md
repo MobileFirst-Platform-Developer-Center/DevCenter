@@ -83,7 +83,7 @@ The migration assistance tool does not modify or move any developer code or comm
 
 1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the [Downloads page]({{site.baseurl}}/downloads).
+    * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
     * Download the tool by using the instructions that are provided
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the .tgz file.

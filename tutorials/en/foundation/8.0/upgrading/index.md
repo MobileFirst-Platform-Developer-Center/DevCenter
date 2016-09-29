@@ -73,7 +73,7 @@ You can externalize adapter properties to configure adapters for the context whe
 * For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
 
 ## Migrating push notifications support
-The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#scenarios).
+The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#migration-scenarios).
 
 Starting with v8.0, you configure the push service on the server side. The push certificates are stored on the server. You can set them from the MobileFirst Operations Console or you can automate certificate uploads by using a command-line tool or the push service REST API. You can also send push notifications from the MobileFirst Operations Console.
 
