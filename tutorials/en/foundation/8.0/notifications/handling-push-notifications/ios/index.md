@@ -29,7 +29,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 
 ### Notifications Configuration
-Create a new Xcode project or use and existing one.  
+Create a new Xcode project or use and existing one.
 If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
 
 
@@ -38,17 +38,17 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 1. Open the project's existing **podfile** and add the following lines:
 
     ```xml
-    use_frameworks! 
+    use_frameworks!
 
     platform :ios, 8.0
     target "Xcode-project-target" do
         pod 'IBMMobileFirstPlatformFoundation'
         pod 'IBMMobileFirstPlatformFoundationPush'
     end
-    
+
 	post_install do |installer|
         workDir = Dir.pwd
-       
+
         installer.pods_project.targets.each do |target|
             debugXcconfigFilename = "#{workDir}/Pods/Target Support Files/#{target}/#{target}.debug.xcconfig"
             xcconfig = File.read(debugXcconfigFilename)
@@ -60,7 +60,7 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
             newXcconfig = xcconfig.gsub(/HEADER_SEARCH_PATHS = .*/, "HEADER_SEARCH_PATHS = ")
             File.open(releaseXcconfigFilename, "w") { |file| file << newXcconfig }
         end
-    end 
+    end
 	```
     - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
@@ -167,24 +167,13 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 Subscribe to desired tags.
 
 ```swift
-var tags: [String] = {"Tag 1", "Tag 2"};
+var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
 
-// Get tags
-MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
     if error == nil {
-        print("The response is: \(response)")
-        print("The response text is \(response.responseText)")
-        if response.availableTags().isEmpty == true {
-            self.tagsArray = []
-            self.showAlert("There are no available tags")
-        } else {
-            self.tagsArray = response.availableTags()
-            self.showAlert(String(self.tagsArray))
-            print("Tags response: \(response)")
-        }
+        // Subscribed successfully
     } else {
-        self.showAlert("Error \(error.description)")
-        print("Error \(error.description)")
+        // Failed to subscribe with error
     }
 })
 ```
