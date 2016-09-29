@@ -16,6 +16,7 @@ IBM MobileFirst Foundation v8.0 introduces new concepts for application developm
 * [Migrating push notifications support](#migrating-push-notifications-support)
 * [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
 * [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
+* [Applying a fix pack to IBM MobileFirst Server](#applying-a-fix-pack-to-ibm-mobilefirst-server)
 
 ## Changes in the development and deployment process
 > For a quick hands-on experience of the development process with IBM MobileFirst Platform Foundation V8.0.0, you can review the [Quick Start tutorials](../quick-start).
@@ -86,3 +87,11 @@ Because of these changes, IBM MobileFirst Platform Foundation does not include a
 
 ## Storing mobile data in Cloudant
 Storing mobile data in Cloudant® with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
+
+## Applying a fix pack to IBM MobileFirst Server
+Find out how to use the Server Configuration Tool to upgrade MobileFirst Server V8.0.0 to a fix pack or an interim fix. Alternatively, if you installed MobileFirst Server with Ant tasks, you can also use Ant tasks to apply the fix pack or interim fix.
+
+To apply an interim fix or fix pack on MobileFirst Server, choose one of the following topics based on your initial installation method:
+
+* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
