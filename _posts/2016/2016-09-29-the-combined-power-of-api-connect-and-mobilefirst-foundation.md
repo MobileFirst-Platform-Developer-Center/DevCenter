@@ -1,5 +1,5 @@
 ---
-title: The Combined Power of IBM API Connect &amp; IBM MobileFirst Foundation for Mobile Security
+title: The Combined Power of IBM API Connect and IBM MobileFirst Foundation for Mobile Security
 date: 2016-09-29
 version:
 - 8.0
