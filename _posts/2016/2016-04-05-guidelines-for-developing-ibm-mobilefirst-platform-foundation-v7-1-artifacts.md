@@ -4,6 +4,8 @@ date: 2016-04-5
 tags:
 - MobileFirst_Platform
 - Migration
+version:
+- 7.1
 author:
   name: Uri Segev
 ---

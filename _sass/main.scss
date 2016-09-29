@@ -33,11 +33,17 @@ body {
 	font-family: $font_0, $font_1, $font_2;
 	-webkit-print-color-adjust:exact;
 }
+.logo-icon {
+	background-image:url(../assets/foundation.svg);
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 4px 7px;
+}
 #wrap {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto -60px;
-	padding: 0 0 50px;
+	padding: 0 0 39px;
 }
 hr {
 	border-top: 1px solid $black;
@@ -71,7 +77,7 @@ hr {
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
 	}
-	
+
 	&.containers {
 		width: 400px;
 	}
@@ -88,13 +94,14 @@ hr {
 .logo {
 	padding-top: 13px;
 	padding-right: 5px;
+	padding-left: 16px;
 }
 .img-circle {
 	margin-left: 98px;
 	height: 64px;
 	width: 64px;
 }
-.col-md-3 {
+.mid-nav {
 	margin: 20px 0;
 	p {
 		text-align: center;
@@ -126,7 +133,8 @@ hr {
 	font-size: 120%;
 }
 footer {
-	background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
+	//background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
+	background-color: #292a2d;
 	ul {
 		list-style-type: none;
 		margin: 21px 0 0 10px;
@@ -161,7 +169,7 @@ code:not([class*="language-"]) {
 	background-color: inherit;
 	color: $black;
 	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-	padding: 2px;
+	padding: 0px;
 	background: #FDFAFB;
     border: 1px solid #E0E0EA;
 	weight:400;
@@ -177,42 +185,51 @@ blockquote {
 	footer ul {
 		padding: 0;
 	}
+	.logo-icon {
+		background-image:none;
+	}
+	.logo {
+		padding-left: 5px;
+	}
 }
 .downloadButtons {
 	margin-bottom: 53px;
-}
-.download-button {
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 5px;
-	font-family: $font_1;
-	color: $white;
-	font-size: 13px;
-	background-color: $color_rhino_approx;
-	padding: 5px 10px;
-	margin: 21px 0 5px 5px;
-	float: right;
-	border: 1px solid $color_chambray_approx;
-	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 2px $color_quill_gray_approx;
-	a {
-		color: $white;
-		text-decoration: none;
-		&:hover {
+	.btn-group {
+		float:right;
+		&.open>.btn-default.dropdown-toggle {
 			color: $white;
-			text-decoration: none;
+			background-color: $color_nile_blue_approx;
 		}
+	}
+	.download-button {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		font-family: $font_1;
+		color: $white;
+		font-size: 13px;
+		background-color: $color_rhino_approx;
+		padding: 5px 10px;
+		margin: 21px 0 5px 5px;
+		float: right;
+		border: 1px solid $color_chambray_approx;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: 0 2px $color_quill_gray_approx;
+		text-decoration: none;
+
 		.glyphicon-download-alt:before {
 			padding: 0 5px 0 0;
 		}
-	}
-	&:hover {
-		background-color: $color_nile_blue_approx;
-		text-decoration: none;
-	}
-	&:active {
-		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-		box-shadow: none;
-		margin-top: 22px;
+
+		&:hover {
+			color: $white;
+			background-color: $color_nile_blue_approx;
+			text-decoration: none;
+		}
+		&:active {
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: none;
+			margin-top: 22px;
+		}
 	}
 }
 :focus, a:focus {
@@ -299,12 +316,19 @@ h4.panel-title, .tutorial h4.panel-title  {
 	margin-bottom: 2px;
 }
 
-// beta site
-hr { 
-	border: 2px solid #DDD; 
+// AnchorJS
+.anchorjs-link:hover {
+	text-decoration: none;
+}
+
+hr {
+	border: 2px solid #DDD;
 	margin: 15px 0 5px 0;
 }
 
-.videoDemo {
-	height: 363px;
+// last mofidied date styling
+#timestamp {
+	font-size: 80%;
+	margin-top: 50px;
+	margin-bottom: 10px;
 }

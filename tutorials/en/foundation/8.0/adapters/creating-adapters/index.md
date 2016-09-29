@@ -1,17 +1,15 @@
 ---
 layout: tutorial
 title: Creating Java and JavaScript Adapters
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
 
 ## Overview
-An adapter can be created either by using Maven directly or by using the MobileFirst CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as a sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
+An adapter can be created using either Maven commands or by using the MobileFirst CLI (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
 
-This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI.
-
-**Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
+**Prerequisite:** Make sure that you read the [Adapters Overview](../) first.
 
 #### Jump to:
 * [Install Maven](#install-maven)
@@ -25,18 +23,11 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
 * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
+* [Working offline](#working-offline)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
-#### Local Maven repositories
-If Internet connectivity is not available while developing, prepare to work offline:
-
-1. Make sure you have first installed Apache Maven.
-2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-adapter.zip** file from the Adapter tooling section.
-5. Add the adapter archetypes and security checks to the local Maven repository by running the **install-adapter.sh** script for Linux and Mac, or the **install-adapter.bat** script for Windows.
 
 ## Creating Adapters Using MobileFirst CLI
 
@@ -107,7 +98,7 @@ You can choose to run the command interactively or directly.
 2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
     ```bash
-    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID -DarchetypeVersion=8.0.0
+    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
     ```
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
   * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
@@ -142,7 +133,6 @@ You can choose to run the command interactively or directly.
 7. Enter `y` to confirm:
 
     ```bash
-    [INFO] Using property: archetypeVersion = 8.0.0
     Confirm properties configuration:
     groupId: com.mycompany
     artifactId: SampleAdapter
@@ -157,7 +147,7 @@ You can choose to run the command interactively or directly.
 Replace the placeholders with the actual values and run the command:
 
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<adapter_package_name>
+mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid>  -Dpackage=<adapter_package_name>
 ```
 
 > For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
@@ -173,7 +163,10 @@ After creating the adapter the result will be a Maven project containing a **src
 * **Using the MobileFirst CLI** - Run the `mfpdev adapter build` command from the project's root folder.
 * **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
 
-This generates an **.adapter** archive file which can be found in the **target** folder:
+### Build All
+If you have multiple adapters in a filesystem folder and you'd like to build all of them, use `mfpdev adapter build all`.
+
+The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
 
 ![java-adapter-result](adapter-result.png)
 
@@ -199,18 +192,21 @@ This generates an **.adapter** archive file which can be found in the **target**
         ```bash
         mfpdev adapter deploy -x
         ```
-   The `-x` option deploys the adapter to the server that is specified in adapter's pom.xml file.  
-   > For more options run the `mfpdev help adapter deploy` command.
+        The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
+        If the option is not used, the CLI will use the default server specified in the CLI settings.
+    
+        > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
  * **Using Maven**:
 
         ```bash
         mvn adapter:deploy
         ```
 
+### Deploy All
+If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use `mfpdev adapter deploy all`.
+
 </br>
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
-
-**NOTE:** The deploy command is available only during development.
 
 ## Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
@@ -234,7 +230,7 @@ For example:
 
 #### Adding an external dependency:
 
-1. Search the dependency in one of the search engines for Maven dependencies that exist online, for example [The Central Repository](http://search.maven.org/).
+1. Search online repositories such as [The Central Repository](http://search.maven.org/) for the dependency.
 2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
 
 The following example uses the `cloudant-client artifactId`:
@@ -251,7 +247,7 @@ The following example uses the `cloudant-client artifactId`:
 > For more information about dependencies see the Maven documentation.
 
 ## Grouping Adapters in a Single Maven Project
-If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all and deploy all abilities, sharing dependencies etc.
+If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all, deploy all and sharing dependencies. You can also build all and deploy all adapters even if they are not grouped in a single Maven project using the `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands.
 
 To group adapters you need to:
 
@@ -287,7 +283,6 @@ To group adapters you need to:
     			<plugin>
     				<groupId>com.ibm.mfp</groupId>
     				<artifactId>adapter-maven-plugin</artifactId>
-    				<version>8.0.0</version>
     				<extensions>true</extensions>
     			</plugin>
     		</plugins>
@@ -324,7 +319,7 @@ To group adapters you need to:
  * Configurations Files - adapter configuration data, to be used in devops environments.
 
 ## Updating the Adapter Maven Project
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
+To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
 
 1. The `adapter-maven-api` version:
 
@@ -333,7 +328,7 @@ To update the adapter Maven project with the latest release, find the **version 
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-api</artifactId>
       <scope>provided</scope>
-      <version>8.0.0</version>
+      <version>8.0.2016061011</version>
     </dependency>
     ```
 2. The `adapter-maven-plugin` version:
@@ -342,10 +337,29 @@ To update the adapter Maven project with the latest release, find the **version 
     <plugin>
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-plugin</artifactId>
-      <version>8.0.0</version>
+      <version>8.0.2016061011</version>
       <extensions>true</extensions>
     </plugin>
     ```
+
+## Working offline
+If you do not have online access to the Maven Central Repository, you can share MobileFirst Maven artifacts in the internal repository of your organization.
+
+1. [Visit the Downloads page]({{site.baseurl}}/downloads/) and download the MobileFirst Foundation Development Kit Installer.
+2. Start MobileFirst Server and in a browser, load the MobileFirst Operations Console from the following URL: http://<your-server-host:server-port>/mfpconsole.
+3. Click **Download Center**. Under **Tools → Adapter Archetypes**, click **Download**. The mfp-maven-central-artifacts-adapter.zip archive is downloaded.
+4. Add the adapter archetypes and security checks to the internal Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
+5. The following JAR files are required by adapter-maven-api. Make sure they are located either in developers' local **.m2** folder, or in the Maven repository of your organization. You can download them from The Central Repository.
+    * javax.ws.rs:javax.ws.rs-api:2.0
+    * javax:javaee-web-api:6.0
+    * org.apache.httpcomponents:httpclient:4.3.4
+    * org.apache.httpcomponents:httpcore:4.3.2
+    * commons-logging:commons-logging:1.1.3
+    * javax.xml:jaxp-api:1.4.2
+    * org.mozilla:rhino:1.7.7
+    * io.swagger:swagger-annotations:1.5.6
+    * com.ibm.websphere.appserver.api:com.ibm.websphere.appserver.api.json:1.0
+    * javax.servlet:javax.servlet-api:3.0.1
 
 ## Tutorials to follow next
 

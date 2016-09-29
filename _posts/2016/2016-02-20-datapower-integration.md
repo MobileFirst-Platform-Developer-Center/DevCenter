@@ -4,11 +4,15 @@ date: 2016-02-20
 tags:
 - MobileFirst_Platform
 - DataPower
+version:
+- 7.1
 author:
   name: Nathan Hazout
 ---
+> **Note:** This article was written for MobileFirst Foundation 7.1. For a similar topic on 8.0 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower]({{site.baseurl}}/blog/2016/06/17/datapower-integration/)
+
 ## Introduction
-You can use IBM® WebSphere® DataPower® in the Demilitarized Zone (DMZ) of your enterprise to protect MobileFirst mobile application traffic.
+You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.
 
 Protecting mobile application traffic that comes into your network from customer and employee devices involves preventing data from being altered, authenticating users, and allowing only authorized users to access applications. To protect mobile application traffic that is initiated by a client MobileFirst application, you can use the security gateway features of IBM WebSphere DataPower.
 
@@ -19,7 +23,7 @@ You can use IBM WebSphere DataPower as a front-end reverse proxy and security ga
 > This article assumes prior knowledge of other MobileFirst features, such as challenge handlers, security tests, realms, login modules, and procedure invocation.
 
 ## Supported versions
-This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160125-0742.
+This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160513-1006. Make sure you are using the latest client SDK as some issues have been resolved recently (see APARs PI59119, PI51627, PI59120).
 
 This also requires MobileFirst Platform to run on an application server that supports LTPA tokens.
 
@@ -36,8 +40,6 @@ This also requires MobileFirst Platform to run on an application server that sup
 ## Setting up your MobileFirst application
 Create a MobileFirst application, with any application logic you need, such as adapter calls. Start by designing your application without any security test to make sure everything works without DataPower.
 
-> **Note:** The steps explained here only work when using the classic *RPC* syntax such as `WL.Client.invokeProcedure` and **NOT** with the newer *REST* syntax such as `WLResourceRequest`
-
 > **Note:** The following document covers **Android** and **iOS only**.
 
 ### Challenge Handler
@@ -51,9 +53,9 @@ The challenge handler to handle the DataPower login form is the same that would 
 
 To learn more about form-based challenge handlers:
 
-- [Hybrid](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
-- [Native iOS](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
-- [Native Android](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
+- [Hybrid]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
+- [Native iOS]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
+- [Native Android]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
 
 Below is an example for Hybrid applications.
 
@@ -114,7 +116,9 @@ DataPowerChallengeHandler.submitLoginFormCallback = function(response) {
 };
 ```
 
-### Special note for Android
+### Special notes for Android
+
+#### Circular Redirects
 A known limitation in Android may cause some requests to fail, such as making a request after a logout.
 
 The error could look like: `org.apache.http.client.CircularRedirectException: Circular redirect...`.
@@ -143,6 +147,11 @@ For a native application use:
 ```java
 WLClient.getInstance().setAllowHTTPClientCircularRedirect(true);
 ```
+
+#### WLHttpResponseListener
+Using the `send` method of the `WLResourceRequest` class with a custom `WLHttpResponseListener` is not currently supported when using a gateway.
+
+If your code implementation uses `WLHttpResponseListener`, it is recommended to use `WLClient.connect` or `WLAuthorizationManager.obtainAuthorizationHeader` before making the request, to ensure that the challenge is handled.
 
 ### authenticationConfig.xml
 DataPower will be responsible for the authentication and will communicate the status with the MobileFirst server via LTPA. Even though MobileFirst will not perform the authentication, it is required to setup a dummy form based login module and realm to represent the user, and let WebSphere perform the authentication using the LTPA token generated by DataPower.
@@ -213,6 +222,7 @@ To configure with LDAP, consult the documentation for your application server.
 	* The **HTTPS connection** sets the IP and port that remote clients will use to connect (`0.0.0.0` means any IP). This is the entry point to your application from the outside world. Because the *Front-side handler* uses HTTPS, you need to select the previously configured **SSL proxy profile** from the dropdown.
 	* Upload the **LTPA** file (`ltpa.keys`) used in your MobileFirst server and type the password for this file (the default password for WebSphere is `WebAS`).
 	* Use the same file and password for the second **LTPA** configuration.
+
 	> Because of a known issue in DataPower firmwares 7.2 and above, the LTPA steps may not appear while deploying the pattern, in which case you need to configure the LTPA key manually after deploying the pattern.
 9. **Deploy Pattern**
 10. Back in your **Control Panel**, go to **Multi-Protocol Gateway** and verify that the *Op-State* is **up**.
@@ -234,7 +244,7 @@ During development, if you wish to open a non-SSL (HTTP) port, you need to modif
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
 ## Samples &amp; Pattern
-You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
+You can download the samples and pattern from [GitHub](https://github.com/mfpdev/DataPowerLTPA/tree/release71).
 There are 3 samples available:
 
 - **DataPower** contains the MobileFirst project common to all 3 samples, as well as the Hybrid sample.

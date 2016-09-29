@@ -8,7 +8,7 @@ weight: 4
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 
-1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
+1. A sample application that is pre-bundled with the MobileFirst client SDK is registered and downloaded from the MobileFirst Operations Console.
 2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
@@ -24,10 +24,8 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
-
-> If a remote server was already set-up, skip this step.
-
-From a **Command-line** window, navigate to the server's folder and run the command: `run.bat`.
+Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
+If using the [MobileFirst Foundation Development Kit](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
 
 ### 2. Creating an application
 
@@ -41,7 +39,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-windows.png"/>
 
-2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 mobile app scaffold.
+2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-windows.png"/>
 
@@ -102,9 +100,11 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 <img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
-1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
+1. In Visual Studio, select the **mfpclient.resw** file and edit the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 2. Press the **Run App** button.
 
@@ -119,7 +119,7 @@ The adapter response is then printed in Visual Studio's Outpout console.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Platform Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Using the MobileFirst Foundation](../../application-development/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)

@@ -1,28 +1,95 @@
 [{
+"caption": "Troubleshoot your app without Republishing with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=6s8CJIGfpJw",
+"thumbnail": "//img.youtube.com/vi/6s8CJIGfpJw/hqdefault.jpg",
+"tags": ["Development", "Deployment","Troubleshooting"],
+"version": ["8.0"] 
+},{
+"caption": "Adjusting app security on the fly with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=9XnVNPBu0C8",
+"thumbnail": "//img.youtube.com/vi/9XnVNPBu0C8/hqdefault.jpg",
+"tags": ["Development", "Authentication"],
+"version": ["8.0"] 
+},{
+"caption": "Enhancing mobile user engagement with Cognitive & IBM MobileFirst Platform",
+"url": "//www.youtube.com/watch?v=7kKy8ZSgnhw",
+"thumbnail": "//img.youtube.com/vi/7kKy8ZSgnhw/hqdefault.jpg",
+"tags": ["Development"],
+"version": ["8.0"] 
+},{
+"caption": "Gradual & Differential Rollout of new app features with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=YMUYeEbGGvk",
+"thumbnail": "//img.youtube.com/vi/YMUYeEbGGvk/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Gradually Rollout New Features with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=8CSD92vS0oM",
+"thumbnail": "//img.youtube.com/vi/8CSD92vS0oM/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Integrating your Xamarin apps with Mobile Foundation service on Bluemix",
+"url": "//www.youtube.com/watch?v=kw9k2d59FYQ",
+"thumbnail": "//img.youtube.com/vi/kw9k2d59FYQ/hqdefault.jpg",
+"tags": ["Development","Xamarin"],
+"version": ["8.0"] 
+},{
+"caption": "Live Update Showcase",
+"url": "//www.youtube.com/watch?v=P31W1sClqK0",
+"thumbnail": "//img.youtube.com/vi/P31W1sClqK0/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Hello Live Update demo",
+"url": "//www.youtube.com/watch?v=qw5Ue0kPCLE",
+"thumbnail": "//img.youtube.com/vi/qw5Ue0kPCLE/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Setting-up Eclipse for Cordova developing in MobileFirst Foundation 8.0",
+"url": "//www.youtube.com/watch?v=yRe2AprnUeg",
+"thumbnail": "//img.youtube.com/vi/yRe2AprnUeg/hqdefault.jpg",
+"tags": ["Integration", "CLI", "Development","THyM", "Eclipse"],
+"version": ["8.0"] 
+},{
+    "caption": "Getting Started with Ionic and MobileFirst Platform Foundation 8.0",
+    "url": "//www.youtube.com/watch?v=DlxZYxXszIw",
+    "thumbnail": "//img.youtube.com/vi/DlxZYxXszIw/hqdefault.jpg",
+    "tags": ["Bluemix", "Ionic", "Integration", "CLI", "Development"],
+    "version": ["8.0"]
+},{
     "caption": "Getting Started With the MobileFirst Platform Development CLI 8.0 on Bluemix and the Development Kit",
     "url": "//www.youtube.com/watch?v=rYQMC0uIbQA",
     "thumbnail": "//img.youtube.com/vi/rYQMC0uIbQA/hqdefault.jpg",
-    "tags": ["Bluemix", "CLI", "Development"]
+    "tags": ["Bluemix", "CLI", "Development"],
+    "version": ["8.0"]
 }, {
     "caption": "IBM MobileFirst Platform Foundation 7.1 End-to-End Demo",
     "url": "//www.youtube.com/watch?v=lMR0jYP758k",
     "thumbnail": "//img.youtube.com/vi/lMR0jYP758k/hqdefault.jpg",
     "tags": ["Integration", "Security", "Development", "Bluemix", "Testing"]
+    ,
+    "version": ["7.1"]
 }, {
     "caption": "DataPower Integration in MobileFirst Platform Foundation 7.1",
     "url": "//www.youtube.com/watch?v=emDdHC0VlRY",
     "thumbnail": "//img.youtube.com/vi/emDdHC0VlRY/hqdefault.jpg",
-    "tags": ["DataPower", "Integration", "Security"]
+    "tags": ["DataPower", "Integration", "Security"],
+    "version": ["7.1"]
+    
 }, {
     "caption": "MobileFirst Services Starter with a StrongLoop based mobile backend",
     "url": "//www.youtube.com/watch?v=wGdVL2Yyf-I",
     "thumbnail": "//img.youtube.com/vi/wGdVL2Yyf-I/hqdefault.jpg",
-    "tags": ["Bluemix", "MobileServices"]
+    "tags": ["Bluemix", "MobileServices"],
+    "version": ["7.1"]
 }, {
     "caption": "IBM MobileFirst Platform on Bluemix Docker containers",
     "url": "//www.youtube.com/watch?v=w2r8RmQyCMA",
     "thumbnail": "//img.youtube.com/vi/w2r8RmQyCMA/hqdefault.jpg",
-    "tags": ["Bluemix", "Docker"]
+    "tags": ["Bluemix", "Docker"],
+    "version": ["7.1"]
 }, {
     "caption": "Mobile Client Access Service",
     "url": "//www.youtube.com/watch?v=vgGJLY8oxmc",
@@ -32,17 +99,20 @@
     "caption": "MobileFirst 7.x Push Notifications Service",
     "url": "//www.youtube.com/watch?v=REs-JSqlIUI",
     "thumbnail": "//img.youtube.com/vi/REs-JSqlIUI/hqdefault.jpg",
-    "tags": ["Bluemix", "MobileServices"]
+    "tags": ["Bluemix", "MobileServices"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Streamline integration with backend systems using MobileFirst 7.x",
     "url": "//www.youtube.com/watch?v=0gQk3IvfK0A",
     "thumbnail": "//img.youtube.com/vi/0gQk3IvfK0A/hqdefault.jpg",
-    "tags": ["Integration"]
+    "tags": ["Integration"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Creating a Windows Native C# app connecting to MobileFirst 7.x",
     "url": "//www.youtube.com/watch?v=Ntt25H6PAxI",
     "thumbnail": "//img.youtube.com/vi/Ntt25H6PAxI/hqdefault.jpg",
-    "tags": ["Development", "Android"]
+    "tags": ["Development", "Android"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Continuous Integration",
     "url": "//www.youtube.com/watch?v=FMTmOUPBhNI",
@@ -52,50 +122,60 @@
     "caption": "IBM MobileFirst Platform 7.x Foundation With Android ProGuard",
     "url": "//www.youtube.com/watch?v=WrCmLJuIMuk",
     "thumbnail": "//img.youtube.com/vi/WrCmLJuIMuk/hqdefault.jpg",
-    "tags": ["Integration", "Android"]
+    "tags": ["Integration", "Android"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "MobileFirst 7.x Operational Analytics for LOB",
     "url": "//www.youtube.com/watch?v=euuvr9DaT5M",
     "thumbnail": "//img.youtube.com/vi/euuvr9DaT5M/hqdefault.jpg",
-    "tags": ["Analytics"]
+    "tags": ["Analytics"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "MobileFirst 7.x Operational Analytics console",
     "url": "//www.youtube.com/watch?v=EQDpRF-9Smc",
     "thumbnail": "//img.youtube.com/vi/EQDpRF-9Smc/hqdefault.jpg",
-    "tags": ["Analytics"]
+    "tags": ["Analytics"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "MobileFirst 7.x Operational Analytics Custom Charts",
     "url": "//www.youtube.com/watch?v=XtlJI4ZemZQ",
     "thumbnail": "//img.youtube.com/vi/XtlJI4ZemZQ/hqdefault.jpg",
-    "tags": ["Analytics"]
+    "tags": ["Analytics"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Getting familiar with Java adapters in MobileFirst 7.x - part 1",
     "url": "//www.youtube.com/watch?v=cKM5480-6wI",
     "thumbnail": "//img.youtube.com/vi/cKM5480-6wI/hqdefault.jpg",
-    "tags": ["Java", "Adapters"]
+    "tags": ["Java", "Adapters"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Getting familiar with Java adapters in MobileFirst 7.x - part 2",
     "url": "//www.youtube.com/watch?v=Z2QUi33_a5k",
     "thumbnail": "//img.youtube.com/vi/Z2QUi33_a5k/hqdefault.jpg",
-    "tags": ["Java", "Adapters"]
+    "tags": ["Java", "Adapters"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "MobileFirst 7.x OAuth security - part 1",
     "url": "//www.youtube.com/watch?v=uyeGupYSZj4",
     "thumbnail": "//img.youtube.com/vi/uyeGupYSZj4/hqdefault.jpg",
-    "tags": ["OAuth", "Security"]
+    "tags": ["OAuth", "Security"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "MobileFirst 7.x OAuth security - part 2",
     "url": "//www.youtube.com/watch?v=eeFBCptXLFU",
     "thumbnail": "//img.youtube.com/vi/eeFBCptXLFU/hqdefault.jpg",
-    "tags": ["OAuth", "Security"]
+    "tags": ["OAuth", "Security"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "IBM MobileFirst Platform Foundation Custom Authenticators and Login Modules",
     "url": "//www.youtube.com/watch?v=2WXevHSF5wU",
     "thumbnail": "//img.youtube.com/vi/2WXevHSF5wU/hqdefault.jpg",
-    "tags": ["Authenticators", "Login modules", "Security"]
+    "tags": ["Authenticators", "Login modules", "Security"],
+    "version": ["7.0","7.1"]
 }, {
     "caption": "Integrating IBM MobileFirst 7.x CLI with Grunt",
     "url": "//www.youtube.com/watch?v=tFvogRMC4ss",
     "thumbnail": "//img.youtube.com/vi/tFvogRMC4ss/hqdefault.jpg",
-    "tags": ["CLI", "Integration"]
+    "tags": ["CLI", "Integration"],
+    "version": ["7.0","7.1"]
 }]

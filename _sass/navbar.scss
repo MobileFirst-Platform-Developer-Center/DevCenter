@@ -7,9 +7,6 @@ $color_celeste_approx: #ccc;
 
 .navbar {
   &.navbar-default {
-    //background-image: url("../assets/MFPFoundation_logo_24px.svg");
-    //background-repeat: no-repeat;
-    //background-position: 0.2% 33%;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 0;
     margin-bottom: 0;
@@ -27,13 +24,18 @@ $color_celeste_approx: #ccc;
         color: $white;
       }
       @media (max-width: $screen-xs-max) {
-        margin-left: 5px;
+          margin-left: 16px;
+          margin-top: 4px;
       }
     }
     .navbar-nav {
       > li {
         > a {
           color: $white;
+          @media (max-width: $screen-sm-max) {
+            padding-left: 5px;
+            padding-right: 7px;
+          }
           &:hover {
             color: $white;
           }
@@ -98,9 +100,6 @@ $color_celeste_approx: #ccc;
     @media (max-width: $screen-xs-max) {
       padding-right: 14px;
     }
-    @media (max-width: 1262px) {
-      display:none;
-    }
     #pnext-search-input {
       height: 33px;
       border-radius: 4px 0 0 4px;
@@ -116,7 +115,7 @@ $color_celeste_approx: #ccc;
   }
 }
 .dropdown-menu {
-  opacity: 0.97;
+  opacity: 1.0 !important;
   padding-top: 0;
   padding-bottom: 0;
   > li {
@@ -168,7 +167,7 @@ $color_celeste_approx: #ccc;
 
       //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
       border-radius: 0 6px 6px 6px;
-      opacity: 0.97;
+      opacity: 1.0 !important;
     }
     > a:after {
       display: block;

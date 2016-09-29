@@ -6,20 +6,25 @@ tags:
 - Cordova
 - Plugins
 - Worklight
+version:
+- 6.2
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Idan Adar
 ---
 <p>When developing mobile applications you may come across situations where you will need to incorporate functionality that is not readily available to implement in Hybrid applications. This can be solved by integrating 3rd party Cordova plug-ins in your application. However, there are some hurdles standing in the way to achieving this integration:</p>
 
 <ul>
-    <li>Worklight/MobileFirst releases v6.x -> v7.0 do not support <a href="https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html">Cordova Plugman</a></li>
-    <li>The current implementation support for Cordova plug-ins does not allow  addition of existing 3rd party Cordova plug-ins (<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/">you can, however, create your own</a>)</li>
+    <li>Worklight/MobileFirst releases v6.x -> v7.0 do not support <a href="https://cordova.apache.org/docs/en/4.0.0/plugin_ref_plugman.md.html">Cordova Plugman</a>, so you cannot simply "install" a plug-in.</li>
+    <li>The current feature implementation for Cordova plug-ins in the product does not allow adding existing 3rd party Cordova plug-ins (<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/">you can, however, create your own</a>).</li>
 </ul>
 
 <p>Fortunately there are several solutions:</p>
 <ol>
-    <li>Upgrade to the soon-to-be-released IBM MobileFirst Platform Foundation 7.1, now providing the ability to create Cordova applications (iOS and Android only at this time), where MobileFirst SDK is integrated as a plug-in like any, thus also enabling you to integrate with any 3rd party Cordova plug-in as you would in any Cordova application</li>
-    <li>Follow the instructions provided below for a workaround to the presented difficulty in existing releases</li>
+    <li>Upgrade to IBM MobileFirst Platform Foundation 7.1, now providing the ability to create Cordova applications (iOS and Android), where MobileFirst SDK is integrated as a plug-in like any, thus also enabling you to integrate with any 3rd party Cordova plug-in as you would in any standard Cordova application</li>
+    <li>Follow the instructions provided below for a <b>workaround</b> (by no means an official response or fix) to the presented difficulty</li>
 </ol>
 
 <h3>End-to-end examples</h3>
@@ -27,43 +32,45 @@ author:
 These examples miss one step that is explained below - using Ant tasks to re-introduce required Cordova plug-in references.</p>
 
 <ul>
-    <li><a href="http://stackoverflow.com/questions/27564069/how-we-can-implement-add-to-anysocial-networking-in-mobilefirst">How we can implement add to any(Social networking) in MobileFirst</a></li>
+    <li><a href="http://stackoverflow.com/questions/27564069/how-we-can-implement-add-to-anysocial-networking-in-mobilefirst">How we can implement add to any (Social networking) in MobileFirst</a></li>
     <li><a href="http://stackoverflow.com/questions/31745420/not-able-to-call-window-plugins-in-ibm-mobilefirst-6-3">Not able to call window.plugins in IBM MobileFirst 6.3</a></li>
 </ul>
 
 <h3>Integration instructions</h3>
-<p>As can be seen in the examples from Stack Overflow there are two additional important steps required:</p>
+<p>As can be seen in the examples from StackOverflow there are two additional important steps required:</p>
 
 <ol>
     <li>The plug-in's JavaScript implementation must be surrounded with the following:
         <ul>
             <li>At the top add:
-                {% highlight javascript linenos %}
-                cordova.define("nl.x-services.plugins.replace-with-JS-filename", function(require, exports, module) {
-                {% endhighlight %}
+{% highlight javascript linenos %}
+cordova.define("nl.x-services.plugins.replace-with-JS-filename", function(require, exports, module) {
+{% endhighlight %}
             </li>
             <li>At the bottom add:
 
-                {% highlight javascript linenos %}
-                });
-                {% endhighlight %}
+{% highlight javascript linenos %}
+});
+{% endhighlight %}
             </li>
         </ul>
-        <p> Make sure to replace the placeholder text "replace-with-js-filename" with the correct filename value.</p>
+        <p>Make sure to replace the placeholder text "replace-with-js-filename" with the correct filename value.</p>
     </li>
-    <li>The plug-in definition needs to be added to the <code>cordova_plugins.js</code> file. This is where we're hit with a problem; this file is considered a framework file and because of that, it gets auto-regenerated with each build performed in Worklight/MobileFirst Studio, and so any change that we do in it will be lost, rendering the plug-in not working. But first, find the <code>cordova_plugins.js</code> file in the <code>your-environment\native\www\default\worklight</code> folder, and:
+    <li>The plug-in definition needs to be added to the <code>cordova_plugins.js</code> file. This is where we're hit with a problem; this file is considered a framework file and because of that, it gets auto-regenerated with each build performed in Worklight/MobileFirst Studio, and so any change that we do in it will be lost, essentially breaking the plug-in. 
+        
+        Find the <code>cordova_plugins.js</code> file in the <code>your-environment\native\www\default\worklight</code> folder, and:
         <ul>
             <li>Add a Cordova plug-in definition
-            {% highlight javascript linenos %}
-            {
-                "file": "../js/replace-with-JS-filename.js",
-                "id": "nl.x-services.plugins.replace-with-JS-filename",
-                "clobbers": [
-                    "window.plugins.replace-with-JS-filename"
-                ]
-            },
-            {% endhighlight %}
-            <p>The plug-in typically resides in <code>common\js</code> (hence <code>../js/</code>).</p>
+{% highlight javascript linenos %}
+{
+    "file": "../js/replace-with-JS-filename.js",
+    "id": "nl.x-services.plugins.replace-with-JS-filename",
+    "clobbers": [
+        "window.plugins.replace-with-JS-filename"
+    ]
+},
+{% endhighlight %}
+            <p>The plug-in typically resides in the <code>common\js</code> folder, hence <code>../js/</code>.</p>
             </li>
         </ul>
     </li>
@@ -79,15 +86,15 @@ These examples miss one step that is explained below - using Ant tasks to re-int
         </ul>
     </li>
     <li>Copy and paste the following into the file:
-        {% highlight xml linenos %}
-        <project name="FixCordovaPlugin" basedir=".">
-            <target name="CopyFile">
-            	<echo message="Copying cordova_plugin.js back to Project" />
-                <copy file="path-to/cordova_plugins.js" overwrite="true" tofile="path-to/project-name/apps/app-name/environment-name/native/www/default/worklight/cordova_plugins.js"/>
-            </target>
-        </project>
-        {% endhighlight %}
-        <p>Replace the following with the corresponding value: <code>project-name, app-name, environment-name</code>.</p>
+{% highlight xml linenos %}
+<project name="FixCordovaPlugin" basedir=".">
+    <target name="CopyFile">
+    	<echo message="Copying cordova_plugin.js back to Project" />
+        <copy file="path-to/cordova_plugins.js" overwrite="true" tofile="path-to/project-name/apps/app-name/environment-name/native/www/default/worklight/cordova_plugins.js"/>
+    </target>
+</project>
+{% endhighlight %}
+        <p>Replace the following with the corresponding value: <code>path-to, project-name, app-name, environment-name</code>.</p>
     </li>
     <li>Highlight the project folder and select <strong>Project > Properties > Builders</strong></li>
     <li>Add a new Builder by clicking on <strong>New...> Ant builder</strong></li>
@@ -100,6 +107,9 @@ These examples miss one step that is explained below - using Ant tasks to re-int
 
 <p>Now when running a build in Worklight/MobileFirst Studio, while the build phase will initially overwrite the changes made to <code>cordova_plugins.js</code>, the Ant task will replace the generated file with a backed-up file.</p>
 
+<b>Final Notes</b><br/>
 <p>This is only one Ant task implementation of many possible ones, and should direct you to the right, custom, solution best suited for your needs.</p>
 
-<p>Note: if you're using the encryptWebResources option, though, you may be out of luck as the Ant task takes place After the build has already placed all app resources in an encrypted .zip...</p>
+<p>if you're using the encryptWebResources option, though, you may be out of luck as the Ant task takes place After the build has already placed all app resources in an encrypted .zip...</p>
+
+<p>The best solution of them all, is to create a Cordova application in MobileFirst Platform Foundation 7.1.</p>

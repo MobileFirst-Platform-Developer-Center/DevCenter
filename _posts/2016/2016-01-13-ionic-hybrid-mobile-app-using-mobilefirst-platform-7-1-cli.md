@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Ionic
 - Cordova
+version:
+- 7.1
 author:
   name: Vidyasagar MSC
 ---
@@ -70,7 +72,7 @@ Please press enter to continue...
 
 If you observe the last command, It looks like pre-built MFP + Ionic templates may be downloaded from GIT. If you think so, your guess is right.
 
-You can find the [templates here](https://github.com/csantanapr/mfp-ionic-templates"). Credits: Carlos Santana.
+You can find the [templates here](https://github.com/csantanapr/mfp-ionic-templates). Credits: Carlos Santana.
 
 Download the templates as a ZIP and in your command point to the location where you have unzipped the templates on your system.
 
@@ -97,6 +99,7 @@ Why am I doing this?
 **Note:** Call this method only once, before any other WL.Client methods that communicate with the server. Remember to implement the onSuccess and onFailure callback functions.
 
 Here's the code snippet from app.js:
+
 ```javascript
 function onConnectSuccess() {
     console.log("Yay!!! Connected to MobileFirst Server");

@@ -6,6 +6,6 @@ use_dropdown_home: overview/
 weight: 2
 show_disqus: false
 print_pdf: false
-new_url: overview/
+new_url: /tutorials/en/quality-assurance/7.1/overview/
 ---
 Home for 7.1

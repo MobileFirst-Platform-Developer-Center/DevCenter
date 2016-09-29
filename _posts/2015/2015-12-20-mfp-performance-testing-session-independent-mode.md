@@ -6,6 +6,10 @@ tags:
 - Performance
 - Testing
 - OAuth
+version:
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Nir Grande
 ---
@@ -39,9 +43,9 @@ The resource in this flow is Java adapter
 * [Prerequisite](#prerequisite) - Before running the script, ensure that the MFP Server is up. Deploy the application and also copy all the dependencies as mentioned below. 
 * [Registration](#registration) - In this test this step is bypassed by adding the clients directly to the database. It is a single action in the application life cycle that should have no effect on performance.
 * [Authorization](#authorization) - In the test, authorization is required for the `antiXSRF` and `deviceNoProvisioning` realms. This means that the client has to extract the correct instance id and device token in order to successfully pass the authorization phase and get a valid grant code. 
-* [Sign grant code](#Sign) - This Java class mimics client behavior by signing the grant code that was received in the authorization phase.  
+* [Sign grant code](#sign-grant-code) - This Java class mimics client behavior by signing the grant code that was received in the authorization phase.  
 * [Token](#token) - The client sends the signed grant code and receives an access token and ID token. These values are then extracted by JMeter.
-* [A sample REST API call](#call) - Shows how to access the resource endpoint with a valid token.
+* [A sample REST API call](#sample-of-rest-api-call) - Shows how to access the resource endpoint with a valid token.
 
 JMeter is used here for simulating an MFP client. It lets you use hundreds of threads, each thread holding a large number of fake devices. Using this method, you can stress the MFP server according to your needs. This flow describes a single client session with several requests. 
 
@@ -142,7 +146,7 @@ The grant code is extracted by JMeter:
 
 ![extract grant code]({{site.baseurl}}/assets/blog/2015-12-20-mfp-performance-testing-session-independent-mode/extract_grant_code.png)
 
-#### Sign grant code**
+#### Sign grant code
 This phase is an internal JMeter operation in order to sign the grant code.  
 Ensure that the `jmeter.jwscreator` class name is selected.
 
@@ -160,7 +164,7 @@ Add the `X-WL-Authenticate` header, returned by the `sign grant code` Java reque
 
 Token request: Pass in four parameters including two dynamic – `client_id` and `code`: 
 
-![token request]("{{site.baseurl}}/assets/blog/2015-12-20-mfp-performance-testing-session-independent-mode/tokenrequest.png)
+![token request]({{site.baseurl}}/assets/blog/2015-12-20-mfp-performance-testing-session-independent-mode/tokenrequest.png)
 
 In the response you get `access_token` and `id_token`:
 

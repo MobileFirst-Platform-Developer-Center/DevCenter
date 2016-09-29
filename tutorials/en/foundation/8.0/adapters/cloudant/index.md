@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Integrating with Cloudant Using an Adapter
-relevantTo: [cordova]
+title: Integrating with Cloudant
+relevantTo: [javascript]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
-weight: 8
+weight: 9
 ---
 ## Overview
 Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
@@ -127,23 +127,4 @@ It also contains a Cordova application that works with both the Java and JavaScr
 > **Note:** The sample uses Cloudant Java Client v1.2.3 due to known limitation.
 
 ### Sample usage
-#### Adapter setup
-1. Create a database in Cloudant and generate an API key. Make sure that you provide read and write rights for this key.
-2. To connect to Cloudant, update the Cloudant configuration:
-
- * CloudantJS:
-  1. Open the adapter XML file and replace the `CLOUDANT_ACCOUNT`, `KEY` and `PASSWORD` placeholders with the actual values.
-  2. Open the **CloudantJS-impl.js** file and replace the `DATABASE_NAME` placeholder with your database name.
-  3. Use either Maven or MobileFirst CLI to [build and deploy the CloudantJS adapter](../creating-adapters/).
-
- * CloudantJava:
-  1. Use either Maven or MobileFirst CLI to [build and deploy the CloudantJava adapter](../creating-adapters/).
-  2. In the **MobileFirst Operations Console → [your adapter] → Configurations tab**, fill in the **Cloudant DB name**, **Cloudant account**, **Cloudant key** and **Cloudant account** fields with the actual values.
-
-  > To learn more about the adapter's configurations properties see the [Java Adapters](../java-adapters) tutorial.
-
-#### Application setup
-1. From a **Command-line**, navigate to the **CloudantAdapterApp** project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. Run the application by running the `cordova run` command.
+Follow the sample's README.md file for instructions.

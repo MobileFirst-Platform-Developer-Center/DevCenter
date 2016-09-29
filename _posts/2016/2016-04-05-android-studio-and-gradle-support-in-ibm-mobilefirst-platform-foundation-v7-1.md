@@ -6,6 +6,8 @@ tags:
 - Android_Studio
 - Gradle
 - Google_Play_Services
+version:
+- 7.1
 author:
   name: Karen Tran
 ---

@@ -5,6 +5,10 @@ tags:
 - Android
 - Push_notifications
 - MobileFirst_Platform
+version:
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Vivin Krishnan
 ---

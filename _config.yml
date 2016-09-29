@@ -1,4 +1,4 @@
-name: "IBM MobileFirst Platform Developer Center"
+name: "IBM MobileFirst Foundation Developer Center"
 description: "Develop, test, manage, and secure your native and hybrid apps"
 url: https://mobilefirstplatform.ibmcloud.com
 source_url: https://github.ibm.com/MFPSamples/DevCenter
@@ -27,11 +27,40 @@ defaults:
       layout: blogpost
       show_disqus: true
       pinned: false
+      indexed: true
+  -
+    scope:
+      path: "blog/rss"
+    values:
+      indexed: false
+  -
+    scope:
+      path: "feed.xml"
+    values:
+      indexed: false      
+  -
+    scope:
+      path: "js"
+    values:
+      indexed: false
+  -
+    scope:
+      path: "css"
+    values:
+      indexed: false
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      category: page
+      indexed: true
   -
     scope:
       path: "tutorials"
     values:
       layout: tutorial
+      category: tutorial
       show_breadcrumb: true
       show_disqus: true
       show_in_nav: true
@@ -42,9 +71,11 @@ defaults:
     values:
       layout: labs
       show_disqus: true
+      category: lab
   -
     scope:
       path: "pdf"
     values:
       layout: pdflist
       permalink: /:path/:basename:output_ext
+      indexed: false

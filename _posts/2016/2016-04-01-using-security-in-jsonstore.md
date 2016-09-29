@@ -5,7 +5,10 @@ tags:
 - iOS
 - Android
 - JSONStore
-- non-MFPF
+version:
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Nana Amfo
 ---
@@ -13,7 +16,13 @@ author:
 
 
 # Overview 
-JSONStore is a lightweight, document-oriented storage system that enables persistent storage of JSON documents for Android applications. Recently, this framework has been released as an open source framework. IBM MobileFirst Platform Foundation provides libraries that allow to enable security features such as encryption and FIPS support in JSONStore. By the end of this blog you will have a JSONStore framework that is secured for your project. This version of JSONStore is not supported for MobileFirst Platform Foundation v8.
+JSONStore is a lightweight, document-oriented storage system that enables persistent storage of JSON documents for Android applications.  
+Recently, the JSONStore framework has been released as an open source framework.  
+
+IBM MobileFirst Platform Foundation provides libraries that allow to enable security features such as encryption and FIPS support in JSONStore.  
+By the end of this blog you will have a JSONStore framework that is secured for your project.
+
+**Note:** This version of JSONStore is not supported for MobileFirst Platform Foundation v8 beta.
 
 ## Android applications
 
@@ -29,30 +38,30 @@ Copy the contents of `libs` directory and paste them in your `libs` directory in
 
 In your build.gradle make sure the following line is included under dependencies
 
-```Gradle
+```xml
 compile fileTree(dir: 'libs', include: ['*.jar'])
 ```
 
 Below screenshot shows the final file system layout after following the above instructions
 
-![](/assets/blog/2016-04-01-using-security-in-jsonstore/EnablingJsonStoreSecurityAndroidStudio.png)
+![Enabling JSONStore]({{site.baseurl}}/assets/blog/2016-04-01-using-security-in-jsonstore/enable-security.png)
 
 Once all the required libraries are in place the last remaining thing to do is to call below method to enable encryption in your JSONStore application.
 
-```Java
+```java
 JSONStore.getInstance(getApplicationContext()).setEncryption(true)
 ``` 
 Now you can use JSONStoreInitOptions instance to set username and password for encrypting your JSONStore collections. 
 
 > To ensure that FIPS compliant encryption is enabled look for the below text in LogCat output
 
-> ```
-> 04-08 19:56:42.566 13387-13387/? D/libuvpn: SSL Version=OpenSSL 1.0.2f-fips 28 Jan 2016
-> 04-08 19:56:42.626 13387-13387/? D/libuvpn: --------------------------------------------------
-> 												FIPS_mode initially 0, setting to 1
-> 04-08 19:56:42.626 13387-13387/? D/libuvpn:   FIPS_mode_set succeeded
-> 											---------------------------------------------------
-> ```
+```xml
+04-08 19:56:42.566 13387-13387/? D/libuvpn: SSL Version=OpenSSL 1.0.2f-fips 28 Jan 2016
+04-08 19:56:42.626 13387-13387/? D/libuvpn: --------------------------------------------------
+												FIPS_mode initially 0, setting to 1
+04-08 19:56:42.626 13387-13387/? D/libuvpn:   FIPS_mode_set succeeded
+ 											---------------------------------------------------
+```
 
 ## iOS applications
 
@@ -68,30 +77,31 @@ Unzip the **jsonstore_encryption.zip** file and open the iOS folder found inside
 
 Drag and drop `SQLCipher.framework` and `libSQLCipherDatabase.a` fils from iOS folder to your iOS project in Xcode. When prompted make sure that the `Copy items if needed` checkbox is checked. 
 
-Open `Link Binary with Libraries` section in the `Build Phases` tab of your iOS project settings. Make sure that `SQLCipher.framework` and `libSQLCipherDatabase.a` are present. Add them if they're not. x
+Open "Link Binary with Libraries" section in the "Build Phases" tab of your iOS project settings. Make sure that "SQLCipher.framework" and "libSQLCipherDatabase.a" are present. Add them if they're not.
 
 Once all the required files are added call the below method in your iOS application
 
-```Objective-C
+```objc
 [[JSONStore sharedInstance] setEncryption:YES];
 ```
-> To ensure that FIPS compliant encryption is enabled execute the below command
 
->```
-> NSLog(@"%@", [[JSONStore sharedInstance] fileInfoAndReturnError:nil]);
->```
+To ensure that FIPS compliant encryption is enabled execute the below command
 
-> The Xcode console output should contain isEncrypted=1 property like shown on a snippet below
+```objc
+NSLog(@"%@", [[JSONStore sharedInstance] fileInfoAndReturnError:nil]);
+```
 
-> ```
-> 2016-04-08 14:54:45.789 JSONStoreTestIOS[48114:20123219] (
->         {
->         isEncrypted = 1;
->         name = myname;
->         size = 3072;
->     }
-> )
-> ```
+The Xcode console output should contain isEncrypted=1 property like shown on a snippet below
+
+```xml
+2016-04-08 14:54:45.789 JSONStoreTestIOS[48114:20123219] (
+         {
+         isEncrypted = 1;
+         name = myname;
+         size = 3072;
+     }
+ )
+```
 
 ## Cordova applications
 
@@ -103,6 +113,6 @@ In order to install JSONStore Cordova plugin follow the step by step instruction
 
 Follow the instructions for adding files for native application. Once all the required files are added call the below method in your Cordovaq application
 
-```Javascript
+```javascript
 JSONStore.setEncryption(true)
 ```

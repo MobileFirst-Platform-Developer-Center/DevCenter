@@ -5,7 +5,9 @@ tags:
 - MobileFirst_Platform
 - iOS
 - SimpleCaptcha
-- Console samples
+- Security_Checks
+version:
+- 8.0
 author:
   name: Ore Poran
 ---
@@ -31,10 +33,10 @@ The end result will be: the SimpleCaptcha security check deployed on your server
 ## SimpleCaptcha SecurityCheck
 From the javadoc:
 
-> This security check implements an example of a captcha by calculating the sum of two operands that are sent as a challenge. The challenge created is a JSON in the format of {"captcha" : "x + y"} 
-> 
+> This security check implements an example of a captcha by calculating the sum of two operands that are sent as a challenge. The challenge created is a JSON in the format of {"captcha" : "x + y"}
+>
 > The challenge answer should bea  JSON in the format of {"answer" : "z"}
-> 
+>
 > If z = x + y then the credentials are valid and the security check goes in to "success" state (this is implemented in the base class CredentialsValidationSecurityCheck)
 
 I'll break this up to Server-side work, and Client-side Work.
@@ -52,7 +54,7 @@ From the 3 Tabs, choose `Adapters`. There you'll find `SecurityCheck - Simple Ca
 
 #### Build/Deploy the Adapter
 Before we deploy the adapter to our server, we need to build it. Adapters are Maven artifacts, which means they can be built using the command `mvn clean install`. If you're using the MobileFirst CLI, use `mfpdev adapter build` followed by `mfpdev adapter deploy`.
-    
+
 Before we build the adapter, lets take a look at some of the source code. Open the adapter in your favorite IDE and make your way to `SimpleCaptchaSecurityCheck.java`.  
 This is the method that does all the logic:
 
@@ -102,9 +104,9 @@ MobileFirst Platform Foundation 8.0 Beta provides a SecurityCheck sample, but no
 As we saw, the SecurityCheck sends a challenge in the format of `{"captcha" : "X + Y" , "message" : errorMsg}`.  
 This means we need to create a challenge Handler in our client, register that client, and create some UI for our User to answer the captcha challenge.
 
-Create a new Xcode project and [add the MobileFirst Platform Foundation SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/ios).
+Create a new Xcode project and [add the MobileFirst Platform Foundation SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/ios).
 
-#### Create the WLChallengeHandler
+#### Create the SecurityCheckChallengeHandler
 In our XCode app, lets create a new Cocoa class called "SimpleCaptchaChallengeHandler".          
 
 *SimpleCaptchaChallengeHandler.h*
@@ -114,7 +116,7 @@ In our XCode app, lets create a new Cocoa class called "SimpleCaptchaChallengeHa
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 
-@interface SimpleCaptchaChallengeHandler : WLChallengeHandler
+@interface SimpleCaptchaChallengeHandler : SecurityCheckChallengeHandler
 @property ViewController* vc;
 
 -(id)initWithViewController: (ViewController*) vc;
@@ -122,7 +124,7 @@ In our XCode app, lets create a new Cocoa class called "SimpleCaptchaChallengeHa
 @end
 ```
 
-* Our class implements WLChallengeHandler, so we need to import the MobileFirst sdk.
+* Our class implements SecurityCheckChallengeHandler, so we need to import the MobileFirst sdk.
 * We create another init method that can accept a viewController, and the reason is that we are going to push some UI from our Challenge Handler's handleChallenge method.
 
 *SimpleCaptchaChallengeHandler.m*
@@ -137,7 +139,7 @@ In our XCode app, lets create a new Cocoa class called "SimpleCaptchaChallengeHa
 }
 ```
 
-Every WLChallengeHandler has to call `initWithSecurityCheck`, we put the SecurityCheck name so the MobileFirstPlatformFoundation framework knows which ChallengeHandler handles each SecurityCheck's challenge.
+Every SecurityCheckChallengeHandler has to call `initWithSecurityCheck`, we put the SecurityCheck name so the MobileFirstPlatformFoundation framework knows which ChallengeHandler handles each SecurityCheck's challenge.
 
 ```objc
 -(void) handleSuccess: (NSDictionary *)success {
@@ -179,14 +181,14 @@ This is done so that the viewController can send the challengeAnswer after the u
 
 #### Create the CaptchaViewController
 
-Now that we've set up the WLChallengeHandler, we need to do some UI.  
+Now that we've set up the SecurityCheckChallengeHandler, we need to do some UI.  
 Create a new Cocoa class called "CaptchaViewController" which implements UIViewController.
 
 *CaptchaViewController.h*
 
 ```objc
 @interface CaptchaViewController : UIViewController
-@property WLChallengeHandler* challengeHandler;
+@property SecurityCheckChallengeHandler* challengeHandler;
 @property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *equationLabel;
 
@@ -245,7 +247,7 @@ Go to the main ViewController.m class and register the challenge handler:
     [[WLClient sharedInstance] registerChallengeHandler:[[SimpleCaptchaChallengeHandler alloc] initWithViewController:self]];    
 }
 ```
-    
+
 Next we want to obtain a token for the scope @"SimpleCaptcha".  
 In MobileFirst Platform Foundation 8.0 beta, we can obtain an access token for a scope, but a securityCheck itself can also be a scope, so its perfectly fine to obtain a token for a specific security check.
 
@@ -277,4 +279,3 @@ Add an extra test - obtain the token again, you shouldn't see the challenge at a
 
 You can post comments below.  
 Thanks!
-

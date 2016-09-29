@@ -1,6 +1,9 @@
-[![Build Status](https://travis.innovate.ibm.com/MFPSamples/DevCenter.svg?token=DxTFrpuyhWKJNXaj5cp2&branch=master)](https://travis.innovate.ibm.com/MFPSamples/DevCenter)
+This repository contains the source code for the IBM MobileFirst Foundation developer center https://mobilefirstplatform.ibmcloud.com.  
 
-This is the working area for the IBM MobileFirst Platform Developer Center v3.0.
+#### Contributing
+If you'd like to contribute, please see the **contributing.md** file.
+
+#### License
 
 Copyright 2016 IBM Corp.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at

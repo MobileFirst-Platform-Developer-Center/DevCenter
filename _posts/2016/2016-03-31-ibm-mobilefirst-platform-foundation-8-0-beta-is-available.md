@@ -1,10 +1,11 @@
 ---
 title: IBM MobileFirst Platform Foundation 8.0 beta is now available
 date: 2016-03-31
-pinned: true
 tags:
 - MobileFirst_Platform
 - Beta_Program
+version:
+- 8.0
 author:
   name: Jerome Joubert
 ---

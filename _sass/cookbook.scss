@@ -1,0 +1,85 @@
+
+// Migration cookbook
+
+#migrationPaths h3 {
+	color: #264a60;
+	padding-top: 103px;
+	margin-top: 0;
+	font-size: 160%;
+}
+.migrationPath {
+	height: 324px;
+	font-family: "Helvetica Neue Medium", Helvetica, Arial;	
+}
+.setupAndTools {
+	padding-left: 64px !important;
+}
+.migratingApplications {
+	padding-left: 38px !important;
+}
+.migratingAdapters {
+	padding-left: 55px !important;
+}
+.devTopics {
+	padding-left: 35px !important;
+}
+
+.topics {
+	list-style-type: none;
+	padding-left: 18px;
+}
+.topics li {
+	line-height: 1.3em !important;
+	padding-bottom: 12px;
+}
+
+#migrationSteps h2 {
+	margin-top: 0;
+}
+
+#migrationSteps h3 {
+	margin-top: 0 !important;
+}
+
+.gutter {
+	padding-left: 15px;
+}
+.number {
+	font-size: 172px;
+	position: relative;
+	top: -60px;
+	left: -123px;
+	height: 0;
+}
+
+.gutter-env-setup-color {
+	border-left: 5px solid #c1e6fe;
+}
+.gutter-apps-color {
+	border-left: 5px solid #9be1d9;
+}
+.gutter-adapters-color {
+	border-left: 5px solid #c4e47a;
+}
+.gutter-dev-topics-color {
+	border-left: 5px solid #98d3fd;
+}
+
+.number-tool {
+	color: #c1e6fe;
+	left: -96px;
+}
+.number-apps {
+	color: #9be1d9;
+}
+.number-adapters {
+	color: #c4e47a;
+}
+.number-dev-topics {
+	color: #98d3fd;
+}
+
+hr {
+	border: 2px solid #c8d2d2 !important;
+	margin: 15px 0 5px 0
+}

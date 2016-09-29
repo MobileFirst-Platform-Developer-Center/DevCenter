@@ -4,9 +4,14 @@ date: 2015-08-19 05:38:49.000000000 +03:00
 tags:
 - MobileFirst_Platform
 - Slack
+version:
+- 6.2
+- 6.3
+- 7.0
+- 7.1
+- 8.0
 author:
   name: Idan Adar
-pinned: true
 ---
 Hi all!
 

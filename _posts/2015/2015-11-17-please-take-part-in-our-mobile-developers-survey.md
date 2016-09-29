@@ -4,6 +4,12 @@ date: 2015-11-17
 tags:
 - Survey
 - MobileFirst_Platform
+version:
+- 6.2
+- 6.3
+- 7.0
+- 7.1
+- 8.0
 author:
   name: Ora Peled-Nakash
 ---

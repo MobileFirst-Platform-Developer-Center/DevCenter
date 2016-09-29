@@ -1,7 +1,8 @@
 ---
 layout: tutorial
 title: JavaScript SQL Adapter
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+breadcrumb_title: SQL Adapter
+relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
@@ -9,7 +10,7 @@ weight: 2
 ---
 
 ## Overview
-An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+An IBM MobileFirst Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
 To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
 
@@ -20,42 +21,79 @@ In this tutorial and in the accompanying sample, you learn how to use a MobileFi
 ## The XML File
 The XML file contains settings and metadata.
 
-1. In the adapter XML file, declare the following parameters:
+In the **adapter.xml** file, declare the following parameters:
+
  * JDBC Driver Class
  * Database URL
  * Username
  * Password<br/><br/>
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <mfp:adapter name="JavaScriptSQL"
-    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    	xmlns:mfp="http://www.ibm.com/mfp/integration"
-    	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<mfp:adapter name="JavaScriptSQL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
 
-    	<displayName>JavaScriptSQL</displayName>
-    	<description>JavaScriptSQL</description>
-    	<connectivity>
-    		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
-    			<dataSourceDefinition>
-    				<driverClass>com.mysql.jdbc.Driver</driverClass>
-    				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
-    			    <user>mobilefirst</user>
-        			<password>mobilefirst</password>
-    			</dataSourceDefinition>
-    		</connectionPolicy>
-    	</connectivity>
+	<displayName>JavaScriptSQL</displayName>
+	<description>JavaScriptSQL</description>
+	<connectivity>
+		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+			<dataSourceDefinition>
+				<driverClass>com.mysql.jdbc.Driver</driverClass>
+				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
+			    <user>mobilefirst</user>
+    			<password>mobilefirst</password>
+			</dataSourceDefinition>
+		</connectionPolicy>
+	</connectivity>
+</mfp:adapter>
+```
 
-    	<procedure name="getAccountTransactions1"/>
-    	<procedure name="getAccountTransactions2"/>
-    </mfp:adapter>
-    ```
+<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="adapter-xml">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+            </h4>
+        </div>
 
-2. Declare a procedure in the adapter XML file.
+        <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
+            <div class="panel-body">
+                <ul>
+                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be set to sql:SQLConnectionPolicy.</li>
+                    <li><b>dataSourceDefinition</b>: <i>Optional.</i> Contains the parameters that are needed to connect to a data source. The adapter creates a connection for each request. For example:
 
-    ```js
-    <procedure name="getAccountTransactions1"/>
-    ```
+{% highlight xml %}
+<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    <dataSourceDefinition>
+        <driverClass>com.mysql.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/mysqldbname</url>
+        <user>user_name</user>
+        <password>password</password>
+    </dataSourceDefinition>
+</connectionPolicy>
+{% endhighlight %}</li>
+
+                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing MobileFirst Server to an application server. For example:
+                    
+{% highlight xml %}                        
+<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
+</connectionPolicy>
+{% endhighlight %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+With the `connectionPolicy` configured, declare a procedure in the adapter XML file.
+
+```js
+<procedure name="getAccountTransactions1"/>
+```
 
 ## JavaScript implementation
 The adapter JavaScript file is used to implement the procedure logic.  
@@ -65,13 +103,13 @@ There are two ways of running SQL statements:
 * SQL stored procedure
 
 ### SQL statement query
-1. assign your SQL query to a variable. This must always be done outside the function scope.
+1. Assign your SQL query to a variable. This must always be done outside the function scope.
 2. Add parameters, if necessary.
 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
-      ```js
-      // 1. assign your SQL query to a variable (outside the function scope)
+      ```javascript
+      // 1. Assign your SQL query to a variable (outside the function scope)
       // 2. Add parameters, if necessary
       var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
         "FROM accounttransactions " +
@@ -105,7 +143,7 @@ function getAccountTransactions2(accountId){
 ```  
 
 ### Using multiple parameters
-When using multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an array.
+When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -121,7 +159,6 @@ function getAccountTransactions1(fromAccount, toAccount){
 		parameters : [fromAccount, toAccount]
 	});
 }
-
 ```
 
 ## Invocation Results
@@ -161,5 +198,7 @@ Also included is an SQL script in the **Utils** folder.
 ### Sample usage
 * Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven or MobileFirst CLI to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+
+When testing, the account value should be passed in an array: `["12345"]`.

@@ -107,11 +107,11 @@ Complete the procedure for production mode when the app is publicly available an
                         super.onCreate(savedInstanceState);
                         setContentView(R.layout.activity_main);
                         Configuration configuration = new Configuration.Builder(this)
-                       .withAPIKey(APP_KEY); // Provides the quality assurance application APP_KEY
+                        .withAPIKey(APP_KEY); // Provides the quality assurance application APP_KEY
                         .withMode(Mode.QA)  // Selects the quality assurance application mode
                         .withReportOnShakeEnabled(true) // Enables shake report trigger
                         .build();
-                        MQA.startNewSession(MainActivity.this, configuration);
+                        MQA.startNewSession(MainActivity.this, configuration)
                     }
                 }
                 {% endhighlight %}

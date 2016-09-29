@@ -5,6 +5,8 @@ tags:
 - Bluemix
 - MobileFirst_Platform
 - IBM_Containers
+version:
+- 7.1
 author:
   name: Srinivasan Nanduri
 ---

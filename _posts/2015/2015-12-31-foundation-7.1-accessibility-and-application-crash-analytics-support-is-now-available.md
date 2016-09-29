@@ -4,6 +4,8 @@ date: 2015-12-31
 tags:
 - MobileFirst_Platform
 - Analytics
+version:
+- 7.1
 author:
   name: Chevy Hungerford
 ---

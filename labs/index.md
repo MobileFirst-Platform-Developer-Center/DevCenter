@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Labs
+title: FoundationLabs
 show_disqus: false
 ---
 <div class="container">
-    <h2>Welcome to Labs</h2>
-    <p>“Labs” are video-based educational materials with step-by-step instructions.</p>
+    <h2 class="no-anchor">Welcome to FoundationLabs</h2>
+    <p>“FoundationLabs” are video-based educational materials with step-by-step instructions.</p>
 
     <ul>
         <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
@@ -24,7 +24,7 @@ show_disqus: false
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
             <p>Developers can follow the different labs presented below to learn how to integrate applications with various MobileFirst tools and services.</p>
-            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 <em>beta</em> labs</a>
+            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 labs</a>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="forAdministrators">
@@ -38,6 +38,12 @@ show_disqus: false
             <p>The following applications are used throughout the lab sessions for developers.</p>
             
             <ul>
+                <li><strong><a href="https://github.com/andriivasylchenko/advancedMessenger">Advanced Messenger</a></strong><br/>
+                MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <li><strong><a href="https://github.com/andriivasylchenko/hybridMessenger">Hybrid Messenger</a></strong><br/>
+                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <li><strong><a href="https://github.com/andriivasylchenko/newHybridWallet">new HybridWallet</a></strong><br/>
+                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridWallet">HybridWallet</a></strong><br/>
                 MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/canteenPOS">canteenPOS</a></strong><br/>

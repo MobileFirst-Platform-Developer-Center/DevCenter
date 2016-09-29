@@ -23,6 +23,15 @@
                                 {% for childtutorial in tutorial.children %}
                                   <li {% if page.url contains childtutorial.url %} class="active" {% endif %}>
                                     <a href="{{site.baseurl}}{{childtutorial.url}}">{{childtutorial.breadcrumb_title}}</a>
+                                    {% if page.url contains childtutorial.url and childtutorial.children != empty %}
+                                        <ul>
+                                            {% for grandchildtutorial in childtutorial.children %}
+                                            <li {% if page.url contains childtutorial.url %} class="active" {% endif %}>
+                                                <a href="{{site.baseurl}}{{grandchildtutorial.url}}">{{grandchildtutorial.breadcrumb_title}}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
                                   </li>
                                 {% endfor %}
                               </ul>

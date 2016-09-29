@@ -1,34 +1,21 @@
 ---
 layout: default
+indexed: false
 ---
-<div id="myCarousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
+<div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-md-7 carousel-caption">
-                        <h1>Introducing IBM MobileFirst Platform Foundation 8.0 Beta</h1>
-                        <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download MobileFirst Platform Foundation" data-analytics-label="MobileFirst" href="{{site.baseurl}}/beta/" role="button">Join the beta program</a></p>
-                    </div>
-                    <a href="{{site.baseurl}}/beta/"><div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner0.png" alt="mobilefirst console"/>
-                    </div></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-7 carousel-caption">
-                        <h1>Develop, test, manage and secure your mobile applications</h1>
-                        <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download MobileFirst Platform Foundation" data-analytics-label="MobileFirst" href="{{site.baseurl}}/downloads/" role="button">Get the Development Kit</a></p>
+                        <h1 class="no-anchor">Develop, test, manage and secure your mobile applications</h1>
+                        <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download MobileFirst Foundation" data-analytics-label="MobileFirst" href="{{site.baseurl}}/downloads/" role="button">Get the Developer Kit</a></p>
                         <p><a class="custombtn btn-lg btn-default stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank" role="button">Find answers on Stack Overflow</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
@@ -41,8 +28,8 @@ layout: default
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 carousel-caption">
-                        <h1>MobileFirst Platform Foundation on IBM Containers</h1>
-                        <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/" role="button">Experience Foundation on IBM Containers</a></p>
+                        <h1 class="no-anchor">Foundation in the cloud. Introducing the Mobile Foundation Bluemix service</h1>
+                        <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience MobileFirst Foundation on IBM Bluemix</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
                         <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix"/>
@@ -54,7 +41,7 @@ layout: default
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 carousel-caption">
-                        <h1>Learn MobileFirst Platform development with self-paced instructional videos</h1>
+                        <h1 class="no-anchor">Learn developing MobileFirst Foundation apps with self-paced instructional videos</h1>
                         <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/" role="button">Visit the Labs</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
@@ -77,25 +64,25 @@ layout: default
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to IBM MobileFirst Platform"></a>
-            <h2><a href="{{site.baseurl}}/get-introduced/">Get Introduced</a></h2>
-            <p>Introduction to IBM MobileFirst Platform offerings.</p>
+        <div class="mid-nav col-sm-3 col-xs-6">
+            <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to IBM MobileFirst Foundation"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/get-introduced/">Get Introduced</a></h2>
+            <p>Introduction to IBM MobileFirst Foundation.</p>
         </div>
-        <div class="col-md-3">
-            <a href="{{site.baseurl}}/tutorials/en/"><img class="img-circle hidden-xs" src="{{site.baseurl}}/assets/mid-menu/get-started.png" alt="Learn the product through tutorials"></a>
-            <h2><a href="{{site.baseurl}}/tutorials/en/">Get Started</a></h2>
+        <div class="mid-nav col-sm-3 col-xs-6">
+            <a href="{{site.baseurl}}/features"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Learn the product through tutorials"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/features">Get Familiar</a></h2>
+            <p>Find out about MobileFirst Foundation product features.</p>
+        </div>
+        <div class="mid-nav col-sm-3 col-xs-6">
+            <a href="{{site.baseurl}}/tutorials/en/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-started.png" alt="Learn the product through tutorials"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/tutorials/en/">Get Started</a></h2>
             <p>Follow our tutorials, and you’ll be up and running in no time.</p>
         </div>
-        <div class="col-md-3">
-            <a href="http://www.ibm.com/support/knowledgecenter/SSVNYL"><img class="img-circle hidden-xs" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Read user documentation topics"></a>
-            <h2><a href="http://www-01.ibm.com/support/knowledgecenter/SSVNYL/com.ibm.mfp.doc/platform_modules/c_pm_core.html" target="_blank">Get Docs</a></h2>
-            <p>Access full product user documentation in the Knowledge Center.</p>
-        </div>
-        <div class="col-md-3">
-            <a href="{{site.baseurl}}/help/"><img class="img-circle hidden-xs" src="{{site.baseurl}}/assets/mid-menu/get-help.png" alt="Receive further assistance for the product"></a>
-            <h2><a href="{{site.baseurl}}/help/">Get Help</a></h2>
-            <p>Find answers to your questions and more…</p>
+        <div class="mid-nav col-sm-3 col-xs-6">
+            <a href="{{site.baseurl}}/help/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-help.png" alt="Receive further assistance for the product"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/help/">Get Help</a></h2>
+            <p>Find answers to your questions, submit feature requests and more...</p>
         </div>
     </div>
 </div>
@@ -103,7 +90,7 @@ layout: default
 <hr>
 
 <div id="blogPosts" class="container">
-      <h3 class="blogPostsHeading">Recent Updates</h3>
+      <h3 class="blogPostsHeading no-anchor">Recent Updates</h3>
       <div class="twoColumns">
         {% for post in site.posts limit:10 %}
         <div class="postItem inline">

@@ -6,13 +6,18 @@ layout: default
         <div class="hidden-xs col-sm-2">
         </div>
         <div class="col-sm-8">
-            <h1>{{page.title}}</h1>
+            <h1 class="no-anchor">{{page.title}}</h1>
             <div class="page-header">
-                <h4>
-                  {{page.author.name}}
-                  <small>{{ page.date | date: '%B %d, %Y' }}</small>
-                  <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
+                <h4 class="no-anchor">
+                    <span><a href="{{site.baseurl}}/search/?author={{page.author.name}}">{{page.author.name}}</a></span>{% if page.additional_authors %},{% endif %}
+                    {% for author in page.additional_authors %}
+                        <span><a href="{{site.baseurl}}/search/?author={{author}}">{{author}}</a></span>{% if forloop.last == false %},{% endif %}
+                    {% endfor %}
+                    
+                    <small>{{ page.date | date: '%B %d, %Y' }}</small>
+                    <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
+
                 {% if page.tags %}
 
                   {% for tag in page.tags %}
@@ -26,10 +31,50 @@ layout: default
                 {% endif %}
             </div>
             {{content}}
-
+            <!-- <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div> -->
+            
+            <div id="social">
+                <b>Share this post:</b>
+                <ul class="share-buttons">
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&p[title]={{ page.title }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter"  src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
+                    <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
+                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
+                    <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
+                </ul>    
+            </div>
+            
             {% include disqus.html %}
         </div>
         <div class="hidden-xs col-sm-2">
         </div>
     </div>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "TechArticle",
+      "name": "{{page.title}}",
+      {% if page.image %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{site.url}}{{site.baseurl}}{{page.image}}"
+      },
+      {% endif %}
+      "datePublished": "{{page.date}}",
+      "author": {
+        "@type": "Person",
+        "name": "{{page.author.name}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "IBM"
+      },
+      {% if page.excerpt %}
+      "description": "{{ page.excerpt | markdownify | strip_html | strip_newlines | strip | truncatewords: 20}}",
+      {% endif %}
+      {% if page.tags %}
+      "keywords": "{{page.tags | join: ','}}"
+      {% endif %}
+    }
+    </script>
 </div>

@@ -4,6 +4,8 @@ date: 2015-08-25 17:11:16.000000000 +03:00
 tags:
  - Analytics
  - MobileFirst_Platform
+version:
+ - 7.1
 author:
   name: W Harrison Wright
 ---
@@ -13,7 +15,7 @@ author:
 
 <p>In prior versions of Analytics we were able to satisfy all desired permutations of your data. New requests have come up showing different breakdowns that are not easily supported with the current architecture. Until we have a chance to satisfy these feature requests, we have created a small python program in the interim for version 7.1.</p>
 
-<p>The python program, known as mfp_query_helper, queries directly into Elasticsearch and aggregates the desired results in memory. This can be a slow and expensive process, and thus mfp_query_helper should normally be run remotely from outside your cluster. The program is available for download <a href="https://github.ibm.com/wrighthw/mfp-query-helper">here</a>.</p>
+<p>The python program, known as mfp_query_helper, queries directly into Elasticsearch and aggregates the desired results in memory. This can be a slow and expensive process, and thus mfp_query_helper should normally be run remotely from outside your cluster. The program is available for download <a href="https://github.com/IdanAdar/mfp-query-helper">here</a>.</p>
 
 <h3>What kind of data permutations can I achieve with this program?</h3>
 <p>This tool is primarily focus on breaking down device data. It's main functions are to query for new devices, and to break down devices by application name and version.</p>
@@ -157,4 +159,4 @@ $ mfp_query_helper [QUERY_NAME] --startDate 2015,1,1 --endDate 2015,2,1
 $ mfp_query_helper newDevices -esHost mysite.com:9500 -esIndex myindex --mfpAppName InsuranceApp<br />
 {% endhighlight %}
 
-<p><a href="https://github.ibm.com/wrighthw/mfp-query-helper">Download mfp-query-helper</a></p>
+<p><a href="https://github.com/IdanAdar/mfp-query-helper">Download mfp-query-helper</a></p>

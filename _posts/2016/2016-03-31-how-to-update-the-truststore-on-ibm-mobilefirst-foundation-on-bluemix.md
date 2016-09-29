@@ -5,8 +5,10 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - Mobile_Foundation
+version:
+- 8.0
 author:
-  name: Idan Adar
+  name: Sachin Nayak
 ---
 
 If you've created a new truststore and use it while deploying the Mobile Foundation service on Bluemix, MobileFirst Server may fail to load the runtime.   
@@ -14,20 +16,18 @@ This is due to the missing default certificates in the truststore. You can avoid
 
 This blog post provides the steps to follow if you are trying to update the truststore in the IBM MobileFirst Platform Foundation on Bluemix, with additional certificates:
 
-* Install the Cloudfoundry command line tool (cf) and the "cf ic" plugin.
-* Login to the IBM container service using cf login and cf ic init commands.
-* Connect to the container using the command: `cf ic exec -it <container_id> bash.`
-
-    You can find the container id using the cf ic ps command.
-
-* Copy the truststore.jks file to your system using the command: 
+1. Install the Cloudfoundry command line tool (cf) and the "cf ic" plugin.
+2. Login to the IBM container service using cf login and cf ic init commands.
+3. Connect to the container using the command: `cf ic exec -it <container_id> bash`. You can find the container id using the `cf ic ps` command.
+4. Copy the truststore.jks file to your system using the command: 
 
     ```bash
     cf ic exec -i <container_id> bash -c 'cat < /opt/ibm/wlp/usr/servers/mfp/resources/security/truststore.jks' > ./truststore.jks
     ```
-* Use the keytool command to import additional certificates into the truststore. The default password for this truststore is "worklight".
+    
+5. Use the keytool command to import additional certificates into the truststore. The default password for this truststore is "worklight".
 
     You might want to backup the existing truststore.jks file before updating.
 
-* Redeploy the MobileFoundation instance from Bluemix UI using the updated truststore file in "Advanced Settings"
-* If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash` and check the log files at: "/opt/ibm/wlp/usr/servers/mfp/logs/"
+6. Redeploy the MobileFoundation instance from Bluemix UI using the updated truststore file in "Advanced Settings"
+7. If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash` and check the log files at: "/opt/ibm/wlp/usr/servers/mfp/logs/"

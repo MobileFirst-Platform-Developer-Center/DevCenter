@@ -6,11 +6,11 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   exit 0
 fi
 
-# only proceed script when on "staging" branch
-# if [ $TRAVIS_BRANCH != 'staging' ]; then
-#   echo "this is not the staging branch, exiting"
-#   exit 0
-# fi
+# only proceed script when on "master" branch
+if [ $TRAVIS_BRANCH != 'content-migration' ]; then
+  echo "this is not the staging branch, exiting"
+  exit 0
+fi
 
 # enable error reporting to the console
 set -e
@@ -20,7 +20,7 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
-# bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
+bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master

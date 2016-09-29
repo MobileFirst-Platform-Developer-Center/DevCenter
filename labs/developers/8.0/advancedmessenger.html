@@ -1,0 +1,837 @@
+---
+layout: labs
+title: MobileFirst Foundation 8.0 Developer Labs
+tabs:
+  - name: Introduction
+    path: /labs/developers/8.0/intro/
+  - name: Setup
+    path: /labs/developers/8.0/setup/
+  - name: Advanced Messenger
+    path: /labs/developers/8.0/advancedmessenger
+  - name: Advanced Wallet
+    path: /labs/developers/8.0/advancedwallet
+---
+<div>
+<img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo.png">
+</div>
+
+<div>
+<img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/screenstory.png">
+</div>
+<br>
+<h3>Part 1</h3>
+<h4 class="no-anchor">Lab highlights</h4>
+<ul>
+  <li>Moving existing app to MobileFirst Foundation 8</li>
+  <li>Uses Ionic v2 beta with Typescript</li>
+  <li>Development using CLI and MS Visual Studio Code</li>
+  <li>Using Java and Javascript adapters for backend calls</li>
+  <li>User authentication</li>
+  <li>Push notifications messaging</li>
+  <li>JSONStore</li>
+  <li>Uses Google Maps Distance Matrix API</li>
+  <li>Uses Node.js as mock server</li>
+</ul>
+
+<p>Time to complete: up to 4 hours</p>
+<br>
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EzFiZx_xt14"></iframe>
+    </div>
+</div>
+
+<br>
+<h4 class="no-anchor">Pre-requisites:</h4>
+<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
+<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
+<br>
+
+<div class="panel-group accordion" id="part-one" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MobileFirst SDK and registering app on server</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Install MobileFirst client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
+                <br>
+                <b>Time to complete:</b> 30 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.62
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/I_dQxp-9WfY"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Repository URL</p>
+                <pre>https://github.com/andriivasylchenko/advancedMessenger</pre>
+                <p>Catching events</p>
+{% highlight javascript %}
+renderer.listenGlobal('document', 'mfpjsloaded', () => {
+  console.log('--> MobileFirst API init complete');
+  this.MFPInitComplete();
+})
+{% endhighlight %}
+
+                <p>Init complete function</p>
+{% highlight javascript %}
+MFPInitComplete(){
+  console.log('--> MFPInitComplete function called')
+  this.rootPage = TabsPage;
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.62">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Using Java and Javascript adapters to perform backend calls</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Create HTTP adapters and modify application to perform backend calls though WLResourceRequest API using adapters. Get familiar with Java and Javascript adapter structure, custom properties
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.63
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5YfqKFETZfU"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Adapters examples repository URL</p>
+                <pre>https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80</pre>
+                <p>Employee Javascript adapter getRating()</p>
+{% highlight javascript %}
+function getRating() {
+
+	var endpoint = MFP.Server.getPropertyValue("endpoint");
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'json',
+	    path : endpoint
+	};
+
+	return MFP.Server.invokeHttp(input);
+}
+{% endhighlight %}
+                <p>News Java adapter JSONObject parsing</p>
+{% highlight javascript %}
+JSONObject result = JSONObject.parse(JSONResponse.getEntity().getContent());
+String json = result.toString();
+{% endhighlight %}
+                <p>Employee provider load function</p>
+{% highlight javascript %}
+load() {
+  console.log('---> called EmployeeProvider load');
+  if (this.data) {
+    return Promise.resolve(this.data);
+  }
+
+  return new Promise(resolve => {
+    let dataRequest = new WLResourceRequest("/adapters/employeeAdapter/getRating", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.results;
+      resolve(this.data)
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+      resolve('error')
+    })
+  });
+}
+{% endhighlight %}
+                <p>News provider load function</p>
+{% highlight javascript %}
+load() {
+  console.log('---> called NewsProvider load');
+
+  if (this.data) {
+    return Promise.resolve(this.data);
+  }
+
+  return new Promise(resolve => {
+    let dataRequest = new WLResourceRequest("/adapters/JavaHTTP/", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.news;
+      resolve(this.data)
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+      resolve('error')
+    })
+  });
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.63">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Securing backend calls with user authentication </a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b>Create security check to validate user credentials and implement client-side handler to grab them. Secure adapter procedures with scope and map it to security check
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.64
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oZsOIX7T234"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>AuthInit function</p>
+{% highlight javascript %}
+AuthInit(){
+  this.AuthHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
+  this.AuthHandler.handleChallenge = ((response) => {
+      console.log('--> inside handleChallenge');
+      if(response.errorMsg){
+        var msg = response.errorMsg + '<br>';
+        msg += 'Remaining attempts: ' + response.remainingAttempts;
+      }
+      this.displayLogin(msg);
+  })
+}
+{% endhighlight %}
+                <p>displayLogin function</p>
+{% highlight javascript %}
+displayLogin(msg) {
+  let prompt = Alert.create({
+    title: 'Login',
+    message: msg,
+    inputs: [
+      {
+        name: 'username',
+        placeholder: 'Username'
+      },
+      {
+        name: 'password',
+        placeholder: 'Password',
+        type: 'password'
+      },
+    ],
+    buttons: [
+      {
+        text: 'Login',
+        handler: data => {
+          console.log('--> Trying to auth with user', data.username);
+
+          this.AuthHandler.submitChallengeAnswer(data);
+        }
+      }
+    ]
+  });
+  this.nav.present(prompt);
+}
+{% endhighlight %}
+                <p>Getting active nav</p>
+{% highlight javascript %}
+ngAfterViewInit(){
+  this.nav = this.app.getActiveNav();
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.64">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Add push notification capabilities to mobile app and configure server side to send push messages</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Using new Push API register device and subscribe for a custom tag to receive Push messages
+                <br>
+                <b>Time to complete:</b> 30 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.65
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h9gkDtGBgLs"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Push provider</p>
+{% highlight javascript %}
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class PushProvider {
+  data: any = null;
+  constructor() {}
+  init() {
+    console.log('--> PushProvider init called');
+
+    MFPPush.initialize(
+    function(success){
+      console.log('--> Push init success');
+
+      MFPPush.registerNotificationsCallback(pushNotificationReceived);
+
+      var options = {"phoneNumber": ""};
+
+      MFPPush.registerDevice(
+        options,
+        function(success){
+          console.log('--> Push registration success');
+          var tag = ['am'];
+
+          MFPPush.subscribe(
+            tag,
+            function(success){
+              console.log('--> Push subscribe success');
+            },
+            function(failure){
+              console.log('--> Push subscribe failure', failure);
+            }
+          )
+        },
+        function(failure){
+          console.log('--> Push registration failure', failure);
+        }
+      )
+    }, function(failure){
+      console.log('--> Push init failure', failure);
+    })
+
+    function pushNotificationReceived(message){
+      console.log('--> Push received', message);
+      alert(message.alert);
+    }
+  }
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.65">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Adding JSONStore to hybrid mobile app</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Store news messages inside JSONStore and display them on news tab
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.66
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ep6w1zXoI-k"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Storage provider</p>
+{% highlight javascript %}
+import {Injectable} from '@angular/core';
+
+
+@Injectable()
+export class StorageProvider {
+  data: any = null;
+  constructor() {}
+  init() {
+    console.log('--> JSONStore init function called');
+    let collections = {
+      news: {
+        searchFields: {text: 'string', date: 'string'}
+      }
+    }
+
+    WL.JSONStore.init(collections).then((success) => {
+      console.log('-->JSONStore init success')
+    }, (failure) => {
+      console.log('-->JSONStore init failed', failure)
+    })
+  }
+
+  put(data){
+    console.log('--> JSONStore put function called');
+    let collectionName = 'news';
+    let options = {
+      replaceCriteria: ['text', 'date'],
+      addNew: true,
+      markDirty: false
+    };
+
+    WL.JSONStore.get(collectionName).change(data, options).then((success) => {
+      console.log('--> JSONStore put success')
+    }, (failure) => {
+      console.log('--> JSONStore put failed', failure)
+    })
+  }
+
+  getAll() {
+    console.log('--> JSONStore get all function called');
+
+    return new Promise( resolve => {
+      let collectionName = 'news';
+      let options = {};
+
+      WL.JSONStore.get(collectionName).findAll(options).then((success) => {
+        console.log('-->JSONStore get docs success', success)
+        resolve(success);
+      }, (failure) => {
+        console.log('-->JSONStore get docs failed', failure)
+        resolve('error');
+      })
+    })
+  }
+}
+{% endhighlight %}
+                <p>News provider load function</p>
+{% highlight javascript %}
+load() {
+  console.log('---> called NewsProvider load');
+    let dataRequest = new WLResourceRequest("/adapters/JavaHTTP/", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.news;
+      console.log('--> puttin data to JSONStore');
+      this.storage.put(this.data);
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+    })
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.66">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<h3>Part 2</h3>
+<h4 class="no-anchor">Lab highlights</h4>
+<ul>
+  <li>Authenticating external resources</li>
+  <li>Using Direct Update and Remote Disable</li>
+  <li>Mobile Operational Analytics</li>
+  <li>Security scan of application binary</li>
+  <li>Bug reporting and user sentiment analysis</li>
+  <li>Moving Node.js app to Bluemix using Cloud Foundry Node runtime</li>
+  <li>Creating MobileFirst Foundation instance on Bluemix</li>
+  <li>Preparing mobile application for distribution</li>
+</ul>
+
+<p>Time to complete: up to 4 hours</p>
+<br>
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-SDMowsLTkQ"></iframe>
+    </div>
+</div>
+
+<br>
+<h4 class="no-anchor">Pre-requisites:</h4>
+<p>You should have fully completed Advanced Messenger Part 1</p>
+<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.70 - 2.72, 7.8 - 7.10, 6.7, 9.5)</p>
+<br>
+
+<div class="panel-group accordion" id="part-two" role="tablist" aria-multiselectable="true">
+  <!--  2.70 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse1" aria-expanded="false" aria-controls="collapse1">Authenticating external resource using MobieFirst Foundation</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Add validator to Node.js Mock Server to check authentication token on MobileFirst Platform and prevent unauthenticated calls
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.70
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aFGJlf7Db_c"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Schedule provider</p>
+{% highlight javascript %}
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class ScheduleProvider {
+  data: any = null;
+  distance: any = null;
+
+  constructor(public http: Http) {}
+
+  load() {
+    console.log('---> called ScheduleProvider load');
+    if (this.data) {
+      // already loaded data
+      return Promise.resolve(this.data);
+    }
+
+    return new Promise(resolve => {
+          let dataRequest = new WLResourceRequest("http://192.168.42.169:4567/schedule", WLResourceRequest.GET);
+
+          dataRequest.send().then((response) => {
+            console.log('--> data loaded from adapter', response);
+
+            this.data = response.responseJSON.delivery;
+            resolve(this.data)
+          }, (failure) => {
+            console.log('--> failed to load data', failure);
+            resolve('error')
+          })
+        });
+  }
+
+  calc(destinations) {
+
+    console.log('---> called ScheduleProvider calc');
+    if (this.distance) {
+      // already loaded data
+      return Promise.resolve(this.distance);
+    }
+    return new Promise(resolve => {
+
+          let dataRequest = new WLResourceRequest("http://192.168.42.169:4567/distance", WLResourceRequest.GET);
+
+          let curtime = Date.now();
+          let origin = '50.019275,14.347424';
+          let googleParams = 'origins=' + origin + '&destinations=' + destinations + '&departure_time=' + curtime + '&traffic_model=best_guess';
+          console.debug('google params', googleParams);
+
+          dataRequest.setQueryParameter("origins", origin);
+          dataRequest.setQueryParameter("destinations", destinations);
+          dataRequest.setQueryParameter("departure_time", curtime);
+          dataRequest.setQueryParameter("traffic_model", "best_guess");
+
+          dataRequest.send().then((response) => {
+            console.log('--> data loaded from adapter', response);
+            this.distance = response.responseJSON;
+            console.debug('Schedule calc data', this.distance.rows[0].elements);
+            resolve(this.distance.rows[0].elements);
+          }, (failure) => {
+            console.log('--> failed to load data', failure);
+            resolve('error')
+          })
+        });
+  }
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.70">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!--  2.71 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse2" aria-expanded="false" aria-controls="collapse2">Using Direct Update and Remote Disable features</a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create web resources package and test direct update capabilities. Remotely disable application and add notification
+                <br>
+                <b>Time to complete:</b> 15 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.71
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gVOet522SbE"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.71">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--  2.72 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading3">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse3" aria-expanded="false" aria-controls="collapse3">Inspect Operational Analytics capabilities</a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Enable client-side log collection and add logging on failure during user authentication. Display errors via custom charts inside analytics console
+                <br>
+                <b>Time to complete:</b> 20 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.72
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/M5i12KZX7Q8"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Handle challenge</p>
+{% highlight javascript %}
+this.AuthHandler.handleChallenge = ((response) => {
+        console.log('--> inside handleChallenge');
+
+        if(response.errorMsg){
+          var msg = response.errorMsg + '<br>';
+          msg += 'Remaining attempts: ' + response.remainingAttempts;
+          WL.Logger.error("Auth error: " + response.errorMsg);
+          WL.Logger.send();
+        }
+
+        this.displayLogin(msg);
+    })
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.72">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--  7.8 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading4">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse4" aria-expanded="false" aria-controls="collapse4">Security scan of application binary using Bluemix service</a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Upload application binary to Bluemix service for security scanning and analyze results
+                <br>
+                <b>Time to complete:</b> 5 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.8
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xOSBiswRzls"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 7.9 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading5">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Using MQA service report a bug and distribute application</a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create Mobile Quality Assurance service instance on Bluemix and using MobileFirst Platform CLI add MQA libraries for hybrid application instrument mobile application and report a first bug
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.9
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lxoqP5FbX_0"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!--  7.10 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading6">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse6" aria-expanded="false" aria-controls="collapse6">Move local Node.js app to Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create a Cloud Foundry application runtime for Node.js. Prepare local Mock Server and then push it to Bluemix
+                <br>
+                <b>Time to complete:</b> 35 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.10
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JzPYTwgqUVM"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Package dependencies</p>
+{% highlight javascript %}
+"dependencies": {
+  "express": "4.13.x",
+  "cfenv": "1.0.x",
+  "passport-mfp-token-validation": "8.0.x",
+  "request": "2.74.x",
+  "path": "0.12.x",
+  "compression": "1.6.x",
+  "body-parser": "1.15.x",
+  "cors": "2.8.x"
+}
+{% endhighlight %}
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 6.7 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading7">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse7" aria-expanded="false" aria-controls="collapse7">Create MobileFirst Foundation Server instance using Bluemix service</a>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create server instance, add remote server definition, deploy required adapters and import application version from local server
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 6.7
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iFCDyGC88ME"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 9.5 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading8">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse8" aria-expanded="false" aria-controls="collapse8">Prepare mobile app for distribution</a>
+            </h4>
+        </div>
+        <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Switch Angular/Ionic to production mode, prepare icon and splash screen, create keystore, build binary for release and sign and then distribute using Mobile Quality Assurance service
+                <br>
+                <b>Time to complete:</b> 20 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 9.5
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iHkWAS7831w"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Terminal commands</p>
+{% highlight sh %}
+keytool -genkey -v -keystore identity.keystore -alias ibm -keyalg RSA -keysize 2048 -validity 10000
+
+ionic build android --release
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /home/ibm/dev/workspaces/am/advancedMessenger/identity.keystore /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/android-release-unsigned.apk ibm
+
+/home/ibm/dev/sdk/build-tools/23.0.3/zipalign -v 4 /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/android-release-unsigned.apk /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/advancedMessenger_0.0.1.apk
+{% endhighlight %}
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

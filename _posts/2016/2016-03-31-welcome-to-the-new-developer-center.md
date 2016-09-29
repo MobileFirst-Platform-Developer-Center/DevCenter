@@ -1,7 +1,6 @@
 ---
 title: Welcome to the New MobileFirst Platform Developer Center
 date: 2016-03-31
-pinned: true
 tags:
 - MobileFirst_Platform
 - Developer_Center
