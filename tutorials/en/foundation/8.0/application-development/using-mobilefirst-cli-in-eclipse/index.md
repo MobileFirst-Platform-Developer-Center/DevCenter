@@ -14,12 +14,12 @@ THyM provides support for importing and managing Cordova projects in Eclipse. Yo
 
 Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
 
-The MobileFirst Studio plug-in for Eclipse exposes the various MobileFirst commands in the Eclipse IDE.  
+The MobileFirst Studio plug-in for Eclipse exposes the various MobileFirst commands in the Eclipse IDE.
 Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
 
 This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
 
-**Prerequisites:**  
+**Prerequisites:**
 
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
@@ -39,7 +39,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
 2. In the find field search "mobilefirst" then click "Go"
-3. Click "Install" for IBM MobileFirst Platform Studio 
+3. Click "Install" for IBM MobileFirst Platform Studio
 
 	![Image of MobileFirsta installation](mff_install.png)
 
@@ -53,7 +53,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
 2. In the find field search "thym" then click "Go"
-3. Click "Install" for Eclipse Thym 
+3. Click "Install" for Eclipse Thym
 
 	![Image of THyM installation](Thym_install.png)
 
@@ -115,9 +115,19 @@ To access MobileFirst Foundation's shortcuts right click the root project direct
 
 ## Tips and Tricks
 
+### External IDE's
+
+If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
+
+**Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
+
+In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
+
+![Context Menu](runAsContextMenu.png)
+
 ### Debug mode
 
-Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:  
+Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
 
 1. Open Eclipse's Preferences.
 2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
