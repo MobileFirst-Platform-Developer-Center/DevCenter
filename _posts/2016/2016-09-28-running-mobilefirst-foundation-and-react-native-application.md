@@ -10,7 +10,6 @@ author:
   name: Ishai Borovoy
 additional_authors:
   - Carmel Schindelhaim
-
 ---
 
 ## Introduction
