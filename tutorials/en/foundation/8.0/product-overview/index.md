@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: Product Overview
-print_pdf: false
 show_children: true
 weight: 1
 ---
