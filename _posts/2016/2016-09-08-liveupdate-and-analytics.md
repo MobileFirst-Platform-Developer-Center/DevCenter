@@ -13,7 +13,6 @@ additional_authors:
   - Ishai Borovoy
 ---
 ## Introduction
-
 Let’s say you are a marketing director of a global retailer, and you have an amazing idea about how to get more customers into your stores. Your kids have been enthusiastically playing the new Pokemon Go game, running around your neighborhood to collect augmented reality Pokemon, and you are impressed with how addictive the game is. It occurred to you that you could build a game around coupon collection modeled after Pokemon GO, in which customers would use your app to collect AR coupons in their surroundings, that they can then redeem in store. How cool!
 
 <img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-09-11-liveupdate-and-analytics/pokemongo.jpg" style="float:right;margin: 10px"/>
@@ -34,23 +33,16 @@ If you created variations of the game for different audiences, for example for V
 
 In this sample, you’ll see how to use the MobileFirst Foundation Live Update feature to release your new feature to a subset of your users, and how to use Foundation Analytics to understand if your idea was a good one, and help you decide whether and how to continue to evolve it.
 
-<br>
-<br>
-
-
-> You can find the app sample which you can work with in the [following link](https://github.com/mfpdev/liveupdate-and-analytics).
-
-<br>
+## Sample app
+The sample application demonstrated below [is available on GitHub](https://github.com/mfpdev/liveupdate-and-analytics).
 
 ## Demo
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/OsfWxKXv7jo"></iframe>
+    <iframe src="https://www.youtube.com/embed/8CSD92vS0oM"></iframe>
   </div>
 </div>
-
-<br>
 
 ## Architecture
 
@@ -65,8 +57,6 @@ LiveUpdateManager.sharedInstance.obtainConfiguration([:]) { (configuration, erro
         self.discountPickableRadius = Int(discountPickableRadius)
         self.giftPickableRadius = Int(giftPickableRadius)
         self.fetchCoupons(coupons_adapter_url)
-
-
     }
 }
 ```
@@ -107,7 +97,6 @@ public String getSegment(String body) throws Exception {
   return isVIPMember ? "vip" : isPremiumMember ? "premium"  : "regular";
 }
 ```
-<br>
 
 ## Building custom chart in analytics
 

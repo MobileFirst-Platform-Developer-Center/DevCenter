@@ -5,23 +5,29 @@ breadcrumb_title: Alerts
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 5
+weight: 1
 ---
 ## Overview
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.  
-You can set reactive thresholds in the MobileFirst Analytics Console to trigger alerts when a specific criteria is met. 
+You can set reactive thresholds in the MobileFirst Analytics Console to trigger alerts when a specific criteria is met.
 
 You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the MobileFirst Analytics Console, and also be sent to a pre-configured REST endpoint or custom webhook.
 
 **Prerequisite:** Ensure that the MobileFirst Analytics Server is started and ready to receive client logs.
 
 ## Creating an alert
-In the MobileFirst Analytics Console, click the **Alert Management** tab → **Create Alert**  
-Provide the following values: Alert Name, Message, Query Frequency, Event Type, Application Name, Application Version, Threshold Type and Operator.
+In the MobileFirst Analytics Console:
+
+1. Click the **Alert Management** tab → **Create Alert**. The **Alert Definition** tab appears.
+
+1. Provide the following values: Alert Name, Message, Query Frequency, Event Type, Application Name, Application Version, Threshold Type and Operator.
+
+2. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
 
 ### Distribution Method tab
-The alert is displayed in the Analytics Console.
-Additionally you can send a POST message with a JSON payload to a customized URL by selecting the **Analytics Console and Network Post** option. 
+By default, the alert is displayed in the Analytics Console.
+
+You can send a POST message with a JSON payload to both the Analytics Console and to a customized URL by selecting the **Analytics Console and Network Post** option.
 
 The following fields are available if you choose this option:
 
@@ -32,7 +38,7 @@ The following fields are available if you choose this option:
 
 <img class="gifplayer" alt="Creating an alert" src="creating-an-alert.png"/>
 
-## Custom Webhook
+## Custom web hook
 You can set up a distribution method for an alert. For example: define a custom web hook to which a payload is sent to when an alert threshold is triggered.
 
 Example payload:
@@ -50,8 +56,8 @@ Example payload:
   "eventType":"MfpAppSession",
   "title":" Crash Count Alert for Application ABC",
   "message": "The crash count for a application ABC exceeded XYZ.
-    View the Crash Summary table in the Crashes tab in the Apps 
-    section of the MobileFirst Analytics Console 
+    View the Crash Summary table in the Crashes tab in the Apps
+    section of the MobileFirst Analytics Console
     to see a detailed stacktrace of this crash instance."
 }
 ```
