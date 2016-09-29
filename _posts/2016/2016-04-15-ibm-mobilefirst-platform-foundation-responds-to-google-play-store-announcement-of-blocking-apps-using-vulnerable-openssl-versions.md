@@ -17,7 +17,7 @@ author:
 
 The Google Play Store has sent the following notification to app developers:
 
-> [UPDATE Sept. 29, 2016] Update to a later iFix to avoid both OpenSSL on WL 6.3
+> [UPDATE Sept. 29, 2016] Update to a later iFix to avoid OpenSSL issues on WL 6.3
 
 > Beginning July 11, 2016, Google Play will block publishing of any new apps or updates that use older versions of OpenSSL. If you’re using a 3rd party library that bundles OpenSSL, you’ll need to upgrade it to a version that bundles OpenSSL 1.02f/1.01r or higher.  
 
