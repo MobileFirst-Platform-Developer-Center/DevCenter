@@ -57,7 +57,7 @@ rm -rf ../generated-pdf/release71/*
 mkdir -p ../generated-pdf/release71/tutorials/en/foundation/7.1 && cp -R _site/pdf/tutorials/en/foundation/7.1/* ../generated-pdf/release71/tutorials/en/foundation/7.1/
 mkdir -p ../generated-pdf/release71/tutorials/en/product-integration/7.1 && cp -R _site/pdf/tutorials/en/product-integration/7.1/* ../generated-pdf/release71/tutorials/en/product-integration/7.1/
 mkdir -p ../generated-pdf/release71/tutorials/en/quality-assurance/7.1 && cp -R _site/pdf/tutorials/en/quality-assurance/7.1/* ../generated-pdf/release71/tutorials/en/quality-assurance/7.1/
-cp -R _site/pdf/tutorials/en/production-integration/7.1/application-scanning.pdf ../generated-pdf/release71/tutorials/en/application-scanning.pdf
+cp -R _site/pdf/tutorials/en/7.1/application-scanning.pdf ../generated-pdf/release71/tutorials/en/application-scanning.pdf
 # copy the index file
 cp _site/pdf/7.1.html ../generated-pdf/release71/index.html
 # commit and push generated content
@@ -78,7 +78,7 @@ git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --depth 1
 rm -rf ../generated-pdf/release70/*
 mkdir -p ../generated-pdf/release70/tutorials/en/foundation/7.0 && cp -R _site/pdf/tutorials/en/foundation/7.0/* ../generated-pdf/release70/tutorials/en/foundation/7.0/
 mkdir -p ../generated-pdf/release70/tutorials/en/product-integration/7.0 && cp -R _site/pdf/tutorials/en/product-integration/7.0/* ../generated-pdf/release70/tutorials/en/product-integration/7.0/
-cp -R _site/pdf/tutorials/en/application-scanning.pdf ../generated-pdf/release70/tutorials/en/application-scanning.pdf
+cp -R _site/pdf/tutorials/en/product-integration/7.0/application-scanning.pdf ../generated-pdf/release70/tutorials/en/application-scanning.pdf
 # copy the index file
 cp _site/pdf/7.0.html ../generated-pdf/release70/index.html
 # commit and push generated content
