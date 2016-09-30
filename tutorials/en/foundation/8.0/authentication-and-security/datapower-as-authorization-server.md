@@ -17,7 +17,7 @@ To use DataPower as the authorization server, deploy the provided pattern to you
 
 ## Setup
 ### Preliminary steps
-1. Create a key pair for the DataPower SSL certificate with a public key named **azserver-sscert.pem** and a private key named **azserver-privkey.pe**m. The exact procedure for creating the SSL key pair for production depends on your certificate authority, and therefore cannot be documented here. However, during development you can run the following commands from a command-line terminal to create a self-signed certificate:
+1. Create a key pair for the DataPower SSL certificate with a public key named **azserver-sscert.pem** and a private key named **azserver-privkey.pem**. The exact procedure for creating the SSL key pair for production depends on your certificate authority, and therefore cannot be documented here. However, during development you can run the following commands from a command-line terminal to create a self-signed certificate:
 
     ```bash
     openssl req -x509 -newkey rsa:4096 -keyout azserver-privkey.pem -out azserver-sscert.pem -days 365 -nodes
@@ -35,11 +35,11 @@ To use DataPower as the authorization server, deploy the provided pattern to you
 In the WebGUI of your DataPower appliance,
 
 1. Create a new DataPower domain.
-**2. Switch to the new domain, and upload the file that contains the public and private SSL-certification keys that you created in preliminary Step 1 (**azserver-sscert.pem** and azserver-privkey.pem**) to the **cert:///** directory.
+2. Switch to the new domain, and upload the file that contains the public and private SSL-certification keys that you created in preliminary Step 1 (**azserver-sscert.pem** and **azserver-privkey.pem**) to the **cert:///** directory.
 3. Upload the **key** file that you created in preliminary Step 2 to the same directory.
 4. Upload the **secret** file that you created in preliminary Step 3 to the **local:///** directory.
-5. Select **Blueprint Console** in the WebGUI navigation sidebar. Then select the **Patterns** tab, and import the pattern by selecting the graphical import button (next to the **New Pattern** button): Graphic of the import button..
-6. Select the pattern archive file (dp-external-az-pattern.zip), and wait for the import to complete.
+5. Select **Blueprint Console** in the WebGUI navigation sidebar. Then select the **Patterns** tab, and import the pattern by selecting the graphical import button (next to the **New Pattern** button).
+6. Select the pattern archive file (**dp-external-az-pattern.zip**), and wait for the import to complete.
 7. Select **Deploy**, and provide the input in the four required fields: enter a name for the service, the URL of your MobileFirst Server, and the DataPower IP address and port that you want the authorization server to listen to.
 8. After the pattern is deployed, select the **Services** tab to ensure that the new authorization service started successfully.
 
