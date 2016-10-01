@@ -2,7 +2,6 @@
 layout: tutorial
 title: Setting up the MobileFirst development environment
 breadcrumb_title: MobileFirst
-relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview
@@ -47,20 +46,6 @@ In the Developer Kit's root directory, the following scripts are available:
     * Add the `-bg` flag to run the process in the background
 * `stop.[sh|cmd]`: Stop the current MobileFirst Server instance
 * `console.[sh|cmd]`: Open the MobileFirst Console
-
-#### Adding the MobileFirst Server to Eclipse
-The MobileFirst Server can be integrated into the Eclipse IDE.
-
-1. From the **Servers** view in Eclipse, select **New → Server**.
-2. If an IBM folder option does not exist, click on "Download additional server adapters".
-3. Select **WebSphere Application Server Liberty Tools** and follow the on-screen instructions.
-4. From the **Servers** view in Eclipse, select **New → Server**.
-5. Select **IBM → WebSphere Application Server Liberty**.
-6. Provide a server **name** and **hostname** and click **Next**.
-7. Provide  the path to the server's root directory, and select a JRE version to use.
-8. Click **Next** followed by clicking **Finish**.
-
-You can now start and stop the MobileFirst Server from the Eclipse IDE "servers" view.
 
 ### MobileFirst Operations Console
 The MobileFirst Operations Console exposes the following functionalities.  
