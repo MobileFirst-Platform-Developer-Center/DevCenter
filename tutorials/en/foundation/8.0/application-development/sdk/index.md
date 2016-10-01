@@ -2,7 +2,7 @@
 layout: tutorial
 title: Adding the MobileFirst SDK
 show_children: true
-weight: 0
+weight: 1
 ---
 ### Overview
 The MobileFirst Foundation Client SDKs provide a set of API methods that enable developers to implement various MobileFirst features, such as: authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and lots more.

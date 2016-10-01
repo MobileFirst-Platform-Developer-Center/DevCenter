@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Using MobileFirst CLI to Manage MobileFirst Artifacts
-breadcrumb_title: MobileFirst CLI
-weight: 1
+breadcrumb_title: Using the MobileFirst CLI
+weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
