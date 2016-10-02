@@ -10,7 +10,8 @@ weight: 3
 Behind the scenes, running search queries and storing data for Analytics is **Elasticsearch 1.5x**.  
 Elasticsearch is a real-time distributed search and analytics engine that provides the ability to explore data at speed and at a scale. Elasticsearch is used for full-text search, structured search.
 
-Elasticsearch is used for storing all mobile and server data in JSON format in the MobileFirst Operational Analytics server in Elasticsearch instances.  
+Elasticsearch is used for storing all mobile and server data in JSON format in the MobileFirst Operational Analytics server in Elasticsearch instances. 
+
 The Elasticsearch instances are queried in real-time to populate the MobileFirst Operational Analytics Console.
 
 MobileFirst Operational Analytics does not hide any Elasticsearch functionality. If knowledge about how to take full benefit of Elasticsearch, debug Elasticsearch, or optimize Elasticsearch instances is present, Operational Analytics does not prevent using it.
@@ -19,7 +20,11 @@ If you have interest in any Elasticsearch functionality besides what is predefin
 
 > Read more in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-> Learn more in the [Cluster management and elasticsearch](../configuration/#cluster-management-and-elasticsearch)
+## Managing Elasticsearch on the MobileFirst Analytics Server
+
+Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
+
+> For more information on configuring Elasticsearch, see [Cluster management and elasticsearch](../configuration/#cluster-management-and-elasticsearch)
 
 
 ## Elasticsearch properties
