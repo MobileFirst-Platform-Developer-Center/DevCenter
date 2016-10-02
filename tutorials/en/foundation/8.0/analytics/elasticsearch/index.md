@@ -6,6 +6,8 @@ breadcrumb_title: Elasticsearch
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
+
+
 ## Overview
 Behind the scenes, running search queries and storing data for Analytics is **Elasticsearch 1.5x**.  
 Elasticsearch is a real-time distributed search and analytics engine that provides the ability to explore data at speed and at a scale. Elasticsearch is used for full-text search, structured search.
