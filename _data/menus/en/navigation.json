@@ -76,9 +76,6 @@
     "name": "Labs",
     "path": "/labs",
     "children": [{
-        "name": "Welcome to Labs",
-        "path": ""
-    }, {
         "name": "Developers",
         "path": "",
         "children": [{

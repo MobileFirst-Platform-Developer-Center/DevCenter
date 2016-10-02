@@ -5,7 +5,7 @@ show_disqus: false
 ---
 <div class="container">
     <h2 class="no-anchor">Welcome to FoundationLabs</h2>
-    <p>“FoundationLabs” are video-based educational materials with step-by-step instructions.</p>
+    <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
 
     <ul>
         <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
@@ -24,7 +24,7 @@ show_disqus: false
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
             <p>Developers can follow the different labs presented below to learn how to integrate applications with various MobileFirst tools and services.</p>
-            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 labs</a>
+            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="forAdministrators">
