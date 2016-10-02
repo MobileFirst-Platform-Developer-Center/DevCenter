@@ -19,10 +19,9 @@ If you have interest in any Elasticsearch functionality besides what is predefin
 
 > Read more in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-## Elastise
+> Learn more in the [Cluster management and elasticsearch](../configuration/#cluster-management-and-elasticsearch)
 
 
-/installation-configuration/production/analytics/configuration/#cluster-management-and-elasticsearch
 ## Elasticsearch properties
 Elasticsearch properties are available through JNDI variables or environment entries.  
 One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
