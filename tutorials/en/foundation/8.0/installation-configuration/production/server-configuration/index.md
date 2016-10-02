@@ -14,6 +14,7 @@ Consider your backup and recovery policy, optimize your MobileFirst Server confi
 * [List of JNDI properties of the MobileFirst Server web applications](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
 * [Configuring data sources](#configuring-data-sources)
 * [Configuring logging and monitoring mechanisms](#configuring-logging-and-monitoring-mechanisms)
+* [Configuring multiple runtimes](#configuring-multiple-runtimes)
 * [Configuring license tracking](#configuring-license-tracking)
 * [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters)
 
@@ -699,6 +700,98 @@ When the audit log is enabled, you can download it from MobileFirst Operations C
 
 ### Login and authentication issues
 To diagnose login and authentication issues, enable the package **com.ibm.mfp.server.security** for trace and set the log level to **FINEST**.
+
+## Configuring multiple runtimes
+You can configure MobileFirst Server with multiple runtimes, creating a visual differentiation between application "types" in the MobileFirst Operations Console. 
+
+> **Note:** multiple runtimes are not supported in a MobileFirst Server instance created by the Mobile Foundation Bluemix service. In the service, you must create multiple service instances instead.
+
+#### Jump to
+* [Configuring multiple runtimes in WebSphere Liberty profile](#configuring-multiple-runtimes-in-websphere-liberty-profile)
+* [Configuring multiple runtimes in WebSphere Full profile](#configuring-multiple-runtimes-in-websphere-full-profile)
+* [Configuring multiple runtimes in Apache Tomcat](#configuring-multiple-runtimes-in-apache-tomcat)
+* [Registering applications and deploying adapters to different runtimes](#registering-applications-and-deploying-adapters-to-different-runtimes)
+* [Exporting and importing runtime configurations](#exporting-and-importing-runtime-configurations)
+
+### Configuring multiple runtimes in WebSphere Liberty profile
+
+1. Open the **server.xml** file of the application server. Typically located in the  **[application-server]/usr/servers/server-name/** folder. For example, with the MobileFirst Developer Kit, the file can be found it **[installation-folder]/mfp-server/usrs/servers/mfp/server.xml**.
+
+2. Add a second `application` element: 
+
+    ```xml
+    <application id="second-runtime" name="second-runtime" location="mfp-server.war" type="war">
+        <classloader delegation="parentLast">
+            </classloader>
+    </application>
+    ```
+
+3. Add a second set of JNDI entries:
+
+    ```xml
+    <jndiEntry jndiName="second-runtime/mfp.analytics.url" value='"http://localhost:9080/analytics-service/rest"'/>
+    <jndiEntry jndiName="second-runtime/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>
+    <jndiEntry jndiName="second-runtime/mfp.analytics.username" value='"admin"'/>
+    <jndiEntry jndiName="second-runtime/mfp.analytics.password" value='"admin"'/>
+    <jndiEntry jndiName="second-runtime/mfp.authorization.server" value='"embedded"'/>
+    ```
+
+4. Add a second `dataSource` element:
+
+    ```xml
+    <dataSource jndiName="second-runtime/jdbc/mfpDS" transactional="false">
+        <jdbcDriver libraryRef="DerbyLib"/>
+        <properties.derby.embedded databaseName="${wlp.install.dir}/databases/second-runtime" user='"MFPDATA"'/>
+    </dataSource>
+    ```
+
+5. Restart the application server.
+    
+<!-- ### Configuring multiple runtimes in WebSphere Full profile
+
+### Configuring multiple runtimes in Apache Tomcat -->
+
+### Registering applications and deploying adapters to different runtimes
+When a MobileFirst Server is configured with multiple runtimes, the registration of applications and deployment of adapters is slightly different.
+
+* [Registering and deploying from the MobileFirst Operations Console](#registering-and-deploying-from-the-mobilefirst-operations-console)
+* [Registering and deploying from the Command-line](#registering-and-deploying-from-the-command-line)
+
+#### Registering and deploying from the MobileFirst Operations Console
+When performing these actions in the MobileFirst Console, you now need to select the runtime to register or deploy to.
+
+<img class="gifplayer" alt="Multiple runtimes in the MobileFirst Operations Console" src="register-and-deploy-to-multiple-runtimes.png"/>
+
+#### Registering and deploying from the Command-line
+When performing these actions using the **mfpdev** command-line tool, you now need to add the runtime name to register or deploy to.
+
+To register an application: `mfpdev app register <server-name> <runtime-name>`.  
+
+```bash
+mfpdev app register local second-runtime
+```
+
+To deploy an adapter: `mfpdev adapter deploy <server-name> <runtime-name>`.  
+
+```bash
+mfpdev adapter deploy local second-runtime
+```
+
+* **local** is the name of the default server definition in the MobileFirst CLI. Replace *local* with a the server definition name you need to register or deploy to.
+* **runtime-name** is the name of the runtime to register or deploy to.
+
+> Learn more with the following CLI help commands:
+>
+> * `mfpdev help server add`
+> * `mfpdev help app register`
+> * `mfpdev help adapter deploy`
+
+## Exporting and importing runtime configurations
+You can export a runtime configuration and import it to another MobileFirst Server using the REST APIs of the MobileFirst Server **administration service**.
+
+For example, you can setup a runtime configuration in a development environment, export its configuration and then import it to a testing environment for a quick set-up, and then further configure it for the specific needs of the testing environment.
+
+> Find out all available REST APIs [in the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
 
 ## Configuring license tracking
 License tracking is enabled by default. Read the following topics to learn how you can configure license tracking. For more information about license tracking, see [License tracking](../../../administering-apps/license-tracking).
