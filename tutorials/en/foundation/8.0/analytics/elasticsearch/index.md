@@ -1,4 +1,3 @@
-
 ---
 layout: tutorial
 title: Elasticsearch
@@ -6,7 +5,6 @@ breadcrumb_title: Elasticsearch
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
-
 
 ## Overview
 Behind the scenes, running search queries and storing data for Analytics is **Elasticsearch 1.5x**.  
