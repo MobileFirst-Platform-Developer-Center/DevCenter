@@ -3,7 +3,7 @@ layout: tutorial
 title: Operations and Analytics Consoles
 breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
-weight: 3
+weight: 4
 ---
 ## Overview
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
