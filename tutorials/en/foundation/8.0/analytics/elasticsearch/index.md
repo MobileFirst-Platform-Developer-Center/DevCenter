@@ -69,8 +69,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
-
-## Related blog posts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
