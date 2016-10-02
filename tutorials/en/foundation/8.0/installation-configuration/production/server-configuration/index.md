@@ -708,8 +708,8 @@ You can configure MobileFirst Server with multiple runtimes, creating a visual d
 
 #### Jump to
 * [Configuring multiple runtimes in WebSphere Liberty profile](#configuring-multiple-runtimes-in-websphere-liberty-profile)
-* [Configuring multiple runtimes in WebSphere Full profile](#configuring-multiple-runtimes-in-websphere-full-profile)
-* [Configuring multiple runtimes in Apache Tomcat](#configuring-multiple-runtimes-in-apache-tomcat)
+<!-- * [Configuring multiple runtimes in WebSphere Full profile](#configuring-multiple-runtimes-in-websphere-full-profile)
+* [Configuring multiple runtimes in Apache Tomcat](#configuring-multiple-runtimes-in-apache-tomcat) -->
 * [Registering applications and deploying adapters to different runtimes](#registering-applications-and-deploying-adapters-to-different-runtimes)
 * [Exporting and importing runtime configurations](#exporting-and-importing-runtime-configurations)
 
