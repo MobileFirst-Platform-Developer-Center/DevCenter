@@ -638,7 +638,7 @@ You can install multiple runtimes. Each runtime must have its own context root, 
 
 The constraints as described in [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) applies. Each runtime (with its context root) must have its own database tables.
 
-> For instructions, see [Configuring multiple runtimes](../server-configurations/#configuring-multiple-runtimes).
+> For instructions, see [Configuring multiple runtimes](../server-configuration/#configuring-multiple-runtimes).
 
 ## Multiple instances of MobileFirst Server on the same server or WebSphere Application Server cell
 By defining a common environment ID, multiple instances of MobileFirst Server are possible to be installed on the same server.
