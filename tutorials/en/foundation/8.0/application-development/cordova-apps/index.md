@@ -286,7 +286,7 @@ The JavaScript file index.js is provided by the template, and is located in the 
 * Windows: <your project name>/platforms/windows/assets/www/js
 
 ## Previewing an application's web resources
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, cordova-browser, or physical devices. In MobileFirst Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all MobileFirst JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with WLResourceRequest. In this case,
 > 
@@ -299,13 +299,14 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
 #### Mobile Browser Simulator
-The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
+The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device. Note: The cordova-browser is not supported by the Mobile Browser Simulator option.
 
 **Supported browsers:**
 
 * Firefox version 38 and later
 * Chrome 49 and later
 * Safari 9 and later
+* Cordova-browser (for simple browser only)
 
 ### Previewing
 1. From a **Command-line** window, run the command:
