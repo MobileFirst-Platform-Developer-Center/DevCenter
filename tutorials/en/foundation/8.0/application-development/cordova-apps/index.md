@@ -306,7 +306,6 @@ The Mobile Browser Simulator is a web application that enables testing of the Co
 * Firefox version 38 and later
 * Chrome 49 and later
 * Safari 9 and later
-* Cordova-browser (for simple browser only)
 
 ### Previewing
 1. From a **Command-line** window, run the command:

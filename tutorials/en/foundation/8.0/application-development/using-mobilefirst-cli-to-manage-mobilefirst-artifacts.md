@@ -375,7 +375,7 @@ Before running the preview command, you must prepare the project by adding the *
 
      4. Preview the Cordova application by running the following command from the Cordova application root folder:
 
-      ```bash
+      ```
       mfpdev app preview
       ```
 
