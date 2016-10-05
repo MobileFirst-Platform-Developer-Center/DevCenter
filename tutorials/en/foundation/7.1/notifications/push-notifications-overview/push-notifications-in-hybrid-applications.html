@@ -30,8 +30,8 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 <li>Place the certificate file either in the application root folder or in the application environment (iPhone or iPad) folder. The environment root folder takes the highest priority.</li>
 </ul>
 
-<strong>Note:</strong> APNS certificates must have a non-blank password.</p>
-<strong>Note:</strong> The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.</p>
+<p><strong>Note:</strong> APNS certificates must have a non-blank password.</p>
+<p><strong>Note:</strong> The APNS production certificate can only be used to send notifications to applications built for production. For in-house enterprise applications, this includes applications built with the corporate production certificates and distribution profiles. For Apple App Store applications, this includes applications installed via TestFlight or the Apple App Store.</p>
 
 <p>When the hybrid application has both iPhone and iPad environments, it requires separate certificates for push notification for each environment. In that case, place those certificates in the corresponding environment folders.</p>
 <blockquote><p>To learn about setting up push notifications required certificates, see this blog post: <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en">Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)</a></p></blockquote>

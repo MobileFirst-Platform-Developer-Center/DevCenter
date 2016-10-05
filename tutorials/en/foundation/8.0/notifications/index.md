@@ -3,7 +3,7 @@ layout: tutorial
 title: Notifications
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 8
+weight: 7
 print_pdf: true
 ---
 ## Overview

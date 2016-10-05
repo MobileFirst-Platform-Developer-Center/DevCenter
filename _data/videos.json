@@ -1,4 +1,34 @@
 [{
+"caption": "Troubleshoot your app without Republishing with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=6s8CJIGfpJw",
+"thumbnail": "//img.youtube.com/vi/6s8CJIGfpJw/hqdefault.jpg",
+"tags": ["Development", "Deployment","Troubleshooting"],
+"version": ["8.0"] 
+},{
+"caption": "Adjusting app security on the fly with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=9XnVNPBu0C8",
+"thumbnail": "//img.youtube.com/vi/9XnVNPBu0C8/hqdefault.jpg",
+"tags": ["Development", "Authentication"],
+"version": ["8.0"] 
+},{
+"caption": "Enhancing mobile user engagement with Cognitive & IBM MobileFirst Platform",
+"url": "//www.youtube.com/watch?v=7kKy8ZSgnhw",
+"thumbnail": "//img.youtube.com/vi/7kKy8ZSgnhw/hqdefault.jpg",
+"tags": ["Development"],
+"version": ["8.0"] 
+},{
+"caption": "Gradual & Differential Rollout of new app features with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=YMUYeEbGGvk",
+"thumbnail": "//img.youtube.com/vi/YMUYeEbGGvk/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Gradually Rollout New Features with IBM MobileFirst Foundation",
+"url": "//www.youtube.com/watch?v=8CSD92vS0oM",
+"thumbnail": "//img.youtube.com/vi/8CSD92vS0oM/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
 "caption": "Integrating your Xamarin apps with Mobile Foundation service on Bluemix",
 "url": "//www.youtube.com/watch?v=kw9k2d59FYQ",
 "thumbnail": "//img.youtube.com/vi/kw9k2d59FYQ/hqdefault.jpg",

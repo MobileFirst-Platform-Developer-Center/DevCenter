@@ -38,7 +38,7 @@ Network Transaction (POST) | /v3/networktransaction |  Creates a new network tra
 Server Log (POST) | /v3/serverlog | Creates a new server log.
 User (POST) | /v3/user | Creates a new user.
 
-## Try it out on Swagger Docs
+## Try it out on Swagger docs
 Try out the analytics REST API on Swagger Docs.  
 In a MobileFirst Server configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
 
@@ -49,4 +49,3 @@ By clicking on **Expand Operations**, you can see the implementation notes, para
 > Warning: Any data that you send by using **Try it out!** might interfere with data already in the data store. If you are not specifically trying to send data to your production environment, use a test name for the `x-mfp-analytics-api-key`.
 
 ![Test Swagger Docs](test-swagger.png)
-

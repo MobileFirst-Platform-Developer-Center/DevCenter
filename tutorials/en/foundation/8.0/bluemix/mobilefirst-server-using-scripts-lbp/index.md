@@ -77,8 +77,8 @@ The archive file contains the files for building an file layout (**dependencies*
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
                             <li><b>mfpfproperties.xml</b> - configuration properties for MobileFirst Server. See the supported properties listed in these documentation topics:
                                 <ul>
-                                <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list.html?view=kc">List of JNDI properties for MobileFirst Server administration service</a></li>
-                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html?view=kc">List of JNDI properties for MobileFirst runtime</a></li>
+                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
@@ -240,7 +240,7 @@ prepareserver.sh --name APP_NAME
 
 
 Launch the MobileFirst Console by loading the following URL: http://APP_HOST.mybluemix.net/mfpconsole (it may take a few moments).  
-Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With MobileFirst Server running on IBM Bluemix, you can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
 

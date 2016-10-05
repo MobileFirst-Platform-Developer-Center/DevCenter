@@ -2,18 +2,14 @@
 layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
-  - name: Introduction
+  - name: Lab selection
     path: /labs/developers/8.0/intro/
-  - name: Setup
-    path: /labs/developers/8.0/setup/
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
     path: /labs/developers/8.0/advancedwallet
 ---
-### Introduction
-Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step video instructions.  
-Before starting the lab series make sure to first follow through the setup instructions.
+Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step instructions.  
 
 <div style="max-width: 200px">
 <a href="{{site.baseurl}}/labs/developers/8.0/advancedmessenger"><img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo_small.png"></a>
