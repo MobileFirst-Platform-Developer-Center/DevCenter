@@ -27,9 +27,7 @@ Check the following possibilities.
     ```
 
 * Check that you are calling the send method.
-    * iOS:
-      * Objective-C: `[[WLAnalytics sharedInstance] send];`
-      * Swift:  `WLAnalytics.sharedInstance().send()`
+    * iOS: `[[WLAnalytics sharedInstance] send];`
     * Android: `WLAnalytics.send();`
     * Cordova: `WL.Analytics.send();`
 
@@ -42,18 +40,9 @@ Configure your apps to collect analytics on the Network device event.
 * For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.
 * To enable the capture of network analytic data in iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
 
-    **Objective-C**
-
     ```objc
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
     [analytics addDeviceEventListener:NETWORK];
-    ```
-
-    **Swift**
-
-    ```Swift
-    WLAnalytics.sharedInstance()
-    WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK)
     ```
 
 * To enable the capture of network analytic data in Android, add the following code in your Application subclass `onCreate` method.
@@ -67,27 +56,11 @@ Configure your apps to collect analytics on the Network device event.
 Configure your apps to collect analytics using the Lifecycle device event listener.
 
 * For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.
-
-* For Web apps turn on the analytics capture.
-
- ```javascript
- ibmmfpfanalytics.logger.config({analyticsCapture: true});
- ```
-
 * To enable the capture of network analytic data in iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
-
-    **Objective-C**
 
     ```objc
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
     [analytics addDeviceEventListener:LIFECYCLE];
-    ```
-
-    **Swift**
-
-    ```Swift
-    WLAnalytics.sharedInstance()
-    WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
     ```
 
 * To enable the capture of network analytic data in Android, add the following code in your Application subclass `onCreate` method.

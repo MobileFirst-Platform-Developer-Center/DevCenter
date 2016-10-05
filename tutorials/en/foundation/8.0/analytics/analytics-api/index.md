@@ -5,7 +5,6 @@ breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
-
 ## Overview
 MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 
@@ -23,10 +22,8 @@ Before you can start collecting the predefined data that MobileFirst Operational
 In Cordova applications, no setup is required and initialization is built-in.  
 
 ### JavaScript (Web)
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../application-development/sdk/web) tutorial.  
-
+In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web) tutorial.  
 Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
-
 
 Reference MobileFirst Analytics in the `HEAD` element:
 
@@ -55,7 +52,6 @@ Or, if using RequireJS, write:
 
 Note that you can select your own namespace to replace "ibmmfpfanalytics".
 
-
 ```javascript
 	ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
@@ -66,25 +62,12 @@ Note that you can select your own namespace to replace "ibmmfpfanalytics".
 
 #### Import the WLAnalytics library
 
-**Objective-C**
-
 ```objc
 import "WLAnalytics.h"
 ```
 
-**Swift**
-
-```Swift
-import IBMMobileFirstPlatformFoundation
-```
-
-
 #### Initialize Analytics
-**Objective-C**
 No setup required. Pre-initialized by default.
-
-**Swift**
-Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
 
 ### Android
 
@@ -101,7 +84,6 @@ Inside the `onCreate` method of your main activity include:
 WLAnalytics.init(this.getApplication());
 ```
 
-
 ## Enabling/disabling client event types
 The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their Analytics Console.
 
@@ -117,7 +99,8 @@ The initialization of the analytics API must be written in native code, even in 
  * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
  * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events) on disabling events.
+**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events
+) and [Client Network Events](#client-lifecycle-events) on disabling events.
 
 ### Client lifecycle events
 After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in MobileFirst Operational Analytics is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
@@ -140,14 +123,14 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
 
 * For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
+	* Open the **[Cordova application root folder] → platforms → ios → Classes →  AppDelegate.m** file
 	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+	* Build the Cordova project by running the command: `cordova build`
 
 * For the Android platform:
-	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
+	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java**
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### Android
 To enable client lifecycle event logging:
@@ -212,14 +195,14 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
 
 * For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
+	* Open the **[Cordova application root folder] → platforms → ios → Classes → AppDelegate.m** file.
 	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+	* Build the Cordova project by running the command: `cordova build`
 
 * For the Android platform: navigate to the subactivity of the main activity to disable.
 	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### iOS
 To enable client network-event logging:
@@ -374,38 +357,38 @@ WLAnalytics.unsetUserContext();
 ```
 
 ## Sending Analytics data
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
+Sending Analytics data is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
 
 Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
 
-#### JavaScript (Cordova)
+### JavaScript (Cordova)
 In a Cordova application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
 ```
 
-#### JavaScript (Web)
+### JavaScript (Web)
 In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
 
 ```javascript
 wlanalytics.send();
 ```
 
-#### iOS
-**Objective-C**
+### iOS
+In an iOS application, use the following *Objective-C* API method:
 
 ```objc
 [[WLAnalytics sharedInstance] send];
 ```
 
-**Swift**
+or for *Swift* use the API method:
 
 ```swift
 WLAnalytics.sharedInstance().send();
 ```
 
-#### Android
+### Android
 In an Android application, use the following Java API method:
 
 ```java
