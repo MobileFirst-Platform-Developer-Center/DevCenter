@@ -62,7 +62,7 @@ To enable the web resources checksum feature for a Cordova app, complete the fol
 2. Enter the following command to enable the web resources checksum feature for an operating system environment of your Cordova app:
 
     ```bash
-    mfpdev app config [android|ios|windows10|windows8|windowsphone8|browser]_security_test_web_resources_checksum true
+    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_test_web_resources_checksum true
     ```
 
     For example:  
@@ -78,7 +78,7 @@ To enable the web resources checksum feature for a Cordova app, complete the fol
 3. Enter the following command to identify the types of files that you want to ignore during the checksum test:
 
     ```bash
-    mfpdev app config [android|ios|windows10|windows8|windowsphone8|browser]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
+    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
     ```
     
     Multiple extensions must be separated by a comma with no spaces between them. For example:
