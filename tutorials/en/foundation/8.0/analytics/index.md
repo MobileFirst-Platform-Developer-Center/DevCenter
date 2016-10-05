@@ -35,7 +35,7 @@ The Logger functions as a standard logger. From the client you can also send log
 
 Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
 
-> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
+> Learn more in the [Client Logging](../using-the-mfpf-sdk/client-side-log-collection/) tutorial.
 
 In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the MobileFirst Analytics Server.
 
@@ -46,13 +46,5 @@ IBM MobileFirst Foundation provides the Analytics and Operations consoles. The M
 > Learn more in the [Operations Console](console) tutorial.
 
 > Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
-
-
-## The Analytics Server
-The Analytics Server is available in both the development and production environments.
-
-For development, the Analytics Server is installed together with the MobileFirst Foundation Development Kit.  For more information, see [Setting up the MobileFirst development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the Analytics Console is available for your development needs.
-
-For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
 
 ## Tutorials to follow next

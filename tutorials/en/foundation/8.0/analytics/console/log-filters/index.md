@@ -5,10 +5,10 @@ breadcrumb_title: Log filters
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 3
+weight: 4
 ---
 ## Overview
-Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → [version] → Log Filters**.  
+Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → Log Filters**.  
 Through `Log Filters` you can create a filter level that you can log at. The log level can be set globally (all logger instances) or for a specific package or packages.
 
 <img class="gifplayer" alt="Creating a log filter" src="add-log-filter.png"/>
