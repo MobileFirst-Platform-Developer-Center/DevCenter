@@ -55,4 +55,6 @@ For development, the Analytics Server is installed together with the MobileFirst
 
 For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
 
-## Tutorials to follow next
+MobileFirst Foundation Operational Analytics uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in MobileFirst Foundation.
+
+## What to read next
