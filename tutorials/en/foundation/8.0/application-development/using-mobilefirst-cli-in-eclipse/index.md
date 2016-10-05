@@ -74,6 +74,7 @@ In this section we will discuss how to create a new Cordova project using THyM.
 
 4. Add the desired platform for your project and click **Finish**
 
+**Note**: If you need additional platforms after creation see [Adding platforms](#adding-platforms)
 
 ## Importing an existing Cordova project
 In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
@@ -83,6 +84,8 @@ In this section we will discuss how to import an existing Cordova project that h
 3. Click **Browse...** and select the root directory of the existing Cordova project.
 4. Ensure the project is checked in the "Projects:" sections and click **Finish**
 	![Image of importing Cordova project](Import_cordova.png)
+
+**Note**: If you need to additional platforms after an import see [Adding platforms](#adding-platforms)
 
 
 ## Adding the MobileFirst SDK to Cordova project
@@ -117,6 +120,23 @@ If you would like to test or deploy to a device via an External IDE (Android Stu
 **Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
 
 In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
+
+### Adding platforms
+
+Adding additional platforms is a simple process that the THyM plugin does not make intuitive.  You have two options to accomplish the same task, and they are as follows.
+
+1. Via Properties
+	1. Right click your project and select **properties** from the context menu.
+	1. In the presented dialog select **Hybrid Mobile Engin** from the left hand menu.
+	1. In this pane you will be able to select or download the desired platforms.
+
+1. Via Terminal
+	1. Right click your project and hover over **Show In** and select **Terminal** from the context menu.
+	1. This should add a tab to next to the console in Eclipse
+	1. Here you will be able to manually add platforms using the Cordova CLI commands
+		*  `cordova platform ls` will list the installed and available platforms
+		*  `cordova platform add <platform>`  where *<platform>* equals your desired platform, will add the specified platform to the project.
+		*  For more information on Cordova platform specific commands see <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command documentation</a>.
 
 ### Debug mode
 Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
