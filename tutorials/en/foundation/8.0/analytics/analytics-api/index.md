@@ -23,7 +23,7 @@ Before you can start collecting the predefined data that MobileFirst Operational
 In Cordova applications, no setup is required and initialization is built-in.  
 
 ### JavaScript (Web)
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. For more information, the [Adding the MobileFirst SDK to Web applications](../../application-development/sdk/web) tutorial.  
+In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. For more information, see the [Adding the MobileFirst SDK to Web applications](../../application-development/sdk/web) tutorial.  
 
 Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
 
