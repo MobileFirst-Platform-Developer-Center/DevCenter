@@ -21,7 +21,7 @@ Let us know in the comments section below if you have any questions, comments, o
 
 Additionaly, we've recently added the following:
 
-* The Live Update feature now sports [an SDK for Cordova applications]({site.baseurl}/tutorials/en/foundation/8.0/application-development/live-update/) as well.
-* [Integration with IBM API Connect]({site.baseurl}/tutorials/en/product-integration/8.0/api-connect/) is now documented.
+* The Live Update feature now sports [an SDK for Cordova applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/live-update/) as well.
+* [Integration with IBM API Connect]({{site.baseurl}}/tutorials/en/product-integration/8.0/api-connect/) is now documented.
 * Google recently rebranded GCM push notifications as FCM as part of the Firebase acquisition. Some FCM setup instructions were changed as well [and so did our documentation]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#google-cloud-messaging-firebase-cloud-messaging).
 * Our repertoire of advanced samples has grown so we [now have a dedicated page]({{site.baseurl}}/tutorials/en/foundation/8.0/advanced-samples/) listing them.
