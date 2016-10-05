@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server installation guide
-breadcrumb_title: Installation guide
+title: MobileFirst Analytics Server Installation Guide
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 ## Overview

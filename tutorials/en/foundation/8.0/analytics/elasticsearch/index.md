@@ -24,7 +24,7 @@ For more information about Elasticsearch functionality, beyond the functionality
 
 Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration/#cluster-management-and-elasticsearch).
+> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration/#cluster-management-and-elasticsearc).
 
 
 ## Elasticsearch properties
