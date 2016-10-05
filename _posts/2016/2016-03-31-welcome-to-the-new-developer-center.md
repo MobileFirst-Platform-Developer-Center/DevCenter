@@ -3,6 +3,7 @@ title: Welcome to the New MobileFirst Platform Developer Center
 date: 2016-03-31
 tags:
 - MobileFirst_Platform
+- Announcement
 - Developer_Center
 author:
   name: Idan Adar

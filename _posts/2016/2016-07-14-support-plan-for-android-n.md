@@ -3,6 +3,7 @@ title: Support plan for Google's Android 7.0 "Nougat" release
 date: 2016-07-14
 tags:
 - MobileFirst_Foundation
+- Announcement
 - Android
 version:
 - 8.0

@@ -2,7 +2,8 @@
 title: IBM Releases Next Generation of MobileFirst Foundation Built for Hybrid Cloud
 date: 2016-06-17
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
+- Announcement
 version:
 - 8.0
 author:

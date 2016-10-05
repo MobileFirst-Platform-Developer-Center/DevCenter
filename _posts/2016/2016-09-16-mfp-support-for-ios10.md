@@ -3,6 +3,7 @@ title: IBM MobileFirst Platform Foundation Support for iOS 10
 date: 2016-09-16
 tags:
 - MobileFirst_Platform
+- Announcement
 - iOS
 version:
 - 8.0

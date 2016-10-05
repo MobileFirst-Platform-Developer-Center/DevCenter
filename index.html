@@ -90,14 +90,23 @@ indexed: false
 <hr>
 
 <div id="blogPosts" class="container">
-      <h3 class="blogPostsHeading no-anchor">Recent Updates</h3>
-      <div class="twoColumns">
+      <span id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive">Announcements</span>
+      <div id="allPosts" class="twoColumns">
         {% for post in site.posts limit:10 %}
         <div class="postItem inline">
           <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
           <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
         </div>
         {% endfor %}
+      </div>
+      <div id="announcements" class="twoColumns">
+          {% assign announcementPosts = site.posts | where_exp:"item", "item.tags contains 'Announcement'" %}
+          {% for post in announcementPosts limit:10 %}
+          <div class="postItem inline">
+            <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+          </div>
+          {% endfor %}
       </div>
       <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong>
 </div>

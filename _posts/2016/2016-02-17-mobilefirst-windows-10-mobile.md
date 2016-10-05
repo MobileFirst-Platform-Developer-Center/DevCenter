@@ -3,6 +3,7 @@ title: IBM MobileFirst supports Windows 10 Mobile
 date: 2016-02-17
 tags:
 - MobileFirst_Platform
+- Announcement
 - Windows_10
 version:
 - 7.1
