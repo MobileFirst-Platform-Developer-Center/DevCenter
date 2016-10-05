@@ -35,4 +35,13 @@ $(function() {
         $("#blogPostsHeadingAnnouncements").addClass("blogPostsHeadingInactive");
         $("#blogPostsHeadingUpdates").style.marginRight = "10px";
     });
+    
+    // Navigate to tabs with hash tags.
+    var urlFragment = document.location.toString();
+    if (urlFragment.match('#')) {
+        $('.nav-tabs a[href="#' + urlFragment.split('#')[1] + '"]').tab('show');
+    } 
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
+    });
 });
