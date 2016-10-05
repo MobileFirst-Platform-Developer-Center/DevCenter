@@ -3,6 +3,7 @@ title: Support plan for Apple's iOS 10 release
 date: 2016-06-05
 tags:
 - MobileFirst_Platform
+- Announcement
 - iOS
 version:
 - 8.0

@@ -3,6 +3,7 @@ title: MobileFirst Platform Foundation compatibility for Android N
 date: 2016-04-05
 tags:
 - MobileFirst_Platform
+- Announcement
 - Android
 version:
 - 6.3

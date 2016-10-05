@@ -3,6 +3,7 @@ title: IBM MobileFirst Studio 8.0 Plug-in for Eclipse Now Available
 date: 2016-06-17
 tags:
 - MobileFirst_Platform
+- Announcement
 - Cordova
 - MobileFirst_Studio
 - Eclipse
