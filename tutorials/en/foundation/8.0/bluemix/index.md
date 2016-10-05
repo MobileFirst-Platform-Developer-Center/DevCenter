@@ -4,7 +4,7 @@ breadcrumb_title: Foundation on Bluemix
 show_disqus: true
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 10
+weight: 9
 print_pdf: true
 ---
 ## Overview

@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: Application Authenticity
-breadcrumb_title: Application Authenticity
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---

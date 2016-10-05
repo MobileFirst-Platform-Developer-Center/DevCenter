@@ -14,7 +14,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging](#google-cloud-messaging)
+    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging-firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)
@@ -34,27 +34,26 @@ Continue reading for the server-side setup, or jump to [Client-side setup](#tuto
 
 On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
 
-### Google Cloud Messaging
-Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
-To setup GCM:
+### Google Cloud Messaging / Firebase Cloud Messaging
+> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
 
-1. Visit [Google's Services website](https://developers.google.com/mobile/add?platform=android&cntapi=gcm&cnturl=https:%2F%2Fdevelopers.google.com%2Fcloud-messaging%2Fandroid%2Fclient&cntlbl=Continue%20Adding%20GCM%20Support&%3Fconfigured%3Dtrue).
-2. Provide your application name and package name.
-3. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.  
-    - This step generates a **Server API Key** and a **Sender ID**.
- 
-        > **Note:** Also availbe is the option to generate configuration files. This set-up step is not needed.
-    - The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
-4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and **Server API Key** and click **Save**.
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
 
-> You can also setup GCM using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
+1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
+2. Create a new project and provide a project name.
+3. Click on the Settings "cog wheel" icon and select **Project settings**.
+4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID**.
+and click **Save**.
+
+> You can also setup FCM using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 
 #### Notes
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
-* Configure the firewall to allow connectivity with GCM in order for your GCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. GCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
+* Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
+* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
+* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
 * Ensure that your firewall accepts outgoing connections from MobileFirst Server to android.googleapis.com on port 443.
 
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
@@ -389,7 +388,7 @@ In the MobileFirst Operations Console → **[your application] → Push → Tags
 ![customizing push notifications](customizing-push-notifications.png)
 
 ## Proxy Support
-You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list_push.html?view=kc#reference_itq_pvt_dv).
+You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.

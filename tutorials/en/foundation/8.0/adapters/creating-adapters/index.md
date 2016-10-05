@@ -160,11 +160,24 @@ After creating the adapter the result will be a Maven project containing a **src
 ## Build and Deploy Adapters
 ### Build
 
-* **Using the MobileFirst CLI** - Run the `mfpdev adapter build` command from the project's root folder.
-* **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
+* **Using the MobileFirst CLI** - Run the `adapter build` command from the project's root folder.
+    
+    ```bash
+    mfpdev adapter build
+    ```
+    
+* **Using Maven** - The adapter is built each time you run the `install` command to build the Maven project.
+
+    ```bash
+    mvn install
+    ```
 
 ### Build All
-If you have multiple adapters in a filesystem folder and you'd like to build all of them, use `mfpdev adapter build all`.
+If you have multiple adapters in a filesystem folder and you'd like to build all of them, use:
+
+```bash
+mfpdev adapter build all
+```
 
 The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
 
@@ -174,15 +187,15 @@ The outcome is an **.adapter** archive file which can be found in the **target**
 
 1. The **pom.xml** file contains the following `properties`:
 
-      ```xml
-      <properties>
-    		<!-- parameters for deploy mfpf adapter -->
-    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
-    		<mfpfUser>admin</mfpfUser>
-    		<mfpfPassword>admin</mfpfPassword>
-    		<mfpfRuntime>mfp</mfpfRuntime>
-    	</properties>
-      ```
+    ```xml
+    <properties>
+    	<!-- parameters for deploy mfpf adapter -->
+    	<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    	<mfpfUser>admin</mfpfUser>
+    	<mfpfPassword>admin</mfpfPassword>
+    	<mfpfRuntime>mfp</mfpfRuntime>
+    </properties>
+    ```
    * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
    * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
    * **Optional**. Replace the **mfpfRuntime** default value with your MobileFirst runtime name.
@@ -203,10 +216,16 @@ The outcome is an **.adapter** archive file which can be found in the **target**
         ```
 
 ### Deploy All
-If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use `mfpdev adapter deploy all`.
+If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use:
 
-</br>
+```bash
+mfpdev adapter deploy all
+```
+
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+
+### Deploying to different runtimes
+If you run multiple runtimes, see [Registering applications and deploying adapters to different runtimes](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes).
 
 ## Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
