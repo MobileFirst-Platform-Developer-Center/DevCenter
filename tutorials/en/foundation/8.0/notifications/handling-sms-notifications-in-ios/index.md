@@ -17,7 +17,7 @@ SMS notifications are a sub-set of Push Notification, as such make sure to first
 * Make sure you have read the following tutorials:
   * [Push Notifications Overview](../)
   * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment)
-  * [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
+  * [Adding the MobileFirst Foundation SDK to iOS applications](../../application-development/sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 

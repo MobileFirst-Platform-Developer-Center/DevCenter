@@ -8,9 +8,28 @@ tags:
 author:
   name: Karen Tran
 ---
+> [UPDATE Sept. 28, 2016] Update to a later iFix to avoid both OpenSSL and Cordova vulnerabilities
+
+The Play Store started blocking Android applications that contain vulnerable versions of OpenSSL. MobileFirst Platform Foundation has updated their OpenSSL version to a compliant version back in May.
+
+Refer to this blog post for more information on the OpenSSL vulnerability: [OpenSSL Vulnerability Blog](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/27/ibm-mobilefirst-platform-foundation-responds-to-google-play-store-announcement-of-blocking-apps-using-vulnerable-openssl-versions/)
+
+Install the following iFixes to avoid the OpenSSL blocking:
+
+* 7.1.0 IF20160724-1420 and later builds
+* 7.0.0 IF20160526-2153 and later builds
+* 6.3.0 IF20160526-2153 and later builds
+* 6.2.0 IF20160524-0631 and later builds
+* 6.1.0 IF20160528-1310 and later builds
+
+Installing this iFix ensures that you will not hit the Cordova or OpenSSL blocking.
+
+When resubmitting your APK file to the Play Store, make sure that Google is scanning the correct APK with the correct version of your app. In several instances, users have reported that Google scanned an old APK instead of the new one. Contact Google Support to confirm.
+
+<hr/>
 > [UPDATE Apr. 21, 2016] Google confirms that it has deployed the MobileFirst Build ID solution to detect MobileFirst applications on the Play Store.
 
-All MobileFirst applications **MUST** apply the iFixes listed in the Mar. 16, 2016 update below or later iFixes. Applications built with these iFixes applied will not get flagged. 
+All MobileFirst applications **MUST** apply the iFixes listed in the Mar. 16, 2016 update below or later iFixes. Applications built with these iFixes applied will not get flagged.
 
 <hr/>
 

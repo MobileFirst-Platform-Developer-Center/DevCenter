@@ -1,0 +1,137 @@
+---
+layout: tutorial
+---
+{{ content }}
+
+<div class="panel-group accordion" id="api-ref" role="tablist" aria-multiselectable="false">
+    {% for item in page.apis %}
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="rest-api-{{forloop.index}}">
+            <h4 class="panel-title no-anchor">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#api-ref" data-target="#collapse-rest-api-{{forloop.index}}" aria-expanded="false" aria-controls="collapse-rest-api-{{forloop.index}}"><b>{{item.name}}</b></a>
+            </h4>
+            <p style="margin:0">{{item.shortdesc}}</p>
+        </div>
+
+        <div id="collapse-rest-api-{{forloop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rest-api-{{forloop.index}}">
+            <div class="panel-body">
+                <h5 class="no-anchor">Description:</h5>
+                <p>{{item.description}}</p>
+                
+                {% if item.roles %}
+                <h5 class="no-anchor">Roles:</h5>
+                <p>Users in the following roles are authorized to perform this operation:</p>
+                
+                <ul>
+                {% for role in item.roles %}
+                    <li><b>{{role.name}}</b></li>
+                {% endfor %}
+                </ul>
+                {% endif %}    
+                
+                <h5 class="no-anchor">Method:</h5>
+                <p><code>{{item.method}}</code></p>
+                
+                <h5 class="no-anchor">Path:</h5>
+                <p><code>{{item.path}}</code></p>
+                
+                <h5 class="no-anchor">Example:</h5>
+                <p><code>{{item.example}}</code></p>
+                
+                {% if item.pathParams %}
+                <h5 class="no-anchor">Path Parameters:</h5>
+                <ul>
+                {% for pathParam in item.pathParams %}
+                    <li><b>{{pathParam.name}}:</b> {{pathParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
+                {% if item.formDataParams %}
+                <h5>Form-data Parameters:</h5>
+                <ul>
+                {% for formDataParam in item.formDataParams %}
+                    <li><b>{{formDataParam.name}}:</b> {{formDataParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
+                {% if item.queryParams %}
+                <h5>Query Parameters:</h5>
+                <p>Query parameters are optional.</p>
+                
+                <ul>
+                {% for queryParam in item.queryParams %}
+                    <li><b>{{queryParam.name}}:</b> {{queryParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
+                {% if item.headerParams %}
+                <h5>Header Parameters:</h5>
+                
+                <ul>
+                {% for headerParam in item.headerParams %}
+                    <li><b>{{headerParam.name}}:</b> {{headerParam.value}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                
+                {% if item.consumes %}
+                <h5 class="no-anchor">Consumes:</h5>
+                <p>{{item.consumes}}</p>
+                {% endif %}
+                
+                {% if item.produces %}
+                <h5 class="no-anchor">Produces:</h5>
+                <p>{{item.produces}}</p>
+                {% endif %}
+                
+                {% if item.payload %}
+                <h5 class="no-anchor">Payload:</h5>
+                <p>{{item.payload}}</p>
+                
+                <b>JSON example</b>
+{% highlight json %}
+{{item.payloadJsonExample}}
+{% endhighlight %}   
+                <h5 class="no-anchor">Payload properties:</h5>
+                <p>The payload has the following properties:</p>
+                {% include show-rest-api-children.html children=item.payloadProperties%}
+                
+                {% endif %}
+                
+                {% if item.response %}
+                <h5 class="no-anchor">Response:</h5>
+                <p>{{item.response}}</p>
+                
+                <b>JSON example</b>
+{% highlight json %}
+{{item.responseJsonExample}}
+{% endhighlight %}
+
+                {% if item.responseXmlExample %}
+                <b>JSON example</b>
+{% highlight xml %}
+{{item.responseXmlExample}}
+{% endhighlight %}                
+                {% endif %}
+                <h5 class="no-anchor">Response properties:</h5>
+                <p>The response has the following properties:</p>
+                {% include show-rest-api-children.html children=item.responseProperties%}
+                {% endif %}
+                
+                <h5 class="no-anchor">Errors:</h5>
+                <ul>
+                {% for errorCode in item.errors %}
+                    <li><b>{{errorCode.name}}:</b> {{errorCode.value}}</li>
+                {% endfor %}
+                </ul>
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#rest-api-{{forloop.index}}" data-target="#collapse-rest-api-{{forloop.index}}" aria-expanded="false" aria-controls="collapse-rest-api-{{forloop.index}}"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

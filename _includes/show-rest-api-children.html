@@ -1,0 +1,7 @@
+<ul>
+{% for property in include.children %}
+    <li><b>{{property.name}}:</b> {{property.value}}
+      {% include show-rest-api-children.html children=property.children %}
+    </li>
+{% endfor %}
+</ul>

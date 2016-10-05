@@ -25,7 +25,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 ### 1. Starting the MobileFirst Server
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [MobileFirst Foundation Development Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.cmd`.
+If using the [MobileFirst Foundation Development Kit](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
 
 ### 2. Creating an application
 
@@ -104,7 +104,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
     * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
     * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 2. Press the **Run App** button.
 
@@ -119,7 +119,7 @@ The adapter response is then printed in Visual Studio's Outpout console.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Using the MobileFirst Foundation](../../application-development/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)

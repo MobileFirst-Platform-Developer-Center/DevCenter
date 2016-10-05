@@ -15,6 +15,8 @@ author:
   name: Nana Amfo
 ---
 
+> [UPDATE Sept. 29, 2016] Update to iFix level 6.3.0.00.20160526-2153 or later to avoid OpenSSL issues on MobileFirst Platform Foundation 6.3.
+
 The Google Play Store has sent the following notification to app developers:
 
 > Beginning July 11, 2016, Google Play will block publishing of any new apps or updates that use older versions of OpenSSL. If you’re using a 3rd party library that bundles OpenSSL, you’ll need to upgrade it to a version that bundles OpenSSL 1.02f/1.01r or higher.  
