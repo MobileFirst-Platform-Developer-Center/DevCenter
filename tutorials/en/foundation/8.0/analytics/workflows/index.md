@@ -5,7 +5,7 @@ breadcrumb_title: Workflows
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 5
+weight: 8
 ---
 ## Overview
 Leverage MobileFirst Analytics to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
