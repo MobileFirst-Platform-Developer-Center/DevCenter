@@ -4,7 +4,7 @@ title: MobileFirst Analytics Server installation guide
 breadcrumb_title: Installation guide
 weight: 1
 ---
-## Overview
+## Overview 
 MobileFirst Analytics Server is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere® Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 
 MobileFirst Analytics Server uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
@@ -71,7 +71,7 @@ The built-in charts on the MobileFirst Analytics Console are rendered by queryin
 
 When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the MobileFirst Analytics Server. Is real-time console visibility truly useful for data from four months ago?
 
-### Indicies, shards, and nodes
+### Indicies, Shards, and Nodes
 The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The MobileFirst Analytics Server creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the MobileFirst Analytics Server.
 
 If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
@@ -93,7 +93,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
     ```bash
     ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
     ```
-
+    
 3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
 4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
 
@@ -105,7 +105,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
         <feature>localConnector-1.0</feature>
     </featureManager>
     ```
-
+    
 5. Configure **analytics.ear** as an application with role-based security in the **server.xml** file. The following example creates a basic hardcoded user registry, and assigns a user to each of the different analytics roles.
 
     ```xml
@@ -137,7 +137,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
         <user name="admin" password="admin"/>
     </basicRegistry>
     ```
-
+    
     > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
 
 6. Start the Liberty Server by running the following command inside your **bin** folder
@@ -145,13 +145,13 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
     ```bash
     ./server start <serverName>
     ```
-
+    
 7. Go to the MobileFirst Analytics Console.
-
+    
     ```bash
     http://localhost:9080/analytics/console
     ```
-
+    
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
 ## Installing MobileFirst Analytics on Tomcat
@@ -171,12 +171,12 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
     <Context docBase ="analytics" path ="/analytics"></Context>
     <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
     ```
-
+    
     The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
 4. Add the following sections to the **conf/tomcat-users.xml** file to configure a **MemoryRealm**.
     * Add the security roles.
-
+    
         ```xml
         <role rolename="analytics_administrator"/>
         <role rolename="analytics_infrastructure"/>
@@ -198,7 +198,7 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
         ```xml
         http://localhost:8080/analytics/console
         ```
-
+    
     For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
 
 ## Installing MobileFirst Analytics on WebSphere Application Server
@@ -211,27 +211,27 @@ The following steps describe how to install and run the Analytics EAR file on We
 2. Select the **MobileFirst Analytics** application from the **Enterprise Applications** list.
 
     ![Install WebSphere Enterprise applications](install_webphere_ent_app.jpg)
-
+    
 3. Click **Class loading and update detection**.
 
     ![Class loading in WebSphere](install_websphere_class_load.jpg)
-
+    
 4. Set the class loading order to **parent last**.
 
     ![Change the class loading order](install_websphere_app_class_load_order.jpg)
-
+    
 5. Click **Security role to user/group mapping** to map the admin user.
 
     ![War class loading order](install_websphere_sec_role.jpg)
-
+    
 6. Click **Manage Modules**.
 
     ![Managing modules in WebSphere](install_websphere_manage_modules.jpg)
-
+    
 7. Select the **analytics** module and change the class loader order to **parent last**.
 
     ![Analytics module in WebSphere](install_websphere_module_class_load_order.jpg)
-
+    
 8. Enable **Administrative security** and **application security** in the WebSphere Application Server administration console:
     * Log in to the WebSphere Application Server administration console.
     * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
@@ -250,14 +250,14 @@ You must run the Ant task on the computer where the application server is instal
     * Replace the placeholder values with the properties at the beginning of the file.
 
     > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:
-    >
+    > 
     > * The dollar sign ($) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax ${variable}, as described in the  [Properties](http://ant.apache.org/manual/properties.html) section of the Apache Ant Manual.
     > * The ampersand character (&) must be written as &amp;, unless you explicitly want to reference an XML entity.
     > * Double quotation marks (") must be written as &quot;, except when it is inside a string that is enclosed in single quotation marks.
 
 2. If you install a cluster of nodes on several servers:
     * You must uncomment the property **wl.analytics.masters.list**, and set its value to the list of host name and transport port of the master nodes. For example: `node1.mycompany.com:96000,node2.mycompany.com:96000`
-    * Add the attribute **mastersList** to the **elasticsearch** elements in the tasks **installanalytics**, **updateanalytics**, and **uninstallanalytics**.
+    * Add the attribute **mastersList** to the **elasticsearch** elements in the tasks **installanalytics**, **updateanalytics**, and **uninstallanalytics**. 
 
     **Note:** If you install on a cluster on WebSphere Application Server Network Deployment, and you do not set the property, the Ant task computes the data end points for all the members of the cluster at the time of installation, and sets the **masternodes** JNDI property to that value.
 
@@ -265,7 +265,7 @@ You must run the Ant task on the computer where the application server is instal
     You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of MobileFirst Analytics, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
 4. Save the Ant file. You might need it later to apply a fix pack or perform an upgrade.
     If you do not want to save the passwords, you can replace them by "************" (12 stars) for interactive prompting.
-
+    
     **Note:** If you add a node to a cluster of MobileFirst Analytics, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
 
 ## Installing MobileFirst Analytics Server on servers running previous versions
@@ -280,26 +280,26 @@ Some event types were changed between earlier versions of MobileFirst Analytics 
 
 The following table shows the mapping between old event types and new event types. Some event types did not change.
 
-| Old event type            | New event type         |
+| Old event type            | New event type         | 
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
+| AlertDefinition	        | AlertDefinition        | 
+| AlertNotification	        | AlertNotification      | 
+| AlertRunnerNode	        | AlertRunnerNode        | 
+| AnalyticsConfiguration    | AnalyticsConfiguration | 
+| CustomCharts	            | CustomChart            | 
+| CustomData	            | CustomData             | 
+| Devices	                | Device                 | 
+| MfpAppLogs                | AppLog                 | 
+| MfpAppPushAction          | AppPushAction          | 
+| MfpAppSession	            | AppSession             | 
+| ServerLogs	            | ServerLog              | 
+| ServerNetworkTransactions | NetworkTransaction     | 
 | ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+| ServerPushSubscriptions   | PushSubscription       | 
+| Users	                    | User                   | 
+| inboundRequestURL	        | resourceURL            | 
+| mfpAppName	            | appName                | 
+| mfpAppVersion	            | appVersion             | 
 
 ### Analytics data migration
 The internals of the MobileFirst Analytics Console were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.

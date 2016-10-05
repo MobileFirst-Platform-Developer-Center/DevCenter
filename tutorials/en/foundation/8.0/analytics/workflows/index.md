@@ -5,7 +5,7 @@ breadcrumb_title: Workflows
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 8
+weight: 5
 ---
 ## Overview
 Leverage MobileFirst Analytics to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
@@ -17,12 +17,19 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 
 ## App usage Analytics
 
-###Initializing your client app to capture app usage
+### Initializing your client app to capture app usage
 App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
 
 You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
 
-On iOS, add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method.
+
+#### iOS
+
+Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
+
+**Objective-C**
+
+
 
   ```Objective-C
     WLAnalytics *analytics = [WLAnalytics sharedInstance];
@@ -35,10 +42,27 @@ On iOS, add the following code in your Application Delegate `application:didFini
   [[WLAnalytics sharedInstance] send];
 ```
 
- Similarly, on Android, add the following code in your Application subclass `onCreate` method.
+**Swift**
+
+```Swift
+WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
+
+```
+
+To send the analytics:
+
+```Swift
+WLAnalytics.sharedInstance().send;
+
+```
+
+
+#### Android
+
+Add the following code in your Application subclass `onCreate` method.
 
  ```Java
-    WLAnalytics.init(this)
+    WLAnalytics.init(this);
     WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
  ```
 
@@ -48,11 +72,15 @@ On iOS, add the following code in your Application Delegate `application:didFini
     WLAnalytics.send();
  ```
 
+#### Cordova
+
 For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
 
 ```javascript
     WL.Analytics.send();
 ```
+
+#### Web apps
 
 For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
 
@@ -61,7 +89,7 @@ For Web apps, no listeners are required. Analytics can be enabled and disabled t
   ibmmfpfanalytics.send();
 ```
 
-### Default Usage and Devices charts
+### Default Usage and Devices chart
 In the **Usage and Devices** page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
 
 #### Total Devices
@@ -102,11 +130,11 @@ The duration of an app session is a valuable metric to visualize. With any app, 
 2. Give your chart a title.
 3. Select **App Session** for **Event Type**.
 4. Select **Bar Graph** for **Chart Type**.
-5. Click Next.
+5. Click **Next**.
 6. Select **Timeline** for **X-Axis**.
 7. Select **Average** for **Y-Axis**.
 8. Select **Duration** for **Property**.
-9. Click Save.
+9. Click **Save**.
 
 ## Crash capture
 MobileFirst Analytics includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
@@ -120,7 +148,9 @@ Ensure that you are collecting app lifecycle events as described in [Initializin
 
 The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
 
-iOS
+#### iOS
+
+**Objective-C**
 
   ```Objective-C
         - (void)sendMFPAnalyticData {
@@ -137,7 +167,27 @@ iOS
           repeats:YES]
   ```
 
-Android
+**Swift**
+
+```swift
+overridefuncviewDidLoad() {
+       super.viewDidLoad()
+       WLAnalytics.sharedInstance();
+       lettimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(sendMFPAnalyticData), userInfo: nil, repeats: true);
+       timer.fire();
+       // Do any additional setup after loading the view, typically from a nib.
+   }
+
+   funcsendMFPAnalyticData() {
+       OCLogger.send()
+       WLAnalytics.sharedInstance().send()
+   }
+
+
+```
+
+
+#### Android
 
   ```Java
         Timer timer = new Timer();
@@ -150,7 +200,7 @@ Android
         }, 0, 60000);
   ```
 
-Cordova
+#### Cordova
 
   ```Java
         setInterval(function() {
@@ -159,7 +209,7 @@ Cordova
         }, 60000)
   ```
 
-Web
+#### Web
 
   ```Java
         setInterval(function() {
