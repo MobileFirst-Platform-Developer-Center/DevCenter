@@ -85,7 +85,10 @@ In this section we will discuss how to import an existing Cordova project that h
 4. Ensure the project is checked in the "Projects:" sections and click **Finish**
 	![Image of importing Cordova project](Import_cordova.png)
 
-**Note**: If you need to additional platforms after an import see [Adding platforms](#adding-platforms)
+If you import a project without any platforms you will see the following error, please see the [adding platforms](#adding-platforms) section on how to resolve this error.
+![No platforms error image](no-platforms-error.png)
+
+**Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
 
 
 ## Adding the MobileFirst SDK to Cordova project
