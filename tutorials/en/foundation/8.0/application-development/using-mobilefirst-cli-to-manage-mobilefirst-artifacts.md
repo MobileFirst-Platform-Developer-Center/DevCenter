@@ -363,7 +363,7 @@ Before running the preview command, you must prepare the project by adding the *
 	};
 	```
 
-	2. Register the app by using the following command:
+	2. Register the app again by using the following command:
 
      ```mfpdev app register
      ```
