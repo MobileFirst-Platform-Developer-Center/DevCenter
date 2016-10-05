@@ -7,7 +7,7 @@ tags:
 - MobileFirst_Foundation
 - Announcement
 author:
-name: Idan Adar 
+  name: Idan Adar 
 ---
 Hi all!  
 We'd like to let you all know of recent changes we've made to the Developer Center.
