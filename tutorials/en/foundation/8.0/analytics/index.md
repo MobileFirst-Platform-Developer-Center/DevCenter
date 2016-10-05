@@ -47,4 +47,28 @@ IBM MobileFirst Foundation provides the Analytics and Operations consoles. The M
 
 > Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
 
+
+## The Analytics Server
+The Analytics Server is available in both the development and production environments.
+
+For development, the Analytics Server is installed together with the MobileFirst Foundation Development Kit.  For more information, see [Setting up the MobileFirst development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the Analytics Console is available for your development needs.
+
+For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
+
+
+## The Analytics Server
+The Analytics Server is available in both the development and production environments.
+
+For development, the Analytics Server is installed together with the MobileFirst Foundation Development Kit.  For more information, see [Setting up the MobileFirst development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the Analytics Console is available for your development needs.
+
+For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
+
+
+## The Analytics Server
+The Analytics Server is available in both the development and production environments.
+
+For development, the Analytics Server is installed together with the MobileFirst Foundation Development Kit.  For more information, see [Setting up the MobileFirst development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the Analytics Console is available for your development needs.
+
+For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
+
 ## Tutorials to follow next
