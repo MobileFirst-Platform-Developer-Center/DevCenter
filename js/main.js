@@ -44,4 +44,19 @@ $(function() {
     $('.nav-tabs a').on('shown.bs.tab', function (e) {
         window.location.hash = e.target.hash;
     });
+    
+    // Scroll to top
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollUpButton').fadeIn();
+            } else {
+                $('.scrollUpButton').fadeOut();
+            }
+        });
+        $('.scrollUpButton').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 500);
+            return false;
+        });
+    });
 });
