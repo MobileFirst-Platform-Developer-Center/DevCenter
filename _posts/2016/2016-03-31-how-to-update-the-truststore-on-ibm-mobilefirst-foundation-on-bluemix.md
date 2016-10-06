@@ -11,6 +11,8 @@ author:
   name: Sachin Nayak
 ---
 
+**Note:** This procedure is no longer valid. Use the trust store capability in the MFP console for adding certificates for adapters to connect to backends.
+
 If you've created a new truststore and use it while deploying the Mobile Foundation service on Bluemix, MobileFirst Server may fail to load the runtime.   
 This is due to the missing default certificates in the truststore. You can avoid this by updating the existing truststore with additional certificates instead of overwriting it with a new one.
 
