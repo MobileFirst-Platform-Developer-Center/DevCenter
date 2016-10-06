@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Installing and configuring the MobileFirst Analytics Server	
+title: Installing and Configuring the MobileFirst Analytics Server	
 weight: 7
 ---
-## Overview 
+## Overview
 The MobileFirst Analytics Server is delivered as two separate WAR files. For convenience in deploying on WebSphere® Application Server or WebSphere Application Server Liberty, MobileFirst Analytics Server is also delivered as an EAR file that contains the two WAR files.
 
 > **Note:** Do not install more than one instance of MobileFirst Analytics Server on a single host machine. For more information about managing your cluster, see the Elasticsearch documentation.
@@ -12,8 +12,3 @@ The analytics WAR and EAR files are included with the MobileFirst Server install
 
 * For more information about how to install MobileFirst Analytics Server, see [MobileFirst Analytics Server installation guide](installation).
 * For more information about how to configure IBM MobileFirst Analytics, see [Configuration guide](configuration).
-
-
-
-
-
