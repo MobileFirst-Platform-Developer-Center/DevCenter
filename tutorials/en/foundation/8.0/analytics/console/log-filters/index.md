@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring Log Filters
-breadcrumb_title: Log filters
+breadcrumb_title: Log Filters
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
