@@ -12,15 +12,19 @@ Notifications are received regardless of whether the application is currently ru
 
 IBM MobileFirst Foundation provides a unified set of API methods to send either push or SMS notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the MobileFirst Server to the vendor (Apple, Google, Microsoft, SMS Gateways) infrastructure, and from there to the relevant devices. The unified notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
 
-Continue reading to learn more on the available push and SMS notification support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
+#### Device support
+Push and SMS notifications are supported for the following platforms in MobileFirst Foundation:
+
+* iOS 8.x and above
+* Android 4.x and above
+* Windows 8.1, Windows 10
 
 #### Jump to:
-
-* [Push Notifications Types](#push-notifications-types)
-* [SMS Notifications](#sms-notifications)
+* [Push notifications](#push-notifications)
+* [SMS notifications](#sms-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Push Notifications types
+## Push notifications
 Notifications can take several forms:
 
 * **Alert (iOS, Android, Windows)** -  a pop-up text message
@@ -30,14 +34,7 @@ Notifications can take several forms:
 * **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
-### Device support
-Push and SMS notifications are supported for the following platforms in MobileFirst Foundation:
-
-* iOS 8.x, 9.x
-* Android 4.x, 5.x, 6.x
-* Windows 8.1, Windows 10
-
-## Push Notification Types 
+### Push notification types 
 
 #### Tag notifications
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.  
