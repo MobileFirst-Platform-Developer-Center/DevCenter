@@ -2,22 +2,32 @@
 layout: tutorial
 title: Elasticsearch
 breadcrumb_title: Elasticsearch
+relevantTo: [ios,android,javascript]
 weight: 7
 ---
+
 ## Overview
-Behind the scenes, running search queries and storing data for Analytics is **Elasticsearch 1.5x**.  
-Elasticsearch is a real-time distributed search and analytics engine that provides the ability to explore data at speed and at a scale. Elasticsearch is used for full-text search, structured search.
+MobileFirst Operational Analytics uses  **Elasticsearch 1.5x** for storing data and running search queries.  
 
-Elasticsearch is used for storing all mobile and server data in JSON format on the MobileFirst Operational Analytics server within Elasticsearch instances.  
-The Elasticsearch instances are queried in real-time in order to populate the MobileFirst Operational Analytics Console.
+Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
 
-MobileFirst Operational Analytics does not hide any Elasticsearch functionality. All functionality is exposed and available to the user according to his knowledge of Elasticsearch.
+Elasticsearch is used for storing all mobile and server data in JSON format in the MobileFirst Operational Analytics server in Elasticsearch instances.
 
-For more information about Elasticsearch functionality beyond that predefined in MobileFirst Operational Analytics, see the Elasticsearch documentation.
+The Elasticsearch instances are queried in real-time to populate the MobileFirst Operational Analytics Console.
 
-> Read more in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+MobileFirst Operational Analytics exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
 
-### Elasticsearch properties
+For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+
+
+## Managing Elasticsearch on the MobileFirst Analytics Server
+
+Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
+
+> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch).
+
+
+## Elasticsearch properties
 Elasticsearch properties are available through JNDI variables or environment entries.  
 One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
 
@@ -30,7 +40,7 @@ One of the more useful JNDI properties to get started with viewing the Elasticse
 > **Note**: This setting is not secure and should not be enabled on a production environment.
 
 ### Elasticsearch REST API
-Being able to access an Elasticsearch instance provides the ability to run custom queries and view more detailed information about the Elasticsearch cluster.
+Being able to access an Elasticsearch instance provides the ability to run custom queries, and view more detailed information about the Elasticsearch cluster.
 
 **Search and view data**
 
@@ -60,7 +70,3 @@ http://localhost:9500/*/_mapping
 ```
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
-
-## Related blog posts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
