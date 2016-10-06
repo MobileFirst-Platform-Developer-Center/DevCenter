@@ -113,10 +113,14 @@ Alternatively, click the **New** button next to **Adapters**.
     Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 	
 4. If you are deploying to a cordova-browser platform (browser), add the wlInitOptions to the main js file (index.js in a standard Cordova app)
-	```var wlInitOptions = {
- mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
- applicationId : 'com.sample.app' // Replace with your own value.};```
-
+	
+    ```javascript
+    var wlInitOptions = {
+        mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
+        applicationId : 'com.sample.app' // Replace with your own value.
+    };
+    ```
+    
 5. Run the command: `cordova prepare`.
 	
 6. Run the command: `cordova run`.
