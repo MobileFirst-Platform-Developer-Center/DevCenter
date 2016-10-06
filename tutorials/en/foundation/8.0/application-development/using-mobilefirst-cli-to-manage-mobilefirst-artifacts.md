@@ -353,16 +353,36 @@ Available configuratons are:
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
-To preview a Cordova application, run the following command from the Cordova application root folder:
+Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
 
-```bash
-mfpdev app preview
-```
+    1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
+	
+	```var wlInitOptions = {
+	  mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
+	  applicationId:'com.sample.app' // Replace with your own value.
+	};
+	```
+
+	2. Register the app again by using the following command:
+
+     ```mfpdev app register
+     ```
+
+	 3. Run the following command:
+	 
+	 ```cordova prepare
+     ```
+
+     4. Preview the Cordova application by running the following command from the Cordova application root folder:
+
+      ```
+      mfpdev app preview
+      ```
 
 You will be prompted to select which platform to preview and which type of preview to use.  
 There are two options of preview: MBS and Browser.
 
-* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more.
+* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. Note: You cannot use the cordova-browser with the MBS option.
 * Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
 
 > For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
