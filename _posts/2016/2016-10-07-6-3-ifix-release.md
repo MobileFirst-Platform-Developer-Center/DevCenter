@@ -6,8 +6,7 @@ version:
 tags:
 - MobileFirst_Foundation
 - Announcement
-- iFix
-- 6.3
+- iFix_6.3
 author:
   name: Idan Adar 
 ---

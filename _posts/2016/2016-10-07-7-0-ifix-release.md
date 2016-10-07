@@ -1,13 +1,12 @@
 ---
-title: MobileFirst Platform Foundation iFix 7.0.0.0-IF201609291531 released
+title: MobileFirst Platform Foundation iFix 7.0.0.0-MFPF-IF201609291531 released
 date: 2016-10-07
 version:
 - 7.0
 tags:
 - MobileFirst_Foundation
 - Announcement
-- iFix
-- 7.0
+- iFix_7.0
 author:
   name: Idan Adar 
 ---
