@@ -14,7 +14,7 @@ A new iFix has been released for MobileFirst Platform Foundation 6.3.
 [Download iFix](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=6.3.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central)
 
 ## Highlights
-* JSONStore support for Android N
+* Fix JSONStore support in Android N
 * Fix for SSL keystore information leakage
 * Application Authenticity check faliure in Windows 10 UWP
 
