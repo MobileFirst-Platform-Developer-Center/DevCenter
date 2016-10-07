@@ -16,27 +16,33 @@
                     {% if (page.url contains category.url) and (category.children != empty) %}
                       <ul>
                         {% for tutorial in category.children %}
+                        {% if tutorial.show_in_nav == true %}
                           <li {% if page.url contains tutorial.url %} class="active" {% endif %}>
                             <a href="{{site.baseurl}}{{tutorial.url}}">{{tutorial.breadcrumb_title}}</a>
                             {% if page.url contains tutorial.url and tutorial.children != empty %}
                               <ul>
                                 {% for childtutorial in tutorial.children %}
+                                {% if childtutorial.show_in_nav == true %}
                                   <li {% if page.url contains childtutorial.url %} class="active" {% endif %}>
                                     <a href="{{site.baseurl}}{{childtutorial.url}}">{{childtutorial.breadcrumb_title}}</a>
                                     {% if page.url contains childtutorial.url and childtutorial.children != empty %}
                                         <ul>
                                             {% for grandchildtutorial in childtutorial.children %}
+                                            {% if grandchildtutorial.show_in_nav == true %}
                                             <li {% if page.url contains childtutorial.url %} class="active" {% endif %}>
                                                 <a href="{{site.baseurl}}{{grandchildtutorial.url}}">{{grandchildtutorial.breadcrumb_title}}</a>
                                             </li>
+                                            {% endif %}
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                   </li>
+                                  {% endif %}
                                 {% endfor %}
                               </ul>
                             {% endif %}
                           </li>
+                          {% endif %}
                         {% endfor %}
                       </ul>
                     {% endif %}
