@@ -22,6 +22,7 @@ Push and SMS notifications are supported for the following platforms in MobileFi
 #### Jump to:
 * [Push notifications](#push-notifications)
 * [SMS notifications](#sms-notifications)
+* [Proxy settings](#proxy-settings)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Push notifications
@@ -53,6 +54,11 @@ Unicast notifications, or User Authenticated Notifications that are secured with
 To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the MobileFirst Server upon receipt of the user approval. When a notification is retrieved from the MobileFirst Operations Console, it is processed and sent through a preconfigured SMS gateway.
 
 To configure a gateway, see the [Sending Notifications](sending-notifications) tutorial.
+
+## Proxy settings
+Use the proxy settings to set the optional proxy through which notifications are sent to APNS and GCM. You can set the proxy by using the **push.apns.proxy.*** and **push.gcm.proxy.*** configuration properties. For more information, see [List of JNDI properties for MobileFirst Server push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+
+> **Note:** WNS does not have proxy support.
 
 ## Tutorials to follow next
 Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
