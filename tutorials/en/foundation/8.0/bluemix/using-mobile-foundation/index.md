@@ -27,7 +27,7 @@ The Mobile Foundation service offers two plan options:
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
 * [Applying MobileFirst Server fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs]()
+* [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
 * [Further reading](#further-reading)
 
