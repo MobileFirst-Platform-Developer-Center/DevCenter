@@ -397,5 +397,6 @@ With the server-side now set-up, setup the client-side and handle received notif
 * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
 * [Handling push notifications in Android applications](../handling-push-notifications/android)
 * * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
-* [Handling SMS notifications in Cordova applications](../handling-sms-notifications-in-cordova)
-* [Handling SMS notifications in Android applications](../handling-sms-notifications-in-android)
+* [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
+* [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
+* [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
