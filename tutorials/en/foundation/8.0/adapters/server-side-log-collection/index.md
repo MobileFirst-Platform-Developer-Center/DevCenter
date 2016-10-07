@@ -13,7 +13,9 @@ Logging libraries typically have verbosity controls that are frequently called *
 ## Log Collection in Adapters
 Logs in adapters can be viewed in the underlying application server logging mechanism.  
 
-In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level in the **server.xml** file. These logs can also be forwarded to the Analytics console as explained in the server-sidel log collection tutorials for Java and JavaScript adapters.
+In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level. 
+
+These logs can also be forwarded to the Analytics console as explained in the tutorials for [Java adapters](java-adapter) and [JavaScript adapters](javascript-adapter).
 
 ## Accessing the log file
 * In an on-prem installation of the MobileFirst Server, the file is available depending on the underlying application server. 
