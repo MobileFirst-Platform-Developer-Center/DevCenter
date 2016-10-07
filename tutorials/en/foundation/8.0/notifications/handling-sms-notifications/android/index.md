@@ -9,7 +9,17 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 ## Overview
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../) tutorials.
+SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
+
+**Prerequisites:**
+
+* Make sure you have read the following tutorials:
+  * [Notifications Overview](../../)
+  * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
+  * [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios)
+* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
+* MobileFirst CLI installed on the developer workstation
+
 
 #### Jump to:
 * [Notifications API](#notifications-api)   

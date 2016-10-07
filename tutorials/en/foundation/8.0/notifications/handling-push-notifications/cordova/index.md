@@ -13,6 +13,11 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 
 > **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
+For information about Silent or Interactive notifications in iOS, see:
+
+* [Silent notifications](../silent)
+* [Interactive notifications](../interactive)
+
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
