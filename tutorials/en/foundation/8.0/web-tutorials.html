@@ -13,6 +13,12 @@ Develop your Web applications by following the tutorials bellow: set-up your dev
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="search" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+                </div>
+            </form>
+
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
