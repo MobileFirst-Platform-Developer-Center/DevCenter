@@ -34,7 +34,7 @@ In the **Infrastructure** panel you can review analytics data related to: sessio
 ## Analytics features
 
 ### App Analytics
-From the **Apps → Usage and Devices**, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
+From the **Apps → Usage and Devices** tab, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
 
 ### Built-in Analytics
 When you use the MobileFirst client SDK together with the MobileFirst Server, analytics data automatically gets collected for any request that your app makes to the MobileFirst Server. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the MobileFirst Analytics Server.
@@ -52,7 +52,7 @@ Custom charts allow you to visualize the collected analytics data in your analyt
 ### Manage alerts
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.
 
-From **Dashboard → Alert Management** you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
+From the **Dashboard → Alert Management** tab, you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
 
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
@@ -68,7 +68,7 @@ Client logs can be sent to the server and included in analytics reports.
 
 To include logging information in a report:
 
-1. In the Analytics Console, choose **Dashboard → Custom Charts**.
+1. In the Analytics Console, choose the **Dashboard → Custom Charts** tab.
 
 2. Choose **Client Logs** from the **Event Type** pull-down menu.
 
@@ -113,62 +113,6 @@ The MobileFirst Analytics Console displays different content based on the securi
 
 > For information on setting up roles, see [Configuring user authentication for MobileFirst Server administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 
-## Elasticsearch
-Behind the scenes, running search queries and storing data for Analytics is **Elasticsearch 1.5x**.  
-Elasticsearch is a real-time distributed search and analytics engine that provides the ability to explore data at speed and at a scale. Elasticsearch is used for full-text search, structured search.
-
-Elasticsearch is used for storing all mobile and server data in JSON format on the MobileFirst Operational Analytics server within Elasticsearch instances.  
-The Elasticsearch instances are queried in real-time in order to populate the MobileFirst Operational Analytics Console.
-
-MobileFirst Operational Analytics does not hide any Elasticsearch functionality. All functionality is exposed and available to the user according to his knowledge of Elasticsearch.
-
-For more information about Elasticsearch functionality beyond that predefined in MobileFirst Operational Analytics, see the Elasticsearch documentation.
-
-> Read more in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
-
-### Elasticsearch properties
-Elasticsearch properties are available through JNDI variables or environment entries.  
-One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
-
- ```xml
-<jndiEntry jndiName="analytics/http.enabled" value="true"/>
- ```
-
- This JNDI property allows you to view your Operational Analytics raw data in JSON format and to access your Elasticsearch instance through the port that is defined by Elasticsearch. The default port is 9500.
-
-> **Note**: This setting is not secure and should not be enabled on a production environment.
-
-### Elasticsearch REST API
-Being able to access an Elasticsearch instance provides the ability to run custom queries and view more detailed information about the Elasticsearch cluster.
-
-**Search and view data**
-
-You can view all your data by visiting the tenant's `_search` REST endpoint.  
-
-
-```
-http://localhost:9500/*/_search
-```
-
-**View cluster health**
-
-```
-http://localhost:9500/_cluster/health
-```
-
-**View information on current nodes**
-
-```
-http://localhost:9500/_nodes
-```
-
-**View the current mappings**
-
-```
-http://localhost:9500/*/_mapping
-```
-
-> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
 ## Related blog posts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)

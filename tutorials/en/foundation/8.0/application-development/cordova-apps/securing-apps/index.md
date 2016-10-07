@@ -54,7 +54,7 @@ When it is enabled, the web resources checksum feature compares the original web
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
 * You must have the MobileFirst Platform CLI installed. 
 * You must have the IBM MobileFirst Foundation plugin.
-* You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows]` command.
+* You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows|browser]` command.
 
 To enable the web resources checksum feature for a Cordova app, complete the following steps:
 

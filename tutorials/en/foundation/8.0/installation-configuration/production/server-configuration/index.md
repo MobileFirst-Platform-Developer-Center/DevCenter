@@ -743,6 +743,8 @@ You can configure MobileFirst Server with multiple runtimes, creating a visual d
     </dataSource>
     ```
 
+    > **Note:** Make sure the `dataSource` is pointing to a different database schema.
+
 5. Restart the application server.
 
 ### Registering applications and deploying adapters to different runtimes

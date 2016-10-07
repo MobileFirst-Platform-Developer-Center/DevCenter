@@ -249,6 +249,7 @@ The splash image is displayed while the application is being initialized. If you
 * iOS: <your project name>/res/screen/ios/
 * Android: <your project name>/res/screen/android/
 * Windows: <your project name>/res/screen/windows/
+* cordova-browser: <your project name>/res/screen/browser/
 
 Various default splash images are included that are appropriate for different displays, and for iOS and Windows, different versions of the operating system. You can replace the default image that is provided by the template with your own splash image, or add an image if you did not use the template. When you use the MobileFirst template to build your app for the Android platform, the **cordova-plugin-splashscreen** plug-in is installed. When this plug-in is integrated, the splash images that Cordova uses are displayed instead of the images that are used by MobileFirst. The images in the folder with the screen.png format are the Cordova standard splash images. You can specify which splash images display by changing the settings in the Cordova **config.xml** file.
 
@@ -262,6 +263,7 @@ Default images for application icons are provided with the template. These defau
 * iOS: <your project name>/res/icon/ios/
 * Android: <your project name>/res/icon/android/
 * Windows: <your project name>/res/icon/windows/
+* cordova-browser: <your project name>/res/icon/browser
 
 You can replace the default image with your own image. Your custom application image must match the size of the default application image that you are replacing, and must use the same file name. Various default images are provided, appropriate to different displays and operating system versions.
 
@@ -275,6 +277,7 @@ The stylesheet files are located in the <your project name>/www/css directory, a
 * iOS: <your project name>/platforms/ios/www/css
 * Android: <your project name>/platforms/android/assets/www/css
 * Windows: <your project name>/platforms/windows/www/css
+* cordova-browser: <your project name>/platforms/browser/www/css
 
 ### Scripts
 Your app code can include JavaScript files that implement various functions of your app such as interactive user interface components, business logic, and back-end query integration.
@@ -284,9 +287,10 @@ The JavaScript file index.js is provided by the template, and is located in the 
 * iOS: <your project name>/platforms/ios/www/js
 * Android: <your project name>/platforms/android/assets/www/js
 * Windows: <your project name>/platforms/windows/assets/www/js
+* cordova-browser: <your project name>/platforms/browser/assets/www/js
 
 ## Previewing an application's web resources
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, cordova-browser, or physical devices. In MobileFirst Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all MobileFirst JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with WLResourceRequest. In this case,
 > 
@@ -299,7 +303,7 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
 #### Mobile Browser Simulator
-The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
+The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device. Note: The cordova-browser platform is not supported by the Mobile Browser Simulator option.
 
 **Supported browsers:**
 
@@ -326,6 +330,7 @@ The Mobile Browser Simulator is a web application that enables testing of the Co
     ```bash
     ❯◯ android
     ◯ ios
+	◯ browser
     ```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
@@ -338,13 +343,13 @@ After making a change to a resource, save the change and it will be immediately 
 To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
 
 ### Running the application on emulator or on a physical device
-To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
+To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows|browser`. For example:
 
 ```bash
 cordova emulate ios
 ```
 
-To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
+To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows|browser`. For example:
 
 ```bash
 cordova run ios

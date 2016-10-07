@@ -18,7 +18,7 @@ You can set thresholds at a broad level (a specific app) or at a granular level 
 ## Creating an alert
 In the MobileFirst Analytics Console:
 
-1. Click the **Alert Management** tab → **Create Alert**. The **Alert Definition** tab appears.
+1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button. The **Alert Definition** tab appears.
 
 1. Provide the following values: Alert Name, Message, Query Frequency, Event Type, Application Name, Application Version, Threshold Type and Operator.
 
@@ -74,7 +74,7 @@ The POST request includes the following attributes:
 * **message** - the user-defined message.
 
 ## Viewing alert details
-Alert details can be viewed from the **Alert Log** tab in the MobileFirst Operational Analytics console.
+Alert details can be viewed from the **Dashboard→Alert Log** tab in the MobileFirst Operational Analytics console.
 
 ![A new alert log](alert-log.png)
 

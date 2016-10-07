@@ -37,4 +37,5 @@ The Liberty for Java runtime is powered by the liberty-for-java buildpack. The l
 
 ## Tutorials to follow next
 * Create a MobileFirst Server instance [using the Mobile Foundation Bluemix service](using-mobile-foundation/).
-* Create a MobileFirst Server instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts/).
+* Create a MobileFirst Server instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
+* Create a MobileFirst Server instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.

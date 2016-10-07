@@ -21,26 +21,25 @@ The Mobile Foundation service offers two plan options:
 
 #### Jump to:
 
-* [Setting up the Mobile Foundation Service](#setting-up-the-mobile-foundation-service)
-* [Using the Mobile Foundation Service](#using-the-mobile-foundation-service)
+* [Setting up the Mobile Foundation service](#setting-up-the-mobile-foundation-service)
+* [Using the Mobile Foundation service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
-* [Applying MobileFirst Server Fixes](#applying-mobilefirst-server-fixes)
+* [Applying MobileFirst Server fixes](#applying-mobilefirst-server-fixes)
+* [Accessing server logs]()
 * [Troubleshooting](#troubleshooting)
 * [Further reading](#further-reading)
 
-## Setting up the Mobile Foundation Service
+## Setting up the Mobile Foundation service
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page.
-
-2. From the left sidebar, tick the **Mobile** checkbox under **Services**. Then, click on the **Mobile Foundation** tile to begin the service creation process.
+1. Load [bluemix.net](http://bluemix.net), login, and click on the **Get started now!** button or the **Catalog** link.
+2. Search for the term **Mobile Foundation** and click on the resulting tile option.
+3. *Optional*. Enter a name for the service or use the default provided service name.
+4. Select the desired pricing plan, then click **Create**.
 
     <img class="gifplayer" alt="Creating a Mobile Foundation service instance" src="service-creation.png"/>
-
-3. Select a **space** to use and optionally set a **Service name**.
-4. Select the desired plan option, then click **Create**.
 
 ### Setting up the *developer* plan
 
@@ -70,7 +69,7 @@ To set up the available plans, first follow these steps:
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-## Using the Mobile Foundation Service
+## Using the Mobile Foundation service
 With the MobileFirst Server now running, you are presented with the following Dashboard:
 
 ![Image of Mobile Foundation setup](service-dashboard.png)
@@ -114,8 +113,13 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 
 > Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
 
-## Applying MobileFirst Server Fixes
+## Applying MobileFirst Server fixes
 Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+
+## Accessing server logs
+To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.
+
+<img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
 
 ## Troubleshooting
 The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
