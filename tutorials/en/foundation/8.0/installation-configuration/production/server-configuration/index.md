@@ -251,7 +251,8 @@ Set the JNDI environment entries in one of the following ways:
     
         ![JNDI environment entries in WebSphere](jndi_was.jpg)
     * WebSphere Application Server Liberty:
-        1. In **liberty_install_dir/usr/servers/serverName**, edit the **server.xml** file, and declare the JNDI properties as follows:
+    
+        In **liberty\_install\_dir/usr/servers/serverName**, edit the **server.xml** file, and declare the JNDI properties as follows:
     
         ```xml
         <application id="app_context_root" name="app_context_root" location="app_war_name.war" type="war"> 
@@ -260,14 +261,15 @@ Set the JNDI environment entries in one of the following ways:
         <jndiEntry jndiName="app_context_root/JNDI_property_name" value="JNDI_property_value" />
         ```
         
-        The context root (in the previous example: **app_context_root**) connects between the JNDI entry and a specific MobileFirst application. If multiple MobileFirst applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
+        The context root (in the previous example: **app\_context\_root**) connects between the JNDI entry and a specific MobileFirst application. If multiple MobileFirst applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
         
-        **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
-        
+        > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
+    
         For all other JNDI properties, the names must be prefixed with the context root of the application:
-            * For the MobileFirst Administration Service application, the MobileFirst Operations Console and MobileFirst runtime, you can define the context root as you want. However, by default it is **/mfpadmin** for MobileFirst Administration Service, **/mfpconsole** for MobileFirst Operations Console, and **/mfp** for MobileFirst runtime.
-            * For the live update service, the context root must be **/<adminContextRoot>config**. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
-            * For the push service, you must define the context root as **/imfpush**. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.
+
+        * For the live update service, the context root must be **/<adminContextRoot>config**. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
+        * For the push service, you must define the context root as **/imfpush**. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.
+        * For the MobileFirst Administration Service application, the MobileFirst Operations Console and MobileFirst runtime, you can define the context root as you want. However, by default it is **/mfpadmin** for MobileFirst Administration Service, **/mfpconsole** for MobileFirst Operations Console, and **/mfp** for MobileFirst runtime.
 
         For example:
         
@@ -279,7 +281,7 @@ Set the JNDI environment entries in one of the following ways:
         ```    
         
     * Apache Tomcat:
-        1. In **tomcat_install_dir/conf**, edit the **server.xml** file, and declare the JNDI properties as follows:
+        1. In **tomcat\_install\_dir/conf**, edit the **server.xml** file, and declare the JNDI properties as follows:
         
         ```xml
         <Context docBase="app_context_root" path="/app_context_root">
