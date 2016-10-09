@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Matrix of features and platforms
+title: Matrix of features & platforms
 weight: 5
 ---
 <br/>
