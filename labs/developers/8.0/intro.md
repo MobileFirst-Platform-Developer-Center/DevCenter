@@ -9,7 +9,9 @@ tabs:
   - name: Advanced Wallet
     path: /labs/developers/8.0/advancedwallet
 ---
+## Lab Selection
 Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step instructions.  
+You can read below an overview of the available links, and jump to lab from the tabbar above.
 
 <div style="max-width: 200px">
 <a href="{{site.baseurl}}/labs/developers/8.0/advancedmessenger"><img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo_small.png"></a>
