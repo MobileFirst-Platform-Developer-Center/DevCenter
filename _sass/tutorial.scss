@@ -58,12 +58,13 @@ $color_wild_sand_approx: #f5f5f5;
 	.sidebar {
 		padding: 23px 0 0 7px;
 		ul {
+			// affects all ULs in the sidebar
 			list-style-type: none;
-			padding: 0 0 0 10px;
+			padding: 0;
 			margin-bottom: 0;
-			margin-left: 6px;
+			margin-left: 0;
 			a {
-				padding: 5px 0;
+				padding: 4px 0;
 				margin-bottom: 10px;
 				font-size: 115%;
 				margin: 0;
@@ -79,63 +80,79 @@ $color_wild_sand_approx: #f5f5f5;
 		}
 		.navmenu-default .navmenu-nav.dropdown-menu {
 			background-color: inherit;
-			> li { 
-				padding: 0 0 0 11px;
+			> li {
+				// affects every LI inside the nav element of the top level ("Founation" and alike)
+				padding: 0 0 0 2px;
 				a {
 					font-size: 100%;
 				}
 			}
-			> li.active { // tutorials
-				padding: 0 0 0 9px;
-				border-left: 2px solid $black;
-				background-color: #f5f5f5;
+			> li.active { 
+				// affects every active LI inside the nav element of the top level ("Founation" and alike)
+				padding: 0 0 0 2px;
+				&:hover {
+					background-color:white;
+				}
 				a {
 					background-color: inherit;
+					color: #164167;
+					font-weight: bold;
 				}
 				> ul {
+					background-color: #f5f5f5;
+					border-left: 1px solid #6aa8c3;
+					padding-left: 0;
 					> li {
-						list-style-type: disc;
-						list-style-position: outside;
+						list-style-type: none;
 						&.active {
+							background-color: #bedfec;
+							a {
+								
+								font-weight: bold;
+							}
 							font-weight: bold;
 							> ul {
-								> li { // child tutorials
-									list-style-type: circle;
-									list-style-position: outside;
-									line-height: 1.3em;
+								background-color: #bedfec;
+								padding-left: 0;
+								> li { 
+									// child tutorials
+									line-height: 1.5em;
 									&.active {
+										background-color: #89d1ef;
 										> a {
 											font-weight: bold;
 										}
 									}
 									> a {
+										padding: 0 0 0 15px;
 										font-weight: normal;
 										color: $black;
 										font-size: 80%;
 										text-decoration: none;
 										&:hover {
-											//font-weight: 600;
 											text-decoration: underline;
 											color: #3c4646;
 										}
 									}
 									> ul {
-										> li { // grand-child tutorials
-											list-style-type: square;
-											list-style-position: outside;
+										background-color: #74caed;
+										> li { 
+											// grand-child tutorials
 											margin-left: 5px;
+											font-weight: bold;
 											&.active {
 												> a {
 													font-weight: bold;
 												}
 											}
-											> a {
+											> a {	
 												font-weight: normal;
 												color: $black;
 												font-size: 70%;
 												text-decoration: none;
+												padding: 0 0 0 20px;
+												
 												&:hover {
-													//font-weight: 600;
 													text-decoration: underline;
 													color: #3c4646;
 												}
@@ -149,13 +166,13 @@ $color_wild_sand_approx: #f5f5f5;
 							color: $black;
 							font-size: 90%;
 							text-decoration: none;
+							font-weight: normal;
+							padding:0 0 0 5px;
 							&:hover {
-								//font-weight: 600;
 								text-decoration: underline;
 								color: #3c4646;
 							}
 						}
-
 					}
 				}
 			}
