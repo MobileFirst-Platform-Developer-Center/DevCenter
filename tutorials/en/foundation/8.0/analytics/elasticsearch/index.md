@@ -17,7 +17,7 @@ The Elasticsearch instances are queried in real-time to populate the MobileFirst
 
 MobileFirst Operational Analytics exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
 
-For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html) topic.
 
 
 ## Managing Elasticsearch on the MobileFirst Analytics Server
