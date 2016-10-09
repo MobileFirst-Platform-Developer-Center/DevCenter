@@ -11,15 +11,15 @@ Make small pull requests. The smaller a change is, the easier it is to confirm a
 Learn more about pull requests: [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/)
 
 ### Blog posts
-If you'd like to contribute a blog post about work you've done with IBM MobileFirst Foundation, follow the normal pull request method:
+If you'd like to contribute a blog post about work you've done with IBM MobileFirst Foundation, follow these steps:
 
-1. Fork the repository and clone it to your workstation
-2. Create a markdown (.md) file and write your blog post in it
-3. Place the .md file under `_posts/<year>/your-blogpost.md`
+1. Fork the repository and clone it to your workstation.
+2. Create a markdown (.md) file to author your blog post in it.
+3. Place the .md file under `_posts/<year>/your-blogpost.md`.
 
-    Your blog post should be named `YYY-MM-DD-your-lowercase-title.md`. For example `2016-09-10-my-new-blog-post.md`
+    Your blog post should be named `YYY-MM-DD-your-lowercase-title.md`. For example `2016-09-10-my-new-blog-post.md`.
     
-4. Make a pull request of your changes back to this repository
+4. Make a pull request of your changes back to this repository.
 
 At the very top of the .md file, add the following. For example: 
 
@@ -37,7 +37,7 @@ author:
 ---
 ```
 
-Add a description of your role in your company and  which company you work for. For example:
+Add a description of your role in your company and which company you work for. For example:
 
 > Idan Adar is a Developer at IBM, working on developer enablement for IBM MobileFirst Foundation.
 
