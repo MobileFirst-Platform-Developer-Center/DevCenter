@@ -138,10 +138,10 @@ For more information, see [Configuring the MobileFirst Server keystore](../../au
     `mfpdev app config server https://mfp.mycompany.com` and `mfpdev app config runtime mfp`.
     
 4. Configure the secret keys and authorized servers for your application.
-        * If your app implements certificate pinning, use the certificate of your target server. For more information about certificate pinning, see [Certificate pinning](../../authentication-and-security/certificate-pinning).
-        * If your iOS app uses App Transport Security (ATS), configure ATS for your target server.
-        * To configure secure Direct Update for an Apache Cordova application, see [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-        * If you develop your app with Apache Cordova, configure the Cordova Content Security Policy (CSP).    
+    * If your app implements certificate pinning, use the certificate of your target server. For more information about certificate pinning, see [Certificate pinning](../../authentication-and-security/certificate-pinning).
+    * If your iOS app uses App Transport Security (ATS), configure ATS for your target server.
+    * To configure secure Direct Update for an Apache Cordova application, see [Implementing secure Direct Update on the client side](../../application-development/direct-update).
+    * If you develop your app with Apache Cordova, configure the Cordova Content Security Policy (CSP).    
 
 5. If you plan to use Direct Update for an application that is developed with Apache Cordova, archive the versions of the Cordova plug-ins you used to build the app.
 
