@@ -17,14 +17,14 @@ The Elasticsearch instances are queried in real-time to populate the MobileFirst
 
 MobileFirst Operational Analytics exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
 
-For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html) topic.
+For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
 
 ## Managing Elasticsearch on the MobileFirst Analytics Server
 
 Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [MobileFirst Analytics Server Configuration Guide](../../installation-configuration/production/analytics/configuration).
+> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [MobileFirst Analytics Server Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
 
 
 ### Elasticsearch properties
