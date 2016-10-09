@@ -24,6 +24,10 @@ Let us know in the comments section below if you have any questions, comments, o
 Would you like to contribute a blog post? Did you find an error in the site or documentation?  
 See our [contribution guidelines](https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md) to find out how to participate!
 
+## Discussion
+Remember our Slack community? The place to chat and discuss various topics related to MobileFirst Foundation.  
+[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/)!
+
 ## More changes
 Additionaly, we've recently added the following:
 
