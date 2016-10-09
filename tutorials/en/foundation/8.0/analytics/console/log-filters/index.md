@@ -5,7 +5,7 @@ breadcrumb_title: Log Filters
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
-weight: 3
+weight: 2
 ---
 ## Overview
 Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → [version] → Log Filters**.  
