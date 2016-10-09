@@ -107,7 +107,7 @@ The tables are expected to be created in the default schema of the runtime user.
 The procedure creates a database if needed. A user that can create tables and index in this database is added and used as a runtime user.
 
 1. If you do not already have a database, use the Oracle Database Configuration Assistant (DBCA) and follow the steps in the wizard to create a new general-purpose database, named ORCL in this example:
-    * Use global database name **ORCL_your_domain**, and system identifier (SID) **ORCL**.
+    * Use global database name **ORCL\_your\_domain**, and system identifier (SID) **ORCL**.
     * On the **Custom Scripts** tab of the step **Database Content**, do not run the SQL scripts because you must first create a user account.
     * On the **Character Sets** tab of the step **Initialization Parameters**, select **Use Unicode (AL32UTF8) character set and UTF8 - Unicode 3.0 UTF-8 national character set**.
     * Complete the procedure, accepting the default values.
