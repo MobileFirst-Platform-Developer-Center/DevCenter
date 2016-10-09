@@ -704,7 +704,7 @@ To diagnose login and authentication issues, enable the package **com.ibm.mfp.se
 ## Configuring multiple runtimes
 You can configure MobileFirst Server with multiple runtimes, creating a visual differentiation between application "types" in the MobileFirst Operations Console. 
 
-> **Note:** multiple runtimes are not supported in a MobileFirst Server instance created by the Mobile Foundation Bluemix service. In the service, you must create multiple service instances instead.
+> **Note:** multiple runtimes are not supported in a Mobile Foundation server instance created by the Mobile Foundation Bluemix service. In the Bluemix service, you must create multiple service instances instead.
 
 #### Jump to
 * [Configuring multiple runtimes in WebSphere Liberty profile](#configuring-multiple-runtimes-in-websphere-liberty-profile)
@@ -743,7 +743,10 @@ You can configure MobileFirst Server with multiple runtimes, creating a visual d
     </dataSource>
     ```
 
-    > **Note:** Make sure the `dataSource` is pointing to a different database schema.
+    > **Note:**
+    > 
+    > * Make sure the `dataSource` is pointing to a different database schema.
+    > * Make sure you have created [another database instance](../databases) for the new runtime.
 
 5. Restart the application server.
 
