@@ -197,7 +197,7 @@ mfpdev adapter deploy
 
 ![adapters deployed to the server and appear in the console]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/adapters-in-console.png)
 
-> Learn more [about Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/adapters-overview/)
+> Learn more [about Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/)
 
 ### Security
 The URL that gets the balance in the ResourceAdapter is protected by a scope named “accessRestricted”.

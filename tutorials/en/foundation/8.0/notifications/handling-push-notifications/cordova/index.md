@@ -21,7 +21,7 @@ For information about Silent or Interactive notifications in iOS, see:
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/)
+    * [Setting up your MobileFirst development environment](../../../installation-configuration)
     * [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/cordova)
     * [Push Notifications Overview](../../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server

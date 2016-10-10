@@ -103,7 +103,7 @@ Provide basic application values and download Starter Code.
 ![Image of application registration screen](register-applications.png)
 
 #### Managing applications
-Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/authorization-concepts/).
+Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/).
 
 ![Image of application management screen](application-management.png)
 
