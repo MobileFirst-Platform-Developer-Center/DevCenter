@@ -749,6 +749,7 @@ You can configure MobileFirst Server with multiple runtimes, creating a visual d
     > 
     > * Make sure the `dataSource` is pointing to a different database schema.
     > * Make sure you have created [another database instance](../databases) for the new runtime.
+    > * In the development environment, add `createDatabase="create"` in the `properties.derby.embedded` child-element.
 
 5. Restart the application server.
 
