@@ -74,7 +74,7 @@ Load the MobileFirst Operations Console and click on **[your application] → Se
 
 You can also map the scope element to a security check in case you're using one in your application.
 
-> [Learn more about the MobileFirst security framework](../../authentication-and-security/authorization-concepts)
+> [Learn more about the MobileFirst security framework](../../authentication-and-security/)
 
 <img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
 
