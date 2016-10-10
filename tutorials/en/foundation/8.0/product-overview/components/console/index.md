@@ -120,7 +120,7 @@ Configure the display name of the application in the console as well as the appl
 ![Image of application settings screen](application-settings.png)
 
 #### Notifications
-Set-up [push notifications](../../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+Set-up [push notifications](../../../notifications/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
 
 ![Image of push notifications setup scren](push-notifications.png)
 

@@ -71,7 +71,7 @@ To run this sample application, [see the sample's README.md](https://github.com/
 15. The web client is notified and sends an empty challenge answer.
 16. A token is returned to the web client and it can invoke the `/user` request successfully.
 
->Note: In the sample there is no mapped scope just for simplicity, while in real world it is recommended to map each security-check to a scope in the application security tab in the MobileFirst Operations Console. Scope mapping allows for better control on resource protection. [Read more about scope mapping](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/#scope).
+>Note: In the sample there is no mapped scope just for simplicity, while in real world it is recommended to map each security-check to a scope in the application security tab in the MobileFirst Operations Console. Scope mapping allows for better control on resource protection. [Read more about scope mapping](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/#scope).
 
 ## So where does the "magic" happen in the code?
 
