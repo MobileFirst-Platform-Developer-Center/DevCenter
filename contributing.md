@@ -1,16 +1,17 @@
-## Contributing to IBM MobileFirst Foundation Developer Center
-We've open sourced our tutorials and samples so that if you will find an error in a sample or the documentation, you'll have the opporunity to submit a correction using a *pull request* or by opening a *new issue*. Contributing pull requests leads better, more accurate and more helpful tutorials and samples.
+# Contributing to IBM MobileFirst Foundation Developer Center
+## Tutorials and samples
+We've open sourced our tutorials and samples so that if you will find an error in a sample or the documentation, you'll have an easy way and to submit a correction by making a *pull request* or by opening a *new issue*. Contributing pull requests leads to better, more accurate and more helpful tutorials and samples.
 
 * For sample applications, please use the specific sample's repository for opening issues and pull requests.  
 * For product documentation, please use this very repository.
 * If you have a question about a sample or about the product, start a new question on [StackOverflow](https://stackoverflow.com/questions/ask) with the **ibm-mobilefirst** tag or join our [Slack community](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/).
   
-### Pull requests  
+#### Pull requests  
 Make small pull requests. The smaller a change is, the easier it is to confirm and accept it. When submitting a pull reuqest, be descriptive - what did you change, and why did you make the change.
 
 Learn more about pull requests: [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/)
 
-### Blog posts
+## Blog posts
 If you'd like to contribute a blog post about work you've done with IBM MobileFirst Foundation, follow these steps:
 
 1. Fork the repository and clone it to your workstation.
@@ -77,7 +78,7 @@ We've decided on a standard to help keep track of the images:
 Syntax example:  
 `![my-alt-text]({{site.baseurl}}/assets/blog/your-blog-post-filename/image-filename.png)`
 
-## Videos
+### Videos
 To embed a video, use the following code snippet:
 
 ```html
