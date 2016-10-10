@@ -82,14 +82,14 @@ $color_wild_sand_approx: #f5f5f5;
 			background-color: inherit;
 			> li {
 				// affects every LI inside the nav element of the top level ("Founation" and alike)
-				padding: 0 0 0 2px;
+				padding: 0 0 0 10px;
 				a {
 					font-size: 100%;
 				}
 			}
 			> li.active { 
 				// affects every active LI inside the nav element of the top level ("Founation" and alike)
-				padding: 0 0 0 2px;
+				padding: 0 0 0 10px;
 				&:hover {
 					background-color:white;
 				}
@@ -105,9 +105,11 @@ $color_wild_sand_approx: #f5f5f5;
 					> li {
 						list-style-type: none;
 						&.active {
-							background-color: #bedfec;
+							background-color: #f5f5f5;
+							&.nochildren {
+								background-color: #89d1ef;
+							}
 							a {
-								
 								font-weight: bold;
 							}
 							font-weight: bold;
@@ -119,6 +121,12 @@ $color_wild_sand_approx: #f5f5f5;
 									line-height: 1.5em;
 									&.active {
 										background-color: #89d1ef;
+										> a {
+											font-weight: bold;
+											padding: 0 0 0 15px;
+										}
+									}
+									&.parent-active {
 										> a {
 											font-weight: bold;
 										}
@@ -135,12 +143,13 @@ $color_wild_sand_approx: #f5f5f5;
 										}
 									}
 									> ul {
-										background-color: #74caed;
+										background-color: #bedfec;
 										> li { 
 											// grand-child tutorials
-											margin-left: 5px;
+											//margin-left: 5px;
 											font-weight: bold;
 											&.active {
+												background-color: #89d1ef;
 												> a {
 													font-weight: bold;
 												}
@@ -167,7 +176,7 @@ $color_wild_sand_approx: #f5f5f5;
 							font-size: 90%;
 							text-decoration: none;
 							font-weight: normal;
-							padding:0 0 0 5px;
+							padding:0 0 0 10px;
 							&:hover {
 								text-decoration: underline;
 								color: #3c4646;
