@@ -3,6 +3,7 @@ title: Full Product Documentation for MobileFirst Foundation 8.0 now in the Deve
 date: 2016-10-05
 version:
 - 8.0
+pinned: true
 tags:
 - MobileFirst_Foundation
 - Announcement
