@@ -98,7 +98,7 @@ The migration assistance tool does not modify or move any developer code or comm
     mfpmigrate client --in source_directory --out destination_directory
     ```
     * **source_directory**  
-    The current location of the initial project.
+    The current location of the initial project. In Hybrid applications, this should point to the **common** folder of the application.
     * **destination_directory**    
     The directory where the new version 8.0 compatible Cordova structure is output.  
     <br/>
