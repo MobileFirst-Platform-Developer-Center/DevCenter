@@ -12,7 +12,7 @@ Find below answers for frequantly asked questions about problems you may encount
 
 ## Notifications
 <div class="panel panel-default">
-  <div class="panel-heading"><b>How does the Push service treats various “failed to deliver” notification situations?</b></div>
+  <div class="panel-heading"><h4>How does the Push service treats various “failed to deliver” notification situations?</h4></div>
   <div class="panel-body">
     <b>GCM</b><br/>
     <ul>
@@ -33,24 +33,14 @@ Find below answers for frequantly asked questions about problems you may encount
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>How can I determine that a notification was sent successfully?</b></div>
-  <div class="panel-body">
-    <p>A notification that was sent successfully can be determined by the following message in the server logs:
-    <blockquote>sendMessage Response:<br/> {"transaction":{"id":11,"type":"SEND_NOTIFICATION","status":"SUCCESS","project_name":{"name":"TagNotifications"},</blockquote>
-
-    <code>status</code> will show either <b>success</b> if the message was sent, or <b>failure</b> if the message was not sent.</p>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading"><b>I get errors related to "apns-environment" in Xcode</b></div>
+  <div class="panel-heading"><h4>I get errors related to "apns-environment" in Xcode</h4></div>
   <div class="panel-body">
     <p>Verify the provisioning profile used to sign the application has the Push capability enabled. This can be verified in the App ID's settings page in the Apple Developer Portal.</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>There are Java socket exceptions in the logs when dispatching an APNS notifications and the notification never reaches the device</b></div>
+  <div class="panel-heading"><h4>There are Java socket exceptions in the logs when dispatching an APNS notifications and the notification never reaches the device</h4></div>
   <div class="panel-body">
     <p>APNS requires persistent socket connections between the MobileFirst Server and the APNS service. The Push service  assumes there is an open socket and tries to send the notification out. Many times though, a customer's firewall may be configured to close unused sockets (push might not be frequently used). Such abrupt socket closures cannot be found by either end point – because normal Socket closures happen with either end point sending the signal and the other acknowledging. When the Push service dispatch is attempted over a closed socket, the logs will show socket exceptions.</p>
     
@@ -59,7 +49,7 @@ Find below answers for frequantly asked questions about problems you may encount
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>There are SOCKS-related errors when sending a push notification to iOS devices</b></div>
+  <div class="panel-heading"><h4>There are SOCKS-related errors when sending a push notification to iOS devices</h4></div>
   <div class="panel-body">
     <p>For example: <blockquote>java.net.SocketException: Malformed reply from SOCKS serverat java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java</blockquote>
     
@@ -68,7 +58,7 @@ Find below answers for frequantly asked questions about problems you may encount
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>A notification was sent, but never reached the device</b></div>
+  <div class="panel-heading"><h4>A notification was sent, but never reached the device</h4></div>
   <div class="panel-body">
     <p>Notifications can be instantaneous or may be delayed. The delay might be a few seconds to a few minutes. There are various reasons that can be accounted for:</p>
     <ul>
@@ -81,21 +71,21 @@ Find below answers for frequantly asked questions about problems you may encount
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>In iOS, some notifications arrive to the device but some don’t</b></div>
+  <div class="panel-heading"><h4>In iOS, some notifications arrive to the device but some don’t</h4></div>
   <div class="panel-body">
     <p>Apple's QoS defines what is called <b>coalescing notifications</b>. What this means is that the APNS server will only maintain 1 notification in their server if it cannot be immediately delivered to a device (identified via a token). For example, if 5 notifications are dispatched one after the other. If the device is on a shaky network, then if the first one was delivered and the second one is stored by APNS server temporarily. By then the 3rd notification has been dispatched and reaches APNS server. Now, the earlier (undelivered) 2nd notification is discarded and the 3rd (and latest one) is stored. To the end user this manifests as missing notifications.</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>In Android, notifications are available only if the app is running and in the foreground</b></div>
+  <div class="panel-heading"><h4>In Android, notifications are available only if the app is running and in the foreground</h4></div>
   <div class="panel-body">
     <p>... If the application is not running, or when the application is in the background, tapping on the notification in the notification shade does not launch the application. This may be because the  <b>app_name</b> field in the <b>strings.xml</b> file was changed to a custom name. This causes a mismatch in the application name and the intent action defined in the <b>AndroidManifest.xml</b> file.  If a different name for the application is required, the <b>app_label</b> field should be used instead, or use custom definitions in the <b>strings.xml</b> file.</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>The Push service is shown as Inactive in the MobileFirst Operations Console</b></div>
+  <div class="panel-heading"><h4>The Push service is shown as Inactive in the MobileFirst Operations Console</h4></div>
   <div class="panel-body">
     <p>The Push service is shown as Inactive despite its .war file deployed and the <code>mfp.push.authorization.server.url</code>, and <code>secret</code> are configured correctly in the <b>server.xml</b> file.</p>
     <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:
@@ -115,7 +105,7 @@ Find below answers for frequantly asked questions about problems you may encount
 
 ## Analytics
 <div class="panel panel-default">
-  <div class="panel-heading"><b>There is no data in the analytics console</b></div>
+  <div class="panel-heading"><h4>There is no data in the analytics console</h4></div>
   <div class="panel-body">
   <p>Check the following possibilities.</p>
   <ul>
@@ -152,14 +142,14 @@ wlServerContext = by default "/mfp/"
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>Why is there crash data in the Crash Overview table, but nothing in the Crash Summary table?</b></div>
+  <div class="panel-heading"><h4>Why is there crash data in the Crash Overview table, but nothing in the Crash Summary table?</h4></div>
   <div class="panel-body">
     <p>The crash logs must be sent to the server once the app is again running. Verify that your apps are sending logs after a crash. To be safe, send logs on app start-up to ensure that any previously unsent information is reported.</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>Why is there no data in the Server Usage Flow graph or the Network Request graph?</b></div>
+  <div class="panel-heading"><h4>Why is there no data in the Server Usage Flow graph or the Network Request graph?</h4></div>
   <div class="panel-body">
     <p>Configure your apps to collect analytics on the Network device event.</p>
     
@@ -197,7 +187,7 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b>Why is there no data for app sessions?</b></div>
+  <div class="panel-heading"><h4>Why is there no data for app sessions?</h4></div>
   <div class="panel-body">
     <p>Configure your apps to collect analytics using the Lifecycle device event listener.</p>
     
