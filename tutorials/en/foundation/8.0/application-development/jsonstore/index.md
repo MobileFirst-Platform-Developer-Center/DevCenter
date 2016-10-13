@@ -34,6 +34,7 @@ A single store can have many collections, and each collection can have many docu
 * [Analytics](#analytics)
 * [Working with External Data](#working-with-external-data)
 * [API Usage](#api-usage)
+* [Troubleshooting](#troubleshooting)
 
 ## General JSONStore Terminology
 ### Document
@@ -374,7 +375,7 @@ app.get('/people', function (req, res) {
 
 The data that is returned can look like the following example:
 
-```javascript
+```xml
 [{id: 0, name: 'carlos', ssn: '111-22-3333'},
  {id: 1, name: 'mike', ssn: '111-44-3333'},
  {id: 2, name: 'dgonz' ssn: '111-55-3333')]
@@ -693,3 +694,5 @@ After documents are marked as clean, they do not show up in the output from the 
 ## API Usage
 Select a platform: 
 
+## Troubleshooting
+For more information, see the [JSONStore troubleshooting](../troubleshooting/jsonstore) section.
