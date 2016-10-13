@@ -33,7 +33,7 @@ If using the [MobileFirst Foundation Development Kit](../../installation-configu
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click the **New** button next to **Applications**
-    * Select a platform: **Android, iOS, Windows, browser**
+    * Select a platform: **Android, iOS, Windows**
     * Enter **com.ibm.mfpstartercordova** as the **application identifier**
     * Enter **1.0.0** as the **version**
     * Click on **Register application**
@@ -112,23 +112,8 @@ Alternatively, click the **New** button next to **Adapters**.
 
     Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 	
-4. If you are deploying to a cordova-browser platform (browser), add the wlInitOptions to the main js file (index.js in a standard Cordova app)
-	
-    ```javascript
-    var wlInitOptions = {
-        mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
-        applicationId : 'com.sample.app' // Replace with your own value.
-    };
-    ```
-    
-5. Run the command: `cordova prepare`.
-	
-6. Run the command: `cordova run`.
-
 If a device is connected, the application will be installed and launched in the device,  
 Otherwise the Simulator or Emulator will be used.
-
-After entering the `cordova run` command, two browser windows open. 
 
 <br clear="all"/>
 ### Results
