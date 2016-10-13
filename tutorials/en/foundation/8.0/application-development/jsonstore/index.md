@@ -33,8 +33,8 @@ A single store can have many collections, and each collection can have many docu
 * [Concurrency](#concurrency)
 * [Analytics](#analytics)
 * [Working with External Data](#working-with-external-data)
-* [API Usage](#api-usage)
 * [Troubleshooting](#troubleshooting)
+* [API Usage](#api-usage)
 
 ## General JSONStore Terminology
 ### Document
@@ -691,8 +691,8 @@ The backend accepts or rejects changes, and then relays a response back to the c
 
 After documents are marked as clean, they do not show up in the output from the `getAllDirty` API.
 
+## Troubleshooting
+For more information, see the [JSONStore troubleshooting](../../troubleshooting/jsonstore) section.
+
 ## API Usage
 Select a platform: 
-
-## Troubleshooting
-For more information, see the [JSONStore troubleshooting](../troubleshooting/jsonstore) section.
