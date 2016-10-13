@@ -1,0 +1,368 @@
+---
+layout: default 
+title: Support for MobileFirst Foundation
+---
+<div class="container">
+    <h2 class="no-anchor">Support for MobileFirst Foundation</h2>
+    <p>Unless there are special instructions for a release of IBM Worklight, IBM MobileFirst Platform Foundation or IBM MobileFirst Foundation, assume that the below instructions apply to all releases.</p>
+        
+    <p>Collecting this information before calling IBM support will help IBM understand the problem and save time analyzing the data.</p>
+
+    <h3 class="no-anchor">MustGather for PMRs</h3>
+    <p>The term "MustGather" represents the diagnostic data, which includes the system information, symptoms, log files, traces, and so on, that is required to resolve a problem. By collecting MustGather data early, even before you open a PMR, you help IBM Support quickly determine the following information:</p>
+    
+    <ul>
+        <li>Whether symptoms match known problems (rediscovery)</li>
+        <li>If you have a non-defect problem that can be identified and resolved</li>
+        <li>If there is a defect that identifies a work around to reduce severity</li>
+        <li>If locating the root cause can speed development of a code fix</li>
+    </ul>
+    
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#collecting-materials" aria-controls="collecting-materials" role="tab" data-toggle="tab">Collecting the correct materials</a></li>
+        <li role="presentation"><a href="#mobilefirst-studio" aria-controls="mobilefirst-studio" role="tab" data-toggle="tab">MobileFirst Studio</a></li>
+        <li role="presentation"><a href="#application-center" aria-controls="application-center" role="tab" data-toggle="tab">Application Center and Foundation deployments</a></li>
+        <li role="presentation"><a href="#applications" aria-controls="applications" role="tab" data-toggle="tab">Applications</a></li>
+        <li role="presentation"><a href="#submitting-data" aria-controls="submitting-data" role="tab" data-toggle="tab">Submitting data</a></li>
+        <li role="presentation"><a href="#related-products" aria-controls="related-products" role="tab" data-toggle="tab">Related products</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="collecting-materials">
+            <br/>
+            <p>Problems in Worklight, Mobile Foundation or MobileFirst Platform Foundation can involve the following different parts:</p>
+            
+            <ul>
+                <li>Projects in Studio on a developer workstation</li>
+                <li>Application Center and Worklight, Mobile Foundation or MobileFirst Platform Foundation Server on an Application Server or Bluemix</li>
+                <li>Applications running on client devices</li>
+            </ul>
+
+            <p>It is important to collect the MustGather information from each part that is related to your problem. When in doubt, collect the MustGather information from all the parts.</p>
+
+            <p>If you are asked to collect additional logs while re-creating a problem, you may be asked to collect logs you have already collected again. This is to ensure that support can see the entire scope of the re-created problem across a set of matching logs.</p>
+
+            <p>The following information is some tips for collecting MustGather information that apply to any problem:</p>
+            
+            <ul>
+                <li>Describe the desired function, flows, and the error symptoms.</li>
+                <li>Describe when and what changes were made between the time when everything was working correctly and when the problem occurred.</li>
+                <li>Describe the simplest test case that reproduces the problem and provide the MustGather information for the test case.</li>
+                <li>Provide accurate and specific times for when the problem shows itself in the MustGather materials.</li>
+                <li>Describe how frequently the problem occurs and whether there are any triggering events for the problem.</li>
+                <li>Describe any temporary circumventions or repairs for the problem, such as restarting the server.</li>
+                <li>Describe the environment in which the problem occurs, including the versions of the components that are involved. Examples include client device, proxies, firewalls, Worklight server, application servers (including nodes and cells), databases, back-end servers, and so on.</li>
+            </ul>
+            <br/>
+        </div>    
+        
+        <div role="tabpanel" class="tab-pane" id="mobilefirst-studio">
+            <br/>       
+            <p>In studio, navigate as follows:</p>
+            <ul>
+                <li>On Windows: <b>Help → About Eclipse → Installation Details</b>
+                <li>On macOS: <b>Eclipse → About Eclipse → Installation Details</b>
+            </ul>
+            
+            <p>Provide the following information from the Installation Details:</p>
+            
+            <p><u>From the Installed Software tab</u>:</p>
+            
+            <ul>
+                <li>The version of Studio. You can find additional ways to find version information at <a href="http://www.ibm.com/support/docview.wss?uid=swg27036358">Finding versions in IBM Worklight</a></li>
+                <li>The version of Eclipse. You will have to expand the Eclipse IDE for Java EE Developers to see the Eclipse version.</li>
+            </ul>
+            
+            <p><u>From the Configuration tab</u>:<br/>
+                The version of the Java SDK or JRE that Studio is running under. Also include the operating system Studio is running under.</p>
+                
+            <p>In addition, provide the following:</p>
+            <ul>
+                <li>Describe any third-party libraries and versions that you are using. For example, jQuery Mobile, PhoneGap or Cordova plugins, and so on.</li>
+                <li>Collect an export of the project.</li>
+                <li>Collect the <eclipse_workspace>/.metadata/.log file.</li>
+                <li>For product releases before 6.0: Collect the files in the <b>Eclipse_workspace/WorklightServerHome/project_name/log</b> directory.</li>
+                <li>For product release 6.0 and later: Collect the files in the <b>Eclipse_workspace/WorklightServerConfig/servers/worklight/logs</b> directory.</li>
+                <li>Collect the <b>Eclipse_workspace/WorklightServerConfig/servers/worklight/jvm.options</b> file.</li>
+                <li>Collect the <b>Eclipse_workspace/WorklightServerConfig/servers/worklight/server.xml</b> file.</li>
+            </ul><br/>
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="application-center">
+            <br/>       
+            <p>Starting with iFix 20160413-1613 for 7.0.0, 20160413-1346 for 7.1.0, 8.0.0 and all later releases, the version and runtime environment for MobileFirst Platform Foundation Server is stored in the topology.log file in the same directory as the other logs. If you are running an earlier version, you need to collect the following information manually:</p>
+            
+            <ul>
+                <li>Describe the version of Worklight Server or Worklight Application Center that you are using.</li>
+                <li>You can find the version by clicking on About in the Worklight/Operations Console. </li>
+                <li>You can find additional ways to find version information at Finding versions in IBM Worklight</li>
+                <li>Describe the application server and the version that you are using including the operating system on which it is running. For example, are you using the WebSphere Application Server Liberty profile, WebSphere Application Server, Tomcat, or another server?</li>
+                <li>Describe the Java SDK and version that you are using.</li>
+                <li>Describe the database type (example: DB2), version, connector version, connection properties and the database driver version.</li>
+            </ul>
+            
+            <p>If the problem occurs during the installation of Worklight Server with IBM Installation Manager , collect:</p>
+            <ul>
+                <li><b>worklight_install_dir/failed-install.log</b></li>
+                <li><b>Installation_Manager_log_dir/worklight-install*.log</b></li>
+                <li><b>Installation_Manager_log_dir/worklight-uninstall*.log</b></li>
+            </ul>
+            
+            <p>The <b>installation_manager_log_dir</b> directory is typically in the following locations:</p>
+            <ul>
+                <li>For a system-wide Installation Manager:
+                    <ul>
+                        <li>On UNIX-based operating systems: <b>/var/ibm/InstallationManager/logs/</b></li>
+                        <li>On Microsoft Windows 7 and 8 operating systems: <b>C:\ProgramData\IBM\Installation Manager\logs\</b></li>
+                        <li>On the Microsoft Windows XP operating system: <b>C:\Documents and Settings\All Users\Application Data\IBM\Installation Manager\logs\</b></li>
+                    </ul>
+                </li>
+                <li>For a per-user Installation Manager:
+                    <ul>
+                        <li>On UNIX-based operating systems: <b>$HOME/var/ibm/InstallationManager/logs/</b></li>
+                        <li>On Microsoft Windows 7 and 8 operating systems: <b>C:\Users\USER\AppData\Roaming\IBM\Installation Manager\logs\</b></li>
+                        <li>On the Microsoft Windows XP operating system: <b>C:\Documents and Settings\USER\Application Data\IBM\Installation Manager\logs\</b></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section1">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection1" aria-expanded="true" aria-controls="collapseSection1">For WebSphere Application Server Liberty profile</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section1">
+                        <div class="panel-body">
+                        <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info :com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
+                        
+                        <blockquote><b>Note:</b> For Worklight 6.1 and earlier just use <code>*=info:com.worklight.*=all</code></blockquote>
+                            
+                        <p>For instructions on enabling and collecting trace for WebSphere Application Server Liberty profile, see the <a href="http://www.ibm.com/support/docview.wss?uid=swg21596714">Setting up trace and getting a full dump in the WebSphere Application Server V8.5 Liberty profile</a> topic.</p>
+                        
+                        <ul>
+                            <li>For <b>Application Center</b> add the following to the trace: <code>com.ibm.puremeap.*=all</code></li>
+                            <li>For <b>Analytics</b> add the following to the trace: <code>com.ibm.mobile.analytics.*=all</code></li>
+                            <li>For problems with <b>push notifications for Worklight 6.2 and later</b>, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
+                            <li>If the <b>WebSphere Application Server Liberty profile was installed by the Worklight 5.x</b> installer:
+                                <ul>
+                                    <li>For Unix-based or Linux operating systems:
+                                        <ul>
+                                            <li>Collect the files in the <b><install_dir>/server/wlp/usr/servers/worklightServer/logs</b> directory.</li>
+                                            <li>Collect the <b>install_dir/server/wlp/usr/servers/worklightServer/server.xml</b> file.</li>
+                                        </ul>
+                                    </li>
+                                    <li>For Windows, look for the value of <b>WLP_USER_DIR</b> in the <b>install_dir\server\wlp\etc\server.env</b> file:
+                                        <ul>
+                                            <li>Collect the files in the <b>WLP_USER_DIR\servers\worklightServer\logs</b> directory.</li>
+                                            <li>Collect the <b>WLP_USER_DIR\servers\worklightServer\server.xml</b> file.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>If the <b>WebSphere Application Server Liberty profile was installed by the Liberty Installer</b>:
+                                <ul>
+                                    <li>For all platforms, look for the value of <b>WLP_USER_DIR</b> in the <b>liberty_install_dir/etc/server.env</b> file.</li>
+                                    <li>If there is not a value for <b>WLP_USER_DIR</b>, assume it has the <b>liberty_install_dir/usr</b> value.
+                                        <ul>
+                                            <li>Collect the files in the <b>WLP_USER_DIR/servers/serverName/logs</b> directory. If you are running in a server farm environment, collect the logs directory for each server.</li>
+                                            <li>Collect the <b>WLP_USER_DIR/servers/serverName/server.xml</b> file.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <blockquote><b>Note:</b> You can automate the collection of files from WebSphere Application Server Liberty profile and their submission to IBM using the IBM Support Assistant Data Collector. For more information, see <a href="http://www.ibm.com/support/docview.wss?uid=swg21145599">MustGather: Read first for WebSphere Application Server</a></blockquote>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection2" aria-expanded="true" aria-controls="collapseSection2">For WebSphere Application Server</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section2">
+                        <div class="panel-body">
+                        <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info:com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
+                        
+                        <blockquote><b>Note:</b> For Worklight 6.1 and earlier just use <code>*=info:com.worklight.*=all</code></blockquote>
+                        
+                        <p>For instructions on enabling and collecting trace for WebSphere Application Server, see the <a href="http://www.ibm.com/support/docview.wss?uid=swg21254706">Setting up a trace</a> topic.</p>
+                        
+                        <ul>
+                            <li>For Application Center add the following to the trace: <code>com.ibm.puremeap.*=all</code></li>
+                            <li>For Analytics add the following to the trace: <code>com.ibm.mobile.analytics.*=all</code></li>
+                            <li>For problems with push notifications for Worklight 6.2 and later, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
+                            <li>Collect the files and directories in the <b>install_dir/profiles/server_profile/logs</b> directory. If you are running in a server farm environment, collect the logs directory for each server.</li>
+                            <li>Collect the files and directories in the <b>install_dir/profiles/server_profile/config</b> directory.</li>
+                        </ul>
+                        
+                        <blockquote><b>Note:</b> You can automate the collection of files from WebSphere Application Server and their submission to IBM using the IBM Support Assistant Data Collector. For more information, see <a href="http://www.ibm.com/support/docview.wss?uid=swg21145599">MustGather: Read first for WebSphere Application Server</a>.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section3">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection3" aria-expanded="true" aria-controls="collapseSection3">For Tomcat</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section3">
+                        <div class="panel-body">
+                        <ul>
+                            <li>Collect the files and directories in the install_dir/logs directory. If you are running in a server farm environment, collect the logs directory for each server.</li>
+                            <li>Collect the files and directories in the directory install_dir/conf directory.</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section4">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection4" aria-expanded="true" aria-controls="collapseSection4">For problems in deploying applications to the Worklight Server</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section4">
+                        <div class="panel-body">
+                        <p>If the problem occurs with the Server Configuration Tool (Worklight Server 6.1 and later), gather the following information:</p>
+                        
+                        <ul>
+                            <li>For problems with the user interface of the Server Configuration Tool, collect the following configuration tool log file:
+                                <ul>
+                                    <li>For UNIX-based operating systems: <b>$HOME/.IBM/Worklight/configuration-tool-workspace/.metadata/.log</b></li>
+                                    <li>For Microsoft Windows 7 or 8 operating systems:
+            <b>C:\Users\user-name\AppData\Roaming\IBM\Worklight\configuration-tool-workspace\.metadata\.log</b></li>
+                                </ul>
+                            </li>
+                            <li>For problems with configuration actions that fail, such as install, update, uninstall, database, and so on, collect the log files that are associated with the execution of these actions. You can determine the location of the directory for the log files using <b>File → Preferences → IBM Worklight Server Configuration Tool</b> → Directory for configuration files. The default location is:
+                                <ul>
+                                    <li>For UNIX-based operating systems: <b>$HOME/.worklight/server-configuration-tool/</b></li>
+                                    <li>For Microsoft Windows 7 or 8 operating systems: <b>C:\Users\user-name\Documents\IBM Worklight Server Data\Server Configuration Tool\</b>. Inside this directory, the log files are stored in the <b>logs/config-name/operation_timestamp_outcome.log</b> files. Collect all the files in the <b>logs/config-name</b> folder, where <b>config-name</b> is the name of the configuration file with which you are having a problem.</li>
+                                </ul>    
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="applications">
+            <br/>       
+            <p>If the client is a web browser, provide the following information:</p>
+            <ul>
+                <li>Describe the client and browser version.</li>
+                <li>Open the debugger of the browser and copy the contents of the console to a file that you include in the MustGather materials.</li>
+            </ul>
+            
+            <p>If the client is a mobile device, describe the device, including:</p>
+            <ul>
+                <li>Is it a physical device or emulator?</li>
+                <li>What is the make of the device? For example, Apple, Blackberry, Samsung, HTC or other device.</li>
+                <li>What is the model and version of the device?</li>
+                <li>What is the version of the operating system on the device?
+                    <ul>
+                        <li>On Apple iOS devices, click <b>Settings → General → About → Version</b></li>
+                        <li>On Google Android devices, click <b>Settings → About phone → Software information → Android version</b></li>
+                        <li>On BlackBerry 10 devices, click <b>Settings → About phone → OS, Also, Settings → About phone → General displays additional information</b>, such as the device model and model number</li>
+                        <li>On Windows Phone devices, click <b>Settings → About → More info</b></li>
+                    </ul>
+                </li>
+                <li>Is the device stock or has it been rooted?</li>
+                <li>Have you have tried multiple devices? Then, note the results for each device. For example, "It works on Apple iPhones that are running iOS 4 and Google Android that are phones running 3.0, but not on Android phones that are running 2.2."</li>
+            </ul>
+                
+            <p>Collect the logs from the client devices:</p>
+            <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section1">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseSection1" aria-expanded="true" aria-controls="collapseSection1">Worklight Mobile Foundation 6.2 or later</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section1">
+                        <div class="panel-body">
+                            <p>If you are using Worklight Mobile Foundation 6.2 or later, you can configure Worklight to dynamically control log entries made with the Worklight logging APIs on all client devices supported by Worklight. These log entries are created both by the Worklight platform and customer-developed applications that issue their own log entries through the Worklight logging API. You can also configure Worklight to automatically transfer the logs from client devices to the Worklight server where the log entries can be stored for later debugging. See <a href="http://www.ibm.com/support/knowledgecenter/SSZH4A_6.2.0/com.ibm.worklight.dev.doc/devref/c_client-side_log_capture.html">Client-side log capture</a> for details on how to create, control and capture Worklight client-side log entries.</p>
+                            
+                            <p>If you are not using Client-side log capture (see the previous item) or you need to capture log entries issued outside of the Worklight logging APIs, you need to manually collect the log files from the client devices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseSection2" aria-expanded="true" aria-controls="collapseSection2">Google Android</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section2">
+                        <div class="panel-body">
+                            <p>On the Google Android platform, capture the debug messages for the device by running the Android Debug Bridge (ADB) logcat command on a workstation that is attached to the device with a USB cable. ADB is included in the installation of the Android Developer Tools.</p>
+                            
+                            <p>You can run the following command that is appropriate for your workstation from an command-line that is running in the platform-tools directory where the android SDK is installed.</p>
+                            
+                            <p>Administrator/root privileges might be required to successfully run logcat.</p>
+                            <ul>
+                                <li>For Microsoft Windows operating systems: <b>adb.exe logcat -d -v time >logcat.txt</b></li>
+                                <li>For Linux operating systems: <b>./adb logcat -d -v time>logcat.txt</b></li>
+                            </ul>
+                            
+                            <p>Collect the logcat.txt file that is created as part of the MustGather materials.<br/>
+                                You can find the documentation for <a href="http://developer.android.com/tools/help/logcat.html">logcat</a> on the Android Developers site.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="section2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseSection3" aria-expanded="true" aria-controls="collapseSection3">Apple iOS</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseSection3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section3">
+                        <div class="panel-body">
+                            <p>If you are using the Apple iOS platform, you can copy the log files using Xcode Organizer. To access the Organizer, navigate to <b>Window → Organizer → Select Device in the Left Pane → Device Logs</b>. Then, copy the device log files as part of the MustGather materials.</p>
+                            
+                            <p>You can find additional information on collecting diagnostic information in the <a href="https://developer.apple.com/library/ios/qa/qa1747/_index.html">Debugging Deployed iOS Apps</a> topic within the iOS Developer Library.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="submitting-data">
+            <br/>
+            <p>To diagnose or identify a problem, it is sometimes necessary to provide Technical Support with data and information from your system. In addition, Technical Support might also need to provide you with tools or utilities to be used in problem determination. You can submit files using one of following methods to help speed problem diagnosis:</p>
+            
+            <ul>
+                <li>Service Request (SR)</li>
+                <li>FTP to the Enhanced Customer Data Repository (ECuRep)</li>
+            </ul>
+            
+            <p>For information about using each of these services, see <a href="http://www.ibm.com/software/support/exchangeinfo.html">Exchanging information with IBM Technical Support</a>.</p><br/>
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="related-products">
+            <br/>  
+            <ul>
+                <li><a href="http://www.ibm.com/support/docview.wss?uid=swg21145599">Read first for WebSphere Application Server</a></li>
+                <li><a href="http://www.ibm.com/support/docview.wss?uid=swg21396515">Data Collecting for IBM Installation Manager</a></li>
+                <li><a href="http://www.ibm.com/support/docview.wss?uid=swg21239895">Read first for WebSphere Process Server</a></li>
+                <li><a href="http://www.ibm.com/support/docview.wss?uid=swg21259452">Application Server Toolkit, Rational Application Developer, and Rational Software Architect</a></li>
+            </ul><br/>
+        </div>
+    </div>
+</div>
