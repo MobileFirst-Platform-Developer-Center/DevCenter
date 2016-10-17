@@ -2,8 +2,7 @@
 title: Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0
 date: 2016-10-17
 tags:
-- MobileFirst_Platform
-- Announcement
+- MobileFirst_Foundation
 - iOS
 version:
 - 8.0
