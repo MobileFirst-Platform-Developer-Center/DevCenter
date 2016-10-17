@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Migrating client applications
-weight: 1
+weight: 2
 show_children: true
 ---
 ## Overview
