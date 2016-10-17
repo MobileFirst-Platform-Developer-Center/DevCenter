@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation service to set up MobileFirst Server
-breadcrumb_title: Using the Mobile Foundation service
+title: Using the Mobile Foundation Bluemix service to set up MobileFirst Server
+breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

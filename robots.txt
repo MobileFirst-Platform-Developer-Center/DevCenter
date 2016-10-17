@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /404
-Disallow: /help/mustgather
 Disallow: /bluemix-services

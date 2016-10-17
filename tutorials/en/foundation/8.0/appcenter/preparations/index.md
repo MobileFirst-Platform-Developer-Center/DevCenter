@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Preparations for using the mobile client
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
