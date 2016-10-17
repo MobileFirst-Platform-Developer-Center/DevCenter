@@ -28,7 +28,7 @@ You must provide the following information:
 **Examples of scopes:**
 
 - [Protecting external resources](../protecting-external-resources) uses the scope `authorization.introspect`.
-- [Sending a Push Notification](../../notifications/sending-push-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
+- [Sending a Push Notification](../../notifications/sending-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
 - Adapters can be protected by a custom scope element, such as `accessRestricted`.
 - The scope `*` is a catch-all scope, granting access to any requested scope.
 

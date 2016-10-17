@@ -9,15 +9,19 @@ weight: 1
 This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on Bluemix by using the **Mobile Foundation** service.  
 Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
 
-The Mobile Foundation service offers two plan options:
+The Mobile Foundation service offers the following plan options:
 
 1. **Developer**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
-    
-2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information regarding billing.
+2. **Developer Pro**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+
+3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+
+4. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+
+> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
 
 #### Jump to:
 
@@ -53,9 +57,9 @@ To set up the available plans, first follow these steps:
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-### Setting up the *Professional 1 Application* plan
+### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
@@ -107,7 +111,7 @@ Through the **Settings** tab, you can further customize the server instance with
 You can add MobileFirst Foundation Operational Analytics support to your Mobile Foundation service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
 
 * When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
-* When using the **Proffessional 1 Application** plan this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
 
 Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
 
