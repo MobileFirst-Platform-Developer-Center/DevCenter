@@ -393,10 +393,13 @@ You can make use proxy settings to set the optional proxy through which notifica
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
 
-* [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
-* [Handling push notifications in iOS applications](../handling-push-notifications/ios)
-* [Handling push notifications in Android applications](../handling-push-notifications/android)
-* * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
-* [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
-* [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
-* [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
+* Handling push notifications
+    * [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
+    * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
+    * [Handling push notifications in Android applications](../handling-push-notifications/android)
+    * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
+
+* Handling SMS notifications
+    * [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
+    * [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
+    * [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
