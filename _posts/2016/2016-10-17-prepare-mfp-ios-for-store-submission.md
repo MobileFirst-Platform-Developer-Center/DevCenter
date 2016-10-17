@@ -9,7 +9,7 @@ version:
 author: 
   name: Vittal R Pai
 ---
-IBM Mobilefirst Foundation iOS Client SDK was modified to be a dynamic framework from version 8.0 on-wards. When an archive/IPA files are generated using Test Flight or iTunes Connect for store submission/validation, this might cause a runtime crash/fail with following error:
+Starting IBM MobileFirst Foundation 8.0, the iOS Client SDK for Cordova and Native applications was modified to be a dynamic framework. When an archive/IPA files are generated using Test Flight or iTunes Connect for store submission/validation, this might cause a runtime crash/fail with following error:
 
 ![validation errors]({{site.baseurl}}/assets/blog/2016-10-17-prepare-mfp-ios-for-store-submission/validation_fail.png)
 
