@@ -3,7 +3,7 @@ layout: tutorial
 title: Developing Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 6
+weight: 5
 print_pdf: true
 ---
 ## Overview

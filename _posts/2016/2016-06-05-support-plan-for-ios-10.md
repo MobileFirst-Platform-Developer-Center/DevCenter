@@ -3,6 +3,7 @@ title: Support plan for Apple's iOS 10 release
 date: 2016-06-05
 tags:
 - MobileFirst_Platform
+- Announcement
 - iOS
 version:
 - 8.0
@@ -25,7 +26,7 @@ For those customers who have iOS apps developed using IBM Worklight Foundation 6
 The recently released IBM MobileFirst Foundation 8.0 provides an opporunity to upgrade your applications to the next level:
 
 * [Read the release announcement]({{site.baseurl}}/blog/2016/06/17/ibm-releases-next-generation-of-mobilefirst-foundation-built-for-hybrid-cloud/)
-* [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/)
+* [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/)
 
 <br/>
 For IBM MobileFirst Platform Foundation Support for iOS 10, read the blog post [here]({{site.baseurl}}/blog/2016/09/16/mfp-support-for-ios10/).

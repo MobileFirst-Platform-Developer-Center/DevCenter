@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Logging in JavaScript Adapters
-relevantTo: [ios,android,window,javascript]
+relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in a JavaScript adapter.
 
 ## Logging example
-The message below outputs to the `trace.log` file of the application server. If the server administrator is forwarding logs from the MobileFirst Server to the MobileFirst Analytics server the `logger` message will also appear in the Server Log Search view in the MobileFirst Analytics Console.
+The message below outputs to the `trace.log` file of the application server. If the server administrator is forwarding logs from the MobileFirst Server to the MobileFirst Analytics server the `logger` message will also appear in the **Infrastructure → Server Log Search** view in the MobileFirst Analytics Console.
 
 ```javascript
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");

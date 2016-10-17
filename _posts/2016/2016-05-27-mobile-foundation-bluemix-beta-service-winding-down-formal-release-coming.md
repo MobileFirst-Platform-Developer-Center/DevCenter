@@ -3,6 +3,7 @@ title: Mobile Foundation Bluemix beta service winding down - formal release comi
 date: 2016-05-27
 tags:
 - MobileFirst_Platform
+- Announcement
 - Bluemix
 - Mobile_Foundation
 version:

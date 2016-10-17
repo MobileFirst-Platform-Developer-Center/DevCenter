@@ -17,11 +17,11 @@ You can change the log levels by either adding a code override manually or by in
 
 Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
 
-Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start*.sh script files provided in the V8.0.0 package (startserver.sh, startanalytics.sh, startservergroup.sh, startanalyticsgroup.sh). The following optional command-line arguments are applicable:
+Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**). The following optional command-line arguments are applicable:
 
 * `[-tr|--trace]` trace_specification
-* `[-ml|--maxlog]` maximum_number_of_log_files
-* `[-ms|--maxlogsize]` maximum_size_of_log_files
+* `[-ml|--maxlog]` maximum\_number\_of\_log\_files
+* `[-ms|--maxlogsize]` maximum\_size\_of\_log\_files
 
 ## Container log files
 Log files are generated for MobileFirst Server and Liberty Profile runtime activities for each container instance and can be found in the following locations:
@@ -44,7 +44,7 @@ The persisted log files are saved in the **/var/log/rsyslog** and **/opt/ibm/wlp
 The logs can be accessed by issuing an SSH request to the container.
 
 ## Accessing log files
-Logs are created for each container instance. You can access log files using the IBM® Container Cloud Service REST API, by using cf ic commands, or by using the Bluemix® logmet console.
+Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the Bluemix logmet console.
 
 ### IBM Container Cloud Service REST API
 For any container instance, the docker.log and /var/log/rsyslog/syslog can be viewed using the Bluemix logmet service (https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
@@ -54,7 +54,7 @@ IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running
 ### Enabling SSH
 To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
 
-If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH_ENABLE and SSH_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
+If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
 
 The container logs endpoint gets stdout logs with the given ID of the container instance.
 

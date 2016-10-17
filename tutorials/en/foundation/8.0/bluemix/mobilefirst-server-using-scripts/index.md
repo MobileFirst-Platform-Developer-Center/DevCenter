@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Server on IBM Containers using Scripts on IBM Container Service
-breadcrumb_title: Using scripts to setup MobileFirst Foundation - Containers
+title: Setting Up MobileFirst Server on IBM Bluemix using Scripts for IBM Containers
+breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -108,9 +108,8 @@ The archive file contains the files for building an image (**dependencies** and 
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
                             <li><b>mfpfproperties.xml</b> - configuration properties for MobileFirst Server and MobileFirst Analytics. See the supported properties listed in these documentation topics:
                                 <ul>
-                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list.html?view=kc">List of JNDI properties for MobileFirst Server administration service</a></li>
-                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html?view=kc">List of JNDI properties for MobileFirst runtime</a></li>
-                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.analytics.doc/analytics/c_config_properties.html">List of supported Analytics configuration properties</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
@@ -1072,8 +1071,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 
 > **Note:** Containers must be restarted after any configuration changes have been made (`cf ic restart containerId`). For container groups, you must restart each container instance within the group. For example, if a root certificate changes, each container instance must be restarted after the new certificate has been added.
 
-Launch the MobileFirst Console by loading the following URL: http://MF_CONTAINER_HOST/mfpconsole (it may take a few moments).  
-Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+Launch the MobileFirst Console by loading the following URL: http://MF\_CONTAINER\_HOST/mfpconsole (it may take a few moments).  
+Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With MobileFirst Server running on IBM Bluemix, you can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
 

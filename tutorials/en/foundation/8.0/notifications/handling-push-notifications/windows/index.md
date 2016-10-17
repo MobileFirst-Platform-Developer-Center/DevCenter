@@ -18,8 +18,8 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
-    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Platform Foundation SDK to windows applications](../../../adding-the-mfpf-sdk/windows-8-10)
+    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the MobileFirst Platform Foundation SDK to windows applications](../../../application-development/sdk/windows-8-10)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
@@ -30,7 +30,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ## Notifications Configuration
 Create a new Visual Studio project or use and existing one.  
-If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../../adding-the-mfpf-sdk/windows-8-10) tutorial.
+If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
 
 
 ### Adding the Push SDK

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation service to set up MobileFirst Server
-breadcrumb_title: Using the Mobile Foundation service
+title: Using the Mobile Foundation Bluemix service to set up MobileFirst Server
+breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
@@ -12,38 +12,44 @@ Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up 
 The Mobile Foundation service offers two plan options:
 
 1. **Developer**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
-2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+
+    > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
+    
+2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
 
 > [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information regarding billing.
 
 #### Jump to:
 
-* [Setting up the Mobile Foundation Service](#setting-up-the-mobile-foundation-service)
-* [Using the Mobile Foundation Service](#using-the-mobile-foundation-service)
+* [Setting up the Mobile Foundation service](#setting-up-the-mobile-foundation-service)
+* [Using the Mobile Foundation service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
-* [Applying MobileFirst Server Fixes ](#applying-mobilefirst-server-fixes)
+* [Adding Analytics support](#adding-analytics-support)
+* [Applying MobileFirst Server fixes](#applying-mobilefirst-server-fixes)
+* [Accessing server logs](#accessing-server-logs)
+* [Troubleshooting](#troubleshooting)
 * [Further reading](#further-reading)
 
-## Setting up the Mobile Foundation Service
+## Setting up the Mobile Foundation service
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page.
+1. Load [bluemix.net](http://bluemix.net), login, and click on the **Get started now!** button or the **Catalog** link.
+2. Search for the term **Mobile Foundation** and click on the resulting tile option.
+3. *Optional*. Enter a name for the service or use the default provided service name.
+4. Select the desired pricing plan, then click **Create**.
 
-2. From the left sidebar, tick the **Mobile** checkbox under **Services**. Then, click on the **Mobile Foundation** tile to begin the service creation process.
-
-    ![Image of Mobile Foundation setup](service-page.png)
-
-3. Select a **space** to use and optionally set a **Service name**.
-4. Select the desired plan option, then click **Create**.
+    <img class="gifplayer" alt="Creating a Mobile Foundation service instance" src="service-creation.png"/>
 
 ### Setting up the *developer* plan
 
 1. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
+    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
+    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+
+2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
@@ -53,20 +59,25 @@ To set up the available plans, first follow these steps:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
-3. Start the MobileFirst Server.
+2. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
+    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
+    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+
+3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-## Using the Mobile Foundation Service
+## Using the Mobile Foundation service
 With the MobileFirst Server now running, you are presented with the following Dashboard:
 
 ![Image of Mobile Foundation setup](service-dashboard.png)
 
-Click on **Launch Console** to open the MobileFirst Operations Console.  The use name is "admin" and the password can be revealed by clicking on the "eye" icon.
+Click on **Add Analytics** to add MobileFirst Foundation Operational Analytics support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+
+Click on **Launch Console** to open the MobileFirst Operations Console. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon. 
 
 ![Image of Mobile Foundation setup](dashboard.png)
 
@@ -78,7 +89,7 @@ The basic server instance consists of:
 * 2GB storage capacity
 
 ### Advanced server configuration
-Through the **Configuration** tab, you can further customize the server instance with:
+Through the **Settings** tab, you can further customize the server instance with:
 
 * Varying node, memory, and storage combinations
 * MobileFirst Operations Console admin password
@@ -92,13 +103,46 @@ Through the **Configuration** tab, you can further customize the server instance
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
 
-## Applying MobileFirst Server Fixes
-Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update.  
-When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+## Adding Analytics support
+You can add MobileFirst Foundation Operational Analytics support to your Mobile Foundation service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
+
+* When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
+* When using the **Proffessional 1 Application** plan this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+
+Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
+
+> Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
+
+## Applying MobileFirst Server fixes
+Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+
+## Accessing server logs
+To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.
+
+<img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
+
+## Troubleshooting
+The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
+
+* Every time you make any of the following server-side actions:
+    * Deploy an adapter or update any adapter configuration or property value
+    * Perform any security configuration such scope-mapping and alike
+    
+    Run the following from the command-line to download your configuration to a .zip file:
+
+    ```bash
+    $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
+    ```
+
+* In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
+
+    ```bash
+    $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
+    ```
 
 ## Further reading
-Now that the MobileFirst Server instance is up and running, you can learn more
+Now that the MobileFirst Server instance is up and running:
 
-* [MobileFirst Operations Console](../../setting-up-your-development-environment/console)
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start)
-* Or [read through all available tutorials](../../all-tutorials/)
+* Familiarize with the [MobileFirst Operations Console](../../product-overview/components/console).
+* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
+* Read through all [available tutorials](../../all-tutorials/).

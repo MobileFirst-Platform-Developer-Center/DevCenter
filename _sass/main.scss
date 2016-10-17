@@ -34,7 +34,8 @@ body {
 	-webkit-print-color-adjust:exact;
 }
 .logo-icon {
-	background-image:url(../assets/foundation.png);
+	background-image:url(../assets/foundation.svg);
+	background-size: 25px;
 	background-repeat: no-repeat;
 	background-position: 4px 7px;
 }
@@ -118,8 +119,20 @@ hr {
 		//Instead of the line below you could use @include columns($width-and-count)
 		columns: 2 200px;
 	}
+	#announcements {
+		display: none;
+	}	
 	.blogPostsHeading {
 		margin-top: 20px;
+		font-weight: bold;
+		font-size: 24px;
+		color: black;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	.blogPostsHeadingInactive {
+		font-weight: 300;
+		text-decoration: none;
 	}
 }
 .postDate {

@@ -3,6 +3,7 @@ title: MobileFirst Platform Quality Assurance 7.0 is now available!
 date: 2016-06-03
 tags:
 - MobileFirst_Platform
+- Announcement
 - MQA
 - Quality_Assurance
 author:

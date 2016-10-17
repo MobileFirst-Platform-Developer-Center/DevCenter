@@ -13,11 +13,16 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 
 > **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
+For information about Silent or Interactive notifications in iOS, see:
+
+* [Silent notifications](../silent)
+* [Interactive notifications](../interactive)
+
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/cordova)
+    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the MobileFirst Foundation SDK to Cordova applications](../../../application-development/sdk/cordova)
     * [Push Notifications Overview](../../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst CLI installed on the developer workstation
@@ -32,7 +37,7 @@ Before iOS, Android and Windows Cordova applications are able to receive and dis
 ## Notifications Configuration
 Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
 
-> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova) tutorial.
+> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 

@@ -10,7 +10,7 @@ When you are unable to resolve a problem encountered while working with IBM Mobi
 
 To help expedite the troubleshooting process, gather the following information:
 
-* The version of IBM MobileFirst Platform Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
+* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
 * The container size selected. For example, Medium 2GB.
 * The Bluemix® dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
 * The container ID
@@ -113,7 +113,7 @@ The following error occurs when running the **prepareserver.sh** script to push 
 This error typically occurs if the Docker variables have been modified on the host environment. After executing the initenv.sh script, the tooling provides an option to override the local docker environment to connect to IBM Containers using native docker commands.
 
 **How to resolve**  
-Do not modify the Docker variables (such as DOCKER_HOST and DOCKER_CERT_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
+Do not modify the Docker variables (such as DOCKER\_HOST and DOCKER\_CERT\_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
 
 
 
