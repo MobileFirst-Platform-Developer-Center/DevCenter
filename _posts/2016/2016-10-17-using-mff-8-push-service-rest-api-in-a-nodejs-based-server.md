@@ -7,11 +7,13 @@ tags:
 - MobileFirst_Foundation
 - Push_Notifications
 - Nodejs
+- Bluemix
+- Mobile_Foundation
 author:
   name: Thomas Südbröcker
 ---
 ## Overview
-It is nice and easy to send simple push notifications in MobileFirst Foundation 8.0 (from the MobileFirst Operations Console or via REST API), but how do you send push notifications which provide more complex data such as when temperature is low, when you're driving too fast and so on.
+It is nice and easy to send simple push notifications in MobileFirst Foundation 8.0 (from the MobileFirst Operations Console or via REST API), but how do you send push notifications which provides more complex data such as when temperature is low, when you're driving too fast and so on. 
 
 To that end, I've implemented a mobile application that integrates several Bluemix services related to IoT, Watson services and so on.
 
