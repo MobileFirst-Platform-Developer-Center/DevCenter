@@ -7,10 +7,9 @@ weight: 7
 ## Overview
 Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. The MobileFirst Server gives you the ability to control  which logs should be collected remotely. This gives the server administrator more fine tuned control over the server resources.
 
-### Logging levels
 Logging libraries typically have verbosity controls that are frequently called **levels**. From least to most verbose: ERROR, WARN, INFO, and DEBUG. 
 
-### Log Collection in Adapters
+## Log Collection in Adapters
 Logs in adapters can be viewed in the underlying application server logging mechanism.  
 In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level. 
 
