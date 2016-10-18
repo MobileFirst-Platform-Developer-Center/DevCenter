@@ -52,9 +52,9 @@ Create a new Ionic 2 project with a blank template by entering the command below
 ionic start myApp blank --v2
 ```
 
-> Once Ionic 2 is out of beta you won't need to include the `--v2` flag.
+> Once Ionic 2 is out of beta you won't need to include the `--v2` flag in the command.
 
-Change directory into the new app’s directory and add android platform if needed. (iOS platform 4.1.1 is added by default)
+Change directory into the new app’s directory and add android platform if needed (iOS platform 4.1.1 is added by default).
 
 ```bash
 ionic platform add android@latest
@@ -168,7 +168,7 @@ In the **Security** tab of your registered **app** in the MobileFirst Operations
 Enter **accessRestricted** in the scope element and select **UserLogin** in the Custom Security Checks section.
 
 ### Call your resource adapter
-Open the home.ts file and add the following code under the import section but before the @Component line:
+Open the **home.ts** file and add the following code under the import section but before the `@Component` line:
 
 ``` javascript
 declare var WLResourceRequest;
@@ -179,7 +179,8 @@ Next, add a `balance` variable above the constructor function. This variable wil
 ``` javascript
 balance;
 ```
-Finally, add the `getBalance()` function that will make the adapter call.
+
+Finally, add a `getBalance()` function that will make the adapter call.
 
 ```javascript
 getBalance(){
@@ -196,19 +197,18 @@ getBalance(){
 ```
 
 ### Update the view
-Add the following code in your **home.html** in the `<ion-content padding>` elements:
+Add the following code in your **home.html** in the `<ion-content padding>` elements:  
 
 ```html
-<h2>My balance is : {{ balance }}</h2>
+<h2>My balance is : {% raw %}{{ balance }}{% endraw %}</h2>
 <p><button ion-button (click)="getBalance()">Get Balance</button></p>
 ```
 
-The **click** action calls the getBalance function.
-
-To display the value of a variable in your view, you surround it with double curly brackets: 
+* The **click** action calls the `getBalance` function.  
+* To display the value of a variable in your view, you surround it with double curly brackets: 
 
 ```xml
-{ { balance } }
+{% raw %}{{ balance }}{% endraw %}
 ```
 
 ### Add the Challenge Handler
