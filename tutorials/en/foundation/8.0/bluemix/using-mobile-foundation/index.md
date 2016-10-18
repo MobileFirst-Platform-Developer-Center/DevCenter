@@ -127,6 +127,8 @@ To access server logs, open the sidebar navigation and click on **Cloud Foundary
 * You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
 
 #### Tracing
+
+> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time.
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
 1. In **Runtime tab → Memory and Instances**, select your service instance.
