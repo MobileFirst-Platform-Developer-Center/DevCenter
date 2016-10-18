@@ -128,7 +128,8 @@ To access server logs, open the sidebar navigation and click on **Cloud Foundary
 
 #### Tracing
 
-> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time.
+> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time and view the logs in the **messages.log** file.
+
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
 1. In **Runtime tab → Memory and Instances**, select your service instance.
