@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation Bluemix service to set up MobileFirst Server
+title: Using the Mobile Foundation Bluemix service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -121,9 +121,18 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.
+To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.  
+You can find the **messages.log** file under **Runtime tab → Files** section, and then from the sidebar in the **logs** folder.
 
 <img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
+
+<!-- ## Tracing
+To enable tracing in order to see DEBUG-level messages in the **trace.log** file:
+
+1. In **Runtime tab → Memory and Instances**, click the **Trace** option.
+2. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+
+<img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/> -->
 
 ## Troubleshooting
 The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
