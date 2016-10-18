@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation Bluemix service to set up MobileFirst Server
+title: Using the Mobile Foundation Bluemix service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -121,7 +121,22 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.
+To access server logs, open the sidebar navigation and click on **Cloud Foundary Applications**. Select your service and click on **Runtime tab → Files**.
+
+* You can find the **messages.log** file in the **logs** folder.
+* You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
+
+#### Tracing
+
+> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time and view the logs in the **messages.log** file.
+
+To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+
+1. In **Runtime tab → Memory and Instances**, select your service instance.
+2. Click the **Trace** action option.
+3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+
+The **trace.log** file is now available in the above specified location.
 
 <img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
 
