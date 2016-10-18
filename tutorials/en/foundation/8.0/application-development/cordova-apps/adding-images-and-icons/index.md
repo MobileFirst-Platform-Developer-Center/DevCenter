@@ -19,7 +19,7 @@ You must create a new folder to hold the splash images and icons, and modify the
 If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the MobileFirst template.
 
 #### Splash screens
-If you did *not* use the MobileFirst template when you created your app, the splash images that are displayed are those that are retrieved from the MobileFirst images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (**src**) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+If you did *not* use the MobileFirst template when you created your app, the splash images that are displayed are those that are retrieved from the MobileFirst images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />

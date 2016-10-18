@@ -197,7 +197,7 @@ mfpdev adapter deploy
 
 ![adapters deployed to the server and appear in the console]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/adapters-in-console.png)
 
-> Learn more [about Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/adapters-overview/)
+> Learn more [about Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/)
 
 ### Security
 The URL that gets the balance in the ResourceAdapter is protected by a scope named “accessRestricted”.
@@ -231,7 +231,7 @@ Add the following code to your **mainCtrl controller** to call make the adapter 
 
 We have defined the **balance** variable that will hold the value we get back from the adapter call. We have also defined the **getAdapter** variable which is the function where we actually call the adapter and get the balance.
 
-> Learn more about the [MobileFirst security framework]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/)
+> Learn more about the [MobileFirst security framework]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/)
 
 ### Updating the view
 Add the following code in your **index.html** in the `<ion-content>` elements:

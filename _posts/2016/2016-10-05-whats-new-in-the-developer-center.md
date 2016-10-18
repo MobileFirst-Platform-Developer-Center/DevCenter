@@ -3,6 +3,7 @@ title: Full Product Documentation for MobileFirst Foundation 8.0 now in the Deve
 date: 2016-10-05
 version:
 - 8.0
+pinned: true
 tags:
 - MobileFirst_Foundation
 - Announcement
@@ -12,6 +13,7 @@ author:
 Hi all!  
 We'd like to let you all know of recent changes we've made to the Developer Center.
 
+## Product documentation
 The biggest change is that all product documentation for MobileFirst Foundation 8.0 is now [right here in the Developer Center]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials) (sans API reference, but it's coming. Promise).
 
 No more switching between the IBM Knowlege Center and Developer Center - you now have a single source for all documenation, tutorials, labs, blogs and videos.  
@@ -19,6 +21,15 @@ We hope you will enjoy the website's cleaner and friendlier content presentation
 
 Let us know in the comments section below if you have any questions, comments, or feedback.
 
+## Contribution
+Would you like to contribute a blog post? Did you find an error in the site or documentation?  
+See our [contribution guidelines](https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md) to find out how to participate!
+
+## Discussion
+Remember our Slack community? The place to chat and discuss various topics related to MobileFirst Foundation.  
+[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/)!
+
+## More changes
 Additionaly, we've recently added the following:
 
 * The Live Update feature now sports [an SDK for Cordova applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/live-update/) as well.

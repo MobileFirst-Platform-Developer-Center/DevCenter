@@ -23,7 +23,7 @@ For those customers who have Android apps developed using IBM Worklight Foundati
 The recently released IBM MobileFirst Foundation 8.0 provides an opporunity to upgrade your applications to the next level:
 
 * [Read the release announcement]({{site.baseurl}}/blog/2016/06/17/ibm-releases-next-generation-of-mobilefirst-foundation-built-for-hybrid-cloud/)
-* [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/)
+* [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/)
 
 
 For compatibility results between Android N and MobileFirst Platform releases, see the blog post: [Compatibility tests for Android N with supported MobileFirst Platform Foundation releases]({{site.baseurl}}/blog/2016/04/05/mobilefirst-platform-compatibility-for-android-n/).

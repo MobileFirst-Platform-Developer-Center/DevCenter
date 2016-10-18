@@ -2,7 +2,7 @@
 layout: tutorial
 title: Migrating push notifications from event source-based notifications
 breadcrumb_title: Migrating push notifications 
-weight: 3
+weight: 4
 ---
 ## Overview
 From IBM MobileFirst Foundation v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of MobileFirst to be moved to v8.0, they must be migrated to the new push service model.

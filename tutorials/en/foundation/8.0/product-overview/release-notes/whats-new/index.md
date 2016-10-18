@@ -28,7 +28,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
 
                 <ul>
                     <li>For more information about the new development process, see <a href="../../../application-development/">Development concepts and overview</a></li>
-                    <li>For more information about the migration of existing applications, see <a href="../../../migration-cookbook">the Migrating Cookbook</a>.</li>
+                    <li>For more information about the migration of existing applications, see <a href="../../../upgrading/migration-cookbook">the Migrating Cookbook</a>.</li>
                     <li>For more information about administering MobileFirst applications, see Administering MobileFirst applications.</li>
                 </ul>
 

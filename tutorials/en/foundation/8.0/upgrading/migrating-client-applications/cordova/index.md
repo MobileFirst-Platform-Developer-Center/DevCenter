@@ -71,7 +71,7 @@ The following information is important to know before you use the migration assi
 * You must have an existing IBM MobileFirst Platform Foundation hybrid application or a Cordova application that you created with the `mfp cordova create` command.
 * You must have internet access.
 * You must have node.js version 4.0.0 or later installed.
-* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the * Cordova CLI for your target platforms. For more information, see [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova website.
+* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms. For more information, see [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova website.
 * Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
 
 Cross-platform apps that were created with earlier versions of IBM MobileFirst Platform Foundation commands or the Cordova with IBM MobileFirst Platform Foundation commands are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process with the following functions:
@@ -84,7 +84,7 @@ The migration assistance tool does not modify or move any developer code or comm
 1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
     * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
-    * Download the tool by using the instructions that are provided
+    * Download the tool by using the instructions that are provided.
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the .tgz file.
     * Use NPM to install the tool by entering the following command:
@@ -95,12 +95,17 @@ The migration assistance tool does not modify or move any developer code or comm
 3. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
 
     ```bash
-    mfpmigrate client --in source_directory --out destination_directory
+    mfpmigrate client --in source_directory --out destination_directory --projectName new_project_directory
     ```
     * **source_directory**  
-    The current location of the initial project.
+    The current location of the project that you are migrating.
     * **destination_directory**    
-    The directory where the new version 8.0 compatible Cordova structure is output.  
+    The current location of the initial project. In Hybrid applications, this should point to the **common** folder of the application.
+    * **destination_directory**    
+    The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new_project_directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
+    * **new_project_directory**
+    The optional name of the folder where the new content of your project is located.
+	This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `*app_name*-*app_id*-*version*`.	
     <br/>
     When it is used with the client command, the migration assistance tool completes the following actions:  
         * Identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0.
@@ -139,7 +144,7 @@ The migration assistance tool does not modify or move any developer code or comm
         The current location of the files to scan. In an IBM MobileFirst Platform Foundation hybrid app, this location is the **common** directory of your app. In an IBM MobileFirst Foundation version 8.0 Cordova cross-platform app, this location is the **www** directory.
         * **destination_directory**  
         The directory where your scan results are output.
-        * **scan_type**  
+		* **scan_type**  
         The type of project to scan.
     * Address any remaining API issues that are identified in the **api-report.html** file.
 7. Repeat step 6 to run the scan tool on the new Cordova app until all of the issues are resolved.

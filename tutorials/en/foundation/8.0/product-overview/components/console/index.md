@@ -103,7 +103,7 @@ Provide basic application values and download Starter Code.
 ![Image of application registration screen](register-applications.png)
 
 #### Managing applications
-Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/authorization-concepts/).
+Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/).
 
 ![Image of application management screen](application-management.png)
 
@@ -120,7 +120,7 @@ Configure the display name of the application in the console as well as the appl
 ![Image of application settings screen](application-settings.png)
 
 #### Notifications
-Set-up [push notifications](../../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+Set-up [push notifications](../../../notifications/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
 
 ![Image of push notifications setup scren](push-notifications.png)
 

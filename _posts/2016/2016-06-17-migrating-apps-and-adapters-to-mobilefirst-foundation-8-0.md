@@ -33,4 +33,4 @@ There is also a fair amount of API changes, so in addition to the cookbook to th
 * Scan your projects and provide you with an API report detailing potentials actions you should take.
 * For Hybrid apps the tool will also generate a Cordova project with all the metadata of the existing app, install the SDK for you and so on
 
-You can read more about the Migration Assistance tool and find the migration steps you need to take, in the [Migration Cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook).
+You can read more about the Migration Assistance tool and find the migration steps you need to take, in the [Migration Cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook).

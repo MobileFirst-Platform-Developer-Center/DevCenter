@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Administrating applications through the Command-line
+title: Administrating applications through Terminal
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 ## Overview

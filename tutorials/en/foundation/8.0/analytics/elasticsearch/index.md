@@ -3,7 +3,7 @@ layout: tutorial
 title: Elasticsearch
 breadcrumb_title: Elasticsearch
 relevantTo: [ios,android,javascript]
-weight: 7
+weight: 3
 ---
 
 ## Overview
@@ -19,15 +19,13 @@ MobileFirst Operational Analytics exposes all Elasticsearch functionality. The u
 
 For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-
 ## Managing Elasticsearch on the MobileFirst Analytics Server
 
 Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch).
+> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [MobileFirst Analytics Server Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
 
-
-## Elasticsearch properties
+### Elasticsearch properties
 Elasticsearch properties are available through JNDI variables or environment entries.  
 One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
 
@@ -39,31 +37,29 @@ One of the more useful JNDI properties to get started with viewing the Elasticse
 
 > **Note**: This setting is not secure and should not be enabled on a production environment.
 
-### Elasticsearch REST API
+## Elasticsearch REST API
 Being able to access an Elasticsearch instance provides the ability to run custom queries, and view more detailed information about the Elasticsearch cluster.
 
-**Search and view data**
-
+**Search and view data**  
 You can view all your data by visiting the tenant's `_search` REST endpoint.  
-
 
 ```
 http://localhost:9500/*/_search
 ```
 
-**View cluster health**
+**View cluster health**  
 
 ```
 http://localhost:9500/_cluster/health
 ```
 
-**View information on current nodes**
+**View information on current nodes**  
 
 ```
 http://localhost:9500/_nodes
 ```
 
-**View the current mappings**
+**View the current mappings**  
 
 ```
 http://localhost:9500/*/_mapping

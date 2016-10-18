@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Server on IBM Containers using Scripts on IBM Container Service
-breadcrumb_title: Using scripts to setup MobileFirst Foundation - Containers
+title: Setting Up MobileFirst Server on IBM Bluemix using Scripts for IBM Containers
+breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
