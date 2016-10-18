@@ -2,6 +2,7 @@
 layout: tutorial
 title: Distributing mobile applications with IBM Application Center
 relevantTo: [ios,android,windows8,cordova]
+show_in_nav: false
 weight: 7
 ---
 ## Overview

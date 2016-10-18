@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Creating Custom Charts
-breadcrumb_title: Custom charts
+breadcrumb_title: Custom Charts
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,javascript]
@@ -20,7 +20,7 @@ Available custom chart types: App Session, Network Transactions, Push Notificati
 * [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
 
 ## Creating a custom chart
-The custom charts creation builder takes you through four main stages:
+From the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
 
 ### 1. General settings
 Click the **Create Chart** button in the **Custom Charts** tab.  
@@ -140,7 +140,7 @@ You can download the data that is shown for any custom chart.
 * **Edit Chart** - looks like a pencil
 * **Delete Chart** - looks like a trashcan
 
-Click the **Dowload** Chart icon to download a file in JSON format from the MobileFirst Analytics Console.  
+Click the **Download Chart** icon to download a file in JSON format from the MobileFirst Analytics Console.  
 Click the **Export with URL** icon to generate an export link from the MobileFirst Analytics Console to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
 
 ## Exporting and importing custom chart definitions

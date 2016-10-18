@@ -13,6 +13,11 @@ Develop your applications by following the tutorials bellow: set-up your develop
 <div id="container">
     <div class="row">
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
+            <form style="margin: 0 0 10px 15px" role="search" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+                </div>
+            </form>
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
@@ -198,7 +203,6 @@ Develop your applications by following the tutorials bellow: set-up your develop
             	<li><a href="../application-development/jsonstore/ios/">JSONStore in iOS applications</a></li>
             	<li><a href="../application-development/jsonstore/android/">JSONStore in Android applications</a></li>
                 <li><a href="../application-development/jsonstore/security-utilities/">Security utilities</a></li>
-                <li><a href="../application-development/jsonstore/troubleshooting/">Troubleshooting</a></li>
                 <li><a href="../application-development/jsonstore/code-examples/">Code examples</a></li>
             </ul>
         </li>
@@ -304,7 +308,6 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
         <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
         <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
-        <li><a href="../authentication-and-security/datapower-as-authorization-server/">Configuring IBM WebSphere DataPower as the OAuth authorization server</a></li>
         <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the MobileFirst Server Keystore</a></li>
     </ul>
 
@@ -316,12 +319,31 @@ Develop your applications by following the tutorials bellow: set-up your develop
     <ul>
         <li><a href="../notifications/">Notifications Overview</a></li>
         <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications/cordova/">Handling Push Notifications in Cordova applications</a></li>
-        <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a></li>
-        <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
-        <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
-        <li><a href="../notifications/handling-sms-notifications-in-cordova/">Handling SMS Notifications in Cordova applications</a></li>
-        <li><a href="../notifications/handling-sms-notifications-in-android/">Handling SMS Notifications in Android applications</a></li>
+        <li><a href="../notifications/handling-push-notifications/">Handling push notifications</a>
+            <ul>
+                <li><a href="../notifications/handling-push-notifications/cordova/">Handling Push Notifications in Cordova applications</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/handling-sms-notifications/">Handling SMS notifications</a>
+            <ul>
+                <li><a href="../notifications/handling-sms-notifications/cordova/">Handling SMS Notifications in Cordova applications</a></li>
+                <li><a href="../notifications/handling-sms-notifications/android/">Handling SMS Notifications in Android applications</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">Handling SMS Notifications in iOS applications</a></li>
+            </ul>
+        </li>
     </ul>
     
     <h3><a href="../analytics">Operational Analytics</a></h3>
@@ -335,7 +357,6 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
         <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
-        <li><a href="../analytics/troubleshooting/">Troubleshooting</a></li>
     </ul>
     
     <h3><a href="../bluemix">Foundation on Bluemix</a></h3>
@@ -372,4 +393,13 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../appcenter/logging-and-tracing">Setting logging and tracing for Application Center on the application server</a></li>
         <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
     </ul>
+    
+    <h3><a href="../troubleshooting/">Troubleshooting common problems</a></h3>
+    Frequantly asked questions and answers.
+    
+    <ul>
+        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+    </ul>
+    <br/>
 </div>

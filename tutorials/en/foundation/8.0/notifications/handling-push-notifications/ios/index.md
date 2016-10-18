@@ -7,16 +7,20 @@ weight: 5
 downloads:
   - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
-
 ---
 ## Overview
 MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
+
+For information about Silent or Interactive notifications, see:
+
+* [Silent notifications](../silent)
+* [Interactive notifications](../interactive)
 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
-    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment)
+    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
     * [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation

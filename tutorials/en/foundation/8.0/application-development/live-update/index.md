@@ -74,7 +74,7 @@ Load the MobileFirst Operations Console and click on **[your application] → Se
 
 You can also map the scope element to a security check in case you're using one in your application.
 
-> [Learn more about the MobileFirst security framework](../../authentication-and-security/authorization-concepts)
+> [Learn more about the MobileFirst security framework](../../authentication-and-security/)
 
 <img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
 
@@ -194,10 +194,10 @@ The Live Update SDK provides developers with API to query runtime configuration 
 * [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
 
 ### Adding the Cordova plugin
+In your Cordova application folder run:
 
-1. in your Cordova application folder run:
-```
-cordova plugin add cordova-plugin-mfp-liveupdate.
+```bash
+cordova plugin add cordova-plugin-mfp-liveupdate
 ```
 
 ### Adding the iOS SDK
@@ -236,8 +236,7 @@ cordova plugin add cordova-plugin-mfp-liveupdate.
         transitive: true
     }   
     ```
-
-
+    
 ## Using the Live Update SDK
 There are several approaches to using the Live Update SDK.
 
@@ -262,8 +261,6 @@ Replace "segment-name", "property-name" and "feature-name" with your own.
         }
   });
 ```
-
-
 
 #### iOS
 
@@ -327,8 +324,6 @@ LiveUpdateManager.obtainConfiguration(input,function(configuration) {
   });
 ```
 
-
-
 #### iOS
 
 ```swift
@@ -388,7 +383,6 @@ public class SampleSegmentResolverAdapter {
 
     private static final Gson gson = new Gson();
     private static final Logger logger = Logger.getLogger(SampleSegmentResolverAdapter.class.getName());
-
 
     @POST
     @Path("segment")
@@ -537,7 +531,6 @@ controlling client side cache by using an optional _useClientCache_ boolean flag
   });
 ```
 
-
 #### iOS
 ```swift
 LiveUpdateManager.sharedInstance.obtainConfiguration("segment-name", useCache: false, completionHandler: { (configuration, error) in
@@ -551,6 +544,7 @@ LiveUpdateManager.sharedInstance.obtainConfiguration("segment-name", useCache: f
 ```
 
 #### Android
+
 ```java
 LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new ConfigurationListener() {
 

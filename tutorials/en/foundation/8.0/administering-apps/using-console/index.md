@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administrating applications through the MobileFirst Operations Console
-breadcrumb_title: Administrating applications through the console
+breadcrumb_title: Administrating using the console
 weight: 2
 ---
 ## Overview

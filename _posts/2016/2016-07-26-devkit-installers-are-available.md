@@ -3,6 +3,7 @@ title: IBM MobileFirst Foundation v8.0 Developer Kit Installers available for do
 date: 2016-07-26
 tags:
 - MobileFirst_Foundation
+- Announcement
 version:
 - 8.0
 author:

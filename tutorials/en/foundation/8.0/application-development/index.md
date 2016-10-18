@@ -95,7 +95,7 @@ MobileFirst Server is the core component that delivers many IBM MobileFirst Foun
 
 You need to use MobileFirst Server throughout your app's lifecycle from development and test through to production deployment and maintenance.  
 
-> A preconfigured server is available for you to use when you develop your app. For information about the MobileFirst Development Server to use when you develop your app, see [Setting up the MobileFirst Development Environment](../setting-up-your-development-environment).
+> A preconfigured server is available for you to use when you develop your app. For information about the MobileFirst Development Server to use when you develop your app, see [Setting up the MobileFirst Development Environment](../installation-configuration/development).
 
 MobileFirst Server consists of the following components. All of these components are also included in the MobileFirst Development Server. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these MobileFirst Server components, see [Topologies and network flows](../installation-configuration/production/topologies).
 

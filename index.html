@@ -1,7 +1,7 @@
----
-layout: default
-indexed: false
 --- 
+layout: default 
+indexed: false
+---
 <div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -9,7 +9,7 @@ indexed: false
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner" role="listbox">  
         <div class="item active">
             <div class="container">
                 <div class="row">
@@ -19,7 +19,7 @@ indexed: false
                         <p><a class="custombtn btn-lg btn-default stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank" role="button">Find answers on Stack Overflow</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="mobilefirst console"/>
+                        <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="mobilefirst console" />
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ indexed: false
                         <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience MobileFirst Foundation on IBM Bluemix</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix"/>
+                        <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix" />
                     </div>
                 </div>
             </div>
@@ -42,10 +42,10 @@ indexed: false
                 <div class="row">
                     <div class="col-md-7 carousel-caption">
                         <h1 class="no-anchor">Learn developing MobileFirst Foundation apps with self-paced instructional videos</h1>
-                        <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/" role="button">Visit the Labs</a></p>
+                        <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/developers/8.0/intro" role="button">Visit the Labs</a></p>
                     </div>
                     <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="mobile development"/>
+                        <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="mobile development" />
                     </div>
                 </div>
             </div>
@@ -90,14 +90,23 @@ indexed: false
 <hr>
 
 <div id="blogPosts" class="container">
-      <h3 class="blogPostsHeading no-anchor">Recent Updates</h3>
-      <div class="twoColumns">
-        {% for post in site.posts limit:10 %}
+    <span id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive">Announcements</span>
+    <div id="allPosts" class="twoColumns">
+    {% for post in site.posts limit:10 %} 
         <div class="postItem inline">
-          <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
-          <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+            <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
         </div>
-        {% endfor %}
-      </div>
-      <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong>
+    {% endfor %}
+    </div>
+    <div id="announcements" class="twoColumns">
+    {% assign announcementPosts = site.posts | where_exp:"item", "item.tags contains 'Announcement'" %}
+    {% for post in announcementPosts limit:10 %}
+        <div class="postItem inline">
+            <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+        </div>
+    {% endfor %}
+    </div>
+    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> | <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
 </div>

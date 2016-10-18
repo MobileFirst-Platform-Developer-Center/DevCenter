@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server configuration guide
-breadcrumb_title: Configuration guide
+title: MobileFirst Analytics Server Configuration Guide
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
-## Overview 
+## Overview
 Some configuration for the MobileFirst Analytics Server is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
 
 #### Jump to
@@ -70,7 +70,7 @@ The JNDI properties on WebSphere Application Server are available as environment
 #### MobileFirst Server
 The following table shows the properties that can be set in the MobileFirst Server.
 
-| Property                           | Description                                           | Default Value | 
+| Property                           | Description                                           | Default Value |
 |------------------------------------|-------------------------------------------------------|---------------|
 | mfp.analytics.console.url          | Set this property to the URL of your MobileFirst Analytics Console. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the MobileFirst Operations Console. | None |
 | mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the MobileFirst Server are captured in MobileFirst Analytics. | true |
@@ -82,24 +82,24 @@ The following table shows the properties that can be set in the MobileFirst Serv
 #### MobileFirst Analytics Server
 The following table shows the properties that can be set in the MobileFirst Analytics Server.
 
-| Property                           | Description                                           | Default Value | 
+| Property                           | Description                                           | Default Value |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Defines the Elasticsearch node type. Valid values are master and data. If this property is not set, then the node acts as both a master-eligible node and a data node. | 	None | 
-| analytics/shards | The number of shards per index. This value can be set only by the first node that is started in the cluster and cannot be changed. | 1 | 
-| analytics/replicas_per_shard | The number of replicas for each shard in the cluster. This value can be changed dynamically in a running cluster. | 0 | 
-| analytics/masternodes | A comma-delimited string that contains the host name and ports of the master-eligible nodes. | None | 
-| analytics/clustername | Name of the cluster. Set this value if you plan to have multiple clusters that operate in the same subset and need to uniquely identify them. | worklight | 
+| analytics/nodetype | Defines the Elasticsearch node type. Valid values are master and data. If this property is not set, then the node acts as both a master-eligible node and a data node. | 	None |
+| analytics/shards | The number of shards per index. This value can be set only by the first node that is started in the cluster and cannot be changed. | 1 |
+| analytics/replicas_per_shard | The number of replicas for each shard in the cluster. This value can be changed dynamically in a running cluster. | 0 |
+| analytics/masternodes | A comma-delimited string that contains the host name and ports of the master-eligible nodes. | None |
+| analytics/clustername | Name of the cluster. Set this value if you plan to have multiple clusters that operate in the same subset and need to uniquely identify them. | worklight |
 | analytics/nodename | Name of a node in the cluster. | A randomly generated string
-| analytics/datapath | The path that analytics data is saved to on the file system. | ./analyticsData | 
-| analytics/settingspath | The path to an Elasticsearch settings file. For more information, see Elasticsearch. | None | 
-| analytics/transportport | The port that is used for node-to-node communication. | 9600 | 
-| analytics/httpport | The port that is used for HTTP communication to Elasticsearch. | 9500 | 
-| analytics/http.enabled | Enables or disables HTTP communication to Elasticsearch. | false | 
-| analytics/serviceProxyURL | The analytics UI WAR file and analytics service WAR file can be installed to separate application servers. If you choose to do so, you must understand that the JavaScript run time in the UI WAR file can be blocked by cross-site scripting prevention in the browser. To bypass this block, the UI WAR file includes Java proxy code so that the JavaScript run time retrieves REST API responses from the origin server. But the proxy is configured to forward REST API requests to the analytics service WAR file. Configure this property if you installed your WAR files to separate application servers. | None | 
-| analytics/bootstrap.mlockall | This property prevents any Elasticsearch memory from being swapped to disk. | true | 
-| analytics/multicast | Enables or disables multicast node discovery. | false | 
-| analytics/warmupFrequencyInSeconds | The frequency at which warmup queries are run. Warmup queries run in the background to force query results into memory, which improves web console performance. Negative values disable the warmup queries. | 600 | 
-| analytics/tenant | Name of the main Elasticsearch index.	worklight | 
+| analytics/datapath | The path that analytics data is saved to on the file system. | ./analyticsData |
+| analytics/settingspath | The path to an Elasticsearch settings file. For more information, see Elasticsearch. | None |
+| analytics/transportport | The port that is used for node-to-node communication. | 9600 |
+| analytics/httpport | The port that is used for HTTP communication to Elasticsearch. | 9500 |
+| analytics/http.enabled | Enables or disables HTTP communication to Elasticsearch. | false |
+| analytics/serviceProxyURL | The analytics UI WAR file and analytics service WAR file can be installed to separate application servers. If you choose to do so, you must understand that the JavaScript run time in the UI WAR file can be blocked by cross-site scripting prevention in the browser. To bypass this block, the UI WAR file includes Java proxy code so that the JavaScript run time retrieves REST API responses from the origin server. But the proxy is configured to forward REST API requests to the analytics service WAR file. Configure this property if you installed your WAR files to separate application servers. | None |
+| analytics/bootstrap.mlockall | This property prevents any Elasticsearch memory from being swapped to disk. | true |
+| analytics/multicast | Enables or disables multicast node discovery. | false |
+| analytics/warmupFrequencyInSeconds | The frequency at which warmup queries are run. Warmup queries run in the background to force query results into memory, which improves web console performance. Negative values disable the warmup queries. | 600 |
+| analytics/tenant | Name of the main Elasticsearch index.	worklight |
 
 In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
 
@@ -178,17 +178,17 @@ In the following sample instructions, do not configure the node to be a master n
     * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
     * [Installing MobileFirst Analytics on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
     * [Installing MobileFirst Analytics on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
-    
+
 2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
 
     | Flag | Value (example) | Default | Note |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. | 
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. | 
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. | 
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. | 
-    | node.data|	false | 	true | 	Do not allow this node to store data. | 
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. | 
+    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
+    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
+    | node.data|	false | 	true | 	Do not allow this node to store data. |
+    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
 
 3. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the **path.plugins** flag.
 4. Run the application server and start the WAR applications if necessary.
@@ -212,13 +212,13 @@ In the following sample instructions, do not configure the node to be a master n
 
     | Flag | Value (example) | Default | Note |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. | 
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. | 
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. | 
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. | 
-    | node.data|	false | 	true | 	Do not allow this node to store data. | 
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. | 
-    
+    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
+    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
+    | node.data|	false | 	true | 	Do not allow this node to store data. |
+    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+
 
 4. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the path.plugins flag.
 5. Run `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` to install the ICU plug-in.

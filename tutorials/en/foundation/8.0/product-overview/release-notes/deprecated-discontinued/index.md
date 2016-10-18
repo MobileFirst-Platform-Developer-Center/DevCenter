@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Deprecated and discontinued features and API elements
+title: Deprecated and discontinued features and APIs
 weight: 3
 ---
 <br/>
