@@ -1,22 +1,16 @@
-# module Jekyll
-#   module MyFilters
-#     def file_date(input)
-#       File.mtime(input)
-#     end
-#   end
-# end
-# 
-# Liquid::Template.register_filter(Jekyll::MyFilters)
-# 
+# require 'pry'
+# require 'pry-byebug'
 
 Jekyll::Hooks.register :pages, :pre_render do |page, payload|
   next unless payload.site['last_modified']
   next unless !page.path.include? "blog/"
   next unless !page.path.include? "sitemap.xml"
   next unless !page.path.include? "feed.xml"
+  next unless !page.path.include? "feed.xslt.xml"
   cmd = "git log -1 --format=%cd #{page.path}"
   result = %x{ #{cmd} }
-  page.data["last-modified-date"] = result
+  payload.page["last-modified-date"] = result
+  # binding.pry
 end
 Jekyll::Hooks.register :posts, :pre_render do |post, payload|
   next unless payload.site['last_modified']

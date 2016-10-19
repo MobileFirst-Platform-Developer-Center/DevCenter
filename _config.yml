@@ -4,7 +4,6 @@ url: https://mobilefirstplatform.ibmcloud.com
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
 paginate: 10
-last_modified: true
 paginate_path: "/blog/:num/"
 markdown: redcarpet
 generate_redirects: false

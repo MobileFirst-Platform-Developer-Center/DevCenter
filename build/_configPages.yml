@@ -4,6 +4,7 @@ baseurl: /MFPSamples
 last_modified: true
 future: true
 unpublished: true
+last_modified: true
 exclude:
   - vendor
   - build
