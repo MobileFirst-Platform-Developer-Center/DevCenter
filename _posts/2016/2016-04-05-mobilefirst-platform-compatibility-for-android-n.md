@@ -3,8 +3,10 @@ title: MobileFirst Platform Foundation compatibility for Android N
 date: 2016-04-05
 tags:
 - MobileFirst_Platform
+- MobileFirst_Foundation
 - Announcement
 - Android
+- JSONStore
 version:
 - 6.3
 - 7.0
