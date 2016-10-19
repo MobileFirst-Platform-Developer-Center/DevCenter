@@ -3,8 +3,10 @@ title: MobileFirst Platform Foundation compatibility for Android N
 date: 2016-04-05
 tags:
 - MobileFirst_Platform
+- MobileFirst_Foundation
 - Announcement
 - Android
+- JSONStore
 version:
 - 6.3
 - 7.0
@@ -23,12 +25,22 @@ MobileFirst Platform Foundation v6.3 to v8.0 has embraced Android 7.0 very well.
 
 We encourage you to start testing your application(s) with Android N. Please see [IBM MobileFirst Platform Foundation's support plan for Android 7.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/07/14/support-plan-for-android-n/).
 
-### Known Issues
----
-##### JSONStore API
-   The MobileFirst Platform Foundation's JSONStore API does not work as expected on Android N, with the [behavior changes](https://developer.android.com/preview/behavior-changes.html#ndk) introduced in for NDK applications. The change in Android N is to remove support for linking against non-public APIs. This requires an update to the [SQLCipher library](https://www.zetetic.net/blog/2016/6/23/sqlcipher-android-release-n-support/) used in the MobileFirst Platform Foundation's JSONStore library. More details on the changes to the SQLCipher library can be found [here](https://discuss.zetetic.net/t/sqlcipher-for-android-upcoming-changes-for-android-n-and-coordinated-beta-test-request/1315). The fix for MobileFirst Platform Foundation's JSONStore library is in progress and should be available soon. Watch this space for the link to download the ifix.
+## Known Issues
+
+#### JSONStore API
+   The MobileFirst Platform Foundation's JSONStore API does not work as expected on Android N, with the [behavior changes](https://developer.android.com/preview/behavior-changes.html#ndk) introduced in Android N for NDK applications. The change in Android N is to remove support for linking against non-public APIs. This requires an update to the [SQLCipher library](https://www.zetetic.net/blog/2016/6/23/sqlcipher-android-release-n-support/) used in the MobileFirst Platform Foundation's JSONStore library. More details on the changes to the SQLCipher library can be found [here](https://discuss.zetetic.net/t/sqlcipher-for-android-upcoming-changes-for-android-n-and-coordinated-beta-test-request/1315). 
    
-##### Cordova with Android N   
+>#### Update 
+The JSONStore issues on Android N are addressed in the following iFixes
+
+>| MFP Version  | iFix Number |
+| ------------- | ------------- |
+| 6.3  | [6.3.0.0-MFPF-IF201609272209](https://www-945.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=6.3.0.0&platform=All&function=all&source=fc)  |
+| 7.0  | [7.0.0.0-MFPF-IF201609291531](https://www-945.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.0.0.0&platform=All&function=all&source=fc)  |
+| 7.1  | [7.1.0.0-MFPF-IF201610060540](https://www-945.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc)  |
+   
+   
+#### Cordova with Android N   
 
 * Android 7.0 does not allow the ``file://`` protocol to be used externally from the scope of the app. The error occurs when sharing file URIs across Intent.Even though other plugins use the file URIs, such as File plugin, out of the core Cordova plugins, only the camera plugin uses the Cross-Process communication of sharing file URIs. Hence the  **FILE_URI** and **NATIVE_URI** destination type of the Cordova camera plugin throws an ``android.os.FileUriExposedException``.
 For updates on these issue please follow this [thread](https://issues.apache.org/jira/browse/CB-11625).
