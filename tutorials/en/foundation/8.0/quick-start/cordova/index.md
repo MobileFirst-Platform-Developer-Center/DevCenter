@@ -105,7 +105,7 @@ Alternatively, click the **New** button next to **Adapters**.
 ### 5. Testing the application
 
 1. From a **Command-line** window, navigate to the Cordova project's root folder.
-2. Run the command: `cordova platform add ios|android|windows|browser` to add a platform.
+2. Run the command: `cordova platform add ios|android|windows` to add a platform.
 3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
     * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
     * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.

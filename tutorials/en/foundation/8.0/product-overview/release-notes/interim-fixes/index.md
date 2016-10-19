@@ -21,6 +21,13 @@ A new offering, IBM MobileFirst Foundation Extension V8.0.0, is available throug
 #### Registering web applications from the MobileFirst Platform CLI (APAR PI65327)
 You can now register client web applications to MobileFirst Server by using the IBM MobileFirst Platform Command Line Interface (CLI) (mfpdev) as an alternative to registration from the IBM MobileFirst Platform Operations Console. For more information, see Registering web applications from the MobileFirst Platform CLI.
 
+### Cordova applications
+#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
+With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
+
+#### Added *projectName* directory as an option when you use the Migration assistance tool
+You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
+
 ### Adapters
 #### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
 You can use IBM MobileFirst Platform Command Line Interface (CLI) to push Java and JavaScript adapter configurations to the MobileFirst Server and pull adapter configurations from the MobileFirst Server.

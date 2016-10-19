@@ -1,28 +1,3 @@
-// SPIN.JS
-var opts = {
-    lines: 13,
-    length: 28,
-    width: 14,
-    radius: 42,
-    scale: 1,
-    corners: 1,
-    color: '#000',
-    opacity: 0.20,
-    rotate: 0,
-    direction: 1,
-    speed: 1.0,
-    trail: 70,
-    fps: 20,
-    zIndex: 2e9,
-    className: 'spin',
-    top: '60%',
-    left: '50%',
-    shadow: false,
-    hwaccel: false,
-    position: 'absolute'
-};
-
-var spinner = new Spinner(opts);
 
 // ELASTICSEARCH
 var MFPSEARCH = {
@@ -42,7 +17,7 @@ var MFPSEARCH = {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
     executeSearch: function() {
-        spinner.spin(document.getElementById('searchResults'));
+        $("#searchResults").addClass("loader");
         this.body.from = this.from;
         var _this = this;
         this.client.search({
@@ -82,7 +57,7 @@ var MFPSEARCH = {
             } else {
                 $('#searchNextBtn').removeClass('disabled');
             }
-            spinner.stop();
+            $("#searchResults").removeClass("loader");
 
             $('.search-video').magnificPopup({
               delegate: 'a', // child items selector, by clicking on it popup will open
@@ -90,7 +65,7 @@ var MFPSEARCH = {
               // other options
             });
         },function() {
-            spinner.stop();
+            $("#searchResults").removeClass("loader");
             $('#searchResults').html("Uhoh, something's wrong... please <a href='https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues/'>open an issue to let us know.");
         });
     },

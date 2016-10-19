@@ -38,9 +38,9 @@ The Mobile Foundation service offers the following plan options:
 ## Setting up the Mobile Foundation service
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on the **Get started now!** button or the **Catalog** link.
-2. Search for the term **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a name for the service or use the default provided service name.
+1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
+2. Search for **Mobile Foundation** and click on the resulting tile option.
+3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
 
     <img class="gifplayer" alt="Creating a Mobile Foundation service instance" src="service-creation.png"/>
