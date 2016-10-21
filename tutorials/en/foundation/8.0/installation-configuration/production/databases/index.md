@@ -19,6 +19,13 @@ Each component needs a set of tables. The tables can be created manually by runn
 
 However, if you decide to install multiple instances of MobileFirst runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
 
+> **Note about DB2:** MobileFirst Foundation licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> 
+> * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
+> * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
+>
+> Learn more in the [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
+
 #### Jump to
 
 * [Database users and privileges](#database-users-and-privileges)
