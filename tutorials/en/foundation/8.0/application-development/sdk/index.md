@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: Adding the MobileFirst SDK
-show_children: true
 weight: 1
 ---
 ### Overview
