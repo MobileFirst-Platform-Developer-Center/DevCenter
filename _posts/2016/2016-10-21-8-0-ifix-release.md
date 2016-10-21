@@ -21,11 +21,16 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 * Fix for the mfpmigrate tool which previously did not recognize all deprecated APIs
 * OpenSSL upgraded
 * Added support for Android API Level 23
+* Add `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands
 
 ## Included changes in this iFix
 *For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
 
-#### MobileFirst Server
+#### MobileFirst Server, Operational Analytics and Application Center
+> To upgrade, download and install the [MobileFirst Foundation DevKit for evaluators]({{site.baseurl}}/downloads/), [MobileFirst Foundation DevKit for customers](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc), or refresh your Mobile Foundation service from your service Dashboard.
+
+**MobileFirst Server**
+
 * PI70564 MONITOR ROLE SHOULD NOT BE ALLOWED TO PERFORM CERTAIN OPERTIONS  
 * PI69736 PUSH CONFIGURATION ERROR IN LOG: FPWSE0003E: MISSING APNS CREDENTIALS  
 * PI69380 SSL THREAD INFORMATION NOT CLEARED AFTER ADAPTER CALL, RESULTING IN A CERTIFICATE CHAINING ERROR  
@@ -34,17 +39,22 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 * PI64813 OLD MOBILEFIRST ANDROID SDK IN DEVKIT DOWNLOAD CENTER  
 * PI65022 MFP MIGRATION ASSISTANT TOOL DOES NOT IDENTIFY ALL DEPRECIATED APIS, AND INCLUDES A WRONG RESOLUTION  
 
-#### MobileFirst Operational Analytics
+**MobileFirst Operational Analytics**  
+
 * PI66473 ANALYTICS SDK DOESN'T CAPTURE RUN TIME ERRORS: SIGNALS: SIGSEGV, SIGILL, ETC  
 * PI65155 ANALYTICS LOGS WILL BE AUTO SENT ON EACH SUCCESSFUL RESOURCE REQUEST CAN TURN AUTO SEND ON/OFF USING SETAUTOSENDLOGS FUNCTION  
 
-#### Application Center
+**Application Center**  
+
 * PI37961 APPLICATION CENTER CANNOT READ CERTAIN APK FILES IF THE AAPT TOOL IS NOT AVAILABLE  
 
-#### Adapters
+**Adapters**  
+
 * PI65047 A WORKLIGHT ADAPTER CALL FAILS WITH AN ERROR INDICATING THAT THERE WAS A FAILURE TO PARSE THE JSON STRING  
 
 #### Client SDKs
+> To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/).
+
 * PI70045 OPENSSL UPGRADED TO 1.1.0A/1.0.2I/1.0.1U  
 * PI69851 CERTIFICATE PINNING FAILS TO FIND THE FILE IN NATIVE IOS  
 * PI69110 NOT GETTING NOTIFICATION ON 10.0, IF MINAPPOSVERSION IS 9.3  
@@ -68,4 +78,11 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 * PI61332 ANDROID API LEVEL 23 IS NOT SUPPORTED BY MOBILEFIRST PLATFORM FOUNDATION  
 
 #### MobileFirst CLI
-Included in this iFix is the following recently published CLI build: [8.0.0-2016101416]({{site.baseurl}}/blog/2016/10/18/8-0-cli-release/)
+Included in this iFix is the following recently published CLI build: [8.0.0-2016101416]({{site.baseurl}}/blog/2016/10/18/8-0-cli-release/).  
+
+> To upgrade, run `npm upgrade -g mfpdev-cli`.
+
+* PI66177 CLI: WLAPPID IS NOT BEING SET IN MFPCLIENT.RESW FILES FORWINDOWS PROJECTS
+* PI69118 `NPM INSTALL` ON THE MFPDEV-CLI FAILS WITH THE LATEST NPMVERSION (3.10.7)
+* Fix to allow a different application identifier per platform in a Cordova project
+* Add `mfpdev adapter build all` and `mfpdev adapter deploy all` commands.
