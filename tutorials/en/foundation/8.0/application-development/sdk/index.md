@@ -15,3 +15,9 @@ To develop **native iOS/Android/Windows applications**, you must add the MobileF
 
 Learn in the following tutorials how to integrate the SDK into your application.  
 To continue, select a tutorial:
+
+* [Adding the MobileFirst Foundation SDK to Cordova Applications](cordova)
+* [Adding the MobileFirst Foundation SDK to iOS Applications](ios)
+* [Adding the MobileFirst Foundation SDK to Android Applications](android)
+* [Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications](windows-8-10)
+* [Adding the MobileFirst Foundation SDK to Web Applications](web)
