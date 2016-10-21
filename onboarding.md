@@ -13,10 +13,10 @@ This website is power by several technologies:
 * Travis CI to automate building and publishing (IBM internal)
 * Bluemix as the hosting service (IBM internal)
 
-If you'd like to contribute to this site as outlined in our contribution guidelines, you can follow these steps to work locally and preview your work before submitting your pull request.
+If you'd like to contribute to this site as outlined in our [contribution guidelines](contribution.md), you can follow these steps to work locally and preview your work before submitting your pull request.
 
-1. Fork this repository and clone your fork to your workstation
-2. Set up Jekyll and test locally
+1. Fork this repository and clone your fork to your workstation.
+2. Set up Jekyll and test locally.
 
   Jekyll is software that takes the Developer Center source files and compiles them into the static HTML files that you see when visiting the site. Follow the below to set up Jekyll locally in order test your changes.
   
