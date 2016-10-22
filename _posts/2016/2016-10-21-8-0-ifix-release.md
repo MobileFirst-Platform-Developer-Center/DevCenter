@@ -10,9 +10,9 @@ tags:
 author:
   name: Idan Adar 
 ---
-A new iFix has been released for MobileFirst Foundation 8.0 for on-prem installations.  
-[Download iFix](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central).
+A new iFix has been released for MobileFirst Foundation 8.0.
 
+For on-prem installations, [download the iFix package](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central).  
 Mobile Foundation Bluemix service users, check your service dashboard for an available refresh.
 
 ## Highlights
@@ -27,17 +27,16 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 *For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
 
 #### MobileFirst Server, Operational Analytics and Application Center
-> To upgrade, download and install the [MobileFirst Foundation DevKit for evaluators]({{site.baseurl}}/downloads/), [MobileFirst Foundation DevKit for customers](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc), or refresh your Mobile Foundation service from your service Dashboard.
+> To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/) / [Developer Kit for customers](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc), iFix package for production environment, or refresh your Mobile Foundation service from your service Dashboard.
 
 **MobileFirst Server**
 
 * PI70564 MONITOR ROLE SHOULD NOT BE ALLOWED TO PERFORM CERTAIN OPERTIONS  
 * PI69736 PUSH CONFIGURATION ERROR IN LOG: FPWSE0003E: MISSING APNS CREDENTIALS  
-* PI69380 SSL THREAD INFORMATION NOT CLEARED AFTER ADAPTER CALL, RESULTING IN A CERTIFICATE CHAINING ERROR  
 * PI67550 PRODUCT INSTALLATION FAILS ON LIBERTY BASE EDITION  
-* PI65271 PRODUCTION DB2 TABLES CREATION SCRIPTLIMITED TO 1 MB, WHICH IS TOO LIMITED  
-* PI64813 OLD MOBILEFIRST ANDROID SDK IN DEVKIT DOWNLOAD CENTER  
-* PI65022 MFP MIGRATION ASSISTANT TOOL DOES NOT IDENTIFY ALL DEPRECIATED APIS, AND INCLUDES A WRONG RESOLUTION  
+* PI65271 PRODUCTION DB2 TABLES CREATION SCRIPT LIMITED TO 1 MB, WHICH IS TOO LIMITED  
+* PI64813 OLD MOBILEFIRST ANDROID SDK IN THE CONSOLE'S DOWNLOAD CENTER  
+* PI65022 MIGRATION ASSISTANT TOOL DOES NOT IDENTIFY ALL DEPRECATED APIS, AND INCLUDES A WRONG RESOLUTION  
 
 **MobileFirst Operational Analytics**  
 
@@ -50,6 +49,7 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 
 **Adapters**  
 
+* PI69380 SSL THREAD INFORMATION NOT CLEARED AFTER ADAPTER CALL, RESULTING IN A CERTIFICATE CHAINING ERROR  
 * PI65047 A WORKLIGHT ADAPTER CALL FAILS WITH AN ERROR INDICATING THAT THERE WAS A FAILURE TO PARSE THE JSON STRING  
 
 #### Client SDKs
@@ -63,7 +63,7 @@ Mobile Foundation Bluemix service users, check your service dashboard for an ava
 * PI68253 WINDOWS 10 MOBILE APPLICATIONS CRASH WHEN MOBILEFIRST SERVER CANNOT BE REACHED  
 * PI67574 THE APPLICATION MESSAGES DOES NOT CHANGE ACCORDING TO BROWSER LOCALE ON CHROME FOR WEB APPS  
 * PI66495 APPLICATION CRASH AFTER UPGRADING ANDROID OS FROM 5.0 TO 6.0  
-* PI66398 ANDROID HYBRID APP PRINTS AN ERROR ON START-UP,ALL CLIENT REQUESTS CONTAINS AN EMPTY X-WL-DEVICE-ID HEADER  
+* PI66398 ANDROID HYBRID APP PRINTS AN ERROR ON START-UP, ALL CLIENT REQUESTS CONTAINS AN EMPTY X-WL-DEVICE-ID HEADER  
 * PI66353 AN APP BUILT WITH RELEASE CONFIGURATION CRASHES ON IOS  
 * PI66017 THE IBM-MFP-WEB-SDK DOES NOT WORK IN INTERNET EXPLORER BROWSERS  
 * PI65972 USERS OF MOBILEFIRST FOUNDATION 8.0 CAN'T UPLOAD APPLICATIONS TO THE GOOGLE PLAY STORE  
@@ -86,3 +86,4 @@ Included in this iFix is the following recently published CLI build: [8.0.0-2016
 * PI69118 `NPM INSTALL` ON THE MFPDEV-CLI FAILS WITH THE LATEST NPMVERSION (3.10.7)
 * Fix to allow a different application identifier per platform in a Cordova project
 * Add `mfpdev adapter build all` and `mfpdev adapter deploy all` commands.
+* 
