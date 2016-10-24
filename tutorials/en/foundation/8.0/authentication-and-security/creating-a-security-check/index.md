@@ -118,6 +118,7 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 }
 ```
 
+<br/>
 These properties can be configured at several levels:
 
 ### adapter.xml
@@ -135,6 +136,8 @@ Example:
 ```xml
 <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed?" type="integer"/>
 ```
+
+> For a real-world example, see the [Configuring the Security Check section](../credentials-validation/security-check/#configuring-the-security-check) of the CredentialsValidation security check tutorial.
 
 ### MobileFirst Operations Console - Adapter
 In the MobileFirst Operations Console → **[your adapter] → Security Check tab**, you can change the value of any property defined in the `adapter.xml` file.  

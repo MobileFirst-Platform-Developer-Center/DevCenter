@@ -31,7 +31,7 @@ layout: default
                 {% endif %}
             </div>
             {{content}}
-            <!-- <div id="timestamp"><em>Last modified on {{ page.path | file_date | date_to_string }}</em></div> -->
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
 
             <div id="social">
                 <b>Share this post:</b>

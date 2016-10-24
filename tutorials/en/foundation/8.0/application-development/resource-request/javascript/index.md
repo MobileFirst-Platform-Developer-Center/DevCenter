@@ -64,6 +64,8 @@ resourceRequest.setQueryParameter("param2", "value2");
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
+> **Note:** The `params` value should be a *string representation* of an array.
+
 ```js
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```

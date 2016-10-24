@@ -18,7 +18,7 @@ Follow the instructions in this blog post in order to integrate your Android app
 > Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/)
 
 ### Prerequisites
-1. Running a MobileFirst Server either locally or a Mobile Foundation service instance.
+1. Running a MobileFirst Server either locally or [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix.
 2. Instance of [IBM Bluemix Push Notification](https://new-console.ng.bluemix.net/catalog/services/push-notifications/)
 3. Push Notification instance created at step 2 should be configured with GCM credentials.
 4. Push Notification instance created at step 2 should contain few tags. 

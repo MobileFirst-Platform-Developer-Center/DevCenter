@@ -16,7 +16,7 @@ branches:
 rvm:
 - 2.3.1 # version of `ruby'
 git:
-  depth: 3
+  depth: 9999999
 notifications:
   slack:
     rooms:
