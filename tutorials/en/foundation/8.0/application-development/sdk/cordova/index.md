@@ -18,7 +18,7 @@ Available plug-ins are:
 * **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
 
 **Support level:**
-The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1**, **cordova-windows@4.2.0**, and **cordova-browser@4.1.0**.
+The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1**, and **cordova-windows@4.2.0**.
 
 #### Jump to:
 
@@ -85,7 +85,7 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
 2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
-3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows|browser`. For example:
+3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
 
     ```bash
     cordova platform add ios

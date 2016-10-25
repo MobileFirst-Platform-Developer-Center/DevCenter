@@ -12,7 +12,7 @@ Confidential clients are clients that are capable of maintaining the confidentia
 
 You begin by registering a confidential client with MobileFirst Server. As part of the registration, you provide the credentials of the confidential client, which consist of an ID and a secret. In addition, you set the client's allowed scope, which determines the scopes that can be granted to this client. When a registered confidential client requests an access token from the authorization server, the server authenticates the client by using the registered credentials, and verifies that the requested scope matches the client’s allowed scope.
 
-Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification.
+Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification. Note that an access token for a confidential client is valid for one hour. If you're using a confidential client for a task that lasts more than an hour, renew the token every hour by sending a new token request.
 
 ## Registering the confidential client
 In the navigation sidebar of the MobileFirst Operations Console, click **Runtime Settings** → **Confidential Clients**. Click **New** to add a new entry.  
@@ -28,7 +28,7 @@ You must provide the following information:
 **Examples of scopes:**
 
 - [Protecting external resources](../protecting-external-resources) uses the scope `authorization.introspect`.
-- [Sending a Push Notification](../../notifications/sending-push-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
+- [Sending a Push Notification](../../notifications/sending-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
 - Adapters can be protected by a custom scope element, such as `accessRestricted`.
 - The scope `*` is a catch-all scope, granting access to any requested scope.
 

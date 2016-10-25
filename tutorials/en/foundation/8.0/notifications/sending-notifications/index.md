@@ -86,7 +86,7 @@ To setup APNS:
 Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
 To setup WNS:
 
-1. Follow the [instructions as provided by Microsoft](http://localhost:4000/tutorials/en/foundation/8.0/notifications/sending-notifications/#google-cloud-messaging) to generate the **Package Security Identifier (SID)** and **Client secret** values.
+1. Follow the [instructions provided by Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) to generate the **Package Security Identifier (SID)** and **Client secret** values.
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add these values and click **Save**.
 
 > You can also setup WNS using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
@@ -393,10 +393,13 @@ You can make use proxy settings to set the optional proxy through which notifica
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
 
-* [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
-* [Handling push notifications in iOS applications](../handling-push-notifications/ios)
-* [Handling push notifications in Android applications](../handling-push-notifications/android)
-* * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
-* [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
-* [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
-* [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
+* Handling push notifications
+    * [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
+    * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
+    * [Handling push notifications in Android applications](../handling-push-notifications/android)
+    * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
+
+* Handling SMS notifications
+    * [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
+    * [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
+    * [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
