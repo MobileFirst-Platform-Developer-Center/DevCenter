@@ -21,11 +21,7 @@ According to [this blog post](http://useyourloaf.com/blog/privacy-settings-in-io
 
 For versions of Mobilefirst Platform Foundation v7.1 and earlier, hybrid applications created using Mobilefirst Studio would create a cordova project with several cordova plugins embedded in it. Some of these Cordova plugins use frameworks that count as usage of user's private data. Even if these plugins are not used by your applications, the application would get rejected during submission to the App Store as Apple flags such applications as containing code that access user's private data even though it's not being invoked.
 
-<<<<<<< HEAD:_posts/2016/2016-10-24-supporting-privacy-changes-in-ios-10.md
-The following are the list of cordova plugins which are embedded inside Mobilefirst hybrid applications which accesses user's private data.
-=======
-The following is a list of Cordova plugins which are embedded inside Mobilefirst hybrid applications which accesss user's private data
->>>>>>> MFPSamples/master:_posts/2016/2016-10-25-supporting-privacy-changes-in-ios-10.md
+The following is a list of Cordova plugins which are embedded inside Mobilefirst hybrid applications which accesses user's private data
 
 - Camera
 - Contact
