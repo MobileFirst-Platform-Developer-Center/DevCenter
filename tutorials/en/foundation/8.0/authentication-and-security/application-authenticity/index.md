@@ -13,7 +13,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 * Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
 
 #### Limitations
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authentcity, disable Bitcode in the Xcode project properties.
+* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
 
 #### Jump to:
 
@@ -22,9 +22,9 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Configuring Application Authenticity](#configuring-application-authenticity)
 
 ## Application Authenticity Flow
-By default, the application-authenticity security check is run during the application's runtime registration to MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server.
+By default, the application-authenticity security check is run during the application's runtime registration to MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server, the authenticity challenge does not occur again.
 
-After an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge does not occur again. See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
+See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
 
 ![Authenticity flow](check_flow.jpg)
 
@@ -56,7 +56,10 @@ When the `.authenticity_data` file is uploaded, application authenticity is enab
 To disable application authenticity, click the **Delete Authenticity File** button.
 
 ## Configuring Application Authenticity
-You can configure the predefined application-authenticity security check with the following property:
+
+By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
+
+You can also configure the predefined application-authenticity security check with the following property:
 
 - `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
 
