@@ -71,7 +71,8 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
 #### New Application
 
-1. Create a Cordova project:
+1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
+    For example:
 
     ```bash
     cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -83,7 +84,7 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
     > The templated **index.js** enables you to use additional MobileFirst features as such [Multilingual application  translation](../../translation) and initialization options (see the user documentation for more information).
 
-2. Navigate to the root of the Cordova project: <code>cd myapp</code>
+2. Change directory to the root of the Cordova project: `cd hello`
 
 3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
 
