@@ -11,6 +11,8 @@ Interim fixes are cumulative. When you download the latest v8.0 interim fix, you
 
 Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
 
+> For a list of iFix releases of IBM MobileFirst Foundation 8.0, [see these blog posts]({{site.baseurl}}/blog/tag/iFix_8.0/).
+
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
 ### Licensing

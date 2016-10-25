@@ -154,14 +154,19 @@ The Apple iTunes store address is [https://linkmaker.itunes.apple.com/](https://
         * Copy the address bar URL.
     * **Apple iTunes:**
         * When the list of items is returned in the search result, select the item that you want.
-        * On the right of the selected application item, click **iPhone App Link** to open the application details page.
+
+        * At the bottom of the selected application, click **Direct Link** to open the application details page.
+
         * Copy the address bar URL.
+
+          **Note:** Do not copy the **Direct Link** to the Application Center. **Direct Link** is a URL with redirection, you will need to get the URL it redirects to.
+
 3. When the application link is in the **Application URL** text field of the console, click **Next** to validate the creation of the application link.
     * If the validation is unsuccessful, an error message is displayed in the **Add an application** page. You can either try another link or cancel the attempt to create the current link.
     * If the validation is successful, this action displays the application properties. You can then modify the application description in the application properties before you move to the next step.
 
     ![Modified application description in application properties](ac_add_public_app_details.jpg)
-    
+
 4. Click **Done** to create the application link.
 
     This action makes the application available to the corresponding version of the Application Center mobile client. A small link icon appears on the application icon to show that this application is stored in a public app store and is different from a binary app.
@@ -268,7 +273,7 @@ HelloWorld version 2.0 is released and you would like users of version 1.0 to up
 2. From the Application Details page, copy the setting of the external URL.
 
     ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
-    
+
 3. When the external URL is copied to the clipboard, open the MobileFirst Operations Console.
 4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
 5. Paste the external URL into the URL field.
@@ -276,11 +281,11 @@ HelloWorld version 2.0 is released and you would like users of version 1.0 to up
     Running the client: When a mobile device connects to MobileFirst Server to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
 
     ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
-    
+
 6. Click **Upgrade** to open the Application Center client. When the login details are correctly completed, you access the Details page of HelloWorld version 2.0 directly.
 
     ![Details of HelloWorld 2.0 in the Application Center client](ac_cli_app_details_upgrade.jpg)
-    
+
 ## Downloading an application file
 You can download the file of an application registered in the Application Center.
 
@@ -300,7 +305,7 @@ To view reviews from mobile users or testers about an application version:
 3. In the menu, select **Reviews**.
 
     ![Reviews of application versions](ac_appfeedbk.jpg)
-    
+
     The rating is an average of the ratings in all recorded reviews. It consists of one to five stars, where one star represents the lowest level of appreciation and five stars represent the highest level of appreciation. The client cannot send a zero star rating.
 
     The average rating gives an indication of how the application satisfies the intended use of the application.

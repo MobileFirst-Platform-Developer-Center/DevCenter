@@ -1,0 +1,89 @@
+---
+title: MobileFirst Foundation iFix 8.0.0.0-IF2016102017 released
+date: 2016-10-21
+version:
+- 8.0
+tags:
+- MobileFirst_Foundation
+- Announcement
+- iFix_8.0
+author:
+  name: Idan Adar 
+---
+A new iFix has been released for MobileFirst Foundation 8.0.
+
+For on-prem installations, [download the iFix package](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central).  
+Mobile Foundation Bluemix service users, check your service dashboard for an available refresh.
+
+## Highlights
+* Fix for certificate pinning in native iOS applications
+* Fix for Windows 10 application crashes
+* Fix for the mfpmigrate tool which previously did not recognize all deprecated APIs
+* OpenSSL upgraded
+* Added support for Android API Level 23
+* Add `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands
+
+## Included changes in this iFix
+*For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
+
+#### MobileFirst Server, Operational Analytics and Application Center
+> To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/) / [Developer Kit for customers](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc), iFix package for production environment, or refresh your Mobile Foundation service from your service Dashboard.
+
+**MobileFirst Server**
+
+* PI70564 MONITOR ROLE SHOULD NOT BE ALLOWED TO PERFORM CERTAIN OPERTIONS  
+* PI69736 PUSH CONFIGURATION ERROR IN LOG: FPWSE0003E: MISSING APNS CREDENTIALS  
+* PI67550 PRODUCT INSTALLATION FAILS ON LIBERTY BASE EDITION  
+* PI65271 PRODUCTION DB2 TABLES CREATION SCRIPT LIMITED TO 1 MB, WHICH IS TOO LIMITED  
+* PI64813 OLD MOBILEFIRST ANDROID SDK IN THE CONSOLE'S DOWNLOAD CENTER  
+* PI65022 MIGRATION ASSISTANT TOOL DOES NOT IDENTIFY ALL DEPRECATED APIS, AND INCLUDES A WRONG RESOLUTION  
+
+**MobileFirst Operational Analytics**  
+
+* PI66473 ANALYTICS SDK DOESN'T CAPTURE RUN TIME ERRORS: SIGNALS: SIGSEGV, SIGILL, ETC  
+* PI65155 ANALYTICS LOGS WILL BE AUTO SENT ON EACH SUCCESSFUL RESOURCE REQUEST CAN TURN AUTO SEND ON/OFF USING SETAUTOSENDLOGS FUNCTION  
+
+**Application Center**  
+
+* PI37961 APPLICATION CENTER CANNOT READ CERTAIN APK FILES IF THE AAPT TOOL IS NOT AVAILABLE  
+
+**Adapters**  
+
+* PI69380 SSL THREAD INFORMATION NOT CLEARED AFTER ADAPTER CALL, RESULTING IN A CERTIFICATE CHAINING ERROR  
+* PI65047 A WORKLIGHT ADAPTER CALL FAILS WITH AN ERROR INDICATING THAT THERE WAS A FAILURE TO PARSE THE JSON STRING  
+
+#### Client SDKs
+> To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/).
+
+* PI70045 OPENSSL UPGRADED TO 1.1.0A/1.0.2I/1.0.1U  
+* PI69851 CERTIFICATE PINNING FAILS TO FIND THE FILE IN NATIVE IOS  
+* PI69110 NOT GETTING NOTIFICATION ON 10.0, IF MINAPPOSVERSION IS 9.3  
+* PI68660 WLRESOURCEREQUEST WITH GATEWAY CHALLENGE DOESN'T TRIGGER CHALLENGE HANDLER WITH RESPONSE WITH 3XX-4XX STATUS CODE  
+* PI68455 WLNETWORKMANAGER NO LONGER EXISTS IN MOBILE FIRST PLATFORM V8 AND CAUSES ERROR WITH CORDOVA-PLUGIN-NETWORK-INFORMATION  
+* PI68253 WINDOWS 10 MOBILE APPLICATIONS CRASH WHEN MOBILEFIRST SERVER CANNOT BE REACHED  
+* PI67574 THE APPLICATION MESSAGES DOES NOT CHANGE ACCORDING TO BROWSER LOCALE ON CHROME FOR WEB APPS  
+* PI66495 APPLICATION CRASH AFTER UPGRADING ANDROID OS FROM 5.0 TO 6.0  
+* PI66398 ANDROID HYBRID APP PRINTS AN ERROR ON START-UP, ALL CLIENT REQUESTS CONTAINS AN EMPTY X-WL-DEVICE-ID HEADER  
+* PI66353 AN APP BUILT WITH RELEASE CONFIGURATION CRASHES ON IOS  
+* PI66017 THE IBM-MFP-WEB-SDK DOES NOT WORK IN INTERNET EXPLORER BROWSERS  
+* PI65972 USERS OF MOBILEFIRST FOUNDATION 8.0 CAN'T UPLOAD APPLICATIONS TO THE GOOGLE PLAY STORE  
+* PI66399 USING A GATEWAY WITH THE WEB SDK LEADS TO UNEXPECTED BEHAVIOR IF THE GATEWAY THROWS A CHALLENGE  
+* PI65003 XAMARIN SDK METHOD INVOKEPROCEDURE(INVOACATIONDATA, TIMEOUT) ALWAYS RETURNS "0" WHEN SPECIFYING A TIMEOUT VALUE  
+* PI64863 IOS-OBJECTIVE-C AND IOS-SWIFT APP SAMPLE RUNTIMES FAIL TO RUN  
+* PI64862 IOS-OBJECTIVE-C SAMPLE APP IN DOWNLOAD CENTER DOESN'T CONTAIN TRANSLATION RESOURCE  
+* PI64860 MFP CORDOVA TEMPLATE ADDS PACKAGE.JSON AND OTHER NOT RELATED FILES TO NEW APP CREATED  
+* PI64093 APPS ON ANDROID VERSIONS 4.4.2 AND EARLIER CANNOT CONNECT TO SERVER USING HTTPS IF ONLY TLS 1.2 IS ENABLED  
+* PI63514 APPLICATION FAILS TO INSTANTIATE MODULE NG AFTER UPGRADING TO ANGULAR JS 1.5  
+* PI61438 SENSITIVE SSL KEYSTORE INFORMATION MAY BE DISPLAYED IN CLIENT AND SERVER ERROR LOGS  
+* PI61332 ANDROID API LEVEL 23 IS NOT SUPPORTED BY MOBILEFIRST PLATFORM FOUNDATION  
+
+#### MobileFirst CLI
+Included in this iFix is the following recently published CLI build: [8.0.0-2016101416]({{site.baseurl}}/blog/2016/10/18/8-0-cli-release/).  
+
+> To upgrade, run `npm upgrade -g mfpdev-cli`.
+
+* PI66177 CLI: WLAPPID IS NOT BEING SET IN MFPCLIENT.RESW FILES FORWINDOWS PROJECTS
+* PI69118 `NPM INSTALL` ON THE MFPDEV-CLI FAILS WITH THE LATEST NPMVERSION (3.10.7)
+* Fix to allow a different application identifier per platform in a Cordova project
+* Add `mfpdev adapter build all` and `mfpdev adapter deploy all` commands.
+* 
