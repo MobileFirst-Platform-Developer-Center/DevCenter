@@ -16,7 +16,7 @@ The Scenario Loader populates various Analytics Console charts and reports with 
 The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
 
 #### Jump to
-* [Before you start](#before-youstart)
+* [Before you start](#before-you-start)
 * [Connecting to the Scenario Loader](#connecting-to-the-scenario-loader)
 * [Configuring the data loading](#configuring-the-data-loading)
 * [Loading and deleting the data](#loading-and-deleting-the-data)
