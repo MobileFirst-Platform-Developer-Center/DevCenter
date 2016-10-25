@@ -1,5 +1,5 @@
 ---
-title: Supporting Privacy changes in iOS 10
+title: Supporting privacy changes in iOS 10
 date: 2016-10-25
 tags:
 - MobileFirst_Foundation
