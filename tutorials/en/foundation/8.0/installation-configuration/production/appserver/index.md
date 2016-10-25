@@ -199,9 +199,9 @@ The installation tools include:
 For WebSphere® Application Server Liberty profile, you must have the required permission to perform the following actions:
 
 * Read the files in the Liberty installation directory.
-* Create files in the configuration directory of the Liberty server, which is typically usr/servers/<servername>, to create backup copies and modify server.xml and jvm.options.
+* Create files in the configuration directory of the Liberty server, which is typically usr/servers/server-name, to create backup copies and modify server.xml and jvm.options.
 * Create files and directories in the Liberty shared resource directory, which is typically usr/shared.
-* Create files in the Liberty server apps directory, which is typically usr/servers/<servername>/apps.
+* Create files in the Liberty server apps directory, which is typically usr/servers/server-name/apps.
 
 For WebSphere Application Server full profile and WebSphere Application Server Network Deployment, you must have the required permission to perform the following actions:
 
@@ -425,7 +425,7 @@ If you use the sample Ant files that are provided in the **mfp\_install\_dir/Mob
 #### Updating with own Ant file
 If you use your own Ant file, make sure that for each installation task (**installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush**), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are **updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**.
 
-1. Verify the class path of the **<taskdef>** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an MobileFirst Server installation that the fix pack is applied. By default, the updated MobileFirst Server WAR files are taken from the location of **mfp-ant-deployer.jar**.
+1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an MobileFirst Server installation that the fix pack is applied. By default, the updated MobileFirst Server WAR files are taken from the location of **mfp-ant-deployer.jar**.
 2. Run the update tasks (**updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**) of your Ant file.
 
 ### Sample Ant files modifications
@@ -533,7 +533,7 @@ To install on WebSphere Application Server Network Deployment, the specified Web
 * A cell (all the servers of a cell)
 * A node (all the servers of a node)
 
-The sample files such as **configure-wasnd-cluster-<dbms>.xml**, **configure-wasnd-server-<dbms>.xml**, and **configure-wasnd-node-<dbms>.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each MobileFirst Server component in the [Installation reference](../installation-reference).
+The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-wasnd-server-dbms-name.xml**, and **configure-wasnd-node-dbms-name.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each MobileFirst Server component in the [Installation reference](../installation-reference).
 
 > Note: As of V8.0.0, the sample configuration file for the WebSphere Application Server Network Deployment cell is not provided.
 
@@ -565,9 +565,9 @@ Make sure that you have also fulfilled the requirements as documented in [WebSph
 The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 #### Application server settings
-You must configure the **<webContainer>** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
+You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
 
-Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **<executor>** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
+Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
 
 ```xml
 <executor id="default" name="LargeThreadPool"
@@ -575,7 +575,7 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-You might also configure the **<tcpOptions>** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
+You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Liberty features required by the MobileFirst Server applications
 You can use the following features for Java EE 6 or Java EE 7.
@@ -898,9 +898,9 @@ The MobileFirst Server administration service, the MobileFirst Server live updat
 The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <h4 id="application-server-settings-collective">Application server settings</h4>
-You must configure the **<webContainer>** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
+You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
 
-Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **<executor>** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
+Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
 
 ```xml
 <executor id="default" name="LargeThreadPool"
@@ -908,7 +908,7 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-You might also configure the **<tcpOptions>** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
+You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 <h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the MobileFirst Server applications</h4>
 
@@ -1293,7 +1293,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                 <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
                 
                 <h3>Data source</h3>
-                <p>The data source (jdbc/mfpAdminDS) is declared as a resource in the <Context> element. For example:</p>
+                <p>The data source (jdbc/mfpAdminDS) is declared as a resource in the **Context** element. For example:</p>
                                     
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
@@ -1409,7 +1409,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                 <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
                 
                 <h3>Data source</h3>
-                <p>The JNDI name of the data source for the runtime must be defined as <b>jdbc/mfpDS</b>. Declare it as a resource in the <b><Context></b> element.</p>
+                <p>The JNDI name of the data source for the runtime must be defined as <b>jdbc/mfpDS</b>. Declare it as a resource in the <b>Context</b> element.</p>
             </div>
         </div>
     </div>
@@ -1920,7 +1920,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                     </li>
                     <li>Deploy the administration service, the live update service, and the runtime on the servers and configure these servers as the members of a server farm.
                         <ul>
-                            <li>Choose the Ant file that corresponds to your application server and your database in the >נ<mfp_install_dir/MobileFirstServer/configuration-samples</b> directory to deploy the administration service, the live update service, and the runtime on the servers.
+                            <li>Choose the Ant file that corresponds to your application server and your database in the <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> directory to deploy the administration service, the live update service, and the runtime on the servers.
                             <br/><br/>
                             For example, choose the <b>configure-liberty-db2.xml</b> file for a deployment on Liberty server with the DB2 database. Make as many copies of this file as the number of members that you want in the farm. 
                             <br/><br/>
