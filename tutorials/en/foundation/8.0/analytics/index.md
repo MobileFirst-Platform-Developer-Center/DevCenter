@@ -57,4 +57,7 @@ For production, there are different installation and configuration options avail
 
 MobileFirst Foundation Operational Analytics uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in MobileFirst Foundation.
 
+## Troubleshooting
+For information on troubleshooting IBM MobileFirst Analytics, see [Analytics Troubleshooting](../troubleshooting/analytics/).
+
 ## What to read next
