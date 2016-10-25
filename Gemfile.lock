@@ -71,7 +71,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     wkhtmltopdf-binary-edge (0.12.3.0)
-    yell (2.0.6)
+    yell (2.0.7)
 
 PLATFORMS
   ruby
