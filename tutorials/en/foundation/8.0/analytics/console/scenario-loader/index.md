@@ -1,14 +1,17 @@
 ---
 layout: tutorial
-title: Scenario Loader (EXPERIMENTAL)
+title: Scenario Loader
 breadcrumb_title: Scenario Loader
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
 ## Overview
-The Scenario Loader populates various Analytics Console charts and reports with test data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
 
-This tool is provided in an experimental mode and is not fully supported. Not all charts are populated.
+> **Note:** The Scenario Loader is *experimental* in nature and is thus not fully supported. Use accordingly.
+>
+> * Some charts may not get populated.
+
+The Scenario Loader populates various Analytics Console charts and reports with test data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
 
 The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
 
