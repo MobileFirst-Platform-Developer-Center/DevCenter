@@ -645,7 +645,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                     </div>   
                   </li>
               </ol>
-              Launch the Analytics Console by loading the following URL: http://&#60ANALYTICS_CONTAINER_HOST&#62/analytics/console (it may take a few moments).  
+              Launch the Analytics Console by loading the following URL: http://ANALYTICS-CONTAINER-HOST/analytics/console (it may take a few moments).  
             </div>
         </div>
     </div>
@@ -695,7 +695,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   To assign an IP address, run: <code>cf ic ip request</code>.<br/>
                   IP addresses can be reused in multiple containers in a space.<br/>
                   If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
-                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst server JNDI properties separated by comma (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://&#60ANALYTICS_CONTAINER_IP&#62:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://&#60ANALYTICS_CONTAINER_IP&#62:9080/analytics/console,mfp/mfp.analytics.username:&#60ANALYTICS_USERNAME&#62,mfp/mfp.analytics.password:&#60ANALYTICS_PASSWORD&#62</code></li>
+                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst server JNDI properties separated by comma (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
               </ul>
               <h4>startservergroup.properties</h4>
               <ul>
@@ -703,7 +703,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>SERVER_CONTAINER_GROUP_NAME - </strong>A name for your Bluemix Container group.</li>
                   <li><strong>SERVER_CONTAINER_GROUP_HOST - </strong>Your host name.</li>
                   <li><strong>SERVER_CONTAINER_GROUP_DOMAIN - </strong>Your domain name. The default is: <code>mybluemix.net</code>.</li>
-                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst Server JNDI properties, separated by commas (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://&#60ANALYTICS_CONTAINER_GROUP_HOSTNAME&#62:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://&#60ANALYTICS_CONTAINER_GROUP_HOSTNAME&#62:80/analytics/console,mfp/mfp.analytics.username:&#60ANALYTICS_USERNAME&#62,mfp/mfp.analytics.password:&#60ANALYTICS_PASSWORD&#62</code></li>
+                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst Server JNDI properties, separated by commas (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
               </ul>
             </div>
         </div>
