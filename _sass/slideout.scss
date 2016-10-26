@@ -1,0 +1,32 @@
+.navmenu {
+    width: 230px;
+}
+
+.navbar-toggle {
+  float: left;
+  margin-left: 15px;
+  margin-right: 17px;
+}
+
+@media (min-width: 0) {
+  .navbar-toggle {
+    display: block; /* force showing the toggle */
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0;
+  }
+  
+  .navbar {
+    right: auto;
+    background: none;
+    border: none;
+  }
+}
+
+.navmenu-nav {
+    font-size: 20px;
+    list-style-type: none;
+}
