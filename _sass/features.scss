@@ -1,9 +1,4 @@
 .features {
-    .wrap-feature {
-        width: 100%;
-    }
-    width: 70%;
-
     h3 {
         color: #1a76b9;
         font-size: 30px;
@@ -33,14 +28,14 @@
         font-weight: bold;
     }
     
-    .pillar-image {
-        float:right;
-    }
+    //.pillar-image {
+    //    float:right;
+    //}
 
-    img {
-        width: 250px;
-        margin: 25px 0 0 0;
-    }
+    //img {
+    //    width: 250px;
+    //    margin: 25px 0 0 0;
+    //}
 
     p {
         margin-bottom: 20px;
@@ -49,7 +44,8 @@
     }
 
     .feature {
-        margin: 30px 0 0 0;
+        //margin: 30px 0 0 0;
+        display: none;
     }
     .feature a {
         color: #30abdf;
@@ -59,8 +55,8 @@
         width: 15px;
     }
     
-    hr { 
-        margin: 0 0 20px 0;
-        border: 1px solid #c8d2d2 !important;
-    }
+    //hr { 
+    //    margin: 0 0 20px 0;
+    //    border: 1px solid #c8d2d2 !important;
+    //}
 }
