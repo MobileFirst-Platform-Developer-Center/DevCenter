@@ -8,41 +8,51 @@
         margin: 0
     }
     
-    .tagline {
-        font-size: 115%;
-        color: #939598;
-    }
-    
-    ul {
+    ul { // feature lists
         list-style: none;
         padding-left: 0;
-    }
-    
-    ul li {
-        margin-bottom: 10px;
-        color: #4179b9;
-        font-weight: 100;
         
-        img {
+        li { 
+            margin-bottom: 10px;
+            color: #4179b9;
+            font-weight: 100;
+            
+            img {
+                width: 15px;
+                margin: 0 5px 0 0;
+            }
+        }
+        
+        .tagline {
+            font-size: 115%;
+            color: #939598;
+        }
+        
+        .title {
+            color: #4179ba;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-weight: 100;
+        }
+
+        .checkmark {
             width: 15px;
-            margin: 0 5px 0 0;
         }
     }
     
     .imgmenu {
-        margin-bottom: 25px;
+        margin: 0 0 25px 0;
+        padding: 0;
+        
+        li {
+            display: inline;
+        }
     }
     
-    .title {
-        color: #4179ba;
-        font-weight: bold;
-    }
-    
-    p {
-        margin-bottom: 20px;
-        font-weight: 100;
-    }
-
+    // Hide feature lists by default; display via JavaScript.
     .feature-analytics, .feature-push, .feature-security, .feature-backend-logic, .feature-management {
         display: none;
     
@@ -51,7 +61,33 @@
         }
     }
     
-    .checkmark {
-        width: 15px;
+    .feature-analytics-img {
+        background-image: url("../assets/features/analytics.png");
+        background-repeat: no-repeat;
+        
+    }
+    
+    .feature-backend-logic-img {
+        background-image: url("../assets/features/backend-logic.png");
+        background-repeat: no-repeat;
+        
+    }
+    
+    .feature-push-img {
+        background-image: url("../assets/features/push.png");
+        background-repeat: no-repeat;
+        
+    }
+    
+    .feature-security-img {
+        background-image: url("../assets/features/security.png");
+        background-repeat: no-repeat;
+        
+    }
+    
+    .feature-management-img {
+        background-image: url("../assets/features/management.png");
+        background-repeat: no-repeat;
+        height: 250px;
     }
 }
