@@ -11,7 +11,7 @@ env:
 script: ./build/$BUILD
 branches:
   only:
-  - content-migration    
+  - slideout-menu    
   - master
 rvm:
 - 2.3.1 # version of `ruby'
