@@ -59,7 +59,7 @@ To disable application authenticity, click the **Delete Authenticity File** butt
 
 By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
 
-You can also configure the predefined application-authenticity security check with the following property:
+You can configure the predefined application-authenticity security check with the following property:
 
 - `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
 
