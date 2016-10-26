@@ -49,11 +49,11 @@
         
         li {
             display: inline;
+            height: 100%;
         }
         
         img {
-            height: 230px;
-            width: 219px;
+            width: 220px;
             margin: 0;
             padding: 0;
         }
@@ -62,6 +62,7 @@
     // Hide feature lists by default; display via JavaScript.
     .feature-analytics, .feature-push, .feature-security, .feature-backend-logic, .feature-management {
         display: none;
+        margin-bottom: 30px;
     
         a {
             color: #30abdf;
