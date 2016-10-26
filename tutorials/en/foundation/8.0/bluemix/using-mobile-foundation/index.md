@@ -123,8 +123,7 @@ Updates to the Mobile Foundation Bluemix services are applied automatically with
 ## Accessing server logs
 To access server logs, open the sidebar navigation and click on **Cloud Foundary Applications**. Select your service and click on **Runtime tab → Files**.
 
-* You can find the **messages.log** file in the **logs** folder.
-* You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
+You can find the **messages.log** and **trace.log** files in the **logs** folder.
 
 #### Tracing
 
