@@ -70,7 +70,7 @@ The Server Configuration Tool has the following restrictions:
 
 You might also experience restrictions or anomalies in various aspects of globalization because of limitations in other products, such as browsers, database management systems, or software development kits in use. For example:
 
-* You must define the user name and password of the Application Center with ASCII characters only. This limitation exists because WebSphere® Application Server (full or Liberty profiles) does not support non-ASCII passwords and user names. See Characters that are valid for user IDs and passwords.
+* You must define the user name and password of the Application Center with ASCII characters only. This limitation exists because WebSphere  Application Server (full or Liberty profiles) does not support non-ASCII passwords and user names. See Characters that are valid for user IDs and passwords.
 * On Windows:
     * To see any localized messages in the log file that the test server creates, you must open this log file with the UTF8 encoding.
     * These limitations exist because of the following causes:
@@ -98,7 +98,7 @@ Android 4.0.x WebView component is known to have several refresh issues. Updatin
 If you build the Application Center client from sources, disabling the hardware acceleration at the application level in the Android manifest should improve the situation for Android 4.0.x. In that case, the application must be built with Android SDK 11 or later.
 
 ### Application Center requires MobileFirst Studio V7.1 for importing and building the Application Center mobile client
-To build the Application Center mobile client, you need MobileFirst Studio V 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the **Previous MobileFirst Platform Foundation releases** tab for the download link. For installation instructions, see [Installing MobileFirst Studio in the IBM® Knowledge Center for 7.1](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html). For more information about building the Application Center mobile client, see [Preparations for using the mobile client](../../../appcenter/preparations).
+To build the Application Center mobile client, you need MobileFirst Studio V 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the **Previous MobileFirst Platform Foundation releases** tab for the download link. For installation instructions, see [Installing MobileFirst Studio in the IBM  Knowledge Center for 7.1](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html). For more information about building the Application Center mobile client, see [Preparations for using the mobile client](../../../appcenter/preparations).
 
 ### Application Center and Microsoft Windows Phone 8.1
 Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.

@@ -29,7 +29,7 @@ Adapters can be uploaded, updated, or configured while a production server is ru
         
     For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
-    > **Note:** If the application server is WebSphere® Application Server Liberty, then the certificates must also be in the Liberty truststore.
+    > **Note:** If the application server is WebSphere  Application Server Liberty, then the certificates must also be in the Liberty truststore.
 
 3. Verify the server-side configuration of the adapter.
 4. Use the `mfpadm deploy adapter` and `mfpadm adapter set user-config` commands to upload the adapter and its configuration.

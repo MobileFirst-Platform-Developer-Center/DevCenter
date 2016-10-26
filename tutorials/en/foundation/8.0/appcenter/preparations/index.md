@@ -32,7 +32,7 @@ The iOS version for iPad and iPhone is not delivered as a compiled application. 
 
 To build the iOS version, you must have the appropriate MobileFirst and Apple software. The version of MobileFirst Studio must be the same as the version of IBM MobileFirst Foundation Server on which this documentation is based. The Apple Xcode version is V6.1.
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM® Knowledge Center for 7.1.
+> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
 
 ### Prerequisites specific to Microsoft Windows Phone operating system
 The Windows Phone version of the mobile client is included as an unsigned Windows Phone application package (.xap) file in the software delivery. The **IBMApplicationCenterUnsigned.xap** file is in the **ApplicationCenter/installer** directory.
@@ -51,7 +51,7 @@ You must import the **IBMAppCenter** project into MobileFirst Studio and then bu
 
 Application Center requires MobileFirst Studio for importing and building the IBMAppCenter project. MobileFirst Studio is not part of IBM MobileFirst Foundation, but if you purchased this product, you are entitled to the full cross-platform version of the product as well.
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM® Knowledge Center for 7.1.
+> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
 
 1. Select **File → Import**.
 2. Select **General → Existing Project into Workspace**.

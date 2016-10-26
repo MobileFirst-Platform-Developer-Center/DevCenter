@@ -49,7 +49,7 @@ Configuration is done through JNDI properties on both the MobileFirst Server and
 
 The Analytics runtime web application must be restarted for any changes in these properties to take effect. It is not necessary to restart the entire application server.
 
-To set a JNDI property on WebSphere® Application Server Liberty, add a tag to the **server.xml** file as follows.
+To set a JNDI property on WebSphere  Application Server Liberty, add a tag to the **server.xml** file as follows.
 
 ```xml
 <jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
@@ -165,7 +165,7 @@ The underlying Elasticsearch data store expects nodes to be homogenous, so do no
 #### Adding a MobileFirst Analytics Server to the cluster
 Learn how to add a MobileFirst Analytics Server to the cluster.
 
-Because Elasticsearch is embedded in the MobileFirst Analytics Server, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere® Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Because Elasticsearch is embedded in the MobileFirst Analytics Server, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
 
 In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
 

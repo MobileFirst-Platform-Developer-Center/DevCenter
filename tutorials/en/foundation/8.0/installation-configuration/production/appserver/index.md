@@ -146,7 +146,7 @@ The process that runs Liberty server is not stopped when the user, who started t
                 <ul>
                     <li>The Server Configuration Tool and the Ant tasks can configure a default secure JMX connection, which includes the generation of a self-signed SSL certificate with a validity period of 365 days. This configuration is not intended for production use.</li>
                     <li>To configure the secure JMX connection for production use, follow the instructions as described in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configuring secure JMX connection to the Liberty profile</a>.</li>
-                    <li>The rest-connector is available for WebSphere® Application Server, Liberty Core, and other editions of Liberty, but it is possible to package a Liberty server with a subset of the available features. To verify that the rest-connector feature is available in your installation of Liberty, enter the following command:
+                    <li>The rest-connector is available for WebSphere  Application Server, Liberty Core, and other editions of Liberty, but it is possible to package a Liberty server with a subset of the available features. To verify that the rest-connector feature is available in your installation of Liberty, enter the following command:
 {% highlight bash %}                    
 liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
@@ -158,7 +158,7 @@ liberty_install_dir/bin/productInfo featureInfo
 </div>
 
 ### WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites
-IBM MobileFirst Server has some requirements for the configuration of WebSphere® Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
+IBM MobileFirst Server has some requirements for the configuration of WebSphere  Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of WebSphere Application Server. See [System requirements](../../../product-overview/requirements).
@@ -192,11 +192,11 @@ Ensure that you fulfill the following criteria:
 To install IBM MobileFirst Server to an application server, the MobileFirst installation tools must be run by a user that has specific file system privileges.  
 The installation tools include:
 
-* IBM® Installation Manager
+* IBM  Installation Manager
 * The Server Configuration Tool
 * The Ant tasks to deploy MobileFirst Server
 
-For WebSphere® Application Server Liberty profile, you must have the required permission to perform the following actions:
+For WebSphere  Application Server Liberty profile, you must have the required permission to perform the following actions:
 
 * Read the files in the Liberty installation directory.
 * Create files in the configuration directory of the Liberty server, which is typically usr/servers/server-name, to create backup copies and modify server.xml and jvm.options.
@@ -242,9 +242,9 @@ The tool is not available on other operating systems. You need to use Ant tasks 
 ### Supported topologies
 The Server Configuration Tool installs the MobileFirst Server components with the following topologies:
 
-* All components (MobileFirst Operations Console, the MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime) are in the same application server. However, on WebSphere® Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, MobileFirst Operations Console, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
+* All components (MobileFirst Operations Console, the MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, MobileFirst Operations Console, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
 * If the MobileFirst Server push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service. On Liberty collective, the push service is installed in a Liberty member that can be the same as the one where the runtime is installed.
-* All the components use the same database system and the user. For DB2®, all the components also use the same schema.
+* All the components use the same database system and the user. For DB2 , all the components also use the same schema.
 * The Server Configuration Tool installs the components for a single server except for Liberty collective and WebSphere Application Server Network Deployment for asymmetric deployment. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not required on WebSphere Application Server Network Deployment.
 
 For other topologies or other database settings, you can install the components with Ant Tasks or manually instead.
@@ -278,7 +278,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                     </li>
                     <li>Select <b>File → New Configuration</b> to create a MobileFirst Server Configuration.
                         <ul>
-                            <li>In the <b>Configuration Details</b> panel, enter the context root of the administration service and the runtime component. You might want to enter an environment ID. An environment ID is used in advanced use cases, for example when <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">multiple installations of MobileFirst Server are made on the same application server or same WebSphere® Application Server cell</a>.</li>
+                            <li>In the <b>Configuration Details</b> panel, enter the context root of the administration service and the runtime component. You might want to enter an environment ID. An environment ID is used in advanced use cases, for example when <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">multiple installations of MobileFirst Server are made on the same application server or same WebSphere  Application Server cell</a>.</li>
                             <li>In the <b>Console Settings</b> panel, select whether to install MobileFirst Operations Console or not. If the console is not installed, you need to use command line tools (<b>mfpdev</b> or <b>mfpadm</b>) or the REST API to interact with the MobileFirst Server administration service.</li>
                             <li>In the <b>Database Selection</b> panel, select the database management system that you plan to use. All the components use the same database type and the same database instance. For more information about the database panes, see <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">Create the database tables with the Server Configuration Tool</a>.</li>
                             <li>In the <b>Application Server Selection</b> panel, select the type of application server where you want to deploy MobileFirst Server.</li>
@@ -390,9 +390,9 @@ You can find the sample configuration files for installing MobileFirst Server in
 
 You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files...**. The sample Ant files have the same limitations as the Server Configuration Tool:
 
-* All components (MobileFirst Operations Console, MobileFirst Server administration service, MobileFirst Server live update service, the MobileFirst Server artifacts, and MobileFirst runtime) are in the same application server. However, on WebSphere® Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime.
+* All components (MobileFirst Operations Console, MobileFirst Server administration service, MobileFirst Server live update service, the MobileFirst Server artifacts, and MobileFirst runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime.
 * If the MobileFirst Server push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service.
-* All the components use the same database system and the user. For DB2®, all the components also use the same schema.
+* All the components use the same database system and the user. For DB2 , all the components also use the same schema.
 * The Server Configuration Tool installs the components for a single server. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not supported on WebSphere Application Server Network Deployment.
 
 You can configure the MobileFirst Server services to run in server farm with Ant tasks. To include your server in a farm, you need to specify some specific attributes that configure your application server accordingly. For more information about configuring a server farm with Ant tasks, see [Installing a server farm with Ant tasks](#installing-a-server-farm-with-ant-tasks).
@@ -458,7 +458,7 @@ For example:
 #### Specify existing users
 By default, the **installmobilefirstadmin** Ant task creates users:
 
-* On WebSphere® Application Server Liberty to define a Liberty administrator for the JMX communication.
+* On WebSphere  Application Server Liberty to define a Liberty administrator for the JMX communication.
 * On any application server, to define a user that is used for the communication with the live update service.
 
 To use an existing user instead of creating new user, you can do the following operations:
@@ -1819,7 +1819,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
                         <ul>
                             <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                                 <ul>
-                                    <li>WebSphere® Application Server full profile<br/>
+                                    <li>WebSphere  Application Server full profile<br/>
                                     <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
                                     <li>WebSphere Application Server Liberty profile</li>
                                     <li>Apache Tomcat</li>
@@ -1871,7 +1871,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                         <ul>
                             <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                                 <ul>
-                                    <li>WebSphere® Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
+                                    <li>WebSphere  Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
                                     <li>WebSphere Application Server Liberty profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
@@ -1896,7 +1896,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                         <ul>
                             <li>Decide which database that you want to use and choose the Ant file to create and configure the database in the <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> directory:
                                 <ul>
-                                    <li>For DB2®, use <b>create-database-db2.xml</b>.</li>
+                                    <li>For DB2 , use <b>create-database-db2.xml</b>.</li>
                                     <li>For MySQL, use <b>create-database-mysql.xml</b>.</li>
                                     <li>For Oracle, use <b>create-database-oracle.xml</b>.</li>
                                 </ul>
@@ -1987,7 +1987,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                 <ol>
                     <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
                         <ul>
-                            <li>WebSphere® Application Server full profile<br/>
+                            <li>WebSphere  Application Server full profile<br/>
                             <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
                             <li>WebSphere Application Server Liberty profile</li>
                             <li>Apache Tomcat</li>
@@ -1998,7 +1998,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                     </li>
                     <li>Decide which database that you want to use. You can choose from:
                         <ul>
-                            <li>DB2®</li>
+                            <li>DB2 </li>
                             <li>MySQL</li>
                             <li>Oracle</li>
                         </ul>
@@ -2083,7 +2083,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                         <ul>
                             <li><b>WebSphere Application Server Liberty profile</b>
                                 <br/>
-                                You can configure the truststore by using IBM® utilities such as Keytool or iKeyman.
+                                You can configure the truststore by using IBM  utilities such as Keytool or iKeyman.
                                 <ul>
                                     <li>For more information about Keytool, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> in the IBM SDK, Java Technology Edition.</li>
                                     <li>For more information about iKeyman, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> in the IBM SDK, Java Technology Edition.</li>

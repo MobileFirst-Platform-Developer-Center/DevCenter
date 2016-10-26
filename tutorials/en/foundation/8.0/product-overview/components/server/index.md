@@ -51,6 +51,6 @@ The installation of MobileFirst Server on-premises can be done by using the foll
 
 For more information about the installation of MobileFirst Server on-premises is provided, see:
 
-* A [guide through a complete installation](../../../installation-configuration/production/) of MobileFirst Server farm on WebSphere® Application Server Liberty profile. The guide is based on a simple scenario for you to try out the installation either in graphical mode or in command line mode.
+* A [guide through a complete installation](../../../installation-configuration/production/) of MobileFirst Server farm on WebSphere  Application Server Liberty profile. The guide is based on a simple scenario for you to try out the installation either in graphical mode or in command line mode.
 * A [detailed section](../../../installation-configuration/production/) that contains details about the installation prerequisites, database setup, server topologies, deployment of the components to the application server, and server configuration.
 

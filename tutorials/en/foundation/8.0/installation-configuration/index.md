@@ -26,9 +26,9 @@ The MobileFirst Server installer copies onto your computer all the tools and lib
 If you install a test or production server, start with **Tutorials about MobileFirst Server installation** below for a simple installation and to learn about the installation of MobileFirst Server. For more information about preparing an installation for your specific environment, see [Installing MobileFirst Server for a production environment](production).
 
 **Tutorials about MobileFirst Server installation**  
-Learn about the MobileFirst Server installation process by walking through the instructions to create a functional MobileFirst Server, cluster with two nodes on WebSphere® Application Server Liberty profile. The installation can be done in two ways:
+Learn about the MobileFirst Server installation process by walking through the instructions to create a functional MobileFirst Server, cluster with two nodes on WebSphere  Application Server Liberty profile. The installation can be done in two ways:
 
-* [By using the graphical mode of IBM® Installation Manager](production/tutorials/graphical-mode) and the Server Configuration Tool.
+* [By using the graphical mode of IBM  Installation Manager](production/tutorials/graphical-mode) and the Server Configuration Tool.
 * [By using the command line tool](production/tutorials/command-line).
 
 Afterwards you'll have a working MobileFirst Server. However, you need to configure it, in particular for security, before you use the server. For more information, see [Configuring MobileFirst Server](production/server-configuration).

@@ -4,7 +4,7 @@ title: Running the IBM Installation Manager
 weight: 1
 ---
 ## Overview
-IBM® Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
+IBM  Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
 
 You run Installation Manager to install the binary files of MobileFirst Server and the tools to deploy the MobileFirst Server applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server).
 
@@ -15,7 +15,7 @@ Two main options are proposed during the installation process:
 * Installation and deployment of IBM MobileFirst Platform Application Center
 
 ### Token licensing
-Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational® License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
+Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
 
 ### IBM MobileFirst Foundation Application Center
 Application Center is a component of IBM MobileFirst Foundation. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
@@ -42,7 +42,7 @@ However, for production installation, use Ant tasks to install Application Cente
 * [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server)
 
 ## Administrator versus user mode
-You can install MobileFirst Server in two different IBM® Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
+You can install MobileFirst Server in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
 
 IBM MobileFirst Foundation supports the following two Installation Manager modes:
 
@@ -94,7 +94,7 @@ The decisions in the following two panes in the installation wizard are mandator
 5. Click **Next**.
 6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
 
-    If you have a contract to use token licensing with Rational® License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure MobileFirst Server. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
+    If you have a contract to use token licensing with Rational  License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure MobileFirst Server. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
 7. Keep the default option (No) as-is in the **Install IBM MobileFirst Foundation for iOS** section of the **General settings** panel.
 8. Decide whether to install Application Center in **Choose configuration** panel.
 
@@ -116,7 +116,7 @@ You can also find some shortcuts for the Server Configuration Tool, Ant, and mfp
 
 ## Installing by running IBM Installation Manager in command line
 
-1. Review the license agreement for MobileFirst Server. The license files can be viewed when you download the installation repository from Passport Advantage®.
+1. Review the license agreement for MobileFirst Server. The license files can be viewed when you download the installation repository from Passport Advantage .
 2. Extract the compressed file of MobileFirst Server repository, that you downloaded, to a folder.
 
     You can download the repository from the IBM MobileFirst Foundation eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
@@ -165,7 +165,7 @@ You can find the resources in the following folders:
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ## Installing by using XML response files - silent installation
-If you want to install IBM MobileFirst Application Center with IBM® Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
+If you want to install IBM MobileFirst Application Center with IBM  Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
 
 Silent installations are defined by an XML file that is called a response file. This file contains the necessary data to complete installation operations silently. Silent installations are started from the command line or a batch file.
 
@@ -200,7 +200,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
             <th>Application server where you install the Application Center</th>
             <th>Derby</th>
-            <th>IBM DB2®</th>
+            <th>IBM DB2 </th>
             <th>MySQL</th>
             <th>Oracle</th>
         </tr>
@@ -209,7 +209,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>WebSphere® Application Server Liberty profile</td>
+            <td>WebSphere  Application Server Liberty profile</td>
             <td>install-liberty-derby.xml</td>
             <td>install-liberty-db2.xml</td>
             <td>install-liberty-mysql.xml (See Note)</td>
@@ -252,7 +252,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     
     > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM DB2 or another DBMS that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
-    For uninstallation, use a sample file that depends on the version of MobileFirst Server or Worklight® Server that you initially installed in the particular package group:
+    For uninstallation, use a sample file that depends on the version of MobileFirst Server or Worklight  Server that you initially installed in the particular package group:
         * MobileFirst Server uses the package group IBM MobileFirst Platform Server.
         * Worklight Server V6.x, or later, uses the package group IBM Worklight.
         * Worklight Server V5.x uses the package group Worklight.
@@ -317,7 +317,7 @@ For more information, see the IBM Installation Manager documentation at [Install
 2. Change the file access rights of the response file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the **read** permissions of the file for users other than yourself. You can use a command, such as the following examples:
     * On UNIX: `chmod 600 response-file.xml`
     * On Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
-3. Similarly, if the server is a WebSphere® Application Server Liberty or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
+3. Similarly, if the server is a WebSphere  Application Server Liberty or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
     * For WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
     * For Apache Tomcat: `conf/server.xml`
 4. Modify the response file to take into account differences between the machine on which the response file was created and the target machine.
@@ -340,13 +340,13 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Always</td>
-        <td>Activation of token licensing. If you plan to use the product with the Rational® License Key Server, you must activate token licensing.<br/><br/>In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>.<br/><br/>If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
+        <td>Activation of token licensing. If you plan to use the product with the Rational  License Key Server, you must activate token licensing.<br/><br/>In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>.<br/><br/>If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
         <td><code>true</code> or <code>false</code></td>    
     </tr>
     <tr>
         <td>user.appserver.selection2</td>
         <td>Always</td>
-        <td>Type of application server. was means preinstalled WebSphere® Application Server 8.5.5. tomcat means Tomcat 7.0.</td>
+        <td>Type of application server. was means preinstalled WebSphere  Application Server 8.5.5. tomcat means Tomcat 7.0.</td>
         <td></td>
     </tr>
     <tr>
@@ -460,7 +460,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
       <td>user.database.db2.host</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The host name or IP address of the DB2® database server.</td>
+      <td>The host name or IP address of the DB2  database server.</td>
       <td></td>
     </tr>
     <tr>
@@ -623,7 +623,7 @@ The MobileFirst Server files and tools are installed in the MobileFirst Server i
 | Item | Description |
 |------|-------------|
 | **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. | 
-| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM® PureApplication® System. | 
+| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM  PureApplication  System. | 
 | **databases** | Contains the SQL scripts to be used for the manual creation of tables for Application Center. |
 | **installer** | Contains the resources to create the Application Center client. | 
 | **tools** | The tools of Application Center. | 
