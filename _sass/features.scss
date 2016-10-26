@@ -52,12 +52,16 @@
         li {
             display: inline;
             height: 100%;
-        }
-        
-        img {
-            width: 220px;
-            margin: 0;
-            padding: 0;
+            
+            img {
+                width: 224px;
+                margin: 0;
+                padding: 0;
+                
+                &:hover {
+                    background-color: #f0f9fe;
+                }
+            }
         }
     }
     
