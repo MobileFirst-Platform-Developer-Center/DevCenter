@@ -11,7 +11,7 @@ weight: 4
 >
 > * Some charts do not get populated.
 
-The Scenario Loader populates various Analytics Console charts and reports with test data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
+The Scenario Loader populates various Analytics Console charts and reports with dummy data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
 
 The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
 
@@ -21,6 +21,7 @@ The loaded data is synthetic in nature, injected directly into the data store. I
 * [Configuring the data loading](#configuring-the-data-loading)
 * [Loading and deleting the data](#loading-and-deleting-the-data)
 * [Viewing the populated charts and tables](#viewing-the-populated-charts-and-tables)
+* [Disabling the debug mode](#disabling-the-debug-mode)
 
 ## Before you start
 The Scenario Loader is packaged together with the Analytics Console. Make sure your Analytics Console is running and accessible before connecting to the Scenario Loader.
