@@ -12,7 +12,7 @@ author:
 ---
 This blog post details a possible scenario which can trigger false-positive failures in applications that utilize the Application Authenticity feature in IBM MobileFirst Platform Foundation 7.0, 7.1, after they were installed from the **Apple App Store**.
 
-Related APAR: PI67872 EXTENDED APP AUTHENTICITY MAY FAIL ON APPLICATIONS INSTALLEDFROM THE APPLE APP STORE.
+Related APAR: PI67872 EXTENDED APP AUTHENTICITY MAY FAIL ON APPLICATIONS INSTALLED FROM THE APPLE APP STORE.
 
 The failure happens when using the **Extended** Application Authenticity feature. The Extended Application Authenticity algorithm relies on the binary content of the application. We suspect that Apple has recently started manipulating the binary content in the process of submitting apps, and this action in turn prevents the feature from working correctly.
 
