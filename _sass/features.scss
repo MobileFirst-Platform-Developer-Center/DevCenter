@@ -8,6 +8,16 @@
         margin: 0
     }
     
+    p {
+        margin-bottom: 20px;
+        font-weight: 100;
+    }
+    
+    .tagline {
+        font-size: 115%;
+        color: #939598;
+    }
+    
     ul { // feature lists
         list-style: none;
         padding-left: 0;
@@ -23,21 +33,11 @@
             }
         }
         
-        .tagline {
-            font-size: 115%;
-            color: #939598;
-        }
-        
         .title {
             color: #4179ba;
             font-weight: bold;
         }
         
-        p {
-            margin-bottom: 20px;
-            font-weight: 100;
-        }
-
         .checkmark {
             width: 15px;
         }
@@ -50,6 +50,13 @@
         li {
             display: inline;
         }
+        
+        img {
+            height: 230px;
+            width: 219px;
+            margin: 0;
+            padding: 0;
+        }
     }
     
     // Hide feature lists by default; display via JavaScript.
@@ -59,35 +66,5 @@
         a {
             color: #30abdf;
         }
-    }
-    
-    .feature-analytics-img {
-        background-image: url("../assets/features/analytics.png");
-        background-repeat: no-repeat;
-        
-    }
-    
-    .feature-backend-logic-img {
-        background-image: url("../assets/features/backend-logic.png");
-        background-repeat: no-repeat;
-        
-    }
-    
-    .feature-push-img {
-        background-image: url("../assets/features/push.png");
-        background-repeat: no-repeat;
-        
-    }
-    
-    .feature-security-img {
-        background-image: url("../assets/features/security.png");
-        background-repeat: no-repeat;
-        
-    }
-    
-    .feature-management-img {
-        background-image: url("../assets/features/management.png");
-        background-repeat: no-repeat;
-        height: 250px;
     }
 }
