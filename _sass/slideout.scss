@@ -1,32 +1,76 @@
-.navmenu {
-    width: 230px;
+@media (min-width: 0) {
+    .navbar-toggle {
+        display: block;
+        /* force showing the toggle */
+    }
+}
+@media (min-width: 992px) {
+    body {
+        padding: 0;
+    }
+
+    .navbar {
+        right: auto;
+        background: none;
+        border: none;
+    }
 }
 
 .navbar-toggle {
-  float: left;
-  margin-left: 15px;
-  margin-right: 17px;
+    float: left;
+    margin-left: 15px;
+    margin-right: 17px;
 }
 
-@media (min-width: 0) {
-  .navbar-toggle {
-    display: block; /* force showing the toggle */
-  }
-}
+.navmenu.offcanvas {
+    width: 230px;
 
-@media (min-width: 992px) {
-  body {
-    padding: 0;
-  }
-  
-  .navbar {
-    right: auto;
-    background: none;
-    border: none;
-  }
-}
-
-.navmenu-nav {
-    font-size: 20px;
-    list-style-type: none;
+    .navmenu-nav {
+        > li {
+            a {
+                padding-top: 14px;
+                padding-bottom: 13px;
+                color: black;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            &.active {
+                background-color: #bfdfeb;
+                > a, > a:hover {
+                    background-color: #bfdfeb;
+                }
+                
+                ul.child-nav {
+                    display: block;
+                    > li {
+                        padding-left: 30px;
+                        padding-top: 14px;
+                        padding-bottom: 13px;
+                    }
+                    > li.active {
+                        background-color: #8dd1ee;
+                        padding-top: 14px;
+                        padding-bottom: 13px;
+                        padding-left: 30px;
+                        a, a:hover {
+                            color: black;
+                        }    
+                    }
+                }
+            }
+            .child-nav {
+                display: none;
+                list-style-type:none;
+                padding-left: 0;
+                a {
+                    font-size: 15px;
+                    font-weight: normal;
+                }
+                a.active {
+                    background-color: #8dd1ee;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
 }
