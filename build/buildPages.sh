@@ -7,7 +7,7 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
 fi
 
 # only proceed script when on "master" branch
-if [ $TRAVIS_BRANCH != 'slideout-menu' ]; then
+if [ $TRAVIS_BRANCH != 'master' ]; then
   echo "this is not the staging branch, exiting"
   exit 0
 fi
