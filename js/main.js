@@ -59,6 +59,4 @@ $(function() {
             return false;
         });
     });
-    
-    $(".navbar .navmenu-nav a").click(function(){ $('selector').offcanvas('hide'); });
 });
