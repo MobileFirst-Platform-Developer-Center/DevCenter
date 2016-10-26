@@ -109,7 +109,7 @@ Application Center supports the distribution of app package (.appx) files for Mi
 The **mfpadm** tool is not available if you download and install only the IBM MobileFirst Foundation Developer Kit. The mfpadm tool is installed with the MobileFirst Server with the installer.
 
 ### Confidential clients
-* Use ASCII characters only in the ID of a confidential client.
+Use ASCII characters only in the ID of a confidential client.
 
 ### Direct Update
 Direct Update on Windows is not supported in V8.0.0.
