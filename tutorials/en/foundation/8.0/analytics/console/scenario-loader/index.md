@@ -7,11 +7,11 @@ weight: 4
 ---
 ## Overview
 
-> **Note:** The Scenario Loader is *experimental* in nature and is thus not fully supported. Use accordingly.
+> **Note:** The Scenario Loader is *experimental* in nature, and is therefore not fully supported. Use accordingly.
 >
-> * Some charts may not get populated.
+> * Some charts do not get populated.
 
-The Scenario Loader populates various Analytics Console charts and reports with test data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
+The Scenario Loader populates various Analytics Console charts and reports with dummy data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
 
 The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
 
@@ -21,6 +21,7 @@ The loaded data is synthetic in nature, injected directly into the data store. I
 * [Configuring the data loading](#configuring-the-data-loading)
 * [Loading and deleting the data](#loading-and-deleting-the-data)
 * [Viewing the populated charts and tables](#viewing-the-populated-charts-and-tables)
+* [Disabling the debug mode](#disabling-the-debug-mode)
 
 ## Before you start
 The Scenario Loader is packaged together with the Analytics Console. Make sure your Analytics Console is running and accessible before connecting to the Scenario Loader.
@@ -59,3 +60,12 @@ To delete the data, click the **Delete Now** button in the **Testing Configurati
 Once the data is loaded, many, but not all, of the charts and tables available in the Analytics Console are populated.
 
 From the Analytics Console navigation bar, check the various pages and tabs to view the populated charts and tables.
+
+## Disabling the debug mode
+
+In order to work with real data after working in debug mode and synthetic data:
+
+1. Delete the  data by clicking the **Delete Now** button in the **Testing Configuration** section.
+2. In **Settings** → **Advanced** section make sure that the **Default tenant** value is set to `worklight`.
+3. For the variable that was set to true, set to false (the JVM argument `-DwlDevEnv=false`, or  the environment variable `ANALYTICS_DEBUG=false`).
+4. Restart the Analytics Server.
