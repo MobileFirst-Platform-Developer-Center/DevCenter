@@ -22,11 +22,6 @@
             color: #4179b9;
             font-weight: 100;
             
-            //p {
-            //    margin-bottom: 20px;
-            //    font-weight: 100;
-            //}
-            
             img {
                 width: 15px;
                 margin: 0 5px 0 0;
@@ -57,10 +52,11 @@
             img {
                 width: 228px;
                 padding: 0 24px 0 24px;
-                
-                &:hover {
-                    background-color: #f0f9fe;
-                }
+
+            }
+            
+            &:hover {
+                background-color: #f0f9fe;
             }
         }
     }

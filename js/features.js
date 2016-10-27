@@ -12,10 +12,10 @@ $(".feature-analytics-img").on("click", function() {
     
     // Change background color for active feature
     $(".analytics").css("background","#c3e5f8");
-    $(".push").css("background","white");
-    $(".security").css("background","white");
-    $(".backend-logic").css("background","white");
-    $(".management").css("background","white");
+    $(".push").css("background","none");
+    $(".security").css("background","none");
+    $(".backend-logic").css("background","none");
+    $(".management").css("background","none");
 });
 
 $(".feature-push-img").on("click", function() {
@@ -25,11 +25,11 @@ $(".feature-push-img").on("click", function() {
     $(".feature-push").css("display","block");
     $(".feature-management").css("display","none");
     
-    $(".analytics").css("background","white");
+    $(".analytics").css("background","none");
     $(".push").css("background","#c3e5f8");
-    $(".security").css("background","white");
-    $(".backend-logic").css("background","white");
-    $(".management").css("background","white");
+    $(".security").css("background","none");
+    $(".backend-logic").css("background","none");
+    $(".management").css("background","none");
 });
 
 $(".feature-security-img").on("click", function() {
@@ -39,11 +39,11 @@ $(".feature-security-img").on("click", function() {
     $(".feature-management").css("display","none");
     $(".feature-security").css("display","block");
     
-    $(".analytics").css("background","white");
-    $(".push").css("background","white");
+    $(".analytics").css("background","none");
+    $(".push").css("background","none");
     $(".security").css("background","#c3e5f8");
-    $(".backend-logic").css("background","white");
-    $(".management").css("background","white");
+    $(".backend-logic").css("background","none");
+    $(".management").css("background","none");
 });
 
 $(".feature-backend-logic-img").on("click", function() {
@@ -53,11 +53,11 @@ $(".feature-backend-logic-img").on("click", function() {
     $(".feature-backend-logic").css("display","block");
     $(".feature-management").css("display","none");
     
-    $(".analytics").css("background","white");
-    $(".push").css("background","white");
-    $(".security").css("background","white");
+    $(".analytics").css("background","none");
+    $(".push").css("background","none");
+    $(".security").css("background","none");
     $(".backend-logic").css("background","#c3e5f8");
-    $(".management").css("background","white");
+    $(".management").css("background","none");
 });
 
 $(".feature-management-img").on("click", function() {
@@ -67,9 +67,9 @@ $(".feature-management-img").on("click", function() {
     $(".feature-analytics").css("display","none");
     $(".feature-management").css("display","block");
     
-    $(".analytics").css("background","white");
-    $(".push").css("background","white");
-    $(".security").css("background","white");
-    $(".backend-logic").css("background","white");
+    $(".analytics").css("background","none");
+    $(".push").css("background","none");
+    $(".security").css("background","none");
+    $(".backend-logic").css("background","none");
     $(".management").css("background","#c3e5f8");
 });
