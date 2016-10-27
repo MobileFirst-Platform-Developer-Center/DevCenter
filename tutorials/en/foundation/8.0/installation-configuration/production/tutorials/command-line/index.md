@@ -4,18 +4,18 @@ title: Installing MobileFirst Server From Command Line tutorial
 weight: 0
 ---
 ## Overview
-Use the command line mode of IBM® Installation Manager and Ant tasks to install MobileFirst Server.
+Use the command line mode of IBM  Installation Manager and Ant tasks to install MobileFirst Server.
 
 #### Before you begin
 * Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
-        * DB2®
+        * DB2 
         * MySQL
         * Oracle
 
         > **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly on IBM Passport Advantage®.
+        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly on IBM Passport Advantage .
 
 * JDBC driver for your database.
     * For DB2, use the DB2 JDBC driver type 4.
@@ -24,7 +24,7 @@ Use the command line mode of IBM® Installation Manager and Ant tasks to install
 * Java 7 or later.
 
 * Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
+* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere  Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
 
 **MobileFirst Server installation repository**  
 IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
@@ -91,7 +91,7 @@ Make sure that Installation Manager V1.8.4 or later is installed. The installati
 
 Run Installation Manager to install the binary files of MobileFirst Server on your disk before you create the databases and deploy MobileFirst Server to Liberty profile. During the installation of MobileFirst Server with Installation Manager, an option is proposed to you to install IBM MobileFirst Platform Application Center. Application Center is a different component of the product. For this tutorial, it is not required to be installed with MobileFirst Server.
 
-You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational® License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. 
+You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational  License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. 
 
 In this tutorial, you specify the properties as the parameters through the **imcl** command line. This specification can also be done by using a response file.
 
@@ -237,7 +237,7 @@ In the Server Configuration Tool, only one database user is needed. This user is
 #### Database tables creation
 For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp\_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
 
-The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX®, use the command `diff server.xml server.xml.bak` to find the differences.
+The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
 
 #### Modification of the application server settings (specific to Liberty):
 1. The Liberty features are added.

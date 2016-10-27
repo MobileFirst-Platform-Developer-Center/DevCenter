@@ -19,7 +19,7 @@ For smooth installation of MobileFirst Server, ensure that you fulfill all the s
 **Database Management System (DBMS)**  
 A DBMS is needed to store the technical data of MobileFirst Server components. You must use one of the supported DBMS:
 
-* IBM® DB2®
+* IBM  DB2 
 * MySQL
 * Oracle
 
@@ -32,7 +32,7 @@ For more information about the versions of DBMS that are supported by the produc
 **Java application server**  
 A Java application server is needed to run the MobileFirst Server applications. You can use any of the following application servers:
 
-* WebSphere® Application Server Liberty Core
+* WebSphere  Application Server Liberty Core
 * WebSphere Application Server Liberty Network Deployment
 * WebSphere Application Server
 * Apache Tomcat

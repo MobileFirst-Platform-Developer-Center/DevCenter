@@ -15,7 +15,7 @@ It is better to provide more information than to risk not providing enough infor
 * Operating system and version. For example, Windows XP SP3 Virtual Machine or Mac OSX 10.8.3.
 * Eclipse version. For example, Eclipse Indigo 3.7 Java EE.
 * JDK version. For example, Java SE Runtime Environment (build 1.7).
-* IBM MobileFirst Foundation version. For example, IBM® Worklight® V5.0.6 Developer Edition.
+* IBM MobileFirst Foundation version. For example, IBM Worklight V5.0.6 Developer Edition.
 * iOS version. For example, iOS Simulator 6.1 or iPhone 4S iOS 6.0 (deprecated, see Deprecated features and API elements).
 * Android version. For example, Android Emulator 4.1.1 or Samsung Galaxy Android 4.0 API Level 14.
 * Windows version. For example, Windows 8, Windows 8.1, or Windows Phone 8.1.
@@ -193,7 +193,7 @@ catch(JSONStoreException e) {
 | 13 BAD\_PARAMETER\_EXPECTED\_DOCUMENT\_OR\_ID | Validation error |
 | 14 CAN\_NOT\_REPLACE\_DEFAULT\_FUNCTIONS | Calling the enhance method in the JSONStoreCollection class to replace an existing function (find and add) is not allowed. |
 | 15 COULD\_NOT\_MARK\_DOCUMENT\_PUSHED | Push sends the document to an adapter but JSONStore fails to mark the document as not dirty. |
-| 16 COULD\_NOT\_GET\_SECURE\_KEY | To initiate a collection with a password there must be connectivity to the MobileFirst Server because it returns a 'secure random token'. IBM® Worklight® V5.0.6 and later allows developers to generate the secure random token locally passing {localKeyGen: true} to the init method via the options object. |
+| 16 COULD\_NOT\_GET\_SECURE\_KEY | To initiate a collection with a password there must be connectivity to the MobileFirst Server because it returns a 'secure random token'. IBM  Worklight  V5.0.6 and later allows developers to generate the secure random token locally passing {localKeyGen: true} to the init method via the options object. |
 | 17 FAILED\_TO\_LOAD\_INITIAL\_DATA\_FROM\_ADAPTER | Could not load data because WL.Client.invokeProcedure called the failure callback. |
 | 18 FAILED\_TO\_LOAD\_INITIAL\_DATA\_FROM\_ADAPTER\_INVALID\_LOAD\_OBJ | The load object that was passed to the init method did not pass the validation. |
 | 19 INVALID\_KEY\_IN\_LOAD\_OBJECT | There is a problem with the key used in the load object when you call the add method. |

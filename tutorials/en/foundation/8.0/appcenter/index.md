@@ -87,7 +87,7 @@ In Application Center, applications have only one version number. The version nu
 The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
 
 ### Server-side component
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM® WebSphere® or Apache Tomcat.
+The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
 
 The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
 
@@ -132,7 +132,7 @@ To use the Application Center, you must configure security settings, start the w
 
 When you install IBM MobileFirst Foundation, the Application Center is automatically installed in the specified application server.
 
-If you install the Application Center in WebSphere® Application Server Liberty profile, the server is created in **installation-directory/server**.
+If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
 
 After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
 

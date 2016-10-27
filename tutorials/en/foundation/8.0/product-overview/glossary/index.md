@@ -232,7 +232,7 @@ A telephone, tablet, or personal digital assistant that operates on a radio netw
 See [adapter](#adapter)
 
 ### MobileFirst Data Proxy
-A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant® by using MobileFirst Platform OAuth security capabilities. The MobileFirst Data Proxy requires an authentication through the trust association interceptor.
+A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using MobileFirst Platform OAuth security capabilities. The MobileFirst Data Proxy requires an authentication through the trust association interceptor.
 
 ### MobileFirst Operations Console
 A web-based interface that is used to control and manage MobileFirst runtime environments that are deployed in MobileFirst Server, and to collect and analyze user statistics.

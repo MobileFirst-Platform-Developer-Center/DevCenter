@@ -42,7 +42,7 @@ For application authenticity to be enabled in your Cordova or native application
     java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
     ```
 
-    This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data, next to the `MyBankApp.ipa` file`.
+    This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
 
 3. Open the MobileFirst Operations Console in your favorite browser.
 4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.

@@ -69,7 +69,7 @@ When you try to log in to the console with an incorrect user name or an incorrec
 * The message **The connection was reset**
 * The message **The time allowed for login exceeded**
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere® Application Server profiles.
+The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
 
 The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
 
@@ -92,13 +92,13 @@ The Application Center enables you to add new applications and versions and to m
 Click **Applications** to access Application Management.
 
 ### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
-Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM® Installation Manager package, have two different users defined that you can use to get started.
+Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM  Installation Manager package, have two different users defined that you can use to get started.
 
 * User with login **demo** and password **demo**
 * User with login **appcenteradmin** and password **admin**
 
 ### WebSphere Application Server full profile
-If you installed the Application Center on WebSphere® Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
 
 ![Available applications](ac_app_mgt.jpg)
 
@@ -244,7 +244,7 @@ Select Active to indicate that an application can be installed on a mobile devic
 * In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli® Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
 
 ## Editing application properties
 You can edit the properties of an application in the list of uploaded applications.  

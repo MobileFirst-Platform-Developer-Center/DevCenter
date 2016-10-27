@@ -797,7 +797,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Bluemix® dashDB™ service (with Bluemix service plan of Enterprise Transactional)</td>
+                                            <td>Bluemix  dashDB™ service (with Bluemix service plan of Enterprise Transactional)</td>
                                         </tr>
                                         <tr>
                                             <td>Optional. [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>

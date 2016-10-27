@@ -12,7 +12,7 @@ To help expedite the troubleshooting process, gather the following information:
 
 * The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
 * The container size selected. For example, Medium 2GB.
-* The Bluemix® dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
+* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
 * The container ID
 * The public IP address (if assigned)
 * Versions of docker and cloud foundry: `cf -v` and `docker version`
@@ -43,7 +43,7 @@ If you encounter a registry-related error after executing the prepareserver.sh o
 In general, any network problems that occur while the prepareserver.sh or prepareanalytics.sh scripts are running could cause processing to hang and then fail.
 
 **How to resolve**  
-First, run the initenv.sh script again to log in to the container registry on Bluemix®. Then, rerun the script that previously failed.
+First, run the initenv.sh script again to log in to the container registry on Bluemix . Then, rerun the script that previously failed.
 
 ### Unable to create the mfpfsqldb.xml file
 An error occurs at the end of running the **prepareserverdbs.sh** script:

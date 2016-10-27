@@ -79,7 +79,7 @@ The **mfpadm** program has the following options:
 **url**  
 The URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use this URL:
 
-* For WebSphere® Application Server: https://server:9443/mfpadmin
+* For WebSphere  Application Server: https://server:9443/mfpadmin
 * For Tomcat: https://server:8443/mfpadmin
 
 **secure**  
