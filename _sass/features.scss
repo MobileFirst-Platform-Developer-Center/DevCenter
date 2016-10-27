@@ -1,4 +1,5 @@
-.features {
+
+.features { // Features page
     h3 {
         color: #1a76b9;
         font-size: 25px;
@@ -13,7 +14,7 @@
         color: #939598;
     }
     
-    .feature-description { // feature lists
+    .feature-description { // Feature lists
         list-style: none;
         padding-left: 0;
         
@@ -38,7 +39,7 @@
         }
     }
     
-    .imgmenu {
+    .imgmenu { // Images menu
         margin: 0;
         padding: 0;
         
@@ -53,7 +54,6 @@
                 width: 228px;
                 height: 185px;
                 padding: 0 24px 0 24px;
-
             }
             
             &:hover {
@@ -63,7 +63,7 @@
     }
     
     // Hide feature lists by default; display via JavaScript.
-    .feature-analytics, .feature-push, .feature-security, .feature-backend-logic, .feature-management {
+    .feature-item {
         display: none;
         margin-bottom: 30px;
     
@@ -71,4 +71,11 @@
             color: #30abdf;
         }
     }
+    
+    @media(max-width: 768px) {
+        .feature-item {
+            display: block;
+        }
+    }
 }
+
