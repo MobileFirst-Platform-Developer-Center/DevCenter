@@ -17,8 +17,12 @@ Available plug-ins are:
 * **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
 * **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
 
-**Support level:**
-The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1**, and **cordova-windows@4.2.0**.
+#### Support levels
+The Cordova platform versions supported by the MobileFirst plug-ins, are:
+
+* cordova-ios: **>= 4.1.1 and < 5.0**
+* cordova-android: **>= 5.1.1 and < 6.0**
+* cordova-windows: **>= 4.3.2 and < 5.0**
 
 #### Jump to:
 
@@ -29,7 +33,6 @@ The platform versions supported by the MobileFirst plug-ins, at **minimum**, are
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Cordova SDK components
-
 #### cordova-plugin-mfp
 The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
 
