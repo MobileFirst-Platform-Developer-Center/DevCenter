@@ -270,7 +270,7 @@ if (document.addEventListener) {
                         <p><b>Previewing web resources:</b></p>
                         <ul>
                             <li>From a command-line window, navigate to the application root folder.</li>
-                            <li>Run the command: <code>mfpdev app preview</code>
+                            <li>Run the command: <code>mfpdev app preview</code></li>
                         </ul>
                         
                         <b>Note:</b> Due to a defect in MobileFirst Foundation 8.0, previewing applications that contain security aspects fails. As a workaround, preview the application on an emulator or physical device.
@@ -905,7 +905,6 @@ export MVN_PATH="/usr/local/bin"
 └{% endhighlight %}
 
                         <br/>
-
                     </div>
                 </div>
             </div>
@@ -1067,7 +1066,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 {% highlight java %}@OAuthSecurity(scope=“ScopeElementA ScopeElementB"){% endhighlight %}
 
                                 <b>JavaScript adapter</b>:
-{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege">{% endhighlight %}
+{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege"/>{% endhighlight %}
 
                                 <b>Note</b>: You can protect a resource/application with a securityCheck that does not belong to a scopeElement mapping</td>
                             </tr>
