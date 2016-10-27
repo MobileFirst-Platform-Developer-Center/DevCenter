@@ -13,7 +13,7 @@
         color: #939598;
     }
     
-    ul { // feature lists
+    .feature-description { // feature lists
         list-style: none;
         padding-left: 0;
         
@@ -44,19 +44,19 @@
     }
     
     .imgmenu {
-        margin: 0 0 25px 0;
+        margin: 0;
         padding: 0;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
         
         li {
-            display: inline;
-            height: 100%;
+            display: block;
+            float: left;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            margin-bottom: 25px;
             
             img {
-                width: 224px;
-                margin: 0;
-                padding: 0;
+                width: 228px;
+                padding: 0 24px 0 24px;
                 
                 &:hover {
                     background-color: #f0f9fe;

@@ -10,13 +10,6 @@ $(".feature-analytics-img").on("click", function() {
     $(".feature-backend-logic").css("display","none");
     $(".feature-management").css("display","none");
     
-    // temp
-    $(".analytics").attr("src","../assets/features/ios.svg");
-    $(".push").attr("src","../assets/features/android.svg");
-    $(".security").attr("src","../assets/features/android.svg");
-    $(".backend-logic").attr("src","../assets/features/android.svg");
-    $(".management").attr("src","../assets/features/android.svg");
-    
     // Change background color for active feature
     $(".analytics").css("background","#c3e5f8");
     $(".push").css("background","white");
@@ -32,12 +25,6 @@ $(".feature-push-img").on("click", function() {
     $(".feature-push").css("display","block");
     $(".feature-management").css("display","none");
     
-    $(".analytics").attr("src","../assets/features/android.svg");
-    $(".push").attr("src","../assets/features/ios.svg");
-    $(".security").attr("src","../assets/features/android.svg");
-    $(".backend-logic").attr("src","../assets/features/android.svg");
-    $(".management").attr("src","../assets/features/android.svg");
-    
     $(".analytics").css("background","white");
     $(".push").css("background","#c3e5f8");
     $(".security").css("background","white");
@@ -51,12 +38,6 @@ $(".feature-security-img").on("click", function() {
     $(".feature-backend-logic").css("display","none");
     $(".feature-management").css("display","none");
     $(".feature-security").css("display","block");
-    
-    $(".analytics").attr("src","../assets/features/android.svg");
-    $(".push").attr("src","../assets/features/android.svg");
-    $(".security").attr("src","../assets/features/ios.svg");
-    $(".backend-logic").attr("src","../assets/features/android.svg");
-    $(".management").attr("src","../assets/features/android.svg");
     
     $(".analytics").css("background","white");
     $(".push").css("background","white");
@@ -72,12 +53,6 @@ $(".feature-backend-logic-img").on("click", function() {
     $(".feature-backend-logic").css("display","block");
     $(".feature-management").css("display","none");
     
-    $(".analytics").attr("src","../assets/features/android.svg");
-    $(".push").attr("src","../assets/features/android.svg");
-    $(".security").attr("src","../assets/features/android.svg");
-    $(".backend-logic").attr("src","../assets/features/ios.svg");
-    $(".management").attr("src","../assets/features/android.svg");
-    
     $(".analytics").css("background","white");
     $(".push").css("background","white");
     $(".security").css("background","white");
@@ -91,12 +66,6 @@ $(".feature-management-img").on("click", function() {
     $(".feature-backend-logic").css("display","none");
     $(".feature-analytics").css("display","none");
     $(".feature-management").css("display","block");
-    
-    $(".analytics").attr("src","../assets/features/android.svg");
-    $(".push").attr("src","../assets/features/android.svg");
-    $(".security").attr("src","../assets/features/android.svg");
-    $(".backend-logic").attr("src","../assets/features/android.svg");
-    $(".management").attr("src","../assets/features/ios.svg");
     
     $(".analytics").css("background","white");
     $(".push").css("background","white");
