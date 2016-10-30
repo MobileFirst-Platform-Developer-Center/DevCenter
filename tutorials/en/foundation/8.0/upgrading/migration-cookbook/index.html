@@ -283,6 +283,7 @@ if (document.addEventListener) {
                             <li>If you're testing only UI, you can simply build and run the application: <code>cordova run replace-with-platform-name</code></li>
                             <li>If you're also testing application logic related to MobileFirst Foundation, make sure to first register the application by using <code>mfpdev app register</code> before previewing.</li>
                         </ul>
+                        </p>
 
                         <h3>Next steps</h3>
                         <ul>
@@ -425,24 +426,25 @@ if (document.addEventListener) {
                                             <li>Open your project in Xcode.</li>
                                             <li>Delete the <b>WorklightAPI</b> folder from your Xcode project (move it to the trash).</li>
                                             <li>Modify your existing code in the following ways:
-                                            <li>In the <b>Build Settings</b> tab,
-                                                <ul>
-                                                    <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
-                                                    <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
-                                                    <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
-                                                </ul>
+                                                <li>In the <b>Build Settings</b> tab,
+                                                    <ul>
+                                                        <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
+                                                        <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
+                                                        <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
+                                                    </ul>
+                                                </li>
                                             </li>
                                             <li>In the <b>Build Phases</b> tab, remove the links to the following frameworks and libraries. CocoaPods will re-add these links automatically.
                                                 <ul>
-                                                    <li>libWorklightStaticLibProjectNative.a
-                                                    <li>SystemConfiguration.framework
-                                                    <li>MobileCoreServices.framework
-                                                    <li>CoreData.framework
-                                                    <li>CoreLocation.framework
-                                                    <li>Security.framework
-                                                    <li>sqlcipher.framework
-                                                    <li>libstdc++.6.dylib
-                                                    <li>libz.dylib
+                                                    <li>libWorklightStaticLibProjectNative.a</li>
+                                                    <li>SystemConfiguration.framework</li>
+                                                    <li>MobileCoreServices.framework</li>
+                                                    <li>CoreData.framework</li>
+                                                    <li>CoreLocation.framework</li>
+                                                    <li>Security.framework</li>
+                                                    <li>sqlcipher.framework</li>
+                                                    <li>libstdc++.6.dylib</li>
+                                                    <li>libz.dylib</li>
                                                 </ul>
                                             </li>
                                         </ol>
@@ -634,7 +636,7 @@ transitive: true{% endhighlight %}</li>
                                     <div class="panel-body">
                                         <ol>
                                             <li>Right-click the project solution and select <b>Manage Nuget packages</b>.</li>
-                                            <li>In the search option, search for "IBM MobileFirst Platform", choose <b>IBM.MobileFirstPlatform.8.0.0.0</b>, and click <b>Install</b>.<br/>
+                                            <li>In the search option, search for "IBM MobileFirst Platform", choose <b>IBM.MobileFirstPlatform.8.0.0.0</b>, and click <b>Install</b>.</li><br/>
                                             <li>in Package.appxmanifest, add the <b>Internet (client)</b> capability.</li>
                                         </ol>
                                     </div>
@@ -719,7 +721,7 @@ export MVN_PATH="/usr/local/bin"
 {% endhighlight %}</li>
 
                                     <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follow this guide</a>.</li>
-                                    <li>Verify the installation by executing: <code>mvn -v</code>.
+                                    <li>Verify the installation by executing: <code>mvn -v</code>.</li>
                                 </ul>
                             </li>
 
@@ -731,6 +733,7 @@ export MVN_PATH="/usr/local/bin"
                                 </ul>
                             </li>
                         </ol>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -794,7 +797,7 @@ export MVN_PATH="/usr/local/bin"
 
                         <ol>
                             <li>Go back to the newly created Maven project and open the <b>pom.xml</b> file located at the root of the directory.</li>
-                            <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.
+                            <li>Add a dependency for your database type. You can search for the appropriate dependency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.</li>
                             <li>In this example, use the MySQL database. Add the following code block in the <b>dependencies</b> section:
 
 {% highlight xml %}<dependency>
@@ -858,7 +861,7 @@ export MVN_PATH="/usr/local/bin"
 
                         <ol>
                             <li>Go back to the newly created Maven project and open the <b>pom.xml</b> file located at the root of the directory.</li>
-                            <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.
+                            <li>Add a dependency for your database type. You can search for the appropriate dependency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.</li>
                             <li>This example uses a Cloudant dependency. Add the following code block in the <b>dependencies</b> section:
 
 {% highlight xml %}<dependency>
@@ -942,7 +945,7 @@ export MVN_PATH="/usr/local/bin"
                 <li><a href="../../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes" target="_blank">Server-side API changes in Mobile Foundation 8.0</a></li>
             </ul>
         </blockquote>
-        <p>With the adapters migrated to a Maven project compliant form and code, it's time look at some development concepts...
+        <p>With the adapters migrated to a Maven project compliant form and code, it's time look at some development concepts...</p>
     </div>
 
     <br id="development-topics"/><br/>
