@@ -8,7 +8,7 @@ custom_js:
         <div class="sidebar hidden-xs col-lg-2 col-sm-3">
             {% include tutorialNav.html %}
         </div>
-        <div class="col-sm-9 col-lg-8 tutorial-center-div">
+        <article class="col-sm-9 col-lg-8 tutorial-center-div">
             <h1 class="no-anchor">{{ page.title}}</h1>
             {% include contribute.html %}
             {% include breadcrumb.html %} {% if page.downloads %}
@@ -45,7 +45,7 @@ custom_js:
             {% endif %}
 
             {% include disqus.html %}
-        </div>
+        </article>
         <div class="col-lg-2">
 
         </div>
