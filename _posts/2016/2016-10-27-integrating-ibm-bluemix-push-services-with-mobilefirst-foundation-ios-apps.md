@@ -23,7 +23,7 @@ Applications using MobileFirst Platform Foundation (MFPF) SDK can be integrated 
 3. Push Notification instance created at step 2 should be configured with APNS credentials and certificate.
 4. Push Notification instance created at step 2 should contain few tags. 
 
-## Setting up the iOS applicationFor the purpose of this blog post, the [RememberMe Android sample application]https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/ios/ is used. Download the sample application and follow the instructions in the README.md file to setup and run the app.
+## Setting up the iOS applicationFor the purpose of this blog post, the [RememberMe Android sample application](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/ios/) is used. Download the sample application and follow the instructions in the README.md file to setup and run the app.
 ## Adding the IBM Bluemix Push Service SDK With the application setup and working, we will add the push functionalities into the app using the IBM Bluemix Push Service SDK.* Open the **podfile** of the Xcode project (located at the root folder of the app)
 * To the list of existing dependency of `pod 'IBMMobileFirstPlatformFoundation'`, add the below dependencies:
 
