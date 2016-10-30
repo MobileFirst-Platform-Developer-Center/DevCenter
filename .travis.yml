@@ -10,8 +10,7 @@ env:
     - BUILD=buildElastic.sh
 script: ./build/$BUILD
 branches:
-  only:
-  - slideout-menu    
+  only:  
   - master
 rvm:
 - 2.3.1 # version of `ruby'
