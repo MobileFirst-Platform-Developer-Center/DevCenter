@@ -144,55 +144,32 @@ hr {
 .postTitle {
 	font-size: 120%;
 }
+
 footer {
-	//background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
 	background-color: #292a2d;
-	ul {
-		list-style-type: none;
-		margin: 21px 0 0 10px;
-		padding: 10px;
-		color: $color_mountain_mist_approx;
-		li {
-			display: inline;
-			margin: 0;
-			a {
-				color: $color_mountain_mist_approx;
-				padding: 0 10px;
-				&:hover {
-					color: white;
-					text-decoration: none;
-				}
-				&:active {
-					color: white;
-					text-decoration: none;
-				}
-			}
-			&:first-child a {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}
-	}
-}
-.footer-fix {
-	padding-right: 10px;
-}
-.threeColumns {
 	padding: 15px;
-	-moz-column-count: 3;
-	column-count: 3;
-	-moz-column-rule: 2px solid white;
-	column-rule: 2px solid white;
-	-moz-column-gap: 20px;
-	column-gap: 20px;
-	
-	a {
-		color: #999;
+	margin: 20px 0 0 0;
+	height: 122px;
+	color: #999;
+}
+
+footer a {
+	font-size: 110%;
+	color: #999;
+	&:hover {
+		color: white;
 	}
 }
 
-.footer-heading {
+.footerItem {
+	float: left;
+	//width: 25%;
+	border-left: 2px solid white;
+	padding-left: 10px;
+}
+.footerHeading {
 	font-weight: bold;
+	font-size: 120%;
 	color: white;
 }
 
