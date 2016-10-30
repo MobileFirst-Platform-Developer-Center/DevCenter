@@ -1,7 +1,7 @@
 <!-- Static navbar -->
 <nav class="navbar navbar-default logo-icon">
-    <div class="container-fluid">
-        <div class="navbar-header">    
+    <section class="container-fluid">
+        <nav class="navbar-header">    
             <button type="button" class="navbar-toggle visible-xs" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -17,18 +17,18 @@
                     <span class="dev">{dev}</span>
                 </div>
             </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        </nav>
+        <nav id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% for item in site.data.menus.en.navigation %} {% capture classes %}{% if item.children %}dropdown {%endif%}{% if page.url contains item.path %}active {% endif%}{% if item.extraClasses %}{{item.extraClasses}}{% endif %}{% endcapture %}
                 <li {% if classes %}class="{{classes}}" {%endif%}>
                     {% if item.children %}
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {% for subitem in item.children %}
                         <li {% if subitem.children %}class="dropdown-submenu" {%endif%}>
                             {% if subitem.children %}
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{subitem.name}}</a>
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{subitem.name}}</a>
                             <ul class="dropdown-menu">
                                 {% for subsubitem in subitem.children %} {% if subsubitem.external %}
                                 <li><a href="{{subsubitem.path}}" target="_blank">{{subsubitem.name}} <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
@@ -65,8 +65,8 @@
                     <input id="pnext-search-input-md" style="border-radius: 4px;" type="text" class="form-control" placeholder="Search for..." name="q" aria-label="Search">
                 </div>
             </form>
-        </div>
+        </nav>
         <!--/.nav-collapse -->
-    </div>
+    </section>
     <!--/.container-fluid -->
 </nav>

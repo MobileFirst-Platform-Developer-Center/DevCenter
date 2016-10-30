@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<div class="container-fluid blogpost">
+<article class="container-fluid blogpost">
     <div class="row">
         <div class="hidden-xs col-sm-2">
         </div>
         <div class="col-sm-8">
             <h1 class="no-anchor">{{page.title}}</h1>
-            <div class="page-header">
+            <header class="page-header">
                 <h4 class="no-anchor">
                     <span><a href="{{site.baseurl}}/search/?author={{page.author.name}}">{{page.author.name}}</a></span>{% if page.additional_authors %},{% endif %}
                     {% for author in page.additional_authors %}
@@ -29,7 +29,7 @@ layout: default
                   {% endfor %}
 
                 {% endif %}
-            </div>
+            </header>
             {{content}}
             <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
 
@@ -77,4 +77,4 @@ layout: default
       {% endif %}
     }
     </script>
-</div>
+</article>
