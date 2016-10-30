@@ -13,7 +13,7 @@ author:
 ---
 
 ## Overview
-Applications using MobileFirst Platform Foundation (MFPF) SDK can be integrated with the Bluemix Push Services for the app to receive notifications.
+Applications using the MobileFirst Foundation 8.0 SDK can be integrated with the Bluemix Push Services for the app to receive notifications.
 
 > Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/)
 
