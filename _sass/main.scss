@@ -179,8 +179,11 @@ footer {
 }
 .threeColumns {
 	padding: 15px;
+	-moz-column-count: 3;
 	column-count: 3;
+	-moz-column-rule: 2px solid white;
 	column-rule: 2px solid white;
+	-moz-column-gap: 20px;
 	column-gap: 20px;
 	
 	a {
