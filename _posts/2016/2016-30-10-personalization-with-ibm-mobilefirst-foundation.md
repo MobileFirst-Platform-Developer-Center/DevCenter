@@ -6,7 +6,7 @@ version:
 tags:
 - MobileFirst_Foundation
 - Personalization
-- Live Update
+- Live_Update
 - Analytics
 - Weather
 
@@ -23,7 +23,7 @@ When it comes down to designing personalized experiences, there are 3 main compo
 
 To help your development team with these challenges, we recently released a new feature called Live Update in IBM MobileFirst Foundation. Live Update makes it very simple for you to define a set of criteria for delivering a customized experience, and select the experience that users with that profile or context will get. You can manage all of the different user groups & app variations very easily in the MobileFirst Foundation Console, and the most powerful part is that you can make changes frequently without republishing your app. And of course, with MobileFirst Foundation Analytics, you can learn which custom experiences were effective.
 
-In this blog, we’ll walk you through a sample, so you can learn how easy it is to create custom experiences in your mobile app with IBM MobileFirst Foundation Live Update. For this example, we imagined a credit card company app. This credit card company has partnerships with multiple business types – small supermarkets, large supermarkets, pharmacies, and gas stations. And in the app, they want to show offers relevant to the business that a user is currently visiting. They also want to provide special offers depending on the weather, for each type of business.  We’ll show you how we set these customizations up in our app with Live Update, and how easy it is to add new categories & criteria for offers without republishing the app. You’ll also see how we used Foundation analytics to learn which customizations were effective. To make this sample fun, <img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-30-10-personalization-with-ibm-mobilefirst-foundation/tinder.png" style="float:right;margin: 10px"/> we modeled the UX after [Tinder](https://en.wikipedia.org/wiki/Tinder_(app)). Users can swipe right to save offers they like, and swipe left to ignore the ones they don’t.
+In this blog post, we’ll walk you through a sample so you can learn how easy it is to create custom experiences in your mobile app with IBM MobileFirst Foundation Live Update. For this example, we imagined a credit card company app. This credit card company has partnerships with multiple business types – small supermarkets, large supermarkets, pharmacies, and gas stations. And in the app, they want to show offers relevant to the business that a user is currently visiting. They also want to provide special offers depending on the weather, for each type of business.  We’ll show you how we set these customizations up in our app with Live Update, and how easy it is to add new categories & criteria for offers without republishing the app. You’ll also see how we used Foundation analytics to learn which customizations were effective. To make this sample fun, <img alt="long distance-runner" src="{{site.baseurl}}/assets/blog/2016-30-10-personalization-with-ibm-mobilefirst-foundation/tinder.png" style="float:right;margin: 10px"/> we modeled the UX after [Tinder](https://en.wikipedia.org/wiki/Tinder_(app)). Users can swipe right to save offers they like, and swipe left to ignore the ones they don’t.
 
 <br>
 
