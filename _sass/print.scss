@@ -13,6 +13,10 @@
     white-space: -o-pre-wrap;
     word-wrap: break-word;
   }
+  
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
 
   .highlight .gutter {
     display: none;
