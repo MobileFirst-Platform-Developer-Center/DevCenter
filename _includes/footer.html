@@ -19,12 +19,9 @@
         <a href="{{site.baseurl}}/feed.xml">RSS feed</a> <b style="color: white">|</b> 
         <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues/new" target="_blank">Open issue</a> <b style="color: white">|</b> 
         <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md" target="_blank">Contribute</a> <b style="color: white">|</b> 
-        <a href="https://www.ibm.com/developerworks/community/report/" target="_blank">Report abuse</a>
+        <a href="https://www.ibm.com/developerworks/community/report/" target="_blank">Report abuse</a><br/>
+        {% if page.url == "/" %}<a style="font-size: 10px">Site built : <abbr class="timeago" title="{{site.time}}">{{site.time}}</abbr></a>{% endif %}
     </div>
-    <!-- <br clear="all"/>
-    <div style="margin-top:20px">    
-        {% if page.url == "/" %}<a>Site built : <abbr class="timeago" title="{{site.time}}">{{site.time}}</abbr></a>{% endif %}
-    </div> -->
 </footer>
 
 <footer class="visible-xs" style="line-height: 1.7em;height:135px">
@@ -51,10 +48,6 @@
         <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md" target="_blank">Contribute</a>
         <a href="https://www.ibm.com/developerworks/community/report/" target="_blank">Report abuse</a>
     </div>
-    <!-- <br clear="all"/>
-    <div style="margin-top:20px">    
-        {% if page.url == "/" %}<a>Site built : <abbr class="timeago" title="{{site.time}}">{{site.time}}</abbr></a>{% endif %}
-    </div> -->
 </footer>
 
 <!-- Bootstrap core JavaScript
