@@ -1,11 +1,15 @@
 ---
 ---
+'use strict';
 var videos = [];
 var videoTags = [];
+
 function displayVideos(tag){
+    
   $('#videosList').html('');
   $('#videoTags span').removeClass('label-success').addClass('label-info');
   var videoTemplate = $.templates("#videoTemplate");
+  var filteredVideos;
   if(tag){
     filteredVideos = jQuery.grep(videos,function(video){
       var index = jQuery.inArray(tag,video.tags);

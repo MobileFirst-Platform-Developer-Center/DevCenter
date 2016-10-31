@@ -1,3 +1,5 @@
+'use strict';
+
 var snippets = $('div.highlight>pre, figure.highlight>pre');
 
 [].forEach.call(snippets, function(snippet) {

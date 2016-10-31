@@ -37,6 +37,7 @@ $(".feature-push-img").on("click", function() {
 
 // Reset function
 function resetList() {
+    'use strict';
     $(".feature-security").css("display","none");
     $(".feature-management").css("display","none");
     $(".feature-analytics").css("display","none");
