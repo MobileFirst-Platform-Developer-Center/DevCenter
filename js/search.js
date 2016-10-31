@@ -17,6 +17,7 @@ var MFPSEARCH = {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
     executeSearch: function() {
+        $("#searchResults").empty();
         $("#searchResults").addClass("loader");
         this.body.from = this.from;
         var _this = this;
