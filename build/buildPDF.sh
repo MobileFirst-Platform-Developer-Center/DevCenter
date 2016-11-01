@@ -113,8 +113,6 @@ mkdir -p ../generated-pdf/release63/tutorials/en/foundation/6.3 && cp -R _site/p
 
 mkdir -p ../generated-pdf/release63/tutorials/en/product-integration/6.3 && cp -R _site/pdf/tutorials/en/product-integration/6.3/* ../generated-pdf/release63/tutorials/en/product-integration/6.3/
 
-mkdir -p ../generated-pdf/release63/tutorials/en/quality-assurance/6.3 && cp -R _site/pdf/tutorials/en/quality-assurance/6.3/* ../generated-pdf/release63/tutorials/en/quality-assurance/6.3/
-
 # copy the index file
 cp _site/pdf/6.3.html ../generated-pdf/release63/index.html
 
