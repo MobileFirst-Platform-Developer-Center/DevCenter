@@ -36,13 +36,13 @@ custom_js:
             {% endif %}
             {{ content }}
             <a href="javascript:void(0)" class="scrollUpButton">&#9650;</a>
-            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
             {% if page.show_children %}
                 {% if page.show_children_title %}
                 <h2 class="hidden-print">{{page.show_children_title}}</h2>
                 {% endif %}
                 {% include show-children.html children=page.children %}
             {% endif %}
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
 
             {% include disqus.html %}
         </article>
