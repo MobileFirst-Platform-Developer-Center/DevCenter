@@ -474,7 +474,7 @@ The following table lists the MobileFirst properties that are always available a
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB | 
 | mfp.push.db.queue.connections | Optional | Number of threads in the thread pool that does the database operation. Default: 3 | 
 | mfp.push.db.cloudant.url | Optional | The Cloudant  account URL. When this property is defined, the Cloudant DB will be directed to this URL. | 
-| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp_push_db | 
+| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp\_push\_db | 
 | mfp.push.db.cloudant.username | Optional | The user name of the Cloudant account, used to store the database. when this property is not defined, a relational database is used. | 
 | mfp.push.db.cloudant.password | Optional | The password of the Cloudant account, used to store the database. This property must be set when mfp.db.cloudant.username is set. |
 | mfp.push.db.cloudant.doc.version | Optional | The Cloudant document version. | 
