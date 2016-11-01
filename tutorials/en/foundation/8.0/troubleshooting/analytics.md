@@ -2,7 +2,6 @@
 layout: tutorial
 title: Troubleshooting Analytics
 breadcrumb_title: Analytics
-show_in_nav: false
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
