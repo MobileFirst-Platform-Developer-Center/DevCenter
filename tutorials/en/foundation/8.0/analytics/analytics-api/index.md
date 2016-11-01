@@ -81,9 +81,11 @@ import IBMMobileFirstPlatformFoundation
 
 #### Initialize Analytics
 **Objective-C**
+
 No setup required. Pre-initialized by default.
 
 **Swift**
+
 Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
 
 ### Android

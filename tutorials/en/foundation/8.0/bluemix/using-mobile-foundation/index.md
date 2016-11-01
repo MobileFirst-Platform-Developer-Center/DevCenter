@@ -118,21 +118,17 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 > Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
 
 ## Applying MobileFirst Server fixes
-Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, open the sidebar navigation and click on **Cloud Foundary Applications**. Select your service and click on **Runtime tab → Files**.
+To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
 
-* You can find the **messages.log** file in the **logs** folder.
-* You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
+You can find the **messages.log** and **trace.log** files in the **logs** folder.
 
 #### Tracing
-
-> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time and view the logs in the **messages.log** file.
-
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
-1. In **Runtime tab → Memory and Instances**, select your service instance.
+1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
 3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
 

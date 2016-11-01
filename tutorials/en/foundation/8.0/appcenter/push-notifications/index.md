@@ -53,7 +53,7 @@ Define these variables with JNDI properties in the server.xml file:
 <Environment name="ibm.appcenter.push.schedule.period.amount" override="false" type="java.lang.String" value="2"/>
 ```
 
-#### WebSphere® Application Server v8.5
+#### WebSphere  Application Server v8.5
 To configure JNDI variables for WebSphere Application Server v8.5, proceed as follows:
 
 1. Click **Applications → Application Types → Websphere enterprise applications**.

@@ -69,7 +69,7 @@ When you try to log in to the console with an incorrect user name or an incorrec
 * The message **The connection was reset**
 * The message **The time allowed for login exceeded**
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere® Application Server profiles.
+The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
 
 The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
 
@@ -92,13 +92,13 @@ The Application Center enables you to add new applications and versions and to m
 Click **Applications** to access Application Management.
 
 ### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
-Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM® Installation Manager package, have two different users defined that you can use to get started.
+Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM  Installation Manager package, have two different users defined that you can use to get started.
 
 * User with login **demo** and password **demo**
 * User with login **appcenteradmin** and password **admin**
 
 ### WebSphere Application Server full profile
-If you installed the Application Center on WebSphere® Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
 
 ![Available applications](ac_app_mgt.jpg)
 
@@ -154,14 +154,19 @@ The Apple iTunes store address is [https://linkmaker.itunes.apple.com/](https://
         * Copy the address bar URL.
     * **Apple iTunes:**
         * When the list of items is returned in the search result, select the item that you want.
-        * On the right of the selected application item, click **iPhone App Link** to open the application details page.
+
+        * At the bottom of the selected application, click **Direct Link** to open the application details page.
+
         * Copy the address bar URL.
+
+          **Note:** Do not copy the **Direct Link** to the Application Center. **Direct Link** is a URL with redirection, you will need to get the URL it redirects to.
+
 3. When the application link is in the **Application URL** text field of the console, click **Next** to validate the creation of the application link.
     * If the validation is unsuccessful, an error message is displayed in the **Add an application** page. You can either try another link or cancel the attempt to create the current link.
     * If the validation is successful, this action displays the application properties. You can then modify the application description in the application properties before you move to the next step.
 
     ![Modified application description in application properties](ac_add_public_app_details.jpg)
-    
+
 4. Click **Done** to create the application link.
 
     This action makes the application available to the corresponding version of the Application Center mobile client. A small link icon appears on the application icon to show that this application is stored in a public app store and is different from a binary app.
@@ -239,7 +244,7 @@ Select Active to indicate that an application can be installed on a mobile devic
 * In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli® Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
 
 ## Editing application properties
 You can edit the properties of an application in the list of uploaded applications.  
@@ -268,7 +273,7 @@ HelloWorld version 2.0 is released and you would like users of version 1.0 to up
 2. From the Application Details page, copy the setting of the external URL.
 
     ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
-    
+
 3. When the external URL is copied to the clipboard, open the MobileFirst Operations Console.
 4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
 5. Paste the external URL into the URL field.
@@ -276,11 +281,11 @@ HelloWorld version 2.0 is released and you would like users of version 1.0 to up
     Running the client: When a mobile device connects to MobileFirst Server to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
 
     ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
-    
+
 6. Click **Upgrade** to open the Application Center client. When the login details are correctly completed, you access the Details page of HelloWorld version 2.0 directly.
 
     ![Details of HelloWorld 2.0 in the Application Center client](ac_cli_app_details_upgrade.jpg)
-    
+
 ## Downloading an application file
 You can download the file of an application registered in the Application Center.
 
@@ -300,7 +305,7 @@ To view reviews from mobile users or testers about an application version:
 3. In the menu, select **Reviews**.
 
     ![Reviews of application versions](ac_appfeedbk.jpg)
-    
+
     The rating is an average of the ratings in all recorded reviews. It consists of one to five stars, where one star represents the lowest level of appreciation and five stars represent the highest level of appreciation. The client cannot send a zero star rating.
 
     The average rating gives an indication of how the application satisfies the intended use of the application.

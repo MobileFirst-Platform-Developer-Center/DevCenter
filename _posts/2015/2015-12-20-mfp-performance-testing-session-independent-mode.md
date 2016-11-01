@@ -1,5 +1,5 @@
 ---
-title: 'MobileFirst Platform Foundation Performance Testing for Session Independent Mode (OAuth model)'
+title: 'MobileFirst Platform Foundation 7.1 Performance Testing for Session Independent Mode (OAuth model)'
 date: 2015-12-20
 tags:
 - MobileFirst_Platform

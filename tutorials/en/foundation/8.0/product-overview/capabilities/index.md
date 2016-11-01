@@ -11,6 +11,22 @@ IBM MobileFirst Foundation provides a framework that enables the development, op
 
 You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java or Objective-C). IBM MobileFirst Foundation provides an SDK that includes libraries that you can access from native code.
 
+#### Supported platforms
+The MobileFirst Foundation SDKs support the following platforms:
+
+* iOS
+* Android
+* Windows Universal 8.1 and Windows 10 UWP
+* Web apps
+
+> **Supported browsers for web apps:**
+> 
+> |      Browser      | Chrome | Safari* | Internet Explorer | Edge | Firefox | Blackberry Browser* | Android Browser |
+> |:-----------------:|:------:|:-------:|:-----------------:|:----:|:-------:|:------------------:|:---------------:|
+> | Supported Version |   43+  |    8+   |        10+        |  20+ |  38+  |      Z series      |   Android 4.3+  |
+
+* Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
+
 ### Back-end connections
 Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. IBM MobileFirst Foundation can act as this middleware solution and make communication with back-end services easier.
 
@@ -41,4 +57,4 @@ IBM MobileFirst Foundation Application Center is an enterprise application store
 
 The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play store, except that it targets the development process.
 
-The Application Center provides a repository for storing the mobile application files and a web-based console for managing that repository. The Application Center also provides a mobile client application to allow users to browse the catalog of applications that are stored by the Application Center, install applications, leave feedback for the development team, and expose production applications to IBM® Endpoint Manager. Access to download and install applications from the Application Center is controlled by using access control lists (ACLs).
+The Application Center provides a repository for storing the mobile application files and a web-based console for managing that repository. The Application Center also provides a mobile client application to allow users to browse the catalog of applications that are stored by the Application Center, install applications, leave feedback for the development team, and expose production applications to IBM  Endpoint Manager. Access to download and install applications from the Application Center is controlled by using access control lists (ACLs).

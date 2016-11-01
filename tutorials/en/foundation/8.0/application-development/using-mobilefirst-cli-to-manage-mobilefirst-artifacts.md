@@ -355,27 +355,30 @@ A Cordova application's web resources can be previewed using a browser. Previewi
 
 Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
 
-    1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
-	
-	```var wlInitOptions = {
-	  mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
-	  applicationId:'com.sample.app' // Replace with your own value.
-	};
-	```
+1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
 
-	2. Register the app again by using the following command:
+    ```javascript
+    var wlInitOptions = {
+      mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
+      applicationId:'com.sample.app' // Replace with your own value.
+    };
+    ```
 
-     ```mfpdev app register
+2. Register the app again by using the following command:
+
+     ```bash
+     mfpdev app register
      ```
 
-	 3. Run the following command:
-	 
-	 ```cordova prepare
+ 3. Run the following command:
+ 
+     ```bash
+     cordova prepare
      ```
 
-     4. Preview the Cordova application by running the following command from the Cordova application root folder:
+ 4. Preview the Cordova application by running the following command from the Cordova application root folder:
 
-      ```
+      ```bash
       mfpdev app preview
       ```
 

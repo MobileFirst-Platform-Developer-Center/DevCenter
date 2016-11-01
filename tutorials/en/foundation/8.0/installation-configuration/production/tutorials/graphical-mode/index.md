@@ -4,12 +4,12 @@ title: Installing MobileFirst Server in graphical mode tutorial
 weight: 0
 ---
 ## Overview
-Use the graphical mode of IBM® Installation Manager and the Server Configuration Tool to install MobileFirst Server.
+Use the graphical mode of IBM  Installation Manager and the Server Configuration Tool to install MobileFirst Server.
 
 #### Before you begin
 * Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
-        * DB2®
+        * DB2 
         * MySQL
         * Oracle
 
@@ -25,7 +25,7 @@ Use the graphical mode of IBM® Installation Manager and the Server Configuratio
 * Java 7 or later.
 
 * Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
+* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere  Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
 
 **MobileFirst Server installation repository**  
 IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
@@ -121,7 +121,7 @@ Run Installation Manager to install the binary files of MobileFirst Server on yo
 5. Click **Next**.
 6. Select **Do not activate token licensing with the Rational License Key Server ** option in the **Activate token licensing** section of the **General settings** panel.
 
-    In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you have a contract to use token licensing with Rational® License Key Server, select Activate token licensing with the Rational License Key Server option. After you activate token licensing, you must do extra steps to configure MobileFirst Server.
+    In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you have a contract to use token licensing with Rational  License Key Server, select Activate token licensing with the Rational License Key Server option. After you activate token licensing, you must do extra steps to configure MobileFirst Server.
 7. Keep the default option (No) as-is in the Install **IBM MobileFirst Foundation for iOS** section of the **General settings** panel.
 8. Select No option in the **Choose configuration** panel so that Application Center is not installed. For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to MobileFirst Server from the updates to Application Center.
 9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
@@ -275,7 +275,7 @@ In the Server Configuration Tool, only one database user is needed. This user is
 #### Database tables creation
 For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
 
-The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX®, use the command `diff server.xml server.xml.bak` to find the differences.
+The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
 
 #### Modification of the application server settings (specific to Liberty):
 1. The Liberty features are added.

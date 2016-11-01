@@ -21,7 +21,7 @@ You can set the logging levels and the output file for tracing operations on the
 
 When you try to diagnose problems in the Application Center (or other components of IBM MobileFirst Foundation), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
 
-1. Open the WebSphere® Application Server administrative console.
+1. Open the WebSphere  Application Server administrative console.
 2. Select **Troubleshooting → Logs and Trace**.
 3. In **Logging and tracing**, select the appropriate application server and then select **Change log detail levels**.
 4. Select the packages and their corresponding detail level. This example enables logging for IBM MobileFirst Foundation, including Application Center, with level **FINEST** (equivalent to **ALL**).

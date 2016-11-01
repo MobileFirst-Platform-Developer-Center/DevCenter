@@ -189,14 +189,14 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 
                 <ul>
                     <li>A new, configurable MobileFirst Java Token Validator access-token validation module is provided for using the MobileFirst security framework to protect resources on any external Java server. The module is provided as a Java library (mfp-java-token-validator-8.0.0.jar), and replaces the use of the obsolete MobileFirst Server token-validation endpoint to create a custom Java validation module.</li>
-                    <li>The MobileFirst OAuth Trust Association Interceptor (TAI) filter, for protecting Java resources on an external WebSphere® Application Server or WebSphere Application Server Liberty server, is now provided as a Java library (com.ibm.imf.oauth.common_8.0.0.jar). The library uses the new Java Token Validator validation module, and the configuration of the provided TAI changed.</li>
+                    <li>The MobileFirst OAuth Trust Association Interceptor (TAI) filter, for protecting Java resources on an external WebSphere  Application Server or WebSphere Application Server Liberty server, is now provided as a Java library (com.ibm.imf.oauth.common_8.0.0.jar). The library uses the new Java Token Validator validation module, and the configuration of the provided TAI changed.</li>
                     <li>The server-side MobileFirst OAuth TAI API is no longer required and was removed.</li>
                     <li>The passport-mfp-token-validation MobileFirst Node.js framework, for protecting Java resources on an external Node.js server, was modified to support the new security framework.</li>
                     <li>You can also write your own custom filter and validation module, for any type of resource server, which uses the new introspection endpoint of the authorization server.</li>
                 </ul>
                 
                 <h3>Integration with WebSphere DataPower as an authorization server</h3>
-                <p>You can now select to use WebSphere DataPower® as the OAuth authorization server, instead of the default MobileFirst Server authorization server. You can configure DataPower to integrate with the MobileFirst security framework.</p>
+                <p>You can now select to use WebSphere DataPower  as the OAuth authorization server, instead of the default MobileFirst Server authorization server. You can configure DataPower to integrate with the MobileFirst security framework.</p>
 
                 <h3>LTPA-based single sign-on (SSO) security check</h3>
                 <p>Support for sharing user authentication among servers that use WebSphere light-weight third-party authentication (LTPA) is now provided by using the new predefined LTPA-based single sign-on (SSO) security check. This check replaces the obsolete MobileFirst LTPA realm, and eliminates the previous required configuration.</p>
@@ -273,7 +273,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>Developers can migrate IBM Bluemix applications to run on IBM MobileFirst Foundation. Migration requires that you make configuration changes to your client application to match IBM MobileFirst Foundation APIs.</p>
 
                 <h3>IBM MobileFirst Foundation as a service on IBM Bluemix</h3>
-                <p>You can now use the IBM Mobile Foundation for Bluemix® service on IBM Bluemix to create and run your enterprise mobile apps.</p>
+                <p>You can now use the IBM Mobile Foundation for Bluemix  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
 
                 <h3>No .wlapp files</h3>
                 <p>In previous versions, applications were deployed to MobileFirst Server by uploading a .wlapp file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the .wlapp file:</p>
@@ -313,9 +313,9 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p><b>Note:</b> See the prerequisites for deploying IBM MobileFirst Foundation on IBM Containers.</p>
 
                 <h3>Deploying MobileFirst Server V8.0.0 on IBM PureApplication System</h3>
-                <p>You can now deploy and configure MobileFirst Server V8.0.0 to the supported IBM MobileFirst Foundation System Pattern on IBM PureApplication® System.</p>
+                <p>You can now deploy and configure MobileFirst Server V8.0.0 to the supported IBM MobileFirst Foundation System Pattern on IBM PureApplication  System.</p>
 
-                <p>All supported IBM MobileFirst Foundation System Pattern now include support for an existing IBM DB2® database. IBM MobileFirst Platform Application Center is now supported on a Virtual System Pattern.</p>
+                <p>All supported IBM MobileFirst Foundation System Pattern now include support for an existing IBM DB2  database. IBM MobileFirst Platform Application Center is now supported on a Virtual System Pattern.</p>
             </div>
         </div>
     </div>
@@ -359,7 +359,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                     <li>Liberty collective topology</li>
                     <li>Running the Server Configuration Tool</li>
                     <li>Installing with Ant Tasks</li>
-                    <li>Manual installation on WebSphere® Application Server Liberty collective</li>
+                    <li>Manual installation on WebSphere  Application Server Liberty collective</li>
                 </ul>
             </div>
         </div>

@@ -1,3 +1,4 @@
+'use strict';
 
 // ELASTICSEARCH
 var MFPSEARCH = {
@@ -17,8 +18,10 @@ var MFPSEARCH = {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
     executeSearch: function() {
+        $("#searchResults").empty();
         $("#searchResults").addClass("loader");
         this.body.from = this.from;
+        
         var _this = this;
         this.client.search({
             "body": this.body
@@ -178,7 +181,7 @@ var MFPSEARCH = {
             this.updateFilters();
         }
 
-        _this = this;
+        var _this = this;
         $('#searchNextBtn a').bind('click', function() {
             _this.nextPage();
         });

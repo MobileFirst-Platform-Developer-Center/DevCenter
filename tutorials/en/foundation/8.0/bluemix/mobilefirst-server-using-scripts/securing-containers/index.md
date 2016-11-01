@@ -68,7 +68,7 @@ You can secure access to the MobileFirst Operations Console and the MobileFirst 
 To enable HTTPS on the MobileFirst Server, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
 ### Securing a connection to the back end
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix® Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
 
 #### Encrypting passwords for user roles configured in MobileFirst Server
 The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
@@ -99,7 +99,7 @@ Complete the following steps by editing the mfpf-server/usr/config/mfpfpropertie
 2. To ensure that the MobileFirst Analytics console can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the MobileFirst Analytics container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
 #### Restricting access to the consoles running on containers	
-You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM® Containers.
+You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
 
 The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
 
@@ -269,7 +269,7 @@ The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
 * Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix® for this step.)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
 
 #### LDAP repository
 Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
