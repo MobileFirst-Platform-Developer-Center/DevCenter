@@ -35,5 +35,5 @@ To enable sending of these events to the Analytics service, set the following pr
 
 If any of these events are not to be send, you can disable the sending by setting the respective property to **false**.
 
-> For more information on the JNDI properties for push service, see [List of JNDI properties for MobileFirst Server push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+> For more information on the JNDI properties for push service, see [List of JNDI properties for MobileFirst Server push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 > **Note:** The IBM MobileFirst Platform Foundation installer creates and sets up these properties to defaults.
