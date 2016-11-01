@@ -36,8 +36,6 @@ mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/p
 
 mkdir -p ../generated-pdf/release80/tutorials/en/product-integration/8.0 && cp -R _site/pdf/tutorials/en/product-integration/8.0/* ../generated-pdf/release80/tutorials/en/product-integration/8.0/
 
-mkdir -p ../generated-pdf/release80/tutorials/en/quality-assurance/8.0 && cp -R _site/pdf/tutorials/en/quality-assurance/8.0/* ../generated-pdf/release80/tutorials/en/quality-assurance/8.0/
-
 # copy the index file
 cp _site/pdf/8.0.html ../generated-pdf/release80/index.html
 
@@ -114,6 +112,8 @@ rm -rf ../generated-pdf/release63/*
 mkdir -p ../generated-pdf/release63/tutorials/en/foundation/6.3 && cp -R _site/pdf/tutorials/en/foundation/6.3/* ../generated-pdf/release63/tutorials/en/foundation/6.3/
 
 mkdir -p ../generated-pdf/release63/tutorials/en/product-integration/6.3 && cp -R _site/pdf/tutorials/en/product-integration/6.3/* ../generated-pdf/release63/tutorials/en/product-integration/6.3/
+
+mkdir -p ../generated-pdf/release63/tutorials/en/quality-assurance/6.3 && cp -R _site/pdf/tutorials/en/quality-assurance/6.3/* ../generated-pdf/release63/tutorials/en/quality-assurance/6.3/
 
 # copy the index file
 cp _site/pdf/6.3.html ../generated-pdf/release63/index.html
