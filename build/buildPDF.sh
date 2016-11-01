@@ -31,8 +31,11 @@ git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --depth 1
 
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
+
 mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80/tutorials/en/foundation/8.0/
+
 mkdir -p ../generated-pdf/release80/tutorials/en/product-integration/8.0 && cp -R _site/pdf/tutorials/en/product-integration/8.0/* ../generated-pdf/release80/tutorials/en/product-integration/8.0/
+
 mkdir -p ../generated-pdf/release80/tutorials/en/quality-assurance/8.0 && cp -R _site/pdf/tutorials/en/quality-assurance/8.0/* ../generated-pdf/release80/tutorials/en/quality-assurance/8.0/
 
 # copy the index file
