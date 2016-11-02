@@ -279,6 +279,8 @@ Available configurations are:
     >
     > 1. Run `mfpdev app register` to register the application in the expected MobileFirst Server address.
     > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance.
+    >
+    >You can also run the command in **direct mode**: `mfpdev app config server replace-with-server-address`
     > 
     > The end result is the application registered in the MobileFirst Server, but its **config.xml** configured to connect to the DataPower appliance.
 
