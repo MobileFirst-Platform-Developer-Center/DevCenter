@@ -2,8 +2,6 @@
 layout: tutorial
 title: Analytics Workflows
 breadcrumb_title: Workflows
-show_disqus: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

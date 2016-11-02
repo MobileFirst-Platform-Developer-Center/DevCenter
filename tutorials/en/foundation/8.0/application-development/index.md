@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: Developing Applications
-print_pdf: true
 show_children: true
 weight: 4
 ---
