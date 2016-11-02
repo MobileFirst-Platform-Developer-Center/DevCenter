@@ -205,7 +205,7 @@ catch(JSONStoreException e) {
 | 25 ERROR\_DURING\_DESTROY | Generic Error. An error occurred when native code called the destroy method. |
 | 26 ERROR\_CLEARING\_COLLECTION | Generic Error. An error occurred in when native code called the removeCollection method. |
 | 27 INVALID\_PARAMETER\_FOR\_FIND\_BY\_ID | Validation error. |
-| 28 INVALID\_SORT\_OBJECT | The provided array for sorting is invalid because one of the JSON objects is invalid. The correct syntax is an array of JSON objects, where each object contains only a single property. This property searches the field with which to sort, and whether it is ascending or descending. For example: {searchField1 : ∾€œASC∾€�}. |
+| 28 INVALID\_SORT\_OBJECT | The provided array for sorting is invalid because one of the JSON objects is invalid. The correct syntax is an array of JSON objects, where each object contains only a single property. This property searches the field with which to sort, and whether it is ascending or descending. For example: {searchField1 : "ASC"}. |
 | 29 INVALID\_FILTER\_ARRAY | The provided array for filtering the results is invalid. The correct syntax for this array is an array of strings, in which each string is either a search field or an internal JSONStore field. For more information, see Store internals. |
 | 30 BAD\_PARAMETER\_EXPECTED\_ARRAY\_OF\_OBJECTS | Validation error when the array is not an array of only JSON objects. |
 | 31 BAD\_PARAMETER\_EXPECTED\_ARRAY\_OF\_CLEAN\_DOCUMENTS | Validation error. |
