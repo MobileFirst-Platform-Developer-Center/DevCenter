@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: System Requirements
-print_pdf: true
 weight: 3
 ---
 ## Overview
