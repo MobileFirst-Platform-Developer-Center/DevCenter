@@ -13,10 +13,11 @@ author:
 
 ## Overview:
 **IBM MobileFirst Foundation**  can be setup on **Bluemix** in the following two ways:  
- 1. Using the [Mobile Foundation Bluemix service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)  
+1. Using the [Mobile Foundation Bluemix service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)  
 2. Deploying Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-prem License entitlement:  
- * Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)  
- * Setting up the [MobileFirst Server on IBM Containers using Scripts on IBM Container Service] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)  
+ 
+    * Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)  
+    * Setting up the [MobileFirst Server on IBM Containers using Scripts on IBM Container Service] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)  
 
 In any of the above options, MobileFirst Server needs a database to store administration and runtime data such as deployed adapters, application configuration data, registered devices and so on.  
 
@@ -30,40 +31,34 @@ The database options for storing the administration and runtime data are as foll
  * A *dashDB database service on Bluemix*. Only the transactional plans of dashDB service are supported.
  * An existing *IBM DB2 database*. (Bring your own DB2 database)
 
-
 This blog post gives you the options available for using **dashDB Bluemix service as the database when you deploy MobileFirst Foundation on Bluemix.** In particular, we will see how a dashDB service can be shared across multiple instances of MobileFirst Foundation deployments.
 
-
 ## The dashDB Bluemix service:
-
 IBM dashDB offers fully-managed, SQL database services for both transactional and data warehousing workloads. dashDB offers a host of plans under the following two categories:  
+
 1. Plans targeted for analytics workloads through features such as in-memory data processing with columnar tables.  
 2. Plans that deliver a transactional solution (OLTP) with enterprise-level performance and capabilities.  
 
 **Mobile Foundation on Bluemix only supports the Enterprise transactional plans of dashDB service.**  
+
 The picture depicts the dashDB plans showing the ones supported by Mobile Foundation. The plan **Enterprise for Transactions High Availability 2.8.500 (Pay per use)** is the recommended plan.  
-Note: You need to create the dashDB service instance before you can deploy MobileFirst Foundation on Bluemix.
 
-![supported-dashDB-plans]({{site.baseurl}}/assets/blog/2016-11-02-using-dashdb-service-with-mobile-foundation/dashDBplans.png)
+> **Note:** You need to create the dashDB service instance before you can deploy MobileFirst Foundation on Bluemix.
 
-
+![supported dashDB plans]({{site.baseurl}}/assets/blog/2016-11-02-using-dashdb-service-with-mobile-foundation/dashDBplans.png)
 
 ## Using the dashDB plan in the Mobile Foundation Bluemix service:
-
 The *Developer Pro, Professional Per Capacity* and *Professional1Application plan* requires you to connect to a Bluemix dashDB service instance. When you deploy the Mobile Foundation service on Bluemix, you will be asked to provide the dashDB service instance details as the first step, as shown in the picture below.  
 
 ![connect-mobilefoundation-to-dashDB]({{site.baseurl}}/assets/blog/2016-11-02-using-dashdb-service-with-mobile-foundation/foundationservice-dashDB.png)
 
 Upon connecting the Mobile Foundation to the dashDB service, a new schema is created for the exclusive use of this service instance, and all the data for that instance will be stored within the schema. This schema is not shared with the other instances of the Mobile Foundation service.  
+
 A single dashDB instance can be shared across multiple Mobile Foundation service deployments. These deployments can very well be on different Organizations (Orgs) and Spaces. You only need to make sure that the user deploying the Mobile Foundation service has access to the Organization and Space where the dashDB instance is deployed.  
   
-**Note:** Connecting your Mobile Foundation service instance to as dashDB instance is a one-time activity that you will carry out when you create the instance for the first time. You cannot change the connection at a later point.  
-
-
-
+> **Note:** Connecting your Mobile Foundation service instance to as dashDB instance is a one-time activity that you will carry out when you create the instance for the first time. You cannot change the connection at a later point.  
 
 ## Using the dashDB service with Mobile Foundation on Bluemix using IBM-provided scripts:
-
 ### Connecting to a dashDB that is in an Org/space that is different than the MobileFirst Server:  
 
 If you use dashDB service as the database when you deploy Mobile Foundation on Bluemix using scripts, then you need to run the scripts provided along with your MobileFirst Server download.  
@@ -86,10 +81,7 @@ Note: If the same dashDB is being shared across multiple Mobile Foundation insta
 4. `prepareserver.sh` - Create and upload the app onto Bluemix 
 5. `startserver.sh` – Start the Mobile Foundation app
 
-
-
 ### Sharing the same dashDB service instance across different Mobile Foundation deployments:
-
 You can share a single dashDB service instance across many Mobile Foundation deployments.   
 As you can see from the above steps, the prepareserverdbs.sh script creates the new schema as specified in the input parameters. Use Option 2 from above to reuse the same dashDB. Make sure that you isolate the database usage for each instance by providing a unique schema name for each MobileFirst Foundation deployment.   
   
@@ -105,12 +97,10 @@ For example:
 ` ADMIN_SCHEMA_NAME=MFPDATA_USER2_MYAPP2 `  
 (The same schema names can be used for RUNTIME and PUSH schema names)  
   
-
 ### Deploying Mobile Foundation using scripts with specific dashDB user accounts:
+If you want to share the dashDB instance across multiple users/developers, you may create new users in a dashDB instance and use them in the scripts.
 
-If you want to share the dashDB instance across multiple users/developers, you may create new users in a dashDB instance and use them in the scripts. 
 New users with User role as **User** will be able to create new Schemas but will not be able to use schemas created by other users.
-
 
 To create a new dashDB user:  
 
@@ -122,8 +112,6 @@ To create a new dashDB user:
 The user that you have now created will be able to create new schemas in the dashDB service for their own user. But will not be able to use other users’ schemas.
 
 ![add-new-dashDB-user]({{site.baseurl}}/assets/blog/2016-11-02-using-dashdb-service-with-mobile-foundation/dashDBadmin.png)
-
-
 
 Once you have created the new user, go to the Bluemix Console and click on `Service Credentials` of the dashDB service. View the Credentials and note down the following: 
  
@@ -138,18 +126,15 @@ To setup Mobile Foundation using scripts with these settings, run the same steps
 2. `prepareserverdbs.sh` – Creates the required schema and tables in the dashDB database and configures Mobile Foundation to connect to the database. 
 Provide the following properties, that you have noted in the previous steps:   
 
-``` DB_TYPE=DB2   
-DB2_HOST=aaaaaaa.services.dal.bluemix.net   
-DB2_DATABASE=BLUDB   
-DB2_PORT=50000   
-DB2_USERNAME=newuser   
-DB2_PASSWORD=xxxxxxxx   
-ADMIN_SCHEMA_NAME=MFPDATA_NEWUSER
-```
+    ```xml
+    DB_TYPE=DB2   
+    DB2_HOST=aaaaaaa.services.dal.bluemix.net   
+    DB2_DATABASE=BLUDB   
+    DB2_PORT=50000   
+    DB2_USERNAME=newuser   
+    DB2_PASSWORD=xxxxxxxx   
+    ADMIN_SCHEMA_NAME=MFPDATA_NEWUSER
+    ```
 
 3. `prepareserver.sh` - Create and upload the app onto Bluemix
 4. `startserver.sh` – Start the Mobile Foundation app
-
-
-
-
