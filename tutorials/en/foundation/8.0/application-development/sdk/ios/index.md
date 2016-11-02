@@ -22,6 +22,8 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - A local or remote instance of MobileFirst Server is running.
 - Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
 
+> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
@@ -70,7 +72,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
 ### Manually adding the MobileFirst Native SDK
 You can also manually add the MobileFirst SDK:
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
@@ -82,7 +84,7 @@ You can also manually add the MobileFirst SDK:
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
                 <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b> tab.</p>
-            
+
                 <ul>
                     <li>In your Xcode project, add the MobileFirst framework files to your project.
                         <ul>
@@ -128,8 +130,8 @@ You can also manually add the MobileFirst SDK:
                         </ul>
                     </li>
                     <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
             </div>
@@ -207,7 +209,7 @@ target :MyWatchApp do
     platform :ios, 9.0
     pod 'IBMMobileFirstPlatformFoundation'
     end
-    
+
 #use the name of the watch extension target
 target :MyWatchApp WatchKit Extension do
     platform :watchos, 2.0

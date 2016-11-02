@@ -32,6 +32,8 @@ The Cordova platform versions supported by the MobileFirst plug-ins, are:
 - [Generated MobileFirst Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
+> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+
 ## Cordova SDK components
 #### cordova-plugin-mfp
 The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
@@ -166,7 +168,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
         </mfp:security>
     </mfp:android>
     <mfp:windows>
-        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum> 
+        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
        <mfp:windows10>
           <mfp:sdkChecksum>...</mfp:sdkChecksum>          
           <mfp:security>
@@ -281,7 +283,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
                         <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum <value></code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions <value></code> command.</li></ul></td>
                     </tr>
                 </table>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
             </div>
