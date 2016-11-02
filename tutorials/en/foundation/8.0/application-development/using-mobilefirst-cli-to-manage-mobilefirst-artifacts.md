@@ -230,7 +230,7 @@ This will put the server instance in a clean state without any app or adapter de
 The command `mfpdev app <option>` can be used to manage applications created with the MobileFirst Platform SDK.
 
 ### Register an application in a server instance
-An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.  
+An  application must be registered in a MobileFirst Server when it is ready to be executed.  
 To register an app, run the following command from the root folder of the app project:
 
 ```bash
@@ -261,19 +261,27 @@ mfpdev app register -w windows8
 ```
 
 ### Configure an application
-When an application is registered, server related attributes are added to the app configuration file.  
-To change the value of those attributes, run the following command:
+When an application is registered, server related attributes are added to its configuration file.  
+To change the values of these attributes, run the following command:
 
 ```bash
 mfpdev app config
 ```
 
-This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.  
-The attributes available will vary for each platform (Android, iOS, Windows).
+This command will interactively present a list of attributes that can be changed, and prompt for the new value of the attribute.  
+The attributes available will vary for each platform (iOS, Android, Windows).
 
-Available configuratons are:
+Available configurations are:
 
-* The server and runtime the application will be registered to
+* The server address and runtime the application will be registered to
+
+    > **Example use case:** in a scenario where the application is required to connect to a DataPower appliance, but the MobileFirst Server address is different than DataPower's:
+    >
+    > 1. Run `mfpdev app register` to register the application in the expected MobileFirst Server address.
+    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance.
+    > 
+    > The end result is the application registered in the MobileFirst Server, but its **config.xml** configured to connect to the DataPower appliance.
+
 * Setting a public key for the Direct Update authenticity feature 
 * Setting application default language (default is English (en))
 * Whether or not to enable the web resources checksum test
