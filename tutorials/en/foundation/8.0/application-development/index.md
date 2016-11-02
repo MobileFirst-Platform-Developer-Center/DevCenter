@@ -5,7 +5,7 @@ show_children: true
 weight: 4
 ---
 ## Development Concepts and Overview
-When you develop your app with the MobileFirst Foundation set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly. 
+When you develop your app with the MobileFirst Foundation set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 
 In addition to getting familiar with these concepts, you will also learn about MobileFirst-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the MobileFirst CLI.
 
@@ -55,6 +55,8 @@ The target deployment platform for the app is independent of whether the app was
 
 * An iOS app that you develop with Xcode and native code
 * An iOS app that you develop with Cordova cross-platform development technologies
+
+> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
 
 ### Application configuration
 As mentioned, an application is configured on both the client-side and the server-side.  
