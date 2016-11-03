@@ -40,12 +40,14 @@ The components are available through the MobileFirst Operations Console's Downlo
 ### MobileFirst Server
 As part of the Developer Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-In the Developer Kit's root directory, the following scripts are available:
+In the Developer Kit's root directory, the following scripts are available to run from a command-line:
 
 * `run.[sh|cmd]`: Run the MobileFirst Server with trailing Liberty Server messages
     * Add the `-bg` flag to run the process in the background
 * `stop.[sh|cmd]`: Stop the current MobileFirst Server instance
 * `console.[sh|cmd]`: Open the MobileFirst Console
+
+`.sh` file extensions are for Mac and Linux, and `.cmd` file extensions are for Windows.
 
 ### MobileFirst Operations Console
 The MobileFirst Operations Console exposes the following functionalities.  

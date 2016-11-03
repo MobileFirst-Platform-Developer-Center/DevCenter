@@ -275,12 +275,10 @@ Available configurations are:
 
 * The server address and runtime the application will be registered to
 
-    > **Example use case:** in a scenario where the application is required to connect to a DataPower appliance, but the MobileFirst Server address is different than DataPower's:
+    > **Example use case:** in order to register an application to a MobileFirst Server with a certain address, but also have the application connect to a different server address, for example a DataPower appliance: 
     >
     > 1. Run `mfpdev app register` to register the application in the expected MobileFirst Server address.
-    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance.
-    > 
-    > The end result is the application registered in the MobileFirst Server, but its **config.xml** configured to connect to the DataPower appliance.
+    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance. You can also run the command in **direct mode**: `mfpdev app config server http(s)://server-ip-or-host:port`.
 
 * Setting a public key for the Direct Update authenticity feature 
 * Setting application default language (default is English (en))

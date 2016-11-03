@@ -59,7 +59,11 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+
+    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+
+    After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
