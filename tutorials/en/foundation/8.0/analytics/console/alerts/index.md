@@ -2,8 +2,6 @@
 layout: tutorial
 title: Managing Alerts
 breadcrumb_title: Alerts
-show_disqus: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

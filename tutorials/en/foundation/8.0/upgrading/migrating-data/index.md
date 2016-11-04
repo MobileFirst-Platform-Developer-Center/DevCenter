@@ -5,7 +5,7 @@ breadcrumb_title: Migrating apps storing mobile data
 weight: 5
 ---
 ## Overview
-You can store data for your mobile application in a Cloudant® database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
+You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
 
 > CloudantToolkit and IMFData frameworks are discontinued in IBM MobileFirst Foundation v8.0.
 
@@ -39,7 +39,7 @@ For more information about JSONStore, see [JSONStore](../../application-developm
 ### Adapter sample
 To download the sample, see Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise).
 
-To understand the MobileFirst adapter that is included with the Bluelist sample, you must understand both [Cloudant® security](https://cloudant.com/for-developers/faq/auth/) and [MobileFirst security framework](../../authentication-and-security).
+To understand the MobileFirst adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [MobileFirst security framework](../../authentication-and-security).
 
 The Bluelist adapter sample has two primary functions:
 
@@ -556,7 +556,7 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate MobileFirst OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
 
 ## Modeling data
-Cloudant® stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.
+Cloudant  stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.
 
 * iOS: Cloudant stores data as JSON documents. The CloudantToolkit framework provided an object mapper to map between native objects and JSON documents. The CDTDatastore API does not provide this feature. The snippets in the following sections demonstrate how to use CDTDatastore objects to accomplish the same operations.
 * Android: AndroidCloudant stores data as JSON documents. The CloudantToolkit API provided an object mapper to map between native objects and JSON documents. Cloudant Sync does not provide this feature. The snippets in the following sections demonstrate how to use DocumentRevision objects to accomplish the same operations.
@@ -565,7 +565,7 @@ Cloudant® stores data as JSON documents. To store data as objects in your appli
 You can modify the content of a data store.
 
 * For more details on `create`, `retrieve`, `update`, and `delete` (CRUD) operations, see [CDTDatastore CRUD documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md).
-* For `create`, `retrieve`, `update`, and `delete` (CRUD) operations on a remote store, see the [Cloudant® Document API](https://docs.cloudant.com/document.html).
+* For `create`, `retrieve`, `update`, and `delete` (CRUD) operations on a remote store, see the [Cloudant  Document API](https://docs.cloudant.com/document.html).
 
 ### Creating data
 
@@ -1056,7 +1056,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 ## Creating indexes
 To perform queries, you must create an index.
 
-* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md). For query operations on a remote store, see the [Cloudant® Query API](https://docs.cloudant.com/cloudant_query.html).
+* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md). For query operations on a remote store, see the [Cloudant  Query API](https://docs.cloudant.com/cloudant_query.html).
 * Android: For more details, see [Cloudant Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md). For CRUD operations on a remote store, see [Cloudant's Query API](https://docs.cloudant.com/cloudant_query.html).
 
 1. Create an index that includes the data type. Indexing with the data type is useful when an object mapper is set on the data store.
@@ -1284,7 +1284,7 @@ To perform queries, you must create an index.
 After you create an index, you can query the data in your database.
 
 * iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md).
-* Android: For more details, see [Cloudant® Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md).
+* Android: For more details, see [Cloudant  Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md).
 * For query operations on a remote store, see the [Cloudant Query API](https://docs.cloudant.com/cloudant_query.html).
 
 #### iOS
@@ -1440,7 +1440,7 @@ QueryResult result = indexManager.find(selectorMap);
 You can synchronize the data on a mobile device with a remote database instance. You can either pull updates from a remote database to the local database on the mobile device, or push local database updates to a remote database.
 
 * iOS: For more details, see [CDTDatastore Replication documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md).
-* Android For more details, see [Cloudant® Sync Replication documentation](https://github.com/cloudant/sync-android/blob/master/doc/replication.md). For CRUD operations on a remote store, see the [Cloudant Replication API](https://docs.cloudant.com/replication.html).
+* Android For more details, see [Cloudant  Sync Replication documentation](https://github.com/cloudant/sync-android/blob/master/doc/replication.md). For CRUD operations on a remote store, see the [Cloudant Replication API](https://docs.cloudant.com/replication.html).
 
 ### Running pull replication
 ##### BEFORE

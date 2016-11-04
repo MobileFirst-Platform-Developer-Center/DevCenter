@@ -18,7 +18,7 @@ Reference information about Ant tasks and configuration sample files for the ins
 * [Sample configuration files for MobileFirst Analytics](#sample-configuration-files-for-mobilefirst-analytics)
 
 ## Ant configuredatabase task reference
-Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant®.
+Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
 
 The **configuredatabase** Ant task creates the relational databases that are used by MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, MobileFirst runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
 
@@ -30,7 +30,7 @@ In addition, if one of the following conditions is met:
 
 * The DBMS type is Derby.
 * An inner element `<dba>` is present.
-* The DBMS type is DB2®, and the specified user has the permissions to create databases.
+* The DBMS type is DB2 , and the specified user has the permissions to create databases.
 
 Then, the task can have the following effects:
 
@@ -113,7 +113,7 @@ The `<db2>` element supports the following elements:
 | `<property>` | The JDBC connection property.           | 0..∞    |
 | `<dba>`      | The database administrator credentials. | 0..1    |
 
-For the available properties, see [Properties for the IBM® Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
+For the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
 The inner element `<dba>` specifies the credentials for the database administrators. This element has the following attributes:
 
 | Attribute | Description                            | Required | Default | 
@@ -233,7 +233,7 @@ The **installmobilefirstadmin** Ant task configures an application server to run
 
 * It declares the administration service web application in the specified context root, by default /mfpadmin.
 * It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
-* For the relational databases, it declares data sources and on WebSphere® Application Server full profile, JDBC providers for the administration services.
+* For the relational databases, it declares data sources and on WebSphere  Application Server full profile, JDBC providers for the administration services.
 * It deploys the administration service and the live update service on the application server.
 * Optionally, it declaresMobileFirst Operations Console as a web application in the specified context root, by default /mfpconsole. If the MobileFirst Operations Console instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
 
@@ -486,7 +486,7 @@ The `<database>` element supports the following elements. For more information a
 
 | Element            | Description                                                      | Count |
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | The parameter for DB2® databases.	                            | 0..1  |
+| <db2>	             | The parameter for DB2  databases.	                            | 0..1  |
 | <derby>	         | The parameter for Apache Derby databases.	                    | 0..1  | 
 | <mysql>	         | The parameter for MySQL databases.                               | 0..1  |
 | <oracle>	         | The parameter for Oracle databases.	                            | 0..1  |
@@ -509,8 +509,8 @@ The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobile
 #### installmobilefirstpush
 The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
 It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
-For the relational databases, it declares data sources and, on WebSphere® Application Server Full Profile, JDBC providers for push service.
-It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the MobileFirst authorization server, MobileFirst Analytics, and with Cloudant® in case Cloudant is used.
+For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
+It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the MobileFirst authorization server, MobileFirst Analytics, and with Cloudant  in case Cloudant is used.
 
 #### updatemobilefirstpush
 The **updatemobilefirstpush** Ant task updates an already-configured MobileFirst Server web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
@@ -650,7 +650,7 @@ The `<database>` element supports the following elements. For more information a
 
 | Element              | Description                               | Count |
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | The parameter for DB2® databases.         | 0..1  | 
+| `<db2>`	           | The parameter for DB2  databases.         | 0..1  | 
 | `<derby>`	           | The parameter for Apache Derby databases. | 0..1  | 
 | `<mysql>`	           | The parameter for MySQL databases.        | 0..1  | 
 | `<oracle>`           | The parameter for Oracle databases.       | 0..1  |
@@ -676,7 +676,7 @@ The **installmobilefirstruntime** Ant task configures an application server to r
 
 * It declares the MobileFirst web application in the specified context root, by default /mfp.
 * It deploys the runtime WAR file on the application server.
-* It declares data sources and on WebSphere® Application Server full profile JDBC providers for the runtime.
+* It declares data sources and on WebSphere  Application Server full profile JDBC providers for the runtime.
 * It deploys the database drivers in the application server.
 * It sets MobileFirst configuration properties through JNDI environment entries.
 * Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the runtime.
@@ -914,7 +914,7 @@ The `<db2>` element supports the following element:
 |---------------|-------------------------------|-------|
 | `<property>`  | The data source property or JDBC connection property.	| 0.. |
 
-For more information about the available properties, see [Properties for the IBM® Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
+For more information about the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
 
 For more information about the available properties for a Liberty server, see the **properties.db2.jcc** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
@@ -1008,7 +1008,7 @@ The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallAp
 The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
 
 * It declares the Application Center Services web application in the /applicationcenter context root.
-* It declares data sources, and on WebSphere® Application Server full profile, it declares also JDBC providers for Application Center Services.
+* It declares data sources, and on WebSphere  Application Server full profile, it declares also JDBC providers for Application Center Services.
 * It deploys the Application Center Services web application on the application server.
 * It declares the Application Center Console as a web application in the /appcenterconsole context root.
 * It deploys the Application Center Console WAR file on the application server.
@@ -1104,7 +1104,7 @@ The `<database>` element supports the following elements. For more information a
 
 | Element           | Description	                            | Count | 
 |-------------------|-------------------------------------------|-------|
-| db2	            | The parameter for DB2® databases.	        | 0..1  |
+| db2	            | The parameter for DB2  databases.	        | 0..1  |
 | derby             | The parameter for Apache Derby databases.	| 0..1  |
 | mysql             | The parameter for MySQL databases.	    | 0..1  |
 | oracle	        | The parameter for Oracle databases.	    | 0..1  |
@@ -1133,7 +1133,7 @@ The **installanalytics** Ant task configures an application server to run IBM Mo
 * It declares the MobileFirst Analytics Service web application in the specified context root /analytics-service.
 * It declares the MobileFirst Analytics Console web application in the specified context root /analytics.
 * It sets MobileFirst Analytics Console and MobileFirst Analytics Services configuration properties through JNDI environment entries.
-* On WebSphere® Application Server Liberty profile, it configures the web container.
+* On WebSphere  Application Server Liberty profile, it configures the web container.
 * Optionally, it creates users to use the MobileFirst Analytics Console.
 
 #### updateanalytics
@@ -1370,16 +1370,16 @@ The easiest way to get started with these Ant tasks is by working with the sampl
 ### List of sample configuration files
 Pick the appropriate sample configuration file. The following files are provided.
 
-| Task                                                     | Derby                     | DB2®                    | MySQL                     | Oracle                      | 
+| Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
 | Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
 | Install MobileFirst Server on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
-| Install MobileFirst Server on WebSphere® Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
+| Install MobileFirst Server on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
 | Install MobileFirst Server on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
 | Install MobileFirst Server on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
 | Install MobileFirst Server on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
-**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM® DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM  DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
 **Note on configuration files for WebSphere Application Server Network Deployment:** The configuration files for **wasnd** contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-derby.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
 
@@ -1398,7 +1398,7 @@ Pick the appropriate sample configuration file. The following XML files are prov
 
 | Task | Application server |
 |------|--------------------|
-| Install MobileFirst Analytics Services and Console on WebSphere® Application Server Liberty profile | configure-liberty-analytics.xml | 
+| Install MobileFirst Analytics Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml | 
 | Install MobileFirst Analytics Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
 | Install MobileFirst Analytics Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
 | Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 

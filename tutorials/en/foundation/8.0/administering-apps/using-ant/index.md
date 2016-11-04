@@ -105,7 +105,7 @@ The **mfpadm** Ant task has the following attributes:
 **url** 
 The base URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use the following URL.
 
-* For WebSphere® Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
+* For WebSphere  Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
 * For Tomcat: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
 
 **secure**  

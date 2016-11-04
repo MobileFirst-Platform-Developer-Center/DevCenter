@@ -86,7 +86,7 @@ To setup APNS:
 Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
 To setup WNS:
 
-1. Follow the [instructions as provided by Microsoft](http://localhost:4000/tutorials/en/foundation/8.0/notifications/sending-notifications/#google-cloud-messaging) to generate the **Package Security Identifier (SID)** and **Client secret** values.
+1. Follow the [instructions provided by Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) to generate the **Package Security Identifier (SID)** and **Client secret** values.
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add these values and click **Save**.
 
 > You can also setup WNS using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)

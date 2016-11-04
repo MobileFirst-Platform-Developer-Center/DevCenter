@@ -64,7 +64,7 @@ To keep unauthorized mobile applications from accessing the MobileFirst Server, 
 
 
 ### Securing a connection to the back end
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix® Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
 
 #### Encrypting passwords for user roles configured in MobileFirst Server
 The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
@@ -252,7 +252,7 @@ The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
 * Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix® for this step.)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
 
 #### LDAP repository
 Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.

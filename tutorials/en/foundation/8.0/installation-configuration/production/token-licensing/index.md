@@ -5,7 +5,7 @@ breadcrumb_title: Token licensing
 weight: 6
 ---
 ## Overview
-If you plan to use token licensing for MobileFirst Server, you must install the Rational® Common Licensing library and configure your application server to connect MobileFirst Server to the Rational License Key Server.
+If you plan to use token licensing for MobileFirst Server, you must install the Rational  Common Licensing library and configure your application server to connect MobileFirst Server to the Rational License Key Server.
 
 The following topics describe the installation overview, the manual installation of Rational Common Licensing library, the configuration of the application server, and the platform limitations for token licensing.
 
@@ -26,7 +26,7 @@ If the token licensing is purchased for MobileFirst Server, you have extra steps
 Here are the technical restrictions for the use of token licensing:
 
 #### Supported Platforms:
-The list of platforms that support token licensing is listed at [Limitations of supported platforms for token licensing](#limitations-of-supported-platforms-for-token-licensing). The MobileFirst Server running on a platform that is not listed might not be possible to install and configure for token licensing. The native libraries for the Rational® Common Licensing client might not available for the platform or not supported.
+The list of platforms that support token licensing is listed at [Limitations of supported platforms for token licensing](#limitations-of-supported-platforms-for-token-licensing). The MobileFirst Server running on a platform that is not listed might not be possible to install and configure for token licensing. The native libraries for the Rational  Common Licensing client might not available for the platform or not supported.
 
 #### Supported Topologies:
 The topologies that are supported by token licensing is listed at [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime).
@@ -43,7 +43,7 @@ To configure the ports so that they use static values, see How to serve a licens
 
 ### Installation Process
 
-You need to activate token licensing when you run the IBM® Installation Manager at installation time. For more information about the instructions for enabling token licensing, see [Installation overview for token licensing](#installation-overview-for-token-licensing).
+You need to activate token licensing when you run the IBM  Installation Manager at installation time. For more information about the instructions for enabling token licensing, see [Installation overview for token licensing](#installation-overview-for-token-licensing).
 
 After MobileFirst Server is installed, you must manually configure the server for token licensing. For more information, see the following topics in this section.
 
@@ -59,7 +59,7 @@ If you intend to use token licensing with IBM MobileFirst Foundation, make sure 
 
 > **Important:** Your choice about token licensing (activating it or not) as part of an installation that supports token licensing cannot be modified. If later you need to change the token licensing option, you must uninstall IBM MobileFirst Foundation and reinstall it.
 
-1. Activate token licensing when you run IBM® Installation Manager to install IBM MobileFirst Foundation.
+1. Activate token licensing when you run IBM  Installation Manager to install IBM MobileFirst Foundation.
 
     #### Graphic mode installation
     If you install the product in graphic mode, select **Activate token licensing with the Rational License Key Server** option in the **General settings** panel during the installation.
@@ -83,10 +83,10 @@ If you intend to use token licensing with IBM MobileFirst Foundation, make sure 
 * For WebSphere Application Server full profile, see [Connecting MobileFirst Server installed on WebSphere Application Server to the Rational License Key Server](#connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server).
 
 ## Connecting MobileFirst Server installed on Apache Tomcat to the Rational License Key Server
-You must install the Rational® Common Licensing native and Java libraries on the Apache Tomcat application server before you connect MobileFirst Server to the Rational License Key Server.
+You must install the Rational  Common Licensing native and Java libraries on the Apache Tomcat application server before you connect MobileFirst Server to the Rational License Key Server.
 
 * Rational License Key Server 8.1.4.8 or later must be installed and configured. The network must allow communication to and from MobileFirst Server by opening the two-way communication ports (**lmrgd** and **ibmratl**). For more information, see [Rational License Key Server Portal](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295) and [How to serve a license key to client machines through a firewall](http://www.ibm.com/support/docview.wss?uid=swg21257370).
-* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM® Rational License Key Center, see [IBM® Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
+* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM  Rational License Key Center, see [IBM  Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
 * MobileFirst Server must be installed and configured with the option Activate token licensing with the Rational License Key Server on your Apache Tomcat as indicated in [Installation overview for token licensing](#installation-overview-for-token-licensing).
 
 ### Installing Rational Common Licensing libraries
@@ -126,17 +126,17 @@ For more information about the JNDI properties, see [JNDI properties for Adminis
 For configuring the connection of MobileFirst Server on Apache Tomcat server farm, you must follow all the steps that are described in [Installing Rational Common Licensing libraries](#installing-rational-common-licensing-libraries) for each node of your server farm where the MobileFirst Server administration service is running. For more information about server farm, see [Server farm topology](../topologies/#server-farm-topology) and [Installing a server farm](../appserver/#installing-a-server-farm).
 
 ## Connecting MobileFirst Server installed on WebSphere Application Server Liberty profile to the Rational License Key Server
-You must install the Rational® Common Licensing native and Java libraries on the Liberty profile before you connect MobileFirst Server to the Rational License Key Server.
+You must install the Rational  Common Licensing native and Java libraries on the Liberty profile before you connect MobileFirst Server to the Rational License Key Server.
 
 * Rational License Key Server 8.1.4.8 or later must be installed and configured. The network must allow communication to and from MobileFirst Server by opening the two-way communication ports (**lmrgd** and **ibmratl**). For more information, see [Rational License Key Server Portal](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295) and [How to serve a license key to client machines through a firewall](http://www.ibm.com/support/docview.wss?uid=swg21257370).
-* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM® Rational License Key Center, see [IBM® Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
+* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM  Rational License Key Center, see [IBM  Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
 * MobileFirst Server must be installed and configured with the option Activate token licensing with the Rational License Key Server on your Apache Tomcat as indicated in [Installation overview for token licensing](#installation-overview-for-token-licensing).
 
 <h3 id="common-licensing-libraries-liberty">Installing Rational Common Licensing libraries</h3>
 
 1. Define a shared library for the Rational Common Licensing client. This library uses native code and can be loaded only once by the application server. Thus, the applications that use it must reference it as a common library.
     * Choose the Rational Common Licensing native library. Depending on your operating system and the bit version of the Java Runtime Environment (JRE) on which your Liberty profile is running, you must choose the correct native library in **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**. For example, for Linux x86 with a 64-bits JRE, the library can be found in p**roduct_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
-    * Copy the native library to the computer that runs MobileFirst Server administration service. The directory might be **${shared.resource.dir}/rcllib**. The **${shared.resource.dir}** directory is usually in **usr/shared/resources**, where usr is the directory that also contains the usr/servers directory. For more information about standard location of **${shared.resource.dir}**, see [WebSphere® Application Server Liberty Core - Directory locations and properties](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). If the **rcllib** folder does not exist, create this folder and then copy the native library file over.
+    * Copy the native library to the computer that runs MobileFirst Server administration service. The directory might be **${shared.resource.dir}/rcllib**. The **${shared.resource.dir}** directory is usually in **usr/shared/resources**, where usr is the directory that also contains the usr/servers directory. For more information about standard location of **${shared.resource.dir}**, see [WebSphere  Application Server Liberty Core - Directory locations and properties](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). If the **rcllib** folder does not exist, create this folder and then copy the native library file over.
     
     > **Note:** Ensure that the Java virtual machine (JVM) of the application server has both read and execute privileges on the native library. On Windows, the following exception appears in the application server log if the JVM of the application server does not have the executable rights on the copied native library.
     
@@ -207,10 +207,10 @@ You must install the Rational® Common Licensing native and Java libraries on th
 For configuring the connection of MobileFirst Server on Liberty profile server farm, you must follow all the steps that are described in [Installing Rational Common Licensing libraries](#installing-rational-common-licensing-libraries) for each node of your server farm where the MobileFirst Server administration service is running. For more information about server farm, see [Server farm topology](../topologies/#server-farm-topology) and [Installing a server farm](../appserver/#installing-a-server-farm).
 
 ## Connecting MobileFirst Server installed on WebSphere Application Server to the Rational License Key Server
-You must configure a shared library for the Rational® Common Licensing libraries on WebSphere® Application Server before you connect MobileFirst Server to the Rational License Key Server.
+You must configure a shared library for the Rational  Common Licensing libraries on WebSphere  Application Server before you connect MobileFirst Server to the Rational License Key Server.
 
 * Rational License Key Server 8.1.4.8 or later must be installed and configured. The network must allow communication to and from MobileFirst Server by opening the two-way communication ports (**lmrgd** and **ibmratl**). For more information, see [Rational License Key Server Portal](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295) and [How to serve a license key to client machines through a firewall](http://www.ibm.com/support/docview.wss?uid=swg21257370).
-* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM® Rational License Key Center, see [IBM® Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
+* Make sure that the license keys for IBM MobileFirst Foundation are generated . For more information about generating and managing your license keys with IBM  Rational License Key Center, see [IBM  Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) and [Obtaining license keys with IBM Rational License Key Center](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html).
 * MobileFirst Server must be installed and configured with the option Activate token licensing with the Rational License Key Server on your Apache Tomcat as indicated in [Installation overview for token licensing](#installation-overview-for-token-licensing).
 
 ### Installing Rational Common Licensing library on a stand-alone server
@@ -281,7 +281,7 @@ Each server where the MobileFirst Server administration service runs must be con
 ## Limitations of supported platforms for token licensing
 The list of operating system, its version, and the hardware architecture that supports MobileFirst Server with token licensing enabled.
 
-For token licensing, the MobileFirst Server needs to connect to the Rational® License Key Server by using the Rational Common Licensing library.
+For token licensing, the MobileFirst Server needs to connect to the Rational  License Key Server by using the Rational Common Licensing library.
 
 This library is composed of a Java library and also native libraries. These native libraries depend on the platform where MobileFirst Server is running. Thus, the token licensing by MobileFirst Server is supported only on platforms where the Rational Common Licensing library can be run.
 
@@ -289,7 +289,7 @@ The following table describes the platforms that support MobileFirst Server with
 
 | Operating System             | Operating System version |	Hardware architecture |
 |------------------------------|--------------------------|-----------------------|
-| AIX®                         | 7.1                      |	POWER8® (64-bit only) |
+| AIX                          | 7.1                      |	POWER8  (64-bit only) |
 | SUSE Linux Enterprise Server | 11	                      | x86-64 only           |
 | Windows Server               | 2012	                  | x86-64 only           |
 

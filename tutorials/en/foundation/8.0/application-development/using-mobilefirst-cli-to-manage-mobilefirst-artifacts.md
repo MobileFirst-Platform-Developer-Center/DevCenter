@@ -230,7 +230,7 @@ This will put the server instance in a clean state without any app or adapter de
 The command `mfpdev app <option>` can be used to manage applications created with the MobileFirst Platform SDK.
 
 ### Register an application in a server instance
-An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.  
+An  application must be registered in a MobileFirst Server when it is ready to be executed.  
 To register an app, run the following command from the root folder of the app project:
 
 ```bash
@@ -261,19 +261,25 @@ mfpdev app register -w windows8
 ```
 
 ### Configure an application
-When an application is registered, server related attributes are added to the app configuration file.  
-To change the value of those attributes, run the following command:
+When an application is registered, server related attributes are added to its configuration file.  
+To change the values of these attributes, run the following command:
 
 ```bash
 mfpdev app config
 ```
 
-This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.  
-The attributes available will vary for each platform (Android, iOS, Windows).
+This command will interactively present a list of attributes that can be changed, and prompt for the new value of the attribute.  
+The attributes available will vary for each platform (iOS, Android, Windows).
 
-Available configuratons are:
+Available configurations are:
 
-* The server and runtime the application will be registered to
+* The server address and runtime the application will be registered to
+
+    > **Example use case:** in order to register an application to a MobileFirst Server with a certain address, but also have the application connect to a different server address, for example a DataPower appliance: 
+    >
+    > 1. Run `mfpdev app register` to register the application in the expected MobileFirst Server address.
+    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance. You can also run the command in **direct mode**: `mfpdev app config server http(s)://server-ip-or-host:port`.
+
 * Setting a public key for the Direct Update authenticity feature 
 * Setting application default language (default is English (en))
 * Whether or not to enable the web resources checksum test
@@ -355,27 +361,30 @@ A Cordova application's web resources can be previewed using a browser. Previewi
 
 Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
 
-    1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
-	
-	```var wlInitOptions = {
-	  mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
-	  applicationId:'com.sample.app' // Replace with your own value.
-	};
-	```
+1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
 
-	2. Register the app again by using the following command:
+    ```javascript
+    var wlInitOptions = {
+      mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
+      applicationId:'com.sample.app' // Replace with your own value.
+    };
+    ```
 
-     ```mfpdev app register
+2. Register the app again by using the following command:
+
+     ```bash
+     mfpdev app register
      ```
 
-	 3. Run the following command:
-	 
-	 ```cordova prepare
+ 3. Run the following command:
+ 
+     ```bash
+     cordova prepare
      ```
 
-     4. Preview the Cordova application by running the following command from the Cordova application root folder:
+ 4. Preview the Cordova application by running the following command from the Cordova application root folder:
 
-      ```
+      ```bash
       mfpdev app preview
       ```
 

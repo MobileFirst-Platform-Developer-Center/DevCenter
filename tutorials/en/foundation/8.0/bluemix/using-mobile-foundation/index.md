@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation Bluemix service to set up MobileFirst Server
+title: Using the Mobile Foundation Bluemix service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -38,9 +38,9 @@ The Mobile Foundation service offers the following plan options:
 ## Setting up the Mobile Foundation service
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on the **Get started now!** button or the **Catalog** link.
-2. Search for the term **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a name for the service or use the default provided service name.
+1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
+2. Search for **Mobile Foundation** and click on the resulting tile option.
+3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
 
     <img class="gifplayer" alt="Creating a Mobile Foundation service instance" src="service-creation.png"/>
@@ -59,7 +59,11 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+
+    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+
+    After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
@@ -118,10 +122,21 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 > Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
 
 ## Applying MobileFirst Server fixes
-Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, navigate back to the [Bluemix.net](https://www.bluemix.net) main page and click on **Compute**. Select your service and go to the **Logs** tab.
+To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+
+You can find the **messages.log** and **trace.log** files in the **logs** folder.
+
+#### Tracing
+To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+
+1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
+2. Click the **Trace** action option.
+3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+
+The **trace.log** file is now available in the above specified location.
 
 <img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
 

@@ -13,7 +13,7 @@ Starting IBM MobileFirst Foundation 8.0, the iOS Client SDK for Cordova and Nati
 
 ![validation errors]({{site.baseurl}}/assets/blog/2016-10-17-prepare-ios-apps-for-app-store-submission/validation_fail.png)
 
-This is because the `i386` and `x86_64` architecture slices are bundled within `IBMMobilefirstPlatformfoundation.framework`. These architecture slices are are bundled so that an application with the SDK could run on simulators as well. iTunes Connect and TestFlight do not support applications which include unused binary slices, hence while publishing to the App Store or while using Archives for testing, the app crashes during runtime or fails during validation. This is a known [Xcode defect](http://www.openradar.me/23681704) for dynamic frameworks. 
+This is because the `i386` and `x86_64` architecture slices are bundled within `IBMMobilefirstPlatformfoundation.framework`. These architecture slices are bundled so that an application with the SDK could run on simulators as well. iTunes Connect and TestFlight do not support applications which include unused binary slices, hence while publishing to the App Store or while using Archives for testing, the app crashes during runtime or fails during validation. This is a known [Xcode defect](http://www.openradar.me/23681704) for dynamic frameworks. 
 
 The following steps mentioned by Daniel Kennett in his [blog post](http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/) will help resolve the above issue by removing unused/unsupported architectures (`i386`/`x86_64`) from dynamic frameworks and will ensure that the application will work as expected without any crash/failures.
 

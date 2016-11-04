@@ -2,9 +2,7 @@
 layout: tutorial
 title: MobileFirst Foundation Operational Analytics
 breadcrumb_title: Operational Analytics
-show_disqus: true
 show_children: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 8
 ---
@@ -56,5 +54,8 @@ For development, the Analytics Server is installed together with the MobileFirst
 For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
 
 MobileFirst Foundation Operational Analytics uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in MobileFirst Foundation.
+
+## Troubleshooting
+For information on troubleshooting IBM MobileFirst Analytics, see [Analytics Troubleshooting](../troubleshooting/analytics/).
 
 ## What to read next

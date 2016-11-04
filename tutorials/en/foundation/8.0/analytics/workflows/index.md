@@ -2,8 +2,6 @@
 layout: tutorial
 title: Analytics Workflows
 breadcrumb_title: Workflows
-show_disqus: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
@@ -231,7 +229,7 @@ The data can be shown in two ways:
 > * The **Crashes** bar graph displays no data when **Display Crash Rate** is selected.
 
 ### Default charts for crashes
-In the **Crashes** page of the **Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app crashes.
+In the **Crashes** page of the **Apps** section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app crashes.
 
 The **Crash Overview** chart shows a table of an overview of crashes.  
 The **Crashes** bar graph shows a histogram of crashes over time. You can display the data by crash rate or total crashes. The Crashes bar graph is also in the Crashes page of the Applications section.

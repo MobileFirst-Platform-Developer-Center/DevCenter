@@ -12,12 +12,19 @@ The following MobileFirst Server components need to store technical data into a 
 * MobileFirst runtime
 
 > **Note:** If multiple runtime instances are installed with different context root, each instance needs its own set of tables.
-> The database can be a relational database such as IBM® DB2®, Oracle, or MySQL.
+> The database can be a relational database such as IBM  DB2 , Oracle, or MySQL.
 
 #### Relational databases (DB2, Oracle, or MySQL)
 Each component needs a set of tables. The tables can be created manually by running the SQL scripts specific to each component (see [Create the database tables manually](#create-the-database-tables-manually)), by using Ant Tasks, or the Server Configuration Tool. The table names of each component do not overlap. Thus, it is possible to put all the tables of these components under a single schema.
 
 However, if you decide to install multiple instances of MobileFirst runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
+
+> **Note about DB2:** MobileFirst Foundation licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> 
+> * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
+> * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
+>
+> Learn more in the [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
 
 #### Jump to
 
@@ -75,7 +82,7 @@ The database stores all the data of the MobileFirst Server applications. Before 
 * [MySQL database and user requirements](#mysql-database-and-user-requirements)
 
 ### DB2 database and user requirements
-Review the database requirement for DB2®. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+Review the database requirement for DB2 . Follow the steps to create user, database, and setup your database to meet the specific requirement.
 
 The page size of the database must be at least 32768. The following procedure creates a database with a page size 32768. It also creates a user (**mfpuser**) and then grants the database access to this user. This user can then be used by the Server Configuration Tool or the Ant tasks to create the tables.
 
@@ -172,7 +179,7 @@ The database tables for the MobileFirst Server applications can be created manua
 * [Creating the MySQL database tables manually](#creating-the-mysql-database-tables-manually)
 
 ### Creating the DB2 database tables manually
-Use the SQL scripts that are provided in the MobileFirst Server installation to create the DB2® database tables.
+Use the SQL scripts that are provided in the MobileFirst Server installation to create the DB2  database tables.
 
 As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
 
@@ -296,7 +303,7 @@ Depending on your choice of the supported database management system (DBMS), sel
 * [Creating the MySQL database tables with the Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
 
 ### Creating the DB2 database tables with the Server Configuration Tool
-Use the Server Configuration Tool that is provided with MobileFirst Server installation to create the DB2® database tables.
+Use the Server Configuration Tool that is provided with MobileFirst Server installation to create the DB2  database tables.
 
 The Server Configuration Tool can create a database in the default DB2 instance. In **Database Selection** panel of the Server Configuration Tool, select the IBM DB2 option. In the next three panes, enter the database credentials. If the database name that is entered in the **Database Additional Settings** panel does not exist in the DB2 instance, you can enter additional information to enable the tool to create a database for you.
 
@@ -395,12 +402,12 @@ The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-sam
 
 If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
 
-For DB2® and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+For DB2  and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
 
 Depending on your choice of the supported database management system (DBMS), select one of the following topics to create the database with Ant tasks.
 
 ### Creating the DB2 database tables with Ant tasks
-Use Ant tasks that are provided with MobileFirst Server installation to create the DB2® database.
+Use Ant tasks that are provided with MobileFirst Server installation to create the DB2  database.
 
 To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
 

@@ -3,7 +3,7 @@ layout: tutorial
 title: Resource request from native iOS Objective-C applications
 relevantTo: [ios]
 weight: 6
-downloads: 
+downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures/tree/release71
   - name: Download Native project
@@ -13,6 +13,7 @@ downloads:
 <p>To create and configure an iOS native project, first follow the “<a href="../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a>” tutorial.</p>
 <p>MobileFirst applications can access resources using the <code>WLResourceRequest</code> REST API.<br />
 This tutorial explains how to use the <code>WLResourceRequest</code> API with an HTTP adapter.</p>
+<blockquote><b>Note:</b> The <b>Keychain Sharing</b> capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.</blockquote>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Access the <code>WLClient</code> functionality by using<br />

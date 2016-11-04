@@ -35,8 +35,8 @@ Application Center is installed as part of the installation of MobileFirst Serve
 
 **Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
 
-* Application server: Tomcat or WebSphere® Application Server full profile or Liberty profile
-* Database: DB2®, Oracle, or MySQL
+* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
+* Database: DB2 , Oracle, or MySQL
 
 If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
 

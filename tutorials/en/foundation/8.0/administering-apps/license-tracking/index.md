@@ -110,13 +110,13 @@ The license is checked in for every deployed application, during a server shutdo
 ### Causes of license validation failure
 License validation might fail when the application is registered or deleted, in the following cases:
 
-* The Rational® Common Licensing native library is not installed and configured.
+* The Rational  Common Licensing native library is not installed and configured.
 * The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../installation-configuration/production/token-licensing).
 * Rational License Key Server is not accessible.
 * Sufficient tokens are not available.
 * The license expired.
 
-### IBM® Rational License Key Server feature name used by IBM MobileFirst Foundation
+### IBM  Rational License Key Server feature name used by IBM MobileFirst Foundation
 Depending on the token license type of an application, the following features are used.
 
 | Token License Type | Feature name | 
@@ -126,7 +126,7 @@ Depending on the token license type of an application, the following features ar
 | NON_PRODUCTION	| (no feature) | 
 
 ## Integration with IBM License Metric Tool
-The IBM® License Metric Tool allows you to evaluate your compliance with your IBM license.
+The IBM  License Metric Tool allows you to evaluate your compliance with your IBM license.
 
 If you have not installed a version of IBM License Metric Tool that supports IBM Software License Metric Tag or SWID (software identification) files, you can review the license usage with the License Tracking reports in MobileFirst Operations Console. For more information, see [License Tracking report](#license-tracking-report).
 
@@ -137,7 +137,7 @@ The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19
 
 The number of Application Center installations is not limited by PVU-based licensing.
 
-The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere® Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool. For more information on IBM MobileFirst Foundation Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
+The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool. For more information on IBM MobileFirst Foundation Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
 For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 

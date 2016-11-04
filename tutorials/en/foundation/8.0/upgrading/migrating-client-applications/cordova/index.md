@@ -95,17 +95,15 @@ The migration assistance tool does not modify or move any developer code or comm
 3. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
 
     ```bash
-    mfpmigrate client --in source_directory --out destination_directory --projectName new_project_directory
+    mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
     ```
     * **source_directory**  
-    The current location of the project that you are migrating.
+    The current location of the project that you are migrating. In Hybrid applications, this should point to the **application** folder of the application.
     * **destination_directory**    
-    The current location of the initial project. In Hybrid applications, this should point to the **common** folder of the application.
-    * **destination_directory**    
-    The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new_project_directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
-    * **new_project_directory**
+    The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new-project-directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
+    * **new-project-directory**
     The optional name of the folder where the new content of your project is located.
-	This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `*app_name*-*app_id*-*version*`.	
+	This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `app_name-app_id-version`.	
     <br/>
     When it is used with the client command, the migration assistance tool completes the following actions:  
         * Identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0.

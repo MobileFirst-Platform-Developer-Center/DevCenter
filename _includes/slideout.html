@@ -1,0 +1,19 @@
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+    <ul class="nav navmenu-nav">
+        <li {% if page.url contains "/features" %} class="active" {% endif%}><a href="{{site.baseurl}}/features">Features</a></li>
+        <li {% if page.url contains "/foundation" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">Docs</a>
+            <ul class="child-nav">
+                <li {% if page.url contains "/tutorials/en/foundation/8.0/all-tutorials" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">Foundation 8.0</a></li>
+                <li {% if page.url contains "/tutorials/en/foundation/7.1/all-tutorials" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials">Foundation 7.1</a></li>
+                <li {% if page.url contains "/tutorials/en/foundation/7.0/all-tutorials" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials">Foundation 7.0</a></li>
+                <li {% if page.url contains "/tutorials/en/foundation/6.3/all-tutorials" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials">Foundation 6.3</a></li>
+                <li {% if page.url contains "{{site.baseurl}}/tutorials/en/product-integration" %} class="active" {% endif%}><a href="{{site.baseurl}}/tutorials/en/product-integration/8.0/">Product integration</a></li>
+            </ul>
+        </li>
+        <li {% if page.url contains "/learn-more" %} class="active" {% endif%}><a href="{{site.baseurl}}/learn-more">Learn more</a></li>
+        <li {% if page.url contains "/video-gallery" %} class="active" {% endif%}><a href="{{site.baseurl}}/video-gallery">Video gallery</a></li>
+        <li {% if page.url contains "/blog" %} class="active" {% endif%}><a href="{{site.baseurl}}/blog">Blog</a></li>
+        <li {% if page.url contains "/help" %} class="active" {% endif%}><a href="{{site.baseurl}}/help">Help</a></li>
+        <li {% if page.url contains "/search" %} class="active" {% endif%}><a href="{{site.baseurl}}/search">Search</a></li>
+    </ul>
+</div>

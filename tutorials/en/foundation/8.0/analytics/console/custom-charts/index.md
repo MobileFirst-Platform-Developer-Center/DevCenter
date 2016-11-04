@@ -2,8 +2,6 @@
 layout: tutorial
 title: Creating Custom Charts
 breadcrumb_title: Custom Charts
-show_disqus: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

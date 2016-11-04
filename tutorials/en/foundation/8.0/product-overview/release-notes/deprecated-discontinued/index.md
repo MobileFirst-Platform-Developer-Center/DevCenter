@@ -56,12 +56,12 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Adapters with session-dependency configuration. In V7.1.0, you can configure MobileFirst Server to work in session-independent mode (default) or in session-dependent mode. Beginning with v8.0, session-dependent mode is no longer supported. The server is inherently independent of the HTTP session, and no related configuration is required.</td>
         <td>Discontinued.</td>
     </tr><td>
-        Attribute store over IBM® WebSphere® eXtreme Scale is not supported in v8.0.</td>
+        Attribute store over IBM  WebSphere  eXtreme Scale is not supported in v8.0.</td>
         <td>Not in v8.0.</td>
     </tr>
     <tr>
         <td>
-        Service discovery and adapter generation for IBM® Business Process Manager (IBM BPM) process applications, Microsoft Azure Marketplace DataMarket, OData RESTful APIs, RESTful resources, Services that are exposed by an SAP Netweaver Gateway, and Web Services is not in v8.0.</td>
+        Service discovery and adapter generation for IBM  Business Process Manager (IBM BPM) process applications, Microsoft Azure Marketplace DataMarket, OData RESTful APIs, RESTful resources, Services that are exposed by an SAP Netweaver Gateway, and Web Services is not in v8.0.</td>
         <td>
         Not in v8.0.</td>
     </tr>
@@ -82,7 +82,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Not in v8.0.</td>
     </tr>
     <tr><td>
-        The Cast Iron® JavaScript adapter in not in v8.0.	</td>
+        The Cast Iron  JavaScript adapter in not in v8.0.	</td>
     <td>
         Not in v8.0.</td>
     </tr>
@@ -107,7 +107,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Not in v8.0.</td>
     </tr>
     <tr><td>
-        Security: Integration with IBM Trusteer®. v8.0 does not include any predefined security check or challenge to test IBM Trusteer risk factors.	</td>
+        Security: Integration with IBM Trusteer . v8.0 does not include any predefined security check or challenge to test IBM Trusteer risk factors.	</td>
     <td>
         Not in v8.0. Use IBM Trusteer Mobile SDK.</td>
     </tr>
@@ -155,7 +155,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Not in v8.0.</td>
     </tr>
     <tr><td>
-        Cloudant® used as a database for MobileFirst Server in not supported in v8.0.	</td>
+        Cloudant  used as a database for MobileFirst Server in not supported in v8.0.	</td>
     <td>
         Not in v8.0.</td>
     </tr>
@@ -170,7 +170,7 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
         Discontinued. For more information about replacing the IMFData and CloudantToolkit APIs in your apps, see Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK.</td>
     <tr/>
     <tr><td>
-        The IBM Tealeaf® SDK is no longer bundled with IBM MobileFirst Foundation.	</td>
+        The IBM Tealeaf  SDK is no longer bundled with IBM MobileFirst Foundation.	</td>
     <td>
         Discontinued. Use IBM Tealeaf SDK. For more information, see <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> and <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a> in the IBM Tealeaf Customer Experience documentation.</td>
     </tr>
@@ -222,7 +222,7 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 #### WS-Security
 |API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
-| `WL.Server.signSoapMessage`	                | Use the WS-Security capabilities of WebSphere® Application Server. |
+| `WL.Server.signSoapMessage`	                | Use the WS-Security capabilities of WebSphere  Application Server. |
 
 ### Java API elements discontinued in v8.0
 #### Security

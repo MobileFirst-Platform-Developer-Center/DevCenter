@@ -1,15 +1,14 @@
 ---
 layout: default
 custom_js:
-- lib/jasny-bootstrap/js/jasny-bootstrap.min.js
 - js/tutorial.js
 ---
-<div class="container-fluid tutorial">
+<section class="container-fluid tutorial">
     <div class="row">
         <div class="sidebar hidden-xs col-lg-2 col-sm-3">
             {% include tutorialNav.html %}
         </div>
-        <div class="col-sm-9 col-lg-8 tutorial-center-div">
+        <article class="col-sm-9 col-lg-8 tutorial-center-div">
             <h1 class="no-anchor">{{ page.title}}</h1>
             {% include contribute.html %}
             {% include breadcrumb.html %} {% if page.downloads %}
@@ -36,17 +35,17 @@ custom_js:
             </div>
             {% endif %}
             {{ content }}
-            <a href="#" class="scrollUpButton">&#9650</a>
-            <!-- <div id="timestamp"><em>Last modified on {{ page.path | file_date | date_to_string }}</em></div> -->
+            <a href="javascript:void(0)" class="scrollUpButton">&#9650;</a>
             {% if page.show_children %}
                 {% if page.show_children_title %}
                 <h2 class="hidden-print">{{page.show_children_title}}</h2>
                 {% endif %}
                 {% include show-children.html children=page.children %}
             {% endif %}
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
 
             {% include disqus.html %}
-        </div>
+        </article>
         <div class="col-lg-2">
 
         </div>
@@ -71,4 +70,4 @@ custom_js:
       {% endif %}
     }
     </script>
-</div>
+</section>

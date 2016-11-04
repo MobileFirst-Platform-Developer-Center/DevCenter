@@ -17,8 +17,12 @@ Available plug-ins are:
 * **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
 * **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
 
-**Support level:**
-The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1**, and **cordova-windows@4.2.0**.
+#### Support levels
+The Cordova platform versions supported by the MobileFirst plug-ins, are:
+
+* cordova-ios: **>= 4.1.1 and < 5.0**
+* cordova-android: **>= 5.1.1 and < 6.0**
+* cordova-windows: **>= 4.3.2 and < 5.0**
 
 #### Jump to:
 
@@ -28,8 +32,9 @@ The platform versions supported by the MobileFirst plug-ins, at **minimum**, are
 - [Generated MobileFirst Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Cordova SDK components
+> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
 
+## Cordova SDK components
 #### cordova-plugin-mfp
 The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
 
@@ -71,7 +76,8 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
 #### New Application
 
-1. Create a Cordova project:
+1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
+    For example:
 
     ```bash
     cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -83,7 +89,7 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
     > The templated **index.js** enables you to use additional MobileFirst features as such [Multilingual application  translation](../../translation) and initialization options (see the user documentation for more information).
 
-2. Navigate to the root of the Cordova project: <code>cd myapp</code>
+2. Change directory to the root of the Cordova project: `cd hello`
 
 3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
 
@@ -162,7 +168,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
         </mfp:security>
     </mfp:android>
     <mfp:windows>
-        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum> 
+        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
        <mfp:windows10>
           <mfp:sdkChecksum>...</mfp:sdkChecksum>          
           <mfp:security>
@@ -277,7 +283,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
                         <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum <value></code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions <value></code> command.</li></ul></td>
                     </tr>
                 </table>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
             </div>
