@@ -96,7 +96,7 @@ The collection of data for analysis by the Analytics server is enabled by defaul
 4. Click **Save**.
 5. Click the **Read Only** button to lock the properties again.
 
-<img  alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
+<img class="gifplayer"  alt="Enable or disable analytics support in the console" src="enable-disable-analytics.png"/>
 
 
 ### Role-based access control
