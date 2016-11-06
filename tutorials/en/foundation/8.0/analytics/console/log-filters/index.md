@@ -9,7 +9,7 @@ weight: 2
 Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → [version] → Log Filters**.  
 Through `Log Filters` you can create a filter level that you can log at. The log level can be set globally (all logger instances) or for a specific package or packages.
 
-<img class="gifplayer" alt="Creating a log filter" src="add-log-filter.png"/>
+<img class="gifplayer"  alt="Creating a log filter" src="add-log-filter.png"/>
 
 For the application to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
 
