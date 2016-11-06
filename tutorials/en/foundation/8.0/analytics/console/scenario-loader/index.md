@@ -44,7 +44,7 @@ The Scenario Loader is packaged together with the Analytics Console. Make sure y
     All available information about these settings is provided in the  **Testing Configuration** section.
 
 
-1. Click on the Administration icon <img class="gifplayer"  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/> and select the **Settings** tab. In the **Advanced** section make sure that the **Default tenant** value is set to `dummy_data_for_demo_purposes_only`.
+1. Click on the Administration icon <img  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/> and select the **Settings** tab. In the **Advanced** section make sure that the **Default tenant** value is set to `dummy_data_for_demo_purposes_only`.
 
 
 ## Loading and deleting the data
