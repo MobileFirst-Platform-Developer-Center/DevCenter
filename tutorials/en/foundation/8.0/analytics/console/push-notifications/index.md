@@ -24,4 +24,4 @@ The number of requests is displayed according to the requested period, applicati
 ###Notification by Mediator
 The number of requests is broken down by app platform, for the requested period, applications, and versions.
 
-<img class="gifplayer" alt="Push Notification reports" src="pushNotifications.png"/>
+<img  alt="Push Notification reports" src="pushNotifications.png"/>

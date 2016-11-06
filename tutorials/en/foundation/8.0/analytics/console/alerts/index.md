@@ -34,7 +34,7 @@ The following fields are available if you choose this option:
 * *required*. Authentication Type
 
 
-<img class="gifplayer" alt="Creating an alert" src="creating-an-alert.png"/>
+<img alt="Creating an alert" src="creating-an-alert.png"/>
 
 ## Custom web hook
 You can set up a distribution method for an alert. For example: define a custom web hook to which a payload is sent to when an alert threshold is triggered.
