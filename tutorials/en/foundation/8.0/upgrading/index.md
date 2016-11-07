@@ -41,7 +41,7 @@ Add support for the MobileFirst features by adding the MobileFirst plug-ins to y
 
 To migrate a Cordova or hybrid app, you need to
 
-* For planning purpose, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* For planning purposes, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 * Replace the client-side APIs that are discontinued or not in V8.0.0. For a list of API changes, see [Upgrading the WebView](migrating-client-applications/cordova/#upgrading-the-webview).
 * Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API instead of `WL.Client.invokeProcedure`, which is deprecated.
 * If you use Direct Update, review [Migrating Direct Update](migrating-client-applications/cordova/#migrating-direct-update).
