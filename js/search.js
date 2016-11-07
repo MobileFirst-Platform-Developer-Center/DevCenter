@@ -1,5 +1,7 @@
 'use strict';
 
+var _this = this;
+
 // ELASTICSEARCH
 var MFPSEARCH = {
     client: null,
@@ -22,7 +24,7 @@ var MFPSEARCH = {
         $("#searchResults").addClass("loader");
         this.body.from = this.from;
         
-        var _this = this;
+        _this = this;
         this.client.search({
             "body": this.body
         }).then(function(body) {
