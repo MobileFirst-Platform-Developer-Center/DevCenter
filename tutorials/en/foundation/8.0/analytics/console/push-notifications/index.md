@@ -9,7 +9,7 @@ weight: 5
 Once Analytics support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
 
 ## Push reports
-Push Notifications reports become available after Analytics support is configured, and Push Notifications are received.
+Push Notifications reports become available after Analytics support is configured, and Push events are sent to the Analytics service.
 
 1. In the Analytics Console, choose the **Infrastructure** section from the navigation bar.
 2. Choose the **Push Notifications** tab.
