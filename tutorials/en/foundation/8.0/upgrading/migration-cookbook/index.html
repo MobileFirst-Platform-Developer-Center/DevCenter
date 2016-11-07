@@ -132,11 +132,12 @@ weight: 1
                         <ul>
                             <li>To only scan the classic hybrid project and have an API report generated, use:
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
-                            <li>To scan also the classic hybrid project and create a predefined Cordova project, use:<br/>
-{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
+                            <li>To scan the classic hybrid project and create a predefined Cordova project, use:<br/>
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory  [--projectName location_of_project]{% endhighlight %}
                             <b>Note:</b> This action might take a while to complete, depending on your Internet connection, because the process includes downloading the MobileFirst Cordova SDK plug-ins.</li>
                             <li>Replace <b>source_directory</b> with the path to the <b>application</b> folder located in application folder of the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report.</li>
+							<li>Replace <b>location_of_project</b> with a directory name of where you want the project created inside of the <b>destination_directory</b>. This flag is optional.
                         </ul>
 
                         <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/cordova-migration.png"/>
@@ -145,7 +146,7 @@ weight: 1
 
                         <ul>
                             <li>The <b>MigratedProject</b> folder now contains a new Cordova application with the same metadata as your classic hybrid app (the application identifier and other settings that depend on the setup of the classic hybrid app), installed the MobileFirst Cordova SDK, and added the required platforms.</li>
-                            <li>If the <b>client</b> command was used, an API report, <b>{app-name}-api-report.html</b>, was generated. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
+                            <li>If the <b>client</b> command was used, an API report, <b>{app-name}-api-report.html</b>, was generated and opened in your default browser. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
 
                         <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-cordova.png"/>
@@ -394,13 +395,13 @@ if (document.addEventListener) {
                         <p>After the Migration Assistance tool has run successfully, you can observe the following effects:</p>
 
                         <ul>
-                            <li>An API report, <b>{app-name}-api-report.html</b>, was generated. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
+                            <li>An API report, <b>{app-name}-api-report.html</b>, was generated and opened in your default browser. It contains potential actions that you will need to follow to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
 
                         <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
 
                         <h4>Step 2</h4>
-                        <p>After you have handled the API report, you can replace the old Native SDK with the new Native SDK.</p>
+                        <p>After you have resolved the issues in the API report, you can replace the old Native SDK with the new Native SDK.</p>
 
                         <b>iOS</b><br/>
                         <b>Prerequisite:</b> Make sure you have CocoaPods installed on your Mac computer:
@@ -645,7 +646,7 @@ transitive: true{% endhighlight %}</li>
 
                         <br/>
                         <h4>Step 3</h4>
-                        <p>The Native application is almost fully migrated. Now's the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you need to either implement it differently or replace it entirely.</p>
+                        <p>The Native application is almost fully migrated. Now's the time to handle the issues that were generated in the API report. Open the API report in a browser and review it. For each item in the report, you need to either implement it differently or replace it entirely.</p>
 
                         <ul>
                             <li><a href="../migrating-client-applications/ios" target="_blank">iOS code changes</a></li>

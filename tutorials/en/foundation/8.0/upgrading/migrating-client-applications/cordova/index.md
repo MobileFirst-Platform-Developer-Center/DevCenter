@@ -64,7 +64,7 @@ You can migrate existing hybrid or cross-platform (Cordova) apps that were devel
 * [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### Starting the Cordova app migration with the migration assistance tool
-The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of IBM MobileFirst Foundation for migraiton by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
+The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of IBM MobileFirst Foundation for migration by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
 
 The following information is important to know before you use the migration assistance tool:
 
@@ -76,7 +76,7 @@ The following information is important to know before you use the migration assi
 
 Cross-platform apps that were created with earlier versions of IBM MobileFirst Platform Foundation commands or the Cordova with IBM MobileFirst Platform Foundation commands are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process with the following functions:
 
-* Scans the JavaScript files in the existing hybrid app or Cordova with IBM MobileFirst Platform Foundation app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
+* Scans the JavaScript and HTML files in the existing hybrid app or Cordova with IBM MobileFirst Platform Foundation app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
 * Copies the structure, script, and configuration files of the initial hybrid app or Cordova with IBM MobileFirst Platform Foundation app to a Cordova structure that is supported in version 8.0.
 
 The migration assistance tool does not modify or move any developer code or comments of your app. You must continue the migration process with either [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app) or [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app) after you run this tool.
@@ -118,10 +118,11 @@ The migration assistance tool does not modify or move any developer code or comm
             * Cordova-plugin-mfp-push plug-in, if the push notification feature was installed on the old project.
             * Hybrid certificates, if certificate pinning was enabled on the old project.
             * Application, script, and XML files
+		* Opens the resulting information file in your default browser after the command completes.
         
         > **Important:** The migration assistance tool does not copy developer code or commented text into the new structure.
 4. Resolve the API issues in the new Cordova app.
-    * Review the **api-report.html** file that is created in the **destination_directory** directory. Each row of the table in this file identifies a deprecated, changed, or removed API that is used in the app that is not compatible with version 8.0. This file also specifies the replacement for removed APIs, when one is available.
+    * Review the **api-report.html** file that is created in the **destination_directory** directory, and is opened in your default browser when the command completes. Each row of the table in this file identifies a deprecated, changed, or removed API that is used in the app that is not compatible with version 8.0. This file also specifies the replacement for removed APIs, when one is available.
 
     | File path | Line number | API | Line content | Category of API change | Description and action item | 
     |-----------|-------------|-----|--------------|------------|-----------|
