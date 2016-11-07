@@ -27,8 +27,15 @@ You can now register client web applications to MobileFirst Server by using the 
 #### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
 With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
 
-#### Added *projectName* directory as an option when you use the Migration assistance tool
+#### Added *projectName* directory as an option when you use the Migration Assistance tool
 You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
+
+#### Usability improvements to the Migration Assistance tool
+Made the following changes to improve the usability of the Migration Assistance tool:
+* The Migration Assistance tool scans HTML files and JavaScript files.
+* The scan report opens in your default browser automatically after the scan is finished.
+* The *--out* flag is optional. The working directory is used if it is not specified.
+* When the *--out* flag is specified and the directory does not exist, the directory is created.
 
 ### Adapters
 #### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
