@@ -128,37 +128,9 @@ Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, 
 |                        | Administrator | Deployer    | Operator    | Monitor    | 
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
-| GET requests 
-<ul>
-<li>Get a list of all the devices that use push notification for an application</li>
-<li>Get the details of a specific device</li>
-<li>Get the list of subscriptions</li>
-<li>Get the subscription information that is associated with a subscription ID.</li>
-<li>Get the details of a GCM configuration</li>
-<li>Get the details of an APNS configuration</li>
-<li>Get the list of tags that are defined for the application</li>
-<li>Get details of a specific tag</li>
-</ul> 
-| Yes           | Yes         | Yes         | Yes        | 
-
-| POST and PUT requests 
-
-* Register an app with push notification
-* Update a push device registration
-* Create a subscription
-* Add or update a GCM configuration
-* Add or update an APNS configuration
-* Submit notifications to a device
-* Create or update a tag | Yes           | Yes         | Yes         | No         | 
-
-| DELETE requests
-
-* Delete the registration of a device to push notification
-* Delete a subscription
-* Unsubscribe a device from a tag
-* Delete a GCM configuration
-* Delete an APNS configuration
-* Delete a tag | Yes           | Yes         | No          | No         | 
+| GET requests <ul><li>Get a list of all the devices that use push notification for an application</li><li>Get the details of a specific device</li><li>Get the list of subscriptions</li><li>Get the subscription information that is associated with a subscription ID.</li><li>Get the details of a GCM configuration</li><li>Get the details of an APNS configuration</li><li>Get the list of tags that are defined for the application</li><li>Get details of a specific tag</li></ul>| Yes           | Yes         | Yes         | Yes        | 
+| POST and PUT requests <ul><li>Register an app with push notification</li><li>Update a push device registration</li><li>Create a subscription</li><li>Add or update a GCM configuration</li><li>Add or update an APNS configuration</li><li>Submit notifications to a device</li><li>Create or update a tag</li></ul> | Yes           | Yes         | Yes         | No         | 
+| DELETE requests <ul><li>Delete the registration of a device to push notification</li><li>Delete a subscription</li><li>Unsubscribe a device from a tag</li><li>Delete a GCM configuration</li><li>Delete an APNS configuration</li><li>Delete a tag</li></ul> | Yes           | Yes         | No          | No         | 
 
 #### Disabling
 
