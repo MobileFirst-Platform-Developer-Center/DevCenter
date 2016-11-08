@@ -108,7 +108,7 @@ TTL is effectively how you can establish and maintain a data retention policy. Y
 
 Each document type has its own TTL. Setting a document's TTL enables automatic deletion of the document after it is stored for the specified amount of time.
 
-Each TTL JNDI property is named **analytics/TTL_<document type>**. For example, the TTL setting for **NetworkTransaction** is named **analytics/TTL_NetworkTransaction**.
+Each TTL JNDI property is named **analytics/TTL_[document-type]**. For example, the TTL setting for **NetworkTransaction** is named **analytics/TTL_NetworkTransaction**.
 
 These values can be set by using basic time units as follows.
 

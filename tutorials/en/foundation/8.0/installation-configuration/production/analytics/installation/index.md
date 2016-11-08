@@ -84,32 +84,32 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
 
 1. Create a server by running the following command in your **./wlp/bin** folder.
 
-    ```bash
-    ./server create <serverName>
-    ```
+   ```bash
+   ./server create <serverName>
+   ```
 
 2. Install the following features by running the following command in your **./bin** folder.
 
-    ```bash
-    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
-    ```
+   ```bash
+   ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
+   ```
 
 3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
 4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
 
-    ```xml
-    <featureManager>
+   ```xml
+   <featureManager>
         <feature>jsp-2.2</feature>
         <feature>ssl-1.0</feature>
         <feature>appSecurity-1.0</feature>
         <feature>localConnector-1.0</feature>
-    </featureManager>
-    ```
+   </featureManager>
+   ```
 
 5. Configure **analytics.ear** as an application with role-based security in the **server.xml** file. The following example creates a basic hardcoded user registry, and assigns a user to each of the different analytics roles.
 
-    ```xml
-    <application location="analytics.ear" name="analytics-ear" type="ear">
+   ```xml
+   <application location="analytics.ear" name="analytics-ear" type="ear">
         <application-bnd>
             <security-role name="analytics_administrator">
                 <user name="admin"/>
@@ -127,30 +127,30 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
                 <user name="business"/>
             </security-role>
         </application-bnd>
-    </application>
+   </application>
 
-    <basicRegistry id="worklight" realm="worklightRealm">
+   <basicRegistry id="worklight" realm="worklightRealm">
         <user name="business" password="demo"/>
         <user name="developer" password="demo"/>
         <user name="support" password="demo"/>
         <user name="infrastructure" password="demo"/>
         <user name="admin" password="admin"/>
-    </basicRegistry>
-    ```
+   </basicRegistry>
+   ```
 
-    > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
+   > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
 
 6. Start the Liberty Server by running the following command inside your **bin** folder
 
-    ```bash
-    ./server start <serverName>
-    ```
+   ```bash
+   ./server start <serverName>
+   ```
 
 7. Go to the MobileFirst Analytics Console.
 
-    ```bash
-    http://localhost:9080/analytics/console
-    ```
+   ```bash
+   http://localhost:9080/analytics/console
+   ```
 
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
@@ -160,44 +160,44 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
 1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
 2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
 
-    ```xml
-    <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
-    ```
+   ```xml
+   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
+   ```
 
 3. Declare the two war files in the **conf/server.xml** file, and define a user registry.
 
-    ```xml
-    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
-    <Context docBase ="analytics" path ="/analytics"></Context>
-    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
-    ```
+   ```xml
+   <Context docBase ="analytics-service" path ="/analytics-service"></Context>
+   <Context docBase ="analytics" path ="/analytics"></Context>
+   <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
+   ```
 
-    The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+   The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
 4. Add the following sections to the **conf/tomcat-users.xml** file to configure a **MemoryRealm**.
     * Add the security roles.
 
-        ```xml
-        <role rolename="analytics_administrator"/>
-        <role rolename="analytics_infrastructure"/>
-        <role rolename="analytics_support"/>
-        <role rolename="analytics_developer"/>
-        <role rolename="analytics_business"/>
-        ```
+      ```xml
+      <role rolename="analytics_administrator"/>
+      <role rolename="analytics_infrastructure"/>
+      <role rolename="analytics_support"/>
+      <role rolename="analytics_developer"/>
+      <role rolename="analytics_business"/>
+      ```
     * Add a few users with the roles you want.
 
-        ```xml
-        <user name="admin" password="admin" roles="analytics_administrator"/>
-        <user name="support" password="demo" roles="analytics_support"/>
-        <user name="business" password="demo" roles="analytics_business"/>
-        <user name="developer" password="demo" roles="analytics_developer"/>
-        <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
-        ```    
+      ```xml
+      <user name="admin" password="admin" roles="analytics_administrator"/>
+      <user name="support" password="demo" roles="analytics_support"/>
+      <user name="business" password="demo" roles="analytics_business"/>
+      <user name="developer" password="demo" roles="analytics_developer"/>
+      <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
+      ```    
     * Start your Tomcat Server and go to the MobileFirst Analytics Console.
 
-        ```xml
-        http://localhost:8080/analytics/console
-        ```
+      ```xml
+      http://localhost:8080/analytics/console
+      ```
 
     For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
 

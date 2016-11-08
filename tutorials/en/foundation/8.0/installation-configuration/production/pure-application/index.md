@@ -936,7 +936,7 @@ You use a predefined template to deploy MobileFirst Application Center on a sing
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements: **If you use token licensing to license IBM MobileFirst Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**Token licensing requirements:** If you use token licensing to license IBM MobileFirst Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
 
 Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
@@ -1388,7 +1388,7 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
         
         > **Important:** For LDAP SSL connection configuration in MobileFirst Analytics, make sure that in step 4b in [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), the dragged-in MobileFirst LDAP Cert component in the MobileFirst Foundation Analytics node must be moved to between the Liberty profile server (or Stanalone server) and the MFP Analytics script package.
         
-    #### WAS_ROOT
+   #### WAS_ROOT
     * If MobileFirst Analytics is being installed on WebSphere Application Server Liberty profile, specify the installation directory of the Liberty profile for Analytics:
         * Click the **Add reference** button next to the **WAS_ROOT** field and in the pop-up window, click the **component-level parameter** tab.
         * In the **Component** field, select **Liberty profile server** (it might be called **Liberty profile server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server Liberty profile).
@@ -1398,21 +1398,22 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
         * In the **Component** field, select **Standalone server** (it might be called **Standalone server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server full profile)
         * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
         
-    #### HEAP\_MIN\_SIZE
+   #### HEAP\_MIN\_SIZE
+   
     Applicable to WebSphere Application Server full profile only.
 
     The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger minimum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MIN\_SIZE**. Consider setting a value equal to **HEAP\_MAX\_SIZE**.
     
     Default value: 4096 MB.
 
-    #### HEAP\_MAX\_SIZE
+   #### HEAP\_MAX\_SIZE
     Applicable to WebSphere Application Server full profile only.
 
     The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger maximum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MAX\_SIZE**. Consider setting a value equal to **HEAP\_MIN\_SIZE**.
 
     Default value: 4096 MB.
     
-    #### WAS\_admin\_user
+   #### WAS\_admin\_user
     * Applicable to WebSphere Application Server full profile only.  
     WebSphere Application Server full profile admin user ID for the Analytics server.
         * Click the **Add reference** button next to the **WAS\_admin\_user** field and in the pop-up window, click the **component-level** parameter tab.
@@ -1421,7 +1422,7 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     
     For Liberty profile, the default value can be used.
     
-    #### WAS\_admin\_password
+   #### WAS\_admin\_password
     Applicable to WebSphere Application Server full profile only.
 
     WebSphere Application Server full profile admin user ID for the Analytics server.
@@ -1431,11 +1432,11 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     
     For Liberty profile, the default value can be used.
 
-    #### admin_user
+   #### admin_user
     * If an LDAP repository is not enabled, create a default administration user for MobileFirst Analytics console protection.
     * If an LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.
 
-    #### admin_password
+   #### admin_password
     * If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.
     * If an LDAP repository is enabled, specify the administration user password. The value is stored in the LDAP repository.
     
