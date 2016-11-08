@@ -23,42 +23,45 @@ However, writing this logic on the server side could be faster and cleaner.
 
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API.
-This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API. This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
 `MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 For example:
-{% highlight javascript %}
+
+```javascript
 MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
-{% endhighlight %}
+```
 
 > Calling a Java adapter from a JavaScript adapter is not supported
 
 ## Java adapter API
 Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
-{% highlight java %}
+
+```java
 @Context
 AdaptersAPI adaptersAPI;
-{% endhighlight %}
+```
 
 ### Calling a Java adapter from a Java adapter
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
-{% highlight java %}
+
+```java
 HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
 HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
-{% endhighlight %}
+```
 
 ### Calling a JavaScript adapter procedure from a Java adapter
 When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
-{% highlight java %}
+
+```java
 HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
 org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
-{% endhighlight %}
+```
 
 ## Data mashup example
 The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
@@ -88,11 +91,12 @@ Here is a list of the mashup types and the corresponding adapter names:
 | **Java** adapter → **Java** adapter              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
-###Mashup Sample Flow
+### Mashup Sample Flow
 **1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
 
 (HTTPAdapterJS adapter) XML:
-{% highlight xml %}
+
+```xml
 <connectivity>
   <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
     <protocol>http</protocol>
@@ -101,10 +105,11 @@ Here is a list of the mashup types and the corresponding adapter names:
     ...
   </connectionPolicy>
 </connectivity>
-{% endhighlight %}
+```
 
 (HTTPAdapterJS adapter) JavaScript:
-{% highlight javascript %}
+
+```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
   var input = {
     method: 'get',
@@ -118,10 +123,11 @@ function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
 function getPath(from, to) {
   return "/latest?base=" + from + "&symbols=" + to;
 }
-{% endhighlight %}
+```
 
 (HTTPAdapterJava adapter)
-{% highlight java %}
+
+```java
 @GET
 @Produces("application/json")
 public Response get(@QueryParam("fromCurrency") String fromCurrency, @QueryParam("toCurrency") String toCurrency) throws IOException, IllegalStateException, SAXException {
@@ -142,12 +148,13 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
     return Response.status(RSSResponse.getStatusLine().getStatusCode()).entity(RSSResponse.getStatusLine().getReasonPhrase()).build();
   }
 }
-{% endhighlight %}  
+```
 
 **2. Create a procedure that fetches the currencies records from the database and returns a resultSet / JSONArray to the application:**
 
 (SQLAdapterJS adapter)
-{% highlight javascript %}
+
+```javascript
 var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
 
 function getCurrenciesList() {
@@ -157,10 +164,11 @@ function getCurrenciesList() {
   });
   return list.resultSet;
 }
-{% endhighlight %}  
+```
 
 (SQLAdapterJava adapter)
-{% highlight java %}
+
+```java
 @GET
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/getCurrenciesList")
@@ -182,12 +190,13 @@ public JSONArray getCurrenciesList() throws SQLException, IOException {
   conn.close();
   return jsonArr;
 }
-{% endhighlight %}  
+```
 
 **3. Create a procedure that calls the HTTPAdapter procedure (which we created in step 1) with the base-currency and the target-currency:**
 
 (SQLAdapterJS adapter)
-{% highlight javascript %}
+
+```javascript
 function getExchangeRate(fromId, toId) {
   var base = getCurrencySymbol(fromId);
   var exchangeTo = getCurrencySymbol(toId);
@@ -210,10 +219,11 @@ function getExchangeRate(fromId, toId) {
     "exchangeRate": ExchangeRate
   };
 }
-{% endhighlight %}  
+```
 
 (SQLAdapterJava adapter - mashup with another Java adapter)
-{% highlight java %}
+
+```java
 @GET
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/getExchangeRate_JavaToJava")
@@ -241,10 +251,11 @@ public JSONObject getExchangeRate_JavaToJava(@QueryParam("fromCurrencyId") Integ
 
   return jsonObj;
 }
-{% endhighlight %}  
+```
 
 (SQLAdapterJava adapter - mashup with a JavaScript adapter)
-{% highlight java %}
+
+```java
 @GET
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/getExchangeRate_JavaToJS")
@@ -271,9 +282,10 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 
   return jsonObj;
 }
-{% endhighlight %}  
+```
 
 <img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
+
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
 
