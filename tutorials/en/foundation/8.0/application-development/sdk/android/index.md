@@ -44,49 +44,50 @@ Create an Android Studio project or use an existing one.
 
 2. Add the following lines after `apply plugin: 'com.android.application'`:
 
-    ```xml
-    repositories{
+   ```xml
+   repositories{
         jcenter()
-    }
-    ```
+   }
+   ```
 
 3. Add the following line inside the `android` section:
 
-    ```xml
-    packagingOptions {
+   ```xml
+   packagingOptions {
         pickFirst 'META-INF/ASL2.0'
         pickFirst 'META-INF/LICENSE'
         pickFirst 'META-INF/NOTICE'
-    }
-    ```
+   }
+   ```
 
 4. Add the following lines inside the `dependencies` section:
 
-    ```xml
-    compile group: 'com.ibm.mobile.foundation',
-    name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0.+',
-    ext: 'aar',
-    transitive: true
-    ```
+   ```xml
+   compile group: 'com.ibm.mobile.foundation',
+   name: 'ibmmobilefirstplatformfoundation',
+   version: '8.0.+',
+   ext: 'aar',
+   transitive: true
+   ```
 
-    Or on a single line:
+   Or on a single line:
 
-    ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
-    ```
+   ```xml
+   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   ```
 
 5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    ```
+   ```xml
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+   ```
+   
 6. Add the MobileFirst UI activity next to the existing **activity** element:
 
-    ```xml
-    <activity android:name="com.worklight.wlclient.ui.UIActivity" />
-    ```
+   ```xml
+   <activity android:name="com.worklight.wlclient.ui.UIActivity" />
+   ```
 
 > If a Gradle Sync request appears, accept it.
 

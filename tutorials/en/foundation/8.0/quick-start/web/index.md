@@ -48,8 +48,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
 
-    ```javascript
-    WLAuthorizationManager.obtainAccessToken()
+   ```javascript
+   WLAuthorizationManager.obtainAccessToken()
         .then(
             function(accessToken) {
                 titleText.innerHTML = "Yay!";
@@ -77,7 +77,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
                 statusText.innerHTML = "Failed to connect to MobileFirst Server";
             }
         );
-    ```
+   ```
     
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
@@ -86,13 +86,13 @@ Alternatively, click the **New** button next to **Adapters**.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+   > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
-    ```bash
-    mfpdev adapter build
-    ```
+   ```bash
+   mfpdev adapter build
+   ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
@@ -108,13 +108,14 @@ Alternatively, click the **New** button next to **Adapters**.
     * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
     * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
 
-    For example:  
+   For example:  
     
-    ```javascript
-    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
-    var port = 9081; // The local port number to use
-    var mfpURL = host + ':443'; // The Mobile Foundation server port number
-    ```
+   ```javascript
+   var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
+   var port = 9081; // The local port number to use
+   var mfpURL = host + ':443'; // The Mobile Foundation server port number
+   ```
+   
 4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>

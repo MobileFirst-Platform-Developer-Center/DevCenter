@@ -28,7 +28,7 @@ To be considered part of the same MobileFirst application family, all applicatio
 	* For iOS applications, this requirement is synonymous to the access group entitlements value.
 	* For Android applications, this requirement is synonymous to the **sharedUserId** value in the **AndroidManifest.xml** file.
 		
-        > **Note:** For Android, the name must be in the **x.y** format.
+    > **Note:** For Android, the name must be in the **x.y** format.
 
 * Applications must be signed by the same signing identity. This requirement means that only applications from the same organization can use this feature.	
     * For iOS applications, this requirement means the same Application ID prefix, provisioning profile, and signing identity is used to sign the application.
@@ -60,12 +60,12 @@ You can now use the native Simple Data Sharing APIs to share simple strings amon
 ### Android
 1. Enable the Simple Data Sharing option by specifying the application family name as the **android:sharedUserId** element in the manifest tag of your **AndroidManifest.xml** file. For example: 
 
-    ```xml
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
+   ```xml
+   <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
         android:versionCode="1"
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
-    ```
+   ```
     
 2. Ensure that applications that are part of the same family are signed by the same signing credentials.
 3. Uninstall any earlier versions of the applications that did not specify a **sharedUserId** or that used a different **sharedUserId**.
