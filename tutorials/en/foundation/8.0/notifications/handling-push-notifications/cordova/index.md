@@ -45,15 +45,15 @@ Create a new Cordova project or use an existing one, and add one or more of the 
 
 2. Add the push plug-in to by running the command:
 
-    ```bash
-    cordova plugin add cordova-plugin-mfp-push
-    ```
+   ```bash
+   cordova plugin add cordova-plugin-mfp-push
+   ```
 
 3. Build the Cordova project by running the command:
 
-    ```bash
-    cordova build
-    ```
+   ```bash
+   cordova build
+   ```
 
 ### iOS platform
 The iOS platform requires an additional step.  
@@ -65,16 +65,17 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 
 ## Notifications API
 ### Client-side
-Javascript Function | Description
---- | ---
-[`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance.
-[`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications.
-[`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service.
-[`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance.
-[`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag.
-[`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to
-[`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Unsubscribes from a particular tag.
-[`MFPPush.unregisterDevice(success, failure)`](#unregister) | Unregisters the device from the Push Notifications Service
+
+| Javascript Function | Description |
+| --- | --- |
+| [`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications. | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service. | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance. | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag. | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Unsubscribes from a particular tag. | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Unregisters the device from the Push Notifications Service | 
 
 ### API implementation
 

@@ -31,33 +31,33 @@ Depending on how you've added the MobileFirst Web SDK, proceed in either of the 
 Reference MobileFirst Analytics in the `HEAD` element:
 
 ```html
-	<head>
-	    ...
-	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js"></script>
-	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
-	</head>
+<head>
+    ...
+    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js"></script>
+    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
+</head>
 ```
 
 Or, if using RequireJS, write:
 
 ```javascript
-	require.config({
-		'paths': {
-			'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
-			'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
-		}
-	});
+require.config({
+	'paths': {
+		'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
+		'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
+	}
+});
 
-	require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
-	    // application logic.
-	});
+require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
+    // application logic.
+});
 ```
 
 Note that you can select your own namespace to replace "ibmmfpfanalytics".
 
 
 ```javascript
-	ibmmfpfanalytics.logger.config({analyticsCapture: true});
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
  **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
@@ -78,7 +78,6 @@ import "WLAnalytics.h"
 import IBMMobileFirstPlatformFoundation
 ```
 
-
 #### Initialize Analytics
 **Objective-C**
 
@@ -89,7 +88,6 @@ No setup required. Pre-initialized by default.
 Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
 
 ### Android
-
 #### Import WLAnalytics
 
 ```java
@@ -234,7 +232,7 @@ To enable client network-event logging:
 
 **Swift:**
 
-```
+```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
@@ -294,7 +292,6 @@ try {
 }
 
 WLAnalytics.log("Message", json);
-
 ```
 
 #### iOS
@@ -316,7 +313,6 @@ NSDictionary *inventory = @{
 ```swift
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
-
 ```
 
 ## Tracking users

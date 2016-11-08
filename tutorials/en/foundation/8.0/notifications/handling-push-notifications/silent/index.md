@@ -24,15 +24,15 @@ Based on the requirement choose the appropriate type under **MobileFirst Operati
 ## Handling silent push notifications in Cordova application
 In the JavaScript push notification callback method, you must do the following steps:
 
-1. Check the notification type. For example,
+1. Check the notification type. For example:
 
-    ```javascript
-    if(props['content-available'] == 1) {
+   ```javascript
+   if(props['content-available'] == 1) {
         //Silent Notification or Mixed Notification. Perform non-GUI tasks here.
-    } else {
+   } else {
         //Normal notification
-    }
-    ```
+   }
+   ```
 
 2. If the notification is silent or mixed, after you complete the background job, invoke `WL.Client.Push.backgroundJobDone` API.
 

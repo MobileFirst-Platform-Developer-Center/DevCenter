@@ -23,8 +23,8 @@ To receive interactive notifications, follow these steps:
 
 1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
 
-    ```javascript
-    var options = {
+   ```javascript
+   var options = {
         ios: {
             alert: true,
             badge: true,
@@ -68,17 +68,17 @@ To receive interactive notifications, follow these steps:
                 minimalContextActions: ['poll_ok','poll_nok'] 
             }]     
         }
-    }
-    ```
+   }
+   ```
 
 2. Pass the `options` object while registering device for push notifications.
 
-    ```javascript
-    MFPPush.registerDevice(options, function(successResponse) {
+   ```javascript
+   MFPPush.registerDevice(options, function(successResponse) {
   		navigator.notification.alert("Successfully registered");
   		enableButtons();
-  	});  
-    ```
+   });  
+   ```
 
 ## Handling interactive push notifications in native iOS application
 Follow these steps to receive interactive notifications:
@@ -86,8 +86,8 @@ Follow these steps to receive interactive notifications:
 1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
 2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
 
-  ```swift
-  //define categories for Interactive Push
+   ```swift
+   //define categories for Interactive Push
    let acceptAction = UIMutableUserNotificationAction()
    acceptAction.identifier = "OK"
    acceptAction.title = "OK"
@@ -108,4 +108,4 @@ Follow these steps to receive interactive notifications:
 
    // Register device
     MFPPush.sharedInstance().registerDevice(options as [NSObject : AnyObject], completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
-  ```
+   ```

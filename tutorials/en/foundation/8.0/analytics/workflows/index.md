@@ -12,7 +12,6 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 * [App Usage Analytics](#app-usage-analytics)
 * [Crash Capture](#crash-capture)
 
-
 ## App usage Analytics
 
 ### Initializing your client app to capture app usage
@@ -20,71 +19,62 @@ App usage measures the number of times a specific app is brought to the foregrou
 
 You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
 
-
 #### iOS
 
 Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
 
 **Objective-C**
 
-
-
-  ```Objective-C
-    WLAnalytics *analytics = [WLAnalytics sharedInstance];
-    [analytics addDeviceEventListener:LIFECYCLE];
- ```
+```objc
+WLAnalytics *analytics = [WLAnalytics sharedInstance];
+[analytics addDeviceEventListener:LIFECYCLE];
+```
 
  To send the analytics:
 
- ```Objective-C
-  [[WLAnalytics sharedInstance] send];
+```objc
+[[WLAnalytics sharedInstance] send];
 ```
 
 **Swift**
 
 ```Swift
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
-
 ```
 
 To send the analytics:
 
 ```Swift
 WLAnalytics.sharedInstance().send;
-
 ```
 
-
 #### Android
-
 Add the following code in your Application subclass `onCreate` method.
 
- ```Java
-    WLAnalytics.init(this);
-    WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
- ```
+```Java
+WLAnalytics.init(this);
+WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
+```
 
- To send the analytic data:
+To send the analytic data:
 
- ```Java
-    WLAnalytics.send();
- ```
+```Java
+WLAnalytics.send();
+```
 
 #### Cordova
-
 For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
 
 ```javascript
-    WL.Analytics.send();
+WL.Analytics.send();
 ```
 
 #### Web apps
-
 For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
 
 ```javascript                                    
-  ibmmfpfanalytics.logger.config({analyticsCapture: true});                
-  ibmmfpfanalytics.send();
+ibmmfpfanalytics.logger.config({analyticsCapture: true});                
+ibmmfpfanalytics.send();
 ```
 
 ### Default Usage and Devices chart
@@ -150,20 +140,20 @@ The client logs must be sent once the app is running again, in order to get the 
 
 **Objective-C**
 
-  ```Objective-C
-        - (void)sendMFPAnalyticData {
-          [OCLogger send];
-          [[WLAnalytics sharedInstance] send];
-        }
+```objc
+- (void)sendMFPAnalyticData {
+  [OCLogger send];
+  [[WLAnalytics sharedInstance] send];
+}
 
-        // then elsewhere in the same implementation file:
+// then elsewhere in the same implementation file:
 
-        [NSTimer scheduledTimerWithTimeInterval:60
-          target:self
-          selector:@selector(sendMFPAnalyticData)
-          userInfo:nil
-          repeats:YES]
-  ```
+[NSTimer scheduledTimerWithTimeInterval:60
+  target:self
+  selector:@selector(sendMFPAnalyticData)
+  userInfo:nil
+  repeats:YES]
+```
 
 **Swift**
 
@@ -180,40 +170,37 @@ overridefuncviewDidLoad() {
        OCLogger.send()
        WLAnalytics.sharedInstance().send()
    }
-
-
 ```
-
 
 #### Android
 
-  ```Java
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-          @Override
-          public void run() {
-            Logger.send();
-            WLAnalytics.send();
-          }
-        }, 0, 60000);
-  ```
+```Java
+Timer timer = new Timer();
+timer.schedule(new TimerTask() {
+  @Override
+  public void run() {
+    Logger.send();
+    WLAnalytics.send();
+  }
+}, 0, 60000);
+```
 
 #### Cordova
 
-  ```Java
-        setInterval(function() {
-          WL.Logger.send();
-          WL.Analytics.send();
-        }, 60000)
-  ```
+```Java
+setInterval(function() {
+  WL.Logger.send();
+  WL.Analytics.send();
+}, 60000)
+```
 
 #### Web
 
-  ```Java
-        setInterval(function() {
-          ibmmfpfanalytics.logger.send();
-        }, 60000);
-  ```
+```Java
+setInterval(function() {
+  ibmmfpfanalytics.logger.send();
+}, 60000);
+```
 
 ### App crash monitoring
 After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the MobileFirst Analytics Console.  
