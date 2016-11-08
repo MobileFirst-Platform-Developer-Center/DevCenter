@@ -101,6 +101,18 @@ You can develop hybrid applications directly with the Apache Cordova CLI or with
     <td>
         Discontinued. Use the push notification service. For more information on migrating to push notification service, see topic Migrating to push notifications from event source-based notifications.</td>
     </tr>
+    <tr>
+      <td>
+        Security: Anti-cross site request forgery (anti-XSRF) realm (`wl_antiXSRFRealm`) is not required in V8.0.
+      </td>
+      <td>
+        In V7.1.0, the authentication context is stored in the HTTP session and identified by a session cookie, which is sent by the browser in cross-site requests. The anti-XSRF realm in this version is used to protect the cookie transmission against XSRF attacks by using an additional header that is sent from the client to the server.
+        <br />
+        In V8.0.0, the security context is no longer associated with an HTTP session and is not identified by a session cookie.
+        Instead, the authorization is done by using an OAuth 2.0 access token that is passed in the Authorization header.
+        Because the Authorization header is not sent by the browser in cross-site requests, there is no need to protect against XSRF attacks.
+      </td>
+    </tr>
     <tr><td>
         Security: User-certificate authentication. v8.0 does not include any predefined security check to authenticate users with X.509 client-side certificates.	</td>
     <td>
