@@ -52,19 +52,19 @@ In macOS, two options are available to run Docker commands:
 
 * Run the command:
 
-    ```bash
-    docker-machine env default
-    ```
+  ```bash
+  docker-machine env default
+  ```
 
 * Set the result as environment variables, for example:
 
-    ```bash
-    $ docker-machine env default
-    export DOCKER_TLS_VERIFY="1"
-    export DOCKER_HOST="tcp://192.168.99.101:2376"
-    export DOCKER_CERT_PATH="/Users/mary/.docker/machine/machines/default"
-    export DOCKER_MACHINE_NAME="default"
-    ```
+  ```bash
+  $ docker-machine env default
+  export DOCKER_TLS_VERIFY="1"
+  export DOCKER_HOST="tcp://192.168.99.101:2376"
+  export DOCKER_CERT_PATH="/Users/mary/.docker/machine/machines/default"
+  export DOCKER_MACHINE_NAME="default"
+  ```
 
 > For further information consult the Docker documentation.
 
@@ -115,7 +115,8 @@ The archive file contains the files for building an image (**dependencies** and 
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
+                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
@@ -305,7 +306,7 @@ If you intend to use analytics with your MobileFirst Server start here.
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             The <strong>args</strong> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
-            <strong>Note:</strong> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
+            <b>Note:</b> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
               <h4>initenv.properties</h4>
               <ul>
                   <li><strong>BLUEMIX_USER - </strong>Your Bluemix username (email).</li>
@@ -448,7 +449,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   
                   </li>
                   <li><strong>startanalytics.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startanalytics.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>ANALYTICS_IP</strong> property.</p>
+                  The <strong>startanalytics.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>ANALYTICS_IP</strong> property.</li>
 
                   Run:
 {% highlight bash %}
@@ -625,7 +626,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                                         </tr>
                                         <tr>
                                             <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                            <td>Specify name of the volume to be created and mounted for analytics data. Default value is <b>mfpf_analytics_<ANALYTICS_CONTAINER_GROUP_NAME></b></td>
+                                            <td>Specify name of the volume to be created and mounted for analytics data. Default value is <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b></td>
                                         </tr>
                                         <tr>
                                             <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
@@ -672,7 +673,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
               </ul>
               <h4>prepareserverdbs.properties</h4>
-              The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
+              The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
               <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
               After you have set up your dashDB instance, provide the required arguments:
               <ul>
@@ -680,9 +681,8 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
                   <li><strong>RUNTIME_DB_SRV_NAME - </strong>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
                   <li><strong>RUNTIME_SCHEMA_NAME - </strong>Your schema name for runtime data. The default is MFPDATA.</li>
-                  <strong>Note:</strong> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.<br/>
-
-              </ul>
+                  <b>Note:</b> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.
+              </ul><br/>
               <h4>prepareserver.properties</h4>
               <ul>
                   <li><strong>SERVER_IMAGE_TAG - </strong>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
@@ -881,7 +881,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                   
                   </li>
                   <li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property. Run:</p> 
+                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property. Run:</li> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -962,11 +962,12 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
                             </div>
-                        </div></li>
+                        </div>
+                    
                   
                   
                   <li><strong>startservergroup.sh - Running the image on an IBM Container group</strong><br />
-                  The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</p>
+                  The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</li>
                   Run:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties

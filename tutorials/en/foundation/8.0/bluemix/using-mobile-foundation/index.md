@@ -149,15 +149,15 @@ The Developer plan does not offer a persistent database, which could cause at ti
     
     Run the following from the command-line to download your configuration to a .zip file:
 
-    ```bash
-    $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
-    ```
+  ```bash
+  $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
+  ```
 
 * In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
 
-    ```bash
-    $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
-    ```
+  ```bash
+  $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
+  ```
 
 ## Further reading
 Now that the MobileFirst Server instance is up and running:
