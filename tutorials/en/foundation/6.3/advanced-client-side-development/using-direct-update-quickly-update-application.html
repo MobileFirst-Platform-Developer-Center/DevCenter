@@ -92,9 +92,9 @@ Once the user approves, a progress bar dialog is displayed and web resources are
 <p>There is no change in the behaviour of applications built with previous versions of IBM MobileFirst Platform Foundation.</p>
 <h3>Customizing the UI</h3>
 <p>It is possible to override the default UI and/or UX and create a custom Direct Update behavior altogether.</p>
-<p>To do so, override the <code>handleDirectUpdate</code> function:<br />
-{% highlight js linenos %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
-    // custom Direct Update logic<br />
+<p>To do so, override the <code>handleDirectUpdate</code> function:
+{% highlight js linenos %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
+    // custom Direct Update logic
 };{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <code>directUpdateData</code> - A JSON object containing the <code>downloadSize</code> property that represents the files size in bytes of the update package to be downloaded from the MobileFirst Server.</p>
@@ -116,7 +116,7 @@ directUpdateContext) {
     var customDialogTitle = 'Custom Title Text';
     var customDialogMessage = 'Custom Message Text';
     var customButtonText1 = 'Update Application';
-    var customButtonText2 = 'Not Now';</p>
+    var customButtonText2 = 'Not Now';
     WL.SimpleDialog.show(customDialogTitle, customDialogMessage,
         [{
             text : customButtonText1,

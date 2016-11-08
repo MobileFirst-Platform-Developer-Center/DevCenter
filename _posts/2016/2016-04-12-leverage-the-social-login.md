@@ -1,5 +1,5 @@
 ---
-title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0 Beta
+title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0
 date: 2016-04-12
 version:
 - 8.0
@@ -24,7 +24,7 @@ All these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/
 2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization.
 3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover, understand, and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.  
 
-This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication, security checks, and adapters. If it's not the case, refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
+This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0* authentication, security checks, and adapters. If it's not the case, refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
 
 ## See in action
 Here is a short YouTube demo movie which shows an app that's analyzing some data from my personal Facebook account.  Because I'm not a native English speaker and most of my posts are not written in English, in the demo I explicitly add text to influence the results.
@@ -35,7 +35,7 @@ Here is a short YouTube demo movie which shows an app that's analyzing some data
 </div>
 
 ## Running the demo
-In order to run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/AnalyzeFacebookWithWatsonSample/AnalyzeMyFacebookApp)
+In order to run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/leverage-social-login-sample)
 
 ## The big picture
 Each of the two diagrams focuses on one flow:  
@@ -86,7 +86,7 @@ The code sample ues configuration to maintain the credentials for the Watson ser
 ConfigurationAPI configApi;
 ```
 
-* Then call it: 
+* Then call it:
 
 ```java
 configApi.getPropertyValue(ALCHEMY_API_KEY)

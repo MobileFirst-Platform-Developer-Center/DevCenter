@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Form-based authentication
-dshow_children: true
+show_children: true
 weight: 2
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
@@ -46,7 +46,8 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <li>Add a <code>getSecretData</code> procedure and protect it with the security test that you created previously.</li>
 <p>{% highlight xml linenos %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
-<p>{% highlight javascript linenos %}
+<p>
+{% highlight javascript linenos %}
 function getSecretData(){
     return {
         secretData: '123456'
@@ -58,15 +59,16 @@ function getSecretData(){
 <ol>
 <li>Create a Java adapter. </li>
 <li>Add a <code>getSecretData</code> method and protect it with the realm that you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
-<p>{% highlight java linenos %}
-	@GET
-	@Produces("application/json")
-	@OAuthSecurity(scope="SampleAppRealm")
-	public JSONObject getSecretData(){
-		JSONObject result = new JSONObject();
-		result.put("secretData", "123456");
-		return result;
-	}
+<p>
+{% highlight java linenos %}
+@GET
+@Produces("application/json")
+@OAuthSecurity(scope="SampleAppRealm")
+public JSONObject getSecretData(){
+	JSONObject result = new JSONObject();
+	result.put("secretData", "123456");
+	return result;
+}
 {% endhighlight %}
 </li>
 <li>To set your new realm as the default user identity for the application, add this option to the application descriptor:<br />

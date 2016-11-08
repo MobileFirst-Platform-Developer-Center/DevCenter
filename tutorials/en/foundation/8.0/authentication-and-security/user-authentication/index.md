@@ -9,7 +9,7 @@ print_pdf: false
 weight: 4
 ---
 ## Overview
-The **UserAuthenticationSecurityCheckecurity** inherits all the features of the **CredentialsValidationSecurityCheck** and adds:
+The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
 
 - The concept of an `AuthenticatedUser`, creating a user identity.
 - An optional **Remember Me** capability

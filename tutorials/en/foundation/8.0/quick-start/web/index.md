@@ -24,8 +24,8 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
-Make sure you have [created a Mobile Foundation instance](../../ibm-containers/using-mobile-foundation), or  
-If using the [MobileFirst Foundation Development Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
+If using the [MobileFirst Foundation Development Kit](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating and registering an application
 
@@ -102,9 +102,20 @@ Alternatively, click the **New** button next to **Adapters**.
 <img src="web-success.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. From a **Command-line** window, navigate to the **project's root → node-server** folder.
+1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
 2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+
+    For example:  
+    
+    ```javascript
+    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
+    var port = 9081; // The local port number to use
+    var mfpURL = host + ':443'; // The Mobile Foundation server port number
+    ```
+4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>
 #### Secure Origins Policy
@@ -128,7 +139,7 @@ The adapter response is then displayed in an alert.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Using the MobileFirst Foundation](../../application-development/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review [All Tutorials](../../all-tutorials)

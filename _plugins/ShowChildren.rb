@@ -6,6 +6,6 @@ Jekyll::Hooks.register :pages, :pre_render do |page, payload|
   # binding.pry
   next unless page.data['show_children']
   next unless page.data['layout'] != 'redirect'
-  page.data['children'] = get_children(page.url, payload['site'])
+  payload.page['children'] = get_children(page.url, payload['site'])
   # binding.pry
 end

@@ -1,0 +1,258 @@
+---
+layout: default
+title: IBM Bluemix Mobile Services
+indexed: false
+custom_js:
+- js/bluemix/particles.min.js
+- js/bluemix/bluemix.js
+---
+<div class="bluemix">
+    <!-- particles.js container -->
+    <div id="particles-js" class="hidden-sm hidden-xs hidden-md"></div>
+    
+    <div class="container">
+        <div class="row hidden-s hidden-xs hidden-m">
+            <div class="mid-nav col-sm-1"></div>
+            <div class="mid-nav col-sm-2">
+                <a><img alt="mobile" class="img-circle" src="{{site.baseurl}}/assets/bluemix/icon-mobile.svg"></a>
+                <h2 class="no-anchor">Bluemix Mobile</h2>
+                <p>Quickly build a mobile project</p>
+            </div>
+            <div class="mid-nav col-sm-1"></div>
+            <div class="mid-nav col-sm-2">
+                <a><img alt="security" class="img-circle" src="{{site.baseurl}}/assets/bluemix/icon-security.svg"></a>
+                <h2 class="no-anchor">Authentication</h2>
+                <p>Use social or custom authentication</p>
+            </div>
+            <div class="mid-nav col-sm-1"></div>
+            <div class="mid-nav col-sm-2">
+                <a><img alt="push" class="img-circle" src="{{site.baseurl}}/assets/bluemix/icon-push.svg"></a>
+                <h2 class="no-anchor">Push</h2>
+                <p>Send and receive push notifications</p>
+            </div>
+            <div class="mid-nav col-sm-1"></div>
+            <div class="mid-nav col-sm-2">
+                <a><img alt="data" class="img-circle" src="{{site.baseurl}}/assets/bluemix/icon-data.svg"></a>
+                <h2 class="no-anchor">Analytics</h2>
+                <p>Improve the performance of your app</p>
+            </div>
+        </div>
+
+        <div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mid-nav col-sm-5">
+                                <a><img alt="mobile" src="{{site.baseurl}}/assets/bluemix/icon-mobile.svg"></a>
+                            </div>
+                            <div class="mid-nav col-sm-7">
+                                <div class="buttons">
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/mobile" class="usenow">Use now</a>
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/mobile/index.html" class="viewdocs">View docs</a>
+                                </div>
+                                <h1 class="no-anchor">Build a mobile project</h1>
+                                <br>
+                                <p class="custom-mid-nav">
+                                    Select a business solution or blank template to get started. Design your app using the visual tools available. Easily add the mobile services, and download the native source code for iOS and Android.
+                                </p>
+                                <img alt="dashboard screenshot" data-toggle="modal" data-target="#modal-mobile-dashboard-templates" src="{{site.baseurl}}/assets/bluemix/step31-1024x587.png" class="screenshot" />
+                                <img alt="dashboard screenshot" data-toggle="modal" data-target="#modal-mobile-dashboard-design" src="{{site.baseurl}}/assets/bluemix/step4-1024x581.png" class="screenshot" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mid-nav col-sm-5">
+                                <a><img alt="security" src="{{site.baseurl}}/assets/bluemix/icon-security.svg"></a>
+                            </div>
+                            <div class="mid-nav col-sm-7">
+                                <div class="buttons">
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/mobile-client-access/" class="usenow">Use now</a>
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/services/mobileaccess/index.html" class="viewdocs">View docs</a>
+                                </div>
+                                <h1 class="no-anchor">Keep your apps healthy and secure</h1>
+                                <br>
+                                <p class="custom-mid-nav">
+                                    Use our lightweight SDK to add social or custom authentication to your app. Stay on top of your app’s performance in the wild with out of the box monitoring, and instrument your code to stay aware of what you need.
+                                </p>
+                                <img alt="mobile client access" data-toggle="modal" data-target="#modal-mobile-client-access" src="{{site.baseurl}}/assets/bluemix/mca.png" class="screenshot" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mid-nav col-sm-5">
+                                <a><img alt="push icon" src="{{site.baseurl}}/assets/bluemix/icon-push.svg"></a>
+                            </div>
+                            <div class="mid-nav col-sm-7">
+                                <div class="buttons">
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/push-notifications/" class="usenow">Use now</a>
+                                    <a target="_blank" href="https://www.ng.bluemix.net/docs/services/mobilepush/index.html" class="viewdocs">View docs</a>
+                                </div>
+                                <h1 class="no-anchor">Engage your users</h1>
+                                <br>
+                                <p class="custom-mid-nav">
+                                    Send your users the content they want to see. Use tags to manage subscriptions and content.
+                                </p>
+                                <img alt="push notifications" data-toggle="modal" data-target="#modal-mobile-push" src="{{site.baseurl}}/assets/bluemix/push.png" class="screenshot" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mid-nav col-sm-5">
+                                <a><img alt="data icon" src="{{site.baseurl}}/assets/bluemix/icon-data.svg"></a>
+                            </div>
+                            <div class="mid-nav col-sm-7">
+                                <div class="buttons">
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/mobile-analytics/" class="usenow">Use now</a>
+                                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html" class="viewdocs">View docs</a>
+                                </div>
+                                <h1 class="no-anchor">Know your users</h1>
+                                <br>
+                                <p class="custom-mid-nav">
+                                    Measure the state, behavior, and context of your mobile apps, mobile users, and mobile devices quickly by adding our SDK.
+                                </p>
+                                <img alt="mobile analytics" data-toggle="modal" data-target="#modal-mobile-analytics" src="{{site.baseurl}}/assets/bluemix/mobileanalytics.png" class="screenshot" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals -->
+                <div class="modal fade" id="modal-mobile-dashboard-templates" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="no-anchor" style="color:black" class="modal-title" id="myModalLabel">Select a template from the Mobile dashboard</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img alt="moblie video" style="width:100%" src="{{site.baseurl}}/assets/bluemix/mobile-video-demo2.gif" class="screenshot" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modal-mobile-dashboard-design" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="no-anchor" style="color:black" class="modal-title" id="myModalLabel">Design your application using the UI Builder</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img alt="UI builder" style="width:100%" src="{{site.baseurl}}/assets/bluemix/step4-1024x581.png" class="screenshot" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modal-mobile-client-access" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="no-anchor" style="color:black" class="modal-title" id="myModalLabel">Set up Mobile Client Access to secure your application</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img alt="mobile client authentication" style="width:100%" src="{{site.baseurl}}/assets/bluemix/mca.png" class="screenshot" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modal-mobile-push" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="no-anchor" style="color:black" class="modal-title" id="myModalLabel">Set up Push Notifications to send alerts</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img alt="push notifications to send alerts" style="width:100%" src="{{site.baseurl}}/assets/bluemix/push.png" class="screenshot" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modal-mobile-analytics" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="no-anchor" style="color:black" class="modal-title" id="myModalLabel">Gather performance and crash data from your application</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img alt="mobile analytics" style="width:100%" src="{{site.baseurl}}/assets/bluemix/mobileanalytics.png" class="screenshot" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+        </div>
+        <!-- /.carousel -->
+        <div class="visible-sm visible-xs visible-md">
+            <div class="row" style="margin:10px 10px 10px 20px;line-height:1.5em">
+                <div>
+                    <h3 class="no-anchor">Build a mobile project</h3>
+                    <p>Select a business solution or blank template to get started. Design your app using the visual tools available. Easily add the mobile services, and download the native source code for iOS and Android.</p>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/mobile" class="usenow">Use now</a>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/mobile/index.html" class="viewdocs">View docs</a>
+                </div>
+                <div>
+                    <h3 class="no-anchor">Keep your apps healthy and secure</h3>
+                    <p>Use our lightweight SDK to add social or custom authentication to your app. Stay on top of your app’s performance in the wild with out of the box monitoring, and instrument your code to stay aware of what you need.</p>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/mobile-client-access/" class="usenow">Use now</a>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/services/mobileaccess/index.html" class="viewdocs">View docs</a>
+                </div>
+                <div>
+                    <h3 class="no-anchor">Engage your users</h3>
+                    <p>Send your users the content they want to see. Use tags to manage subscriptions and content.</p>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/push-notifications/" class="usenow">Use now</a>
+                    <a target="_blank" href="https://www.ng.bluemix.net/docs/services/mobilepush/index.html" class="viewdocs">View docs</a>
+                </div>
+                <div>
+                    <h3 class="no-anchor">Know your users</h3>
+                    <p>Measure the state, behavior, and context of your mobile apps, mobile users, and mobile devices quickly by adding our SDK.</p>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/catalog/services/mobile-analytics/" class="usenow">Use now</a>
+                    <a target="_blank" href="https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html" class="viewdocs">View docs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

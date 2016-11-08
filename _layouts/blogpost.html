@@ -1,17 +1,21 @@
 ---
 layout: default
 ---
-<div class="container-fluid blogpost">
+<article class="container-fluid blogpost">
     <div class="row">
         <div class="hidden-xs col-sm-2">
         </div>
         <div class="col-sm-8">
             <h1 class="no-anchor">{{page.title}}</h1>
-            <div class="page-header">
+            <header class="page-header">
                 <h4 class="no-anchor">
-                  <span><a href="{{site.baseurl}}/search/?author={{page.author.name}}">{{page.author.name}}</a></span>
-                  <small>{{ page.date | date: '%B %d, %Y' }}</small>
-                  <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
+                    <span><a href="{{site.baseurl}}/search/?author={{page.author.name}}">{{page.author.name}}</a></span>{% if page.additional_authors %},{% endif %}
+                    {% for author in page.additional_authors %}
+                        <span><a href="{{site.baseurl}}/search/?author={{author}}">{{author}}</a></span>{% if forloop.last == false %},{% endif %}
+                    {% endfor %}
+                    
+                    <small>{{ page.date | date: '%B %d, %Y' }}</small>
+                    <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
 
                 {% if page.tags %}
@@ -25,17 +29,17 @@ layout: default
                   {% endfor %}
 
                 {% endif %}
-            </div>
+            </header>
             {{content}}
-            <!-- <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div> -->
-            
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
+
             <div id="social">
                 <b>Share this post:</b>
                 <ul class="share-buttons">
-                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&t=" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
-                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text=" target="_blank" title="Tweet"><img alt="share on twitter"  src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&p[title]={{ page.title }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter"  src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
                     <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
-                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&title=&summary=&source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
+                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
                     <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
                 </ul>    
             </div>
@@ -73,4 +77,4 @@ layout: default
       {% endif %}
     }
     </script>
-</div>
+</article>

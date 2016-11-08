@@ -23,7 +23,7 @@ downloads:
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
 ## Login
-In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});
@@ -43,9 +43,9 @@ WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':
     });
 ```
 
-If the credentials are wrong, the security check will send back a **challenge**.
+If the credentials are wrong, the security check sends back a **challenge**.
 
-It is the developer's responsibility to know when to use `login` vs `submitChallengeAnswer` based on the application's needs. One way to achieve this is to define a boolean flag, for example `isChallenged`, and set it to `true` when reaching `handleChallenge` or set it to `false` in any other cases (failure, success, initializing, etc).
+It is the developer's responsibility to know when to use `login`, as opposed to `submitChallengeAnswer`, based on the application's needs. One way to achieve this is to define a Boolean flag, for example `isChallenged`, and set it to `true` when `handleChallenge` is reached, or set it to `false` in any other cases (failure, success, initialization, etc).
 
 When the user clicks the **Login** button, you can dynamically choose which API to use:
 
@@ -60,10 +60,10 @@ if (isChallenged){
 ```
 
 > **Note:**
-> `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will **also** be called.
+>The  `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `processSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
 
 ## Obtaining an access token
-Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
+Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
 The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
@@ -79,17 +79,17 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
 });
 ```
 > **Note:**
-> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
+> The `WLAuthorizationManager` `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the `handleSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
 
-If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
+If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
 
 The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
 
-> Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
+> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
 
 ## Retrieving the authenticated user
-The challenge handler's `handleSuccess` method receives a `data` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `handleSuccess` to save the current user:
+The challenge handler `handleSuccess` method receives `data` as a parameter.
+If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
 
 ```js
 userLoginChallengeHandler.handleSuccess = function(data) {
@@ -117,7 +117,7 @@ Here, `data` has a key called `user` which itself contains a `JSONObject` repres
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
+The MobileFirst Foundation SDK also provides a `logout` API to log out from a specific security check:
 
 ```js
 WLAuthorizationManager.logout(securityCheckName).then(
@@ -131,7 +131,7 @@ WLAuthorizationManager.logout(securityCheckName).then(
 ```
 
 ## Sample applications
-There are two samples associated with this tutorial:
+Two samples are associated with this tutorial:
 
 - **PreemptiveLogin**: An application that always starts with a login screen, using the preemptive `login` API.
 - **RememberMe**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
@@ -144,31 +144,8 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 - [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80) the RememberMe Web project.
 - [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80) the PreemptiveLogin Web project.
 
-### Web sample usage
-Make sure you have Node.js installed.
+### Sample usage
+Follow the sample's README.md file for instructions.
+The username/password for the app must match, i.e. "john"/"john".
 
-1. Register the application in the MobileFirst Operations Console.
-
-{% comment %}
-1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.remembermeweb` or `com.sample.preemptiveloginweb`.
-{% endcomment %}
-
-2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
-3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-4. In the MobileFirst Console → PreemptiveLoginWeb / RememberMeWeb → Security, map the `accessRestricted` scope to the `UserLogin` security check.
-5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
-
-### Cordova Sample usage
-1. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-2. From a **Command-line** window, navigate to the project's root folder and:
-    * Add a platform by running the `cordova platform add` command.
-    * Register the application: `mfpdev app register`.
-3. Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
-
-4. Back in the command-line:
-    * Run the Cordova application by running the `cordova run` command.
 ![sample application](sample-application.png)

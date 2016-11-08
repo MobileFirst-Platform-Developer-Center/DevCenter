@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidationSecurityCheck
+title: Implementing the CredentialsValidationSecurityCheck class
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
@@ -10,19 +10,19 @@ downloads:
 ---
 
 ## Overview
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.  
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
+The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
+This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../authorization-concepts/) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
 
 #### Jump to:
 
 * [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Configuring the security check](#configuring-the-security-check)
 * [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
@@ -44,7 +44,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 ```
 
 ## Creating the challenge
-When the Security Check is triggered, it sends a challenge to the client. Returning `null` will creating an empty challenge which may be enough in some cases.  
+When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
 Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
 
 For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
@@ -64,7 +64,7 @@ protected Map<String, Object> createChallenge() {
 `getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
-When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
 
 ```java
 @Override
@@ -76,12 +76,12 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
             return true;
         }
         else {
-            errorMsg = "Pin code is not valid.";
+            errorMsg = "The pin code is not valid.";
         }
 
     }
     else{
-        errorMsg = "Pin code was not provided";
+        errorMsg = "The pin code was not provided.";
     }
 
     //In any other case, credentials are not valid
@@ -93,7 +93,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ### Configuration class
 You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
 
-Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
+Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -110,7 +110,7 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 
 The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
 
-You can also add error handling in this constructor, using the `addMessage` method:
+You can also add error handling in this constructor by using the `addMessage` method:
 
 ```java
 public PinCodeConfig(Properties properties) {
@@ -148,9 +148,9 @@ protected PinCodeConfig getConfiguration() {
 }
 ```
 
-`getConfiguration().pinCode` can now be used to retrieve the default PIN code.  
+You can now use the `getConfiguration().pinCode` method to retrieve the default PIN code.  
 
-`validateCredentials` can be modified to use the PIN code from the configuration instead of the hardcoded value.
+You can modify the `validateCredentials` method to use the PIN code from the configuration instead of the hardcoded value.
 
 ```java
 @Override
@@ -167,7 +167,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
     }
     else{
-        errorMsg = "Pin code was not provided";
+        errorMsg = "The pin code was not provided.";
     }
 
     //In any other case, credentials are not valid
@@ -176,7 +176,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Configuring the SecurityCheck
+## Configuring the security check
 In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
@@ -188,11 +188,11 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 </securityCheckDefinition>
 ```
 
-The `name` attribute should be the name of the SecurityCheck, the `class` should be set to the class created previously.
+The `name` attribute must the name of the security check. Set the `class` parameter to the class that you created previously.
 
 A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
 
-By default, if you do not specify those properties in the adapter.xml file you received the defaults set by `CredentialsValidationSecurityCheckConfig`:
+By default, if you do not specify those properties in the adapter.xml file, you receive the default values that are set by `CredentialsValidationSecurityCheckConfig`:
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -203,14 +203,14 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
-The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+The `CredentialsValidationSecurityCheckConfig` class defines the following properties:
 
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
-- `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
+- `attemptingStateExpirationSec`: Interval in seconds during which the client must provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.
 - `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
 
-Note that the default for `blockedStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Note that the default value for `blockedStateExpirationSec` is set to `0`: if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 
 ## Sample Security Check

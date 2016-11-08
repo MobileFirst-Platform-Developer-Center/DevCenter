@@ -13,20 +13,20 @@ downloads:
 MobileFirst Foundation provides a Node.js framework to enforce security capabilities on external resources.  
 The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
 
-This tutorial will show how to protect a simple Node.js resource, `GetBalance`, using a scope (`accessRestricted`).
+This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
 
-**Prerequesites:**
+**Prerequsites:**  
 
-* Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Platform Foundation security framework](../../).
+* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ## The passport-mfp-token-validation module
 The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the MobileFirst Server.
 
-To install the module run:
+To install the module, run:
 
 ```bash
-npm install passport-mfp-token-validation
+npm install passport-mfp-token-validation@8.0.X
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ npm install passport-mfp-token-validation
     var mfpStrategy = require('passport-mfp-token-validation').Strategy;
     ```
 
-* Setup the `Strategy` as follows:
+* Set up the `Strategy` as follows:
 
     ```js
     passport.use(new mfpStrategy({
@@ -55,9 +55,9 @@ npm install passport-mfp-token-validation
     }));
     ```
  * `authServerUrl`: Replace `localhost:9080` with your MobileFirst Server IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones you defined in the MobileFirst Operations Console.
- * `analytics`: The analytics item is optional and only required if you wish to log analytics events to MFP.  
- Replace `localhost:9080`, `username` and `password` with your Analytics Server IP address, port number, username and password.
+ * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the MobileFirst Operations Console.
+ * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to MobileFirst Foundation.  
+ Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
 
 * Authenticate requests by calling `passport.authenticate`:
 

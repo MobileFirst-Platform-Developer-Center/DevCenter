@@ -121,7 +121,7 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 	<li>x3250 M4, Xeon 4C E3-1220v2 69W 3.1GHz/1600MHz/8MB
         <strong>Note:</strong> With the specified number of cores, IBM MobileFirst Foundation performs thousands of transactions per second. If your throughput is low, you can use fewer cores than the specified number.</li>
 	<li>32 GB 1333 MHz
-        <strong>Note:</strong> Not all RAM was used. Use the <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v710/Hardware_Calculator.xlsx">accompanying calculator</a> to compute required RAM.</li>
+        <strong>Note:</strong> Not all RAM was used. Use the <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Hardware_Calculator.xlsx">accompanying calculator</a> to compute required RAM.</li>
 	<li>NetExtreme II BCM5790 Gigabit Ethernet</li>
 	<li>2 X 500 3.5in SATA, SR C100</li>
 </ul>
@@ -190,14 +190,12 @@ Possible architectures for push notifications Two architectures are possible fo
 <p>The primary difference between the two methods is that the first method is limited to a single server, which is pulling data from the JMS queue. With the second method, the procedures in the MobileFirst Server are called through a load balancer. Therefore, the architecture can scale to more than one server.</p>
 
 <h4>Broadcast, tag-based, and unicast (1:1) notifications</h4>
-<p>IBM Worklight Foundation V8.0 supports broadcast, tag-based, and unicast (1:1) notifications.</p>
+<p>IBM MobileFirst Foundation V8.0 supports broadcast, tag-based, and unicast (1:1) notifications.</p>
 <ul>
 	<li>Broadcast notifications are sent to all the registered mobile devices of a specific application.</li>
 	<li>Broadcast notifications are sent to all the registered mobile devices of a specific application. </li>
 	<li>Unicast notifications, are sent to the devices of specific users. The "userID" (or) "deviceID" is specified in the introduced server-side REST API, which enables to send push notification messages to a specified target.</li>
 </ul>
-
-<p>For more information about these features, <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/admin/c_push_notification_possible_architectures.html">see the IBM MobileFirst Foundation user documentation</a>.</p>
 
 <h4>Testing assumptions</h4>
 <p>Push providers were simulated with a delay that is typical to these services:</p>
@@ -208,7 +206,7 @@ Possible architectures for push notifications Two architectures are possible fo
 </ul>
 
 <p>IBM MobileFirst Foundation can associate multiple devices per user. On average, each user is assumed to have 1.1 devices.<br/>
-Starting IBM Worklight Foundation V6.2.0, devices can subscribe to tags or topics of interest. Performance of tag-based notifications was tested with tags that had 600,000, 300,000, and 150,000 devices subscribed to them.</p>
+Starting IBM Worklight Foundation V6.2.0 onwards, devices can subscribe to tags or topics of interest. Performance of tag-based notifications was tested with tags that had 600,000, 300,000, and 150,000 devices subscribed to them.</p>
 
 <b>Test results</b>
 <p>For broadcast or tag-based push notifications, a MobileFirst Server can push a notification message to over 22,500 iOS devices, 50,000 Android devices, and 350 Windows Phone devices per second. This is with all of the device types together.</p>

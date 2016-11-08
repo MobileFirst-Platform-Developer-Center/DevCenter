@@ -60,7 +60,7 @@ export DOCKER_MACHINE_NAME="default"
 
 <ol>
   <li>Install the <a href="https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195" target="_blank">Cloud Foundry CLI</a>.</li>
-  <li>Install the <a href="https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic" target="_blank">IBM Containers Plugin (cf ic)</a>.</li>
+  <li>Install the <a href="https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html" target="_blank">IBM Containers Plugin (cf ic)</a>.</li>
 </ol>
 
 <h2 id="runOnBluemix">Run IBM MobileFirst Platform Foundation on IBM Containers</h2>
@@ -172,28 +172,22 @@ The <code>args</code> folder contains a set of configuration files which contain
 
 <div class="collapse" id="collapsePrepareServerDBs">
     <div class="well">
-        <p>In order to create a database service and bind it to a Bluemix application, go to the Bluemix Dashboard, create a new Cloud Foundry application and follow the instructions:</p>
+        <p>In order to create a database service go to the <strong>Data & Analytics</strong> section, cand follow the instructions:</p>
         <ol>
-            <li>Choose "web".</li>
-            <li>Choose the Liberty for Java option.</li>
-            <li>Name your app.
+            <li>Click on the Create button on the top right of your screen.</li>
+            <li>Choose a suitable database service. Supported services are dashDB (Transactional Plans only), SQL Database and Cloundation NoSQL DB Bluemix Dashboard.</li>
+            <li>Name your service.
             <strong>Note:</strong> Choose a unique name.</li>
-            <li>Click on the "view app overview" button.</li>
-            <li>In the overview page click on the "add a service or API" button.</li>
-            <li>Choose a DB service type (sqldb, cloudantNoSQLDB) from the Data and Analytics services section.</li>
             <li>Name the service and click on the "create" button</li>
         </ol>
         <ul>
             <li><strong>DB_SRV_NAME - </strong>Your Bluemix DB service instance name.</li>
-            <li><strong>APP_NAME - </strong>Your Bluemix DB application name.<br />
-            <strong>Note:</strong> Choose a unique name.</li>
             <li><strong>RUNTIME_NAME - </strong>The MobileFirst project runtime name. Required for configuring runtime databases only, as explained in the next step.</li>
             <li><strong>SCHEMA_NAME - </strong>Your database schema name. The default names are:
                 <ul>
                     <li>For the admin database: WLDAMIN</li>
                     <li>For the MobileFirst project runtime database: the value of RUNTIME_NAME</li>
                 </ul>
-                <p>Note: For the sqldb_free plan, the SCHEMA is pre-configured and thus ignored.</p>
             </li>
         </ul>
     </div>
@@ -269,6 +263,13 @@ cf ic ip list
 {% endhighlight %}
             </li>
         </ul>
+    </li>
+    <li><strong>initenv.sh (Optional) – Logging in to Bluemix </strong><br />
+        This step is required only if you need to create your containers in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <code>initenv.sh</code> script:
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
     </li>
     <li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
         Uncomment the <code>PROJECT_LOC</code> argument and run the <code>prepareserver.sh</code> script in order to build a MobileFirst Platform Foundation Server image, deploy your project runtime and push it to to your Bluemix repository:

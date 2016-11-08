@@ -9,7 +9,7 @@ version:
 author:
   name: Nathan Hazout
 ---
-> **Note:** This article was written for MobileFirst Foundation 8.0. For a similar topic on 7.1 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower](https://mobilefirstplatform.ibmcloud.com/blog/2016/02/20/datapower-integration/)
+> **Note:** This article was written for MobileFirst Foundation 8.0. For a similar topic on 7.1 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower]({{site.baseurl}}/blog/2016/02/20/datapower-integration/)
 
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.
@@ -21,6 +21,8 @@ Enterprise topologies are designed to include different zones of protection so t
 You can use IBM WebSphere DataPower as a front-end reverse proxy and security gateway. DataPower uses a multiprotocol gateway (MPGW) service to proxy and secure access to MobileFirst mobile applications.
 
 > This article assumes prior knowledge of other MobileFirst features, such as challenge handlers.
+
+> **Note:** This article is based on the older LTPA integration. For the newer **DataPower as the OAuth authorization server** integration, [consult the documentation](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/t_datapower_as_authorization_server.html).
 
 ## Supported versions
 This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Foundation 8.0. The supported platforms are currently Android, iOS and Cordova.

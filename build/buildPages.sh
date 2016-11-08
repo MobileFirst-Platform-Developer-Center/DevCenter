@@ -6,8 +6,8 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   exit 0
 fi
 
-# only proceed script when on "GA" branch
-if [ $TRAVIS_BRANCH != 'GA' ]; then
+# only proceed script when on "master" branch
+if [ $TRAVIS_BRANCH != 'master' ]; then
   echo "this is not the staging branch, exiting"
   exit 0
 fi

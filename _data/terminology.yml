@@ -1,0 +1,5 @@
+# Usage example: 
+#################
+# product_brand: "MobileFirst Foundation"
+#
+# In a tutorial: "In {{ site.data.terminology.product_brand }} 8.0, ..."

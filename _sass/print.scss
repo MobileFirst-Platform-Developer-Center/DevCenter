@@ -1,20 +1,39 @@
 @media print {
-  body{
-    -webkit-print-color-adjust:exact;
-  }
-  nav.navbar, .hidden-xs, footer, #disqus_thread, .download-button {
-    display: none;
-  }
+    body {
+        -webkit-print-color-adjust: exact;
+    }
 
-  pre, code, .highlight pre code, .highlight .code pre {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-  }
+    #disqus_thread,
+    .contribute-links,
+    .download-button,
+    .hidden-xs,
+    footer,
+    nav.navbar {
+        display: none;
+    }
 
-  .highlight .gutter {
-    display: none;
-  }
+    h2,
+    h3 {
+        page-break-before: avoid;
+    }
+
+    .highlight .code pre,
+    .highlight pre code,
+    code,
+    pre {
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .highlight .gutter {
+        display: none;
+    }
+    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }

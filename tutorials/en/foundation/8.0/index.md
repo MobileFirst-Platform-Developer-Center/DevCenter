@@ -23,5 +23,5 @@ For curated content visit:
 * [iOS development](ios-tutorials/) 
 * [Android development](android-tutorials/) 
 * [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/) 
-
+* [Web application development](web-tutorials/) 
 * [Server-side development](server-side-tutorials/)

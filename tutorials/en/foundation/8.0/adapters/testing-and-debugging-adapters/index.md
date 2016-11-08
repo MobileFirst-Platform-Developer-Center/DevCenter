@@ -6,9 +6,9 @@ weight: 6
 ---
 ## Overview
 
-You can test Java and JavaScript adapters as well as debug Java code implemented for use in Java or JavaScript adapters via IDEs such as Eclipse, IntelliJ and alike.  
+You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
 
-This tutorial demonstrates how to test adapters using the MobileFirst CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
+This tutorial demonstrates how to test adapters by using the MobileFirst CLI and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
 
 #### Jump to:
 
@@ -29,19 +29,19 @@ The structure of the URL used to access the adapter resource is:
 
 ### Passing parameters
 
-* When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
-* When using JavaScript adapters, parameters are passed as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+* When using Java adapters, you can pass parameters in the URL, body, form, etc, depending on how you configured your adapter.
+* When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 ### Handling security
 The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
 
-To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
+To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
 
 ```java
 @OAuthSecurity(enabled=false)
 ```
 
-To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+To disable security in JavaScript adapters, add the `secured` attribute to the procedure:
 
 ```js
 <procedure name="adapter-procedure-name" secured="false"/>
@@ -58,7 +58,7 @@ To receive a Test Token, either click the "Run in Postman" button below to impor
 
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
-For testing purposes set **Allowed Scopes** as `**`.
+For testing purposes, set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
@@ -77,7 +77,7 @@ If you don't use a scope to protect your resource, use an empty string.
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
 
-The result will be a JSON object with a temporary valid access token:
+The result is a JSON object with a temporary valid access token:
 
 ```json
 {
@@ -109,9 +109,10 @@ To access Swagger:
 
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 #### Test Token
-To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
+To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all). If you are using the Swagger UI for the first time you may be required to log in with the Confidential Client ID ("test") and Secret ("test").
+You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
+
 > Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
 <br/><br/>
@@ -123,13 +124,13 @@ Expand the endpoint's operation, enter the required parameters (if needed) and c
   ![Adapter request using Swagger with the test token](SwaggerReq.png)
 
 #### Swagger Annotations
-Available only in Java adapters. 
+Available only in Java adapters.
 
-In order to generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
-> To learn more about Swagger Annotations see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
+To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
+> To learn more about Swagger Annotations, see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
 
 ```java
-@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
+@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
 @POST
 @Produces(MediaType.APPLICATION_JSON)

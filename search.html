@@ -4,7 +4,6 @@ indexed: false
 layout: default
 custom_js:
   - lib/elasticsearch-js/elasticsearch.jquery.js
-  - lib/spinjs/spin.min.js
   - lib/multiselect/bootstrap-multiselect.js
   - lib/magnific/jquery.magnific-popup.min.js
   - js/search.js
@@ -40,7 +39,8 @@ custom_js:
     </div>
     {% endraw %}
 </script>
-<div class="container search">
+
+<section class="container search">
     <h2 class="no-anchor">Site Search <small id="queryTerm"></small></h2>
     <form role="search" action="{{site.baseurl}}/search/" method="get">
         <div class="input-group add-on">
@@ -55,7 +55,7 @@ custom_js:
 
         <select id="document-type" multiple="multiple">
             <option value="blog">Blogs</option>
-            <option value="tutorial">Tutorials</option>
+            <option value="tutorial">Docs</option>
             <option value="lab">Labs</option>
             <option value="video">Videos</option>
         </select>
@@ -94,4 +94,4 @@ custom_js:
         </ul>
         <p id="searchResultsCount" style="display:none"></p>
     </nav>
-</div>
+</section>

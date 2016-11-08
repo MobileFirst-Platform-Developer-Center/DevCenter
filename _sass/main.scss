@@ -33,11 +33,17 @@ body {
 	font-family: $font_0, $font_1, $font_2;
 	-webkit-print-color-adjust:exact;
 }
+.logo-icon {
+	background-image:url(../assets/foundation.svg);
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 4px 7px;
+}
 #wrap {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto -60px;
-	padding: 0 0 50px;
+	padding: 0 0 39px;
 }
 hr {
 	border-top: 1px solid $black;
@@ -88,6 +94,7 @@ hr {
 .logo {
 	padding-top: 13px;
 	padding-right: 5px;
+	padding-left: 16px;
 }
 .img-circle {
 	margin-left: 98px;
@@ -112,8 +119,20 @@ hr {
 		//Instead of the line below you could use @include columns($width-and-count)
 		columns: 2 200px;
 	}
+	#announcements {
+		display: none;
+	}	
 	.blogPostsHeading {
 		margin-top: 20px;
+		font-weight: bold;
+		font-size: 24px;
+		color: black;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	.blogPostsHeadingInactive {
+		font-weight: 300;
+		text-decoration: none;
 	}
 }
 .postDate {
@@ -125,39 +144,44 @@ hr {
 .postTitle {
 	font-size: 120%;
 }
+
 footer {
-	background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
-	ul {
-		list-style-type: none;
-		margin: 21px 0 0 10px;
-		padding: 10px;
-		color: $color_mountain_mist_approx;
-		li {
-			display: inline;
-			margin: 0;
-			a {
-				color: $color_mountain_mist_approx;
-				padding: 0 10px;
-				&:hover {
-					color: $white;
-					text-decoration: none;
-				}
-				&:active {
-					color: $white;
-					text-decoration: none;
-				}
-			}
-			&:first-child a {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}
-	}
-}
-.footer-fix {
-	padding-right: 10px;
+	background-color: #292a2d;
+	padding: 15px;
+	margin: 20px 0 0 0;
+	height: 122px;
+	color: #999;
 }
 
+footer a {
+	font-size: 110%;
+	color: #999;
+	&:hover {
+		color: white;
+	}
+}
+
+.footerItem {
+	float: left;
+	//width: 25%;
+	border-left: 2px solid white;
+	padding-left: 10px;
+}
+.footerHeading {
+	font-weight: bold;
+	font-size: 120%;
+	color: white;
+}
+
+code:not([class*="language-"]) {
+	background-color: inherit;
+	color: $black;
+	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
+	padding: 0px;
+	background: #FDFAFB;
+    border: 1px solid #E0E0EA;
+	weight:400;
+}
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
@@ -168,6 +192,12 @@ blockquote {
 @media(max-width: 768px) {
 	footer ul {
 		padding: 0;
+	}
+	.logo-icon {
+		background-image:none;
+	}
+	.logo {
+		padding-left: 5px;
 	}
 }
 .downloadButtons {
@@ -255,9 +285,6 @@ blockquote {
 h4.panel-title, .tutorial h4.panel-title  {
 	font-size: 13px;
 }
-.navbar-toggle {
-	margin-right: 24px;
-}
 
 .error-template {
 	padding: 40px 15px;
@@ -309,4 +336,8 @@ hr {
 	font-size: 80%;
 	margin-top: 50px;
 	margin-bottom: 10px;
+}
+
+.timeago {
+	font-size: 10px;
 }
