@@ -25,9 +25,7 @@ This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by u
 
 ## Server setup
 
-1. Download the OAuth Security Extension from the **MobileFirst Operations Console → Download Center → Tools** tab.
-
-  * Unpack the `mfp-oauth-tai.zip` archive.   
+1. Download the OAuth Security Extension from the **MobileFirst Operations Console → Download Center → Tools** tab. Unpack the `mfp-oauth-tai.zip` archive.   
 
 2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
 
@@ -58,15 +56,15 @@ Modify the WebSphere Application Server `server.xml` file to your external resou
 
 * Configure the feature manager to include the following features:
 
-    ```xml
-    <featureManager>
+  ```xml
+  <featureManager>
            <feature>jsp-2.2</feature>
            <feature>appSecurity-2.0</feature>
            <feature>usr:OAuthTai-8.0</feature>
            <feature>servlet-3.0</feature>
            <feature>jndi-1.0</feature>
-    </featureManager>
-    ```
+  </featureManager>
+  ```
 
 * Add a security role as a class annotation in your Java servlet :
 
@@ -88,11 +86,11 @@ If you are using servlet-2.x , you need to define the security role in your web.
 
 * Configure OAuthTAI. This is where URLs are set to be protected:
 
-    ```xml
-    <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
+  ```xml
+  <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
             <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
-    </usr_OAuthTAI>
-    ```
+  </usr_OAuthTAI>
+  ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
 
     - **clientID**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` so that it can validate tokens.
@@ -117,7 +115,6 @@ JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
 ...
 securityContext.get('mfp-device')
 ```
-
 
 ## Sample
 You can deploy the project on supported application servers (WebSphere Application Server full profile and WebSphere Application Server Liberty profile).  

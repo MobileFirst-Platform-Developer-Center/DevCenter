@@ -27,15 +27,16 @@ You can also manually edit the application's configuration JSON file with the re
 2. Open the configuration file, located in the **[project-folder\mobilefirst** folder.
 3. Edit the file to enable device SSO for your selected custom security check: device SSO is enabled by setting the `enableSSO` property of a custom security check to `true`. The property configuration is contained within a security-check object that is nested in a `securityCheckConfigurations` object. Locate these objects in your application descriptor file, or create them if they are missing. For example:
 
-    ```xml
-    "securityCheckConfigurations": {
+   ```xml
+   "securityCheckConfigurations": {
         "UserAuthentication": {
             ...
             ...
             "enableSSO": true
         }
-    }
-    ```
+   }
+   ```
+   
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 ## Using Device SSO with a Pre-Existing Sample

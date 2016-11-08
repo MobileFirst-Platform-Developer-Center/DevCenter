@@ -94,11 +94,11 @@ This example uses `username` for both the `id` and `displayName` parameters.
 
 1. First, modify the `validateCredentials` method to save the `username` argument:
 
-    ```java
-    private String userId, displayName;
+   ```java
+   private String userId, displayName;
 
-    @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
@@ -115,17 +115,17 @@ This example uses `username` for both the `id` and `displayName` parameters.
             errorMsg = "The credentials are not set properly.";
         }
         return false;
-    }
-    ```
+   }
+   ```
 
 2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
 
-    ```java
-    @Override
-    protected AuthenticatedUser createUser() {
+   ```java
+   @Override
+   protected AuthenticatedUser createUser() {
         return new AuthenticatedUser(userId, displayName, this.getName());
-    }
-    ```
+   }
+   ```
 
 You can use `this.getName()` to get the current security check name.
 
@@ -153,12 +153,12 @@ In this example, the client decides to enable/disable the **RememberMe** feature
 
 1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
 
-    ```java
-    private String userId, displayName;
-    private boolean rememberMe = false;
-
-    @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   ```java
+   private String userId, displayName;
+   private boolean rememberMe = false;
+   
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
@@ -181,17 +181,17 @@ In this example, the client decides to enable/disable the **RememberMe** feature
             errorMsg = "Credentials not set properly";
         }
         return false;
-    }
-    ```
+   }
+   ```
 
 2. Then, override the `rememberCreatedUser()` method:
 
-    ```java
-    @Override
-    protected boolean rememberCreatedUser() {
+   ```java
+   @Override
+   protected boolean rememberCreatedUser() {
         return rememberMe;
-    }
-    ```
+   }
+   ```
 
 ## Configuring the security check
 In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
