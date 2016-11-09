@@ -89,23 +89,24 @@ The migration assistance tool does not modify or move any developer code or comm
     * Change to the directory where you downloaded the .tgz file.
     * Use NPM to install the tool by entering the following command:
     
-    ```bash
-    npm install -g tgz_filename
-    ```
+   ```bash
+   npm install -g tgz_filename
+   ```
 3. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
 
-    ```bash
-    mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
-    ```
-    * **source_directory**  
-    The current location of the project that you are migrating. In Hybrid applications, this should point to the **application** folder of the application.
-    * **destination_directory**    
-    The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new-project-directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
-    * **new-project-directory**
-    The optional name of the folder where the new content of your project is located.
-	This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `app_name-app_id-version`.	
-    <br/>
-    When it is used with the client command, the migration assistance tool completes the following actions:  
+   ```bash
+   mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
+   ```
+    
+   * **source_directory**  
+   The current location of the project that you are migrating. In Hybrid applications, this should point to the **application** folder of the application.
+   * **destination_directory**    
+   The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new-project-directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
+   * **new-project-directory**
+   The optional name of the folder where the new content of your project is located.
+   This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `app_name-app_id-version`.	
+   <br/>
+   When it is used with the client command, the migration assistance tool completes the following actions:  
         * Identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0.
         * Creates a Cordova structure based on the structure of the initial app.
         * Copies or adds the following items, when applicable:
@@ -126,7 +127,8 @@ The migration assistance tool does not modify or move any developer code or comm
 
     | File path | Line number | API | Line content | Category of API change | Description and action item | 
     |-----------|-------------|-----|--------------|------------|-----------|
-    |c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | <ul><li>`document.getElementById('app_version')`</li><li>`textContent = WL.Client.getAppProperty("APP_VERSION");`</li></ul> | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
+    | c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
+    
     * Address the API issues that are identified in the **api-report.html** file.
 5. Manually copy the developer code from the initial app structure into the correct location in the new Cordova structure. Copy the content in the following directories, according to the type of the source IBM MobileFirst Platform Foundation app:
     * **IBM MobileFirst Platform Foundation hybrid app**  
@@ -136,9 +138,9 @@ The migration assistance tool does not modify or move any developer code or comm
 6. Run the migration assistance tool with the scan command on your new app to confirm that your API changes are complete.
     * Enter the following command to run the scan:
     
-        ```bash
-        mfpmigrate scan --in source_directory --out destination_directory --type hybrid
-        ```
+      ```bash
+      mfpmigrate scan --in source_directory --out destination_directory --type hybrid
+      ```
         * **source_directory**  
         The current location of the files to scan. In an IBM MobileFirst Platform Foundation hybrid app, this location is the **common** directory of your app. In an IBM MobileFirst Foundation version 8.0 Cordova cross-platform app, this location is the **www** directory.
         * **destination_directory**  
@@ -163,83 +165,88 @@ After you complete the migration, your app can use Cordova platforms and plug-in
 1. Update the **www/index.html** file.
     * Add the following CSS code to the head of your index.html file, before your CSS code that is already there.
     
-        ```html
-        <link rel="stylesheet" href="worklight/worklight.css">
-        <link rel="stylesheet" href="css/main.css">
-        ```
+      ```html
+      <link rel="stylesheet" href="worklight/worklight.css">
+      <link rel="stylesheet" href="css/main.css">
+      ```
         
-        > **Note:** The **worklight.css** file sets the body attribute to relative. If this affects the style of your app, then declare a different value for the position in your own CSS code. For example:
+      > **Note:** The **worklight.css** file sets the body attribute to relative. If this affects the style of your app, then declare a different value for the position in your own CSS code. For example:
 
-        ```css
-        body {
+      ```css
+      body {
             position: absolute;
-        }
-        ```    
+      }
+      ```
+          
     * Add Cordova JavaScript to the head of the file after the CSS definitions.
     
-        ```html
-        <script type="text/javascript" src="cordova.js"></script>
-        ```    
+      ```html
+      <script type="text/javascript" src="cordova.js"></script>
+      ```    
+      
     * Remove the following line of code if it is present.
 
-        ```html
-        <script>window.$ = window.jQuery = WLJQ;</script>
-        ```
-        You can download your own version of JQuery, and load it as shown in the following code line.
+      ```html
+      <script>window.$ = window.jQuery = WLJQ;</script>
+      ```
+      
+      You can download your own version of JQuery, and load it as shown in the following code line.
 
-        ```html
-        <script src="lib/jquery.min.js"></script>
-        ```
+      ```html
+      <script src="lib/jquery.min.js"></script>
+      ```
         
-        You do not have to move the optional jQuery addition to the **lib** folder. You can move this addition anywhere you want to, but you must correctly reference it in the **index.html** file.
+      You do not have to move the optional jQuery addition to the **lib** folder. You can move this addition anywhere you want to, but you must correctly reference it in the **index.html** file.
 
 2. Update the **www/js/InitOptions.js** file to call `WL.Client.init` automatically.
     * Remove the following code from **InitOptions.js**
 
-        The function `WL.Client.init` is called automatically with the global variable **wlInitOptions**.
+      The function `WL.Client.init` is called automatically with the global variable **wlInitOptions**.
         
-        ```javascript
-        if (window.addEventListener) {
+      ```javascript
+      if (window.addEventListener) {
             window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
+      } else if (window.attachEvent) {
             window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
-        }
-        ```
+      }
+      ```
         
 3. Optional: Update the **www/InitOptions.js** to call `WL.Client.init` manually.
     * Edit the **config.xml** file and set the `<mfp:clientCustomInit>` element's enabled attribute to true.
     * If you are using the MobileFirst hybrid default template, replace this code:
     
-        ```javascript
-        if (window.addEventListener) {
+      ```javascript
+      if (window.addEventListener) {
             window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
+      } else if (window.attachEvent) {
             window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
-        }
-        ```
+      }
+      ```
     
-        with the following code:
+      With the following code:
         
-        ```javascript
-        if (document.addEventListener) {
+      ```javascript
+      if (document.addEventListener) {
             document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
+      } else if (window.attachEvent) {
             document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
-        }
-        ```
+      }
+      ```
+      
 4. Optional: If you have logic specific to a hybrid environment, for example in Your **app/iphone/js/main.js**, copy the function `wlEnvInit()` and append it at the end of **www/main.js**.
 
-    ```javascript
-    // This wlEnvInit method is invoked automatically by MobileFirst runtime after successful initialization.
-    function wlEnvInit() {
+   ```javascript
+   // This wlEnvInit method is invoked automatically by MobileFirst runtime after successful initialization.
+   function wlEnvInit() {
         wlCommonInit();
         if (cordova.platformId === "ios") {
             // Environment initialization code goes here for ios
         } else if (cordova.platformId === "android") {
             // Environment initialization code goes here for android
         }
-    }
-    ```
+   }
+   ```
+   
 5. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
 6. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the `cordova plugin add` command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 
@@ -257,10 +264,11 @@ To migrate, you run the migration assistance tool and then make other modificati
 
 1. With the Cordova development tool of your choice, add any Cordova plug-ins other than Cordova plug-ins that enable MobileFirst features that were in your original application. For example, with the Cordova CLI, to add the plug-ins **cordova-plugin-file** and **cordova-plugin-file-transfer**, enter:
 
-    ```bash
-    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
-    ```
-    > **Note:** The **mfpmigrate** migration assistance tool added the Cordova plug-ins for MobileFirst features, so you do not have to add them. For more information about these plug-ins, see [Cordova plug-ins for MobileFirst](../../../application-development/sdk/cordova).
+   ```bash
+   cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
+   ```
+    
+   > **Note:** The **mfpmigrate** migration assistance tool added the Cordova plug-ins for MobileFirst features, so you do not have to add them. For more information about these plug-ins, see [Cordova plug-ins for MobileFirst](../../../application-development/sdk/cordova).
 
 2. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
 3. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the **cordova plugin add** command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
@@ -299,33 +307,35 @@ Many MobileFirst API elements were removed in v8.0. Removed elements are clearly
 The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
 
 #### Discontinued JavaScript UI elements
+
 | API element | Migration path | 
 |-------------|----------------|
-| <ul><li>`WL.BusyIndicator`</li><li>`WL.OptionsMenu`</li><li>`WL.TabBar`</li><li>`WL.TabBarItem`</li></ul> | Use Cordova plug-ins or HTML 5 elements. | 
+| {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. | 
 | `WL.App.close()` | Handle this event outside of MobileFirst. | 
 | `WL.App.copyToClipboard()` | Use Cordova plug-ins providing this functionality. |
 | `WL.App.openUrl(url, target, options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova InAppBrowser plug-in provides this feature. | 
-| <ul><li>`WL.App.overrideBackButton(callback)`</li><li>`WL.App.resetBackButton()`</li></ul> | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova backbutton plug-in provides this feature. | 
+| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova backbutton plug-in provides this feature. | 
 | `WL.App.getDeviceLanguage()` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. | 
 | `WL.App.getDeviceLocale()` | Use Cordova plug-ins providing this functionality.<br/><br/> Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. | 
 | `WL.App.BackgroundHandler` | To run a custom handler function, use the standard Cordova pause event listener. Use a Cordova plug-in that provides privacy and prevents iOS and Android systems and users from taking snapshots or screen captures. For more information, see the description of the PrivacyScreenPlugin at [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). | 
-| <ul><li>`WL.Client.close()`</li><li>`WL.Client.restore()`</li><li>`WL.Client.minimize()`</li></ul>| The functions were provided to support the Adobe AIR platform, which is not supported by IBM MobileFirst Foundation v8.0 | 
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| The functions were provided to support the Adobe AIR platform, which is not supported by IBM MobileFirst Foundation v8.0 | 
 | `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. | 
 
 #### Other Discontinued JavaScript elements
+
 | API | Migration path | 
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
-| <ul><li>`WL.Client.setSharedToken({key: myName, value: myValue})`</li><li>`WL.Client.getSharedToken({key: myName})`</li><li>`WL.Client.clearSharedToken({key: myName})`</li></ul> | No replacement. | 
-| <ul><li>`WL.Client.isConnected()`</li><li>`connectOnStartup` init option</li></ul> | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to check connectivity to the server and apply application management rules. | 
-| <ul><li>`WL.Client.setUserPref(key,value, options)`</li><li>`WL.Client.setUserPrefs(userPrefsHash, options)`</li><li>`WL.Client.deleteUserPrefs(key, options)`</li></ul> | No replacement. You can use an adapter and the [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API to manage user preferences. | 
-| <ul><li>`WL.Client.getUserInfo(realm, key)`</li><li>`WL.Client.updateUserInfo(options)`</li></ul> | No replacement. | 
+| {::nomarkdown}<ul><li><code>WL.Client.setSharedToken({key: myName, value: myValue})</code></li><li><code>WL.Client.getSharedToken({key: myName})</code></li><li><code>WL.Client.clearSharedToken({key: myName})</code></li></ul>{:/} | No replacement. | 
+| {::nomarkdown}<ul><li><cod>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to check connectivity to the server and apply application management rules. | 
+| {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | No replacement. You can use an adapter and the [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API to manage user preferences. | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. | 
 | `WL.Client.logActivity(activityType)` | Use [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc) |
 | `WL.Client.login(realm, options)` | Use [`WLAuthorizationManager.login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#login). | 
 | `WL.Client.logout(realm, options)` | Use [`WLAuthorizationManager.logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#logout). | 
 | `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken). | 
-| <ul><li>`WL.Client.transmitEvent(event, immediate)`</li><li>`WL.Client.purgeEventTransmissionBuffer()`</li><li>`WL.Client.setEventTransmissionPolicy(policy)`</li></ul> | Create a custom adapter for receiving notifications of these events. | 
-| <ul><li>`WL.Device.getContext()`</li><li>`WL.Device.startAcquisition(policy, triggers, onFailure)`</li><li>`WL.Device.stopAcquisition()`</li><li>`WL.Device.Wifi`</li><li>`WL.Device.Geo.Profiles`</li><li>`WL.Geo`</li></ul> | Use native API or third-party Cordova plug-ins for GeoLocation. | 
+| {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | Create a custom adapter for receiving notifications of these events. | 
+| {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | Use native API or third-party Cordova plug-ins for GeoLocation. | 
 | `WL.Client.makeRequest (url, options)` | Create a custom adapter that provides the same functionality | 
 | `WL.Device.getID(options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, **device.uuid** from the **cordova-plugin-device** plug-in provides this feature. |
 | `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` | 
@@ -339,7 +349,7 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Use [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice) to register the device for push and SMS. | 
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to obtain a token for the required scope. |
 | `WLClient.getLastAccessToken(scope)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) |
-| <ul><li>`WLClient.getLoginName()`</li><li>`WL.Client.getUserName(realm)`</li></ul> | No replacement | 
+| {::nomarkdown}<ul><li><code>WLClient.getLoginName()</code></li><li><code>WL.Client.getUserName(realm)</code></li></ul>{:/} | No replacement | 
 | `WL.Client.getRequiredAccessTokenScope(status, header)` | Use [`WLAuthorizationManager.isAuthorizationRequired`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#isAuthorizationRequired) and [`WLAuthorizationManager.getResourceScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#getResourceScope). | 
 | `WL.Client.isUserAuthenticated(realm)` | No replacement | 
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | No replacement | 
@@ -356,7 +366,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 | API | Migration path | 
 |-----|----------------|
-| <ul><li>`WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`</li><li>  `WL.Client.invokeProcedure(invocationData, options)`</li><li>`WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`</li><li>`WLProcedureInvocationResult`</li></ul> | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. | 
+| {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. | 
 | `WLClient.getEnvironment` | Use Cordova plug-ins providing this functionality. Note: For your information, the device.platform plug-in provides this feature. | 
 | `WL.Client.getLanguage` | Use Cordova plug-ins providing this functionality. Note: For your information, the **cordova-plugin-globalization** plug-in provides this feature. | 
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. | 
