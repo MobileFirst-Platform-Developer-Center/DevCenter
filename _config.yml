@@ -10,7 +10,8 @@ generate_redirects: false
 print_pdf: false
 kramdown:
   input: GFM
-  hard_wrap: false    
+  hard_wrap: false  
+  auto_ids: false
 gems:
   - jekyll-feed
   - jekyll-paginate
