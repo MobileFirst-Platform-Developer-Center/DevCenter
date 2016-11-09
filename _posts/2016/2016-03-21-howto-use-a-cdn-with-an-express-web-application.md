@@ -127,7 +127,7 @@ app.listen(appEnv.port, function () {
 ```
 
 
-## Using IB CDN in Bluemix
+## Using IBM CDN in Bluemix
 
 Take a look at the [Getting started with IBM CDN](https://console.ng.bluemix.net/docs/services/cdn/index.html) to setup your CDN.
 
