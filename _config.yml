@@ -8,8 +8,6 @@ paginate_path: "/blog/:num/"
 markdown: kramdown
 generate_redirects: false
 print_pdf: false
-# redcarpet:
-#     extensions: ["with_toc_data", "tables"]
 kramdown:
   input: GFM
   hard_wrap: false    
