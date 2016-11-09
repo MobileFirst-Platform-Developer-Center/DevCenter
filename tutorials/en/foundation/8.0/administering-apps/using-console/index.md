@@ -83,9 +83,9 @@ Use MobileFirst Operations Console (the console) to disable user access to a spe
 3. In the **URL of latest version** field, optionally provide a URL for a newer version of the application (usually in the appropriate public or private app store). For some environments, the Application Center provides a URL to access the Details view of an application version directly. See [Application properties](../../appcenter/appcenter-console/#application-properties).
 4. In the **Default notification message** field, add the custom notification message to display when the user attempts to access the application. The following sample message directs users to upgrade to the latest version:
 
-    ```bash
-    This version is no longer supported. Please upgrade to the latest version.
-    ```
+   ```bash
+   This version is no longer supported. Please upgrade to the latest version.
+   ```
 
 5. In the **Supported locales** section, you can optionally provide the notification message in other languages.
 6. Select **Save** to apply your changes.
@@ -101,9 +101,9 @@ Follow the outlined procedure to configure the notification message. You can use
 2. Change the status to **Active and Notifying**.
 3. Add a custom startup message. The following sample message informs the user of planned maintenance work for the application:
 
-    ```bash
-    The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
-    ```
+   ```bash
+   The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
+   ```
 
 4. In the Supported locales section, you can optionally provide the notification message in other languages.
 
@@ -118,19 +118,19 @@ Follow the outlined procedure to configure multiple languages for displaying the
 2. Select the status **Active and Notifying** or **Access Disabled**.
 3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
 
-    Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
+   Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
     
-    > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
+   > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
 
-    Following is a sample CSV file that defines the same message for multiple locales:
+   Following is a sample CSV file that defines the same message for multiple locales:
 
-    ```xml
-    en,Your application is disabled
-    en-US,Your application is disabled in US
-    en-GB,Your application is disabled in GB
-    fr,votre application est désactivée
-    he,האפליקציה חסמומה
-    ```
+   ```xml
+   en,Your application is disabled
+   en-US,Your application is disabled in US
+   en-GB,Your application is disabled in GB
+   fr,votre application est désactivée
+   he,האפליקציה חסמומה
+   ```
 
 4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
 You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
