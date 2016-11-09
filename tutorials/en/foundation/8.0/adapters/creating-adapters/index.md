@@ -391,4 +391,4 @@ If you do not have online access to the Maven Central Repository, you can share 
 * [Learn about JavaScript adapters](../javascript-adapters/)
 * [Develop adapters in IDEs](../developing-adapters/)
 * [Testing and debugging adapters](../testing-and-debugging-adapters/)
-* [Review all Adapters tutorials](../)
+* [Review all Adapters tutorials](../#tutorials-to-follow-next)
