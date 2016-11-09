@@ -30,9 +30,9 @@ In order to serve the web application's resources, these need to be stored in a 
 1. From a **command-line** window, navigate to a location of your choosing.
 2. Run the command:
 
-    ```bash
-    mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
-    ```
+   ```bash
+   mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+   ```
     - Replace **MyCompany** and **MyWebApp** with your own values.
     - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
 
@@ -50,9 +50,9 @@ In order to serve the web application's resources, these need to be stored in a 
 1. Edit the **server.xml file** of your WebSphere application server.  
     If using the MobileFirst Development Kit, the file is located in: [**MobileFirst Development Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
 
-    ```xml
-    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
-    ```
+   ```xml
+   <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
+   ```
     - Replace **name** and **path-to/MyWebApp.war** with your own values.
     - The application server is automatically restarted after saving the changes to the **server.xml** file.  
 
@@ -65,42 +65,42 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
 
 1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
 
-    ```bash
-    npm init
-    npm install --save express
-    npm install --save request
-    ```
+   ```bash
+   npm init
+   npm install --save express
+   npm install --save request
+   ```
 
 2. Create a new file next to the **node_modules** folder, for example **proxy.js**.
 3. Add the following code to the file:
 
-    ```javascript
-    var express = require('express');
-    var http = require('http');
-    var request = require('request');
+   ```javascript
+   var express = require('express');
+   var http = require('http');
+   var request = require('request');
 
-    var app = express();
-    var server = http.createServer(app);
-    var mfpServer = "http://localhost:9080";
-    var port = 9081;
+   var app = express();
+   var server = http.createServer(app);
+   var mfpServer = "http://localhost:9080";
+   var port = 9081;
 
-    server.listen(port);
-    app.use('/myapp', express.static(__dirname + '/'));
-    console.log('::: server.js ::: Listening on port ' + port);
+   server.listen(port);
+   app.use('/myapp', express.static(__dirname + '/'));
+   console.log('::: server.js ::: Listening on port ' + port);
 
-    // Web server - serves the web application
-    app.get('/home', function(req, res) {
+   // Web server - serves the web application
+   app.get('/home', function(req, res) {
         // Website you wish to allow to connect
         res.sendFile(__dirname + '/index.html');
-    });
+   });
 
-    // Reverse proxy, pipes the requests to/from MobileFirst Server
-    app.use('/mfp/*', function(req, res) {
+   // Reverse proxy, pipes the requests to/from MobileFirst Server
+   app.use('/mfp/*', function(req, res) {
         var url = mfpServer + req.originalUrl;
         console.log('::: server.js ::: Passing request to URL: ' + url);
         req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
-    });
-    ```
+   });
+   ```
     - replace the **port** value with your preferred one.
     - replace `/myapp` with your preferred path name for your web application.
     - replace `/index.html` with the name of your main HTML file.

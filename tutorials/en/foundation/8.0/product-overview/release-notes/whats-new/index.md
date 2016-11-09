@@ -55,7 +55,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>Starting with Cordova 4.0 the pluggable WebView allows the default web runtime to be replaced. Crosswalk is now supported by Cordova applications with IBM MobileFirst Foundation. Using the Crosswalk WebView for Android allows high performance and consistent user experience across a wide range of mobile devices. To take advantage of the Crosswalk capabilities, apply the Cordova Crosswalk plug-in.</p>
 
                 <h3>Distributing MobileFirst SDK for Windows 8 and Windows 10 Universal apps with NuGet</h3>
-                <p>The MobileFirst SDK for Windows 8 and Windows 10 Universal apps is available from NuGet at [https://www.nuget.org/packages](https://www.nuget.org/packages). To get started.</p>
+                <p>The MobileFirst SDK for Windows 8 and Windows 10 Universal apps is available from NuGet at <a href="https://www.nuget.org/packages">https://www.nuget.org/packages</a>. To get started.</p>
 
                 <h3>org.apache.http replaced by okHttp</h3>
                 <p><code>org.apache.http</code> has been removed from the Android SDK. okHttp will be used as the http dependency.</p>
@@ -78,10 +78,10 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>New features improve and extend the APIs that you can use to develop mobile applications. Use the latest APIs to take advantage of new, improved, or changed functions in IBM MobileFirst Foundation.</p>
                 
                 <h3>Updated JavaScript server-side API</h3>
-                <p>In v8.0, back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.
+                <p>In v8.0, back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.</p>
 
                 <h3>New Java server-side API</h3>
-                <p>IBM MobileFirst Foundation v8.0 provides new Java server-side API, which you can use to extend MobileFirst Server.
+                <p>IBM MobileFirst Foundation v8.0 provides new Java server-side API, which you can use to extend MobileFirst Server.</p>
 
                 <h4>New Java server-side API for security</h4>
                 <p>The new security API package, <code>com.ibm.mfp.server.security.external</code>, and its contained packages, include the interfaces that are required for developing security checks and adapters that use the security-check context.</p>
@@ -132,7 +132,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>The REST API for the administration service is partly refactored. In particular, the API for beacons and mediators is removed and most REST services for push notification are now part of the REST API for the push service.</p>
 
                 <h3>Updated REST API for the runtime</h3>
-                <p>The REST API for the MobileFirst runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://<server_ip>:<server_port>/<context_root>/doc</code>.</p>
+                <p>The REST API for the MobileFirst runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
             </div>
         </div>
     </div>
@@ -431,7 +431,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 <p>IBM MobileFirst Foundation authorization server enforces the OAuth protocol to secure push notification service.</p>
 
                 <h3>Push notification service model</h3>
-                <p>With IBM MobileFirst Foundation v8.0, the event source-based model is not supported. The push notification capability is enabled on IBM MobileFirst Foundation by the push service model.</h3>
+                <p>With IBM MobileFirst Foundation v8.0, the event source-based model is not supported. The push notification capability is enabled on IBM MobileFirst Foundation by the push service model.</p>
 
                 <h3>Push REST API</h3>
                 <p>You can enable back-end server applications that are deployed outside MobileFirst Server to access push notification functions by using REST API for push in the IBM MobileFirst Foundation runtime.</p>

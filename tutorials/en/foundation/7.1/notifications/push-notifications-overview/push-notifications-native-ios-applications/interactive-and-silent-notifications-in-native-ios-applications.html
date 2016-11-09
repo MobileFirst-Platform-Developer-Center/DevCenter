@@ -12,7 +12,7 @@ Callback methods are executed even when the application is running in the backgr
 <blockquote><p>For more information, refer to the "silent notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
 <h4>Server API for silent notification</h4>
 <p>To send silent notification, set a string to indicate the type. Create a notification object by using the <code>WL.Server.createDefaultNotification</code> API and set the type as below:<br />
-{% highlight objc linenos %}notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; {% endhighlight %}</p>
+{% highlight objc  %}notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; {% endhighlight %}</p>
 <ul>
 <li><code>DEFAULT</code> means normal notification, which shows the alert and is kept in the notification center if the application is running in the background.</li>
 <li><code>SILENT</code> means silent notification, which does not show any alert or the message is not placed in the notification center. In the silent type, the aps tag of push notification contains only content-available.</li>
@@ -38,11 +38,11 @@ When an interactive notification is received, the device shows action buttons al
 Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
 <ul>
 <li>For event-source notifications, create a notification object and set the category as below:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 notification.APNS.category = "poll";
 {% endhighlight %}</li>
 <li>For broadcast/tag-based notifications, create a notification object and set the category as below:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 notification.settings.apns.category = "poll";
 {% endhighlight %}</li>
 <li>The category name must be same as the one used on the client side.</li>
@@ -54,7 +54,7 @@ notification.settings.apns.category = "poll";
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method in the <code>AppDelegate</code> class.
 <p>    
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     NSLog(@"APNS Token : %@", deviceToken);
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){
@@ -77,7 +77,7 @@ To enable background processing, select the project in XCode and in the capabili
 }
 {% endhighlight %}</li>
 <li>To handle the actions the user selects, use the <code>handleActionWithIdentifier</code> method of the <code>UIApplicationDelegate</code> protocol:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"OK"]) {
         NSLog(@"OK was tapped");

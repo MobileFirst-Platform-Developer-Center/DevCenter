@@ -48,7 +48,7 @@ Use it to work with your Java code.<br />
 <p>Add the <strong>com.mycustomcode</strong> package to the generated Android project.<br />
 Add <strong>MyCustomToaster.java</strong> class under this package.<br />
 Add a static method to this class:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class MyCustomToaster {
   public static void showToastAlert(Activity context, String text) {
     Toast.makeText(context, text, 2000).show();
@@ -57,7 +57,7 @@ public class MyCustomToaster {
 {% endhighlight %}
 <p>Open your main application activity.<br />
 Start <em>MyCustomToast.showToastAlert()</em>:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class MyShellTest extends WLDroidGap {
   @Override
   public void onCreate(Bundle savedInstanceState){

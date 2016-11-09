@@ -31,7 +31,7 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
 <code>public class action : WLActionReceiver</code></p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public void onActionReceived(string action, JObject data) {
     if (action == "displayAddress") {
         Deployment.Current.Dispatcher.BeginInvoke(() => {
@@ -43,7 +43,7 @@ public void onActionReceived(string action, JObject data) {
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst Web View, it must be registered.<br />
 The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 InitializeComponent();
 WL.createInstance(); //Create the instance of the ActionSender API's
 myReceiver = new Action();
@@ -51,7 +51,7 @@ Loaded += PhoneAppPage_Loaded;
 WL.getInstance().addActionReceiver(myReceiver);
 {% endhighlight %} <br />
 You can later remove this <code>ActionReceiver</code> registration by using the following API:<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 WL.getInstance().removeActionReceiver(myReceiver);
 {% endhighlight %} </p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
@@ -59,13 +59,13 @@ WL.getInstance().removeActionReceiver(myReceiver);
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In C#, the following API is used:<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 WL.getInstance().sendActionToJS(doSomething, data);
 {% endhighlight %} </p>
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JObject</code> that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function actionReceiver(received){
     if (received.action == "doSomething" && received.data.someProperty == "12345"){
         //perform required actions, e.g., update web user interface
@@ -74,11 +74,11 @@ function actionReceiver(received){
 {% endhighlight %} </p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);
 {% endhighlight %} </p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 WL.App.removeActionReceiver("MyActionReceiverId");
 {% endhighlight %} </p>
 <h2 id="sendaction">The SendAction Sample</h2>
@@ -96,7 +96,7 @@ When the <strong>OK</strong> button of the MessageBox is pressed, the native <co
 <li>A button to trigger validation</li>
 <li>An empty  line to show potential error messages. This line is used to display the message that is sent from the native code to the JavaScript code.</li>
 </ul>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <p>This is a MobileFirst WebView.</p>
 <p>Enter a valid address (requires Internet connection):<br/>
 <input type="text" name="address" id="address"/>
@@ -106,14 +106,14 @@ When the <strong>OK</strong> button of the MessageBox is pressed, the native <co
 {% endhighlight %} </p>
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 $('#displayBtn').on('click', function(){
     $('#errorMsg').empty();
     WL.App.sendActionToNative("displayAddress", { address: $('#address').val()});
 }); 
 {% endhighlight %} </p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received) {
     if(received.action == 'displayError') {
         $('#errorMsg').html(received.data.errorReason);

@@ -160,12 +160,12 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
 1. Run a MySQL command line client with the option `-u root`.
 2. Enter the following commands:
 
-    ```sql
-    CREATE DATABASE MFPDATA CHARACTER SET utf8 COLLATE utf8_general_ci;
-    GRANT ALL PRIVILEGES ON MFPDATA.* TO 'mfpuser'@'mfp-host' IDENTIFIED BY 'mfpuser-password';
-    GRANT ALL PRIVILEGES ON MFPDATA.* TO 'mfpuser'@'localhost' IDENTIFIED BY 'mfpuser-password';
-    FLUSH PRIVILEGES;
-    ```
+   ```sql
+   CREATE DATABASE MFPDATA CHARACTER SET utf8 COLLATE utf8_general_ci;
+   GRANT ALL PRIVILEGES ON MFPDATA.* TO 'mfpuser'@'mfp-host' IDENTIFIED BY 'mfpuser-password';
+   GRANT ALL PRIVILEGES ON MFPDATA.* TO 'mfpuser'@'localhost' IDENTIFIED BY 'mfpuser-password';
+   FLUSH PRIVILEGES;
+   ```
 
     Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which IBM MobileFirst Foundation runs.
     

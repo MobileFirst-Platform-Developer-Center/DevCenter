@@ -203,8 +203,8 @@ The following global JNDI properties are required for the administration service
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
 | mfp.admin.jmx.host       | The host name of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the <httpEndpoint> element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
-| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the <administrator-role> element of the server.xml file of the WebSphere Application Server Liberty profile server. |
+| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the `<httpEndpoint>` element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
+| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the `<administrator-role>` element of the server.xml file of the WebSphere Application Server Liberty profile server. |
 | mfp.admin.jmx.pwd        | The password of the WebSphere Application Server Liberty administrator user. |
 
 Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
@@ -312,7 +312,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code><httpEndpoint></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -324,7 +324,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.user
         </td>
         <td>
-            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
+            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
             
 {% highlight xml %}
 <administrator-role>
@@ -444,21 +444,21 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
@@ -499,21 +499,21 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>

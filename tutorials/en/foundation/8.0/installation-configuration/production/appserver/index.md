@@ -105,9 +105,10 @@ Ensure that you fulfill the following criteria:
 
                         In the previous example:
                         <ul>
-                            <li>registryPort must have the same value as the rmiRegistryPortPlatform attribute of the JMX Remote Lifecycle Listener.</li>
-                            <li>serverPort must have the same value as the rmiServerPortPlatform attribute of the JMX Remote Lifecycle Listener.</li>
+                            <li>registryPort must have the same value as the <b>rmiRegistryPortPlatform</b> attribute of the JMX Remote Lifecycle Listener.</li>
+                            <li>serverPort must have the same value as the <b>rmiServerPortPlatform</b> attribute of the JMX Remote Lifecycle Listener.</li>
                         </ul>
+                    </li>
                     <li>If you installed Apache Tomcat with the Apache Tomcat Windows Service Installer instead of adding the options to <b>CATALINA_OPTS</b>, run <b>tomcat_install_dir/bin/Tomcat7w.exe</b>, and add the options in the <b>Java</b> tab of the Properties window.
                     
                     <img alt="Apache Tomcat 7 properties" src="Tomcat_Win_Service_Installer_properties.jpg"/></li>
@@ -119,6 +120,7 @@ Ensure that you fulfill the following criteria:
 
 ### WebSphere Application Server Liberty prerequisites
 IBM MobileFirst Server has some requirements for the configuration of the Liberty server that are detailed in the following topics.  
+
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of Liberty. See [System requirements](../../../product-overview/requirements).
@@ -322,11 +324,11 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                     <li>If you select the <b>Declare the WebSphere Administrator as an administrator user in IBM MobileFirst Platform Operations Console</b> option, then the user that is used to install MobileFirst Server is mapped to the administration security role of the console and can log in to the console with administrator privileges. This user is also mapped to the security role of the live update service. The user name and password are set as JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
                                     <li>If you do not select the <b>Declare the WebSphere Administrator as an administrator user in IBM MobileFirst Platform Operations Console</b> option, then before you can use MobileFirst Server, you must do the following tasks:
                                         <ul>
-                                            <li>Enable the communication between the administration service and the live update service by:</li>
+                                            <li>Enable the communication between the administration service and the live update service by:
                                                 <ul>
                                                     <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
                                                     <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the security roles of the administration service and MobileFirst Operations Console. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                                    <li>Map one or more users to the  of the administration service and MobileFirst Operations Console. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -465,21 +467,21 @@ To use an existing user instead of creating new user, you can do the following o
 
 1. In the `<jmx>` element, specify a user and password, and set the value of the **createLibertyAdmin** attribute to false. For example:
 
-    ```xml
-    <installmobilefirstadmin ...>
-        <jmx libertyAdminUser="myUser" libertyAdminPassword="password" createLibertyAdmin="false" />
-        ...
-    ```
+   ```xml
+   <installmobilefirstadmin ...>
+       <jmx libertyAdminUser="myUser" libertyAdminPassword="password" createLibertyAdmin="false" />
+       ...
+   ```
 
 2. In the `<configuration>` element, specify a user and password and set the value of the **createConfigAdminUser** attribute to false. For example:
 
-    ```xml
+   ```xml
     <installmobilefirstadmin ...>
         <configuration configAdminUser="myUser" configAdminPassword="password" createConfigAdminUser="false" />
         ...
-    ```
+   ```
     
-Also, the user that is created by the sample Ant files is mapped to the security roles of the administration service and the console. With this setting, you can use this user to log on to MobileFirst Server after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
+Also, the user that is created by the sample Ant files is mapped to the  of the administration service and the console. With this setting, you can use this user to log on to MobileFirst Server after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
 
 #### Specify Liberty Java EE level
 Some distributions of WebSphere Application Server Liberty support features from Java EE 6 or from Java EE 7. By default, the Ant tasks automatically detect the features to install. For example, **jdbc-4.0** Liberty feature is installed for Java EE 6 and **jdbc-4.1** feature is installed in case of Java EE 7. If the Liberty installation supports both features from Java EE 6 and Java EE 7, you might want to force a certain level of features. An example might be that you plan to run both MobileFirst Server V8.0.0 and V7.1.0 on the same Liberty server. MobileFirst ServerV7.1.0 or earlier supports only Java EE 6 features.
@@ -639,22 +641,22 @@ Copy the password decoder user feature to your Liberty profile. For example:
 
 * On UNIX and Linux systems:
 
-    ```bash
-    mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-    cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-    cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
-    ```
+  ```bash
+  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  ```
 
 * On Windows systems:
 
-    ```bash
-    mkdir LIBERTY_HOME\wlp\usr\extension\lib
-    copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-    LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-    mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-    copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-    LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
-    ```
+  ```bash
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib
+  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  ```
     
 #### Configuration details
 <div class="panel-group accordion" id="manual-installation-liberty" role="tablist" aria-multiselectable="true">
@@ -700,7 +702,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 </dataSource>
 {% endhighlight %}
                 
-                <h3>Security roles</h3>
+                <h3></h3>
                 <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -733,8 +735,8 @@ Copy the password decoder user feature to your Liberty profile. For example:
 </dataSource>
 {% endhighlight %}
 
-                <h3>Security roles</h3>
-                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:
+                <h3></h3>
+                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -969,22 +971,22 @@ Copy the password decoder user feature to your Liberty profile. For example:
 
 * On UNIX and Linux systems:
 
-    ```bash
-    mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-    cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-    cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
-    ```
+  ```bash
+  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  ```
 
 * On Windows systems:
 
-    ```bash
-    mkdir LIBERTY_HOME\wlp\usr\extension\lib
-    copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-    LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-    mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-    copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-    LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
-    ```
+  ```bash
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib
+  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  ```
     
 <h4 id="configuration-details-collective">Configuration details</h4>
 <div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist" aria-multiselectable="true">
@@ -1061,7 +1063,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                 The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/the-adminContextRootconfig</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
                 
                 <h3>Data source</h3>
-                <p>The JNDI name of the data source for the live update service must be defined as the-contextRoot/jdbc/ConfigDS. The following example illustrates the case whereby the live update service is installed with the context root /mfpadminconfig, and that the service is using a relational database:</p>
+                <p>The JNDI name of the data source for the live update service must be defined as <b>the-contextRoot/jdbc/ConfigDS</b>. The following example illustrates the case whereby the live update service is installed with the context root <b>/mfpadminconfig</b>, and that the service is using a relational database:</p>
                 
 {% highlight xml %}
 <dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
@@ -1070,7 +1072,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <h3>Security roles</h3>
-                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:
+                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1265,7 +1267,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                 The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
                 
                 <h3>Mandatory JNDI properties</h3>
-                <p>The JNDI properties are defined within the <code>Environment</code> element in the application context. For example:
+                <p>The JNDI properties are defined within the <code>Environment</code> element in the application context. For example:</p>
 
 {% highlight xml %}
 <Environment name="mfp.admin.push.url" value="http://localhost:8080/imfpush" type="java.lang.String" override="false"/>
@@ -1572,9 +1574,7 @@ To set the class loader delegation to parent last after an application is instal
                 <p>Create a data source for the administration service and map it to <b>jdbc/mfpAdminDS</b>.</p>
                 
                 <h3>Start order</h3>
-                <p>The administration service application must start before the runtime application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.
-
-
+                <p>The administration service application must start before the runtime application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.</p>
                 
                 <h3>Security roles</h3>
                 <p>The security roles available for the administration service application are:</p>
@@ -1829,12 +1829,12 @@ When you plan a server farm with the Server Configuration Tool, first create the
                                 <blockquote><b>Important:</b> IBM MobileFirst Foundation supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
                             </li>
                             <li>Set up as many stand-alone servers as the number of members that you want in the farm.
-                            <br/><br/>
-                            Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.
-                            <br/><br/>
-                            Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.
-                            <br/><br/>
-                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime</a>.</li>
+                                <ul>
+                                    <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
+                                    <li>Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.</li>
+                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime</a>.</li>
+                                </ul>
+                            </li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
                             <br/><br/>
                             This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
@@ -2010,16 +2010,14 @@ When you plan a server farm, first create stand-alone servers that communicate w
                         For more information about databases, see <a href="../databases">Setting up databases</a>.
                     </li>
                     <li>Set up as many stand-alone servers as the number of members that you want in the farm.
-                    <br/><br/>
-                    Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.
-                    <br/><br/>
-                    Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.
-                    <br/><br/>
-                    When each of these servers is working properly in a stand-alone topology, you can transform them into members of a server farm.
+                        <ul>
+                            <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
+                            <li>Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.</li>
+                            <li>When each of these servers is working properly in a stand-alone topology, you can transform them into members of a server farm.</li>
+                        </ul>
+                    </li>
                     <li>Stop all the servers that are intended to become members of the farm.</li>
-                    <li>Configure each server appropriately for the type of application server.
-                    <br/>
-                    You must set some JNDI properties correctly. In a server farm topology, the mfp.config.service.user and mfp.config.service.password JNDI properties must have the same value for all the members of the farm. For Apache Tomcat, you must also check that the JVM arguments are properly defined.
+                    <li>Configure each server appropriately for the type of application server.<br/>You must set some JNDI properties correctly. In a server farm topology, the mfp.config.service.user and mfp.config.service.password JNDI properties must have the same value for all the members of the farm. For Apache Tomcat, you must also check that the JVM arguments are properly defined.
                         <ul>
                             <li><b>WebSphere Application Server Liberty profile</b>
                                 <br/>
@@ -2039,9 +2037,9 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                     <li><b>mfp.admin.jmx.host</b>: Set this parameter to the IP or the host name that is used by remote members to access this server. Therefore, do not set it to <b>localhost</b>. This host name is used by the other members of the farm and must be accessible to all farm members.</li>
                                     <li><b>mfp.admin.jmx.port</b>: Set this parameter to the server HTTPS port that is used for the JMX REST connection. You can find the value in the <code>httpEndpoint</code> element of the <b>server.xml</b> file.</li>
                                 </ul>
-
                             </li>
-                            <li>Apache Tomcat
+                            <li><b>Apache Tomcat</b>
+                                <br/>
                                 Modify the <b>conf/server.xml</b> file to set the following JNDI properties in the administration service context and in every runtime context.
 {% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
@@ -2088,7 +2086,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                     <li>For more information about Keytool, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> in the IBM SDK, Java Technology Edition.</li>
                                     <li>For more information about iKeyman, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> in the IBM SDK, Java Technology Edition.</li>
                                 </ul>
-                                The locations of keystore and truststore are defined in the <b>server.xml</b> file. See the <b>keyStoreRef</b> and <b>trustStoreRef</b> attributes in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL configuration attributes</a>. By default, the keystore of Liberty profile is at <b>${server.config.dir}/resources/security/key.jks</b>. If the truststore reference is missing or not defined in the <b>server.xml</b> file, the keystore that is specified by keyStoreRef is used. The server uses the default keystore and the file is created the first time that the server runs. In that case, a default certificate is created with a validity period of 365 days. For production, you might consider using your own certificate (including the intermediate ones, if needed) or changing the expiration date of the generated certificate.
+                                The locations of keystore and truststore are defined in the <b>server.xml</b> file. See the <b>keyStoreRef</b> and <b>trustStoreRef</b> attributes in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL configuration attributes</a>. By default, the keystore of Liberty profile is at <b>${server.config.dir}/resources/security/key.jks</b>. If the truststore reference is missing or not defined in the <b>server.xml</b> file, the keystore that is specified by <b>keyStoreRef</b>. The server uses the default keystore and the file is created the first time that the server runs. In that case, a default certificate is created with a validity period of 365 days. For production, you might consider using your own certificate (including the intermediate ones, if needed) or changing the expiration date of the generated certificate.
                                 
                                 <blockquote>Note: If you want to confirm the location of the truststore, you can do so by adding the following declaration to the server.xml file:
 {% highlight xml %}
@@ -2122,8 +2120,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                     <li>Review the information that is retrieved from the remote server and then click <b>OK</b>.</li>
                                     <li>Click <b>Save</b>.</li>
                                     <li>Restart the server.</li>
-                                </ul>
-                                
+                                </ul>    
                             </li>
                         </ul>
                     </li>

@@ -117,14 +117,15 @@ To add, click **New** and provide the requested values.
         <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
             <div class="panel-body">
                 <ul>
-                    <li> <b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature in the schema of an application the following elements should be provided:
+                    <li><b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature in the schema of an application the following elements should be provided:
                         <ul>
                             <li><i>id</i> – A unique feature identifier. String, Non-editable.</li>
                             <li><i>name</i> - A descriptive name of the feature. String, Editable.</li>
                             <li><i>description</i> – A short description of the feature. String, Editable.</li>
                             <li><i>defaultValue</i> – The default value of the feature that will be served unless it was overridden inside the segment (see Segment below). Boolean, Editable.</li>
                         </ul>
-                    <li> <b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property in the schema of an application the following elements should be provided:
+                    </li>
+                    <li><b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property in the schema of an application the following elements should be provided:
                         <ul>
                             <li><i>id</i> – A unique property identifier. String, Non-editable.</li>
                             <li><i>name</i> - A descriptive name of a property. String, Editable.</li>
@@ -205,14 +206,14 @@ cordova plugin add cordova-plugin-mfp-liveupdate
 1. Edit your application's podfile by adding the `IBMMobileFirstPlatformFoundationLiveUpdate` pod.  
  For example:
 
-    ```xml
-    use_frameworks!
+   ```xml
+   use_frameworks!
 
-    target 'your-Xcode-project-target' do
-     pod 'IBMMobileFirstPlatformFoundation'
-     pod 'IBMMobileFirstPlatformFoundationLiveUpdate'
-    end
-    ```
+   target 'your-Xcode-project-target' do
+      pod 'IBMMobileFirstPlatformFoundation'
+      pod 'IBMMobileFirstPlatformFoundationLiveUpdate'
+   end
+   ```
 
 2. From a **command-line** window, nagivate to the Xcode project's root folder and run the commmand: `pod install`.
 
@@ -221,8 +222,8 @@ cordova plugin add cordova-plugin-mfp-liveupdate
 1. In Android Studio, select **Android → Gradle Scripts**, then select the **build.gradle (Module: app)** file.
 2. Add `ibmmobilefirstplatformfoundationliveupdate` inside `dependencies`:
 
-    ```xml
-    dependencies {
+   ```xml
+   dependencies {
         compile group: 'com.ibm.mobile.foundation',
         name: 'ibmmobilefirstplatformfoundation',
         version: '8.0.+',
@@ -234,8 +235,8 @@ cordova plugin add cordova-plugin-mfp-liveupdate
         version: '8.0.0',
         ext: 'aar',
         transitive: true
-    }   
-    ```
+   }   
+   ```
     
 ## Using the Live Update SDK
 There are several approaches to using the Live Update SDK.
@@ -450,7 +451,7 @@ public class ResolverAdapterData {
 
 **Request**
 
-| ***Attribute*** |  ***Value***                                                                                      |  
+| **Attribute** |  **Value**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
 | *URL*           | /segment                                                                                          |
 | *Method*        | POST                                                                                              |               
@@ -459,7 +460,7 @@ public class ResolverAdapterData {
 
 **Response**
 
-|  ***Attribute***   |  ***Value***                                |
+|  **Attribute**   |  **Value**                                |
 |:-------------------|:--------------------------------------------|
 | *Content-type*     | text/plain                                  |                                                                          
 | *Body*             |  &lt;string describing the segment ID&gt;   |
@@ -532,6 +533,7 @@ controlling client side cache by using an optional _useClientCache_ boolean flag
 ```
 
 #### iOS
+
 ```swift
 LiveUpdateManager.sharedInstance.obtainConfiguration("segment-name", useCache: false, completionHandler: { (configuration, error) in
   if error == nil {
@@ -565,6 +567,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
 
 <img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
+
 ## Sample application
 In the sample application you select a country flag and using Live Update the app then outputs text in language that corresponds to the selected country. If enabling the map feature and providing the map, a map of the corresponding country will be displayed.
 

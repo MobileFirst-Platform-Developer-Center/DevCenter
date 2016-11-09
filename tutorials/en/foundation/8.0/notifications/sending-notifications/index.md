@@ -14,7 +14,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging-firebase-cloud-messaging)
+    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)
@@ -357,15 +357,15 @@ For testing purposes, Postman is used as described below:
     - Update its properties as described in [Notification payload](#notification-payload) above.
     - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
 
-    ```json
-    {
+   ```json
+   {
         "message" : {
             "alert" : "Hello World!"
         }
-    }
-    ```
+   }
+   ```
     
-    ![authorization header](postman_json.png)
+   ![authorization header](postman_json.png)
     
 After clicking on the **Send** button, the device should have now received a notification:
 

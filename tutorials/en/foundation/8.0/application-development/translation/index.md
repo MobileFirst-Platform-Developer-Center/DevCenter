@@ -77,8 +77,8 @@ The below steps explain the implementation of this tutorial's sample application
 
 1. Set up the default application strings in the `index.js` file.
 
-    ```javascript
-    var Messages = {
+   ```javascript
+   var Messages = {
         headerText: "Default header",
         actionsLabel: "Default action label",
         sampleText: "Default sample text",
@@ -86,23 +86,23 @@ The below steps explain the implementation of this tutorial's sample application
         frenchLanguage: "French",
         russianLanguage: "Russian",
         hebrewLanguage: "Hebrew"
-    };
-    ```
+   };
+   ```
 
 2. Override specific strings when required.
 
-    ```javascript
-    function setFrench(){
+   ```javascript
+   function setFrench(){
         Messages.headerText = "Traduction";
         Messages.actionsLabel = "Sélectionnez une langue:";
         Messages.sampleText = "Ceci est un exemple de texte en français.";
-    }
-    ```
+   }
+   ```
 
 3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
 
-    ```javascript
-    function languageChanged(lang) {
+   ```javascript
+   function languageChanged(lang) {
         if (typeof(lang)!="string") 
             lang = $("#languages").val();
         
@@ -129,8 +129,8 @@ The below steps explain the implementation of this tutorial's sample application
         $("#sampleText").html(Messages.sampleText);
         $("#headerText").html(Messages.headerText);
         $("#actionsLabel").html(Messages.actionsLabel);
-    }
-    ```
+   }
+   ```
 
 ## Detecting the device locale and language
 To detect the language used by the device or browser:

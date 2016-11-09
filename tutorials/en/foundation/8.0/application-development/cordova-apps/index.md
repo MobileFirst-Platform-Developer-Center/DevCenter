@@ -20,7 +20,7 @@ IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-i
 * [MobileFirst SDK Startup Flow](#mobilefirst-sdk-startup-flow)
 * [Cordova Application Security](#cordova-application-security)
 * [Cordova Application Resources](#cordova-application-resources)
-* [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
+* [Previewing an application's web resources](#previewing-an-applications-web-resources)
 * [Implementing JavaScript Code](#implementing-javascript-code)
 * [CrossWalk support for Android](#crosswalk-support-for-android)
 * [WKWebView support for iOS](#wkwebview-support-for-ios)
@@ -109,9 +109,9 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
 }
 {% endhighlight %}
 
-                <p>The <code>MFPApplication</code> class has two functions:</ul>
+                <p>The <code>MFPApplication</code> class has two functions:</p>
                 <ul>
-                    <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</code>
+                    <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</li>
                     <li>Creates two listeners for enabling analytics. These listeners can be removed if not needed.</li>
                 </ul>
                 
@@ -369,18 +369,18 @@ To add it:
 
 1. From a **Command-line** line, run the command:
 
-    ```bash
-    cordova plugin add cordova-plugin-crosswalk-webview
-    ```
+   ```bash
+   cordova plugin add cordova-plugin-crosswalk-webview
+   ```
 
-    This command will add the CrossWalk WebView to the application.  
+   This command will add the CrossWalk WebView to the application.  
     Behind the scenes, the MobileFirst Cordova SDK will adjust the Android project activity for using it.
 
 2. Build the project by running the command:
 
-    ```bash
-    cordova build
-    ```
+   ```bash
+   cordova build
+   ```
 
 ## WKWebView support for iOS
 The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  

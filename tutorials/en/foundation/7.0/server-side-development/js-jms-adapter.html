@@ -33,14 +33,14 @@ Public procedures are declared in the XML file while implemented in the JavaScri
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 Procedure names in the JavaScript file must be the same as in the adapter XML file.</p>
 <h4>XML file</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 ...
 <procedure name="writeMessage"/>
 <procedure name="readMessage"/>
 <procedure name="readAllMessages"/>
 {% endhighlight %} </p>
 <h4>JS file</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 ...
 function writeMessage(messagebody) {
    ...
@@ -48,7 +48,7 @@ function writeMessage(messagebody) {
 }
 {% endhighlight %} </p>
 <p>The <code>destination</code> parameter is the target for messages that are produced by the client, and the source for the messages that are used by the client.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function writeMessage(messagebody) {
     var inputData = {
         destination: "dynamicQueues/MobileFirst",
@@ -80,7 +80,7 @@ function writeMessage(messagebody) {
 </ul>
 </li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <wl:adapter name="JMSAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:jms="http://www.ibm.com/mfp/integration/jms">
     <displayName>JMSAdapter</displayName>
     <description>JMSAdapter</description>
@@ -117,7 +117,7 @@ If you use <strong>Apache ActiveMQ</strong>, copy the <code>activemq-all-activem
 <h3>readMessage</h3>
 <p>This method gets the next message from the destination.<br />
 It waits for timeout in milliseconds and returns a JMS message that contains the <code>body</code> and all available properties.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function readMessage() {
     var result = WL.Server.readSingleJMSMessage({
       destination: "dynamicQueues/MobileFirst",
@@ -137,7 +137,7 @@ It returns a list of JMS messages in the same format as the <code>readSingleJMSM
 <h3>writeMessage</h3>
 <p>This method writes a JMSText message to the destination. It features user properties that can be set.<br />
 It returns the <code>JMSMessageID</code> of the sent message.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function writeMessage(messagebody) {
     var inputData = {
         destination: "dynamicQueues/MobileFirst",

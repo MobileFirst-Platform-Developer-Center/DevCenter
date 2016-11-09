@@ -22,7 +22,7 @@ downloads:
 <ol>
 <li> Implement the <code>WL.NativePage.show()</code> method to open the native page:
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 function openNativePage() {
     var params = {
         nameParam : $('#nameInput').val()
@@ -38,7 +38,7 @@ function openNativePage() {
 </li>
 <li>To handle the callback function:
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 function backFromNativePage(data) {
     alert("Received phone number is: " + data.phoneNumber);
 }
@@ -50,12 +50,12 @@ function backFromNativePage(data) {
 <p>In Android, the native page must be implemented as an Android Activity, or extend an existing Activity.</p>
 <ol>
 <li>Declare the native page in the <code>AndroidManifest.xml</code> file, as you would any Activity. For example:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <activity android:name=".HelloNative"></activity>
 {% endhighlight %} 
 </li>
 <li>To retrieve custom data parameters that are passed from the web view, use an <code>Intent</code> object:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     String name = getIntent().getStringExtra("nameParam");
@@ -67,7 +67,7 @@ protected void onCreate(Bundle savedInstanceState) {
 <p>When the native page switches back to the web view, the <code>finish()</code> function is called for the Activity.<br />
 You can pass data back to the web view by using an <code>Intent</code> object. For example:</p>
 <p>Java:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 String phoneNumber = editText.getText().toString();
 Intent phoneNumberInfo = new Intent();
 phoneNumberInfo.putExtra("phoneNumber", phoneNumber);
@@ -76,7 +76,7 @@ finish();
 {% endhighlight %} </p>
 
 <p>JavaScript:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function backFromNativePage(data) {
     alert("Received phone number is: " + data.phoneNumber);
 }

@@ -11,14 +11,14 @@ As an application developer, you are responsible for maintaining the offline or 
 <p>Connecting to the MobileFirst Server ensures that APIs that return authentication-related data such as <code>getUserName()</code> or <code>isAuthenticated()</code> retrieve the necessary information from the server.</p>
 <h2>API signatures</h2>
 <h3>JavaScript</h3>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 WL.Client.connect({
     onSuccess: successCallback,
     onFailure: failureCallback}
 );
 {% endhighlight %}</p>
 <h3>Objective-C</h3>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];
 {% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
@@ -28,7 +28,7 @@ WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)
 {% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <h3>Java</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 WLClient.createInstance(this).connect(myConnectListener);
 {% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>

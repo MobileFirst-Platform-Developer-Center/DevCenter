@@ -32,7 +32,7 @@ weight: 2
 <p>The <code>wl.analytics.url</code> property must be set to send data to the Analytics server and the <code>wl.analytics.console.url</code> must be set to access the Analytics dashboard.</p>
 <ol>
 <li>You can set these two properties in the <code>server.xml</code> file:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <jndiEntry jndiName="AppName/wl.analytics.url" value="http://localhost:10080/analytics-service/data"/>
 <jndiEntry jndiName="AppName/wl.analytics.console.url" value="http://localhost:10080/analytics/console"/>
 {% endhighlight %} </p>
@@ -73,14 +73,14 @@ weight: 2
 <li>The following API call results in a session hit that is visualized on MobileFirst Operational Analytics:
     </li>
 <p>    
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // a 'session hit' will be recorded upon a successful connection
 WL.Client.connect();
 {% endhighlight %} </p>
 <li>The following API call results in an adapter hit that is visualized on the MobileFirst Operational Analytics dashboard:</li>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // an 'adapter hit' will be recorded upon a successful adapter invocation
 WL.Client.invokeProcedure({...});
 {% endhighlight %} </p>
@@ -97,7 +97,7 @@ WL.Client.invokeProcedure({...});
 <p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
 <p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Set the log level to trace so that all logs are captured
 WL.Logger.config({"level": "TRACE"});
 
@@ -113,7 +113,7 @@ WL.Logger.fatal("Create a client log at the FATAL level.");
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Create an analytics log message
 WL.Analytics.log("Analytics log message");
 
@@ -126,7 +126,7 @@ WL.Analytics.log({_activity: "customActivity"}, "Analytics log message");
 
 <h2 id="sendingData">Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 <p>// Logs sent upon successful connection
 WL.Client.connect();
 
@@ -136,13 +136,13 @@ WL.Client.invokeProcedure({...});
 
 <p>You can disable this automatic behavior by using the following call:</p>
 
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 // Disable automatic sending of client and analytics logs
 WL.Logger.config({autoSendLogs: false});
 {% endhighlight %} </p>
 
 <p>If you want to send this data more frequently, you can use the following API calls:</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 // Send client debug logs
 WL.Logger.send();
 
@@ -164,7 +164,7 @@ WL.Analytics.send();
 <h2 id="creatingCustomChart">Creating a custom chart</h2>
 <p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on your user location.</p>
 <p>The messages that are logged to the Operational Analytics server in this example are hard-coded locations. Those messages look like this:</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 WL.Analytics.log({location: "USA"}, "visit");
 WL.Analytics.log({location: "Mexico"}, "visit");
 WL.Analytics.log({location: "Canada"}, "visit");

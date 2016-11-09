@@ -77,7 +77,7 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
 <p>You can modify them by using the Authentication Configuration Editor.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/>
 <p>Each realm has a name, a <strong>loginModule</strong> specification, a <strong>className</strong> of an authenticator implementation and optional parameters.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <realms>
   <realm name="SampleAppRealm" loginModule="StrongDummy">
     <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
@@ -88,7 +88,7 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
 </realms>
 {% endhighlight %}</p>
 <p>Each login module has a name, a <strong>className</strong> of the implementation and optional parameters.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <loginModules>
   <loginModule name="StrongDummy">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
@@ -118,7 +118,7 @@ Three types of security tests can be defined in the <strong>authenticationConfig
 By default, the <strong>webSecurityTest</strong> includes a protection against XSRF attacks. For more information about this protection, see the user documentation.<br />
 Each <strong>webSecurityTest</strong> must contain one <strong>testUser</strong> element with a realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <webSecurityTest name="SampleWebSecurityTest">
   <testUser realm="SampleRealm" />
 </webSecurityTest>
@@ -133,7 +133,7 @@ By default, the <strong>mobileSecurityTest</strong> includes:</p>
 </ul>
 <p>Each <strong>mobileSecurityTest</strong> must contain one <strong>testUser</strong> element with realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <mobileSecurityTest name="SampleMobileSecurityTest">
   <testUser realm="SampleRealm" />
 </mobileSecurityTest>
@@ -144,7 +144,7 @@ Unlike the mobile and web security tests, the <strong>customSecurityTest</strong
 Any number of tests can be defined within the <strong>customSecurityTest</strong>.<br />
 You can define which realm to be used as a user realm by adding the <strong>isInternalUserId=“true”</strong> property.<br />
 You can define the order of realms that the user must authenticate in.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <customSecurityTest name="SampleCustomSecurityTest">
   <test realm="SampleRealm1" step="1"/>
   <test realm="SampleRealm2" step="2"/>
@@ -154,7 +154,7 @@ You can define the order of realms that the user must authenticate in.</p>
 <h2>Protecting Applications</h2>
 <p>Protecting an application means that authentication is required immediately when the application tries to connect to the MobileFirst Server instance.</p>
 <p>A separate <strong>securityTest</strong> can be defined for each application environment in the <strong>application-descriptor.xml</strong> file.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <android version="1.0" securityTest="SampleMobileSecurityTest">
   ...
 </android>
@@ -163,7 +163,7 @@ You can define the order of realms that the user must authenticate in.</p>
 <h2>Protecting Adapters</h2>
 <p>Protecting an adapter procedure means that authentication is required when this adapter procedure is called by a client application.<br />
 A separate <strong>securityTest</strong> can be defined for each adapter procedure in the adapter XML file.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <wl:adapter name="DummyAdapter"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:wl="http://www.worklight.com/integration"
@@ -185,7 +185,7 @@ A separate <strong>securityTest</strong> can be defined for each adapter procedu
 <p>A static resource is a URL that is loaded from the MobileFirst Server instance, for example: the Console or Mobile Web application.</p>
 <p>Protecting a static resource means that MobileFirst Server requires authentication at any attempt to browse to the specified URL.<br />
 The static resources and their protection can be defined in the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <staticResources>
   <resource id="mobileFirstConsole" securityTest="SubscribeServlet">
     <urlPatterns>/console*</urlPatterns>

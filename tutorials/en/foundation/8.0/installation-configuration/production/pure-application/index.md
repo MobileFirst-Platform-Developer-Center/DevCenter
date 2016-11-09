@@ -936,7 +936,7 @@ You use a predefined template to deploy MobileFirst Application Center on a sing
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements: **If you use token licensing to license IBM MobileFirst Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**Token licensing requirements:** If you use token licensing to license IBM MobileFirst Foundation, review the requirements that are outlined in [Token licensing requirements for IBM MobileFirst Foundation System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
 
 Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for MobileFirst Server](#script-packages-for-mobilefirst-server).
 
@@ -1388,7 +1388,7 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
         
         > **Important:** For LDAP SSL connection configuration in MobileFirst Analytics, make sure that in step 4b in [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), the dragged-in MobileFirst LDAP Cert component in the MobileFirst Foundation Analytics node must be moved to between the Liberty profile server (or Stanalone server) and the MFP Analytics script package.
         
-    #### WAS_ROOT
+   #### WAS_ROOT
     * If MobileFirst Analytics is being installed on WebSphere Application Server Liberty profile, specify the installation directory of the Liberty profile for Analytics:
         * Click the **Add reference** button next to the **WAS_ROOT** field and in the pop-up window, click the **component-level parameter** tab.
         * In the **Component** field, select **Liberty profile server** (it might be called **Liberty profile server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server Liberty profile).
@@ -1398,21 +1398,22 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
         * In the **Component** field, select **Standalone server** (it might be called **Standalone server\_1** if the MobileFirst Server is also deployed on WebSphere Application Server full profile)
         * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
         
-    #### HEAP\_MIN\_SIZE
+   #### HEAP\_MIN\_SIZE
+   
     Applicable to WebSphere Application Server full profile only.
 
     The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger minimum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MIN\_SIZE**. Consider setting a value equal to **HEAP\_MAX\_SIZE**.
     
     Default value: 4096 MB.
 
-    #### HEAP\_MAX\_SIZE
+   #### HEAP\_MAX\_SIZE
     Applicable to WebSphere Application Server full profile only.
 
     The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger maximum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the MobileFirst Platform Analytics node is larger than **HEAP\_MAX\_SIZE**. Consider setting a value equal to **HEAP\_MIN\_SIZE**.
 
     Default value: 4096 MB.
     
-    #### WAS\_admin\_user
+   #### WAS\_admin\_user
     * Applicable to WebSphere Application Server full profile only.  
     WebSphere Application Server full profile admin user ID for the Analytics server.
         * Click the **Add reference** button next to the **WAS\_admin\_user** field and in the pop-up window, click the **component-level** parameter tab.
@@ -1421,7 +1422,7 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     
     For Liberty profile, the default value can be used.
     
-    #### WAS\_admin\_password
+   #### WAS\_admin\_password
     Applicable to WebSphere Application Server full profile only.
 
     WebSphere Application Server full profile admin user ID for the Analytics server.
@@ -1431,11 +1432,11 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     
     For Liberty profile, the default value can be used.
 
-    #### admin_user
+   #### admin_user
     * If an LDAP repository is not enabled, create a default administration user for MobileFirst Analytics console protection.
     * If an LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.
 
-    #### admin_password
+   #### admin_password
     * If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.
     * If an LDAP repository is enabled, specify the administration user password. The value is stored in the LDAP repository.
     
@@ -1534,7 +1535,7 @@ The "MobileFirst Platform (WAS single node)" template is composed of the followi
 
 | Node | Components | 
 |------|------------|
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction:<br/>Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration. MobileFirst Operations Console.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction:<br/>Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration. MobileFirst Operations Console.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### MobileFirst Platform (WAS server farm) template
@@ -1545,7 +1546,7 @@ The diagram below shows the composition of the "MobileFirst Platform (WAS server
 | Node | Components | 
 |------|------------|
 | IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MobileFirst App**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MobileFirst Adapter**MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### MobileFirst Platform (WAS ND) template
@@ -1558,9 +1559,9 @@ The "MobileFirst Platform (WAS ND)" template is composed of the following nodes 
 | Node | Components | 
 |------|------------|
 | IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| DmgrNode | **Deployment manager**<br/>WebSphere Application Server deployment manager installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Runtime**<br/>Runtime WAR file.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Application**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MFP Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
+| DmgrNode | **Deployment manager**<br/>WebSphere Application Server deployment manager installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>MobileFirst Server Administration web application including MobileFirst Operations Console.<br/><br/>**MFP Runtime**<br/>Runtime WAR file.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Application**<br/>MobileFirst application to be added to the deployment.<br/><br/>**MFP Adapter**<br/>MobileFirst adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to the MobileFirst Server. | 
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>MobileFirst runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
+| CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
 
 ### MobileFirst Platform Application Center (Liberty single node) template
 The diagram below shows the composition of the "MobileFirst Platform Application Center (Liberty single node)" template.
@@ -1584,7 +1585,7 @@ The "MobileFirst Platform Application Center (WAS single node)" template is comp
 | Node | Components | 
 |------|------------|
 | MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP WAS SDK Level**<br/>Purpose of this script is to set the required SDK level as the default SDK for the WAS Profile<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the MobileFirst Application Center server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP WAS SDK Level**<br/>Purpose of this script is to set the required SDK level as the default SDK for the WAS Profile<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for MobileFirst Server installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the MobileFirst Application Center server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
 
 
 ## Script packages for MobileFirst Server
@@ -1619,13 +1620,13 @@ This script package sets up the MobileFirst Analytics server in a WebSphere  App
 
 | Parameter | Description | 
 |-----------|-------------|
-| WAS_ROOT  | Mandatory.<ul><li>If Analytics is installed on WebSphere Application Server Liberty profile, specify the installation directory of the WebSphere Application Server Liberty profile for Analytics.</li><li>If Analytics is installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics.</li></ul> | 
+| WAS_ROOT  | Mandatory.{::nomarkdown}<ul><li>If Analytics is installed on WebSphere Application Server Liberty profile, specify the installation directory of the WebSphere Application Server Liberty profile for Analytics.</li><li>If Analytics is installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics.</li></ul>{:/} | 
 | HEAP\_MIN\_SIZE | WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger minimum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of MobileFirst Analytics is larger than this. It is recommended to set the same value as HEAP_MAX_SIZE.<br/><br/>Default value: 4096 (MB). | 
 | HEAP\_MAX\_SIZE	| WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger maximum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of MobileFirst Analytics is larger than this. It is recommended to set the same value asHEAP_MIN_SIZE.<br/><br/>Default value: 4096 (MB). | 
 | WAS\_admin\_user | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
 | WAS\_admin\_password | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user password for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
-| admin_user | Mandatory.<ul><li>If LDAP repository not enabled, create a default administration user for MobileFirst Analytics console protection.</li><li>If LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.</li></ul> |
-| admin_password | Mandatory.<ul><li>If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.</li><li>If an LDAP repository is enabled, specify the admin user password. The value is stored in the LDAP repository.</li></ul> | 
+| admin_user | Mandatory.{::nomarkdown}<ul><li>If LDAP repository not enabled, create a default administration user for MobileFirst Analytics console protection.</li><li>If LDAP repository is enabled, specify the user name that has MobileFirst Analytics administration privilege. The value is stored in the LDAP repository.</li></ul> |
+| admin_password | Mandatory.<ul><li>If an LDAP repository is not enabled, specify the password for the default administration user for MobileFirst Analytics console protection.</li><li>If an LDAP repository is enabled, specify the admin user password. The value is stored in the LDAP repository.</li></ul>{:/} | 
 | LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM  Tivoli  Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
 | LDAP_IP | (LDAP parameter). LDAP server IP address. | 
 | LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
@@ -1633,7 +1634,7 @@ This script package sets up the MobileFirst Analytics server in a WebSphere  App
 | BASE_DN | (LDAP parameter) Base DN. | 
 | BIND_DN | (LDAP parameter) Bind DN. | 
 | BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
 | USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
 | GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
@@ -1699,7 +1700,7 @@ The script package must be used with the WebSphere Application Server Liberty pr
 | db_password |	Mandatory. password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template.| 
 | db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
 | db_port |  Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
-| admin_user | User name that has MobileFirst Server administration privilege.<ul><li>When LDAP_TYPE is None, create the default admin user.</li><li>When LDAP_TYPE is set to TivoliDirectoryServer or ActiveDirectory and other LDAP parameters are specified according to your LDAP server configuration, the admin_user value should be taken from the configured LDAP user repository. Not required when the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
+| admin_user | User name that has MobileFirst Server administration privilege.{::nomarkdown}<ul><li>When LDAP_TYPE is None, create the default admin user.</li><li>When LDAP_TYPE is set to TivoliDirectoryServer or ActiveDirectory and other LDAP parameters are specified according to your LDAP server configuration, the admin_user value should be taken from the configured LDAP user repository. Not required when the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
 | admin_password | Password of the admin user.<ul><li>When LDAP_TYPE is None, create the default admin user password.</li><li>When an external LDAP server is configured, the user password is taken from the LDAP repository. Not required when the MobileFirst Server is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
 | install_console | Whether the MobileFirst Operations Console is to be deployed in the MobileFirst Platform Server node. Default value: Selected. (Check box) |
 | WAS\_admin\_user | Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
@@ -1707,14 +1708,14 @@ The script package must be used with the WebSphere Application Server Liberty pr
 | server_hostname | Mandatory. Host name of the MobileFirst Server or Deployment manager. Mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. | 
 | server\_farm\_mode | Mandatory. Whether the MobileFirst Server is to be deployed in server farm mode. Must be selected for a server farm topology and must be cleared for a standalone topology. Default value: set according to the topology defined in the pattern template. | 
 | webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, this parameter is mapped to the IP output attribute of IBM HTTP servers. | 
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry. One of the following values:<ul>None – LDAP connection is disabled. When this value is selected, all the other LDAP parameters are treated as placeholders only.</li><li>TivoliDirectoryServer: Select this value if the LDAP repository is IBM Tivoli Directory Server</li><li>ActiveDirectory: Select this value if the LDAP repository is Microsoft Active Directory</li></ul>Default value: None. | 
+| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry. One of the following values:<ul>None – LDAP connection is disabled. When this value is selected, all the other LDAP parameters are treated as placeholders only.</li><li>TivoliDirectoryServer: Select this value if the LDAP repository is IBM Tivoli Directory Server</li><li>ActiveDirectory: Select this value if the LDAP repository is Microsoft Active Directory</li></ul>{:/}Default value: None. | 
 | LDAP_IP | (LDAP parameter) LDAP server IP address. | 
 | LDAP_SSL_PORT | (LDAP parameter) LDAP port for secure connection. | 
 | LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
 | BASE_DN | (LDAP parameter) Base DN. | 
 | BIND_DN | (LDAP parameter) Bind DN. | 
 | BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set to true for secure connection to LDAP server.<ul><li>When true, the LDAP\_SSL\_PORT is used and CERT\_FILE\_PATH is required to locate the certification file of the LDAP server.</li><li>When false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| REQUIRE_SSL | (LDAP parameter) Set to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When true, the LDAP\_SSL\_PORT is used and CERT\_FILE\_PATH is required to locate the certification file of the LDAP server.</li><li>When false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
 | USER_FILTER | (LDAP parameter) User filter that searches the existing user registry for users. | 
 | GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
@@ -1761,12 +1762,12 @@ This script package sets up the MobileFirst Application Center server in a WebSp
 | BASE_DN | (LDAP parameter) Base DN. | 
 | BIND_DN | (LDAP parameter) Bind DN. | 
 | BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
+| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
 | USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
 | GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
 | CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| appcenteradmin | Admin role for MobileFirst Application Center. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>Default value: None | 
+| appcenteradmin | Admin role for MobileFirst Application Center. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>{:/}Default value: None | 
 
 ### MFP Server Prerequisite
 This script package includes all prerequisites that are required to install the MobileFirst Server, including the DB2 JDBC driver and Apache Ant. The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the server software component but prior to any other MFP* script packages in the MobileFirst Platform Server node.
@@ -1776,6 +1777,32 @@ This script package includes all prerequisites that are required to install the 
 | None | No parameters for this script package. | 
 
 ### MFP Server Runtime Deployment
+This script package installs the MobileFirst runtime in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server with the MobileFirst Operations Console installed. The script package also sets up the connection to the MobileFirst Analytics server. It must be installed after the MFP Server Administration script package.
+
+| Parameter | Description |
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute install_directory of Liberty profile server or Standalone server. | 
+| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr\_profile\_name of Deployment manager or sa\_profile\_name of Standalone server. |
+| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the MobileFirst Platform (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy MFP runtime. Default value: 2. | 
+| db_ip | IP address of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. |
+| db_port | Port number of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to theinstancePort output attribute of the Database Server software component in the pattern template. |
+| admin_user | Mandatory. User name that has MobileFirst Server administration privilege. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| admin_password | Mandatory. admin user password. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| runtime_path | Mandatory. Runtime WAR file installed path. For example: it can be mapped to the target_path output attribute of MFP Server Runtime in the pattern template. | 
+| runtime_contextRoot | Mandatory. Runtime context root. Must start with a forward slash, /; for example, "/HelloWorld". It is set as a pattern level parameter in the pattern template. | 
+| rtdb_name | Mandatory. Name of the Runtime database. It is mapped to thedb_name output attribute of the MFP Runtime DB script package in the pattern template. | 
+| rtdb_user | Mandatory. User that created the Runtime database. It is mapped to the db_user output attribute of the MFP Runtime DB script package in the pattern template. |
+| rtdb_password | Mandatory. Password of the user that created the Runtime database. It is mapped to the db_password output attribute of the MFP Runtime DB script package in the pattern template. |
+| rptdb_name | Optional. Name of the Reports database. It is mapped to thedb_name output attribute of the MFP Reports DB script package in the pattern template. Leave blank if you do not want to connect to a Reports database. |
+| rptdb_user | Optional. User that created the Reports database. It is mapped to thedb_user output attribute of the MFP Reports DB script package in the pattern template. | 
+| rptdb_password | Optional. Password of the user that created the Reports database. It is mapped to the db_password output attribute of MFP Reports DB script package in the pattern template. \ 
+| was\_admin\_user	| Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. |
+| was_admin_password | Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to thewas_admin_password output attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin_password output attribute of Deployment manager in the pattern template. | 
+| server_farm_mode | Mandatory. Map it to the same attribute of MFP Server Administration. | 
+| server_hostname | Mandatory. Host name of the MobileFirst Server. It is mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. |
+| analytics_ip | Optional. MobileFirst Analytics Node IP address to enable the Analytics capability in the MFP Server Runtime. |
+| analytics_admin_user | Optional. Administrator name of the MobileFirst Analytics server. | 
+| analytics_admin_password | Optional. Password of administrator of the MobileFirst Analytics server. | 
 
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.

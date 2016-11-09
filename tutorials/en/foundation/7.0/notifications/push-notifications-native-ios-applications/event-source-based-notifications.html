@@ -41,7 +41,7 @@ Implementation of the push notification API consists of the following main steps
 
 <h3>Creating an event source</h3>
 This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-{% highlight js linenos %} 
+{% highlight js  %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -60,7 +60,7 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js linenos %} 
+{% highlight js  %} 
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
@@ -92,7 +92,7 @@ The device subscription is deleted either by an application that calls <code>[[W
 <br />
 </li><li>Create an instance of <code>onReadyToSubscribeListener</code> and set values for alias, adaptername and eventsource.
 
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];
   readyToSubscribeListener.alias = self.alias;
   readyToSubscribeListener.adapterName = self.adapterName;
@@ -101,12 +101,12 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 
 </li><li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
 
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
 {% endhighlight %} 
 
 </li><li>Pass the token to <code>WLPush</code>.
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %} 
 </li></ol>
@@ -114,18 +114,18 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 
 The user must initialize the <code>WLPush sharedInstance</code> in the application's <code>ViewController</code> load method.
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
 [[WLPush sharedInstance]init];
 {% endhighlight %} 
 The user must add this method to the app delegate to get the token.
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 }
 {% endhighlight %} 
 
 The token that is received by this method must be passed to the WLPush method.
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %} 
 
@@ -135,7 +135,7 @@ IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSub
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.
 
 This function is called when authentication finishes.
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 #import "ReadyToSubscribeListener.h"
 #import "MyEventSourceListener.h"
 
@@ -157,7 +157,7 @@ This function is called when authentication finishes.
 <strong>Prerequisite:</strong> To subscribe, a user must authenticate.
 
 To set up subscription to the event source, use the following API:
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 - (IBAction)subscribe:(id)sender {
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];
@@ -179,7 +179,7 @@ Delegates receive a response object if one is required.
 <h3>Unsubscribing  from an event source</h3>
 
 To set up unsubscription from an event source, use the following API:
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 - (IBAction)unsubscribe:(id)sender {
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];
@@ -203,7 +203,7 @@ Delegates receive a response object if one is required.
 <br clear="all"/>
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.
 
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }

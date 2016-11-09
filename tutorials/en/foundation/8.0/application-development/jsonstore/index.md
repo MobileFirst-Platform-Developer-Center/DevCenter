@@ -199,15 +199,15 @@ If you do not need encryption, the JSONStore is fully functional (minus encrypti
 1. Run the SQLCipher for Windows Runtime 8.1/10 extension that comes with the SQLCipher for Windows Runtime Commercial Edition.
 2. After the extension finishes installing, locate the SQLCipher version of the **sqlite3.dll** file that was just created. There is one for x86, one for x64, and one for ARM.
 
-    ```bash
-    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
-    ```
+   ```bash
+   C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
+   ```
     
 3. Copy and replace this file to your MobileFirst application.
 
-    ```bash
-    <Worklight project name>\apps\<application name>\windows8\native\buildtarget\<platform>
-    ```
+   ```bash
+   <Worklight project name>\apps\<application name>\windows8\native\buildtarget\<platform>
+   ```
 
 ## Performance
 The following are factors that can affect JSONStore performance.

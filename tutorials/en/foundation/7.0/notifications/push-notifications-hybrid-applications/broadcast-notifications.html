@@ -23,7 +23,7 @@ This ability can be disabled by by unsubscribing from the reserved <code>Push.AL
     <li><strong>payload</strong>&nbsp;- A JSON block that contains other data that is sent from the MobileFirst Server. It also contains the tag name for tag and broadcast notification. The tag name appears in the "tag" element. For broadcast notification, default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Client.Push.onMessage = function (props, payload) {
     alert("Provider notification data: " + Object.toJSON(props));
     alert("Application notification data: " + Object.toJSON(payload));

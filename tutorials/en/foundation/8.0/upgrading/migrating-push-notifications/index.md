@@ -20,11 +20,11 @@ The table below provides you with a comparison between the two models.
 
 | User requirement | Event source model | Push service model | 
 |------------------|--------------------|--------------------|
-| To enable your application with push notifications | <ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul> | Configure or setup your application with push credentials. | 
-| To enable your mobile client application with push notifications | <ul><li>Create WLClient</li><li>Connect to the MobileFirst Server</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul> | <ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul> |
+| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
+| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the MobileFirst Server</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
 | To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
 | To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
-| To send push notifications to mobile client applications | <ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul> | <ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the MobileFirst Server and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul> |
+| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the MobileFirst Server and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
 | To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
 | To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
 
@@ -51,57 +51,57 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 
 1. Initialize the MobileFirst push client instance in your application and in the success callback register the callback method that should receive the notification.
 
-    ```javascript
-    MFPPush.initialize(function(successResponse){
-    MFPPush.registerNotificationsCallback(notificationReceived); }, 
-    function(failureResponse){alert("Failed to initialize");    
+   ```javascript
+   MFPPush.initialize(function(successResponse){
+   MFPPush.registerNotificationsCallback(notificationReceived); }, 
+   function(failureResponse){alert("Failed to initialize");    
                               }  
-    );
-    ```
+   );
+   ```
     
 2. Implement the notification callback method.
 
-    ```javascript
-    var notificationReceived = function(message) {
+   ```javascript
+   var notificationReceived = function(message) {
         alert(JSON.stringify(message)); 
-    };
-    ```
+   };
+   ```
     
 3. Register the mobile device with the push notification service.
 
-    ```javascript
-    MFPPush.registerDevice(function(successResponse) {
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
 		alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
 	    }
-	);
-    ```
+   );
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service.
  
-    ```javascript
-    MFPPush.unregisterDevice(function(successResponse) {
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
 		alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
-	);
-    ```
+   );
+   ```
     
 5. Remove WL.Client.Push.isPushSupported() (if used) and use.
 
-    ```javascript
-    MFPPush.isPushSupported (function(successResponse) {
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
 		alert(successResponse);
 	   },
 	   function(failureResponse) {
 	       alert("Failed to get the push suport status");
 	   }
-	);
-    ```
+   );
+   ```
     
 6. Remove the following `WL.Client.Push` APIs, since there will be no event source to subscribe to and register notification callbacks.
     * `registerEventSourceCallback()`
@@ -134,58 +134,58 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
 
-    ```javascript
-    MFPPush.initialize(function(successResponse){
+   ```javascript
+   MFPPush.initialize(function(successResponse){
 		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
-	);
-    ```
+   );
+   ```
     
 2. Implement the notification callback method.
 
-    ```javascript
-    var notificationReceived = function(message) {
+   ```javascript
+   var notificationReceived = function(message) {
 		alert(JSON.stringify(message));
-	};
-    ```
+   };
+   ```
 
 3. Register the mobile device with the push notification service.
 
-    ```javascript
-    MFPPush.registerDevice(function(successResponse) {
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
 		alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
 	    }
-	);
-    ```
+   );
+   ```
     
 4. (Optional) Unregister the mobile device from the push notification service.
 
-    ```javascript
-    MFPPush.unregisterDevice(function(successResponse) {
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
 		alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
-	);
-    ```
+   );
+   ```
     
 5. Remove `WL.Client.Push.isPushSupported()` (if used) and use.
 
-    ```javascript
-    MFPPush.isPushSupported (function(successResponse) {
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
 		alert(successResponse);
 	    },
 	  function(failureResponse) {
 		alert("Failed to get the push suport status");
 	    }
-	);
-    ```
+   );
+   ```
     
 6. Remove the following `WL.Client.Push` APIs since there will be no event source to subscribe to and register notification callbacks.
     * `registerEventSourceCallback()`
@@ -196,28 +196,28 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 7. Subscribe to tags.
 
-    ```javascript
-    var tags = ['sample-tag1','sample-tag2'];
-    MFPPush.subscribe(tags, function(successResponse) {
+   ```javascript
+   var tags = ['sample-tag1','sample-tag2'];
+   MFPPush.subscribe(tags, function(successResponse) {
     	alert("Successfully subscribed");
         },
       function(failureResponse) {
     	alert("Failed to subscribe");
         }
-    );
-    ```
+   );
+   ```
 
 8. (Optional) Unsubscribe from tags.
 
-    ```javascript
-    MFPPush.unsubscribe(tags, function(successResponse) {
+   ```javascript
+   MFPPush.unsubscribe(tags, function(successResponse) {
 		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
 	    }
-	);
-    ```
+   );
+   ```
     
 ##### Server
 Remove the following `WL.Server` APIs (if used) in your adapter:
@@ -242,58 +242,58 @@ Complete the following steps for every application that was using the same event
 ##### Client
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
 
-    ```javascript
-    MFPPush.initialize(function(successResponse){
+   ```javascript
+   MFPPush.initialize(function(successResponse){
         MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
         function(failureResponse){
             alert("Failed to initialize");
         }
-    );
-    ```
+   );
+   ```
     
 2. Implement the notification callback method.
 
-    ```javascript
-    var notificationReceived = function(message) {
+   ```javascript
+   var notificationReceived = function(message) {
         alert(JSON.stringify(message));
-    };
-    ```
+   };
+   ```
     
 3. Register the mobile device with the push notification service.
 
-    ```javascript
-    MFPPush.registerDevice(function(successResponse) {
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
         alert("Successfully registered");
         },
       function(failureResponse) {
         alert("Failed to register");
         }
-    );
-    ```
+   );
+   ```
     
 4. (Optional) Unregister the mobile device from the push notification service.
 
-    ```javascript
-    MFPPush.unregisterDevice(function(successResponse) {
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
         alert("Successfully unregistered");
         },
       function(failureResponse) {
         alert("Failed to unregister");
         }
-    );
-    ```
+   );
+   ```
 
 5. Remove WL.Client.Push.isPushSupported() (if used) and use.
 
-    ```javascript
-    MFPPush.isPushSupported (function(successResponse) {
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
         alert(successResponse);
         },
       function(failureResponse) {
         alert("Failed to get the push suport status");
         }
-    );
-    ```
+   );
+   ```
 
 6. Remove the following `WL.Client.Push` APIs:
     * `onReadyToSubscribe()`
@@ -316,58 +316,58 @@ Complete the following steps for every application that was using the same event
 ##### Client
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
 
-    ```javascript
-    MFPPush.initialize(function(successResponse){
+   ```javascript
+   MFPPush.initialize(function(successResponse){
 		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
-    );
-    ```
+   );
+   ```
 
 2. Implement the notification callback method.
 
-    ```javascript
-    var notificationReceived = function(message) {
+   ```javascript
+   var notificationReceived = function(message) {
 		alert(JSON.stringify(message));
-	};
-    ```
+   };
+   ```
 
 3. Register the mobile device with the push notification service.
 
-    ```javascript
-    MFPPush.registerDevice(function(successResponse) {
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
 		alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
 	    }
-	);
-    ```
+   );
+   ```
 
 4. (Optional) Un-register the mobile device from push notification service.
 
-    ```javascript
-    MFPPush.unregisterDevice(function(successResponse) {
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
 		alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
-	);
-    ```
+   );
+   ```
     
 5. Remove `WL.Client.Push.isPushSupported()` (if used) and use:
 
-    ```javascript
-    MFPPush.isPushSupported (function(successResponse) {
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
 		alert(successResponse);
 	    },
 	  function(failureResponse) {
 		alert("Failed to get the push suport status");
 	    }
-	);
-    ```
+   );
+   ```
 
 6. Remove the following `WL.Client.Push` APIs:
     * `subscribeTag()`
@@ -378,28 +378,28 @@ Complete the following steps for every application that was using the same event
 
 7. Subscribe to tags:
 
-    ```javascript
-    var tags = ['sample-tag1','sample-tag2'];
-    MFPPush.subscribe(tags, function(successResponse) {
+   ```javascript
+   var tags = ['sample-tag1','sample-tag2'];
+   MFPPush.subscribe(tags, function(successResponse) {
 		alert("Successfully subscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to subscribe");
 	    }
-	);
-    ```
+   );
+   ```
 
 8. (Optional) Unsubscribe from tags:
 
-    ```javascript
-    MFPPush.unsubscribe(tags, function(successResponse) {
+   ```javascript
+   MFPPush.unsubscribe(tags, function(successResponse) {
 		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
 	    }
-	);
-    ```
+   );
+   ```
 
 ##### Server
 Remove `WL.Server.sendMessage()` (if used) in your adapter.  
@@ -425,24 +425,24 @@ To migrate this in v8.0, convert this model to Unicast notification.
 
 1. Initialize the MFPPush client instance in your application.
 
-    ```java
-    MFPPush push = MFPPush.getInstance();
+   ```java
+   MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
-    ```
+   ```
 
 2. Implement the interface MFPPushNotificationListener and define onReceive().
 
-    ```java
-    @Override
-    public void onReceive(MFPSimplePushNotification message) {
+   ```java
+   @Override
+   public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
-    }
-    ```
+   }
+   ```
     
 3. Register the mobile device with the push notification service.
 
-    ```java
-    push.registerDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
@@ -452,13 +452,13 @@ To migrate this in v8.0, convert this model to Unicast notification.
            Log.i("Push Notifications", "Registered successfully");
 
         }
-    });
-    ```
+   });
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service.
 
-    ```java
-    push.unregisterDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
@@ -468,8 +468,8 @@ To migrate this in v8.0, convert this model to Unicast notification.
         public void onSuccess(String arg0) {
              Log.i("Push Notifications", "Unregistered successfully");
         }
-    });
-    ```
+   });
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
 6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
@@ -506,25 +506,24 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```java
-    MFPPush push = MFPPush.getInstance();
-    push.initialize(_this);
-    ```
+   ```java
+   MFPPush push = MFPPush.getInstance();
+   push.initialize(_this);
+   ```
     
 2. Implement the interface MFPPushNotificationListener and define onReceive().
 
-    ```java
-    @Override
-    public void onReceive(MFPSimplePushNotification message) {
+   ```java
+   @Override
+   public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
-
-    }
-    ```
+   }
+   ```
 
 3. Register the mobile device with the push notification service.
 
-    ```java
-    push.registerDevice(new MFPPushResponseListener<String>(){   
+   ```java
+   push.registerDevice(new MFPPushResponseListener<String>(){   
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
@@ -533,13 +532,13 @@ This maps to tags which segments the users/devices based on topic of interest. T
         public void onSuccess(String arg0) {
             Log.i("Push Notifications", "Registered successfully");
         }
-    });
-    ```
+   });
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service:
   
-    ```java
-    push.unregisterDevice(new MFPPushResponseListener<String>(){   
+   ```java
+   push.unregisterDevice(new MFPPushResponseListener<String>(){   
        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
@@ -549,8 +548,8 @@ This maps to tags which segments the users/devices based on topic of interest. T
         public void onSuccess(String arg0) {
             Log.i( "Push Notifications", "Unregistered successfully");
         }
-    });
-    ```
+   });
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
 6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
@@ -562,11 +561,11 @@ This maps to tags which segments the users/devices based on topic of interest. T
 7. `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
 8. Subscribe to tags:
 
-    ```java
-    String[] tags = new String[2];
-    tags[0] ="sample-tag1";
-    tags[1] ="sample-tag2";
-    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
+   ```java
+   String[] tags = new String[2];
+   tags[0] ="sample-tag1";
+   tags[1] ="sample-tag2";
+   push.subscribe(tags, new MFPPushResponseListener<String[]>(){
 
         @Override
         public void onFailure(MFPPushException arg0) {
@@ -577,16 +576,16 @@ This maps to tags which segments the users/devices based on topic of interest. T
         public void onSuccess(String[] arg0) {
             Log.i( "Subscribed successfully");
         }
-    });
-    ```
+   });
+   ```
     
 9. (Optional) Unsubscribe from tags:
  
-    ```java
-    String[] tags = new String[2];
-    tags[0] ="sample-tag1";
-    tags[1] ="sample-tag2";
-    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
+   ```java
+   String[] tags = new String[2];
+   tags[0] ="sample-tag1";
+   tags[1] ="sample-tag2";
+   push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
 
         @Override
         public void onFailure(MFPPushException arg0) {
@@ -597,8 +596,9 @@ This maps to tags which segments the users/devices based on topic of interest. T
         public void onSuccess(String[] arg0) {
             Log.i("Push Notifications", "Unsubscribed successfully");
         }
-    });
-    ```
+   });
+   ```
+   
 ##### Server
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
@@ -623,24 +623,24 @@ Complete the following steps for every application that was using the same event
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```java
-    MFPPush push = MFPPush.getInstance();
-    push.initialize(_this);
-    ```
+   ```java
+   MFPPush push = MFPPush.getInstance();
+   push.initialize(_this);
+   ```
     
 2. Implement the interface `MFPPushNotificationListener` and define `onReceive()`.
 
-    ```java
-    @Override
-    public void onReceive(MFPSimplePushNotification message) {
+   ```java
+   @Override
+   public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
-    }
-    ```
+   }
+   ```
     
 3. Register the mobile device with push notification service.
 
-    ```java
-    push.registerDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
@@ -650,13 +650,13 @@ Complete the following steps for every application that was using the same event
             Log.i("Push Notifications", "Registered successfully");
 
         }
-    });
-    ```
+   });
+   ```
     
 4. (Optional) Un-register the mobile device from push notification service.
 
-    ```java
-    push.unregisterDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.unregisterDevice(new MFPPushResponseListener<String>(){
        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
@@ -666,8 +666,8 @@ Complete the following steps for every application that was using the same event
         public void onSuccess(String arg0) {
             Log.i( "Push Notifications", "Unregistered successfully");
         }
-    });
-    ```
+   });
+   ```
 
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
 6. Remove the following WLClient.Push APIs:
@@ -693,24 +693,24 @@ Complete the following steps for every application that was using the same event
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```java
-    MFPPush push = MFPPush.getInstance();
-    push.initialize(_this);
-    ```
+   ```java
+   MFPPush push = MFPPush.getInstance();
+   push.initialize(_this);
+   ```
 
 2. Implement the interface MFPPushNotificationListener and define onReceive().
  
-    ```java
-    @Override
-    public void onReceive(MFPSimplePushNotification message) {
+   ```java
+   @Override
+   public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
-    }
-    ```
+   }
+   ```
     
 3. Register the mobile device with the push notification service.
     
-    ```java
-    push.registerDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
@@ -719,13 +719,13 @@ Complete the following steps for every application that was using the same event
         public void onSuccess(String arg0) {
             Log.i("Push Notifications", "Registered successfully");
         }
-    });
-    ```
+   });
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service.
  
-    ```java
-    push.unregisterDevice(new MFPPushResponseListener<String>(){
+   ```java
+   push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
@@ -735,8 +735,8 @@ Complete the following steps for every application that was using the same event
         public void onSuccess(String arg0) {
             Log.i( "Push Notifications", "Unregistered successfully");
         }
-    });
-    ```
+   });
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported()`;
 6. Remove the following `WLClient.Push` API's:
@@ -747,11 +747,11 @@ Complete the following steps for every application that was using the same event
 
 7. Subscribe to tags:
 
-    ```java
-    String[] tags = new String[2];
-    tags[0] ="sample-tag1";
-    tags[1] ="sample-tag2";
-    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
+   ```java
+   String[] tags = new String[2];
+   tags[0] ="sample-tag1";
+   tags[1] ="sample-tag2";
+   push.subscribe(tags, new MFPPushResponseListener<String[]>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -761,16 +761,16 @@ Complete the following steps for every application that was using the same event
         public void onSuccess(String[] arg0) {
             Log.i( "Subscribed successfully");
         }
-    });
-    ```
+   });
+   ```
 
 8. (Optional) Unsubscribe from tags:
 
-    ```java
-    String[] tags = new String[2];
-    tags[0] ="sample-tag1";
-    tags[1] ="sample-tag2";
-    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
+   ```java
+   String[] tags = new String[2];
+   tags[0] ="sample-tag1";
+   tags[1] ="sample-tag2";
+   push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -780,8 +780,8 @@ Complete the following steps for every application that was using the same event
         public void onSuccess(String[] arg0) {
             Log.i("Push Notifications", "Unsubscribed successfully");
         }
-    });
-    ```
+   });
+   ```
 
 ##### Server
 Remove `WL.Server.sendMessage()` (if used) in your adapter.
@@ -808,40 +808,40 @@ To migrate this in v8.0, convert this model to Unicast notification.
 
 1. Initialize the `MFPPush` client instance in your application.
 
-    ```objc
-    [[MFPPush sharedInstance] initialize];
-    ```
+   ```objc
+   [[MFPPush sharedInstance] initialize];
+   ```
     
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service.
 
-    ```objc
-    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
     	   NSLog(@"Failed to register");
         } else {
             NSLog(@"Successfullyregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service.
 
-    ```objc
-    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
 	       NSLog(@"Failed to unregister");
         } else {
 	       NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
-    ```objc
-    [[MFPPush sharedInstance] isPushSupported]
-    ```
+   ```objc
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
@@ -852,9 +852,9 @@ To migrate this in v8.0, convert this model to Unicast notification.
 
 7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
 
-    ```objc
-    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
-    ```
+   ```objc
+   [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
+   ```
     
 ##### Server
 Remove the following WL.Server API's (if used) in your adapter:
@@ -883,40 +883,40 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 1. Initialize the `MFPPush` client instance in your application.
 
-    ```objc
-    [[MFPPush sharedInstance] initialize];
-    ```
+   ```objc
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service:
 
-    ```objc
-    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to register");
         }else{
         	NSLog(@"Successfullyregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service:
- 
-    ```objc
-    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+
+   ```objc
+   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
-    ```objc
-    [[MFPPush sharedInstance] isPushSupported]
-    ```
+   ```objc
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
     
 6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
@@ -928,33 +928,33 @@ This maps to tags which segments the users/devices based on topic of interest. T
 7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
 8. Subscribe to tags:
 
-    ```objc
-    NSMutableArray *tags = [[NSMutableArray alloc]init];
-    [tags addObject:@"sample-tag1"];
-    [tags addObject:@"sample-tag2"];
-    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
+   ```objc
+   NSMutableArray *tags = [[NSMutableArray alloc]init];
+   [tags addObject:@"sample-tag1"];
+   [tags addObject:@"sample-tag2"];
+   [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 9. (Optional) Unsubscribe from tags:
 
-    ```objc
-    NSMutableArray *tags = [[NSMutableArray alloc]init];
-    [tags addObject:@"sample-tag1"];
-    [tags addObject:@"sample-tag2"];
-    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
+   ```objc
+   NSMutableArray *tags = [[NSMutableArray alloc]init];
+   [tags addObject:@"sample-tag1"];
+   [tags addObject:@"sample-tag2"];
+   [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
 	       NSLog(@"Failed to unregister");
         }else{
 	       NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 ##### Server
 Remove `WL.Server` (if used) in your adapter.
@@ -979,40 +979,40 @@ Complete the following steps for every application that was using the same event
 ##### Client
 1. Initialize the MFPPush client instance in your application:
 
-    ```objc
-    [[MFPPush sharedInstance] initialize];
-    ```
+   ```objc
+   [[MFPPush sharedInstance] initialize];
+   ```
     
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service:
 
-    ```objc
-    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to register");
         }else{
         	NSLog(@"Successfullyregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service.
 
-    ```objc
-    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
-    ```objc
-    [[MFPPush sharedInstance] isPushSupported]
-    ```
+   ```objc
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. Remove the following `WLClient.Push` API's:
     * `registerEventSourceCallback()`
@@ -1037,34 +1037,34 @@ Complete the following steps for every application that was using the same event
 
 1. Initialize the MFPPush client instance in your application:
 
-    ```objc
-    [[MFPPush sharedInstance] initialize];
-    ```
+   ```objc
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service:
 
-    ```objc
-    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to register");
         }else{
         	NSLog(@"Successfullyregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 4. (Optional) Un-register the mobile device from the push notification service:
  
-    ```objc
-    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+   ```objc
+   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
 	       NSLog(@"Failed to unregister");
         }else{
 	       NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
     
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `[[MFPPush sharedInstance] isPushSupported]`.
 6. Remove the following `WLClient.Push` API's since there will be no Event source to subscribe to and register notification callbacks:
@@ -1077,33 +1077,33 @@ Complete the following steps for every application that was using the same event
 7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
 8. Subscribe to tags:
  
-    ```objc
-    NSMutableArray *tags = [[NSMutableArray alloc]init];
-    [tags addObject:@"sample-tag1"];
-    [tags addObject:@"sample-tag2"];
-    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
+   ```objc
+   NSMutableArray *tags = [[NSMutableArray alloc]init];
+   [tags addObject:@"sample-tag1"];
+   [tags addObject:@"sample-tag2"];
+   [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
 	       NSLog(@"Failed to unregister");
         }else{    
 	       NSLog(@"Successfully unregistered");
        }
-    }];
-    ```
+   }];
+   ```
     
 9. (Optional) Unsubscribe from tags:
 
-    ```objc
-    NSMutableArray *tags = [[NSMutableArray alloc]init];
-    [tags addObject:@"sample-tag1"];
-    [tags addObject:@"sample-tag2"];
-    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
+   ```objc
+   NSMutableArray *tags = [[NSMutableArray alloc]init];
+   [tags addObject:@"sample-tag1"];
+   [tags addObject:@"sample-tag2"];
+   [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
-    }];
-    ```
+   }];
+   ```
 
 ##### Server
 Remove the `WL.Server.sendMessage` (if used), in your adapter.
@@ -1127,46 +1127,46 @@ To migrate this in v8.0, convert this model to Unicast notification.
 
 1. Initialize the `MFPPush` client instance in your application.
 
-    ```csharp
-    MFPPush push = MFPPush.GetInstance();
-    push.Initialize();
-    Implement the interface MFPPushNotificationListener and define onReceive().
-    class Pushlistener : MFPPushNotificationListener
-    {
+   ```csharp
+   MFPPush push = MFPPush.GetInstance();
+   push.Initialize();
+   Implement the interface MFPPushNotificationListener and define onReceive().
+   class Pushlistener : MFPPushNotificationListener
+   {
         public void onReceive(String properties, String payload)
         { 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
-    }
-    ```
+   }
+   ```
     
 2. Register the mobile device with the push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.RegisterDevice(null);
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.RegisterDevice(null);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Registered successfully");
-    } 
-    else
-    {
+   } 
+   else
+   {
         Debug.WriteLine("Push Notifications Failed to register");
-    }
-    ```
+   }
+   ```
 
 3. (Optional) Un-register the mobile device from the push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.UnregisterDevice();
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.UnregisterDevice();
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Failed to unregister");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Push Notifications Unregistered successfully");
-    }
-    ```
+   }
+   ```
 
 4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
 5. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
@@ -1198,46 +1198,46 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```csharp
-    MFPPush push = MFPPush.GetInstance();
-    push.Initialize();
-    Implement the interface MFPPushNotificationListener and define onReceive().
-    class Pushlistener : MFPPushNotificationListener
-    {
+   ```csharp
+   MFPPush push = MFPPush.GetInstance();
+   push.Initialize();
+   Implement the interface MFPPushNotificationListener and define onReceive().
+   class Pushlistener : MFPPushNotificationListener
+   {
         public void onReceive(String properties, String payload)
         { 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
-    }
-    ```
+   }
+   ```
     
 2. Register the mobile device with the IMFPUSH service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.RegisterDevice(null);
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.RegisterDevice(null);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Registered successfully");
-    } 
-    else
-    {
+   } 
+   else
+   {
         Debug.WriteLine("Push Notifications Failed to register");
-    }
-    ```
+   }
+   ```
 
 3. (Optional) Un-register the mobile device from the IMFPUSH service:
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.UnregisterDevice();
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.UnregisterDevice();
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Failed to unregister");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Push Notifications Unregistered successfully");
-    }
-    ```
+   }
+   ```
 
 4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
 5. Remove the following `WLClient.Push` APIs since there will be no Event Source to subscribe to and register notification callbacks:
@@ -1249,33 +1249,33 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
 6. Subscribe to tags:
 
-    ```csharp
-    String[] Tag = { "sample-tag1", "sample-tag2" };
-    MFPPushMessageResponse Response = await push.Subscribe(Tag);
-    if (Response.Success == true)
-    {
+   ```csharp
+   String[] Tag = { "sample-tag1", "sample-tag2" };
+   MFPPushMessageResponse Response = await push.Subscribe(Tag);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Subscribed successfully");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Failed to subscribe");
-    }
-    ```
+   }
+   ```
     
 7. (Optional) Unsubscribe from tags:
 
-    ```csharp
-    String[] Tag = { "sample-tag1", "sample-tag2" };
-    MFPPushMessageResponse Response = await push.Unsubscribe(Tag);
-    if (Response.Success == true)
-    {
+   ```csharp
+   String[] Tag = { "sample-tag1", "sample-tag2" };
+   MFPPushMessageResponse Response = await push.Unsubscribe(Tag);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Unsubscribed successfully");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Failed to unsubscribe");
-    }
-    ```
+   }
+   ```
     
 ##### Server
 Remove the following `WL.Server` APIs (if used) in your adapter:
@@ -1297,46 +1297,46 @@ Complete the following steps for every application that was using the same event
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```csharp
-    MFPPush push = MFPPush.GetInstance();
-    push.Initialize();
-    Implement the interface MFPPushNotificationListener and define onReceive().
-    class Pushlistener : MFPPushNotificationListener
-    {
+   ```csharp
+   MFPPush push = MFPPush.GetInstance();
+   push.Initialize();
+   Implement the interface MFPPushNotificationListener and define onReceive().
+   class Pushlistener : MFPPushNotificationListener
+   {
         public void onReceive(String properties, String payload)
         { 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
-    }
-    ```
+   }
+   ```
 
 2. Register the mobile device with the push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.RegisterDevice(null);
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.RegisterDevice(null);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Registered successfully");
-    } 
-    else
-    {
+   } 
+   else
+   {
         Debug.WriteLine("Push Notifications Failed to register");
-    }
-    ```
+   }
+   ```
 
 3. (Optional) Un-register the mobile device from the push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.UnregisterDevice();
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.UnregisterDevice();
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Failed to unregister");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Push Notifications Unregistered successfully");
-    }
-    ```
+   }
+   ```
     
 4. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.IsPushSupported();`.
 5. Remove the following `WLClient.Push` APIs:
@@ -1358,50 +1358,50 @@ Complete the following steps for every application that was using the same event
 
 1. Initialize the `MFPPush` client instance in your application:
 
-    ```csharp
-    MFPPush push = MFPPush.GetInstance();
-    push.Initialize();
-    ```
+   ```csharp
+   MFPPush push = MFPPush.GetInstance();
+   push.Initialize();
+   ```
     
 2. Implement the interface MFPPushNotificationListener and define onReceive().
 
-    ```csharp
-    class Pushlistener : MFPPushNotificationListener
-    {
+   ```csharp
+   class Pushlistener : MFPPushNotificationListener
+   {
         public void onReceive(String properties, String payload)
         { 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
-    }
-    ```
+   }
+   ```
 
 3. Register the mobile device with the push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.RegisterDevice(null);
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.RegisterDevice(null);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Registered successfully");
-    } 
-    else
-    {
+   } 
+   else
+   {
         Debug.WriteLine("Push Notifications Failed to register");
-    }
-    ```
+   }
+   ```
 
 4. (Optional) Un-register the mobile device from push notification service.
 
-    ```csharp
-    MFPPushMessageResponse Response = await push.UnregisterDevice();
-    if (Response.Success == true)
-    {
+   ```csharp
+   MFPPushMessageResponse Response = await push.UnregisterDevice();
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Push Notifications Failed to unregister");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Push Notifications Unregistered successfully");
-    }
-    ```
+   }
+   ```
 
 5. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported()`;
 6. Remove the following `WLClient.Push` API's:
@@ -1412,33 +1412,33 @@ Complete the following steps for every application that was using the same event
 
 7. Subscribe to tags:
 
-    ```csharp
-    String[] Tag = { "sample-tag1", "sample-tag2" };
-    MFPPushMessageResponse Response = await push.Subscribe(Tag);
-    if (Response.Success == true)
-    {
+   ```csharp
+   String[] Tag = { "sample-tag1", "sample-tag2" };
+   MFPPushMessageResponse Response = await push.Subscribe(Tag);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Subscribed successfully");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Failed to subscribe");
-    }
-    ```
+   }
+   ```
     
 8. (Optional) Unsubscribe from tags:
 
-    ```csharp
-    String[] Tag = { "sample-tag1", "sample-tag2" };
-    MFPPushMessageResponse Response = await push.Unsubscribe(Tag);
-    if (Response.Success == true)
-    {
+   ```csharp
+   String[] Tag = { "sample-tag1", "sample-tag2" };
+   MFPPushMessageResponse Response = await push.Unsubscribe(Tag);
+   if (Response.Success == true)
+   {
         Debug.WriteLine("Unsubscribed successfully");
-    }
-    else
-    {
+   }
+   else
+   {
         Debug.WriteLine("Failed to unsubscribe");
-    }
-    ```
+   }
+   ```
     
 ##### Server
 Remove `WL.Server.sendMessage()` (if used) in your adapter.

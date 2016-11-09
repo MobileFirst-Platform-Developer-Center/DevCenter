@@ -14,9 +14,9 @@ IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is de
 
 * [Getting Started with MQ Telemetry Transport](#getting-started-with-mq-telemetry-transport)
 * [Building a collaborative application (Whiteboard)](#building-a-collaborative-application-whiteboard)
-  * [Collaboration](#whiteboard-collaboration)
-  * [MQTT Client](#whiteboard-mqtt-client)
-  * [Adding Callbacks](#whiteboard-adding-callbacks)
+  * [Collaboration](#whiteboard---collaboration)
+  * [MQTT Client](#whiteboard---mqtt-client)
+  * [Adding Callbacks](#whiteboard---adding-callbacks)
 * [Extending the Application](#extending-the-application)
 * [Connecting to an MQTT broker](#connecting-to-an-mqtt-broker)
   * [Mosquitto](#mosquitto)

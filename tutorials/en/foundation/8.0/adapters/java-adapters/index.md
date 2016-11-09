@@ -13,8 +13,8 @@ Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java 
 #### Jump to:
 
 * [File structure](#file-structure)
-* [JAX-RS 2.0 application class](#jax-rs-2-0-application-class)
-* [Implementing a JAX-RS 2.0 resource](#implementing-a-jax-rs-2-0-resource)
+* [JAX-RS 2.0 application class](#jax-rs-20-application-class)
+* [Implementing a JAX-RS 2.0 resource](#implementing-a-jax-rs-20-resource)
 * [HTTP Session](#http-session)
 * [Server-side APIs](#server-side-apis)
 
