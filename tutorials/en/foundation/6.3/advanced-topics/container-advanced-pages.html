@@ -67,7 +67,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </ul>
 <h3 id="mobileViews">Mobile views</h3>
 <p>Dojo provides mobile widgets that developers can use to quickly generate mobile views.</p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <div id="locations" dojoType="dojox.mobile.ScrollableView" selected="true">
     <h1 dojoType="dojox.mobile.Heading" label="Locations" fixed="top"></h1>
     <div class="list-category" dojoType="dojox.mobile.RoundRectCategory">USA</div>
@@ -88,7 +88,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/login1.png"/></p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <div dojoType="dojox.mobile.View">
         <c:set var="conferences" scope="session" value=""></c:set>
         <h1 style="text-align: center;" dojoType="dojox.mobile.Heading">IBM Mobile Conference App</h1>
@@ -115,7 +115,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <li>White list or pattern-based URIs of secured resources</li>
 <li>Support for logout in addition to Java Enterprise Edition standard logout functionality</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <security-role>
     <role-name>worklightadmin</role-name>
 </security-role>
@@ -140,7 +140,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
     </form-login-config>
 </login-config>
 {% endhighlight %}</p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <div style="position: relative; float: left;">
     <form method="post" action="conferenceLogout.jsp" name="logout">
         <span data-dojo-type="dojox.mobile.ToolBarButton"
@@ -155,7 +155,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <p>Make these changes in your <strong>server.xml</strong> file, depending which server you use:</p>
 <p>MobileFirst Development Server (Liberty):</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <server description="new server">
     <featureManager>
         <feature>servlet-3.0</feature>
@@ -200,7 +200,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </server>
 {% endhighlight %}</p>
 <p>Tomcat server:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <GlobalNamingResources>
 <!-- Editable user database that can also be used by
      UserDatabaseRealm to authenticate users
@@ -214,7 +214,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </GlobalNamingResources>
 {% endhighlight %}</p>
 <p>Add role and user in <strong>tomcat-users.xml</strong>:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <role rolename="worklightadmin"/>
 <user username="tomcat" password="tomcat" roles="worklightadmin"/>
 {% endhighlight %}</p>
@@ -227,7 +227,7 @@ In the hybrid model, developers typically package the application HTML, CSS, and
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/projectstructure-300x295.png"/></p>
 <h3 id="android">Running the sample on an Android environment</h3>
 <p>Make the following changes in <strong>AdvancedPages/android/nativeResources/src/com/AdvancedPages/AdvancedPages.java</strong>:</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
         WL.getInstance().hideSplashScreen();
@@ -251,7 +251,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/android.jpg"/></p>
 <h3 id="iphone">Running the sample on an iPhone environment</h3>
 <p>Make the following changes in <strong>AdvancedPages/iphone/nativeResources/Classes/AdvancedPages.m</strong>:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(void)wlInitDidCompleteSuccessfully
 {
     [[WL sharedInstance] hideSplashScreen];
@@ -284,7 +284,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p>IBM MobileFirst Platform provides client libraries for hybrid application development. Although the APIs are platform-neutral, they are often backed by platform-specific implementations. Because the conference app is served remotely, these client-side libraries must be packaged with the conference app (WAR). Each platform-specific implementation is in its own folder structure in the web application.</p>
 <p>When the IBM Mobile Conference application completes the authentication process, the mobile device client initializes the device with the server by using <code>WL.Client.init()</code>. This provides a flexible model for application integrity validation, application updates, and other features.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png"/></p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <c:choose>
     <c:when test="${fn:contains(iOSClient, 'Android')}">
         <link rel="stylesheet" type="text/css"
@@ -300,7 +300,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
     <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/>
 ...
 {% endhighlight %}</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 <c:choose>
     <c:when test="${fn:contains(iOSClient, 'Android')}">
         <script>
@@ -351,7 +351,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/eoc.jpg"/></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function __writeEOC(mykey, mydata, callback) {
     WL.EncryptedCache.write(mykey, mydata, function() {
         callback();

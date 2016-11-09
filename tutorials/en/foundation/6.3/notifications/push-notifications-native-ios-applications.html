@@ -36,7 +36,7 @@ downloads:
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
 	<displayName>iOSNativePush</displayName>
 	<description>iOSNativePush</description>
@@ -64,7 +64,7 @@ downloads:
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).</p>
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -80,7 +80,7 @@ WL.Server.createEventSource({
 </ul>
 <h3>Sending a notification</h3>
 <p>Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-{% highlight js linenos %}function submitNotification(userId, notificationText) {
+{% highlight js  %}function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
         return { result: "No subscription found for user :: " + userId };
@@ -102,7 +102,7 @@ WL.Server.createEventSource({
 <p>
 </li>
 <li>Create an instance of <code>onReadyToSubscribeListener</code>.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];
 	readyToSubscribeListener.alias = self.alias;
 	readyToSubscribeListener.adapterName = self.adapterName;
@@ -110,37 +110,37 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 {% endhighlight %}</p>
 </li>
 <li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
 {% endhighlight %}</p>
 </li>
 <li>Pass the token to <code>WLPush</code>.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %}
 </li>
 </ol>
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 <p>The user must initialize the <code>WLPush</code> <code>sharedInstance</code> in the app <code>ViewController</code> load method.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
 	appDelegate.appDelegateVC = self;
 [[WLPush sharedInstance]init];
 {% endhighlight %}<br />
 The user must add this method to the app delegate to get the token.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 }<br />
 {% endhighlight %}</p>
 <p>The token that is received by this method must be passed to the WLPush method.
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %}</p>
 <h3>Registering the event source</h3>
 <p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 #import "ReadyToSubscribeListener.h"
 #import "MyEventSourceListener.h"
 <p>@implementation ReadyToSubscribeListener
@@ -163,7 +163,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <h3>Subscribing to the event source</h3>
 <p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
 <p>To set up subscription to the event source, use the following API:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (IBAction)subscribe:(id)sender {
     self.console.text=@"Trying to subscribe ...";
 	MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
@@ -179,7 +179,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>Delegates receive a response object if one is required.</p>
 <h3>Unsubscribing  from an event source</h3>
 <p>To set up unsubscription from an event source, use the following API:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (IBAction)unsubscribe:(id)sender {
     self.console.text = @"Trying to unsubscribe ... ";
 	MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];>
@@ -197,7 +197,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p><code>[[WLPush sharedInstance]isPushSupported]</code> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.<br />
 <code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
     _appDelegateVC.console.text=userInfo.description;
@@ -209,7 +209,7 @@ If the application was in background mode (or inactive) when the push notificati
 This notification type enables devices to send and receive messages that are filtered by tags.<br />
 To start receiving tag-based notifications, the device must first subscribe to a push notification tag in an application.<br />
 Tags are defined in the <strong>application-descriptor.xml</strong> file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <tags>
     <tag>
         <name>PushTag1</name>
@@ -237,7 +237,7 @@ Broadcast notification can be disabled by unsubscribing to the reserved tag <cod
 <h3>Common API for tag-based and broadcast notifications</h3>
 <h4>Client-side API:</h4>
 <p>When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);
     _appDelegateVC.console.text=userInfo.description;
@@ -297,7 +297,7 @@ The category name must be same as the one used on the client side.</ul>
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
 </li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){
   UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
   UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
@@ -316,7 +316,7 @@ if([application respondsToSelector:@selector(registerUserNotificationSettings:)]
 {% endhighlight %}</p>
 </li>
 <li>Implement the new callback method:
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler
 {% endhighlight %}
 This new callback method is invoked when the user clicks the action button.</p>

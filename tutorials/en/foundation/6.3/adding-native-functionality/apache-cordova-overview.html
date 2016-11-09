@@ -20,11 +20,11 @@ With the JavaScript API provided by Cordova, developers can access native mobile
 
 <h2>Usage samples</h2>
 <p>Calling a native alert notification from JavaScript on iOS and Android devices:<br />
-{% highlight js linenos %}navigator.notification.alert("I am a native alert dialog.");{% endhighlight %}</p>
+{% highlight js  %}navigator.notification.alert("I am a native alert dialog.");{% endhighlight %}</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png"/></p>
 
 <p>Getting device hardware and software information:</p>
-{% highlight js linenos %}
+{% highlight js  %}
 var element = document.getElementById('deviceProperties');
 element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
     'Device Cordova: '  + device.cordova  + '<br />' +
@@ -72,10 +72,10 @@ Cookies are shared between web and native, providing seamless client-server inte
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png"/></p>
 
 <p>JavaScript API to activate native page:<br />
-{% highlight js linenos %}WL.NativePage.show(className, callback, data);{% endhighlight %}</p>
+{% highlight js  %}WL.NativePage.show(className, callback, data);{% endhighlight %}</p>
 
 <p>The web page invokes the native class <code>className</code>, with the parameter <code>data</code>, and calls the callback function on return. Example:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 WL.NativePage.show("com.demo.NativePage", function(data) {demoApplication.returnFromNative(data);},{inputData: "Hello"});
 {% endhighlight %}
 

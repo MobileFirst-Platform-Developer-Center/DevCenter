@@ -50,13 +50,13 @@ The associated sample project demonstrates an end-to-end scenario. However, ther
 <p>Keep in mind that some of the implementation code relates to the application UI.<br />
 You can find the rest of the application code (HTML, CSS, additional JavaScript) in the provided sample application.</p>
 <p>The <code>username</code>, <code>password</code> and <code>offlineLoggedIn</code> global variables help determine the user’s login state, whether connected or not connected to the Internet.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var username = null, password = null;
 var offlineLoggedIn = false;
 {% endhighlight %}</p>
 <p><strong>Prerequisite:</strong> When an end-user tries to log in for the very first time, Internet connection must be available so that the user credentials can be verified against the server backend.</p>
 <p>Therefore, before any authentication is performed, Internet connection is checked so that the appropriate authentication flow is executed.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function goToSecuredArea() {
     WL.Device.getNetworkInfo(
         function (networkInfo) {
@@ -76,7 +76,7 @@ function goToSecuredArea() {
 </li>
 <li>In order to simulate a back-end of multiple users, a valid login is considered one where the <code>username == password</code>, no matter what the username is.
 <p>The <code>submitAuthentication</code> function in the adapter's <code>*-impl.js</code> file is therefore modified to:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function submitAuthentication (username, password){
     if (username == password) {
 {% endhighlight %}</li>
@@ -84,7 +84,7 @@ function submitAuthentication (username, password){
 <h4>JSONStore</h4>
 <p>Because the authentication simulates multiple users, usage of multiple JSONStores is required as well, in order to accommodate for the many users.</p>
 <p>Thus, in <code>WL.JSONStore.init</code>, the username is passed as a parameter for a new JSONStore to be opened for each authenticated user. For this, declare a collection to define the structure of the JSONStore:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = "userCredentials";
 var collections = {
     userCredentials : {
@@ -98,7 +98,7 @@ var collections = {
 <h3>Online authentication</h3>
 <p>Below is the complete implementation, followed by a breakdown and explanation code block by code block.<br />
 The sample application contains additional comments.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function onlineAuthentication() {
   if (WL.Client.isUserAuthenticated("myCustomRealm")) {
     if (username == null) {
@@ -139,7 +139,7 @@ function onlineAuthentication() {
 <i>Check whether the user is already authenticated<br />
 If <code>true</code>, display the secured area.<br />
 If <code>false</code>, display the login form and start authentication via the challenge handler.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function onlineAuthentication() {
   if (WL.Client.isUserAuthenticated("myCustomRealm")) {
     if (username == null) {
@@ -161,7 +161,7 @@ function onlineAuthentication() {
 <p>
 <i>If the connection to the Internet is established and the user is authenticated on the back end but the username variable is empty, assume that a logout happened offline.<br />
 Log out the user from the realm before trying to log in again online.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 if (WL.Client.isUserAuthenticated("myCustomRealm")) {
   if (username == null) {
     WL.Client.logout("myCustomRealm", {
@@ -182,7 +182,7 @@ if (WL.Client.isUserAuthenticated("myCustomRealm")) {
 {% endhighlight %}</p>
 <p>
 <i>If logging-in while offline and Internet connection is then available, log in to the realm without showing the login form.</i><br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function onlineAuthentication() {
   if (WL.Client.isUserAuthenticated("myCustomRealm")) {
     //...
@@ -204,7 +204,7 @@ function onlineAuthentication() {
 {% endhighlight %}</p>
 <p>
 <i>If online authentication fails, for example if MobileFirst Server is unavailable, offline authentication is attempted instead.</i><br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function onlineAuthenticationFailure() {
     offlineAuthentication();
 }
@@ -218,7 +218,7 @@ A JSONStore for the user is initialized from the user’s username and encrypted
 If the collection is empty, populate it.<br />
 If the collection is not empty, do not populate it again.</p>
 <p>Finally, the username and password variables are emptied, the JSONStore is closed and the secured area is displayed.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function onlineAuthenticationSuccess() {
     username = $("#username").val();
     password = $("#password").val();</p>
@@ -254,7 +254,7 @@ function onlineAuthenticationSuccess() {
 <li>Empty username and password fields destroy your JSONStore. As a result, users can no longer log in offline until the next online authentication, where the JSONStore is created again if it does not exist.</li>
 <li>First-time log-in cannot happen because there is no JSONStore yet.</li>
 </ul>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function offlineAuthentication() {
   $("#username").val('');
   $("#password").val('');
@@ -313,7 +313,7 @@ function offlineAuthentication() {
 {% endhighlight %}</p>
 <p>
 <i>This function first checks whether the user is already authenticated.</i>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
   if (offlineLoggedIn === true || username) {
     offlineLoggedIn = true;
     displaySecuredAreaOffline();
@@ -324,7 +324,7 @@ function offlineAuthentication() {
 Check the validity of the user credentials.<br />
 If they are not valid, display an error message.<br />
 If they are valid, try to open and decrypt the user’s JSONStore by using the user’s password.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
     $("#offlineLoginButton").bind("click", function() {
       // Don't allow empty username/password field.
       if (($("#username").val() == '') || ($("#password").val() == '')) {
@@ -340,7 +340,7 @@ If they are valid, try to open and decrypt the user’s JSONStore by using the u
 <i>Then, Check the contents of the store.<br />
 If the store is empty, this user did not previously log in: no stored data in the collection.<br />
 Destroy the store for this username and provide an appropriate error message.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
           .then(function() {
             /*
              * Need to handle the case where logging in when offline for the first time, in which case logging in cannot be done as there wouldn't be a JSONStore available yet.
@@ -355,7 +355,7 @@ Destroy the store for this username and provide an appropriate error message.</i
 {% endhighlight %}</p>
 <p>
 <i>If the JSON store is NOT empty, set the <em>offlineLoggedIn</em> flag to <em>true</em> and display the secured area.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
                 } else {
                   // Preserve the username and password, set the offline-logged-in flag and dislay the secured area.
                   offlineLoggedIn = true;
@@ -366,7 +366,7 @@ Destroy the store for this username and provide an appropriate error message.</i
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Logout</h3>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function logout() {
   password = null;
   username = null;
@@ -387,7 +387,7 @@ function logout() {
 Empty the username and password variables.<br />
 Close the JSONStore.<br />
 Set the <em>offlineLoggedIn</em> flag to false.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
   password = null;
   username = null;
   WL.JSONStore.closeAll();
@@ -396,7 +396,7 @@ Set the <em>offlineLoggedIn</em> flag to false.</i></p>
 <p>
 <i>Check the Internet connection before logging out.<br />
 If available, log out the user from the realm and display the unsecured area.</i></p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
   WL.Device.getNetworkInfo(
     function(networkInfo) {
       if (networkInfo.isNetworkConnected == "true") {

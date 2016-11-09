@@ -30,17 +30,17 @@ As soon as the web framework finishes initializing and all resources are ready, 
 <p>The <code>NativeUIInHybrid</code> project includes a hybrid application called <code>NativeSplashScreen</code>.</p>
 <p>The application contains an <code>InitiativeActivity</code> activity. This activity is used to show a simple text view and a button as our customized splash screen:</p>
 <p>In the <code>onCreate</code> method:<br />
-{% highlight java linenos %}setContentView(R.layout.activity_initiative);
+{% highlight java  %}setContentView(R.layout.activity_initiative);
 startAppBtn = (Button) findViewById(R.id.StartApp);{% endhighlight %}
 And in the <code>onClickListener</code> method:
-{% highlight java linenos %}startAppBtn.setOnClickListener(new View.OnClickListener() {
+{% highlight java  %}startAppBtn.setOnClickListener(new View.OnClickListener() {
 	public void onClick(View v) {
 		setResult(Activity.RESULT_OK);
 		finish();
 	}
 });{% endhighlight %}
 The text view and the button are also added to the activity layout file:
-{% highlight xml linenos %}<TextView
+{% highlight xml  %}<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/InitiativeActivityText" />
@@ -52,7 +52,7 @@ The text view and the button are also added to the activity layout file:
         android:layout_marginTop="150dp"
         android:text="@string/InitiativeButtonText" />{% endhighlight %}
 <p>It is also required to add an Intent to the <code>MainActivity</code> before the call to the <code>initializeWebFramework</code> method. The intent loads the newly created activity instead of opening the default MobileFirst splash screen.</p>
-<p>{% highlight java linenos %}WL.createInstance(this);</p>
+<p>{% highlight java  %}WL.createInstance(this);</p>
 <p>Intent intent = new Intent(this, InitiativeActivity.class);<br />
 startActivity(intent);</p>
 <p>WL.getInstance().initializeWebFramework(getApplicationContext(), this);{% endhighlight %}</p>
@@ -65,38 +65,38 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used in the native side (see Step 2). The second parameter is a JSON object that contains any data.</p>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-{% highlight java linenos %}public class ActionReceiver implements WLActionReceiver{
+{% highlight java  %}public class ActionReceiver implements WLActionReceiver{
 }{% endhighlight %}
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:<br />
-{% highlight java linenos %}public void onActionReceived(String action, JSONObject data){
+{% highlight java  %}public void onActionReceived(String action, JSONObject data){
 	if (action.equals("doSomething")){
 		// Write your code here...
 	}
 }{% endhighlight %}
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst Web View, it must be registered. The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-{% highlight java linenos %}WL.getInstance().addActionReceiver(new ActionReceiver(this));{% endhighlight %}</p>
+{% highlight java  %}WL.getInstance().addActionReceiver(new ActionReceiver(this));{% endhighlight %}</p>
 <h2 id="nativetojs">Sending actions from native code to JavaScript code</h2>
 <p>In MobileFirst applications, commands can be sent with parameters from native Android code to web view JavaScript code.<br />
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In Java, the following API is used:<br />
-{% highlight java linenos %}JSONObject data = new JSONObject();
+{% highlight java  %}JSONObject data = new JSONObject();
 	data.put("someProperty", 12345);
 	WL.getInstance().sendActionToJS("doSomething", data);{% endhighlight %}
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <code>JSONObject</code> instance that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
-<p>{% highlight js linenos %}function actionReceiver(received){
+<p>{% highlight js  %}function actionReceiver(received){
   if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){
     //perform required actions, e.g., update web user interface
   }
 }{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function handles those actions as early as possible.</p>
-<p>{% highlight js linenos %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
+<p>{% highlight js  %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js linenos %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
+{% highlight js  %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
 <h2 id="sendSample">SendAction sample</h2>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_09_sendaction.png"/></p>
 <h3>Overview</h3>
@@ -112,7 +112,7 @@ This sample includes an additional <code>FragmentActivity</code> (DisplayMap) to
 <li>A button to trigger validation</li>
 <li>An empty  line to show potential error messages</li>
 </ul>
-<p>{% highlight html linenos %}<p>This is a MobileFirst WebView.</p>
+<p>{% highlight html  %}<p>This is a MobileFirst WebView.</p>
 <p>Enter a valid address (requires Internet connection):<br/><br />
     	<input type="text" name="address" id="address"/><br />
 <input type="button" value="Display" id="displayBtn"/>
@@ -120,14 +120,14 @@ This sample includes an additional <code>FragmentActivity</code> (DisplayMap) to
  <p id="errorMsg" style="color:red;"></p>{% endhighlight %}
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.<br />
-{% highlight js linenos %}$('#displayBtn').on('click', function(){
+{% highlight js  %}$('#displayBtn').on('click', function(){
 	$('#errorMsg').empty();
 	WL.App.sendActionToNative("displayAddress",
 				{ address: $('#address').val()}
 		);
 	});{% endhighlight %}
 <p>The code also registers an action receiver to display potential error messages from the native code.</p>
-    {% highlight js linenos %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){
+    {% highlight js  %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){
 		if(received.action == 'displayError'){
 			$('#errorMsg').html(received.data.errorReason);
 		}
@@ -136,7 +136,7 @@ This sample includes an additional <code>FragmentActivity</code> (DisplayMap) to
 <h3>Action receiver</h3>
 <p>A new class is required. It implements <code>WLActionReceiver</code>.<br />
 Before using this new class, call the <code>addActionReceiver</code> method to register <code>ActionReceiver</code> in the main activity after the initialization process is complete.</p>
-{% highlight java linenos %}public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
+{% highlight java  %}public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
 	if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
 		super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 	} else {
@@ -146,7 +146,7 @@ Before using this new class, call the <code>addActionReceiver</code> method to r
 }
 {% endhighlight %}
 <p>The <code>ActionReceiver</code> class implements the <code>onActionReceived</code> method. This  method is used to receive the address that was passed in the JavaScript code.</p>
-{% highlight java linenos %}public void onActionReceived(String action, JSONObject data){
+{% highlight java  %}public void onActionReceived(String action, JSONObject data){
 	if (action.equals("displayAddress")){
 		try {
 			mAddress = data.getString("address");
