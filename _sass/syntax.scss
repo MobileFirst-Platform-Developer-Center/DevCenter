@@ -1,4 +1,8 @@
-div.highlighter-rouge {
+div.highlighter-rouge, figure.highlight {
+   code {
+      background: initial;
+      border: none;
+   }
     background: #ffffff;
     // .lineno {
     //     border: none;
@@ -243,7 +247,7 @@ div.highlighter-rouge {
     }
     /* Generic.Inserted & Diff Inserted */
 }
-code.highlighter-rouge {
+code {
     background-color: inherit;
     color: $black;
     font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
