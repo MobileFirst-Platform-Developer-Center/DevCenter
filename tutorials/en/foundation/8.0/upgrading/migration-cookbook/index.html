@@ -425,13 +425,13 @@ if (document.addEventListener) {
                                         <ol>
                                             <li>Open your project in Xcode.</li>
                                             <li>Delete the <b>WorklightAPI</b> folder from your Xcode project (move it to the trash).</li>
-                                            <li>Modify your existing code in the following ways:
-                                                <li>In the <b>Build Settings</b> tab,
-                                                    <ul>
-                                                        <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
-                                                        <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
-                                                        <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
-                                                    </ul>
+                                            <li>Modify your existing code in the following ways:<br/>
+                                                In the <b>Build Settings</b> tab,
+                                                   <ul>
+                                                      <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
+                                                      <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
+                                                      <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
+                                                   </ul>
                                                 </li>
                                             </li>
                                             <li>In the <b>Build Phases</b> tab, remove the links to the following frameworks and libraries. CocoaPods will re-add these links automatically.
@@ -636,7 +636,7 @@ transitive: true{% endhighlight %}</li>
                                     <div class="panel-body">
                                         <ol>
                                             <li>Right-click the project solution and select <b>Manage Nuget packages</b>.</li>
-                                            <li>In the search option, search for "IBM MobileFirst Platform", choose <b>IBM.MobileFirstPlatform.8.0.0.0</b>, and click <b>Install</b>.</li><br/>
+                                            <li>In the search option, search for "IBM MobileFirst Platform", choose <b>IBM.MobileFirstPlatform.8.0.0.0</b>, and click <b>Install</b>.</li>
                                             <li>in Package.appxmanifest, add the <b>Internet (client)</b> capability.</li>
                                         </ol>
                                     </div>
@@ -707,7 +707,7 @@ transitive: true{% endhighlight %}</li>
 
                 <div id="collapsePrereqs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="prereqs">
                     <div class="panel-body">
-                        <p>Maven adapters require Apache Maven installed on the developer workstation.
+                        <p>Maven adapters require Apache Maven installed on the developer workstation.</p>
                         <ol>
                             <li>Install Apache Maven.
                                 <ul>
@@ -733,7 +733,6 @@ export MVN_PATH="/usr/local/bin"
                                 </ul>
                             </li>
                         </ol>
-                        </p>
                     </div>
                 </div>
             </div>
