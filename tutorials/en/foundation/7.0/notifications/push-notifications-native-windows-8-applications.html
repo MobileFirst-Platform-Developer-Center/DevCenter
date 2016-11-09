@@ -23,7 +23,7 @@ To create and configure a Windows 8 native project, first follow these tutorials
 <p>In the <code>application-descriptor.xml</code> file, for <em>windows8</em>, set the following attributes to the <code>pushSender</code> element.</p>
 <p><em>packageSID</em> - Unique identifier of your Windows Store app</p>
 <p><em>clientSecret</em> - Secret key</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="Windows8NativePush" platformVersion="7.0.0.00.20150227-0916" securityTest="MySecurityTest" version="1.0">
     <displayName>Windows8NativePush</displayName>
@@ -34,7 +34,7 @@ To create and configure a Windows 8 native project, first follow these tutorials
 <h3>Client side</h3>
 <p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
 <p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <code>VisualElements</code> element in the package manifest.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <Applications>
     <Application Id="App" ....>
         <VisualElements  .. ... ToastCapable="true">

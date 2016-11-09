@@ -137,7 +137,7 @@ The device subscription is deleted either by an application that calls <code>WL.
 
 To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):
 
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -154,7 +154,7 @@ WL.Server.createEventSource({
 </ul>
 
 An additional event source option:
-{% highlight js linenos %}
+{% highlight js  %}
 poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
@@ -177,7 +177,7 @@ The following parameters are required:
 
 As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js linenos %} 
+{% highlight js  %} 
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
@@ -198,11 +198,11 @@ function submitNotification(userId, notificationText) {
 
 The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.
 
-{% highlight js linenos %} function submitNotification(userId, notificationText) { {% endhighlight %} 
+{% highlight js  %} function submitNotification(userId, notificationText) { {% endhighlight %} 
 
 A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:
 
-{% highlight js linenos %}
+{% highlight js  %}
 {
     userId: 'bjones',
     state: {
@@ -213,19 +213,19 @@ A user subscription object contains the information about all of the user’s su
 {% endhighlight %} 
 
 Next line:
-{% highlight js linenos %} 
+{% highlight js  %} 
 var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId); 
 {% endhighlight %} 
 
 If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.
-{% highlight js linenos %}
+{% highlight js  %}
 if (userSubscription === null) {
     return { result: "No subscription found for user :: " + userId };
 }
 {% endhighlight %} 
 
 The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.
-{% highlight js linenos %} var badgeDigit = 1;
+{% highlight js  %} var badgeDigit = 1;
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"}); {% endhighlight %} 
 
 <ul>
@@ -236,7 +236,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 
 The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.
 
-{% highlight js linenos %} WL.Server.notifyAllDevices(userSubscription, notification); {% endhighlight %} 
+{% highlight js  %} WL.Server.notifyAllDevices(userSubscription, notification); {% endhighlight %} 
 
 <br clear="all"/>
 
@@ -259,7 +259,7 @@ Additional client-side API methods:
 
 When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:
 
-{% highlight js linenos %}
+{% highlight js  %}
 function pushNotificationReceived(props, payload) {
     alert("pushNotificationReceived invoked");
     alert("props :: " + JSON.stringify(props));

@@ -52,19 +52,19 @@ In macOS, two options are available to run Docker commands:
 
 * Run the command:
 
-    ```bash
-    docker-machine env default
-    ```
+  ```bash
+  docker-machine env default
+  ```
 
 * Set the result as environment variables, for example:
 
-    ```bash
-    $ docker-machine env default
-    export DOCKER_TLS_VERIFY="1"
-    export DOCKER_HOST="tcp://192.168.99.101:2376"
-    export DOCKER_CERT_PATH="/Users/mary/.docker/machine/machines/default"
-    export DOCKER_MACHINE_NAME="default"
-    ```
+  ```bash
+  $ docker-machine env default
+  export DOCKER_TLS_VERIFY="1"
+  export DOCKER_HOST="tcp://192.168.99.101:2376"
+  export DOCKER_CERT_PATH="/Users/mary/.docker/machine/machines/default"
+  export DOCKER_MACHINE_NAME="default"
+  ```
 
 > For further information consult the Docker documentation.
 
@@ -115,7 +115,8 @@ The archive file contains the files for building an image (**dependencies** and 
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
+                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
@@ -304,34 +305,34 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <strong>args</strong> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
-            <strong>Note:</strong> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
+            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
+            <b>Note:</b> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
               <h4>initenv.properties</h4>
               <ul>
-                  <li><strong>BLUEMIX_USER - </strong>Your Bluemix username (email).</li>
-                  <li><strong>BLUEMIX_PASSWORD - </strong>Your Bluemix password.</li>
-                  <li><strong>BLUEMIX_ORG - </strong>Your Bluemix organization name.</li>
-                  <li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
+                  <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
+                  <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
+                  <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
+                  <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
-                  <li><strong>ANALYTICS_IMAGE_TAG - </strong>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
               </ul>
               <h4>startanalytics.properties</h4>
               <ul>
-                  <li><strong>ANALYTICS_IMAGE_TAG - </strong>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><strong>ANALYTICS_CONTAINER_NAME - </strong>A name for your Bluemix Container.</li>
-                  <li><strong>ANALYTICS_IP - </strong>An IP address that the Bluemix Container should be bound to.<br/>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>A name for your Bluemix Container.</li>
+                  <li><b>ANALYTICS_IP - </b>An IP address that the Bluemix Container should be bound to.<br/>
                   To assign an IP address, run: <code>cf ic ip request</code>.<br/>
                   IP addresses can be reused in multiple containers in a space.<br/>
                   If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
               <ul>
-                  <li><strong>ANALYTICS_IMAGE_TAG - </strong>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><strong>ANALYTICS_CONTAINER_GROUP_NAME - </strong>A name for your Bluemix Container group.</li>
-                  <li><strong>ANALYTICS_CONTAINER_GROUP_HOST - </strong>Your host name.</li>
-                  <li><strong>ANALYTICS_CONTAINER_GROUP_DOMAIN - </strong>Your domain name. The default is: <code>mybluemix.net</code>.</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>A name for your Bluemix Container group.</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>Your host name.</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
               </ul>
             </div>
         </div>
@@ -346,306 +347,302 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
-              <ol>
-                  <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
-                      Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation Operational Analytics on the IBM Containers:
+                <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+                <ol>
+                    <li><b>initenv.sh – Logging in to Bluemix </b><br />
+                    Run the <b>initenv.sh</b> script to create an environment for building and running IBM MobileFirst Foundation Operational Analytics on the IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="script-analytics-initenv">
-                                <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Click for a list of command-line arguments</b></a>
-                                </h4>
-                            </div>
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-analytics-initenv">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
 
-                            <div id="collapse-script-analytics-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-initenv">
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>Bluemix user ID or email address</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Bluemix password</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Bluemix organization name</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Bluemix space name</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
-                                            <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
-                                        </tr>
-                                    </table>
-                                    
-                                    <p>For example:</p>
-                    {% highlight bash %}
-                    initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
-                    {% endhighlight %}
+                                <div id="collapse-script-analytics-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-initenv">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-u|--user] BLUEMIX_USER</td>
+                                                <td>Bluemix user ID or email address</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
+                                                <td>Bluemix password</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-o|--org] BLUEMIX_ORG	</td>
+                                                <td>Bluemix organization name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
+                                                <td>Bluemix space name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
+                                                <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>For example:</p>
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Close section</b></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                  
-                  </li>
-                  <li><strong>prepareanalytics.sh - Prepare a MobileFirst Foundation Operational Analytics image</strong><br />
-                      Run the <strong>prepareanalytics.sh</strong> script to build a MobileFirst Foundation Operational Analytics image and push it to your Bluemix repository:
+                    </li>
+                    <li><b>prepareanalytics.sh - Prepare a MobileFirst Foundation Operational Analytics image</b><br />
+                        Run the <b>prepareanalytics.sh</b> script to build a MobileFirst Foundation Operational Analytics image and push it to your Bluemix repository:
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                  To view all available images in your Bluemix repository run: <code>cf ic images</code><br/>
-                  The list contains the image name, date of creation, and ID.
+                        To view all available images in your Bluemix repository run: <code>cf ic images</code><br/>
+                        The list contains the image name, date of creation, and ID.
                   
-                  <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-                      <div class="panel panel-default">
-                          <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
-                              <h4 class="panel-title">
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Click for a list of command-line arguments</b></a>
-                              </h4>
-                          </div>
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
+                                    <h4 class="panel-title">
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
 
-                          <div id="collapse-script-analytics-prepareanalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-prepareanalytics">
-                              <div class="panel-body">
-                                  <table class="table table-striped">
-                                      <tr>
-                                          <td><b>Command-line argument</b></td>
-                                          <td><b>Description</b></td>
-                                      </tr>
-                                      <tr>
-                                          <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                          <td>Name to be used for the customized analytics image. Format: Bluemix registry URL/private namespace/image name</td>
-                                      </tr>
+                                <div id="collapse-script-analytics-prepareanalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-prepareanalytics">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                              <td><b>Command-line argument</b></td>
+                                              <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                              <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
+                                              <td>Name to be used for the customized analytics image. Format: Bluemix registry URL/private namespace/image name</td>
+                                            </tr>      
+                                        </table>
                                       
-                                  </table>
-                                  
-                                  <p>For example:</p>
-                  {% highlight bash %}
-                  prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
-                  {% endhighlight %}
+                                        <p>For example:</p>
+{% highlight bash %}
+prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
+{% endhighlight %}
 
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Close section</b></a>
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Close section</b></a>
+                                  </div>
                               </div>
                           </div>
                       </div>
-                  </div>
                   
-                  </li>
-                  <li><strong>startanalytics.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startanalytics.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>ANALYTICS_IP</strong> property.</p>
+                    </li>
+                    <li><b>startanalytics.sh - Running the image on an IBM Container</b><br />
+                    The <b>startanalytics.sh</b> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP that you configured in the <b>ANALYTICS_IP</b> property.</li>
 
-                  Run:
+                    Run:
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
-                                <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Click for a list of command-line arguments</b></a>
-                                </h4>
-                            </div>
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
 
-                            <div id="collapse-script-analytics-startanalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-startanalytics">
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                            <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
-                                            <td>Name of the analytics container</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-i|--ip] ANALYTICS_IP	</td>
-                                            <td>IP address that the container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
-                                            <td>Expose HTTP port. Accepted values are Y (default) or N.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
-                                            <td>Expose HTTPS port. Accepted values are Y (default) or N.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                            <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
-                                            <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
-                                            <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                            <td>The trace specification to be applied. Default: <code>*=info</code></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                            <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                            <td>The maximum size of a log file. The default size is 20 MB.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                            <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME	</td>
-                                            <td>Enable mounting volume for analytics data. Accepted values are Y or N (default).</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                            <td>Specify the name of the volume to be created and mounted for the analytic data. The default name is <b>mfpf_analytics_container_name</b>.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                            <td>Specify the location to store the data. The default folder name is <b>/analyticsData.</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                            <td>Provide MobileFirst Analytics properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
-                                        </tr>
-                                    </table>
-                                    
-                                    <p>For example:</p>
-                    {% highlight bash %}
-                    startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
-                    {% endhighlight %}
+                                <div id="collapse-script-analytics-startanalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-startanalytics">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
+                                                <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
+                                                <td>Name of the analytics container</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-i|--ip] ANALYTICS_IP	</td>
+                                                <td>IP address that the container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
+                                                <td>Expose HTTP port. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
+                                                <td>Expose HTTPS port. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
+                                                <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
+                                                <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME	</td>
+                                                <td>Enable mounting volume for analytics data. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
+                                                <td>Specify the name of the volume to be created and mounted for the analytic data. The default name is <b>mfpf_analytics_container_name</b>.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
+                                                <td>Specify the location to store the data. The default folder name is <b>/analyticsData.</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>Provide MobileFirst Analytics properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>For example:</p>
+                        {% highlight bash %}
+                        startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
+                        {% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Close section</b></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>   
+                        </div>   
+                    <li><b>startanalyticsgroup.sh - Running the image on an IBM Container group</b><br />
+                        The <b>startanalyticsgroup.sh</b> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container group. It also binds your image to the host name that you configured in the <b>ANALYTICS_CONTAINER_GROUP_HOST</b> property.
 
-                  </li>
-                  <li><strong>startanalyticsgroup.sh - Running the image on an IBM Container group</strong><br />
-                  The <strong>startanalyticsgroup.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container group. It also binds your image to the host name that you configured in the <strong>ANALYTICS_CONTAINER_GROUP_HOST</strong> property.</p>
-
-                  Run:
+                        Run:
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
                   
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
-                                <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Click for a list of command-line arguments</b></a>
-                                </h4>
-                            </div>
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
 
-                            <div id="collapse-script-analytics-startanalyticsgroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-startanalyticsgroup">
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                            <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
-                                            <td>The name of the analytics container group.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-gh|--host] ANALYTICS_CONTAINER_GROUP_HOST	</td>
-                                            <td>The host name of the route.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[-gs|--domain] ANALYTICS_CONTAINER_GROUP_DOMAIN	</td>
-                                            <td>The domain name of the route.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
-                                            <td>The minimum number of container instances. The default value is 1.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX	</td>
-                                            <td>The maximum number of container instances. The default value is 1.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED	</td>
-                                            <td>The desired number of container instances. The default value is 2.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                            <td>The trace specification to be applied. Default: <code>*=info</code></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                            <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                            <td>The maximum size of a log file. The default size is 20 MB.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                            <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                            <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                            <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                            <td>Specify name of the volume to be created and mounted for analytics data. Default value is <b>mfpf_analytics_<ANALYTICS_CONTAINER_GROUP_NAME></b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                            <td>Specify the directory to be used for storing analytics data. Default value is <b>/analyticsData</b></td>
-                                        </tr>
-                                    </table>
-                                    
-                                    <p>For example:</p>
-                    {% highlight bash %}
-                    startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
-                    {% endhighlight %}
+                                <div id="collapse-script-analytics-startanalyticsgroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-analytics-startanalyticsgroup">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
+                                                <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
+                                                <td>The name of the analytics container group.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gh|--host] ANALYTICS_CONTAINER_GROUP_HOST	</td>
+                                                <td>The host name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gs|--domain] ANALYTICS_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>The domain name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
+                                                <td>The minimum number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX	</td>
+                                                <td>The maximum number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED	</td>
+                                                <td>The desired number of container instances. The default value is 2.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
+                                                <td>Specify name of the volume to be created and mounted for analytics data. Default value is <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
+                                                <td>Specify the directory to be used for storing analytics data. Default value is <b>/analyticsData</b></td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>For example:</p>
+{% highlight bash %}
+startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
+{% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Close section</b></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>   
-                  </li>
-              </ol>
-              Launch the Analytics Console by loading the following URL: http://ANALYTICS-CONTAINER-HOST/analytics/console (it may take a few moments).  
+                        </div>   
+                    </li>
+                </ol>
+                Launch the Analytics Console by loading the following URL: http://ANALYTICS-CONTAINER-HOST/analytics/console (it may take a few moments).  
             </div>
         </div>
     </div>
@@ -662,49 +659,48 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <strong>args</strong> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
+                The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
             
-              <h4>initenv.properties</h4>
-              <ul>
-                  <li><strong>BLUEMIX_USER - </strong>Your Bluemix username (email).</li>
-                  <li><strong>BLUEMIX_PASSWORD - </strong>Your Bluemix password.</li>
-                  <li><strong>BLUEMIX_ORG - </strong>Your Bluemix organization name.</li>
-                  <li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
-              </ul>
-              <h4>prepareserverdbs.properties</h4>
-              The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
-              <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
-              After you have set up your dashDB instance, provide the required arguments:
-              <ul>
-                  <li><strong>ADMIN_DB_SRV_NAME - </strong>Your dashDB service instance name for storing admin data.</li>
-                  <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
-                  <li><strong>RUNTIME_DB_SRV_NAME - </strong>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
-                  <li><strong>RUNTIME_SCHEMA_NAME - </strong>Your schema name for runtime data. The default is MFPDATA.</li>
-                  <strong>Note:</strong> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.<br/>
-
-              </ul>
-              <h4>prepareserver.properties</h4>
-              <ul>
-                  <li><strong>SERVER_IMAGE_TAG - </strong>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
-              </ul>
-              <h4>startserver.properties</h4>
-              <ul>
-                  <li><strong>SERVER_IMAGE_TAG - </strong>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><strong>SERVER_CONTAINER_NAME - </strong>A name for your Bluemix Container.</li>
-                  <li><strong>SERVER_IP - </strong>An IP address that the Bluemix Container should be bound to.<br/>
-                  To assign an IP address, run: <code>cf ic ip request</code>.<br/>
-                  IP addresses can be reused in multiple containers in a space.<br/>
-                  If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
-                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst server JNDI properties separated by comma (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
-              </ul>
-              <h4>startservergroup.properties</h4>
-              <ul>
-                  <li><strong>SERVER_IMAGE_TAG - </strong>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><strong>SERVER_CONTAINER_GROUP_NAME - </strong>A name for your Bluemix Container group.</li>
-                  <li><strong>SERVER_CONTAINER_GROUP_HOST - </strong>Your host name.</li>
-                  <li><strong>SERVER_CONTAINER_GROUP_DOMAIN - </strong>Your domain name. The default is: <code>mybluemix.net</code>.</li>
-                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst Server JNDI properties, separated by commas (<strong>without spaces</strong>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
-              </ul>
+                <h4>initenv.properties</h4>
+                <ul>
+                    <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
+                    <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
+                    <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
+                    <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
+                </ul>
+                <h4>prepareserverdbs.properties</h4>
+                The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
+                <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
+                After you have set up your dashDB instance, provide the required arguments:
+                <ul>
+                    <li><b>ADMIN_DB_SRV_NAME - </b>Your dashDB service instance name for storing admin data.</li>
+                    <li><b>ADMIN_SCHEMA_NAME - </b>Your schema name for admin data. The default is MFPDATA.</li>
+                    <li><b>RUNTIME_DB_SRV_NAME - </b>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
+                    <li><b>RUNTIME_SCHEMA_NAME - </b>Your schema name for runtime data. The default is MFPDATA.</li>
+                    <b>Note:</b> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.
+                </ul><br/>
+                <h4>prepareserver.properties</h4>
+                <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
+                </ul>
+                <h4>startserver.properties</h4>
+                <ul>
+                    <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
+                    <li><b>SERVER_CONTAINER_NAME - </b>A name for your Bluemix Container.</li>
+                    <li><b>SERVER_IP - </b>An IP address that the Bluemix Container should be bound to.<br/>
+                    To assign an IP address, run: <code>cf ic ip request</code>.<br/>
+                    IP addresses can be reused in multiple containers in a space.<br/>
+                    If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
+                    <li><b>MFPF_PROPERTIES - </b>MobileFirst server JNDI properties separated by comma (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                </ul>
+                <h4>startservergroup.properties</h4>
+                <ul>
+                    <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>A name for your Bluemix Container group.</li>
+                    <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Your host name.</li>
+                    <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
+                    <li><b>MFPF_PROPERTIES - </b>MobileFirst Server JNDI properties, separated by commas (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -718,10 +714,11 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
-              <ol>
-                  <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
-                      Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation on IBM Containers:
+            <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+            
+            <ol>
+                <li><b>initenv.sh – Logging in to Bluemix </b><br />
+                    Run the <b>initenv.sh</b> script to create an environment for building and running IBM MobileFirst Foundation on IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -773,9 +770,9 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                             </div>
                         </div>
                     </div>
-                  </li>
-                  <li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
-                  The <strong>prepareserverdbs.sh</strong> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                </li>
+                <li><b>prepareserverdbs.sh - Prepare the MobileFirst Server database</b><br />
+                    The <b>prepareserverdbs.sh</b> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -831,43 +828,44 @@ prepareserverdbs.sh --admindb MFPDashDBService
                             </div>
                         </div>
                     </div>
-                  </li>
-                  <li><strong>initenv.sh(Optional) – Logging in to Bluemix </strong><br />
-                      This step is required only if you need to create your containers in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <strong>initenv.sh</strong> script:
+                </li>
+                <li><b>initenv.sh(Optional) – Logging in to Bluemix </b><br />
+                      This step is required only if you need to create your containers in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  </li>
-                  <li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
-                  Run the <strong>prepareserver.sh</strong> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
-                  The list contains the image name, date of creation, and ID.<br/>
+
+                </li>
+                <li><b>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</b><br />
+                    Run the <b>prepareserver.sh</b> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
+                    The list contains the image name, date of creation, and ID.<br/>
                   
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
-                  <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-                      <div class="panel panel-default">
-                          <div class="panel-heading" role="tab" id="script-prepareserver">
-                              <h4 class="panel-title">
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Click for a list of command-line arguments</b></a>
-                              </h4>
-                          </div>
 
-                          <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserver">
-                              <div class="panel-body">
-                                  <table class="table table-striped">
-                                      <tr>
-                                          <td><b>Command-line argument</b></td>
-                                          <td><b>Description</b></td>
-                                      </tr>
-                                      <tr>
-                                          <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                          <td>Name to be used for the customized MobileFirst Server image. Format: registryUrl/namespace/imagename
-</td>
-                                      </tr>
-                                  </table>
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="script-prepareserver">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Click for a list of command-line arguments</b></a>
+                                </h4>
+                            </div>
+
+                            <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserver">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td><b>Command-line argument</b></td>
+                                            <td><b>Description</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
+                                            <td>Name to be used for the customized MobileFirst Server image. Format: registryUrl/namespace/imagename</td>
+                                        </tr>
+                                    </table>
                                   
-                                  <p>For example:</p>
+                                    <p>For example:</p>
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
@@ -876,12 +874,11 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>
                               </div>
                           </div>
-                    </div>
-                  </div>
-                  
-                  </li>
-                  <li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property. Run:</p> 
+                        </div>
+                    </div>  
+                </li>
+                <li><b>startserver.sh - Running the image on an IBM Container</b><br />
+                    The <b>startserver.sh</b> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -962,12 +959,11 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
                             </div>
-                        </div></li>
-                  
-                  
-                  <li><strong>startservergroup.sh - Running the image on an IBM Container group</strong><br />
-                  The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</p>
-                  Run:
+                        </div>
+                    </div>
+                <li><b>startservergroup.sh - Running the image on an IBM Container group</b><br />
+                    The <b>startservergroup.sh</b> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <b>SERVER_CONTAINER_GROUP_HOST</b> property.</li>
+                    Run:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
@@ -1062,8 +1058,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
                                 </div>
                             </div>
                         </div>
-                  </li>
-              </ol>
+                    </div>
+                </ol>
             </div>
         </div>
     </div>

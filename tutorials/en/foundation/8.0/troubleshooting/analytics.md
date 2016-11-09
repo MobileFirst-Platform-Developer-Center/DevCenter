@@ -43,6 +43,7 @@ wlServerContext = by default "/mfp/"
             </li>
         </ul>
     </li>
+    </ul>
   </div>
 </div>
 
@@ -78,7 +79,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 {% highlight swift %}
 WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK)
-{% endhighlight %}
+{% endhighlight %}</li>
 
         <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
 

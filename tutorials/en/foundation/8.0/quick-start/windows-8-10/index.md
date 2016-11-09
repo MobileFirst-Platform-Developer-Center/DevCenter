@@ -49,8 +49,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
 
-    ```csharp
-    try
+   ```csharp
+   try
       {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
@@ -75,7 +75,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
             statusTextBlock.Text = "Client failed to connect to MobileFirst Server";
             System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
         }
-    ```
+   ```
 
 
 ### 4. Deploy an adapter

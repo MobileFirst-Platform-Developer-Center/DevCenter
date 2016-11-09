@@ -26,7 +26,7 @@ Sometimes it is better to use the existing JavaScript™ UI frameworks.</p>
 
 <p>The MobileFirst client-side framework uses the jQuery library for internal functionality. By default, the <code>$</code> character is assigned to the internal jQuery in the main HTML file of the application, in the HEAD element:</p>
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 <script>window.$ = window.jQuery = WLJQ;</script>
 {% endhighlight %}
 
@@ -50,7 +50,7 @@ More style images can optionally be added.</p>
 <br clear="all"/>
 <h3>Basic structure of a screen</h3>
 <p>The basic structure of a screen in a jQuery Mobile application is as follows:<br />
-{% highlight html linenos %}
+{% highlight html  %}
 <div data-role="page"><br />
     <div data-role="header"> ... </div><br />
     <div data-role="content"> ... </div><br />
@@ -70,7 +70,7 @@ More style images can optionally be added.</p>
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_03_RPE.png"  style="max-width: 60%; margin: 5px"/>
 
 <p>By using jQuery Mobile, you can create mobile application screens with a few lines of code<br />
-{% highlight html linenos %}
+{% highlight html  %}
 <div data-role="page">
     <div data-role="header">
         <h2>My Application</h2>

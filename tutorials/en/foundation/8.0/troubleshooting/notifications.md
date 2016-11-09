@@ -86,7 +86,7 @@ Find information to help resolve issues that you might encounter when you use th
   <div class="panel-heading"><h4>The Push service is shown as Inactive in the MobileFirst Operations Console</h4></div>
   <div class="panel-body">
     <p>The Push service is shown as Inactive despite its .war file deployed and the <code>mfp.admin.push.url</code>,  <code>mfp.push.authorization.server.url</code>, and <code>secret</code> properties are correctly configured in the <b>server.xml</b> file.</p>
-    <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:
+    <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:</p>
 
 {% highlight xml %}
 <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value='"http://localhost:9080/imfpush"'/>

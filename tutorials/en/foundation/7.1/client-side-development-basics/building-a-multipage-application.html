@@ -50,13 +50,13 @@ This is required because the main application HTML file loads the MobileFirst cl
 <li>When you implement multipage navigation in the Windows Phone 8 environment, you <strong>must</strong> change the URL each time you use the jQuery <code>load()</code> API method. <em>The example project for this training module demonstrates this task in detail.</em>
 <p>Add <code>/www/default/</code> at the beginning of the URL path string. For example:<br />
 Change<br />
-{% highlight js linenos %}
+{% highlight js  %}
 $("#pagePort").load("pages/MainPage.html", function(){
     (currentPage.init);
 });
 {% endhighlight %}</p>
 <p>To<br />
-{% highlight js linenos %}
+{% highlight js  %}
 $("#pagePort").load("/www/default/pages/MainPage.html", function(){
     (currentPage.init);<br />
 });
@@ -73,13 +73,13 @@ To overcome the defect, consult the changes that need to be made in the <code>.j
 <li>You can use the jQuery <code>$().load()</code> API method to implement the above.</li>
 </ul>
 <p>To load an HTML file, use the following syntax:<br />
-{% highlight js linenos %}$(containerSelector).load(filePath, callbackFunction);{% endhighlight %}</p>
+{% highlight js  %}$(containerSelector).load(filePath, callbackFunction);{% endhighlight %}</p>
 <p><code>containerSelector</code> – The jQuery CSS selector of element to host the loaded content.<br />
 <code>filePath</code> – The relative path to an HTML file. Always relative to the main HTML file.<br />
 <code>callbackFunction</code> - A JavaScript function to run when the loading completes.</p>
 <h3>Example</h3>
 <h4>JavaScript</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 $("#pagePort").load(path + "pages/MainPage.html", function(){
     $.getScript(path + "js/MainPage.js", function() {
         if (currentPage.init) {
@@ -89,7 +89,7 @@ $("#pagePort").load(path + "pages/MainPage.html", function(){
 });
 {% endhighlight %}</p>
 <h4>HTML</h4>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <div id="pagePort"></div>
 {% endhighlight %}</p>
 <p>This code loads the <code>MainPage.html</code> file and inserts its content into the <code>pagePort DIV</code> element.<br />
@@ -100,7 +100,7 @@ JavaScript (and CSS, if needed) references from the <code>MainPage.html</code> a
 <p>The navigation history must be preserved as a stack in a global array object.<br />
 A reference to the currently loaded page must be preserved, too, by using a global object variable.<br />
 A reference to the file path is needed for Windows Phone 8.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 var pagesHistory = [];
 var currentPage = {};
 var path = "";
@@ -109,7 +109,7 @@ var path = "";
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg" /></p>
 <ol>
 <li>On application start, the <code>MainPage.html</code> file is loaded from the application code and injected into the <code>#pagePort DIV</code>.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function wlCommonInit() {
     // Special case for Windows Phone 8 only.
     if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
@@ -122,7 +122,7 @@ function wlCommonInit() {
     });
 }{% endhighlight %}</li>
 <li>The <code>MainPage.js</code> file is loaded as a part of <code>MainPage.html</code>.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 currentPage = {};
 currentPage.init = function() {
     WL.Logger.debug("MainPage :: init");
@@ -139,7 +139,7 @@ currentPage.init = function() {
 <li><code>Page1.html</code> is loaded and injected into <code>#pagePort DIV</code>. <code>Page1.js</code> is loaded as a part of <code>Page1.html</code>.</li>
 <li>The <code>currentPage</code> object is declared and overrides the old one.</li>
 <li>The <code>currentPage.init</code> function is declared.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 currentPage = {};
 currentPage.init = function(){
     WL.Logger.debug(“page1 :: init");
@@ -152,7 +152,7 @@ currentPage.init = function(){
 <ol>
 <li>The previous HTML file name is retrieved from the <code>PagesHistory</code> stack (<code>MainPage.html</code>).</li>
 <li>It is loaded and injected into <code>#pagePort DIV</code>.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 currentPage.back = function(){
     WL.Logger.debug("Page1 :: back")
     $("#pagePort").load(pagesHistory.pop(),
@@ -165,7 +165,7 @@ currentPage.back = function(){
 <li><code>MainPage.js</code> is loaded as a part of <code>MainPage.html</code>.</li>
 <li>The <code>currentPage</code> object is declared and overrides the old one.</li>
 <li>The <code>currentPage.init</code> function is declared.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 currentPage = {};
 currentPage.init = function(){
     WL.Logger.debug("MainPage :: init");

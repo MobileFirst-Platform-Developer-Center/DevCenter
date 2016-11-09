@@ -31,7 +31,7 @@ Developers can easily create their own protocol between internal web components 
 <h2>Java implementation</h2>
 <h4>Implementing the webViewOverlay</h4>
 <p>First, in the application main class, a <strong>webViewOverlay</strong> object is declared, to be used to display the external content. Static references are used for simplicity.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public class IncludeExternalPages extends CordovaActivity implements WLInitWebFrameworkListener {
     private static WebView webViewOverlay;
     public static Activity thisapp;
@@ -40,7 +40,7 @@ public class IncludeExternalPages extends CordovaActivity implements WLInitWebFr
 The object is created and its layout properties are set, and it is added as a view to the root element. It is invisible initially.<br />
 Note the <em>setMargins</em> API. This API can be used to position your <strong>webViewOverlay</strong> component in the screen.</p>
 <p><strong>Note:</strong> Android 4.4 introduces a new version of WebView that is based on Chromium and that affects the WebView margins. More information about this issue can be found here: <a href="http://developer.android.com/guide/webapps/migrating.html" target="_blank">http://developer.android.com/guide/webapps/migrating.html</a></p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
         super.loadUrl(WL.getInstance().getMainHtmlFilePath());
@@ -72,7 +72,7 @@ Next, setting up the content view.</p>
 <li>The current root view is removed from its original parent. Instead, the <strong>root</strong> and <strong>webViewOverlay</strong> are added to the <strong>rootRelativeLayout</strong>.</li>
 <li>The content view is set to <strong>rootRelativeLayout</strong>.</li>
 </ul>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
      …
     webViewOverlay.getSettings().setJavaScriptEnabled(true);
@@ -86,7 +86,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 <p>
 <h4>Implementing the Java code of the Cordova plug-in</h4>
 <p>In a new class, <strong>WebViewOverlayPlugin.java</strong>, the actions the plug-in supports are declared.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public class WebViewOverlayPlugin extends CordovaPlugin {
     private final String ACTION_OPEN_URL = "open";
     private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";
@@ -94,7 +94,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {
 {% endhighlight %}</p>
 <p>
 If an “open” request was received from the web part of the application, load the external content and render the <strong>webViewOverlay</strong> visible.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public class WebViewOverlayPlugin extends CordovaPlugin {
     ...
 @Override
@@ -114,7 +114,7 @@ return true;
 <p>
 If receive a “close” request from the web part of the application, clean the <strong>webViewOverlay</strong> and hide it.<br />
 UI-related actions are performed on a dedicated UI thread.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class WebViewOverlayPlugin extends CordovaPlugin {
     …
     …
@@ -134,7 +134,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {
 {% endhighlight %}</p>
 <h2>JavaScript implementation</h2>
 <p>In JavaScript, a <strong>WebViewOverlayPlugin</strong> object is created and populated with the required methods.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function WebViewOverlayPlugin() {};
 WebViewOverlayPlugin.prototype.open = function() {
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);
@@ -147,7 +147,7 @@ window.webViewOverlay = new WebViewOverlayPlugin();
 <p>
 The clicked tab ID is analyzed and either shows or hides the <strong>webViewOverlay</strong> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function tabClicked(id){
     WL.Logger.debug("tabClicked >> id :: " + id);
     $(".tab").addClass('hidden');

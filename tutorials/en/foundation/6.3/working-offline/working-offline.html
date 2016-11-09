@@ -26,14 +26,14 @@ The developer is responsible for maintaining the offline or online state within 
 </ul>
 <p>To add connectivity failure detection in either location, add the <code>onConnectionFailure</code> property and specify a callback function to invoked if connectivity fails.</p>
 <h4>initOptions.js</h4>
-{% highlight js linenos %}var wlInitOptions = {
+{% highlight js  %}var wlInitOptions = {
     onConnectionFailure: function (data){
     connectionFailure(data);
 }
 {% endhighlight %}
 
 <h4>Implementation JS file</h4>
-{% highlight js linenos %}WL.Client.invokeProcedure(invocationData, {
+{% highlight js  %}WL.Client.invokeProcedure(invocationData, {
     onSuccess: successHandlerFunction,
     onConnectionFailure: connectionFailure,
     timeout: 1000
@@ -50,7 +50,7 @@ The developer is responsible for maintaining the offline or online state within 
 </li>
 </ul>
 <p>The developer can also add event listeners to the above events and specify the callback functions to handle them.</p>
-{% highlight js linenos %}
+{% highlight js  %}
     document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);
 document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetected, false);{% endhighlight %}
 <p>Note: <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> are namespace constants, not strings.</p>
@@ -89,7 +89,7 @@ document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetecte
 <p>When a MobileFirst application returns to the foreground, the Cordova <code>resume</code> event is fired.<br />
 The developer can add a listener for this event and specify the callback function that handles it. For example:</p>
 
-{% highlight js linenos %}document.addEventListener("resume", function() {
+{% highlight js  %}document.addEventListener("resume", function() {
     WL.Device.getNetworkInfo( function(networkInfo) {
         if (networkInfo.isNetworkConnected) {
             // Perform client or server actions.
@@ -105,7 +105,7 @@ The heartbeat can used to periodically make sure that the application remains co
 <p>A developer can specify the heartbeat interval by using the <code>WL.Client.setHeartBeatInterval(intervalSeconds)</code> API method.</p>
 <p>The following sample shows an offline and online detection mechanism<br />
 
-{% highlight js linenos %}
+{% highlight js  %}
 document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,
 MyApp.connectionFailure, false);
 MyApp.connectionFailure = function() {

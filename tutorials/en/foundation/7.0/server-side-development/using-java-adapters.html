@@ -31,7 +31,7 @@ This package name can be interpreted as folders: <code>java\com\sample\customcod
 </li>
 <li>Add methods to your <code>Calculator.java</code> class.<br />
 Here is an example of a static method (does not require a new instance) and of an instance method.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 package com.sample.customcode;
 public class Calculator {
   // Add two integers.
@@ -52,7 +52,7 @@ public class Calculator {
 <p>After your custom Java code is created and any required JAR files are added, you can reference it from your MobileFirst adapter JavaScript as if it were written in Java.</p>
 <ol>
 <li>Invoke the static Java method as shown, and use the full class name to reference it directly.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function addTwoIntegers(a,b){
   return {
     result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
@@ -61,7 +61,7 @@ function addTwoIntegers(a,b){
 {% endhighlight %}
 </li>
 <li>To use the instance method, create a class instance and invoke the instance method from it.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function subtractTwoIntegers(a,b){
   var calcInstance = new com.sample.customcode.Calculator();
   return {

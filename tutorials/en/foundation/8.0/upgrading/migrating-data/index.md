@@ -240,174 +240,175 @@ To enable the encryption of local data stores on mobile devices, you must make u
 
 ### Encrypting data on iOS devices
 1. Obtain the encryption capabilities with CocoaPods.
-    * Open your Podfile and add the following line:
+   * Open your Podfile and add the following line:
         
-        ##### Before (with IMFData/CloudantToolkit):
+   ##### Before (with IMFData/CloudantToolkit):
         
-        ```xml
-        pod 'IMFDataLocal/SQLCipher'
-        ```
+   ```xml
+   pod 'IMFDataLocal/SQLCipher'
+   ```
         
-        ##### After (with Cloudant Sync):
-        
-        ```xml
-        pod 'CDTDatastore/SQLCipher'
-        ```        
-        
-        For more information, see the [CDTDatastore encryption documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md).
-    * Run the following command to add the dependencies to your application.
+   ##### After (with Cloudant Sync):
 
-        ```bash
-        pod install
-        ```
+   ```xml
+   pod 'CDTDatastore/SQLCipher'
+   ```        
+        
+   For more information, see the [CDTDatastore encryption documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md).
+    
+   * Run the following command to add the dependencies to your application.
+
+     ```bash
+     pod install
+     ```
 
 2. To use the encryption feature within a Swift application, add the following imports to the associated bridging header for the application: 
     
-    ##### Before (with IMFData/CloudantToolkit):
+   ##### Before (with IMFData/CloudantToolkit):
     
-    ```objc
-    #import <CloudantSync.h>
-    #import <CloudantSyncEncryption.h>
-    #import <CloudantToolkit/CloudantToolkit.h>
-    #import <IMFData/IMFData.h>
-    ```
+   ```objc
+   #import <CloudantSync.h>
+   #import <CloudantSyncEncryption.h>
+   #import <CloudantToolkit/CloudantToolkit.h>
+   #import <IMFData/IMFData.h>
+   ```
     
-    ##### After (with Cloudant Sync):
+   ##### After (with Cloudant Sync):
     
-    ```objc
-    #import <CloudantSync.h>
-    #import <CloudantSyncEncryption.h>
-    ```
+   ```objc
+   #import <CloudantSync.h>
+   #import <CloudantSyncEncryption.h>
+   ```
         
 3. Initialize your local store for encryption with a key provider.
 
-    > **Warning:** If you change the password after creating the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database has been encrypted. You must delete the database to change passwords.
+   > **Warning:** If you change the password after creating the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database has been encrypted. You must delete the database to change passwords.
 
-    ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### BEFORE (with IMFData/CloudantToolkit):
     
-    **Objective-C**
+   **Objective-C**
     
-    ```objc
-    //Get reference to data manager
-    IMFDataManager *manager = [IMFDataManager sharedInstance];
-    NSString *name = @"automobiledb";
-    NSError *error = nil;
+   ```objc
+   //Get reference to data manager
+   IMFDataManager *manager = [IMFDataManager sharedInstance];
+   NSString *name = @"automobiledb";
+   NSError *error = nil;
 
-    // Initalize a key provider
-    id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword: @"passw0rd" forIdentifier: @"identifier"];
+   // Initalize a key provider
+   id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword: @"passw0rd" forIdentifier: @"identifier"];
 
-    //Initialize local store
-    CDTStore *localStore = [manager localStore: name withEncryptionKeyProvider: keyProvider error: &error];
-    ```
+   //Initialize local store
+   CDTStore *localStore = [manager localStore: name withEncryptionKeyProvider: keyProvider error: &error];
+   ```
     
-    **Swift**
+   **Swift**
     
-    ```swift
-    let manager = IMFDataManager.sharedInstance()
-    let name = "automobiledb"
+   ```swift
+   let manager = IMFDataManager.sharedInstance()
+   let name = "automobiledb"
 
-    let keyProvider = CDTEncryptionKeychainProvider(password: "passw0rd", forIdentifier: "identifier")
-    var store:CDTStore?
-    do {
+   let keyProvider = CDTEncryptionKeychainProvider(password: "passw0rd", forIdentifier: "identifier")
+   var store:CDTStore?
+   do {
         store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
-    } catch let error as NSError {
+   } catch let error as NSError {
         // Handle error
-    }
-    ```
+   }
+   ```
     
-    ##### AFTER (with Cloudant Sync):
+   ##### AFTER (with Cloudant Sync):
     
-    **Objective-C**
+   **Objective-C**
+
+   ```objc
+   // Get reference to datastore manager
+   CDTDatastoreManager *datastoreManager = existingDatastoreManager;
+   NSString *name = @"automobiledb";
+   NSError *error = nil;
+
+   // Create KeyProvider
+   id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword: @"passw0rd" forIdentifier: @"identifier"];
+
+   //Create local store
+   CDTDatastore *datastore = [datastoreManager datastoreNamed:name withEncryptionKeyProvider:keyProvider error:&error];
+   ```
+
+   **Swift**
     
-    ```objc
-    // Get reference to datastore manager
-    CDTDatastoreManager *datastoreManager = existingDatastoreManager;
-    NSString *name = @"automobiledb";
-    NSError *error = nil;
+   ```swift
+   // Get reference to datastore manager
+   let datastoreManager:CDTDatastoreManager = existingDatastoreManager
+   let name:String  = "automobiledb"
 
-    // Create KeyProvider
-    id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword: @"passw0rd" forIdentifier: @"identifier"];
-
-    //Create local store
-    CDTDatastore *datastore = [datastoreManager datastoreNamed:name withEncryptionKeyProvider:keyProvider error:&error];
-    ```
-
-    **Swift**
-    
-    ```swift
-    // Get reference to datastore manager
-    let datastoreManager:CDTDatastoreManager = existingDatastoreManager
-    let name:String  = "automobiledb"
-
-    //Create local store
-    var datastore:CDTDatastore?
-    let keyProvider = CDTEncryptionKeychainProvider(password: "passw0rd", forIdentifier: "identifier")
-    do{
+   //Create local store
+   var datastore:CDTDatastore?
+   let keyProvider = CDTEncryptionKeychainProvider(password: "passw0rd", forIdentifier: "identifier")
+   do{
         datastore = try datastoreManager.datastoreNamed(name, withEncryptionKeyProvider: keyProvider)
-    }catch let error as NSError{
+   }catch let error as NSError{
         // Handle error
-    }
-    ```
+   }
+   ```
     
 4. When you are replicating data with an encrypted local store, you must initialize the CDTPullReplication and CDTPushReplication methods with a key provider.
 
-    ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### BEFORE (with IMFData/CloudantToolkit):
 
-    **Objective-C**
+   **Objective-C**
     
-    ```objc
-    //Get reference to data manager
-    IMFDataManager *manager = [IMFDataManager sharedInstance];
-    NSString *databaseName = @"automobiledb";
+   ```objc
+   //Get reference to data manager
+   IMFDataManager *manager = [IMFDataManager sharedInstance];
+   NSString *databaseName = @"automobiledb";
 
-    // Initalize a key provider
-    id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@"password" forIdentifier:@"identifier"];
+   // Initalize a key provider
+   id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@"password" forIdentifier:@"identifier"];
 
-    // pull replication
-    CDTPullReplication *pull = [manager pullReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
+   // pull replication
+   CDTPullReplication *pull = [manager pullReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
 
-    // push replication
-    CDTPushReplication *push = [manager pushReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
-    ```
+   // push replication
+   CDTPushReplication *push = [manager pushReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
+   ```
     
-    **Swift**
+   **Swift**
     
-    ```swift
-    //Get reference to data manager
-    let manager = IMFDataManager.sharedInstance()
-    let databaseName = "automobiledb"
+   ```swift
+   //Get reference to data manager
+   let manager = IMFDataManager.sharedInstance()
+   let databaseName = "automobiledb"
 
-    // Initalize a key provider
-    let keyProvider = CDTEncryptionKeychainProvider(password: "password", forIdentifier: "identifier")
+   // Initalize a key provider
+   let keyProvider = CDTEncryptionKeychainProvider(password: "password", forIdentifier: "identifier")
 
-    // pull replication
-    let pull:CDTPullReplication = manager.pullReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
+   // pull replication
+   let pull:CDTPullReplication = manager.pullReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
 
-    // push replication
-    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
-    ```
+   // push replication
+   let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
+   ```
     
-    ##### AFTER (with Cloudant Sync):
-    Replication with an encrypted database requires no changes from replication with an unencrypted database.
+   ##### AFTER (with Cloudant Sync):
+   Replication with an encrypted database requires no changes from replication with an unencrypted database.
 
 ### Encrypting data on Android devices
 To encrypt data on an Android device, obtain encryption capabilities by including the correct libraries in your application. Then, you can initialize your local store for encryption and replicate data.
 
 1. Add the Cloudant Toolkit library as a dependency in your build.gradle file:
 
-    ##### BEFORE (with IMFData/CloudantToolkit):
-    
-    ```xml
-    repositories {
-    mavenCentral()
-    }
+   ##### BEFORE (with IMFData/CloudantToolkit):
 
-    dependencies {
-        compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
-    }
-    ```
+   ```xml
+   repositories {
+   mavenCentral()
+   }
+
+   dependencies {
+       compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
+   }
+   ```
     
-    ##### AFTER (with Cloudant Sync):
+   ##### AFTER (with Cloudant Sync):
     
     ```xml
     repositories {
@@ -429,21 +430,21 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
     * Add **sqlcipher.jar** as a file dependency. From the app folder menu in Android studio, select the **Dependencies** tab under **Open Module Settings**.
 3. Initialize your local store for encryption with a key provider.
     
-    > **Warning:** If you change the password after you create the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database is encrypted. You must delete the database to change passwords.
+   > **Warning:** If you change the password after you create the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database is encrypted. You must delete the database to change passwords.
 
-    ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### BEFORE (with IMFData/CloudantToolkit):
     
-    ```java
-    // Get reference to DataManager
-    DataManager manager = DataManager.getInstance();
+   ```java
+   // Get reference to DataManager
+   DataManager manager = DataManager.getInstance();
 
-    // Initalize a key provider
-    KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","identifier");
+   // Initalize a key provider
+   KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","identifier");
 
-    // Create local store
-    String databaseName = "automobiledb";
-    Task<Store> storeTask = manager.localStore(databaseName, keyProvider);
-    storeTask.continueWith(new Continuation<Store, Void >() {
+   // Create local store
+   String databaseName = "automobiledb";
+   Task<Store> storeTask = manager.localStore(databaseName, keyProvider);
+   storeTask.continueWith(new Continuation<Store, Void >() {
         @Override
         public Void then(Task<Store> task) throws Exception {
             if (task.isFaulted()) {
@@ -454,48 +455,47 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
             }
             return null;
          }
-    });
-    ```
+   });
+   ```
     
-    ##### AFTER (with Cloudant Sync):
+   ##### AFTER (with Cloudant Sync):
     
-    ```java
-    // Load SQLCipher libs
-    SQLiteDatabase.loadLibs(context);
+   ```java
+   // Load SQLCipher libs
+   SQLiteDatabase.loadLibs(context);
 
-    // Create DatastoreManager
-    File path = context.getDir("databasedir", Context.MODE_PRIVATE);
-    DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
+   // Create DatastoreManager
+   File path = context.getDir("databasedir", Context.MODE_PRIVATE);
+   DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
 
-    // Create encrypted local store
-    String name = "automobiledb";
+   // Create encrypted local store
+   String name = "automobiledb";
 
-    KeyProvider keyProvider = new AndroidKeyProvider(context,"passw0rd","identifier");
-    Datastore datastore = manager.openDatastore(name, keyProvider);
-    ```
+   KeyProvider keyProvider = new AndroidKeyProvider(context,"passw0rd","identifier");
+   Datastore datastore = manager.openDatastore(name, keyProvider);
+   ```
 
 4. When you are replicating data with an encrypted local store, you must pass a KeyProvider object into the `pullReplicationForStore()` or `pushReplicationForStore()` method.
 
-    ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### BEFORE (with IMFData/CloudantToolkit):
     
-    ```java
-    //Get reference to data manager
-    DataManager manager = DataManager.getInstance();
-    String databaseName = "automobiledb";
+   ```java
+   //Get reference to data manager
+   DataManager manager = DataManager.getInstance();
+   String databaseName = "automobiledb";
 
-    // Initalize a key provider
-    KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","identifier");
+   // Initalize a key provider
+   KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","identifier");
 
-    // pull replication
-    Task<PushReplication> pullTask = manager.pullReplicationForStore(databaseName, keyProvider);
+   // pull replication
+   Task<PushReplication> pullTask = manager.pullReplicationForStore(databaseName, keyProvider);
 
-    // push replication
-    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
-    ```
+   // push replication
+   Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
+   ```
 
-    ##### AFTER (with Cloudant Sync):
-    
-    Replication with an encrypted database requires no changes from replication with an unencrypted database.
+   ##### AFTER (with Cloudant Sync):
+   Replication with an encrypted database requires no changes from replication with an unencrypted database.
 
 ## Setting user permissions
 You can set user permissions on remote databases.
@@ -1061,63 +1061,63 @@ To perform queries, you must create an index.
 
 1. Create an index that includes the data type. Indexing with the data type is useful when an object mapper is set on the data store.
 
-    ##### BEFORE
+   ##### BEFORE
     
-    **Objective-C**
+   **Objective-C**
     
-    ```objc
-    // Use an existing data store
-    CDTStore *store = existingStore;
+   ```objc
+   // Use an existing data store
+   CDTStore *store = existingStore;
 
-    // The data type to use for the Automobile class
-    NSString *dataType = [store.mapper dataTypeForClassName:NSStringFromClass([Automobile class])];
+   // The data type to use for the Automobile class
+   NSString *dataType = [store.mapper dataTypeForClassName:NSStringFromClass([Automobile class])];
 
-    // Create the index
-    [store createIndexWithDataType:dataType fields:@[@"year", @"make"] completionHandler:^(NSError *error) {
+   // Create the index
+   [store createIndexWithDataType:dataType fields:@[@"year", @"make"] completionHandler:^(NSError *error) {
        if(error){
            // Handle error
        }else{
            // Continue application flow
        }
-    }];
-    ```
+   }];
+   ```
     
-    **Swift**
+   **Swift**
     
-    ```swift
-    // A store that has been previously created.
-    let store:CDTStore = existingStore
+   ```swift
+   // A store that has been previously created.
+   let store:CDTStore = existingStore
 
-    // The data type to use for the Automobile class
-    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
+   // The data type to use for the Automobile class
+   let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
 
-    // Create the index
-    store.createIndexWithDataType(dataType, fields: ["year","make"]) { (error:NSError!) -> Void in
+   // Create the index
+   store.createIndexWithDataType(dataType, fields: ["year","make"]) { (error:NSError!) -> Void in
         if nil != error {
             // Handle error
         } else {
             // Continue application flow
         }
-    }
-    ```
+   }
+   ```
     
-    **Java**
+   **Java**
     
-    ```java
-    // Use an existing data store
-    Store store = existingStore;
+   ```java
+   // Use an existing data store
+   Store store = existingStore;
 
-    // The data type to use for the Automobile class
-    String dataType = store.getMapper().getDataTypeForClassName(Automobile.class.getCanonicalName());
+   // The data type to use for the Automobile class
+   String dataType = store.getMapper().getDataTypeForClassName(Automobile.class.getCanonicalName());
 
-    // The fields to index.
-    List<IndexField> indexFields = new ArrayList<IndexField>();
-    indexFields.add(new IndexField("year"));
-    indexFields.add(new IndexField("make"));
+   // The fields to index.
+   List<IndexField> indexFields = new ArrayList<IndexField>();
+   indexFields.add(new IndexField("year"));
+   indexFields.add(new IndexField("make"));
 
-    // Create the index
-    Task<Void> indexTask = store.createIndexWithDataType(dataType, indexFields);
-    indexTask.continueWith(new Continuation<Void, Void>() {
+   // Create the index
+   Task<Void> indexTask = store.createIndexWithDataType(dataType, indexFields);
+   indexTask.continueWith(new Continuation<Void, Void>() {
         @Override
         public Void then(Task<Void> task) throws Exception {
             if(task.isFaulted()){
@@ -1127,105 +1127,105 @@ To perform queries, you must create an index.
             }
             return null;
         }
-    });
-    ```
+   });
+   ```
     
-    ##### AFTER
+   ##### AFTER
     
-    **Objective-C**
+   **Objective-C**
     
-    ```objc
-    // A store that has been previously created.
-    CDTDatastore *datastore = existingDatastore;
+   ```objc
+   // A store that has been previously created.
+   CDTDatastore *datastore = existingDatastore;
 
-    NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"] withName:@"automobileindex"];
-    if(!indexName){
+   NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"] withName:@"automobileindex"];
+   if(!indexName){
         // Handle error
-    }
-    ```
+   }
+   ```
     
-    **Swift**
+   **Swift**
     
-    ```swift
-    // A store that has been previously created.
-    let datastore:CDTDatastore = existingDatastore
+   ```swift
+   // A store that has been previously created.
+   let datastore:CDTDatastore = existingDatastore
 
-    // Create the index
-    let indexName:String? = datastore.ensureIndexed(["@datatype","year","make"], withName: "automobileindex")
-    if(indexName == nil){
+   // Create the index
+   let indexName:String? = datastore.ensureIndexed(["@datatype","year","make"], withName: "automobileindex")
+   if(indexName == nil){
         // Handle error
-    }
-    ```
+   }
+   ```
     
-    **Java**
+   **Java**
     
-    ```java
-    // Use an existing store
-    Datastore datastore = existingStore;
+   ```java
+   // Use an existing store
+   Datastore datastore = existingStore;
 
-    // Create an IndexManager
-    IndexManager indexManager = new IndexManager(datastore);
+   // Create an IndexManager
+   IndexManager indexManager = new IndexManager(datastore);
 
-    // The fields to index.
-    List<Object> indexFields = new ArrayList<Object>();
-    indexFields.add("@datatype");
-    indexFields.add("year");
-    indexFields.add("make");
+   // The fields to index.
+   List<Object> indexFields = new ArrayList<Object>();
+   indexFields.add("@datatype");
+   indexFields.add("year");
+   indexFields.add("make");
 
-    // Create the index
-    indexManager.ensureIndexed(indexFields, "automobile_index");
-    ```
+   // Create the index
+   indexManager.ensureIndexed(indexFields, "automobile_index");
+   ```
     
 2. Delete indexes.
 
-    ##### BEFORE
+   ##### BEFORE
 
-    **Objective-C**
+   **Objective-C**
 
-    ```objc
-    // Use an existing data store
-    CDTStore *store = existingStore;
-    NSString *indexName = existingIndexName;
+   ```objc
+   // Use an existing data store
+   CDTStore *store = existingStore;
+   NSString *indexName = existingIndexName;
 
-    // Delete the index
-    [store deleteIndexWithName:indexName completionHandler:^(NSError *error) {
+   // Delete the index
+   [store deleteIndexWithName:indexName completionHandler:^(NSError *error) {
         if(error){
             // Handle error
         }else{
             // Continue application flow
         }
-    }];
-    ```
+   }];
+   ```
 
-    **Swift**
+   **Swift**
 
-    ```swift
-    // Use an existing store
-    let store:CDTStore = existingStore
+   ```swift
+   // Use an existing store
+   let store:CDTStore = existingStore
 
-    // The data type to use for the Automobile class
-    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
+   // The data type to use for the Automobile class
+   let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
 
-    // Delete the index
-    store.deleteIndexWithDataType(dataType, completionHandler: { (error:NSError!) -> Void in
+   // Delete the index
+   store.deleteIndexWithDataType(dataType, completionHandler: { (error:NSError!) -> Void in
         if nil != error {
             // Handle error
         } else {
             // Continue application flow
         }
-    })
-    ```
+   })
+   ```
 
-    **Java**
+   **Java**
 
-    ```java
-    // Use an existing data store
-    Store store = existingStore;
-    String indexName = existingIndexName;
+   ```java
+   // Use an existing data store
+   Store store = existingStore;
+   String indexName = existingIndexName;
 
-    // Delete the index
-    Task<Void> indexTask = store.deleteIndex(indexName);
-    indexTask.continueWith(new Continuation<Void, Void>() {
+   // Delete the index
+   Task<Void> indexTask = store.deleteIndex(indexName);
+   indexTask.continueWith(new Continuation<Void, Void>() {
         @Override
         public Void then(Task<Void> task) throws Exception {
             if(task.isFaulted()){
@@ -1235,50 +1235,50 @@ To perform queries, you must create an index.
             }
             return null;
         }
-    });
-    ```
+   });
+   ```
 
-    ##### AFTER
+   ##### AFTER
 
-    **Objective-C**
+   **Objective-C**
 
-    ```objc
-    // Use an existing store
-    CDTDatastore *datastore = existingDatastore;
-    NSString *indexName = existingIndexName;
+   ```objc
+   // Use an existing store
+   CDTDatastore *datastore = existingDatastore;
+   NSString *indexName = existingIndexName;
 
-    // Delete the index
-    BOOL success = [datastore deleteIndexNamed:indexName];
-    if(!success){
+   // Delete the index
+   BOOL success = [datastore deleteIndexNamed:indexName];
+   if(!success){
         // Handle error
-    }
-    ```
+   }
+   ```
 
-    **Swift**
+   **Swift**
 
-    ```swift
-    // A store that has been previously created.
-    let datastore:CDTDatastore = existingDatastore
-    let indexName:String = existingIndexName
+   ```swift
+   // A store that has been previously created.
+   let datastore:CDTDatastore = existingDatastore
+   let indexName:String = existingIndexName
 
-    // Delete the index
-    let success:Bool = datastore.deleteIndexNamed(indexName)
-    if(!success){
+   // Delete the index
+   let success:Bool = datastore.deleteIndexNamed(indexName)
+   if(!success){
         // Handle error
-    }
-    ```
+   }
+   ```
 
-    **Java**
+   **Java**
+   
+   ```java
+   // Use an existing store
+   Datastore datastore = existingStore;
+   String indexName = existingIndexName;
+   IndexManager indexManager = existingIndexManager;
 
-    ```java
-    // Use an existing store
-    Datastore datastore = existingStore;
-    String indexName = existingIndexName;
-    IndexManager indexManager = existingIndexManager;
-
-    // Delete the index
-    indexManager.deleteIndexNamed(indexName);
-    ```
+   // Delete the index
+   indexManager.deleteIndexNamed(indexName);
+   ```
 
 ## Querying data
 After you create an index, you can query the data in your database.

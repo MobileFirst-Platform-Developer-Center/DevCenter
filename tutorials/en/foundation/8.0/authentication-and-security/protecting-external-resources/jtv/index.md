@@ -95,9 +95,9 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 ## Protecting a simple Java Servlet
 1. Create a simple Java Servlet called `GetBalance`, which returns a hardcoded value:
 
-    ```java
-    @WebServlet("/GetBalance")
-    public class GetBalance extends HttpServlet {
+   ```java
+   @WebServlet("/GetBalance")
+   public class GetBalance extends HttpServlet {
     	private static final long serialVersionUID = 1L;
 
     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -105,13 +105,13 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     		response.getWriter().append("17364.9");
     	}
 
-    }
-    ```
+   }
+   ```
 
 2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, which will validate the authorization header for a given scope:
 
-    ```java
-    public class JTVFilter implements Filter {
+   ```java
+   public class JTVFilter implements Filter {
 
     	public static final String AUTH_HEADER = "Authorization";
     	private static final String AUTHSERVER_URI = "http://localhost:9080/mfp/api"; //Set here your authorization server URI
@@ -158,30 +158,30 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     		}
     	}
 
-    }
-    ```
+   }
+   ```
 
 3. In the servlet's **web.xml** file, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
 
-    ```xml
-    <filter>
+   ```xml
+   <filter>
       <filter-name>accessRestricted</filter-name>
       <filter-class>com.sample.JTVFilter</filter-class>
       <init-param>
         <param-name>scope</param-name>
         <param-value>accessRestricted</param-value>
       </init-param>
-    </filter>
-    ```
+   </filter>
+   ```
 
-    Then protect your servlet with the filter:
+   Then protect your servlet with the filter:
 
-    ```xml
-    <filter-mapping>
+   ```xml
+   <filter-mapping>
       <filter-name>accessRestricted</filter-name>
       <url-pattern>/GetBalance</url-pattern>
-    </filter-mapping>
-    ```
+   </filter-mapping>
+   ```
 
 ## Sample
 You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  

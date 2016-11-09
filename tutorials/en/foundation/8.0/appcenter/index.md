@@ -140,9 +140,9 @@ After the installation is complete, you must configure the security settings for
 
 1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
 
-    ```bash
-    server start worklightServer
-    ```
+   ```bash
+   server start worklightServer
+   ```
     
 2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
 3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:

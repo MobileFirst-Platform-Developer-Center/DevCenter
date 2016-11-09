@@ -19,7 +19,7 @@ weight: 10
 </ul>
 <h2 id="registeringbeacons">Registering beacons</h2>
 <p>Register the following beacons by using the beacons (PUT) REST API.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 1,
@@ -30,7 +30,7 @@ weight: 10
 }
 {% endhighlight %} </p>
 
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 2,
@@ -98,7 +98,7 @@ weight: 10
 You can register, update, or delete beacon triggers by using REST APIs. For detailed information about the REST APIs, see the Reference part of the user documentation.</p>
 <p>Register the following beacon triggers by using the beacon trigger REST API (POST).</p>
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "triggerName": "entryIntoBranch",
     "triggerType": "Enter",
@@ -110,7 +110,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
 {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "triggerName": "entryIntoLoanSection",
     "triggerType": "Enter",
@@ -122,7 +122,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
 {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "triggerName": "exitFromBranch",
     "triggerType": "Exit",
@@ -135,7 +135,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
 <h2 id="associatingbeacons">Associating beacons and beacon triggers</h2>
 <p>An association between a beacon and a beacon trigger is represented as a <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform Foundation. You create, update, or delete associations by using REST APIs. For detailed information about REST APIs, see the Reference part of the user documentation.</p>
 <p>To create associations between beacons and triggers for an application, use the Associate beacons and triggers (PUT) REST API:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "beacons": [
         {

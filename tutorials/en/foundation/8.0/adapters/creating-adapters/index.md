@@ -43,39 +43,39 @@ You can choose to run the command interactively or directly.
 #### Interactive Mode
 1. Open a **Command-line** window and run:
 
-    ```bash
-    mfpdev adapter create
-    ```
+   ```bash
+   mfpdev adapter create
+   ```
 
 2. Enter an adapter name. For example:
 
-    ```bash
-    ? Enter Adapter Name: SampleAdapter
-    ```
+   ```bash
+   ? Enter Adapter Name: SampleAdapter
+   ```
 
 3. Select an adapter type using the arrows and the enter keys:
 
-    ```bash
-    ? Select Adapter Type:
+   ```bash
+   ? Select Adapter Type:
       HTTP
       SQL
-    ❯ Java
-    ```
+   ❯ Java
+   ```
   * Select `HTTP` to create a JavaScript HTTP adapter
   * Select `SQL` to create a JavaScript SQL adapter  
   * Select `Java` to create a Java adapter
 
 4. Enter an adapter package (this option is valid for Java adapters only). For example:
 
-    ```bash
-    ? Enter Package: com.mypackage
-    ```
+   ```bash
+   ? Enter Package: com.mypackage
+   ```
 
 5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
 
-    ```bash
-    ? Enter Group ID: com.mycompany
-    ```
+   ```bash
+   ? Enter Group ID: com.mycompany
+   ```
 
 #### Direct Mode
 Replace the placeholders with the actual values and run the command:
@@ -98,9 +98,10 @@ You can choose to run the command interactively or directly.
 
 2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
-    ```bash
-    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
-    ```
+   ```bash
+   mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
+   ```
+   
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
   * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
      * Use `adapter-maven-archetype-java` to create a Java adapter
@@ -109,42 +110,41 @@ You can choose to run the command interactively or directly.
 
 3. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
 
-    ```bash
-    Define value for property 'groupId': : com.mycompany
-    ```
+   ```bash
+   Define value for property 'groupId': : com.mycompany
+   ```
 
 4. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
 
-    ```bash
-    Define value for property 'artifactId': : SampleAdapter
-    ```
+   ```bash
+   Define value for property 'artifactId': : SampleAdapter
+   ```
 
 5. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
 
-    ```bash
-    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
-    ```
+   ```bash
+   Define value for property 'version':  1.0-SNAPSHOT: : 1.0
+   ```
 
 6. Enter an adapter package name (the default is the `groupId`). For example:
 
-    ```bash
-    Define value for property 'package':  com.mycompany: : com.mypackage
-    ```
+   ```bash
+   Define value for property 'package':  com.mycompany: : com.mypackage
+   ```
 
 7. Enter `y` to confirm:
 
-    ```bash
-    Confirm properties configuration:
-    groupId: com.mycompany
-    artifactId: SampleAdapter
-    version: 1.0
-    package: com.mypackage
-    archetypeVersion: 8.0.0
-     Y: : y
-    ```
+   ```bash
+   Confirm properties configuration:
+   groupId: com.mycompany
+   artifactId: SampleAdapter
+   version: 1.0
+   package: com.mypackage
+   archetypeVersion: 8.0.0
+   Y: : y
+   ```
 
 #### Direct Mode
-
 Replace the placeholders with the actual values and run the command:
 
 ```bash
@@ -163,15 +163,15 @@ After creating the adapter the result will be a Maven project containing a **src
 
 * **Using the MobileFirst CLI** - Run the `adapter build` command from the project's root folder.
     
-    ```bash
-    mfpdev adapter build
-    ```
+  ```bash
+  mfpdev adapter build
+  ```
     
 * **Using Maven** - The adapter is built each time you run the `install` command to build the Maven project.
 
-    ```bash
-    mvn install
-    ```
+  ```bash
+  mvn install
+  ```
 
 ### Build All
 If you have multiple adapters in a filesystem folder and you'd like to build all of them, use:
@@ -188,33 +188,36 @@ The outcome is an **.adapter** archive file which can be found in the **target**
 
 1. The **pom.xml** file contains the following `properties`:
 
-    ```xml
-    <properties>
+   ```xml
+   <properties>
     	<!-- parameters for deploy mfpf adapter -->
     	<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
     	<mfpfUser>admin</mfpfUser>
     	<mfpfPassword>admin</mfpfPassword>
     	<mfpfRuntime>mfp</mfpfRuntime>
-    </properties>
-    ```
+   </properties>
+   ```
+   
    * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
    * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
    * **Optional**. Replace the **mfpfRuntime** default value with your MobileFirst runtime name.
 2. Run the deploy command from the project's root folder:
  * **Using the MobileFirst CLI**:
 
-        ```bash
-        mfpdev adapter deploy -x
-        ```
-        The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
-        If the option is not used, the CLI will use the default server specified in the CLI settings.
+   ```bash
+   mfpdev adapter deploy -x
+   ```
+   
+   The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
+   If the option is not used, the CLI will use the default server specified in the CLI settings.
     
-        > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+   > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+   
  * **Using Maven**:
 
-        ```bash
-        mvn adapter:deploy
-        ```
+   ```bash
+   mvn adapter:deploy
+   ```
 
 ### Deploy All
 If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use:
@@ -263,7 +266,6 @@ The following example uses the `cloudant-client artifactId`:
 </dependency>
 ```
 
-</br>
 > For more information about dependencies see the Maven documentation.
 
 ## Grouping Adapters in a Single Maven Project
@@ -275,8 +277,8 @@ To group adapters you need to:
 2. Put the Maven adapter projects in it.
 3. Create a **pom.xml** file:
 
-    ```xml
-    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   ```xml
+   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     	<modelVersion>4.0.0</modelVersion>
@@ -298,18 +300,19 @@ To group adapters you need to:
         <mfpfRuntime>mfp</mfpfRuntime>
     	</properties>
 
-      <build>
-    		<plugins>
-    			<plugin>
-    				<groupId>com.ibm.mfp</groupId>
-    				<artifactId>adapter-maven-plugin</artifactId>
-    				<extensions>true</extensions>
-    			</plugin>
-    		</plugins>
-    	</build>
+   <build>
+        <plugins>
+			<plugin>
+				<groupId>com.ibm.mfp</groupId>
+				<artifactId>adapter-maven-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+   </build>
 
-    </project>
-    ```
+   </project>
+   ```
+   
   1. Define a **`groupId`** element of your choice
   2. Add an **`artifactId`** element - the root folder's name
   3. Add a **`module`** element for each adapter
@@ -343,24 +346,25 @@ To update the adapter Maven project with the latest release, find the **version 
 
 1. The `adapter-maven-api` version:
 
-    ```xml
-    <dependency>
+   ```xml
+   <dependency>
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-api</artifactId>
       <scope>provided</scope>
       <version>8.0.2016061011</version>
-    </dependency>
-    ```
+   </dependency>
+   ```
+   
 2. The `adapter-maven-plugin` version:
 
-    ```xml
-    <plugin>
+   ```xml
+   <plugin>
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-plugin</artifactId>
       <version>8.0.2016061011</version>
       <extensions>true</extensions>
-    </plugin>
-    ```
+   </plugin>
+   ```
 
 ## Working offline
 If you do not have online access to the Maven Central Repository, you can share MobileFirst Maven artifacts in the internal repository of your organization.

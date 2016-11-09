@@ -42,7 +42,6 @@ This communication requires the access to the following two ports of the license
 To configure the ports so that they use static values, see How to serve a license key to client machines through a firewall.
 
 ### Installation Process
-
 You need to activate token licensing when you run the IBM  Installation Manager at installation time. For more information about the instructions for enabling token licensing, see [Installation overview for token licensing](#installation-overview-for-token-licensing).
 
 After MobileFirst Server is installed, you must manually configure the server for token licensing. For more information, see the following topics in this section.
@@ -61,18 +60,18 @@ If you intend to use token licensing with IBM MobileFirst Foundation, make sure 
 
 1. Activate token licensing when you run IBM  Installation Manager to install IBM MobileFirst Foundation.
 
-    #### Graphic mode installation
-    If you install the product in graphic mode, select **Activate token licensing with the Rational License Key Server** option in the **General settings** panel during the installation.
+   #### Graphic mode installation
+   If you install the product in graphic mode, select **Activate token licensing with the Rational License Key Server** option in the **General settings** panel during the installation.
     
-    ![Activting token licensing in the IBM installation manager](licensing_with_tokens_activate.jpg)
+   ![Activting token licensing in the IBM installation manager](licensing_with_tokens_activate.jpg)
     
-    #### Command line mode installation
-    If you install in silent mode, set the value as **true** to the **user.licensed.by.tokens** parameter in the response file.  
-    For example, you can use:
+   #### Command line mode installation
+   If you install in silent mode, set the value as **true** to the **user.licensed.by.tokens** parameter in the response file.  
+   For example, you can use:
     
-    ```bash
-    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
-    ```
+   ```bash
+   imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
+   ```
     
 2. Deploy the MobileFirst Server to an application server after the product installation is complete. For more information, see [Installing MobileFirst Server to an application server](../appserver).
 
@@ -98,27 +97,28 @@ You must install the Rational  Common Licensing native and Java libraries on the
     > **Important:** The Java virtual machine (JVM) of Apache Tomcat needs read and execute privileges on the copied native and Java libraries. Both copied files must also be readable and executable at least for the application server process in your operating system.
 4. Configure the access to the Rational Common Licensing library by the JVM of your application server. For any operating systems, configure the **${CATALINA_HOME}/bin/setenv.bat** file (or **setenv.sh** file on UNIX) by adding the following line:
 
-    **Windows:**  
+   **Windows:**  
     
-    ```bash
-    set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
-    ```
+   ```bash
+   set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
+   ```
     
-    **UNIX:**
-    
-    ```bash
-    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
-    ```
-    
-    > **Note:** If you move the configuration folder of the server on which the administration service is running, you must update the **java.library.path** with the new absolute path.
-5. Configure MobileFirst Server to access Rational License Key Server. In **${CATALINA_HOME}/conf/server.xml** file, look for the `<Context>` element of the administration service application, and add in these JNDI configuration lines.
+   **UNIX:**
 
-    ```xml
-    <Environment name="mfp.admin.license.key.server.host" value="rlks_hostname" type="java.lang.String" override="false"/>
-    <Environment name="mfp.admin.license.key.server.port" value="rlks_port" type="java.lang.String" override="false"/>
-    ```
-    * **rlks_hostname** is the host name of the Rational License Key Server.
-    * **rlks_port** is the port of the Rational License Key Server. By default, the value is **27000**.
+   ```bash
+   CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
+   ```
+    
+   > **Note:** If you move the configuration folder of the server on which the administration service is running, you must update the **java.library.path** with the new absolute path.
+
+5. Configure MobileFirst Server to access Rational License Key Server. In **${CATALINA_HOME}/conf/server.xml** file, look for the `Context` element of the administration service application, and add in these JNDI configuration lines.
+
+   ```xml
+   <Environment name="mfp.admin.license.key.server.host" value="rlks_hostname" type="java.lang.String" override="false"/>
+   <Environment name="mfp.admin.license.key.server.port" value="rlks_port" type="java.lang.String" override="false"/>
+   ```
+   * **rlks_hostname** is the host name of the Rational License Key Server.
+   * **rlks_port** is the port of the Rational License Key Server. By default, the value is **27000**.
 
 For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing](../server-configuration/#jndi-properties-for-administration-service-licensing).
 
@@ -135,73 +135,73 @@ You must install the Rational  Common Licensing native and Java libraries on the
 <h3 id="common-licensing-libraries-liberty">Installing Rational Common Licensing libraries</h3>
 
 1. Define a shared library for the Rational Common Licensing client. This library uses native code and can be loaded only once by the application server. Thus, the applications that use it must reference it as a common library.
-    * Choose the Rational Common Licensing native library. Depending on your operating system and the bit version of the Java Runtime Environment (JRE) on which your Liberty profile is running, you must choose the correct native library in **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**. For example, for Linux x86 with a 64-bits JRE, the library can be found in p**roduct_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
-    * Copy the native library to the computer that runs MobileFirst Server administration service. The directory might be **${shared.resource.dir}/rcllib**. The **${shared.resource.dir}** directory is usually in **usr/shared/resources**, where usr is the directory that also contains the usr/servers directory. For more information about standard location of **${shared.resource.dir}**, see [WebSphere  Application Server Liberty Core - Directory locations and properties](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). If the **rcllib** folder does not exist, create this folder and then copy the native library file over.
+   * Choose the Rational Common Licensing native library. Depending on your operating system and the bit version of the Java Runtime Environment (JRE) on which your Liberty profile is running, you must choose the correct native library in **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**. For example, for Linux x86 with a 64-bits JRE, the library can be found in **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
+   * Copy the native library to the computer that runs MobileFirst Server administration service. The directory might be **${shared.resource.dir}/rcllib**. The **${shared.resource.dir}** directory is usually in **usr/shared/resources**, where usr is the directory that also contains the usr/servers directory. For more information about standard location of **${shared.resource.dir}**, see [WebSphere  Application Server Liberty Core - Directory locations and properties](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). If the **rcllib** folder does not exist, create this folder and then copy the native library file over.
     
-    > **Note:** Ensure that the Java virtual machine (JVM) of the application server has both read and execute privileges on the native library. On Windows, the following exception appears in the application server log if the JVM of the application server does not have the executable rights on the copied native library.
+   > **Note:** Ensure that the Java virtual machine (JVM) of the application server has both read and execute privileges on the native library. On Windows, the following exception appears in the application server log if the JVM of the application server does not have the executable rights on the copied native library.
     
-    ```bash
-    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
-    ```
-    * Copy **rcl_ibmratl.jar** file to **${shared.resource.dir}/rcllib**. The **rcl_ibmratl.jar** file is a Rational Common Licensing Java library that can be found in **product_install_dir/MobileFirstServer/tokenLibs** directory.
+   ```bash
+   com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
+   ```
+   * Copy **rcl_ibmratl.jar** file to **${shared.resource.dir}/rcllib**. The **rcl_ibmratl.jar** file is a Rational Common Licensing Java library that can be found in **product_install_dir/MobileFirstServer/tokenLibs** directory.
 
-    > **Note:** The Java virtual machine (JVM) of Liberty profile must have the possibility to read the copied Java library. This file must also have readable privilege (at least for the application server process) in your operating system.    
-    * Declare a shared library that uses the **rcl_ibmratl.jar** file in the **${server.config.dir}/server.xml** file.
+   > **Note:** The Java virtual machine (JVM) of Liberty profile must have the possibility to read the copied Java library. This file must also have readable privilege (at least for the application server process) in your operating system.    
+   * Declare a shared library that uses the **rcl_ibmratl.jar** file in the **${server.config.dir}/server.xml** file.
 
-    ```xml
-    <!-- Declare a shared Library for the RCL client. -->
-    <!- This library can be loaded only once because it uses native code. -->
-    <library id="RCLLibrary">
-      <fileset dir="${shared.resource.dir}/rcllib" includes="rcl_ibmratl.jar"/>
-    </library>
-    ```    
-    * Declare the shared library as a common library for the MobileFirst Server administration service application by adding an attribute (**commonLibraryRef**) to the class loader of the application. As the library can be loaded only once, it must be used as a common library, and not as a private library.
+   ```xml
+   <!-- Declare a shared Library for the RCL client. -->
+   <!- This library can be loaded only once because it uses native code. -->
+   <library id="RCLLibrary">
+       <fileset dir="${shared.resource.dir}/rcllib" includes="rcl_ibmratl.jar"/>
+   </library>
+   ```    
+   * Declare the shared library as a common library for the MobileFirst Server administration service application by adding an attribute (**commonLibraryRef**) to the class loader of the application. As the library can be loaded only once, it must be used as a common library, and not as a private library.
 
-    ```xml
-    <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
+   ```xml
+   <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
       [...]
       <!- Declare the shared library as an attribute commonLibraryRef to 
           the class loader of the application. -->
       <classloader delegation="parentLast" commonLibraryRef="RCLLibrary">
       </classloader>
-    </application>
-    ```
-    * If you are using Oracle as database, then the **server.xml** will already have the following class loader:
+   </application>
+   ```
+   * If you are using Oracle as database, then the **server.xml** will already have the following class loader:
 
-    ```xml
-    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
+   ```xml
+   <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
     </classloader>
-    ```
+   ```
     
-    You also need to append Rational Common Licensing library as common library to the Oracle library as follows:
+   You also need to append Rational Common Licensing library as common library to the Oracle library as follows:
     
-    ```xml
-    <classloader delegation="parentLast"
+   ```xml
+   <classloader delegation="parentLast"
          commonLibraryRef="MobileFirst/JDBC/oracle,RCLLibrary">
-    </classloader>
-    ```
-    * Configure the access to the Rational Common Licensing library by the JVM of your application server. For any operating systems, configure the **${wlp.user.dir}/servers/server_name/jvm.options** file by adding the following line:
+   </classloader>
+   ```
+   * Configure the access to the Rational Common Licensing library by the JVM of your application server. For any operating systems, configure the **${wlp.user.dir}/servers/server_name/jvm.options** file by adding the following line:
 
-    ```xml
-    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
-    ```
+   ```xml
+   -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
+   ```
     
-    > **Note:** If you move the configuration folder of the server on which the administration service is running, you must update the **java.library.path** with the new absolute path.
+   > **Note:** If you move the configuration folder of the server on which the administration service is running, you must update the **java.library.path** with the new absolute path.
 
-    The **${wlp.user.dir}** directory is usually in **liberty_install_dir/usr** and contains the servers directory. However, it's location can be customized. For more information, see [Customizing the Liberty environment](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)
+   The **${wlp.user.dir}** directory is usually in **liberty_install_dir/usr** and contains the servers directory. However, it's location can be customized. For more information, see [Customizing the Liberty environment](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)
     
 2. Configure MobileFirst Server to access Rational License Key Server.
 
-    In the **${wlp.user.dir}/servers/server_name/server.xml** file, add these JNDI configuration lines.
+   In the **${wlp.user.dir}/servers/server_name/server.xml** file, add these JNDI configuration lines.
     
-    ```xml
-    <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
-    <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
-    ```
-    * **rlks_hostname** is the host name of the Rational License Key Server.
-    * **rlks_port** is the port of the Rational License Key Server. By default, the value is 27000.
+   ```xml
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
+   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
+   ```
+   * **rlks_hostname** is the host name of the Rational License Key Server.
+   * **rlks_port** is the port of the Rational License Key Server. By default, the value is 27000.
 
-    For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing](../server-configuration/#jndi-properties-for-administration-service-licensing).
+   For more information about the JNDI properties, see [JNDI properties for Administration Services: licensing](../server-configuration/#jndi-properties-for-administration-service-licensing).
 
 ### Installing on Liberty profile server farm
 For configuring the connection of MobileFirst Server on Liberty profile server farm, you must follow all the steps that are described in [Installing Rational Common Licensing libraries](#installing-rational-common-licensing-libraries) for each node of your server farm where the MobileFirst Server administration service is running. For more information about server farm, see [Server farm topology](../topologies/#server-farm-topology) and [Installing a server farm](../appserver/#installing-a-server-farm).
@@ -296,3 +296,122 @@ The following table describes the platforms that support MobileFirst Server with
 Token licensing does not support 32-bit Java Runtime Environment (JRE). Make sure that the application server uses a 64-bit JRE.
 
 ## Troubleshooting token licensing problems
+Find information to help resolve issues that you might encounter with token licensing if you activated this feature when you installed MobileFirst Server.
+
+When you start the MobileFirst Server administration service after you complete Installing and configuring for token licensing, some errors or exceptions can be emitted in the application server log or on MobileFirst Operations Console. These exceptions might be due to incorrect installation of the Rational Common Licensing library and configuration of the application server.
+
+**Apache Tomcat**  
+Check **catalina.log** or catalina.out file, depending on your platform.
+
+**WebSphere® Application Server Liberty profile**  
+Check **messages.log** file.
+
+**WebSphere Application Server full profile**  
+Check **SystemOut.log** file.
+
+> **Important:** If token licensing is installed on WebSphere Application Server Network Deployment or a cluster, you must check the log of each server.
+
+Here is a list of exceptions that might occur after the installation and configuration for token licensing:
+
+* [Rational Common Licensing native library is not found](#rational-common-licensing-native-library-is-not-found)
+* [Rational Common Licensing shared library is not found](#rational-common-licensing-shared-library-is-not-found)
+* [The Rational License Key Server connection is not configured](#the-rational-license-key-server-is-not-configured)
+* [The Rational License Key Server is not accessible](#the-rational-license-key-server-is-not-accessible)
+* [Failed to initialize Rational Common Licensing API](#failed-to-initialize-rational-common-licensing-api)
+* [Insufficient token licenses](#insufficient-token-licenses)
+* [Invalid rcl_ibmratl.jar file](#invalid-rcl-ibmratl-jar-file)
+
+### Rational Common Licensing native library is not found
+
+> FWLSE3125E: The Rational Common Licensing native library is not found. Make sure the JVM property (java.library.path) is defined with the right path and the native library can be executed. Restart IBM MobileFirst Platform Server after taking corrective action.
+
+#### For WebSphere Application Server full profile
+Possible causes to this error might be:
+
+* No common property with name **java.library.path** is defined at server level.
+* The path that is given as the value for the **java.library.path** property does not contain the Rational Common Licensing native library.
+* The native library does not have appropriate permissions. The library must have the read and execute privileges on UNIX and Windows for the user who accesses it with the Java™ Runtime
+* Environment of the application server.
+
+#### For WebSphere Application Server Liberty profile and Apache Tomcat
+Possible causes to this error might be:
+
+* The path to the Rational Common Licensing native library given as the value of java.library.path property is either not set or incorrect.
+    * For Liberty profile, check **${wlp.user.dir}/servers/server_name/jvm.options** file.
+    * For Apache Tomcat, check **${CATALINA_HOME}/bin/setenv.bat** file or setenv.sh file, depending on your platform.
+* The native library is not found in the path that is defined to the **java.library.path** property. Check that the native library exists in the defined path with the expected name.
+* The native library does not have appropriate permissions. The error might be preceded by this exception: `com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: {0}\rcl_ibmratl.dll: Access is denied`.
+
+The Java Runtime Environment of the application server needs read and execute privileges on this native library. The library file must also be readable and executable at least for the application server process in your operating system.
+
+* The shared library that uses the **rcl_ibmratl.jar** file is not defined in the **${server.config.dir}/server.xml** file for Liberty profile. The **rcl_ibmratl.jar** might also not in the correct directory or the directory does not have the appropriate permissions.
+* The shared library that used the **rcl_ibmratl.jar** file is not declared as a common library for the MobileFirst Server administration service application in the **${server.config.dir}/server.xml** file for the Liberty profile.
+* There is a mix of 32-bit and 64-bit objects between the Java Runtime Environment of the application server and the native library. For example, a 32-bit Java Runtime Environment is used with a 64-bit native library. This mix is not supported.
+
+### Rational Common Licensing shared library is not found
+
+> FWLSE3126E: The Rational Common Licensing shared library is not found. Make sure the shared library is configured. Restart IBM MobileFirst Platform Server after taking corrective action.
+
+Possible causes to this error might be:
+
+* The **rcl_ibmratl.jar** file is not in the expected directory.
+    * For Apache Tomcat, check that this file is in **${CATALINA_HOME}/lib** directory.
+    * For WebSphere Application Server Liberty profile, check that this file is in the directory as defined in the server.xml file for the shared library of the Rational Common Licensing client. For example, **${shared.resource.dir}/rcllib**. In the **server.xml** file, ensure that this shared library is correctly referenced as a common library for MobileFirst Server administration service application.
+    * For WebSphere Application Server, make sure that this file is in the directory that is specified in the class path of the WebSphere Application Server shared library. Check that the class path of that shared library contains this entry: **absolute\_path/rcl\_ibmratl.jar** whereas absolute_path is the absolute path of the **rcl_ibmratl.jar** file.
+
+The **java.library.path** property is not set for the application server. Define a property with name **java.library.path** and set the path to the Rational Common Licensing native library as the value. For example, **/opt/IBM/RCL\_Native\_Library/**.
+* The native library does not have the expected permissions. On Windows, the Java Runtime Environment of the application server must have the read and executable rights on the native library.
+* There is a mix of 32-bit and 64-bit objects between the Java Runtime Environment of the application server and the native library. For example, a 32-bit Java Runtime Environment is used with a 64-bit native library. This mix is not supported.
+
+### The Rational License Key Server connection is not configured
+
+> FWLSE3127E: The Rational License Key Server connection is not configured. Make sure the admin JNDI properties "mfp.admin.license.key.server.host" and "mfp.admin.license.key.server.port" are set. Restart IBM MobileFirst Platform Server after taking corrective action.
+
+Possible causes to this error might be:
+
+* The Rational Common Licensing native library and the shared library that uses the **rcl_ibmratl.jar** file are correctly configured but the value of JNDI properties (**mfp.admin.license.key.server.host** and **mfp.admin.license.key.server.port**) is not set in the MobileFirst Server administration service application.
+* The Rational License Key Server is down.
+* The host computer on which Rational License Key Server is installed cannot be reached. Check the IP address or host name with the specified port.
+
+### The Rational License Key Server is not accessible
+
+> FWLSE3128E: The Rational License Key Server "{port}@{IP address or hostname}" is not accessible. Make sure that license server is running and accessible to IBM MobileFirst Platform Server. If this error occurs at runtime startup, restart IBM MobileFirst Platform Server after taking corrective action.
+
+Possible causes to this error might be:
+
+* The Rational Common Licensing shared library and the native library are correctly defined but there is no valid configuration to connect to the Rational License Key Server. Check the IP address, the host name, and the port of the license server. Make sure that the license server is started and accessible from the computer where the application server is installed.
+* The native library is not found in the path that is defined to the **java.library.path** property.
+* The native library does not have appropriate permissions.
+* The native library is not in the defined directory.
+* The Rational License Key Server is behind a firewall. The error might be preceded by this exception: [ERROR] Failed to get license for application 'WorklightStarter' because Rational Licence Key Server ({port}@{IP address or hostname}) is either down or not accessible com.ibm.rcl.ibmratl.LicenseServerUnreachableException. All license files searched for features: {port}@{IP address or hostname}
+
+Ensure that the license manager daemon (lmgrd) port and the vendor daemon (ibmratl) port are open in your firewall. For more information, see How to serve a license key to client machines through a firewall.
+
+### Failed to initialize Rational Common Licensing API
+
+> Failed to initialize Rational Common Licensing (RCL) API because its native library could not be found or loaded com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Not found in java.library.path)
+
+Possible causes to this error might be:
+
+* The Rational Common Licensing native library is not found in the path that is defined to the **java.library.path** property. Check that the native library exists in the defined path with the expected name.
+* The **java.library.path** property is not set for the application server. Define a property with name **java.library.path** and set the path to the Rational Common Licensing native library as the value. For example, **/opt/IBM/RCL_Native_Library/**.
+* There is a mix of 32-bit and 64-bit objects between the Java Runtime Environment of the application server and the native library. For example, a 32-bit Java Runtime Environment is used with a 64-bit native library. This mix is not supported.
+
+### Insufficient token licenses
+
+> FWLSE3129E: Insufficient token licenses for feature "{0}".
+
+This error occurs when the remaining number of token licenses on the Rational License Key Server is not enough to deploy a new MobileFirst application.
+
+### Invalid rcl_ibmratl.jar file
+
+> UTLS0002E: The shared library RCL Shared Library contains a classpath entry which does not resolve to a valid jar file, the library jar file is expected to be found at {0}/rcl_ibmratl.jar.
+
+**Note:** For WebSphere Application Server and WebSphere Application Server Network Deployment only
+
+Possible causes to this error might be:
+
+* The **rcl_ibmratl.jar** Java library does not have the appropriate permissions. The error might be followed by another exception: java.util.zip.ZipException: error in opening zip file. Check that the **rcl_ibmratl.jar** file has the read permission for the user who installs WebSphere Application Server.
+* If there is no other exception, the **rcl_ibmratl.jar** file that is referenced in the class path of the shared library might be invalid or does not exist. Check that the **rcl_ibmratl.jar** file is valid or exists in the defined path.
+
+

@@ -46,23 +46,24 @@ After your custom Java code is created and any required JAR files are added, you
 
 * Invoke the static Java method as shown, and use the full class name to reference it directly:
 
-    ```js
-    function addTwoIntegers(a,b){
-      return {
+```javascript
+function addTwoIntegers(a,b){
+    return {
         result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
-      };
-    }
-    ```
+    };
+}
+```
+  
 * To use the instance method, create a class instance and invoke the instance method from it:
 
-    ```js
-    function subtractTwoIntegers(a,b){
-      var calcInstance = new com.sample.customcode.Calculator();   
-      return {
+```javascript
+function subtractTwoIntegers(a,b){
+    var calcInstance = new com.sample.customcode.Calculator();   
+    return {
         result : calcInstance.subtractTwoIntegers(a,b)
-      };
-    }
-    ```
+    };
+}
+```
 
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.

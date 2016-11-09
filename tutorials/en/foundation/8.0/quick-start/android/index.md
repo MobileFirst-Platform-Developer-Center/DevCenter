@@ -51,16 +51,16 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 * Add the following imports:
 
-    ```java
-    import java.net.URI;
-    import java.net.URISyntaxException;
-    import android.util.Log;
-    ```
+  ```java
+  import java.net.URI;
+  import java.net.URISyntaxException;
+  import android.util.Log;
+  ```
     
 * Paste the following code snippet, replacing the call to `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
-    ```java
-    WLAuthorizationManager.getInstance().obtainAccessToken("", new WLAccessTokenListener() {
+  ```java
+  WLAuthorizationManager.getInstance().obtainAccessToken("", new WLAccessTokenListener() {
                 @Override
                 public void onSuccess(AccessToken token) {
                     System.out.println("Received the following access token value: " + token);
@@ -108,7 +108,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
                     });
                 }
             });
-    ```
+  ```
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
@@ -117,13 +117,13 @@ Alternatively, click the **New** button next to **Adapters**.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+   > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
-    ```bash
-    mfpdev adapter build
-    ```
+   ```bash
+   mfpdev adapter build
+   ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     

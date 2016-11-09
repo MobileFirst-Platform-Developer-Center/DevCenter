@@ -32,10 +32,9 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 Create a new Visual Studio project or use and existing one.  
 If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
 
-
 ### Adding the Push SDK
 
-1. Select Tools > NuGet Package Manager > Package Manager Console.
+1. Select Tools → NuGet Package Manager → Package Manager Console.
 2. Choose the project where you want to install the MobileFirst push component.
 3. Add theMobileFirst push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
@@ -109,7 +108,6 @@ if (Response.Success == true)
 Retrieve all the available tags from the push notification service.
 
 ```csharp
-
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetTags();
 if (Response.Success == true)
 {
@@ -190,15 +188,15 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
 
 1. Create a class by using interface of type MFPPushNotificationListener
 
-    ```csharp
-    internal class NotificationListner : MFPPushNotificationListener
-    {
+   ```csharp
+   internal class NotificationListner : MFPPushNotificationListener
+   {
         public async void onReceive(String properties, String payload)
-    {
-       // Handle push notification here      
-    }
-    }
-    ```
+   {
+        // Handle push notification here      
+   }
+   }
+   ```
 
 2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
 3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.

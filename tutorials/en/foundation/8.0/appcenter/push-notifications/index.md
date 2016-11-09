@@ -80,22 +80,22 @@ To enable Google Cloud Messaging (GCM) for an application, you must attach the G
     * Save the Simple API Access Server key for future use in your application communications through GCM. The key is about 40 characters long and is referred to as the Google API key that you will need later on the server side.
 5. Enter the GCM project ID as a string resource property in the JavaScript project of the Application Center Android client; in the **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** template file, modify this line with your own value:
 
-    ```xml
-    gcmProjectId:""// Google API project (project name = com.ibm.appcenter) ID needed for Android push.
-    // example : 123456789012
-    ```
+   ```xml
+   gcmProjectId:""// Google API project (project name = com.ibm.appcenter) ID needed for Android push.
+   // example : 123456789012
+   ```
 
 6. Register the Google API key as a JNDI property for the Application Center server. The key name is : **ibm.appcenter.gcm.signature.googleapikey**. For example, you can configure this key for an Apache Tomcat server as a JNDI property in the **server.xml** file:
 
-    ```xml
-    <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
+   ```xml
+   <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
         <Environment name="ibm.appcenter.gcm.signature.googleapikey" override="false" type="java.lang.String" 
         value="AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs"/>
-    </Context>
-    ```
+   </Context>
+   ```
 
-    The JNDI property must be defined in accordance with your application server requirements.  
-    See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
+   The JNDI property must be defined in accordance with your application server requirements.  
+   See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
     
 **Important:**
 

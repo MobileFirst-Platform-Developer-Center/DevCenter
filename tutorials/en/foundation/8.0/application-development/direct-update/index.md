@@ -13,10 +13,10 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 
 In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst CLI or by deploying a generated archive file. Direct Update is then activated automatically  Once activated, it will be enforced on every request to a protected resource.
 
-#### Supported Cordova platforms
+**Supported Cordova platforms**  
 Direct Update is supported in the Cordova iOS and Cordova Android platforms.
 
-#### Direct Update in development, testing, and production
+**Direct Update in development, testing, and production**  
 For development and testing purposes, developers typically use Direct Update by simply uploading an archive to the development server. While this process is easy to implement, it is not very secure. For this phase, an internal RSA key pair that is extracted from an embedded MobileFirst self-signed certificate is used.
 
 For the phases of live production or even pre-production testing, however, it is strongly recommended to implement secure Direct Update before you publish your application to the app store. Secure Direct Update requires an RSA key pair that is extracted from a real CA signed server certificate.
@@ -25,12 +25,12 @@ For the phases of live production or even pre-production testing, however, it is
 
 > Learn more in [Secure Direct Update](#secure-direct-update).
 
-#### Direct Update data transfer rates
+**Direct Update data transfer rates**  
 At optimal conditions, a single MobileFirst Server can push data to clients at the rate of 250 MB per second. If higher rates are required, consider a cluster or a CDN service.  
 
 > Learn more in [Serving Direct Update requests from a CDN](cdn-support)
 
-#### Notes
+### Notes
 
 * Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
 * When you use the Direct Update feature and the [web resources checksum](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) feature is enabled, a new checksum base is established with each Direct Update.
@@ -70,26 +70,26 @@ Alternatives:
 
 * Build the .zip file and upload it to a different MobileFirst Server: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
 
-    ```bash
-    mfpdev app webupdate myQAServer MyBankApps
-    ```
+  ```bash
+  mfpdev app webupdate myQAServer MyBankApps
+  ```
 
 * Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
 
-    ```bash
-    mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
-    ```
+  ```bash
+  mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
+  ```
 
 * Manually upload packaged web resources to the MobileFirst Server:
  1. Build the .zip file without uploading it:
 
-         ```bash
-         mfpdev app webupdate --build
-         ```
+    ```bash
+    mfpdev app webupdate --build
+    ```
  2. Load the MobileFirst Operations Console and click on the application entry.
  3. Click on **Upload Web Resources File** to upload the packaged web resources.
 
-        ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
 > Run the command `mfpdev help app webupdate` to learn more.
 

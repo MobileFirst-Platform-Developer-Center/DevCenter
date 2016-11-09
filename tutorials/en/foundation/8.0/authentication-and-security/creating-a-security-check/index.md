@@ -40,7 +40,7 @@ The security check base classes that are described below are available are part 
 
 To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml**, too.
 
-In the Java adapter's `adapter.xml` file, add an XML element called `securityCheckDefinition`. For example:
+In the Java adapter's **adapter.xml** file, add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -122,7 +122,7 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 These properties can be configured at several levels:
 
 ### adapter.xml
-In the Java adapter's `adapter.xml` file, inside `<securityCheckDefinition>`, you can add one or more `<property>` elements.  
+In the Java adapter's **adapter.xml** file, inside `<securityCheckDefinition>`, you can add one or more `<property>` elements.  
 The `<property>` element takes the following attributes:
 
 - **name**: The name of the property, as defined in the configuration class.
@@ -140,8 +140,8 @@ Example:
 > For a real-world example, see the [Configuring the Security Check section](../credentials-validation/security-check/#configuring-the-security-check) of the CredentialsValidation security check tutorial.
 
 ### MobileFirst Operations Console - Adapter
-In the MobileFirst Operations Console → **[your adapter] → Security Check tab**, you can change the value of any property defined in the `adapter.xml` file.  
-Note that **only** the properties defined in the `adapter.xml` file appear on this screen; properties defined in the configuration class won't appear here automatically.
+In the MobileFirst Operations Console → **[your adapter] → Security Check tab**, you can change the value of any property defined in the **adapter.xml** file.  
+Note that **only** the properties defined in the **adapter.xml** file appear on this screen; properties defined in the configuration class won't appear here automatically.
 
 ![Adapter in console](console-adapter-security.png)
 
@@ -151,16 +151,17 @@ You can also manually edit the adapter's configuration JSON file with the requir
 2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
 3. Edit the file and look for the `securityCheckDefinitions` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, find or add a properties object. For each available configuration property that you want to configure, add within the properties object a pair of configuration-property name and value. For example: 
 
-    ```xml
-    "securityCheckDefinitions": {
+   ```xml
+   "securityCheckDefinitions": {
         "UserAuthentication": {
             "properties": {
                 "maxAttempts": "4",
                 "failureExpirationSec: "90"
             }
         }
-    }
-    ```
+   }
+   ```
+   
 4. Deploy the updated configuration JSON file by running the command: `mfpdev adapter push`.
 
 ### MobileFirst Operations Console - Application
@@ -176,16 +177,17 @@ You can also manually edit the adapter's configuration JSON file with the requir
 2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
 3. Edit the file and look for the `securityCheckConfigurations` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, add a pair of configuration-property name and value for each available configuration property that you want to configure. For example:
 
-    ```xml
-    "SecurityCheckConfigurations": {
+   ```xml
+   "SecurityCheckConfigurations": {
         "UserAuthentication": {
             "properties": {
                 "maxAttempts": "2",
                 "failureExpirationSec: "60"
             }
         }
-    }
-    ```
+   }
+   ```
+   
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 ## Predefined Security Checks

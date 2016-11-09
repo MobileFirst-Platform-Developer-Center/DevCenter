@@ -26,9 +26,9 @@ downloads:
 
 1. Add the following to the existing `podfile`, located at the root of the Xcode project:
 
-    ```xml
-    pod 'IBMMobileFirstPlatformFoundationJSONStore'
-    ```
+   ```xml
+   pod 'IBMMobileFirstPlatformFoundationJSONStore'
+   ```
 
 2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
 

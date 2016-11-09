@@ -363,30 +363,30 @@ Before running the preview command, you must prepare the project by adding the *
 
 1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
 
-    ```javascript
-    var wlInitOptions = {
+   ```javascript
+   var wlInitOptions = {
       mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
       applicationId:'com.sample.app' // Replace with your own value.
-    };
-    ```
+   };
+   ```
 
 2. Register the app again by using the following command:
 
-     ```bash
-     mfpdev app register
-     ```
+   ```bash
+   mfpdev app register
+   ```
 
  3. Run the following command:
  
-     ```bash
-     cordova prepare
-     ```
+    ```bash
+    cordova prepare
+    ```
 
  4. Preview the Cordova application by running the following command from the Cordova application root folder:
 
-      ```bash
-      mfpdev app preview
-      ```
+    ```bash
+    mfpdev app preview
+    ```
 
 You will be prompted to select which platform to preview and which type of preview to use.  
 There are two options of preview: MBS and Browser.
@@ -404,7 +404,7 @@ The web resources of a cordova app, like .html, .css and .js files inside **www*
 
 When you want to send a new set of web resources to be updated in a cordova application, run the command
 
-```
+```bash
 mfpdev app webupdate
 ```
 
@@ -412,38 +412,38 @@ This command will package the updated web resources to a .zip file and upload it
 
 To upload the web resources to different server instance, inform the server name and runtime as part of the command
 
-```
+```bash
 mfpdev app webupdate <server_name> <runtime>
 ```
 
 You can use the --build parameter to generate the .zip file with the packaged web resources without uploading it to a server.
 
-```
+```bash
 mfpdev app webupdate --build
 ```
 
 To upload a package that was previously built, use the --file parameter
 
-```
+```bash
 mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
 ```
 
 There is also the option to encrypt the content of package using the --encrypt parameter
 
-```
+```bash
 mfpdev app webupdate --encrypt
 ```
 
 ### Pull and Push the MobileFirst Application configuration
 After a MobileFirst Application is registered in a MobileFirst server, it is possible to change some of the application configurations using the MobileFirst Server Console and them pull those configurations from the server to the application with the following command:
 
-```
+```bash
 mfpdev app pull
 ```
 
 It is also possible to change the application configurations locally and push the changes to the MobileFirst Server with the command:
 
-```
+```bash
 mfpdev app push
 ```
 
@@ -459,7 +459,7 @@ It is possible to manage MobileFirst Adapters with the command `mfpdev adapter <
 
 To create a new MobileFirst Adapter, use the command
 
-```
+```bash
 mfpdev adapter create
 ```
 
@@ -469,7 +469,7 @@ And follow the prompt to inform the name, type and group id of the adapter
 
 To build an adapter, run the following command from the adapter's root folder:
 
-```
+```bash
 mfpdev adapter build
 ```
 
@@ -479,13 +479,13 @@ This will generate a .adapter file at the **<AdapterName>/target** folder.
 
 The following command will deploy the adapter to the default server:
 
-```
+```bash
 mfpdev adapter deploy
 ```
 
 To deploy to a different server, use:
 
-```
+```bash
 mfpdev adapter deploy <server_name>
 ```
 
@@ -493,7 +493,7 @@ mfpdev adapter deploy <server_name>
 
 After an adapter is deployed it is possible to call the adapter from the command line to test it's behavior with the command:
 
-```
+```bash
 mfpdev adapter call
 ```
 
@@ -505,25 +505,25 @@ You will be prompted to inform the adapter, procedure and parameters to use. The
 
 To set preferences of the mfpdev CLI, such as default browser and default preview mode, use the command:
 
-```
+```bash
 mfpdev config
 ```
 
 To see the help content describing all mfpdev commands, use:
 
-```
+```bash
 mfpdev help
 ```
 
 The following command will generate a list with information about your environment:
 
-```
+```bash
 mfpdev info
 ```
 
 To print the version of the mfpdev CLI, use:
 
-```
+```bash
 mfpdev -v
 ```
 

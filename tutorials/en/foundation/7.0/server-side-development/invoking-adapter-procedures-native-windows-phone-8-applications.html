@@ -19,19 +19,19 @@ To create and configure a Windows Phone 8 native project, first follow the <a hr
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="initialize">Initializing WLClient</h2>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLClient client = WLClient.getInstance();
 {% endhighlight %} </p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 client.connect(new MyConnectResponseListener(this));
 {% endhighlight %} </p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public class MyConnectResponseListener : WLResponseListener
 {% endhighlight %} </p>
 <p>The <code>WLResponseListener</code> interface defines two methods:</p>
@@ -53,7 +53,7 @@ public class MyConnectResponseListener : WLResponseListener
 <li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
 </li>
 <li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");<
 invocationData.setParameters(new Object[]{});
 String myContextObject = "InvokingAdapterProceduresWP8";
@@ -66,7 +66,7 @@ WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this
 <h2 id="response">Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 using IBM.Worklight;
 namespace InvokingAdapterProceduresWP8{
   public class MyInvokeListener : WLResponseListener
@@ -74,7 +74,7 @@ namespace InvokingAdapterProceduresWP8{
 {
 {% endhighlight %} </p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code>. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public void onSuccess(WLResponse response)
 {
     WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);>

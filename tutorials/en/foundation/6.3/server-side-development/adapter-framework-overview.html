@@ -81,7 +81,7 @@ To run a procedure test:</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
 </ol>
 <h2>Adapter XML structure</h2>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <wl:adapter name="HelloWorld">
 	<displayName />
 	<description />
@@ -106,14 +106,14 @@ To run a procedure test:</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <procedure name="procedure1"></procedure>
 <procedure name="procedure2"></procedure>
 {% endhighlight %}
 <h2>Adapter JavaScript structure</h2>
 <p>Each procedure declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function procedure1(param) {
   return WL.Server.invokeSQLStatement({
     preparedStatement: procedure1Statement,

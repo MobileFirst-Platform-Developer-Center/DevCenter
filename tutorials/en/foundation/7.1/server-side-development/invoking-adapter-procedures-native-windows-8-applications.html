@@ -14,19 +14,19 @@ downloads:
 <p>MobileFirst applications can access resources using the <code>WLResourceRequest</code> REST API.<br />
 This tutorial explains how to use the <code>WLResourceRequest</code> API with an HTTP adapter.</p>
 <h2 id="initializeWLClient">Initializing WLClient</h2>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLClient client = WLClient.getInstance();
 {% endhighlight %}</p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 client.connect(new MyConnectResponseListener(this));
 {% endhighlight %}</p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public class MyConnectResponseListener : WLResponseListener
 {% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
@@ -40,24 +40,24 @@ public class MyConnectResponseListener : WLResponseListener
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/<em>{AdapterName}</em>/<em>{ProcedureName}</em></code><br />
-{% highlight java linenos %}
+{% highlight java  %}
 URI adapterPath = new URI("/adapters/RSSReader/getFeed");
 {% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTTP Method (GET, POST, etc).<br />
-{% highlight java linenos %}
+{% highlight java  %}
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 {% endhighlight %}</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 request.setQueryParameter("params","['MobileFirst_Platform']");
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 request.setQueryParameter("param1","value1");
 request.setQueryParameter("param2","value2");
 {% endhighlight %}
@@ -65,7 +65,7 @@ request.setQueryParameter("param2","value2");
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in <a href="#receiveResponse">the next section</a>.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 request.send(new MyInvokeListener());
 {% endhighlight %}
 </li>
@@ -75,7 +75,7 @@ request.send(new MyInvokeListener());
 <h2 id="receiveResponse">Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 using IBM.Worklight;
 namespace InvokingAdapterProceduresWin8{
     public class MyInvokeListener : WLResponseListener
@@ -83,7 +83,7 @@ namespace InvokingAdapterProceduresWin8{
 {
 {% endhighlight %}</p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code> instance. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public void onSuccess(WLResponse response)
 {
     WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);

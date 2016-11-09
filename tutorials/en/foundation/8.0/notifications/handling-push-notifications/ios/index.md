@@ -41,16 +41,16 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 
 1. Open the project's existing **podfile** and add the following lines:
 
-    ```xml
-    use_frameworks!
+   ```xml
+   use_frameworks!
 
-    platform :ios, 8.0
-    target "Xcode-project-target" do
+   platform :ios, 8.0
+   target "Xcode-project-target" do
         pod 'IBMMobileFirstPlatformFoundation'
         pod 'IBMMobileFirstPlatformFoundationPush'
-    end
+   end
 
-	post_install do |installer|
+   post_install do |installer|
         workDir = Dir.pwd
 
         installer.pods_project.targets.each do |target|
@@ -64,15 +64,14 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
             newXcconfig = xcconfig.gsub(/HEADER_SEARCH_PATHS = .*/, "HEADER_SEARCH_PATHS = ")
             File.open(releaseXcconfigFilename, "w") { |file| file << newXcconfig }
         end
-    end
-	```
+   end
+   ```
     - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
 2. Save and close the **podfile**.
 3. From a **Command-line** window, navigate into to the project's root folder.
 4. Run the command `pod install`
 5. Open project using the **.xcworkspace** file.
-
 
 ## Notifications API
 
@@ -136,16 +135,13 @@ MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error:
 })
 ```
 
-**Notes:** `options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request.
-
-Sends the device token to the server to register the device with its unique identifier.
+`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 ```
 
-**Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method
-
+> **Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method.
 
 #### Get tags
 Retrieve all the available tags from the push notification service.

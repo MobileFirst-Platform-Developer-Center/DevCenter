@@ -42,7 +42,7 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 <li>Set the TCP Port.</li>
 </ul>
 <p>Declare the required procedures below the connectivity element.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <wl:adapter name="HTTPAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:http="http://www.ibm.com/mfp/integration/http">
     <displayName>HTTPAdapter</displayName>
     <description>HTTPAdapter</description>
@@ -82,7 +82,7 @@ Other parts of the URL can be parameterized; that is, substituted at run time by
 <p>In the JavaScript file, use the same procedure name as in the XML file.<br />
 The mandatory parameters to call the procedure are <code>method</code>, <code>path</code>, and <code>returnedContentType</code>.<br />
 The procedure can be parameterized at run time.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getFeeds() {
     var input = {
         method : 'get',
@@ -109,7 +109,7 @@ Provide an input parameter object, which must specify:</p>
 <h2 id="xslTransformationFiltering">XSL transformation filtering</h2>
 <p>You can apply XSL transformation to the received data, for example to filter the data.<br />
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getFeedsFiltered() {
     var input = {
         method : 'get',
@@ -131,7 +131,7 @@ Encoding XML within JavaScript is simple: just use <strong>E4X</strong>, which i
 <p>If you receive error messages for SOAP envelopes, disable the JavaScript validator.<br />
 Click <strong>Project > Properties > Builders</strong> and clear <strong>JavaScript Validator</strong>.</p>
 <p>Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 var request =
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Body>
@@ -149,7 +149,7 @@ var request =
 <li>A <code>path</code> property: a service path</li>
 <li>A <code>body</code> property: <code>content</code> (SOAP XML as a string) and <code>contentType</code></li>
 </ul>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 var input = {
     method: 'post',
     returnedContentType: 'xml',
