@@ -53,7 +53,7 @@ Extended authenticity protection requires additional steps, as explained in the 
 <li>Add the relevant authentication realm to a security test.
 <ul>
 <li>If a <code>mobileSecurityTest</code> is used, add the <code>testAppAuthenticity</code> child element to it:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <mobileSecurityTest name="MyMobileAuthenticityTest">
     <testAppAuthenticity/>
     <testDeviceId provisioningType="none" />
@@ -62,7 +62,7 @@ Extended authenticity protection requires additional steps, as explained in the 
 {% endhighlight %} 
 </li>
 <li>If a <code>customSecurityTest</code> is used, add the <code>wl_authenticityRealm</code> realm to it:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <customSecurityTest name="MyCustomAuthenticityTest" >
     <test realm="wl_authenticityRealm" step="1"/>
     <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/>
@@ -81,7 +81,7 @@ Extended authenticity protection requires additional steps, as explained in the 
 <ul>
 <li><strong>By using the <code>wladm</code> program</strong><br />
 Use the <code>wladm</code> program (provided in the MobileFirst installation directory) to run the <code>enable extended-authenticity</code> command:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file
 {% endhighlight %} <br />
 <em>src-wlapp-file</em>  => Original binary app file (.wlapp)<br />
@@ -91,7 +91,7 @@ wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file
 </li>
 <li><strong>By using the <code>wladm</code> Ant task</strong><br />
 Use the <code>wladm</code> Ant task (provided in the MobileFirst installation directory) to run the <code>enable-extended-authenticity</code> command:<br />
-{% highlight xml linenos %} 
+{% highlight xml  %} 
 <enable-extended-authenticity srcwlappfile="original-.wlapp-file"
     devicefile="device file(.apk, .ipa, or .xap)"
     destwlappfile="output-.wlapp-file"/>

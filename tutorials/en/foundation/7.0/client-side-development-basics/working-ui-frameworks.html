@@ -26,7 +26,7 @@ jQuery is a fast and concise JavaScript framework that simplifies HTML document 
 
 The MobileFirst client-side framework uses the jQuery library for internal functionality. By default, the <code>$</code> character is assigned to the internal jQuery in the main HTML file of the application, in the HEAD element:
 
-{% highlight html linenos %}
+{% highlight html  %}
 <script>window.$ = window.jQuery = WLJQ;</script>
 {% endhighlight %}
 
@@ -52,7 +52,7 @@ The main HTML file of the application is created with references to the <code>.c
 
 <h3>Basic structure of a screen</h3>
 The basic structure of a screen in a jQuery Mobile application is as follows:
-{% highlight html linenos %}
+{% highlight html  %}
 <div data-role="page">
     <div data-role="header"> ... </div>
     <div data-role="content"> ... </div>
@@ -72,7 +72,7 @@ A WYSIWYG editor is provided for jQuery Mobile widgets for developer convenience
 <img alt="missing_alt" src="{{site.baseurl}}/assets/backup/03_03_RPE.png" />
 
 By using jQuery Mobile, you can create mobile application screens with only a few lines of code.
-{% highlight html linenos %}
+{% highlight html  %}
 <div data-role="page">
     <div data-role="header">
         <h2>My Application</h2>
