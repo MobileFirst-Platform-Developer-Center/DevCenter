@@ -16,7 +16,7 @@ You must have a login and password that grant you authorization to access the Mo
 
 You can use the MobileFirst Operations Console to manage your applications.
 
-From the MobileFirst Operations Console, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the MobileFirst Operations Console](../../analytics/console/#enable-disable-analytics-support).
+From the MobileFirst Operations Console, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the MobileFirst Operations Console](../../analytics/console/#enabledisable-analytics-support).
 
 #### Jump to
 

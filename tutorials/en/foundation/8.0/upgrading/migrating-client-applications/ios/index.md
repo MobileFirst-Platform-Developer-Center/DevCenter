@@ -9,9 +9,9 @@ To migrate an existing native iOS project that was created with IBM MobileFirstâ
 
 #### Jump to
 
-* [Scanning existing MobileFirst native iOS apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-mobilefirst-version-8-0)
-* [Migrating an existing iOS project to version 8.0 manually](#migrating-an-existing-ios-project-to-version-8-0-manually)
-* [Migrating an existing native iOS projects to version 8.0 with CocoaPods](#migrating-an-existing-native-ios-projects-to-version-8-0-with-cocoapods)
+* [Scanning existing MobileFirst native iOS apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-mobilefirst-version-80)
+* [Migrating an existing iOS project to version 8.0 manually](#migrating-an-existing-ios-project-to-version-80-manually)
+* [Migrating an existing native iOS projects to version 8.0 with CocoaPods](#migrating-an-existing-native-ios-projects-to-version-80-with-cocoapods)
 * [Migrating encryption in iOS](#migrating-encryption-in-ios)
 * [Updating the iOS code](#updating-the-ios-code)
 

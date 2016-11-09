@@ -315,11 +315,11 @@ Here is a list of exceptions that might occur after the installation and configu
 
 * [Rational Common Licensing native library is not found](#rational-common-licensing-native-library-is-not-found)
 * [Rational Common Licensing shared library is not found](#rational-common-licensing-shared-library-is-not-found)
-* [The Rational License Key Server connection is not configured](#the-rational-license-key-server-is-not-configured)
+* [The Rational License Key Server connection is not configured](#the-rational-license-key-server-connection-is-not-configured)
 * [The Rational License Key Server is not accessible](#the-rational-license-key-server-is-not-accessible)
 * [Failed to initialize Rational Common Licensing API](#failed-to-initialize-rational-common-licensing-api)
 * [Insufficient token licenses](#insufficient-token-licenses)
-* [Invalid rcl_ibmratl.jar file](#invalid-rcl-ibmratl-jar-file)
+* [Invalid rcl_ibmratl.jar file](#invalid-rclibmratljar-file)
 
 ### Rational Common Licensing native library is not found
 

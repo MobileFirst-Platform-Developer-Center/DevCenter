@@ -37,8 +37,8 @@ Displaying a received notification
 
 ### Agenda
 
-- [Notification API - server-side](#notification-api-server-side)
-- [Notification API - client-side](#notification-api-client-side)
+- [Notification API - server-side](#notification-api---server-side)
+- [Notification API - client-side](#notification-api---client-side)
 - [Sample application](#sample-application)
 
 ### Notification API - Server-side

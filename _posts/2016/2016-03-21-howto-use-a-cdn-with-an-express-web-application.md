@@ -17,7 +17,7 @@ In this tutorial we are learning what is a Content Delivery Network (CDN), what 
   * [CDN for Mobile Applications](#cdn-for-mobile-applications)
 * [Instrumenting an Express Application](#instrumenting-an-express-application)
   * [Creating Cache Middleware](#creating-cache-middleware)
-* [Using IBM<sup>&reg;</sup> CDN in Bluemix](#using-ibm-reg-cdn-in-bluemix)
+* [Using IBM CDN in Bluemix](#using-ibm-cdn-in-bluemix)
 * [Final Thoughts](#final-thoughts)
 
 ## What is a Content Delivery Network (CDN)?
@@ -127,7 +127,7 @@ app.listen(appEnv.port, function () {
 ```
 
 
-## Using IBM<sup>&reg;</sup> CDN in Bluemix
+## Using IB CDN in Bluemix
 
 Take a look at the [Getting started with IBM CDN](https://console.ng.bluemix.net/docs/services/cdn/index.html) to setup your CDN.
 

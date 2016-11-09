@@ -9,7 +9,7 @@ Consider your backup and recovery policy, optimize your MobileFirst Server confi
 #### Jump to
 
 * [Endpoints of the MobileFirst Server production server](#endpoints-of-the-mobilefirst-server-production-server)
-* [Configuring MobileFirst Server to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v1-2)
+* [Configuring MobileFirst Server to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v12)
 * [Configuring user authentication for MobileFirst Server administration](#configuring-user-authentication-for-mobilefirst-server-administration)
 * [List of JNDI properties of the MobileFirst Server web applications](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
 * [Configuring data sources](#configuring-data-sources)

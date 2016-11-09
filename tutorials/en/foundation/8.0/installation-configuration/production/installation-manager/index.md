@@ -38,7 +38,7 @@ However, for production installation, use Ant tasks to install Application Cente
 * [Administrator versus user mode](#administrator-versus-user-mode)
 * [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
 * [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
-* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files-silent-installation)
+* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
 * [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server)
 
 ## Administrator versus user mode

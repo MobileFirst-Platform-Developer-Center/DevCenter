@@ -8,8 +8,8 @@ weight: 1
 To migrate an existing Cordova or hybrid application that was created with IBM MobileFirst Foundation version 6.2.0 or later, you must create a Cordova project that uses the plug-ins from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can help you in this task.
 
 #### Jump to
-* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v8-0-versus-v7-1-and-before)
-* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-8-0)
+* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before)
+* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
 * [Migrating Direct Update](#migrating-direct-update)
 * [Upgrading the WebView](#upgrading-the-webview)

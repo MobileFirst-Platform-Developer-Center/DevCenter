@@ -24,7 +24,7 @@ Finally, you will register your mobile apps as well as deploy your adapters.
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8-0-0-0-archive)
+* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Adding Analytics server information](#adding-analytics-server-configuration-to-mobilefirst-server)
 * [Applying MobileFirst Server Fixes](#applying-mobilefirst-server-fixes)
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)

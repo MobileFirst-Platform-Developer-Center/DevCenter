@@ -20,7 +20,7 @@ IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-i
 * [MobileFirst SDK Startup Flow](#mobilefirst-sdk-startup-flow)
 * [Cordova Application Security](#cordova-application-security)
 * [Cordova Application Resources](#cordova-application-resources)
-* [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
+* [Previewing an application's web resources](#previewing-an-applications-web-resources)
 * [Implementing JavaScript Code](#implementing-javascript-code)
 * [CrossWalk support for Android](#crosswalk-support-for-android)
 * [WKWebView support for iOS](#wkwebview-support-for-ios)

@@ -14,7 +14,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging-firebase-cloud-messaging)
+    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)

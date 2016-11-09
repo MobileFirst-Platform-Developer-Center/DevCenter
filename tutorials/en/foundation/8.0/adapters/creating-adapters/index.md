@@ -17,7 +17,7 @@ An adapter can be created using either Maven commands or by using the MobileFirs
 * [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
  * [Install MobileFirst CLI](#install-mobilefirst-cli)
  * [Creating an Adapter](#install-mobilefirst-cli)
-* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
+* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
 * [File Structure](#file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Dependencies](#dependencies)
