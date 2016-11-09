@@ -28,13 +28,13 @@ weight: 2
 <li>Create an Android Studio project or use an existing one.</li>
 <li>In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.</li>
 <li>Add the following lines below <code>apply plugin: 'com.android.application'</code>:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 repositories{
     jcenter()
 }
 {% endhighlight %}</li>
 <li>Add the following inside <code>android</code>:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 packagingOptions {
     pickFirst 'META-INF/ASL2.0'
     pickFirst 'META-INF/LICENSE'
@@ -42,7 +42,7 @@ packagingOptions {
 }
 {% endhighlight %}</li>
 <li>Add the following lines inside <code>dependencies</code>:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 compile group: 'com.ibm.mobile.foundation',
 name: 'ibmmobilefirstplatformfoundation',
 version: '7.1.0.0',
@@ -50,13 +50,13 @@ ext: 'aar',
 transitive: true
 {% endhighlight %}</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.GET_TASKS" />
 {% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <activity android:name="com.worklight.wlclient.ui.UIActivity" />
 {% endhighlight %}</li>
 </ol>
@@ -130,13 +130,13 @@ The next step adds the following files to the native project, as explained in <a
 <li> [Android Studio only] Create an <code>assets</code> folder under <code>src\main</code>.</li>
 <li>Copy the <code>wlclient.properties</code> file from the previously created MobileFirst native API folder to the new native Android application, in the <code>/assets</code> directory.</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.GET_TASKS" />
 {% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <activity android:name="com.worklight.wlclient.ui.UIActivity" />
 {% endhighlight %}</li>
 </ol>

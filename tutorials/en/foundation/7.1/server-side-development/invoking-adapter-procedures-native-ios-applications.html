@@ -21,7 +21,7 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 MyConnectListener *connectListener = [[MyConnectListener alloc] initWithController:self];
 [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];
 {% endhighlight %}</p>
@@ -29,7 +29,7 @@ MyConnectListener *connectListener = [[MyConnectListener alloc] initWithControll
 </li>
 <li>Create a delegate to be used in the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.<br />
 The header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @interface MyConnectListener : NSObject <WLDelegate> {
     @private
     ViewController *vc;
@@ -42,7 +42,7 @@ The header file must specify that it implements the <code>WLDelegate</code> prot
 In both cases, the response object is sent as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(void)onSuccess:(WLResponse *)response{
     NSLog(@"\nConnection Success: %@", response);
     NSString *resultText = @"Connection success. ";
@@ -64,24 +64,24 @@ In both cases, the response object is sent as an argument.
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 NSURL* url = [NSURL URLWithString:@"/adapters/RSSReader/getFeed"];
 {% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTTP method (GET, POST, etc).<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
 {% endhighlight %}</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [request setQueryParameterValue:@"['MobileFirst_Platform']" forName:@"params"];
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [request setQueryParameterValue:@"value1" forName:@"param1"];
 [request setQueryParameterValue:@"value2" forName:@"param2"];
 {% endhighlight %}
@@ -90,7 +90,7 @@ WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttp
 </li>
 <li>Trigger the request with a call to the <code>sendWithCompletionHandler</code> method.<br />
 Specify a <code>completionHandler</code> instance.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
     NSString* resultText;
     if(error != nil){

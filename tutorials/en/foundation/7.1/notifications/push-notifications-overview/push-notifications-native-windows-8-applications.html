@@ -14,7 +14,7 @@ As a developer, you need to register your app with Windows Store through the Win
 <p>For more information about how to get WNS credentials (which you will use later in the MobileFirst project), see <a href="http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx">http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx</a></p>
 <h3>Server side</h3>
 <p>In the <code>application-descriptor.xml</code> file, Add the <strong>pushSender</strong> element under the nativeWindows8App environment (these settings are also editable with the Application Descriptor Editor in Design mode).</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeWindows8App id="AppName" platformVersion="7.0.0.00.20150312-0731"
 	version="1.0" xmlns="http://www.worklight.com/native-windows8-descriptor">
 	<displayName>AppName</displayName>
@@ -30,7 +30,7 @@ As a developer, you need to register your app with Windows Store through the Win
 <h3>Client side</h3>
 <p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
 <p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <code>VisualElements</code> element in the package manifest.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <Applications><br />
     <Application Id="App" ...>
         <VisualElements  ... ToastCapable="true">

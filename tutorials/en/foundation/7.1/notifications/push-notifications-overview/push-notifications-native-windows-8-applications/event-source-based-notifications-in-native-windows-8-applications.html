@@ -34,7 +34,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -49,7 +49,7 @@ WL.Server.createEventSource({
 <li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 <p>An additional event source option:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
@@ -67,7 +67,7 @@ The following parameters are required:</p>
 <p><br clear="all" /></p>
 <h3>Sending a notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
@@ -81,11 +81,11 @@ function submitNotification(userId, notificationText) {
     };
 }{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function submitNotification(userId, notificationText) {
 {% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 {
     userId: 'bjones',
     state: {
@@ -95,17 +95,17 @@ function submitNotification(userId, notificationText) {
 };
 {% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 {% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 if (userSubscription === null) {
     return { result: "No subscription found for user :: " + userId };
 }
 {% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
-{% highlight js linenos %}var badgeDigit = 1;
+{% highlight js  %}var badgeDigit = 1;
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
 {% endhighlight %}</p>
 <ul>
@@ -114,7 +114,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.Server.notifyAllDevices(userSubscription, notification);
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
@@ -126,18 +126,18 @@ WL.Server.notifyAllDevices(userSubscription, notification);
 </ul>
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
-<p>{% highlight csharp linenos %}WLClient client = WLClient.getInstance();{% endhighlight %}</p>
+<p>{% highlight csharp  %}WLClient client = WLClient.getInstance();{% endhighlight %}</p>
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>{% highlight csharp linenos %}WLPush push = client.getPush();{% endhighlight %}</p>
+<p>{% highlight csharp  %}WLPush push = client.getPush();{% endhighlight %}</p>
 <p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
  OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();
  push.onReadyToSubscribeListener = myOnReadyListener;
 {% endhighlight %}</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public void onReadyToSubscribe()
 {...}
 {% endhighlight %}
@@ -151,11 +151,11 @@ public void onReadyToSubscribe()
 <code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
 {% endhighlight %}</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>{% highlight csharp linenos %}<
+<p>{% highlight csharp  %}<
 public void onReadyToSubscribe()
 {<br />
   WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);<br />
@@ -170,7 +170,7 @@ public void onReadyToSubscribe()
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLPush push = WLClient.getInstance().getPush();
 MySubscribeListener mySubListener = new MySubscribeListener();
 push.subscribe("myPush", null, mySubListener);
@@ -188,7 +188,7 @@ push.subscribe("myPush", null, mySubListener);
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when unsubscription completes.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLPush push = WLClient.getInstance().getPush();
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();
 push.unsubscribe("myPush", myUnsubListener);
@@ -200,20 +200,20 @@ push.unsubscribe("myPush", myUnsubListener);
 </ul>
 <h3>Additional client-side API methods</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLClient.getInstance().getPush().isSubscribed("myPush");
 {% endhighlight %}</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}
 {% endhighlight %}</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
 {% endhighlight %}</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 public void onReceive(String props, String payload)
 {
      Debug.WriteLine("Props: " + props);

@@ -18,7 +18,7 @@ downloads:
 </ul>
 <h2 id="RSSAdapterApplication">RSSAdapterApplication</h2>
 <p><code>RSSAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by your application.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @Override
 protected void init() throws Exception {
     RSSAdapterResource.init();
@@ -26,7 +26,7 @@ protected void init() throws Exception {
 }
 {% endhighlight %}</p>
 <h2 id="RSSAdapterResource">RSSAdapterResource</h2>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @Path("/")
 public class RSSAdapterResource {
 }
@@ -34,7 +34,7 @@ public class RSSAdapterResource {
 <code>RSSAdapterResource</code> is where we handle the requests to your adapter.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>HTTP Client</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 private static CloseableHttpClient client;
 private static HttpHost host;
 public static void init() {
@@ -44,7 +44,7 @@ public static void init() {
 {% endhighlight %}</p>
 <p>Because every request to your resource will create a new instance of <code>RSSAdapterResource</code>, it is important to reuse objects that may impact performance. In this example we made the Http client a <code>static</code> object and initialized it in a static <code>init()</code> method, which gets called by the <code>init()</code> of <code>RSSAdapterApplication</code> as described above.</p>
 <h3>Procedure resource</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @GET
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
@@ -66,7 +66,7 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 </ul>
 <p>Depending if you pass a <code>tag</code> parameter, <code>execute</code> will retrieve a different build a different path and retrieve a different RSS file.</p>
 <h3>execute()</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public void execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException,
 		IllegalStateException, SAXException {
     HttpResponse RSSResponse = client.execute(host, req);
@@ -97,7 +97,7 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse) thro
 <h2 id="results">Results</h2>
 <p>Use the testing techniques described in <a href="../#testing" title="Java Adapter">Java Adapter</a> to test your work.</p>
 <p>The adapter should return the RSS feed converted to JSON.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 {
    "rss": {
       "channel": {

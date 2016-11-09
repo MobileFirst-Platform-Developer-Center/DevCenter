@@ -61,7 +61,7 @@ Direct Update is based on the MobileFirst Authentication Framework. It comes wit
 <h3>Server-side customization</h3>
 <p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:<br/>
 It can also be configured to <code>perRequest</code> however do review the notes above in case using OAuth.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <mobileSecurityTest name="mobileTests">
     <testAppAuthenticity/>
     <testDeviceId provisioningType="none" />
@@ -70,12 +70,12 @@ It can also be configured to <code>perRequest</code> however do review the notes
 </mobileSecurityTest>
 {% endhighlight %}</p>
 <p>To disable Direct Update, change its mode to <code>disabled</code>, and similarly to override it to other modes.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <testDirectUpdate mode="disabled" />
 {% endhighlight %}</p>
 <p>Also by default, the <code>customSecurityTest</code> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <customSecurityTest name="customTests">
     <test realm="wl_directUpdateRealm" mode="perRequest"/>
 </customSecurityTest>{% endhighlight %}</p>
@@ -104,7 +104,7 @@ After a Direct Update, the application no longer uses prepackaged resources but 
 <h3 id="customUI">Customizing the UI</h3>
 <p>It is possible to override the default UI and/or UX and create a custom Direct Update behavior altogether.</p>
 <p>To do so, override the <code>handleDirectUpdate</code> function:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
     // custom Direct Update logic
 };
@@ -126,7 +126,7 @@ Examples of a new customized Direct Update UI:</p>
 <li>An alternate HTML file that is presented to the user with options</li>
 <li>And so on…</li>
 </ul>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData,
 directUpdateContext) {
     // custom WL.SimpleDialog for Direct Update
@@ -152,14 +152,14 @@ directUpdateContext) {
 {% endhighlight %}</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png" /></p>
 <p>In the example above, the <code>submitFailure</code> API is used to dismiss the Direct Update:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 wl_directUpdateChallengeHandler.submitFailure();
 {% endhighlight %}</p>
 <p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
 <p>As such, it is important to call <code>submitFailure()</code> to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the <code>onFailure</code> callback of the invocation that triggered the Direct Update.</p>
 <p>Because the update process did not take place, it will occur again the next time it is triggered.</p>
 <p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle. For more information, see the topic about customizing the direct update interface, in the user documentation.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 directUpdateContext.start(directUpdateCustomListener);
 {% endhighlight %}</p>
 
@@ -177,7 +177,7 @@ directUpdateContext.start(directUpdateCustomListener);
 <ol>
 <li>Generate a certificate and place it in the MobileFirst project in the <code>server\conf</code> folder.</li>
 <li>Edit the MobileFirst Default Certificate section in <code>server\conf\worklight.properties</code> with the certificate keystore information, for example:
-{% highlight xml linenos %}
+{% highlight xml  %}
 wl.ca.keystore.path=conf/myCert.jks
 wl.ca.keystore.type=jks
 wl.ca.keystore.password=myStrongPassword
@@ -193,7 +193,7 @@ wl.ca.key.alias.password=myCertPassword{% endhighlight %}</li>
 <p>The public key can then be found in the Application Descriptor Design view:</p>
 <p> <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key.png" /></p>
 <p>The public key can also be found in the Application Descriptor Editor view:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <application>
     …
     …
