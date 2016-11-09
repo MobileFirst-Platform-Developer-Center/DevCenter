@@ -1777,6 +1777,32 @@ This script package includes all prerequisites that are required to install the 
 | None | No parameters for this script package. | 
 
 ### MFP Server Runtime Deployment
+This script package installs the MobileFirst runtime in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server with the MobileFirst Operations Console installed. The script package also sets up the connection to the MobileFirst Analytics server. It must be installed after the MFP Server Administration script package.
+
+| Parameter | Description |
+|-----------|-------------|
+| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute install_directory of Liberty profile server or Standalone server. | 
+| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr\_profile\_name of Deployment manager or sa\_profile\_name of Standalone server. |
+| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the MobileFirst Platform (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy MFP runtime. Default value: 2. | 
+| db_ip | IP address of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. |
+| db_port | Port number of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to theinstancePort output attribute of the Database Server software component in the pattern template. |
+| admin_user | Mandatory. User name that has MobileFirst Server administration privilege. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| admin_password | Mandatory. admin user password. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
+| runtime_path | Mandatory. Runtime WAR file installed path. For example: it can be mapped to the target_path output attribute of MFP Server Runtime in the pattern template. | 
+| runtime_contextRoot | Mandatory. Runtime context root. Must start with a forward slash, /; for example, "/HelloWorld". It is set as a pattern level parameter in the pattern template. | 
+| rtdb_name | Mandatory. Name of the Runtime database. It is mapped to thedb_name output attribute of the MFP Runtime DB script package in the pattern template. | 
+| rtdb_user | Mandatory. User that created the Runtime database. It is mapped to the db_user output attribute of the MFP Runtime DB script package in the pattern template. |
+| rtdb_password | Mandatory. Password of the user that created the Runtime database. It is mapped to the db_password output attribute of the MFP Runtime DB script package in the pattern template. |
+| rptdb_name | Optional. Name of the Reports database. It is mapped to thedb_name output attribute of the MFP Reports DB script package in the pattern template. Leave blank if you do not want to connect to a Reports database. |
+| rptdb_user | Optional. User that created the Reports database. It is mapped to thedb_user output attribute of the MFP Reports DB script package in the pattern template. | 
+| rptdb_password | Optional. Password of the user that created the Reports database. It is mapped to the db_password output attribute of MFP Reports DB script package in the pattern template. \ 
+| was\_admin\_user	| Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. |
+| was_admin_password | Optional. When the MobileFirst Server is deployed on WebSphere Application Server full profile, it is mapped to thewas_admin_password output attribute of Standalone server in the pattern template. When the MobileFirst Server is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin_password output attribute of Deployment manager in the pattern template. | 
+| server_farm_mode | Mandatory. Map it to the same attribute of MFP Server Administration. | 
+| server_hostname | Mandatory. Host name of the MobileFirst Server. It is mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. |
+| analytics_ip | Optional. MobileFirst Analytics Node IP address to enable the Analytics capability in the MFP Server Runtime. |
+| analytics_admin_user | Optional. Administrator name of the MobileFirst Analytics server. | 
+| analytics_admin_password | Optional. Password of administrator of the MobileFirst Analytics server. | 
 
 ## Upgrading IBM MobileFirst Platform Foundation System Pattern
 To upgrade IBM MobileFirst Application Pattern, upload the .tgz file that contains the latest updates.
