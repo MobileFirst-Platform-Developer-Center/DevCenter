@@ -13,6 +13,8 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 
 IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Foundation SDK to Cordova applications](../../application-development/sdk/cordova).
 
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+
 #### Jump to:
 
 * [Cordova application development](#cordova-application-development)
