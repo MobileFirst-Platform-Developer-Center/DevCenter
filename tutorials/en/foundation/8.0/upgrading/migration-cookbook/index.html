@@ -413,62 +413,61 @@ if (document.addEventListener) {
 
                         <br/>
                         <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="removeiOSSDK">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseRemoveiOSSDK" aria-expanded="false" aria-controls="collapseRemoveiOSSDK">Remove the old SDK</a>
-                                    </h4>
-                                </div>
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="removeiOSSDK">
+                                 <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseRemoveiOSSDK" aria-expanded="false" aria-controls="collapseRemoveiOSSDK">Remove the old SDK</a>
+                                 </h4>
+                              </div>
 
-                                <div id="collapseRemoveiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeiOSSDK">
-                                    <div class="panel-body">
-                                        <ol>
-                                            <li>Open your project in Xcode.</li>
-                                            <li>Delete the <b>WorklightAPI</b> folder from your Xcode project (move it to the trash).</li>
-                                            <li>Modify your existing code in the following ways:<br/>
-                                                In the <b>Build Settings</b> tab,
-                                                   <ul>
-                                                      <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
-                                                      <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
-                                                      <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
-                                                   </ul>
-                                                </li>
-                                            </li>
-                                            <li>In the <b>Build Phases</b> tab, remove the links to the following frameworks and libraries. CocoaPods will re-add these links automatically.
-                                                <ul>
-                                                    <li>libWorklightStaticLibProjectNative.a</li>
-                                                    <li>SystemConfiguration.framework</li>
-                                                    <li>MobileCoreServices.framework</li>
-                                                    <li>CoreData.framework</li>
-                                                    <li>CoreLocation.framework</li>
-                                                    <li>Security.framework</li>
-                                                    <li>sqlcipher.framework</li>
-                                                    <li>libstdc++.6.dylib</li>
-                                                    <li>libz.dylib</li>
-                                                </ul>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
+                              <div id="collapseRemoveiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Open your project in Xcode.</li>
+                                       <li>Delete the <b>WorklightAPI</b> folder from your Xcode project (move it to the trash).</li>
+                                       <li>Modify your existing code in the following ways:<br/>
+                                          In the <b>Build Settings</b> tab,
+                                          <ul>
+                                             <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
+                                             <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
+                                             <li>Remove any references to the static library <code>libWorklightStaticLibProjectNative.a</code>.</li>
+                                          </ul>
+                                       </li>
+                                       <li>In the <b>Build Phases</b> tab, remove the links to the following frameworks and libraries. CocoaPods will re-add these links automatically.
+                                          <ul>
+                                             <li>libWorklightStaticLibProjectNative.a</li>
+                                             <li>SystemConfiguration.framework</li>
+                                             <li>MobileCoreServices.framework</li>
+                                             <li>CoreData.framework</li>
+                                             <li>CoreLocation.framework</li>
+                                             <li>Security.framework</li>
+                                             <li>sqlcipher.framework</li>
+                                             <li>libstdc++.6.dylib</li>
+                                             <li>libz.dylib</li>
+                                          </ul>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="addiOSSDK">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseAddiOSSDK" aria-expanded="false" aria-controls="collapseAddiOSSDK">Add the new SDK</a>
-                                    </h4>
-                                </div>
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="addiOSSDK">
+                                 <h4 class="panel-title">
+                                     <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseAddiOSSDK" aria-expanded="false" aria-controls="collapseAddiOSSDK">Add the new SDK</a>
+                                 </h4>
+                              </div>
 
-                                <div id="collapseAddiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addiOSSDK">
-                                    <div class="panel-body">
-                                        <ol>
-                                            <li>Make sure that Xcode is closed.</li>
-                                            <li>Open <b>Terminal</b> and navigate to the root of the Xcode project.
-                                                <ul>
-                                                    <li>Run the <code>pod init</code> command to create a Podfile file.</li>
-                                                    <li>The Podfile file is created at the root of the Xcode project. Find it and open it in an editor of your choice.</li>
-                                                    <li>Comment out or remove the existing content.</li>
-                                                    <li>Add the following lines and save the changes. Remember to update the <b>target</b> value:
+                              <div id="collapseAddiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Make sure that Xcode is closed.</li>
+                                       <li>Open <b>Terminal</b> and navigate to the root of the Xcode project.
+                                          <ul>
+                                              <li>Run the <code>pod init</code> command to create a Podfile file.</li>
+                                              <li>The Podfile file is created at the root of the Xcode project. Find it and open it in an editor of your choice.</li>
+                                              <li>Comment out or remove the existing content.</li>
+                                              <li>Add the following lines and save the changes. Remember to update the <b>target</b> value:
 {% highlight xml %}use_frameworks!
 platform :ios, 8.0
 target "replace-with-the-name-of-the-target-in-xcode-project" do
@@ -487,21 +486,21 @@ target "replace-with-the-name-of-the-target-in-xcode-project" do
     pod 'IBMMobileFirstPlatformFoundation'
     pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
 end{% endhighlight %}
-                                                    </li>
-                                                    <li>Run the <code>pod install</code> command. This command installs the MobileFirst Native SDK, IBMMobileFirstPlatformFoundation.framework, and any other frameworks that are specified in the Podfile and their dependencies. Then, it generates the pods project and integrates the client project with the MobileFirst SDK.</li>
-                                                </ul>
-                                            </li>
-                                            <li>Open your <b>ProjectName.xcworkspace</b> file in Xcode by typing <b>open ProjectName.xcworkspace</b> from a command line. This file is in the same directory as the ProjectName.xcodeproj file. You can also double-click it from the Finder.</li>
-                                            <li>Replace all of the existing MobileFirst imports of headers with a single entry of the following new umbrella header:<br/>
+                                              </li>
+                                              <li>Run the <code>pod install</code> command. This command installs the MobileFirst Native SDK, IBMMobileFirstPlatformFoundation.framework, and any other frameworks that are specified in the Podfile and their dependencies. Then, it generates the pods project and integrates the client project with the MobileFirst SDK.</li>
+                                          </ul>
+                                       </li>
+                                       <li>Open your <b>ProjectName.xcworkspace</b> file in Xcode by typing <b>open ProjectName.xcworkspace</b> from a command line. This file is in the same directory as the ProjectName.xcodeproj file. You can also double-click it from the Finder.</li>
+                                       <li>Replace all of the existing MobileFirst imports of headers with a single entry of the following new umbrella header:<br/>
 
                                             <b>Objective C:</b><br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
                                             <br/><br/>
                                             <b>Swift:</b><br/>
                                             <code>import IBMMobileFirstPlatformFoundation</code><br/>
-                                            </li>
-                                            <li>In the <b>Build Settings</b> tab, under <b>Other Linker Flags</b>, add <code>$(inherited)</code> at the beginning of the <b>-ObjC</b> flag.</li>
-                                            <li>If you are using Push Notifications or JSONStore, you need to include an independent import.
+                                       </li>
+                                       <li>In the <b>Build Settings</b> tab, under <b>Other Linker Flags</b>, add <code>$(inherited)</code> at the beginning of the <b>-ObjC</b> flag.</li>
+                                       <li>If you are using Push Notifications or JSONStore, you need to include an independent import.
                                             <br/><br/>
                                             <b>Push Notifications</b><br/>
                                             For Objective C:<br/>
@@ -516,11 +515,11 @@ end{% endhighlight %}
                                             <br/><br/>
                                             For Swift:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
 
                         <br/>
@@ -562,14 +561,14 @@ end{% endhighlight %}
 
 {% highlight xml %}repositories{
     jcenter()
-}{% endhighlight %} accesskey=""            </li>
+}{% endhighlight %}            </li>
                                             <li>Add the following inside <b>android</b>:
 
 {% highlight xml %}packagingOptions {
     pickFirst 'META-INF/ASL2.0'
     pickFirst 'META-INF/LICENSE'
     pickFirst 'META-INF/NOTICE'
-}{% endhighlight %} accesskey=""            </li>
+}{% endhighlight %}            </li>
                                             <li>Add the following lines inside <b>dependencies</b>:
 
 {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
