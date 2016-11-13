@@ -211,10 +211,11 @@ Follow the sample's README.md file for instructions.
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
 >
->      ```xml
+```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
 >            <key>NSAllowsArbitraryLoads</key>
 >            <true/>
 >      </dict>
->      ```
+```
+
