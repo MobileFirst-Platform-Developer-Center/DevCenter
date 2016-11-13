@@ -131,9 +131,9 @@ weight: 1
                         <p>Open a command-line window and use the Migration Assistance tool in the following manner.</p>
                         <ul>
                             <li>To only scan the classic hybrid project and have an API report generated, use:
-{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}</li>
                             <li>To scan the classic hybrid project and create a predefined Cordova project, use:<br/>
-{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory  [--projectName location_of_project]{% endhighlight %}
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory [--projectName location_of_project]{% endhighlight %}
                             <b>Note:</b> This action might take a while to complete, depending on your Internet connection, because the process includes downloading the MobileFirst Cordova SDK plug-ins.</li>
                             <li>Replace <b>source_directory</b> with the path to the <b>application</b> folder located in application folder of the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report.</li>
@@ -318,7 +318,7 @@ if (document.addEventListener) {
                         Open a command-line window and use the Migration Assistance tool in the following manner.<br/>
                         This might take a while to complete, depending on your Internet connection...</p>
 
-{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}
 
                         <ul>
                             <li>Replace <b>source_directory</b> with the path to the <b>common</b> folder located in the application folder of the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
@@ -382,7 +382,7 @@ if (document.addEventListener) {
                         <blockquote><b>Note:</b> Currently, the Migration Assistance tool can scan only native applications that are based on MobileFirst Platform Foundation 7.1.</blockquote>
 
                         <p>Open a command-line window and use the Migration Assistance tool in the following manner:</p>
-{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform{% endhighlight %}
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory --type platform{% endhighlight %}
 
                         <ul>
                             <li>Replace <b>source_directory</b> with the path to the native project, for example: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
@@ -1046,7 +1046,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                                 <td>Defined in the MobileFirst Operations Console or via REST APIs, a scope contains 0 or more security checks.
 
 {% highlight json %}"scopeElementMapping": {
-    "ScopeElementA": “secCheck1 secCheck2"
+    "ScopeElementA": "secCheck1 secCheck2"
 }, {% endhighlight %}</td>
                             </tr>
 
@@ -1064,7 +1064,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                                 <td>A <b>scope</b> (1 or more scope elements) can be used to protect a resource (Java adapters), a procedure (JavaScript adapters), or an application (application descriptor).<br/><br/>
 
                                 <b>Java adapter</b>:
-{% highlight java %}@OAuthSecurity(scope=“ScopeElementA ScopeElementB"){% endhighlight %}
+{% highlight java %}@OAuthSecurity(scope="ScopeElementA ScopeElementB"){% endhighlight %}
 
                                 <b>JavaScript adapter</b>:
 {% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege"/>{% endhighlight %}
