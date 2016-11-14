@@ -18,7 +18,7 @@ This tutorial illustrates the native Android client-side authentication componen
 <li>Remember to add this activity to the <code>AndroidManifest.xml</code> file, too.</li>
 <li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.
 <p>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether it is the expected challenge. In the sample adapter code, a <code>authRequired</code> variable is sent for this purpose.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public boolean isCustomResponse(WLResponse response) {
 	try {
 		if(response!= null &&
@@ -38,7 +38,7 @@ The <code>handleChallenge</code> method  is called after the <code>isCustomRespo
 </li>
 <li>Use this method to present the login form.
 <p>
-{% highlight java linenos %}
+{% highlight java  %}
 public void handleChallenge(WLResponse response){
     cachedResponse = response;
     Intent login = new Intent(parentActivity, LoginAdapterBasedAuth.class);
@@ -48,7 +48,7 @@ public void handleChallenge(WLResponse response){
 </li>
 <p><br clear="all" /></p>
 <li>In the <code>submitLogin</code> method, if the user asked to abort this action, use the <code>submitFailure()</code> method, otherwise invoke the adapter authentication procedure by using the <code>submitAdapterAuthentication()</code> method.
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public void submitLogin(int resultCode, String userName, String password, boolean back) {
     if (resultCode != Activity.RESULT_OK || back) {
         submitFailure(cachedResponse);
@@ -66,7 +66,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 <p><br clear="all" /></p>
 <li>In the main activity class, connect to MobileFirst Server, register your <code>challengeHandler</code> method, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the <code>challengeHandler</code>.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 final WLClient client = WLClient.createInstance(this);
 client.connect(new MyConnectionListener());
 challengeHandler = new AndroidChallengeHandler(this, realm);

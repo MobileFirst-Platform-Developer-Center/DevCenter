@@ -230,7 +230,7 @@ This will put the server instance in a clean state without any app or adapter de
 The command `mfpdev app <option>` can be used to manage applications created with the MobileFirst Platform SDK.
 
 ### Register an application in a server instance
-An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.  
+An  application must be registered in a MobileFirst Server when it is ready to be executed.  
 To register an app, run the following command from the root folder of the app project:
 
 ```bash
@@ -261,19 +261,25 @@ mfpdev app register -w windows8
 ```
 
 ### Configure an application
-When an application is registered, server related attributes are added to the app configuration file.  
-To change the value of those attributes, run the following command:
+When an application is registered, server related attributes are added to its configuration file.  
+To change the values of these attributes, run the following command:
 
 ```bash
 mfpdev app config
 ```
 
-This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.  
-The attributes available will vary for each platform (Android, iOS, Windows).
+This command will interactively present a list of attributes that can be changed, and prompt for the new value of the attribute.  
+The attributes available will vary for each platform (iOS, Android, Windows).
 
-Available configuratons are:
+Available configurations are:
 
-* The server and runtime the application will be registered to
+* The server address and runtime the application will be registered to
+
+    > **Example use case:** in order to register an application to a MobileFirst Server with a certain address, but also have the application connect to a different server address, for example a DataPower appliance: 
+    >
+    > 1. Run `mfpdev app register` to register the application in the expected MobileFirst Server address.
+    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance. You can also run the command in **direct mode**: `mfpdev app config server http(s)://server-ip-or-host:port`.
+
 * Setting a public key for the Direct Update authenticity feature 
 * Setting application default language (default is English (en))
 * Whether or not to enable the web resources checksum test
@@ -355,29 +361,32 @@ A Cordova application's web resources can be previewed using a browser. Previewi
 
 Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
 
-    1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
-	
-	```var wlInitOptions = {
-	  mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
-	  applicationId:'com.sample.app' // Replace with your own value.
-	};
-	```
+1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
 
-	2. Register the app again by using the following command:
+   ```javascript
+   var wlInitOptions = {
+      mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Development server
+      applicationId:'com.sample.app' // Replace with your own value.
+   };
+   ```
 
-     ```mfpdev app register
-     ```
+2. Register the app again by using the following command:
 
-	 3. Run the following command:
-	 
-	 ```cordova prepare
-     ```
+   ```bash
+   mfpdev app register
+   ```
 
-     4. Preview the Cordova application by running the following command from the Cordova application root folder:
+ 3. Run the following command:
+ 
+    ```bash
+    cordova prepare
+    ```
 
-      ```
-      mfpdev app preview
-      ```
+ 4. Preview the Cordova application by running the following command from the Cordova application root folder:
+
+    ```bash
+    mfpdev app preview
+    ```
 
 You will be prompted to select which platform to preview and which type of preview to use.  
 There are two options of preview: MBS and Browser.
@@ -395,7 +404,7 @@ The web resources of a cordova app, like .html, .css and .js files inside **www*
 
 When you want to send a new set of web resources to be updated in a cordova application, run the command
 
-```
+```bash
 mfpdev app webupdate
 ```
 
@@ -403,38 +412,38 @@ This command will package the updated web resources to a .zip file and upload it
 
 To upload the web resources to different server instance, inform the server name and runtime as part of the command
 
-```
+```bash
 mfpdev app webupdate <server_name> <runtime>
 ```
 
 You can use the --build parameter to generate the .zip file with the packaged web resources without uploading it to a server.
 
-```
+```bash
 mfpdev app webupdate --build
 ```
 
 To upload a package that was previously built, use the --file parameter
 
-```
+```bash
 mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
 ```
 
 There is also the option to encrypt the content of package using the --encrypt parameter
 
-```
+```bash
 mfpdev app webupdate --encrypt
 ```
 
 ### Pull and Push the MobileFirst Application configuration
 After a MobileFirst Application is registered in a MobileFirst server, it is possible to change some of the application configurations using the MobileFirst Server Console and them pull those configurations from the server to the application with the following command:
 
-```
+```bash
 mfpdev app pull
 ```
 
 It is also possible to change the application configurations locally and push the changes to the MobileFirst Server with the command:
 
-```
+```bash
 mfpdev app push
 ```
 
@@ -450,7 +459,7 @@ It is possible to manage MobileFirst Adapters with the command `mfpdev adapter <
 
 To create a new MobileFirst Adapter, use the command
 
-```
+```bash
 mfpdev adapter create
 ```
 
@@ -460,7 +469,7 @@ And follow the prompt to inform the name, type and group id of the adapter
 
 To build an adapter, run the following command from the adapter's root folder:
 
-```
+```bash
 mfpdev adapter build
 ```
 
@@ -470,13 +479,13 @@ This will generate a .adapter file at the **<AdapterName>/target** folder.
 
 The following command will deploy the adapter to the default server:
 
-```
+```bash
 mfpdev adapter deploy
 ```
 
 To deploy to a different server, use:
 
-```
+```bash
 mfpdev adapter deploy <server_name>
 ```
 
@@ -484,7 +493,7 @@ mfpdev adapter deploy <server_name>
 
 After an adapter is deployed it is possible to call the adapter from the command line to test it's behavior with the command:
 
-```
+```bash
 mfpdev adapter call
 ```
 
@@ -496,25 +505,25 @@ You will be prompted to inform the adapter, procedure and parameters to use. The
 
 To set preferences of the mfpdev CLI, such as default browser and default preview mode, use the command:
 
-```
+```bash
 mfpdev config
 ```
 
 To see the help content describing all mfpdev commands, use:
 
-```
+```bash
 mfpdev help
 ```
 
 The following command will generate a list with information about your environment:
 
-```
+```bash
 mfpdev info
 ```
 
 To print the version of the mfpdev CLI, use:
 
-```
+```bash
 mfpdev -v
 ```
 

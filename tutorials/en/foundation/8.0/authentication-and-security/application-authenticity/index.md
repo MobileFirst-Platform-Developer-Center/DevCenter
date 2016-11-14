@@ -36,13 +36,13 @@ For application authenticity to be enabled in your Cordova or native application
 1. Download the mfp-app-authenticity tool from the **MobileFirst Operations Console → Download Center**.
 2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
-    For example:
+   For example:
 
-    ```bash
-    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
-    ```
+   ```bash
+   java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
+   ```
 
-    This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data, next to the `MyBankApp.ipa` file`.
+   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
 
 3. Open the MobileFirst Operations Console in your favorite browser.
 4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
@@ -59,7 +59,7 @@ To disable application authenticity, click the **Delete Authenticity File** butt
 
 By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
 
-You can also configure the predefined application-authenticity security check with the following property:
+You can configure the predefined application-authenticity security check with the following property:
 
 - `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
 

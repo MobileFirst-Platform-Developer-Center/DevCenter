@@ -25,7 +25,7 @@ controls in a native way for each mobile platform.</p>
 It uses native implementation on the following platforms: Android, iOS, BlackBerry 10, and Windows Phone 8.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_busyind.png"/>
 <p>It must be initialized before use.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 busyIndicator = new WL.BusyIndicator( null, {text : 'Loading...'});
 {% endhighlight %}
 <p>The first parameter, the parent element ID for <code>WL.BusyIndicator</code>, is ignored in iOS, Android, Windows Phone, and BlackBerry environments. It only applies to the web environment.<br />
@@ -48,7 +48,7 @@ It uses a native implementation on the following platforms: Android, iOS, Window
 Adobe Air, BlackBerry 6/7, Desktop webpage, and Mobile Web use a JS-based implementation.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_simpledialog.png" />
 <p>The invocation syntax is:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.SimpleDialog.show(title, text, buttons, options);
 {% endhighlight %}
 <p>Parameters are <code>title</code>, <code>text</code>, and <code>buttons</code> as an array of button objects.<br />
@@ -58,7 +58,7 @@ The dialog is closed when any of the buttons is pressed.</p>
 <li><strong>text</strong> – the text that displayed on the button.</li>
 <li><strong>handler</strong> – the function to invoke if the button is pressed.</li>
 </ul>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var dialogTitle = "CommonControls";
 var dialogText = "This is simple dialog text; take a look at the console";
 WL.SimpleDialog.show(dialogTitle, dialogText, [
@@ -86,7 +86,7 @@ The syntax is similar, though with some minor differences.<br />
 <code>WL.TabBar</code> must be initialized before it can be used.</p>
 <p>Because <code>WL.TabBar</code> is only available for Android and iOS, it is recommended to initialize it at the environment level (<code>android\js\main.js</code> and <code>iphone-or-ipad\js\main.js</code>) and not in the common folder (<code>common\js\main.js</code>).</p>
 <p>Use the following syntax to add a tab bar item:
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.TabBar.addItem(id, callback, title, options);
 {% endhighlight %}
 <ul>
@@ -115,7 +115,7 @@ WL.TabBar.addItem(id, callback, title, options);
 </ul>
 </li>
 </ul>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.TabBar.addItem("item1",
     function(){ alert("item 1 pressed"); },
     "Item 1",{
@@ -128,7 +128,7 @@ WL.TabBar.addItem("item1",
 <li>image – file name of an image to use for an unselected state.</li>
 <li>imageSelected – file name of an image to use for a selected state.</li>
 </ul>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.TabBar.addItem("item1",
     function(){ alert("item 1 pressed"); },
     "Item 1",{
@@ -167,7 +167,7 @@ Here are the API signatures:</p>
 <li><code>WL.OptionsMenu.removeItems()</code></li>
 </ul>
 <p>Use the following syntax to add an option of a menu:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.OptionsMenu.addItem(id, callbackFunction, title, options);
 {% endhighlight %}<
 <ul>
@@ -181,7 +181,7 @@ WL.OptionsMenu.addItem(id, callbackFunction, title, options);
 </ul>
 </li>
 </ul>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.OptionsMenu.addItem("item2",
     function(){ alert("item 2 pressed");},
     "Contacts", {
@@ -211,14 +211,14 @@ For more information, see the user documentation topic: “Managing the splash s
 <p>As mentioned, you can handle when the splash screen to be hidden by using MobileFirst framework. To do so:<br />
 Uncomment the <strong>autoHideSplash</strong> option the <strong>initOptions.js</strong> file.<br />
 Use the following API method in at the point in the JavaScript code where you want the splash screen to be hidden. For example:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit() {
       WL.App.hideSplashScreen();
 }
 {% endhighlight %}
 <p>If an application requires extra processing time while it launches, the splash screen duration can, for example, be extended by implementing custom JavaScript code that does so.<br />
 This might happen when waiting for data from a backend, or while loading of more frameworks.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit(){
     // Custom app logic...
         customLogicCallback();
@@ -228,11 +228,11 @@ function customLogicCallback() {
 }
 {% endhighlight %}
 Similarly, the splash screen can be manually displayed again by using the JavaScript API method:
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.App.showSplashScreen();
 {% endhighlight %}
 In this example we wish to force a reload of the application.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit() {
     WL.App.hideSplashscreen();
     // Custom app logic…

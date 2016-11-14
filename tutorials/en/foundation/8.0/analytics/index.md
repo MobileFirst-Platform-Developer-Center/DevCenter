@@ -2,9 +2,7 @@
 layout: tutorial
 title: MobileFirst Foundation Operational Analytics
 breadcrumb_title: Operational Analytics
-show_disqus: true
 show_children: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 8
 ---
@@ -19,7 +17,7 @@ MobileFirst Operational Analytics supports:
 * Native iOS and Android clients
 * Cordova applications (iOS, Android)
 * Web applications
-* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
+* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
 
 IBM MobileFirst Foundation Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
 
@@ -56,5 +54,8 @@ For development, the Analytics Server is installed together with the MobileFirst
 For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the MobileFirst development environment](../installation-configuration/production/analytics/).
 
 MobileFirst Foundation Operational Analytics uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in MobileFirst Foundation.
+
+## Troubleshooting
+For information on troubleshooting IBM MobileFirst Analytics, see [Analytics Troubleshooting](../troubleshooting/analytics/).
 
 ## What to read next

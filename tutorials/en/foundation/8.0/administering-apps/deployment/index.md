@@ -29,7 +29,7 @@ Adapters can be uploaded, updated, or configured while a production server is ru
         
     For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-mobilefirst-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
-    > **Note:** If the application server is WebSphere® Application Server Liberty, then the certificates must also be in the Liberty truststore.
+    > **Note:** If the application server is WebSphere  Application Server Liberty, then the certificates must also be in the Liberty truststore.
 
 3. Verify the server-side configuration of the adapter.
 4. Use the `mfpadm deploy adapter` and `mfpadm adapter set user-config` commands to upload the adapter and its configuration.
@@ -77,20 +77,20 @@ The following example demonstrates how you complete the configuration by using t
 
 2. Configure your back-end server to work with the keystore. For example, in Apache Tomcat, you change the **server.xml** file:
 
-    ```xml
-    <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
+   ```xml
+   <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
       maxThreads="150" minSpareThreads="25" maxSpareThreads="200"
       enableLookups="false" disableUploadTimeout="true"         
       acceptCount="100" scheme="https" secure="true"
       clientAuth="false" sslProtocol="TLS"
       keystoreFile="backend.keystore" keystorePass="password" keystoreType="JKS"
       keyAlias="backend"/>
-    ```
+   ```
         
 3. Check the connectivity configuration in the **adapter.xml** file:
 
-    ```xml
-    <connectivity>
+   ```xml
+   <connectivity>
       <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
         <protocol>https</protocol>
         <domain>mydomain.com</domain>
@@ -101,26 +101,26 @@ The following example demonstrates how you complete the configuration by using t
         -->		
       </connectionPolicy>
       <loadConstraints maxConcurrentConnectionsPerNode="2"/>
-    </connectivity>
-    ```
+   </connectivity>
+   ```
         
 4. Export the public certificate from the created back-end server keystore:
 
-    ```bash
-    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
-    ```
+   ```bash
+   keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
+   ```
         
 5. Import the exported certificate into your MobileFirst Server keystore:
 
-    ```bash
-    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
-    ```
+   ```bash
+   keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
+   ```
         
 6. Check that the certificate is correctly imported in the keystore:
 
-    ```bash
-    keytool -list -keystore mfp.keystore
-    ```
+   ```bash
+   keytool -list -keystore mfp.keystore
+   ```
         
 7. Deploy the new the MobileFirst Server keystore.
 
@@ -175,20 +175,20 @@ When you register an application with a production server, you upload its applic
 
 1. If your MobileFirst Server is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
 
-    > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
+   > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
 
 2. Transfer the application descriptor from a test server to the production server.
 
-    This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server).
+   This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server).
 
 3. Set the application license information For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
 4. Configure the application-authenticity security check. For more information about configuring the application-authenticity security check, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
 
-    > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
+   > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
 
 5. If your application uses push notification, upload the push notification certificates to the server. You can upload the push certificates for your application with MobileFirst Operations Console. The certificates are common to all versions of an application.
 
-    > **Note:** You might not be able to test the push notification for your app with production certificates before your app is published to the store.
+   > **Note:** You might not be able to test the push notification for your app with production certificates before your app is published to the store.
 
 6. Verify the following items before you publish the application to the store.
     * Test any mobile application management feature that you plan to use, such as disabling remote applications or displaying of an administrator message. For more information, see [Mobile-application management](../using-console/#mobile-application-management).
@@ -236,16 +236,16 @@ When you use the **mfpdev app push** command, the application's client propertie
 1. On your development computer, navigate to a directory that is the root directory of your app or one of its subdirectories.
 2. Run the **mfpdev app pull** command. If you specify the command with no parameters, the app is pulled from the default MobileFirst Server. You can also specify a particular server and its administrator password. For example, for an Android application named **myapp1**:
 
-    ```bash
-    cd myapp1
-    mfpdev app pull Server10 -password secretPassword!
-    ```
+   ```bash
+   cd myapp1
+   mfpdev app pull Server10 -password secretPassword!
+   ```
     
-    This command finds the configuration files for the current application on the MobileFirst Server whose server profile is named Server10. Then, it sends the compressed file **myapp1-android-1.0.0-artifacts.zip**, which contains these configuration files, to the local computer and places it in the directory **myapp1/mobilefirst**.
+   This command finds the configuration files for the current application on the MobileFirst Server whose server profile is named Server10. Then, it sends the compressed file **myapp1-android-1.0.0-artifacts.zip**, which contains these configuration files, to the local computer and places it in the directory **myapp1/mobilefirst**.
     
 3. Run the **mfpdev app push** command. If you specify the command with no parameters, the app is pushed to the default MobileFirst Server. You can also specify a particular server and its administrator password. For example, for the same application that was pushed in the previous step: `mfpdev app push Server12 -password secretPass234!`.
     
-    This command sends the file **myapp1-android-1.0.0-artifacts.zip** to the MobileFirst Server whose server profile is named Server12, that has the administrator password **secretPass234!** The client properties file **myapp1/app/src/main/assets/mfpclient.properties** is modified to reflect that the server that the app is registered to is Server12, with the server's URL.
+   This command sends the file **myapp1-android-1.0.0-artifacts.zip** to the MobileFirst Server whose server profile is named Server12, that has the administrator password **secretPass234!** The client properties file **myapp1/app/src/main/assets/mfpclient.properties** is modified to reflect that the server that the app is registered to is Server12, with the server's URL.
 
 The app's server-side configuration files are present on the MobileFirst Server that you specified in the mfpdev app push command. The app is registered to this new server.
 
@@ -262,61 +262,63 @@ You download the application descriptor from the server where the application is
 
 2. Download the application descriptor from the server where the application is configured. You can download it by using the REST API or **mfpadm**.
 
-    > **Note:** You can also export an application or application version from the MobileFirst Operations Console. See [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
+   > **Note:** You can also export an application or application version from the MobileFirst Operations Console. See [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
     * To download the application descriptor with the REST API, use the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API.
 
-        The following URL returns the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The call is made to MobileFirst Development Server: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
+    The following URL returns the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The call is made to MobileFirst Development Server: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
     
-        For example, you can use such URL with a tool like curl: `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
+    For example, you can use such URL with a tool like curl: `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
     
-        Change the following elements of the URL according to your server configuration:
-            * 9080 is the HTTP port of MobileFirst Development Server.
-            * mfpadmin is the context root of the administration service. This context root is mfpadmin in MobileFirst Development Server.
+    <br/>
+    Change the following elements of the URL according to your server configuration:
+     * 9080 is the HTTP port of MobileFirst Development Server.
+     * mfpadmin is the context root of the administration service. This context root is mfpadmin in MobileFirst Development Server.
 
-        For information about the REST API, see REST API for the MobileFirst Server administration service.
-    * Download the application descriptor by using **mfpadm**.
+    For information about the REST API, see REST API for the MobileFirst Server administration service.
+     * Download the application descriptor by using **mfpadm**.
 
-        The **mfpadm** program is installed when you run the MobileFirst Server installer. You start it from the **product\_install\_dir/shortcuts/** directory, where **product\_install\_dir** indicates the installation directory of MobileFirst Server.
+       The **mfpadm** program is installed when you run the MobileFirst Server installer. You start it from the **product\_install\_dir/shortcuts/** directory, where **product\_install\_dir** indicates the installation directory of MobileFirst Server.
     
-        The following example creates a password file, which is required by the **mfpadm** command, then downloads the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The provided URL is the HTTPS URL of MobileFirst Development Server.
+       The following example creates a password file, which is required by the **mfpadm** command, then downloads the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The provided URL is the HTTPS URL of MobileFirst Development Server.
     
-        ```bash
-        echo password=admin > password.txt
-        mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --passwordfile password.txt \ app version mfp my.test.application ios 0.0.1 get descriptor > desc.json
-        rm password.txt
-        ```
+       ```bash
+       echo password=admin > password.txt
+       mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --passwordfile password.txt \ app version mfp my.test.application ios 0.0.1 get descriptor > desc.json
+       rm password.txt
+       ```
     
-        Change the following elements of the command line according to your server configuration:
-            * 9443 is the HTTPS port of MobileFirst Development Server.
-            * mfpadmin is the context root of the administration service. This context root is mfpadmin in MobileFirst Development Server.
-            * --secure false indicates that the server's SSL certificate is accepted even if self-signed or if created for a different host name from the server's host name used in the URL.
+       Change the following elements of the command line according to your server configuration:
+        * 9443 is the HTTPS port of MobileFirst Development Server.
+        * mfpadmin is the context root of the administration service. This context root is mfpadmin in MobileFirst Development Server.
+        * --secure false indicates that the server's SSL certificate is accepted even if self-signed or if created for a different host name from the server's host name used in the URL.
 
-        For more information about the **mfpadm** program, see [Administering MobileFirst applications through the command line](../using-cli).
+       For more information about the **mfpadm** program, see [Administering MobileFirst applications through the command line](../using-cli).
     
 3. Upload the application descriptor to the new server to register the app or update its configuration.
 You can upload it by using the REST API or **mfpadm**.
-    * To upload the application descriptor with the REST API, use the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API.
+   * To upload the application descriptor with the REST API, use the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API.
     
-    The following URL uploads the application descriptor to the mfp runtime. You send a POST request, and the payload is the JSON application descriptor. The call in this example is made to server that runs on the local computer and that is configured with an HTTP port set to 9081.
+     The following URL uploads the application descriptor to the mfp runtime. You send a POST request, and the payload is the JSON application descriptor. The call in this example is made to server that runs on the local computer and that is configured with an HTTP port set to 9081.
     
-    ```bash
-    http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
-    ```
+     ```bash
+     http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
+     ```
     
-    For example, you can use such URL with a tool like curl.
+     For example, you can use such URL with a tool like curl.
     
-    ```bash
-    curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
-    ```    
-    * Upload the application descriptor by using mfpadm.
+     ```bash
+     curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
+     ```    
+    
+   * Upload the application descriptor by using mfpadm.
 
-        The following example creates a password file, which is required by the mfpadm command, then uploads the application descriptor for the application of app ID my.test.application, for the ios platform, and version 0.0.1. The provided URL is the HTTPS URL of a server that runs on the local computer but is configured with an HTTPS port set to 9444, and for a runtime named mfp.
+     The following example creates a password file, which is required by the mfpadm command, then uploads the application descriptor for the application of app ID my.test.application, for the ios platform, and version 0.0.1. The provided URL is the HTTPS URL of a server that runs on the local computer but is configured with an HTTPS port set to 9444, and for a runtime named mfp.
 
-        ```bash
-        echo password=admin > password.txt
-        mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json 
-        rm password.txt
-        ```
+     ```bash
+     echo password=admin > password.txt
+     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json 
+     rm password.txt
+     ```
 
 ### Transferring server-side artifacts by using the REST API
 Whatever your role, you can export applications, adapters, and resources for back-up or reuse purposes by using the MobileFirst Server administration service. As an administrator or deployer, you can also deploy an export archive to a different server. No access to the application code is required, but the client app must be built for the target server.
@@ -340,18 +342,18 @@ The export API retrieves the selected artifacts for a runtime as a .zip archive.
 * To export the adapter content, descriptor, license configuration, content, user configuration, keystore, and web resources of an application, use the [Export resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-) API.
 * To export all or selected resources for a runtime, use the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) API. For example, you can use this general curl command to retrieve all resources as a .zip file.
 
-    ```bash
-    curl -X GET -u admin:admin -o exported.zip
-    "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
-    ```
+  ```bash
+  curl -X GET -u admin:admin -o exported.zip
+  "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
+  ```
     
 * To deploy an archive that contains such web application resources as adapter, application, license configuration, keystore, web resource, use the [Deploy (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) API. For example, you can use this curl command to deploy an existing .zip file that contains artifacts.
 
-    ```bash
-    curl -X POST -u admin:admin -F
-    file=@/Users/john_doe/Downloads/export_applications_adf_ios_2.zip
-    "http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi"
-    ```
+  ```bash
+  curl -X POST -u admin:admin -F
+  file=@/Users/john_doe/Downloads/export_applications_adf_ios_2.zip
+  "http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi"
+  ```
 
 * To deploy application authenticity data, use the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) API.
 * To deploy the web resources of an application, use the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc) API.
@@ -425,4 +427,4 @@ Direct Update is a mandatory upgrade mechanism that is used to deploy fast fixes
 3. Direct Update is considered a security mechanism, and therefore it is mandatory, not optional. When you initiate the Direct Update, all users must update their app to be able to use it.
 4. Direct Update does not work if an application is compiled (built) with a different version of IBM MobileFirst Foundation than the one that was used for the initial deployment.
 
-
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.

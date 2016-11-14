@@ -22,6 +22,8 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - A local or remote instance of MobileFirst Server is running.
 - Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
 
+> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
@@ -29,7 +31,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - [Adding Support for Apple watchOS 2](#adding-support-for-apple-watchos-2)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-1-2)
+- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
@@ -53,15 +55,15 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     - Comment out or delete the contents of the file.
     - Add the following lines and save the changes:
 
-        ```xml
-        use_frameworks!
+      ```xml
+      use_frameworks!
 
-        platform :ios, 8.0
-        target "Xcode-project-target" do
-            pod 'IBMMobileFirstPlatformFoundation'
-        end
-        ```
-        - Replace **Xcode-project-target** with the name of your Xcode project's target.
+      platform :ios, 8.0
+      target "Xcode-project-target" do
+          pod 'IBMMobileFirstPlatformFoundation'
+      end
+      ```
+      - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
 4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the MobileFirst Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
     **Note:** The commands might take several minutes to complete.
@@ -70,7 +72,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
 ### Manually adding the MobileFirst Native SDK
 You can also manually add the MobileFirst SDK:
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
@@ -82,7 +84,7 @@ You can also manually add the MobileFirst SDK:
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
                 <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b> tab.</p>
-            
+
                 <ul>
                     <li>In your Xcode project, add the MobileFirst framework files to your project.
                         <ul>
@@ -109,7 +111,7 @@ You can also manually add the MobileFirst SDK:
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant MobileFirst frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</bloclquote></li>
+                            <blockquote><b>Note:</b> These steps copy the relevant MobileFirst frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
                         </ul>
                     </li>
                     <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
@@ -128,8 +130,8 @@ You can also manually add the MobileFirst SDK:
                         </ul>
                     </li>
                     <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
             </div>
@@ -180,18 +182,17 @@ import IBMMobileFirstPlatformFoundation
 <br>
 #### Note about iOS 9 and above:
 
-> * Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+> Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
->
->    
-        ```xml
-        <key>NSAppTransportSecurity</key>
-        <dict>
-            <key>NSAllowsArbitraryLoads</key>
-            <true/>
-        </dict>
-        ```
+> 
+```xml
+>      <key>NSAppTransportSecurity</key>
+>      <dict>
+>            <key>NSAllowsArbitraryLoads</key>
+>            <true/>
+>      </dict>
+```
 
 ## Adding Support for Apple watchOS 2
 If you are developing for Apple watchOS, the Podfile must contain sections corresponding to the main app and the watchOS extension:
@@ -207,7 +208,7 @@ target :MyWatchApp do
     platform :ios, 9.0
     pod 'IBMMobileFirstPlatformFoundation'
     end
-    
+
 #use the name of the watch extension target
 target :MyWatchApp WatchKit Extension do
     platform :watchos, 2.0

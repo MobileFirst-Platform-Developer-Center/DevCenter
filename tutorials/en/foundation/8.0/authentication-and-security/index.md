@@ -2,7 +2,7 @@
 layout: tutorial
 title: Authentication and Security
 weight: 6
-print_pdf: true
+show_children: true
 ---
 ## Overview
 The MobileFirst Foundation security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
@@ -56,7 +56,7 @@ The granted access token remains valid until its expiration time elapses. The ac
                 <li>Using the IBM MobileFirst Foundation Operations Console
                     <ul>
                         <li>Select <b>[your application] → Security</b> tab.</li>
-                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.
+                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
                     </ul>
                 </li>
                 <li>Editing the application's configuration file
@@ -222,9 +222,10 @@ You can also manually edit the application's configuration JSON file with the re
 2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
 3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: 
 
-    ```xml
-    "mandatoryScope": "appAuthenticity PincodeValidation"
-    ```
+   ```xml
+   "mandatoryScope": "appAuthenticity PincodeValidation"
+   ```
+   
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 > You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.

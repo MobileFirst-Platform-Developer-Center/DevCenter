@@ -21,7 +21,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <application xmlns="http://www.worklight.com/application-descriptor" id="HybridTagNotifications" platformVersion="7.0.0.00.20150312-0731">
 ...
 ...
@@ -49,7 +49,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h4>Client-side API</h4>
 <p><code>WL.Client.Push.onMessage (props, payload)</code><br />
 This method is called when a push notification is received by the device.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Client.Push.onMessage = function (props, payload) {
     alert("Provider notification data: " + Object.toJSON(props));<
     alert("Application notification data: " + Object.toJSON(payload));
@@ -77,7 +77,7 @@ The sample also demonstrates how to send notifications to two predefined tags, s
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
 <li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>:
-{% highlight xml linenos %}<application ... id="HybridTagNotifications" ...>
+{% highlight xml  %}<application ... id="HybridTagNotifications" ...>
 {% endhighlight %}</li>
 </ul>
 </li>

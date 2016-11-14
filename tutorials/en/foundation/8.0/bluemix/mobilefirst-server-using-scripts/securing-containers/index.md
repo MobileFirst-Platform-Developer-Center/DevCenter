@@ -20,15 +20,15 @@ ATS configuration does not impact applications connecting from other, non-iOS, m
 1. Copy the **ssl_cert.p12** file to the **mfpf-server/usr/security/** folder.
 2. Modify the **mfpf-server/usr/config/keystore.xml** file similar to the following example configuration:
 
-    ```bash
-    <server>
+   ```bash
+   <server>
         <featureManager>
             <feature>ssl-1.0</feature>
         </featureManager>
         <ssl id="defaultSSLConfig" sslProtocol="TLSv1.2" keyStoreRef="defaultKeyStore" enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384" />
         <keyStore id="defaultKeyStore" location="ssl_cert.p12" password="*****" type="PKCS12"/>
-    </server>
-    ```
+   </server>
+   ```
     - **ssl-1.0** is added as a feature in the feature manager to enable the server to work with SSL communication.
     - **sslProtocol="TLSv1.2"** is added in the ssl tag to mandate that the server communicates only on Transport Layer Security (TLS) version 1.2 protocol. More than one protocol can be added. For example, adding **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** would ensure that the server could communicate on TLS V1, V1.1, and V1.2. (TLS V1.2 is required for iOS 9 apps.)
     - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** is added in the ssl tag so that the server enforces communication using only that cipher.
@@ -68,7 +68,7 @@ You can secure access to the MobileFirst Operations Console and the MobileFirst 
 To enable HTTPS on the MobileFirst Server, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
 ### Securing a connection to the back end
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix® Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
 
 #### Encrypting passwords for user roles configured in MobileFirst Server
 The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
@@ -99,7 +99,7 @@ Complete the following steps by editing the mfpf-server/usr/config/mfpfpropertie
 2. To ensure that the MobileFirst Analytics console can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the MobileFirst Analytics container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
 #### Restricting access to the consoles running on containers	
-You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM® Containers.
+You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
 
 The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
 
@@ -107,20 +107,19 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
 
 1. Create a custom TAI that implements your security mechanism to control access to the MobileFirst Operations Console. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the MobileFirst Operations Console or not.
 
-    ```java
-    package com.ibm.mfpconsole.interceptor;
-    import java.util.Properties;
+   ```java
+   package com.ibm.mfpconsole.interceptor;
+   import java.util.Properties;
 
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
+   import javax.servlet.http.HttpServletRequest;
+   import javax.servlet.http.HttpServletResponse;
 
-    import com.ibm.websphere.security.WebTrustAssociationException;
-    import com.ibm.websphere.security.WebTrustAssociationFailedException;
-    import com.ibm.wsspi.security.tai.TAIResult;
-    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
+   import com.ibm.websphere.security.WebTrustAssociationException;
+   import com.ibm.websphere.security.WebTrustAssociationFailedException;
+   import com.ibm.wsspi.security.tai.TAIResult;
+   import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
-    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-    	
+   public class MFPConsoleTAI implements TrustAssociationInterceptor {	
        String allowedIP =null; 
        
        public MFPConsoleTAI() {
@@ -224,34 +223,33 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
         public void cleanup()
 
         {}
-    }
-    ```
+   }
+   ```
     
 2. Export the custom TAI Implementation into a .jar file and place it in the applicable **env** folder (**mfpf-server/usr/env or mfpf-analytics/usr/env**).
 3. Create an XML configuration file that contains the details of the TAI interceptor (see the TAI configuration example code provided in step 1) and then add your .xml file to the applicable folder (**mfpf-server/usr/config** or **mfpf-analytics/usr/config**). Your .xml file should resemble the following example. **Tip:** Be sure to update the class name and properties to reflect your implementation.
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <server description="new server">
-    <featureManager> 
-        <feature>appSecurity-2.0</feature> 
-    </featureManager> 
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+        <server description="new server">
+        <featureManager> 
+            <feature>appSecurity-2.0</feature> 
+        </featureManager> 
 
-    <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
-                      failOverToAppAuthType="false">
-        <interceptors id="MFPConsoleTAI" enabled="true"  
-                      className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
-                      invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
-            <properties allowedIPs="9.182.149.*"/>
-        </interceptors> 
-    </trustAssociation> 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+                          failOverToAppAuthType="false">
+            <interceptors id="MFPConsoleTAI" enabled="true"  
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
+                <properties allowedIPs="9.182.149.*"/>
+            </interceptors> 
+        </trustAssociation> 
 
-    <library id="MFPConsoleTAI"> 
-        <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
-    </library> 
-
-    </server>
-    ```
+        <library id="MFPConsoleTAI"> 
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
+        </library> 
+   </server>
+   ```
 
 4. [Build the image and run the container](../). The MobileFirst Operations Console and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
 
@@ -269,7 +267,7 @@ The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
 * Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix® for this step.)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
 
 #### LDAP repository
 Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
@@ -277,8 +275,8 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
 #### Registry file
 1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
 
-    ```xml
-    <ldapRegistry 
+   ```xml
+   <ldapRegistry 
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -291,8 +289,8 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
         userIdMap="*:uid"
         groupIdMap="*:cn"
         groupMemberIdMap="groupOfNames:member"/>
-    </ldapRegistry>
-    ```
+   </ldapRegistry>
+   ```
     
     Entry | Description
     --- | ---
@@ -304,12 +302,12 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
         
 2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
 
-    ```xml
-    <featureManager>
+   ```xml
+   <featureManager>
         <feature>appSecurity-2.0</feature>
         <feature>ldapRegistry-3.0</feature>
-    </featureManager>
-    ```
+   </featureManager>
+   ```
     
     For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
     
@@ -341,7 +339,6 @@ To configure a secure gateway connection to your LDAP server, you must create an
 </ldapRegistry>
 ```
 
-
 ### Configuring apps to work with LDAP
 Configure MobileFirst mobile apps to work with an external LDAP registry.  
 The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
@@ -355,5 +352,6 @@ To configure a secure gateway connection to your LDAP server, you must create an
 5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
 6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
 7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
-Results
+
+**Results**  
 The communication between the MobileFirst app in the container on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.

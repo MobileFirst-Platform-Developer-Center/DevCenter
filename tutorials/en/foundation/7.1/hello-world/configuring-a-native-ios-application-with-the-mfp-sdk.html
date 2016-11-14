@@ -15,6 +15,7 @@ weight: 1
 <li>Proficiency with Apple Xcode IDE</li>
 <li>If you haven't gone through the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Command Line Interface tutorial</a>, do so now.</li>
 </ul>
+<blockquote><b>Note:</b> The <b>Keychain Sharing</b> capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.</blockquote>
 <h3>Topics</h3>
 <ul>
 <li><a href="#addingNativeSDK">Adding the MobileFirst Native SDK to an application</a></li>
@@ -55,7 +56,7 @@ pod 'IBMMobileFirstPlatformFoundation', '~> 7.1.3'
 </li>
 <li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
 {% endhighlight %}
     </li>

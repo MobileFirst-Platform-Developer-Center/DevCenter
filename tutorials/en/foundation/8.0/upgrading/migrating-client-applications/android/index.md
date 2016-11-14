@@ -9,7 +9,7 @@ To migrate an existing native Android project that was created with IBM MobileFi
 
 #### Jump to
 
-* [Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-8-0)
+* [Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-80)
 * [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
 * [Updating the Android code](#updating-the-android-code)
 
@@ -34,23 +34,23 @@ The migration assistance tool does not modify or move any developer code or comm
     * Change to the directory where you downloaded the tool.
     * Use NPM to install the tool by entering the following command:
 
-    ```bash
-    npm install -g
-    ```
+   ```bash
+   npm install -g
+   ```
     
 3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
 
-    ```bash
-    mfpmigrate scan --in source_directory --out destination_directory --type android
-    ```
+   ```bash
+   mfpmigrate scan --in source_directory --out destination_directory --type android
+   ```
     
-    **source_directory**  
-    The current location of the project.
+   **source_directory**  
+   The current location of the project.
 
-    **destination_directory**  
-    The directory where the report is created.
+   **destination_directory**  
+   The directory where the report is created.
     
-    When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0 and saves them in the identified destination directory.
+   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0 and saves them in the identified destination directory.
 
 ## Migrating an Android project with Gradle
 Migrate your Android application with MobileFirst SDK using Gradle.
@@ -87,18 +87,18 @@ The tables below list changes in the MobileFirst Android SDK.
 | API element | Migration path | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | No replacement. | 
-| <ul><li>`WLDevice WLClient.getWLDevice()`</li><li>`WLClient.transmitEvent(org.json.JSONObject event)`</li><li>`WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)`</li><li>`WLClient.purgeEventTransmissionBuffer()`</li></ul> | Use Android API or third-party packages for GeoLocation. | 
-| <ul><li>`WL.Client.getUserInfo(realm, key)`</li><li>`WL.Client.updateUserInfo(options)`</li></ul> | No replacement | 
-| <ul><li>`WL.Client.getUserInfo(realm, key`</li><li>`WL.Client.updateUserInfo(options)`</li></ul> | No replacement | 
+| {::nomarkdown}<ul><li><code>WLDevice WLClient.getWLDevice()</code></li><li><code>WLClient.transmitEvent(org.json.JSONObject event)</code></li><li><code>WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)</code></li><li><code>WLClient.purgeEventTransmissionBuffer()</code></li></ul>{:/} | Use Android API or third-party packages for GeoLocation. | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement | 
 | `WLClient.checkForNotifications()` | Use [`WLAuthorizationManager.obtainAccessToken("", listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) to check connectivity to the server and apply application management rules. | 
-| <ul><li>`WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`</li><li>`WLClient.login(java.lang.String realmName, WLRequestListener listener)`</li></ul> | Use [`AuthorizationManager.login()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#login(java.lang.String,%20org.json.JSONObject,%20com.worklight.wlclient.api.WLLoginResponseListener)) | 
-| <ul><li>`WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`</li><li>`WLClient.logout(java.lang.String realmName, WLRequestListener listener)`</li></ul> | Use [`AuthorizationManager.logout()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#logout(java.lang.String,%20com.worklight.wlclient.api.WLLogoutResponseListener)). | 
+| {::nomarkdown}<ul><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Use [`AuthorizationManager.login()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#login(java.lang.String,%20org.json.JSONObject,%20com.worklight.wlclient.api.WLLoginResponseListener)) | 
+| {::nomarkdown}<ul><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Use [`AuthorizationManager.logout()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#logout(java.lang.String,%20com.worklight.wlclient.api.WLLogoutResponseListener)). | 
 | `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | Use [`WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) to check connectivity to the server and apply application management rules. | 
-| <ul><li>`WLClient.getLastAccessToken()`</li><li>`WLClient.getLastAccessToken(java.lang.String scope)`</li></ul> | Use [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc). | 
+| {::nomarkdown}<ul><li><code>WLClient.getLastAccessToken()</code></li><li><code>WLClient.getLastAccessToken(java.lang.String scope)</code></li></ul>{:/} | Use [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc). | 
 | `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | Use [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc). | 
 | `WLClient.logActivity(java.lang.String activityType)` | Use [`com.worklight.common.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/Logger.html?view=kc) | 
 | `WLAuthorizationPersistencePolicy` | No replacement. To implement authorization persistence, store the authorization token in the application code and create custom HTTP requests. For more information, see [Java™ custom resource-request implementation sample](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid). | 
-| <ul><li>`WLSimpleSharedData.setSharedToken(myName, myValue)`</li><li>`WLSimpleSharedData.getSharedToken(myName)`</li><li>`WLSimpleSharedData.clearSharedToken(myName)`</li></ul> | Use the Android APIs to share tokens across applications. |
+| {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | Use the Android APIs to share tokens across applications. |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | No replacement | 
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc). | 
 | `ChallengeHandler` | For custom gateway challenges, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). For MobileFirst security-check challenges, use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). | 
@@ -119,7 +119,7 @@ The tables below list changes in the MobileFirst Android SDK.
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Replaced with `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | No replacement. MFP Client allows circular redirects. | 
-| <ul><li>`WLHttpResponseListener`</li><li>`WLResourceRequest`, all methods that take `WLHttpResponseListener`:<ul><li>`WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`</li><li>`WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`</li><li>`WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`</li><li>`WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`</li><li>`WLResourceRequest.send(WLHttpResponseListener listener)`</li><li>`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`</li><li>`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)`</li></ul></li></ul> | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
+| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>, all methods that take <code>WLHttpResponseListener</code>:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
 
 
 

@@ -49,18 +49,16 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `getAccessToken()` function:
  
-    In Objective-C:
+   In Objective-C:
 
-    ```objc
-    - (IBAction)getAccessToken:(id)sender {
-    _testServerButton.enabled = NO;
-    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
-    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
+   ```objc
+   - (IBAction)getAccessToken:(id)sender {
+   _testServerButton.enabled = NO;
+   NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
+   _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
     
-    
-    NSLog(@"Testing Server Connection");
-    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@""
-                                                 withCompletionHandler:^(AccessToken *token, NSError *error) {
+   NSLog(@"Testing Server Connection");
+   [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@"" withCompletionHandler:^(AccessToken *token, NSError *error) {
         if (error != nil) {
             _titleLabel.text = @"Bummer...";
             _connectionStatusLabel.text = [NSString stringWithFormat:@"Failed to connect to MobileFirst Server\n%@", serverURL];
@@ -88,13 +86,12 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
         _testServerButton.enabled = YES;
     }];
 }
-
-    ```
+   ```
     
-    In Swift:
+   In Swift:
     
-    ```swift
-    @IBAction func getAccessToken(sender: AnyObject) {
+   ```swift
+   @IBAction func getAccessToken(sender: AnyObject) {
         self.testServerButton.enabled = false
         
         let serverURL = WLClient.sharedInstance().serverUrl()
@@ -128,8 +125,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
             
             self.testServerButton.enabled = true
         }
-    }
-    ```
+   }
+   ```
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
@@ -138,13 +135,13 @@ Alternatively, click the **New** button next to **Adapters**.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+   > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
-    ```bash
-    mfpdev adapter build
-    ```
+   ```bash
+   mfpdev adapter build
+   ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder. 
 

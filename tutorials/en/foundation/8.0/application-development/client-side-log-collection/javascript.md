@@ -100,19 +100,19 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
 #### Cordova apps
 1. Use a `WL.Logger` instance with the `myApp` package name.
 
-    ```javascript
-    var logger = WL.Logger.create({ pkg: 'MyApp' });
-    ```
+   ```javascript
+   var logger = WL.Logger.create({ pkg: 'MyApp' });
+   ```
 
 2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
 
-    ```javascript
-    WL.Logger.config({
+   ```javascript
+   WL.Logger.config({
         filters: {
             'MyApp': 'ERROR'
         }
-    });
-    ```
+   });
+   ```
 
 3. **Optional:** Control the filters remotely by fetching a server configuration profile.
 
@@ -139,6 +139,7 @@ ibmmfpfanalytics.logger.updateConfigFromServer();
 Outputs to a browser JavaScript console, LogCat, or Xcode console.
 
 ### Cordova
+
 ```javascript
 var MathUtils = function(){
    var logger = WL.Logger.create({pkg: 'MathUtils'});
@@ -153,8 +154,12 @@ var MathUtils = function(){
 ### Web
 For logging with Web applications, use the preceding example and replace
 
-`var logger = WL.Logger.create({pkg: 'MathUtils'});`
+```javascript
+var logger = WL.Logger.create({pkg: 'MathUtils'});
+```
 
 with
 
-`var logger = ibmmfpfanalytics.logger.create({pkg: 'MathUtils'});`
+```javascript
+var logger = ibmmfpfanalytics.logger.create({pkg: 'MathUtils'});
+```

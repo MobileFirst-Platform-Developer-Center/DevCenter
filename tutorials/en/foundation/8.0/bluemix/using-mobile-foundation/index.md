@@ -59,7 +59,11 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+
+    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+
+    After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
@@ -118,21 +122,17 @@ Once the operation finishes, reload the MobileFirst Operations Console page in y
 > Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
 
 ## Applying MobileFirst Server fixes
-Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, open the sidebar navigation and click on **Cloud Foundary Applications**. Select your service and click on **Runtime tab → Files**.
+To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
 
-* You can find the **messages.log** file in the **logs** folder.
-* You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
+You can find the **messages.log** and **trace.log** files in the **logs** folder.
 
 #### Tracing
-
-> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time and view the logs in the **messages.log** file.
-
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
-1. In **Runtime tab → Memory and Instances**, select your service instance.
+1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
 3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
 
@@ -149,15 +149,15 @@ The Developer plan does not offer a persistent database, which could cause at ti
     
     Run the following from the command-line to download your configuration to a .zip file:
 
-    ```bash
-    $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
-    ```
+  ```bash
+  $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
+  ```
 
 * In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
 
-    ```bash
-    $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
-    ```
+  ```bash
+  $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
+  ```
 
 ## Further reading
 Now that the MobileFirst Server instance is up and running:

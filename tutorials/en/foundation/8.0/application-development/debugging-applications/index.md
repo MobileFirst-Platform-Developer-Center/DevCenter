@@ -60,9 +60,9 @@ It lets you run a Cordova application in your browser and fake various Cordova f
 You can verify Node.js installation by typing `npm -v` in terminal.
 2. Open terminal and type:
 
-    ```bash
-    npm install -g ripple-emulator
-    ```
+   ```bash
+   npm install -g ripple-emulator
+   ```
 
 ### Running application using Ripple
 After Ripple is installed open terminal from your Cordova project location and type:

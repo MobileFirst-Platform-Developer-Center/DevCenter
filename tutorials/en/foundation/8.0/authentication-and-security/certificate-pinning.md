@@ -30,7 +30,7 @@ You must use a certificate purchased from a certificate authority. Self-signed c
 
 The certificate must be placed in both the MobileFirst Server and in your application. Place the certificate as follows:
 
-* In the MobileFirst Server (WebSphere® Application Server, WebSphere Application Server Liberty, or Apache Tomcat): Consult the documentation for your specific application server for information about how to configure SSL/TLS and certificates.
+* In the MobileFirst Server (WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat): Consult the documentation for your specific application server for information about how to configure SSL/TLS and certificates.
 * In your application:
     - Native iOS: add the certificate to the application **bundle**
     - Native Android: place the certificate in the **assets** folder

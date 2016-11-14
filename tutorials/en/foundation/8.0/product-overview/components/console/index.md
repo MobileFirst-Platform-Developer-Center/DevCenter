@@ -54,9 +54,9 @@ From a **Command-line** window, with the MobileFirst CLI installed,
     *Direct Mode*  
     Run the command with the following structure: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. For example:
 
-    ```bash
-    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
-    ```
+   ```bash
+   mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
+   ```
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
@@ -139,7 +139,7 @@ After an adapter is deployed, it can be configured in the console.
 ### Client logs
 Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.</p>
+When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.
 
 > For more information, see the topic about client-side log capture configuration in the user documentation.
 

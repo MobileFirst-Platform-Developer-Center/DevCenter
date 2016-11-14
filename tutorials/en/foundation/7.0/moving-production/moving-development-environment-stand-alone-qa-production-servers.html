@@ -64,7 +64,7 @@ All the files that are mentioned above are compiled to the <code><em>project-nam
 <p> Multiple MobileFirst project files can coexist on an application server. Each is deployed as a WAR file. Each is configured to communicate with a different schema in the database.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/11_01_installation3.jpg"/></p>
 <li>Edit the application server configuration file with additional MobileFirst properties.
-{% highlight xml linenos %}
+{% highlight xml  %}
 <configureapplicationserver shortcutsDir="${shortcuts.dir}">
     <project warfile="${worklight.project.war.file}"/>
     <!-- Specify some JNDI properties. -->

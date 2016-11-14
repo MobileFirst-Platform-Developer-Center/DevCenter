@@ -27,21 +27,21 @@ To open the project in Visual Studio Express 2012 for Windows 8, double-click th
 <h2 id="appOptim">Optimizing applications</h2>
 <h3>Windows 8</h3>
 <p>In a Windows 8 application, it is possible to override icons with default icons provided by the system. To do so:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 document.getElementById('#ID').winControl.icon = 'refresh';
 {% endhighlight %}</p>
 <p>Other Windows 8 APIs:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 Windows.Devices.Geolocation
 Windows.Media.Capture
 Windows.ApplicationModel.Contacts
 {% endhighlight %}</p>
 <h3>Adobe Air</h3>
 <ul>
-<li>To minimize a window: {% highlight js linenos %}window.nativeWindow.minimize();{% endhighlight %}</li>
-<li>To maximize a window: {% highlight js linenos %}window.nativeWindow.maximize();{% endhighlight %}</li>
-<li>To restore a window: {% highlight js linenos %}window.nativeWindow.restore();{% endhighlight %}</li>
-<li>To close a window: {% highlight js linenos %}window.nativeWindow.close();{% endhighlight %}</li>
+<li>To minimize a window: {% highlight js  %}window.nativeWindow.minimize();{% endhighlight %}</li>
+<li>To maximize a window: {% highlight js  %}window.nativeWindow.maximize();{% endhighlight %}</li>
+<li>To restore a window: {% highlight js  %}window.nativeWindow.restore();{% endhighlight %}</li>
+<li>To close a window: {% highlight js  %}window.nativeWindow.close();{% endhighlight %}</li>
 </ul>
 <h2 id="networkOptim">Network optimization</h2>
 <p>When developing a Desktop browser application, network performance is a highly important optimization to think about.<br />

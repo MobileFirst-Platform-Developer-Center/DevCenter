@@ -33,10 +33,10 @@ Use the stand-alone tool by following these steps.
 
 1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
 2. Call the upload tool from the command line:
-
-    ```bash
-    java com.ibm.appcenter.Upload [options] [files]
-    ```
+  
+   ```bash
+   java com.ibm.appcenter.Upload [options] [files]
+   ```
     
 You can pass any of the available options in the command line.
 
@@ -70,9 +70,9 @@ Use the stand-alone tool by following these steps.
 1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
 2. Call the upload tool from the command line:
 
-    ```bash
-    java com.ibm.appcenter.Upload -delete [options] [files or applications]
-    ```
+   ```bash
+   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   ```
     
 You can pass any of the available options in the command line.
 
@@ -107,9 +107,10 @@ Use the stand-alone tool by following these steps.
 1. Add applicationcenterdeploytool.jar and json4j.jar to the java classpath environment variable.
 2. Call the upload tool from the command line:
 
-    ```bash
-    java com.ibm.appcenter.Upload -clearLdapCache [options]
-    ```
+   ```bash
+   java com.ibm.appcenter.Upload -clearLdapCache [options]
+   ```
+   
 You can pass any of the available options in the command line.
 
 | Option | Content indicated by | Description | 

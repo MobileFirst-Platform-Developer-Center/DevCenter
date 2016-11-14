@@ -28,7 +28,7 @@ downloads:
 <p>Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at <a href="https://docs.cloudant.com/authentication.html" target="_blank">https://docs.cloudant.com/authentication.html</a>. With a JavaScript HTTP adapter, the easiest way is to use <strong>Basic Authentication</strong>.</p>
 <p>In your adapter XML file, specify the <code>domain</code> for your Cloudant instance, the <code>port</code>, and add an <code>authentication</code> element of type <code>basic</code>. The framework will use those credentials to generate an <code>Authorization: Basic</code> HTTP header.</p>
 <p><strong>Note:</strong> With Cloudant, you can generate unique API keys to use instead of your real username and password.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
         <protocol>https</protocol>
@@ -55,7 +55,7 @@ downloads:
 <h3>Procedures</h3>
 <p>Your adapter procedures use the <code>invokeHttp</code> method to send an HTTP request to one of the URLs that are defined by Cloudant.<br />
 For example, you can create a new document by sending a <code>POST</code> request to <code>/{<em>your-database</em>}/</code> with the body being a JSON representation of the document that you wish to store.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function addEntry(entry){
     var input = {
         method : 'post',
@@ -79,12 +79,12 @@ function addEntry(entry){
 <p>Cloudant provides a <a href="https://github.com/cloudant/java-cloudant" target="_blank">Java client library</a> for you to easily use all the features of Cloudant.</p>
 <p>During the initialization of your Java adapter, set up a <code>CloudantClient</code> instance to work with.<br />
 <strong>Note:</strong> With Cloudant, you can generate unique API keys to use instead of your real username and password.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 cloudant = new CloudantClient(cloudantDomain,cloudantKey,cloudantPassword);
 db = cloudant.database(CLOUDANT_DB, false);
 {% endhighlight %}</p>
 <p>Using <a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object" target="_blank">Plain Old Java Objects</a> and standard Java API for RESTful Web Services (JAX-RS), you can create a new document on Cloudant in just a few lines, by sending a JSON representation of the document in the HTTP request.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @POST
 @Consumes(MediaType.APPLICATION_JSON)
 public Response addEntry(User user){

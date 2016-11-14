@@ -4,18 +4,18 @@ title: Installing MobileFirst Server From Command Line tutorial
 weight: 0
 ---
 ## Overview
-Use the command line mode of IBM® Installation Manager and Ant tasks to install MobileFirst Server.
+Use the command line mode of IBM  Installation Manager and Ant tasks to install MobileFirst Server.
 
 #### Before you begin
 * Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
-        * DB2®
+        * DB2 
         * MySQL
         * Oracle
 
         > **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly on IBM Passport Advantage®.
+        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of IBM MobileFirst Foundation eAssembly on IBM Passport Advantage .
 
 * JDBC driver for your database.
     * For DB2, use the DB2 JDBC driver type 4.
@@ -24,7 +24,7 @@ Use the command line mode of IBM® Installation Manager and Ant tasks to install
 * Java 7 or later.
 
 * Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere® Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
+* You must also have the installation repository of the MobileFirst Server and the installer of WebSphere  Application Server Liberty Core V8.5.5.3 or later. Download these packages from the IBM MobileFirst Foundation eAssembly on Passport Advantage:
 
 **MobileFirst Server installation repository**  
 IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server
@@ -91,7 +91,7 @@ Make sure that Installation Manager V1.8.4 or later is installed. The installati
 
 Run Installation Manager to install the binary files of MobileFirst Server on your disk before you create the databases and deploy MobileFirst Server to Liberty profile. During the installation of MobileFirst Server with Installation Manager, an option is proposed to you to install IBM MobileFirst Platform Application Center. Application Center is a different component of the product. For this tutorial, it is not required to be installed with MobileFirst Server.
 
-You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational® License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. 
+You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure MobileFirst Server for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational  License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. 
 
 In this tutorial, you specify the properties as the parameters through the **imcl** command line. This specification can also be done by using a response file.
 
@@ -237,7 +237,7 @@ In the Server Configuration Tool, only one database user is needed. This user is
 #### Database tables creation
 For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp\_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
 
-The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX®, use the command `diff server.xml server.xml.bak` to find the differences.
+The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
 
 #### Modification of the application server settings (specific to Liberty):
 1. The Liberty features are added.
@@ -350,77 +350,83 @@ When you create a farm, you also need to configure an HTTP server to send querie
 1. Create a second Liberty server on the same computer.
     * Start a command line.
     * Go to **liberty\_install\_dir/bin**, and enter server create **mfp2**.
+
 2. Modify the HTTP and HTTPS ports of the server **mfp2** so that they do not conflict with the ports of server **mfp1**.
     * Go to the second server directory.
 
         The directory is **liberty\_install\_dir/usr/servers/mfp2** or **WLP\_USER\_DIR/servers/mfp2** (if you modify the directory as described in step 6 of Installing WebSphere Application Server Liberty Core).
     * Edit the **server.xml** file. Replace
 
-        ```xml
-        <httpEndpoint id="defaultHttpEndpoint"
+      ```xml
+      <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9080"
         httpsPort="9443" />
-        ```
+      ```
         
-        With:
+      With:
         
-        ```xml
-        <httpEndpoint id="defaultHttpEndpoint"
+      ```xml
+      <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
-        ```
+      ```
         
-        The HTTP and HTTPS ports of the server mfp2 do not conflict with the ports of the server mfp1 with this change. Make sure to modify the ports before you run the installation of MobileFirst Server. Otherwise, if you modify the port after the installation is made, you also need to reflect the change of the port in the JNDI property: **mfp.admin.jmx.port**.
+      The HTTP and HTTPS ports of the server mfp2 do not conflict with the ports of the server mfp1 with this change. Make sure to modify the ports before you run the installation of MobileFirst Server. Otherwise, if you modify the port after the installation is made, you also need to reflect the change of the port in the JNDI property: **mfp.admin.jmx.port**.
+
 3. Copy the Ant file that you used in [Deploying MobileFirst Server to Liberty with Ant tasks](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), and change the value of the property **appserver.was85liberty.serverInstance** to **mfp2**. The Ant tasks detect that the databases exist and do not create the tables (see the following log extract). Then, the applications are deployed to the server.
 
-    ```bash
-    [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
-    [configuredatabase] Database MFPDATA exists.
-    [configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
-    [configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
-    [configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
-    [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
-    [configuredatabase] Configuring MobileFirstAdmin database MFPDATA...
-    [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
-    [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
-    ```
+   ```bash
+   [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
+   [configuredatabase] Database MFPDATA exists.
+   [configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
+   [configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
+   [configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
+   [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
+   [configuredatabase] Configuring MobileFirstAdmin database MFPDATA...
+   [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
+   [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
+   ```
 
-    4. Test the two servers with HTTP connection.
-        * Open a web browser.
-        * Enter the following URL: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The console is served by server mfp1.
-        * Log in with **admin/admin**.
-        * Open a tab in the same web browser and enter the URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). The console is served by server mfp2.
-        * Log in with admin/admin. If the installation is done correctly, you can see the same welcome page in both tabs after login.
-        * Return to first browser tab and click **Hello, admin → Download Audit Log**. You are logged out of the console and see the login screen again. This logout behavior is an issue. The problem happens because when you log on to server mfp2, a Lightweight Third Party Authentication (LTPA) token is created and stored in your browser as a cookie. However, this LTPA token is not recognized by server mfp1. Switching between servers is likely to happen in a production environment when you have an HTTP load balancer in front of the cluster. To resolve this issue, you must ensure that both servers (mfp1 and mfp2) generate the LTPA tokens with the same secret keys. Copy the LTPA keys from server mfp1 to server mfp2.
+4. Test the two servers with HTTP connection.
+    * Open a web browser.
+    * Enter the following URL: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The console is served by server mfp1.
+    * Log in with **admin/admin**.
+    * Open a tab in the same web browser and enter the URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). The console is served by server mfp2.
+    * Log in with admin/admin. If the installation is done correctly, you can see the same welcome page in both tabs after login.
+    * Return to first browser tab and click **Hello, admin → Download Audit Log**. You are logged out of the console and see the login screen again. This logout behavior is an issue. The problem happens because when you log on to server mfp2, a Lightweight Third Party Authentication (LTPA) token is created and stored in your browser as a cookie. However, this LTPA token is not recognized by server mfp1. Switching between servers is likely to happen in a production environment when you have an HTTP load balancer in front of the cluster. To resolve this issue, you must ensure that both servers (mfp1 and mfp2) generate the LTPA tokens with the same secret keys. Copy the LTPA keys from server mfp1 to server mfp2.
+    
         * Stop both servers with these commands:
         
-            ```bash
-            server stop mfp1
-            server stop mfp2
-            ```
+          ```bash
+          server stop mfp1
+          server stop mfp2
+          ```
+        
         * Copy the LTPA keys of server mfp1 to server mfp2.
             From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system. 
             * On UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * On Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * Restart the servers. Switch from one browser tab to another other does not require you to relogin. In a Liberty server farm, all servers must have the same LTPA keys.
-    5. Enable the JMX communication between the Liberty servers.
+    
+5. Enable the JMX communication between the Liberty servers.
 
-        The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
+    The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
         
-        > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
-        * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
-        * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
-        * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
-        * In the same directory, import the certificate of server mfp1 with the command: `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. The certificate of server mfp1 is imported into the keystore of server mfp2 so that server mfp2 can trust the HTTPS connections to server mfp1. You are asked to confirm that you trust the certificate.
-        * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
+    > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
+    
+    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
+    * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
+    * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
+    * In the same directory, import the certificate of server mfp1 with the command: `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. The certificate of server mfp1 is imported into the keystore of server mfp2 so that server mfp2 can trust the HTTPS connections to server mfp1. You are asked to confirm that you trust the certificate.
+    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
 
-    ## Testing the farm and see the changes in MobileFirst Operations Console
+## Testing the farm and see the changes in MobileFirst Operations Console
 
-    1. Start the two servers:
+1. Start the two servers:
 
-        ```bash
-        server start mfp1
-        server start mfp2
-        ```
+   ```bash
+   server start mfp1
+   server start mfp2
+   ```
         
-    2. Access the console. For example, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), or [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in HTTPS. In the left sidebar, an extra menu that is labeled as **Server Farm Nodes** appears. If you click **Server Farm Nodes**, you can the status of each node. You might need to wait a bit for both nodes to be started.
+2. Access the console. For example, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), or [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in HTTPS. In the left sidebar, an extra menu that is labeled as **Server Farm Nodes** appears. If you click **Server Farm Nodes**, you can the status of each node. You might need to wait a bit for both nodes to be started.

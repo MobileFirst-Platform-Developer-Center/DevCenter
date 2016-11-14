@@ -108,25 +108,25 @@ There are two ways of running SQL statements:
 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
-      ```javascript
-      // 1. Assign your SQL query to a variable (outside the function scope)
-      // 2. Add parameters, if necessary
-      var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
-        "FROM accounttransactions " +
-        "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
-        "ORDER BY transactionDate DESC " +
-        "LIMIT 20;";
+   ```javascript
+   // 1. Assign your SQL query to a variable (outside the function scope)
+   // 2. Add parameters, if necessary
+   var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
+    "FROM accounttransactions " +
+    "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
+    "ORDER BY transactionDate DESC " +
+    "LIMIT 20;";
 
-        // Invoke prepared SQL query and return invocation result
-        function getAccountTransactions1(accountId){
-          // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
-          // 4. Return the result to the application or to another procedure.
-	         return MFP.Server.invokeSQLStatement({
-		          preparedStatement : getAccountsTransactionsStatement,
-		          parameters : [accountId, accountId]
-	        });
-      }
-      ```       
+    // Invoke prepared SQL query and return invocation result
+   function getAccountTransactions1(accountId){
+      // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
+      // 4. Return the result to the application or to another procedure.
+         return MFP.Server.invokeSQLStatement({
+	          preparedStatement : getAccountsTransactionsStatement,
+	          parameters : [accountId, accountId]
+        });
+   }
+   ```       
 
 ### SQL stored procedure
 To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.

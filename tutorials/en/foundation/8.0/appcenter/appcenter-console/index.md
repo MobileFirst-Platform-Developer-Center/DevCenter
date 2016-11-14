@@ -69,7 +69,7 @@ When you try to log in to the console with an incorrect user name or an incorrec
 * The message **The connection was reset**
 * The message **The time allowed for login exceeded**
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere® Application Server profiles.
+The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
 
 The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
 
@@ -92,13 +92,13 @@ The Application Center enables you to add new applications and versions and to m
 Click **Applications** to access Application Management.
 
 ### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
-Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM® Installation Manager package, have two different users defined that you can use to get started.
+Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM  Installation Manager package, have two different users defined that you can use to get started.
 
 * User with login **demo** and password **demo**
 * User with login **appcenteradmin** and password **admin**
 
 ### WebSphere Application Server full profile
-If you installed the Application Center on WebSphere® Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
 
 ![Available applications](ac_app_mgt.jpg)
 
@@ -113,19 +113,19 @@ To add an application to make it available for installation on mobile devices:
 2. Click **Upload**.
 3. Select the application file to upload to the Application Center repository.
 
-    ### Android
-    The application file name extension is .apk.
+   ### Android
+   The application file name extension is .apk.
 
-    ### iOS
-    The application file name extension is .ipa for normal iOS applications.
+   ### iOS
+   The application file name extension is .ipa for normal iOS applications.
 
-    ### Windows Phone 8
-    The application file name extension is .xap. The application must be signed with a company account. The application enrollment token for this company account must be made available to Windows Phone 8 devices before the application can be installed on the devices. See [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) for details.
+   ### Windows Phone 8
+   The application file name extension is .xap. The application must be signed with a company account. The application enrollment token for this company account must be made available to Windows Phone 8 devices before the application can be installed on the devices. See [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) for details.
 
-    ### Windows 8
-    The application is provided as a Windows Store package; the file extension is .appx.
+   ### Windows 8
+   The application is provided as a Windows Store package; the file extension is .appx.
 
-    Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
+   Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
 
 4. Click **Next** to access the properties to complete the definition of the application.
 5. Complete the properties to define the application. See [Application properties](#application-properties) for information about how to complete property values.
@@ -244,7 +244,7 @@ Select Active to indicate that an application can be installed on a mobile devic
 * In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli® Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
 
 ## Editing application properties
 You can edit the properties of an application in the list of uploaded applications.  

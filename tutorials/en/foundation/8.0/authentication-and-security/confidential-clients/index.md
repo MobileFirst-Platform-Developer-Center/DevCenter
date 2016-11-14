@@ -20,7 +20,9 @@ You must provide the following information:
 
 - **Display Name**: an optional display name that is used to refer to the confidential client. The default display name is the value of the ID parameter. For example: **Back-end Node server**.
 - **ID**: A unique identifier for the confidential client (can be considered as a "user name").
+  The ID can contain only ASCII characters.
 - **Secret**: A private passphrase to authorize access from the confidential client (can be considered as an API key).
+  The secret can contain only ASCII characters.
 - **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../#scope) tutorial.
     - An element of an allowed scope can also include the special asterisk wildcard character (`*`), which signifies any sequence of zero or more characters. For example, if the scope element is `send*`, the confidential client can be granted access to scopes that contain any scope element that starts with "send", such as "sendMessage". The asterisk wildcard can be placed at any position within the scope element, and can also appear more than once. 
     - An allowed-scope parameter that consists of a single asterisk character (*) indicates that the confidential client can be granted a token for any scope.

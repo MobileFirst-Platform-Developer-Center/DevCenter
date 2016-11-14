@@ -68,22 +68,26 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
 
 1. Use a `logger` instance with the `myApp` package name.
 
-    ```java
-    Logger logger = Logger.getInstance("MyApp");
-    ```
+   ```java
+   Logger logger = Logger.getInstance("MyApp");
+   ```
 
 2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
 
-    ```java
-    HashMap<String, LEVEL> filters = new HashMap<>();
-    filters.put("MyApp", LEVEL.ERROR);
-    Logger.setFilters(filters);
-    ```
+   ```java
+   HashMap<String, LEVEL> filters = new HashMap<>();
+   filters.put("MyApp", LEVEL.ERROR);
+   Logger.setFilters(filters);
+   ```
 
 3. **Optional:** Control the filters remotely by fetching a server configuration profile.
 
 ## Fetching server configuration profiles
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the MobileFirst Operations Console, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the MobileFirst Operations Console, see [Configuring log filters](../../../analytics/console/log-filters/). For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Logging levels can be set by the client or by retrieving configuration profiles from the server. From the MobileFirst Operations Console, a log level can be set globally (all logger instances) or for a specific package or packages. 
+
+> For information on configuring the filter from the MobileFirst Operations Console, see [Configuring log filters](../../../analytics/console/log-filters/).
+
+For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
 
 ```java
 Logger.updateConfigFromServer();
@@ -103,4 +107,5 @@ public class MathUtils{
     logger.debug("sum called with args " + a + " and " + b + ". Returning " + sum);
     return sum;
   }
-}```
+}
+```

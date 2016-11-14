@@ -1,4 +1,6 @@
-var snippets = $('div.highlight>pre, figure.highlight>pre');
+'use strict';
+
+var snippets = $('div.highlighter-rouge>pre.highlight, figure.highlight>pre');
 
 [].forEach.call(snippets, function(snippet) {
     snippet.firstChild.insertAdjacentHTML('beforebegin', '<button class="btn btn-sm clipboard" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" data-clipboard-snippet><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>');

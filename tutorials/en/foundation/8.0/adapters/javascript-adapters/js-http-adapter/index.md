@@ -82,7 +82,7 @@ Declare the required procedures below the `connectivity` element:
                     <li><b>port</b>: <i>Optional.</i> The port address. If no port is specified the default HTTP/S port is used (80/443)</li>
                     <li><b>sslCertificateAlias</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The alias of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
                     <li><b>sslCertificatePassword</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The password of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <authentication> element, as follows:
+                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <b>authentication</b>< element, as follows:
                         <ul>
                             <li>Basic authentication
 {% highlight xml %}
@@ -107,7 +107,7 @@ Declare the required procedures below the `connectivity` element:
         <password></password>
     </serverIdentity>
 </authentication>
-{% endhighlight %}</li>
+{% endhighlight %}
                         </ul>
                     </li>
                     <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
@@ -135,7 +135,6 @@ Declare the required procedures below the `connectivity` element:
                     The default number of concurrent HTTP connections is 50. You can modify this number based on the expected concurrent requests to the adapter and the maximum requests allowed on the back-end service. You can also configure the back-end service to limit the number of concurrent incoming requests.
                     <br/><br/>
                     Consider a two-node system, where the expected load on the system is 100 concurrent requests and the back-end service can support up to 80 concurrent requests. You can set maxConcurrentConnectionsPerNode to 40. This setting ensures that no more than 80 concurrent requests are made to the back-end service.
-
                     <br/><br/>
                     If you increase the value, the back-end application needs more memory. To avoid memory issues, do not to set this value too high. Instead, estimate the average and peak number of transactions per second, and evaluate their average duration. Then, calculate the number of required concurrent connections as indicated in this example, and add a 5-10% margin. Then, monitor your back end, and adjust this value as required, to ensure that your back-end application can process all incoming requests.
                     <br/><br/>

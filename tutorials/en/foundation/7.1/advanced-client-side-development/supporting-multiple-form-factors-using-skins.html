@@ -37,7 +37,7 @@ Follow the on interactive instructions to complete the process.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_03_skinLoader-location.png" /></p>
 <p>A special, developer-controlled JavaScript file, <code>skinLoader.js</code>, is run when the app starts in order to determine which skin to load.<br />
 The default <code>skinLoader.js</code> file contains examples of code.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getSkinName() {
   var skinName = "default";
   if (device.version == "2.2" || device.version == "2.1") {
@@ -51,7 +51,7 @@ function getSkinName() {
 <p>Skins are automatically registered in the <code>application-descriptor.xml</code> file.<br />
 Registration determines the hierarchical order between the <code>common</code> folder, environment, and skin.<br />
 If you remove a skin from the project, you must modify the <code>application-decsriptor.xml</code> file manually.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <android version="1.0">
     <skins>
         <skin name="default">

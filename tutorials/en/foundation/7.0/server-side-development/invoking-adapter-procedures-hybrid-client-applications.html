@@ -15,7 +15,7 @@ downloads:
 <blockquote><p>If your application supports other hybrid environments such as BlackBerry, Mobile Web, or Desktop Browser, see the tutorial for <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-hybrid-client-applications/" title="Invoking adapter procedures from hybrid client applications">MobileFirst 6.3</a>.</p></blockquote>
 <p><br clear="all" /></p>
 <h3>WLResourceRequest</h3>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 var resourceRequest = new WLResourceRequest(
     "/adapters/RSSReader/getFeedsFiltered",
     WLResourceRequest.GET
@@ -31,7 +31,7 @@ var resourceRequest = new WLResourceRequest(
 </ul>
 <p><br clear="all" /></p>
 <h4>setQueryParameter</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 resourceRequest.setQueryParameter("params", "['technology']");
 {% endhighlight %} </p>
 <p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
@@ -39,7 +39,7 @@ resourceRequest.setQueryParameter("params", "['technology']");
 <li>In MobileFirst JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name <code>params</code>.
 </li>
 <li>In Java adapters or external resources, use <code>setQueryParameter</code> for each parameter.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 resourceRequest.setQueryParameter("param1", "value1");
 resourceRequest.setQueryParameter("param2", "value2");
 {% endhighlight %}
@@ -47,7 +47,7 @@ resourceRequest.setQueryParameter("param2", "value2");
 </ul>
 <p><br clear="all" /></p>
 <h4>send(body)</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 resourceRequest.send().then(
 	onSuccess,
 	onFailure
@@ -67,7 +67,7 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <p>The object is returned to a corresponding success/failure handler.</p>
 <p><br clear="all" /><br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 {
   "errors": [],
   "info": [],
@@ -105,7 +105,7 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <h3>Handling the result</h3>
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function loadFeedsSuccess(result){
     WL.Logger.debug("Feed retrieve success");
     if (result.responseJSON.Items.length > 0)

@@ -2,7 +2,6 @@
 layout: tutorial
 title: Troubleshooting Analytics
 breadcrumb_title: Analytics
-show_in_nav: false
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -44,6 +43,7 @@ wlServerContext = by default "/mfp/"
             </li>
         </ul>
     </li>
+    </ul>
   </div>
 </div>
 
@@ -58,7 +58,7 @@ wlServerContext = by default "/mfp/"
   <div class="panel-heading"><h4>Why is there no data in the Server Usage Flow graph or the Network Request graph?</h4></div>
   <div class="panel-body">
     <p>Configure your apps to collect analytics on the Network device event.</p>
-    
+
 {% highlight javascript %}
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 {% endhighlight %}
@@ -66,7 +66,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
     <ul>
         <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
         <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/>
-        
+
         <b>Objective-C</b>
 
 {% highlight objc %}
@@ -79,7 +79,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 {% highlight swift %}
 WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK)
-{% endhighlight %}
+{% endhighlight %}</li>
 
         <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
 
@@ -96,11 +96,11 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
   <div class="panel-heading"><h4>Why is there no data for app sessions?</h4></div>
   <div class="panel-body">
     <p>Configure your apps to collect analytics using the Lifecycle device event listener.</p>
-    
+
     <ul>
         <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
         <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/><br/>
-        
+
         <b>Objective-C</b>
 
 {% highlight objc %}
@@ -114,11 +114,11 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
 {% endhighlight %}</li>
-        
+
         <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
-        
+
         <b>Java</b>
-        
+
 {% highlight java %}
 WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);

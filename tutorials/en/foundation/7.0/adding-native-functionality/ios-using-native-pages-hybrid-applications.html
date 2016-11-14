@@ -21,7 +21,7 @@ downloads:
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> method to open the native page:
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function openNativePage() {
     var params = {
         nameParam : $('#nameInput').val()
@@ -37,7 +37,7 @@ function openNativePage() {
 </li>
 <li>To handle the callback function, write the following code:
 <p>
-{% highlight js linenos %}
+{% highlight js  %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }
@@ -55,7 +55,7 @@ If you work with existing <code>.m</code> and <code>.h</code> files, reference t
 Placing the <code>.m</code> and <code>.h</code> files only in the <code>iphone\native\Classes</code> folder in Eclipse is not sufficient, because these files are not referenced in the Xcode project unless they have been added in Xcode.</p>
 </li>
 <li>To retrieve custom data parameters that are passed from the web view, use the <code>setDataFromWebView:(NSDictionary*)data</code> method:
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(void)setDataFromWebView:(NSDictionary*)data {
     self.nameParam = (NSString*)[data valueForKey:@"nameParam"];
 }
@@ -66,7 +66,7 @@ Placing the <code>.m</code> and <code>.h</code> files only in the <code>iphone\n
 <p>When the native page switches back to the web view, a call to the <code>[NativePage showWebView:]</code> method is necessary.<br />
 To pass data back to the web view, use the <code>NSDictionary</code> object. For example:</p>
 <h4>Objective-C</h4>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(IBAction)returnClicked:(id)sender {
     NSString *phone = [phoneNumber text];
     NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];
@@ -75,7 +75,7 @@ To pass data back to the web view, use the <code>NSDictionary</code> object. For
 {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h4>JavaScript</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

@@ -24,7 +24,7 @@ Go to:
 
 <h3>Creating an event source</h3>
 Create a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-{% highlight js linenos %} 
+{% highlight js  %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -43,7 +43,7 @@ WL.Server.createEventSource({
 
 Notifications can be either pulled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js linenos %} 
+{% highlight js  %} 
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
@@ -66,18 +66,18 @@ function submitNotification(userId, notificationText) {
 
 The first step is to create an instance of the <code>WLClient</code> class:
 
-{% highlight java linenos %} final WLClient client = WLClient.createInstance(this); {% endhighlight %} 
+{% highlight java  %} final WLClient client = WLClient.createInstance(this); {% endhighlight %} 
 
 You derive all push notification operations from the <code>WLPush</code> class.
 
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.
 
-{% highlight java linenos %} WLPush push = client.getPush(); {% endhighlight %} 
+{% highlight java  %} WLPush push = client.getPush(); {% endhighlight %} 
 
 <code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the GCM server to receive push notifications.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 client.getPush().setOnReadyToSubscribeListener(listener);
 client.connect(listener);
 {% endhighlight %} 
@@ -85,7 +85,7 @@ client.connect(listener);
 The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.
 
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 @Override
 public void onReadyToSubscribe() {.....}
 {% endhighlight %} 
@@ -105,13 +105,13 @@ The API takes the following arguments:
 
 Example:
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
 {% endhighlight %} 
 
 Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.
 
-{% highlight java linenos %} @Override
+{% highlight java  %} @Override
 public void onReadyToSubscribe() {
    WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
 } {% endhighlight %} 
@@ -125,7 +125,7 @@ public void onReadyToSubscribe() {
 
 <code>onPause()</code> must call the <code>setForeground(false)</code> method of the <code>WLPush</code> instance to receive the notification in the notification bar when the application is paused.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 @Override
 protected void onPause() {
     super.onPause();
@@ -136,7 +136,7 @@ protected void onPause() {
 
 <code>onResume()</code> must call the <code>setForeground(true)</code> method of the <code>WLPush</code> instance to receive the notification in the callback of the application.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 @Override
 protected void onResume() {
     super.onResume();
@@ -147,7 +147,7 @@ protected void onResume() {
 
 <code>onDestroy()</code> must call the <code>unregisterReceivers</code> method of the <code>WLPush</code> instance to avoid leak exceptions from the receiver when the application exits.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 @Override
 protected void onDestroy() {
     super.onDestroy();
@@ -172,7 +172,7 @@ The API takes the following arguments:
 
 Example:
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient client = WLClient.getInstance();
 client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));
 {% endhighlight %} 
@@ -200,7 +200,7 @@ The API takes the following arguments:
 
 Example:
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient client = WLClient.getInstance();
 client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCRIBE));
  {% endhighlight %} 
@@ -218,14 +218,14 @@ MyListener Implements <code>WLResponseListener</code> and provides the following
 
 <code>isPushSupported()</code> - Indicates whether push notifications are supported by the device.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient client = WLClient.getInstance();
 boolean supported = client.getPush().isPushSupported();
 {% endhighlight %} 
 
 <code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient client = WLClient.getInstance();
 boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");
 {% endhighlight %} 
@@ -234,19 +234,19 @@ boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");
 
 When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListener, WLEventSourceListener{
 {% endhighlight %} 
 
 The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid", "PushAdapter","PushEventSource", this );
 {% endhighlight %} 
 
 The <code>onReceive</code> method displays the received notification on the screen.
 
-{% highlight java linenos %} 
+{% highlight java  %} 
 @Override
 public void onReceive(String arg0, String arg1) {
     AndroidNativePush.updateTextView("Notification received  " + arg0);

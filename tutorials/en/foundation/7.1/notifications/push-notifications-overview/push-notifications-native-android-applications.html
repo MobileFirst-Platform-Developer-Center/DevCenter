@@ -24,7 +24,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 <p>    These settings are also editable with the Application Descriptor Editor in Design mode.</p>
 <ul>
 <li>Add the <code>pushSender</code> child-element inside the <code>nativeAndroidApp</code> element . Replace the <code>key</code> and <code>senderId</code> values with your API key and project number respectively. In case you do not have these, you can get them from the <a href="https://console.developers.google.com">Google Developer Console</a>.
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeAndroidApp id="AppName" platformVersion="7.1.0.00.20150812-0731"
 	version="1.0" xmlns="http://www.worklight.com/native-android-descriptor">
 	<displayName>AppName</displayName>
@@ -47,7 +47,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 <li>wlServerPort – The port on which MobileFirst Server is listening. </li>
 <li>GcmSenderId – The project number that you obtained through the Google API console.</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 wlServerProtocol = http
 wlServerHost =
 wlServerPort = 10080
@@ -68,7 +68,7 @@ GcmSenderId =
 <li>
 <h3>Modify the native Android project.</h3>
 <h4>Verify that the following permissions exist in the <code>AndroidManifest.xml</code> file of your Android project.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <permission android:name="com.example.project.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 <p> <uses-permission android:name="android.permission.INTERNET" />
  <uses-permission android:name="android.permission.GET_TASKS"/>
@@ -82,7 +82,7 @@ GcmSenderId =
 {% endhighlight %}</p>
 <p>Replace all <strong>com.example.project</strong> with your Android project package name.</p>
 <h4>Add the <code>launchMode</code> attribute to the <code>application</code> element. Set its value to <code>singleTask</code>.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <application
     android:allowBackup="true"
     android:icon="@drawable/ic_launcher"
@@ -91,7 +91,7 @@ GcmSenderId =
     android:launchMode="singleTask">
 {% endhighlight %}</p>
 <h4>Add an <code>intent-filter</code> to the <code>activity</code> element for notifications.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <activity
 	android:name=".ActivityName"<
 	android:label="@string/app_name">
@@ -102,7 +102,7 @@ GcmSenderId =
 {% endhighlight %}</p>
 <p>Replace the <strong>com.example.project.app_name</strong> with your Android project package name and the <code>app_name</code> string as it appears in the <code>res/values/string.xml</code> file. For example: com.sample.notifications.NativeAndroidNotifications.</p>
 <h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <service android:name="com.worklight.wlclient.push.GCMIntentService" />
 <receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
    <intent-filter>

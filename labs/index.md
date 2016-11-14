@@ -3,17 +3,17 @@ layout: default
 title: FoundationLabs
 show_disqus: false
 ---
-<div class="container">
+<section class="container">
     <h2 class="no-anchor">Welcome to FoundationLabs</h2>
-    <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
+    <article>
+        <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
 
-    <ul>
-        <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
-        <li>As an administrator, learn how to setup MobileFirst Platform on Linux, Windows and IBM Bluemix.</li>
-    </ul>
-
-    <br/>
-
+        <ul>
+            <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
+            <li>As an administrator, learn how to setup MobileFirst Platform on Linux, Windows and IBM Bluemix.</li>
+        </ul>
+    </article>
+    
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#forDevelopers" aria-controls="developers" role="tab" data-toggle="tab">For Developers</a></li>
         <li role="presentation"><a href="#forAdministrators" aria-controls="administrators" role="tab" data-toggle="tab">For Administrators</a></li>
@@ -59,4 +59,4 @@ show_disqus: false
             </ul>
         </div>
     </div>
-</div>
+</section>

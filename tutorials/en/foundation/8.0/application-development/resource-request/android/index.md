@@ -26,7 +26,7 @@ Create a `WLResourceRequest` object and specify the path to the resource and the
 Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
 
 ```java
-URI adapterPath = new URI("/adapters/JavaAdapter/users");
+URI adapterPath = URI.create("/adapters/JavaAdapter/users");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 

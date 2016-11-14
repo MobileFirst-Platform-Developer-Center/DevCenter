@@ -76,7 +76,7 @@ Executable code that allows a lower-level software layer to call a function defi
 A collection of apps.
 
 ### certificate
-In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca-certificate-authority-ca).
+In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca--certificate-authority-ca).
 
 ### certificate authority enterprise application
 A company application that provides certificates and private keys for its client applications.
@@ -232,7 +232,7 @@ A telephone, tablet, or personal digital assistant that operates on a radio netw
 See [adapter](#adapter)
 
 ### MobileFirst Data Proxy
-A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant® by using MobileFirst Platform OAuth security capabilities. The MobileFirst Data Proxy requires an authentication through the trust association interceptor.
+A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using MobileFirst Platform OAuth security capabilities. The MobileFirst Data Proxy requires an authentication through the trust association interceptor.
 
 ### MobileFirst Operations Console
 A web-based interface that is used to control and manage MobileFirst runtime environments that are deployed in MobileFirst Server, and to collect and analyze user statistics.

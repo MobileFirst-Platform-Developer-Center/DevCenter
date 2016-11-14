@@ -35,15 +35,13 @@ Review the following sections to learn what actions needs to be taken to ensure 
 * Apple mandated that all applications should declare any usage of user's private data information in the project's `Info.plist` file. Some of the cordova plugins which are embedded inside Mobilefirst hybrid applications accesses user's private data. [Refer this blog](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/25/supporting-privacy-changes-in-ios-10) for more information/solution.
 * iOS applications written in Swift need to be migrated to Swift 3.0 or Swift 2.3. This can be easily done using the migration guide [provided by Apple](https://swift.org/migration-guide).
 
-<br>
-###IBM Application Center
+### IBM Application Center
 
 IBM Application Center from MobileFirst Platform Foundation, version 6.3 - 8.0 works with iOS 10 except for one minor issue related to Push notifications.
 
 It is noticed that when the Mobilefirst Application Center is configured to send push notifications, users might not be notified of updates for the application installed on iOS 10 device. This is a known issue, it needs an interim fix ([PI69110](https://www-945.ibm.com/support/fixcentral)) to be applied to the AppCenter server setup.
 
-<br>
-###WatchOS 3
+### WatchOS 3
 Apple has released WatchOS 3 alongside iOS 10, a new version of the Watch operating system for Apple Watch which brings in massive improvements to the OS.
 
 To support watchOS 3, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
@@ -53,13 +51,11 @@ The watch application, as any regular iOS application, should be registered as a
 Existing application(s) that were created using MobileFirst Platform v8.0 watchOS `IBMMobileFirstPlatformFoundationWatchOS` framework will work on WatchOS 3.0 as they did on watchOS 2e.
 Steps to be followed while developing watchOS application(s) and the limitations can be found [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/watchos)
 
-<br>
-###MobileFirst Xamarin Application
+### MobileFirst Xamarin Application
 
 Similar to the Mobilefirst native iOS SDK, the [IBM MobileFirst SDK for Xamarin](https://components.xamarin.com/view/ibm-worklight?version=8.0.0.1) has also been successfully validated with iOS 10. Existing application(s) created using the IBM MobileFirst SDK for Xamarin will work on iOS 10.
 
-<br>
-####Additional Information
+#### Additional Information
 [WWDC 2016.](https://developer.apple.com/videos/wwdc2016/)
 
 > **Note:** For compatibility results between iOS 10 and MobileFirst Platform releases, see the blog post: [Compatibility tests for iOS 10 with supported MobileFirst Platform Foundation releases]({{site.baseurl}}/blog/2016/07/01/compatibility-tests-for-ios-10/).

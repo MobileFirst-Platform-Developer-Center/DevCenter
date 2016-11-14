@@ -17,8 +17,12 @@ Available plug-ins are:
 * **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
 * **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
 
-**Support level:**
-The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1**, and **cordova-windows@4.2.0**.
+#### Support levels
+The Cordova platform versions supported by the MobileFirst plug-ins, are:
+
+* cordova-ios: **>= 4.1.1 and < 5.0**
+* cordova-android: **>= 5.1.1 and < 6.0**
+* cordova-windows: **>= 4.3.2 and < 5.0**
 
 #### Jump to:
 
@@ -28,8 +32,9 @@ The platform versions supported by the MobileFirst plug-ins, at **minimum**, are
 - [Generated MobileFirst Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Cordova SDK components
+> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
 
+## Cordova SDK components
 #### cordova-plugin-mfp
 The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
 
@@ -71,11 +76,12 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
 #### New Application
 
-1. Create a Cordova project:
+1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
+   For example:
 
-    ```bash
-    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
-    ```
+   ```bash
+   cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
+   ```
      - "Hello" is the folder name of the application.
      - "com.example.helloworld" is the ID of the application.
      - "HelloWorld" is the Name of the application.
@@ -83,33 +89,33 @@ Consider creating the project by using the MobileFirst Cordova **application tem
 
     > The templated **index.js** enables you to use additional MobileFirst features as such [Multilingual application  translation](../../translation) and initialization options (see the user documentation for more information).
 
-2. Navigate to the root of the Cordova project: <code>cd myapp</code>
+2. Change directory to the root of the Cordova project: `cd hello`
 
 3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
 
-    ```bash
-    cordova platform add ios
-    ```
+   ```bash
+   cordova platform add ios
+   ```
 
-    > **Note:** Because the application was configured using the MobileFirst template, the MobileFirst core Cordova plug-in is added automatically as the platform is added in step 3.
+   > **Note:** Because the application was configured using the MobileFirst template, the MobileFirst core Cordova plug-in is added automatically as the platform is added in step 3.
 
 #### Existing Application
 
 1. Navigate to the root of your existing Cordova project and add the MobileFirst core Cordova plug-in:
 
-    ```bash
-    cordova plugin add cordova-plugin-mfp
-    ```
+   ```bash
+   cordova plugin add cordova-plugin-mfp
+   ```
 
 2. Navigate to the **www\js** folder and select the **index.js** file.
 
 3. Add the following function:
 
-    ```javascript
-    function wlCommonInit() {
+   ```javascript
+   function wlCommonInit() {
 
-    }
-    ```
+   }
+   ```
 
 The MobileFirst API methods are available after the MobileFirst client SDK has been loaded. The `wlCommonInit` function is then called.  
 Use this function to call the various MobileFirst API methods.
@@ -120,9 +126,9 @@ Use this function to call the various MobileFirst API methods.
 
 2. Register the application to MobileFirst Server:
 
-    ```bash
-    mfpdev app register
-    ```
+   ```bash
+   mfpdev app register
+   ```
     - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, then updates the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server.
@@ -162,7 +168,7 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
         </mfp:security>
     </mfp:android>
     <mfp:windows>
-        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum> 
+        <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
        <mfp:windows10>
           <mfp:sdkChecksum>...</mfp:sdkChecksum>          
           <mfp:security>
@@ -187,15 +193,15 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
 
         <div id="collapse-config-xml-properties" class="panel-collapse collapse" role="tabpanel" aria-labelledby="config-xml-properties">
             <div class="panel-body">
-                    <table class="table table-striped">
+                <table class="table table-striped">
                     <tr>
                         <td><b>Element</b></td>
                         <td><b>Description</b></td>
                         <td><b>Configuration</b></td>
                     </tr>
                     <tr>
-                        <td><b>widget<b></td>
-                        <td>Root element of the <a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml document</a>. The element contains two required attributes: <ul><li><b>id</b>: This is the application package name that was specified when the Cordova project was created. If this value is manually changed after the application was registered with the MobileFirst Server, then the application must be registered again.</li><li><b>xmlns:mfp</b>: The MobileFirst plug-in XML namespace.</li></td>
+                        <td><b>widget</b></td>
+                        <td>Root element of the <a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml document</a>. The element contains two required attributes: <ul><li><b>id</b>: This is the application package name that was specified when the Cordova project was created. If this value is manually changed after the application was registered with the MobileFirst Server, then the application must be registered again.</li><li><b>xmlns:mfp</b>: The MobileFirst plug-in XML namespace.</li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -206,12 +212,12 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
                     <tr>
                         <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
                         <td>Optional. When you enable the Direct Update Authenticity feature, the direct update package is digitally signed during deployment. After the client downloaded the package, a security check is run to validate the package authenticity. This string value is the public key that will be used to authenticate the direct update .zip file.</td>
-                        <td>Set with the <code>mfpdev app config direct_update_authenticity_public_key <value></code> command.</td>
+                        <td>Set with the <code>mfpdev app config direct_update_authenticity_public_key key-value</code> command.</td>
                     </tr>
                     <tr>
                         <td><b>mfp:languagePreferences</b></td>
                         <td>Optional. Contains a comma-separated list of locales to display system messages.</td>
-                        <td>Set with the <code>mfpdev app config language_preferences <value></code> command.</td>
+                        <td>Set with the <code>mfpdev app config language_preferences key-value</code> command.</td>
                     </tr>
                     <tr>
                         <td><b>mfp:clientCustomInit</b></td>
@@ -273,11 +279,11 @@ After the MobileFirst Cordova SDK is added to the project, the Cordova-generated
                     </tr>
                     <tr>
                         <td><b>mfp:testWebResourcesChecksum</b></td>
-                        <td>Controls whether the application verifies the integrity of its web resources each time it starts running on the mobile device. Attributes: <ul><li><b>enabled:</b> Valid values are <b>true</b> and <b>false</b>. If this attribute is set to <b>true</b>, the application calculates the checksum of its web resources and compares this checksum with a value that was stored when the application was first run.</li><li><b>ignoreFileExtensions:</b> Checksum calculation can take a few seconds, depending on the size of the web resources. To make it faster, you can provide a list of file extensions to be ignored in this calculation. This value is ignored when the <b>enabled</b> attribute value is <b>false</b>.</td>
-                        <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum <value></code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions <value></code> command.</li></ul></td>
+                        <td>Controls whether the application verifies the integrity of its web resources each time it starts running on the mobile device. Attributes: <ul><li><b>enabled:</b> Valid values are <b>true</b> and <b>false</b>. If this attribute is set to <b>true</b>, the application calculates the checksum of its web resources and compares this checksum with a value that was stored when the application was first run.</li><li><b>ignoreFileExtensions:</b> Checksum calculation can take a few seconds, depending on the size of the web resources. To make it faster, you can provide a list of file extensions to be ignored in this calculation. This value is ignored when the <b>enabled</b> attribute value is <b>false</b>.</li></ul></td>
+                        <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions value</code> command.</li></ul></td>
                     </tr>
                 </table>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
             </div>

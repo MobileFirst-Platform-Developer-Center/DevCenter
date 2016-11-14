@@ -9,7 +9,7 @@ Consider your backup and recovery policy, optimize your MobileFirst Server confi
 #### Jump to
 
 * [Endpoints of the MobileFirst Server production server](#endpoints-of-the-mobilefirst-server-production-server)
-* [Configuring MobileFirst Server to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v1-2)
+* [Configuring MobileFirst Server to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v12)
 * [Configuring user authentication for MobileFirst Server administration](#configuring-user-authentication-for-mobilefirst-server-administration)
 * [List of JNDI properties of the MobileFirst Server web applications](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
 * [Configuring data sources](#configuring-data-sources)
@@ -45,15 +45,15 @@ For MobileFirst Server to communicate with devices that support only Transport L
 
 The steps to configure MobileFirst Server to enable Transport Layer Security (TLS) V1.2 depend on how MobileFirst Server connects to devices.
 
-* If MobileFirst Server is behind a reverse proxy that decrypts SSL-encoded packets from devices before it passes the packets to the application server, you must enable TLS V1.2 support on your reverse proxy. If you use IBM® HTTP Server as your reverse proxy, see [Securing IBM HTTP Server](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.ihs.doc/ihs/welc6top_securing_ihs_container.html?view=kc) for instructions.
-* If MobileFirst Server communicates directly with devices, the steps to enable TLS V1.2 depend on whether your application serveris Apache Tomcat, WebSphere® Application Server Liberty profile, or WebSphere Application Server full profile.
+* If MobileFirst Server is behind a reverse proxy that decrypts SSL-encoded packets from devices before it passes the packets to the application server, you must enable TLS V1.2 support on your reverse proxy. If you use IBM  HTTP Server as your reverse proxy, see [Securing IBM HTTP Server](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.ihs.doc/ihs/welc6top_securing_ihs_container.html?view=kc) for instructions.
+* If MobileFirst Server communicates directly with devices, the steps to enable TLS V1.2 depend on whether your application serveris Apache Tomcat, WebSphere  Application Server Liberty profile, or WebSphere Application Server full profile.
 
 ### Apache Tomcat
 1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
     Ensure that you have one of the following JRE versions:
     * Oracle JRE 1.7.0_75 or later
     * Oracle JRE 1.8.0_31 or later
-2. Edit the conf/server.xml file and modify the <Connector> element that declares the HTTPS port so that the sslEnabledProtocols attribute has the following value: `sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`
+2. Edit the **conf/server.xml** file and modify the `Connector` element that declares the HTTPS port so that the **sslEnabledProtocols** attribute has the following value: `sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`.
 
 ### WebSphere Application Server Liberty profile
 1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
@@ -81,7 +81,7 @@ The steps to configure MobileFirst Server to enable Transport Layer Security (TL
 ## Configuring user authentication for MobileFirst Server administration
 MobileFirst Server administration requires user authentication. You can configure user authentication and choose an authentication method. Then, the configuration procedure depends on the web application server that you use.
 
-> **Important:** If you use stand-alone WebSphere® Application Server full profile, use an authentication method other than the simple WebSphere authentication method (SWAM) in global security. You can use lightweight third-party authentication (LTPA). If you use SWAM, you might experience unexpected authentication failures.
+> **Important:** If you use stand-alone WebSphere  Application Server full profile, use an authentication method other than the simple WebSphere authentication method (SWAM) in global security. You can use lightweight third-party authentication (LTPA). If you use SWAM, you might experience unexpected authentication failures.
 
 You must configure authentication after the installer deploys the MobileFirst Server administration web applications in the web application server.
 
@@ -95,6 +95,7 @@ The MobileFirst Server administration has the following Java Platform, Enterpris
 You must map the roles to the corresponding sets of users. The **mfpmonitor** role can view data but cannot change any data. The following tables list MobileFirst roles and functions for production servers.
 
 #### Deployment
+
 |                        | Administrator | Deployer    | Operator    | Monitor    | 
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
@@ -102,12 +103,14 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 | Deploy an adapter.     | Yes           | Yes         | No          | No         | 
 
 #### MobileFirst Server management
+
 |                            | Administrator | Deployer    | Operator    | Monitor    | 
 |----------------------------|---------------|-------------|-------------|------------|
 | Java EE security role.     | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
 | Configure runtime settings.| Yes           | Yes         | No          | No         | 
 
 #### Application management
+
 |                                     | Administrator | Deployer    | Operator    | Monitor    | 
 |-------------------------------------|---------------|-------------|-------------|------------|
 | Java EE security role.              | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
@@ -125,11 +128,12 @@ Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, 
 |                        | Administrator | Deployer    | Operator    | Monitor    | 
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
-| GET requests <ul><li>Get a list of all the devices that use push notification for an application</li><li><li>Get the details of a specific device</li><li>Get the list of subscriptions</li><li>Get the subscription information that is associated with a subscription ID.</li><li>Get the details of a GCM configuration</li><li>Get the details of an APNS configuration</li><li>Get the list of tags that are defined for the application</li><li>Get details of a specific tag</li></ul>            | Yes           | Yes         | Yes         | Yes        | 
-| POST and PUT requests <ul><li>Register an app with push notification</li><li>Update a push device registration</li><li>Create a subscription</li><li>Add or update a GCM configuration</li><li>Add or update an APNS configuration</li><li>Submit notifications to a device</li><li>Create or update a tag</li></ul> | Yes           | Yes         | Yes         | No         | 
-| DELETE requests <ul><li>Delete the registration of a device to push notification</li><li>Delete a subscription</li><li>Unsubscribe a device from a tag</li><li>Delete a GCM configuration</li><li>Delete an APNS configuration</li><li>Delete a tag</li></ul> | Yes           | Yes         | No          | No         | 
+| GET requests {::nomarkdown}<ul><li>Get a list of all the devices that use push notification for an application</li><li>Get the details of a specific device</li><li>Get the list of subscriptions</li><li>Get the subscription information that is associated with a subscription ID.</li><li>Get the details of a GCM configuration</li><li>Get the details of an APNS configuration</li><li>Get the list of tags that are defined for the application</li><li>Get details of a specific tag</li></ul>{:/}| Yes           | Yes         | Yes         | Yes        | 
+| POST and PUT requests {::nomarkdown}<ul><li>Register an app with push notification</li><li>Update a push device registration</li><li>Create a subscription</li><li>Add or update a GCM configuration</li><li>Add or update an APNS configuration</li><li>Submit notifications to a device</li><li>Create or update a tag</li></ul>{:/} | Yes           | Yes         | Yes         | No         | 
+| DELETE requests {::nomarkdown}<ul><li>Delete the registration of a device to push notification</li><li>Delete a subscription</li><li>Unsubscribe a device from a tag</li><li>Delete a GCM configuration</li><li>Delete an APNS configuration</li><li>Delete a tag</li></ul>{:/} | Yes           | Yes         | No          | No         | 
 
 #### Disabling
+
 |                        | Administrator | Deployer    | Operator    | Monitor    | 
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor | 
@@ -141,7 +145,7 @@ If you choose to use an authentication method through a user repository such as 
 ### Configuring WebSphere Application Server full profile for MobileFirst Server administration
 Configure security by mapping the MobileFirst Server administration Java EE roles to a set of users for both web applications.
 
-You define the basics of user configuration in the WebSphere® Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`
+You define the basics of user configuration in the WebSphere  Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`
 
 1. Select **Security → Global Security**.
 2. Select **Security Configuration Wizard** to configure users.
@@ -158,7 +162,7 @@ You define the basics of user configuration in the WebSphere® Application Serve
     * Click **Save** to save the changes.
 
 ### Configuring WebSphere Application Server Liberty profile for MobileFirst Server administration
-In WebSphere® Application Server Liberty profile, you configure the roles of **mfpadmin**, **mfpdeployer**, **mfpmonitor**, and **mfpoperator** in the **server.xml** configuration file of the server.
+In WebSphere  Application Server Liberty profile, you configure the roles of **mfpadmin**, **mfpdeployer**, **mfpmonitor**, and **mfpoperator** in the **server.xml** configuration file of the server.
 
 To configure the security roles, you must edit the **server.xml** file. In the `<application-bnd>` element of each `<application>` element, create `<security-role>` elements. Each `<security-role>` element is for each roles: **mfpadmin**, mfpdeployer, mfpmonitor, and mfpoperator. Map the roles to the appropriate user group name, in this example: **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup**, or **mfpoperatorgroup**. These groups are defined through the `<basicRegistry>` element. You can customize this element or replace it entirely with an `<ldapRegistry>` element or a `<safRegistry>` element.
 
@@ -166,21 +170,21 @@ Then, to maintain good response times with a large number of installed applicati
 
 1. Edit the **server.xml** file. For example: 
 
-    ```xml
-    <security-role name="mfpadmin">
+   ```xml
+   <security-role name="mfpadmin">
       <group name="mfpadmingroup"/>
-    </security-role>
-    <security-role name="mfpdeployer">
+   </security-role>
+   <security-role name="mfpdeployer">
       <group name="mfpdeployergroup"/>
-    </security-role>
-    <security-role name="mfpmonitor">
+   </security-role>
+   <security-role name="mfpmonitor">
       <group name="mfpmonitorgroup"/>
-    </security-role>
-    <security-role name="mfpoperator">
+   </security-role>
+   <security-role name="mfpoperator">
       <group name="mfpoperatorgroup"/>
-    </security-role>
+   </security-role>
 
-    <basicRegistry id="mfpadmin">
+   <basicRegistry id="mfpadmin">
       <user name="admin" password="admin"/>
       <user name="guest" password="guest"/>
       <user name="demo" password="demo"/>
@@ -193,40 +197,40 @@ Then, to maintain good response times with a large number of installed applicati
       </group>
       <group name="mfpmonitorgroup"/>
       <group name="mfpoperatorgroup"/>
-    </basicRegistry>
-    ```
+   </basicRegistry>
+   ```
 
 2. Define  the **AppCenterPool** size:
 
-    ```xml
-    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
-    ```
+   ```xml
+   <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
+   ```
     
 3. In the `<dataSource>` element, define a reference to the connection manager:
 
-    ```xml
-    <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
-    ...
-    </dataSource>
-```
+   ```xml
+   <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
+   ...
+   </dataSource>
+   ```
 
 ### Configuring Apache Tomcat for MobileFirst Server administration
 You must configure the Java EE security roles for the MobileFirst Server administration on the Apache Tomcat web application server.
 
 1. If you installed the MobileFirst Server administration manually, declare the following roles in the **conf/tomcat-users.xml** file:
 
-    ```xml
-    <role rolename="mfpadmin"/>
-    <role rolename="mfpmonitor"/>
-    <role rolename="mfpdeployer"/>
-    <role rolename="mfpoperator"/>
-    ```
+   ```xml
+   <role rolename="mfpadmin"/>
+   <role rolename="mfpmonitor"/>
+   <role rolename="mfpdeployer"/>
+   <role rolename="mfpoperator"/>
+   ```
 
 2. Add roles to the selected users, for example:
 
-    ```xml
-    <user name="admin" password="admin" roles="mfpadmin"/>
-    ```
+   ```xml
+   <user name="admin" password="admin" roles="mfpadmin"/>
+   ```
     
 3. You can define the set of users as described in the Apache Tomcat documentation, [Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
@@ -245,77 +249,78 @@ Set the JNDI environment entries in one of the following ways:
 
 * Configure the server environment entries. The steps to configure the server environment entries depends on which application server you use:
 
-    * **WebSphere® Application Server:**
+    * **WebSphere  Application Server:**
         1. In the WebSphere Application Server administration console, go to **Applications → Application Types → WebSphere enterprise applications → application_name → Environment entries for Web modules**.
         2. In the Value fields, enter values that are appropriate to your server environment.
     
         ![JNDI environment entries in WebSphere](jndi_was.jpg)
     * WebSphere Application Server Liberty:
     
-        In **liberty\_install\_dir/usr/servers/serverName**, edit the **server.xml** file, and declare the JNDI properties as follows:
+      In **liberty\_install\_dir/usr/servers/serverName**, edit the **server.xml** file, and declare the JNDI properties as follows:
     
-        ```xml
-        <application id="app_context_root" name="app_context_root" location="app_war_name.war" type="war"> 
+      ```xml
+      <application id="app_context_root" name="app_context_root" location="app_war_name.war" type="war"> 
             ...
-        </application>
-        <jndiEntry jndiName="app_context_root/JNDI_property_name" value="JNDI_property_value" />
-        ```
+      </application>
+      <jndiEntry jndiName="app_context_root/JNDI_property_name" value="JNDI_property_value" />
+      ```
         
-        The context root (in the previous example: **app\_context\_root**) connects between the JNDI entry and a specific MobileFirst application. If multiple MobileFirst applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
+      The context root (in the previous example: **app\_context\_root**) connects between the JNDI entry and a specific MobileFirst application. If multiple MobileFirst applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
         
-        > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
+      > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
     
-        For all other JNDI properties, the names must be prefixed with the context root of the application:
+      For all other JNDI properties, the names must be prefixed with the context root of the application:
 
-        * For the live update service, the context root must be **/<adminContextRoot>config**. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
-        * For the push service, you must define the context root as **/imfpush**. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.
-        * For the MobileFirst Administration Service application, the MobileFirst Operations Console and MobileFirst runtime, you can define the context root as you want. However, by default it is **/mfpadmin** for MobileFirst Administration Service, **/mfpconsole** for MobileFirst Operations Console, and **/mfp** for MobileFirst runtime.
+       * For the live update service, the context root must be **/[adminContextRoot]config**. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
+       * For the push service, you must define the context root as **/imfpush**. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.
+       * For the MobileFirst Administration Service application, the MobileFirst Operations Console and MobileFirst runtime, you can define the context root as you want. However, by default it is **/mfpadmin** for MobileFirst Administration Service, **/mfpconsole** for MobileFirst Operations Console, and **/mfp** for MobileFirst runtime.
 
-        For example:
+      For example:
         
-        ```xml
-        <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
+      ```xml
+      <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
             ...
-        </application>
-        <jndiEntry jndiName="mfpadmin/mfp.admin.actions.prepareTimeout" value = "2400000" />
-        ```    
+      </application>
+      <jndiEntry jndiName="mfpadmin/mfp.admin.actions.prepareTimeout" value = "2400000" />
+      ```    
         
     * Apache Tomcat:
-        1. In **tomcat\_install\_dir/conf**, edit the **server.xml** file, and declare the JNDI properties as follows:
         
-        ```xml
-        <Context docBase="app_context_root" path="/app_context_root">
+      In **tomcat\_install\_dir/conf**, edit the **server.xml** file, and declare the JNDI properties as follows:
+        
+      ```xml
+      <Context docBase="app_context_root" path="/app_context_root">
             <Environment name="JNDI_property_name" override="false" type="java.lang.String" value="JNDI_property_value"/>
-        </Context>
-        ```
+      </Context>
+      ```
         
         * The context path prefix is not needed because the JNDI entries are defined inside the `<Context>` element of an application.
         * `override="false"` is mandatory.
         * The `type` attribute is always `java.lang.String`, unless specified differently for the property.
     
-        For example:
+      For example:
         
-        ```xml
-        <Context docBase="app_context_root" path="/app_context_root">
+      ```xml
+      <Context docBase="app_context_root" path="/app_context_root">
             <Environment name="mfp.admin.actions.prepareTimeout" override="false" type="java.lang.String" value="2400000"/>
-        </Context>
-        ```
+      </Context>
+      ```
         
 * If you install with Ant tasks, you can also set the values of the JNDI properties at installation time.
 
-    In **mfp_install_dir/MobileFirstServer/configuration-samples**, edit the configuration XML file for the Ant tasks, and declare the values for the JNDI properties by using the property element inside the following tags:
+  In **mfp_install_dir/MobileFirstServer/configuration-samples**, edit the configuration XML file for the Ant tasks, and declare the values for the JNDI properties by using the property element inside the following tags:
     
-    * `<installmobilefirstadmin>`, for MobileFirst Server administration, MobileFirst Operations Console, and live update services. For more information, see [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
-    * `<installmobilefirstruntime>`, for MobileFirst runtime configuration properties. For more information, see [Ant tasks for installation of MobileFirst runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
-    * `<installmobilefirstpush>`, for configuration of the push service. For more information, see [Ant tasks for installation of MobileFirst Server push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
+  * `<installmobilefirstadmin>`, for MobileFirst Server administration, MobileFirst Operations Console, and live update services. For more information, see [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+  * `<installmobilefirstruntime>`, for MobileFirst runtime configuration properties. For more information, see [Ant tasks for installation of MobileFirst runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+  * `<installmobilefirstpush>`, for configuration of the push service. For more information, see [Ant tasks for installation of MobileFirst Server push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
-    For example: 
-    
-    ```xml
-    <installmobilefirstadmin ..>
+  For example: 
+
+  ```xml
+  <installmobilefirstadmin ..>
         <property name = "mfp.admin.actions.prepareTimeout" value = "2400000" />
-    </installmobilefirstadmin>
-    ```
+  </installmobilefirstadmin>
+  ```
         
 ### List of JNDI properties for MobileFirst Server administration service
 When you configure MobileFirst Server administration service and MobileFirst Operations Console for your application server, you set optional or mandatory JNDI properties, in particular for Java Management Extensions (JMX).
@@ -323,9 +328,10 @@ When you configure MobileFirst Server administration service and MobileFirst Ope
 The following properties can be set on the administration service web application mfp-admin-service.war.
 
 #### JNDI properties for administration service: JMX
+
 | Property                 | Optional or mandatory | Description | Restrictions | 
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | Optional	           | The Java Management Extensions (JMX) connector type.<br/>The possible values are `SOAP` and `RMI`. The default value is SOAP. | WebSphere® Application Server only. |
+| mfp.admin.jmx.connector  | Optional	           | The Java Management Extensions (JMX) connector type.<br/>The possible values are `SOAP` and `RMI`. The default value is SOAP. | WebSphere  Application Server only. |
 | mfp.admin.jmx.host       | Optional	           | Host name for the JMX REST connection. | Liberty profile only. |
 | mfp.admin.jmx.port	   | Optional	           | Port for the JMX REST connection. | Liberty profile only. |
 | mfp.admin.jmx.user       | Mandatory for the Liberty profile and for WebSphere Application Server farm, optional otherwise | User name for the JMX REST connection. | WebSphere Application Server Liberty profile: The user name for the JMX REST connection.<br/><br/>WebSphere Application Server farm: the user name for the SOAP connection.<br/><br/>WebSphere Application Server Network Deployment: the user name of the WebSphere administrator if the virtual host mapped to the MobileFirst server administration application is not the default host.<br/><br/>Liberty collective: the user name of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. | 
@@ -336,6 +342,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.jmx.dmgr.port | Mandatory | Deployment manager RMI or SOAP port. | WebSphere Application Server Network Deployment only. | 
 
 #### JNDI properties for administration service: timeout
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.actions.prepareTimeout | Optional | Timeout in milliseconds to transfer data from the adminstration service to the runtime during a deployment transaction. If the runtime cannot be reached within this time, an error is raised and the deployment transaction ends.<br/><br/>Default value: 1800000 ms (30 min) |
@@ -344,12 +351,14 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.maxLockTimeInMillis | Optional | The maximal time during which a process can take the transaction lock. Because deployment transactions run sequentially, they use a lock. If the application server fails while a lock is taken, it can happen in rare situations that the lock is not released at the next restart of the application server. In this case, the lock is released automatically after the maximum lock time so that the server is not blocked forever. Set a time that is longer than a normal transaction.<br/><br/>Default value: 1800000 (30 min) | 
 
 #### JNDI properties for administration service: logging
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.logging.formatjson | Optional | Set this property to true to enable pretty formatting (extra blank space) of JSON objects in responses and log messages. Setting this property is helpful when you debug the server. Default value: false. |
 | mfp.admin.logging.tosystemerror | Optional | Specifies whether all logging messages are also directed to System.Error. Setting this property is helpful when you debug the server. | 
 
 #### JNDI properties for administration service: proxies
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port | Optional | If the MobileFirst administration server is behind a firewall or reverse proxy, this property specifies the address of the host. Set this property to enable a user outside the firewall to reach the MobileFirst administration server. Typically, this property is the port of the proxy, for example 443. It is necessary only if the protocol of the external and internal URIs are different. | 
@@ -358,20 +367,22 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.proxy.host | Optional | If the MobileFirst administration server is behind a firewall or reverse proxy, this property specifies the address of the host. Set this property to enable a user outside the firewall to reach the MobileFirst administration server. Typically, this property is the address of the proxy. | 
 
 #### JNDI properties for administration service: topologies
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | Optional. | Set this property to false to disable the audit feature of the MobileFirst Operations Console. The default value is true. |
 | mfp.admin.environmentid | Optional. | The environment identifier for the registration of the MBeans. Use this identifier when different instances of the MobileFirst Server are installed on the same application server. The identifier determines which administration service, which console, and which runtimes belong to the same installation. The administration service manages only the runtimes that have the same environment identifier. | 
 | mfp.admin.serverid | Mandatory for server farms and Liberty collective, optional otherwise. | Server farm: the server identifier. Must be different for each server in the farm.<br/><br/> Liberty collective: the value must be controller. | 
 | mfp.admin.hsts | Optional. | Set to true to enable HTTP Strict Transport Security according to RFC 6797. |
-| mfp.topology.platform | Optional | Server type. Valid values:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>If you do not set the value, the application tries to guess the server type. | 
-| mfp.topology.clustermode | Optional | In addition to the server type, specify here the server topology. Valid values: <ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>The default value is Standalone. | 
+| mfp.topology.platform | Optional | Server type. Valid values:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}If you do not set the value, the application tries to guess the server type. | 
+| mfp.topology.clustermode | Optional | In addition to the server type, specify here the server topology. Valid values: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}The default value is Standalone. | 
 | mfp.admin.farm.heartbeat | Optional | This property enables you to set in minutes the heartbeat rate that is used in server farm topologies. The default value is 2 minutes.<br/><br/>In a server farm, all members must use the same heartbeat rate. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.missed.heartbeats.timeout | Optional | This property enables you to set the number of missed heartbeats of a farm member before the status of the farm member is considered to be failed or down. The default value is 2.<br/><br/>In a server farm all members must use the same missed heartbeat value. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Optional | A Boolean value (true or false) for re-registering or re-initializing the farm member. | 
 | mfp.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. | 
 
 #### JNDI properties for administration service: relational database
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.db.jndi.name | Optional | The JNDI name of the database. This parameter is the normal mechanism to specify the database. The default value is **java:comp/env/jdbc/mfpAdminDS**. |
@@ -383,12 +394,14 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.db.type | Optional | This property defines the type of database. The default value is inferred from the connection URL. | 
 
 #### JNDI properties for administration service: licensing
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
-| mfp.admin.license.key.server.host	| <ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul> | Host name of the Rational® License Key Server. |
-| mfp.admin.license.key.server.port	| <ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul> | Port number of the Rational License Key Server. |
+| mfp.admin.license.key.server.host	| {::nomarkdown}<ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul>{:/} | Host name of the Rational  License Key Server. |
+| mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul>{:/} | Port number of the Rational License Key Server. |
 
 #### JNDI properties for administration service: JNDI configurations
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.jndi.configuration | Optional | The name of the JNDI configuration if the JNDI properties (except this one) must be read from a property file that is injected into the WAR file. If you do not set this property, JNDI properties are not read from a property file. | 
@@ -397,6 +410,7 @@ The following properties can be set on the administration service web applicatio
 The administration service uses a live update service as an auxiliary facility to store various configurations. Use these properties to configure how to reach the live update service.
 
 #### JNDI properties for administration service: live update service
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | Optional	The URL of the live update service. The default URL is derived from the URL of administration service by adding config to the context root of the administration service. |
@@ -407,6 +421,7 @@ The administration service uses a live update service as an auxiliary facility t
 The administration service uses a push service as an auxiliary facility to store various push settings. Use these properties to configure how to reach the push service. Because the push service is protected by the OAuth security model, you must set various properties to enable confidential clients in OAuth.
 
 #### JNDI properties for administration service: push service
+
 | Property                 | Optional or mandatory | Description  | 
 |--------------------------|-----------------------|--------------|
 | mfp.admin.push.url | Optional | The URL of the push service. If the property is not specified, the push service is considered disabled. If the property is not properly set, the administration service cannot contact the push service and the administration of push services in MobileFirst Operations Console does not work. | 
@@ -428,7 +443,7 @@ The following properties can be set on the web application (mfp-admin-ui.war) of
 | mfp.admin.ui.cors.strictssl | Optional | Set to false to allow CORS situations where the MobileFirst Operations Console is secured with SSL (HTTPS protocol) while the MobileFirst Server administration service is not, or conversely. This property takes effect only if the **mfp.admin.ui.cors** property is enabled. | 
 
 ### List of JNDI properties for MobileFirst Server live update service
-When you configure the MobileFirst Server live update service for your application server, you can set the following JNDI properties. The table lists the JNDI properties for the IBM® relational database live update service.
+When you configure the MobileFirst Server live update service for your application server, you can set the following JNDI properties. The table lists the JNDI properties for the IBM  relational database live update service.
 
 | Property | Optional or mandatory | Description | 
 |----------|-----------------------|-------------|
@@ -442,7 +457,7 @@ The following table lists the MobileFirst properties that are always available a
 
 | Property | Description | 
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere® Application Server Network Deployment only. | 
+| mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere  Application Server Network Deployment only. | 
 | mfp.admin.jmx.dmgr.port | Mandatory. The RMI or SOAP port of the deployment manager. WebSphere Application Server Network Deployment only. | 
 | mfp.admin.jmx.host | Liberty only. The host name for the JMX REST connection. For Liberty collective, use the host name of the controller. | 
 | mfp.admin.jmx.port | Liberty only. The port number for the JMX REST connection. For Liberty collective, the port of the REST connector must be identical to the value of the httpsPort attribute that is declared in the `<httpEndpoint>` element. This element is declared in the server.xml file of the Liberty controller. | 
@@ -462,7 +477,7 @@ The following table lists the MobileFirst properties that are always available a
 | mfp.licenseTracking.enabled | A value that is used to enable or disable device tracking in IBM MobileFirst Foundation.<br/><br/>For performance reasons, you can disable device tracking when IBM MobileFirst Foundation runs only Business-to-Consumer (B2C) apps. When device tracking is disabled, the license reports are also disabled and no license metrics are generated.<br/><br/>Possible values are true (default) and false. | 
 | mfp.runtime.temp.folder | Defines the runtime temporary files folder. Uses the default temporary folder location of the web container when not set. | 
 | mfp.adapter.invocation.url | The URL to be used for invoking adapter procedures from inside Java adapters, or JavaScript adapters that are invoked using the rest endpoint. If this property is not set, the URL of the currently executing request will be used (this is the default behavior). This value should contain the full URL, including the context root. | 
-| mfp.authorization.server | Authorization-server mode. Can be one of the following mode:<ul><li>embedded: Use the MobileFirst authorization server.</li><li>external: Use an external authorization server</li></ul>. When setting this value, you must also set the **mfp.external.authorization.server.secret** and **mfp.external.authorization.server.introspection.url** properties for your external server. | 
+| mfp.authorization.server | Authorization-server mode. Can be one of the following mode:{::nomarkdown}<ul><li>embedded: Use the MobileFirst authorization server.</li><li>external: Use an external authorization server</li></ul>{:/}. When setting this value, you must also set the **mfp.external.authorization.server.secret** and **mfp.external.authorization.server.introspection.url** properties for your external server. | 
 | mfp.external.authorization.server.secret | Secret of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to external and is ignored otherwise. |
 | mfp.external.authorization.server.introspection.url | URL of the introspection endpoint of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to **external** and is ignored otherwise. | 
 | ssl.websphere.config | Used to configure the keystore for an HTTP adapter. When set to false (default), instructs the MobileFirst runtime to use the MobileFirst keystore. When set to true, instructs the MobileFirst runtime to use the WebSphere SSL configuration. For more information, see [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters). | 
@@ -473,8 +488,8 @@ The following table lists the MobileFirst properties that are always available a
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB | 
 | mfp.push.db.queue.connections | Optional | Number of threads in the thread pool that does the database operation. Default: 3 | 
-| mfp.push.db.cloudant.url | Optional | The Cloudant® account URL. When this property is defined, the Cloudant DB will be directed to this URL. | 
-| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp_push_db | 
+| mfp.push.db.cloudant.url | Optional | The Cloudant  account URL. When this property is defined, the Cloudant DB will be directed to this URL. | 
+| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp\_push\_db | 
 | mfp.push.db.cloudant.username | Optional | The user name of the Cloudant account, used to store the database. when this property is not defined, a relational database is used. | 
 | mfp.push.db.cloudant.password | Optional | The password of the Cloudant account, used to store the database. This property must be set when mfp.db.cloudant.username is set. |
 | mfp.push.db.cloudant.doc.version | Optional | The Cloudant document version. | 
@@ -482,7 +497,7 @@ The following table lists the MobileFirst properties that are always available a
 | mfp.push.db.cloudant.connectionTimeout | Optional	| A timeout for establishing a network connection for Cloudant, in milliseconds. A value of zero means an infinite timeout. A negative value means the default (no override). Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections | Optional | The Cloudant connector's max connections. Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). | 
 | mfp.push.db.cloudant.ssl.authentication | Optional | A Boolean value (true or false) that specifies whether the SSL certificate chain validation and host name verification are enabled for HTTPS connections to the Cloudant database. Default: True | 
-| mfp.push.db.cloudant.ssl.configuration | Optional	| (WAS Full Profile only) For HTTPS connections to the Cloudant database: The name of an SSL configuration in the WebSphere® Application Server configuration, to use when no configuration is specified for the host and port. |
+| mfp.push.db.cloudant.ssl.configuration | Optional	| (WAS Full Profile only) For HTTPS connections to the Cloudant database: The name of an SSL configuration in the WebSphere  Application Server configuration, to use when no configuration is specified for the host and port. |
 | mfp.push.db.cloudant.proxyHost | Optional	| Cloudant connector's proxy host. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.proxyPort | Optional	| Cloudant connector's proxy port. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.services.ext.security | Optional	| The security extension plugin. |
@@ -545,12 +560,12 @@ The active log files are defined in number by the **LOGPRIMARY** and **LOGSECOND
 
 The `DB2 GET DATABASE CONFIGURATION` command includes information about the log file size, and the number of primary and secondary log files.
 
-Depending on the largest size of the MobileFirst application that is deployed, you might need to increase the DB2® log space.
+Depending on the largest size of the MobileFirst application that is deployed, you might need to increase the DB2  log space.
 
 Using the `DB2 update db cfg` command, increase the **LOGSECOND** parameter. Space is not allocated when the database is activated. Instead, the space is allocated only as needed.
 
 ### Configuring DB2 HADR seamless failover for MobileFirst Server and Application Center data sources
-You must enable the seamless failover feature with WebSphere® Application Server Liberty profile and WebSphere Application Server. With this feature, you can manage an exception when a database fails over and gets rerouted by the DB2® JDBC driver.
+You must enable the seamless failover feature with WebSphere  Application Server Liberty profile and WebSphere Application Server. With this feature, you can manage an exception when a database fails over and gets rerouted by the DB2  JDBC driver.
 
 > **Note:** DB2 HADR failover is not supported for Apache Tomcat.
 
@@ -624,7 +639,7 @@ Edit the **server.xml** file and for every `<dataSource>` element (runtime and A
 
 The timeout value depends mainly on the number of opened connections in parallel but also on the minimum and maximum number of the connections in the pool. Hence, you must tune the different **connectionManager** attributes to identify the most adequate values. For more information about the **connectionManager** element, see [Liberty: Configuration elements in the **server.xml** file](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html).
 
-> **Note:** MySQL in combination with WebSphere® Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM® DB2® or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+> **Note:** MySQL in combination with WebSphere  Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM  DB2  or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
 ### Stale data after creating or deleting apps from MobileFirst Operations Console
 On a Tomcat 8 application server, if you use a MySQL database, some calls from MobileFirst Operations Console to services return a 404 error.
@@ -666,7 +681,7 @@ For more information, see [Connection pool settings](https://www.ibm.com/support
 IBM MobileFirst Foundation reports errors, warnings, and informational messages into a log file. The underlying logging mechanism varies by application server.
 
 ### MobileFirst Server
-IBM MobileFirst Platform Server (MobileFirst Server for short) uses the standard java.util.logging package. By default, all MobileFirst logging goes to the application server log files. You can control MobileFirst Server logging by using the standard tools that are available in each application server. For example, if you want to activate trace logging in WebSphere® Application Server Liberty, add a trace element to the server.xml file. To activate trace logging in WebSphere Application Server, use the logging screen in the console and enable trace for MobileFirst logs.
+IBM MobileFirst Platform Server (MobileFirst Server for short) uses the standard java.util.logging package. By default, all MobileFirst logging goes to the application server log files. You can control MobileFirst Server logging by using the standard tools that are available in each application server. For example, if you want to activate trace logging in WebSphere  Application Server Liberty, add a trace element to the server.xml file. To activate trace logging in WebSphere Application Server, use the logging screen in the console and enable trace for MobileFirst logs.
 
 MobileFirst logs all begin with **com.ibm.mfp**.  
 Application Center logs begin with **com.ibm.puremeap**.
@@ -688,7 +703,7 @@ MobileFirst Server uses the **java.util.logging** API. The logging levels map to
 * WL.Logger.error: SEVERE
 
 ### Log monitoring tools
-For Apache Tomcat, you can use [IBM® Operations Analytics - Log Analysis](http://www.ibm.com/software/products/en/ibm-operations-analytics---log-analysis) or other industry standard log file monitoring tools to monitor logs and highlight errors and warnings.
+For Apache Tomcat, you can use [IBM  Operations Analytics - Log Analysis](http://www.ibm.com/software/products/en/ibm-operations-analytics---log-analysis) or other industry standard log file monitoring tools to monitor logs and highlight errors and warnings.
 
 For WebSphere Application Server, use the log viewing facilities that are described in IBM Knowledge Center. The URLs are listed in the table in the MobileFirst Server section of this page.
 
@@ -719,31 +734,31 @@ You can configure MobileFirst Server with multiple runtimes, creating a visual d
 
 2. Add a second `application` element: 
 
-    ```xml
-    <application id="second-runtime" name="second-runtime" location="mfp-server.war" type="war">
+   ```xml
+   <application id="second-runtime" name="second-runtime" location="mfp-server.war" type="war">
         <classloader delegation="parentLast">
             </classloader>
-    </application>
-    ```
+   </application>
+   ```
 
 3. Add a second set of JNDI entries:
 
-    ```xml
-    <jndiEntry jndiName="second-runtime/mfp.analytics.url" value='"http://localhost:9080/analytics-service/rest"'/>
-    <jndiEntry jndiName="second-runtime/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>
-    <jndiEntry jndiName="second-runtime/mfp.analytics.username" value='"admin"'/>
-    <jndiEntry jndiName="second-runtime/mfp.analytics.password" value='"admin"'/>
-    <jndiEntry jndiName="second-runtime/mfp.authorization.server" value='"embedded"'/>
-    ```
+   ```xml
+   <jndiEntry jndiName="second-runtime/mfp.analytics.url" value='"http://localhost:9080/analytics-service/rest"'/>
+   <jndiEntry jndiName="second-runtime/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>
+   <jndiEntry jndiName="second-runtime/mfp.analytics.username" value='"admin"'/>
+   <jndiEntry jndiName="second-runtime/mfp.analytics.password" value='"admin"'/>
+   <jndiEntry jndiName="second-runtime/mfp.authorization.server" value='"embedded"'/>
+   ```
 
 4. Add a second `dataSource` element:
 
-    ```xml
-    <dataSource jndiName="second-runtime/jdbc/mfpDS" transactional="false">
+   ```xml
+   <dataSource jndiName="second-runtime/jdbc/mfpDS" transactional="false">
         <jdbcDriver libraryRef="DerbyLib"/>
         <properties.derby.embedded databaseName="${wlp.install.dir}/databases/second-runtime" user='"MFPDATA"'/>
-    </dataSource>
-    ```
+   </dataSource>
+   ```
 
     > **Note:**
     > 
@@ -822,12 +837,12 @@ Defines how often (in seconds) the decommissioning task is run. Default: 86400, 
 * Generates the license tracking report.
 
 **mfp.licenseTracking.enabled**  
-A value that is used to enable or disable license tracking in IBM MobileFirst Foundation. By default, license tracking is enabled. For performance reasons, you can disable this flag when IBM MobileFirst Foundation is not licensed by Client Device or by Addressable Device. When device tracking is disabled, the license reports are also disabled and no license metrics are generated. In that case, only IBM® License Metric Tool records for Application count are generated.
+A value that is used to enable or disable license tracking in IBM MobileFirst Foundation. By default, license tracking is enabled. For performance reasons, you can disable this flag when IBM MobileFirst Foundation is not licensed by Client Device or by Addressable Device. When device tracking is disabled, the license reports are also disabled and no license metrics are generated. In that case, only IBM  License Metric Tool records for Application count are generated.
 
 For more information about specifying JNDI properties, see [List of JNDI properties for MobileFirst runtime](#list-of-jndi-properties-for-mobilefirst-runtime).
 
 ### Configuring IBM License Metric Tool log files
-IBM MobileFirst Foundation generates IBM® Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this to understand how to configure the location and the maximum size of the generated files.
+IBM MobileFirst Foundation generates IBM  Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this to understand how to configure the location and the maximum size of the generated files.
 
 By default, the IBM Software License Metric Tag files are in the following directories:
 
@@ -847,7 +862,7 @@ To change the default values, you must create a Java property file, with the for
 For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool](../../../administering-apps/license-tracking/#integration-with-ibm-license-metric-tool).
 
 ## WebSphere Application Server SSL configuration and HTTP adapters
-By setting a property, you can let HTTP adapters benefit from WebSphere® SSL configuration.
+By setting a property, you can let HTTP adapters benefit from WebSphere  SSL configuration.
 
 By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the MobileFirst Server keystore, which is described in [Configuring the MobileFirst Server keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between MobileFirst adapters and back-end servers by using self-signed certificates](../../../administering-apps/deployment/#configuring-ssl-between-mobilefirst-adapters-and-back-end-servers-by-using-self-signed-certificates).
 

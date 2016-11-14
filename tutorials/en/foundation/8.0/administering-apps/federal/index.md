@@ -18,7 +18,7 @@ IBM MobileFirst Foundation supports Federal Desktop Core Configuration (FDCC), a
 ## FDCC and USGCB support
 The United States federal government mandates that federal agency desktops that run on Microsoft Windows platforms adopt Federal Desktop Core Configuration (FDCC) or the newer United States Government Configuration Baseline (USGCB) security settings.
 
-IBM® Worklight® V5.0.6 was tested by using the USGCB and FDCC security settings via a self-certification process. Testing includes a reasonable level of testing to ensure that installation and core features function on this configuration.
+IBM  Worklight  V5.0.6 was tested by using the USGCB and FDCC security settings via a self-certification process. Testing includes a reasonable level of testing to ensure that installation and core features function on this configuration.
 
 #### References
 For more information, see [USGCB](http://usgcb.nist.gov/).
@@ -27,7 +27,7 @@ For more information, see [USGCB](http://usgcb.nist.gov/).
 Federal Information Processing Standards (FIPS) are standards and guidelines that are issued by the United States National Institute of Standards and Technology (NIST) for federal government computer systems. FIPS Publication 140-2 is a security standard that is used to accredit cryptographic modules. IBM MobileFirst Foundation provides FIPS 140-2 support for Android and iOS Cordova apps.
 
 ### FIPS 140-2 on the MobileFirst Server, and SSL communications with the MobileFirst Server
-The IBM MobileFirst Foundation server runs in an application server, such as the WebSphere® Application Server. The WebSphere Application Server can be configured to enforce the use of FIPS 140-2 validated cryptographic modules for inbound and outbound Secure Socket Layer (SSL) connections. The cryptographic modules are also used for the cryptographic operations that are performed by the applications by using the Java Cryptography Extension (JCE). Since the MobileFirst Server is an application that runs on the application server, it uses the FIPS 140-2 validated cryptographic modules for the inbound and outbound SSL connections.
+The IBM MobileFirst Foundation server runs in an application server, such as the WebSphere  Application Server. The WebSphere Application Server can be configured to enforce the use of FIPS 140-2 validated cryptographic modules for inbound and outbound Secure Socket Layer (SSL) connections. The cryptographic modules are also used for the cryptographic operations that are performed by the applications by using the Java Cryptography Extension (JCE). Since the MobileFirst Server is an application that runs on the application server, it uses the FIPS 140-2 validated cryptographic modules for the inbound and outbound SSL connections.
 
 When an IBM MobileFirst Foundation client transacts a Secure Socket Layer (SSL) connection to a MobileFirst Server, which is running on an application server that is using the FIPS 140-2 mode, the results are the successful use of the FIPS 140-2 approved cipher suite. If the client platform does not support one of the FIPS 140-2 approved cipher suites, the SSL transaction fails and the client is not able to establish an SSL connection to the server. If successful, the client uses a FIPS 140-2 approved cipher suite.
 
@@ -123,7 +123,7 @@ The FIPS 140-2 optional feature is not enabled by default on apps created for an
 
 After you completed the steps that are described in Enabling FIPS 140-2, you must configure FIPS 140-2 by modifying the initOptions object in the index.js file to add the FIPS configuration property.
 
-**Note:** The FIPS 140-2 feature, combined with the JSONStore feature, enables FIPS 140-2 support for JSONStore. This combination supersedes what was indicated in tutorial JSONStore - Encrypting sensitive data with FIPS 140-2 that was available for IBM® Worklight® V6.0 or earlier. If you previously modified an application by following the instructions in this tutorial, delete and re-create its iPhone, iPad, and Android environments. Because any environment-specific changes that you previously made are lost when you delete an environment, make sure to back up any such changes before you delete any environment. After the environment is re-created, you can reapply those changes to the new environment.
+**Note:** The FIPS 140-2 feature, combined with the JSONStore feature, enables FIPS 140-2 support for JSONStore. This combination supersedes what was indicated in tutorial JSONStore - Encrypting sensitive data with FIPS 140-2 that was available for IBM  Worklight  V6.0 or earlier. If you previously modified an application by following the instructions in this tutorial, delete and re-create its iPhone, iPad, and Android environments. Because any environment-specific changes that you previously made are lost when you delete an environment, make sure to back up any such changes before you delete any environment. After the environment is re-created, you can reapply those changes to the new environment.
 
 Add the following property to the initOptions object found in the index.js file.
 

@@ -43,7 +43,7 @@ You can use either the Design or the Source editor in the Studio, or use your fa
 - Database URL<br />
 - Username<br />
 - Password</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
   <connectivity>
     <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
       <dataSourceDefinition>
@@ -57,7 +57,7 @@ You can use either the Design or the Source editor in the Studio, or use your fa
 {% endhighlight %}</p>
 </li>
 <li>Declare a procedure in the adapter XML file.
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <procedure name="getAccountTransactions1"/>
 {% endhighlight %}
 </li>
@@ -74,7 +74,7 @@ You can use either the Design or the Source editor in the Studio, or use your fa
 <li>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
 The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.</li>
 <li>Add more parameters, if necessary.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 //Create SQL query
 var getAccountsTransactionsStatement = WL.Server.createSQLStatement(
   "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -87,7 +87,7 @@ var getAccountsTransactionsStatement = WL.Server.createSQLStatement(
 </li>
 <li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
 <li>Return the result to the application or to another procedure.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 //Invoke prepared SQL query and return invocation result
 function getAccountTransactions1(accountId){
   return WL.Server.invokeSQLStatement({
@@ -101,7 +101,7 @@ function getAccountTransactions1(accountId){
 Specify a SQL stored procedure name as an invocation parameter.</li>
 <li>Add more parameters, if necessary.</li>
 <li>Return the invocation result to the application or to another procedure.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 //Invoke stored SQL procedure and return invocation result
 function getAccountTransactions2(accountId){
   return WL.Server.invokeSQLStoredProcedure({
@@ -113,7 +113,7 @@ function getAccountTransactions2(accountId){
 </li>
 </ol>
 <h2 id="results">Invocation Results</h2>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 {
   "isSuccessful": true,
   "resultSet": [{

@@ -63,7 +63,7 @@ Application-specific properties that are set in the shell descriptor are used in
 You can edit the <code>shell-descriptor.xml</code> file in Design mode or Source mode.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png"/></p>
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <shell xmlns="http://www.worklight.com/shell-descriptor" id="MyShell" platformVersion="7.0.0.00" version="1.0">
     <iphone version="1.0"/>
@@ -77,7 +77,7 @@ You can edit the <code>shell-descriptor.xml</code> file in Design mode or Source
 <li>Create a <code>myshell.js</code> file in the <code>MyShell\common\js</code> folder.</li>
 <li>Add the following function to it:
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function sayHelloFromShell(){
     alert("Hello from Shell");
 }
@@ -85,7 +85,7 @@ function sayHelloFromShell(){
 </li>
 <li>Modify the <code>body-top.wlfragment</code> file and add the following lines to it:
 <p>
-{% highlight html linenos %}
+{% highlight html  %}
 <h1>This is a header that will be visible in all inner applications that use this Shell</h1>
 <script src="js/myshell.js"></script>
 {% endhighlight %} 
@@ -93,7 +93,7 @@ function sayHelloFromShell(){
 <li>Modify the <code>main.js</code> file in the <code>apps/MyShellTest/common/js</code> folder.<br />
 Invoke the function that you previously added in the shell component.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit(){
     sayHelloFromShell();
 }

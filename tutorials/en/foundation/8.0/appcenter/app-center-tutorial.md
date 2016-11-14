@@ -15,6 +15,8 @@ Application Center facilitates sharing mobile applications:
 
 Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
 
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+
 You can use Application Center in different contexts. For example:
 
 * As an enterprise app store across an organization.
@@ -35,8 +37,8 @@ Application Center is installed as part of the installation of MobileFirst Serve
 
 **Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
 
-* Application server: Tomcat or WebSphere® Application Server full profile or Liberty profile
-* Database: DB2®, Oracle, or MySQL
+* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
+* Database: DB2 , Oracle, or MySQL
 
 If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
 

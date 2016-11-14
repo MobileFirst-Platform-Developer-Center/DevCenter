@@ -33,7 +33,7 @@ The flows between the various MobileFirst Server components, IBM MobileFirst Ana
 9. [Mobile devices to MobileFirst runtime](#mobile-devices-to-mobilefirst-runtime)
 
 ### MobileFirst runtime to MobileFirst Server administration service
-The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from MobileFirst Operations Console or the administration service. On WebSphere® Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
+The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from MobileFirst Operations Console or the administration service. On WebSphere  Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
 
 The protocols for JMX depend on the application server:
 
@@ -153,7 +153,7 @@ The live update service must be always installed with the administration service
 
 You can use the following topologies of application servers:
 
-* Stand-alone server: WebSphere® Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
+* Stand-alone server: WebSphere  Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
 * Server farm: WebSphere Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
 * WebSphere Application Server Network Deployment cell
 * Liberty collective
@@ -177,7 +177,7 @@ Asymmetric deployment is only supported for WebSphere Application Server Network
 * [Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
 ### Stand-alone server topology
-You can configure a stand-alone topology for WebSphere® Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
+You can configure a stand-alone topology for WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
 In this topology, all the administration components and the runtimes are deployed in a single Java Virtual Machine (JVM).
 
 ![Stand-alone topology](standalone_topology.jpg)
@@ -203,8 +203,8 @@ The following global JNDI properties are required for the administration service
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
 | mfp.admin.jmx.host       | The host name of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the <httpEndpoint> element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
-| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the <administrator-role> element of the server.xml file of the WebSphere Application Server Liberty profile server. |
+| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the `<httpEndpoint>` element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
+| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the `<administrator-role>` element of the server.xml file of the WebSphere Application Server Liberty profile server. |
 | mfp.admin.jmx.pwd        | The password of the WebSphere Application Server Liberty administrator user. |
 
 Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
@@ -248,7 +248,7 @@ When you deploy several administration components, you must specify:
 * On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
 
 ### Server farm topology
-You can configure a farm of WebSphere® Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
+You can configure a farm of WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
 
 A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of MobileFirst applications to be distributed across several servers. Each server in the farm must be a Java virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
 
@@ -312,7 +312,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code><httpEndpoint></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -324,7 +324,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.user
         </td>
         <td>
-            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
+            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
             
 {% highlight xml %}
 <administrator-role>
@@ -444,21 +444,21 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
@@ -499,21 +499,21 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code><httpEndpoint></code> element of the server.xml file of the Liberty controller.
+        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code><administrator-role></code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
-</td>
+        </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
@@ -530,7 +530,7 @@ The following JNDI property is required for the runtime when several controllers
 When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
 
 ### WebSphere Application Server Network Deployment topologies
-The administration components and the runtimes are deployed in servers or clusters of the WebSphere® Application Server Network Deployment cell.
+The administration components and the runtimes are deployed in servers or clusters of the WebSphere  Application Server Network Deployment cell.
 
 Examples of these topologies support either asymmetric or symmetric deployment, or both. You can, for example, deploy the administration components (MobileFirst Operations Console, the administration service, and the live update service) in one cluster and the runtimes managed by these components in another cluster.
 
@@ -608,7 +608,7 @@ If the virtual host that is mapped to an administration service application is n
 ### Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies
 You can use a reverse proxy with distributed topologies. If your topology uses a reverse proxy, configure the required JNDI properties for the administration service.
 
-You can use a reverse proxy, such as IBM® HTTP Server, to front server farm or WebSphere® Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
+You can use a reverse proxy, such as IBM  HTTP Server, to front server farm or WebSphere  Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
 
 You can call the reverse proxy from:
 
@@ -643,4 +643,4 @@ The constraints as described in [Constraints on MobileFirst Server administratio
 ## Multiple instances of MobileFirst Server on the same server or WebSphere Application Server cell
 By defining a common environment ID, multiple instances of MobileFirst Server are possible to be installed on the same server.
 
-You can install multiple instances of MobileFirst Server administration service, MobileFirst Server live update service, and MobileFirst runtime on the same application server or WebSphere® Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.
+You can install multiple instances of MobileFirst Server administration service, MobileFirst Server live update service, and MobileFirst runtime on the same application server or WebSphere  Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.

@@ -12,13 +12,14 @@ downloads:
 ---
 <h2>Overview</h2>
 <p>To create and configure an iOS native project, first follow the "<a title="Creating your first native iOS MobileFirst application" href="../../hello-world/creating-first-native-ios-mobilefirst-application/">Creating your first Native iOS MobileFirst application</a>" tutorial.<br />
+<blockquote><b>Note:</b> The <b>Keychain Sharing</b> capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.</blockquote>
 Make sure that you follow the extra steps for Swift-based applications.</p>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Access the <code>WLClient</code> functionality by calling the <code>WLClient.sharedInstance</code> method anywhere in your application.</li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-{% highlight swift linenos %}
+{% highlight swift  %}
 let connectListener = MyConnectListener(vc: self)
 WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
 {% endhighlight %}
@@ -26,7 +27,7 @@ WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
 <li>Make sure that your Bridging Header includes <strong>WLSwiftBridgingHeader.h</strong> for access to MobileFirst APIs.</li>
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.
 <p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
-{% highlight swift linenos %}
+{% highlight swift  %}
 class MyConnectListener: NSObject, WLDelegate{
 //...
 }
@@ -37,7 +38,7 @@ class MyConnectListener: NSObject, WLDelegate{
 <p>After <code>wlConnectWithDelegate</code> finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyConnectListener</code> instance is called.<br />
 In both cases, the response object is sent as an argument.</li>
 <li>Use this object to operate data that is retrieved from the server.
-{% highlight swift linenos %}
+{% highlight swift  %}
 func onSuccess(response: WLResponse!) {
     var resultText = "Connection success. "
     if(response != nil){
@@ -58,12 +59,12 @@ func onFailure(response: WLFailResponse!) {
 <h2>Calling an adapter procedure</h2>
 <ol>
 <li>To call a procedure, create a <code>WLProcedureInvocationData</code> object and specify the adapter name and the procedure name.
-{% highlight swift linenos %}
+{% highlight swift  %}
 let invocationData = WLProcedureInvocationData(adapterName: "RSSReader", procedureName: "getStories")
 {% endhighlight %}
 </li>
 <li>Call the procedure by using the shared instance of <code>WLClient</code>. As previously stated, supply a delegate object to manage the retrieved data.
-{% highlight swift linenos %}
+{% highlight swift  %}
 let invokeListener = MyInvokeListener(vc: self)
 WLClient.sharedInstance().invokeProcedure(invocationData, withDelegate: invokeListener)
 {% endhighlight %}
@@ -71,7 +72,7 @@ WLClient.sharedInstance().invokeProcedure(invocationData, withDelegate: invokeLi
 <h2>Receiving a procedure response</h2>
 <p>When the procedure call is complete, a delegate method of the <code>MyInvokeListener</code> instance is called.<br />
 Any delegate header file must specify that it complies with a <code>WLDelegate</code> protocol.</p>
-{% highlight swift linenos %}
+{% highlight swift  %}
 class MyInvokeListener: NSObject, WLDelegate{
 }
 {% endhighlight %}
@@ -79,7 +80,7 @@ class MyInvokeListener: NSObject, WLDelegate{
 <p>After the procedure call finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyInvokeListener</code> instance is called.<br />
 In both cases, a response object is sent as an argument.</li>
 <li>Use this object to operate data that is retrieved from the server.
-{% highlight swift linenos %}
+{% highlight swift  %}
 func onSuccess(response: WLResponse!) {
     var resultText = "Invocation success. "
     if(response != nil){

@@ -53,7 +53,7 @@ No provisioning is the default setting for mobile applications.</p>
 <ul>
 <li>If you use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</li>
 <li>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <customSecurityTest name="customTests">
   ...
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" />
@@ -75,14 +75,14 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.jpg" /></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <code>authentication-config.xml</code> file.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <customSecurityTest name="customTests">
   …
   <test realm="wl_authenticityRealm" />
   <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" />
 </customSecurityTest>
 {% endhighlight %}</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <mobileSecurityTest name="mobileTests">
   ...
   <testAppAuthenticity/>

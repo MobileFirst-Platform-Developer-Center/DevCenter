@@ -21,7 +21,7 @@ However, writing this logic on the server side could be faster and cleaner.</p>
 <h2 id="invoke">invokeProcedure</h2>
 <p>At the heart of this mashup scenario is the <code>WL.Server.invokeProcedure(invocationData)</code> API. Almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.</p>
 <p>The <code>invocationData</code> parameter has the same format as the client-side API.<br />
-{% highlight javascript linenos %} <br />
+{% highlight javascript  %} <br />
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });<br />
  {% endhighlight %} </p>
 <p>However, while the client-side <code>invokeProcedure</code> uses a success handler, the server-side one returns the result object itself.</p>
@@ -57,7 +57,7 @@ The HTTP request has the following parameters:</p>
 </ul>
 </li>
 <li>Create the <code>getYahooWeather</code> function in the <code>HTTPWeather-impl.js</code> file and use it to retrieve and return the weather data by using the Yahoo! Weather API:
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getYahooWeather(woeid) {
     var input = {
         method : 'get',
@@ -86,7 +86,7 @@ function getYahooWeather(woeid) {
 Remember that SQL adapters require a JDBC connector driver, which must be downloaded separately by the developer and added to the <code>server/lib</code> folder of the project.</p>
 </li>
 <li>Create a <code>getCitiesList</code> function in the <code>SQLAdapter-impl.js</code> file and use it to retrieve and return the city list from the SQL database.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
 function getCitiesList() {
     return WL.Server.invokeSQLStatement({
@@ -97,7 +97,7 @@ function getCitiesList() {
 {% endhighlight %} </p>
 </li>
 <li>Create a <code>getCityWeather</code> function in the <code>SQLAdapter-impl.js</code> file and use it to retrieve and return the weather data from the HTTPWeather adapter:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getCityWeather(woeid){
     return WL.Server.invokeProcedure({
         adapter : 'HTTPWeather',
@@ -110,7 +110,7 @@ function getCityWeather(woeid){
 <li>In the SQL adapter, extract a city identifier from the city list that was retrieved earlier and use it to call the <code>getYahooWeather</code> procedure of the HTTPWeather adapter.
 </li>
 <li>Repeat for each city, attaching the received data to the city object.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getCitiesWeather(){
     var cityList = getCitiesList();
     for (var i = 0; i < cityList.resultSet.length; i++) {

@@ -37,11 +37,11 @@ IBM MobileFirst Foundation V8.0.0 is radically simplified compared to the previo
 ## Migrating a Cordova or hybrid application
 You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
 
-Add support for the MobileFirst features by adding the MobileFirst plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v8-0-versus-v7-1-and-before).
+Add support for the MobileFirst features by adding the MobileFirst plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before).
 
 To migrate a Cordova or hybrid app, you need to
 
-* For planning purpose, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* For planning purposes, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 * Replace the client-side APIs that are discontinued or not in V8.0.0. For a list of API changes, see [Upgrading the WebView](migrating-client-applications/cordova/#upgrading-the-webview).
 * Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API instead of `WL.Client.invokeProcedure`, which is deprecated.
 * If you use Direct Update, review [Migrating Direct Update](migrating-client-applications/cordova/#migrating-direct-update).
@@ -86,7 +86,7 @@ MobileFirst Server enables changes to app security, connectivity and push withou
 Because of these changes, IBM MobileFirst Platform Foundation does not include automated scripts to migrate your databases from earlier versions to V8.0.0 or to upgrade an existing server installation. To move new versions of your apps to V8.0.0, install a new server that you can run side by side with your previous server. Then, upgrade your apps and adapters to V8.0.0 and deploy them to the new server.
 
 ## Storing mobile data in Cloudant
-Storing mobile data in Cloudant® with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
+Storing mobile data in Cloudant  with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
 
 ## Applying a fix pack to IBM MobileFirst Server
 Find out how to use the Server Configuration Tool to upgrade MobileFirst Server V8.0.0 to a fix pack or an interim fix. Alternatively, if you installed MobileFirst Server with Ant tasks, you can also use Ant tasks to apply the fix pack or interim fix.

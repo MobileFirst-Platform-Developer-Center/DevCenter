@@ -23,7 +23,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}<nativeWindowsPhone8App id="NativeWP8TagNotifications" platformVersion="7.0.0.00.20150227-0916"
+<p>{% highlight xml  %}<nativeWindowsPhone8App id="NativeWP8TagNotifications" platformVersion="7.0.0.00.20150227-0916"
 	version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor">
 ...
 ...
@@ -54,7 +54,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li><code>WLNotificationListener</code><br />
     Defines the callback method to be notified when the notification arrives.</p>
-<p>{% highlight java linenos %}client.getPush().setWLNotificationListener(listener){% endhighlight %}</li>
+<p>{% highlight java  %}client.getPush().setWLNotificationListener(listener){% endhighlight %}</li>
 <li>The <code>onMessage(props,payload)</code> method of <code>WLNotificationListener</code> is called when a push notification is received by the device.
 <ul>
 <li><code>props</code> - A JSON block that contains the notification properties of the platform.</li>
@@ -85,7 +85,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml linenos %}<application ... id="NativeWP8TagNotifications" ...>{% endhighlight %}</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml  %}<application ... id="NativeWP8TagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:
