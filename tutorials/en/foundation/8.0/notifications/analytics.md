@@ -40,7 +40,7 @@ To track the notifications dispatched out of the Push Notifications service, ens
 <jndiEntryjndiName = "mfp.push.analytics.events.notificationDispatch" value = "true"/>
 ```
 
-If any of these events are not to be sent, set the property to **false**.
+To disable the sending of this event, set the property to **false**.
 
 For information on viewing the Push Notification reports in the Analytics Console, see [Push Notification Reports](../../analytics/console/push-notifications/).
 
