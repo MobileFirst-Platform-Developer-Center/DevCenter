@@ -186,13 +186,13 @@ import IBMMobileFirstPlatformFoundation
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
 > 
->      ```xml
+```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
 >            <key>NSAllowsArbitraryLoads</key>
 >            <true/>
 >      </dict>
->      ```
+```
 
 ## Adding Support for Apple watchOS 2
 If you are developing for Apple watchOS, the Podfile must contain sections corresponding to the main app and the watchOS extension:

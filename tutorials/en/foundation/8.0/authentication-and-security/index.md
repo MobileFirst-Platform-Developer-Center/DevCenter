@@ -137,7 +137,7 @@ The following predefined security checks are available:
 
 - [Application Authenticity](application-authenticity/)
 - [Direct Update](../application-development/direct-update)
-- LTPA
+- LTPA-based single sign-on (SSO)
 
 ### Challenge Handler
 When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure that the client is allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a user name and password.
