@@ -4,7 +4,6 @@ title: Developing Adapters in Eclipse
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
-<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven projects that are created by using either Maven directly or via the MobileFirst CLI. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the MobileFirst CLI. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial a MobileFirst adapter is created and built from the Eclipse IDE.
 

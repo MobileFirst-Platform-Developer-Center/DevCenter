@@ -3,7 +3,6 @@ layout: tutorial
 title: Logging in JavaScript Adapters
 relevantTo: [ios,android,windows,javascript]
 ---
-<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in a JavaScript adapter.
 

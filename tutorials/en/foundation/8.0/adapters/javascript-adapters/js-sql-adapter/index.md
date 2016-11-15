@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
-<!-- NLS_CHARSET=UTF-8 -->
+
 ## Overview
 An IBM MobileFirst Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
