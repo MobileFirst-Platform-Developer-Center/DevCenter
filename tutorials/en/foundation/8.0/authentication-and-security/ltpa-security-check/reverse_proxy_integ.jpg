@@ -1,0 +1,221 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+		<!-- this has to come right after head element to force IE to use the latest compatibility version -->
+	<title>IBM Knowledge Center</title>
+	<meta name="viewport" content=""/>
+	<meta content="$locale" http-equiv="Content-Language" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="DC.Rights" content="© Copyright IBM Corp. 2013, 2014"/>
+	<meta name="Keywords" content="publications, information, documentation, libraries, infocenters, knowledge center"/>
+	<meta name="DC.Date" scheme="iso8601" content="2013-01-01"/>
+	<meta name="Source" content="v17 Template Generator, Template 17.02"/>
+	<meta name="Security" content="Public"/>
+	<meta name="Abstract" content="IBM product documentation is available in a searchable, browsable Knowledge Center--IBM's revolutionary approach to product information delivery."/>
+	<meta name="IBM.Effective" scheme="W3CDTF" content="2013-01-01"/>
+	<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="SU400"/>
+	<meta name="Owner" content="IBM Knowledge Center/Pittsburgh/IBM"/>
+	<meta name="DC.Language" scheme="rfc1766" content="en-us"/>
+	<meta name="IBM.Country" content="ZZ"/>
+	<meta name="Robots" content="noindex,nofollow"/>
+	<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT701"/>
+	<meta name="Description" content="IBM product documentation is available in a searchable, browsable Knowledge Center; IBM's revolutionary approach to product information delivery."/>
+	<meta name="IBM.WTMSite" content="ESTKCS"/>
+	<meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS" />
+	<script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>	
+	
+	
+		
+	<!--[if IE]>
+    	<script type="text/javascript">
+    		var ieDM = document.documentMode;
+    		if (ieDM <=7 && ieDM > 0) {
+    			location.href = "/support/knowledgecenter" + "/unsupported.jsp";
+    		}
+	    </script>
+	<![endif]-->
+	
+	<script type="text/javascript">		
+		var contextPath = "/support/knowledgecenter";
+
+		//Determine which language KC and dojo should load...
+		//Step a: look at the url
+		var lang = undefined;
+		var dir = "ltr";
+		var query = location.search.substring(1);  
+		var pairs = query.split("&"); 
+		for (var i = 0; i < pairs.length; i++) { 
+			var pair = pairs[i];
+			var eqPos = pair.indexOf('=');
+			if (eqPos == -1) continue;
+			var arg = pair.substring(0, eqPos);
+			if (arg === "lang") {	//this has to match Constants.BROWSER_STATE_PARAMETER_LANGUAGE
+				lang = pair.substring(eqPos+1); 
+				break;
+			}
+		}
+		//Step b: look at the browser setting
+		if (!lang) {
+			
+            lang = "en_US";
+		}
+		//Step c: if nothing found, default to English
+		if (!lang) {
+			lang = "en-us";
+		}
+		//Fix for dojo - this is required for dojo because it otherwise treats pt as pt-br
+		if (lang === "pt") lang = "pt-pt";		
+		
+		var startsWith = function(string, prefix) {
+			return (string.indexOf(prefix) == 0);
+		};	
+		if (startsWith(lang, "ar") || startsWith(lang, "he") || startsWith(lang, "iw")) {
+			dir="rtl";
+		}
+
+		lang = lang.replace("_", "-").toLowerCase();
+	 
+	    var djConfig = {
+		    parseOnLoad: false, 
+		    async: true,
+		    locale: lang,		
+		    packages: [{name: 'idx', location: contextPath + '/js/idx' },
+				  	   {name: 'kc', location: contextPath + '/js/kc' }
+				  	  ]
+	    };
+	</script>
+	
+	<script type="text/javascript" src="/support/knowledgecenter/js/dojo/dojo.js"></script>
+	<script type="text/javascript" src="/support/knowledgecenter/js/dojo/layer_dojo_prereqs.js"></script>
+	<script type="text/javascript" src="/support/knowledgecenter/js/dojo/layer_idx_prereqs.js"></script>
+	<script type="text/javascript" src="/support/knowledgecenter/js/dojo/layer_kc.js"></script>
+
+	<link rel="shortcut icon" href="/support/knowledgecenter/js/kc/themes/images/kc.ico"/>
+	
+	<style type="text/css">
+		@import "/support/knowledgecenter/js/kc/themes/css/kc.css";
+		@import "/support/knowledgecenter/js/idx/themes/oneui/oneui.css";		
+	</style>
+
+
+	<script type="text/javascript">
+	require(["dojo/ready"], function(ready) {
+		ready(function() {			
+			function loadKC() {				
+				//This is needed before the next block so we handle necessary hash/html5 URL handling and do the URL redirections before doing more computation
+				require(["kc/state/URLReconciler"], function(URLReconciler) {
+				});
+	
+				require(["kc/Constants", "dojo/has", "dojo/dom-style", "kc/controller/AuthenticationController",
+					"kc/LinkManager", "kc/state/BrowserStateController", "kc/KCExtensions",
+					"kc/FeedbackManager", "kc/InstrumentationManager", "kc/UserZoomStudy", "kc/MockManager",	//these scripts will initialize themselves automatically upon require...
+					"kc/frame/Frame", "idx/oneui/messaging/Toaster"], function(Constants, has, domStyle) {
+					var h = document.getElementsByTagName('html')[0];
+					h.lang = Constants.KC_LANGUAGE;
+					h.dir = dir;
+					var b = document.getElementsByTagName('body')[0];
+					b.lang = Constants.KC_LANGUAGE;
+					b.dir = dir;
+					b.setAttribute("loaded", true);
+	
+					if (has("ie") == 8) {	//94791
+						domStyle.set(b, "visibility", "hidden");
+						domStyle.set(b, "visibility", "visible");
+					}
+	
+					var toaster = new idx.oneui.messaging.Toaster({lang:Constants.KC_LANGUAGE, dir:dir, messageTimeout: 12345, style: 'z-index: 9', role: 'alert'}, "kcToaster");
+					toaster.startup();
+	
+					var frame = new kc.frame.Frame({lang:Constants.KC_LANGUAGE, dir:dir}, "kcFrame");
+					frame.startup();
+				});
+			}
+
+			// display overlay, don't load KC
+			require(["kc/MobileRedirectOverlay", "kc/Constants"], function(overlay, Constants){
+				//Set the context path and other constants that will be user later on
+				Constants.KC_ROOT = contextPath;
+				Constants.KC_API_ROOT = contextPath + "/api";
+		
+				//pass the exposed server side properties to the UI
+				
+				
+				Constants.SERVER_PROPERTIES['private.feedback.domain'] = 'http://safervm.torolab.ibm.com/kc';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.url'] = '';
+				
+				Constants.SERVER_PROPERTIES['user.study.disabled'] = 'true';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.exiturl'] = '';
+				
+				Constants.SERVER_PROPERTIES['feedback'] = 'disabled';
+				
+				Constants.SERVER_PROPERTIES['healthcheck.message.url'] = '/doc/alert.messages.json';
+				
+				Constants.SERVER_PROPERTIES['feedback.footer.disabled'] = 'true';
+				
+				Constants.SERVER_PROPERTIES['feedback.max.comments'] = '100';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.percentage'] = '5';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.id'] = '';
+				
+				Constants.SERVER_PROPERTIES['pdf.max.topic'] = '2147483647';
+				
+				Constants.SERVER_PROPERTIES['max.jobs.per.user'] = '1';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.stop'] = '';
+				
+				Constants.SERVER_PROPERTIES['feedback.exitsurvey.start'] = '';
+				
+				Constants.SERVER_PROPERTIES['savedsearch.amount'] = '10';
+				
+				Constants.SERVER_PROPERTIES['logindlg.forgotid.url'] = 'https://www.ibm.com/account/profile/us?page=reghelpdesk';
+				
+				Constants.SERVER_PROPERTIES['logindlg.forgotpassword.url'] = 'https://www.ibm.com/account/profile/us?page=forgot';
+				
+				Constants.SERVER_PROPERTIES['healthcheck.frequency'] = '600000';
+				
+				Constants.SERVER_PROPERTIES['development'] = 'true';
+				
+				Constants.SERVER_PROPERTIES['healthcheck.alert.url'] = '/doc/alert.properties';
+				
+				Constants.SERVER_PROPERTIES['logindlg.register.url'] = 'https://www.ibm.com/account/profile/us?page=reg';
+				
+				Constants.SERVER_PROPERTIES['healthcheck.disabled'] = 'true';
+				
+	
+				Constants.serverPropertiesLoaded();
+				
+				if(overlay.shouldDisplayOverlay()) {
+					overlay.displayOverlay();
+				} else if(overlay.shouldRedirectToMobile()) {
+					overlay._processMobileClick();
+				} else {
+					loadKC();
+				}				
+			});
+		});				
+	});
+	</script>
+
+	<link rel="shortcut icon" href="/support/knowledgecenter/js/kc/themes/images/kc.ico"/>
+
+	<style type="text/css">
+		@import "/support/knowledgecenter/js/kc/themes/css/kc.css";
+		@import "/support/knowledgecenter/js/idx/themes/oneui/oneui.css";
+	</style>
+</head>
+
+<body class="oneui kc">
+	<div id="kcMobileRedirectOverlay"></div>
+	<div id="kcFrame"></div>
+	<div id="kcToaster"></div>
+</body>
+
+</html>
