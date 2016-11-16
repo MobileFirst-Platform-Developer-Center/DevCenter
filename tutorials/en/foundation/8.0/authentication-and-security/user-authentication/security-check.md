@@ -140,6 +140,9 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
 This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
 
+> **Note:**
+> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+
 ## Adding RememberMe functionality
 By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
 
@@ -156,7 +159,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    ```java
    private String userId, displayName;
    private boolean rememberMe = false;
-   
+
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
