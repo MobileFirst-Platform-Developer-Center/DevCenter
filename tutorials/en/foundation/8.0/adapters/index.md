@@ -5,6 +5,7 @@ relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  
 Adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 

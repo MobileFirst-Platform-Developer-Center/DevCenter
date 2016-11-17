@@ -7,9 +7,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-
 When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
