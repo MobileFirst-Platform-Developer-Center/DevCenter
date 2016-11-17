@@ -3,6 +3,7 @@ layout: tutorial
 title: Troubleshooting
 weight: 14
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Find answers for frequantly asked questions about problems you may encounter while using MobileFirst Foundation 8.0.
 

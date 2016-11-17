@@ -4,6 +4,7 @@ title: Migrating existing adapters to work under MobileFirst Server V8.0.0
 breadcrumb_title: Migrating existing adapters
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Starting with v8.0 of MobileFirst Server, adapters are Maven projects. Learn how to upgrade adapters that were developed under earlier versions of MobileFirst Server.
 

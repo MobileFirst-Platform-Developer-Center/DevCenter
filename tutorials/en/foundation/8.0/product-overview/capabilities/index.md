@@ -3,6 +3,7 @@ layout: tutorial
 title: Product Main Capabilities
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 With IBM MobileFirst Foundation, you can use capabilities such as development, testing, back-end connections, push notifications, offline mode, update, security, analytics, monitoring, and application publishing.
 

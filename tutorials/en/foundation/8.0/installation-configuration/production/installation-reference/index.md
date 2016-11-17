@@ -3,6 +3,7 @@ layout: tutorial
 title: Installation Reference
 weight: 9
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Reference information about Ant tasks and configuration sample files for the installation of IBM MobileFirst  Server, IBM MobileFirst Application Center, and IBM MobileFirst Analytics.
 

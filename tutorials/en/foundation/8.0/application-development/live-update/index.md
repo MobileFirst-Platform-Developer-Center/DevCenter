@@ -11,7 +11,7 @@ downloads:
   - name: Download Live Update adapter
     url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
 

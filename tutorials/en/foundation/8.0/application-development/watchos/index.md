@@ -5,7 +5,7 @@ breadcrumb_title: watchOS 2
 relevantTo: [ios]
 weight: 13
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Setup
 To set up the development environment for watchOS 2, create the Xcode project, add the watchOS 2 framework, and set up the necessary targets.
 

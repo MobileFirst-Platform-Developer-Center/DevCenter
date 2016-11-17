@@ -3,6 +3,7 @@ layout: tutorial
 title: Topologies and Network flows
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The information presented here details possible server topologies for MobileFirst Server components, as well as available network flows.  
 The components are deployed according to the server topology that you use. The network flows explain to you how the components communicate with one another and with the end-user devices.

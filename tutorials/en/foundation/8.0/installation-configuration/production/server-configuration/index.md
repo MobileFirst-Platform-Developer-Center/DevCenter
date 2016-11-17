@@ -3,6 +3,7 @@ layout: tutorial
 title: Configuring MobileFirst Server
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Consider your backup and recovery policy, optimize your MobileFirst Server configuration, and apply access restrictions and security options.
 

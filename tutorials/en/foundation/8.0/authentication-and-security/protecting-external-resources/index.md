@@ -6,6 +6,7 @@ relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Protected resources can run on the MobileFirst Server (such as **Adapters**), or on **external servers**. You can protect resources on external servers by using the validation modules that are provided with MobileFirst Foundation.
 

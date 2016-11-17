@@ -5,6 +5,7 @@ breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can configure the Application Center client so that push notifications are sent to users when an update is available for an application in the store.
 

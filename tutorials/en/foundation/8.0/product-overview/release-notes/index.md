@@ -3,6 +3,7 @@ layout: tutorial
 title: Release Notes
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 Identify the latest information about this product release and all its fix packs.
 

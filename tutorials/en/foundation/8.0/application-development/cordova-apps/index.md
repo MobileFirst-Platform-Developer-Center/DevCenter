@@ -5,7 +5,7 @@ breadcrumb_title: Cordova application development
 relevantTo: [cordova]
 weight: 4
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 From [http://cordova.apache.org/](http://cordova.apache.org/):
 

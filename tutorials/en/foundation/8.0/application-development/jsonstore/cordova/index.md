@@ -10,6 +10,7 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Prerequisites
 
 * Read the [JSONStore parent tutorial](../)

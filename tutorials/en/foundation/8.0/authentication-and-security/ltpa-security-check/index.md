@@ -5,6 +5,7 @@ breadcrumb_title: LTPA Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 A lightweight third-party authentication (LTPA) token is a type of security token that is used by IBM WebSphere Application Server and other IBM products. LTPA can be used to send the credentials of an authenticated user to back-end services. It can also be used as a single sign-on (SSO) token between the user and multiple servers.
 

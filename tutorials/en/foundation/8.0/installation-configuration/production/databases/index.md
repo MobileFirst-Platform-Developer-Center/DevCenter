@@ -3,6 +3,7 @@ layout: tutorial
 title: Setting Up Databases
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The following MobileFirst Server components need to store technical data into a database:
 

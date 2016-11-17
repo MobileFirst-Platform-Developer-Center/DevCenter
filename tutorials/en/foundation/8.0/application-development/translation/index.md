@@ -8,7 +8,7 @@ downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can use the IBM MobileFirst Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 

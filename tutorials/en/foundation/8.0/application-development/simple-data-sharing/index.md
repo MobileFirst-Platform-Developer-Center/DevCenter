@@ -4,6 +4,7 @@ title: Simple Data Sharing
 relevantTo: [ios,android,cordova]
 weight: 12
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The Simple Data Sharing feature makes it possible to securely share lightweight information among a family of applications on a single device. This feature uses native APIs that are already present in the different mobile SDKs to provide one unified developer API. This MobileFirst API abstracts the different platform complexities, making it easier for developers to quickly implement code that allows for inter-application communication.
 

@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 

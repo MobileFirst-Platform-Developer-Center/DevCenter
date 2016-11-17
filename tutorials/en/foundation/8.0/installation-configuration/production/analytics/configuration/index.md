@@ -4,6 +4,7 @@ title: MobileFirst Analytics Server Configuration Guide
 breadcrumb_title: Configuration Guide
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Some configuration for the MobileFirst Analytics Server is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
 

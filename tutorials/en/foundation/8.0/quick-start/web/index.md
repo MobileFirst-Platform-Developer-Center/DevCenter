@@ -5,6 +5,7 @@ breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 

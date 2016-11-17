@@ -8,7 +8,7 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
 In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.

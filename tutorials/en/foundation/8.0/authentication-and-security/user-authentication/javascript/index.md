@@ -16,7 +16,7 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/javascript) tutorial.
 

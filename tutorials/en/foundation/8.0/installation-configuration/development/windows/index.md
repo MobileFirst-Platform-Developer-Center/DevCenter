@@ -5,6 +5,7 @@ breadcrumb_title: Windows
 relevantTo: [windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
 

@@ -3,6 +3,7 @@ layout: tutorial
 title: Deprecated and discontinued features and APIs
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 Consider carefully how removed features and API elements affect your IBM MobileFirst Foundation environment.
 

@@ -4,6 +4,7 @@ title: Confidential Clients
 relevantTo: [android,ios,windows,javascript]
 weight: 10
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Mobile applications can utilize the MobileFirst client SDKs to request access to protected resources.  
 Other entities which are not mobile applications can do so as well. Such entities are considered as **Confidential Clients**.

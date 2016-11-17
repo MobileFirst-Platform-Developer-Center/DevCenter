@@ -4,6 +4,7 @@ title: Migrating client applications
 weight: 2
 show_children: true
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Migrate your existing client applications to IBM MobileFirst Foundation V8.0.0.
 

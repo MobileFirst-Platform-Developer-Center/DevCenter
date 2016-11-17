@@ -8,6 +8,7 @@ show_disqus: false
 print_pdf: false
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
 

@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
 

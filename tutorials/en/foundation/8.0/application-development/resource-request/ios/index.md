@@ -10,6 +10,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.

@@ -5,6 +5,7 @@ relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
 

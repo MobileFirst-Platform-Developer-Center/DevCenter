@@ -4,7 +4,7 @@ title: Sending Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 In order to send push or SMS notifications to iOS, Android or Windows devices, the MobileFirst Server first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
 Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.

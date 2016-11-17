@@ -8,6 +8,7 @@ downloads:
   - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
 

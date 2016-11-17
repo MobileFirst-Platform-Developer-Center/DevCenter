@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
 The pods correspond to core functions and other functions:

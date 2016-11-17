@@ -5,7 +5,7 @@ breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 If you used the **cordova-plugin-mfp** plug-in, and you did not use the MobileFirst template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by IBM MobileFirst Foundation with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
 

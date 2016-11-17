@@ -4,6 +4,7 @@ title: Workstation Installation Guide
 breadcrumb_title: Installation guide
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.
 

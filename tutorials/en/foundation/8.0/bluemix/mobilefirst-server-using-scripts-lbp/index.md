@@ -5,7 +5,7 @@ breadcrumb_title: Liberty for Java
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Follow the instructions below to configure a MobileFirst Server instance on a Liberty for Java runtime on Bluemix. (MobileFirst Analytics instance can be run on IBM containers only). To achieve this you will go through the following steps: 
 

@@ -5,6 +5,7 @@ breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can develop mobile or Desktop MobileFirst web applications by using your preferred development environment and tools.  
 In this tutorial, you learn how to add the MobileFirst Web SDK to your web applicaiton, as well as how to register the web application with the MobileFirst Server

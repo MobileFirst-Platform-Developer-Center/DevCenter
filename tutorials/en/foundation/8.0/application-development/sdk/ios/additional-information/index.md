@@ -5,7 +5,7 @@ breadcrumb_title: additional information
 relevantTo: [ios]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Working with bitcode in iOS apps
 
 * The application-authenticity security check is not supported with bitcode.

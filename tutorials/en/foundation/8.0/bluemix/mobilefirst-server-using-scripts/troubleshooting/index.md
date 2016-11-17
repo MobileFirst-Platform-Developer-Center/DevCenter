@@ -4,7 +4,7 @@ title: Troubleshooting
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Resolving problems with IBM MobileFirst Foundation on IBM Containers	
 When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on IBM Containers, be sure to gather this key information before contacting IBM Support.
 

@@ -4,6 +4,7 @@ title: Migrating existing iOS applications
 breadcrumb_title: iOS
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To migrate an existing native iOS project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 

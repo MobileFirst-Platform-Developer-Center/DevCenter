@@ -3,6 +3,7 @@ layout: tutorial
 title: Licensing in MobileFirst Server
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The IBM MobileFirst Server supports two different licensing methods based on what you have purchased.
 

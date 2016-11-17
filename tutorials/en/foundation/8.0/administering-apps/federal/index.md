@@ -4,6 +4,7 @@ title: Federal standards support in MobileFirst Foundation
 breadcrumb_title: Federal standards support
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation supports Federal Desktop Core Configuration (FDCC), and United States Government Configuration Baseline (USGCB) specifications. IBM MobileFirst Foundation also supports the Federal Information Processing Standards (FIPS) 140-2, which is a security standard that is used to accredit cryptographic modules.
 

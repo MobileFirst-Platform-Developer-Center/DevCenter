@@ -5,6 +5,7 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 
 The MobileFirst Foundation SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:

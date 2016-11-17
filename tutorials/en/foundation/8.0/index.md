@@ -8,6 +8,7 @@ weight: 0
 show_disqus: false
 show_breadcrumb: true
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
 MobileFirst Foundation radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
 

@@ -4,6 +4,7 @@ title: Developing Applications
 show_children: true
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Development Concepts and Overview
 When you develop your app with the MobileFirst Foundation set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 

@@ -4,6 +4,7 @@ title: Administrating applications through the MobileFirst Operations Console
 breadcrumb_title: Administrating using the console
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can administer MobileFirst applications through the MobileFirst Operations Console by locking apps or denying access, or by displaying notification messages.
 
