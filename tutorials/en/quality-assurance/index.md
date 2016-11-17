@@ -6,6 +6,7 @@ show_breadcrumb: true
 show_disqus: false
 print_pdf: false
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
 <p>IBM MobileFirst Quality Assurance enables mobile app testing, user validation, and streamlined quality feedback with sentiment analysis, over-the-air build distribution, automated crash reporting, in-app bug reporting and user feedback.</p>
 
