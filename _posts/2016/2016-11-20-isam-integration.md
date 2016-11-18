@@ -254,6 +254,6 @@ There are 3 samples available:
 - **IsamSwift** contains a native Xcode project.
 - **IsamAndroid** contains a native Android Studio project.
 
-This sample uses `ResourceAdapter` adapter which can be found on GitHub [Security Check Adapters](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/release80).
+This sample uses `ResourceAdapter` adapter which can be found on GitHub [Security Check Adapters](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters).
 
 Ensure that *server.xml* file is configured and resources are deployed before running the sample app.
