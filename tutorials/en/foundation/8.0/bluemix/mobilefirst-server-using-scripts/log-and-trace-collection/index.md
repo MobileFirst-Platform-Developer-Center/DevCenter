@@ -4,7 +4,7 @@ title: Log and trace collection
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview 
 IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your MobileFirst containers.
 

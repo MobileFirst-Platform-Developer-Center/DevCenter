@@ -3,6 +3,7 @@ layout: tutorial
 title: System Requirements
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 System requirements for IBM MobileFirst Foundation include operating systems, SDKs, and other software.
 

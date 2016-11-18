@@ -5,6 +5,7 @@ breadcrumb_title: Analytics REST API
 relevantTo: [ios,android,cordova]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation Operational Analytics provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
 

@@ -5,6 +5,7 @@ title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
 weight: 9
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation can be hosted on Bluemix, here is some information about Bluemix.
 

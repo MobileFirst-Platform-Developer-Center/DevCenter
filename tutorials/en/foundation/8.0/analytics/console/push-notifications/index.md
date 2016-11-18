@@ -5,6 +5,7 @@ breadcrumb_title: Push Notifications
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Once Analytics support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
 

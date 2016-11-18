@@ -4,6 +4,7 @@ title: Installing MobileFirst Server to an application server
 breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully.
 

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Configuring the MobileFirst Server Keystore
 breadcrumb_title: Configuring the Server Keystore
-weight: 13
+weight: 14
 ---
 ## Overview
 A keystore is a repository of security keys and certificates that is used to verify and authenticate the validity of parties involved in a network transaction. The MobileFirst Server keystore defines the identity of MobileFirst Server instances, and is used to digitally sign OAuth tokens and Direct Update packages. In addition, when a MobileFirst adapter communicates with a back-end server using mutual HTTPS (SSL) authentication, the keystore is used to validate the SSL-client identity of the MobileFirst Server instance.

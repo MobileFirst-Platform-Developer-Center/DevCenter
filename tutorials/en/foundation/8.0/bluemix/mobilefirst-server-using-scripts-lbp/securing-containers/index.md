@@ -4,7 +4,7 @@ title: Securing MobilFirst server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Below are several methods you can follow in order to secure your MobileFirst Server instance.
 

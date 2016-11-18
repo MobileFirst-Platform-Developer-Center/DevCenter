@@ -4,6 +4,7 @@ title: Installing and configuring for token licensing
 breadcrumb_title: Token licensing
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 If you plan to use token licensing for MobileFirst Server, you must install the Rational  Common Licensing library and configure your application server to connect MobileFirst Server to the Rational License Key Server.
 

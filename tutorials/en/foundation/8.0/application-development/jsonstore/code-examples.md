@@ -5,7 +5,7 @@ breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 #### Initialize and open connections, get an Accessor, and add data
 

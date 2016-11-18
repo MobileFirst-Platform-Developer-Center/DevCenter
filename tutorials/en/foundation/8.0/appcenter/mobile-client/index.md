@@ -4,6 +4,7 @@ title: The mobile client
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can install applications on your mobile device with the Application Center mobile client.
 

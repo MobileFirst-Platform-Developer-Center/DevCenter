@@ -3,6 +3,7 @@ layout: tutorial
 title: Using MobileFirst Server to Eclipse
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Server can be integrated into the Eclipse IDE. This can help in creating a unified development experience.
 

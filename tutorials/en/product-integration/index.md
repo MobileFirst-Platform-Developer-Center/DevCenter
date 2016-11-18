@@ -6,6 +6,7 @@ show_breadcrumb: true
 show_disqus: false
 print_pdf: false
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
 Integrate between the various IBM MobileFirst suite of solutions and other IBM products.
 Select a release version below:

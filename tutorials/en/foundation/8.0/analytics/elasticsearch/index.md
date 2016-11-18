@@ -5,7 +5,7 @@ breadcrumb_title: Elasticsearch
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Operational Analytics uses  **Elasticsearch 1.5x** for storing data and running search queries.  
 

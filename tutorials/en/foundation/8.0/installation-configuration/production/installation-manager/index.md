@@ -3,6 +3,7 @@ layout: tutorial
 title: Running the IBM Installation Manager
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM  Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
 

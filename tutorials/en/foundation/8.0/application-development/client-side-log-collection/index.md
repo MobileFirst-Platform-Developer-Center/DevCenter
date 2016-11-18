@@ -5,7 +5,7 @@ breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,javascript]
 weight: 7
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging.
 MobileFirst Foundation provides a set of logging API methods for this purpose.

@@ -3,6 +3,7 @@ layout: tutorial
 title: Known Issues and Limitations
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Known Issues
 Click the following link to receive a dynamically generated list of documents for this specific release and all its fix packs, including known issues and their resolutions, and relevant downloads: [http://www.ibm.com/support/search.wss?tc=SSVNUQ&tc=SSHT2F&atrn=SWVersion&atrv=8.0](http://www.ibm.com/support/search.wss?tc=SSVNUQ&tc=SSHT2F&atrn=SWVersion&atrv=8.0).
 

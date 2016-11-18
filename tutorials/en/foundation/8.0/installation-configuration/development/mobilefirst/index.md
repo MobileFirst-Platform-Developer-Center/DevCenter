@@ -4,6 +4,7 @@ title: Setting up the MobileFirst development environment
 breadcrumb_title: MobileFirst
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
 

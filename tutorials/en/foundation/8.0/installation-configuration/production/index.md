@@ -4,6 +4,7 @@ title: Installing MobileFirst Server for a Production Environment
 breadcrumb_title: Production Environment
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This section provides details to assist you in planning and preparing an installation for your specific environment.  
 For more information about the configuration of the MobileFirst Server, see [Configuring MobileFirst Server](server-configuration).

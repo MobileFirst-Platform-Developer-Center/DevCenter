@@ -4,6 +4,7 @@ title: MobileFirst Analytics Server Installation Guide
 breadcrumb_title: Installation Guide
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Analytics Server is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 

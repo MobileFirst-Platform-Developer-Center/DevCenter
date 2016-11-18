@@ -7,6 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
 

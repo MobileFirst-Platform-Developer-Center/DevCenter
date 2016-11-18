@@ -5,7 +5,7 @@ breadcrumb_title: JSONStore
 relevantTo: [ios,android,cordova]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Find information to help resolve issues that you might encounter when you use the JSONStore API.
 

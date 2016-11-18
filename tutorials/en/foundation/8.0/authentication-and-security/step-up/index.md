@@ -20,6 +20,7 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Resources can be protected by several security checks. In this case, the MobileFirst Server sends all the relevant challenges simultaneously to the application.  
 

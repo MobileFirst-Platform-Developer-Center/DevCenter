@@ -4,6 +4,7 @@ title: Configuring IBM WebSphere DataPower as the OAuth authorization server
 breadcrumb_title: DataPower
 weight: 12
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst security framework is built around an authorization server that implements the OAuth protocol, and exposes the OAuth endpoints with which the client interacts. MobileFirst Server implements custom security logic and advanced security features on top of the authorization server. By default, MobileFirst Server functions also as the OAuth authorization server. However, you can configure IBM® WebSphere® DataPower® (DataPower) to act as the authorization server, and interact with MobileFirst Server. This design provides you with enhanced flexibility in setting up production topologies, for example, deploying the DataPower authorization server in the DMZ.
 

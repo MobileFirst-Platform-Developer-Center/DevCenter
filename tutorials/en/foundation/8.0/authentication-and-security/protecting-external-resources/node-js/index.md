@@ -8,7 +8,7 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation provides a Node.js framework to enforce security capabilities on external resources.  
 The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).

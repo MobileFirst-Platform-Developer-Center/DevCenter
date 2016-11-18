@@ -4,6 +4,7 @@ title: Deploying applications to test and production environments
 breadcrumb_title: Deploying apps to environments
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 When you finish a development cycle of your application, deploy it to a testing environment, and then to a production environment.
 

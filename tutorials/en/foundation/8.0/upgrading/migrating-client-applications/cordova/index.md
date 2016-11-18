@@ -4,6 +4,7 @@ title: Migrating existing Cordova and hybrid applications
 breadcrumb_title: Cordova and hybrid
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To migrate an existing Cordova or hybrid application that was created with IBM MobileFirst Foundation version 6.2.0 or later, you must create a Cordova project that uses the plug-ins from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can help you in this task.
 

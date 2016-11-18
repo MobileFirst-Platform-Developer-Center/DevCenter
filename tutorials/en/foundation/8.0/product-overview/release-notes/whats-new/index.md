@@ -3,6 +3,7 @@ layout: tutorial
 title: What's new
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 IBM MobileFirst Foundation V8.0 brings significant changes that modernize your MobileFirst application development, deployment, and management experience.
 

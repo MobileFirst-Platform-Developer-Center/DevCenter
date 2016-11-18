@@ -5,6 +5,7 @@ breadcrumb_title: Alerts
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.  
 You can set reactive thresholds in the MobileFirst Analytics Console to trigger alerts when a specific criteria is met.

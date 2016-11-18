@@ -3,6 +3,7 @@ layout: tutorial
 title: Matrix of features & platforms
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 IBM MobileFirst Foundation provides many features and supports many platforms.
 

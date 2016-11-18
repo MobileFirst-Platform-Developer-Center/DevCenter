@@ -5,6 +5,7 @@ breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 In this tutorial, you learn how to add the MobileFirst SDK to a new or existing Cordova application that has been created with Apache Cordova, Ionic, or another thirdy-party tool. You also learn how to configure the MobileFirst Server to recognize the application, and to find information about the MobileFirst configuration files that are changed in the project.
 

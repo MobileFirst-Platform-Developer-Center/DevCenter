@@ -4,7 +4,7 @@ title: Sending Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 In order to send push or SMS notifications to iOS, Android or Windows devices, the MobileFirst Server first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
 Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
@@ -43,8 +43,7 @@ To setup FCM:
 1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
 2. Create a new project and provide a project name.
 3. Click on the Settings "cog wheel" icon and select **Project settings**.
-4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID**.
-and click **Save**.
+4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID** and click **Save**.
 
 > You can also setup FCM using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 

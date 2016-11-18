@@ -5,7 +5,7 @@ breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 

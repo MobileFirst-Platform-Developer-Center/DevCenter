@@ -4,6 +4,7 @@ title: Administrating applications through Ant
 breadcrumb_title: Administrating using Ant
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can administer MobileFirst applications through the **mfpadm** Ant task.
 

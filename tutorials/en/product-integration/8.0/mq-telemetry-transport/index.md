@@ -5,7 +5,7 @@ downloads:
   - name: Download Cordova Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 
 IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is designed for Internet of Things (IoT) and mobile  connectivity.

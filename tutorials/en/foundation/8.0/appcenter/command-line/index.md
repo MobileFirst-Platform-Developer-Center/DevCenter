@@ -5,6 +5,7 @@ breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To deploy applications to the Application Center through a build process, use the command-line tool.
 

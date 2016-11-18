@@ -4,6 +4,7 @@ title: The Application Center console
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 With the Application Center console, you can manage the repository of the Application Center and your applications.
 

@@ -5,6 +5,7 @@ breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To use the mobile client to install apps on mobile devices, you must either generate the app by using the provided Eclipse and Visual Studio projects or use the version of the client provided for Android, iOS, or Windows 8 Universal, directly.
 

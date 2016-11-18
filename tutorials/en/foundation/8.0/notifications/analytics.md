@@ -5,6 +5,7 @@ breadcrumb_title: Setting Up Analytics Support
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To set up Analytics support for Push Notification, the following JNDI properties must be set in order to initialize and configure the **Analytics plug-in**. The Analytics plug-in is provided by the Push Notifications service. If it is not set, the Push Notifications service will default to logging the events in the system logger.
 

@@ -3,6 +3,7 @@ layout: tutorial
 title: License tracking
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 License tracking is enabled by default in IBM MobileFirst Foundation, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of IBM MobileFirst Foundation is within the license entitlement levels and can prevent potential license violations.
 
