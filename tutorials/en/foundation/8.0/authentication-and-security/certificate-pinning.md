@@ -2,7 +2,7 @@
 layout: tutorial
 title: Certificate Pinning
 relevantTo: [ios,android,cordova]
-weight: 10
+weight: 13
 ---
 
 ## Overview

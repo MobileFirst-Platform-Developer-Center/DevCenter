@@ -1531,7 +1531,7 @@ Since IBM  Worklight  V6.0, use the JNDI environment entries for defining LDAP c
 Expert users could configure the application servers to use LDAP authentication by using the methods that were documented in releases before IBM Worklight V6.0.
 
 #### Jump to
-* [LDAP with WebSphere Application Server V8.x](#ldap-with-websphere-application-server-v8-x)
+* [LDAP with WebSphere Application Server V8.x](#ldap-with-websphere-application-server-v8x)
 * [LDAP with Liberty profile](#ldap-with-liberty-profile)
 * [LDAP with Apache Tomcat](#ldap-with-apache-tomcat)
 
@@ -1555,8 +1555,8 @@ The Application Center refers to these VMM attributes for users:
 
 If VMM attributes are not identical in LDAP, you must map the VMM attributes to the corresponding LDAP attributes.
 
-* [Configuring LDAP authentication for WebSphere Application Server V8.x](#configuring-ldap-authentication-for-websphere-application-server-v8-x)
-* [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8-x)
+* [Configuring LDAP authentication for WebSphere Application Server V8.x](#configuring-ldap-authentication-for-websphere-application-server-v8x)
+* [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8x)
 
 ##### Configuring LDAP authentication for WebSphere Application Server V8.x
 You can configure LDAP based on the federated repository configuration only. This procedure shows you how to use LDAP to define the roles appcenteradmin and appcenteruser in WebSphere  Application Server V8.x.
@@ -2370,9 +2370,9 @@ You can configure some JNDI properties for Application Center.
 | ibm.appcenter.ldap.user.filter | LDAP user search filter for the attribute of ibm.appcenter.ldap.user.loginName. Use **%v** as the placeholder for the login name attribute.<br><br>This property is required only when LDAP users and groups are defined in the same subtree; that is, when the properties ibm.appcenter.ldap.user.base and ibm.appcenter.ldap.group.base have the same value. | 
 | ibm.appcenter.ldap.user.groupmembership | Specifies the groups of a member when you use LDAP without Virtual Member Manager (VMM). This property is the inverse of ibm.appcenter.ldap.group.uniquemember. This property is optional, but if it is specified, LDAP access is faster. See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
 | ibm.appcenter.ldap.user.loginName | The login name attribute when you use LDAP without Virtual Member Manager (VMM). See [Configuring LDAP ACL management (Liberty profile)](#configuring-ldap-acl-management-liberty-profile) and [Configuring LDAP ACL management (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
-| ibm.appcenter.ldap.vmm.active | Set this property to true to specify that LDAP is done through Virtual Member Manager (VMM), or to false otherwise. See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8-x). | 
-| ibm.appcenter.ldap.vmm.adminpwd | The password when LDAP is done through Virtual Member Manager (VMM). See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8-x). |
-| ibm.appcenter.ldap.vmm.adminuser | The user when LDAP is done through Virtual Member Manager (VMM). See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8-x). | 
+| ibm.appcenter.ldap.vmm.active | Set this property to true to specify that LDAP is done through Virtual Member Manager (VMM), or to false otherwise. See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8x). | 
+| ibm.appcenter.ldap.vmm.adminpwd | The password when LDAP is done through Virtual Member Manager (VMM). See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8x). |
+| ibm.appcenter.ldap.vmm.adminuser | The user when LDAP is done through Virtual Member Manager (VMM). See [Configuring LDAP ACL management for WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8x). | 
 | ibm.appcenter.logging.formatjson | This property has an effect only when ibm.appcenter.logging.tosystemerror is set to true. If this property is enabled, it formats JSON responses in logging messages that are directed to System.Error. Setting this property is helpful when you debug the server. | 
 | ibm.appcenter.logging.tosystemerror | Specifies whether all logging messages are also directed to System.Error. Setting this property is helpful when you debug the server. | 
 | ibm.appcenter.openjpa.Log | This property is passed to OpenJPA and enables JPA logging. For details, see the [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html). | 

@@ -9,7 +9,7 @@ To migrate an existing native Android project that was created with IBM MobileFi
 
 #### Jump to
 
-* [Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-8-0)
+* [Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-80)
 * [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
 * [Updating the Android code](#updating-the-android-code)
 
@@ -119,7 +119,7 @@ The tables below list changes in the MobileFirst Android SDK.
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Replaced with `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | No replacement. MFP Client allows circular redirects. | 
-| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest`, all methods that take <code>WLHttpResponseListener</code>:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
+| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>, all methods that take <code>WLHttpResponseListener</code>:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
 
 
 

@@ -9,7 +9,7 @@ To migrate an existing native Windows project that was created with IBM MobileFi
 
 #### Jump to
 
-* [Scanning existing MobileFirst native Windows apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-mobilefirst-version-8-0)
+* [Scanning existing MobileFirst native Windows apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-mobilefirst-version-80)
 * [Migrating a Windows project](#migrating-a-windows-project)
 * [Updating the Windows code](#updating-the-windows-code)
 

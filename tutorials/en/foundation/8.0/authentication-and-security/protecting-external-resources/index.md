@@ -3,7 +3,7 @@ layout: tutorial
 title: Using the MobileFirst Server to authenticate external resources
 breadcrumb_title: Protecting External Resources
 relevantTo: [android,ios,windows,javascript]
-weight: 9
+weight: 12
 show_children: true
 ---
 ## Overview

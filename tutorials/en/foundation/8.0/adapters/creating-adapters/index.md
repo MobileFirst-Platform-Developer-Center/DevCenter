@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 An adapter can be created using either Maven commands or by using the MobileFirst CLI (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
 
@@ -16,8 +16,8 @@ An adapter can be created using either Maven commands or by using the MobileFirs
 * [Install Maven](#install-maven)
 * [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
  * [Install MobileFirst CLI](#install-mobilefirst-cli)
- * [Creating an Adapter](#install-mobilefirst-cli)
-* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
+ * [Creating an Adapter](#creating-an-adapter)
+* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
 * [File Structure](#file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Dependencies](#dependencies)
@@ -391,4 +391,4 @@ If you do not have online access to the Maven Central Repository, you can share 
 * [Learn about JavaScript adapters](../javascript-adapters/)
 * [Develop adapters in IDEs](../developing-adapters/)
 * [Testing and debugging adapters](../testing-and-debugging-adapters/)
-* [Review all Adapters tutorials](../)
+* [Review all Adapters tutorials](../#tutorials-to-follow-next)

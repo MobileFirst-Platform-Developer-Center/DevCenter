@@ -5,6 +5,7 @@ breadcrumb_title: Using SSL
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 You can use SSL in an HTTP adapter with simple and mutual authentication to connect to back-end services.  
 SSL represents transport level security, which is independent of basic authentication. It is possible to do basic authentication either over HTTP or HTTPS.

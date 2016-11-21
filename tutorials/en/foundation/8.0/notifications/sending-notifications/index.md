@@ -14,7 +14,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging-firebase-cloud-messaging)
+    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)
@@ -43,8 +43,7 @@ To setup FCM:
 1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
 2. Create a new project and provide a project name.
 3. Click on the Settings "cog wheel" icon and select **Project settings**.
-4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID**.
-and click **Save**.
+4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID** and click **Save**.
 
 > You can also setup FCM using either the [REST API for the MobileFirst Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the MobileFirst administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 

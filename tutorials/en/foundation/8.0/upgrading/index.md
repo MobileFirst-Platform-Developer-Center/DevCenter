@@ -37,7 +37,7 @@ IBM MobileFirst Foundation V8.0.0 is radically simplified compared to the previo
 ## Migrating a Cordova or hybrid application
 You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
 
-Add support for the MobileFirst features by adding the MobileFirst plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v8-0-versus-v7-1-and-before).
+Add support for the MobileFirst features by adding the MobileFirst plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before).
 
 To migrate a Cordova or hybrid app, you need to
 

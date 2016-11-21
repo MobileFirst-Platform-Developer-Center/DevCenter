@@ -2,7 +2,7 @@
 layout: tutorial
 title: Confidential Clients
 relevantTo: [android,ios,windows,javascript]
-weight: 8
+weight: 10
 ---
 ## Overview
 Mobile applications can utilize the MobileFirst client SDKs to request access to protected resources.  

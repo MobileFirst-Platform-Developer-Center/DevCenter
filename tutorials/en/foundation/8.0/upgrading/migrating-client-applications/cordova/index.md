@@ -8,8 +8,8 @@ weight: 1
 To migrate an existing Cordova or hybrid application that was created with IBM MobileFirst Foundation version 6.2.0 or later, you must create a Cordova project that uses the plug-ins from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can help you in this task.
 
 #### Jump to
-* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v8-0-versus-v7-1-and-before)
-* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-8-0)
+* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before)
+* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
 * [Migrating Direct Update](#migrating-direct-update)
 * [Upgrading the WebView](#upgrading-the-webview)
@@ -327,7 +327,7 @@ The table below lists those API elements that require removal, with suggestions 
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
 | {::nomarkdown}<ul><li><code>WL.Client.setSharedToken({key: myName, value: myValue})</code></li><li><code>WL.Client.getSharedToken({key: myName})</code></li><li><code>WL.Client.clearSharedToken({key: myName})</code></li></ul>{:/} | No replacement. | 
-| {::nomarkdown}<ul><li><cod>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to check connectivity to the server and apply application management rules. | 
+| {::nomarkdown}<ul><li><code>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to check connectivity to the server and apply application management rules. | 
 | {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | No replacement. You can use an adapter and the [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API to manage user preferences. | 
 | {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. | 
 | `WL.Client.logActivity(activityType)` | Use [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc) |

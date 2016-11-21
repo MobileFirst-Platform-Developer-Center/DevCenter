@@ -76,7 +76,7 @@ Executable code that allows a lower-level software layer to call a function defi
 A collection of apps.
 
 ### certificate
-In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca-certificate-authority-ca).
+In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca--certificate-authority-ca).
 
 ### certificate authority enterprise application
 A company application that provides certificates and private keys for its client applications.

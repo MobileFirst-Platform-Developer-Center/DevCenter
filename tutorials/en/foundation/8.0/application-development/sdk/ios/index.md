@@ -31,7 +31,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - [Adding Support for Apple watchOS 2](#adding-support-for-apple-watchos-2)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-1-2)
+- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
@@ -186,13 +186,13 @@ import IBMMobileFirstPlatformFoundation
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
 > 
->      ```xml
+```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
 >            <key>NSAllowsArbitraryLoads</key>
 >            <true/>
 >      </dict>
->      ```
+```
 
 ## Adding Support for Apple watchOS 2
 If you are developing for Apple watchOS, the Podfile must contain sections corresponding to the main app and the watchOS extension:
