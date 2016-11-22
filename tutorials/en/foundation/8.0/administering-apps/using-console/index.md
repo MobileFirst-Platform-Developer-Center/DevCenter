@@ -113,6 +113,8 @@ Follow the outlined procedure to configure the notification message. You can use
 The message is displayed when the application first uses MobileFirst Server to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
 
 ### Defining administrator messages in multiple languages
+<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages can be displayed only in the browser installation language or in the default administrative-messages language. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+
 Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
 
 1. Select your application version from the **Applications** section of the MobileFirst Operations Console navigation sidebar, and then select the application **Management** tab.

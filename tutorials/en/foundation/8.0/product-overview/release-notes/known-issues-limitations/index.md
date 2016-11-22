@@ -187,6 +187,13 @@ To update the cordova-ios platform of a Cordova app, you must uninstall and rein
 
 The update fails if you use the `cordova platform update ios` command.
 
+### Web applications
+Web applications have the following limitations:
+- <a name="web_app_limit_ms_ie_n_edge"></a>
+In Microsoft Internet Explorer (IE) and Microsoft Edge browsers, due to built-in browser restrictions,
+    - Administrative messages are always displayed in the browser installation language, or in the default administrative-message language if no match is found for the installation language. See [Defining administrator messages in multiple languages](../../../administering-apps/using-console/).
+    - Client web SDK runtime messages are displayed only in English.
+
 ### WKWebView support for iOS Cordova applications
 App notifications and Direct Update features might not work well in iOS Cordova apps with WKWebView.
 
