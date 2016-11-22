@@ -37,10 +37,6 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 
 <p>Topologies can vary depending on the corporate network architecture, disaster recovery, different back-end systems, and so on.</p>
 
-<b>Session-independent mode</b>
-<p>The scalability and the performance of the server are highly affected by the use of session-independent mode, and the storage options for the security context of the clients.</p>
-<p>When the MobileFirst Server works in session-independent mode, the security context of the clients is stored independently of the container’s HTTP session. In this mode, the security context information can be stored (via the attribute store) in the runtime database (relational or Cloudant), or in WebSphere eXtreme Scale. The eXtreme Scale cache can optionally be persisted to a database, using a loader plugin. The scalability tests were performed with all these configurations, and the throughput results for each configuration are provided below.</p>
-
 <h3 id="scalabilityTests">Scalability Tests</h3>
 <p>IBM conducted a series of scalability tests before releasing IBM MobileFirst Foundation. The following table contains a short summary of the tests performed.</p>
 <b>Tests</b>
@@ -105,16 +101,6 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 	<li>The back end is called via HTTP and returns with a predefined response.</li>
 </ol>
 
-<h4>Configurations</h4>
-<p>The scalability tests were repeated for each of the configuration supported for session independency, and attribute store type. In session-independent mode, the following configurations were tested:</p>
-<ol>
-	<li>Attribute store over the runtime database (both relational and Cloudant)</li>
-	<li>Attribute store over WebSphere eXtreme Scale</li>
-	<li>Attribute store over WebSphere eXtreme Scale with database backup (both relational and Cloudant).</li>
-</ol>
-
-<p>In session-dependent mode, the tests were performed with a relational database and with a Cloudant database.</p>
-
 <h4>Hardware</h4>
 <p>The following hardware was used for IBM MobileFirst Foundation application server:</p>
 <ul>
@@ -134,20 +120,13 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 	<li>1 RAID 5 controller</li>
 </ul>
 
-<p>The following hardware was used during testing for the IBM MobileFirst Foundation Cloudant database:</p>
-<ul>
-	<li>Three node cluster with a single load-balancer hosted by Softlayer</li>
-	<li>32 logical CPU cores (dual es-2650 @ 2GHz)</li>
-	<li>1.5TB storage (two SSDs in RAID 0)</li>
-</ul>
-
 <p>IBM MobileFirst Foundation Client:</p>
 <ul>
 	<li>Simulated by twenty virtual machines that run multiple client threads. Running Ubuntu 10.04 64-Bit 4 GB RAM.</li>
 	<li>The client load is achieved with Apache jMeter, an open source server performance testing tool by Apache.</li>
 </ul>
 
-<h4>Results</h4>
+<h3>Test Results</h3>
 <p>Throughput was measured at 2,000 requests per second per server with an average CPU usage of 70%.</p>
 
 <h3 id="usingTheHardwareSizingCalculator">Using the hardware sizing calculator</a>
