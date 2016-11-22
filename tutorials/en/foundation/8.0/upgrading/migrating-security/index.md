@@ -34,7 +34,7 @@ We will start the migration process with the resource adapter. In MobileFirst 8.
 
 Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a MobileFirst 8.0 security check.
 
-> For instructions on migrating adapters to 8.0 see the [migration cookbook](..\migration-cookbook).
+> For instructions on migrating adapters to 8.0 see the [migration cookbook](../migration-cookbook).
 
 The methods of `AccountAdpter` in the 7.1 sample are already protected with the `@OAuthSecurity` annotation. The same annotation is used in version 8.0. The only difference is that in 7.1 the scope elements `UserLoginRealm` and `PinCodeRealm` refer to security realms that are defined in the authenticationConfig.xml file. In 8.0, on the other hand, scope elements are mapped to security checks deployed on the server. We could keep the code unchanged with the same names of the scope elements, but let’s rename the scope elements to `UserLogin` and `PinCode` because the term “realm” is no longer used in MFP 8.0:
 ```java
