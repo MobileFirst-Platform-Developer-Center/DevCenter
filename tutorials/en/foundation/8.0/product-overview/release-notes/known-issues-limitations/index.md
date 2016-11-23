@@ -61,6 +61,7 @@ The MobileFirst Operations Console has the following limitations:
     * If the first letters typed are in a left-to-right language, the whole text direction is automatically left-to-right.
 * The sequence of characters and text alignment do not match cultural fashion in the bidirectional language.
 * The numeric fields do not parse numeric values according to the formatting rules of the locale. The console displays formatted numbers but accept as input only *raw* (unformatted) numbers. For example: 1000, not 1 000, or 1,000.
+* Response times in the Analytics page of the MobileFirst Operations Console depend on several factors, such as hardware (RAM, CPUs), quantity of accumulated analytics data, and IBM MobileFirst Analytics clustering. Consider testing your load before you integrate IBM MobileFirst Analytics into production.
 
 ### Server Configuration Tool
 The Server Configuration Tool has the following restrictions:
@@ -159,10 +160,6 @@ For Windows Phone 8.1 environments, x64 architecture is not supported.
 ### Microsoft Windows 10 UWP apps
 Application authenticity feature does not work on MobileFirst Windows 10 UWP apps when the MobileFirst SDK is installed through the NuGet package. As a workaround, developers can download the NuGet package and add the MobileFirst SDK references manually.
 
-### MobileFirst Operations Console
-#### Analytics page
-Response times in the Analytics page of the MobileFirst Operations Console depend on several factors, such as hardware (RAM, CPUs), quantity of accumulated analytics data, and IBM MobileFirst Analytics clustering. Consider testing your load before you integrate IBM MobileFirst Analytics into production.
-
 ### Nested projects can result in unpredictable results with the CLI
 Do not nest projects inside one another when using the IBM MobileFirst Command Line Interface (CLI). Otherwise, the project that is acted upon might not be the one that you expect.
 
@@ -189,6 +186,13 @@ To update the cordova-ios platform of a Cordova app, you must uninstall and rein
 4. Run the `cordova prepare` command to integrate the changes.
 
 The update fails if you use the `cordova platform update ios` command.
+
+### Web applications
+Web applications have the following limitations:
+- <a name="web_app_limit_ms_ie_n_edge"></a>
+In Microsoft Internet Explorer (IE) and Microsoft Edge browsers, due to built-in browser restrictions,
+    - Administrative messages are always displayed in the browser installation language, or in the default administrative-message language if no match is found for the installation language. See [Defining administrator messages in multiple languages](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
+    - Client web SDK runtime messages are displayed only in English.
 
 ### WKWebView support for iOS Cordova applications
 App notifications and Direct Update features might not work well in iOS Cordova apps with WKWebView.

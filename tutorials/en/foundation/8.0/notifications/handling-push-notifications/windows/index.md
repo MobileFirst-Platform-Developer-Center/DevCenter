@@ -60,7 +60,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
 | [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
 | [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
 | [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
 | [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |

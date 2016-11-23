@@ -74,7 +74,7 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The `authorize` Method
+## The Authorize Method
 
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
 The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.

@@ -63,7 +63,7 @@ To migrate native application, you need to follow these steps:
 > **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in [Migrating push notification support](#migrating-push-notifications-support).
 
 ## Migrating adapters and security
-Starting with v8.0, adapters are Maven projects. The MobileFirst security framework is based on OAuth, security scopes, and security checks. Security scopes define the security requirements to access a resource. Security checks define how a security requirement is verified. Security checks are written as Java or JavaScript adapters. For a hands-on experience with adapters and security, see the tutorials for [Creating Java and JavaScript Adapters](../adapters/creating-adapters) and [Authorization concepts](../authentication-and-security).
+Starting with v8.0, adapters are Maven projects. The MobileFirst security framework is based on OAuth, security scopes, and security checks. Security scopes define the security requirements to access a resource. Security checks define how a security requirement is verified. Security checks are written as Java adapters. For a hands-on experience with adapters and security, see the tutorials for [Creating Java and JavaScript Adapters](../adapters/creating-adapters) and [Authorization concepts](../authentication-and-security).
 
 MobileFirst Server operates only in session-independent mode and adapters should not store a state locally to a Java virtual machine (JVM).
 
@@ -72,6 +72,7 @@ You can externalize adapter properties to configure adapters for the context whe
 * For more information about migrating adapters, see [Migrating existing adapters](migrating-adapters) to work under MobileFirst Server v8.0.
 * For more information about server-side API changes, see [Server-side API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) changes in v8.0.
 * For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
+* For more information on migrating authentication and security see [Migrating Authentication and Security](migrating-security) to MobileFirst v8.0.
 
 ## Migrating push notifications support
 The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#migration-scenarios).
