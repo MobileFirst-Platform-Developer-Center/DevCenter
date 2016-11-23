@@ -191,7 +191,7 @@ The update fails if you use the `cordova platform update ios` command.
 Web applications have the following limitations:
 - <a name="web_app_limit_ms_ie_n_edge"></a>
 In Microsoft Internet Explorer (IE) and Microsoft Edge browsers, due to built-in browser restrictions,
-    - Administrative messages are always displayed in the browser installation language, or in the default administrative-message language if no match is found for the installation language. See [Defining administrator messages in multiple languages](../../../administering-apps/using-console/).
+    - Administrative messages are always displayed in the browser installation language, or in the default administrative-message language if no match is found for the installation language. See [Defining administrator messages in multiple languages](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
     - Client web SDK runtime messages are displayed only in English.
 
 ### WKWebView support for iOS Cordova applications
