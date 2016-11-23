@@ -22,9 +22,9 @@ To run NPM commands, [Node.js](https://nodejs.org) is required.
 #### SDK Limitations
 The numbers in the table specify the first browser version that are fully supported.
 
-|      Browser      | Chrome | Safari* | Internet Explorer | Edge | Firefox | Blackberry Browser* | Android Browser |
-|:-----------------:|:------:|:-------:|:-----------------:|:----:|:-------:|:------------------:|:---------------:|
-| Supported Version |   43+  |    8+   |        10+        |  20+ |  38+  |      Z series      |   Android 4.3+  |
+|      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
+|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+| Supported Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
 
 (*) Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
 
