@@ -22,9 +22,9 @@ The MobileFirst Foundation SDKs support the following platforms:
 
 > **Supported browsers for web apps:**
 > 
-> |      Browser      | Chrome | Safari* | Internet Explorer | Edge | Firefox | Blackberry Browser* | Android Browser |
-> |:-----------------:|:------:|:-------:|:-----------------:|:----:|:-------:|:------------------:|:---------------:|
-> | Supported Version |   43+  |    8+   |        10+        |  20+ |  38+  |      Z series      |   Android 4.3+  |
+> |      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
+> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+> | Supported Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
 
 * Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
 
