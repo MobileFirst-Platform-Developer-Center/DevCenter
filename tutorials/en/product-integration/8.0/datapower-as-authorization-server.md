@@ -2,7 +2,7 @@
 layout: tutorial
 title: Configuring IBM WebSphere DataPower as the OAuth authorization server
 breadcrumb_title: DataPower
-weight: 12
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

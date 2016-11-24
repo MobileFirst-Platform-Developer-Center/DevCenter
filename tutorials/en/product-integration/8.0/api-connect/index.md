@@ -6,6 +6,7 @@ downloads:
     url: https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml
   - name: Download Sample Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
+weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

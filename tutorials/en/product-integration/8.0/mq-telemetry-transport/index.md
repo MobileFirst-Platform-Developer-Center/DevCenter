@@ -4,6 +4,7 @@ title: MQ Telemetry Transport
 downloads:
   - name: Download Cordova Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
