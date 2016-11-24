@@ -55,7 +55,7 @@ GEM
     minitest (5.9.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    parallel (1.9.0)
+    parallel (1.10.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     pdfkit (0.8.2)
