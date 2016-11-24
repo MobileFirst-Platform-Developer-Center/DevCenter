@@ -2,8 +2,12 @@
 layout: tutorial
 title: Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM Security Access Manager
 breadcrumb_title: ISAM
+downloads:
+  - name: Download Sample applications
+    url: https://github.ibm.com/pranab-agarwal/IsamLTPA-release80
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM Security Access Manager can be used in the DMZ to protect MobileFirst mobile application traffic.
 
@@ -246,7 +250,7 @@ To ensure all MobileFirst traffic is routed through IBM Security Access Manager,
 8. Leave the rest of the settings at default values and ensure that this server is made to be the default server.
 
 ## Samples
-The mobile app samples can be downloaded from [GitHub]().
+The mobile app samples [can be downloaded from GitHub.com](https://github.ibm.com/pranab-agarwal/IsamLTPA-release80).
 
 There are 3 samples available:
 - **IsamCordova** contains a Cordova sample.
