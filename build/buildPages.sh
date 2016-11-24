@@ -17,7 +17,7 @@ rm -f _site/*.log
 bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
 
 # only proceed script when started not by pull request (PR)
-if [ $TRAVIS_PULL_REQUEST != "true" ]; then
+if [ $TRAVIS_PULL_REQUEST == "false" ]; then
   # cleanup
   rm -rf ../mfpsamples.github.ibm.com.master
 
