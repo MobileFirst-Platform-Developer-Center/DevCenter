@@ -6,6 +6,7 @@ downloads:
   - name: Download Sample applications
     url: https://github.ibm.com/pranab-agarwal/IsamLTPA-release80
 weight: 3
+published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
