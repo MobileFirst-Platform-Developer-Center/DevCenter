@@ -143,9 +143,9 @@ In the MobileFirst Console, select your application and then click **Security** 
 
 
 ### server.xml
-In MobileFirst server, look for *ltpa.keys* file. Fill in the value for `com.ibm.websphere.ltpa.Realm` in the file.
+In the MobileFirst Server folder, look for a **ltpa.keys** file. Fill in the value for `com.ibm.websphere.ltpa.Realm` in the file.
 
-In the *server.xml* file, look for `<basicRegistry>` or `<ldapRegsitry>` element. Create one, if it does not exist. Add `realm` attribute to that element. The value for the `realm` attribute should be the one that you had filled in *ltpa.keys* file above.
+In the **server.xml** file, look for `<basicRegistry>` or `<ldapRegsitry>` element. Create one, if it does not exist. Add `realm` attribute to that element. The value for the `realm` attribute should be the one that you had filled in **ltpa.keys** file above.
 
 When using `<basicRegistry>`, ensure that the authorised users are also listed here.
 
@@ -164,19 +164,19 @@ For more information about basic registry or configuring against LDAP server, re
 ## IBM Security Access Manager configuration
 The following was tested in IBM Security Access Manager 9.0.2.
 
-Before you start configuring IBM Security Access Manager, export *ltpa.keys* file from MobileFirst Platform's application server. This will be required in the following steps.
+Before you start configuring IBM Security Access Manager, export **ltpa.keys** file from MobileFirst Platform's application server. This will be required in the following steps.
 
 Ensure that IBM Security Access Manager is running and Reverse Proxy is configured before doing the following. Learn about configuring IBM Security Access Manager: [ISAM Online Help](http://www.ibm.com/support/knowledgecenter/SSPREK_9.0.2/com.ibm.isam.doc/welcome.html).
 
 ### Import LTPA keys
 
-1. Go To **Secure Web Settings: Global Keys -> LTPA Keys**.
-2. Click **Manage -> Import**.
+1. Go To **Secure Web Settings: Global Keys → LTPA Keys**.
+2. Click **Manage → Import**.
 3. Click **Browse** and select the appropriate key file exported before and click **Import**.
 4. Deploy pending changes.
 
 ### Configuring Reverse Proxy Instance for LTPA Based SSO
-1. Go to **Secure Web Settings: Manage -> Reverse Proxy**.
+1. Go to **Secure Web Settings: Manage → Reverse Proxy**.
 2. Select the reverse proxy instance you want to configure and then click **Edit**.
 3. Go to **SSO** tab.
 4. Under **LTPA: Transport** dropdown menu, select **BOTH**.
@@ -187,7 +187,7 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 9. **Restart** the reverse proxy.
 
 ### Setting Up MobileFirst Junctions
-1. Go to **Secure Web Settings: Manage -> Reverse Proxy**.
+1. Go to **Secure Web Settings: Manage → Reverse Proxy**.
 2. Select the reverse proxy instance that you want to configure.
 3. From the **Manage** dropdown list, select **Junction Management**.
 4. Click **New -> Standard Junction**.
@@ -210,14 +210,14 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 22. Repeat steps 1 - 16 for junctions names `/mfpconsole` and `/mfpadmin`.
 
 ### ACL Settings for MobileFirst Platform
-1. Go to **Secure Web Settings: Manage -> Policy Administration**.
+1. Go to **Secure Web Settings: Manage → Policy Administration**.
 2. Enter **User Id** and **Password** and **Sign On**.
-3. Under **Task List**, expand **ACL** and click **Search ACLs -> Search**.
+3. Under **Task List**, expand **ACL** and click **Search ACLs → Search**.
 4. From the list returned, click on **favicon** and click **Clone**.
 5. In the **Clone ACL** page, enter an **ACL Name** and **Description** for example: `MobileFirstManagement` and `This ACL is used for MobileFirst Management URLs to pass through ISAM`.
 6. Click **Clone** and then **Done**.
-7. Under **Task List**, expand **Object Space -> Browse Object Space**.
-8. Expand **default-root -> WebSEAL -> ISAMHostname-Reverse Proxy Instance Name**.
+7. Under **Task List**, expand **Object Space → Browse Object Space**.
+8. Expand **default-root → WebSEAL → ISAMHostname-Reverse Proxy Instance Name**.
 9. Click **mfpadmin**.
 10. Under **General** tab, in **ACL Attached**, click **Attach...** and from the **ACL List** select **MobileFirstManagement** and click **Apply**.
 11. Click **Apply** and then **Cancel** to go back.
@@ -226,9 +226,9 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 ### User Creation
 >**NOTE**:: This step is necessary if your IBM Security Access Manager is not configured against an LDAP server.
 
-1. Go to **Secure Web Settings: Manage -> Policy Administration**.
+1. Go to **Secure Web Settings: Manage → Policy Administration**.
 2. Enter **User Id** and **Password** and **Sign On**.
-3. Under **Task List**, expand **User -> Create User**.
+3. Under **Task List**, expand **User → Create User**.
 4. Enter the **User Id** of the user you want to create.
 5. Enter **Common Name** and **Surname** of the user; For example: `JaneDoe` and `Doe`.
 6. Enter **Password** for the user; For example: `Passw0rd1`.
@@ -236,7 +236,7 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 8. Click **Apply**.
 9. Repeat the above steps for all the users you need to create.
 
->**Note**: Ensure that an entry is present for all the **Registry UID's** create above, in the **Basic Registry** section of the *server.xml* file of your MobileFirst Platform's application server.
+>**Note**: Ensure that an entry is present for all the **Registry UID's** create above, in the **Basic Registry** section of the **server.xml** file of your MobileFirst Platform's application server.
 
 ### Configuring MobileFirst Platform Foundation Server to communicate with IBM Security Access Manager
 To ensure all MobileFirst traffic is routed through IBM Security Access Manager, you need to update MobileFirst configuration.
@@ -260,4 +260,4 @@ There are 3 samples available:
 
 This sample uses `ResourceAdapter` adapter which can be found on GitHub [Security Check Adapters](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters).
 
-Ensure that *server.xml* file is configured and resources are deployed before running the sample app.
+Ensure that **server.xml** file is configured and resources are deployed before running the sample app.
