@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Migrating Authentication and Security to MobileFirst V8.0
-breadcrumb_title: Migrating authentication and security
+title: Migrating Authentication and Security Concepts
+breadcrumb_title: Migrating authentication concepts
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
