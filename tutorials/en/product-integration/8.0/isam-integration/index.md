@@ -3,8 +3,12 @@ layout: tutorial
 title: Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM Security Access Manager
 breadcrumb_title: ISAM
 downloads:
-  - name: Download Sample applications
-    url: https://github.ibm.com/pranab-agarwal/IsamLTPA-release80
+  - name: Download Cordova sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80
+  - name: Download Android sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80
+  - name: Download iOS sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/release80
 weight: 3
 published: false
 ---
@@ -251,7 +255,9 @@ To ensure all MobileFirst traffic is routed through IBM Security Access Manager,
 8. Leave the rest of the settings at default values and ensure that this server is made to be the default server.
 
 ## Samples
-The mobile app samples [can be downloaded from GitHub.com](https://github.ibm.com/pranab-agarwal/IsamLTPA-release80).
+Download the [Cordova sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80).  
+Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80).
+Download the [iOS sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/release80).
 
 There are 3 samples available:
 - **IsamCordova** contains a Cordova sample.
