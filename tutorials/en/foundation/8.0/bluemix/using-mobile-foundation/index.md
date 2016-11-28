@@ -18,7 +18,7 @@ The Mobile Foundation service offers the following plan options:
 
 2. **Developer Pro**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational Analytics server, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
 
 4. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
 
@@ -79,6 +79,9 @@ To set up the available plans, first follow these steps:
     ![Image of Mobile Foundation setup](overview-page.png)
 
 ## Using the Mobile Foundation service
+
+> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
+
 With the MobileFirst Server now running, you are presented with the following Dashboard:
 
 ![Image of Mobile Foundation setup](service-dashboard.png)
