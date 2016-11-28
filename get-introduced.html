@@ -2,7 +2,7 @@
 layout: default
 title: Get Introduced
 ---
-<div class="container getintroduced">
+<div id="get-introduced" class="container">
    <h2 class="no-anchor">Get Introduced</h2>
    <p>IBM MobileFirst Foundation provides simple, scalable, time-tested enterprise mobile middleware, deployable on premises and on Cloud.</p>
    
@@ -10,7 +10,7 @@ title: Get Introduced
 
    <blockquote>To learn more about MobileFirst Foundation features, <a href="{{site.baseurl}}/features">see the features page</a>.</blockquote>
 
-   <div class="introduction-items row hidden-xs hidden-sm">
+   <div id="introduction-items" class="row hidden-xs hidden-sm">
       <div class="col-md-3 intro-item intro-item-border">
          <img alt="Developer friendly" src="../assets/features/developer_friendly.svg"/>
          <h4>DevOps friendly</h4>
@@ -31,26 +31,30 @@ title: Get Introduced
          <h4>Build smarter apps</h4>
          <p>Leverage Bluemix services such as App Content Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and more.<br/></p>
       </div>
-   </div>
+   </div>     
    
-   <div class="introduction-items row visible-xs visible-sm" style="margin-left: 2px">   
-      <h4>DevOps friendly</h4>
-      <p>Build an automated DevOps pipeline to speed up deployments &amp; updates to applications to avoid human mistakes.</p>
+   <div id="introduction-items-small" class="visible-xs visible-sm" style="margin-left: 2px">   
+      <img alt="Developer friendly" class="component-img" src="../assets/features/developer_friendly.svg"/>
+      <p><b>DevOps friendly</b><br/>
+      Build an automated DevOps pipeline to speed up deployments &amp; updates to applications to avoid human mistakes.</p>
       
-      <h4>Scale at ease</h4>
-      <p>Start small and develop in the cloud, then move and scale production workload on premises or in a dedicated cloud environment.</p>
+      <img alt="Devops friendly" class="component-img" src="../assets/features/devops_friendly.svg"/>
+      <p><b>Scale at ease</b><br/>
+      Start small and develop in the cloud, then move and scale production workload on premises or in a dedicated cloud environment.</p>
       
-      <h4>API management</h4>
-      <p>Works seamlessly with IBM API Connect and DataPower Gateway to add API creation &amp; management capabilities, and to enforce API &amp; mobile security at the edge of the network.</p>
+      <img alt="API management" class="component-img" src="../assets/features/api_management.svg"/>
+      <p><b>API management</b><br/>
+      Works seamlessly with IBM API Connect and DataPower Gateway to add API creation &amp; management capabilities, and to enforce API &amp; mobile security at the edge of the network.</p>
       
-      <h4>Build smarter apps</h4>
-      <p>Leverage Bluemix services such as App Content Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and more.</p>
+      <img alt="Bluemix" class="component-img" src="../assets/features/bluemix.svg"/>
+      <p><b>Build smarter apps</b><br/>
+      Leverage Bluemix services such as App Content Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and more.</p>
    </div>
    
    <div id="product-components">
       <h3 class="no-anchor">Product Components</h3>
       <hr/>
-      <div style="width: 70%">
+      <div style="width: 90%">
          <img alt="MobileFirst Server" class="component-img" src="../assets/features/server.svg"/>
          <p><b>MobileFirst Server</b><br/>
          The MobileFirst Server runs the core capabilities of the product, such as: Security, Push Notifications, Analytics, App lifecycle management, Backend logic connectivity and more.</p>
@@ -71,17 +75,17 @@ title: Get Introduced
          <p><b>Adapter Tooling</b><br/>
          Adapters are server-side entities where you can implement backend business logic for your app and also connect to any backend system.</p>
       </div>
-      
-      <h3 class="no-anchor">Get Started</h3>
-      <p>To get started, <a href="{{site.baseurl}}/downloads">download our Developer Kit</a> for a local installation, or <a href="https://console.ng.bluemix.net/catalog/services/mobile-foundation/">head over to Bluemix</a> to setup a Mobile Foundation server
-           in the cloud.<br/>Once you have a server running, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">follow our tutorials</a>!</p>
-
-      <ul>
-         <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/">Cordova tutorials</a></li>
-         <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ios-tutorials/">iOS tutorials</a></li>
-         <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/android-tutorials/">Android tutorials</a></li>
-         <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/windows-8-10-tutorials/">Windows tutorials</a></li>
-         <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/">Web apps tutorials</a></li>
-      </ul>
    </div>
+      
+   <h3 class="no-anchor">Get Started</h3>
+   <hr/>
+   <p>To get started, <a href="{{site.baseurl}}/downloads">download our Developer Kit</a> for a local installation, or <a href="https://console.ng.bluemix.net/catalog/services/mobile-foundation/">head over to Bluemix</a> to setup a Mobile Foundation server in the cloud.<br/>Once you have a server running, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">follow our tutorials</a>!</p>
+
+   <ul>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/">Cordova tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ios-tutorials/">iOS tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/android-tutorials/">Android tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/windows-8-10-tutorials/">Windows tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/">Web apps tutorials</a></li>
+   </ul>
 </div>
