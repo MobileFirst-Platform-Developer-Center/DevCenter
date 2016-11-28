@@ -880,7 +880,7 @@ Complete the following steps for every application that was using the same event
 Applications using multiple event sources requires segmentation of users based on subscriptions.
 
 ##### Client
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to MobileFirstV8.0.0, convert this model to tag based notification.
+This maps to tags which segments the users/devices based on topic of interest. To migrate this to MobileFirst V8.0.0, convert this model to tag based notification.
 
 1. Initialize the `MFPPush` client instance in your application.
 
