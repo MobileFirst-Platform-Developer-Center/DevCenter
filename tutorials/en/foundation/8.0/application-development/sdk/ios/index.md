@@ -29,7 +29,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS 2](#adding-support-for-apple-watchos-2)
+- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Bitcode and TLS 1.2](#bitcode-and-tls-12)
@@ -195,8 +195,9 @@ import IBMMobileFirstPlatformFoundation
 >      </dict>
 ```
 
-## Adding Support for Apple watchOS 2
-If you are developing for Apple watchOS, the Podfile must contain sections corresponding to the main app and the watchOS extension:
+## Adding Support for Apple watchOS
+If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
+watchOS 2:
 
 ```xml
 # Replace with the name of your watchOS application
