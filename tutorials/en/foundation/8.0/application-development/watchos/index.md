@@ -63,7 +63,7 @@ Below is one example of creating an app with both an iPhone and an Apple Watch t
         * For com.worklight.[project_name] map it to the username/password check.
         * For com.worklight.[project_name].watchkitapp.watchkitextension map it to the pin code security check.
 
-## watchOS Limitation with MobileFirst
+## WatchOS Limitation
 The optional frameworks that add features to the MobileFirst app are not provided for watchOS development. Some other features are limited by constraints imposed by the watchOS or Apple Watch device.
 
 | Feature | Limitation |
@@ -82,7 +82,7 @@ With the IBM MobileFirst Platform Operations Console, you can configure the IBM 
 * when the app is active but a messages is sent: **Active and Notifying**
 * when the app is outdated and access is denied: **Access Denied**
 
-For watchOS :
+For watchOS:
 
 * To see messages where the app is set to **Active and Notifying,** a custom remote disable challenge handler must be implemented and registered. The custom challenge handler must be initialized with the security check `wl_remoteDisableRealm`.
 * In the case where the access is disabled (**Access Denied**) the client app receives an error message in the failure callback or request delegate handler. The developer can decide how to handle the error, either notifying the user through the UI or writing to the log. In addition the above method of creating a custom challenge handler can be used.
