@@ -306,6 +306,7 @@ phoneNumber | The phone number used for registering the device and receiving not
     },
   },
   "target" : {
+    // The list below is for demonstration purposes only - per the documentation only 1 target is allowed to be used at a time.
     "deviceIds" : [ "MyDeviceId1", ... ],
     "platforms" : [ "A,G", ... ],
     "tagNames" : [ "Gold", ... ],
