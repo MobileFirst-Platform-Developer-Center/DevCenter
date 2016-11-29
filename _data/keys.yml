@@ -1,0 +1,240 @@
+# Development Center (DC) keywords
+# This file defines text-substitution keywords, mainly for MobileFirst Platform product terminology.
+# The keywords text should not be translated.
+# NOTE
+# - The keywords are targeted at the current product version. Use them only in documentation for this version.
+# - Do not use the keywords when the text should not change in the future. This mainly applies to release notes or migration and upgrade documentation.
+#   For example, write "In V8.0.0, xxx was replaced with yyy.", and do not use the product_version keyword for the version number.
+# - The "DITA" references in the file list the equivalent DITA keyword names in the V8.0.0 KC (RTC MOBILE main stream), for comparison.
+
+# [DC-KEYS-TODO] When replacing, check also for instances with different capitalization.
+
+####################
+## Usage ##
+#
+## Keyword definition syntax
+#       keyword: "text"
+# For example, define a "product" keyword for the product name:
+#       product: "MobileFirst Platform Foundation"
+#
+## Keyword usage syntax
+#       {{ site.data.keys.keyword }}
+# For example, use the "product" keyword:
+#       This topic describes the {{ site.data.keys.product}} security framework.
+
+####################
+## Notes ##
+# - When using a keyword in a Markdown header, the auto-generated anchor ID is derived from the header text after the keyword translation.
+#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by idanh on 29 Nov 2016).
+
+######################################################################
+## Product name ##
+# [DC-KEYS-TODO] Replace source strings with these keywords only after replacing the product-component keywords, because some component strings include the product name.
+# [PROD-RENAME] NOTE: Do not replace product-name instances in V6.3.0--V7.1.0 (currently the same name as in V8.0.0), or in instances that are applicable to a specific time before the upcoming Feb 2017 product renaming, because the product rebranding is not retroactive (at least not to earlier versions). You can use the v63_80rebrand_product[*] keywords for such instances.
+
+## Product name
+# [sharonl] In the KC, we have a product_wl DITA for "IBM MobileFirst Platform Foundation" and a product_short keyword for "IBM MobileFirst Foundation".
+# product_short is used only twice in the V8.0.0 KC. In the DC V8.0.0 docs (tutorials) there are many instances of "MobileFirst Foundation", with and without "IBM".
+# I think that the "MobileFirst Foundation" terminology, was never officially approved as a standalone product shorthand (it's only used as part of some component names), and based on the DITA files as far as it was approved it was only with the "IBM" preface. -->
+# [DC-KEYS-TODO] Because the product is about to be renamed shortly (using a shorter name), I think we should just replace all standalone "IBM MobileFirst Platform Foundation" instances with $product_full, and replace all standalone "[IBM] MobileFirst Foundation" and "MobileFirst Platform Foundation" (no "IBM") with $product (although, to be more accurate we should ensure that he first use in each topic uses $product_full).
+product:                        "MobileFirst Platform Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
+product_full:                   "IBM MobileFirst Platform Foundation"   # DITA: product_wl
+
+## Product adjective
+# "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
+# [DC-KEYS-TODO] Do this replacement last, as "MobileFirst" is used as part of most of the product name and component name keyword strings.
+product_adj:                    "MobileFirst"                           # DITA: prod_adj
+
+## "Parent" product
+# [DC-KEYS] [sharonl] I selected the "parent product" terminology because the "Foundation" product is part of the "MobileFirst Platform" product. I'm assuming "MobileFirst Platform" will also be rebranded in Feb 2017. I can't be sure of any of the instances of these strings in the current DC are intended as standalone references to the "parent" product; the V8.0.0 KC has uses of the "platform" keyword (<==> $parent_product_long in YAML).
+parent_product:                 "MobileFirst Platform"                  # DITA: No short version, but there's a comment that from comments it seems that "MobileFirst Platform" is allowed as a short name.
+parent_product_long:            "IBM MobileFirst Platform"              # DITA: platform
+parent_product_full:            "IBM MobileFirst Platform"
+
+######################################################################
+## Current product version ##
+# [DC-KEYS] [sharonl] I'm not sure yet whether we need to use version keywords, and if so which keywords. We first need to remove unnecessary version references in the DC --- e.g., there are instances where it's used as part of the current product name --- and then see how many version-number instances we are left with that that don't need to be hardcoded.
+# Regardless of the keyword usage, after the initial cleanup we need to decide on a specific format for referencing the product version number (not just for the current version), and use it consistently. Currently the format in the DC is inconsistent. For example, in some cases we preface the version number with 'V' or 'v', while in others we do not; in some cases we use the <V>.<R> format (e.g., "8.0.0") while in others we use <V>.<R>.<M> (e.g., "8.0.0"). The KC mostly used the "V<V>.<R>.<M> (e.g., "V8.0.0"), which was done via the Vprod keyword. I suspect that before the KC --> DC integration, the DC mostly used "<V>.<R>" (e.g., "8.0"). I also saw "v<V>x" instances in the DC (e.g., "V8.x" in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/appcenter/#configuring-ldap-authentication-for-websphere-application-server-v8x).
+# NOTE: Avoid using the current version number in headers, or create a custom ID for the header in such cases, to avoid the inclusion of the version number in the
+
+# Note that the KC uses the "V.R.M" variation (8.0.0 for the current version) while the DC seems to mostly use V.R (v8.0), but it has 8.0.0 instances mainly for KC-integrated text. Also, in the KC we precede the version number with 'V' (V8.0.0) while in the DC this seems to be done mainly in KC-integrated text. I also saw "v8.0" instances in the DC (e.g., "Java API elements discontinued in v8.0" in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/deprecated-discontinued/#java-api-elements-discontinued-in-v80), which should be replaced either with 'V' or no prefix.
+# I also saw an instance of "V8.x" (in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/appcenter/#configuring-ldap-authentication-for-websphere-application-server-v8x). I didn't check for other similar instances.
+# --> TODO: Decide on a format and use it consistently, for all versions.
+
+# NOTE
+# - In most cases, you should not include the version number in the current-product documentation. Do not include it as part of the product name.
+# - When you want to refer to a specific version and not the current version, use a hardcoded version number and not a keyword; (in such case, also avoid using the keyword for the product name of the current version). For example, "Support for xxx was removed in MobileFirst Platform Foundation V8.0.0.". This is mainly applicable to release notes and to migration and upgrade documentation.
+
+
+# Version-number legend: V = Version ; R = Release ; M = Modificaiton; I = iFix
+
+# V.R product version number
+product_V_R:                "8.0"               # DITA: Vartifacts
+product_V_R_stripped:       "80"
+# V.R.M product version number
+product_V_R_M:              "8.0.0"                                                   
+product_V_R_M_stripped:     "800"
+# V.R.M.I product version number
+product_V_R_M_I:            "8.0.0.0"
+product_V_R_M_I_stripped:   "8000"
+
+## Product version
+product_version_short:          "V8.0"
+product_version:                "V8.0.0"        # DITA: Vprod
+product_version_long:           "V8.0.0,0"
+# [sharonl] It's also possible to use "V{{ site.data.keys.product_V_R }}" in the source file. But using keywords ensure that we reference the version using a consistent format, and allows us to easily change the format in the future (by only changing the keyword definitions).
+
+#####################################################################
+## Product components ##
+# NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
+
+# [DC-KEYS-TODO] When replacing text with the keywords, look for "MobileFirst Platform Foundation", "MobileFirst Platform", and "MobileFirst Foundation" variations (followed by the component identifier text).
+
+## MF Analytics
+# [DC-KEYS-TODO] [sharonl] The DC also has "[MobileFirst Foundation] Operational Analytics" instances
+mf_analytics:                   "Analytics"
+  # [DC-KEYS] [sharonl] There is no equivalent DITA keyword, but the DC also uses "Analytics" as a standalone "term". I don't know whether this is approved by legal/OM.
+  # We need the keyword to distinguish this from uses of the word "Analytics" not as a signifier of our product component.
+mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short 
+mf_analytics_full:              "IBM MobileFirst Analytics"                             # DITA: analytics
+
+# MF Analytics Console
+mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short  
+mf_analytics_console_full:      "IBM MobileFirst Analytics Console"                     # DITA: anl_cons
+
+# MF Analytics Server
+mf_analytics_server:            "MobileFirst Analytics Server"                          # DITA: anl_server_short
+mf_analytics_server_full:       "IBM MobileFirst Analytics Server"                      # DITA: anl_server
+
+## MF Application Center
+mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
+mf_app_center:                  "MobileFirst Application Center"
+mf_app_center_full:             "IBM MobileFirst Platform Application Center"           # DITA: appcenter_long
+# [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation Application Center" with mf_app_center_full, and replace
+# "MobileFirst Platform Application Center" and "MobileFirst Foundation Application Center" (with "IBM") with mf_app_center.
+
+## MF Application Pattern
+mf_app_pattern:                 "MobileFirst Application Pattern"                       # DITA: apppattern_short
+mf_app_pattern_full:            "IBM MobileFirst Platform Application Pattern"          # DITA: apppattern_long
+
+## MF CLI
+mf_cli:                         "MobileFirst Platform CLI"                              # DITA: cli_short
+mf_cli_full:                    "IBM MobileFirst Platform Command Line Interface (CLI)" # DITA: cli
+
+## MF Data Proxy
+mf_data_proxy:                  "MobileFirst Data Proxy"                                # DITA: datastore
+mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
+
+## MF Developer Kit
+mf_dev_kit:                     "MobileFirst Developer Kit"
+mf_dev_kit_full:                "IBM MobileFirst Platform Foundation Developer Kit"     # DITA: dev_kit
+# [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC "with the appropriate keyword.
+
+## MF Device Runtime
+# [DC-KEYS] [sharonl] I don't think that we need keywords for the following DITA keywords, even though they are used in non-archived KC 8.0 DITA files;
+#   device_runtime_long = "IBM MobileFirst Platform Device Runtime"
+#   device_runtime_short = "MobileFirst Device Runtime"
+#   --> Outside of archived files, these keywords are used only twice in start/c_wl_overview.dita and twice in start/r_supported_operating_systems_an.dita.
+#       In the DC V8.0.0 tutorials, "Device Runtime" is used only once, in link text in product-overview/requirements/index.md:39. --> TODO: Check this use.
+
+## MF Mobile Browser Simulator (MBS)
+mf_mbs:                         "Mobile Browser Simulator"                              # DITA: mbs
+mf_mbs_full:                    "IBM MobileFirst Platform Foundation Mobile Browser Simulator"
+# [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation's Mobile Browser Simulator" [application-development/debugging-applications/index.md:29] with mf_mbs_full.
+
+## MF Operations Console
+mf_console:                     "MobileFirst Operations Console"                        # DITA: wl_cons
+mf_console_full:                "IBM MobileFirst Operations Console"                    # DITA: console_long
+# [DC-KEYS-TODO] Also replace "MobileFirst Foundation Operations Console" (w/wo "IBM").
+
+## MF Server
+mf_server:                      "MobileFirst Server"                                    # DITA: wl_server
+mf_server_full:                 "IBM MobileFirst Platform Server"                       # DITA: server_long
+# [DC-KEYS-TODO] Also replace "MobileFirst Platform Server", "MobileFirst Platform Foundation Server" and "MobileFirst Foundation Server" (w/wo "IBM").
+
+# MF Development Server
+mf_dev_server:                  "MobileFirst Development Server"                        # DITA: dev_server
+mf_dev_server_full:             "IBM MobileFirst Development Server"
+# [DC-KEYS] There are no "Platform Development Server" or "Foundation Development Server" instances to replace. (There are also no "Developer Server" instances in the DC.)
+
+## MF Server Configuration Tool
+# [DC-KEYS] [sharon[] I'm not sure whether this an MF or IBM tool, because there are no keyword versions with "MobileFirst" and/or "IBM" indications in the KC DITA files, and the existing DITA references don't add such indications "hardcoded". I defined the DC keywords with the assumption that this an MF tool. --> TODO: Verify.
+mf_server_cfg_tool_short:       "Server Configuration Tool"                             # DITA: server_config_tool
+mf_server_cfg_tool:             "MobileFirst Server Configuration Tool"
+mf_server_cfg_tool_full:        "IBM MobileFirst Server Configuration Tool"
+
+## MF Studio
+mf_studio:                      "MobileFirst Studio"                                    # DITA: wl_studio
+mf_studio_full:                 "IBM MobileFirst Platform Studio"                       # DITA: studio_long
+# [DC-KEYS-TODO] Also replace "MobileFirst Foundation Studio" and "MobileFirst Platform Studio" (w/wo "IBM"; currently only 1 with).
+
+## MF System Pattern
+# [DC-KEYS] [sharonl] I'm not sure about the need for a non-translatable capitalized component-name version for this pattern, and hence for the need for keywords, but I'm not familiar enough with this feature to decide.
+mf_system_pattern:              "MobileFirst Platform Pattern"                          # DITA: sys_pattern_short
+mf_system_pattern_long:         "MobileFirst Platform System Pattern"
+mf_system_pattern_full:         "IBM MobileFirst Platform Foundation System Pattern"    # DITA: sys_pattern_long + cons_app_pattern_long
+
+# MF Test Workbench
+mf_test_workbench:              "MobileFirst Test Workbench"                            # DITA: test_workbench_short
+mf_test_workbench_full:         "IBM MobileFirst Platform Test Workbench"               # DITA: test_workbench_long
+
+#####################################################################
+## MF for Bluemix ##
+
+## Mobile Foundation for Bluemix
+mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short
+mf_bm:                          "Mobile Foundation for Bluemix"
+mf_bm_full:                     "IBM Mobile Foundation for Bluemix"                     # DITA: mfpf_bm_long
+# [DC-KEYS] [sharonl] In the DC, there are currently multiple "Mobile Foundation" instances, some in relation to Bluemix and some seem to be unrelated. 
+
+## MF Bluemix containers package
+mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
+mf_bm_pkg_archive:              "ibm-mfpf-container-8.0.0.0.zip"                        # DITA: mfpf_package_zip
+# [DC-KEYS] [sharonl] Currently the DC has three "ibm-mfp-container-8.0.0.0 archive" references, without the .zip extension.
+# We can also decide to forgo these keywords, and instead, consider use the $product_V_R_M_I keyword (if it's kept): "ibm-mfpf-container-{{ site.data.keys.product_V_R_M_I }}".
+
+#####################################################################
+## Other IBM products ##
+# [DC-KEYS] [sharonl] I'm not sure whether we should use keywords for these terms, or just list the terms here for reference.
+
+## IBM Rational License Key Server
+prod_rlks:                      "Rational License Key Server"                           # DITA: rkls_short ["rkls" - SIC]
+prod_rlks_full:                 "IBM Rational License Key Server"                       # DITA: rkls_long  ["rkls" - SIC]
+
+## IBM WebSphere Application Server (WAS)
+# [DC-KEYS] [sharonl] The equivalent KC DITA keywords section has this note: "No short names for the various flavors of the WAS appserver.".
+# I'm not sure whether this was intended as a guideline or as a description of the current state. I think that we should consider at least adding a referene to the common abbreviations, such as "WAS" and "WAS ND" if not in separate short-verison keywords in the long and/or full versions; I think the IBM WAS documentation uses these shorthands. --> TODO-OM/legal
+
+# WebSphere Application Server (WAS)
+# [DC-KEYS] [sharonl]: I think that we might sometimes use the DITA "was" keyword to refer generically to WAS and sometimes to its full profile. --> TODO: Check and consider adding a separte keywords group for the full profile, and maybe creating a Liberty keyword that refers to the "Liberty profile".
+prod_was:                       "WebSphere Application Server"                          # DITA: was
+prod_was_full:                  "IBM WebSphere Application Server"                      # "IBM $prod_was"
+
+# WebSphere Application Server Liberty [WAS Liberty profile]
+prod_was_liberty:               "WebSphere Application Server Liberty"                  # DITA: was_liberty
+prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
+
+# WebSphere Application Server Network Deployment [WAS ND profile]
+prod_was_nd:                    "WebSphere Application Server Network Deployment"       # DITA: was_nd
+prod_was_nd_full:               "IBM WebSphere Application Server Network Deployment"
+
+#####################################################################
+## Earlier product versions terminology ##
+# [DC-KEYS] [sharonl] We don't necessarily need to use these keywords. I think that at least as far as "Worklight" is concerned, we can leave the existing "hardcoded" instances in the DC, and use the keywords as a terminology reference.
+
+## Product name in earlier versions
+# V6.3--V8.0 Feb 2017 product rebranding (product "IBM MobileFirst Platform Foundation")
+# In V6.3 (Altair) the product and was renamed from "Worklight" to "MobileFirst Platform Foundation", part of "MobileFirst Platform".
+# [PRODUCT_RENAME] In Feb 2017, the product will be renamed again (applicable to the current V8.0 and future versions).
+# Product name (V6.3--V8.0 rebranding)
+v63_80rebrand_product:          "MobileFirst Platform Foundation"
+# "Parent product" name (V6.3--V8.0 rebranding)
+v63_80rebrand_parent_product:   "MobileFirst Platform"
+
+# V6.2 product name ("IBM Worklight Foundation")
+v62_product_full:               "IBM Worklight Foundation"                              # DITA: 62_prod_long
+# [DC-KEYS] [sharonl] "Worklight Foundation" is used once, in upgrading/migration-cookbook/index.html, and 62_prod_long is used once in the KC in wldoc/collaterals/welcome.dita:122.
+
+# V6.1 and earlier product name ("IBM Worklight")
+pre62_product_full:             "IBM Worklight"                                         # DITA: pre62_product_wl
+
