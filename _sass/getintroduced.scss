@@ -43,19 +43,24 @@
       p {
          margin-bottom: 20px;
       }
+      
+      .component-img {
+         width: 70px;
+      }
    }
 
    #product-components {
       margin: 30px 0 40px 0;
       
       p {
-         margin-bottom: 20px;
-         padding-top: 14px;
+         margin-bottom: 30px;
+         padding-top: 0;
       }
    }
 
    .component-img {
-      width: 70px;
+      width: 50px;
       float: left;
+      margin-right: 10px;
    }
 }
