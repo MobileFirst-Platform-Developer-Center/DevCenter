@@ -2,21 +2,15 @@
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-<circle style="fill:#4178BE;" cx="25" cy="25" r="25"/>
-<polyline style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" points="21.4,21.9 28.9,21.9 28.9,16.7 "/>
-<polyline style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" points="21.4,31.1 28.9,31.1 28.9,36.3 "/>
-<polyline style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" points="21.8,26.5 33.5,26.5 33.5,21.9 37.5,21.9 "/>
-<path style="fill:#4178BE;stroke:#FFFFFF;stroke-width:0.5;" d="M20.8,33.3h-10c-0.6,0-1-0.4-1-1V20.6c0-0.6,0.4-1,1-1h10
-	c0.6,0,1,0.4,1,1v11.7C21.8,32.9,21.3,33.3,20.8,33.3z"/>
-<line style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" x1="9.9" y1="28.8" x2="21.8" y2="28.8"/>
-<line style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" x1="9.9" y1="24.2" x2="21.8" y2="24.2"/>
-<line style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" x1="11" y1="21.9" x2="17.9" y2="21.9"/>
-<circle style="fill:#FFFFFF;" cx="19.4" cy="21.9" r="0.5"/>
-<line style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" x1="11" y1="26.5" x2="17.9" y2="26.5"/>
-<circle style="fill:#FFFFFF;" cx="19.4" cy="26.5" r="0.5"/>
-<line style="fill:none;stroke:#FFFFFF;stroke-width:0.5;" x1="11" y1="31.1" x2="17.9" y2="31.1"/>
-<circle style="fill:#FFFFFF;" cx="19.4" cy="31.2" r="0.5"/>
-<polygon style="fill:#FFFFFF;stroke:#FFFFFF;" points="26.3,16.1 28.6,12.2 30.9,16.1 "/>
-<circle style="fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.5;" cx="39.9" cy="21.4" r="2.5"/>
-<polygon style="fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.5;" points="30.3,40.8 27.3,40.8 26.3,38 28.7,36.2 31.2,37.9 "/>
+<circle style="fill:#5AAAFA;" cx="25" cy="25" r="25"/>
+<polyline style="fill:none;stroke:#FFFFFF;" points="21.4,21.9 28.9,21.9 28.9,16.7 "/>
+<polyline style="fill:none;stroke:#FFFFFF;" points="21.4,31.1 28.9,31.1 28.9,36.3 "/>
+<polyline style="fill:none;stroke:#FFFFFF;" points="21.8,26.5 33.5,26.5 33.5,21.9 37.5,21.9 "/>
+<path style="fill:#5AAAFA;stroke:#FFFFFF;" d="M20.8,33.3h-10c-0.6,0-1-0.4-1-1V20.6c0-0.6,0.4-1,1-1h10c0.6,0,1,0.4,1,1v11.7
+	C21.8,32.9,21.3,33.3,20.8,33.3z"/>
+<line style="fill:none;stroke:#FFFFFF;" x1="9.9" y1="28.8" x2="21.8" y2="28.8"/>
+<line style="fill:none;stroke:#FFFFFF;" x1="9.9" y1="24.2" x2="21.8" y2="24.2"/>
+<polygon style="fill:#FFFFFF;stroke:#FFFFFF;" points="26.6,17.1 28.9,13.2 31.2,17.1 "/>
+<circle style="fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.5;" cx="39.9" cy="21.9" r="2.5"/>
+<polygon style="fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.5;" points="30.4,40.9 27.4,40.9 26.4,38 28.8,36.3 31.3,38 "/>
 </svg>
