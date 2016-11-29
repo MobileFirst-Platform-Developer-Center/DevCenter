@@ -26,7 +26,7 @@ In this blogpost, we will be exploring the various topics:
 <h2 id="indepMode">How to Get Sessions in Independent Mode</h2>
 In the `worklight.properties` file, configure the following attributes:
 ```javascript
-mfp.session.independant=true
+mfp.session.independent=true
 mfp.attrStore.type=database
 ```
 
@@ -56,7 +56,7 @@ Session count will not increase again until the token expires, a protected resou
 <h2 id="depMode">How to Get Sessions in Dependent Mode</h2>
 In the `worklight.properties` file, configure the following attributes:
 ```javascript
-mfp.session.independant=false
+mfp.session.independent=false
 mfp.attrStore.type=httpSession
 ```
 
