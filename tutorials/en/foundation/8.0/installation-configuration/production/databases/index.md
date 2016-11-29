@@ -82,6 +82,8 @@ The database stores all the data of the MobileFirst Server applications. Before 
 * [Oracle database and user requirements](#oracle-database-and-user-requirements)
 * [MySQL database and user requirements](#mysql-database-and-user-requirements)
 
+> For an up-to-date list of supported database software versions, refer to the [System Requirements](../../../product-overview/requirements/) page.
+
 ### DB2 database and user requirements
 Review the database requirement for DB2. Follow the steps to create user, database, and setup your database to meet the specific requirement.
 
