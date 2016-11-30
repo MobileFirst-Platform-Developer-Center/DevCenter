@@ -10,7 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
+{{ site.data.keys.product_full }} provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
 
 The Java library is provided as a JAR file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
@@ -18,14 +18,14 @@ This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by u
 
 **Prerequisite:**
 
-* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Be familiar with the [MobileFirst Foundation security framework](../../).
+* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
+* Be familiar with the [{{ site.data.keys.product }} security framework](../../).
 
 ![Flow](TAI_flow.jpg)
 
 ## Server setup
 
-1. Download the OAuth Security Extension from the **MobileFirst Operations Console → Download Center → Tools** tab. Unpack the `mfp-oauth-tai.zip` archive.   
+1. Download the OAuth Security Extension from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. Unpack the `mfp-oauth-tai.zip` archive.   
 
 2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
 
@@ -46,7 +46,7 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
 </security-constraint>
 
 <security-role id="SecurityRole_TAIUserRole">
-   <description>This is the role that MobileFirst OAuthTAI uses to protect the resource, and it is mandatory to map it to 'All Authenticated in Application' in WebSphere Application Server full profile and to 'ALL_AUTHENTICATED_USERS' in WebSphere Application Server Liberty.</description>
+   <description>This is the role that {{ site.data.keys.product }} OAuthTAI uses to protect the resource, and it is mandatory to map it to 'All Authenticated in Application' in WebSphere Application Server full profile and to 'ALL_AUTHENTICATED_USERS' in WebSphere Application Server Liberty.</description>
    <role-name>TAIUserRole</role-name>
 </security-role>
 ```
@@ -91,7 +91,7 @@ If you are using servlet-2.x , you need to define the security role in your web.
             <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
   </usr_OAuthTAI>
   ```
-    - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
+    - **authorizationURL**:  Either your {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
 
     - **clientID**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` so that it can validate tokens.
 
@@ -122,7 +122,7 @@ You can deploy the project on supported application servers (WebSphere Applicati
 
 ### Sample usage
 
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
+1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
 4. Map the `accessRestricted` scope to the security check.

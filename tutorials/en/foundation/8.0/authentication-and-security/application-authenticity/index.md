@@ -6,9 +6,9 @@ weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-By issuing an HTTP request, an entity can access to corporate HTTP services (APIs) that IBM MobileFirst Foundation Server provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
+By issuing an HTTP request, an entity can access to corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one and was not tampered with or modified by a third-party attacker.
 
-To enable application authenticity, you can either follow the on-screen instructions in the **MobileFirst Operations Console** → **[your-application]** → **Authenticity**, or review the information below.
+To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
 
 #### Availability
 * Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
@@ -23,7 +23,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Configuring Application Authenticity](#configuring-application-authenticity)
 
 ## Application Authenticity Flow
-By default, the application-authenticity security check is run during the application's runtime registration to MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server, the authenticity challenge does not occur again.
+By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server, the authenticity challenge does not occur again.
 
 See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
 
@@ -34,7 +34,7 @@ See [Configuring application authenticity](#configuring-application-authenticity
 ## Enabling Application Authenticity
 For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
-1. Download the mfp-app-authenticity tool from the **MobileFirst Operations Console → Download Center**.
+1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
 2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
    For example:
@@ -45,7 +45,7 @@ For application authenticity to be enabled in your Cordova or native application
 
    This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
 
-3. Open the MobileFirst Operations Console in your favorite browser.
+3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
 4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
 5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
 
@@ -68,7 +68,7 @@ After an authenticity check has completed, it does not occur again until the tok
 
 #### To configure the `expirationSec` property:
 
-1. Load the MobileFirst Operations Console, navigate to **[your application]** → **Security** → **Security Check Configurations**, and click on **Create New**.
+1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security Check Configurations**, and click on **Create New**.
 
 2. Search for the `appAuthenticity` scope element.
 
