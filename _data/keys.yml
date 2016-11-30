@@ -38,7 +38,7 @@
 # I think that the "MobileFirst Foundation" terminology, was never officially approved as a standalone product shorthand (it's only used as part of some component names), and based on the DITA files as far as it was approved it was only with the "IBM" preface. -->
 # [DC-KEYS-TODO] Because the product is about to be renamed shortly (using a shorter name), I think we should just replace all standalone "IBM MobileFirst Platform Foundation" instances with $product_full, and replace all standalone "[IBM] MobileFirst Foundation" and "MobileFirst Platform Foundation" (no "IBM") with $product (although, to be more accurate we should ensure that he first use in each topic uses $product_full).
 product:                        "MobileFirst Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
-product_full:                   "IBM MobileFirst Platform Foundation"   # DITA: product_wl
+product_full:                   "IBM MobileFirst Foundation"   # DITA: product_wl
 
 ## Product adjective
 # "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
@@ -91,12 +91,10 @@ product_version_long:           "V8.0.0,0"
 # [DC-KEYS-TODO] When replacing text with the keywords, look for "MobileFirst Platform Foundation", "MobileFirst Platform", and "MobileFirst Foundation" variations (followed by the component identifier text).
 
 ## MF Analytics
-# [DC-KEYS-TODO] [sharonl] The DC also has "[MobileFirst Foundation] Operational Analytics" instances
-mf_analytics:                   "Analytics"
   # [DC-KEYS] [sharonl] There is no equivalent DITA keyword, but the DC also uses "Analytics" as a standalone "term". I don't know whether this is approved by legal/OM.
   # We need the keyword to distinguish this from uses of the word "Analytics" not as a signifier of our product component.
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short 
-mf_analytics_full:              "IBM MobileFirst Analytics"                             # DITA: analytics
+mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"                             # DITA: analytics
 
 # MF Analytics Console
 mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short  
