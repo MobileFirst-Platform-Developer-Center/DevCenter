@@ -17,9 +17,9 @@ To use the mobile client to install apps on mobile devices, you must either gene
 * [Deploying the mobile client in Application Center](#deploying-the-mobile-client-in-application-center)
 
 ### Prerequisites for building the Application Center installer
-The Application Center comes with an Android, an iOS, and Windows 8 Universal version of the client application that runs on the mobile device. This mobile application that supports installation of applications on your mobile device is called the mobile client. The mobile client is a MobileFirst mobile application.
+The Application Center comes with an Android, an iOS, and Windows 8 Universal version of the client application that runs on the mobile device. This mobile application that supports installation of applications on your mobile device is called the mobile client. The mobile client is a {{ site.data.keys.product_full }} mobile application.
 
-The MobileFirst project **IBMAppCenter** contains the Android, the iOS, and the Windows 8 Universal versions of the client.
+The {{ site.data.keys.product_full }} project **IBMAppCenter** contains the Android, the iOS, and the Windows 8 Universal versions of the client.
 
 The Windows 8 Universal project is provided as a Visual Studio project located at **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj.**
 
@@ -29,11 +29,11 @@ The Android version of the mobile client is included in the software delivery in
 To build the Android version, you must have the latest version of the Android development tools.
 
 ### Prerequisites specific to Apple iOS operating system
-The iOS version for iPad and iPhone is not delivered as a compiled application. The application must be created from the MobileFirst project named **IBMAppCenter**. This project is also delivered as part of the distribution in the **ApplicationCenter/installer** directory.
+The iOS version for iPad and iPhone is not delivered as a compiled application. The application must be created from the {{ site.data.keys.product_full }} project named **IBMAppCenter**. This project is also delivered as part of the distribution in the **ApplicationCenter/installer** directory.
 
-To build the iOS version, you must have the appropriate MobileFirst and Apple software. The version of MobileFirst Studio must be the same as the version of IBM MobileFirst Foundation Server on which this documentation is based. The Apple Xcode version is V6.1.
+To build the iOS version, you must have the appropriate {{ site.data.keys.product_full }} and Apple software. The version of {{ site.data.keys.mf_studio }} must be the same as the version of {{ site.data.keys.mf_server }} on which this documentation is based. The Apple Xcode version is V6.1.
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
+> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download {{ site.data.keys.mf_studio }} from the [Downloads page]({{site.baseurl}}/downloads). For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
 
 ### Prerequisites specific to Microsoft Windows Phone operating system
 The Windows Phone version of the mobile client is included as an unsigned Windows Phone application package (.xap) file in the software delivery. The **IBMApplicationCenterUnsigned.xap** file is in the **ApplicationCenter/installer** directory.
@@ -48,11 +48,11 @@ The Windows 8 version of the mobile client is included as a .zip archive file. T
 Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
 
 ## Importing and building the project (Android, iOS, Windows Phone)
-You must import the **IBMAppCenter** project into MobileFirst Studio and then build the project.
+You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }} and then build the project.
 
-Application Center requires MobileFirst Studio for importing and building the IBMAppCenter project. MobileFirst Studio is not part of IBM MobileFirst Foundation, but if you purchased this product, you are entitled to the full cross-platform version of the product as well.
+Application Center requires {{ site.data.keys.mf_studio }} for importing and building the IBMAppCenter project. {{ site.data.keys.mf_studio }} is not part of {{ site.data.keys.product }}, but if you purchased this product, you are entitled to the full cross-platform version of the product as well.
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the Previous MobileFirst Platform Foundation releases tab for the download link. For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
+> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
 
 1. Select **File → Import**.
 2. Select **General → Existing Project into Workspace**.

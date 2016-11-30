@@ -6,14 +6,14 @@ show_in_nav: false
 weight: 7
 ---
 ## Overview
-IBM MobileFirst Platform Application Center is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
 
 Application Center facilitates sharing mobile applications:
 
 * You can **share feedback and rating** information.  
 * You can use access control lists to limit who can install applications.
 
-Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
 
 > **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
@@ -33,7 +33,7 @@ You can use Application Center in different contexts. For example:
 * [Application Center command-line tools](#application-center-command-line-tools)
 
 ## Installing and configuring
-Application Center is installed as part of the installation of MobileFirst Server with IBM Installation Manager.
+Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
 
 **Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
 
@@ -44,7 +44,7 @@ If you do not have a database installed, the installation process can also insta
 
 1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
-    > For more information, see the topic about [installing MobileFirst Server](../../installation-configuration).
+    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
 
     Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
 

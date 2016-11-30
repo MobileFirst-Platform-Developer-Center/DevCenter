@@ -33,7 +33,7 @@ Use the Application Center console to:
 * [Adding an application from a public app store](#adding-an-application-from-a-public-app-store)
 * [Application properties](#application-properties)
 * [Editing application properties](#editing-application-properties)
-* [Upgrading a mobile application in MobileFirst Server and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
 * [Downloading an application file](#downloading-an-application-file)
 
 In the Application Center console, you can see reviews about mobile application versions sent by users.
@@ -93,7 +93,7 @@ The Application Center enables you to add new applications and versions and to m
 Click **Applications** to access Application Management.
 
 ### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
-Installations of the Application Center on these application servers, during installation of IBM MobileFirst Foundation with the IBM  Installation Manager package, have two different users defined that you can use to get started.
+Installations of the Application Center on these application servers, during installation of {{ site.data.keys.product_full }} with the IBM  Installation Manager package, have two different users defined that you can use to get started.
 
 * User with login **demo** and password **demo**
 * User with login **appcenteradmin** and password **admin**
@@ -261,12 +261,12 @@ To edit the properties of an uploaded application:
 
 ![Application properties for editing](ac_edit_app_props.jpg)
 
-## Upgrading a mobile application in MobileFirst Server and the Application Center
-You can easily upgrade deployed mobile applications by using a combination of MobileFirst Operations Console and the Application Center.
+## Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center
+You can easily upgrade deployed mobile applications by using a combination of {{ site.data.keys.mf_console }} and the Application Center.
 
-The mobile client of the Application Center must be installed on the mobile device. The HelloWorld application must be installed on the mobile device and must connect to MobileFirst Server when the application is running.
+The mobile client of the Application Center must be installed on the mobile device. The HelloWorld application must be installed on the mobile device and must connect to {{ site.data.keys.mf_server }} when the application is running.
 
-You can use this procedure to update Android, iOS, and Windows Phone applications that have been deployed on MobileFirst Server and also in the Application Center. In this task, the application HelloWorld version 1.0 is already deployed on MobileFirst Server and in the Application Center.
+You can use this procedure to update Android, iOS, and Windows Phone applications that have been deployed on {{ site.data.keys.mf_server }} and also in the Application Center. In this task, the application HelloWorld version 1.0 is already deployed on {{ site.data.keys.mf_server }} and in the Application Center.
 
 HelloWorld version 2.0 is released and you would like users of version 1.0 to upgrade to the later version. To deploy the new version of the application:
 
@@ -275,11 +275,11 @@ HelloWorld version 2.0 is released and you would like users of version 1.0 to up
 
     ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
 
-3. When the external URL is copied to the clipboard, open the MobileFirst Operations Console.
+3. When the external URL is copied to the clipboard, open the {{ site.data.keys.mf_console }}.
 4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
 5. Paste the external URL into the URL field.
 
-    Running the client: When a mobile device connects to MobileFirst Server to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
+    Running the client: When a mobile device connects to {{ site.data.keys.mf_server }} to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
 
     ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
 

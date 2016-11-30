@@ -40,7 +40,7 @@ For Windows Phone, only the Windows Phone application package (.xap) file format
 
 Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the MobileFirst platform.
+Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
 
 You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
 
@@ -126,12 +126,12 @@ From the mobile client, you can take the following actions:
 
 The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirst platform.To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build MobileFirst applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
 
 ## Preliminary information
-To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst Foundation is installed, start the Application Center console, and log in.
+To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
 
-When you install IBM MobileFirst Foundation, the Application Center is automatically installed in the specified application server.
+When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
 
 If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
 
