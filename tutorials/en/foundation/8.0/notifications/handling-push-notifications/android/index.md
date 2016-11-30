@@ -106,6 +106,15 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
 
 	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
 
+    * Add the following `intent-filter` to the application's activity.
+      
+      ```xml
+      <intent-filter>
+          <action android:name="your.application.package.name.IBMPushNotification" />
+          <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+      ```
+      
 ## Notifications API
 
 ### MFPPush Instance
