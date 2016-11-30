@@ -20,12 +20,12 @@
 ## Keyword usage syntax
 #       {{ site.data.keys.keyword }}
 # For example, use the "product" keyword:
-#       This topic describes the {{ site.data.keys.product}} security framework.
+#       This topic describes the {{ site.data.keys.product }} security framework.
 
 ####################
 ## Notes ##
 # - When using a keyword in a Markdown header, the auto-generated anchor ID is derived from the header text after the keyword translation.
-#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by idanh on 29 Nov 2016).
+#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by Idan Adar on 29 Nov 2016).
 
 ######################################################################
 ## Product name ##
@@ -37,7 +37,7 @@
 # product_short is used only twice in the V8.0.0 KC. In the DC V8.0.0 docs (tutorials) there are many instances of "MobileFirst Foundation", with and without "IBM".
 # I think that the "MobileFirst Foundation" terminology, was never officially approved as a standalone product shorthand (it's only used as part of some component names), and based on the DITA files as far as it was approved it was only with the "IBM" preface. -->
 # [DC-KEYS-TODO] Because the product is about to be renamed shortly (using a shorter name), I think we should just replace all standalone "IBM MobileFirst Platform Foundation" instances with $product_full, and replace all standalone "[IBM] MobileFirst Foundation" and "MobileFirst Platform Foundation" (no "IBM") with $product (although, to be more accurate we should ensure that he first use in each topic uses $product_full).
-product:                        "MobileFirst Platform Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
+product:                        "MobileFirst Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
 product_full:                   "IBM MobileFirst Platform Foundation"   # DITA: product_wl
 
 ## Product adjective
@@ -118,7 +118,7 @@ mf_app_pattern:                 "MobileFirst Application Pattern"               
 mf_app_pattern_full:            "IBM MobileFirst Platform Application Pattern"          # DITA: apppattern_long
 
 ## MF CLI
-mf_cli:                         "MobileFirst Platform CLI"                              # DITA: cli_short
+mf_cli:                         "MobileFirst CLI"                              # DITA: cli_short
 mf_cli_full:                    "IBM MobileFirst Platform Command Line Interface (CLI)" # DITA: cli
 
 ## MF Data Proxy
@@ -128,7 +128,7 @@ mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
 ## MF Developer Kit
 mf_dev_kit:                     "MobileFirst Developer Kit"
 mf_dev_kit_full:                "IBM MobileFirst Platform Foundation Developer Kit"     # DITA: dev_kit
-# [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC "with the appropriate keyword.
+# [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC with the appropriate keyword.
 
 ## MF Device Runtime
 # [DC-KEYS] [sharonl] I don't think that we need keywords for the following DITA keywords, even though they are used in non-archived KC 8.0 DITA files;
