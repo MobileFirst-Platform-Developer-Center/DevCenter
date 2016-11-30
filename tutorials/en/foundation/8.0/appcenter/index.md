@@ -7,7 +7,7 @@ weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Learn about the Application Center: what it is for, the different components and features, and how to use the console and the client.
+Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
 
 The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
 The Application Center is a tool to make sharing mobile applications within an organization easier.
