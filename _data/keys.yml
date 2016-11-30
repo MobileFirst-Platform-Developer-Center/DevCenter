@@ -107,7 +107,7 @@ mf_analytics_server_full:       "IBM MobileFirst Analytics Server"              
 ## MF Application Center
 mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
 mf_app_center:                  "MobileFirst Application Center"
-mf_app_center_full:             "IBM MobileFirst Platform Application Center"           # DITA: appcenter_long
+mf_app_center_full:             "IBM MobileFirst Foundation Application Center"           # DITA: appcenter_long
 # [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation Application Center" with mf_app_center_full, and replace
 # "MobileFirst Platform Application Center" and "MobileFirst Foundation Application Center" (with "IBM") with mf_app_center.
 
@@ -117,7 +117,7 @@ mf_app_pattern_full:            "IBM MobileFirst Platform Application Pattern"  
 
 ## MF CLI
 mf_cli:                         "MobileFirst CLI"                              # DITA: cli_short
-mf_cli_full:                    "IBM MobileFirst Platform Command Line Interface (CLI)" # DITA: cli
+mf_cli_full:                    "IBM MobileFirst Foundation Command Line Interface (CLI)" # DITA: cli
 
 ## MF Data Proxy
 mf_data_proxy:                  "MobileFirst Data Proxy"                                # DITA: datastore
@@ -125,7 +125,7 @@ mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
 
 ## MF Developer Kit
 mf_dev_kit:                     "MobileFirst Developer Kit"
-mf_dev_kit_full:                "IBM MobileFirst Platform Foundation Developer Kit"     # DITA: dev_kit
+mf_dev_kit_full:                "IBM MobileFirst Foundation Developer Kit"     # DITA: dev_kit
 # [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC with the appropriate keyword.
 
 ## MF Device Runtime
@@ -137,7 +137,7 @@ mf_dev_kit_full:                "IBM MobileFirst Platform Foundation Developer K
 
 ## MF Mobile Browser Simulator (MBS)
 mf_mbs:                         "Mobile Browser Simulator"                              # DITA: mbs
-mf_mbs_full:                    "IBM MobileFirst Platform Foundation Mobile Browser Simulator"
+mf_mbs_full:                    "IBM MobileFirst Foundation Mobile Browser Simulator"
 # [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation's Mobile Browser Simulator" [application-development/debugging-applications/index.md:29] with mf_mbs_full.
 
 ## MF Operations Console
@@ -147,7 +147,7 @@ mf_console_full:                "IBM MobileFirst Operations Console"            
 
 ## MF Server
 mf_server:                      "MobileFirst Server"                                    # DITA: wl_server
-mf_server_full:                 "IBM MobileFirst Platform Server"                       # DITA: server_long
+mf_server_full:                 "IBM MobileFirst Foundation Server"                       # DITA: server_long
 # [DC-KEYS-TODO] Also replace "MobileFirst Platform Server", "MobileFirst Platform Foundation Server" and "MobileFirst Foundation Server" (w/wo "IBM").
 
 # MF Development Server
@@ -163,7 +163,7 @@ mf_server_cfg_tool_full:        "IBM MobileFirst Server Configuration Tool"
 
 ## MF Studio
 mf_studio:                      "MobileFirst Studio"                                    # DITA: wl_studio
-mf_studio_full:                 "IBM MobileFirst Platform Studio"                       # DITA: studio_long
+mf_studio_full:                 "IBM MobileFirst Foundation Studio"                       # DITA: studio_long
 # [DC-KEYS-TODO] Also replace "MobileFirst Foundation Studio" and "MobileFirst Platform Studio" (w/wo "IBM"; currently only 1 with).
 
 ## MF System Pattern
