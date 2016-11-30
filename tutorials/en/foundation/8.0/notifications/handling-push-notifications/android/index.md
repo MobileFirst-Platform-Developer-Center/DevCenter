@@ -10,16 +10,16 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android)
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
     * [Push Notifications Overview](../../)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
 
@@ -30,7 +30,7 @@ Before Android applications are able to handle any received push notifications, 
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android) tutorial.
+If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
 
 ### Project setup
 
