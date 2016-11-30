@@ -10,7 +10,7 @@ tabs:
     path: /labs/developers/8.0/advancedwallet
 ---
 ## Lab Selection
-Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step instructions.  
+Below are {{ site.data.keys.product }} 8.0 hands-on lab sessions with step-by-step instructions.  
 You can read below an overview of the available links, and jump to lab from the tabbar above.
 
 <div style="max-width: 200px">
@@ -39,7 +39,7 @@ You can read below an overview of the available links, and jump to lab from the 
 * Performing a security scan of application binary
 * Doing a bug reporting and checking user sentiment analysis
 * Moving Node.js app to Bluemix using Cloud Foundry Node runtime
-* Creating MobileFirst Foundation instance on Bluemix
+* Creating {{ site.data.keys.product }} instance on Bluemix
 * Preparing mobile application for distribution
 
 ---
@@ -55,7 +55,7 @@ You can read below an overview of the available links, and jump to lab from the 
 <br/>
 In this lab you will be:
 
-* Migrating from MobileFirst Platform Foundation v7.1-based Hybrid app to a MobileFirst Foundation v8.0-based Cordova app
+* Migrating from MobileFirst Platform Foundation v7.1-based Hybrid app to a {{ site.data.keys.product }} v8.0-based Cordova app
 * Developing using CLI and Visual Studio Code
 * Using Ionic v1 for hybrid development
 * Securing backend APIs with user authentication
