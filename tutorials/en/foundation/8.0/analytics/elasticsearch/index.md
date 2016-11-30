@@ -7,23 +7,23 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Operational Analytics uses  **Elasticsearch 1.5x** for storing data and running search queries.  
+{{ site.data.keys.mf_analytics_full }} uses  **Elasticsearch 1.5x** for storing data and running search queries.  
 
 Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
 
-Elasticsearch is used for storing all mobile and server data in JSON format in the MobileFirst Operational Analytics server in Elasticsearch instances.
+Elasticsearch is used for storing all mobile and server data in JSON format in the {{ site.data.keys.mf_analytics_server }} in Elasticsearch instances.
 
-The Elasticsearch instances are queried in real-time to populate the MobileFirst Operational Analytics Console.
+The Elasticsearch instances are queried in real-time to populate the {{ site.data.keys.mf_analytics_console }}.
 
-MobileFirst Operational Analytics exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
+{{ site.data.keys.mf_analytics }} exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
 
 For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-## Managing Elasticsearch on the MobileFirst Analytics Server
+## Managing Elasticsearch on the {{ site.data.keys.mf_analytics_server }}
 
-Elasticsearch is embedded in the MobileFirst Analytics Server and participates in the node and cluster behavior.
+Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }} and participates in the node and cluster behavior.
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [MobileFirst Analytics Server Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
+> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [{{ site.data.keys.mf_analytics_server }} Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
 
 ### Elasticsearch properties
 Elasticsearch properties are available through JNDI variables or environment entries.  
