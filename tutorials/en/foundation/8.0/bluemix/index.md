@@ -19,9 +19,9 @@ In a nutshell: There are 2 ways to run {{ site.data.keys.product }} on Bluemix b
 * Bluemix subscription or PayGo license: Mobile Foundation Bluemix Service 
 * On Prem license: Use IBM provided scripts to setup a MFP instance on IBM Containers or Liberty for Java runtime. 
 
-To run IBM MobileFirst Foundation on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
+To run IBM MobileFirst Foundation on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
 
-To run IBM MobileFirst Foundation on Bluemix Liberty for Java runtime, the components are: an **Cloudfoundry app** thats contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server instance** deployed to it. 
+To run IBM MobileFirst Foundation on Bluemix Liberty for Java runtime, the components are: an **Cloudfoundry app** thats contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. 
 ### IBM Containers
 IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
 
@@ -35,6 +35,6 @@ The Liberty for Java runtime is powered by the liberty-for-java buildpack. The l
 [Learn more about Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
 
 ## Tutorials to follow next
-* Create a {{ site.data.keys.mf_server instance [using the Mobile Foundation Bluemix service](using-mobile-foundation/).
-* Create a {{ site.data.keys.mf_server instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
-* Create a {{ site.data.keys.mf_server instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.
+* Create a {{ site.data.keys.mf_server }} instance [using the Mobile Foundation Bluemix service](using-mobile-foundation/).
+* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
+* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM-provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.
