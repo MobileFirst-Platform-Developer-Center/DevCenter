@@ -8,7 +8,7 @@ print_pdf: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Integrate between the various IBM MobileFirst suite of solutions and other IBM products.
+Integrate between the various {{ site.data.keys.product }} suite of solutions and other IBM products.
 Select your product release version from the following list:
 
 * [MobileFirst Platform Foundation 8.0](8.0/)

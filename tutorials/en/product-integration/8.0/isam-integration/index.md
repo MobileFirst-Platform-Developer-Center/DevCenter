@@ -14,20 +14,20 @@ published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-IBM Security Access Manager can be used in the DMZ to protect MobileFirst mobile application traffic.
+IBM Security Access Manager can be used in the DMZ to protect {{ site.data.keys.product_adj }} mobile application traffic.
 
-It can be used as a security gateway to protect mobile application traffic initiated by MobileFirst application. Such traffic can be protected by preventing data from being altered, authenticating users and allowing only authorised users to access the enterprise applications.
+It can be used as a security gateway to protect mobile application traffic initiated by {{ site.data.keys.product_adj }} application. Such traffic can be protected by preventing data from being altered, authenticating users and allowing only authorised users to access the enterprise applications.
 
 IBM Security Access Manager can be used in different ways within an organisation's network to protect enterprise resources. It can be placed in the DMZ so that it acts as a front-end, reverse proxy and a security gateway.
 
-> This article assumes prior knowledge of other MobileFirst features, such as challenge handlers. It also assumes that IBM Security Access Manager is installed and IBM Security Access Manager for Web configured and Reverse Proxy Instance created.
+> This article assumes prior knowledge of other {{ site.data.keys.product_adj }} features, such as challenge handlers. It also assumes that IBM Security Access Manager is installed and IBM Security Access Manager for Web configured and Reverse Proxy Instance created.
 
 ## Supported versions
-This pattern and the samples are designed to work with MobileFirst Foundation 8.0. The supported platforms currently are Android and iOS, both native and Cordova-based.  
+This pattern and the samples are designed to work with {{ site.data.keys.product }} 8.0. The supported platforms currently are Android and iOS, both native and Cordova-based.  
 
-This also requires MobileFirst to run on an application server that supports LTPA tokens.
+This also requires {{ site.data.keys.product }} to run on an application server that supports LTPA tokens.
 
-> NOTE: Native Android apps are supported on IBM Security Access Manager version 9.0.2 onwards. The older versions of Security Access Manager tokenise the authentication header, causing the MobileFirst Foundation's Android SDK to fail. The iOS and Cordova SDKs are not affected by this. This issue has been rectified in IBM Security Access Manager 9.0.2.
+> NOTE: Native Android apps are supported on IBM Security Access Manager version 9.0.2 onwards. The older versions of Security Access Manager tokenise the authentication header, causing the {{ site.data.keys.product }}'s Android SDK to fail. The iOS and Cordova SDKs are not affected by this. This issue has been rectified in IBM Security Access Manager 9.0.2.
 
 ## Flow
 ### Initial flow
@@ -40,7 +40,7 @@ This also requires MobileFirst to run on an application server that supports LTP
 ![Expired flow](expired-flow.png)
 
 ## Setting up your MobileFirst application
-Create your MobileFirst application without any security, to ensure that it works without IBM Security Access Manager.
+Create your {{ site.data.keys.product_adj }} application without any security, to ensure that it works without IBM Security Access Manager.
 
 > You can download the linked samples for Cordova, Android or iOS.
 
@@ -48,10 +48,10 @@ Create your MobileFirst application without any security, to ensure that it work
 The IBM Security Access Manager pattern provided here will send an HTML login form when the MobileFirst application tries to access any protected resource. To detect the incoming login form, `GatewayChallengeHandler` is used in conjunction with searching for the known login form string `pkmslogin.form`. IBM Security Access Manager expects that the login form is submitted with the login credentials of the user accessing protected resources.
 
 #### Cordova and Android App:
-- The form's action URL, relative to MobileFirst context is `../../../../../../../pkmslogin.form?token=Unknown`.
+- The form's action URL, relative to {{ site.data.keys.product_adj }} context is `../../../../../../../pkmslogin.form?token=Unknown`.
 
 #### iOS App:
-- The form's action URL, relative to MobileFirst context is `../../pkmslogin.form?token=Unknown`.
+- The form's action URL, relative to {{ site.data.keys.product_adj }} context is `../../pkmslogin.form?token=Unknown`.
 
 #### Common For All Mobile platforms
 - The form submitted back to IBM Security Access Manager expects 3 elements as parameters.
@@ -116,7 +116,7 @@ isamAuthChallengeHandler.submitLoginFormCallback = function(response) {
 };
 ```
 
-Clicking the **Logout** button will log the user out of the MobileFirst server, first, and then will logout the user from IBM Security Access Manager. For logging out of IBM Security Access Manager, the action URL is `../../../../../../../pkmslogout`.
+Clicking the **Logout** button will log the user out of the {{ site.data.keys.mf_server }}, first, and then will logout the user from IBM Security Access Manager. For logging out of IBM Security Access Manager, the action URL is `../../../../../../../pkmslogout`.
 > It will be `../../pkmslogout` for iOS applications.
 
 ```javascript
@@ -137,17 +137,17 @@ document.getElementById('logout').addEventListener('click', function() {
 ```
 
 ## Scope-Elements Mapping
-IBM Security Access Manager is responsible for authentication and communicates the status with MobileFirst server using LTPA tokens. To ensure requests with valid LTPA token access protected resources, such resources need to be protected by the security check `LtpaBasedSSO`.
+IBM Security Access Manager is responsible for authentication and communicates the status with {{ site.data.keys.mf_server }} using LTPA tokens. To ensure requests with valid LTPA token access protected resources, such resources need to be protected by the security check `LtpaBasedSSO`.
 
 One way to achieve this is to map the **Scope-Elements** on this application. This will ensure that each application trying to access the protected resource is subjected to LTPA validation first.
 
-In the MobileFirst Console, select your application and then click **Security** tab. Look for **Scope-Elements Mapping**. Click **New** and enter `accessRestricted` for **Scope Element**. Choose `LtpaBasedSSO` as **Predefined MobileFirst Security Checks**.
+In the {{ site.data.keys.mf_console }}, select your application and then click **Security** tab. Look for **Scope-Elements Mapping**. Click **New** and enter `accessRestricted` for **Scope Element**. Choose `LtpaBasedSSO` as **Predefined {{ site.data.keys.product_adj }} Security Checks**.
 
 >**Note:** `accessRestricted` is used in this example. It can be something else for your resource.
 
 
 ### server.xml
-In the MobileFirst Server folder, look for a **ltpa.keys** file. Fill in the value for `com.ibm.websphere.ltpa.Realm` in the file.
+In the {{ site.data.keys.mf_server }} folder, look for a **ltpa.keys** file. Fill in the value for `com.ibm.websphere.ltpa.Realm` in the file.
 
 In the **server.xml** file, look for `<basicRegistry>` or `<ldapRegsitry>` element. Create one, if it does not exist. Add `realm` attribute to that element. The value for the `realm` attribute should be the one that you had filled in **ltpa.keys** file above.
 
@@ -168,7 +168,7 @@ For more information about basic registry or configuring against LDAP server, re
 ## IBM Security Access Manager configuration
 The following was tested in IBM Security Access Manager 9.0.2.
 
-Before you start configuring IBM Security Access Manager, export **ltpa.keys** file from MobileFirst Platform's application server. This will be required in the following steps.
+Before you start configuring IBM Security Access Manager, export **ltpa.keys** file from {{ site.data.keys.product }}'s application server. This will be required in the following steps.
 
 Ensure that IBM Security Access Manager is running and Reverse Proxy is configured before doing the following. Learn about configuring IBM Security Access Manager: [ISAM Online Help](http://www.ibm.com/support/knowledgecenter/SSPREK_9.0.2/com.ibm.isam.doc/welcome.html).
 
@@ -190,7 +190,7 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 8. **Save** and **Deploy** the changes.
 9. **Restart** the reverse proxy.
 
-### Setting Up MobileFirst Junctions
+### Setting Up {{ site.data.keys.product_adj }} Junctions
 1. Go to **Secure Web Settings: Manage → Reverse Proxy**.
 2. Select the reverse proxy instance that you want to configure.
 3. From the **Manage** dropdown list, select **Junction Management**.
@@ -199,8 +199,8 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 6. Select **Create Transparent Path Junction**.
 7. Select **TCP** (This integration was tested against non-SSL junction).
 8. Go to **Server** tab and click **New**.
-9. Enter the **Hostname** of MobileFirst Platform Foundation server.
-10. Enter **TCP or SSL Port** of your MobileFirst Platform Foundation server.
+9. Enter the **Hostname** of {{ site.data.keys.mf_server }}.
+10. Enter **TCP or SSL Port** of your {{ site.data.keys.mf_server }}.
 11. Select the **Local Address** from the dropdown menu for the application interface.
 12. Click **Save**.
 13. Go to **Identity** tab.
@@ -213,12 +213,12 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 20. Enter LTPA Keyfile Password that was set while creating this file. The default value for Websphere is **WebAS**.
 22. Repeat steps 1 - 16 for junctions names `/mfpconsole` and `/mfpadmin`.
 
-### ACL Settings for MobileFirst Platform
+### ACL Settings for {{ site.data.keys.product }}
 1. Go to **Secure Web Settings: Manage → Policy Administration**.
 2. Enter **User Id** and **Password** and **Sign On**.
 3. Under **Task List**, expand **ACL** and click **Search ACLs → Search**.
 4. From the list returned, click on **favicon** and click **Clone**.
-5. In the **Clone ACL** page, enter an **ACL Name** and **Description** for example: `MobileFirstManagement` and `This ACL is used for MobileFirst Management URLs to pass through ISAM`.
+5. In the **Clone ACL** page, enter an **ACL Name** and **Description** for example: `MobileFirstManagement` and `This ACL is used for {{ site.data.keys.product_adj }} Management URLs to pass through ISAM`.
 6. Click **Clone** and then **Done**.
 7. Under **Task List**, expand **Object Space → Browse Object Space**.
 8. Expand **default-root → WebSEAL → ISAMHostname-Reverse Proxy Instance Name**.
@@ -240,17 +240,17 @@ Ensure that IBM Security Access Manager is running and Reverse Proxy is configur
 8. Click **Apply**.
 9. Repeat the above steps for all the users you need to create.
 
->**Note**: Ensure that an entry is present for all the **Registry UID's** create above, in the **Basic Registry** section of the **server.xml** file of your MobileFirst Platform's application server.
+>**Note**: Ensure that an entry is present for all the **Registry UID's** create above, in the **Basic Registry** section of the **server.xml** file of your {{ site.data.keys.product }}'s application server.
 
-### Configuring MobileFirst Platform Foundation Server to communicate with IBM Security Access Manager
-To ensure all MobileFirst traffic is routed through IBM Security Access Manager, you need to update MobileFirst configuration.
+### Configuring {{ site.data.keys.mf_server }} to communicate with IBM Security Access Manager
+To ensure all {{ site.data.keys.product_adj }} traffic is routed through IBM Security Access Manager, you need to update {{ site.data.keys.product_adj }} configuration.
 
-1. Go to MobileFirst server's terminal console.
+1. Go to {{ site.data.keys.mf_server }}'s terminal console.
 2. Execute the command **mfpdev server add**.
 3. Enter the name of the server profile; for example: `mfpViaISAM`.
 4. Enter the FQDN of the IBM Security Access Manager server; For example: `http://<ISAM Hostname>:80`.
-5. Enter the MobileFirst admin name; For example: `admin`.
-6. Enter the MobileFirst admin's password; For example: `password`.
+5. Enter the {{ site.data.keys.product_adj }} admin name; For example: `admin`.
+6. Enter the {{ site.data.keys.product_adj }} admin's password; For example: `password`.
 7. Say `'y'` to save administrator password.
 8. Leave the rest of the settings at default values and ensure that this server is made to be the default server.
 
