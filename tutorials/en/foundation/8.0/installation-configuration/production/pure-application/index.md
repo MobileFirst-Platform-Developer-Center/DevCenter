@@ -1375,7 +1375,7 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
         **Standalone server**  
         Select this component if you want to deploy {{ site.data.keys.mf_analytics }} on WebSphere Application Server full profile.
 
-        A new node is created with the name "OS Node". Rename it "{{{ site.data.keys.mf_analytics }}".
+        A new node is created with the name "OS Node". Rename it "{{ site.data.keys.mf_analytics }}".
     * Make the following configuration changes depending on the type of application server you want to deploy Analytics to:
         * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server Liberty profile, click **Liberty profile server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/Liberty** and specify the administrative user name and password. Use the default values for the other parameters.
         * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server full profile, click **Standalone server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/AppServer/Profiles**, change Profile name to **AppSrv01**, and specify the administrative user name and password. Use the default values for the other parameters.
