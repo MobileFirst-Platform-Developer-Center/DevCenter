@@ -74,7 +74,7 @@ Load the {{ site.data.keys.mf_console }} and click on **[your application] → S
 
 You can also map the scope element to a security check in case you're using one in your application.
 
-> [Learn more about the {{ site.data.keys.product_adj security framework](../../authentication-and-security/)
+> [Learn more about the {{ site.data.keys.product_adj }} security framework](../../authentication-and-security/)
 
 <img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
 
