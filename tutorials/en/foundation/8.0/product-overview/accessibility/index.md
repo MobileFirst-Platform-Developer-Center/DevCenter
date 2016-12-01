@@ -4,6 +4,7 @@ title: Accessibility features for IBM MobileFirst Foundation
 breadcrumb_title: Accessibility features
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 Accessibility features assist users who have a disability, such as restricted mobility or limited vision, to use information technology content successfully.
 

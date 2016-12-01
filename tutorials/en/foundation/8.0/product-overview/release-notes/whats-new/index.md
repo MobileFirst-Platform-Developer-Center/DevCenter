@@ -3,6 +3,7 @@ layout: tutorial
 title: What's new
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 IBM MobileFirst Foundation V8.0 brings significant changes that modernize your MobileFirst application development, deployment, and management experience.
 
@@ -138,13 +139,13 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
     </div>
     
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="mobilefirst-security-apis">
+        <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-security-apis" aria-expanded="true" aria-controls="collapse-mobilefirst-security-apis">What's new in MobileFirst Security APIs</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-security" aria-expanded="true" aria-controls="collapse-mobilefirst-security">What's new in MobileFirst security</a>
             </h4>
         </div>
 
-        <div id="collapse-mobilefirst-security-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-security-apis">
+        <div id="collapse-mobilefirst-security" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-security">
             <div class="panel-body">
                 <p>The security framework in IBM MobileFirst Foundation was entirely redesigned. New security features were introduced, and some modifications were made to existing features.</p>
 
@@ -174,7 +175,7 @@ IBM MobileFirst Foundation V8.0 brings significant changes that modernize your M
                 </ul>
                 
                 <h3>Device Single Sign-On</h3>
-                <p>Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property.</p>
+                <p>Device single sign-on (SSO) is now supported by way of the new predefined <code>enableSSO</code> security-check application-descriptor configuration property.</p>
 
                 <h3>Direct Update</h3>
                 <p>In contrast to earlier versions of MobileFirst, starting with v8.0:</p>

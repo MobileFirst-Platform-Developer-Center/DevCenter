@@ -5,15 +5,21 @@ breadcrumb_title: Alerts
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.  
 You can set reactive thresholds in the MobileFirst Analytics Console to trigger alerts when a specific criteria is met.
 
 You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the MobileFirst Analytics Console, and also be sent to a pre-configured REST endpoint or custom webhook.
 
+Once alerts are triggered, the **Alert** icon (in the title bar) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
+
+Alternate methods are available for distributing the alerts.
+
 **Prerequisite:** Ensure that the MobileFirst Analytics Server is started and ready to receive client logs.
 
-## Creating an alert
+## Alert management
+### Creating an alert
 In the MobileFirst Analytics Console:
 
 1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button. The **Alert Definition** tab appears.
@@ -25,19 +31,19 @@ In the MobileFirst Analytics Console:
 ### Distribution Method tab
 By default, the alert is displayed in the Analytics Console.
 
-You can send a POST message with a JSON payload to both the Analytics Console and to a customized URL by selecting the **Analytics Console and Network Post** option.
+You can also send a POST message with a JSON payload to both the Analytics Console and to a customized URL by selecting the **Analytics Console and Network Post** option.
 
 The following fields are available if you choose this option:
 
-* *required*. Network POST URL
-* *optional*. Headers
-* *required*. Authentication Type
+* Network POST URL (*required*)
+* Headers (*optional*)
+* Authentication Type (*required*)
 
 
 <img class="gifplayer"  alt="Creating an alert" src="creating-an-alert.png"/>
 
 ## Custom web hook
-You can set up a distribution method for an alert. For example: define a custom web hook to which a payload is sent to when an alert threshold is triggered.
+You can set up a custom distribution method for an alert. For example: define a web hook to which a payload is sent to when an alert threshold is triggered.
 
 Example payload:
 

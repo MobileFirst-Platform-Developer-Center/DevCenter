@@ -20,6 +20,7 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Resources can be protected by several security checks. In this case, the MobileFirst Server sends all the relevant challenges simultaneously to the application.  
 
@@ -73,7 +74,7 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The `authorize` Method
+## The Authorize Method
 
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
 The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.

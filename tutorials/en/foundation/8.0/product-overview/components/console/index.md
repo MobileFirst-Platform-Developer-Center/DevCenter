@@ -5,6 +5,7 @@ breadcrumb_title: MobileFirst Operations Console
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Foundation Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
 

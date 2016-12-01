@@ -4,6 +4,7 @@ title: MobileFirst Server
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Server consists of several components. An overview of MobileFirst Server architecture is provided for you to understand the functions of each component.
 

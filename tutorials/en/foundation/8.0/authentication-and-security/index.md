@@ -4,6 +4,7 @@ title: Authentication and Security
 weight: 6
 show_children: true
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Foundation security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
 
@@ -136,8 +137,8 @@ A security check typically issues security challenges that require the client to
 The following predefined security checks are available:
 
 - [Application Authenticity](application-authenticity/)
+- [LTPA-based single sign-on (SSO)](ltpa-security-check/)
 - [Direct Update](../application-development/direct-update)
-- LTPA
 
 ### Challenge Handler
 When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure that the client is allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a user name and password.

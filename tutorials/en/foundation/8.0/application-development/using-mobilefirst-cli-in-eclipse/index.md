@@ -5,7 +5,7 @@ relevantTo: [ios,android,windows,cordova]
 breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
 

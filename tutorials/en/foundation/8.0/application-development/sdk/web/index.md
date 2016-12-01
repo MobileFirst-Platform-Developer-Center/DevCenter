@@ -5,6 +5,7 @@ breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can develop mobile or Desktop MobileFirst web applications by using your preferred development environment and tools.  
 In this tutorial, you learn how to add the MobileFirst Web SDK to your web applicaiton, as well as how to register the web application with the MobileFirst Server
@@ -21,9 +22,9 @@ To run NPM commands, [Node.js](https://nodejs.org) is required.
 #### SDK Limitations
 The numbers in the table specify the first browser version that are fully supported.
 
-|      Browser      | Chrome | Safari* | Internet Explorer | Edge | Firefox | Blackberry Browser* | Android Browser |
-|:-----------------:|:------:|:-------:|:-----------------:|:----:|:-------:|:------------------:|:---------------:|
-| Supported Version |   43+  |    8+   |        10+        |  20+ |  38+  |      Z series      |   Android 4.3+  |
+|      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
+|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+| Supported Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
 
 (*) Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
 

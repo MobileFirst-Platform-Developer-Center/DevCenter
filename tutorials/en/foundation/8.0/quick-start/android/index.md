@@ -5,6 +5,7 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 

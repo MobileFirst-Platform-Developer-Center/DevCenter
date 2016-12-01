@@ -4,6 +4,7 @@ title: Migrating push notifications from event source-based notifications
 breadcrumb_title: Migrating push notifications 
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 From IBM MobileFirst Foundation v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of MobileFirst to be moved to v8.0, they must be migrated to the new push service model.
 
@@ -879,7 +880,7 @@ Complete the following steps for every application that was using the same event
 Applications using multiple event sources requires segmentation of users based on subscriptions.
 
 ##### Client
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to MobileFirstV8.0.0, convert this model to tag based notification.
+This maps to tags which segments the users/devices based on topic of interest. To migrate this to MobileFirst V8.0.0, convert this model to tag based notification.
 
 1. Initialize the `MFPPush` client instance in your application.
 

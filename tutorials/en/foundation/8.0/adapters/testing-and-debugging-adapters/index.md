@@ -4,6 +4,7 @@ title: Testing and Debugging Adapters
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 
 You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  

@@ -25,7 +25,7 @@ GEM
       typhoeus (~> 0.7)
       yell (~> 2.0)
     i18n (0.7.0)
-    jekyll (3.3.0)
+    jekyll (3.3.1)
       addressable (~> 2.4)
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
@@ -39,13 +39,13 @@ GEM
     jekyll-feed (0.8.0)
       jekyll (~> 3.3)
     jekyll-paginate (1.1.0)
-    jekyll-sass-converter (1.4.0)
+    jekyll-sass-converter (1.5.0)
       sass (~> 3.4)
     jekyll-sitemap (0.12.0)
       jekyll (~> 3.3)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
-    kramdown (1.12.0)
+    kramdown (1.13.1)
     liquid (3.0.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -55,7 +55,7 @@ GEM
     minitest (5.9.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    parallel (1.9.0)
+    parallel (1.10.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     pdfkit (0.8.2)
@@ -87,4 +87,4 @@ DEPENDENCIES
   wkhtmltopdf-binary-edge
 
 BUNDLED WITH
-   1.13.1
+   1.13.6

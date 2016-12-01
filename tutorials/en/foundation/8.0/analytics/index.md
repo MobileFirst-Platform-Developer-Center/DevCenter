@@ -6,6 +6,7 @@ show_children: true
 relevantTo: [ios,android,javascript]
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation Operational Analytics collects data from app-to-server activities, client logs, client crashes, and server-side logs from the MobileFirst Runtime Server and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and more.
 
@@ -17,7 +18,7 @@ MobileFirst Operational Analytics supports:
 * Native iOS and Android clients
 * Cordova applications (iOS, Android)
 * Web applications
-* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms
+* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
 
 IBM MobileFirst Foundation Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
 

@@ -5,6 +5,7 @@ breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
 

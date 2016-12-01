@@ -5,7 +5,7 @@ breadcrumb_title: Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Find information to help resolve issues that you might encounter when you use the MobileFirst Foundation Push service.
 

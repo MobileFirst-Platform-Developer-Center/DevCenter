@@ -5,7 +5,7 @@ breadcrumb_title: Analytics
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Find information to help resolve issues that you might encounter when you use the MobileFirst Foundation's Operational Analytics.
 

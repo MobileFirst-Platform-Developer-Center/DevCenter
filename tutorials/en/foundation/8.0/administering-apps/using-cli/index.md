@@ -4,6 +4,7 @@ title: Administrating applications through Terminal
 breadcrumb_title: Administrating using terminal
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can administer MobileFirst applications through the **mfpadm** program.
 

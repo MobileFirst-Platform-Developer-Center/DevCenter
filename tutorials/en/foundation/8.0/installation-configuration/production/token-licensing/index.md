@@ -4,6 +4,7 @@ title: Installing and configuring for token licensing
 breadcrumb_title: Token licensing
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 If you plan to use token licensing for MobileFirst Server, you must install the Rational  Common Licensing library and configure your application server to connect MobileFirst Server to the Rational License Key Server.
 
@@ -319,7 +320,7 @@ Here is a list of exceptions that might occur after the installation and configu
 * [The Rational License Key Server is not accessible](#the-rational-license-key-server-is-not-accessible)
 * [Failed to initialize Rational Common Licensing API](#failed-to-initialize-rational-common-licensing-api)
 * [Insufficient token licenses](#insufficient-token-licenses)
-* [Invalid rcl_ibmratl.jar file](#invalid-rclibmratljar-file)
+* [Invalid rcl_ibmratl.jar file](#invalid-rcl_ibmratljar-file)
 
 ### Rational Common Licensing native library is not found
 

@@ -8,7 +8,7 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
 

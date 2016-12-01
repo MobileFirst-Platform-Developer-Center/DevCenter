@@ -4,6 +4,7 @@ title: Installing and configuring the IBM MobileFirst Foundation Application Cen
 breadcrumb_title: Installing Application Center	
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview 
 You install the Application Center as part of the MobileFirst Server installation.
 You can install it with one of the following methods:

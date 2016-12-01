@@ -3,8 +3,9 @@ layout: tutorial
 title: Configuring Device Single Sign-On (SSO)
 breadcrumb_title: Device SSO
 relevantTo: [android,ios,windows,cordova]
-weight: 9
+weight: 11
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation offers a Single Sign-On (SSO) feature which enables sharing the state of any custom security check between multiple applications on the same device. For example, by using Device SSO, users can successfully sign on to one application on their device and also be authenticated on other applications on the same device that uses the same implementation.
 

@@ -3,6 +3,7 @@ layout: tutorial
 title: Installation and Configuration
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 

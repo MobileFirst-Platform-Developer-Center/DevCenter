@@ -4,6 +4,7 @@ title: What's new in Interim Fixes
 breadcrumb_title: Interim iFixes
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
 Interim fixes provide patches and updates to correct problems and keep IBM MobileFirst Foundation current for new releases of mobile operating systems.
 

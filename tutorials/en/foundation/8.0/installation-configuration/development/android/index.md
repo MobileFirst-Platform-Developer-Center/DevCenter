@@ -5,6 +5,7 @@ breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
 

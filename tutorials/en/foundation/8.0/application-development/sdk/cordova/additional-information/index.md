@@ -5,7 +5,7 @@ breadcrumb_title: Additional information
 relevantTo: [cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Enforcing TLS-secure connections in iOS apps
 Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
 

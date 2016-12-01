@@ -3,6 +3,7 @@ layout: tutorial
 title: Product Components
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM MobileFirst Foundation consists of the following components: MobileFirst CLI, MobileFirst Server, client-side runtime components, MobileFirst Operations Console, Application Center, and IBM MobileFirst Foundation System Pattern.
 

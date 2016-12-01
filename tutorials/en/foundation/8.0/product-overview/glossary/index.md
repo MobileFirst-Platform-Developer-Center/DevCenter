@@ -3,6 +3,7 @@ layout: tutorial
 title: Glossary
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This glossary provides terms and definitions for IBM MobileFirst Foundation software and products.
 

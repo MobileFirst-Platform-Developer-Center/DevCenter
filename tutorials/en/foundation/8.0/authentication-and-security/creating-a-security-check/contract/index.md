@@ -5,6 +5,7 @@ breadcrumb_title: security check contract
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Every security check must implement the `com.ibm.mfp.server.security.external.SecurityCheck` interface (the security-check interface). This interface constitutes the basic contract between the security check and the MobileFirst security framework. The security-check implementation must fulfill the following requirements:
 

@@ -4,6 +4,7 @@ title: Migrating apps storing mobile data in Cloudant with IMFData or Cloudant S
 breadcrumb_title: Migrating apps storing mobile data
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
 

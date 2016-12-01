@@ -4,6 +4,7 @@ title: Deploying applications to test and production environments
 breadcrumb_title: Deploying apps to environments
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 When you finish a development cycle of your application, deploy it to a testing environment, and then to a production environment.
 
@@ -427,4 +428,4 @@ Direct Update is a mandatory upgrade mechanism that is used to deploy fast fixes
 3. Direct Update is considered a security mechanism, and therefore it is mandatory, not optional. When you initiate the Direct Update, all users must update their app to be able to use it.
 4. Direct Update does not work if an application is compiled (built) with a different version of IBM MobileFirst Foundation than the one that was used for the initial deployment.
 
-
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.

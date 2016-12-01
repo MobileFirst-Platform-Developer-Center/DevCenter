@@ -6,8 +6,9 @@ downloads:
     url: https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml
   - name: Download Sample Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
+weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 IBM API Connect is a cloud-based API Management solution that allows you to design, control, secure, publish, manage, analyze, and scale your API with its simple-to-use configuration and coding platform.
 To learn more about IBM API Connect, visit the [IBM API Connect Developer Center](https://developer.ibm.com/apiconnect/).  

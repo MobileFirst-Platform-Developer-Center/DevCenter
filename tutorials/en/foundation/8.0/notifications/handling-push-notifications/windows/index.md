@@ -9,8 +9,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
   - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
-
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
 
@@ -60,7 +60,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
 | [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
 | [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
 | [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
 | [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |

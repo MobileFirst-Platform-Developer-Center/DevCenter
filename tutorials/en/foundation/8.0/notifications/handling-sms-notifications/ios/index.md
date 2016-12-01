@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in iOS](../../) tutorials.
 

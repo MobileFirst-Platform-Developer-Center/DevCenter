@@ -5,7 +5,7 @@ breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Follow the instructions below to configure a MobileFirst Server instance as well as MobileFirst Analytics instance on IBM Bluemix. To achieve this you will go through the following steps: 
 

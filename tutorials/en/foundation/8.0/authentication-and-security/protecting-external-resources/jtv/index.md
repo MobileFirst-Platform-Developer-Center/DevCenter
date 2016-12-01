@@ -8,6 +8,7 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).

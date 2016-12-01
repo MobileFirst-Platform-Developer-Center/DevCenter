@@ -4,6 +4,7 @@ title: Migrating existing Windows applications
 breadcrumb_title: Windows
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
@@ -92,7 +93,7 @@ You can upgrade your Visual Studio project to v8.0 manually. MobileFirstv8.0 int
     
     * All methods that performed asynchronous operations previously used a Response listener call back model. These have been replaced by the **await/async** model.
 
-You can now start developing your native Windows application with the MobileFirst SDK. You might need to update your code to reflect the changes for MobileFirstV8.0.0 API.
+You can now start developing your native Windows application with the MobileFirst SDK. You might need to update your code to reflect the changes for MobileFirst V8.0.0 API.
 
 #### What to do next
 Replace the client-side APIs that are discontinued or not in v8.0.

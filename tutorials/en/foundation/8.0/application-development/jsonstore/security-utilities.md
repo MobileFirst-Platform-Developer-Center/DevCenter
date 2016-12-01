@@ -5,7 +5,7 @@ breadcrumb_title: Security utilities
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
 

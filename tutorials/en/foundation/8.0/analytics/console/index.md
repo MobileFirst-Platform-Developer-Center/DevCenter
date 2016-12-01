@@ -5,6 +5,7 @@ breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 

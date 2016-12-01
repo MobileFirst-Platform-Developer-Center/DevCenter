@@ -5,7 +5,7 @@ breadcrumb_title: Additional info
 relevantTo: [android]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Registering Javadocs to an Android Studio Gradle project
 The MobileFirst Android Javadocs are included in the *.aar files imported by Gradle. However you need to link them to their relevant library in Android Studio.
 

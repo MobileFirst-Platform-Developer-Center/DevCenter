@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
 The pods correspond to core functions and other functions:
@@ -28,7 +29,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS 2](#adding-support-for-apple-watchos-2)
+- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Bitcode and TLS 1.2](#bitcode-and-tls-12)
@@ -186,16 +187,17 @@ import IBMMobileFirstPlatformFoundation
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
 > 
->      ```xml
+```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
 >            <key>NSAllowsArbitraryLoads</key>
 >            <true/>
 >      </dict>
->      ```
+```
 
-## Adding Support for Apple watchOS 2
-If you are developing for Apple watchOS, the Podfile must contain sections corresponding to the main app and the watchOS extension:
+## Adding Support for Apple watchOS
+If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
+watchOS 2:
 
 ```xml
 # Replace with the name of your watchOS application

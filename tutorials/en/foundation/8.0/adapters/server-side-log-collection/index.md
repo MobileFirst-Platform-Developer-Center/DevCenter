@@ -4,6 +4,7 @@ breadcrumb_title: Server-side log collection
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. The MobileFirst Server gives you the ability to control  which logs should be collected remotely. This gives the server administrator more fine tuned control over the server resources.
 

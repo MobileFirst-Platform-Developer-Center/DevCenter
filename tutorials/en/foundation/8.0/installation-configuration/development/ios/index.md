@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
 
@@ -37,7 +38,7 @@ Xcode is an IDE which you can use to:
 - Install apps on iOS devices
 - Develop, debug, test performance, and more
 
-> To learn more, [visit the iOS Dveloper Library website](https://developer.apple.com/library/ios/navigation/)
+> To learn more, [visit the iOS Developer Library website](https://developer.apple.com/library/ios/navigation/)
 
 #### iOS Simulator
 Xcode provides an iOS Simulator to test your application. For a detailed explanation of all available options, see the [About Simulator documentation topic](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) in the Apple Developers website.

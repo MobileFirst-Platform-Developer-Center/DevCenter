@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
 This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.

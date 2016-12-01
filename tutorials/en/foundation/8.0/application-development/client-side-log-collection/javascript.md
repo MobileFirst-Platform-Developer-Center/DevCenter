@@ -5,6 +5,7 @@ breadcrumb_title: Logging in JavaScript
 relevantTo: [javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in JavaScript (Cordova, Web) applications.
 

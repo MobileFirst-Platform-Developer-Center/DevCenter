@@ -5,6 +5,7 @@ breadcrumb_title: Debugging applications
 relevantTo: [javascript]
 weight: 10
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
 
