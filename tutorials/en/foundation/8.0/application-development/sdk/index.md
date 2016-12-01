@@ -20,4 +20,5 @@ To continue, select a tutorial:
 * [Adding the MobileFirst Foundation SDK to iOS Applications](ios)
 * [Adding the MobileFirst Foundation SDK to Android Applications](android)
 * [Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications](windows-8-10)
+* [Adding the MobileFirst Foundation SDK to Xamarin Applications](xamarin)
 * [Adding the MobileFirst Foundation SDK to Web Applications](web)
