@@ -61,12 +61,12 @@ CoreMotion.framework in addition to MobileFirst's standard requirements.
 
 ### Initialize the Trusteer Mobile SDK
 By default, the Trusteer Mobile SDK is initialized automatically when you integrate the SDK into a MobileFirst project. However, to provide more flexibility and eliminate potential initialization failure, it is recommended that you disable the automatic SDK initialization and instead initialize the SDK manually:
--	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**worklight.plist**](../../../foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/#worklight-plist)) to `false`:
+1.	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**worklight.plist**](../../../foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/#worklight-plist)) to `false`:
 	```
 	<key>TRUSTEER_AUTO_INIT</key>
 	<false/>
 	```
--	Manually initialize the SDK. You can do this either by using the Trusteer Mobile SDK according to the Trusteer documentation, or by using the MobileFirst Trusteer API from your application's native iOS code or hybrid JavaScript code:
+2.	Manually initialize the SDK. You can do this either by using the Trusteer Mobile SDK according to the Trusteer documentation, or by using the MobileFirst Trusteer API from your application's native iOS code or hybrid JavaScript code:
 	- In your native iOS code, call the `init` method of the [`WLTrusteer`](http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLTrusteer.html) class `sharedInstance` method:
 		```
 		[[WLTrusteer sharedInstance] init];
