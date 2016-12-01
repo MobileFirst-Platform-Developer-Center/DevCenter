@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

@@ -3,7 +3,7 @@ layout: tutorial
 title: Xamarin end-to-end demonstration
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
-weight: 2
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
