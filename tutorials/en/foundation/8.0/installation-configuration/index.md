@@ -15,6 +15,7 @@ If you develop the client-side or the server-side of mobile apps, use either the
 * [Set-up the iOS development environment](development/ios)
 * [Set-up the Android development environment](development/android)
 * [Set-up the Windows development environment](development/windows)
+* [Set-up the Xamarin development environment](development/xamarin)
 * [Set-up the Web development environment](development/web)
 
 ### Installing a test or production server on-premises
