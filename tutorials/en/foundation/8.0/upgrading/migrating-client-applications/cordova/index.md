@@ -10,16 +10,16 @@ To migrate an existing Cordova or hybrid application that was created with IBM M
 
 #### Jump to
 * [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before)
-* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
+* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product_full }} 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
 * [Migrating Direct Update](#migrating-direct-update)
 * [Upgrading the WebView](#upgrading-the-webview)
 * [Removed components](#removed-components)
 
 ## Comparison of Cordova apps developed with v8.0 versus v7.1 and before
-Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova and hybrid apps developed with IBM MobileFirst Platform Foundation v7.1.
+Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Cordova and hybrid apps developed with IBM MobileFirst Platform Foundation v7.1.
 
-| Feature | Cordova app with IBM<br/>MobileFirst Foundation v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
+| Feature | Cordova app with IBM<br/>{{ site.data.keys.product }} v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | | |	 	 	 
 | Eclipse plug-in and integration | Yes | Unsupported | Yes (Proprietary) |
@@ -34,7 +34,7 @@ Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova 
 | Mobile OS	| iOS 8 or higher, Android 4.1 or higher, Windows Phone 8.1, Windows Phone 10. | iOS 7 or higher, Android 4 or higher. | iOS, Android, and Windows Phone 8 |
 | Web applications | Yes, as a JavaScript application developed without Apache Cordova. | Unsupported | Yes, as a desktopbrowser or mobilewebapp environment. |
 | Direct Update | Yes. | Yes | Yes |
-| MobileFirst Security Framework | Yes | Yes | Yes |
+| {{ site.data.keys.product_adj }} Security Framework | Yes | Yes | Yes |
 | Application Authenticity | Yes | Yes | Yes |
 | Certificate pinning | Yes | No | Yes |
 | JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes | Yes |
@@ -44,9 +44,9 @@ Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova 
 | Specification of the app's target category (B2E or B2C) for addressable device license tracking | Yes | No | Yes |
 | Simple data sharing | No | Yes | Yes |
 | Single sign-on | Yes<br/><br/>Note: Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property | Yes | Yes |
-| MobileFirst application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
+| {{ site.data.keys.product_adj }} application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
 | Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | Yes (Proprietary) |
-| Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined MobileFirst security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
+| Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined {{ site.data.keys.product_adj }} security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
 | Cordova plug-ins management | Yes | Yes | No |
 | MESSAGES (i18n) | Yes | Yes | Yes |
 | Token licensing | Yes | Yes | Yes |
@@ -54,18 +54,18 @@ Compare Cordova apps developed with IBM MobileFirst Foundation v8.0 and Cordova 
 | Minification | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
 | Concatenation of JS and CSS | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
 | Obfuscation | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
-| Android Pro Guard | Yes<br/><br/>Note: IBM MobileFirst Platform Foundation V8.0.0 does not include the predefined proguard-project.txt configuration file for Android ProGuard obfuscation with a MobileFirst Android application. | Yes<br/><br/>Note: See Android documentation to enable Pro Guard. | Yes |
+| Android Pro Guard | Yes<br/><br/>Note: {{ site.data.keys.product }} V8.0.0 does not include the predefined proguard-project.txt configuration file for Android ProGuard obfuscation with a {{ site.data.keys.product_adj }} Android application. | Yes<br/><br/>Note: See Android documentation to enable Pro Guard. | Yes |
 
-## Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst Foundation 8.0
-You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst™ Platform Foundation version 6.2 or later to Cordova apps that are supported by IBM MobileFirst Foundation v8.0.
+## Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product }} 8.0
+You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst Platform Foundation version 6.2 or later to Cordova apps that are supported by {{ site.data.keys.product }} v8.0.
 
 #### Jump to
 * [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
-* [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
-* [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
+* [Completing migration of a {{ site.data.keys.product_adj }} hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [Completing migration of a {{ site.data.keys.product_adj }} Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### Starting the Cordova app migration with the migration assistance tool
-The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of IBM MobileFirst Foundation for migration by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
+The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of {{ site.data.keys.product_adj }} for migration by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
 
 The following information is important to know before you use the migration assistance tool:
 
@@ -144,7 +144,7 @@ The migration assistance tool does not modify or move any developer code or comm
       mfpmigrate scan --in source_directory --out destination_directory --type hybrid
       ```
         * **source_directory**  
-        The current location of the files to scan. In an IBM MobileFirst Platform Foundation hybrid app, this location is the **common** directory of your app. In an IBM MobileFirst Foundation version 8.0 Cordova cross-platform app, this location is the **www** directory.
+        The current location of the files to scan. In an IBM MobileFirst Platform Foundation hybrid app, this location is the **common** directory of your app. In a {{ site.data.keys.product }} version 8.0 Cordova cross-platform app, this location is the **www** directory.
         * **destination_directory**  
         The directory where your scan results are output.
 		* **scan_type**  
@@ -160,7 +160,7 @@ After you use the migration assistance tool, you must modify some portions of yo
 * You must have internet access if you need to download a new version of JQuery (step 1c) or if you need to install any additional Cordova plug-ins (step 6).
 * You must have node.js version 4.0.0 or later installed if you need to install additional Cordova plug-ins (step 6).
 
-Complete the steps in this task to finish migrating your MobileFirst hybrid application from IBM MobileFirst Platform Foundation 7.1 to a Cordova application that includes support for IBM MobileFirst Platform Foundation 8.0.
+Complete the steps in this task to finish migrating your MobileFirst hybrid application from IBM MobileFirst Platform Foundation 7.1 to a Cordova application that includes support for {{ site.data.keys.product }} 8.0.
 
 After you complete the migration, your app can use Cordova platforms and plug-ins that you obtain independently of IBM MobileFirst Platform Foundation, and you can continue to develop the app with your preferred Cordova development tools.
 
@@ -260,23 +260,23 @@ After you use the migration assistance tool, you must modify some portions of yo
 * You must have internet access.
 * You must have node.js version 4.0.0 or later installed.
 
-The Cordova app that you created with **mfp cordova create** uses the Cordova platform and plug-in versions that were supplied with IBM MobileFirst Platform Foundation previous version. After you complete the migration, your migrated app can use Cordova platforms and plug-ins that you obtain independently of IBM MobileFirst Platform Foundation. This is the only type of support for Cordova applications that is available with IBM MobileFirs Foundation v8.0.
+The Cordova app that you created with **mfp cordova create** uses the Cordova platform and plug-in versions that were supplied with IBM MobileFirst Platform Foundation previous version. After you complete the migration, your migrated app can use Cordova platforms and plug-ins that you obtain independently of {{ site.data.keys.product }}. This is the only type of support for Cordova applications that is available with IBM MobileFirs Foundation v8.0.
 
 To migrate, you run the migration assistance tool and then make other modifications to your app.
 
-1. With the Cordova development tool of your choice, add any Cordova plug-ins other than Cordova plug-ins that enable MobileFirst features that were in your original application. For example, with the Cordova CLI, to add the plug-ins **cordova-plugin-file** and **cordova-plugin-file-transfer**, enter:
+1. With the Cordova development tool of your choice, add any Cordova plug-ins other than Cordova plug-ins that enable {{ site.data.keys.product_adj }} features that were in your original application. For example, with the Cordova CLI, to add the plug-ins **cordova-plugin-file** and **cordova-plugin-file-transfer**, enter:
 
    ```bash
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **Note:** The **mfpmigrate** migration assistance tool added the Cordova plug-ins for MobileFirst features, so you do not have to add them. For more information about these plug-ins, see [Cordova plug-ins for MobileFirst](../../../application-development/sdk/cordova).
+   > **Note:** The **mfpmigrate** migration assistance tool added the Cordova plug-ins for {{ site.data.keys.product_adj }} features, so you do not have to add them. For more information about these plug-ins, see [Cordova plug-ins for {{ site.data.keys.product_adj }}](../../../application-development/sdk/cordova).
 
 2. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
 3. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the **cordova plugin add** command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 4. Optional: (Only for apps that include the iOS platform, and that use OpenSSL.) Add the **cordova-plugin-mfp-encrypt-utils** plug-in to your app. The **cordova-plugin-mfp-encrypt-utils** plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform.
 
-You now have a Cordova app that you can continue to develop with your preferred Cordova tools, but that also includes MobileFirst functionality.
+You now have a Cordova app that you can continue to develop with your preferred Cordova tools, but that also includes {{ site.data.keys.product_adj }} functionality.
 
 ## Migrating encryption for iOS Cordova
 If your iOS Hybrid or Cordova application used OpenSSL encryption, you may want to migrate your app to the new V8.0.0 native encryption. If you want to continue using OpenSSL you need to add an additional Cordova plug-in.
@@ -286,12 +286,12 @@ For more information on the iOS Cordova encryption options for migration see the
 ## Migrating Direct Update
 Direct Update is triggered after the first access to a protected resource. The process to deploy new web resources has changed in v8.0.
 
-Unlike in previous versions, in v8.0, if an application does not access a secure MobileFirst resource, the client application does not receive updates, even if updates are available on the server. A resource might be unprotected, for example because OAuth has been disabled by the annotation `@OAuth(security=false)` or by configuration. You can work around this risk in one of the following ways:
+Unlike in previous versions, in v8.0, if an application does not access a secure {{ site.data.keys.product_adj }} resource, the client application does not receive updates, even if updates are available on the server. A resource might be unprotected, for example because OAuth has been disabled by the annotation `@OAuth(security=false)` or by configuration. You can work around this risk in one of the following ways:
 
 * Explicitly obtain an access token. See the `obtainAccessToken` API in the [`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc) class.
 * Call another protected resource. See the [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc) class.
 
-To use Direct Update: Starting with v8.0, you no longer upload a **.wlapp** file to MobileFirst Server. Instead, you upload a smaller web resource archive (.zip file). The archive file no longer contains the web preview files or skins that were widely used in previous versions. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.
+To use Direct Update: Starting with v8.0, you no longer upload a **.wlapp** file to {{ site.data.keys.mf_server }}. Instead, you upload a smaller web resource archive (.zip file). The archive file no longer contains the web preview files or skins that were widely used in previous versions. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.
 
 > For more information, see the [Direct Update documentation](../../../application-development/direct-update).
 
@@ -300,11 +300,11 @@ IBM MobileFirs Foundation v8.0 Cordova SDK (JavaScript) introduced numerous chan
 
 The manual migration process involves a few stages:
 
-* Creating a new Cordova MobileFirst project
+* Creating a new Cordova project
 * Replacing the necessary web resource elements with the code from your previous version
 * Making the necessary changes to your JavaScript code to conform to SDK changes
 
-Many MobileFirst API elements were removed in v8.0. Removed elements are clearly marked as non-existent in an IDE that supports autocorrect for JavaScript.
+Many {{ site.data.keys.product_adj }} API elements were removed in v8.0. Removed elements are clearly marked as non-existent in an IDE that supports autocorrect for JavaScript.
 
 The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
 
@@ -313,14 +313,14 @@ The table below lists those API elements that require removal, with suggestions 
 | API element | Migration path |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. |
-| `WL.App.close()` | Handle this event outside of MobileFirst. |
+| `WL.App.close()` | Handle this event outside of {{ site.data.keys.product_adj }}. |
 | `WL.App.copyToClipboard()` | Use Cordova plug-ins providing this functionality. |
 | `WL.App.openUrl(url, target, options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova InAppBrowser plug-in provides this feature. |
 | {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova backbutton plug-in provides this feature. |
 | `WL.App.getDeviceLanguage()` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. |
 | `WL.App.getDeviceLocale()` | Use Cordova plug-ins providing this functionality.<br/><br/> Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. |
 | `WL.App.BackgroundHandler` | To run a custom handler function, use the standard Cordova pause event listener. Use a Cordova plug-in that provides privacy and prevents iOS and Android systems and users from taking snapshots or screen captures. For more information, see the description of the PrivacyScreenPlugin at [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| The functions were provided to support the Adobe AIR platform, which is not supported by IBM MobileFirst Foundation v8.0 |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| The functions were provided to support the Adobe AIR platform, which is not supported by {{ site.data.keys.product }} v8.0 |
 | `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. |
 
 #### Other Discontinued JavaScript elements
@@ -356,11 +356,11 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Client.isUserAuthenticated(realm)` | No replacement |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | No replacement |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | No replacement |
-| `WL.Client.createChallengeHandler(realmName)` | To create a challenge handler for handling custom gateway challenges, use [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). To create a challenge handler for handling MobileFirst security-check challenges, use [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
+| `WL.Client.createChallengeHandler(realmName)` | To create a challenge handler for handling custom gateway challenges, use [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). To create a challenge handler for handling {{ site.data.keys.product_adj }} security-check challenges, use [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
 | `WL.Client.createWLChallengeHandler(realmName)` | Use [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
 | `challengeHandler.isCustomResponse()` where `challengeHandler` is a challenge-handler object that is returned by `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()` where `gatewayChallengeHandler` is a challenge-handler object that is returned by [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). |
 | `wlChallengeHandler.processSucccess()` where `wlChallengeHandler` is a challenge-handler object that is returned by `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()` where `securityCheckChallengeHandler` is a challenge-handler object that is returned by [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). For MobileFirst security-check challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). For {{ site.data.keys.product_adj }} security-check challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | Use [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel). |
 | `WL.Client.createProvisioningChallengeHandler()` | No replacement. Device provisioning is now handled automatically by the security framework. |
 
@@ -374,7 +374,7 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
 
 ## Removed components
-The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the MobileFirst API no longer supports these features.
+The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the {{ site.data.keys.product_adj }} API no longer supports these features.
 
 ### Skins
 MobileFirst application skins provided a way of optimizing the UI for adapting to different devices and formats and is no longer supported in v8.0.  
@@ -431,7 +431,7 @@ Then in their **index.html** file or anywhere inside their app they can reuse th
 ```
 
 ### Settings page
-The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing MobileFirst Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl).
+The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl).
 
 ### Minification
 MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.

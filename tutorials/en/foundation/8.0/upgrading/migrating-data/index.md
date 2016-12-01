@@ -8,7 +8,7 @@ weight: 5
 ## Overview
 You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
 
-> CloudantToolkit and IMFData frameworks are discontinued in IBM MobileFirst Foundation v8.0.
+> CloudantToolkit and IMFData frameworks are discontinued in {{ site.data.keys.product_full }} v8.0.
 
 * For iOS, use the [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK as a replacement for CloudantToolkit and IMFData frameworks.
 * For Android, Use the [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) as a replacement for CloudantToolkit and IMFData frameworks. With Cloudant Sync, you can persist data locally and replicate with a remote data store.
@@ -26,7 +26,7 @@ For more information about JSONStore, see [JSONStore](../../application-developm
 
 #### Jump to
 
-* [Integrating MobileFirst and Cloudant security](#integrating-mobilefirst-and-cloudant-security)
+* [Integrating {{ site.data.keys.product_adj }} and Cloudant security](#integrating-mobilefirst-and-cloudant-security)
 * [Creating databases](#creating-databases)
 * [Encrypting data on the device](#encrypting-data-on-the-device)
 * [Setting user permissions](#setting-user-permissions)
@@ -36,29 +36,29 @@ For more information about JSONStore, see [JSONStore](../../application-developm
 * [Querying data](#querying-data)
 * [Supporting offline storage and synchronization](#supporting-offline-storage-and-synchronization)
 
-## Integrating MobileFirst and Cloudant security
+## Integrating {{ site.data.keys.product_adj }} and Cloudant security
 ### Adapter sample
 To download the sample, see Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise).
 
-To understand the MobileFirst adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [MobileFirst security framework](../../authentication-and-security).
+To understand the adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security).
 
 The Bluelist adapter sample has two primary functions:
 
-* Exchange MobileFirst OAuth tokens for Cloudant session cookies
+* Exchange {{ site.data.keys.product_adj }} OAuth tokens for Cloudant session cookies
 * Perform the required admin requests to Cloudant from the Bluelist sample.
 
 The sample demonstrates how to perform API requests that require admin access on the server where it is secure. While it is possible to place your admin credentials on the mobile device, it is a better practice to restrict access from mobile devices.
 
-The Bluelist sample integrates MobileFirst security with Cloudant security. The MobileFirst adapter sample maps a MobileFirst identity to a Cloudant identity. The mobile device receives a Cloudant session cookie to perform non-admin API requests. The sample uses the Couch Security model.
+The Bluelist sample integrates {{ site.data.keys.product_adj }} security with Cloudant security. The adapter sample maps a {{ site.data.keys.product_adj }} identity to a Cloudant identity. The mobile device receives a Cloudant session cookie to perform non-admin API requests. The sample uses the Couch Security model.
 
 ### Enroll REST endpoint
 The following diagram illustrates the integration performed by the Bluelist adapter sample **/enroll** endpoint.
 
 ![sample integration diagram](SecurityIntegration.jpg)
 
-1. Mobile device obtains the MobileFirst OAuth token from the MobileFirst Server.
-2. Mobile device calls the **/enroll** endpoint on the MobileFirst adapter.
-3. The MobileFirst adapter sample validates the MobileFirst OAuth token with the MobileFirst Server.
+1. Mobile device obtains the {{ site.data.keys.product_adj }} OAuth token from the {{ site.data.keys.mf_server }}.
+2. Mobile device calls the **/enroll** endpoint on the adapter.
+3. The adapter sample validates the {{ site.data.keys.product_adj }} OAuth token with the {{ site.data.keys.mf_server }}.
 4. If valid, performs admin API requests to Cloudant . The sample checks for an existing Cloudant user in the **_users** database.
     * If the user exists, look up Cloudant user credentials in the **_users** database.
     * If a new user is passed, use the Cloudant admin credentials, create a new Cloudant user and store in the **_users** database.
@@ -66,11 +66,11 @@ The following diagram illustrates the integration performed by the Bluelist adap
     * Give the Cloudant user permissions to read/write the newly created database.
     * Create the required indexes for the Bluelist application.
 5. Request a new Cloudant session cookie.
-6. The MobileFirst adapter sample returns a Cloudant session cookie, remote database name, and Cloudant URL to the mobile device.
+6. The adapter sample returns a Cloudant session cookie, remote database name, and Cloudant URL to the mobile device.
 7. Mobile device makes requests directly to Cloudant until the session cookie expires.
 
 ### sessioncookie REST Endpoint
-In the case of an expired session cookie, the mobile device can exchange a valid MobileFirst OAuth token for a Cloudant session cookie with the **/sessioncookie** endpoint.
+In the case of an expired session cookie, the mobile device can exchange a valid {{ site.data.keys.product_adj }} OAuth token for a Cloudant session cookie with the **/sessioncookie** endpoint.
 
 ## Creating databases
 ### Accessing local data stores
@@ -554,7 +554,7 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 ```
 
 ##### AFTER (with Cloudant Sync):
-You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate MobileFirst OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
+You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate {{ site.data.keys.product_adj }} OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
 
 ## Modeling data
 Cloudant  stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.

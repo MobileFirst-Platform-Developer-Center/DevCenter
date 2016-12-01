@@ -6,31 +6,31 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-To migrate an existing native Android project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+To migrate an existing native Android project that was created with IBM MobileFirst Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
 #### Jump to
 
-* [Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-80)
+* [Scanning existing {{ site.data.keys.product }} native Android apps to prepare for {{ site.data.keys.product }} version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-80)
 * [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
 * [Updating the Android code](#updating-the-android-code)
 
-## Scanning existing MobileFirst native Android apps to prepare for MobileFirst version 8.0
+## Scanning existing {{ site.data.keys.product }} native Android apps to prepare for {{ site.data.keys.product }} version 8.0
 The migration assistance tool helps you prepare your apps that were created with a previous version of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Android app and generating a report of APIs that are deprecated or discontinued in version 8.0.
 
 The following information is important to know before you use the migration assistance tool:
 
-* You must have an existing IBM MobileFirst Platform Foundation native Android application.
+* You must have an existing {{ site.data.keys.product }} native Android application.
 * You must have internet access.
 * You must have node.js version 4.0.0 or later installed.
 * Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
 
-Apps that were created with previous versions of IBM MobileFirst Platform Foundation are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
+Apps that were created with previous versions of {{ site.data.keys.product }} are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
 
 The migration assistance tool does not modify or move any developer code or comments of your app.
 
 1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
+    * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the tool.
     * Use NPM to install the tool by entering the following command:
@@ -39,7 +39,7 @@ The migration assistance tool does not modify or move any developer code or comm
    npm install -g
    ```
     
-3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
+3. Scan the {{ site.data.keys.product }} app by entering the following command:
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type android
@@ -51,16 +51,16 @@ The migration assistance tool does not modify or move any developer code or comm
    **destination_directory**  
    The directory where the report is created.
     
-   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0 and saves them in the identified destination directory.
+   When it is used with the scan command, the migration assistance tool identifies APIs in the existing {{ site.data.keys.product }} app that are removed, deprecated, or changed in version 8.0 and saves them in the identified destination directory.
 
 ## Migrating an Android project with Gradle
-Migrate your Android application with MobileFirst SDK using Gradle.
+Migrate your Android application with {{ site.data.keys.product_adj }} SDK using Gradle.
 
-Ensure that your Android Studio and the Android SDK are set up properly. For more information about how to set up your system, see [Android Studio Overview](http://developer.android.com/tools/studio/index.html). Your project must conform to the Android Studio/Gradle setup and compile without errors before you upgrade to IBM MobileFirst  Foundation.
+Ensure that your Android Studio and the Android SDK are set up properly. For more information about how to set up your system, see [Android Studio Overview](http://developer.android.com/tools/studio/index.html). Your project must conform to the Android Studio/Gradle setup and compile without errors before you upgrade to {{ site.data.keys.product }}.
 
-> **Note:** This task assumes that the Android project is created with Android Studio and that the MobileFirst SDK is added with as described in [Adding the IBM MobileFirst Platform Foundation SDK to a new or existing application with Android Studio (7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html).
+> **Note:** This task assumes that the Android project is created with Android Studio and that the {{ site.data.keys.product_adj }} SDK is added with as described in [Adding the {{ site.data.keys.product }} SDK to a new or existing application with Android Studio (7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html).
 
-If your Android Studio project was set up to add a previous version of MobileFirst SDK, remove the **compile** group from the **build.gradle** dependencies enclosure. For example, if you are upgrading from 7.1, remove this group:
+If your Android Studio project was set up to add a previous version of {{ site.data.keys.product_adj }} SDK, remove the **compile** group from the **build.gradle** dependencies enclosure. For example, if you are upgrading from 7.1, remove this group:
 
 ```xml
 compile group: 'com.ibm.mobile.foundation', 
@@ -70,18 +70,18 @@ compile group: 'com.ibm.mobile.foundation',
             transitive: true
 ```
 
-You can now add the V8.0.0 SDK and configuration, by using local or remote SDK files. See [Adding the MobileFirst SDK to Android applications](../../../application-development/sdk/android).
+You can now add the V8.0.0 SDK and configuration, by using local or remote SDK files. See [Adding the {{ site.data.keys.product_adj }} SDK to Android applications](../../../application-development/sdk/android).
 
 > Note: After you import the new SDK, you need to import the Javadoc files manually. See [Registering Javadocs to an Android Studio Gradle project](../../../application-development/sdk/android/additional-information).
 
-You can now start developing your native Android application with the MobileFirst SDK. You might need to adapt your code to changes in the V8.0.0 API (see [Updating the Android code](#updating-the-android-code)).
+You can now start developing your native Android application with the {{ site.data.keys.product_adj }} SDK. You might need to adapt your code to changes in the V8.0.0 API (see [Updating the Android code](#updating-the-android-code)).
 
 #### What to do next
 Replace the client-side APIs that are discontinued or not in v8.0.
 
 ## Updating the Android code
-IBM MobileFirst Foundation v8.0 introduces a number of changes to the Android SDK that might require changes to apps developed in earlier versions.  
-The tables below list changes in the MobileFirst Android SDK.
+{{ site.data.keys.product_full }} v8.0 introduces a number of changes to the Android SDK that might require changes to apps developed in earlier versions.  
+The tables below list changes in the {{ site.data.keys.product_adj }} Android SDK.
 
 #### Discontinued Android API elements
 
@@ -102,7 +102,7 @@ The tables below list changes in the MobileFirst Android SDK.
 | {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | Use the Android APIs to share tokens across applications. |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | No replacement | 
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc). | 
-| `ChallengeHandler` | For custom gateway challenges, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). For MobileFirst security-check challenges, use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). | 
+| `ChallengeHandler` | For custom gateway challenges, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenges, use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). | 
 | `WLChallengeHandler` | Use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). |
 | `ChallengeHandler.isCustomResponse()` | Use [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). | 
 | `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). | 

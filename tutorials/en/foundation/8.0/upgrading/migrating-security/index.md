@@ -8,7 +8,7 @@ downloads:
 weight: 3
 ---
 ## Overview
-The security framework of MobileFirst Foundation has undergone some major changes in version 8.0, to improve and simplify security development and administration tasks. In particular, the security building blocks have changed – In 8.0, OAuth security scopes and security checks replace the security tests, realms and login modules of previous versions.
+The security framework of {{ site.data.keys.product_full }} has undergone some major changes in version 8.0, to improve and simplify security development and administration tasks. In particular, the security building blocks have changed – In 8.0, OAuth security scopes and security checks replace the security tests, realms and login modules of previous versions.
 
 This tutorial guides you through the steps required for migrating the security code of your application. We will use a sample 7.1 application as a starting point, and describe the complete process that will take us from the 7.1 sample application to a 8.0 application, with the same security protection. Both the 7.1 sample app and the migrated application are attached here.
 
@@ -30,9 +30,9 @@ In the [second part](#migrating-other-types-of-authentication-realms) of this tu
 Our starting point is a sample 7.1 hybrid application. The application accesses a Java adapter protected with OAuth. The adapter has two methods – the `getBalance` method, which is protected with a form-based authentication realm (login by user name and password), and the `transferMoney` method, protected with an adapter-based authentication realm, requiring the user to provide a pin code. The source code of the 7.1 sample application and the source code of the same application after it has been migrated to 8.0 are available for [download](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample).
 
 ## Migrating the resource adapter
-We will start the migration process with the resource adapter. In MobileFirst 8.0 adapters are developed as separate Maven projects, unlike in 7.1 where adapters were part of the MobileFirst project. This means that we can migrate the resource adapter, build and deploy it, independently of the client app. The same is true for the client app itself and the security checks (which are actually also deployed as adapters). This leaves us the freedom to migrate these parts in the order of our choice. In this tutorial, we will migrate the resource adapter first so that we can introduce the OAuth security scope elements by which the resources are protected.
+We will start the migration process with the resource adapter. In {{ site.data.keys.product }} 8.0 adapters are developed as separate Maven projects, unlike in 7.1 where adapters were part of the project. This means that we can migrate the resource adapter, build and deploy it, independently of the client app. The same is true for the client app itself and the security checks (which are actually also deployed as adapters). This leaves us the freedom to migrate these parts in the order of our choice. In this tutorial, we will migrate the resource adapter first so that we can introduce the OAuth security scope elements by which the resources are protected.
 
-Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a MobileFirst 8.0 security check.
+Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a {{ site.data.keys.product }} 8.0 security check.
 
 > For instructions on migrating adapters to 8.0 see the [migration cookbook](../migration-cookbook).
 
@@ -59,7 +59,7 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the MobileFirst CLI.
+[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}.
 
 ## Migrating the client application
 Next, we will migrate the client application. Refer to the migration cookbook for client application migration instructions.
@@ -93,7 +93,7 @@ function logout() {
 }
 ```
 
-After finishing the steps for migrating the app, build the application, and register it on your MobileFirst server using the command `mfpdev app register`. You should now see the application listed in the MobileFirst operations console.
+After finishing the steps for migrating the app, build the application, and register it on your {{ site.data.keys.mf_server }} using the command `mfpdev app register`. You should now see the application listed in the {{ site.data.keys.mf_console }}.
 
 ## Migrating the form-based authentication realm
 At this stage we already have the client application and the resource adapter migrated and deployed. However if we try to run the application now, it will not be able to access the resources. This is because the application is expected to present an access token that contains the scope elements required by the resource adapter methods (“UserLogin” or “PinCode”), but since we haven’t created the security checks yet, the application cannot obtain an access token and the application is not authorized to access the protected resources.
@@ -167,7 +167,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the MobileFirst CLI. In the MobileFirst console you should see the new adapter UserLogin in the list of adapters
+[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}. In the {{ site.data.keys.mf_console }} you should see the new adapter UserLogin in the list of adapters
 
 ## Migrating the pin code realm
 The pin code realm in our sample is implemented with adapter-based authentication, which is no longer supported in 8.0. We will replace this realm with a new security check.
@@ -218,7 +218,7 @@ We will start with the user login challenge handler. This challenge handler perf
 var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
 ```
 
-The method `createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges sent by a MobileFirst security check. In most cases, you should use this method in replacement for either the method `createWLChallengeHandler` or the method `createChallengeHandler` of the 7.1 client API. The only exception is challenge handlers that are designed to handle challenges sent by a third party gateway. This type of challenge handlers, called gateway challenge handlers in 8.0, are created with the method `WL.Client.createGatewayChallengeHandler(). For example, if your resource is protected by a reverse proxy such as DataPower, which sends a custom login form to the client, you should use a gateway challenge handler to handle the challenge. For more information on gateway challenge handlers see the article [Quick Review of Challenge Handlers](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/).
+The method `createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges sent by a {{ site.data.keys.product_adj }} security check. In most cases, you should use this method in replacement for either the method `createWLChallengeHandler` or the method `createChallengeHandler` of the 7.1 client API. The only exception is challenge handlers that are designed to handle challenges sent by a third party gateway. This type of challenge handlers, called gateway challenge handlers in 8.0, are created with the method `WL.Client.createGatewayChallengeHandler(). For example, if your resource is protected by a reverse proxy such as DataPower, which sends a custom login form to the client, you should use a gateway challenge handler to handle the challenge. For more information on gateway challenge handlers see the article [Quick Review of Challenge Handlers](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/).
 
 *	Remove the method `isCustomResponse`. It is no longer needed for security check challenge handlers.
 *	Replace the method `handleChallenge` with the three methods that a challenge handler must implement – `handleChallenge()`, `handleSuccess()` and `handleFailure`. In 8.0 the challenge handler no longer has to check the response in order to find if the response carries a challenge, success or error. The framework takes care for that, and calls the appropriate method.
@@ -278,17 +278,17 @@ This completes the migration of the app. You can now rebuild the application, de
 ## Migrating other types of authentication realms
 In the sections above we described the process for migrating form-based authentication realms and adapter-based authentication realms. Your 7.1 application might include other types of realms, including realms that were explicitly added to the application security test, or included by default in a `mobileSecurityTest` or a `webSecurityTest`. See below guidelines for migrating other types of realms to 8.0.
 ### Application authenticity
-Application authenticity is provided as a predefined security check in 8.0. By default, this security check is run during the application's runtime registration with MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server. However, as with any MobileFirst security check, you can also include this predefined check in custom security scopes.
+Application authenticity is provided as a predefined security check in 8.0. By default, this security check is run during the application's runtime registration with {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. However, as with any {{ site.data.keys.product_adj }} security check, you can also include this predefined check in custom security scopes.
 ### LTPA realm
-Use the predefined 8.0 security check, `LtpaBasedSSO`. For more information, see the tutorial [Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM DataPower](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/17/datapower-integration/).
+Use the predefined 8.0 security check, `LtpaBasedSSO`. For more information, see the tutorial [Protecting {{ site.data.keys.product_adj }} 8.0 application traffic using IBM DataPower](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/17/datapower-integration/).
 ### Device provisioning
-The client registration process in 8.0 replaces device provisioning of 7.1. In MobileFirst 8.0, a client (an instance of an application) registers itself with MobileFirst server on the first attempt to access the server. As part of the registration, the client provides a public key that will be used for authenticating its identity. This protection mechanism is always enabled, and there is no need for you to migrate the device-provisioning realm to 8.0.
+The client registration process in 8.0 replaces device provisioning of 7.1. In {{ site.data.keys.product_adj }} 8.0, a client (an instance of an application) registers itself with {{ site.data.keys.mf_server }} on the first attempt to access the server. As part of the registration, the client provides a public key that will be used for authenticating its identity. This protection mechanism is always enabled, and there is no need for you to migrate the device-provisioning realm to 8.0.
 ### Anti-cross site request forgery (anti-XSRF) realm
 Anti-XSRF is no longer relevant in the OAuth-based security framework of 8.0.
 ### Direct Update realm
-There is no need to migrate the Direct Update realm to 8.0. The Direct Update feature is supported in MobileFirst 8.0, but it does not require a security check, such as the Direct Update realm that was required in previous versions. Note however that the steps to deliver updates by using the Direct Update feature have changed. For more information see the [Migrating Direct Update](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html) user documentation topic.
+There is no need to migrate the Direct Update realm to 8.0. The Direct Update feature is supported in {{ site.data.keys.product_adj }} 8.0, but it does not require a security check, such as the Direct Update realm that was required in previous versions. Note however that the steps to deliver updates by using the Direct Update feature have changed. For more information see the [Migrating Direct Update](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html) user documentation topic.
 ### Remote disable realm
-There is no need to migrate the Remote Disable realm to 8.0. The remote disable feature in MobileFirst 8.0 does not require a security check.
+There is no need to migrate the Remote Disable realm to 8.0. The remote disable feature in {{ site.data.keys.product_adj }} 8.0 does not require a security check.
 ### Custom authenticators and login modules
 Create a new security check as described above. Use either of the base classes `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck`. Although you cannot migrate the authenticator class or the login module class directly, you may copy relevant code pieces into the security check, such as code for generating the challenge, extracting credentials from the response, and validating the credentials.
 
@@ -298,12 +298,12 @@ In addition to the OAuth scopes that are used to protect the resource adapter, o
 
 If your application has an application security test that includes checks (realms) that you still want to keep at the application level after the migration to 8.0, you can configure a mandatory scope for the application. When an application tries to access a protected resource, it has to pass the security checks that are mapped to the mandatory scope in addition to the checks mapped to the scope protecting the resource.
 
-To define a mandatory scope for an application, select the application version in the MobileFirst console, select the Security tab and click the Add to Scope button. You can include in the scope any predefined or custom security checks, or mapped scope elements.
+To define a mandatory scope for an application, select the application version in the {{ site.data.keys.mf_console }}, select the Security tab and click the Add to Scope button. You can include in the scope any predefined or custom security checks, or mapped scope elements.
 ### Access token expiration
- Check the value of the Access Token Expiration property in application-descriptor.xml file. The default value in both version 7.1 and version 8.0 is 3600 seconds, so unless your application has a different value defined in the application descriptor file, you don’t have to change anything. To set the expiration value in 8.0, navigate to the application version page in the MobileFirst console, select the security tab, and enter the value in the Maximum Token-expiration Period field.
+ Check the value of the Access Token Expiration property in application-descriptor.xml file. The default value in both version 7.1 and version 8.0 is 3600 seconds, so unless your application has a different value defined in the application descriptor file, you don’t have to change anything. To set the expiration value in 8.0, navigate to the application version page in the {{ site.data.keys.mf_console }}, select the security tab, and enter the value in the Maximum Token-expiration Period field.
 ### User identity realm
-In MobileFirst 7.1, authentication realms may be configured as user identity realms. Applications that use OAuth authentication flow use the `userIdentityRealms` property in the application descriptor file to define an ordered list of user identity realms. In applications that use the classic Worklight authentication flow (non OAuth), the attribute `isInternalUserId` indicates whether the realm is a user identity realm. These configurations are no longer needed in MobileFirst 8.0. In MobileFirst 8.0, the active user identity is set by the last security check that called the `setActiveUser` method. If your security check extends the abstract base class `UserAuthenticationSecurityCheck`, like the UserLogin security check in our sample application, the base class takes care for setting the active user.
+In MobileFirst 7.1, authentication realms may be configured as user identity realms. Applications that use OAuth authentication flow use the `userIdentityRealms` property in the application descriptor file to define an ordered list of user identity realms. In applications that use the classic Worklight authentication flow (non OAuth), the attribute `isInternalUserId` indicates whether the realm is a user identity realm. These configurations are no longer needed in {{ site.data.keys.product_adj }} 8.0. In {{ site.data.keys.product_adj }} 8.0, the active user identity is set by the last security check that called the `setActiveUser` method. If your security check extends the abstract base class `UserAuthenticationSecurityCheck`, like the UserLogin security check in our sample application, the base class takes care for setting the active user.
 ### Device identity realm
-In 7.1 applications there must be a realm that is defined as a device identity realm. No migration is needed for this configuration in 8.0. In MobileFirst 8.0, the device identity isn’t associated with a security check. The device information is registered as part of the client registration flow, which occurs on the first time the client attempts to access a protected resource.
+In 7.1 applications there must be a realm that is defined as a device identity realm. No migration is needed for this configuration in 8.0. In {{ site.data.keys.product_adj }} 8.0, the device identity isn’t associated with a security check. The device information is registered as part of the client registration flow, which occurs on the first time the client attempts to access a protected resource.
 ## Summary
 In this tutorial we covered only the basic steps required to migrate the security artifacts of existing applications from previous versions. We encourage you to [learn more about the new security framework](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/) and take advantage of additional features that were not covered here.
