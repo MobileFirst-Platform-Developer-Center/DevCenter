@@ -17,18 +17,18 @@ The server topology to install the components must also be defined. See [Topolog
 * [Application server prerequisites](#application-server-prerequisites)
 * [Installing with the Server Configuration Tool](#installing-with-the-server-configuration-tool) 
 * [Installing with Ant tasks](#installing-with-ant-tasks)
-* [Installing the MobileFirst Server components manually](#installing-the-mobilefirst-server-components-manually)
+* [Installing the {{ site.data.keys.mf_server }} components manually](#installing-the-mobilefirst-server-components-manually)
 * [Installing a server farm](#installing-a-server-farm)
 
 ## Application server prerequisites
-Depending on your choice of the application server, select one of the following topics to find out the prerequisites that you must fulfill before you install the MobileFirst Server components.
+Depending on your choice of the application server, select one of the following topics to find out the prerequisites that you must fulfill before you install the {{ site.data.keys.mf_server }} components.
 
 * [Apache Tomcat prerequisites](#apache-tomcat-prerequisites)
 * [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites)
 * [WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites](#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites)
 
 ### Apache Tomcat prerequisites
-MobileFirst Server has some requirements for the configuration of Apache Tomcat that are detailed in the following topics.  
+{{ site.data.keys.mf_server }} has some requirements for the configuration of Apache Tomcat that are detailed in the following topics.  
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of Apache Tomcat. See [System requirements](../../../product-overview/requirements).
@@ -120,18 +120,18 @@ Ensure that you fulfill the following criteria:
 </div>
 
 ### WebSphere Application Server Liberty prerequisites
-IBM MobileFirst Server has some requirements for the configuration of the Liberty server that are detailed in the following topics.  
+{{ site.data.keys.product_full }}has some requirements for the configuration of the Liberty server that are detailed in the following topics.  
 
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of Liberty. See [System requirements](../../../product-overview/requirements).
 * Liberty must be run with JRE 7.0 or later. JRE 6.0 is not supported.
-* Some versions of Liberty support both the features of Java EE 6 and Java EE 7. For example, jdbc-4.0 Liberty feature is part of Java EE 6, whereas jdbc-4.1 Liberty feature is part of Java EE 7. MobileFirst Server V8.0.0 can be installed with Java EE 6 or Java EE 7 features. However, if you want to run an older version of MobileFirst Server on the same Liberty server, you must use the Java EE 6 features. MobileFirst Server V7.1.0 and earlier, does not support the Java EE 7 features.
+* Some versions of Liberty support both the features of Java EE 6 and Java EE 7. For example, jdbc-4.0 Liberty feature is part of Java EE 6, whereas jdbc-4.1 Liberty feature is part of Java EE 7. {{ site.data.keys.mf_server }} V8.0.0 can be installed with Java EE 6 or Java EE 7 features. However, if you want to run an older version of {{ site.data.keys.mf_server }} on the same Liberty server, you must use the Java EE 6 features. {{ site.data.keys.mf_server }} V7.1.0 and earlier, does not support the Java EE 7 features.
 * JMX must be configured as documented in **Configuring JMX connection for WebSphere Application Server Liberty profile** below.
 * For an installation in a production environment, you might want to start the Liberty server as a service on Windows, Linux, or UNIX systems so that:
-The MobileFirst Server components are started automatically when the computer starts.
+The {{ site.data.keys.mf_server }} components are started automatically when the computer starts.
 The process that runs Liberty server is not stopped when the user, who started the process, logs out.
-* MobileFirst Server V8.0.0 cannot be deployed in a Liberty server that contains the deployed MobileFirst Server components from the previous versions.
+* {{ site.data.keys.mf_server }} V8.0.0 cannot be deployed in a Liberty server that contains the deployed {{ site.data.keys.mf_server }} components from the previous versions.
 * For an installation in a Liberty collective environment, the Liberty collective controller and the Liberty collective cluster members must be configured as documented in [Configuring a Liberty collective](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/tagt_wlp_configure_collective.html?view=kc).
 
 <div class="panel-group accordion" id="websphere-prereq" role="tablist" aria-multiselectable="true">
@@ -144,7 +144,7 @@ The process that runs Liberty server is not stopped when the user, who started t
 
         <div id="collapse-websphere-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-jmx-connection">
             <div class="panel-body">
-                <p>MobileFirst Server requires the secure JMX connection to be configured.</p>
+                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
                 
                 <ul>
                     <li>The Server Configuration Tool and the Ant tasks can configure a default secure JMX connection, which includes the generation of a self-signed SSL certificate with a validity period of 365 days. This configuration is not intended for production use.</li>
@@ -161,12 +161,12 @@ liberty_install_dir/bin/productInfo featureInfo
 </div>
 
 ### WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites
-IBM MobileFirst Server has some requirements for the configuration of WebSphere  Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
+{{ site.data.keys.mf_server }} has some requirements for the configuration of WebSphere  Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
 Ensure that you fulfill the following criteria:
 
 * Use a supported version of WebSphere Application Server. See [System requirements](../../../product-overview/requirements).
 * The application server must be run with JRE 7.0. By default, WebSphere Application Server uses Java 6.0 SDK. To switch to Java 7.0 SDK, see [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
-* The administrative security must be turned on. MobileFirst Operations Console, the MobileFirst Server administration service, and the MobileFirst Server configuration service are protected by security roles. For more information, see [Enabling security](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
+* The administrative security must be turned on. {{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, and the {{ site.data.keys.mf_server }} configuration service are protected by security roles. For more information, see [Enabling security](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
 * The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses SOAP. For WebSphere Application Server Network Deployment, RMI can be used. For more information, see **Configuring JMX connection for WebSphere Application Server and WebSphere Application Server Network Deployment** below.
 
 <div class="panel-group accordion" id="websphere-nd-prereq" role="tablist" aria-multiselectable="true">
@@ -179,10 +179,10 @@ Ensure that you fulfill the following criteria:
 
         <div id="collapse-websphere-nd-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-nd-jmx-connection">
             <div class="panel-body">
-                <p>MobileFirst Server requires the secure JMX connection to be configured.</p>
+                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
                 
                 <ul>
-                    <li>MobileFirst Server requires access to the SOAP port, or the RMI port to perform JMX operations. By default, the SOAP port is active on a WebSphere Application Server. MobileFirst Server uses the SOAP port by default. If both the SOAP and RMI ports are deactivated, MobileFirst Server does not run.</li>
+                    <li>{{ site.data.keys.mf_server }} requires access to the SOAP port, or the RMI port to perform JMX operations. By default, the SOAP port is active on a WebSphere Application Server. {{ site.data.keys.mf_server }} uses the SOAP port by default. If both the SOAP and RMI ports are deactivated, {{ site.data.keys.mf_server }} does not run.</li>
                     <li>RMI is only supported by WebSphere Application Server Network Deployment. RMI is not supported by a stand-alone profile, or a WebSphere Application Server server farm.</li>
                     <li>You must activate Administrative and Application Security.</li>
                 </ul>
@@ -192,12 +192,12 @@ Ensure that you fulfill the following criteria:
 </div>
 
 ### File system prerequisites
-To install IBM MobileFirst Server to an application server, the MobileFirst installation tools must be run by a user that has specific file system privileges.  
+To install {{ site.data.keys.mf_server }} to an application server, the {{ site.data.keys.product_adj }} installation tools must be run by a user that has specific file system privileges.  
 The installation tools include:
 
 * IBM  Installation Manager
 * The Server Configuration Tool
-* The Ant tasks to deploy MobileFirst Server
+* The Ant tasks to deploy {{ site.data.keys.mf_server }}
 
 For WebSphere  Application Server Liberty profile, you must have the required permission to perform the following actions:
 
@@ -221,10 +221,10 @@ For Apache Tomcat, you must have the required permission to perform the followin
 * Create files in the lib directory.
 * Create files in the webapps directory.
 
-For all these application servers, the user who runs the application server must be able to read the files that were created by the user who ran the MobileFirst installation tools.
+For all these application servers, the user who runs the application server must be able to read the files that were created by the user who ran the {{ site.data.keys.product_adj }} installation tools.
 
 ## Installing with the Server Configuration Tool
-Use the Server Configuration Tool to install the MobileFirst Server components to your application server.
+Use the Server Configuration Tool to install the {{ site.data.keys.mf_server }} components to your application server.
 
 The Server Configuration Tool can set up the database and install the components to an application server. This tool is meant for a single user. The configuration files are store on the disk. The directory where they are stored can be modified with menu **File → Preferences**. The files must be used only by one instance of the Server Configuration Tool at the time. The tool does not manage concurrent access to the same file. If you have multiple instances of the tool accessing the same file, the data might be lost. For more information about how the tool creates and setup the databases, see [Create the database tables with the Server Configuration Tool](../databases/#create-the-database-tables-with-the-server-configuration-tool). If the databases exist, the tool can detect them by testing the presence and the content of some test tables and does not modify these database tables.
 
@@ -240,13 +240,13 @@ You can use the Server Configuration Tool if you are on the following operating 
 * macOS x86-64
 * Linux x86 or Linux x86-64
 
-The tool is not available on other operating systems. You need to use Ant tasks to install the MobileFirst Server components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
+The tool is not available on other operating systems. You need to use Ant tasks to install the {{ site.data.keys.mf_server }} components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
 
 ### Supported topologies
-The Server Configuration Tool installs the MobileFirst Server components with the following topologies:
+The Server Configuration Tool installs the {{ site.data.keys.mf_server }} components with the following topologies:
 
-* All components (MobileFirst Operations Console, the MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, MobileFirst Operations Console, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
-* If the MobileFirst Server push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service. On Liberty collective, the push service is installed in a Liberty member that can be the same as the one where the runtime is installed.
+* All components ({{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, {{ site.data.keys.mf_console }}, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
+* If the {{ site.data.keys.mf_server }} push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service. On Liberty collective, the push service is installed in a Liberty member that can be the same as the one where the runtime is installed.
 * All the components use the same database system and the user. For DB2 , all the components also use the same schema.
 * The Server Configuration Tool installs the components for a single server except for Liberty collective and WebSphere Application Server Network Deployment for asymmetric deployment. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not required on WebSphere Application Server Network Deployment.
 
@@ -276,23 +276,23 @@ Before you run the Server Configuration Tool, make sure that the following requi
                             <li>On Linux, from application shortcuts <b>Applications → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
                             <li>On Windows, click <b>Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
                             <li>On macOS, open a shell console. Go to <b>mfp_server_install_dir/shortcuts</b> and type <b>./configuration-tool.sh</b>.</li>
-                            <li>The <b>mfp_server_install_dir</b> directory is where you installed MobileFirst Server.</li>
+                            <li>The <b>mfp_server_install_dir</b> directory is where you installed {{ site.data.keys.mf_server }}.</li>
                         </ul>
                     </li>
-                    <li>Select <b>File → New Configuration</b> to create a MobileFirst Server Configuration.
+                    <li>Select <b>File → New Configuration</b> to create a {{ site.data.keys.mf_server }} Configuration.
                         <ul>
-                            <li>In the <b>Configuration Details</b> panel, enter the context root of the administration service and the runtime component. You might want to enter an environment ID. An environment ID is used in advanced use cases, for example when <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">multiple installations of MobileFirst Server are made on the same application server or same WebSphere  Application Server cell</a>.</li>
-                            <li>In the <b>Console Settings</b> panel, select whether to install MobileFirst Operations Console or not. If the console is not installed, you need to use command line tools (<b>mfpdev</b> or <b>mfpadm</b>) or the REST API to interact with the MobileFirst Server administration service.</li>
+                            <li>In the <b>Configuration Details</b> panel, enter the context root of the administration service and the runtime component. You might want to enter an environment ID. An environment ID is used in advanced use cases, for example when <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">multiple installations of {{ site.data.keys.mf_server }} are made on the same application server or same WebSphere  Application Server cell</a>.</li>
+                            <li>In the <b>Console Settings</b> panel, select whether to install {{ site.data.keys.mf_console }} or not. If the console is not installed, you need to use command line tools (<b>mfpdev</b> or <b>mfpadm</b>) or the REST API to interact with the {{ site.data.keys.mf_server }} administration service.</li>
                             <li>In the <b>Database Selection</b> panel, select the database management system that you plan to use. All the components use the same database type and the same database instance. For more information about the database panes, see <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">Create the database tables with the Server Configuration Tool</a>.</li>
-                            <li>In the <b>Application Server Selection</b> panel, select the type of application server where you want to deploy MobileFirst Server.</li>
+                            <li>In the <b>Application Server Selection</b> panel, select the type of application server where you want to deploy {{ site.data.keys.mf_server }}.</li>
                         </ul>
                     </li>
                     <li>In the <b>Application Server Settings</b> panel, choose the application server and do the following steps:
                         <ul>
                             <li>For an installation on WebSphere Application Server Liberty:
                                 <ul>
-                                    <li>Enter the installation directory of Liberty and the name of the server where you want to install MobileFirst Server.</li>
-                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>Enter the installation directory of Liberty and the name of the server where you want to install {{ site.data.keys.mf_server }}.</li>
+                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
                                     <li>Select the deployment type: <b>Standalone deployment</b> (default), <b>Server farm deployment</b>, or <b>Liberty collective deployment</b>.</li>
                                 </ul>
                                 
@@ -300,7 +300,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                 <ul>
                                     <li>Specify the Liberty collective server:
                                         <ul>
-                                            <li>Where the administration service, MobileFirst Operations Console and the live update service are installed. The server must be a Liberty collective controller.</li>
+                                            <li>Where the administration service, {{ site.data.keys.mf_console }} and the live update service are installed. The server must be a Liberty collective controller.</li>
                                             <li>Where the runtime is installed. The server must be a Liberty collective member.</li>
                                             <li>Where the push service is installed. The server must be a Liberty collective member.</li>
                                         </ul>
@@ -314,22 +314,22 @@ Before you run the Server Configuration Tool, make sure that the following requi
                             <li>For an installation on WebSphere Application Server or WebSphere Application Server Network Deployment:
                                 <ul>
                                     <li>Enter the installation directory of WebSphere Application Server.</li>
-                                    <li>Select the WebSphere Application Server profile where you want to install MobileFirst Server. If you install on WebSphere Application Server Network Deployment, select the profile of the deployment manager. On the deployment manager profile, you can select a scope (<b>Server</b> or <b>Cluster</b>). If you select <b>Cluster</b>, you must specify the cluster:
+                                    <li>Select the WebSphere Application Server profile where you want to install {{ site.data.keys.mf_server }}. If you install on WebSphere Application Server Network Deployment, select the profile of the deployment manager. On the deployment manager profile, you can select a scope (<b>Server</b> or <b>Cluster</b>). If you select <b>Cluster</b>, you must specify the cluster:
                                         <ul>
                                             <li>Where the runtime is installed.</li>
-                                            <li>Where the administration service, MobileFirst Operations Console and the live update service are installed.</li>
+                                            <li>Where the administration service, {{ site.data.keys.mf_console }} and the live update service are installed.</li>
                                             <li>Where the push service is installed.</li>
                                         </ul>
                                     </li>
                                     <li>Enter an administrator login ID and password. The administrator user must have an administrator role.</li>
-                                    <li>If you select the <b>Declare the WebSphere Administrator as an administrator user in IBM MobileFirst Platform Operations Console</b> option, then the user that is used to install MobileFirst Server is mapped to the administration security role of the console and can log in to the console with administrator privileges. This user is also mapped to the security role of the live update service. The user name and password are set as JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                    <li>If you do not select the <b>Declare the WebSphere Administrator as an administrator user in IBM MobileFirst Platform Operations Console</b> option, then before you can use MobileFirst Server, you must do the following tasks:
+                                    <li>If you select the <b>Declare the WebSphere Administrator as an administrator user in {{ site.data.keys.mf_console }}</b> option, then the user that is used to install {{ site.data.keys.mf_server }} is mapped to the administration security role of the console and can log in to the console with administrator privileges. This user is also mapped to the security role of the live update service. The user name and password are set as JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
+                                    <li>If you do not select the <b>Declare the WebSphere Administrator as an administrator user in {{ site.data.keys.mf_console }}</b> option, then before you can use {{ site.data.keys.mf_server }}, you must do the following tasks:
                                         <ul>
                                             <li>Enable the communication between the administration service and the live update service by:
                                                 <ul>
                                                     <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
                                                     <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the  of the administration service and MobileFirst Operations Console. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                                    <li>Map one or more users to the  of the administration service and {{ site.data.keys.mf_console }}. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -340,7 +340,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                 <ul>
                                     <li>Enter the installation directory of Apache Tomcat.</li>
                                     <li>Enter the port that is used for the JMX communication with RMI. By default, the value is 8686. The Server Configuration Tool modifies the <b>tomcat_install_dir/bin/setenv.bat</b> or <b>tomcat_install_dir/bin/setenv.sh</b> file to open this port. If you want to open the port manually, or have already some code that opens the port in <b>setenv.bat</b> or <b>setenv.sh</b>, do not use the tool. Install with Ant tasks instead. An option to open the RMI port manually is provided for an installation with Ant tasks.</li>
-                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for MobileFirst Server administration</a>.</li>
+                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -351,7 +351,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                             <li>Enter the confidential client IDs and secret for the OAuth communication between the services. Otherwise, the tool generates default values and random passwords.</li>
                         </ul>
                     </li>
-                    <li>In the <b>Analytics Settings</b> panel, select the <b>Enable the connection to the Analytics server</b> if MobileFirst Analytics is installed. Enter the following connection settings:
+                    <li>In the <b>Analytics Settings</b> panel, select the <b>Enable the connection to the Analytics server</b> if {{ site.data.keys.mf_analytics }} is installed. Enter the following connection settings:
                         <ul>
                             <li>The URL of the Analytics console.</li>
                             <li>The URL of the Analytics server (the Analytics data service).</li>
@@ -369,66 +369,66 @@ Before you run the Server Configuration Tool, make sure that the following requi
 
 After the installation is completed successfully, restart the application server in the case of Apache Tomcat or Liberty profile.
 
-If Apache Tomcat is launched as a service, the setenv.bat or setenv.sh file that contains the statement to open the RMI might not be read. As a result, MobileFirst Server might not be able to work correctly. To set the required variables, see [Configuring JMX connection for Apache Tomcat](#apache-tomcat-prerequisites).
+If Apache Tomcat is launched as a service, the setenv.bat or setenv.sh file that contains the statement to open the RMI might not be read. As a result, {{ site.data.keys.mf_server }} might not be able to work correctly. To set the required variables, see [Configuring JMX connection for Apache Tomcat](#apache-tomcat-prerequisites).
 
 On WebSphere Application Server Network Deployment, the applications are installed but not started. You need to start them manually. You can do that from the WebSphere Application Server administration console.
 
 Keep the configuration file in the Server Configuration Tool. You might reuse it to install the interim fixes. The menu to apply an interim fix is **Configurations > Replace the deployed WAR files**.
 
 ### Applying a fix pack by using the Server Configuration Tool
-If MobileFirst Server is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.
+If {{ site.data.keys.mf_server }} is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.
 
 1. Start the Server Configuration Tool.
     * On Linux, from application shortcuts **Applications → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * On macOS, open a shell console. Go to **mfp\_server\_install_dir/shortcuts** and type **./configuration-tool.sh**.
-    * The **mfp\_server\_install\_dir** directory is where you installed MobileFirst Server.
+    * The **mfp\_server\_install\_dir** directory is where you installed {{ site.data.keys.mf_server }}.
 
 2. Click **Configurations → Replace the deployed WAR files** and select an existing configuration to apply the fix pack or an interim fix.
 
 ## Installing with Ant tasks
-Use Ant tasks to install the MobileFirst Server components to your application server.
+Use Ant tasks to install the {{ site.data.keys.mf_server }} components to your application server.
 
-You can find the sample configuration files for installing MobileFirst Server in the **mfp\_install\_dir/MobileFirstServer/configuration-samples directory**.
+You can find the sample configuration files for installing {{ site.data.keys.mf_server }} in the **mfp\_install\_dir/MobileFirstServer/configuration-samples directory**.
 
 You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files...**. The sample Ant files have the same limitations as the Server Configuration Tool:
 
-* All components (MobileFirst Operations Console, MobileFirst Server administration service, MobileFirst Server live update service, the MobileFirst Server artifacts, and MobileFirst runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime.
-* If the MobileFirst Server push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service.
+* All components ({{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, the {{ site.data.keys.mf_server }} artifacts, and {{ site.data.keys.product_adj }} runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime.
+* If the {{ site.data.keys.mf_server }} push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service.
 * All the components use the same database system and the user. For DB2 , all the components also use the same schema.
 * The Server Configuration Tool installs the components for a single server. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not supported on WebSphere Application Server Network Deployment.
 
-You can configure the MobileFirst Server services to run in server farm with Ant tasks. To include your server in a farm, you need to specify some specific attributes that configure your application server accordingly. For more information about configuring a server farm with Ant tasks, see [Installing a server farm with Ant tasks](#installing-a-server-farm-with-ant-tasks).
+You can configure the {{ site.data.keys.mf_server }} services to run in server farm with Ant tasks. To include your server in a farm, you need to specify some specific attributes that configure your application server accordingly. For more information about configuring a server farm with Ant tasks, see [Installing a server farm with Ant tasks](#installing-a-server-farm-with-ant-tasks).
 
 For other topologies that are supported in [Topologies and network flows](../topologies), you can modify the sample Ant files.
 
 The references to the Ant tasks are as follows:
 
-* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of MobileFirst Server push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of MobileFirst runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-For an overview of installing with the sample configuration file and tasks, see [Installing MobileFirst Server in command line mode](../tutorials/command-line).
+For an overview of installing with the sample configuration file and tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
 
 You can run an Ant file with the Ant distribution that is part of the product installation. For example, if you have WebSphere Application Server Network Deployment cluster and your database is IBM DB2, you can use the **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant file. After you edit the file and enter all the required properties, you can run the following commands from **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory:
 
 * **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml help** - This command displays the list of all the possible targets of the Ant file, to install, uninstall, or update some components.
-* **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install**  - This command installs MobileFirst Server on the WebSphere Application Server Network Deployment cluster, with DB2 as a data source by using the parameters that you entered in the properties of the Ant file.
+* **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install**  - This command installs {{ site.data.keys.mf_server }} on the WebSphere Application Server Network Deployment cluster, with DB2 as a data source by using the parameters that you entered in the properties of the Ant file.
 
 <br/>
 After the installation, make a copy of the Ant file so that you can reuse it to apply a fix pack.
 
 ### Applying a fix pack by using the Ant files
 #### Updating with the sample Ant file
-If you use the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to install MobileFirst Server, you can reuse a copy of this Ant file to apply a fix pack. For password values, you can enter 12 stars (\*) instead of the actual value, to be prompted interactively when the Ant file is run.
+If you use the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to install {{ site.data.keys.mf_server }}, you can reuse a copy of this Ant file to apply a fix pack. For password values, you can enter 12 stars (\*) instead of the actual value, to be prompted interactively when the Ant file is run.
 
-1. Verify the value of the **mfp.server.install.dir** property in the Ant file. It must point to the directory that contains the product with the fix pack applied. This value is used to take the updated MobileFirst Server WAR files.
+1. Verify the value of the **mfp.server.install.dir** property in the Ant file. It must point to the directory that contains the product with the fix pack applied. This value is used to take the updated {{ site.data.keys.mf_server }} WAR files.
 2. Run the command: `mfp_install_dir/shortcuts/ant -f your_ant_file update`
 
 #### Updating with own Ant file
 If you use your own Ant file, make sure that for each installation task (**installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush**), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are **updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**.
 
-1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an MobileFirst Server installation that the fix pack is applied. By default, the updated MobileFirst Server WAR files are taken from the location of **mfp-ant-deployer.jar**.
+1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an {{ site.data.keys.mf_server }} installation that the fix pack is applied. By default, the updated {{ site.data.keys.mf_server }} WAR files are taken from the location of **mfp-ant-deployer.jar**.
 2. Run the update tasks (**updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**) of your Ant file.
 
 ### Sample Ant files modifications
@@ -439,16 +439,16 @@ The following sections provide the details on how you can modify the sample Ant 
 2. [Specify existing users](#specify-existing-users)
 3. [Specify Liberty Java EE level](#specify-liberty-java-ee-level)
 4. [Specify data source JDBC properties](#specify-data-source-jdbc-properties)
-5. [Run the Ant files on a computer where MobileFirst Server is not installed](#run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed)
+5. [Run the Ant files on a computer where {{ site.data.keys.mf_server }} is not installed](#run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed)
 6. [Specify WebSphere Application Server Network Deployment targets](#specify-websphere-application-server-network-deployment-targets)
 7. [Manual configuration of the RMI port on Apache Tomcat](#manual-configuration-of-the-rmi-port-on-apache-tomcat)
 
 #### Specify extra JNDI properties
 The **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks declare the values for the JNDI properties that are required for the components to function. These JNDI properties are used to define the JMX communication, and also the links to other components (such the live update service, the push service, the analytics service, or the authorization server). However, you can also define values for other JNDI properties. Use the `<property>` element that exists for these three tasks. For a list of JNDI properties, see:
 
-* [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [List of JNDI properties for MobileFirst Server push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 For example:
 
@@ -482,10 +482,10 @@ To use an existing user instead of creating new user, you can do the following o
         ...
    ```
     
-Also, the user that is created by the sample Ant files is mapped to the  of the administration service and the console. With this setting, you can use this user to log on to MobileFirst Server after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
+Also, the user that is created by the sample Ant files is mapped to the  of the administration service and the console. With this setting, you can use this user to log on to {{ site.data.keys.mf_server }} after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
 
 #### Specify Liberty Java EE level
-Some distributions of WebSphere Application Server Liberty support features from Java EE 6 or from Java EE 7. By default, the Ant tasks automatically detect the features to install. For example, **jdbc-4.0** Liberty feature is installed for Java EE 6 and **jdbc-4.1** feature is installed in case of Java EE 7. If the Liberty installation supports both features from Java EE 6 and Java EE 7, you might want to force a certain level of features. An example might be that you plan to run both MobileFirst Server V8.0.0 and V7.1.0 on the same Liberty server. MobileFirst Server V7.1.0 or earlier supports only Java EE 6 features.
+Some distributions of WebSphere Application Server Liberty support features from Java EE 6 or from Java EE 7. By default, the Ant tasks automatically detect the features to install. For example, **jdbc-4.0** Liberty feature is installed for Java EE 6 and **jdbc-4.1** feature is installed in case of Java EE 7. If the Liberty installation supports both features from Java EE 6 and Java EE 7, you might want to force a certain level of features. An example might be that you plan to run both {{ site.data.keys.mf_server }} V8.0.0 and V7.1.0 on the same Liberty server. {{ site.data.keys.mf_server }} V7.1.0 or earlier supports only Java EE 6 features.
 
 To force a certain level of Java EE 6 features, use the jeeversion attribute of the `<websphereapplicationserver>` element. For example:
 
@@ -514,8 +514,8 @@ You can specify the properties for the JDBC connection. Use the `<property>` ele
     </db2>
 ```
 
-#### Run the Ant files on a computer where MobileFirst Server is not installed
-To run the Ant tasks on a computer where MobileFirst Server is not installed, you need the following items:
+#### Run the Ant files on a computer where {{ site.data.keys.mf_server }} is not installed
+To run the Ant tasks on a computer where {{ site.data.keys.mf_server }} is not installed, you need the following items:
 
 * An Ant installation
 * A copy of the **mfp-ant-deployer.jar** file to the remote computer. This library contains the definition of the Ant tasks.
@@ -526,7 +526,7 @@ To run the Ant tasks on a computer where MobileFirst Server is not installed, yo
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-For more information, see the Ant tasks to install each MobileFirst Server component at [Installation reference](../installation-reference).
+For more information, see the Ant tasks to install each {{ site.data.keys.mf_server }} component at [Installation reference](../installation-reference).
 
 #### Specify WebSphere Application Server Network Deployment targets
 To install on WebSphere Application Server Network Deployment, the specified WebSphere Application Server profile must be the deployment manager. You can deploy on the following configurations:
@@ -536,7 +536,7 @@ To install on WebSphere Application Server Network Deployment, the specified Web
 * A cell (all the servers of a cell)
 * A node (all the servers of a node)
 
-The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-wasnd-server-dbms-name.xml**, and **configure-wasnd-node-dbms-name.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each MobileFirst Server component in the [Installation reference](../installation-reference).
+The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-wasnd-server-dbms-name.xml**, and **configure-wasnd-node-dbms-name.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each {{ site.data.keys.mf_server }} component in the [Installation reference](../installation-reference).
 
 > Note: As of V8.0.0, the sample configuration file for the WebSphere Application Server Network Deployment cell is not provided.
 
@@ -544,8 +544,8 @@ The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-
 #### Manual configuration of the RMI port on Apache Tomcat
 By default, the Ant tasks modify the **setenv.bat** file or the **setenv.sh** file to open the RMI port. If you prefer to open the RMI port manually, add the **tomcatSetEnvConfig** attribute with the value as false to the `<jmx>` element of the **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** tasks.
 
-## Installing the MobileFirst Server components manually
-You can also install the MobileFirst Server components to your application server manually.  
+## Installing the {{ site.data.keys.mf_server }} components manually
+You can also install the {{ site.data.keys.mf_server }} components to your application server manually.  
 The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
 
 * [Manual installation on WebSphere Application Server Liberty](#manual-installation-on-websphere-application-server-liberty)
@@ -558,14 +558,14 @@ Make sure that you have also fulfilled the requirements as documented in [WebSph
 
 * [Topology constraints](#topology-constraints)
 * [Application server settings](#application-server-settings)
-* [Liberty features required by the MobileFirst Server applications](#liberty-features-required-by-the-mobilefirst-server-applications)
+* [Liberty features required by the {{ site.data.keys.mf_server }} applications](#liberty-features-required-by-the-mobilefirst-server-applications)
 * [Global JNDI entries](#global-jndi-entries)
 * [Class loader](#class-loader)
 * [Password decoder user feature](#password-decoder-user-feature)
 * [Configuration details](#configuration-details)
 
 #### Topology constraints
-The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 #### Application server settings
 You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
@@ -580,24 +580,24 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
 
 You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
-#### Liberty features required by the MobileFirst Server applications
+#### Liberty features required by the {{ site.data.keys.mf_server }} applications
 You can use the following features for Java EE 6 or Java EE 7.
 
-**MobileFirst Server administration service** 
+**{{ site.data.keys.mf_server }} administration service** 
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **appSecurity-2.0**
 * **restConnector-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**MobileFirst Server push service**  
+**{{ site.data.keys.mf_server }} push service**  
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **servlet-3.0** (servlet-3.1 for Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**MobileFirst runtime**  
+**{{ site.data.keys.product_adj }} runtime**  
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **servlet-3.0** (servlet-3.1 for Java EE 7)
@@ -618,7 +618,7 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 
 > **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
 
-For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+For more information about the JNDI properties for the administration service, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
 For a farm configuration, see also the following topics:
 
@@ -664,7 +664,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-admin-service" aria-expanded="true" aria-controls="collapse-admin-service"><b>MobileFirst Server administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-admin-service" aria-expanded="true" aria-controls="collapse-admin-service"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
             </h4>
         </div>
 
@@ -692,7 +692,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
@@ -717,7 +717,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-liberty-admin-service"><b>MobileFirst Server live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-liberty-admin-service"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
             </h4>
         </div>
 
@@ -749,7 +749,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-console-configuration" aria-expanded="true" aria-controls="collapse-console-configuration"><b>MobileFirst Operations Console configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-console-configuration" aria-expanded="true" aria-controls="collapse-console-configuration"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
             </h4>
         </div>
 
@@ -767,7 +767,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
@@ -806,7 +806,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
 
-                <p>If MobileFirst Analytics is installed, you need to define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -814,7 +814,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
@@ -830,7 +830,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>MobileFirst Server push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
             </h4>
         </div>
 
@@ -856,21 +856,21 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
                 </ul>
                 
-                If MobileFirst Analytics is configured, define the following JNDI properties:
+                If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-artifacts-configuration" aria-expanded="true" aria-controls="collapse-artifacts-configuration"><b>MobileFirst Server artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-artifacts-configuration" aria-expanded="true" aria-controls="collapse-artifacts-configuration"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
             </h4>
         </div>
 
@@ -889,16 +889,16 @@ Make sure that you have also fulfilled the requirements as documented in [WebSph
 
 * [Topology constraints](#topology-constraints-collective)
 * [Application server settings](#application-server-settings-collective)
-* [Liberty features required by the MobileFirst Server applications](#liberty-features-required-by-the-mobilefirst-server-applications-collective)
+* [Liberty features required by the {{ site.data.keys.mf_server }} applications](#liberty-features-required-by-the-mobilefirst-server-applications-collective)
 * [Global JNDI entries](#global-jndi-entries-collective)
 * [Class loader](#class-loader-collective)
 * [Password decoder user feature](#password-decoder-user-feature-collective)
 * [Configuration details](#configuration-details-collective)
 
 <h4 id="topology-constraints-collective">Topology constraints</h4>
-The MobileFirst Server administration service, the MobileFirst Server live update service, and MobileFirst Operations Console must be installed in a Liberty collective controller. The MobileFirst runtime and the MobileFirst Server push service must be installed in every member of the Liberty collective cluster.
+The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.mf_console }} must be installed in a Liberty collective controller. The {{ site.data.keys.product_adj }} runtime and the {{ site.data.keys.mf_server }} push service must be installed in every member of the Liberty collective cluster.
 
-The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <h4 id="application-server-settings-collective">Application server settings</h4>
 You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
@@ -913,25 +913,25 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
 
 You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
-<h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the MobileFirst Server applications</h4>
+<h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the {{ site.data.keys.mf_server }} applications</h4>
 
 You need to add the following features for Java EE 6 or Java EE 7.
 
-**MobileFirst Server administration service** 
+**{{ site.data.keys.mf_server }} administration service** 
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **appSecurity-2.0**
 * **restConnector-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**MobileFirst Server push service**  
+**{{ site.data.keys.mf_server }} push service**  
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **servlet-3.0** (servlet-3.1 for Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**MobileFirst runtime**  
+**{{ site.data.keys.product_adj }} runtime**  
 
 * **jdbc-4.0** (jdbc-4.1 for Java EE 7)
 * **servlet-3.0** (servlet-3.1 for Java EE 7)
@@ -953,8 +953,8 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 
 > **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
 
-* For more information about the JNDI properties for the administration service, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
-* For more information about the JNDI properties for the runtime, see [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+* For more information about the JNDI properties for the administration service, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+* For more information about the JNDI properties for the runtime, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 <h4 id="class-loader-collective">Class loader</h4>
 For all applications, the class loader must have the parent last delegation. For example:
@@ -994,7 +994,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-admin-service-collective" aria-expanded="true" aria-controls="collapse-admin-service-collective"><b>MobileFirst Server administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-admin-service-collective" aria-expanded="true" aria-controls="collapse-admin-service-collective"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
             </h4>
         </div>
 
@@ -1026,7 +1026,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
@@ -1051,7 +1051,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-live-update-service-collective" aria-expanded="true" aria-controls="collapse-live-update-service-collective"><b>MobileFirst Server live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-live-update-service-collective" aria-expanded="true" aria-controls="collapse-live-update-service-collective"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
             </h4>
         </div>
 
@@ -1085,7 +1085,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-console-configuration-collective" aria-expanded="true" aria-controls="collapse-console-configuration-collective"><b>MobileFirst Operations Console configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-console-configuration-collective" aria-expanded="true" aria-controls="collapse-console-configuration-collective"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
             </h4>
         </div>
 
@@ -1104,7 +1104,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
@@ -1121,7 +1121,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-runtime-configuration-collective" aria-expanded="true" aria-controls="collapse-runtime-configuration-collective"><b>MobileFirst runtime configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-runtime-configuration-collective" aria-expanded="true" aria-controls="collapse-runtime-configuration-collective"><b>{{ site.data.keys.product_adj }} runtime configuration details</b></a>
             </h4>
         </div>
 
@@ -1145,7 +1145,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
 
-                <p>If MobileFirst Analytics is installed, you need to define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1153,7 +1153,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
@@ -1169,15 +1169,15 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>MobileFirst Server push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
             </h4>
         </div>
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>The push service is packaged as a WAR application for you to deploy to a Liberty collective cluster member or to a Liberty server. If you install the push service in a Liberty server, see <a href="#configuration-details">MobileFirst Server push service configuration details</a> under <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a>.
+                <p>The push service is packaged as a WAR application for you to deploy to a Liberty collective cluster member or to a Liberty server. If you install the push service in a Liberty server, see <a href="#configuration-details">{{ site.data.keys.mf_server }} push service configuration details</a> under <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a>.
                 <br/><br/>
-                When the MobileFirst Server push service is installed in a Liberty collective, it can be installed in the same cluster than the runtime or in another cluster.
+                When the {{ site.data.keys.mf_server }} push service is installed in a Liberty collective, it can be installed in the same cluster than the runtime or in another cluster.
                 <br/><br/>
                 You need to make some specific configurations for this application in the <b>server.xml</b> file of every Liberty collective cluster member. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective </a> for the configuration details that are common to all services.    
                 <br/><br/>
@@ -1199,21 +1199,21 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
                 </ul>
                 
-                If MobileFirst Analytics is configured, define the following JNDI properties:
+                If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-artifacts-configuration-collective" aria-expanded="true" aria-controls="collapse-artifacts-configuration-collective"><b>MobileFirst Server artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-artifacts-configuration-collective" aria-expanded="true" aria-controls="collapse-artifacts-configuration-collective"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
             </h4>
         </div>
 
@@ -1235,7 +1235,7 @@ Make sure that you have fulfilled the requirements as documented in [Apache Tomc
 * [Configuration details](#configuration-details-tomcat)
 
 <h4 id="topology-constraints-tomcat">Topology constraints</h4>
-The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <h4 id="application-server-settings-tomcat">Application server settings</h4>
 ou must activate the **Single Sign On Valve**. For example:
@@ -1255,7 +1255,7 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-admin-service-tomcat" aria-expanded="true" aria-controls="collapse-admin-service-tomcat"><b>MobileFirst Server administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-admin-service-tomcat" aria-expanded="true" aria-controls="collapse-admin-service-tomcat"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
             </h4>
         </div>
 
@@ -1293,7 +1293,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The data source (jdbc/mfpAdminDS) is declared as a resource in the **Context** element. For example:</p>
@@ -1316,7 +1316,7 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-live-update-service-tomcat" aria-expanded="true" aria-controls="collapse-live-update-service-tomcat"><b>MobileFirst Server live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-live-update-service-tomcat" aria-expanded="true" aria-controls="collapse-live-update-service-tomcat"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
             </h4>
         </div>
 
@@ -1346,7 +1346,7 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-console-configuration-tomcat" aria-expanded="true" aria-controls="collapse-console-configuration-tomcat"><b>MobileFirst Operations Console configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-console-configuration-tomcat" aria-expanded="true" aria-controls="collapse-console-configuration-tomcat"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
             </h4>
         </div>
 
@@ -1360,7 +1360,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                 <h3>Mandatory JNDI properties</h3>
                 <p>You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>The security roles available for the application are:</p>
@@ -1376,7 +1376,7 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-runtime-configuration-tomcat" aria-expanded="true" aria-controls="collapse-runtime-configuration-tomcat"><b>MobileFirst runtime configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-runtime-configuration-tomcat" aria-expanded="true" aria-controls="collapse-runtime-configuration-tomcat"><b>{{ site.data.keys.product_adj }} runtime configuration details</b></a>
             </h4>
         </div>
 
@@ -1401,7 +1401,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.topology.clustermode</b></li>
                 </ul>
                 
-                <p>If MobileFirst Analytics is installed, you need to define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1409,7 +1409,7 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>The JNDI name of the data source for the runtime must be defined as <b>jdbc/mfpDS</b>. Declare it as a resource in the <b>Context</b> element.</p>
@@ -1419,7 +1419,7 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-push-configuration-tomcat" aria-expanded="true" aria-controls="collapse-push-configuration-tomcat"><b>MobileFirst Server push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-push-configuration-tomcat" aria-expanded="true" aria-controls="collapse-push-configuration-tomcat"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
             </h4>
         </div>
 
@@ -1439,21 +1439,21 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
                 </ul>
                 
-                <p>If MobileFirst Analytics is configured, define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:</p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.
+                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-on-apache-tomcat" href="#collapse-artifacts-configuration-tomcat" aria-expanded="true" aria-controls="collapse-artifacts-configuration-tomcat"><b>MobileFirst Server artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-on-apache-tomcat" href="#collapse-artifacts-configuration-tomcat" aria-expanded="true" aria-controls="collapse-artifacts-configuration-tomcat"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
             </h4>
         </div>
 
@@ -1477,10 +1477,10 @@ Make sure that you have fulfilled the requirements as documented in <a href="#we
 
 <h4 id="topology-constraints-nd">Topology constraints</h4>
 <b>On a stand-alone WebSphere Application Server</b>  
-The MobileFirst Server administration service, the MobileFirst Server live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the MobileFirst Server components and MobileFirst Analytics](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <b>On WebSphere Application Server Network Deployment</b>  
-The deployment manager must be running while MobileFirst Server is running. The deployment manager is used for the JMX communication between the runtime and the administration service. The administration service and the live update service must be installed on the same application server. The runtime can be installed on different servers than the administration service, but it must be on the same cell.
+The deployment manager must be running while {{ site.data.keys.mf_server }} is running. The deployment manager is used for the JMX communication between the runtime and the administration service. The administration service and the live update service must be installed on the same application server. The runtime can be installed on different servers than the administration service, but it must be on the same cell.
 
 <h4 id="application-server-settings-nd">Application server settings</h4>
 The administrative security and the application security must be enabled. You can enable the application security in the WebSphere Application Server administration console:
@@ -1493,21 +1493,21 @@ The administrative security and the application security must be enabled. You ca
 
 For more information, see [Enabling security](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) in WebSphere Application Server documentation.
 
-The server class loader policy must support parent last delegation. The MobileFirst Server WAR files must be installed with parent last class loader mode. Review the class-loader policy:
+The server class loader policy must support parent last delegation. The {{ site.data.keys.mf_server }} WAR files must be installed with parent last class loader mode. Review the class-loader policy:
 
 1. Log in to the WebSphere Application Server administration console.
-2. Click S**ervers → Server Types → WebSphere application servers**, and click on the server that is used for IBM MobileFirst Foundation.
+2. Click S**ervers → Server Types → WebSphere application servers**, and click on the server that is used for {{ site.data.keys.product }}.
 3. If the class-loader policy is set to **Multiple**, do nothing.
 4. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with local class loader first (parent last)**, do nothing.
-5. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with parent class loader first (parent first)**, change the class-loader policy to **Multiple**. Also, set the class loader order of all applications other than MobileFirst Server applications to **Classes loaded with parent class loader first (parent first)**.
+5. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with parent class loader first (parent first)**, change the class-loader policy to **Multiple**. Also, set the class loader order of all applications other than {{ site.data.keys.mf_server }} applications to **Classes loaded with parent class loader first (parent first)**.
 
 <h4 id="class-loader-nd">Class loader</h4>
-For all MobileFirst Server applications, the class loader must have the parent last delegation.
+For all {{ site.data.keys.mf_server }} applications, the class loader must have the parent last delegation.
 
 To set the class loader delegation to parent last after an application is installed, follow these steps:
 
 1. Click the **Manage Applications** link, or click **Applications → Application Types → WebSphere entreprise applications**.
-2. Click the **MobileFirst Server** application. By default the name of the application is the name of the WAR file.
+2. Click the **{{ site.data.keys.mf_server }}** application. By default the name of the application is the name of the WAR file.
 3. In the **Detail Properties** section, click the **Class loading and update detection** link.
 4. In the **Class loader order** pane, select the **Classes loaded with local class loader first (parent last)** option.
 5. Click **OK**.
@@ -1522,7 +1522,7 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-admin-service-nd" aria-expanded="true" aria-controls="collapse-admin-service-nd"><b>MobileFirst Server administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-admin-service-nd" aria-expanded="true" aria-controls="collapse-admin-service-nd"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
             </h4>
         </div>
 
@@ -1569,7 +1569,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
                 
                 <h3>Data source</h3>
                 <p>Create a data source for the administration service and map it to <b>jdbc/mfpAdminDS</b>.</p>
@@ -1591,7 +1591,7 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-live-update-service-nd" aria-expanded="true" aria-controls="collapse-live-update-service-nd"><b>MobileFirst Server live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-live-update-service-nd" aria-expanded="true" aria-controls="collapse-live-update-service-nd"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
             </h4>
         </div>
 
@@ -1621,7 +1621,7 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-console-configuration-nd" aria-expanded="true" aria-controls="collapse-console-configuration-nd"><b>MobileFirst Operations Console configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-console-configuration-nd" aria-expanded="true" aria-controls="collapse-console-configuration-nd"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
             </h4>
         </div>
 
@@ -1637,7 +1637,7 @@ To set the class loader delegation to parent last after an application is instal
                 <br/><br/>
                 You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for MobileFirst Operations Console</a>.</p>
+                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
                 
                 <h3>Security roles</h3>
                 <p>The security roles available for the application are:</p>
@@ -1688,7 +1688,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.admin.jmx.connector</b> - set the value as <b>SOAP</b>.</li>
                 </ul>
                                 
-                <p>If MobileFirst Analytics is installed, you need to define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1696,7 +1696,7 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
                 
                 <h3>Start order</h3>
                 <p>The runtime application must start after the administration service application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.</p>
@@ -1709,7 +1709,7 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-push-configuration-nd" aria-expanded="true" aria-controls="collapse-push-configuration-nd"><b>MobileFirst Server push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-push-configuration-nd" aria-expanded="true" aria-controls="collapse-push-configuration-nd"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
             </h4>
         </div>
 
@@ -1731,14 +1731,14 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
                 </ul>
                 
-                <p>If MobileFirst Analytics is configured, define the following JNDI properties:</p>
+                <p>If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:</p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for MobileFirst Server push service</a>.</p>
+                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.</p>
 
                 <h3>Data source</h3>
                 <p>Create the data source for the push service and map it to <b>jdbc/imfPushDS</b>.</p>
@@ -1748,7 +1748,7 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-artifacts-configuration-nd" aria-expanded="true" aria-controls="collapse-artifacts-configuration-nd"><b>MobileFirst Server artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-artifacts-configuration-nd" aria-expanded="true" aria-controls="collapse-artifacts-configuration-nd"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
             </h4>
         </div>
 
@@ -1773,18 +1773,18 @@ You can install your server farm by running Ant tasks, with the Server Configura
 * [Lifecycle of a server farm node](#lifecycle-of-a-server-farm-node)
 
 ### Planning the configuration of a server farm
-To plan the configuration of a server farm, choose the application server, configure the MobileFirst databases, and deploy the WAR files of the MobileFirst Server components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
+To plan the configuration of a server farm, choose the application server, configure the {{ site.data.keys.product_adj }} databases, and deploy the WAR files of the {{ site.data.keys.mf_server }} components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
 
-When you intend to plan a server farm installation, see [Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
+When you intend to plan a server farm installation, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
 
-In IBM MobileFirst Foundation, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. MobileFirst Server internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
+In {{ site.data.keys.product }}, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. {{ site.data.keys.mf_server }} internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
 
 #### When to declare a server farm
 **Declare a server farm in the following cases:**
 
-* MobileFirst Server is installed on multiple Tomcat application servers.
-* MobileFirst Server is installed on multiple WebSphere Application Server servers but not on WebSphere Application Server Network Deployment.
-* MobileFirst Server is installed on multiple WebSphere Application Server Liberty servers.
+* {{ site.data.keys.mf_server }} is installed on multiple Tomcat application servers.
+* {{ site.data.keys.mf_server }} is installed on multiple WebSphere Application Server servers but not on WebSphere Application Server Network Deployment.
+* {{ site.data.keys.mf_server }} is installed on multiple WebSphere Application Server Liberty servers.
 
 **Do not declare a server farm in the following cases:**
 
@@ -1792,15 +1792,15 @@ In IBM MobileFirst Foundation, a server farm is composed of multiple stand-alone
 * Multiple application servers are federated by WebSphere Application Server Network Deployment.
 
 #### Why it is mandatory to declare a farm
-Each time a management operation is performed through MobileFirst Operations Console or through the MobileFirst Server administration service application, the operation needs to be replicated to all instances of a runtime environment. Examples of such management operations are the uploading of a new version of an app or of an adapter. The replication is done via JMX calls performed by the administration service application instance that handles the operation. The administration service needs to contact all runtime instances in the cluster. In environments listed under **When to declare a server farm** above, the runtime can be contacted through JMX only if a farm is configured. If a server is added to a cluster without proper configuration of the farm, the runtime in that server will be in an inconsistent state after each management operation, and until it is restarted again.
+Each time a management operation is performed through {{ site.data.keys.mf_console }} or through the {{ site.data.keys.mf_server }} administration service application, the operation needs to be replicated to all instances of a runtime environment. Examples of such management operations are the uploading of a new version of an app or of an adapter. The replication is done via JMX calls performed by the administration service application instance that handles the operation. The administration service needs to contact all runtime instances in the cluster. In environments listed under **When to declare a server farm** above, the runtime can be contacted through JMX only if a farm is configured. If a server is added to a cluster without proper configuration of the farm, the runtime in that server will be in an inconsistent state after each management operation, and until it is restarted again.
 
 ### Installing a server farm with the Server Configuration Tool
 Use the Server Configuration Tool to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
 
 When you plan a server farm with the Server Configuration Tool, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run the tool that does the following operations:
 
-* Configure the database instance that is shared by the MobileFirst Server components.
-* Deploy the MobileFirst Server components to each server
+* Configure the database instance that is shared by the {{ site.data.keys.mf_server }} components.
+* Deploy the {{ site.data.keys.mf_server }} components to each server
 * Modify its configuration to make it a member of a server farm
 
 <div class="panel-group accordion" id="installing-mobilefirst-server-ct" role="tablist" aria-multiselectable="true">
@@ -1813,27 +1813,27 @@ When you plan a server farm with the Server Configuration Tool, first create the
 
         <div id="collapse-server-farm-ct" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ct">
             <div class="panel-body">
-                <p>MobileFirst Server requires the secure JMX connection to be configured.</p>
+                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
                 
                 <ol>
                     <li>Prepare the application servers that must be configured as the server farm members.
                         <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
+                            <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
                                 <ul>
                                     <li>WebSphere  Application Server full profile<br/>
-                                    <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
+                                    <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
                                     <li>WebSphere Application Server Liberty profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
                                 
-                                <blockquote><b>Important:</b> IBM MobileFirst Foundation supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                                <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
                             </li>
                             <li>Set up as many stand-alone servers as the number of members that you want in the farm.
                                 <ul>
                                     <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
-                                    <li>Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.</li>
-                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime</a>.</li>
+                                    <li>Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.</li>
+                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
                                 </ul>
                             </li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
@@ -1853,7 +1853,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
 ### Installing a server farm with Ant tasks
 Use Ant tasks to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
 
-When you plan a server farm with Ant tasks, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run Ant tasks to configure the database instance that is shared by the MobileFirst Server components. Finally, run Ant tasks to deploy the MobileFirst Server components to each server and modify its configuration to make it a member of a server farm.
+When you plan a server farm with Ant tasks, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run Ant tasks to configure the database instance that is shared by the {{ site.data.keys.mf_server }} components. Finally, run Ant tasks to deploy the {{ site.data.keys.mf_server }} components to each server and modify its configuration to make it a member of a server farm.
 
 <div class="panel-group accordion" id="installing-mobilefirst-server-ant" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -1865,28 +1865,28 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
 
         <div id="collapse-server-farm-ant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ant">
             <div class="panel-body">
-                <p>MobileFirst Server requires the secure JMX connection to be configured.</p>
+                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
                 
                 <ol>
                     <li>Prepare the application servers that must be configured as the server farm members.
                         <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
+                            <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
                                 <ul>
-                                    <li>WebSphere  Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
+                                    <li>WebSphere  Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
                                     <li>WebSphere Application Server Liberty profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
                                 
-                                <blockquote><b>Important:</b> IBM MobileFirst Foundation supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                                <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
                             </li>
                             <li>Set up as many stand-alone servers as the number of members that you want in the farm.
                             <br/><br/>
                             Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.
                             <br/><br/>
-                            Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.
+                            Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.
                             <br/><br/>
-                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on MobileFirst Server administration service, MobileFirst Server live update service and MobileFirst runtime</a>.</li>
+                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
                             <br/><br/>
                             This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
@@ -1906,7 +1906,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             </li>
                             <li>Edit the Ant file and enter all the required properties for the database.
                             <br/><br/>
-                            To enable the configuration of the database that is used by the MobileFirst Server components, set the values of the following properties:
+                            To enable the configuration of the database that is used by the {{ site.data.keys.mf_server }} components, set the values of the following properties:
                                 <ul>
                                     <li>Set <b>mfp.process.admin</b> to <b>true</b>. To configure the database for the administration service and the live update service.</li>
                                     <li>Set <b>mfp.process.runtime</b> to <b>true</b>. To configure the database for the runtime.</li>
@@ -1914,7 +1914,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             </li>
                             <li>Run the following commands from the <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> directory where <b>create-database-ant-file.xml</b> must be replaced with the actual Ant file name that you chose: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> and <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.
                             <br/><br/>
-                            As the MobileFirst Server databases are shared between the application servers in a farm, these two commands must be run only once, whatever the number of servers in the farm.
+                            As the {{ site.data.keys.mf_server }} databases are shared between the application servers in a farm, these two commands must be run only once, whatever the number of servers in the farm.
                             </li>
                             <li>Optionally, if you want to install another runtime, you must configure another database with another database name or schema. To do so, edit the Ant file, modify the properties, and run the following command once, whatever the number of servers in the farm: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.</li>
                         </ul>
@@ -1925,7 +1925,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             <br/><br/>
                             For example, choose the <b>configure-liberty-db2.xml</b> file for a deployment on Liberty server with the DB2 database. Make as many copies of this file as the number of members that you want in the farm. 
                             <br/><br/>
-                            <b>Note:</b> Keep these files after the configuration as they can be reused for upgrading the MobileFirst Server components that are already deployed, or for uninstalling them from each member of the farm.</li>
+                            <b>Note:</b> Keep these files after the configuration as they can be reused for upgrading the {{ site.data.keys.mf_server }} components that are already deployed, or for uninstalling them from each member of the farm.</li>
                             <li>Edit each copy of the Ant file, enter the same properties for the database that are used at step 2, and also enter the other required properties for the application server.
                             <br/><br/>
                             To configure the server as a server farm member, set the values of the following properties:
@@ -1935,7 +1935,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                                     <li><b>mfp.config.service.user</b>: The user name that is used to access the live update service. The user name must be the same for all the members of the farm.</li>
                                     <li><b>mfp.config.service.password</b>: The password that is used to access the live update service. The password must be the same for all the members of the farm.</li>
                                 </ul>
-                                To enable the deployment of the WAR files of the MobileFirst Server components on the server, set the values of the following properties:
+                                To enable the deployment of the WAR files of the {{ site.data.keys.mf_server }} components on the server, set the values of the following properties:
                                     <ul>
                                         <li>Set <b>mfp.process.admin</b> to <b>true</b>. To deploy the WAR files of the administration service and the live update service.</li>
                                         <li>Set <b>mfp.process.runtime</b> to <b>true</b>. To deploy the WAR file of the runtime.</li>
@@ -1951,7 +1951,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             </li>
                             <li>For each server, run the following commands where <b>configure-appserver-database-ant-file.xml</b> must be replaced with the actual Ant file name that you chose: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> and <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
                             <br/><br/>
-                            These commands run the <b>installmobilefirstadmin</b> and <b>installmobilefirstruntime</b> Ant tasks. For more information about these tasks, see <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services</a> and <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant tasks for installation of MobileFirst runtime environments</a>.
+                            These commands run the <b>installmobilefirstadmin</b> and <b>installmobilefirstruntime</b> Ant tasks. For more information about these tasks, see <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services</a> and <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments</a>.
                             </li>
                             <li>Optionally, if you want to install another runtime, do the following steps:
                                 <ul>
@@ -1986,16 +1986,16 @@ When you plan a server farm, first create stand-alone servers that communicate w
         <div id="collapse-manual" class="panel-collapse collapse" role="tabpanel" aria-labelledby="manual">
             <div class="panel-body">
                 <ol>
-                    <li>Choose the type of application server to use to configure the members of the server farm. IBM MobileFirst Foundation supports the following application servers in server farms:
+                    <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
                         <ul>
                             <li>WebSphere  Application Server full profile<br/>
-                            <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by IBM MobileFirst Foundation.</li>
+                            <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
                             <li>WebSphere Application Server Liberty profile</li>
                             <li>Apache Tomcat</li>
                         </ul>
                         To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
                         
-                        <blockquote><b>Important:</b> IBM MobileFirst Foundation supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                        <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
                     </li>
                     <li>Decide which database that you want to use. You can choose from:
                         <ul>
@@ -2003,7 +2003,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                             <li>MySQL</li>
                             <li>Oracle</li>
                         </ul>
-                        MobileFirst Server databases are shared between the application servers in a farm, which means:
+                        {{ site.data.keys.mf_server }} databases are shared between the application servers in a farm, which means:
                         <ul>
                             <li>You create the database only once, whatever the number of servers in the farm.</li>
                             <li>You cannot use the Derby database in a farm topology because the Derby database allows only a single connection at a time.</li>
@@ -2013,7 +2013,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                     <li>Set up as many stand-alone servers as the number of members that you want in the farm.
                         <ul>
                             <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
-                            <li>Each of these servers must have the MobileFirst Server administration service, the MobileFirst Server live update service, and one or more MobileFirst runtimes deployed on it.</li>
+                            <li>Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.</li>
                             <li>When each of these servers is working properly in a stand-alone topology, you can transform them into members of a server farm.</li>
                         </ul>
                     </li>
@@ -2073,7 +2073,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                     </li>
                                     <li>Verify that <b>mfp.admin.jmx.connector</b> is set to <b>SOAP</b>.</li>
                                     <li>Click <b>OK</b> and save the configuration.</li>
-                                    <li>Make similar changes for every MobileFirst runtime application deployed on the server.</li>
+                                    <li>Make similar changes for every {{ site.data.keys.product_adj }} runtime application deployed on the server.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -2096,7 +2096,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                 </blockquote>
                                 Lastly, start the server and look for lines that contain com.ibm.ssl.trustStore in the <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> file.
                                 <ul>
-                                    <li>Import the public certificates of the other servers in the farm into the truststore that is referenced by the <b>server.xml</b> configuration file of the server. The tutorial <a href="../tutorials/graphical-mode">Installing MobileFirst Server in graphical mode</a> provides you the instructions to exchange the certificates between two Liberty servers in a farm. For more information, see step 5 of <a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creating a farm of two Liberty servers that run MobileFirst Server</a> section.</li>
+                                    <li>Import the public certificates of the other servers in the farm into the truststore that is referenced by the <b>server.xml</b> configuration file of the server. The tutorial <a href="../tutorials/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a> provides you the instructions to exchange the certificates between two Liberty servers in a farm. For more information, see step 5 of <a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}</a> section.</li>
                                     <li>Restart each instance of WebSphere Application Server Liberty profile to make the security configuration take effect. The following steps are needed for single sign-on (SSO) to work.</li>
                                     <li>Start one member of the farm. In the default LTPA configuration, after the Liberty server starts successfully, it generates an LTPA keystore as <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
                                     <li>Copy the <b>ltpa.keys</b> file to the <b>${wlp.user.dir}/servers/server_name/resources/security</b> directory of each farm member to replicate the LTPA keystores across the farm members. For more information about LTPA configuration, see <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuring LTPA on the Liberty profile</a>.</li>
@@ -2135,11 +2135,11 @@ When you plan a server farm, first create stand-alone servers that communicate w
 The purpose of this task is to check the status of the farm members and verify whether a farm is configured properly.
 
 1. Start all the servers of the farm.
-2. Access MobileFirst Operations Console. For example, **http://server_name:port/mfpconsole**, or **https://hostname:secure_port/mfpconsole** in HTTPS.
+2. Access {{ site.data.keys.mf_console }}. For example, **http://server_name:port/mfpconsole**, or **https://hostname:secure_port/mfpconsole** in HTTPS.
     In the console sidebar, an extra menu that is labeled as Server Farm Nodes appears.
 3. Click **Server Farm Nodes** to access the list of registered farm members and their status. In the following example, the node that is identified as **FarmMember2** is considered to be down, which indicates that this server has probably failed and requires some maintenance.
 
-![Status of Farm nodes in the MobileFirst Console](farm_nodes_status_list.jpg)
+![Status of Farm nodes in the {{ site.data.keys.mf_console }}](farm_nodes_status_list.jpg)
 
 ### Lifecycle of a server farm node
 You can configure heartbeat rate and timeout values to indicate possible server problems among farm members by triggering a change in status of an affected node.
@@ -2148,11 +2148,11 @@ You can configure heartbeat rate and timeout values to indicate possible server 
 When a server configured as a farm node is started, the administration service on that server automatically registers it as a new farm member.
 When a farm member is shut down, it automatically unregisters from the farm.
 
-A heartbeat mechanism exists to keep track of farm members that might become unresponsive, for example, because of a power outage or a server failure. In this heartbeat mechanism, MobileFirst runtimes periodically send a heartbeat to MobileFirst administration services at a specified rate. If the MobileFirst administration service registers that too long a time has elapsed since a farm member sent a heartbeat, the farm member is considered to be down.
+A heartbeat mechanism exists to keep track of farm members that might become unresponsive, for example, because of a power outage or a server failure. In this heartbeat mechanism, {{ site.data.keys.product_adj }} runtimes periodically send a heartbeat to {{ site.data.keys.product_adj }} administration services at a specified rate. If the {{ site.data.keys.product_adj }} administration service registers that too long a time has elapsed since a farm member sent a heartbeat, the farm member is considered to be down.
 
 Farm members that are considered to be down do not serve any more requests to mobile applications.
 
-Having one or more nodes down does not prevent the other farm members from correctly serving requests to mobile applications nor from accepting new management operations that are triggered through the MobileFirst Operations Console.
+Having one or more nodes down does not prevent the other farm members from correctly serving requests to mobile applications nor from accepting new management operations that are triggered through the {{ site.data.keys.mf_console }}.
 
 #### Configuring the heartbeat rate and timeout values
 You can configure the heartbeat rate and timeout values by defining the following JNDI properties:
@@ -2161,4 +2161,4 @@ You can configure the heartbeat rate and timeout values by defining the followin
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-For more information about JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).

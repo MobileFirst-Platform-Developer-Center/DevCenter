@@ -5,12 +5,12 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-The following MobileFirst Server components need to store technical data into a database:
+The following {{ site.data.keys.mf_server_full }} components need to store technical data into a database:
 
-* MobileFirst Server administration service
-* MobileFirst Server live update service
-* MobileFirst Server push service
-* MobileFirst runtime
+* {{ site.data.keys.mf_server }} administration service
+* {{ site.data.keys.mf_server }} live update service
+* {{ site.data.keys.mf_server }} push service
+* {{ site.data.keys.product }} runtime
 
 > **Note:** If multiple runtime instances are installed with different context root, each instance needs its own set of tables.
 > The database can be a relational database such as IBM  DB2 , Oracle, or MySQL.
@@ -18,9 +18,9 @@ The following MobileFirst Server components need to store technical data into a 
 #### Relational databases (DB2, Oracle, or MySQL)
 Each component needs a set of tables. The tables can be created manually by running the SQL scripts specific to each component (see [Create the database tables manually](#create-the-database-tables-manually)), by using Ant Tasks, or the Server Configuration Tool. The table names of each component do not overlap. Thus, it is possible to put all the tables of these components under a single schema.
 
-However, if you decide to install multiple instances of MobileFirst runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
+However, if you decide to install multiple instances of {{ site.data.keys.product }} runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
 
-> **Note about DB2:** MobileFirst Foundation licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> **Note about DB2:** {{ site.data.keys.product_adj }} licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
 > 
 > * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
 > * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
@@ -36,12 +36,12 @@ However, if you decide to install multiple instances of MobileFirst runtime, eac
 * [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks)
 
 ## Database users and privileges
-At run time, the MobileFirst Server applications in the application server use data sources as resources to obtain connection to relational databases. The data source needs a user with certain privileges to access the database.
+At run time, the {{ site.data.keys.mf_server }} applications in the application server use data sources as resources to obtain connection to relational databases. The data source needs a user with certain privileges to access the database.
 
-You need to configure a data source for each MobileFirst Server application that is deployed to the application server to have the access to the relational database. The data source requires a user with specific privileges to access the database. The number of users that you need to create depends on the installation procedure that is used to deploy MobileFirst Server applications to the application server.
+You need to configure a data source for each {{ site.data.keys.mf_server }} application that is deployed to the application server to have the access to the relational database. The data source requires a user with specific privileges to access the database. The number of users that you need to create depends on the installation procedure that is used to deploy {{ site.data.keys.mf_server }} applications to the application server.
 
 ### Installation with the Server Configuration Tool
-The same user is used for all components (MobileFirst Server administration service, MobileFirst Server configuration service, MobileFirst Server push service, and MobileFirst runtime)
+The same user is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
 
 ### Installation with Ant tasks
 The sample Ant files that are provided in the product distribution use the same user for all components. However, it is possible to modify the Ant files to have different users:
@@ -51,7 +51,7 @@ The sample Ant files that are provided in the product distribution use the same 
 * A different user for the push service.
 
 ### Manual installation
-It is possible to assign a different data source, and thus a different user, to each of the MobileFirst Server components.
+It is possible to assign a different data source, and thus a different user, to each of the {{ site.data.keys.mf_server }} components.
 At run time, the users must have the following privileges on the tables and sequences of their data:
 
 * SELECT TABLE
@@ -76,7 +76,7 @@ For an upgrade of the product, it needs these additional privileges:
 * DROP VIEW
 
 ## Database requirements
-The database stores all the data of the MobileFirst Server applications. Before you install the MobileFirst Server components, ensure that the database requirements are met.
+The database stores all the data of the {{ site.data.keys.mf_server }} applications. Before you install the {{ site.data.keys.mf_server }} components, ensure that the database requirements are met.
 
 * [DB2 database and user requirements](#db2-database-and-user-requirements)
 * [Oracle database and user requirements](#oracle-database-and-user-requirements)
@@ -95,7 +95,7 @@ The page size of the database must be at least 32768. The following procedure cr
 2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions.
     * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
     * On Linux or UNIX systems, go to **~/sqllib/bin** and enter `./db2`.
-3. To create the MobileFirst Server database, enter the SQL statements similar to the following example.
+3. To create the {{ site.data.keys.mf_server }} database, enter the SQL statements similar to the following example.
 
 Replace the user name **mfpuser** with your own.
 
@@ -112,7 +112,7 @@ Review the database requirement for Oracle. Follow the steps to create user, dat
 
 Ensure that you set the database character set as Unicode character set (AL32UTF8) and the national character set as UTF8 - Unicode 3.0 UTF-8.  
 
-The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the MobileFirst services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
+The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the {{ site.data.keys.product }} services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
 
 The tables are expected to be created in the default schema of the runtime user. The Ant tasks and the Server Configuration Tool create the tables in the default schema of the user passed as argument. For more information about the creation of tables, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
 
@@ -172,24 +172,24 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
    FLUSH PRIVILEGES;
    ```
 
-    Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which IBM MobileFirst Foundation runs.
+    Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which {{ site.data.keys.product_adj }} runs.
     
-    The user must be able to connect to the MySQL server from the hosts that run the Java application server with the MobileFirst Server applications installed.
+    The user must be able to connect to the MySQL server from the hosts that run the Java application server with the {{ site.data.keys.mf_server }} applications installed.
     
 ## Create the database tables manually
-The database tables for the MobileFirst Server applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
+The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
 
 * [Creating the DB2 database tables manually](#creating-the-db2-database-tables-manually)
 * [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually)
 * [Creating the MySQL database tables manually](#creating-the-mysql-database-tables-manually)
 
 ### Creating the DB2 database tables manually
-Use the SQL scripts that are provided in the MobileFirst Server installation to create the DB2  database tables.
+Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
 
 #### Installation with the Server Configuration Tool
-The same schema is used for all components (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst runtime)
+The same schema is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
 
 #### Installation with Ant tasks
 The sample Ant files that are provided in the product distribution use the same schema for all components. However, it is possible to modify the Ant files to have different schemas:
@@ -199,7 +199,7 @@ The sample Ant files that are provided in the product distribution use the same 
 * A different schema for the push service.
 
 #### Manual installation
-It is possible to assign a different data source, and thus a different schema, to each of the MobileFirst Server components.  
+It is possible to assign a different data source, and thus a different schema, to each of the {{ site.data.keys.mf_server }} components.  
 The scripts to create the tables are as follows:
 
 * For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**.
@@ -223,9 +223,9 @@ db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 If the tables are created by mfpuser, this user has the privileges on the tables automatically and can use them at run time. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or a finer control of privileges, refer to the DB2 documentation.
 
 ### Creating the Oracle database tables manually
-Use the SQL scripts that are provided in the MobileFirst Server installation to create the Oracle database tables.
+Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
 
 The tables must be created in the default schema of the runtime user. The scripts to create the tables are as follows:
 
@@ -250,12 +250,12 @@ DISCONNECT;
 If the tables are created by MFPUSER, this user has the privileges on the tables automatically and can use them at run time. The tables are created in the user's default schema. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or have a finer control of privileges, refer to the Oracle documentation.
 
 ### Creating the MySQL database tables manually
-Use the SQL scripts that are provided in the MobileFirst Server installation to create the MySQL database tables.
+Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
 
-As described in the Overview section, all the four MobileFirst Server components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the MobileFirst Server applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
+As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
 
 #### Installation with the Server Configuration Tool
-The same database is used for all components (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst runtime)
+The same database is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
 
 #### Installation with Ant tasks
 The sample Ant files that are provided in the product distribution use the same database for all components. However, it is possible to modify the Ant files to have different database:
@@ -265,7 +265,7 @@ The sample Ant files that are provided in the product distribution use the same 
 * A different database for the push service.
 
 #### Manual installation
-It is possible to assign a different data source, and thus a different database, to each of the MobileFirst Server components.  
+It is possible to assign a different data source, and thus a different database, to each of the {{ site.data.keys.mf_server }} components.  
 The scripts to create the tables are as follows:
 
 * For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**.
@@ -289,15 +289,15 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ```
 
 ## Create the database tables with the Server Configuration Tool
-The database tables for the MobileFirst Server applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install MobileFirst Server with the Server Configuration Tool.
+The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install {{ site.data.keys.mf_server }} with the Server Configuration Tool.
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the MobileFirst Server components. For an overview of the installation process with the Server Configuration Tool, see [Installing MobileFirst Server in graphical mode](../tutorials/graphical-mode).
+The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../tutorials/graphical-mode).
 
 After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
 
 * Create the database and user if needed.
-* Verify whether the MobileFirst Server tables exist in the database. If they do not exist, create the tables.
-* Deploys the MobileFirst Server applications to the application server.
+* Verify whether the {{ site.data.keys.mf_server }} tables exist in the database. If they do not exist, create the tables.
+* Deploys the {{ site.data.keys.mf_server }} applications to the application server.
 
 If the database tables are created manually before you run the Server Configuration Tool, the tool can detect them and skip the phase of setting up the tables.
 
@@ -308,7 +308,7 @@ Depending on your choice of the supported database management system (DBMS), sel
 * [Creating the MySQL database tables with the Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
 
 ### Creating the DB2 database tables with the Server Configuration Tool
-Use the Server Configuration Tool that is provided with MobileFirst Server installation to create the DB2  database tables.
+Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
 
 The Server Configuration Tool can create a database in the default DB2 instance. In **Database Selection** panel of the Server Configuration Tool, select the IBM DB2 option. In the next three panes, enter the database credentials. If the database name that is entered in the **Database Additional Settings** panel does not exist in the DB2 instance, you can enter additional information to enable the tool to create a database for you.
 
@@ -320,7 +320,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
 
 ### Creating the Oracle database tables with the Server Configuration Tool
-Use the Server Configuration Tool that is provided with MobileFirst Server installation to create the Oracle database tables.
+Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
 
 In Database Selection panel of the Server Configuration Tool, select the **Oracle Standard or Enterprise Editions, 11g or 12c** option. In the next three panes, enter the database credentials.
 
@@ -356,7 +356,7 @@ A database is created with the SID name that is entered in the **Database Additi
 4. In same panel, also enter the password for the **SYSTEM** user of the database.
 
 ### Creating the MySQL database tables with the Server Configuration Tool
-Use the Server Configuration Tool that is provided with MobileFirst Server installation to create the MySQL database tables.
+Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
 
 The Server Configuration Tool can create a MySQL database for you. In **Database Selection** panel of the Server Configuration Tool, select the **MySQL 5.5.x, 5.6.x or 5.7.x** option. In the next three panes, enter the database credentials. If the database or the user that you enter in the Database Additional Settings panel does not exist, the tool can create it.
 
@@ -364,15 +364,15 @@ If MySQL server does not have the settings that are recommended in [MySQL databa
 
 The following procedure provides some extra steps that you need to do when you create the database tables with the tool.
 
-1. In the **Database Additional Settings** panel, besides the connection settings, you must enter all the hosts from which the user is allowed to connect to the database. That is, all the hosts where MobileFirst Server runs.
+1. In the **Database Additional Settings** panel, besides the connection settings, you must enter all the hosts from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
 2. In the **Database creation request** panel, enter the login ID and the password of a MySQL administrator. By default, the administrator is root.
 
 ## Create the database tables with Ant tasks
-The database tables for the MobileFirst Server applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them with Ant tasks.
+The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them with Ant tasks.
 
-You can find relevant information in this section about the setting up of the database if MobileFirst Server is installed with Ant Tasks.
+You can find relevant information in this section about the setting up of the database if {{ site.data.keys.mf_server }} is installed with Ant Tasks.
 
-You can use Ant Tasks to set up the MobileFirst Server database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing MobileFirst Server in command line mode](../tutorials/command-line).
+You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
 
 A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
 
@@ -380,7 +380,7 @@ A set of sample Ant files is provided with the installation to help you get star
 The Ant files can do these tasks:
 
 * Create the tables in a database if the database and database user exist. The requirements for the database are listed in [Database requirements](#database-requirements).
-* Deploy the WAR files of the MobileFirst Server components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all theMobileFirst Server applications.
+* Deploy the WAR files of the {{ site.data.keys.mf_server }} components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all the {{ site.data.keys.mf_server }} applications.
 
 #### create-database-dbms.xml
 The Ant files can create a database if needed on the supported database management system (DBMS), and then create the tables in the database. However, as the database is created with default settings, it is not meant to be used for production.
@@ -394,7 +394,7 @@ The sample Ant files have predefined targets. Follow this procedure to use the f
 2. Edit the file and enter the values for your configuration in the `<! -- Start of Property Parameters -->` section for the Ant file.
 3. Run the Ant file with the databases target: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
-This command creates the tables in the specified database and schema for all MobileFirst Server applications (MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, and MobileFirst Server runtime). A log for the operations is produced and stored in your disk.
+This command creates the tables in the specified database and schema for all {{ site.data.keys.mf_server }} applications ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.mf_server }} runtime). A log for the operations is produced and stored in your disk.
 
 * On Windows, it is in C:\Users\user_name\Documents\IBM MobileFirst Platform Server Data\Configuration Logs\ directory.
 * On UNIX, it is in $HOME/.mobilefirst\_platform\_server/configuration-logs/ directory.
@@ -402,7 +402,7 @@ This command creates the tables in the specified database and schema for all Mob
 ### Different users for the database tables creation and for run time
 The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
 
-* All the MobileFirst Server applications (the administration service, the live update service, the push service, and the runtime)
+* All the {{ site.data.keys.mf_server }} applications (the administration service, the live update service, the push service, and the runtime)
 * The user that is used to create the database and the user at run time for the data source in the application server.
 
 If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
@@ -412,7 +412,7 @@ For DB2  and MySQL, it is possible to have different users for the database crea
 Depending on your choice of the supported database management system (DBMS), select one of the following topics to create the database with Ant tasks.
 
 ### Creating the DB2 database tables with Ant tasks
-Use Ant tasks that are provided with MobileFirst Server installation to create the DB2  database.
+Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the DB2  database.
 
 To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
 
@@ -433,7 +433,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
 
 ### Creating the Oracle database tables with Ant tasks
-Use Ant tasks that are provided with MobileFirst Server installation to create the Oracle database tables.
+Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
 
 When you enter the Oracle user name in Ant file, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the **configureDatabase** Ant task considers it as another user. Unlike other tools for Oracle database, the **configureDatabase** Ant task protects the user name against automatic conversion to uppercase.
 
@@ -479,14 +479,14 @@ Follow the general guidelines as described in [Create the database tables with A
     * **database.oracle.admin.password**
 5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
 
-A database user is created with the name and password that are entered in the **oracle** element. This user has the privileges to create the MobileFirst Server tables, upgrade them and use them at run time.
+A database user is created with the name and password that are entered in the **oracle** element. This user has the privileges to create the {{ site.data.keys.mf_server }} tables, upgrade them and use them at run time.
 
 
 
 
 
 ### Creating the MySQL database tables with Ant tasks
-Use Ant Tasks that are provided with MobileFirst Server installation to create the MySQL database tables.
+Use Ant Tasks that are provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
 
 To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
 
@@ -499,5 +499,5 @@ The following procedure provides some extra steps that you need to do when you c
 1. In the **dba** element that is defined in the **create-database-mysql.xml** file, enter the login ID and password of a MySQL administrator. By default, the administrator is **root**. You can assign the values in the following properties:
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
-2. In the **mysql** element, add a **client** element for each host from which the user is allowed to connect to the database. That is, all the hosts where MobileFirst Server runs.
+2. In the **mysql** element, add a **client** element for each host from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
 After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
