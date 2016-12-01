@@ -2,7 +2,7 @@
 layout: tutorial
 title: Adding the MobileFirst Foundation SDK to Xamarin Applications
 breadcrumb_title: Xamarin
-relevantTo: [Xamarin]
+relevantTo: [xamarin]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
