@@ -36,6 +36,9 @@
             "name": "Windows 8 and 10",
             "path": "/foundation/8.0/windows-8-10-tutorials"
         }, {
+            "name": "Xamarin",
+            "path": "/foundation/8.0/xamarin-tutorials"
+        }, {
             "name": "Web apps",
             "path": "/foundation/8.0/web-tutorials"
         }]
