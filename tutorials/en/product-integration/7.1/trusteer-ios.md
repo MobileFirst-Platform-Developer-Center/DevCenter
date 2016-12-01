@@ -61,7 +61,7 @@ CoreMotion.framework in addition to MobileFirst's standard requirements.
 
 ### Initialize the Trusteer Mobile SDK
 By default, the Trusteer Mobile SDK is initialized automatically when you integrate the SDK into a MobileFirst project. However, to provide more flexibility and eliminate potential initialization failure, it is recommended that you disable the automatic SDK initialization and instead initialize the SDK manually:
--	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**worklight.plist**](../../../foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/)) to `false`:
+-	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**worklight.plist**](../../../foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/#worklight-plist)) to `false`:
 	```
 	<key>TRUSTEER_AUTO_INIT</key>
 	<false/>

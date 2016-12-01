@@ -32,7 +32,7 @@ clientKey=YMAQAABNFUWS2L
 ### Initialize the Trusteer Mobile SDK
 By default, the Trusteer Mobile SDK is initialized automatically when you integrate the SDK into a MobileFirst project. However, to provide more flexibility and eliminate potential initialization failure, it is recommended that you disable the automatic SDK initialization and instead initialize the SDK manually:
 
--	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**wlclient.properties**](../../../foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/))  to `false`:
+-	Disable the automatic initialization of the Trusteer Mobile SDK by setting the `TRUSTEER_AUTO_INIT` property in your client properties file ([**wlclient.properties**](../../../foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/#wlclient-properties))  to `false`:
 	```
 	TRUSTEER_AUTO_INIT=false
 	```
