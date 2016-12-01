@@ -7,7 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on Bluemix by using the **Mobile Foundation** service.  
+This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the **Mobile Foundation** service.  
 Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
 
 The Mobile Foundation service offers the following plan options:
@@ -31,7 +31,7 @@ The Mobile Foundation service offers the following plan options:
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
-* [Applying MobileFirst Server fixes](#applying-mobilefirst-server-fixes)
+* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
 * [Further reading](#further-reading)
@@ -48,7 +48,7 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *developer* plan
 
-1. Start the MobileFirst Server.
+1. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
@@ -68,7 +68,7 @@ To set up the available plans, first follow these steps:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
-2. Start the MobileFirst Server.
+2. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
@@ -82,7 +82,7 @@ To set up the available plans, first follow these steps:
 
 > **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
 
-With the MobileFirst Server now running, you are presented with the following Dashboard:
+With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
 
 ![Image of Mobile Foundation setup](service-dashboard.png)
 
@@ -118,14 +118,14 @@ Through the **Settings** tab, you can further customize the server instance with
 ## Adding Analytics support
 You can add MobileFirst Foundation Operational Analytics support to your Mobile Foundation service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
 
-* When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
+* When using the **Developer** plan this action will also automatically hook the Analytics service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
 
 Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
 
 > Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
 
-## Applying MobileFirst Server fixes
+## Applying {{ site.data.keys.mf_server }} fixes
 Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
@@ -164,7 +164,7 @@ The Developer plan does not offer a persistent database, which could cause at ti
   ```
 
 ## Further reading
-Now that the MobileFirst Server instance is up and running:
+Now that the {{ site.data.keys.mf_server }} instance is up and running:
 
 * Familiarize with the [MobileFirst Operations Console](../../product-overview/components/console).
 * Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).

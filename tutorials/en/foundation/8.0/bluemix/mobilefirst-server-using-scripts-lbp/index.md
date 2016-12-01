@@ -7,18 +7,18 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Follow the instructions below to configure a MobileFirst Server instance on a Liberty for Java runtime on Bluemix. (MobileFirst Analytics instance can be run on IBM containers only). To achieve this you will go through the following steps: 
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. (MobileFirst Analytics instance can be run on IBM containers only). To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI)
 * Setup your Bluemix account
-* Build a MobileFirst Server and push it to the Bluemix as a Cloud Foundry application.
+* Build a {{ site.data.keys.mf_server }} and push it to the Bluemix as a Cloud Foundry application.
 
 Finally, you will register your mobile apps as well as deploy your adapters.
 
 **Notes:**  
 
 * Windows OS is currently not supported for running these scripts.  
-* The MobileFirst Server Configuration tools cannot be used for deployments to Bluemix.
+* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to Bluemix.
 
 #### Jump to:
 
@@ -26,7 +26,7 @@ Finally, you will register your mobile apps as well as deploy your adapters.
 * [Set up your host machine](#set-up-your-host-machine)
 * [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Adding Analytics server information](#adding-analytics-server-configuration-to-mobilefirst-server)
-* [Applying MobileFirst Server Fixes](#applying-mobilefirst-server-fixes)
+* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
 
 ## Register an account at Bluemix
@@ -43,9 +43,9 @@ Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_
 
 ## Download the ibm-mfpf-container-8.0.0.0 archive
 To set up IBM MobileFirst Foundation on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
-The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a MobileFirst Operational Analytics Container (**mfpf-analytics**) and files for configuring a MobileFirst Server Cloud Foundry app (**mfpf-server-libertyapp**).
+The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a MobileFirst Operational Analytics Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Cloud Foundry app (**mfpf-server-libertyapp**).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -71,11 +71,11 @@ The archive file contains the files for building an file layout (**dependencies*
                     <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr</b> folder:
                         <ul>
-                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by the MobileFirst Server.</li>
+                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by the {{ site.data.keys.mf_server }}.</li>
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>mfpfproperties.xml</b> - configuration properties for MobileFirst Server. See the supported properties listed in these documentation topics:
+                            <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }}. See the supported properties listed in these documentation topics:
                                 <ul>
-                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a></li>
+                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a></li>
                                 </ul>
                             </li>
@@ -97,7 +97,7 @@ The archive file contains the files for building an file layout (**dependencies*
 </div>
 
 
-## Setting Up the MobileFirst Server 
+## Setting Up the {{ site.data.keys.mf_server }} 
 You can choose to run the scripts interactively or by using the configuration files:
 A good place to start is to run the scripts interactively once, which will also record the arguments (**recorded-args**). You can later use the args files to run the scripts in a non interactive mode.
 
@@ -166,8 +166,8 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./initenv.sh --help
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserverdbs.sh - Prepare the MobileFirst Server database</b><br />
-                  The <b>prepareserverdbs.sh</b> script is used to configure your MobileFirst Server with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                  <li><b>prepareserverdbs.sh - Prepare the {{ site.data.keys.mf_server }} database</b><br />
+                  The <b>prepareserverdbs.sh</b> script is used to configure your {{ site.data.keys.mf_server }} with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -213,7 +213,7 @@ prepareserver.sh --name APP_NAME
                   
                   </li>
                   <li><b>startserver.sh - Starting the server</b><br />
-                  The <b>startserver.sh</b> script is used to start the Mobilefirst Server on Liberty for Java Cloud Foundry application. Run:</p> 
+                  The <b>startserver.sh</b> script is used to start the {{ site.data.keys.mf_server }} on Liberty for Java Cloud Foundry application. Run:</p> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -241,7 +241,7 @@ prepareserver.sh --name APP_NAME
 Launch the MobileFirst Console by loading the following URL: `http://APP_HOST.mybluemix.net/mfpconsole` (it may take a few moments).  
 Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
-With MobileFirst Server running on IBM Bluemix, you can now start your application development.
+With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development.
 
 #### Applying changes
 You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments. 
@@ -249,8 +249,8 @@ You may need to apply changes to the server layout after you have deployed the s
 1. ./prepareserver.sh 
 2. ./startserver.sh 
 
-### Adding analytics server configuration to MobileFirst Server
-If you have setup a Analytics server and want to connect it to this MobileFirst Server then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with `<>` with correct values from yur deployment.
+### Adding analytics server configuration to {{ site.data.keys.mf_server }}
+If you have setup a Analytics server and want to connect it to this {{ site.data.keys.mf_server }} then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with `<>` with correct values from yur deployment.
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -265,8 +265,8 @@ If you have setup a Analytics server and want to connect it to this MobileFirst 
 <jndiEntry jndiName="${env.MFPF_PUSH_ROOT}/mfp.push.analytics.password" value='"<AnalyticsPassword>"'/>
 ```
 
-## Applying MobileFirst Server Fixes
-Interim fixes for the MobileFirst Server on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
+## Applying {{ site.data.keys.mf_server }} Fixes
+Interim fixes for the {{ site.data.keys.mf_server }} on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
 Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the 
 **package_root/mfpf-server-libertyapp/usr** folders.
 
@@ -276,11 +276,11 @@ Before you apply an interim fix, back up your existing configuration files. The 
 You can now build and deploy the updatd server.
 
 ## Removing the database service configuration from Bluemix	
-If you ran the **prepareserverdbs.sh** script during the configuration of the MobileFirst Server image, the configurations and database tables required for MobileFirst Server are created. This script also creates the database schema for the MobileFirst Server.
+If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the {{ site.data.keys.mf_server }}.
 
 To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
 
 1. From the Bluemix dashboard, select the dashDB service you have used. Choose the dashDB service name that you had provided as parameter while running the **prepareserverdbs.sh** script.
 2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
-3. Select the schemas related to IBM MobileFirst Server configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
+3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
 4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.

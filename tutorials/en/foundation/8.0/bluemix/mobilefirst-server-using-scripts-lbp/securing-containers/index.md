@@ -6,7 +6,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Below are several methods you can follow in order to secure your MobileFirst Server instance.
+Below are several methods you can follow in order to secure your {{ site.data.keys.mf_server }} instance.
 
 #### Jump to
 
@@ -57,17 +57,17 @@ For development-stage purposes only, you can disable ATS by adding following pro
 Your IBM MobileFirst Foundation instance security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
 ### Encrypting passwords
-Store the passwords for MobileFirst Server users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in MobileFirst Server for instructions.
+Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
 
 ### Application-authenticity validation
-To keep unauthorized mobile applications from accessing the MobileFirst Server, enable the application-authenticity security check. Learn more...
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
 
 
 ### Securing a connection to the back end
 If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
 
-#### Encrypting passwords for user roles configured in MobileFirst Server
-The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
+#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
 Passwords are configured in the **server.env** files in the **package_root/mfpf-server-liberty-app/usr/env** . Passwords should be stored in an encrypted format.
 
 1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
