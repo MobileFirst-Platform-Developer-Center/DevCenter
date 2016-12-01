@@ -11,8 +11,8 @@ The MobileFirst Foundation SDK consists of a collection of dependencies that are
 The pods correspond to core functions and other functions:
 
 * **MobileFirst.Xamarin** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **MobileFirst.JSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Xamarin tutorial](../../using-the-mfpf-sdk/jsonstore/xamarin/).
-* **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../notifications/).
+* **MobileFirst.JSONStore** - Contains the JSONStore framework.  
+* **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 
 In this tutorial you learn how to add the MobileFirst Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the MobileFirst Server to recognize the application.
 
@@ -20,7 +20,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using Xamari
 
 - Xamarin Studio installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Xamarin development environment](../../setting-up-your-development-environment/xamarin-development-environment) tutorials.
+- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
 
 #### Jump to:
 
@@ -110,7 +110,7 @@ This file defines the client-side properties used for registering your iOS app o
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
 
-- Review the [Adapters development tutorials](../../adapters/)
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Review the [Adapters development tutorials](../../../adapters/)
+- Review the [Authentication and security tutorials](../../../authentication-and-security/)
+- Review the [Notifications tutorials](../../../notifications/)
+- Review [All Tutorials](../../../all-tutorials)
