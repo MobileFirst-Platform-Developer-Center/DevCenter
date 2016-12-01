@@ -28,7 +28,7 @@ Available methods are: `GET`, `POST`, `PUT` and `DELETE`.
 
 ```cs
 URI adapterPath = new URI("/adapters/JavaAdapter/users",UriKind.Relative);
-WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
+WorklightResourceRequest request = WorklightClient.CreateInstance.ResourceRequest(adapterPath,"GET");
 ```
 
 * For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
@@ -56,7 +56,7 @@ As explained above, **path** parameters (`/path/value1/value2`) are set during t
 
 ```cs
 Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
-WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
+WorklightResourceRequest request = WorklightClient.CreateInstance.ResourceRequest(adapterPath,"GET");
 ```
 
 ### Query parameters
