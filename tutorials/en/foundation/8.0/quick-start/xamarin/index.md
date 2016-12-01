@@ -42,7 +42,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 ### 3. Editing application logic
 
 1. Create a Xamarin project with name and packaging the details during registration.
-2. Add the Xamarin SDK as mentioned in [Adding the SDK](../adding -the-mfpd-sdk/xamarin)
+2. Add the Xamarin SDK as mentioned in [Adding the SDK](../../application-development/sdk/xamarin/)
 2. Select the **[project-root]/[ProjectName/App.cs]**. You can choose to add the logic in any other .cs file.
 3. Choose  file and paste the following code snippet:
 

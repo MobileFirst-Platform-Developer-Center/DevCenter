@@ -17,7 +17,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Xamarin application](../../../adding-the-mfpf-sdk/xamarin).
+- Ensure you have added the MobileFirst Platform SDK to your Native [Xamarin application](../../sdk/xamarin/).
 - Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
@@ -56,7 +56,7 @@ As explained above, **path** parameters (`/path/value1/value2`) are set during t
 
 ```cs
 Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
-WorklightResourceRequest request = WorklightClient.createInstance(adapterPath,"GET");
+WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
 ```
 
 ### Query parameters
