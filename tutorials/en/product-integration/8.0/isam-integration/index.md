@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80
   - name: Download Android sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80
-  - name: Download iOS sample
+  - name: Download iOS (Swift) sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/release80
 weight: 3
 ---
