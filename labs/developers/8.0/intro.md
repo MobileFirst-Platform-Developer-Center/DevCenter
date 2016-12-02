@@ -8,6 +8,8 @@ tabs:
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
     path: /labs/developers/8.0/advancedwallet
+  - name: Advanced Car Service
+    path: /labs/developers/8.0/advancedcarservice
 ---
 ## Lab Selection
 Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step instructions.  
