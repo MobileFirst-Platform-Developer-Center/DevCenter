@@ -8,9 +8,8 @@ downloads:
   - name: Download Android sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80
   - name: Download iOS sample
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/release80
 weight: 3
-published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -257,7 +256,7 @@ To ensure all {{ site.data.keys.product_adj }} traffic is routed through IBM Sec
 ## Samples
 Download the [Cordova sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80).  
 Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80).
-Download the [iOS sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/release80).
+Download the [iOS (Swift) sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/release80).
 
 There are 3 samples available:
 - **IsamCordova** contains a Cordova sample.
