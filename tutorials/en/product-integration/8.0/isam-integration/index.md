@@ -10,7 +10,6 @@ downloads:
   - name: Download iOS sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/release80
 weight: 3
-published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
