@@ -70,12 +70,12 @@ Head over to the [lab's GitHub repository](https://github.com/MobileFirst-Platfo
 | 1  | Overview | This lab goes into detail about the data flow, how backend services are used, and what scenarios were considered.|
 | 2  | Setup Mobile Foundation on Bluemix | This lab shows how to setup and configure a MobileFirst Foundation service on Bluemix. |
 | 3  | Security Implementation Login | This lab talks about how easy it is to integrate OAuth2 Security into your app. |
-| 4  | MessageHub Adapter | This lab talks about how to setup a MessageHub instance on Bluemix and create an MFP adapter to create topics and send topics to MessageHub. |
-| 5  | DashDB Adapter | This lab shows how to instantiate a DashDB service and use an MFP adapter to read data from a customers and visits table. |
+| 4  | MessageHub Adapter | This lab talks about how to setup a MessageHub instance on Bluemix and create an adapter to create topics and send topics to MessageHub. |
+| 5  | DashDB Adapter | This lab shows how to instantiate a DashDB service and use an adapter to read data from a customers and visits table. |
 | 6  | NodeJS CRM OnPrem | This lab shows how to get the mock onPrem CRM running. |
 | 7  | NodeJS CRM OnPrem | This lab shows how to configure SecureGateway with your onPrem CRM to tunnel through a firewall. |
 | 8  | Java MessageHub Consumer | This lab shows how to create a Java runtime app on Bluemix to subscribe to topics. |
 | 9  | Customer Adapter | This lab shows how to mashup adapters so that any changes to resouces can be managed on the server side |
-| 10 | Ionic Mobile App | This lab shows how to integrate the Ionic App with the MFP Adapters. |
+| 10 | Ionic Mobile App | This lab shows how to integrate the Ionic App with the Adapters. |
 | 11 | Bluemix Mobile Analytics | This lab shows how to to use the Bluemix Mobile Analytics service to monitor the data for your business needs. |
 {: .table-striped }
