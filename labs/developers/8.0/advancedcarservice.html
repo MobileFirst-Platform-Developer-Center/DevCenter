@@ -1,0 +1,143 @@
+---
+layout: labs
+title: MobileFirst Foundation 8.0 Developer Labs
+tabs:
+  - name: Lab selection
+    path: /labs/developers/8.0/intro
+  - name: Advanced Messenger
+    path: /labs/developers/8.0/advancedmessenger
+  - name: Advanced Wallet
+    path: /labs/developers/8.0/advancedwallet
+  - name: Advanced Car Service
+    path: /labs/developers/8.0/advancedcarservice
+---
+
+<div>
+    <a href="https://github.com/MobileFirst-Platform-Developer-Center/MotoCorpService/tree/release80/Lab"><img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedcarservice/logo.png"></a>
+    <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedcarservice/screenstory.png">
+</div>
+
+<h1>Lab Highlights</h1>
+
+<ul>
+  <li>Hybrid, Ionic 1 based</li>
+  <li>Development using CLI with Foundation on Bluemix</li>
+  <li>User Authentication</li>
+  <li>NodeJS to Mock onPrem CRM</li>
+  <li>MessageHub for latency to process requests on a large scale</li>
+  <li>DashDB to cache data to lessen the load on the CRM</li>
+  <li>SecureGateway to tunnel through firewall to use onPrem CRM</li>
+</ul>
+
+<h1>Pre-requisites and Setup</h1>
+Please follow the instructions found in the "Setup Mobile Foundation on Bluemix" Lab <a href="https://github.com/MobileFirst-Platform-Developer-Center/MotoCorpService/tree/release80/Lab">here</a>.
+
+<h1>Overview</h1>
+
+<p>In this lab, imagine you are an Enterprise that owns car service centers utlizing an on-premise CRM. You want to equip service center employees with iPhones, and build an app that will help them coordinate activities in the service center to improve service times and quality of service across potentialy tens of thousands of locations.<br><br>
+
+One important element in this solution it is to allow your employees to have access to the most accurate data about your customer, as a customer can engage with your Enterprise via multiple channels.<br><br>
+
+So through this example we will explore a possible architecture that would allow an Enterprise that already has an OnPrem CRM solution, to expose the CRM data to a mobile app for its Service Centers employees, so they can deliver better customer service.</p>
+
+We will be utilizing the Bluemix services:
+
+<ul>
+  <li>MobileFirst Foundation</li>
+  <li>DashDB</li>
+  <li>MessageHub</li>
+  <li>SecureGateway</li>
+</ul>
+
+<img alt="diagram" src="{{site.baseurl}}/labs/developers/8.0/advancedcarservice/diagram.png">
+
+<p>In this lab we will cover how to do solve the solution above asynchronously. The mobile app will be reading from a cached data repository (DashDB) which will be updated as frequently as possibly. The mobile app will also be writing (creating new customers/visits) via a messaging system (MessageHub). This allows the CRM to consume updates in a more controlled flow, mitigating the peaks and valleys of a service center working day. So if needed, more resources can be added to the CRM to support more load throughout the day, to keep data updated with less latency.<br><br>
+    
+<h2>Write</h2>
+<ul>
+  <li>User creates a new visit in the mobile app (Mobile App)</li>
+  <li>Login adapter validates that the OAuth token for that user is valid (Login Adapter)</li>
+  <li>Customer Adapter is the main adapter for requests and forwards it to the MessageHub Adapter (Customer Adapter)</li>
+  <li>MessageHub Adapter creates a new visit (topic) request to MessageHub (MessageHub Adapter)</li>
+  <li>MessageHub Adapter creates a new visit (topic) request to MessageHub (MessageHub Adapter)</li>
+  <li>MessageHub creates a new visit topic (MessageHub)</li>
+  <li>MessageHub Consumer subscribes to the visit topic and receives the new visit topic and updates the CRM (MessageHub Consumer)</li>
+  <li>SecureGateway creates a tunnel through the firewall so that the consumer can reach the onPrem CRM (SecureGateway)</li>
+  <li>The OnPrem CRM receives the new visit and replicates the new visit to DashDB (DashDB)</li>
+</ul>
+<h2>Read</h2>
+<ul>
+  <li>User requests to view information on a specific visit (Mobile App)</li>
+  <li>Login adapter validates that the OAuth token for that user is valid (Login Adapter)</li>
+  <li>Customer adapter forwards that request to the DashDB Adapter (Customer Adapter)</li>
+  <li>DashDB adapter queries DashDB for that specific visit (DashDB Adapter)</li>
+  <li>DashDB runs the query and returns the result back to the DashDB Adapter (DashDB)</li>
+</ul>
+</p>
+
+<h1>Lab Steps</h1>
+
+<p>Please go to the github repo <a href="https://github.com/MobileFirst-Platform-Developer-Center/MotoCorpService/tree/release80/Lab">here</a> to see the labs mentioned below.
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Lab</th> 
+    <th>Description</th>
+  </tr>
+  <tr style="background: #ddd">
+    <td>1</td>
+    <td>Overview</td> 
+    <td>This lab goes into detail about the data flow, how backend services are used, and what scenarios were considered.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Setup Mobile Foundation on Bluemix</td> 
+    <td>This lab shows how to setup and configure a MobileFirst Foundation service on Bluemix.</td>
+  </tr>
+  <tr style="background: #ddd">
+    <td>3</td>
+    <td>Security Implementation Login</td> 
+    <td>This lab talks about how easy it is to integrate OAuth2 Security into your app.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>MessageHub Adapter</td> 
+    <td>This lab talks about how to setup a MessageHub instance on Bluemix and create an MFP adapter to create topics and send topics to MessageHub.</td>
+  </tr>
+  <tr style="background: #ddd">
+    <td>5</td>
+    <td>DashDB Adapter</td> 
+    <td>This lab shows how to instantiate a DashDB service and use an MFP adapter to read data from a customers and visits table.</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>NodeJS CRM OnPrem</td> 
+    <td>This lab shows how to get the mock onPrem CRM running.</td>
+  </tr>
+  <tr style="background: #ddd">
+    <td>7</td>
+    <td>NodeJS CRM OnPrem</td> 
+    <td>This lab shows how to configure SecureGateway with your onPrem CRM to tunnel through a firewall.</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Java MessageHub Consumer</td> 
+    <td>This lab shows how to create a Java runtime app on Bluemix to subscribe to topics.</td>
+  </tr>
+  <tr style="background: #ddd">
+    <td>9</td>
+    <td>Customer Adapter</td> 
+    <td>This lab shows how to mashup adapters so that any changes to resouces can be managed on the server side</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Ionic Mobile App</td> 
+    <td>This lab shows how to integrate the Ionic App with the MFP Adapters.</td>
+  </tr>
+  <tr style="background: #ddd">
+    <td>11</td>
+    <td>Bluemix Mobile Analytics</td> 
+    <td>This lab shows how to to use the Bluemix Mobile Analytics service to monitor the data for your business needs.</td>
+  </tr>
+</table>                  
