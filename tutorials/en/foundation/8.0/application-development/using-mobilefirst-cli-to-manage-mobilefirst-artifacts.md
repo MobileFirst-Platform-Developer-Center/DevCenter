@@ -97,7 +97,7 @@ DESCRIPTION
 |                                                               | add                                          | Adds a new server definition to your environment                        |
 |                                                               | edit                                         | Enables you to edit a server definition.                                |
 |                                                               | remove                                       | Removes a server definition from your environment.                      |
-|                                                               | console                                      | Opens the MobileFirst Operations Console.                               |
+|                                                               | console                                      | Opens the {{ site.data.keys.mf_console }}.                               |
 |                                                               | clean                                        | Unregisters apps and removes adapters from the {{ site.data.keys.mf_server }}.      |
 | mfpdev adapter                                                | create                                       | Creates an adapter.                                                     |
 |                                                               | build                                        | Builds an adapter.                                                      |
@@ -107,11 +107,11 @@ DESCRIPTION
 |                                                               | call                                         | Calls an adapter's procedure on the {{ site.data.keys.mf_server }}.                 |
 | mfpdev                                                        | config                                       | Sets your configuration preferences for preview browser type, preview timeout value, and server timeout value for the mfpdev command-line interface.                                                                                                                   |
 |                                                               | info                                         | Displays information about your environment, including operating system, memory consumption, node version, and command-line interface version. If the current directory is a Cordova application, information provided by the Cordova cordova info command is also displayed. |
-|                                                               | -v                                           | Displays the version number of the MobileFirst Platform CLI currently in use. |
+|                                                               | -v                                           | Displays the version number of the {{ site.data.keys.mf_cli }} currently in use. |
 |                                                               | -d, --debug                                  | Debug mode: Produces debug output.                                      |
 |                                                               | -dd, --ddebug                                | Verbose debug mode: Produces verbose debug output.                      |
 |                                                               | -no-color                                    | Suppresses use of color in command output.                              |
-| mfpdev help                                                   | name of command                              | Displays help for MobileFirst Platform CLI (mfpdev) commands. With a arguments, displays more specific help text for each command type or command. i.e "mfpdev help server add" |
+| mfpdev help                                                   | name of command                              | Displays help for {{ site.data.keys.mf_cli }} (mfpdev) commands. With a arguments, displays more specific help text for each command type or command. i.e "mfpdev help server add" |
 
 ## Interactive and Direct modes
 All commands can be executed in **interactive** or **direct mode**. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
@@ -361,11 +361,11 @@ A Cordova application's web resources can be previewed using a browser. Previewi
 
 Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
 
-1. Add the *wlInitOptions* variable to your main JavaScript file, which is index.js in a standard Cordova app.
+1. Add the *wlInitOptions* variable to your main JavaScript file, which is **index.js** in a standard Cordova app.
 
    ```javascript
    var wlInitOptions = {
-      mfpContextRoot:'/mfp', // "mfp" is the default context root in the MobileFirst Server
+      mfpContextRoot:'/mfp', // "mfp" is the default context root of {{ site.data.keys.mf_server }}
       applicationId:'com.sample.app' // Replace with your own value.
    };
    ```
