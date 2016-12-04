@@ -23,22 +23,16 @@
 
 ######################################################################
 ## Product name ##
-# [PROD-RENAME] NOTE: Do not replace product-name instances in V6.3.0--V7.1.0 (currently the same name as in V8.0.0), or in instances that are applicable to a specific time before the product renaming, because the product rebranding is not retroactive (at least not to earlier versions). You can use the v63_80rebrand_product[*] keywords for such instances.
+# NOTE: The are some hardcoded current-version "IBM MobileFirst Platform" references in the DC doc, for installed product component names and search strings in product artifacts or packages.
+
 
 ## Product name
-# [sharonl] In the KC, we have a product_wl DITA for "IBM MobileFirst Platform Foundation" and a product_short keyword for "IBM MobileFirst Foundation".
-# product_short is used only twice in the V8.0.0 KC. In the DC V8.0.0 docs (tutorials) there are many instances of "MobileFirst Foundation", with and without "IBM".
-# I think that the "MobileFirst Foundation" terminology, was never officially approved as a standalone product shorthand (it's only used as part of some component names), and based on the DITA files as far as it was approved it was only with the "IBM" preface. -->
-# [DC-KEYS-TODO] Because the product is about to be renamed shortly (using a shorter name), I think we should just replace all standalone "IBM MobileFirst Platform Foundation" instances with $product_full, and replace all standalone "[IBM] MobileFirst Foundation" and "MobileFirst Platform Foundation" (no "IBM") with $product (although, to be more accurate we should ensure that he first use in each topic uses $product_full).
 product:                        "MobileFirst Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
 product_full:                   "IBM MobileFirst Foundation"   # DITA: product_wl
 
 ## Product adjective
 # "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
-# [DC-KEYS-TODO] Do this replacement last, as "MobileFirst" is used as part of most of the product name and component name keyword strings.
 product_adj:                    "MobileFirst"                           # DITA: prod_adj
-
-# NOTE: The are some "IBM MobileFirst Platform" references in the DC doc for search strings in product artifacts or packages (such as in the adapter Maven project or the Windows client SDK NuGet package).
 
 # Windows server-data directory
 prod_server_data_dir_name_win:  "IBM MobileFirst Platform Server Data"
