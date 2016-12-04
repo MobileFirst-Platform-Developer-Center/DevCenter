@@ -93,7 +93,7 @@ product_version_long:           "V8.0.0,0"
 ## MF Analytics
   # [DC-KEYS] [sharonl] There is no equivalent DITA keyword, but the DC also uses "Analytics" as a standalone "term". I don't know whether this is approved by legal/OM.
   # We need the keyword to distinguish this from uses of the word "Analytics" not as a signifier of our product component.
-mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short 
+mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"                             # DITA: analytics
 
 # MF Analytics Console
@@ -147,7 +147,7 @@ mf_console_full:                "IBM MobileFirst Operations Console"            
 
 ## MF Server
 mf_server:                      "MobileFirst Server"                                    # DITA: wl_server
-mf_server_full:                 "IBM MobileFirst Foundation Server"                       # DITA: server_long
+mf_server_full:                 "IBM MobileFirst Foundation Server"                     # DITA: server_long
 # [DC-KEYS-TODO] Also replace "MobileFirst Platform Server", "MobileFirst Platform Foundation Server" and "MobileFirst Foundation Server" (w/wo "IBM").
 
 # MF Development Server
