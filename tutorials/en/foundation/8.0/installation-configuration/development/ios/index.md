@@ -44,4 +44,5 @@ Xcode is an IDE which you can use to:
 Xcode provides an iOS Simulator to test your application. For a detailed explanation of all available options, see the [About Simulator documentation topic](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) in the Apple Developers website.
 
 ## What's Next
-Now that the {{ site.data.keys.product_adj }} and iOS development environment are set up, continue to [Quick Start](../../../quick-start/ios/) category to experience MobileFirst Platform, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+Now that the {{ site.data.keys.product_adj }} and iOS development environment are set up, continue to [Quick Start](../../../quick-start/ios/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+
