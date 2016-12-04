@@ -7,7 +7,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. (MobileFirst Analytics instance can be run on IBM containers only). To achieve this you will go through the following steps: 
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI)
 * Setup your Bluemix account
@@ -24,7 +24,7 @@ Finally, you will register your mobile apps as well as deploy your adapters.
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8000-archive)
+* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Adding Analytics server information](#adding-analytics-server-configuration-to-mobilefirst-server)
 * [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
@@ -41,11 +41,11 @@ You can run the scripts using the macOS Terminal.app or a Linux bash shell.
 
 Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 
-## Download the ibm-mfpf-container-8.0.0.0 archive
-To set up IBM MobileFirst Foundation on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
+## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+To set up {{ site.data.keys.product }} on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
-The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a MobileFirst Operational Analytics Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Cloud Foundry app (**mfpf-server-libertyapp**).
+The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.product_adj }} Operational Analytics Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Cloud Foundry app (**mfpf-server-libertyapp**).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -59,24 +59,24 @@ The archive file contains the files for building an file layout (**dependencies*
             <div class="panel-body">
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
-                <p>Contains the IBM MobileFirst Foundation runtime and IBM Java JRE 8.</p>
+                <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
                 
                 <h4>mfpf-libs folder</h4>
-                <p>Contains MobileFirst product component libraries and CLI.</p>
+                <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
                 
                 <h4>mfpf-server-libertyapp folder</h4>
                 
                 <ul>
                    
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
+                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.product }} app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr</b> folder:
                         <ul>
-                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by the {{ site.data.keys.mf_server }}.</li>
+                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}.</li>
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
                             <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }}. See the supported properties listed in these documentation topics:
                                 <ul>
                                 <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for the {{ site.data.keys.product_adj }} runtime</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
@@ -108,7 +108,7 @@ A good place to start is to run the scripts interactively once, which will also 
 
 If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
-### MobileFirst Foundation Server
+### {{ site.data.keys.mf_server }}
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -124,7 +124,7 @@ If you choose to run the scripts interactively, you can skip the configuration b
               <h4>initenv.properties</h4>
               This file contains properties used to run the environment initialization.
               <h4>prepareserverdbs.properties</h4>
-              The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (Any plan that is marked OLTP or Transactional).<br/>
+              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (Any plan that is marked OLTP or Transactional).<br/>
               <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans is immediate for the plans marked "pay as you go". Make sure you pick one of the suitable plans like <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               After you have set up your dashDB instance, provide the required arguments.
               
@@ -185,14 +185,14 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
                     
                   </li>
-                  <li><b>initenv.sh(Optional) – Logging in to Bluemix </b><br />
+                  <li><b>initenv.sh(Optional) – Logging in to Bluemix</b><br />
                       This step is required only if you need to create your server in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server </b><br />
-                    Run the <b>prepareserver.sh</b> script in order to build a MobileFirst Platform Foundation Server and push it to  Bluemix as a Cloud Foundry application. To view all the Cloud Foundry applications and theur URLs in the logged in Org and space, run: <code>cf apps</code><br/>
+                  <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }}</b><br />
+                    Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} and push it to  Bluemix as a Cloud Foundry application. To view all the Cloud Foundry applications and theur URLs in the logged in Org and space, run: <code>cf apps</code><br/>
                   
 
 {% highlight bash %}
@@ -238,8 +238,8 @@ prepareserver.sh --name APP_NAME
 </div>
 
 
-Launch the MobileFirst Console by loading the following URL: `http://APP_HOST.mybluemix.net/mfpconsole` (it may take a few moments).  
-Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+Launch the {{ site.data.keys.mf_console }} by loading the following URL: `http://APP_HOST.mybluemix.net/mfpconsole` (it may take a few moments).  
+Add the remote server by following the instructions in the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting Up {{ site.data.keys.mf_server }} on IBM Bluemix using Scripts for IBM Containers
+title: Setting Up MobileFirst Server on IBM Bluemix using Scripts for IBM Containers
 breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
@@ -24,7 +24,7 @@ Finally, you will run the image on IBM Containers as a single Container or a Con
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8000-archive)
+* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Prerequisites](#prerequisites)
 * [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 * [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
@@ -73,9 +73,9 @@ In macOS, two options are available to run Docker commands:
 1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
-## Download the ibm-mfpf-container-8.0.0.0 archive
+## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
 To set up {{ site.data.keys.product }} on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
 The archive file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Container (**mfpf-server**).
 
@@ -104,7 +104,7 @@ The archive file contains the files for building an image (**dependencies** and 
                     <li><b>usr</b> folder:
                         <ul>
                             <li><b>bin</b> folder: Contains the script file that gets executed when the container starts. You can add your own custom code to be executed.</li>
-                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
+                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
                             <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}. See the supported properties listed in these documentation topics:
                                 <ul>
@@ -669,7 +669,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
-                The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
+                The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
                 <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
                 After you have set up your dashDB instance, provide the required arguments:
                 <ul>

@@ -48,6 +48,15 @@ prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server D
 prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
 prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
 
+## Mobile Foundation for Bluemix
+mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short
+mf_bm:                          "Mobile Foundation for Bluemix"
+mf_bm_full:                     "IBM Mobile Foundation for Bluemix"                     # DITA: mfpf_bm_long
+# In the MFPF V8.0.0 KC, this the mfpf_bm_* keywords were used only in three topics:
+# - "System requirements" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html)
+# - "What's new in deploying and managing apps" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_wn_deploy_manage.html)
+# - "Deploying MobileFirst Server to the cloud" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html)
+
 ######################################################################
 ## Current product version ##
 # [DC-KEYS] [sharonl] I'm not sure yet whether we need to use version keywords, and if so which keywords. We first need to remove unnecessary version references in the DC --- e.g., there are instances where it's used as part of the current product name --- and then see how many version-number instances we are left with that that don't need to be hardcoded.
@@ -84,6 +93,9 @@ product_version_full:           "V8.0.0,0"
 ## Product artifacts with versions
 # Maven adapter version
 prod_maven_adapter_version:     "8.0.2016061011"
+
+# MF for Bluemix containers package
+mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 
 #####################################################################
 ## Product components ##
@@ -176,21 +188,6 @@ mf_system_pattern_full:         "IBM MobileFirst Platform Foundation System Patt
 # MF Test Workbench
 mf_test_workbench:              "MobileFirst Test Workbench"                            # DITA: test_workbench_short
 mf_test_workbench_full:         "IBM MobileFirst Platform Test Workbench"               # DITA: test_workbench_long
-
-#####################################################################
-## MF for Bluemix ##
-
-## Mobile Foundation for Bluemix
-mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short
-mf_bm:                          "Mobile Foundation for Bluemix"
-mf_bm_full:                     "IBM Mobile Foundation for Bluemix"                     # DITA: mfpf_bm_long
-# [DC-KEYS] [sharonl] In the DC, there are currently multiple "Mobile Foundation" instances, some in relation to Bluemix and some seem to be unrelated. 
-
-## MF Bluemix containers package
-mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
-mf_bm_pkg_archive:              "ibm-mfpf-container-8.0.0.0.zip"                        # DITA: mfpf_package_zip
-# [DC-KEYS] [sharonl] Currently the DC has three "ibm-mfp-container-8.0.0.0 archive" references, without the .zip extension.
-# We can also decide to forgo these keywords, and instead, consider use the $product_V_R_M_I keyword (if it's kept): "ibm-mfpf-container-{{ site.data.keys.product_V_R_M_I }}".
 
 #####################################################################
 ## Other IBM products ##

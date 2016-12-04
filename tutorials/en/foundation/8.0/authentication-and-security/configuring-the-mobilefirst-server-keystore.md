@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Configuring the {{ site.data.keys.mf_server }} Keystore
+title: Configuring the MobileFirst Server Keystore
 breadcrumb_title: Configuring the Server Keystore
 weight: 14
 ---

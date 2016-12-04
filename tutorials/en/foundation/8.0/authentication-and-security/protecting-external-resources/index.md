@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the {{ site.data.keys.mf_server }} to authenticate external resources
+title: Using MobileFirst Server to authenticate external resources
 breadcrumb_title: Protecting External Resources
 relevantTo: [android,ios,windows,javascript]
 weight: 12
