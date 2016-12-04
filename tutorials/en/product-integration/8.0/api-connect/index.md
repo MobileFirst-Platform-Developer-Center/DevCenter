@@ -22,7 +22,7 @@ IBM MobileFirst Foundation integrates its security capabilities with IBM API Con
 
 Currently the security integration of MobileFirst and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 
-The security integration is suppored for both [API Connect on-premise deployment] (http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect BlueMix Service] (https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
+The security integration is suppored for both [API Connect on-premise deployment](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect BlueMix Service](https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
 
 #### Jump to
 * [Prerequisites](#prerequisites)
