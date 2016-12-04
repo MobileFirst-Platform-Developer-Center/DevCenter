@@ -2,15 +2,11 @@
 # The keywords text should not be translated.
 
 # NOTE
-# - The keywords are targeted at the current product version (see $product_version). Use them only in documentation for this version.
+# - Use the keywords on in current-version documentation (see $product_version).
 # - Do not use the keywords when the text should not change in the future. This mainly applies to release notes or migration and upgrade documentation.
-#   For example, write "In V8.0.0, xxx was replaced with yyy.", and do not use the product_version keyword for the version number.
-# - Backslashes ('\') in keyword definitions should be escaped with a backslash ("\\").
-# - When using a keyword in a Markdown header, the auto-generated anchor ID is derived from the header text after the keyword translation.
-#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by Idan Adar on 29 Nov 2016).
+#   For example, write "In V8.0.0, xxx was replaced with yyy."; do not use $product_version in such cases.
+# - Escape backslashes ('\') in keyword definitions with a backslash ("\\").
 # - The "DITA" references in the file list the equivalent DITA keyword names in the V8.0.0 KC (RTC MOBILE main stream), for comparison.
-
-# [DC-KEYS-TODO] When replacing, check also for instances with different capitalization.
 
 ####################
 ## Usage ##
@@ -27,8 +23,7 @@
 
 ######################################################################
 ## Product name ##
-# [DC-KEYS-TODO] Replace source strings with these keywords only after replacing the product-component keywords, because some component strings include the product name.
-# [PROD-RENAME] NOTE: Do not replace product-name instances in V6.3.0--V7.1.0 (currently the same name as in V8.0.0), or in instances that are applicable to a specific time before the upcoming Feb 2017 product renaming, because the product rebranding is not retroactive (at least not to earlier versions). You can use the v63_80rebrand_product[*] keywords for such instances.
+# [PROD-RENAME] NOTE: Do not replace product-name instances in V6.3.0--V7.1.0 (currently the same name as in V8.0.0), or in instances that are applicable to a specific time before the product renaming, because the product rebranding is not retroactive (at least not to earlier versions). You can use the v63_80rebrand_product[*] keywords for such instances.
 
 ## Product name
 # [sharonl] In the KC, we have a product_wl DITA for "IBM MobileFirst Platform Foundation" and a product_short keyword for "IBM MobileFirst Foundation".
