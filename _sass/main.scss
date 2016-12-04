@@ -241,42 +241,43 @@ blockquote {
 		}
 	}
 }
-:focus, a:focus {
-	outline: none;
-}
-.btn {
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.focus {
-		outline: none;
-	}
-}
+// Focus is kept "unstyled to comply with accessibility guidelines."
+//:focus, a:focus {
+//	outline: none;
+//}
+//.btn {
+//	&:focus {
+//		outline: none;
+//	}
+//	&:active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.focus {
+//		outline: none;
+//	}
+//}
 .btn-color {
 	color: white;
 }
 .container .btn {
 	background-color: $color_rhino_approx;
-	&:focus {
-		background-color: $color_rhino_approx;
-		color: white;
-	}
+	//&:focus {
+	//	background-color: $color_rhino_approx;
+	//	color: white;
+	//}
 	&:hover {
 		background-color: $color_nile_blue_approx;
 		color: white;
