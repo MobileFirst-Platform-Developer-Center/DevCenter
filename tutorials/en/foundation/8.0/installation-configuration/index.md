@@ -5,7 +5,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-IBM MobileFirst Foundation provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
+{{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 
 ### Installing a development environment
 If you develop the client-side or the server-side of mobile apps, use either the [MobileFirst Developer Kit](development/mobilefirst/) or [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation) to get started.
@@ -19,9 +19,9 @@ If you develop the client-side or the server-side of mobile apps, use either the
 * [Set-up the Web development environment](development/web)
 
 ### Installing a test or production server on-premises
-IBM installations are based on an IBM product called IBM Installation Manager. Install IBM Installation Manager V1.8.4 or later separately before you install IBM MobileFirst Foundation.
+IBM installations are based on an IBM product called IBM Installation Manager. Install IBM Installation Manager V1.8.4 or later separately before you install {{ site.data.keys.product }}.
 
-> **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Foundation v8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+> **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
 The {{ site.data.keys.mf_server }} installer copies onto your computer all the tools and libraries that are required for deploying {{ site.data.keys.mf_server }} components and optionally the IBM MobileFirst Platform Application Center to your application server.
 
@@ -47,6 +47,6 @@ If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the follo
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions
-For information about upgrading existing installations and applications to a newer version, see [Upgrading to IBM MobileFirst Foundation v8.0](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/topics/t_upgrading.html).
+For information about upgrading existing installations and applications to a newer version, see [Upgrading to IBM MobileFirst Foundation {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
 
 
