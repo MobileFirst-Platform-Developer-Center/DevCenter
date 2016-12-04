@@ -79,12 +79,12 @@ The following code enables the OpenSSL option for the encryption/decryption:
 With this setup, the encryption/decryption calls use OpenSSL as in previous versions of {{ site.data.keys.product }}.
 
 ### Migration options
-If you have an {{ site.data.keys.product_full }} project written in an earlier version, you may need to incorporate changes to continue using OpenSSL.
+If you have a {{ site.data.keys.product_adj }} project that was written with an earlier version of the product, you might need to incorporate changes to continue using OpenSSL.
 
 * If the application is not using encryption/decryption APIs, and no encrypted data is cached on the device, no action is needed.
 * If the application is using encryption/decryption APIs you have the option of using these APIs with or without OpenSSL.
     - **Migrating to native encryption:**
         1. Make sure the default native encryption/decryption option is chosen (see **Option 1**).
-        2. **Migrating cached data**: If the previous installation of IBM MobileFirst Platform Foundation saved encrypted data to the device using OpenSSL, but the native encryption/decryption option is now chosen, the stored data must be decrypted. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. This way the data will be auto-migrated to native encryption.
+        2. **Migrating cached data**: If the previous product installation of saved encrypted data to the device using OpenSSL, but the native encryption/decryption option is now chosen, the stored data must be decrypted. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. This way the data will be auto-migrated to native encryption.
         **Note:** To allow the decryption from OpenSSL, you must add the OpenSSL frameworks by installing the Cordova plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`
     - **Continuing with OpenSSL:** If OpenSSL is required use the setup described in **Option 2**.

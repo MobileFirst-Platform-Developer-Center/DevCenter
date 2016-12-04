@@ -45,7 +45,7 @@ NuGet is the package manager for the Microsoft development platform, including .
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.8.0.0.0**.
+3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**.
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
