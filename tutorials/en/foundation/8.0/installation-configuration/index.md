@@ -8,7 +8,7 @@ weight: 2
 {{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 
 ### Installing a development environment
-If you develop the client-side or the server-side of mobile apps, use either the [MobileFirst Developer Kit](development/mobilefirst/) or [Mobile Foundation Bluemix service](../bluemix/using-mobile-foundation) to get started.
+If you develop the client-side or the server-side of mobile apps, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
 
 * [Set-up the MobileFirst development environment](development/mobilefirst/)
 * [Set-up the Cordova development environment](development/cordova)
@@ -23,7 +23,7 @@ IBM installations are based on an IBM product called IBM Installation Manager. I
 
 > **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
-The {{ site.data.keys.mf_server }} installer copies onto your computer all the tools and libraries that are required for deploying {{ site.data.keys.mf_server }} components and optionally the IBM MobileFirst Platform Application Center to your application server.
+The {{ site.data.keys.mf_server }} installer copies onto your computer all the tools and libraries that are required for deploying {{ site.data.keys.mf_server }} components and optionally the {{ site.data.keys.mf_app_center_full }} to your application server.
 
 If you install a test or production server, start with **Tutorials about {{ site.data.keys.mf_server }} installation** below for a simple installation and to learn about the installation of {{ site.data.keys.mf_server }}. For more information about preparing an installation for your specific environment, see [Installing {{ site.data.keys.mf_server }} for a production environment](production).
 
@@ -37,8 +37,8 @@ Afterwards you'll have a working {{ site.data.keys.mf_server }}. However, you ne
 
 **Additions**  
 
-* To add MobileFirst Analytics Server to your installation, see [MobileFirst Analytics Server installation guide](production/analytics/installation/).  
-* To install IBM MobileFirst Platform Application Center, see [Installing and configuring the Application Center](production/appcenter).
+* To add {{ site.data.keys.mf_analytics_server }} to your installation, see the [{{ site.data.keys.mf_analytics_server }} installation guide](production/analytics/installation/).  
+* To install {{ site.data.keys.mf_app_center }}, see [Installing and configuring the Application Center](production/appcenter).
 
 ### Deploying {{ site.data.keys.mf_server }} to the cloud
 If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
@@ -47,6 +47,6 @@ If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the follo
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions
-For information about upgrading existing installations and applications to a newer version, see [Upgrading to IBM MobileFirst Foundation {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
+For information about upgrading existing installations and applications to a newer version, see [Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
 
 

@@ -48,10 +48,10 @@ prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server D
 prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
 prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
 
-## MF for Bluemix service
-mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short
-mf_bm:                          "Mobile Foundation for Bluemix"
-mf_bm_full:                     "IBM Mobile Foundation for Bluemix"                     # DITA: mfpf_bm_long
+## MF on Bluemix service
+mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short (uses "for Bluemix" and not "on Bluemix")
+mf_bm:                          "Mobile Foundation on Bluemix"
+mf_bm_full:                     "IBM Mobile Foundation on Bluemix"                      # DITA: mfpf_bm_long (uses "for Bluemix" and not "on Bluemix")
 
 ######################################################################
 ## Current product version ##
@@ -90,7 +90,7 @@ product_version_full:           "V8.0.0,0"
 # Maven adapter version
 prod_maven_adapter_version:     "8.0.2016061011"
 
-# MF for Bluemix service containers package
+# MF on Bluemix service containers package
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 
 #####################################################################
@@ -102,10 +102,12 @@ mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 ## MF Analytics
   # [DC-KEYS] [sharonl] There is no equivalent DITA keyword, but the DC also uses "Analytics" as a standalone "term". I don't know whether this is approved by legal/OM.
   # We need the keyword to distinguish this from uses of the word "Analytics" not as a signifier of our product component.
+mf_analytics_short:             "Analytics"
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
-mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"                             # DITA: analytics
+mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
 
 # MF Analytics Console
+mf_analytics_console_short:     "Analytics Console"
 mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short  
 mf_analytics_console_full:      "IBM MobileFirst Analytics Console"                     # DITA: anl_cons
 

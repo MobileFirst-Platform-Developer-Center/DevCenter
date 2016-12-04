@@ -274,7 +274,7 @@ weight: 1
                 <p>Developers can migrate IBM Bluemix applications to run on {{ site.data.keys.product }}. Migration requires that you make configuration changes to your client application to match {{ site.data.keys.product }} APIs.</p>
 
                 <h3>{{ site.data.keys.product }} as a service on IBM Bluemix</h3>
-                <p>You can now use the IBM Mobile Foundation for Bluemix  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
+                <p>You can now use the {{ site.data.keys.mf_bm_full }}  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
 
                 <h3>No .wlapp files</h3>
                 <p>In previous versions, applications were deployed to {{ site.data.keys.mf_server }} by uploading a .wlapp file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the .wlapp file:</p>

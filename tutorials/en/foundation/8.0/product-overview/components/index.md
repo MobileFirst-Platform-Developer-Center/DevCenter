@@ -45,10 +45,10 @@ You can use the {{ site.data.keys.mf_console }} for the following tasks:
 * Configure data collection rules for application-specific events.
 * [Learn more about the {{ site.data.keys.mf_console }}](console).
 
-### {{ site.data.keys.mf_analytics_full }}
-{{ site.data.keys.product }} includes a scalable operational analytics feature that is accessible from the {{ site.data.keys.mf_console }}. The analytics feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics.
+### {{ site.data.keys.mf_analytics }}
+{{ site.data.keys.product }} includes a scalable operational {{ site.data.keys.mf_analytics_short }} feature that is accessible from the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics.
 
-The data for operational analytics includes the following sources:
+The data for {{ site.data.keys.mf_analytics }} includes the following sources:
 
 * Crash events of an application on iOS and Android devices (crash events for native code and JavaScript errors).
 * Interactions of any application-to-server activity (anything that is supported by the {{ site.data.keys.mf_cli }}ent/server protocol, including push notification).

@@ -46,9 +46,9 @@ Protecting confidential and private information is critical for all applications
 {{ site.data.keys.product }} provides secure, end-to-end communication by positioning a server that oversees the flow of data between the mobile application and your back-end systems. With {{ site.data.keys.product }}, you can define custom security handlers for any access to this flow of data. Because any access to data of a mobile application has to go through this server instance, you can define different security handlers for mobile applications, web applications, and back-end access. With this kind of granular security, you can define separate levels of authentication for different functions of your mobile application. You can also prevent mobile applications from accessing sensitive information.
 
 ### Analytics
-The operational analytics feature enables searching across apps, services, devices, and other sources to collect data about usage, or to detect problems.
+The {{ site.data.keys.mf_analytics }} feature enables searching across apps, services, devices, and other sources to collect data about usage, or to detect problems.
 
-In addition to reports that summarize app activity, {{ site.data.keys.product }} includes a scalable operational analytics platform accessible in the {{ site.data.keys.mf_console }}. The analytics feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics. You can enable analytics, reports, or both, depending on your needs.
+In addition to reports that summarize app activity, {{ site.data.keys.product }} includes a scalable operational analytics platform accessible in the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics. You can enable analytics, reports, or both, depending on your needs.
 
 ### Monitoring
 {{ site.data.keys.product }} includes a range of operational analytics and reporting mechanisms for collecting, viewing, and analyzing data from your {{ site.data.keys.product }} applications and servers, and for monitoring server health.

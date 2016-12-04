@@ -43,7 +43,7 @@ User (POST) | /v3/user | Creates a new user.
 Try out the analytics REST API on Swagger Docs.  
 In a {{ site.data.keys.mf_server }} configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
 
-![Mobile Foundation Operational Analytics Swagger Docs UI](analytics-swagger.png)
+![{{ site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
 
 By clicking on **Expand Operations**, you can see the implementation notes, parameters, and response messages for each method.
 

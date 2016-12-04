@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst Foundation Operational Analytics
-breadcrumb_title: Operational Analytics
+title: MobileFirst Analytics
+breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
 weight: 8

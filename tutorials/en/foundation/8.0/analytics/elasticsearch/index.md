@@ -33,7 +33,7 @@ One of the more useful JNDI properties to get started with viewing the Elasticse
 <jndiEntry jndiName="analytics/http.enabled" value="true"/>
 ```
 
-This JNDI property allows you to view your Operational Analytics raw data in JSON format and to access your Elasticsearch instance through the port that is defined by Elasticsearch. The default port is 9500.
+This JNDI property allows you to view your {{ site.data.keys.mf_analytics_short }} raw data in JSON format and to access your Elasticsearch instance through the port that is defined by Elasticsearch. The default port is 9500.
 
 > **Note**: This setting is not secure and should not be enabled on a production environment.
 

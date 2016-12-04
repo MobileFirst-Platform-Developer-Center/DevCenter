@@ -350,7 +350,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
                 <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
                 <ol>
                     <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.product }} Operational Analytics on the IBM Containers:
+                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_analytics }} on the IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
