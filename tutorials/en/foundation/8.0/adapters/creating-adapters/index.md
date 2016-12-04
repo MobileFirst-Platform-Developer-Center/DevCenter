@@ -339,10 +339,10 @@ To group adapters you need to:
 5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
  * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
  * Resources - a list of the adapter resources.
- * Configurations Files - adapter configuration data, to be used in devops environments.
+ * Configurations Files - adapter configuration data, to be used in DevOps environments.
 
 ## Updating the Adapter Maven Project
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by searching for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
+To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by searching for "IBM MobileFirst Platform", and update the following properties in the adapter Maven project's **pom.xml** file:
 
 1. The `adapter-maven-api` version:
 
@@ -351,7 +351,7 @@ To update the adapter Maven project with the latest release, find the **version 
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-api</artifactId>
       <scope>provided</scope>
-      <version>8.0.2016061011</version>
+      <version>{{ site.data.keys.prod_maven_adapter_version }}</version>
    </dependency>
    ```
    
@@ -361,7 +361,7 @@ To update the adapter Maven project with the latest release, find the **version 
    <plugin>
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-plugin</artifactId>
-      <version>8.0.2016061011</version>
+      <version>{{ site.data.keys.prod_maven_adapter_version }}</version>
       <extensions>true</extensions>
    </plugin>
    ```

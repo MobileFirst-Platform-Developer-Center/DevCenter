@@ -1,10 +1,13 @@
 # Development Center (DC) keywords
-# This file defines text-substitution keywords, mainly for MobileFirst Platform product terminology.
 # The keywords text should not be translated.
+
 # NOTE
-# - The keywords are targeted at the current product version. Use them only in documentation for this version.
+# - The keywords are targeted at the current product version (see $product_version). Use them only in documentation for this version.
 # - Do not use the keywords when the text should not change in the future. This mainly applies to release notes or migration and upgrade documentation.
 #   For example, write "In V8.0.0, xxx was replaced with yyy.", and do not use the product_version keyword for the version number.
+# - Backslashes ('\') in keyword definitions should be escaped with a backslash ("\\").
+# - When using a keyword in a Markdown header, the auto-generated anchor ID is derived from the header text after the keyword translation.
+#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by Idan Adar on 29 Nov 2016).
 # - The "DITA" references in the file list the equivalent DITA keyword names in the V8.0.0 KC (RTC MOBILE main stream), for comparison.
 
 # [DC-KEYS-TODO] When replacing, check also for instances with different capitalization.
@@ -21,11 +24,6 @@
 #       {{ site.data.keys.keyword }}
 # For example, use the "product" keyword:
 #       This topic describes the {{ site.data.keys.product }} security framework.
-
-####################
-## Notes ##
-# - When using a keyword in a Markdown header, the auto-generated anchor ID is derived from the header text after the keyword translation.
-#   You can bypass this issue by setting a custom anchor ID for the header. However, it was decided that this is not required. (decided by Idan Adar on 29 Nov 2016).
 
 ######################################################################
 ## Product name ##
@@ -45,11 +43,15 @@ product_full:                   "IBM MobileFirst Foundation"   # DITA: product_w
 # [DC-KEYS-TODO] Do this replacement last, as "MobileFirst" is used as part of most of the product name and component name keyword strings.
 product_adj:                    "MobileFirst"                           # DITA: prod_adj
 
-## "Parent" product
-# [DC-KEYS] [sharonl] I selected the "parent product" terminology because the "Foundation" product is part of the "MobileFirst Platform" product. I'm assuming "MobileFirst Platform" will also be rebranded in Feb 2017. I can't be sure of any of the instances of these strings in the current DC are intended as standalone references to the "parent" product; the V8.0.0 KC has uses of the "platform" keyword (<==> $parent_product_long in YAML).
-parent_product:                 "MobileFirst Platform"                  # DITA: No short version, but there's a comment that from comments it seems that "MobileFirst Platform" is allowed as a short name.
-parent_product_long:            "IBM MobileFirst Platform"              # DITA: platform
-parent_product_full:            "IBM MobileFirst Platform"
+# NOTE: The are some "IBM MobileFirst Platform" references in the DC doc for search strings in product artifacts or packages (such as in the adapter Maven project or the Windows client SDK NuGet package).
+
+# Windows server-data directory
+prod_server_data_dir_name_win:  "IBM MobileFirst Platform Server Data"
+#prod_server_data_dir_win:       "My Documents\IBM MobileFirst Platform Server Data"
+prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server Data"
+# Unix server-data directory
+prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
+prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
 
 ######################################################################
 ## Current product version ##
@@ -66,23 +68,27 @@ parent_product_full:            "IBM MobileFirst Platform"
 # - When you want to refer to a specific version and not the current version, use a hardcoded version number and not a keyword; (in such case, also avoid using the keyword for the product name of the current version). For example, "Support for xxx was removed in MobileFirst Platform Foundation V8.0.0.". This is mainly applicable to release notes and to migration and upgrade documentation.
 
 
-# Version-number legend: V = Version ; R = Release ; M = Modificaiton; I = iFix
+# Version-number legend: V = Version ; R = Release ; M = Modification; I = iFix
 
 # V.R product version number
-product_V_R:                "8.0"               # DITA: Vartifacts
-product_V_R_stripped:       "80"
+product_V_R:                    "8.0"               # DITA: Vartifacts
+product_V_R_stripped:           "80"
 # V.R.M product version number
-product_V_R_M:              "8.0.0"                                                   
-product_V_R_M_stripped:     "800"
+product_V_R_M:                  "8.0.0"                                                   
+product_V_R_M_stripped:         "800"
 # V.R.M.I product version number
-product_V_R_M_I:            "8.0.0.0"
-product_V_R_M_I_stripped:   "8000"
+product_V_R_M_I:                "8.0.0.0"
+product_V_R_M_I_stripped:       "8000"
 
 ## Product version
-product_version_short:          "V8.0"
-product_version:                "V8.0.0"        # DITA: Vprod
-product_version_long:           "V8.0.0,0"
+product_version:                "V8.0"
+product_version_long:           "V8.0.0"        # DITA: Vprod
+product_version_full:           "V8.0.0,0"
 # [sharonl] It's also possible to use "V{{ site.data.keys.product_V_R }}" in the source file. But using keywords ensure that we reference the version using a consistent format, and allows us to easily change the format in the future (by only changing the keyword definitions).
+
+## Product artifacts with versions
+# Maven adapter version
+prod_maven_adapter_version:     "8.0.2016061011"
 
 #####################################################################
 ## Product components ##

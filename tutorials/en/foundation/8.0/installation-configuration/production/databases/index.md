@@ -396,8 +396,8 @@ The sample Ant files have predefined targets. Follow this procedure to use the f
 
 This command creates the tables in the specified database and schema for all {{ site.data.keys.mf_server }} applications ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.mf_server }} runtime). A log for the operations is produced and stored in your disk.
 
-* On Windows, it is in C:\Users\user_name\Documents\IBM MobileFirst Platform Server Data\Configuration Logs\ directory.
-* On UNIX, it is in $HOME/.mobilefirst\_platform\_server/configuration-logs/ directory.
+* On Windows, it is in the **{{ site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** directory.
+* On UNIX, it is in the **{{ site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** directory.
 
 ### Different users for the database tables creation and for run time
 The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:

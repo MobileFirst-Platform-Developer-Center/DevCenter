@@ -207,12 +207,12 @@ Use these commands to store these values in the configuration file.
 | mfpadm [--configfile=file] config lock-timeout seconds | | 
 | mfpadm [--configfile=file] config runtime runtime-name | | 
 
-Use this command to list the values that are stored in the configuration file: mfpadm `[--configfile=file]` config
+Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
 
-The configuration file is a text file, in the encoding of the current locale, in Java™ .properties syntax. Default configuration file:
+The configuration file is a text file, in the encoding of the current locale, in Java **.properties** syntax. These are the default configuration files:
 
-* UNIX: `$HOME/.mfpadm.config`
-* Windows: `My Documents\IBM MobileFirst Platform Server Data\mfpadm.config`
+* UNIX: **${HOME}/.mfpadm.config**
+* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **Note:** When you do not specify a `--configfile` option, the default configuration file is used only in interactive mode and in config commands. For noninteractive use of the other commands, you must explicitly designate the configuration file if you want to use one.
 
