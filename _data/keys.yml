@@ -48,14 +48,10 @@ prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server D
 prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
 prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
 
-## Mobile Foundation for Bluemix
+## MF for Bluemix service
 mf_bm_short:                    "Mobile Foundation"                                     # DITA: mfpf_bm_short
 mf_bm:                          "Mobile Foundation for Bluemix"
 mf_bm_full:                     "IBM Mobile Foundation for Bluemix"                     # DITA: mfpf_bm_long
-# In the MFPF V8.0.0 KC, this the mfpf_bm_* keywords were used only in three topics:
-# - "System requirements" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html)
-# - "What's new in deploying and managing apps" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_wn_deploy_manage.html)
-# - "Deploying MobileFirst Server to the cloud" (http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.deploy.doc/topics/c_deploy.html)
 
 ######################################################################
 ## Current product version ##
@@ -94,7 +90,7 @@ product_version_full:           "V8.0.0,0"
 # Maven adapter version
 prod_maven_adapter_version:     "8.0.2016061011"
 
-# MF for Bluemix containers package
+# MF for Bluemix service containers package
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 
 #####################################################################
