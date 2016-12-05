@@ -49,18 +49,14 @@ mf_bm_full:                     "IBM Mobile Foundation on Bluemix"              
 
 ######################################################################
 ## Current product version ##
-# [DC-KEYS] [sharonl] I'm not sure yet whether we need to use version keywords, and if so which keywords. We first need to remove unnecessary version references in the DC --- e.g., there are instances where it's used as part of the current product name --- and then see how many version-number instances we are left with that that don't need to be hardcoded.
-# Regardless of the keyword usage, after the initial cleanup we need to decide on a specific format for referencing the product version number (not just for the current version), and use it consistently. Currently the format in the DC is inconsistent. For example, in some cases we preface the version number with 'V' or 'v', while in others we do not; in some cases we use the <V>.<R> format (e.g., "8.0.0") while in others we use <V>.<R>.<M> (e.g., "8.0.0"). The KC mostly used the "V<V>.<R>.<M> (e.g., "V8.0.0"), which was done via the Vprod keyword. I suspect that before the KC --> DC integration, the DC mostly used "<V>.<R>" (e.g., "8.0"). I also saw "v<V>x" instances in the DC (e.g., "V8.x" in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/appcenter/#configuring-ldap-authentication-for-websphere-application-server-v8x).
-# NOTE: Avoid using the current version number in headers, or create a custom ID for the header in such cases, to avoid the inclusion of the version number in the
-
-# Note that the KC uses the "V.R.M" variation (8.0.0 for the current version) while the DC seems to mostly use V.R (v8.0), but it has 8.0.0 instances mainly for KC-integrated text. Also, in the KC we precede the version number with 'V' (V8.0.0) while in the DC this seems to be done mainly in KC-integrated text. I also saw "v8.0" instances in the DC (e.g., "Java API elements discontinued in v8.0" in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/deprecated-discontinued/#java-api-elements-discontinued-in-v80), which should be replaced either with 'V' or no prefix.
-# I also saw an instance of "V8.x" (in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/appcenter/#configuring-ldap-authentication-for-websphere-application-server-v8x). I didn't check for other similar instances.
-# --> TODO: Decide on a format and use it consistently, for all versions.
-
-# NOTE
+# NOTE:
 # - In most cases, you should not include the version number in the current-product documentation. Do not include it as part of the product name.
-# - When you want to refer to a specific version and not the current version, use a hardcoded version number and not a keyword; (in such case, also avoid using the keyword for the product name of the current version). For example, "Support for xxx was removed in MobileFirst Platform Foundation V8.0.0.". This is mainly applicable to release notes and to migration and upgrade documentation.
+# - When you want to refer to a specific version and not the current version, use a hardcoded version number and not a keyword.
+#   For example, "Support for xxx was removed in MobileFirst Platform Foundation V8.0.0.".
+#   This is mainly applicable to release notes and to migration and upgrade documentation.
+# - Avoid using the current version number in headers, or create a custom ID for the header in such cases, to avoid the inclusion of the version number in the auto-generated anchor ID.
 
+# [DC-KEYS-TODO] Look also for "V8.x" instances (e.g., in https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/appcenter/#configuring-ldap-authentication-for-websphere-application-server-v8x). I didn't check for other similar instances.
 
 # Version-number legend: V = Version ; R = Release ; M = Modification; I = iFix
 
@@ -86,6 +82,9 @@ prod_maven_adapter_version:     "8.0.2016061011"
 
 # MF on Bluemix service containers package
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
+
+# MF system-pattern file
+prod_sys_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 
 #####################################################################
 ## Product components ##
@@ -113,15 +112,13 @@ mf_analytics_server_full:       "IBM MobileFirst Analytics Server"              
 mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
 mf_app_center:                  "MobileFirst Application Center"
 mf_app_center_full:             "IBM MobileFirst Foundation Application Center"           # DITA: appcenter_long
-# [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation Application Center" with mf_app_center_full, and replace
-# "MobileFirst Platform Application Center" and "MobileFirst Foundation Application Center" (with "IBM") with mf_app_center.
 
 ## MF Application Pattern
 mf_app_pattern:                 "MobileFirst Application Pattern"                       # DITA: apppattern_short
 mf_app_pattern_full:            "IBM MobileFirst Platform Application Pattern"          # DITA: apppattern_long
 
 ## MF CLI
-mf_cli:                         "MobileFirst CLI"                              # DITA: cli_short
+mf_cli:                         "MobileFirst CLI"                                       # DITA: cli_short
 mf_cli_full:                    "IBM MobileFirst Foundation Command Line Interface (CLI)" # DITA: cli
 
 ## MF Data Proxy
@@ -130,7 +127,7 @@ mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
 
 ## MF Developer Kit
 mf_dev_kit:                     "MobileFirst Developer Kit"
-mf_dev_kit_full:                "IBM MobileFirst Foundation Developer Kit"     # DITA: dev_kit
+mf_dev_kit_full:                "IBM MobileFirst Foundation Developer Kit"              # DITA: dev_kit
 # [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC with the appropriate keyword.
 
 ## MF Device Runtime
@@ -208,21 +205,20 @@ prod_was_nd_full:               "IBM WebSphere Application Server Network Deploy
 
 #####################################################################
 ## Earlier product versions terminology ##
-# [DC-KEYS] [sharonl] We don't necessarily need to use these keywords. I think that at least as far as "Worklight" is concerned, we can leave the existing "hardcoded" instances in the DC, and use the keywords as a terminology reference.
 
 ## Product name in earlier versions
-# V6.3--V8.0 Feb 2017 product rebranding (product "IBM MobileFirst Platform Foundation")
-# In V6.3 (Altair) the product and was renamed from "Worklight" to "MobileFirst Platform Foundation", part of "MobileFirst Platform".
-# [PRODUCT_RENAME] In Feb 2017, the product will be renamed again (applicable to the current V8.0 and future versions).
+# V6.3--V8.0 before the Feb 2017 product rebranding ("IBM MobileFirst Platform Foundation")
 # Product name (V6.3--V8.0 rebranding)
-v63_80rebrand_product:          "MobileFirst Platform Foundation"
-# "Parent product" name (V6.3--V8.0 rebranding)
-v63_80rebrand_parent_product:   "MobileFirst Platform"
+v63_to_80prerebrand_product:        "MobileFirst Platform Foundation"
+v63_to_80prerebrand_product_full:   "IBM MobileFirst Platform Foundation"
+# In V6.3 (Altair) the product and was renamed from "Worklight" to "MobileFirst Platform Foundation".
+# In Feb 2017, the product will be renamed again (applicable to the current V8.0 and future versions).
 
 # V6.2 product name ("IBM Worklight Foundation")
+v62_product:                    "Worklight Foundation"
 v62_product_full:               "IBM Worklight Foundation"                              # DITA: 62_prod_long
-# [DC-KEYS] [sharonl] "Worklight Foundation" is used once, in upgrading/migration-cookbook/index.html, and 62_prod_long is used once in the KC in wldoc/collaterals/welcome.dita:122.
 
 # V6.1 and earlier product name ("IBM Worklight")
+pre62_product:                  "Worklight"
 pre62_product_full:             "IBM Worklight"                                         # DITA: pre62_product_wl
 

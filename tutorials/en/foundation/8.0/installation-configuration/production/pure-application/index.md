@@ -30,17 +30,16 @@ weight: 10
 ### Key benefits
 {{ site.data.keys.product }} System Pattern provides the following benefits:
 
-* Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are:  
+* Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are  
     * IBM WebSphere  Application Server Liberty profile single node
     * IBM WebSphere Application Server Liberty profile multiple nodes
     * IBM WebSphere Application Server full profile single node
     * IBM WebSphere Application Server full profile multiple nodes
     * Clusters of WebSphere Application Server Network Deployment servers
-        
-    In V8.0.0 MobileFirst Application Center, deployment topologies such as:
+    * In {{ site.data.keys.mf_app_center }}, deployment topologies such as
         * IBM WebSphere Application Server Liberty profile single node
         * IBM WebSphere Application Server full profile single node
-* Script packages act as building blocks to compose extended deployment topologies such as automating the inclusion of an analytics server in a pattern and flexible DB VM deployment options. WebSphere Application Server and DB2  script packages are available through the inclusion of WebSphere Application Server and DB2 pattern types.
+* Script packages act as building blocks to compose extended deployment topologies such as automating the inclusion of an analytics server in a pattern and flexible DB VM deployment options. WebSphere Application Server and DB2 script packages are available through the inclusion of WebSphere Application Server and DB2 pattern types.
 * Optional JNDI properties in the runtime deployment script package allow fine-grained tuning for the deployment topology. In addition, deployment topologies that are built with IBM WebSphere Application Server full profile now support accessing the WebSphere Application Server Administration Console, which gives you full control over the configuration of the application server.
 
 ### Important restrictions
@@ -142,14 +141,14 @@ In addition to all components provided by IBM WebSphere Application Server Patte
 * MFP Server Application Center
 
 ### Compatibility between pattern types and artifacts created with different product versions
-If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, you can upload the associated runtime, application, and adapter artifacts into patterns associated with IBM MobileFirst Platform Foundation V7.0.0 and later.
+If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, you can upload the associated runtime, application, and adapter artifacts into patterns associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 and later.
 
-Pattern types that are associated with IBM MobileFirst Platform Foundation V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
+Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
 
 For versions V6.0.0 and earlier, only the same versions of server, .war file, application (.wlapp file), and adapters are compatible.
 
 ## Installing {{ site.data.keys.product }} System Pattern
-You can find the vsys. {{ site.data.keys.product }}-8.0.0.0.tgz file in the {{ site.data.keys.product }}_patterns_8.0.0.zip file. Make sure you extract it before you start this procedure.
+You can find the **{{ site.data.keys.prod_sys_pattern_file }}** file. Make sure you extract the file before you start this procedure.
 
 1. Log in to IBM  PureApplication System with an account that has permission to create new pattern types.
 2. Go to **Catalog → Pattern Types**.
