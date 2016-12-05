@@ -11,7 +11,7 @@ layout: default
                 <h4 class="no-anchor">
                     <span><a href="{{site.baseurl}}/search/?author={{page.author.name | url_param_escape}}">{{page.author.name }}</a></span>{% if page.additional_authors %},{% endif %}
                     {% for author in page.additional_authors %}
-                        <span><a href="{{site.baseurl}}/search/?author={{author}}">{{ author | url_param_escape }}</a></span>{% if forloop.last == false %},{% endif %}
+                        <span><a href="{{site.baseurl}}/search/?author={{author | url_param_escape }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
                     {% endfor %}
                     
                     <small>{{ page.date | date: '%B %d, %Y' }}</small>
