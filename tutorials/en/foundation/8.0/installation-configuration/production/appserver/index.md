@@ -1775,7 +1775,7 @@ You can install your server farm by running Ant tasks, with the Server Configura
 ### Planning the configuration of a server farm
 To plan the configuration of a server farm, choose the application server, configure the {{ site.data.keys.product_adj }} databases, and deploy the WAR files of the {{ site.data.keys.mf_server }} components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
 
-When you intend to plan a server farm installation, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
+When you intend to plan a server farm installation, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
 
 In {{ site.data.keys.product }}, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. {{ site.data.keys.mf_server }} internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
 
@@ -1833,7 +1833,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
                                 <ul>
                                     <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
                                     <li>Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.</li>
-                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
+                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
                                 </ul>
                             </li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
@@ -1886,7 +1886,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             <br/><br/>
                             Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.
                             <br/><br/>
-                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
+                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
                             <br/><br/>
                             This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
