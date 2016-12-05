@@ -23,7 +23,7 @@ Consider carefully how removed features and API elements affect your {{ site.dat
     </tr>
     <tr>
         <td><p>MobileFirst Studio is replaced by {{ site.data.keys.mf_studio }} plug-in for Eclipse.</p></td>
-        <td><p>Replaced by MobileFirst Studio plug-in for Eclipse and empowered by standard and community-base Eclipse plug-ins. You can develop hybrid applications directly with the Apache Cordova CLI or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.For more information about using eclipse as a Cordova enabled IDE, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">IBM {{ site.data.keys.mf_studio }} plug-in for managing Cordova projects in Eclipse</a>.</p>
+        <td><p>Replaced by {{ site.data.keys.mf_studio }} plug-in for Eclipse and empowered by standard and community-base Eclipse plug-ins. You can develop hybrid applications directly with the Apache Cordova CLI or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.For more information about using eclipse as a Cordova enabled IDE, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">IBM {{ site.data.keys.mf_studio }} plug-in for managing Cordova projects in Eclipse</a>.</p>
 
         <p>You can develop adapters with Apache Maven or a maven-enabled IDE such as Eclipse, IntelliJ, and others. For more information about developing adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapters category</a>. For more information about using Eclipse as a Maven enabled IDE, read the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Developing Adapters in Eclipse tutorial</a>.</p>
 
@@ -162,7 +162,7 @@ Consider carefully how removed features and API elements affect your {{ site.dat
         <td>Discontinued. Use IBM Tealeaf SDK. For more information, see <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> and <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a> in the IBM Tealeaf Customer Experience documentation.</td>
     </tr>
     <tr>
-        <td>IBM MobileFirst Platform Test Workbench is not bundled with {{ site.data.keys.product }}	</td>
+        <td>{{ site.data.keys.mf_test_workbench_full }} is not bundled with {{ site.data.keys.product }}</td>
         <td>Discontinued.</td>
     </tr>
     <tr>

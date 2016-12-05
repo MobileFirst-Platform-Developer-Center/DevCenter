@@ -70,7 +70,7 @@ Follow these steps to isolate the issue to more accurately report a problem.
 Understanding the following JSONStore characteristics can help resolve some of the common issues that you might encounter.  
 
 * The only way to store binary data in JSONStore is to first encode it in base64. Store file names or paths instead of the actual files in JSONStore.
-* Accessing JSONStore data from native code is possible only in IBM MobileFirst Platform Foundation V6.2.0.
+* Accessing JSONStore data from native code is possible only in {{ site.data.keys.v62_product_full }} V6.2.0.
 * There is no limit on how much data you can store inside JSONStore, beyond limits that are imposed by the mobile operating system.
 * JSONStore provides persistent data storage. It is not only stored in memory.
 * The init API fails when the collection name starts with a digit or symbol. IBM Worklight V5.0.6.1 and later returns an appropriate error: `4 BAD\_PARAMETER\_EXPECTED\_ALPHANUMERIC\_STRING`
