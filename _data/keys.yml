@@ -77,7 +77,7 @@ prod_maven_adapter_version:     "8.0.2016061011"
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 
 # MF system-pattern file
-prod_sys_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
+mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 
 #####################################################################
 ## Product components ##
@@ -101,10 +101,6 @@ mf_analytics_server_full:       "IBM MobileFirst Analytics Server"              
 mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
 mf_app_center:                  "MobileFirst Application Center"
 mf_app_center_full:             "IBM MobileFirst Foundation Application Center"         # DITA: appcenter_long
-
-## MF Application Pattern
-mf_app_pattern:                 "MobileFirst Application Pattern"                       # DITA: app_pattern_short
-mf_app_pattern_full:            "IBM MobileFirst Application Pattern"                   # [DITA: app_pattern_long: "IBM MobileFirst Platform Application Pattern"]
 
 ## MF CLI
 mf_cli:                         "MobileFirst CLI"                                       # DITA: cli_short
