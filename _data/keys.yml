@@ -177,10 +177,9 @@ prod_rlks_full:                 "IBM Rational License Key Server"               
 
 ## IBM WebSphere Application Server (WAS)
 # [DC-KEYS] [sharonl] The equivalent KC DITA keywords section has this note: "No short names for the various flavors of the WAS appserver.".
-# I'm not sure whether this was intended as a guideline or as a description of the current state. I think that we should consider at least adding a referene to the common abbreviations, such as "WAS" and "WAS ND" if not in separate short-verison keywords in the long and/or full versions; I think the IBM WAS documentation uses these shorthands. --> TODO-OM/legal
+# I'm not sure whether this was intended as a guideline or as a description of the current state. I think that we should consider at least adding a reference to the common abbreviations, such as "WAS" and "WAS ND" if not in separate short-version keywords in the long and/or full versions; I think the IBM WAS documentation uses these shorthands. --> TODO-OM/legal
 
 # WebSphere Application Server (WAS)
-# [DC-KEYS] [sharonl]: I think that we might sometimes use the DITA "was" keyword to refer generically to WAS and sometimes to its full profile. --> TODO: Check and consider adding a separte keywords group for the full profile, and maybe creating a Liberty keyword that refers to the "Liberty profile".
 prod_was:                       "WebSphere Application Server"                          # DITA: was
 prod_was_full:                  "IBM WebSphere Application Server"                      # "IBM $prod_was"
 
