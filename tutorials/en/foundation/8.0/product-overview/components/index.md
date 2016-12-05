@@ -5,7 +5,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-{{ site.data.keys.product_full }} consists of the following components: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, client-side runtime components, {{ site.data.keys.mf_console }}, Application Center, and {{ site.data.keys.product }} System Pattern.
+{{ site.data.keys.product_full }} consists of the following components: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, client-side runtime components, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }}, and the {{ site.data.keys.mf_system_pattern }}.
 
 The following figure shows the components of {{ site.data.keys.product }}:
 
@@ -68,8 +68,8 @@ Your company can typically use the Application Center as follows:
 
 The Application Center is aimed for private use within a company, and you can target some mobile applications to specific groups of users. You can use the Application Center as an enterprise application store.
 
-### IBM {{ site.data.keys.product_adj }} Foundation System Pattern
-With the {{ site.data.keys.product_adj }} Pattern, you can deploy {{ site.data.keys.mf_server }} on IBM PureApplication System or IBM PureApplication Service on SoftLayer. With these patterns, administrators and corporations can respond quickly to changes in the business environment by taking advantage of on-premises Cloud technologies. This approach simplifies the deployment process, and improves the operational efficiency to cope with increased mobile demand. The demand accelerates iteration of solutions that exceed traditional demand cycles. Using {{ site.data.keys.mf_server }} Pattern also gives access to best practices and built-in expertise, such as built-in scaling policies.
+### {{ site.data.keys.mf_system_pattern }}
+With the {{ site.data.keys.mf_system_pattern_full }}, you can deploy {{ site.data.keys.mf_server }} on IBM PureApplication System or IBM PureApplication Service on SoftLayer. With these patterns, administrators and corporations can respond quickly to changes in the business environment by taking advantage of on-premises Cloud technologies. This approach simplifies the deployment process, and improves the operational efficiency to cope with increased mobile demand. The demand accelerates iteration of solutions that exceed traditional demand cycles. Using {{ site.data.keys.mf_server }} Pattern also gives access to best practices and built-in expertise, such as built-in scaling policies.
 
 #### PureApplication System
 IBM PureApplication System is an integrated, highly scalable system that is based on IBM X-Architecture, providing an application-centric computing model in a cloud environment.

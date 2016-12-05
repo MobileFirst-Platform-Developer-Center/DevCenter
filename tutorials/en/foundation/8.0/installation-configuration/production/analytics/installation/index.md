@@ -18,7 +18,7 @@ weight: 1
 * [Installing {{ site.data.keys.mf_analytics }} on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
 * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
 * [Installing {{ site.data.keys.mf_analytics }} with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
-* [Installing {{ site.data.keys.mf_analytics }} Server on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
+* [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
 ## System requirements
 ### Operating systems

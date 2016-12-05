@@ -107,11 +107,12 @@ mf_analytics_server_full:       "IBM MobileFirst Analytics Server"              
 ## MF Application Center
 mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
 mf_app_center:                  "MobileFirst Application Center"
-mf_app_center_full:             "IBM MobileFirst Foundation Application Center"           # DITA: appcenter_long
+mf_app_center_full:             "IBM MobileFirst Foundation Application Center"         # DITA: appcenter_long
 
 ## MF Application Pattern
-mf_app_pattern:                 "MobileFirst Application Pattern"                       # DITA: apppattern_short
-mf_app_pattern_full:            "IBM MobileFirst Platform Application Pattern"          # DITA: apppattern_long
+mf_app_pattern:                 "MobileFirst Application Pattern"                       # DITA: app_pattern_short
+mf_app_pattern_full:            "IBM MobileFirst Application Pattern"
+# DITA: app_pattern_long: "IBM MobileFirst Platform Application Pattern"
 
 ## MF CLI
 mf_cli:                         "MobileFirst CLI"                                       # DITA: cli_short
@@ -155,13 +156,14 @@ mf_server_cfg_tool_full:        "IBM MobileFirst Server Configuration Tool"
 ## MF Studio
 mf_studio:                      "MobileFirst Studio"                                    # DITA: wl_studio
 mf_studio_full:                 "IBM MobileFirst Foundation Studio"                       # DITA: studio_long
-# [DC-KEYS-TODO] Also replace "MobileFirst Foundation Studio" and "MobileFirst Platform Studio" (w/wo "IBM"; currently only 1 with).
 
 ## MF System Pattern
-# [DC-KEYS] [sharonl] I'm not sure about the need for a non-translatable capitalized component-name version for this pattern, and hence for the need for keywords, but I'm not familiar enough with this feature to decide.
-mf_system_pattern:              "MobileFirst Platform Pattern"                          # DITA: sys_pattern_short
-mf_system_pattern_long:         "MobileFirst Platform System Pattern"
-mf_system_pattern_full:         "IBM MobileFirst Platform Foundation System Pattern"    # DITA: sys_pattern_long + cons_app_pattern_long
+mf_system_pattern_short:        "System Pattern"
+mf_system_pattern:              "MobileFirst System Pattern"
+mf_system_pattern_long:         "MobileFirst Foundation System Pattern"
+mf_system_pattern_full:         "IBM MobileFirst Foundation System Pattern"
+# DITA: sys_pattern_long + cons_app_pattern_long: "IBM MobileFirst Platform Foundation System Pattern"
+# DITA: sys_pattern_short: "MobileFirst Platform Pattern"
 
 # MF Test Workbench
 mf_test_workbench:              "MobileFirst Test Workbench"                            # DITA: test_workbench_short
@@ -169,15 +171,15 @@ mf_test_workbench_full:         "IBM MobileFirst Platform Test Workbench"       
 
 #####################################################################
 ## Other IBM products ##
-# [DC-KEYS] [sharonl] I'm not sure whether we should use keywords for these terms, or just list the terms here for reference.
+# It is not mandatory to use these keywords, but if you refer to the products directly take care to use the correct terminology and spelling.
 
 ## IBM Rational License Key Server
 prod_rlks:                      "Rational License Key Server"                           # DITA: rkls_short ["rkls" - SIC]
 prod_rlks_full:                 "IBM Rational License Key Server"                       # DITA: rkls_long  ["rkls" - SIC]
 
 ## IBM WebSphere Application Server (WAS)
-# [DC-KEYS] [sharonl] The equivalent KC DITA keywords section has this note: "No short names for the various flavors of the WAS appserver.".
-# I'm not sure whether this was intended as a guideline or as a description of the current state. I think that we should consider at least adding a reference to the common abbreviations, such as "WAS" and "WAS ND" if not in separate short-version keywords in the long and/or full versions; I think the IBM WAS documentation uses these shorthands. --> TODO-OM/legal
+# The KC DITA WAS keywords section has this note: "No short names for the various flavors of the WAS appserver.".
+# It's not clear whether this was intended as a guideline or as a description of the current state.
 
 # WebSphere Application Server (WAS)
 prod_was:                       "WebSphere Application Server"                          # DITA: was

@@ -8,27 +8,27 @@ weight: 10
 ## Overview
 {{ site.data.keys.product_full }} provides the capability to deploy and manage {{ site.data.keys.mf_server }} and {{ site.data.keys.product_adj }} applications on IBM  PureApplication  System and IBM PureApplication Service on SoftLayer .
 
-{{ site.data.keys.product }} in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of {{ site.data.keys.product }} System Pattern provides MobileFirst runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
+{{ site.data.keys.product }} in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of {{ site.data.keys.mf_system_pattern_full }} provides {{ site.data.keys.product_adj }} runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
 
 #### Jump to
-* [Installing {{ site.data.keys.product_full }} System Pattern](#installing-ibm-mobilefirst-foundation-system-pattern)
-* [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern)
+* [Installing {{ site.data.keys.mf_system_pattern }}](#installing-mobilefirst-system-pattern)
+* [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
 * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
 * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
 * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
 * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
 * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying MobileFirst Application Center on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
-* [Configuring MobileFirst administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
-    * [Configuring an external database with a {{ site.data.keys.product }} System Pattern](#configuring-an-external-database-with-a-ibm-mobilefirst-platform-foundation-system-pattern)
+* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
+* [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
+    * [Configuring an external database with {{ site.data.keys.mf_system_pattern }}](#configuring-an-external-database-with-a-mobilefirst-system-pattern)
 * [Deploying and configuring {{ site.data.keys.mf_analytics }}](#deploying-and-configuring-mobilefirst-analytics)
-* [Predefined templates for {{ site.data.keys.product }} Pattern](#predefined-templates-for-mobilefirst-platform-pattern)
+* [Predefined templates for {{ site.data.keys.mf_system_pattern }}](#predefined-templates-for-mobilefirst-system-pattern)
 * [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server)
-* [Upgrading {{ site.data.keys.product }} System Pattern](#upgrading-ibm-mobilefirst-platform-foundation-system-pattern)
+* [Upgrading {{ site.data.keys.mf_app_pattern }}](#upgrading-mobilefirst-application-pattern)
 
 ### Key benefits
-{{ site.data.keys.product }} System Pattern provides the following benefits:
+{{ site.data.keys.mf_system_pattern }} provides the following benefits:
 
 * Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are  
     * IBM WebSphere  Application Server Liberty profile single node
@@ -112,21 +112,21 @@ If you change any of these attributes, your pattern deployment fails.
 The following limitations apply:
 
 * Dynamic scaling for WebSphere Application Server Liberty profile server farms and WebSphere Application Server full profile server farms is not supported. The number of server farm nodes can be specified in the pattern by setting the scaling policy but cannot be changed during run time.
-* The {{ site.data.keys.product }} System Pattern Extension for MobileFirst Studio and Ant command-line interface that is supported in versions earlier than V7.0 are not available in this version of {{ site.data.keys.product }} System Pattern.
-* {{ site.data.keys.product }} System Pattern depends on WebSphere Application Server Patterns, which has its own restrictions. For more information, see [Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html).
+* The {{ site.data.keys.v63_to_80prerebrand_product_full }} System Pattern Extension for {{ site.data.keys.mf_studio }} and Ant command-line interface that are supported in versions earlier than V7.0, are not available for the current version of {{ site.data.keys.mf_system_pattern }}.
+* {{ site.data.keys.mf_system_pattern }} depends on WebSphere Application Server Patterns, which has its own restrictions. For more information, see [Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html).
 * Due to restrictions in the uninstallation of Virtual System Patterns, you must delete the script packages manually after you delete the pattern type. In IBM PureApplication System, go to **Catalog → Script Packages** to delete the script packages that are listed in the **Components** section.
 * The MobileFirst (WebSphere Application Server Network Deployment) pattern template does not support token licensing. If you want to use this pattern, you must use perpetual licensing. All other patterns support token licensing.
 
 ### Composition
-{{ site.data.keys.product }} System Pattern is composed of the following patterns:
+{{ site.data.keys.mf_system_pattern }} is composed of the following patterns:
 
 * IBM WebSphere Application Server Network Deployment Patterns 2.2.0.0.
 * [PureApplication Service] WebSphere 8558 for Mobile IM repository to allow the WebSphere Application Server Network Deployment Patterns to work. Contact the administrator for IBM PureApplication System to confirm that the WebSphere 8558 IM repository is installed.
 * IBM DB2 with BLU Acceleration  Pattern 1.2.4.0.
-* {{ site.data.keys.product }} System Pattern.
+* {{ site.data.keys.mf_system_pattern }}.
 
 ### Components
-In addition to all components provided by IBM WebSphere Application Server Pattern and IBM DB2 with BLU Acceleration Pattern, {{ site.data.keys.product }} System Pattern provides the following Script Packages:
+In addition to all components provided by IBM WebSphere Application Server Pattern and IBM DB2 with BLU Acceleration Pattern, {{ site.data.keys.mf_system_pattern }} provides the following Script Packages:
 
 * MFP Administration DB
 * MFP Runtime DB
@@ -145,23 +145,23 @@ If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, yo
 
 Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
 
-For versions V6.0.0 and earlier, only the same versions of server, .war file, application (.wlapp file), and adapters are compatible.
+For versions V6.0.0 and earlier, only the same versions of server, **.war** file, application (**.wlapp** file), and adapters are compatible.
 
-## Installing {{ site.data.keys.product }} System Pattern
+## Installing {{ site.data.keys.mf_system_pattern }}
 You can find the **{{ site.data.keys.prod_sys_pattern_file }}** file. Make sure you extract the file before you start this procedure.
 
 1. Log in to IBM  PureApplication System with an account that has permission to create new pattern types.
 2. Go to **Catalog → Pattern Types**.
-3. Upload the {{ site.data.keys.product }} System Pattern .tgz file:
+3. Upload the {{ site.data.keys.mf_system_pattern }} **.tgz** file:
     * On the toolbar, click **+**. The "Install a pattern type" window opens.
-    * the Local tab, click **Browse**, select the {{ site.data.keys.product }} System Pattern .tgz file, and then wait for the upload process to complete. The pattern type is displayed in the list and is marked as not enabled.
+    * In the Local tab, click **Browse**, select the {{ site.data.keys.mf_system_pattern }} **.tgz** file, and then wait for the upload process to complete. The pattern type is displayed in the list and is marked as not enabled.
 4. In the list of pattern types, click the uploaded pattern type. Details of the pattern type are displayed.
 5. In the License Agreement row, click **License**. The License window is displayed stating the terms of the license agreement.
 6. To accept the license, click **Accept**. Details of the pattern type now show that the license is accepted.
 7. In the Status row, click **Enable**. The pattern type is now listed as being enabled.
 8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
 
-## Token licensing requirements for {{ site.data.keys.product }} System Pattern
+## Token licensing requirements for {{ site.data.keys.mf_system_pattern }}
 If you use token licensing to license {{ site.data.keys.product }}, you must install IBM  Rational  License Key Server and configure with your licenses before you deploy the {{ site.data.keys.product }} Pattern.
 
 > **Important:** The **{{ site.data.keys.product }} (WAS ND)** pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template. All other pattern templates support token licensing.
@@ -184,7 +184,7 @@ You use a predefined template to deploy {{ site.data.keys.mf_server }} on a sing
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.product_adj }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -248,7 +248,7 @@ For more information about the composition and configuration options of the pred
 
 8. Configure and launch the pattern deployment:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the Virtual System Patterns page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
     * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
     * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
     * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
@@ -309,7 +309,7 @@ You use a predefined template to deploy {{ site.data.keys.mf_server }} on a mult
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -377,7 +377,7 @@ For more information about the composition and configuration options of the pred
 
 9. Configure and launch the pattern deployment:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the Virtual System Patterns page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
     * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
     * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
     * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
@@ -438,7 +438,7 @@ You use a predefined template to deploy a single-node {{ site.data.keys.mf_serve
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -576,7 +576,7 @@ You use a predefined template to deploy {{ site.data.keys.mf_server }} on a mult
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -644,7 +644,7 @@ For more information about the composition and configuration options of the pred
 
 9. Configure and launch the pattern deployment:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the Virtual System Patterns page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
     * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
     * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
     * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
@@ -936,7 +936,7 @@ You use a predefined template to deploy {{ site.data.keys.product_adj }} Applica
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements that are outlined in [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements that are outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
 
 Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -1032,7 +1032,7 @@ You use a predefined template to deploy a single-node {{ site.data.keys.product_
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.product }} System Pattern](#token-licensing-requirements-for-ibm-mobilefirst-foundation-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
 
 Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -1081,7 +1081,7 @@ For more information about the composition and configuration options of the pred
 
 4. Configure and launch the pattern deployment:
     * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the Virtual System Patterns page, use the **Search** field to find the pattern you created, and then select the pattern.
+    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
     * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
     * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
     * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
@@ -1291,10 +1291,10 @@ If the runtime to be deployed in the pattern is configured to use LDAP for appli
     * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
     * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
 
-## Configuring an external database with a {{ site.data.keys.product }} System Pattern
-You can configure {{ site.data.keys.product }} System Patterns to enable connecting out to an external database. IBM  DB2  is the only supported external database. The configuration is common for all the supported patterns.
+## Configuring an external database with a {{ site.data.keys.mf_system_pattern }}
+You can configure {{ site.data.keys.mf_system_pattern }} to enable connecting out to an external database. IBM DB2 is the only supported external database. The configuration is common for all the supported patterns.
 
-Before you begin,  
+**Before you begin**
 This procedure involves configuring the external database parameters for connecting to the external database. Before you begin, ensure the following:
 
 * Configure the external database instance on your installed IBM DB2.
@@ -1488,8 +1488,8 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
     * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
     
-## Predefined templates for {{ site.data.keys.product }} Pattern
-{{ site.data.keys.product }} System Pattern includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
+## Predefined templates for {{ site.data.keys.mf_system_pattern }}
+{{ site.data.keys.mf_system_pattern }} includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
 The following templates are available:
 
 #### Jump to
@@ -1589,7 +1589,7 @@ The "{{ site.data.keys.product }} Application Center (WAS single node)" template
 
 
 ## Script packages for {{ site.data.keys.mf_server }}
-{{ site.data.keys.product }} System Pattern provides script packages that are the building blocks to compose various pattern topologies.  
+{{ site.data.keys.mf_system_pattern }} provides script packages that are the building blocks to compose various pattern topologies.  
 The following sections list and describe the parameters for each script package.
 
 #### Jump to
@@ -1804,12 +1804,12 @@ This script package installs the {{ site.data.keys.product_adj }} runtime in a W
 | analytics_admin_user | Optional. Administrator name of the {{ site.data.keys.mf_analytics_server }}. | 
 | analytics_admin_password | Optional. Password of administrator of the {{ site.data.keys.mf_analytics_server }}. | 
 
-## Upgrading {{ site.data.keys.product }} System Pattern
-To upgrade IBM {{ site.data.keys.product_adj }} Application Pattern, upload the .tgz file that contains the latest updates.
+## Upgrading {{ site.data.keys.mf_app_pattern }}
+To upgrade {{ site.data.keys.mf_app_pattern }}, upload the **.tgz** file that contains the latest updates.
 
 1. Log into IBM  PureApplication  System with an account that is allowed to upload new system plugins.
 2. From the IBM PureApplication System console, navigate to **Catalog → System Plug-ins**.
-3. Upload the IBM {{ site.data.keys.product_adj }} Application Pattern .tgz file that contains the updates.
+3. Upload the {{ site.data.keys.mf_app_pattern }} **.tgz** file that contains the updates.
 4. Enable the plugins you have uploaded.
 5. Redeploy the pattern.
 

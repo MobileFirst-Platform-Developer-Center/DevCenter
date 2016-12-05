@@ -22,7 +22,7 @@ weight: 1
                 <p>Review the following sections to learn what is new for developing your apps.</p>
 
                 <h3>New development and deployment process</h3>
-                <p>Starting with {{ site.data.keys.product }} v8.0, you no longer create a project WAR file that needs to be installed in the application server. Instead, the {{ site.data.keys.mf_server }} is installed once, and you upload the server-side configuration of your apps, of the resource security or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}.</p>
+                <p>You no longer create a project WAR file that needs to be installed in the application server. Instead, the {{ site.data.keys.mf_server }} is installed once, and you upload the server-side configuration of your apps, of the resource security or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}.</p>
 
                 <p>{{ site.data.keys.product_adj }} projects no longer exist. Instead, you develop your mobile app with the development environment of your choice.<br/>
                 You can modify the server-side configuration of your apps and adapters without stopping the {{ site.data.keys.mf_server }}.</p>
@@ -39,7 +39,7 @@ weight: 1
                 <p>You can also use the new client-side JavaScript web analytics API, which is provided as part of the new web SDK, to add {{ site.data.keys.mf_analytics }} capabilities to your web application.</p>
 
                 <h3>Develop cross-platform apps with your preferred Cordova tools</h3>
-                <p>Starting with {{ site.data.keys.product }} V8.0, you can now use your preferred Cordova tools (such as Apache Cordova CLI or Ionic Framework) to develop your cross-platform hybrid apps. You obtain these tools independently of {{ site.data.keys.product }}, and then add {{ site.data.keys.product_adj }} plug-ins to provide {{ site.data.keys.product_adj }} back-end capabilities.</p>
+                <p>You can now use your preferred Cordova tools (such as Apache Cordova CLI or Ionic Framework) to develop your cross-platform hybrid apps. You obtain these tools independently of {{ site.data.keys.product }}, and then add {{ site.data.keys.product_adj }} plug-ins to provide {{ site.data.keys.product_adj }} back-end capabilities.</p>
 
                 <p>You can install the {{ site.data.keys.product }} Studio Eclipse plug-in to manage your cross-platform Cordova apps that are enabled with {{ site.data.keys.product }} in the Eclipse development environment. The {{ site.data.keys.product }} Studio plug-in also provides additional {{ site.data.keys.mf_cli }} commands that you can run from within the Eclipse environment.</p>
 
@@ -62,7 +62,7 @@ weight: 1
                 <p><code>org.apache.http</code> has been removed from the Android SDK. okHttp will be used as the http dependency.</p>
 
                 <h3>WKWebView support for iOS hybrid Cordova apps</h3>
-                <p>From {{ site.data.keys.product }} v8.0, you can replace the default UIWebView in cordova apps with WKWebView.</p>
+                <p>You can now replace the default UIWebView in Cordova apps with WKWebView.</p>
             </div>
         </div>
     </div>
@@ -79,10 +79,10 @@ weight: 1
                 <p>New features improve and extend the APIs that you can use to develop mobile applications. Use the latest APIs to take advantage of new, improved, or changed functions in {{ site.data.keys.product }}.</p>
                 
                 <h3>Updated JavaScript server-side API</h3>
-                <p>In v8.0, back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.</p>
+                <p>Back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.</p>
 
                 <h3>New Java server-side API</h3>
-                <p>{{ site.data.keys.product }} v8.0 provides new Java server-side API, which you can use to extend {{ site.data.keys.mf_server }}.</p>
+                <p>A new Java server-side API is provided, which you can use to extend {{ site.data.keys.mf_server }}.</p>
 
                 <h4>New Java server-side API for security</h4>
                 <p>The new security API package, <code>com.ibm.mfp.server.security.external</code>, and its contained packages, include the interfaces that are required for developing security checks and adapters that use the security-check context.</p>
@@ -97,7 +97,7 @@ weight: 1
                 <p>With this new API, you can get the value from the adapter configuration (or default value).</p>
 
                 <h3>Updated Java server-side API</h3>
-                <p>{{ site.data.keys.product }} v8.0 also includes updated Java server-side API, which you can use to extend {{ site.data.keys.mf_server }}.</p>
+                <p>An updated Java server-side API is provided, which you can use to extend {{ site.data.keys.mf_server }}.</p>
 
                 <h4>getMFPConfigurationProperty(String name)</h4>
                 <p>The signature of this new API has not changed in this version. However, its behavior is now identical to that of <code>String getPropertyValue (String propertyName)</code>, which is described in New Java server-side API.</p>
@@ -105,7 +105,7 @@ weight: 1
                 <h4>WLServerAPIProvider</h4>
                 <p>In V7.0.0 and V7.1.0, the Java API was accessible through the WLServerAPIProvider interface. For example: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> and <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
                 
-                <p>These static interfaces are still supported in v8.0, to allow adapters that were developed in previous versions of the product to compile and deploy. Old adapters that do not use push notifications or the previous security API continue to work in v8.0. Adapters that do use push notifications or the previous security API break.</p>
+                <p>These static interfaces are still supported, to allow adapters that were developed in previous versions of the product to compile and deploy. Old adapters that do not use push notifications or the previous security API continue to work with the new version. Adapters that do use push notifications or the previous security API break.</p>
 
                 <h3>JavaScript client-side APIs for web applications</h3>
                 <p>The JavaScript client-side API that is used for development of cross-platform Cordova applications is now available also for development of web applications, with slight variations in the initialization method. Note that not all functions of the JavaScript API are applicable to web applications.</p>
@@ -178,7 +178,7 @@ weight: 1
                 <p>Device single sign-on (SSO) is now supported by way of the new predefined <code>enableSSO</code> security-check application-descriptor configuration property.</p>
 
                 <h3>Direct Update</h3>
-                <p>In contrast to earlier versions of {{ site.data.keys.product_adj }}, starting with v8.0:</p>
+                <p>In contrast to earlier versions of {{ site.data.keys.product_adj }}, starting with V8.0</p>
 
                 <ul>
                     <li>If a client application accesses an unprotected resource, the application does not receive updates, even if an update is available on {{ site.data.keys.mf_server }}.</li>
@@ -223,7 +223,7 @@ weight: 1
 
         <div id="collapse-os-support" class="panel-collapse collapse" role="tabpanel" aria-labelledby="os-support">
             <div class="panel-body">
-                <p>{{ site.data.keys.product }} v8.0 introduces support for Windows 10 Universal apps as well as Apple watchOS 2.{{ site.data.keys.product }} v8.0 introduces support for bitcode builds as well as Apple watchOS 2.</p>
+                <p>{{ site.data.keys.product }} now supports Windows 10 Universal apps, bitcode builds, and Apple watchOS 2.</p>
 
                 <h3>Support for universal applications for Windows 10 Native</h3>
                 <p>With {{ site.data.keys.product }}, you can now write native C# Universal App Platform applications to use the {{ site.data.keys.product_adj }} SDK within your app.</p>
@@ -252,7 +252,7 @@ weight: 1
 
         <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
             <div class="panel-body">
-                <p>{{ site.data.keys.product }} v8.0 comes with capabilities to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
+                <p>New {{ site.data.keys.product }} capabilities are introduced to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
 
                 <h3>Improved DevOps support</h3>
                 <p>{{ site.data.keys.mf_server }} has been significantly redesigned to better support your DevOps environment. {{ site.data.keys.mf_server }} is installed once into your application server environment, and no changes to the application server configuration are required when you upload an application or change the {{ site.data.keys.mf_server }} configuration.</p>
@@ -277,7 +277,7 @@ weight: 1
                 <p>You can now use the {{ site.data.keys.mf_bm_full }}  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
 
                 <h3>No .wlapp files</h3>
-                <p>In previous versions, applications were deployed to {{ site.data.keys.mf_server }} by uploading a .wlapp file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the .wlapp file:</p>
+                <p>In previous versions, applications were deployed to {{ site.data.keys.mf_server }} by uploading a <b>.wlapp</b> file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the <b>.wlapp</b> file:</p>
 
                 <ul>
                     <li>You register an app in {{ site.data.keys.mf_server }} by deploying an application descriptor JSON file.</li>
@@ -288,22 +288,22 @@ weight: 1
 
                 <h3>Adapters</h3>
                 <h4>Adapters are Apache Maven projects.</h4>
-                <p>Starting from v8.0, adapters are treated as Maven projects. You can create, build, and deploy adapters by using standard command-line Maven commands or using any IDE that supports Maven, such as Eclipse and IntelliJ.</p>
+                <p>Adapters are now treated as Maven projects. You can create, build, and deploy adapters by using standard command-line Maven commands or using any IDE that supports Maven, such as Eclipse and IntelliJ.</p>
     
                 <h4>Adapter configuration and deployment in DevOps environments</h4>
                 <ul>
-                    <li>Starting with v8.0 of {{ site.data.keys.mf_server }}, administrators can use the {{ site.data.keys.mf_console }} to modify the behavior of an adapter that has been deployed. After reconfiguration, the changes take effect in the server immediately, without the need to redeploy the adapter, or restart the server.</li>
-                    <li>Starting with v8.0, you can "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time, while {{ site.data.keys.mf_server }} is still serving traffic.</li>
+                    <li>{{ site.data.keys.mf_server }} administrators can now use the {{ site.data.keys.mf_console }} to modify the behavior of an adapter that has been deployed. After reconfiguration, the changes take effect in the server immediately, without the need to redeploy the adapter, or restart the server.</li>
+                    <li>You can now "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time, while {{ site.data.keys.mf_server }} is still serving traffic.</li>
                 </ul>
                 
                 <h4>Changes in the adapter descriptor file</h4>
-                <p>The adapter.xml descriptor file for V8.0.0 has changed slightly. For more information on the structure of the adapter descriptor file for adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Adapters tutorials</a>.</p>
+                <p>The <b>adapter.xml</b> descriptor file has changed slightly. For more information on the structure of the adapter descriptor file for adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Adapters tutorials</a>.</p>
 
                 <h4>Integration with Swagger UI</h4>
-                <p>Starting from v8.0, {{ site.data.keys.mf_server }} integrates with Swagger UI. For any adapter, you can view the associated API by clicking View Swagger Docs in the Resources tab in the {{ site.data.keys.mf_console }}. The feature is available in development environments only.</p>
+                <p>{{ site.data.keys.mf_server }} now integrates with Swagger UI. For any adapter, you can view the associated API by clicking View Swagger Docs in the Resources tab in the {{ site.data.keys.mf_console }}. The feature is available in development environments only.</p>
 
                 <h4>Support for JavaScript adapters</h4>
-                <p>v8.0 supports JavaScript adapters with HTTP and SQL connectivity types, only.</p>
+                <p>JavaScript adapters are supported with HTTP and SQL connectivity types, only.</p>
                 
                 <h4>Support for JAX-RS 2.0</h4>
                 <p>JAX-RS 2.0 introduces new server-side functionality: server-side asynchronous HTTP, filters and interceptors.  Adapters can now exploit these new features.</p>
@@ -313,10 +313,10 @@ weight: 1
 
                 <p><b>Note:</b> See the prerequisites for deploying {{ site.data.keys.product }} on IBM Containers.</p>
 
-                <h3>Deploying {{ site.data.keys.mf_server }} V8.0.0 on IBM PureApplication System</h3>
-                <p>You can now deploy and configure {{ site.data.keys.mf_server }} V8.0.0 to the supported {{ site.data.keys.product }} System Pattern on IBM PureApplication  System.</p>
+                <h3>Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</h3>
+                <p>You can now deploy and configure {{ site.data.keys.mf_server }} to the supported {{ site.data.keys.product }} System Pattern on IBM PureApplication  System.</p>
 
-                <p>All supported {{ site.data.keys.product }} System Pattern now include support for an existing IBM DB2  database. {{ site.data.keys.mf_app_center_full }} is now supported on a Virtual System Pattern.</p>
+                <p>All supported {{ site.data.keys.product }} system patterns now include support for an existing IBM DB2  database. {{ site.data.keys.mf_app_center_full }} is now supported on a Virtual System Pattern.</p>
             </div>
         </div>
     </div>
@@ -347,14 +347,14 @@ weight: 1
 
                 <p>Along with the redesign of {{ site.data.keys.mf_server }}, more installation options are now provided. In addition to the manual installation, {{ site.data.keys.product }} gives you two options to install {{ site.data.keys.mf_server }} in a server farm. You can also install {{ site.data.keys.mf_server }} in Liberty collective.</p>
 
-                <p>Starting with v8.0, you can now install the {{ site.data.keys.mf_server }} components in a server farm by using Ant tasks, or with the Server Configuration Tool. For more information, see the following topics:</p>
+                <p>You can now install the {{ site.data.keys.mf_server }} components in a server farm by using Ant tasks, or with the Server Configuration Tool. For more information, see the following topics:</p>
 
                 <ul>
                     <li>Installing a server farm</li>
                     <li>Tutorials about {{ site.data.keys.mf_server }} installation</li>
                 </ul>
                     
-                <p>{{ site.data.keys.mf_server }} v8.0 also supports Liberty collective. For more information about the server topology and various installation methods, see the following topics:</p>
+                <p>{{ site.data.keys.mf_server }} also supports Liberty collective. For more information about the server topology and various installation methods, see the following topics:</p>
                 
                 <ul>
                     <li>Liberty collective topology</li>
@@ -398,11 +398,11 @@ weight: 1
                 <p>The {{ site.data.keys.mf_analytics_console }} now shows different content based on the security role of the logged-in user.<br/>
                 For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Role-based access control</a>.</p>
 
-                <p>Starting with v8.0, the {{ site.data.keys.mf_analytics }} Server uses Elasticsearch v1.7.5.</p>
+                <p>{{ site.data.keys.mf_analytics_server }} uses Elasticsearch V1.7.5.</p>
 
-                <p>For v8.0 Analytics support for web applications was added with the new web analytics client-side API.</p>
+                <p>{{ site.data.keys.mf_analytics_short }} support for web applications was added with the new web analytics client-side API.</p>
 
-                <p>Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics }} Server and v8.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.</p>
+                <p>Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.</p>
             </div>
         </div>
     </div>
@@ -416,7 +416,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-push" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-push">
             <div class="panel-body">
-                <p>With {{ site.data.keys.product }} v8.0, the push notification service is provided as a stand-alone service hosted on a separate web application.</p>
+                <p>The push notification service is now provided as a stand-alone service hosted on a separate web application.</p>
 
                 <p>Earlier versions of {{ site.data.keys.product }} embedded the push notification service as part of the application runtime.</p>
 
@@ -432,13 +432,13 @@ weight: 1
                 <p>{{ site.data.keys.product }} authorization server enforces the OAuth protocol to secure push notification service.</p>
 
                 <h3>Push notification service model</h3>
-                <p>With {{ site.data.keys.product }} v8.0, the event source-based model is not supported. The push notification capability is enabled on {{ site.data.keys.product }} by the push service model.</p>
+                <p>The event source-based model is not supported. The push notification capability is enabled on {{ site.data.keys.product }} by the push service model.</p>
 
                 <h3>Push REST API</h3>
                 <p>You can enable back-end server applications that are deployed outside {{ site.data.keys.mf_server }} to access push notification functions by using REST API for push in the {{ site.data.keys.product }} runtime.</p>
 
                 <h3>Upgrading from existing event source-based notification model</h3>
-                <p>With the {{ site.data.keys.product }} V8.0.0, the event source-based model is not supported. The push notification capability is enabled entirely by the push service model. All existing event source-based applications need to be migrated to the new push service model.</p>
+                <p>The event source-based model is not supported. The push notification capability is enabled entirely by the push service model. All existing event source-based applications need to be migrated to the new push service model.</p>
 
                 <h3>Sending push notifications</h3>
                 <p>You can choose to send an event-source based, tag-based, or broadcast-enabled push notification from the server.</p>
