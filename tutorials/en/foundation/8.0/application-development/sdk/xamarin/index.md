@@ -7,31 +7,31 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-The MobileFirst Foundation SDK consists of a collection of dependencies that are available through [Xamarin Component store](https://components.xamarin.com/) and which you can add to your Xamarin project.  
+The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Xamarin Component store](https://components.xamarin.com/) and which you can add to your Xamarin project.  
 The pods correspond to core functions and other functions:
 
 * **MobileFirst.Xamarin** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 * **MobileFirst.JSONStore** - Contains the JSONStore framework.  
 * **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the MobileFirst Server to recognize the application.
+In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
 
 **Prerequisites:**
 
 - Xamarin Studio installed on the developer workstation.  
-- A local or remote instance of MobileFirst Server is running.
-- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
+- A local or remote instance of {{ site.data.keys.mf_server }} is running.
+- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
 
 #### Jump to:
 
-- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
+- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Adding the MobileFirst Native SDK
-Follow the instructions below to add the MobileFirst Native SDK to a new or existing Xcode project, and to register the application to the MobileFirst Server.
+## Adding the {{ site.data.keys.product_adj }} Native SDK
+Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
 
-Before you start, make sure that the MobileFirst Server is running.  
+Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 ### Creating an application
@@ -39,7 +39,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 ### Adding the SDK
 
-1. The MobileFirst Native SDK is provided via Xamarin Components Store.
+1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
 2. Expand the Android or iOS project.
 3. In the Android or iOS project, right click **Components**.
 4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
@@ -50,7 +50,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 ### Registering the application
 
-1. Load the MobileFirst Operations Console.
+1. Load the {{ site.data.keys.mf_console }}.
 2. Click the New button next to Applications to register a new application and follow the on-screen instructions.
 3. Android and iOS applications have to be registered separately. This ensures both the Android application and iOS application can connect successfully to the server. The registration details for Android and iOS applications can be found in the `AndroidManifest.xml` and `Info.plist` respectively.
 3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the mfpclient.plist and mfpclient.properties file. Follow the onscreen instructions to add the file to your project.
@@ -70,7 +70,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 ### Referencing the SDK
 
-Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Foundation framework:
+Whenever you want to use the {{ site.data.keys.product_adj }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
 
 CommonProject:
 
@@ -90,25 +90,25 @@ Android:
 using Worklight.Xamarin.Android;
 ```
 
-## Updating the MobileFirst Native SDK
-To update the MobileFirst Native SDK with the latest release, update the version of the SDK via the Xamarin Components store.
+## Updating the {{ site.data.keys.product_adj }} Native SDK
+To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Xamarin Components store.
 
-## Generated MobileFirst Native SDK artifacts
+## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
 
 ### mfpclient.plist
 
-This file defines the client-side properties used for registering your iOS app on the MobileFirst server.
+This file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
 
 | Property            | Description                                                         | Example values |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the MobileFirst Server.             | http or https  |
-| wlServerHost        | The host name of the MobileFirst Server.                            | 192.168.1.63   |
-| wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
+| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
+| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
+| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 
 ## Tutorials to follow next
-With the MobileFirst Native SDK now integrated, you can now:
+With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
 
 - Review the [Adapters development tutorials](../../../adapters/)
 - Review the [Authentication and security tutorials](../../../authentication-and-security/)

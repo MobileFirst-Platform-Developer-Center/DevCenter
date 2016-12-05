@@ -12,12 +12,12 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst applications can access resources using the `WorklightResourceRequest` REST API.  
+{{ site.data.keys.product_full }} applications can access resources using the `WorklightResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Xamarin application](../../sdk/xamarin/).
+- Ensure you have added the {{ site.data.keys.product }} SDK to your Native [Xamarin application](../../sdk/xamarin/).
 - Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest

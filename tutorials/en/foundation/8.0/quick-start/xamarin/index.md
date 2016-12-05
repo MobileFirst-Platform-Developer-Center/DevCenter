@@ -9,27 +9,27 @@ weight: 6
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 
-1. A sample application that is bundled with the MobileFirst Xamarin client SDK is registered with the MobileFirst Operations Console.
-2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
+1. A sample application that is bundled with the {{ site.data.keys.product_adj }} Xamarin client SDK is registered with the {{ site.data.keys.mf_console }}.
+2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
 
-* Successfully pinging the MobileFirst Server.
-* Successfully retrieving data using a MobileFirst Adapter.
+* Successfully pinging the {{ site.data.keys.mf_server }}.
+* Successfully retrieving data using an adapter.
 
 #### Prerequisites:
 
 * Xamarin Studio
-* *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
+* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
 
-### 1. Starting the MobileFirst Server
+### 1. Starting the {{ site.data.keys.mf_server }}
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [MobileFirst Foundation Development Kit](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 1. Click the **New** button next to **Applications**
     * Select the **Android** platform
@@ -85,13 +85,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 
 ### 4. Deploy an adapter
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
 
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
@@ -99,7 +99,7 @@ Alternatively, click the **New** button next to **Adapters**.
     mfpdev adapter build
     ```
 
-3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
@@ -107,26 +107,24 @@ Alternatively, click the **New** button next to **Adapters**.
 
 ### 5. Testing the application
 
-1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
-    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
+    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
 2. Press the **Play** button.
 
 <br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
-* If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.
+* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then printed in the Xamarin Studio Console.
 
-![Image of application that successfully called a resource from the MobileFirst Server ](console-output.png)
+![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Next steps
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
 
-- Review the [Using the MobileFirst Foundation](../../application-development/sdk/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

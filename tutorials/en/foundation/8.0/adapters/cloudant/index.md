@@ -17,7 +17,7 @@ All documents must have two fields: a unique `_id` field, and a `_rev` field. Th
 
 The Cloudant API is documented on the [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) site.
 
-You can use IBM MobileFirst Platform adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
+You can use adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
 
 This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../javascript-adapters/js-http-adapter) or [Java Adapters](../java-adapters).
 

@@ -68,7 +68,7 @@ function subtractTwoIntegers(a,b){
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
 
 When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.

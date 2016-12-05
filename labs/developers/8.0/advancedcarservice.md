@@ -35,7 +35,7 @@ So through this example we will explore a possible architecture that would allow
 
 We will be utilizing the Bluemix services:
 
-* MobileFirst Foundation
+* {{ site.data.keys.product }}
 * DashDB
 * MessageHub
 * SecureGateway
@@ -68,7 +68,7 @@ Head over to the [lab's GitHub repository](https://github.com/MobileFirst-Platfo
 | #  | Lab      | Description |
 |----|----------|-------------|
 | 1  | Overview | This lab goes into detail about the data flow, how backend services are used, and what scenarios were considered.|
-| 2  | Setup Mobile Foundation on Bluemix | This lab shows how to setup and configure a MobileFirst Foundation service on Bluemix. |
+| 2  | Setup Mobile Foundation on Bluemix | This lab shows how to setup and configure a {{ site.data.keys.product }} service on Bluemix. |
 | 3  | Security Implementation Login | This lab talks about how easy it is to integrate OAuth2 Security into your app. |
 | 4  | MessageHub Adapter | This lab talks about how to setup a MessageHub instance on Bluemix and create an adapter to create topics and send topics to MessageHub. |
 | 5  | DashDB Adapter | This lab shows how to instantiate a DashDB service and use an adapter to read data from a customers and visits table. |

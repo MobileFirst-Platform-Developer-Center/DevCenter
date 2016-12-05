@@ -15,12 +15,12 @@ The pods correspond to core functions and other functions:
 * **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the MobileFirst Server to recognize the application.
+In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
 
 **Prerequisites:**
 
 - Xcode and MobileFirst CLI installed on the developer workstation.  
-- A local or remote instance of MobileFirst Server is running.
+- A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
 
 > **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
@@ -36,9 +36,9 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
-Follow the instructions below to add the MobileFirst Native SDK to a new or existing Xcode project, and to register the application to the MobileFirst Server.
+Follow the instructions below to add the MobileFirst Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
 
-Before you start, make sure that the MobileFirst Server is running.  
+Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 ### Creating an application
@@ -153,7 +153,7 @@ You can also manually add the MobileFirst SDK:
 
     You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
 
-The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the MobileFirst Server.  
+The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the MobileFirst Operations Console:    
 >
@@ -232,14 +232,14 @@ SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.
 ## Generated MobileFirst Native SDK artifacts
 
 ### mfpclient.plist
-Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the MobileFirst server.
+Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
 
 | Property            | Description                                                         | Example values |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the MobileFirst Server.             | http or https  |
-| wlServerHost        | The host name of the MobileFirst Server.                            | 192.168.1.63   |
-| wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
+| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
+| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
+| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 
 ## Bitcode and TLS 1.2

@@ -7,7 +7,7 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Leverage MobileFirst Analytics to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
+Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
 
 #### Jump to
 * [App Usage Analytics](#app-usage-analytics)
@@ -16,9 +16,9 @@ Leverage MobileFirst Analytics to best serve your business needs. Once your goal
 ## App usage Analytics
 
 ### Initializing your client app to capture app usage
-App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the MobileFirst Analytics client SDK must be configured to listen for the app lifecycle events.
+App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the {{ site.data.keys.mf_analytics }} client SDK must be configured to listen for the app lifecycle events.
 
-You can use the MobileFirst Analytics API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
+You can use the {{ site.data.keys.mf_analytics }} API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
 
 #### iOS
 
@@ -79,7 +79,7 @@ ibmmfpfanalytics.send();
 ```
 
 ### Default Usage and Devices chart
-In the **Usage and Devices** page of the Apps section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app usage.
+In the **Usage and Devices** page of the Apps section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app usage.
 
 #### Total Devices
 The **Total Devices** chart shows the number of total devices.
@@ -115,7 +115,7 @@ The **Operating System Usage** chart shows a pie chart of the percentage of app 
 ### Creating a custom chart for average session duration
 The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
 
-1. In the MobileFirst Analytics Console, click **Create Chart** in the Custom Charts page of the Dashboard section.
+1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the Custom Charts page of the Dashboard section.
 2. Give your chart a title.
 3. Select **App Session** for **Event Type**.
 4. Select **Bar Graph** for **Chart Type**.
@@ -126,12 +126,12 @@ The duration of an app session is a valuable metric to visualize. With any app, 
 9. Click **Save**.
 
 ## Crash capture
-MobileFirst Analytics includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
+{{ site.data.keys.mf_analytics }} includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
 
-An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the MobileFirst Analytics SDK logs a crash event. This data is sent to the server with the next logger send call.
+An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the {{ site.data.keys.mf_analytics }} SDK logs a crash event. This data is sent to the server with the next logger send call.
 
 ### Initializing your app to capture crash data
-To ensure that crash data is collected and included in the MobileFirst Analytics Console reports, make sure the crash data is sent to the server.
+To ensure that crash data is collected and included in the {{ site.data.keys.mf_analytics_console }} reports, make sure the crash data is sent to the server.
 
 Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
 
@@ -204,7 +204,7 @@ setInterval(function() {
 ```
 
 ### App crash monitoring
-After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the MobileFirst Analytics Console.  
+After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the {{ site.data.keys.mf_analytics_console }}.  
 In the **Overview** page of the **Dashboard** section, the Crashes bar graph shows a histogram of crashes over time.
 
 The data can be shown in two ways:
@@ -217,7 +217,7 @@ The data can be shown in two ways:
 > * The **Crashes** bar graph displays no data when **Display Crash Rate** is selected.
 
 ### Default charts for crashes
-In the **Crashes** page of the **Apps** section in the IBM MobileFirst Analytics Console, a number of default charts are provided to help you manage your app crashes.
+In the **Crashes** page of the **Apps** section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app crashes.
 
 The **Crash Overview** chart shows a table of an overview of crashes.  
 The **Crashes** bar graph shows a histogram of crashes over time. You can display the data by crash rate or total crashes. The Crashes bar graph is also in the Crashes page of the Applications section.
@@ -225,7 +225,7 @@ The **Crashes** bar graph shows a histogram of crashes over time. You can displa
 The **Crash Summary** chart shows a sortable table of a summary of crashes. You can expand the individual crashes by clicking the + icon to view a **Crash Details** table that includes more details about the crashes. In the Crash Details table, you can click the **>** icon to view more details about the specific crash instance.
 
 ### App crash troubleshooting
-You can view the **Crashes** page in the **Applications** section of the MobileFirst Analytics Console to better administer your apps.
+You can view the **Crashes** page in the **Applications** section of the {{ site.data.keys.mf_analytics_console }} to better administer your apps.
 
 The **Crash Overview** table shows the following data columns:
 

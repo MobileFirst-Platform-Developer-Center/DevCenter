@@ -16,11 +16,11 @@ The three types of notifications that are supported for iOS are represented by c
 
 For `MIXED` type notifications, a message is displayed on the device while, in the background, the app awakens and processes a silent notification. The callback method for `MIXED` type notifications gets called twice - once when the silent notification reaches the device and once when the application is opened by tapping on the notification.
 
-Based on the requirement choose the appropriate type under **MobileFirst Operations Console → [your application] → Push → Send Notifications → iOS custom settings**. 
+Based on the requirement choose the appropriate type under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. 
 
 > **Note:** If the notification is silent, the **alert**, **sound**, and **badge** properties are ignored.
 
-![Setting notification type for iOS silent notifications in the MobileFirst Operations Console](notification-type-for-silent-notifications.png)
+![Setting notification type for iOS silent notifications in the {{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
 
 ## Handling silent push notifications in Cordova application
 In the JavaScript push notification callback method, you must do the following steps:

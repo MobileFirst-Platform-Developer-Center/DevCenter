@@ -7,10 +7,10 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-The MobileFirst Foundation Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+The {{ site.data.keys.mf_console_full }} is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
 
 #### As a developer
-* Develop applications for any environment and register them to MobileFirst Server.
+* Develop applications for any environment and register them to {{ site.data.keys.mf_server }}.
 * See all your deployed applications and adapters at a glance. See the Dashboard.
 * Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
 * Set up push notification by deploying certificates, creating notification tags, and sending notification.
@@ -19,7 +19,7 @@ The MobileFirst Foundation Operations Console is a web-based UI which enables si
 
 #### As an IT administrator
 * Monitor various services.
-* Search for devices that access MobileFirst Server and manage their access rights.
+* Search for devices that access {{ site.data.keys.mf_server }} and manage their access rights.
 * Update adapter configurations dynamically.
 * Adjust client logger configurations through log profiles.
 * Track how product licenses are used.
@@ -30,22 +30,22 @@ The MobileFirst Foundation Operations Console is a web-based UI which enables si
 * [Navigating the console](#navigating-the-console)
 
 ## Accessing the console
-The MobileFirst Operations Console can be accessed in the following ways:
+The {{ site.data.keys.mf_console }} can be accessed in the following ways:
 
-### From a locally installed MobileFirst Server
+### From a locally installed {{ site.data.keys.mf_server }}
 #### Desktop Browser
 From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 #### Command-line
-From a **Command-line** window, with the MobileFirst CLI installed, run the command: `mfpdev server console`.
+From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, run the command: `mfpdev server console`.
 
-### From a remotely installed MobileFirst Server
+### From a remotely installed {{ site.data.keys.mf_server }}
 #### Desktop Browser
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
 The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Command-line
-From a **Command-line** window, with the MobileFirst CLI installed, 
+From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
 
 1. Add a remote server definition:
 
@@ -61,7 +61,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## Navigating the console
 
@@ -81,14 +81,14 @@ Edit runtime properties, global security variables, server keystore and confiden
 ![Image of the Runtime Settings screen ](runtime-settings.png)
 
 ### Error log
-The Error log shows a list of the failed management operations that were initiated from the MobileFirst Operations Console, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+The Error log shows a list of the failed management operations that were initiated from the {{ site.data.keys.mf_console }}, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
 
 > For more information, see the topic about error log of operations on runtime environments in the user documentation.
 
 ![Image of error logs screen](error-log.png)
 
 ### Devices
-Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
+Administrators can search for devices that access the {{ site.data.keys.mf_server }} and can manage access rights.  
 Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
 A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
 
@@ -111,7 +111,7 @@ Manage and configure registered applications by use of [Direct Update](../../../
 #### Authentication and Security
 Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
 
-> [Learn more](../../../authentication-and-security/) about the MobileFirst security framework.
+> [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
 
 ![Image of application security configuration screen](authentication-and-security.png)
 
@@ -128,7 +128,7 @@ Set-up [push notifications](../../../notifications/) and related parameters, suc
 ### Adapters
 
 #### Creating adapters
-Register a [MobileFirst adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+[Register an adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
 ![Image of adapter registration screen](create-adapter.png)
 
@@ -149,7 +149,7 @@ When an administrator creates a configuration profile, the log configuration is 
 ### License tracking
 Accessible from the top Settings buttons.
 
-License terms vary depending on which edition (Enterprise or Consumer) of MobileFirst Foundation is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of MobileFirst Foundation is within the license entitlement levels and can prevent potential license violations.
+License terms vary depending on which edition (Enterprise or Consumer) of {{ site.data.keys.product }} is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
 
 By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
 
@@ -158,7 +158,7 @@ By tracking the usage of client devices and determining whether the devices are 
 ![Image of client logs screen](license-tracking.png)
 
 ### Downloads
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Foundation from the Download Center in the MobileFirst Console.
+For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of {{ site.data.keys.product }} from the Download Center in the {{ site.data.keys.mf_console }}.
 
 ![Image of available artifacts](downloads.png)
 

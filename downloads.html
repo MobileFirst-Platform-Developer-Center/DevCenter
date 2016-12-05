@@ -4,9 +4,9 @@ title: Downloads
 ---
 <section class="container downloads">
    <h2 class="no-anchor">Downloads</h2>
-   <p>Looking to get started? <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">use the Mobile Foundation Bluemix service</a> to bring up a MobileFirst Server instance in minutes, or start locally by downloading the Developer Kit.<br/>If you haven't already, go and <a href="{{site.baseurl}}/get-introduced">Get Introduced to the product</a>.</p>
+   <p>Looking to get started? <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">use the Mobile Foundation Bluemix service</a> to bring up a {{ site.data.keys.mf_server }} instance in minutes, or start locally by downloading the Developer Kit.<br/>If you haven't already, go and <a href="{{site.baseurl}}/get-introduced">Get Introduced to the product</a>.</p>
    
-   <blockquote>To learn more about the MobileFirst Foundation components and the Developer Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> tutorial.</blockquote>
+   <blockquote>To learn more about the {{ site.data.keys.product }} components and the Developer Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the {{ site.data.keys.product_adj }} development environment</a> tutorial.</blockquote>
    
    <h3>Product components</h3>
    <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
@@ -19,10 +19,10 @@ title: Downloads
 
          <div id="collapseDevKit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="devkit">
             <div class="panel-body">
-               <p>The Developer Kit bundles together the various components of MobileFirst Foundation 8.0.</p>
+               <p>The Developer Kit bundles together the various components of {{ site.data.keys.product }} 8.0.</p>
               
                <p><strong>Prerequisite:</strong><br/>
-               To use the MobileFirst Server in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
+               To use the {{ site.data.keys.mf_server }} in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
               
                <ul>
                   <li>Download and install Java 7 or 8 JDK</li>
@@ -38,16 +38,16 @@ title: Downloads
                <blockquote><b>Customers: login to <a href="https://www.ibm.com/support/fixcentral/">IBM Fix Central</a> to download your copy<br/>Evaluators: Download your copy below</b></blockquote>
               
                <p>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the MobileFirst Developer Kit Installer for macOS</a> (IF2016102017)<br/>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the MobileFirst Developer Kit Installer for Linux</a> (IF2016102017)<br/>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the MobileFirst Developer Kit Installer for Windows</a> (IF2016102017)
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the {{ site.data.keys.mf_dev_kit }} Installer for macOS</a> (IF2016102017)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the {{ site.data.keys.mf_devkit }} Installer for Linux</a> (IF2016102017)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the {{ site.data.keys.mf_dev_kit }} Installer for Windows</a> (IF2016102017)
                </p>
               
                <p>
                   Once installation completes,
                   <ol>
-                     <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the MobileFirst Server.</li>
-                     <li>Load the MobileFirst Operations Console (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
+                     <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the {{ site.data.keys.mf_server }}.</li>
+                     <li>Load the {{ site.data.keys.mf_console }} (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
                      <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">the tutorials</a>.</li>
                   </ol>
                </p>   
@@ -58,13 +58,13 @@ title: Downloads
       <div class="panel panel-default">
          <div class="panel-heading" role="tab" id="cli8">
             <h4 class="panel-title">
-               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseCli8" aria-expanded="true" aria-controls="collapseCli8"> MobileFirst CLI</a>
+               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseCli8" aria-expanded="true" aria-controls="collapseCli8"> {{ site.data.keys.mf_cli }}</a>
             </h4>
          </div>
 
          <div id="collapseCli8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli8">
             <div class="panel-body">
-               <p>To use the MobileFirst CLI the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
+               <p>To use the {{ site.data.keys.mf_cli }} the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
                You can verify the installation by running <code>mfpdev -v</code>.</p>
              
                <p><strong>Prerequisite:</strong></p>
@@ -74,7 +74,7 @@ title: Downloads
                </ul>
              
                <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
-               If the CLI was downloaded from the MobileFirst Operations Console, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
+               If the CLI was downloaded from the {{ site.data.keys.mf_console }}, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
                </p>
             </div>
          </div>
@@ -89,12 +89,12 @@ title: Downloads
 
          <div id="collapseSDKs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sdks">
             <div class="panel-body">
-               <p>The MobileFirst client SDKs are available in the following online repositories.<br/>
+               <p>The {{ site.data.keys.mf_cli }}ent SDKs are available in the following online repositories.<br/>
                You can install them using their respective package managers.</p>
               
-               <p>For installation instructions, review the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk">Adding the MobileFirst Foundation SDK</a> tutorials.</p>
+               <p>For installation instructions, review the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk">Adding the {{ site.data.keys.product }} SDK</a> tutorials.</p>
               
-               <p>The SDKs are also available from <strong>MobileFirst Operations Console → Download Center → Tools tab</strong> for offline installation.</p>
+               <p>The SDKs are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
               
                <ul>
                   <li><a href="https://www.npmjs.com/package/cordova-plugin-mfp" target="_blank">Cordova</a> (npm)</li>
@@ -116,10 +116,10 @@ title: Downloads
 
          <div id="collapseArtifacts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts">
             <div class="panel-body">
-               <p>The MobileFirst server-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>.<br/>
+               <p>The {{ site.data.keys.mf_server }}-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>.<br/>
                For installation instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the Adapters tutorials</a>.</p>
               
-               <p>The artifacts are also available from <strong>MobileFirst Operations Console → Download Center → Tools tab</strong> for offline installation.</p>
+               <p>The artifacts are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
               
                <p><strong>Prerequisite:</strong><br/>
                To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
@@ -130,8 +130,8 @@ title: Downloads
                   <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22mfp-security-checks-base%22">Security Checks</a></li>
                   <li><a href="http://search.maven.org/#search%7Cga%7C1%7Cjava%20token%20validator">OAuth - Java Token Validator</a></li>
                   <li><a href="https://npmjs.org">NodeJS Validator</a></li>
-                  <li>Trust Association Interceptor - can be download from the MobileFirst Operations Console</li>
-                  <li>Live Update adapter - can be download from the MobileFirst Operations Console</li>
+                  <li>Trust Association Interceptor - can be download from the {{ site.data.keys.mf_console }}</li>
+                  <li>Live Update adapter - can be download from the {{ site.data.keys.mf_console }}</li>
               </ul>
             </div>
          </div>
@@ -142,7 +142,7 @@ title: Downloads
    <p>Below are links to download a PDF version of the MobileFirst Platform Foundation docs for offline reading:</p>
 
    <ul>
-      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release80.zip">MobileFirst Foundation 8.0</a></li>
+      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release80.zip">{{ site.data.keys.product }} 8.0</a></li>
       <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release71.zip">MobileFirst Platform Foundation 7.1</a></li>
       <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release70.zip">MobileFirst Platform Foundation 7.0</a></li>
       <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release63.zip">MobileFirst Platform Foundation 6.3</a></li>
@@ -192,7 +192,7 @@ title: Downloads
                         <blockquote>
                             <strong>Note 1:</strong> Other versions of Eclipse might result in installation failures.
                             <br/>
-                            <strong>Note 2:</strong> Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the MobileFirst Operations Console
+                            <strong>Note 2:</strong> Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the {{ site.data.keys.mf_console }}
                             is started.</blockquote>
                     </li>
                     <li>If you are upgrading from a pre-6.2 version of the Developer Edition, you must uninstall it first. Skip this step if you are upgrading from v6.2 or later.</li>
@@ -223,7 +223,7 @@ title: Downloads
       <div class="panel panel-default">
          <div class="panel-heading" role="tab" id="cli">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCli" aria-expanded="true" aria-controls="cli"> MobileFirst CLI</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCli" aria-expanded="true" aria-controls="cli"> {{ site.data.keys.mf_cli }}</a>
             </h4>
          </div>
 

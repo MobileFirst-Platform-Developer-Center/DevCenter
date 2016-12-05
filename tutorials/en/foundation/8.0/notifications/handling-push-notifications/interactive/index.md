@@ -14,9 +14,9 @@ Interactive notifications are supported on devices with iOS version 8 and above.
 ## Sending interactive push notification
 Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
 
-You can set a string to indicate the category of the notification with the notification object, under **MobileFirst Operations Console → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
 
-![Setting categories for iOS interactive notifications in the MobileFirst Operations Console](categories-for-interactive-notifications.png)
+![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
 ## Handling interactive push notifications in Cordova application
 

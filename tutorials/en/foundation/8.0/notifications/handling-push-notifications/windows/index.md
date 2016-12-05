@@ -12,16 +12,16 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
+{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Platform Foundation SDK to windows applications](../../../application-development/sdk/windows-8-10)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product_adj }} SDK to windows applications](../../../application-development/sdk/windows-8-10)
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
 * [Notifications configuration](#notifications-configuration)
@@ -30,13 +30,13 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ## Notifications Configuration
 Create a new Visual Studio project or use and existing one.  
-If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
+If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
 
 ### Adding the Push SDK
 
 1. Select Tools → NuGet Package Manager → Package Manager Console.
-2. Choose the project where you want to install the MobileFirst push component.
-3. Add theMobileFirst push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
+2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
+3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
 ## Pre-requisite WNS configuration
 1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.

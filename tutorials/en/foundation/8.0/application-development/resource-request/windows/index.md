@@ -14,12 +14,12 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst applications can access resources using the `WorklightResourceRequest` REST API.  
+{{ site.data.keys.mf_console }} applications can access resources using the `WorklightResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../application-development/sdk/windows-8-10).
+- Ensure you have added the {{ site.data.keys.product }} SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../application-development/sdk/windows-8-10).
 - Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest

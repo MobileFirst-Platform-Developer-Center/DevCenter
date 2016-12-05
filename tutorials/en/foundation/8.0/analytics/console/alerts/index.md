@@ -7,20 +7,20 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.  
-You can set reactive thresholds in the MobileFirst Analytics Console to trigger alerts when a specific criteria is met.
+Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.  
+You can set reactive thresholds in the {{ site.data.keys.mf_analytics_console }} to trigger alerts when a specific criteria is met.
 
-You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the MobileFirst Analytics Console, and also be sent to a pre-configured REST endpoint or custom webhook.
+You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the {{ site.data.keys.mf_analytics_console }}, and also be sent to a pre-configured REST endpoint or custom webhook.
 
 Once alerts are triggered, the **Alert** icon (in the title bar) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
 
 Alternate methods are available for distributing the alerts.
 
-**Prerequisite:** Ensure that the MobileFirst Analytics Server is started and ready to receive client logs.
+**Prerequisite:** Ensure that the {{ site.data.keys.mf_analytics_server }} is started and ready to receive client logs.
 
 ## Alert management
 ### Creating an alert
-In the MobileFirst Analytics Console:
+In the {{ site.data.keys.mf_analytics_server }}:
 
 1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button. The **Alert Definition** tab appears.
 
@@ -78,7 +78,7 @@ The POST request includes the following attributes:
 * **message** - the user-defined message.
 
 ## Viewing alert details
-Alert details can be viewed from the **Dashboard→Alert Log** tab in the MobileFirst Operational Analytics console.
+Alert details can be viewed from the **Dashboard→Alert Log** tab in the {{ site.data.keys.mf_analytics_console }}.
 
 ![A new alert log](alert-log.png)
 
