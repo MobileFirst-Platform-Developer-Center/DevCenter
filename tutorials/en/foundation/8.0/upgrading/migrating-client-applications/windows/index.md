@@ -6,16 +6,16 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
 #### Jump to
 
-* [Scanning existing {{ site.data.keys.product }} native Windows apps to prepare for {{ site.data.keys.product_adj }} version 8.0](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-mobilefirst-foundation-80)
+* [Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
 * [Migrating a Windows project](#migrating-a-windows-project)
 * [Updating the Windows code](#updating-the-windows-code)
 
-## Scanning existing MobileFirst native Windows apps to prepare for {{ site.data.keys.product_adj }} version 8.0
-The migration assistance tool helps you prepare your apps that were created with earlier versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Windows app and generating a report of APIs that are deprecated or discontinued in version 8.0.
+## Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade
+The migration assistance tool helps you prepare your apps that were created with earlier versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Windows app and generating a report of APIs that are deprecated or discontinued in V8.0.
 
 The following information is important to know before you use the migration assistance tool:
 
@@ -24,7 +24,7 @@ The following information is important to know before you use the migration assi
 * You must have node.js version 4.0.0 or later installed.
 * Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
 
-Apps that were created with earlier versions of IBM MobileFirst Platform Foundation are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing native Windows app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
+Apps that were created with earlier versions of IBM MobileFirst Platform Foundation are not supported in V8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing native Windows app and identifies APIs that are deprecated, no longer supported, or modified in V8.0.
 
 The migration assistance tool does not modify or move any developer code or comments of your app.
 
@@ -51,16 +51,16 @@ The migration assistance tool does not modify or move any developer code or comm
    **destination_directory**  
    The directory where the report is created.
 
-   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0 and saves them in the identified destination directory.
+   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
     
 ## Migrating a Windows project
 To work with existing native Windows project that was created with IBM MobileFirst™ Platform Foundation V6.2.0 or later, you must modify the project.
 
-MobileFirst v8.0 only supports Windows Universal environments, that is Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal (Desktop and Phone). Windows Phone 8 Silverlight is not supported.
+MobileFirst V8.0 only supports Windows Universal environments, that is Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal (Desktop and Phone). Windows Phone 8 Silverlight is not supported.
 
-You can upgrade your Visual Studio project to v8.0 manually. {{ site.data.keys.product_adj }} v8.0 introduces a number of changes to the Visual Studio SDK that may require changes to apps developed in earlier versions. For information on the API's that have changed, see [Updating the Windows code](#updating-the-windows-code).
+You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.product_adj }} V8.0 introduces a number of changes to the Visual Studio SDK that may require changes to apps developed in earlier versions. For information on the API's that have changed, see [Updating the Windows code](#updating-the-windows-code).
 
-1. Update your {{ site.data.keys.product_adj }} SDK to v8.0.
+1. Update your {{ site.data.keys.product_adj }} SDK to V8.0.
     * Remove the MobileFirst SDK packages manually. This includes the **wlclient.properties** file, as well as the following references:
         * Newtonsoft.Json
         * SharpCompress
@@ -96,10 +96,10 @@ You can upgrade your Visual Studio project to v8.0 manually. {{ site.data.keys.p
 You can now start developing your native Windows application with the {{ site.data.keys.product_adj }} SDK. You might need to update your code to reflect the changes for {{ site.data.keys.product_adj }} V8.0.0 API.
 
 #### What to do next
-Replace the client-side APIs that are discontinued or not in v8.0.
+Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Updating the Windows code
-{{ site.data.keys.product }} v8.0 introduces a number of changes to the Windows SDK that might require changes to apps developed in earlier versions.
+{{ site.data.keys.product }} V8.0 introduces a number of changes to the Windows SDK that might require changes to apps developed in earlier versions.
 
 #### Deprecated Windows C# API Classes
 
