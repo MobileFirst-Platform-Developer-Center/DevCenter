@@ -10,7 +10,7 @@ To migrate an existing native Android project that was created with IBM MobileFi
 
 #### Jump to
 
-* [Scanning existing {{ site.data.keys.product }} native Android apps to prepare for {{ site.data.keys.product }} version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-version-80)
+* [Scanning existing {{ site.data.keys.product }} native Android apps to prepare for {{ site.data.keys.product }} version 8.0](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-mobilefirst-foundation-80)
 * [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
 * [Updating the Android code](#updating-the-android-code)
 
