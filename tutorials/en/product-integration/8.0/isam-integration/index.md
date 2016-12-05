@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM Security Access Manager
+title: Protecting IBM MobileFirst Foundation application traffic using IBM Security Access Manager
 breadcrumb_title: ISAM
 downloads:
   - name: Download Cordova sample
