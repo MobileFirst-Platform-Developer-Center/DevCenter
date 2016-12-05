@@ -59,8 +59,8 @@ The installation is very simple and straight forward.
   ```
 
 * Download the TestNg framework plugin into the development editor. If you are using Eclipse you can use Market place to install the same
-* [chrome and firefox driver downloads] (http://www.seleniumhq.org/download/)
-* [Install Appium (server + inspector)] (http://appium.io)
+* [chrome and firefox driver downloads](http://www.seleniumhq.org/download/)
+* [Install Appium (server + inspector)](http://appium.io)
 
 ## DOM inspectors
 Using inspector one can inspect the DOM elements of the Hybrid mobile App or the Web html. Here we use it for extracting the xpaths that is used in the code for setting and getting the values to or from the mobile or web elements.
@@ -106,8 +106,8 @@ The sample runs the following tests:
 By now you would have seen the ease and the power of using these defacto standard automation frameworks for running the UI tests. So now think of using this for your UI as well.
 
 ## References
-1. [Appium] (http://appium.io/)
-2. [Appium Getting Started] (http://appium.io/getting-started.html)
-3. [iOS Device - Appium] (https://testobject.com/blog/2016/01/how-to-test-ios-apps-with-appium-on-os-x.html)
-4. [iOS Simulator - Appium] (https://www.youtube.com/watch?v=d1u58t-ko6s)
-5. [Maven, Jenkins and Selenium] (http://www.guru99.com/maven-jenkins-with-selenium-complete-tutorial.html)
+1. [Appium](http://appium.io/)
+2. [Appium Getting Started](http://appium.io/getting-started.html)
+3. [iOS Device - Appium](https://testobject.com/blog/2016/01/how-to-test-ios-apps-with-appium-on-os-x.html)
+4. [iOS Simulator - Appium](https://www.youtube.com/watch?v=d1u58t-ko6s)
+5. [Maven, Jenkins and Selenium](http://www.guru99.com/maven-jenkins-with-selenium-complete-tutorial.html)
