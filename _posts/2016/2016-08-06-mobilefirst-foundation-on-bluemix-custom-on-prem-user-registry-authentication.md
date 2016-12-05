@@ -35,7 +35,7 @@ Here is a YouTube demo that shows how to create/add a custom user registry as a 
 * Prerequisite (installations):
  - Install Libety buildtools/WebSphere Application developer tools in the eclipse
  - Install "WAS Liberty with OSGI Application" in the eclipse
-* Create a OSGi Bundle project [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=6m26s)
+* Create a OSGi Bundle project [[video clip]](http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=6m26s)
 * Import the following packages as a dependency in OSGi bundle project
 
     ```
@@ -47,7 +47,7 @@ Here is a YouTube demo that shows how to create/add a custom user registry as a 
 
 * Copy the sample Activator.java and FileRegistrySample.java to the project
 * Create a new liberty Feature and export the bundles created above as .esa file.
-* Install the feature to Liberty server [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=12m08s)
+* Install the feature to Liberty server [[video clip]](http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=12m08s)
 	- cd "liberty-bin-dir" eg: `cd /usr/CustomUserRegWebDavDemo/mfp-server-all-in-one/mfp-server/bin`
 	- `sudo ./featureManager install CustUserRegWebDavFeature.esa`
   - Optional (to uninstall a feature):
@@ -62,7 +62,7 @@ Here is a YouTube demo that shows how to create/add a custom user registry as a 
 
 So, now we are done with creating the liberty feature and adding it to the server.xml.
 
-## Enabling WebDAV on remote machine [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=16m08s)
+## Enabling WebDAV on remote machine [[video clip]](http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=16m08s)
 
 * Enabling IIS server and WEBDAV on Windows Machine
  - Under Windows features turn on the following features
@@ -72,21 +72,21 @@ So, now we are done with creating the liberty feature and adding it to the serve
    * Windows Authentication
 * Copy the users and groups file registries and expose the same as a WEBDAV resource.
 
-##Configure Secured Gateway to connect to On-Prem [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=20m26s)
+##Configure Secured Gateway to connect to On-Prem [[video clip]](http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=20m26s)
 
 * Create a SG service and add the destination
 * On the Client SG
   - Connect to the server by entering the SG ID
   - Add host and port to the Access list
 
-## Update server.xml, prepare, push the liberty app to Bluemix and login [[video clip]] (http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=24m35s)
+## Update server.xml, prepare, push the liberty app to Bluemix and login [[video clip]](http://www.youtube.com/watch?v=TL1z7sQQb-Y&t=24m35s)
 
 * Update the userFile and groupFile attribute to point it to WebDAV resource/Custom user registry
 * Zip the App
 * Push the App
 * Login to the App
 
-Note: To install the app on to Bluemix you need to install [cloudfoundry] (https://console.ng.bluemix.net/docs/cli/cliplug-in.html) plugin on your system and then login.
+Note: To install the app on to Bluemix you need to install [cloudfoundry](https://console.ng.bluemix.net/docs/cli/cliplug-in.html) plugin on your system and then login.
 
 ## Sample
 [Download sample for OSGi Liberty feature](https://github.com/vinapp/liberty-customreg-as-webdavres)
@@ -94,7 +94,7 @@ Note: To install the app on to Bluemix you need to install [cloudfoundry] (https
 ## References
 
 1. [WebDAV Introduction](http://www.webdav.org/)
-2. [Installing and Configuring WebDAV on linux/apache] (http://www.cyberciti.biz/faq/rhel-fedora-linux-apache-enable-webdav/)
-3. [Installing and Configuring WebDAV on Windows] (http://www.iis.net/learn/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis)
-4. [Access Files Using WebDAV - All Platform] (http://www2.le.ac.uk/offices/itservices/ithelp/my-computer/files-and-security/work-off-campus/webdav)
-5. [About Implementing Custom User registry as a liberty feature] (https://developer.ibm.com/wasdev/docs/creating-a-custom-user-registry-as-a-liberty-user-feature/)
+2. [Installing and Configuring WebDAV on linux/apache](http://www.cyberciti.biz/faq/rhel-fedora-linux-apache-enable-webdav/)
+3. [Installing and Configuring WebDAV on Windows](http://www.iis.net/learn/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis)
+4. [Access Files Using WebDAV - All Platform](http://www2.le.ac.uk/offices/itservices/ithelp/my-computer/files-and-security/work-off-campus/webdav)
+5. [About Implementing Custom User registry as a liberty feature](https://developer.ibm.com/wasdev/docs/creating-a-custom-user-registry-as-a-liberty-user-feature/)
