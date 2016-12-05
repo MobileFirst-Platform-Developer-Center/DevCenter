@@ -4,12 +4,13 @@ title: Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM S
 breadcrumb_title: ISAM
 downloads:
   - name: Download Cordova sample
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/tree/release80
   - name: Download Android sample
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80
-  - name: Download iOS (Swift) sample
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80
+  - name: Download iOS sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80
 weight: 3
+published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -26,7 +27,7 @@ This pattern and the samples are designed to work with {{ site.data.keys.product
 
 This also requires {{ site.data.keys.product }} to run on an application server that supports LTPA tokens.
 
-> NOTE: Native Android apps are supported on IBM Security Access Manager version 9.0.2 onwards. The older versions of Security Access Manager tokenise the authentication header, causing the {{ site.data.keys.product }}'s Android SDK to fail. The iOS and Cordova SDKs are not affected by this. This issue has been rectified in IBM Security Access Manager 9.0.2.
+> NOTE: Cordova-based apps (iOS or Android) and native Android apps are supported on IBM Security Access Manager version 9.0.2 onwards. The older versions of Security Access Manager tokenise the authentication header, causing the {{ site.data.keys.product }}'s Cordova/Android SDK to fail. The iOS SDK is not affected by this. This issue has been rectified in IBM Security Access Manager 9.0.2.
 
 ## Flow
 ### Initial flow
@@ -126,7 +127,8 @@ document.getElementById('logout').addEventListener('click', function() {
       var options = {};
       options.parameters = {};
 
-      isamAuthChallengeHandler.submitLoginForm(reqURL, options, null);
+      isamAuthChallengeHandler.submitLoginForm(reqURL, options,
+        isamAuthChallengeHandler.submitLoginFormCallback);
       alert ("Success logout");
     },
     function(response) {
@@ -254,9 +256,9 @@ To ensure all {{ site.data.keys.product_adj }} traffic is routed through IBM Sec
 8. Leave the rest of the settings at default values and ensure that this server is made to be the default server.
 
 ## Samples
-Download the [Cordova sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/release80).  
-Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/release80).
-Download the [iOS (Swift) sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/release80).
+Download the [Cordova sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/tree/release80).  
+Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80).
+Download the [iOS sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80).
 
 There are 3 samples available:
 - **IsamCordova** contains a Cordova sample.
