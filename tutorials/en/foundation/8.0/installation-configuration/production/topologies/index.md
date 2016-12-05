@@ -12,7 +12,7 @@ The components are deployed according to the server topology that you use. The n
 
 * [Network flows between the {{ site.data.keys.mf_server }} components](#network-flows-between-the-mobilefirst-server-components)
 * [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
-* [Multiple {{ site.data.keys.product }} runtimes](#multiple-mobilefirst-runtimes)
+* [Multiple {{ site.data.keys.product }} runtimes](#multiple-mobilefirst-foundation-runtimes)
 * [Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
 
 ## Network flows between the {{ site.data.keys.mf_server }} components
@@ -23,15 +23,15 @@ The network flows between the components and the device can be illustrated by th
 
 The flows between the various {{ site.data.keys.mf_server }} components, {{ site.data.keys.mf_analytics }}, the mobile devices, and the application server are explained in the following sections:
 
-1. [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service)
-2. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers)
-3. [{{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product }} runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
-4. [{{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-runtime-to-mobilefirst-analytics)
+1. [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
+2. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
+3. [{{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product }} runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-foundation-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+4. [{{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
 5. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
 6. [{{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
 7. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
 8. [{{ site.data.keys.mf_server }} push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
-9. [Mobile devices to {{ site.data.keys.product }} runtime](#mobile-devices-to-mobilefirst-runtime)
+9. [Mobile devices to {{ site.data.keys.product }} runtime](#mobile-devices-to-mobilefirst-foundation-runtime)
 
 ### {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service
 The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from {{ site.data.keys.mf_console }} or the administration service. On WebSphere  Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
@@ -62,17 +62,17 @@ The JNDI properties that are used for the communication between the runtime and 
 
 #### {{ site.data.keys.product }} runtime
 
-* [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime)
 
 ### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers
-As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
+As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
 
 On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
 
 For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
 
 ### {{ site.data.keys.mf_server }} administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
-On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-runtime-to-mobilefirst-server-administration-service) and [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) and [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
 
 The deployment manager must be running to allow the operations that require JMX communication between the runtime and the administration service. Such operations can be a runtime initialization, or the notification of a modification performed through the administration service.
 
@@ -194,7 +194,7 @@ With one JVM, only symmetric deployment is possible with the following character
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime).
 
 **Stand-alone WebSphere Application Server Liberty profile server**  
 The following global JNDI properties are required for the administration services and the runtimes.
@@ -270,7 +270,7 @@ This topology supports only symmetric deployment. The runtimes and the administr
 * Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime).
 
 **WebSphere Application Server Liberty profile server farm**  
 The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
@@ -414,7 +414,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 The following global JNDI properties are required for the administration services:
 
@@ -582,7 +582,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime).
 
 The following local JNDI properties are required for the administration services and for the runtimes:
 
