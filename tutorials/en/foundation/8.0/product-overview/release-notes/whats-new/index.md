@@ -47,7 +47,7 @@ weight: 1
                 <p>Previously {{ site.data.keys.product_adj }} client SDK was delivered as a single framework or JAR file. You can now choose to include or exclude specific functionalities. In addtion to the core SDK, each {{ site.data.keys.product_adj }} API has its own set of optional components.</p>
 
                 <h3>New, improved development command-line interface (CLI)</h3>
-                <p>The {{ site.data.keys.mf_cli }} has been redesigned for greater development efficiency, including for use in automated scripts. Commands now start with the prefix mfpdev. The CLI is included in the {{ site.data.keys.product }} Developer Kit, or you can quickly download the latest version of the CLI from npm.</p>
+                <p>The {{ site.data.keys.mf_cli }} has been redesigned for greater development efficiency, including for use in automated scripts. Commands now start with the prefix mfpdev. The CLI is included in the {{ site.data.keys.mf_dev_kit_full }}, or you can quickly download the latest version of the CLI from npm.</p>
 
                 <h3>Migration assistance tool</h3>
                 <p>A migration assistance tool simplifies the procedure of migrating your existing apps to {{ site.data.keys.product }} version 8.0. The tool scans your existing {{ site.data.keys.product_adj }} apps and creates a list of the APIs that are used in the file that are either removed, deprecated, or replaced in version 8.0. When you run the migration assistance tool on Apache Cordova applications that were created with the {{ site.data.keys.product }}, it creates a new Cordova structure for the app that is compliant with version 8.0. For more information about the migration assistance tool.</p>

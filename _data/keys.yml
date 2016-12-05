@@ -23,8 +23,7 @@
 
 ######################################################################
 ## Product name ##
-# NOTE: The are some hardcoded current-version "IBM MobileFirst Platform" references in the DC doc, for installed product component names and search strings in product artifacts or packages.
-
+# NOTE: The are some hardcoded product-name and component instances in the documentation of the current version, which are quoted from file names and product-integrated (PII) strings (such as menu options, console strings, comments, and system messages).
 
 ## Product name
 product:                        "MobileFirst Foundation"       # [DITA: product_short = "IBM MobileFirst Foundation"; two uses]
@@ -72,9 +71,8 @@ product_V_R_M_I_stripped:       "8000"
 
 ## Product version
 product_version:                "V8.0"
-product_version_long:           "V8.0.0"        # DITA: Vprod
+product_version_long:           "V8.0.0"            # DITA: Vprod
 product_version_full:           "V8.0.0,0"
-# [sharonl] It's also possible to use "V{{ site.data.keys.product_V_R }}" in the source file. But using keywords ensure that we reference the version using a consistent format, and allows us to easily change the format in the future (by only changing the keyword definitions).
 
 ## Product artifacts with versions
 # Maven adapter version
@@ -93,8 +91,6 @@ prod_sys_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 # [DC-KEYS-TODO] When replacing text with the keywords, look for "MobileFirst Platform Foundation", "MobileFirst Platform", and "MobileFirst Foundation" variations (followed by the component identifier text).
 
 ## MF Analytics
-  # [DC-KEYS] [sharonl] There is no equivalent DITA keyword, but the DC also uses "Analytics" as a standalone "term". I don't know whether this is approved by legal/OM.
-  # We need the keyword to distinguish this from uses of the word "Analytics" not as a signifier of our product component.
 mf_analytics_short:             "Analytics"
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
@@ -126,21 +122,14 @@ mf_data_proxy:                  "MobileFirst Data Proxy"                        
 mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
 
 ## MF Developer Kit
+mf_dev_kit_short:               "Developer Kit"
 mf_dev_kit:                     "MobileFirst Developer Kit"
 mf_dev_kit_full:                "IBM MobileFirst Foundation Developer Kit"              # DITA: dev_kit
-# [DC-KEYS-TODO]: Also replace "Development Kit" (instead of "Developer Kit") uses in the DC with the appropriate keyword.
-
-## MF Device Runtime
-# [DC-KEYS] [sharonl] I don't think that we need keywords for the following DITA keywords, even though they are used in non-archived KC 8.0 DITA files;
-#   device_runtime_long = "IBM MobileFirst Platform Device Runtime"
-#   device_runtime_short = "MobileFirst Device Runtime"
-#   --> Outside of archived files, these keywords are used only twice in start/c_wl_overview.dita and twice in start/r_supported_operating_systems_an.dita.
-#       In the DC V8.0.0 tutorials, "Device Runtime" is used only once, in link text in product-overview/requirements/index.md:39. --> TODO: Check this use.
 
 ## MF Mobile Browser Simulator (MBS)
+# If the terminology changes, note that the "MBS" abbreviation is sometimes used hardcoded in the documentation
 mf_mbs:                         "Mobile Browser Simulator"                              # DITA: mbs
 mf_mbs_full:                    "IBM MobileFirst Foundation Mobile Browser Simulator"
-# [DC-KEYS-TODO] Also replace "IBM MobileFirst Foundation's Mobile Browser Simulator" [application-development/debugging-applications/index.md:29] with mf_mbs_full.
 
 ## MF Operations Console
 mf_console:                     "MobileFirst Operations Console"                        # DITA: wl_cons

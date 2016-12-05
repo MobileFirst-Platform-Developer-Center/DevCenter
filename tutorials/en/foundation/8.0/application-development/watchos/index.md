@@ -25,7 +25,7 @@ To set up the development environment for watchOS , create the Xcode project, ad
 2. Add the {{ site.data.keys.product_adj }} watchOS framework.
     * To install the necessary frameworks with CocoaPods, see [Adding the {{ site.data.keys.product_adj }} Native SDK](../../application-development/sdk/ios/#adding-support-for-apple-watchos) tutorial.
     * To install the necessary frameworks manually:
-        * Obtain the watchOS framework from {{ site.data.keys.mf_console }}'s Download Center.
+        * Obtain the watchOS framework from the Download Center of the {{ site.data.keys.mf_console }}.
         * Select the **[project name] WatchKit Extension** folder in the left navigation pane.
         * From the **File** menu, choose **Add Files**.
         * Click the **Options** button and select the following:

@@ -30,7 +30,7 @@ The migration assistance tool does not modify or move any developer code or comm
 
 1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the Developer Kit, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
+    * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the tool.
     * Use NPM to install the tool by entering the following command:

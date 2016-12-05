@@ -51,13 +51,13 @@ To install the Command Line Interface run the command:
 npm install -g mfpdev-cli
 ```
 
-If the CLI .zip file was downloaded from the {{ site.data.keys.mf_console }}'s Download Center, use the command:
+If the CLI .zip file was downloaded from the Download Center of the {{ site.data.keys.mf_console }}, use the command:
 
 ```bash
 npm install -g <path-to-mfpdev-cli.tgz>
 ```
 
-- To install the CLI without optional depedencies add the `--no-optional` flag:  `npm install -g --no-optional path-to-mfpdev-cli.tgz`
+- To install the CLI without optional dependencies add the `--no-optional` flag:  `npm install -g --no-optional path-to-mfpdev-cli.tgz`
 
 To confirm the installation, run the command `mfpdev` without any arguments and it will print the help text:
 
@@ -91,7 +91,7 @@ DESCRIPTION
 |                                                               | config                                       | Enables you to specify the back-end server and runtime to use for your app. In addition, for Cordova apps, enables you to configure several additional aspects such as the default language for system messages and whether to do a checksum security check. Other configuration parameters are included for Cordova apps.                                                                                                                                                |
 |                                                               | pull                                         | Retrieves an existing app configuration from the server.                |
 |                                                               | push                                         | Sends an app's configuration to the server.                             |
-|                                                               | preview                                      | Enables you to preview your Cordova app without requiring an actual device of the target platform type. You can view the preview in either the Mobile Browser Simulator or your web browser.                                                                               |
+|                                                               | preview                                      | Enables you to preview your Cordova app without requiring an actual device of the target platform type. You can view the preview in either the {{ site.data.keys.mf_mbs }} or your web browser.                                                                               |
 |                                                               | webupdate                                    | Packages the application resources contained in the www directory into a .zip file that can be used for the direct update process.                                                                                                                                     |
 | mfpdev server	                                                | info                                         | Displays information about the {{ site.data.keys.mf_server }}.                      |
 |                                                               | add                                          | Adds a new server definition to your environment                        |
@@ -359,7 +359,7 @@ Available configurations are:
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
-Before running the preview command, you must prepare the project by adding the *wlInitOptions* variable.  Complete the following steps:
+Before running the preview command, you must prepare the project by adding the `wlInitOptions` variable. Complete the following steps:
 
 1. Add the *wlInitOptions* variable to your main JavaScript file, which is **index.js** in a standard Cordova app.
 
@@ -388,11 +388,11 @@ Before running the preview command, you must prepare the project by adding the *
     mfpdev app preview
     ```
 
-You will be prompted to select which platform to preview and which type of preview to use.  
+You will be prompted to select which platform to preview and which type of preview to use.
 There are two options of preview: MBS and Browser.
 
-* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. Note: You cannot use the cordova-browser with the MBS option.
-* Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
+* MBS - {{ site.data.keys.mf_mbs }}. This method simulates a mobile device in a browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. Note: You cannot use the cordova-browser with the MBS option.
+* Browser - Simple Browser Rendering. This method presents the www resources of the Cordova application as a usual browser web page.
 
 > For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
 

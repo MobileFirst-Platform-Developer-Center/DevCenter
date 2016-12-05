@@ -18,15 +18,15 @@ This tutorial explores various approaches to debugging a JavaScript-based applic
 
 #### Jump to:
 
-* [Debugging with the IBM Mobile Browser Simulator](#debugging-with-the-ibm-mobile-browser-simulator)
+* [Debugging with the {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
 * [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
 * [Debugging with {{ site.data.keys.product_adj }} Logger](#debugging-with-mobilefirst-logger)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
-## Debugging with the IBM Mobile Browser Simulator
-You can use {{ site.data.keys.product_full }}'s Mobile Browser Simulator (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
+## Debugging with the {{ site.data.keys.mf_mbs }}
+You can use the {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
 To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
@@ -41,7 +41,7 @@ mfpdev app preview -p <platform>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
-### Mobile Browser Simulator
+### {{ site.data.keys.mf_mbs }}
 
 ![MBS](mbs.png)
 

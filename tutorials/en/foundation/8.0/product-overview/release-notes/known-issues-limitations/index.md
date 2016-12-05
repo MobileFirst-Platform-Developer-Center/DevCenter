@@ -163,8 +163,8 @@ Application authenticity feature does not work on {{ site.data.keys.product_adj 
 ### Nested projects can result in unpredictable results with the CLI
 Do not nest projects inside one another when using the {{ site.data.keys.mf_cli }}. Otherwise, the project that is acted upon might not be the one that you expect.
 
-### Previewing Cordova web resources with the Mobile Browser Simulator
-You can preview your web resources with Mobile Browser Simulator, but not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`.
+### Previewing Cordova web resources with the {{ site.data.keys.mf_mbs }}
+You can preview your web resources with the {{ site.data.keys.mf_mbs }}, but not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`.
 
 ### Physical iOS device required for testing extended app authenticity
 The testing of the extended app authenticity feature requires a physical iOS device, because an IPA cannot be installed on an iOS simulator.

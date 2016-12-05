@@ -101,7 +101,7 @@ Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.da
 
 
 ## {{ site.data.keys.product_adj }} Commands
-To access {{ site.data.keys.product }}'s shortcuts right click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
+To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
 
 | Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
