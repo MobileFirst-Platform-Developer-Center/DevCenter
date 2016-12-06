@@ -870,7 +870,7 @@ For more information about the composition and configuration options of the pred
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
     * Log in to the Console with admin user and password specified in step 3 or step 9.
 
-    If the console does not display the {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the {{ site.data.keys.product}} runtime from the WebSphere Application Server administrative console](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console).
+    If the console does not display the {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console).
 
 ### {{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment
 If you deploy a PureApplication  pattern based on the {{ site.data.keys.product }} (WAS ND) template and run the System Monitoring for WebSphere  Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly, when you deploy the pattern.
