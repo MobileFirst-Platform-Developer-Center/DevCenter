@@ -13,7 +13,7 @@ tabs:
 ---
 ## Lab Selection
 Below are {{ site.data.keys.product }} 8.0 hands-on lab sessions with step-by-step instructions.  
-You can read below an overview of the available links, and jump to lab from the tabbar above.
+Read an overview of the available labs, and jump to lab from the tab bar above.
 
 <div style="max-width: 250px">
 <a href="{{site.baseurl}}/labs/developers/8.0/advancedcarservice"><img src="{{site.baseurl}}/labs/developers/8.0/advancedcarservice/logo_small.png" alt="small logo for advanced car service app"></a>
