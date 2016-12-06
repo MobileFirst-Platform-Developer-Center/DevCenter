@@ -2,12 +2,10 @@
 title: 'HowTo: Download or upload large files to endpoints protected with IBM MobileFirst Foundation security'
 date: 2016-12-05
 tags:
-- MobileFirst_Platform
-- Large_files
+- MobileFirst_Foundation
 - Android
 - iOS
-- Swift3
-
+- Swift
 version:
 - 8.0
 author:
