@@ -62,7 +62,7 @@ The JNDI properties that are used for the communication between the runtime and 
 
 #### {{ site.data.keys.product }} runtime
 
-* [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime)
+* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers
 As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
@@ -270,7 +270,7 @@ This topology supports only symmetric deployment. The runtimes and the administr
 * Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime).
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **WebSphere Application Server Liberty profile server farm**  
 The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
@@ -414,7 +414,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 The following global JNDI properties are required for the administration services:
 
@@ -582,7 +582,7 @@ The deployment of this topology has the following characteristics:
 * Each runtime uses its own runtime database schema.
 
 #### Configuration of JNDI properties
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-foundation-runtime).
+Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 The following local JNDI properties are required for the administration services and for the runtimes:
 
