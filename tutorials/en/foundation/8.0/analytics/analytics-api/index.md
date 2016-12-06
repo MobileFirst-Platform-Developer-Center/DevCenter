@@ -5,9 +5,9 @@ breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
+{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
@@ -17,18 +17,18 @@ MobileFirst Foundation's Operational Analytics provides client-side APIs to help
 * [Tracking Users](#tracking-users)
 
 ## Configuring analytics on the client side
-Before you can start collecting the predefined data that MobileFirst Operational Analytics provides, you must first import the corresponding libraries to initialize the analytics support.
+Before you can start collecting the predefined data that {{ site.data.keys.mf_analytics }} provides, you must first import the corresponding libraries to initialize the analytics support.
 
 ### JavaScript (Cordova)
 In Cordova applications, no setup is required and initialization is built-in.  
 
 ### JavaScript (Web)
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. For more information, see [Adding the MobileFirst SDK to Web applications](../../application-development/sdk/web) tutorial.  
+In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the {{ site.data.keys.product_adj }} Web SDK. For more information, see [Adding the {{ site.data.keys.product_adj }} SDK to Web applications](../../application-development/sdk/web) tutorial.  
 
-Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
+Depending on how you've added the {{ site.data.keys.product_adj }} Web SDK, proceed in either of the following ways:
 
 
-Reference MobileFirst Analytics in the `HEAD` element:
+Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
 
 ```html
 <head>
@@ -105,7 +105,7 @@ WLAnalytics.init(this.getApplication());
 ## Enabling/disabling client event types
 The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their Analytics Console.
 
-The MobileFirst Analytics API allows for the capturing of the following metrics.
+The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
 
 * **Lifecycle events**: app usage rates, usage duration, app crash rates
 * **Network usage**: breakdown of API call frequencies, network performance metrics
@@ -120,7 +120,7 @@ The initialization of the analytics API must be written in native code, even in 
 **Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events) on disabling events.
 
 ### Client lifecycle events
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in MobileFirst Operational Analytics is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
+After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
 
 As soon as the device is set up to record sessions and you send your data, you can see the analytics console populated with data, as shown below.
 
@@ -350,7 +350,7 @@ To un-track individual users, use the `unsetUserContext` method:
 Not supported
 
 #### Web applications
-There is no `unsetUserContext` in the MobileFirst Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+There is no `unsetUserContext` in the {{ site.data.keys.product_adj }} Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
 
 #### iOS
 **Objective-C**
@@ -372,9 +372,9 @@ WLAnalytics.unsetUserContext();
 ```
 
 ## Sending Analytics data
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server by using `send` method of the Analytics API.
+Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the {{ site.data.keys.mf_analytics_server }} by using `send` method of the Analytics API.
 
-Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
+Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the {{ site.data.keys.mf_analytics_console }}.
 
 #### JavaScript (Cordova)
 In a Cordova application, use the following JavaScript API method:

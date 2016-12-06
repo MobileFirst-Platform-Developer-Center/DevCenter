@@ -5,7 +5,7 @@ breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 #### Initialize and open connections, get an Accessor, and add data
 
@@ -41,7 +41,7 @@ WL.JSONStore.init(collections, options)
 .then(function () {
 
   // Data to add, you probably want to get
-  // this data from a network call (e.g. MobileFirst Adapter).
+  // this data from a network call (e.g. Adapter).
   var data = [{name: 'carlos', age: 10}];
 
   // Optional options for add.
@@ -255,7 +255,7 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 });
 ```
 
-#### Push - get all documents that are marked as dirty, send them to a MobileFirst adapter, and mark them clean
+#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
 
 ```javascript
 var collectionName = 'people';
@@ -295,7 +295,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Pull - get new data from a MobileFirst adapter
+#### Pull - get new data from an adapter
 
 ```javascript
 var collectionName = 'people';
@@ -686,7 +686,7 @@ oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - get all documents that are marked as dirty, send them to a MobileFirst adapter, and mark them clean
+#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
 
 ```objc
 // Get the accessor to an already initialized collection.
@@ -699,13 +699,13 @@ NSError* error = nil;
 NSArray* dirtyDocs = [people allDirtyAndReturnError:&error];
 
 // ACTION REQUIRED: Handle the dirty documents here
-// (e.g. send them to a MobileFirst Adapter).
+// (e.g. send them to an adapter).
 
 // Mark dirty documents as clean
 int numCleaned = [[people markDocumentsClean:dirtyDocs error:&error] intValue];
 ```
 
-#### Pull - get new data from a MobileFirst adapter
+#### Pull - get new data from an adapter
 
 ```objc
 // Get the accessor to an already initialized collection.
@@ -715,7 +715,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 NSError* error = nil;
 
 
-// ACTION REQUIRED: Get data (e.g. MobileFirst Adapter).
+// ACTION REQUIRED: Get data (e.g. Adapter).
 // For this example, it is hardcoded.
 NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
 
@@ -1100,7 +1100,7 @@ finally {
 }
 ```
 
-#### Push - get all documents that are marked as dirty, send them to a MobileFirst adapter, and mark them clean
+#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
 
 ```java
 // Fill in the blank to get the Android application context.
@@ -1122,7 +1122,7 @@ try {
 }
 ```
 
-#### Pull - get new data from a MobileFirst adapter
+#### Pull - get new data from an adapter
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();

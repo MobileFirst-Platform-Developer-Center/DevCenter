@@ -5,13 +5,14 @@ breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../mobilefirst/) tutorial.
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
 
 #### Support level
-MobileFirst SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
 
 ### Android Studio
 Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
@@ -29,4 +30,4 @@ In the SDK Manager you can install required packages. For more information, [vis
 You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
 
 ## What's Next
-Now that the MobileFirst and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience MobileFirst Platform, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of MobileFirst Platform development.
+Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.

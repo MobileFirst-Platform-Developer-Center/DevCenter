@@ -20,8 +20,9 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Resources can be protected by several security checks. In this case, the MobileFirst Server sends all the relevant challenges simultaneously to the application.  
+Resources can be protected by several security checks. In this case, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
 
 A security check can be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
 For example, this tutorial describes an application that has two resources protected by a user name and password, where the second resource also requires an additional PIN code.
@@ -41,7 +42,7 @@ Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial
 
 In this example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should be asked to enter a PIN code only after a successful login to `StepUpUserLogin`. For this purpose, `StepUpPinCode` must be able to **reference** the `StepUpUserLogin` class.  
 
-The MobileFirst Foundation framework provides an annotation to inject a reference.  
+The {{ site.data.keys.product_adj }} framework provides an annotation to inject a reference.  
 In your `StepUpPinCode` class, at the class level, add:
 
 ```java
@@ -73,7 +74,7 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The `authorize` Method
+## The Authorize Method
 
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
 The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.

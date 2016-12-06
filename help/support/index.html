@@ -3,8 +3,8 @@ layout: default
 title: Support for MobileFirst Foundation
 ---
 <div class="container">
-    <h2 class="no-anchor">Support for MobileFirst Foundation</h2>
-    <p>Unless there are special instructions for a release of IBM Worklight, IBM MobileFirst Platform Foundation or IBM MobileFirst Foundation, assume that the below instructions apply to all releases.</p>
+    <h2 class="no-anchor">Support for {{ site.data.keys.product_full }}</h2>
+    <p>Unless there are special instructions for a release of IBM Worklight, IBM MobileFirst Platform Foundation or {{ site.data.keys.product_full }}, assume that the below instructions apply to all releases.</p>
         
     <p>Collecting this information before calling IBM support will help IBM understand the problem and save time analyzing the data.</p>
 
@@ -30,11 +30,11 @@ title: Support for MobileFirst Foundation
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="collecting-materials">
             <br/>
-            <p>Problems in Worklight, Mobile Foundation or MobileFirst Platform Foundation can involve the following different parts:</p>
+            <p>Problems in Worklight, Mobile Foundation or {{ site.data.keys.product }} can involve the following different parts:</p>
             
             <ul>
                 <li>Projects in Studio on a developer workstation</li>
-                <li>Application Center and Worklight, Mobile Foundation or MobileFirst Platform Foundation Server on an Application Server or Bluemix</li>
+                <li>Application Center and Worklight, Mobile Foundation or {{ site.data.keys.product }} Server on an Application Server or Bluemix</li>
                 <li>Applications running on client devices</li>
             </ul>
 
@@ -90,7 +90,7 @@ title: Support for MobileFirst Foundation
         
         <div role="tabpanel" class="tab-pane" id="application-center">
             <br/>       
-            <p>Starting with iFix 20160413-1613 for 7.0.0, 20160413-1346 for 7.1.0, 8.0.0 and all later releases, the version and runtime environment for MobileFirst Platform Foundation Server is stored in the topology.log file in the same directory as the other logs. If you are running an earlier version, you need to collect the following information manually:</p>
+            <p>Starting with iFix 20160413-1613 for 7.0.0, 20160413-1346 for 7.1.0, 8.0.0 and all later releases, the version and runtime environment for the server is stored in the topology.log file in the same directory as the other logs. If you are running an earlier version, you need to collect the following information manually:</p>
             
             <ul>
                 <li>Describe the version of Worklight Server or Worklight Application Center that you are using.</li>
@@ -130,11 +130,11 @@ title: Support for MobileFirst Foundation
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="section1">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection1" aria-expanded="true" aria-controls="collapseSection1">For WebSphere Application Server Liberty profile</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2-collapseSection1" aria-expanded="true" aria-controls="accordion2-collapseSection1">For WebSphere Application Server Liberty profile</a>
                         </h4>
                     </div>
 
-                    <div id="collapseSection1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section1">
+                    <div id="accordion2-collapseSection1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section1">
                         <div class="panel-body">
                         <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info :com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
                         
@@ -146,7 +146,7 @@ title: Support for MobileFirst Foundation
                             <li>For <b>Application Center</b> add the following to the trace: <code>com.ibm.puremeap.*=all</code></li>
                             <li>For <b>Analytics</b> add the following to the trace: <code>com.ibm.mobile.analytics.*=all</code></li>
                             <li>For problems with <b>push notifications for Worklight 6.2 to MobileFirst Platform Foundation 7.1</b>, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
-                            <li>For problems with <b>MobileFirst Foundation 8.0</b>, add the following to the trace: <code>com.ibm.mfp.push.server.=all</code>.</li>
+                            <li>For problems with <b>{{ site.data.keys.product }} 8.0</b>, add the following to the trace: <code>com.ibm.mfp.push.server.=all</code>.</li>
                             <li>If the <b>WebSphere Application Server Liberty profile was installed by the Worklight 5.x</b> installer:
                                 <ul>
                                     <li>For Unix-based or Linux operating systems:
@@ -184,11 +184,11 @@ title: Support for MobileFirst Foundation
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="section2">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection2" aria-expanded="true" aria-controls="collapseSection2">For WebSphere Application Server</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2-collapseSection2" aria-expanded="true" aria-controls="accordion2-collapseSection2">For WebSphere Application Server</a>
                         </h4>
                     </div>
 
-                    <div id="collapseSection2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section2">
+                    <div id="accordion2-collapseSection2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section2">
                         <div class="panel-body">
                         <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info:com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
                         
@@ -212,11 +212,11 @@ title: Support for MobileFirst Foundation
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="section3">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection3" aria-expanded="true" aria-controls="collapseSection3">For Tomcat</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2-collapseSection3" aria-expanded="true" aria-controls="accordion2-collapseSection3">For Tomcat</a>
                         </h4>
                     </div>
 
-                    <div id="collapseSection3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section3">
+                    <div id="accordion2-collapseSection3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section3">
                         <div class="panel-body">
                         <ul>
                             <li>Collect the files and directories in the install_dir/logs directory. If you are running in a server farm environment, collect the logs directory for each server.</li>
@@ -229,11 +229,11 @@ title: Support for MobileFirst Foundation
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="section4">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSection4" aria-expanded="true" aria-controls="collapseSection4">For problems in deploying applications to the Worklight Server</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2-collapseSection4" aria-expanded="true" aria-controls="accordion2-collapseSection4">For problems in deploying applications to the Worklight Server</a>
                         </h4>
                     </div>
 
-                    <div id="collapseSection4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section4">
+                    <div id="accordion2-collapseSection4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section4">
                         <div class="panel-body">
                         <p>If the problem occurs with the Server Configuration Tool (Worklight Server 6.1 and later), gather the following information:</p>
                         

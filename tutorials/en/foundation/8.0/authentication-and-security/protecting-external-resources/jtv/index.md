@@ -8,16 +8,17 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
+{{ site.data.keys.product_full }} provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
 
 This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequesites:**
 
-* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Foundation security framework](../../).
+* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
+* Understanding of the [{{ site.data.keys.product_adj }} Foundation security framework](../../).
 
 ![Flow](JTV_flow.jpg)
 
@@ -39,11 +40,11 @@ To be able to validate tokens, instantiate `TokenValidationManager`.
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: the URI of the Authorization server, usually the MobileFirst Server. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID that you configured in the MobileFirst Operations Console.
-- `clientSecret`: The confidential client secret that you configured in the MobileFirst Operations Console.
+- `authorizationURI`: the URI of the Authorization server, usually the {{ site.data.keys.mf_server }}. For example **http://localhost:9080/mfp/api**.
+- `clientId`: The confidential client ID that you configured in the {{ site.data.keys.mf_console }}.
+- `clientSecret`: The confidential client secret that you configured in the {{ site.data.keys.mf_console }}.
 
-> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the MobileFirst Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
+> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the {{ site.data.keys.product_adj }} Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
 ## Validating the credentials
 The `validate` API method asks the authorization server to validate the authorization header:
@@ -189,7 +190,7 @@ You can deploy the project on the supported application servers (Tomcat, WebSphe
 
 ### Sample usage
 
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
+1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
 4. Map the `accessRestricted` scope to the security check.

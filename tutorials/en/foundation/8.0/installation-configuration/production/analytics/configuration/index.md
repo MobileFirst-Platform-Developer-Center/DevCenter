@@ -4,8 +4,9 @@ title: MobileFirst Analytics Server Configuration Guide
 breadcrumb_title: Configuration Guide
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Some configuration for the MobileFirst Analytics Server is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
+Some configuration for the {{ site.data.keys.mf_analytics_server }} is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
 
 #### Jump to
 
@@ -43,9 +44,9 @@ The combination of the previous settings means that Elasticsearch waits for the 
 * Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
 
 ## Configuration properties
-The MobileFirst Analytics Server can start successfully without any additional configuration.
+The {{ site.data.keys.mf_analytics_server }} can start successfully without any additional configuration.
 
-Configuration is done through JNDI properties on both the MobileFirst Server and the MobileFirst Analytics Server. Additionally, the MobileFirst Analytics Server supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
+Configuration is done through JNDI properties on both the {{ site.data.keys.mf_server }} and the {{ site.data.keys.mf_analytics_server }}. Additionally, the {{ site.data.keys.mf_analytics_server }} supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
 
 The Analytics runtime web application must be restarted for any changes in these properties to take effect. It is not necessary to restart the entire application server.
 
@@ -64,23 +65,23 @@ To set a JNDI property on Tomcat, add a tag to the context.xml file as follows.
 The JNDI properties on WebSphere Application Server are available as environment variables.
 
 * In the WebSphere Application Server console, select **Applications → Application Types → WebSphere Enterprise applications**.
-* Select the **MobileFirst Administration Service** application.
+* Select the **{{ site.data.keys.product_adj }} Administration Service** application.
 * In **Web Module Properties**, click **Environment entries for Web Modules** to display the JNDI properties.
 
-#### MobileFirst Server
-The following table shows the properties that can be set in the MobileFirst Server.
+#### {{ site.data.keys.mf_server }}
+The following table shows the properties that can be set in the {{ site.data.keys.mf_server }}.
 
 | Property                           | Description                                           | Default Value |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | Set this property to the URL of your MobileFirst Analytics Console. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the MobileFirst Operations Console. | None |
-| mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the MobileFirst Server are captured in MobileFirst Analytics. | true |
-| mfp.analytics.url                  |Required. The URL that is exposed by the MobileFirst Analytics Server that receives incoming analytics data. For example, http://hostname:port/analytics-service/rest/v2. | None |
+| mfp.analytics.console.url          | Set this property to the URL of your {{ site.data.keys.mf_analytics_console }}. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the {{ site.data.keys.mf_console }}. | None |
+| mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the {{ site.data.keys.mf_server }} are captured in {{ site.data.keys.mf_analytics }}. | true |
+| mfp.analytics.url                  |Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_server }} that receives incoming analytics data. For example, http://hostname:port/analytics-service/rest/v2. | None |
 | analyticsconsole/mfp.analytics.url |	Optional. Full URI of the Analytics REST services. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI, not the internal URI inside the local LAN. This value can contain * in places of the URI protocol, host name, or port, to denote the corresponding part from the incoming URL.	*://*:*/analytics-service, with the protocol, host name, and port dynamically determined |
 | mfp.analytics.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
 | mfp.analytics.password             | The password that is used if the data entry point is protected with basic authentication. | None |
 
-#### MobileFirst Analytics Server
-The following table shows the properties that can be set in the MobileFirst Analytics Server.
+#### {{ site.data.keys.mf_analytics_server }}
+The following table shows the properties that can be set in the {{ site.data.keys.mf_analytics_server }}.
 
 | Property                           | Description                                           | Default Value |
 |------------------------------------|-------------------------------------------------------|---------------|
@@ -121,10 +122,10 @@ These values can be set by using basic time units as follows.
 * 1s = 1 second
 * 1ms = 1 millisecond
 
-> Note: If you are migrating from previous versions of MobileFirst Analytics Server and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of MobileFirst Analytics Server](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
-The underlying storage and clustering technology that serves the MobileFirst Analytics Console is Elasticsearch.  
+The underlying storage and clustering technology that serves the {{ site.data.keys.mf_analytics_console }} is Elasticsearch.  
 Elasticsearch provides many tunable properties, mostly for performance tuning. Many of the JNDI properties are abstractions of properties that are provided by Elasticsearch.
 
 All properties that are provided by Elasticsearch can also be set by using JNDI properties with **analytics/** prepended before the property name. For example, **threadpool.search.queue_size** is a property that is provided by Elasticsearch. It can be set with the following JNDI property.
@@ -142,30 +143,30 @@ These properties are normally set in a custom settings file. If you are familiar
 Unless you are an expert Elasticsearch IT manager, identified a specific need, or were instructed by your services or support team, do not be tempted to fiddle with these settings.
 
 ## Backing up Analytics data
-Learn about how to back up your MobileFirst Analytics data.
+Learn about how to back up your {{ site.data.keys.mf_analytics }} data.
 
-The data for MobileFirst Analytics is stored as a set of files on the MobileFirst Analytics Server file system. The location of this folder is specified by the datapath JNDI property in the MobileFirst Analytics Server configuration. For more information about the JNDI properties, see [Configuration properties](#configuration-properties).
+The data for {{ site.data.keys.mf_analytics }} is stored as a set of files on the {{ site.data.keys.mf_analytics_server }} file system. The location of this folder is specified by the datapath JNDI property in the {{ site.data.keys.mf_analytics_server }} configuration. For more information about the JNDI properties, see [Configuration properties](#configuration-properties).
 
-The MobileFirst Analytics Server configuration is also stored on the file system, and is called server.xml.
+The {{ site.data.keys.mf_analytics_server }} configuration is also stored on the file system, and is called server.xml.
 
-You can back up these files by using any existing server backup procedures that you might already have in place. No special procedure is required when you back up these files, other than ensuring that the MobileFirst Analytics Server is stopped. Otherwise, the data might change while the backup is occurring, and the data that is stored in memory might not yet be written to the file system. To avoid inconsistent data, stop the MobileFirst Analytics Server before you start your backup.
+You can back up these files by using any existing server backup procedures that you might already have in place. No special procedure is required when you back up these files, other than ensuring that the {{ site.data.keys.mf_analytics_server }} is stopped. Otherwise, the data might change while the backup is occurring, and the data that is stored in memory might not yet be written to the file system. To avoid inconsistent data, stop the {{ site.data.keys.mf_analytics_server }} before you start your backup.
 
 ## Cluster management and Elasticsearch
 Manage clusters and add nodes to relieve memory and capacity strain.
 
 ### Add a Node to the Cluster
-You can add a new node to the cluster by installing the MobileFirst Analytics Server or by running a standalone Elasticsearch instance.
+You can add a new node to the cluster by installing the {{ site.data.keys.mf_analytics_server }} or by running a standalone Elasticsearch instance.
 
-If you choose the standalone Elasticsearch instance, you relieve some cluster strain for memory and capacity requirements, but you do not relieve data ingestion strain. Data reports must always go through the MobileFirst Analytics Server for preservation of data integrity and data optimization prior to going to persistent store.
+If you choose the standalone Elasticsearch instance, you relieve some cluster strain for memory and capacity requirements, but you do not relieve data ingestion strain. Data reports must always go through the {{ site.data.keys.mf_analytics_server }} for preservation of data integrity and data optimization prior to going to persistent store.
 
 You can mix and match.
 
 The underlying Elasticsearch data store expects nodes to be homogenous, so do not mix a powerful 8-core 64 GB RAM rack system with a leftover surplus notebook in your cluster. Use similar hardware among the nodes.
 
-#### Adding a MobileFirst Analytics Server to the cluster
-Learn how to add a MobileFirst Analytics Server to the cluster.
+#### Adding a {{ site.data.keys.mf_analytics_server }} to the cluster
+Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
 
-Because Elasticsearch is embedded in the MobileFirst Analytics Server, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
 
 In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
 
@@ -174,10 +175,10 @@ In the following sample instructions, do not configure the node to be a master n
 * Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
 * Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
 
-1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the MobileFirst Analytics Server to any of the supported app servers.
-    * [Installing MobileFirst Analytics on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-    * [Installing MobileFirst Analytics on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
-    * [Installing MobileFirst Analytics on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
+1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the {{ site.data.keys.mf_analytics_server }} to any of the supported app servers.
+    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+    * [Installing {{ site.data.keys.mf_analytics }} on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
 2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
 
@@ -192,12 +193,12 @@ In the following sample instructions, do not configure the node to be a master n
 
 3. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the **path.plugins** flag.
 4. Run the application server and start the WAR applications if necessary.
-5. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in MobileFirst Analytics Console.
+5. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
 
 #### Adding a stand-alone Elasticsearch node to the cluster
 Learn how to add a stand-alone Elasticsearch node to the cluster.
 
-You can add a stand-alone Elasticsearch node to your existing MobileFirst Analytics cluster in just a few simple steps. However, you must decide the role of this node. Is it going to be a master-eligible node? If so, remember to avoid the split-brain issue. Is it going to be a data node? Is it going to be a client-only node? Perhaps you want a client-only node so that you can start a node temporarily to expose Elasticsearch's REST API directly to affect dynamic configuration changes to your running cluster.
+You can add a stand-alone Elasticsearch node to your existing {{ site.data.keys.mf_analytics }} cluster in just a few simple steps. However, you must decide the role of this node. Is it going to be a master-eligible node? If so, remember to avoid the split-brain issue. Is it going to be a data node? Is it going to be a client-only node? Perhaps you want a client-only node so that you can start a node temporarily to expose Elasticsearch's REST API directly to affect dynamic configuration changes to your running cluster.
 
 In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
 
@@ -223,11 +224,11 @@ In the following sample instructions, do not configure the node to be a master n
 4. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the path.plugins flag.
 5. Run `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` to install the ICU plug-in.
 6. Run `./bin/elasticsearch`.
-7. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in MobileFirst Analytics Console.
+7. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
 
 #### Circuit breakers
 Learn about Elasticsearch circuit breakers.
 
-Elasticsearch contains multiple circuit breakers that are used to prevent operations from causing an **OutOfMemoryError**. For example, if a query that serves data to the MobileFirst Operations Console results in using 40% of the JVM heap, the circuit breaker triggers, an exception is raised, and the console receives empty data.
+Elasticsearch contains multiple circuit breakers that are used to prevent operations from causing an **OutOfMemoryError**. For example, if a query that serves data to the {{ site.data.keys.mf_console }} results in using 40% of the JVM heap, the circuit breaker triggers, an exception is raised, and the console receives empty data.
 
 Elasticsearch also has protections for filling up the disk. If the disk on which the Elasticsearch data store is configured to write fills to 90% capacity, the Elasticsearch node informs the master node in the cluster. The master node then redirects new document-writes away from the nearly full node. If you have only one node in your cluster, no secondary node to which data can be written is available. Therefore, no data is written and is lost.

@@ -5,7 +5,7 @@ breadcrumb_title: additional information
 relevantTo: [ios]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Working with bitcode in iOS apps
 
 * The application-authenticity security check is not supported with bitcode.
@@ -54,11 +54,11 @@ To prepare for production
    
    The SSL port number is defined on the server in **server.xml** in the `httpEndpoint` definition.
     
-3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring MobileFirst Server to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
+3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
 4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
 
 ### Enabling OpenSSL for iOS
-The MobileFirst iOS SDK uses native iOS APIs for cryptography. You can configure the IBM MobileFirst™ Platform Foundation V8.0.0 to use the OpenSSL cryptography library in iOS apps.
+The {{ site.data.keys.product_adj }} iOS SDK uses native iOS APIs for cryptography. You can configure {{ site.data.keys.product_full }} to use the OpenSSL cryptography library in iOS apps.
 
 Encryption/decryption is provided with the following APIs: `WLSecurityUtils.encryptText()` and `WLSecurityUtils.decryptWithKey()`.
 
@@ -86,13 +86,13 @@ OpenSSL is disable by default. To enable it, proceed as follows:
 With this setup, the encryption/decryption calls use OpenSSL as in previous versions of the product.
 
 ### Migration options
-If you have an MobileFirst project that was written in an earlier version, you might need to incorporate changes to continue using OpenSSL.
+If you have an {{ site.data.keys.product_adj }} project that was written in an earlier version, you might need to incorporate changes to continue using OpenSSL.
     * If the application is not using encryption/decryption APIs and no encrypted data is cached on the device, no action is needed.
     * If the application is using encryption/decryption APIs, you have the option of using these APIs with or without OpenSSL.
 
 #### Migrating to native encryption
 1. Make sure the default native encryption/decryption option is chosen (see Option 1).
-2. Migrating cached data: If the previous installation of IBM MobileFirst Platform Foundation saved encrypted data to the device using OpenSSL, OpenSSL frameworks must be installed as described in Option 2. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. If the OpenSSL framework is not installed an error is thrown. This way the data will be auto-migrated to native encryption allowing subsequent releases to work without the OpenSSL framework.
+2. Migrating cached data: If the previous installation of {{ site.data.keys.product_full }} saved encrypted data to the device using OpenSSL, OpenSSL frameworks must be installed as described in Option 2. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. If the OpenSSL framework is not installed an error is thrown. This way the data will be auto-migrated to native encryption allowing subsequent releases to work without the OpenSSL framework.
 
 #### Continuing with OpenSSL
 If OpenSSL is required use the setup described in Option 2.

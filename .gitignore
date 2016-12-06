@@ -10,3 +10,9 @@ _customConfig.yml
 assets/.DS_Store
 
 node_modules/
+
+# Temporary swap files
+*.swp
+*.swo
+*.*~
+

@@ -5,6 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
 
@@ -13,7 +14,7 @@ This tutorial explains the steps a developer needs to follow in order to develop
 * Xcode 7.1 and later
 * iOS 8 and later
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../mobilefirst/) tutorial.
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product }} development environment](../mobilefirst/) tutorial.
 
 ### Registration
 1. Register as an iOS developer
@@ -37,10 +38,11 @@ Xcode is an IDE which you can use to:
 - Install apps on iOS devices
 - Develop, debug, test performance, and more
 
-> To learn more, [visit the iOS Dveloper Library website](https://developer.apple.com/library/ios/navigation/)
+> To learn more, [visit the iOS Developer Library website](https://developer.apple.com/library/ios/navigation/)
 
 #### iOS Simulator
 Xcode provides an iOS Simulator to test your application. For a detailed explanation of all available options, see the [About Simulator documentation topic](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) in the Apple Developers website.
 
 ## What's Next
-Now that the MobileFirst and iOS development environment are set up, continue to [Quick Start](../../../quick-start/ios/) category to experience MobileFirst Platform, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of MobileFirst Platform development.
+Now that the {{ site.data.keys.product_adj }} and iOS development environment are set up, continue to [Quick Start](../../../quick-start/ios/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+

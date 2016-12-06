@@ -4,14 +4,14 @@ title: Securing containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Below are several methods you can follow in order to secure your IBM Container with MobileFirst Server instance.
+Below are several methods you can follow in order to secure your IBM Container with {{ site.data.keys.mf_server }} instance.
 
 #### Jump to
 
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
-* [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [Security configuration for {{ site.data.keys.product_full }} on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
@@ -54,24 +54,24 @@ For development-stage purposes only, you can disable ATS by adding following pro
 </dict>
 ```
 
-## Security configuration for IBM MobileFirst Foundation on IBM Containers	
-Your IBM MobileFirst Foundation instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
+## Security configuration for {{ site.data.keys.product_full }} on IBM Containers	
+Your {{ site.data.keys.product }} instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
 ### Encrypting passwords
-Store the passwords for MobileFirst Server users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in MobileFirst Server for instructions.
+Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
 
 ### Application-authenticity validation
-To keep unauthorized mobile applications from accessing the MobileFirst Server, enable the application-authenticity security check. Learn more...
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
 
-### Configure SSL for Operations Console and Analytics Console
-You can secure access to the MobileFirst Operations Console and the MobileFirst Analytics Console by enabling HTTP over SSL (HTTPS) on the MobileFirst Server.  
-To enable HTTPS on the MobileFirst Server, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
+### Configure SSL for {{ site.data.keys.mf_console }} and {{ site.data.keys.mf_analytics_console }}
+You can secure access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_server }}.  
+To enable HTTPS on the {{ site.data.keys.mf_server }}, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
 ### Securing a connection to the back end
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
 
-#### Encrypting passwords for user roles configured in MobileFirst Server
-The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
+#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
 Passwords are configured in the **server.env** files in the **package_root/mfpf-server/usr/env** and **package_root/mfpf-analytics/usr/env** folders. Passwords should be stored in an encrypted format.
 
 1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
@@ -86,26 +86,26 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 ```
 
 #### Securing container communication using a private IP address	
-To have secure communication between the MobileFirst Server container and the MobileFirst Analytics container, you must include the private IP address of the MobileFirst Analytics container in the `mfpfProperties.xml` file.
+To have secure communication between the {{ site.data.keys.mf_server }} container and the {{ site.data.keys.mf_analytics }} container, you must include the private IP address of the {{ site.data.keys.mf_analytics }} container in the `mfpfProperties.xml` file.
 
-To complete this task, you need the private IP of the MobileFirst Analytics container, which you can obtain using the following command: `cf ic inspect analytics_container_id`. Look for the IP Address field in the command output. **Remember:** If you are going to use MobileFirst Analytics, you must configure, build, and run the MobileFirst Analytics image before configuring, deploying, and running the MobileFirst Server image.
+To complete this task, you need the private IP of the {{ site.data.keys.mf_analytics }} container, which you can obtain using the following command: `cf ic inspect analytics_container_id`. Look for the IP Address field in the command output. **Remember:** If you are going to use {{ site.data.keys.mf_analytics }}, you must configure, build, and run the {{ site.data.keys.mf_analytics }} image before configuring, deploying, and running the {{ site.data.keys.mf_server }} image.
 
 Complete the following steps by editing the mfpf-server/usr/config/mfpfproperties.xml file:
 
-1. Set the **mfp.analytics.url** property to the private IP address of the MobileFirst Analytics container. Example: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
+1. Set the **mfp.analytics.url** property to the private IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
     When a private IP address changes, provide the new IP address in the mfpfproperties.xml file and rebuild and deploy the container by running the prepareserver.sh and starterserver.sh scripts respectively.
     
-2. To ensure that the MobileFirst Analytics console can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the MobileFirst Analytics container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
+2. To ensure that the {{ site.data.keys.mf_analytics_console }} can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
 #### Restricting access to the consoles running on containers	
-You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
+You can restrict access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
 
 The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
 
 See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)
 
-1. Create a custom TAI that implements your security mechanism to control access to the MobileFirst Operations Console. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the MobileFirst Operations Console or not.
+1. Create a custom TAI that implements your security mechanism to control access to the {{ site.data.keys.mf_console }}. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the {{ site.data.keys.mf_console }} or not.
 
    ```java
    package com.ibm.mfpconsole.interceptor;
@@ -251,18 +251,18 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    </server>
    ```
 
-4. [Build the image and run the container](../). The MobileFirst Operations Console and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
+4. [Build the image and run the container](../). The {{ site.data.keys.mf_console }} and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
 
 ## LDAP configuration for containers
-You can configure an IBM MobileFirst Foundation container to securely connect out to an external LDAP repository.
+You can configure a {{ site.data.keys.product }} container to securely connect out to an external LDAP repository.
 
 The external LDAP registry can be used in a container for the following purposes:
 
-* To configure the MobileFirst administration security with an external LDAP registry.
-* To configure the MobileFirst mobile applications to work with an external LDAP registry.
+* To configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.
+* To configure the {{ site.data.keys.product_adj }} mobile applications to work with an external LDAP registry.
 
 ### Configuring administration security with LDAP
-Configure the MobileFirst administration security with an external LDAP registry.  
+Configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.  
 The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
@@ -340,7 +340,7 @@ To configure a secure gateway connection to your LDAP server, you must create an
 ```
 
 ### Configuring apps to work with LDAP
-Configure MobileFirst mobile apps to work with an external LDAP registry.  
+Configure {{ site.data.keys.product_adj }} mobile apps to work with an external LDAP registry.  
 The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
 
 To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
@@ -354,4 +354,4 @@ To configure a secure gateway connection to your LDAP server, you must create an
 7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
 
 **Results**  
-The communication between the MobileFirst app in the container on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
+The communication between the {{ site.data.keys.product_adj }} app in the container on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
