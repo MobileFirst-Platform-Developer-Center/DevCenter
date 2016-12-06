@@ -91,7 +91,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### Configuration class
-You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
+You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
 
 Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
 

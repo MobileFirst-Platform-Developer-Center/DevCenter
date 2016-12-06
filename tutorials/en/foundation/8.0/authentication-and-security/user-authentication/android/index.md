@@ -30,7 +30,7 @@ submitChallengeAnswer(credentials);
 
 You might also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
 
 ```java
 WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
@@ -72,7 +72,7 @@ public void login(JSONObject credentials){
 ## Obtaining an access token
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
-The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The {{ site.data.keys.product }} SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```java
 WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenListener() {
@@ -132,7 +132,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `logout` API to log out from a specific security check:
+The {{ site.data.keys.product }} SDK also provides a `logout` API to log out from a specific security check:
 
 ```java
 WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutResponseListener() {

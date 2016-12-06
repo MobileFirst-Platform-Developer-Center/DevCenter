@@ -161,7 +161,7 @@ After the trust is confirmed, no application that uses that provisioning profile
 ## Installing the client on a Windows Phone 8 Universal mobile device
 You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the IBM MobileFirst Foundation Server. It is uploaded to the MobileFirst Server by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
 
 1. Start the browser on your mobile device.
 2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
@@ -519,7 +519,7 @@ New versions of the mobile client application that are available on the Applicat
 
 f a later version of the application is detected, you are requested to download and install the later version.
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the MobileFirst project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
 
 If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
 

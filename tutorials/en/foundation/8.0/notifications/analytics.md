@@ -13,7 +13,7 @@ To set up Analytics support for Push Notification, the following JNDI properties
 <jndiEntryjndiName = "imfpush/mfp.push.services.ext.analytics" value = "com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin"/>
 ```
 
-The following properties are required to configure and initialize the IBM MobileFirst Foundation Analytics plug-in. The username and password will be used to authenticate with the Analytics service at the provided endpoint.
+The following properties are required to configure and initialize the {{ site.data.keys.mf_analytics }} plug-in. The username and password will be used to authenticate with the Analytics service at the provided endpoint.
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
@@ -45,5 +45,5 @@ To disable the sending of this event, set the property to **false**.
 
 For information on viewing the Push Notification reports in the Analytics Console, see [Push Notification Reports](../../analytics/console/push-notifications/).
 
-> For more information on the JNDI properties for push service, see [List of JNDI properties for MobileFirst Server push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
-> **Note:** The IBM MobileFirst Platform Foundation installer creates and sets up these properties to defaults.
+> For more information on the JNDI properties for push service, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+> **Note:** The {{ site.data.keys.product_full }} installer creates and sets up these properties to defaults.

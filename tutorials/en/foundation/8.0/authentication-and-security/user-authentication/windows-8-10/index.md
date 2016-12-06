@@ -36,7 +36,7 @@ public override void SubmitChallengeAnswer(object answer)
 
 You may also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
 
-You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `Login` API:
+You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `Login` API:
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
@@ -64,7 +64,7 @@ public async void login(JSONObject credentials)
 ## Obtaining an access token
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in, when the application starts.
 
-The MobileFirst Foundation SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
+The {{ site.data.keys.product }} SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
@@ -120,7 +120,7 @@ Here, `identity` has a key called `user` which itself contains a `JObject` repre
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `Logout` API to logout from a specific security check:
+The {{ site.data.keys.product }} SDK also provides a `Logout` API to logout from a specific security check:
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);

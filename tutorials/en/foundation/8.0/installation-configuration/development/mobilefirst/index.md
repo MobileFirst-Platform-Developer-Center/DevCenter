@@ -6,52 +6,52 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-IBM MobileFirst Foundation is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
+{{ site.data.keys.product_full }} is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
 
-These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the MobileFirst Foundation Developer Kit for local use. Note that the version that is available from the Developer Kit represents the version that was available at the time the specific Developer Kit build was released, and that downloading a new Developer Kit build will be required in order to use the latest. 
+These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the {{ site.data.keys.mf_dev_kit }} for local use. Note that the version that is available from the {{ site.data.keys.mf_dev_kit_short }} represents the version that was available at the time the specific {{ site.data.keys.mf_dev_kit_short }} build was released, and that downloading a new {{ site.data.keys.mf_dev_kit_short }} build will be required in order to use the latest. 
 
-Continue reading to learn more about the components of MobileFirst Foundation.
+Continue reading to learn more about the components of {{ site.data.keys.product }}.
 
-> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
+> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
 
 #### Jump to:
 
 * [Installation guide](#installation-guide)
-* [MobileFirst Foundation Developer Kit](#mobilefirst-foundation-development-kit)
-* [MobileFirst Foundation components](#mobilefirst-foundation-components)
+* [{{ site.data.keys.mf_dev_kit }}](#mobilefirst-developer-kit)
+* [{{ site.data.keys.product }} components](#mobilefirst-foundation-components)
 * [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Installation guide
 [Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation in your workstation.
 
-## MobileFirst Foundation Development Kit
-The Developer Kit provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
+## {{ site.data.keys.mf_dev_kit }}
+The {{ site.data.keys.mf_dev_kit_short }} provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: {{ site.data.keys.mf_server }} &amp; {{ site.data.keys.mf_console }}, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
 
 > **Note:** If you need to set up your development environment on a computer that has no internet access, you can install components offline. See [How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment).
 
-### Developer Kit Installer
+### {{ site.data.keys.mf_dev_kit_short }} Installer
 The Installer packages the components for local installation where Internet connectivity is not available.  
-The components are available through the MobileFirst Operations Console's Download Center.
+The components are available through the Download Center of the {{ site.data.keys.mf_console }}.
 
 > To download the installer, visit the [downloads]({{site.baseurl}}/downloads/) page.
 
-## MobileFirst Foundation components
+## {{ site.data.keys.product }} components
 
-### MobileFirst Server
-As part of the Developer Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
+### {{ site.data.keys.mf_server }}
+As part of the {{ site.data.keys.mf_dev_kit_short }}, the {{ site.data.keys.mf_server }} is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-In the Developer Kit's root directory, the following scripts are available to run from a command-line:
+In the {{ site.data.keys.mf_dev_kit_short }} root directory, the following scripts are available to run from a command-line:
 
-* `run.[sh|cmd]`: Run the MobileFirst Server with trailing Liberty Server messages
+* `run.[sh|cmd]`: Run the {{ site.data.keys.mf_server }} with trailing Liberty Server messages
     * Add the `-bg` flag to run the process in the background
-* `stop.[sh|cmd]`: Stop the current MobileFirst Server instance
-* `console.[sh|cmd]`: Open the MobileFirst Console
+* `stop.[sh|cmd]`: Stop the current {{ site.data.keys.mf_server }} instance
+* `console.[sh|cmd]`: Open the {{ site.data.keys.mf_console }}
 
 `.sh` file extensions are for Mac and Linux, and `.cmd` file extensions are for Windows.
 
-### MobileFirst Operations Console
-The MobileFirst Operations Console exposes the following functionalities.  
+### {{ site.data.keys.mf_console }}
+The {{ site.data.keys.mf_console }} exposes the following functionalities.  
 A developer can:
 
 - Register and deploy applications and adapters
@@ -64,23 +64,23 @@ A developer can:
 - Send Push Notifications to iOS and Android devices
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 
-> Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../../product-overview/components/console/) tutorial.
+> Learn more about the {{ site.data.keys.mf_console }} in the [Using the MobilFirst Operations Console](../../../product-overview/components/console/) tutorial.
 
-### MobileFirst Command-line Interface
-You can use the IBM MobileFirst Foundation Command Line Interface (CLI) to develop and manage applications, in addition to using the IBM MobileFirst Platform Operations Console. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
+### {{ site.data.keys.product }} Command-line Interface
+You can use the {{ site.data.keys.mf_cli }} to develop and manage applications, in addition to using the {{ site.data.keys.mf_console }}. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
 
-* Registering apps with the MobileFirst Server
+* Registering apps with the {{ site.data.keys.mf_server }}
 * Configuring your app
 * Creating, building, and deploying adapters
 * Previewing and updating Cordova apps
 
-> To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
+> To download and install the {{ site.data.keys.mf_cli }}, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-### MobileFirst Foundation client SDKs and adapter tooling
-MobileFirst Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
+### {{ site.data.keys.product }} client SDKs and adapter tooling
+{{ site.data.keys.product }} provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
 
-* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../../application-development/sdk/) tutorials category.  
+* To use the {{ site.data.keys.product_adj }} client SDKs, visit the [Adding the {{ site.data.keys.product }}SDK](../../../application-development/sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../../authentication-and-security/) tutorials category.  
 

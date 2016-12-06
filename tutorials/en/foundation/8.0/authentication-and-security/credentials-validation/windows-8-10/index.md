@@ -32,7 +32,7 @@ The client should then register a **challenge handler** for each security check.
 The challenge handler defines the client-side behavior that is specific to the security check.
 
 ## Creating the challenge handler
-A challenge handler is a class that handles the challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+A challenge handler is a class that handles the challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
 
 In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
 

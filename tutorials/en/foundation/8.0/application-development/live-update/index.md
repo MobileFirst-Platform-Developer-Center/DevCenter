@@ -15,7 +15,7 @@ downloads:
 ## Overview
 User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
 
-The Live Update feature in MobileFirst Foundation provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the MobileFirst Operations Console for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
+The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
 
 #### Common Use Cases
 Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
@@ -35,7 +35,7 @@ The following video provides a demonstration of the Live Update feature.
 
 #### Jump to:
 * [Live Update Architecture](#live-update-architecture)
-* [Adding Live Update to MobileFirst Server](#adding-live-update-to-mobilefirst-server)
+* [Adding Live Update to {{ site.data.keys.mf_server }}](#adding-live-update-to-mobilefirst-server)
 * [Configuring Application Security](#configuring-application-security)
 * [Schema and Segments](#schema-and-segments)
 * [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
@@ -53,14 +53,14 @@ The following system components function together in order to provide the Live U
  - Application schema and segments management
  - Serving configurations to applications
 * **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context.
-* **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the MobileFirst Server.
-* **MobileFirst Operations Console:** used for configuring the Live Update adapter and settings.
+* **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the {{ site.data.keys.mf_server }}.
+* **{{ site.data.keys.mf_console }}:** used for configuring the Live Update adapter and settings.
 * **Configuration Service:** *Internal*. Provides configuration management services for the Live Update adapter.
 
-## Adding Live Update to MobileFirst Server
-By default, Live Update Settings in the MobileFirst Operations Console is hidden. To enable, the provided Live Update adapter needs to be deployed.  
+## Adding Live Update to {{ site.data.keys.mf_server }}
+By default, Live Update Settings in the {{ site.data.keys.mf_console }} is hidden. To enable, the provided Live Update adapter needs to be deployed.  
 
-1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools** tab.
+1. Open the {{ site.data.keys.mf_console }}. From the sidebar navigation click on **Download Center → Tools** tab.
 2. Download and deploy the Live Update adapter.
 
 Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
@@ -70,11 +70,11 @@ Once deployed, the **Live Update Settings** screen is then revealed for each reg
 ## Configuring Application Security
 In order to allow integration with Live Update, a scope element is required. Without it, the adapter will reject requests from client applications.  
 
-Load the MobileFirst Operations Console and click on **[your application] → Security tab → Scope-Elements Mapping**. Click **New** and enter the scope element **configuration-user-login**. Then, click **Add**.
+Load the {{ site.data.keys.mf_console }} and click on **[your application] → Security tab → Scope-Elements Mapping**. Click **New** and enter the scope element **configuration-user-login**. Then, click **Add**.
 
 You can also map the scope element to a security check in case you're using one in your application.
 
-> [Learn more about the MobileFirst security framework](../../authentication-and-security/)
+> [Learn more about the {{ site.data.keys.product_adj }} security framework](../../authentication-and-security/)
 
 <img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
 
@@ -188,7 +188,7 @@ Override the default value of a property.
 
 
 ## Adding Live Update SDK to applications
-The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the MobileFirst Operations Console.
+The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the {{ site.data.keys.mf_console }}.
 
 * [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
 * [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
@@ -580,7 +580,7 @@ Follow the sample's README.md file for instructions.
 #### Changing Live Update Settings
 Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
 
-In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
+In **{{ site.data.keys.mf_console }} → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
 
 * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
 * To see the map while using the app, you need to enable to `includeMap` feature.

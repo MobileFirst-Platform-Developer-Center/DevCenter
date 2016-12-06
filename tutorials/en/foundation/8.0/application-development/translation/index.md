@@ -10,7 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-You can use the IBM MobileFirst Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
+You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
 #### Jump to:
@@ -24,7 +24,7 @@ Items that can be translated are application strings and system messages.
 ## Translating application strings
 Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
 
-- In Cordova applications that use the MobileFirst SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
+- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
 - In Web applications, you need to add it.
 
 ### JSON object structure example

@@ -6,10 +6,10 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.
+Follow this installation guide in order to setup your workstation for development using {{ site.data.keys.product }}.
 
 ## DevKit Installer
-The MobileFirst Foundation [Development Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
+The [{{ site.data.keys.mf_dev_kit }} Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) will install a ready-to-use {{ site.data.keys.mf_server }}, database and runtime on your developer machine.  
 
 **Prerequisite:**  
 The installer requires Java installed.
@@ -46,19 +46,19 @@ Open a command-line window and navigate to the extracted folder location.
 * To start the server: `./run.cmd -bg`
 * To stop the server: `./stop.cmd`
 
-### Accessing the MobileFirst Operations Console
-You can access the [MobileFirst Operations Console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) in the following ways:
+### Accessing the {{ site.data.keys.mf_console }}
+You can access the [{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) in the following ways:
 
 * From command-line, execute: `mfpdev server console`
 * From a browser, visit: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
 
 ![console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
-## MobileFirst CLI
-The [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the MobileFirst Server, pull/push application from/to the MobileFirst Server, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
+## {{ site.data.keys.mf_cli }}
+The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the {{ site.data.keys.mf_server }}, pull/push application from/to the {{ site.data.keys.mf_server }}, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
 
 **Prerequisite:**  
-1. NodeJS is a requirement before you can install the MobileFirst CLI.  
+1. NodeJS is a requirement before you can install the {{ site.data.keys.mf_cli }}.  
  Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
 
  To Verify the installation, open a command-line window and execute: `node -v`.
@@ -75,8 +75,8 @@ To Verify the installation, open a command-line window and execute: `mfpdev -v` 
 
 ![console](mfpdev-cli.png)
 
-## MobileFirst Adapters and Security Checks
-[MobileFirst Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters) and [Security Checks]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security) are your door-way to introduce authentication and other security layers to your application.
+## Adapters and Security Checks
+[Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters) and [Security Checks]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security) are your door-way to introduce authentication and other security layers to your application.
 
 **Prerequisite:**  
 Apache Maven is a required to set-up before you can create adapters and security checks.  
@@ -96,6 +96,6 @@ Apache Maven is a required to set-up before you can create adapters and security
 Verify the installation by executing: `mvn -v`.
 
 ### Usage
-With Apache Maven installed, you can now create adapters either via Maven command-line commands, or by using the MobileFirst CLI.  
+With Apache Maven installed, you can now create adapters either via Maven command-line commands, or by using the {{ site.data.keys.mf_cli }}.  
 For more informationm, review the [Adapters tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
 

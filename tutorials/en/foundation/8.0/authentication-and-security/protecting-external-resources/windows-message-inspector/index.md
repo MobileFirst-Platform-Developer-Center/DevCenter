@@ -14,19 +14,19 @@ This tutorial will show how to protect a simple Windows .NET resource, `GetBalan
 In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
 
 First we will define a **Message Inspector** that will help us controlling the incoming request to the `GetBalanceService` resource.
-Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **MobileFirst Authorization Server**.
+Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **{{ site.data.keys.product_adj }} Authorization Server**.
 
 **Prerequesites:**
 
-* Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Platform Foundation security framework](../../).
+* Make sure to read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
+* Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
 
 #### Jump to:
 * [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
 * [Define a Message Inspector](#define-a-message-inspector)
 * [Message Inspector Implementation](#message-inspector-implementation)
     * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from MobileFirst Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
+    * [Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
     * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
     * [Post-process Validation](#post-process-validation)
 
@@ -169,7 +169,7 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 ```
 
 ## Message Inspector Implementation
-First let's define some constants as class members in our message inspector: MobileFirst server URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from MobileFirst Authorization server, so it will be available to all users:
+First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -191,7 +191,7 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 Inside `validateRequest` there are 3 main steps that we will implement:
 
 1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
-2. **Get token** from MobileFirst Authorization Server - This token will be used to authenticate the client's token against MobileFirst Authorization Server.
+2. **Get token** from {{ site.data.keys.product_adj }} Authorization Server - This token will be used to authenticate the client's token against {{ site.data.keys.product_adj }} Authorization Server.
 3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
 
 ```csharp
@@ -276,7 +276,7 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 }
 ```
 
-## Obtain Access Token from MobileFirst Authorization Server
+## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
 In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
 Later we will use this received token to pass the client token for introspection.
 
@@ -314,7 +314,7 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to MobileFirst Authorization server.  
+The `sendRequest` method is a helper method that is responsible for sending requests to {{ site.data.keys.product_adj }} Authorization server.  
 It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
 
 ```csharp
@@ -342,8 +342,8 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 ```
 
 ## Send request to Introspection Endpoint with client token
-Now that we are authorized by MobileFirst Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
-Next we will examine the response from MobileFirst Authorization Server in `postProcess` method.
+Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
+Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -368,8 +368,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from MobileFirst Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
-If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the MobileFirst Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
+The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }} Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
+If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -414,7 +414,7 @@ private void postProcess(HttpWebResponse introspectionResponse)
 ### Sample usage
 
 1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
+2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 4. Register the matching application.
 5. Map the `accessRestricted` scope to the security check.

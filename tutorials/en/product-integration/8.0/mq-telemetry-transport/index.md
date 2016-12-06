@@ -54,7 +54,7 @@ The Eclipse Paho project  ([http://www.eclipse.org/paho/](http://www.eclipse.org
 
 IBM provides MQTT clients in a Mobile Messaging &amp; M2M Client Pack, available from the IBM Messaging community on [developerWorks](https://developer.ibm.com/messaging/messagesight/).
 
-This tutorial uses the Eclipse Paho JavaScript MQTT client for publish/subscribe messaging in MobileFirst Platform&reg; application.
+This tutorial uses the Eclipse Paho JavaScript MQTT client for publish/subscribe messaging in {{ site.data.keys.product_adj }} application.
 
 The MQTT clients have a simple API for publish/subscribe messaging.
 
@@ -101,16 +101,16 @@ function onMsgCallback(msg) {
 
 ## Building a collaborative application (Whiteboard)
 
-In this tutorial, you build a dynamic application (Whiteboard) with MobileFirst and MQ Telemetry Transport that lets users draw on a shared canvas in real time. Create this application in two steps:
+In this tutorial, you build a dynamic application (Whiteboard) with {{ site.data.keys.product_adj }} and MQ Telemetry Transport that lets users draw on a shared canvas in real time. Create this application in two steps:
 
-* Build the MobileFirst application
+* Build the {{ site.data.keys.product_adj }} application
   * Implement the "single-user" mode (run the sample without any MQTT publishes).
   * The application captures touch/click events, and you can paint on the canvas.
 * Implement collaboration by using an MQTT client and server
   * Add a JavaScript MQTT client to the Whiteboard application that communicates with other clients through an MQTT server.
   * The MQTT server options are covered in a subsequent slide.
 
-> **Note:** MQTT data does not use the MobileFirst Platform security and authentication mechanism.
+> **Note:** MQTT data does not use the {{ site.data.keys.product_adj }} security and authentication mechanism.
 
 The Whiteboard application uses MQTT messaging to provide a shared canvas for all users
 
@@ -441,7 +441,7 @@ The sample **MQTTWhiteboard** is a Corodova application that demonstrates use of
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80) the Cordova project.  
 ### Sample usage
 1. Before running the application you need to update your MQTT broker host and port number in `main.js`. You also need to update your Content Security Policy (CSP) inside `index.html` to include your MQTT broker.
-2. From a **Command-line** window, ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+2. From a **Command-line** window, ensure the sample is registered in the {{ site.data.keys.mf_server }} by running the command: `mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.
 4. Run the Cordova application by running the `cordova run` command.
 

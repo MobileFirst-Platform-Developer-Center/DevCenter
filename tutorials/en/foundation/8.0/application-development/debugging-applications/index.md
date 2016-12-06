@@ -18,15 +18,15 @@ This tutorial explores various approaches to debugging a JavaScript-based applic
 
 #### Jump to:
 
-* [Debugging with the IBM Mobile Browser Simulator](#debugging-with-the-ibm-mobile-browser-simulator)
+* [Debugging with the {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
 * [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
-* [Debugging with IBM MobileFirst Logger](#debugging-with-ibm-mobilefirst-logger)
+* [Debugging with {{ site.data.keys.product_adj }} Logger](#debugging-with-mobilefirst-logger)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
-## Debugging with the IBM Mobile Browser Simulator
-You can use IBM MobileFirst Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
+## Debugging with the {{ site.data.keys.mf_mbs }}
+You can use the {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
 To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
@@ -41,7 +41,7 @@ mfpdev app preview -p <platform>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
-### Mobile Browser Simulator
+### {{ site.data.keys.mf_mbs }}
 
 ![MBS](mbs.png)
 
@@ -49,7 +49,7 @@ mfpdev app preview -p <platform>
 
 ![MBS](simple.png)
 
-> Learn more about the MobileFirst CLI in the [Using MobileFirst CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the {{ site.data.keys.mf_cli }} in the [Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
@@ -96,8 +96,8 @@ This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in 
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### Debugging with IBM MobileFirst Logger
-IBM MobileFirst Foundation provides a `WL.Logger` object that can be used to print log messages.  
+### Debugging with {{ site.data.keys.product_adj }} Logger
+{{ site.data.keys.product }} provides a `WL.Logger` object that can be used to print log messages.  
 `WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
 > For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
