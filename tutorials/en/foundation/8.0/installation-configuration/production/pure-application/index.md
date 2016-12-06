@@ -881,7 +881,7 @@ When the deployment of a PureApplication pattern is almost complete, the System 
 
 You must stop the System Monitoring for WebSphere Application Server shared service before you deploy the pattern. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem.
 
-	### Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console
+### Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console
 If your {{ site.data.keys.mf_console }} is empty after you deploy a PureApplication  System pattern based on the {{ site.data.keys.product }} (WAS ND) template, you might need to restart the IBM {{ site.data.keys.product }} runtime from the WebSphere  Application Server administrative console.
 
 This procedure applies only when you are deploying PureApplication virtual system patterns based on the {{ site.data.keys.product }} (WAS ND) template when you are running the System Monitoring for WebSphere Application Server shared service. If you do not use this shared service or are deploying a pattern based on a different template, this procedure does not apply to you.

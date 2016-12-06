@@ -6,7 +6,7 @@
 # - Do not use the keywords when the text should not change in the future. This mainly applies to release notes or migration and upgrade documentation.
 #   For example, write "In V8.0.0, xxx was replaced with yyy."; do not use $product_version in such cases.
 # - Escape backslashes ('\') in keyword definitions with a backslash ("\\").
-# - The internal "DITA" references are for similar keywords used in the V8.0.0 KC (RTC MOBILE main stream).
+# - The internal "DITA" references are for similar keywords used in the V8.0.0 KC.
 
 ####################
 ## Usage ##
