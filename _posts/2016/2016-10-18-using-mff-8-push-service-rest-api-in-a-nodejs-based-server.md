@@ -6,7 +6,7 @@ version:
 tags:
 - MobileFirst_Foundation
 - Push_Notifications
-- Nodejs
+- NodeJS
 - Bluemix
 - Mobile_Foundation
 author:
