@@ -9,9 +9,9 @@ layout: default
             <h1 class="no-anchor">{{page.title}}</h1>
             <header class="page-header">
                 <h4 class="no-anchor">
-                    <span><a href="{{site.baseurl}}/search/?author={{page.author.name | url_param_escape }}">{{page.author.name }}</a></span>{% if page.additional_authors %},{% endif %}
+                    <span><a href="{{site.baseurl}}/search/?author={{ page.author.name | replace: ' ', '%20' }}">{{page.author.name }}</a></span>{% if page.additional_authors %},{% endif %}
                     {% for author in page.additional_authors %}
-                        <span><a href="{{site.baseurl}}/search/?author={{author | url_param_escape }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
+                        <span><a href="{{site.baseurl}}/search/?author={{ author | replace: ' ', '%20' }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
                     {% endfor %}
                     
                     <small>{{ page.date | date: '%B %d, %Y' }}</small>
@@ -36,10 +36,10 @@ layout: default
             <div id="social">
                 <b>Share this post:</b>
                 <ul class="share-buttons">
-                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&ptitle={{ page.title | url_param_escape }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
-                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title | url_param_escape }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter"  src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&ptitle={{ page.title | replace: ' ', '%20' }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title | replace: ' ', '%20' }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter" src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
                     <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
-                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_param_escape }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
+                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | replace: ' ', '%20' }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
                     <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
                 </ul>    
             </div>
