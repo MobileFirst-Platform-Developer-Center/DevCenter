@@ -1,5 +1,5 @@
-<nav class="navmenu navmenu-default" role="navigation">
-    <ul role="menu" aria-label="Sidebar navigation">
+<nav class="navmenu navmenu-default" aria-label="sidebar navigation">
+    <ul role="menu" aria-label="Sidebar menu">
 {% for language in site.data.tutorials %}
   {% if page.url contains language.url %}
     {% for product in language.children %}
