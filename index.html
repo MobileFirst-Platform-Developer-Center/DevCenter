@@ -2,7 +2,7 @@
 layout: default 
 indexed: false
 ---
-<section id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="main">
+<div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="banner">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -59,11 +59,11 @@ indexed: false
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</section>
+</div>
 <!-- /.carousel -->
 
-<section class="container" role="menu">
-    <div class="row">
+<div class="container" role="navigation">
+    <div class="row" role="menu" aria-label="main topics menubar">
         <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to {{ site.data.keys.product_full }}"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/get-introduced/">Get Introduced</a></h2>
@@ -85,12 +85,12 @@ indexed: false
             <p>Find answers to your questions, submit feature requests and more...</p>
         </div>
     </div>
-</section>
+</div>
 
 <hr>
 
-<div id="blogPosts" class="container" role="tablist">
-    <span aria-label="featured blog posts" role="tab" id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span role="tab" aria-label="announcement blog posts" id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
+<div id="blogPosts" class="container" role="main">
+    <span aria-label="featured blog posts" role="button" id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span aria-label="announcement blog posts" role="button"  id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
     <div id="allPosts" class="twoColumns">
     {% for post in site.posts limit:10 %} 
         <div class="postItem inline">
@@ -108,5 +108,5 @@ indexed: false
         </div>
     {% endfor %}
     </div>
-    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> | <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
+    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> <span role="Separator">|</span> <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
 </div>
