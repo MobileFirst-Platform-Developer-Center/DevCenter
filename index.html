@@ -2,7 +2,7 @@
 layout: default 
 indexed: false
 ---
-<section id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
+<section id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="main">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -62,7 +62,7 @@ indexed: false
 </section>
 <!-- /.carousel -->
 
-<section class="container">
+<section class="container" role="main">
     <div class="row">
         <div class="mid-nav col-sm-3 col-xs-6">
             <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to {{ site.data.keys.product_full }}"></a>
@@ -89,7 +89,7 @@ indexed: false
 
 <hr>
 
-<div id="blogPosts" class="container">
+<div id="blogPosts" class="container" role="main">
     <span id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
     <div id="allPosts" class="twoColumns">
     {% for post in site.posts limit:10 %} 
