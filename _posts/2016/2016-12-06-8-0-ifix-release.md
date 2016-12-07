@@ -10,10 +10,11 @@ tags:
 author:
   name: Idan Adar 
 ---
-A new iFix has been released for MobileFirst Foundation 8.0, dated **November 22end, 2016**.
+A new iFix has been released for MobileFirst Foundation 8.0, dated **November 22nd, 2016**.
 
 For on-prem installations, [download the iFix package](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central).  
-Mobile Foundation Bluemix service users, check your service dashboard for an available refresh.
+
+> Mobile Foundation Bluemix service users, check your service dashboard for available updates.
 
 ## Included changes in this iFix
 *For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
@@ -65,3 +66,13 @@ PI66180 WHEN UPDATING THE MFPDEV-CLI, USER CONFIGURATION SETTINGS ARE NOT MIGRAT
 PI66177 WLAPPID IS NOT BEING SET IN MFPCLIENT.RESW FILES FOR WINDOWS PROJECTS  
 PI64854 MFPDEV CLI CREATES ADAPTERS BY USING ARCHETYPE WITH VERSION 8.0.0  
 PI64852 MFPDEV HELP HAS WRONG INFORMATION FOR APP PULL AND APP PUSH  
+
+## Released artifacts build numbers
+
+mfpdev-cli 8.0.0.0-IF8.0.201611-0713  
+cordova-template-mfp 8.0.0.0-IF8.0.201611-0713
+cordova-plugin-mfp 8.0.0.0-IF8.0.201611-0713
+cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.201611-0713
+cordova-plugin-mfp-fips 8.0.0.0-IF8.0.201611-0713
+server runtime 8.0.0.00-20161122-002317
+
