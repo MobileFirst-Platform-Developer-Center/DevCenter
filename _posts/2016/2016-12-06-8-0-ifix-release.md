@@ -71,7 +71,7 @@ PI64852 MFPDEV HELP HAS WRONG INFORMATION FOR APP PULL AND APP PUSH
 
 server runtime 8.0.0.00-20161122-002317  
 mfpdev-cli 8.0.0.0-IF8.0.201611-0713    
-ibm-mfp-web-sdk for 8.0.0.0-IF8.0.2016112109  
+ibm-mfp-web-sdk for 8.0.0.0-IF8.0.201611-2109  
 cordova-template-mfp 8.0.0.0-IF8.0.201611-0713  
 cordova-plugin-mfp 8.0.0.0-IF8.0.201611-0713  
 cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.201611-0713  
