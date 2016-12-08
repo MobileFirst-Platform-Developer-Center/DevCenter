@@ -1,5 +1,5 @@
 ---
-title: MobileFirst Foundation iFix 8.0.0.0-IF2016112219 released
+title: MobileFirst Foundation iFix 8.0.0.0-IF20161122-19 released
 date: 2016-12-06
 version:
 - 8.0
@@ -70,13 +70,13 @@ PI64852 MFPDEV HELP HAS WRONG INFORMATION FOR APP PULL AND APP PUSH
 ## Individual artifacts build numbers
 
 server runtime 8.0.0.00-20161122-002317  
-mfpdev-cli 8.0.0.0-IF8.0.201611-0713    
-ibm-mfp-web-sdk for 8.0.0.0-IF8.0.201611-2109  
-cordova-template-mfp 8.0.0.0-IF8.0.201611-0713  
-cordova-plugin-mfp 8.0.0.0-IF8.0.201611-0713  
-cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.201611-0713  
-cordova-plugin-mfp-fips 8.0.0.0-IF8.0.201611-0713  
-cordova-plugin-mfp-push 8.0.0.0-IF8.0.201611-0305  
+mfpdev-cli 8.0.0.0-IF8.0.20161107-13    
+ibm-mfp-web-sdk for 8.0.0.0-IF8.0.20161121-09  
+cordova-template-mfp 8.0.0.0-IF8.0.20161107-13  
+cordova-plugin-mfp 8.0.0.0-IF8.0.20161107-13  
+cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.20161107-13  
+cordova-plugin-mfp-fips 8.0.0.0-IF8.0.20161107-13  
+cordova-plugin-mfp-push 8.0.0.0-IF8.0.20161103-05  
 
 
 
