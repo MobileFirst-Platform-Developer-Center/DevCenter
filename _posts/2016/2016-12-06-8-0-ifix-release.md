@@ -67,12 +67,17 @@ PI66177 WLAPPID IS NOT BEING SET IN MFPCLIENT.RESW FILES FOR WINDOWS PROJECTS
 PI64854 MFPDEV CLI CREATES ADAPTERS BY USING ARCHETYPE WITH VERSION 8.0.0  
 PI64852 MFPDEV HELP HAS WRONG INFORMATION FOR APP PULL AND APP PUSH  
 
-## Released artifacts build numbers
+## Individual artifacts build numbers
 
-mfpdev-cli 8.0.0.0-IF8.0.201611-0713  
-cordova-template-mfp 8.0.0.0-IF8.0.201611-0713
-cordova-plugin-mfp 8.0.0.0-IF8.0.201611-0713
-cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.201611-0713
-cordova-plugin-mfp-fips 8.0.0.0-IF8.0.201611-0713
-server runtime 8.0.0.00-20161122-002317
+server runtime 8.0.0.00-20161122-002317  
+mfpdev-cli 8.0.0.0-IF8.0.201611-0713    
+ibm-mfp-web-sdk for 8.0.0.0-IF8.0.2016112109  
+cordova-template-mfp 8.0.0.0-IF8.0.201611-0713  
+cordova-plugin-mfp 8.0.0.0-IF8.0.201611-0713  
+cordova-plugin-mfp-jsonstore 8.0.0.0-IF8.0.201611-0713  
+cordova-plugin-mfp-fips 8.0.0.0-IF8.0.201611-0713  
+cordova-plugin-mfp-push 8.0.0.0-IF8.0.201611-0305  
+
+
+
 
