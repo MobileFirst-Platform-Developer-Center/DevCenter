@@ -8,6 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
 
@@ -296,8 +297,8 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
-2. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
-3. Open the MobileFirst Console
+2. Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
+3. Open the {{ site.data.keys.mf_console }}
     - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
     - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
 

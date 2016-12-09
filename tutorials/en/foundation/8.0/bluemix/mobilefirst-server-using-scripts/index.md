@@ -5,29 +5,29 @@ breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Follow the instructions below to configure a MobileFirst Server instance as well as MobileFirst Analytics instance on IBM Bluemix. To achieve this you will go through the following steps: 
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Bluemix. To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
 * Setup your Bluemix account
-* Build a MobileFirst Server image and push it to the Bluemix repository.
+* Build a {{ site.data.keys.mf_server }} image and push it to the Bluemix repository.
 
 Finally, you will run the image on IBM Containers as a single Container or a Container group, and register your applications as well as deploy your adapters.
 
 **Notes:**  
 
 * Windows OS is currently not supported for running these scripts.  
-* The MobileFirst Server Configuration tools cannot be used for deployments to IBM Containers.
+* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to IBM Containers.
 
 #### Jump to:
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8000-archive)
+* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Prerequisites](#prerequisites)
-* [Setting Up the MobileFirst and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
-* [Applying MobileFirst Server Fixes](#applying-mobilefirst-server-fixes)
+* [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
+* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
 * [Removing a Container from Bluemix](#removing-a-container-from-bluemix)
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
 
@@ -73,11 +73,11 @@ In macOS, two options are available to run Docker commands:
 1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
-## Download the ibm-mfpf-container-8.0.0.0 archive
-To set up IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+To set up {{ site.data.keys.product }} on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
-The archive file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying a MobileFirst Operational Analytics Container (**mfpf-analytics**) and files for configuring a MobileFirst Server Container (**mfpf-server**).
+The archive file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Container (**mfpf-server**).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -91,25 +91,25 @@ The archive file contains the files for building an image (**dependencies** and 
             <div class="panel-body">
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
-                <p>Contains the IBM MobileFirst Foundation runtime and IBM Java JRE 8.</p>
+                <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
                 
                 <h4>mfpf-libs folder</h4>
-                <p>Contains MobileFirst product component libraries and CLI.</p>
+                <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
                 
                 <h4>mfpf-server and mfpf-analytics folders</h4>
                 
                 <ul>
                     <li><b>Dockerfile</b>: Text document that contains all the commands that are necessary to build an image.</li>
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation Server/MobileFirst Foundation Operational Analytics image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
+                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr</b> folder:
                         <ul>
                             <li><b>bin</b> folder: Contains the script file that gets executed when the container starts. You can add your own custom code to be executed.</li>
-                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by MobileFirst Server/MobileFirst Operational Analytics.</li>
+                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
                             <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>mfpfproperties.xml</b> - configuration properties for MobileFirst Server and MobileFirst Analytics. See the supported properties listed in these documentation topics:
+                            <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}. See the supported properties listed in these documentation topics:
                                 <ul>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for MobileFirst Server administration service</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for MobileFirst runtime</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
@@ -152,12 +152,12 @@ The archive file contains the files for building an image (**dependencies** and 
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>The context root at which the MobileFirst Server Administration Services are made available.</td>
+                                            <td>The context root at which the {{ site.data.keys.mf_server }} Administration Services are made available.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
                                             <td>mfpconsole</td>
-                                            <td>The context root at which the MobileFirst Operations Console is made available.</td>
+                                            <td>The context root at which the {{ site.data.keys.mf_console }} is made available.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_GROUP</td>
@@ -182,22 +182,22 @@ The archive file contains the files for building an image (**dependencies** and 
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_USER	</td>
                                             <td>WorklightRESTUser</td>
-                                            <td>The Liberty server administrator user for MobileFirst Server Administration Services.</td>
+                                            <td>The Liberty server administrator user for {{ site.data.keys.mf_server }} Administration Services.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
                                             <td>mfpadmin. Ensure that you change the default value to a private password before deploying to a production environment.</td>
-                                            <td>The password of the Liberty server administrator user for MobileFirst Server Administration Services.</td>
+                                            <td>The password of the Liberty server administrator user for {{ site.data.keys.mf_server }} Administration Services.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
                                             <td>admin</td>
-                                            <td>The user name for the administrator role for MobileFirst Server operations.</td>
+                                            <td>The user name for the administrator role for {{ site.data.keys.mf_server }} operations.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD	</td>
                                             <td>admin</td>
-                                            <td>The password for the administrator role for MobileFirst Server operations.</td>
+                                            <td>The password for the administrator role for {{ site.data.keys.mf_server }} operations.</td>
                                         </tr>
                                     </table>
                                     
@@ -250,7 +250,7 @@ The archive file contains the files for building an image (**dependencies** and 
                     <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the JAVA_HOME/jre/lib/security/ folder in the container.</li>
                     <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
                     <li><b>ssh</b> folder: used to store the SSH public key file (id_rsa.pub), which is used to enable SSH access to the container.</li>
-                    <li><b>wxs</b> folder (only for MobileFirst Server): Contains the data cache / extreme-scale client library when Data Cache is used as an attribute store for the server.</li>
+                    <li><b>wxs</b> folder (only for {{ site.data.keys.mf_server }}): Contains the data cache / extreme-scale client library when Data Cache is used as an attribute store for the server.</li>
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
@@ -285,15 +285,15 @@ Run: `cf ic login`.
 
 > To learn more about IC commands, use the `ic help` command.
 
-## Setting Up the MobileFirst and Analytics Servers on IBM Containers
+## Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers
 As explained above, you can choose to run the scripts interactively or by using the configuration files:
 
 * Using the configuration files - run the scripts and pass the respective configuration file as an argument.
 * Interactively - run the scripts without any arguments.
 
 **Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
-### MobileFirst Foundation Operational Analytics
-If you intend to use analytics with your MobileFirst Server start here.
+### {{ site.data.keys.mf_analytics }}
+If you intend to use analytics with your {{ site.data.keys.mf_server }} start here.
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -350,7 +350,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                 <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
                 <ol>
                     <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running IBM MobileFirst Foundation Operational Analytics on the IBM Containers:
+                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_analytics }} on the IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -403,8 +403,8 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                             </div>
                         </div>
                     </li>
-                    <li><b>prepareanalytics.sh - Prepare a MobileFirst Foundation Operational Analytics image</b><br />
-                        Run the <b>prepareanalytics.sh</b> script to build a MobileFirst Foundation Operational Analytics image and push it to your Bluemix repository:
+                    <li><b>prepareanalytics.sh - Prepare a {{ site.data.keys.mf_analytics }} image</b><br />
+                        Run the <b>prepareanalytics.sh</b> script to build a {{ site.data.keys.mf_analytics }} image and push it to your Bluemix repository:
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
@@ -447,7 +447,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                   
                     </li>
                     <li><b>startanalytics.sh - Running the image on an IBM Container</b><br />
-                    The <b>startanalytics.sh</b> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP that you configured in the <b>ANALYTICS_IP</b> property.</li>
+                    The <b>startanalytics.sh</b> script is used to run the {{ site.data.keys.mf_analytics }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>ANALYTICS_IP</b> property.</li>
 
                     Run:
 {% highlight bash %}
@@ -531,7 +531,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Provide MobileFirst Analytics properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                                <td>Provide {{ site.data.keys.mf_analytics }} properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
                                             </tr>
                                         </table>
                                         
@@ -546,7 +546,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             </div>
                         </div>   
                     <li><b>startanalyticsgroup.sh - Running the image on an IBM Container group</b><br />
-                        The <b>startanalyticsgroup.sh</b> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container group. It also binds your image to the host name that you configured in the <b>ANALYTICS_CONTAINER_GROUP_HOST</b> property.
+                        The <b>startanalyticsgroup.sh</b> script is used to run the {{ site.data.keys.mf_analytics }} image on an IBM Container group. It also binds your image to the host name that you configured in the <b>ANALYTICS_CONTAINER_GROUP_HOST</b> property.
 
                         Run:
 {% highlight bash %}
@@ -610,7 +610,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
+                                                <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
                                             </tr>
                                             <tr>
                                                 <td>Optional. [-m|--memory] SERVER_MEM	</td>
@@ -648,7 +648,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
     </div>
 </div>
 
-### MobileFirst Foundation Server
+### {{ site.data.keys.mf_server }}
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -669,7 +669,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
-                The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
+                The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
                 <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
                 After you have set up your dashDB instance, provide the required arguments:
                 <ul>
@@ -691,7 +691,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     To assign an IP address, run: <code>cf ic ip request</code>.<br/>
                     IP addresses can be reused in multiple containers in a space.<br/>
                     If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
-                    <li><b>MFPF_PROPERTIES - </b>MobileFirst server JNDI properties separated by comma (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>MFPF_PROPERTIES - </b>{{ site.data.keys.mf_server }} JNDI properties separated by comma (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
                 <ul>
@@ -699,7 +699,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>SERVER_CONTAINER_GROUP_NAME - </b>A name for your Bluemix Container group.</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Your host name.</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
-                    <li><b>MFPF_PROPERTIES - </b>MobileFirst Server JNDI properties, separated by commas (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>MFPF_PROPERTIES - </b>{{ site.data.keys.mf_server }} JNDI properties, separated by commas (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
             </div>
         </div>
@@ -718,7 +718,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             
             <ol>
                 <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running IBM MobileFirst Foundation on IBM Containers:
+                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.product }} on IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -771,8 +771,8 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         </div>
                     </div>
                 </li>
-                <li><b>prepareserverdbs.sh - Prepare the MobileFirst Server database</b><br />
-                    The <b>prepareserverdbs.sh</b> script is used to configure your MobileFirst server with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                <li><b>prepareserverdbs.sh - Prepare the {{ site.data.keys.mf_server }} database</b><br />
+                    The <b>prepareserverdbs.sh</b> script is used to configure your {{ site.data.keys.mf_server }} with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -836,8 +836,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
                 </li>
-                <li><b>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</b><br />
-                    Run the <b>prepareserver.sh</b> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
+                <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }} image</b><br />
+                    Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
                     The list contains the image name, date of creation, and ID.<br/>
                   
 {% highlight bash %}
@@ -861,7 +861,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                         </tr>
                                         <tr>
                                             <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                            <td>Name to be used for the customized MobileFirst Server image. Format: registryUrl/namespace/imagename</td>
+                                            <td>Name to be used for the customized {{ site.data.keys.mf_server }} image. Format: registryUrl/namespace/imagename</td>
                                         </tr>
                                     </table>
                                   
@@ -878,7 +878,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - Running the image on an IBM Container</b><br />
-                    The <b>startserver.sh</b> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li> 
+                    The <b>startserver.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -899,11 +899,11 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                        <td>Name of the MobileFirst Server image.</td>
+                                        <td>Name of the {{ site.data.keys.mf_server }} image.</td>
                                     </tr>
                                     <tr>
                                         <td>[-i|--ip] SERVER_IP	</td>
-                                        <td>IP address that the MobileFirst Server container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                        <td>IP address that the {{ site.data.keys.mf_server }} container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
                                     </tr>
                                     <tr>
                                         <td>Optional. [-si|--services] SERVICE_INSTANCES	</td>
@@ -947,7 +947,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                        <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                        <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
                                     </tr>
                                 </table>
                                 
@@ -962,7 +962,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                         </div>
                     </div>
                 <li><b>startservergroup.sh - Running the image on an IBM Container group</b><br />
-                    The <b>startservergroup.sh</b> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <b>SERVER_CONTAINER_GROUP_HOST</b> property.</li>
+                    The <b>startservergroup.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container group. It also binds your image to the host name that you configured in the <b>SERVER_CONTAINER_GROUP_HOST</b> property.</li>
                     Run:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
@@ -985,11 +985,11 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>The name of the MobileFirst Server container image in the Bluemix registry.</td>
+                                                <td>The name of the {{ site.data.keys.mf_server }} container image in the Bluemix registry.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
-                                                <td>The name of the MobileFirst Server container group.</td>
+                                                <td>The name of the {{ site.data.keys.mf_server }} container group.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
@@ -1034,7 +1034,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+                                                <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
                                                 <b>Note:</b> If you specify properties using this script, ensure that the same properties have not been set in the configuration files in the usr/config folder.</td>
                                             </tr>
                                             <tr>
@@ -1067,16 +1067,16 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 
 > **Note:** Containers must be restarted after any configuration changes have been made (`cf ic restart containerId`). For container groups, you must restart each container instance within the group. For example, if a root certificate changes, each container instance must be restarted after the new certificate has been added.
 
-Launch the MobileFirst Console by loading the following URL: http://MF\_CONTAINER\_HOST/mfpconsole (it may take a few moments).  
-Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+Launch the {{ site.data.keys.mf_console }} by loading the following URL: http://MF\_CONTAINER\_HOST/mfpconsole (it may take a few moments).  
+Add the remote server by following the instructions in the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
-With MobileFirst Server running on IBM Bluemix, you can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
+With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development. Review the {{ site.data.keys.product }} [tutorials](../../all-tutorials).
 
 #### Port number limitation
-There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the MobileFirst Analytics container and the MobileFirst Server container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
+There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the {{ site.data.keys.mf_analytics }} container and the {{ site.data.keys.mf_server }} container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
 
-## Applying MobileFirst Server Fixes
-Interim fixes for the MobileFirst Server on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
+## Applying {{ site.data.keys.mf_server }} Fixes
+Interim fixes for the {{ site.data.keys.mf_server }} on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
 Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the **package_root/mfpf-analytics/usr** and **package_root/mfpf-server/usr** folders.
 
 1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
@@ -1098,11 +1098,11 @@ Run the following cf ic commands to remove an image name from the Bluemix regist
 2. `cf ic rmi image_id` (Removes the image from the registry)
 
 ## Removing the database service configuration from Bluemix	
-If you ran the **prepareserverdbs.sh** script during the configuration of the MobileFirst Server image, the configurations and database tables required for MobileFirst Server are created. This script also creates the database schema for the container.
+If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
 
 To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
 
 1. From the Bluemix dashboard, select the dashDB service you have used. Choose the dashDB service name that you had provided as parameter while running the **prepareserverdbs.sh** script.
 2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
-3. Select the schemas related to IBM MobileFirst Server configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
+3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
 4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.

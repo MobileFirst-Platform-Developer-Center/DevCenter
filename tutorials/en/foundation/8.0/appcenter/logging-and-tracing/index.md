@@ -5,10 +5,11 @@ breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
 
-You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, IBM MobileFirst Foundation provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
+You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, {{ site.data.keys.product_full }} provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
 
 #### Jump to
 * [Enabling logging and tracing in WebSphere Application Server full profile](#enabling-logging-and-tracing-in-websphere-application-server-full-profile)
@@ -19,12 +20,12 @@ You can set the logging levels and the output file for tracing operations for Ap
 ## Enabling logging and tracing in WebSphere Application Server full profile
 You can set the logging levels and the output file for tracing operations on the application server.
 
-When you try to diagnose problems in the Application Center (or other components of IBM MobileFirst Foundation), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
+When you try to diagnose problems in the Application Center (or other components of {{ site.data.keys.product }}), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
 
 1. Open the WebSphere  Application Server administrative console.
 2. Select **Troubleshooting → Logs and Trace**.
 3. In **Logging and tracing**, select the appropriate application server and then select **Change log detail levels**.
-4. Select the packages and their corresponding detail level. This example enables logging for IBM MobileFirst Foundation, including Application Center, with level **FINEST** (equivalent to **ALL**).
+4. Select the packages and their corresponding detail level. This example enables logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**).
 
 ```xml
 com.ibm.puremeap.*=all
@@ -35,7 +36,7 @@ com.worklight.*=all
 Where:
 
 * **com.ibm.puremeap.*** is for Application Center.
-* **com.ibm.worklight.*** and **com.worklight.*** are for other MobileFirst components.
+* **com.ibm.worklight.*** and **com.worklight.*** are for other {{ site.data.keys.product_adj }} components.
 
 The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
 
@@ -44,7 +45,7 @@ You can set the logging levels and the output file for tracing operations for Ap
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
 
-To enable logging for IBM MobileFirst Foundation, including Application Center, with level FINEST(equivalent to ALL), add a line to the server.xml file. For example:
+To enable logging for {{ site.data.keys.product }}, including Application Center, with level FINEST(equivalent to ALL), add a line to the server.xml file. For example:
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
@@ -61,7 +62,7 @@ You can set the logging levels and the output file for tracing operations undert
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
 
-To enable logging for IBM MobileFirst Foundation, including Application Center, with level **FINEST** (equivalent to **ALL**), edit the **conf/logging.properties** file. For example, add lines similar to these lines:
+To enable logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**), edit the **conf/logging.properties** file. For example, add lines similar to these lines:
 
 ```xml
 com.ibm.puremeap.level = ALL

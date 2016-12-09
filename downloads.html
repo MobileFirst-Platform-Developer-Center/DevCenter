@@ -2,290 +2,286 @@
 layout: default 
 title: Downloads 
 ---
-<section class="container">
-    <h2 class="no-anchor">Downloads</h2>
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#installFoundation" aria-controls="foundation" role="tab" data-toggle="tab">IBM MobileFirst Foundation 8.0</a></li>
-        <li role="presentation"><a href="#downloadPreviousReleases" aria-controls="previousReleases" role="tab" data-toggle="tab">Previous releases</a></li>
-        <li role="presentation"><a href="#offlineReading" aria-controls="tutorialsForOfflineReading" role="tab" data-toggle="tab">Offline reading</a></li>
-        <li role="presentation"><a href="#samples" aria-controls="samples" role="tab" data-toggle="tab">Samples</a></li>
-    </ul>
+<section class="container downloads" role="main">
+   <h2 class="no-anchor">Downloads</h2>
+   <p>Looking to get started? <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">use the Mobile Foundation Bluemix service</a> to bring up a {{ site.data.keys.mf_server }} instance in minutes, or start locally by downloading the Developer Kit.<br/>If you haven't already, go and <a href="{{site.baseurl}}/get-introduced">Get Introduced to the product</a>.</p>
+   
+   <blockquote>To learn more about the {{ site.data.keys.product }} components and the Developer Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the {{ site.data.keys.product_adj }} development environment</a> tutorial.</blockquote>
+   
+   <h3>Product components</h3>
+   <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="devkit">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseDevKit" aria-expanded="true" aria-controls="collapseDevKit"> Developer Kit</a>
+            </h4>
+         </div>
 
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="installFoundation">
-            <br/>
-            <p>Looking to get started? <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">use the Mobile Foundation Bluemix service</a> to bring up a MobileFirst Server instance in minutes!</p>
-            <br/>
-            <p>IBM MobileFirst Foundation 8.0 consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling. In addition, a Developer Kit Installer is also provided for local development.</p>
-            
-            <blockquote>To learn more about the MobileFirst Foundation components and the Developer Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> tutorial.</blockquote>
-                
-            <br/>
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#get-devkit" aria-controls="devkit" role="tab" data-toggle="tab">Developer Kit</a></li>
-                <li role="presentation"><a href="#get-cli" aria-controls="cli" role="tab" data-toggle="tab">CLI</a></li>
-                <li role="presentation"><a href="#get-client-sdks" aria-controls="client-sdks" role="tab" data-toggle="tab">Client SDKs</a></li>
-                <li role="presentation"><a href="#get-artifacts" aria-controls="artifacts" role="tab" data-toggle="tab">Adapters, Security Checks, Filters and others</a></li>
-            </ul>
-            
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="get-devkit">
-                    <br/>
-                    <p>The Developer Kit bundles together the various components of MobileFirst Foundation 8.0.</p>
-                    
-                    <p><strong>Prerequisite:</strong><br/>
-                        To use the MobileFirst Server in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
-                    
-                    <ul>
-                        <li>Download and install Java 7 or 8 JDK</li>
-                        <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
-                            <ul>
-                                <li> Windows: C:\Program Files\Java\jdk1.7.0_67</li>
-                                <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
-                                <li> Linux: /usr/lib/jvm/java-1.7.0_67/</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
-                    <blockquote><b>Customers: login to <a href="https://www.ibm.com/support/fixcentral/">IBM Fix Central</a> to download your copy<br/>Evaluators: Download your copy below</b></blockquote>
-                    
-                    <p>
-                        <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the MobileFirst Developer Kit Installer for macOS</a><br/>
-                        <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the MobileFirst Developer Kit Installer for Linux</a><br/>
-                        <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the MobileFirst Developer Kit Installer for Windows</a>
-                    </p>
-                    
-                    <p>
-                        Once installation completes,
-                        <ol>
-                            <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the MobileFirst Server.</li>
-                            <li>Load the MobileFirst Operations Console (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
-                            <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">the tutorials</a>.</li>
-                        </ol>
-                    </p>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="get-cli">
-                    <br/>
-                    <p>To use the MobileFirst CLI the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
-                    You can verify the installation by running <code>mfpdev -v</code>.</p>
-                    
-                    <p><strong>Prerequisite:</strong></p>
-                    <ul>
-                        <li>NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">Node.js</a>.</li>
-                        <li>You may encounter a permission error during the installation of the CLI; see "<a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">Fixing npm permissions</a>"</li>
-                    </ul>
-                    
-                    <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
-                        If the CLI was downloaded from the MobileFirst Operations Console, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
-                    </p>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="get-client-sdks">
-                    <br/>
-                    <p>The MobileFirst client SDKs are available in the following online repositories.<br/>
-                    You can install them using their respective package managers.</p>
-                    
-                    <p>For installation instructions, review the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk">Adding the MobileFirst Foundation SDK</a> tutorials.</p>
-                    
-                    <p>The SDKs are also available from <strong>MobileFirst Operations Console → Download Center → Tools tab</strong> for offline installation.</p>
-                    
-                    <ul>
-                        <li><a href="https://www.npmjs.com/package/cordova-plugin-mfp" target="_blank">Cordova</a> (npm)</li>
-                        <li><a href="https://cocoapods.org/pods/IBMMobileFirstPlatformFoundation" target="_blank">iOS</a> (CocoaPods)</li>
-                        <li><a href="http://search.maven.org/#search|ga|1|ibmmobilefirstplatformfoundation" target="_blank">Android</a> (Maven)</li>
-                        <li><a href="https://www.nuget.org/packages/IBM.MobileFirstPlatformFoundation/" target="_blank">Windows</a> (NuGet)</li>
-                        <li><a href="https://www.npmjs.com/package/ibm-mfp-web-sdk" target="_blank">Web</a> (npm)</li>
-                    </ul>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="get-artifacts">
-                    <br/>
-                    <p>The MobileFirst server-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>.<br/>
-                    For installation instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the Adapters tutorials</a>.</p>
-                    
-                    <p>The artifacts are also available from <strong>MobileFirst Operations Console → Download Center → Tools tab</strong> for offline installation.</p>
-                    
-                    <p><strong>Prerequisite:</strong><br/>
-                        To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
-                    
-                    <p>Available artifacts:</p>
-                    <ul>
-                        <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp">Adapter archetypes</a></li>
-                        <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22mfp-security-checks-base%22">Security Checks</a></li>
-                        <li><a href="http://search.maven.org/#search%7Cga%7C1%7Cjava%20token%20validator">OAuth - Java Token Validator</a></li>
-                        <li><a href="https://npmjs.org">NodeJS Validator</a></li>
-                        <li>Trust Association Interceptor - can be download from the MobileFirst Operations Console</li>
-                        <li>Live Update adapter - can be download from the MobileFirst Operations Console</li>
-                    </ul>
-                </div>
+         <div id="collapseDevKit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="devkit">
+            <div class="panel-body">
+               <p>The Developer Kit bundles together the various components of {{ site.data.keys.product }} 8.0.</p>
+              
+               <p><strong>Prerequisite:</strong><br/>
+               To use the {{ site.data.keys.mf_server }} in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
+              
+               <ul>
+                  <li>Download and install Java 7 or 8 JDK</li>
+                  <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
+                     <ul>
+                        <li> Windows: C:\Program Files\Java\jdk1.7.0_67</li>
+                        <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                        <li> Linux: /usr/lib/jvm/java-1.7.0_67/</li>
+                     </ul>
+                  </li>
+               </ul>
+              
+               <blockquote><b>Customers: login to <a href="https://www.ibm.com/support/fixcentral/">IBM Fix Central</a> to download your copy<br/>Evaluators: Download your copy below</b></blockquote>
+              
+               <p>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the {{ site.data.keys.mf_dev_kit }} Installer for macOS</a> (IF2016112219)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the {{ site.data.keys.mf_devkit }} Installer for Linux</a> (IF2016112219)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the {{ site.data.keys.mf_dev_kit }} Installer for Windows</a> (IF2016112219)
+               </p>
+              
+               <p>
+                  Once installation completes,
+                  <ol>
+                     <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the {{ site.data.keys.mf_server }}.</li>
+                     <li>Load the {{ site.data.keys.mf_console }} (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
+                     <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">the tutorials</a>.</li>
+                  </ol>
+               </p>   
             </div>
-        </div>    
-        
-        <div role="tabpanel" class="tab-pane" id="downloadPreviousReleases">
-            <br/>       
-            Download previous versions of Worklight/MobileFirst Platform Foundation.
-            <br/><br/>        
-            <b>Installation instructions:</b>
+         </div>
+      </div>
+      
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="cli8">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseCli8" aria-expanded="true" aria-controls="collapseCli8" aria-label="CLI download instructions"> {{ site.data.keys.mf_cli }}</a>
+            </h4>
+         </div>
 
-            <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="studio">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseStudio" aria-expanded="true" aria-controls="collapseStudio"> MobileFirst Studio</a>
-                        </h4>
-                    </div>
-
-                    <div id="collapseStudio" class="panel-collapse collapse" role="tabpanel" aria-labelledby="studio">
-                        <div class="panel-body">
-                            <ol>
-                                <li> Make sure that you have the Eclipse IDE for
-                                    <strong>Java EE Developers</strong> installed: <a href="https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2">Luna SR2 (4.4.2)</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars1">Mars SR1 (4.5.1)</a>.
-                                    <br/>
-                                    <blockquote>
-                                        <strong>Note 1:</strong> Other versions of Eclipse might result in installation failures.
-                                        <br/>
-                                        <strong>Note 2:</strong> Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the MobileFirst Operations Console
-                                        is started.</blockquote>
-                                </li>
-                                <li>If you are upgrading from a pre-6.2 version of the Developer Edition, you must uninstall it first. Skip this step if you are upgrading from v6.2 or later.</li>
-                                <li>Start Eclipse, and then select
-                                    <strong>Help > Install New Software</strong>.</li>
-                                <li>Click the <b>Add</b> button and select the Studio .zip you have downloaded</li>
-                                <li>Click the IBM MobileFirst Platform Studio
-                                    <strong>Install</strong> button.</li>
-                                <li>IBM MobileFirst Platform Studio and all features are preselected. Confirm your selection and click
-                                    <strong>Next</strong>.
-                                    <ul>
-                                        <li>Always select
-                                            <strong>IBM MobileFirst Platform Studio</strong>.</li>
-                                        <li>IBM Dojo Mobile Tools and IBM jQuery Mobile Tools are optional; select them based on your anticipated use.</li>
-                                    </ul>
-                                </li>
-                                <li>Review and accept the license terms, and then click
-                                    <strong>Finish</strong> to begin the installation.</li>
-                                <li>Follow the prompts to complete the installation.</li>
-                                <li>If your Eclipse workbench has IBM Rational Team Concert™ V4.0 Eclipse Client already installed, you might need to clean the Eclipse environment before you use Studio.</li>
-                            </ol>
-
-                            <p>
-                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="cli">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCli" aria-expanded="true" aria-controls="cli"> MobileFirst CLI</a>
-                        </h4>
-                    </div>
-
-                    <div id="collapseCli" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
-                        <div class="panel-body">
-                            <p>To use the CLI, you must have the Java Developer Kit (JDK) installed on your machine. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
-
-                            <p>You must have the
-                                <code>JAVA_HOME</code> environment variable to your JDK directory. For example:</p>
-
-                            <ul>
-                                <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
-                                <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
-                                <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>  
-                            </ul>
-
-                            <ol>
-                                <li>Download the CLI package for the required release version</li>
-                                <li>Open your command-line terminal and change the directory to the folder where your CLI package is located.</li>
-                                <li>Unzip the downloaded file. The CLI is packaged as a single compressed file, which contains installation executable files for each platform:
-                                    <ul>
-                                        <li>install_linux.bin</li>
-                                        <li>install_mac.app/</li>
-                                        <li>install_windows.exe</li>
-                                        <li>resources/</li>
-                                    </ul>
-                                </li>
-                                <li>Select and run the installer that is appropriate for your platform. For example, when you run
-                                    <em>$ install_linux.bin</em>, a GUI appears and guides you through the installation of Command Line Interface. Follow the instructions to complete your installation.</li>
-                                <li>On completion of the installation, log out from the OS, and then log back in. This action ensures that the appropriate commands are on your system path.</li>
-                            </ol>
-
-                            <p>
-                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="workbench">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkbench" aria-expanded="true" aria-controls="workbench"> MobileFirst Mobile Test Workbench</a>
-                        </h4>
-                    </div>
-
-                    <div id="collapseWorkbench" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workbench">
-                        <div class="panel-body">
-                            <ol>
-                                <li>Make sure that you have installed MobileFirst Studio on a supported version of Eclipse.</li>
-                                <li>Start Eclipse, and then select
-                                    <strong>Help > Eclipse Marketplace</strong>.</li>
-                                <li>In the
-                                    <strong>Find</strong> field, type
-                                    <em>MobileFirst Platform Test Workbench</em> and click
-                                    <strong>Go</strong>.</li>
-                                <li>Click the
-                                    <strong>Install</strong> button.</li>
-                                <li>Select the features that you want to install, and then click
-                                    <strong>Next</strong>.</li>
-                                <li>Click
-                                    <strong>Next</strong>, and then review and accept the license terms, and then click
-                                    <strong>Finish</strong> to begin the installation.</li>
-                                <li>Follow the prompts to complete the installation.</li>
-                                <li>Testing Android applications with the Test Workbench requires a JDK. Be sure to add the path to the JDK in Eclipse under
-                                    <strong>Window > Preferences > Java > Installed JREs</strong>, and set it as the default JRE by selecting its corresponding check box.</li>
-                            </ol>
-
-                            <p>
-                                <strong>Next:</strong> Start testing your apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
-                        </div>
-                    </div>
-                </div>
+         <div id="collapseCli8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli8">
+            <div class="panel-body">
+               <p>To use the {{ site.data.keys.mf_cli }} the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
+               You can verify the installation by running <code>mfpdev -v</code>.</p>
+             
+               <p><strong>Prerequisite:</strong></p>
+               <ul>
+                  <li>NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">Node.js</a>.</li>
+                  <li>You may encounter a permission error during the installation of the CLI; see "<a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">Fixing npm permissions</a>"</li>
+               </ul>
+             
+               <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
+               If the CLI was downloaded from the {{ site.data.keys.mf_console }}, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
+               </p>
             </div>
-            
-            <b>Previous MobileFirst Studio releases:</b>
-            <ul>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.1.0.zip">IBM MobileFirst Platform Foundation 7.1.0.0</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.0.0.zip">IBM MobileFirst Platform Foundation 7.0.0.0</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_6.3.0.0.zip">IBM MobileFirst Platform Foundation 6.3.0.0</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_eclipse_6.2.0.1.zip">IBM Worklight Foundation 6.2.0.1</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.1.0.2.zip">IBM Worklight 6.1.0.2</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.0.0.2.zip">IBM Worklight 6.0.0.2</a></li>
-            </ul>
-            
-            <b>Previous MobileFirst CLI releases:</b>
-            <ul>    
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.1.0.zip">MobileFirst Platform Foundation CLI v7.1</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.0.0.zip">MobileFirst Platform Foundation CLI v7.0</a></li>
-                <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_6.3.0.zip">MobileFirst Platform Foundation CLI v6.3</a></li>
-            </ul>
-        </div>
-        
-        <div role="tabpanel" class="tab-pane" id="offlineReading">
-            <br/>
-            <p>Below are links to download a PDF version of the MobileFirst Platform Foundation docs for offline reading:</p>
+         </div>
+      </div>
+      
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="sdks">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseSDKs" aria-expanded="true" aria-controls="collapseSDKs"> Client SDKs</a>
+            </h4>
+         </div>
 
-            <ul>
-                <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/tree/release80">MobileFirst Foundation 8.0</a></li>
-                <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/tree/release71">MobileFirst Platform Foundation 7.1</a></li>
-                <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/tree/release70">MobileFirst Platform Foundation 7.0</a></li>
-                <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/tree/release63">MobileFirst Platform Foundation 6.3</a></li>
-            </ul>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="samples">
-            <br/>
-            <p>Looking for sample applications?</p>
-            <ul>
-                <li>Go through this repository of <a href="../tutorials/en/foundation/8.0/advanced-samples">advanced use case samples</a>.</li>
-                <li>Find your <a href="../tutorials/en/foundation/8.0/all-tutorials">topic of interest</a> and review its associated samples.</li>
-            </ul>            
-        </div>
-    </div>
+         <div id="collapseSDKs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sdks">
+            <div class="panel-body">
+               <p>The {{ site.data.keys.mf_cli }}ent SDKs are available in the following online repositories.<br/>
+               You can install them using their respective package managers.</p>
+              
+               <p>For installation instructions, review the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk">Adding the {{ site.data.keys.product }} SDK</a> tutorials.</p>
+              
+               <p>The SDKs are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
+              
+               <ul>
+                  <li><a href="https://www.npmjs.com/package/cordova-plugin-mfp" target="_blank">Cordova</a> (npm)</li>
+                  <li><a href="https://cocoapods.org/pods/IBMMobileFirstPlatformFoundation" target="_blank">iOS</a> (CocoaPods)</li>
+                  <li><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.ibm.mobile.foundation%22%20AND%20a%3A%22ibmmobilefirstplatformfoundation%22" target="_blank">Android</a> (Maven)</li>
+                  <li><a href="https://www.nuget.org/packages/IBM.MobileFirstPlatformFoundation/" target="_blank">Windows</a> (NuGet)</li>
+                  <li><a href="https://www.npmjs.com/package/ibm-mfp-web-sdk" target="_blank">Web</a> (npm)</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="artifacts">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseArtifacts" aria-expanded="true" aria-controls="collapseArtifacts"> Artifacts</a>
+            </h4>
+         </div>
+
+         <div id="collapseArtifacts" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts">
+            <div class="panel-body">
+               <p>The {{ site.data.keys.mf_server }}-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>.<br/>
+               For installation instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the Adapters tutorials</a>.</p>
+              
+               <p>The artifacts are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
+              
+               <p><strong>Prerequisite:</strong><br/>
+               To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
+              
+               <p>Available artifacts:</p>
+               <ul>
+                  <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp">Adapter archetypes</a></li>
+                  <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22mfp-security-checks-base%22">Security Checks</a></li>
+                  <li><a href="http://search.maven.org/#search%7Cga%7C1%7Cjava%20token%20validator">OAuth - Java Token Validator</a></li>
+                  <li><a href="https://npmjs.org">NodeJS Validator</a></li>
+                  <li>Trust Association Interceptor - can be download from the {{ site.data.keys.mf_console }}</li>
+                  <li>Live Update adapter - can be download from the {{ site.data.keys.mf_console }}</li>
+              </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   <h3>Offline documentation</h3>
+   <p>Below are links to download a PDF version of the MobileFirst Platform Foundation docs for offline reading:</p>
+
+   <ul>
+      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release80.zip">{{ site.data.keys.product }} 8.0</a></li>
+      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release71.zip">MobileFirst Platform Foundation 7.1</a></li>
+      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release70.zip">MobileFirst Platform Foundation 7.0</a></li>
+      <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release63.zip">MobileFirst Platform Foundation 6.3</a></li>
+   </ul>
+  
+   <h3>Samples</h3>
+   <p>Looking for sample applications?</p>
+   <ul>
+      <li>Go through this repository of <a href="../tutorials/en/foundation/8.0/advanced-samples">advanced use case samples</a>.</li>
+      <li>Find your <a href="../tutorials/en/foundation/8.0/all-tutorials">topic of interest</a> and review its associated samples.</li>
+   </ul>  
+       
+   <h3>Past releases</h3>   
+   <b>Studio releases:</b>
+   <ul>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.1.0.zip">IBM MobileFirst Platform Foundation 7.1.0.0</a> (IF201611182214)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.0.0.zip">IBM MobileFirst Platform Foundation 7.0.0.0</a> (IF201611140235)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_6.3.0.0.zip">IBM MobileFirst Platform Foundation 6.3.0.0</a> (IF201611231057)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_eclipse_6.2.0.1.zip">IBM Worklight Foundation 6.2.0.1</a> (IF201611022041)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.1.0.2.zip">IBM Worklight 6.1.0.2</a> (IF201611022042)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.0.0.2.zip">IBM Worklight 6.0.0.2</a></li>
+   </ul>
+   
+   <b>CLI releases:</b>
+   <ul>    
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.1.0.zip">MobileFirst Platform Foundation CLI v7.1</a> (IF201611182214)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.0.0.zip">MobileFirst Platform Foundation CLI v7.0</a> (IF201611140235)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_6.3.0.zip">MobileFirst Platform Foundation CLI v6.3</a> (IF201611231057)</li>
+   </ul>
+   
+   <b>Installation instructions:</b>
+
+   <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="studio">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseStudio" aria-expanded="true" aria-controls="collapseStudio"> MobileFirst Studio</a>
+            </h4>
+         </div>
+
+         <div id="collapseStudio" class="panel-collapse collapse" role="tabpanel" aria-labelledby="studio">
+            <div class="panel-body">
+                <ol>
+                    <li> Make sure that you have the Eclipse IDE for
+                        <strong>Java EE Developers</strong> installed: <a href="https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2">Luna SR2 (4.4.2)</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars1">Mars SR1 (4.5.1)</a>.
+                        <br/>
+                        <blockquote>
+                            <strong>Note 1:</strong> Other versions of Eclipse might result in installation failures.
+                            <br/>
+                            <strong>Note 2:</strong> Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the {{ site.data.keys.mf_console }}
+                            is started.</blockquote>
+                    </li>
+                    <li>If you are upgrading from a pre-6.2 version of the Developer Edition, you must uninstall it first. Skip this step if you are upgrading from v6.2 or later.</li>
+                    <li>Start Eclipse, and then select
+                        <strong>Help > Install New Software</strong>.</li>
+                    <li>Click the <b>Add</b> button and select the Studio .zip you have downloaded</li>
+                    <li>Click the IBM MobileFirst Platform Studio
+                        <strong>Install</strong> button.</li>
+                    <li>IBM MobileFirst Platform Studio and all features are preselected. Confirm your selection and click
+                        <strong>Next</strong>.
+                        <ul>
+                            <li>Always select
+                                <strong>IBM MobileFirst Platform Studio</strong>.</li>
+                            <li>IBM Dojo Mobile Tools and IBM jQuery Mobile Tools are optional; select them based on your anticipated use.</li>
+                        </ul>
+                    </li>
+                    <li>Review and accept the license terms, and then click
+                        <strong>Finish</strong> to begin the installation.</li>
+                    <li>Follow the prompts to complete the installation.</li>
+                    <li>If your Eclipse workbench has IBM Rational Team Concert™ V4.0 Eclipse Client already installed, you might need to clean the Eclipse environment before you use Studio.</li>
+                </ol>
+
+                <p><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="cli">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCli" aria-expanded="true" aria-controls="cli" aria-label="CLI download instructions for past releases"> {{ site.data.keys.mf_cli }}</a>
+            </h4>
+         </div>
+
+         <div id="collapseCli" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
+            <div class="panel-body">
+               <p>To use the CLI, you must have the Java Developer Kit (JDK) installed on your machine. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
+
+               <p>You must have the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:</p>
+
+               <ul>
+                  <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
+                  <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                  <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>  
+               </ul>
+
+               <ol>
+                  <li>Download the CLI package for the required release version</li>
+                  <li>Open your command-line terminal and change the directory to the folder where your CLI package is located.</li>
+                  <li>Unzip the downloaded file. The CLI is packaged as a single compressed file, which contains installation executable files for each platform:
+                     <ul>
+                        <li>install_linux.bin</li>
+                        <li>install_mac.app/</li>
+                        <li>install_windows.exe</li>
+                        <li>resources/</li>
+                     </ul>
+                  </li>
+                  <li>Select and run the installer that is appropriate for your platform. For example, when you run <em>$ install_linux.bin</em>, a GUI appears and guides you through the installation of Command Line Interface. Follow the instructions to complete your installation.</li>
+                  <li>On completion of the installation, log out from the OS, and then log back in. This action ensures that the appropriate commands are on your system path.</li>
+               </ol>
+
+               <p><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="panel panel-default">
+         <div class="panel-heading" role="tab" id="workbench">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkbench" aria-expanded="true" aria-controls="workbench"> MobileFirst Mobile Test Workbench</a>
+            </h4>
+         </div>
+
+         <div id="collapseWorkbench" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workbench">
+            <div class="panel-body">
+               <ol>
+                  <li>Make sure that you have installed MobileFirst Studio on a supported version of Eclipse.</li>
+                  <li>Start Eclipse, and then select <strong>Help > Eclipse Marketplace</strong>.</li>
+                  <li>In the <strong>Find</strong> field, type <em>MobileFirst Platform Test Workbench</em> and click <strong>Go</strong>.</li>
+                  <li>Click the <strong>Install</strong> button.</li>
+                  <li>Select the features that you want to install, and then click <strong>Next</strong>.</li>
+                  <li>Click <strong>Next</strong>, and then review and accept the license terms, and then click <strong>Finish</strong> to begin the installation.</li>
+                  <li>Follow the prompts to complete the installation.</li>
+                  <li>Testing Android applications with the Test Workbench requires a JDK. Be sure to add the path to the JDK in Eclipse under <strong>Window > Preferences > Java > Installed JREs</strong>, and set it as the default JRE by selecting its corresponding check box.</li>
+               </ol>
+
+               <p><strong>Next:</strong> Start testing your apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+            </div>
+         </div>
+      </div>
+   </div>          
 </section>

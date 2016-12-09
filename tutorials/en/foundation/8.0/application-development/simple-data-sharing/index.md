@@ -4,8 +4,9 @@ title: Simple Data Sharing
 relevantTo: [ios,android,cordova]
 weight: 12
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-The Simple Data Sharing feature makes it possible to securely share lightweight information among a family of applications on a single device. This feature uses native APIs that are already present in the different mobile SDKs to provide one unified developer API. This MobileFirst API abstracts the different platform complexities, making it easier for developers to quickly implement code that allows for inter-application communication.
+The Simple Data Sharing feature makes it possible to securely share lightweight information among a family of applications on a single device. This feature uses native APIs that are already present in the different mobile SDKs to provide one unified developer API. This {{ site.data.keys.product_adj }} API abstracts the different platform complexities, making it easier for developers to quickly implement code that allows for inter-application communication.
 
 This feature is supported on iOS and Android for both Cordova and native applications.
 
@@ -19,10 +20,10 @@ After you enable the Simple Data Sharing feature, you can use the provided Cordo
 * [Limitations and considerations](#limitations-and-considerations)
 
 ## Terminology
-### MobileFirst application family
+### {{ site.data.keys.product_adj }} application family
 An application family is a way to associate a group of applications which share the same level of trust. Applications in the same family can securely and safely share information with each other.
 
-To be considered part of the same MobileFirst application family, all applications in the same family must comply with the following requirements:
+To be considered part of the same {{ site.data.keys.product_adj }} application family, all applications in the same family must comply with the following requirements:
 
 * Specify the same value for the application family in the application descriptor.
 	* For iOS applications, this requirement is synonymous to the access group entitlements value.
@@ -34,10 +35,10 @@ To be considered part of the same MobileFirst application family, all applicatio
     * For iOS applications, this requirement means the same Application ID prefix, provisioning profile, and signing identity is used to sign the application.
 	* For Android applications, this requirement means the same signing certificate and key.
 
-Aside from the IBM MobileFirst Foundation provided APIs, applications in the same MobileFirst application family can also use the data sharing APIs that are available through their respective native mobile SDK APIs.
+Aside from the {{ site.data.keys.product }} provided APIs, applications in the same {{ site.data.keys.product_adj }} application family can also use the data sharing APIs that are available through their respective native mobile SDK APIs.
 
 ### String tokens
-Sharing string tokens across applications of the same MobileFirst application family can now be accomplished in hybrid or native iOS and Android applications through the Simple Data Sharing feature.
+Sharing string tokens across applications of the same {{ site.data.keys.product_adj }} application family can now be accomplished in hybrid or native iOS and Android applications through the Simple Data Sharing feature.
 
 String tokens are considered simple strings, such as passwords or cookies. Using large strings results in considerable performance degradation.
 

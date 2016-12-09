@@ -8,8 +8,9 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
 > **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
@@ -21,11 +22,11 @@ For information about Silent or Interactive notifications in iOS, see:
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Foundation SDK to Cordova applications](../../../application-development/sdk/cordova)
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova)
     * [Push Notifications Overview](../../)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server
-* MobileFirst CLI installed on the developer workstation
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 * Cordova CLI installed on the developer workstation
 
 #### Jump to
@@ -37,7 +38,7 @@ For information about Silent or Interactive notifications in iOS, see:
 ## Notifications Configuration
 Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
 
-> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
+> If the {{ site.data.keys.product_adj }} Cordova SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 

@@ -8,13 +8,13 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-An IBM MobileFirst Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+An SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
 To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
 
-In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.
+In this tutorial and in the accompanying sample, you learn how to use an adapter to connect to a MySQL database.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
@@ -75,7 +75,7 @@ In the **adapter.xml** file, declare the following parameters:
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing MobileFirst Server to an application server. For example:
+                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing {{ site.data.keys.mf_server }} to an application server. For example:
                     
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -198,7 +198,7 @@ Also included is an SQL script in the **Utils** folder.
 ### Sample usage
 * Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
 
 When testing, the account value should be passed in an array: `["12345"]`.

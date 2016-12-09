@@ -33,9 +33,9 @@ function displayVideoTags(){
   videoTags = videoTags.filter(function(item, pos, self) {
       return self.indexOf(item) == pos;
   });
-  $('#videoTags').append('<span class="videoTag label label-info" data-tag="">All</span>');
+  $('#videoTags').append('<span class="videoTag label label-info" data-tag="" role="button">All</span>');
   $.each(videoTags, function(index,tag){
-    $('#videoTags').append('<span class="videoTag label label-info" data-tag="'+tag+'">'+tag+'</span>');
+    $('#videoTags').append('<span class="videoTag label label-info" data-tag="'+tag+'" role="button">'+tag+'</span>');
   });
   $('#videoTags span').on('click',function(event){
     displayVideos($(event.currentTarget).data('tag'));

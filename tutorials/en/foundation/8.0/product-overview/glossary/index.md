@@ -3,8 +3,9 @@ layout: tutorial
 title: Glossary
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-This glossary provides terms and definitions for IBM MobileFirst Foundation software and products.
+This glossary provides terms and definitions for {{ site.data.keys.product }} software and products.
 
 The following cross-references are used in this glossary:
 
@@ -18,10 +19,10 @@ For other terms and definitions, see the [IBM Terminology website](http://www.ib
 A policy that controls how data is collected from a sensor of a mobile device. The policy is defined by application code.
 
 ### adapter
-The server-side code of a MobileFirst application. Adapters connect to enterprise applications, deliver data to and from mobile applications, and perform any necessary server-side logic on sent data.
+The server-side code of a {{ site.data.keys.product_adj }} application. Adapters connect to enterprise applications, deliver data to and from mobile applications, and perform any necessary server-side logic on sent data.
 
 ### administration database
-The database of the MobileFirst Operations Console and of the Administration Services. The database tables define elements such as applications, adapters, projects with their descriptions and orders of magnitude.
+The database of the {{ site.data.keys.mf_console }} and of the Administration Services. The database tables define elements such as applications, adapters, projects with their descriptions and orders of magnitude.
 ### Administration Services
 An application that hosts the REST services and administration tasks. The Administration Services application is packaged in its own WAR file.
 
@@ -38,7 +39,7 @@ An interface that allows an application program that is written in a high-level 
 A web or mobile device application. See also web application.
 
 ### Application Center
-A MobileFirst component that can be used to share applications and facilitate collaboration between team members in a single repository of mobile applications.
+A {{ site.data.keys.product_adj }} component that can be used to share applications and facilitate collaboration between team members in a single repository of mobile applications.
 
 ### Application Center installer
 An application that lists the catalog of available applications in the Application Center. The Application Center Installer must be present on a device so that one can install applications from your private application repository.
@@ -60,7 +61,7 @@ Pertaining to something that is compiled, or is executable.
 A collection of several properties (such as adapter, procedure, or parameter).
 
 ### broadcast notification
-A notification that is targeted to all of the users of a specific MobileFirst application. See also tag-based notification.
+A notification that is targeted to all of the users of a specific {{ site.data.keys.product_adj }} application. See also tag-based notification.
 
 ### build definition
 An object that defines a build, such as a weekly project-wide integration build.
@@ -228,20 +229,20 @@ See [Application Center installer](#application-center-installer).
 ### mobile device
 A telephone, tablet, or personal digital assistant that operates on a radio network. See also Android.
 
-### MobileFirst adapter
+### {{ site.data.keys.product_adj }} adapter
 See [adapter](#adapter)
 
-### MobileFirst Data Proxy
-A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using MobileFirst Platform OAuth security capabilities. The MobileFirst Data Proxy requires an authentication through the trust association interceptor.
+### {{ site.data.keys.product_adj }} Data Proxy
+A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using {{ site.data.keys.product }} OAuth security capabilities. The {{ site.data.keys.product_adj }} Data Proxy requires an authentication through the trust association interceptor.
 
-### MobileFirst Operations Console
-A web-based interface that is used to control and manage MobileFirst runtime environments that are deployed in MobileFirst Server, and to collect and analyze user statistics.
+### {{ site.data.keys.mf_console }}
+A web-based interface that is used to control and manage {{ site.data.keys.product_adj }} runtime environments that are deployed in {{ site.data.keys.mf_server }}, and to collect and analyze user statistics.
 
-### MobileFirst runtime environment
+### {{ site.data.keys.product_adj }} runtime environment
 A mobile-optimized server-side component that runs the server side of your mobile applications (back-end integration, version management, security, unified push notification). Each runtime environment is packaged as a web application (WAR file).
 
-### MobileFirst Server
-A MobileFirst component that handles security, back-end connections, push notifications, mobile application management, and analytics. The MobileFirst Server is a collection of apps that run on an application server and acts as a runtime container for MobileFirst runtime environments.
+### {{ site.data.keys.mf_server }}
+A {{ site.data.keys.product_adj }} component that handles security, back-end connections, push notifications, mobile application management, and analytics. The {{ site.data.keys.mf_server }} is a collection of apps that run on an application server and acts as a runtime container for {{ site.data.keys.product_adj }} runtime environments.
 
 ## N
 ### native app
@@ -268,7 +269,7 @@ Pertaining to a Base64 encoded certificate. See also Base64, DER encoded.
 A system of digital certificates, certification authorities, and other registration authorities that verify and authenticate the validity of each party involved in a network transaction.
 
 ### PKI bridge
-A MobileFirst Server concept that enables the User Certificate Authentication framework to communicate with a PKI.
+A {{ site.data.keys.mf_server }} concept that enables the User Certificate Authentication framework to communicate with a PKI.
 
 ### poll
 To repeatedly request data from a server.
@@ -280,7 +281,7 @@ In secure communication, an algorithmic pattern used to encrypt messages that on
 The development environment for various components, such as applications, adapters, configuration files, custom Java code, and libraries.
 
 ### project WAR file
-A web archive (WAR) file that contains the configurations for the MobileFirst runtime environment and is deployed on an application server.
+A web archive (WAR) file that contains the configurations for the {{ site.data.keys.product_adj }} runtime environment and is deployed on an application server.
 
 ### provision
 To provide, deploy, and track a service, component, application, or resource.

@@ -4,20 +4,21 @@ title: Installing and configuring the IBM MobileFirst Foundation Application Cen
 breadcrumb_title: Installing Application Center	
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview 
-You install the Application Center as part of the MobileFirst Server installation.
+You install the Application Center as part of the {{ site.data.keys.mf_server }} installation.
 You can install it with one of the following methods:
 
 * Installation with IBM  Installation Manager
 * Installation with Ant tasks
 * Manual installation
 
-Optionally, you can create the database of your choice before you install MobileFirst Server with the Application Center.  
+Optionally, you can create the database of your choice before you install {{ site.data.keys.mf_server }} with the Application Center.  
 After you installed the Application Center in the web application server of your choice, you have additional configuration to do. For more information, see Configuring Application Center after installation below. If you chose a manual setup in the installer, see the documentation of the server of your choice.
 
 > **Note:** If you intend to install applications on iOS devices through the Application Center, you must first configure the Application Center server with SSL.
 
-For a list of installed files and tools, see [Distribution structure of MobileFirst Server](../installation-manager/#distribution-structure-of-mobilefirst-server).
+For a list of installed files and tools, see [Distribution structure of {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
 #### Jump to
 
@@ -43,9 +44,9 @@ To install IBM Application Center with IBM Installation Manager, complete the fo
 * [Default logins and passwords created by IBM Installation Manager for the Application Center](#default-logins-and-passwords-created-by-ibm-installation-manager-for-the-application-center)
 
 ### Optional creation of databases
-If you want to activate the option to install the Application Center when you run the MobileFirst Server installer, you need to have certain database access rights that entitle you to create the tables that are required by the Application Center.
+If you want to activate the option to install the Application Center when you run the {{ site.data.keys.mf_server }} installer, you need to have certain database access rights that entitle you to create the tables that are required by the Application Center.
 
-If you have sufficient database administration credentials, and if you enter the administrator user name and password in the installer when prompted, the installer can create the databases for you. Otherwise, you need to ask your database administrator to create the required database for you. The database needs to be created before you start the MobileFirst Server installer.
+If you have sufficient database administration credentials, and if you enter the administrator user name and password in the installer when prompted, the installer can create the databases for you. Otherwise, you need to ask your database administrator to create the required database for you. The database needs to be created before you start the {{ site.data.keys.mf_server }} installer.
 
 The following topics describe the procedure for the supported database management systems.
 
@@ -64,7 +65,7 @@ When you manually create the database, you can replace the database name (here A
 
 > **Important:** You can name your database and user differently, or set a different password, but ensure that you enter the appropriate database name, user name, and password correctly across the DB2 database setup. DB2 has a database name limit of 8 characters on all platforms, and has a user name and password length limit of 8 characters for UNIX and Linux systems, and 30 characters for Windows.
 
-1. Create a system user, for example, named **wluser** in a DB2 admin group such as **DB2USERS**, using the appropriate commands for your operating system. Give it a password, for example, **wluser**. If you want multiple instances of IBM MobileFirst Server to connect to the same database, use a different user name for each connection. Each database user has a separate default schema. For more information about database users, see the DB2 documentation and the documentation for your operating system.
+1. Create a system user, for example, named **wluser** in a DB2 admin group such as **DB2USERS**, using the appropriate commands for your operating system. Give it a password, for example, **wluser**. If you want multiple instances of IBM {{ site.data.keys.mf_server }} to connect to the same database, use a different user name for each connection. Each database user has a separate default schema. For more information about database users, see the DB2 documentation and the documentation for your operating system.
 
 2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions:
 
@@ -113,7 +114,7 @@ The installer can create the database, except for the Oracle 12c database type, 
     * Using **Oracle Database Control**:
         * Connect as **SYSDBA**.
         * Go to the **Users** page: click **Server**, then **Users** in the **Security** section.
-        * Create a user, for example, named **APPCENTER**. If you want multiple instances of IBM MobileFirst Server to connect to the same general-purpose database you created in step 1, use a different user name for each connection. Each database user has a separate default schema.
+        * Create a user, for example, named **APPCENTER**. If you want multiple instances of IBM {{ site.data.keys.mf_server }} to connect to the same general-purpose database you created in step 1, use a different user name for each connection. Each database user has a separate default schema.
         * Assign the following attributes:
             * Profile: **DEFAULT**
             * Authentication: **password**
@@ -163,22 +164,22 @@ When installation is complete, you must restart the web application server in ce
 You must restart the web application server in the following circumstances:
 
 * When you are using WebSphere  Application Server with DB2  as database type.
-* When you are using WebSphere Application Server and have opened it without the application security enabled before you installed IBM MobileFirst Application Center or MobileFirst Server.
+* When you are using WebSphere Application Server and have opened it without the application security enabled before you installed IBM MobileFirst Application Center or {{ site.data.keys.mf_server }}.
 
-The MobileFirst installer must activate the application security of WebSphere Application Server (if not active yet) to install Application Center. Then, for this activation to take place, restart the application server after the installation of MobileFirst Server completed.
+The MobileFirst installer must activate the application security of WebSphere Application Server (if not active yet) to install Application Center. Then, for this activation to take place, restart the application server after the installation of {{ site.data.keys.mf_server }} completed.
 
 * When you are using WebSphere Application Server Liberty or Apache Tomcat.
-* After you upgraded from a previous version of MobileFirst Server.
+* After you upgraded from a previous version of {{ site.data.keys.mf_server }}.
 
 If you are using WebSphere Application Server Network Deployment and chose an installation through the deployment manager:
 
-* You must restart the servers that were running during the installation and on which the MobileFirst Server web applications are installed.
+* You must restart the servers that were running during the installation and on which the {{ site.data.keys.mf_server }} web applications are installed.
 
 To restart these servers with the deployment manager console, select **Applications → Application Types → WebSphere enterprise applications → IBM_Application\_Center\_Services → Target specific application status**.
 
 * You do not have to restart the deployment manager or the node agents.
 
-> **Note:** Only the Application Center is installed in the application server. A MobileFirst Operations Console is not installed by default. To install a MobileFirst Operations Console.
+> **Note:** Only the Application Center is installed in the application server.
 
 ### Default logins and passwords created by IBM Installation Manager for the Application Center
 IBM  Installation Manager creates the logins by default for the Application Center, according to your application server. You can use these logins to test the Application Center.
@@ -216,15 +217,15 @@ If you did not manually create the database, you can use Ant tasks to create and
 
 Before you begin, make sure that a database management system (DBMS) is installed and running on a database server, which can be on the same computer, or a different one.
 
-The Ant tasks for Application Center are in the **ApplicationCenter/configuration-samples** directory of the MobileFirst Server distribution.
+The Ant tasks for Application Center are in the **ApplicationCenter/configuration-samples** directory of the {{ site.data.keys.mf_server }} distribution.
 
-If you want to start the Ant task from a computer where MobileFirst Server is not installed, you must copy the following files to that computer:
+If you want to start the Ant task from a computer where {{ site.data.keys.mf_server }} is not installed, you must copy the following files to that computer:
     
 * The library **mf\_server\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar**
 * The directory that contains binary files of the aapt program, from the Android SDK platform-tools package: **mf\_server\_install\_dir/ApplicationCenter/tools/android-sdk**
 * The Ant sample files that are in **mf\_server\_install\_dir/ApplicationCenter/configuration-samples**
 
-> **Note:** The **mf\_server\_install\_dir** placeholder represents the directory where you installed MobileFirst Server.
+> **Note:** The **mf\_server\_install\_dir** placeholder represents the directory where you installed {{ site.data.keys.mf_server }}.
 
 If you did not create your database manually, as described in [Optional creation of databases](#optional-creation-of-databases), follow steps 1 to 3 below.
 If your database already exists, you must create only the database tables. Follow steps 4 to 7 below.
@@ -271,14 +272,14 @@ Use Ant tasks to deploy the Application Center Console and Services to an applic
 Before you begin,
 
 * Complete the procedure at [Creating and configuring the database for Application Center with Ant tasks](#creating-and-configuring-the-database-for-application-center-with-ant-tasks).
-* You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer where MobileFirst Server is not installed, you must copy the following files and directories to that computer:
+* You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer where {{ site.data.keys.mf_server }} is not installed, you must copy the following files and directories to that computer:
 
     * The library **mf\_server\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar**
     * The web applications (WAR and EAR files) in **mf_server\_install\_dir/ApplicationCenter/console**
     * The directory that contains the binary files of the aapt program, from the Android SDK platform-tools package: **mf\_server\_install\_dir/ApplicationCenter/tools/android-sdk**
     * The Ant sample files that are in **mf\_server\_install\_dir/ApplicationCenter/configuration-samples**
 
-> **Note:** The mf_server_install_dir placeholder represents the directory where you installed MobileFirst Server.
+> **Note:** The mf_server_install_dir placeholder represents the directory where you installed {{ site.data.keys.mf_server }}.
 
 1. Copy the Ant file that corresponds both to your application server, and your DBMS. The files for configuring Application Center are named after the following pattern:
 
@@ -308,11 +309,11 @@ Before you begin,
     ```
 
 ## Manually installing Application Center
-A reconfiguration is necessary for the MobileFirst Server to use a database or schema that is different from the one that was specified during its installation. This reconfiguration depends on the type of database and on the kind of application server.
+A reconfiguration is necessary for the {{ site.data.keys.mf_server }} to use a database or schema that is different from the one that was specified during its installation. This reconfiguration depends on the type of database and on the kind of application server.
 
 On application servers other than Apache Tomcat, you can deploy Application Center from two WAR files or one EAR file.
 
-> **Restriction:** Whether you install Application Center with IBM  Installation Manager as part of the MobileFirst Server installation or manually, remember that "rolling updates" of Application Center are not supported. That is, you cannot install two versions of Application Center (for example, V5.0.6 and V6.0.0) that operate on the same database.
+> **Restriction:** Whether you install Application Center with IBM  Installation Manager as part of the {{ site.data.keys.mf_server }} installation or manually, remember that "rolling updates" of Application Center are not supported. That is, you cannot install two versions of Application Center (for example, V5.0.6 and V6.0.0) that operate on the same database.
 
 #### Jump to
 
@@ -923,7 +924,7 @@ Where **APPCENTER** after **username=** is the name of the system user with "CON
 The procedure to manually deploy the Application Center WAR files manually to an application server depends on the type of application server being configured.  
 These manual instructions assume that you are familiar with your application server.
 
-> **Note:** Using the MobileFirst Server installer to install Application Center is more reliable than installing manually, and should be used whenever possible.
+> **Note:** Using the {{ site.data.keys.mf_server }} installer to install Application Center is more reliable than installing manually, and should be used whenever possible.
 
 If you prefer to use the manual process, follow these steps to configure your application server for Application Center. You must deploy the appcenterconsole.war and applicationcenter.war files to your Application Center. The files are located in **product\_install\_dir/ApplicationCenter/console**.
 
@@ -1063,7 +1064,7 @@ To configure WebSphere  Application Server for Application Center manually, you 
     * Depending on your version of WebSphere Application Server, click one of the following options:
         * **Applications → New → New Enterprise Application**
         * **Applications → New Application → New Enterprise Application**
-    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Navigate to the {{ site.data.keys.mf_server }} installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
     * Select **appcenterconsole.war** and click **Next**.
     * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
     * On the **Application Security Warnings** page, click **Continue**.
@@ -1091,7 +1092,7 @@ To configure WebSphere  Application Server for Application Center manually, you 
     * Depending on your version of WebSphere Application Server, click one of the following options:
         * **Applications → New → New Enterprise Application**
         * **Applications → New Application → New Enterprise Application**
-    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Navigate to the {{ site.data.keys.mf_server }} installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
     * Select **applicationcenter.war** and click **Next**.
     * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
     * On the **Application Security Warnings** page, click **Continue**.
@@ -1213,11 +1214,11 @@ To configure Apache Tomcat for Application Center manually, you must copy JAR an
 4. Start Tomcat.
 
 ### Deploying the Application Center EAR file and configuring the application server manually
-As an alternative to the MobileFirst Server installer procedure, you can use a manual procedure to deploy the Application Center EAR file and configure your WebSphere  application server manually. These manual instructions assume that you are familiar with your application server.
+As an alternative to the {{ site.data.keys.mf_server }} installer procedure, you can use a manual procedure to deploy the Application Center EAR file and configure your WebSphere  application server manually. These manual instructions assume that you are familiar with your application server.
 
 The procedure to deploy the Application Center EAR file manually to an application server depends on the type of application server. Manual deployment is supported only for WebSphere Application Server Liberty profile and WebSphere Application Server.
 
-> **Tip:** It is more reliable to install Application Center through the MobileFirst Server installer than manually. Therefore, whenever possible, use the MobileFirst Server installer. If, however, you prefer the manual procedure, deploy the **appcentercenter.ear** file, which you can find in the **product\_install\_dir/ApplicationCenter/console** directory.
+> **Tip:** It is more reliable to install Application Center through the {{ site.data.keys.mf_server }} installer than manually. Therefore, whenever possible, use the {{ site.data.keys.mf_server }} installer. If, however, you prefer the manual procedure, deploy the **appcentercenter.ear** file, which you can find in the **product\_install\_dir/ApplicationCenter/console** directory.
 
 #### Configuring the Liberty profile for Application Center manually
 After you deploy the Application Center EAR file, to configure WebSphere  Application Server Liberty profile manually for Application Center, you must modify the server.xml file.
@@ -1335,7 +1336,7 @@ After you deploy the Application Center EAR file, to configure WebSphere  Applic
     * Depending on your version of WebSphere Application Server, click one of the following options:
         * **Applications → New → New Enterprise Application**
         * **Applications → New Application → New Enterprise Application**
-    * Navigate to the MobileFirst Server installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
+    * Navigate to the {{ site.data.keys.mf_server }} installation directory **mfserver\_install\_dir/ApplicationCenter/console**.
     * Select **appcenterconsole.war** and click **Next**.
     * On the **How do you want to install the application?** page, click **Detailed**, and then click **Next**.
     * On the **Application Security Warnings** page, click **Continue**.

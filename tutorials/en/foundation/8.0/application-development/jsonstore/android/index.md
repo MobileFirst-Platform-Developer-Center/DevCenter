@@ -10,10 +10,11 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Prerequisites
 
 * Read the [JSONStore parent tutorial](../)
-* Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
 
 #### Jump to:
 
@@ -37,7 +38,7 @@ Use `openCollections` to open one or more JSONStore collections.
 
 Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **MobileFirst Adapter Integration** in the second part of this tutorial.
+For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
 
 ```java
 Context context = getContext();
@@ -135,7 +136,7 @@ This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} 
 
 ### Remove
 Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
+Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
 
 ```java
 Context context = getContext();
@@ -214,7 +215,7 @@ try {
 ```
 
 #### Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
 
 ```java
 Context context = getContext();
@@ -234,11 +235,11 @@ try {
 ```
 
 #### MobileFirst Adapter Integration
-This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
 You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
 
 #### Adapter Implementation
-Create a MobileFirst adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -270,7 +271,7 @@ function replacePerson(data) {
 ```
 
 #### Load data from MobileFirst Adapter
-To load data from a MobileFirst Adapter use `WLResourceRequest`.
+To load data from an adapter use `WLResourceRequest`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -314,7 +315,7 @@ try {
 To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
 
 #### Push changes
-To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {

@@ -4,24 +4,25 @@ title: What's new in Interim Fixes
 breadcrumb_title: Interim iFixes
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Interim fixes provide patches and updates to correct problems and keep IBM MobileFirst Foundation current for new releases of mobile operating systems.
+Interim fixes provide patches and updates to correct problems and keep {{ site.data.keys.product_full }} current for new releases of mobile operating systems.
 
 Interim fixes are cumulative. When you download the latest v8.0 interim fix, you get all of the fixes from earlier interim fixes.
 
 Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
 
-> For a list of iFix releases of IBM MobileFirst Foundation 8.0, [see these blog posts]({{site.baseurl}}/blog/tag/iFix_8.0/).
+> For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see these blog posts]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
 ### Licensing
 #### PVU licensing
-A new offering, IBM MobileFirst Foundation Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for IBM MobileFirst Foundation Extension, see [Licensing MobileFirst](../../licensing).
+A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
 
 ### Web applications
-#### Registering web applications from the MobileFirst Platform CLI (APAR PI65327)
-You can now register client web applications to MobileFirst Server by using the IBM MobileFirst Platform Command Line Interface (CLI) (mfpdev) as an alternative to registration from the IBM MobileFirst Platform Operations Console. For more information, see Registering web applications from the MobileFirst Platform CLI.
+#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
+You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
 
 ### Cordova applications
 #### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
@@ -39,4 +40,4 @@ Made the following changes to improve the usability of the Migration Assistance 
 
 ### Adapters
 #### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
-You can use IBM MobileFirst Platform Command Line Interface (CLI) to push Java and JavaScript adapter configurations to the MobileFirst Server and pull adapter configurations from the MobileFirst Server.
+You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.

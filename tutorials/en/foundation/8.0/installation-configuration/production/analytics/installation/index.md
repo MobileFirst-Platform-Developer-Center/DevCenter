@@ -4,20 +4,21 @@ title: MobileFirst Analytics Server Installation Guide
 breadcrumb_title: Installation Guide
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Analytics Server is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+{{ site.data.keys.mf_analytics_server }} is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 
-MobileFirst Analytics Server uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
+{{ site.data.keys.mf_analytics_server }} uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
 
 #### Jump to
 
 * [System requirements](#system-requirements)
 * [Capacity considerations](#capacity-considerations)
-* [Installing MobileFirst Analytics on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-* [Installing MobileFirst Analytics on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
-* [Installing MobileFirst Analytics on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
-* [Installing MobileFirst Analytics with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
-* [Installing MobileFirst Analytics Server on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
+* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+* [Installing {{ site.data.keys.mf_analytics }} on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
+* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
+* [Installing {{ site.data.keys.mf_analytics }} with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
+* [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
 ## System requirements
 ### Operating systems
@@ -59,28 +60,28 @@ MobileFirst Analytics Server uses an embedded Elasticsearch library for the data
 ## Capacity considerations
 Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
 
-IBM MobileFirst Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
+IBM {{ site.data.keys.mf_analytics }} Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
 
 The type and amount of data that you choose to collect, and how long you choose to keep it, has a dramatic impact on your storage requirements and overall performance. As an example, consider the following questions.
 
 * Are raw debug client logs useful after a month?
-* Are you using the **Alerts** feature in MobileFirst Analytics? If so, are you querying on events that occurred in the last few minutes or over a longer range?
+* Are you using the **Alerts** feature in {{ site.data.keys.mf_analytics }}? If so, are you querying on events that occurred in the last few minutes or over a longer range?
 * Are you using custom charts? If so, are you creating these charts for built-in data or custom instrumented key/value pairs? How long do you keep the data?
 
-The built-in charts on the MobileFirst Analytics Console are rendered by querying data that the MobileFirst Analytics Server already summarized and optimized specifically for the fastest possible console user experience. Because it is pre-summarized and optimized for the built-in charts, it is not suitable for use in alerts or custom charts where the console user defines the queries.
+The built-in charts on the {{ site.data.keys.mf_analytics_console }} are rendered by querying data that the {{ site.data.keys.mf_analytics_server }} already summarized and optimized specifically for the fastest possible console user experience. Because it is pre-summarized and optimized for the built-in charts, it is not suitable for use in alerts or custom charts where the console user defines the queries.
 
-When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the MobileFirst Analytics Server. Is real-time console visibility truly useful for data from four months ago?
+When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the {{ site.data.keys.mf_analytics_server }}. Is real-time console visibility truly useful for data from four months ago?
 
 ### Indicies, Shards, and Nodes
-The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The MobileFirst Analytics Server creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the MobileFirst Analytics Server.
+The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The {{ site.data.keys.mf_analytics_server }} creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the {{ site.data.keys.mf_analytics_server }}.
 
 If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
 
 The same principle applies to **replicas**. Only set **replicas** to something greater than 0 if you intend to immediately (or nearly immediately) scale up to the number of nodes to match the math.  
 For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
 
-## Installing MobileFirst Analytics on WebSphere Application Server Liberty
-Ensure that you already have the MobileFirst Analytics EAR file. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
+## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
+Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
 
 1. Create a server by running the following command in your **./wlp/bin** folder.
 
@@ -146,7 +147,7 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
    ./server start <serverName>
    ```
 
-7. Go to the MobileFirst Analytics Console.
+7. Go to the {{ site.data.keys.mf_analytics_console }}.
 
    ```bash
    http://localhost:9080/analytics/console
@@ -154,8 +155,8 @@ Ensure that you already have the MobileFirst Analytics EAR file. For more inform
 
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
-## Installing MobileFirst Analytics on Tomcat
-Ensure that you already have the MobileFirst Analytics WAR files. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+## Installing {{ site.data.keys.mf_analytics }} on Tomcat
+Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
 
 1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
 2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
@@ -193,7 +194,7 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
       <user name="developer" password="demo" roles="analytics_developer"/>
       <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
       ```    
-    * Start your Tomcat Server and go to the MobileFirst Analytics Console.
+    * Start your Tomcat Server and go to the {{ site.data.keys.mf_analytics_console }}.
 
       ```xml
       http://localhost:8080/analytics/console
@@ -201,8 +202,8 @@ Ensure that you already have the MobileFirst Analytics WAR files. For more infor
 
     For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
 
-## Installing MobileFirst Analytics on WebSphere Application Server
-For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing MobileFirst Server to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
+## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server
+For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
 
 The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
 
@@ -236,17 +237,17 @@ The following steps describe how to install and run the Analytics EAR file on We
     * Log in to the WebSphere Application Server administration console.
     * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
     * Click **OK** and save changes.
-9. Start the MobileFirst Analytics application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
+9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
 
-## Installing MobileFirst Analytics with Ant tasks
-Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing MobileFirst Server to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
+## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
+Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
 
-You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which MobileFirst Server is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
+You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
 
-> Note: The **mf_server_install_dir** placeholder is the directory where you installed MobileFirst Server.
+> Note: The **mf_server_install_dir** placeholder is the directory where you installed {{ site.data.keys.mf_server }}.
 
-1. Edit the Ant script that you use later to deploy MobileFirst Analytics WAR files.
-    * Review the sample configuration files in [Sample configuration files for MobileFirst Analytics](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
+1. Edit the Ant script that you use later to deploy {{ site.data.keys.mf_analytics }} WAR files.
+    * Review the sample configuration files in [Sample configuration files for {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
     * Replace the placeholder values with the properties at the beginning of the file.
 
     > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:
@@ -262,21 +263,21 @@ You must run the Ant task on the computer where the application server is instal
     **Note:** If you install on a cluster on WebSphere Application Server Network Deployment, and you do not set the property, the Ant task computes the data end points for all the members of the cluster at the time of installation, and sets the **masternodes** JNDI property to that value.
 
 3. To deploy the WAR files, run the following command: `ant -f configure-appServer-analytics.xml install`
-    You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of MobileFirst Analytics, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
+    You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of {{ site.data.keys.mf_analytics }}, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
 4. Save the Ant file. You might need it later to apply a fix pack or perform an upgrade.
     If you do not want to save the passwords, you can replace them by "************" (12 stars) for interactive prompting.
 
-    **Note:** If you add a node to a cluster of MobileFirst Analytics, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
+    **Note:** If you add a node to a cluster of {{ site.data.keys.mf_analytics }}, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
 
-## Installing MobileFirst Analytics Server on servers running previous versions
-Although there is no option to upgrade previous versions of the MobileFirst Analytics Server, when you install MobileFirst Analytics Server V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
+## Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions
+Although there is no option to upgrade previous versions of the {{ site.data.keys.mf_analytics_server }}, when you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
 
-For servers previously running earlier of versions of MobileFirst Analytics Server update the analytics data and the JNDI properties.
+For servers previously running earlier of versions of {{ site.data.keys.mf_analytics_server }} update the analytics data and the JNDI properties.
 
-### Migration of server properties used by previous versions of MobileFirst Analytics Server
-If you install MobileFirst Analytics Server V8.0.0 on a server that was previously running an earlier version of MobileFirst Analytics Server, you must update the values of the JNDI properties on the hosting server.
+### Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}
+If you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that was previously running an earlier version of {{ site.data.keys.mf_analytics_server }}, you must update the values of the JNDI properties on the hosting server.
 
-Some event types were changed between earlier versions of MobileFirst Analytics Server and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
+Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
 
 The following table shows the mapping between old event types and new event types. Some event types did not change.
 
@@ -302,18 +303,18 @@ The following table shows the mapping between old event types and new event type
 | mfpAppVersion	            | appVersion             |
 
 ### Analytics data migration
-The internals of the MobileFirst Analytics Console were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
+The internals of the {{ site.data.keys.mf_analytics_console }} were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
 
-When you first view the MobileFirst Analytics Console after you upgrade to V8.0.0, no statistics are rendered in the MobileFirst Analytics Console. Your data is not lost, but it must be migrated to the new data format.
+When you first view the {{ site.data.keys.mf_analytics_console }} after you upgrade to V8.0.0, no statistics are rendered in the {{ site.data.keys.mf_analytics_console }}. Your data is not lost, but it must be migrated to the new data format.
 
-An alert is displayed on every page of the MobileFirst Analytics Console that reminds you that documents must be migrated. The alert text includes a link to the **Migration** page.
+An alert is displayed on every page of the {{ site.data.keys.mf_analytics_console }} that reminds you that documents must be migrated. The alert text includes a link to the **Migration** page.
 
 The following image shows a sample alert from the **Overview** page of the **Dashboard** section:
 
 ![Migration alert in the console](migration_alert.jpg)
 
 ### Migration page
-You can access the Migration page from the wrench icon in the MobileFirst Analytics Console. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
+You can access the Migration page from the wrench icon in the {{ site.data.keys.mf_analytics_console }}. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
 
 The following image shows the **Migration** page when you have documents that must be migrated:
 
@@ -321,6 +322,6 @@ The following image shows the **Migration** page when you have documents that mu
 
 > **Note:** This process might take a long time, depending on the amount of data you have, and it cannot be stopped during migration.
 
-The migration can take approximately 3 minutes to migrate 1 million documents on a single node with 32G of RAM, with 16G allocated to the JVM, with a 4-core processor. Documents that are not migrated are not queried, so they are not rendered in the MobileFirst Analytics Console.
+The migration can take approximately 3 minutes to migrate 1 million documents on a single node with 32G of RAM, with 16G allocated to the JVM, with a 4-core processor. Documents that are not migrated are not queried, so they are not rendered in the {{ site.data.keys.mf_analytics_console }}.
 
 If the migration fails while in progress, retry the migration. Retrying the migration does not remigrate documents that were already migrated, and your data integrity is maintained.

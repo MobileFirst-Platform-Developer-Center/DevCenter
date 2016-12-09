@@ -8,8 +8,9 @@ downloads:
   - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
+{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
 
 For information about Silent or Interactive notifications, see:
 
@@ -20,10 +21,10 @@ For information about Silent or Interactive notifications, see:
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 
 ### Jump to:
@@ -34,7 +35,7 @@ For information about Silent or Interactive notifications, see:
 
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.
-If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
+If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
 
 
 ### Adding the Push SDK
@@ -91,8 +92,8 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
 | [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device-amp-send-device-token)                                                | Sends the device token to the server                                    |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
 | [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
 | [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
 | [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |

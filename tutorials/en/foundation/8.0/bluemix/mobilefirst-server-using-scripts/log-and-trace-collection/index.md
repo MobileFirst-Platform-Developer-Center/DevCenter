@@ -4,13 +4,13 @@ title: Log and trace collection
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview 
-IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your MobileFirst containers.
+IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
 
-The option to create log files for the MobileFirst Server and MobileFirst Analytics containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+The option to create log files for the {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
 
-When your MobileFirst Foundation container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
+When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
 
 ### Logging overrides
 You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
@@ -22,7 +22,7 @@ Injecting code using a given script file to change the log level can be accompli
 * `[-ms|--maxlogsize]` maximum\_size\_of\_log\_files
 
 ## Container log files
-Log files are generated for MobileFirst Server and Liberty Profile runtime activities for each container instance and can be found in the following locations:
+Log files are generated for {{ site.data.keys.mf_server }} and Liberty Profile runtime activities for each container instance and can be found in the following locations:
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
@@ -34,7 +34,7 @@ You can log in to the container by following the steps in Accessing log files an
 To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from Bluemix using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
 
 **Enabling volume**
-Volume allows for containers to persist log files. The volume for MobileFirst Server and MobileFirst Analytics container logs is not enabled by default.
+Volume allows for containers to persist log files. The volume for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analyics }} container logs is not enabled by default.
 
 You can enable volume when running the **start*.sh** scripts by setting `ENABLE_VOLUME [-v | --volume]` to `Y`. This is also configurable in the **args/startserver.properties** and **args/startanalytics.properties** files for interactive execution of the scripts.
 
@@ -59,7 +59,7 @@ The container logs endpoint gets stdout logs with the given ID of the container 
 Example: `GET /containers/{container_id}/logs`
 
 #### Accessing containers from the command line
-You can access running MobileFirst Server and MobileFirst Analytics container instances from the command line to obtain logs and traces.
+You can access running {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} container instances from the command line to obtain logs and traces.
 
 1. Create an interactive terminal within the container instance by running the following command: `cf ic exec -it container_instance_id "bash"`.
 2. To locate the log files or traces, use the following command example:
@@ -77,7 +77,7 @@ You can access running MobileFirst Server and MobileFirst Analytics container in
    ```
 
 #### Accessing containers using SSH
-You can get the syslogs and Liberty logs by using Secure Shell (SSH) to access your MobileFirst Server and MobileFirst Analytics containers.
+You can get the syslogs and Liberty logs by using Secure Shell (SSH) to access your {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers.
 
 If you are running a container group, you can bind a public IP address to each instance and view the logs securely using SSH. To enable SSH, make sure to copy the SSH public key to the **mfp-server\server\ssh** folder before you run the **startservergroup.sh** script.
 
