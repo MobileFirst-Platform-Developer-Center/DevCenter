@@ -11,6 +11,7 @@ To use the mobile client to install apps on mobile devices, you must either gene
 
 #### Jump to
 
+* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [Importing and building the project (Android, iOS, Windows Phone)](#importing-and-building-the-project-android-ios-windows-phone)
 * [Customizing features (for experts): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
 * [Microsoft Windows 8: Building the project](#microsoft-windows-8-building-the-project)
@@ -46,6 +47,59 @@ Optional: If necessary, you can also build the Windows Phone version from source
 The Windows 8 version of the mobile client is included as a .zip archive file. The **IBMApplicationCenterWindowsStore.zip** file contains an executable file (.exe) and its dependent Dynamic-Link Library (.dll) files. To use the content of this archive, you download the archive to a location on you local drive and run the executable file.
 
 Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
+
+##  Cordova based IBM AppCenter client
+Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
+
+### Introduction
+This is an AppCenter client application that is based on Cordova framework, it does not have any dependency on the {{ site.data.keys.product_adj }} Platform client/server APIs. Since this a pure Cordova app, there is no dependency on {{ site.data.keys.mf_studio }} (v7.1 Studio  for developing {{ site.data.keys.product_adj }}  Platform apps). This app uses DOJO for the UI.
+
+### Getting started
+Follow the steps below to get started:
+
+1.  Install Cordova.
+```
+npm install -g cordova@latest
+```
+OR
+```
+sudo npm install -g cordova@latest
+```
+
++ Install Android SDK and set the `ANDROID_HOME`.
++ Build and run this project.
+```
+sudo cordova build
+```
+OR
+```
+sudo cordova build android
+```
+OR
+```
+sudo cordova build ios
+```
+
+Once build is successful, you can find `.apk` in *platforms/android/build/outputs/apk/android-debug.apk*.
+
+### Customizing AppCenter client
+
+####  Android
+The project can be imported into Android studio. For this you will have to follow the steps below:
+* Open the Android Studio.
+* Select **Import project (Eclipse ADT, Gradle, etc.)**
+* Select the android folder from *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android*.
+
+This might take some time. Once this is done you are ready to customize.
+> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+
+####  iOS
+
+* Go to *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms*.
+* Click to open the `IBMAppCenterClient.xcodeproj` file, the project is opened in Xcode and you are ready to customize.
+
+> **Note:** You can refer to the Apache Cordova release notes [here](https://cordova.apache.org/news/2016/05/24/tools-release.html).
+
 
 ## Importing and building the project (Android, iOS, Windows Phone)
 You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }} and then build the project.
@@ -86,27 +140,28 @@ The installation of Visual Studio 2013 enables you to select the installation of
 
 See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
 
+
 ## Customizing features (for experts): Android, iOS, Windows Phone)
 You can customize features by editing a central property file and manipulating some other resources.
 
-To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/**. If you want to change the default application behavior, you can adapt this property file before you build the project.
+To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/** or **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. If you want to change the default application behavior, you can adapt this property file before you build the project.
 
 This file contains the properties shown in the following table.
 
 | Property | Description |
 |----------|-------------|
-| url | The hardcoded address of the Application Center server. If this property is set, the address fields of the Login view are not displayed. | 
+| url | The hardcoded address of the Application Center server. If this property is set, the address fields of the Login view are not displayed. |
 | defaultPort | If the url property is null, this property prefills the port field of the Login view on a phone. This is a default value; the field can be edited by the user. |
-| defaultContext | If the url property is null, this property prefills the context field of the Login view on a phone. This is a default value; the field can be edited by the user. | 
+| defaultContext | If the url property is null, this property prefills the context field of the Login view on a phone. This is a default value; the field can be edited by the user. |
 | ssl | The default value of the SSL switch of the Login view. |
 | allowDowngrade | This property indicates whether installation of older versions is authorized or not; an older version can be installed only if the operating system and version permit downgrade. |
-| showPreviousVersions | This property indicates whether the device user can show the details of all the versions of applications or only details of the latest version. | 
-| showInternalVersion | This property indicates whether the internal version is shown or not. If the value is false, the internal version is shown only if no commercial version is set. | 
+| showPreviousVersions | This property indicates whether the device user can show the details of all the versions of applications or only details of the latest version. |
+| showInternalVersion | This property indicates whether the internal version is shown or not. If the value is false, the internal version is shown only if no commercial version is set. |
 | listItemRenderer | This property can have one of these values:<ul><li>full, the default value; the application lists show application name, rating, and latest version.</li><li>simple: the application lists show the application name only.</li></ul> |
-| listAverageRating | This property can have one of these values:<ul><li>latestVersion: the application lists show the average rating of the latest version of the application.</li><li>allVersions: the application lists show the average rating of all versions of the application.</li></ul> | 
-| requestTimeout | This property indicates the timeout in milliseconds for requests to the Application Center server. | 
-| gcmProjectId | The Google API project ID (project name = com.ibm.appcenter), which is required for Android push notifications; for example, 123456789012. | 
-| allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. | 
+| listAverageRating | This property can have one of these values:<ul><li>latestVersion: the application lists show the average rating of the latest version of the application.</li><li>allVersions: the application lists show the average rating of all versions of the application.</li></ul> |
+| requestTimeout | This property indicates the timeout in milliseconds for requests to the Application Center server. |
+| gcmProjectId | The Google API project ID (project name = com.ibm.appcenter), which is required for Android push notifications; for example, 123456789012. |
+| allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. |
 
 ### Other resources
 Other resources that are available are application icons, application name, splash screen images, icons, and translatable resources of the application.
@@ -162,4 +217,3 @@ The Windows 8 mobile client is not intended to be deployed in Application Center
 The Android, iOS, and Windows Phone versions of the mobile client must be deployed to the Application Center. To do so, you must upload the Android application package (.apk) files, iOS application (.ipa) files, and Windows Phone application (.xap) files, Web directory archive (.zip) files to the Application Center.
 
 Follow the steps described in [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) to add the mobile client application for Android, iOS, and Windows Phone. Make sure that you select the Installer application property to indicate that the application is an installer. Selecting this property enables mobile device users to install the mobile client application easily over the air. To install the mobile client, see the related task that corresponds to the version of the mobile client app determined by the operating system.
-
