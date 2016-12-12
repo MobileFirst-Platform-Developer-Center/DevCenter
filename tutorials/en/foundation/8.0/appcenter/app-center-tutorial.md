@@ -63,7 +63,7 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
-##  Cordova based IBM {{ site.data.keys.mf_app_center_short }} client
+##  Cordova based IBM AppCenter client
 Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
 
 ### Introduction

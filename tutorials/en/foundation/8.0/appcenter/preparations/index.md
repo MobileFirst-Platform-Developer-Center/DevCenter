@@ -48,7 +48,7 @@ The Windows 8 version of the mobile client is included as a .zip archive file. T
 
 Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
 
-##  Cordova based IBM {{ site.data.keys.mf_app_center_short }} client
+##  Cordova based IBM AppCenter client
 Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
 
 ### Introduction
