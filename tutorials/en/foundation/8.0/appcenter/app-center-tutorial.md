@@ -27,6 +27,7 @@ You can use Application Center in different contexts. For example:
 #### Jump to:
 
 * [Installing and configuring](#installing-and-configuring)
+* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [Preparing mobile clients](#preparing-mobile-clients)
 * [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
 * [The Application Center mobile client](#the-application-center-mobile-client)
@@ -62,9 +63,67 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
+##  Cordova based IBM AppCenter client
+Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
+
+### Introduction
+This is an AppCenter client application that is based on Cordova framework, it does not have any dependency on the MobileFirst Platform client/server APIs. Since this a pure Cordova app, there is no dependency on MobileFirst Platform Studio (v7.1 Studio  for developing MobileFirst Platform apps). This app uses DOJO for the UI.
+
+### Getting started
+Follow the steps below to get started:
+
+1.  Install Cordova.
+```
+npm install -g cordova@latest
+```
+OR
+```
+sudo npm install -g cordova@latest
+```
+
++ Install Android SDK and set the `ANDROID_HOME`.
++ Build and run this project.
+```
+cordova build
+```
+OR
+```
+cordova build android
+```
+OR
+```
+cordova build ios
+```
+
+Once build is successful, you can find `.apk` in *platforms/android/build/outputs/apk/android-debug.apk*.
+
+### Customizing AppCenter client
+
+####  Android
+The project can be imported into Android studio. For this you will have to follow the steps below:
+* Open the Android Studio.
+* Select **Import project (Eclipse ADT, Gradle, etc.)**
+* Select the android folder from *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android*.
+
+This might take some time. Once this is done you are ready to customize.
+> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+
+####  iOS
+
+* Go to *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms*.
+* Click to open the `IBMAppCenterClient.xcodeproj` file, the project is opened in Xcode and you are ready to customize.
+
+> **Note:** You can refer to the Apache Cordova release notes [here](https://cordova.apache.org/news/2016/05/24/tools-release.html).
+
+
+
+
+
 ## Preparing mobile clients
 ### For Android phones and tablets
 The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
+
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
 ### For iPad and iPhone
 
@@ -76,6 +135,8 @@ The mobile client is delivered as a compiled application (APK) and is located at
 
 4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
 You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
+
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
 ### For Blackberry
 
