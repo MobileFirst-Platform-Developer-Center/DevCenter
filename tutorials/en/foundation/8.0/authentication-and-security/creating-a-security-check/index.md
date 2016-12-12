@@ -11,6 +11,7 @@ Security checks constitute the basic server-side building block of the {{ site.d
 
 Both Java and JavaScript adapters can theoretically define a security check in their respective definition files, however note that the security checks are implemented in Java code only.  
 An adapter can either be a *resource* adapter (meaning it serves resources and content to send to the client), a *SecurityCheck* adapter, or **both**.
+> <b>Note:</b> While security checks are implemented within adapters, the {{ site.data.keys.product_adj }} security-framework and adapter APIs are separate and cannot be mixed. Therefore, you cannot use an adapter API, such as the `AdpatersAPI` interface, in your security-check code, and you cannot use security-check APIs in adapter resource code.
 
 The architecture of the security framework is modular and flexible and so the implementation of the security check is not inherently dependent of any specific resource or application. You can reuse the same security check to protect different resources, and use different security-check combinations for various authorization flows. For enhanced flexibility, a security-check class exposes configuration properties that can be customized at the adapter level both in the security-check definition and during run time from the {{ site.data.keys.mf_console }}.
 

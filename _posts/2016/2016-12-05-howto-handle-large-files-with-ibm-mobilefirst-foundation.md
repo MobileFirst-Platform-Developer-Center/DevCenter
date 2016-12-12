@@ -31,7 +31,7 @@ It is designed to provide a simple API encapsulating the handling of MobileFirst
 This sample shows how a mobile application developer can download or upload large files to endpoints protected with IBM MobileFirst Foundation security. It focuses on the first consideration when handling transfers of large files - transfer the file content in chunks.
 The other considerations for transferring of large files are tied to the mobile operating system APIs and guidelines, and to the application specific requirements. They should be handled by the application developer.
 
-The approach shown in this sample is for the client application to obtain an IBM MobileFirst Foundation OAuth token and perform the file transfers using native Http request with the MobileFirst  security authorization header. This approach allows the developer full control over the file transfer process and can be applied to all client platforms supported by IBM MobileFirst Foundation. 
+The approach shown in this sample is for the client application to obtain an IBM MobileFirst Foundation OAuth token and perform the file transfers using native Http request with the MobileFirst  security authorization header. This approach allows the developer full control over the file transfer process and can be applied to all native client platforms supported by IBM MobileFirst Foundation.
  
 ## GitHub Repository
 [https://github.com/mfpdev/handling-large-files-sample](https://github.com/mfpdev/handling-large-files-sample)

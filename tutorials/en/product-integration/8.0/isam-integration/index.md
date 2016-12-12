@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/tree/release80
   - name: Download Android sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80
-  - name: Download iOS sample
+  - name: Download iOS (Swift) sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80
 weight: 3
 ---
@@ -256,14 +256,14 @@ To ensure all {{ site.data.keys.product_adj }} traffic is routed through IBM Sec
 
 ## Samples
 Download the [Cordova sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMCordova/tree/release80).  
-Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80).
-Download the [iOS sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80).
+Download the [Android sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80).  
+Download the [iOS (Swift) sample application](https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80).
 
 There are 3 samples available:
 - **IsamCordova** contains a Cordova sample.
 - **IsamSwift** contains a native Xcode project.
 - **IsamAndroid** contains a native Android Studio project.
 
-This sample uses `ResourceAdapter` adapter which can be found on GitHub [Security Check Adapters](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters).
+These samples use the `ResourceAdapter` adapter which can be found in the [Security Check Adapters](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters) repository.
 
-Ensure that **server.xml** file is configured and resources are deployed before running the sample app.
+Ensure that **server.xml** file is configured and resources are deployed before running the sample applications.

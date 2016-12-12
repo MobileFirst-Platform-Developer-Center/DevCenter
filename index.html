@@ -2,18 +2,18 @@
 layout: default 
 indexed: false
 ---
-<section id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
+<div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="banner">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>  
-    <div class="carousel-inner" role="listbox">      
+    <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">      
         <div class="item active">
             <div class="container">
                 <div class="row">  
-                    <div class="col-md-7 carousel-caption">
+                    <div class="col-md-7 carousel-caption" role="tab">
                         <h1 class="no-anchor">Develop, test, manage and secure your mobile applications</h1>
                         <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download {{ site.data.keys.product }}" data-analytics-label="MobileFirst" href="{{site.baseurl}}/downloads/" role="button">Get the Developer Kit</a></p>
                         <p><a class="custombtn btn-lg btn-default stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank" role="button">Find answers on Stack Overflow</a></p>
@@ -27,7 +27,7 @@ indexed: false
         <div class="item">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 carousel-caption">
+                    <div class="col-md-7 carousel-caption" role="tab">
                         <h1 class="no-anchor">Foundation in the cloud. Introducing the Mobile Foundation Bluemix service</h1>
                         <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience {{ site.data.keys.product }} on IBM Bluemix</a></p>
                     </div>
@@ -40,7 +40,7 @@ indexed: false
         <div class="item">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 carousel-caption">
+                    <div class="col-md-7 carousel-caption" role="tab">
                         <h1 class="no-anchor">Learn developing {{ site.data.keys.product }} apps with self-paced instructional videos</h1>
                         <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/developers/8.0/intro" role="button">Visit the Labs</a></p>
                     </div>
@@ -59,38 +59,38 @@ indexed: false
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</section>
+</div>
 <!-- /.carousel -->
 
-<section class="container">
-    <div class="row">
-        <div class="mid-nav col-sm-3 col-xs-6">
+<div class="container" role="navigation">
+    <div class="row" role="menu" aria-label="main topics menubar">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to {{ site.data.keys.product_full }}"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/get-introduced/">Get Introduced</a></h2>
             <p>Introduction to {{ site.data.keys.product_full }}.</p>
         </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/features"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Learn the product through tutorials"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/features">Get Familiar</a></h2>
             <p>Find out about {{ site.data.keys.product }} product features.</p>
         </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-started.png" alt="Learn the product through tutorials"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">Get Started</a></h2>
             <p>Follow our tutorials, and you’ll be up and running in no time.</p>
         </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/help/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-help.png" alt="Receive further assistance for the product"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/help/">Get Help</a></h2>
             <p>Find answers to your questions, submit feature requests and more...</p>
         </div>
     </div>
-</section>
+</div>
 
 <hr>
 
-<div id="blogPosts" class="container">
-    <span id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
+<div id="blogPosts" class="container" role="main">
+    <span aria-label="featured blog posts" role="button" id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span aria-label="announcement blog posts" role="button"  id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
     <div id="allPosts" class="twoColumns">
     {% for post in site.posts limit:10 %} 
         <div class="postItem inline">
@@ -108,5 +108,5 @@ indexed: false
         </div>
     {% endfor %}
     </div>
-    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> | <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
+    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> <span role="Separator">|</span> <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
 </div>

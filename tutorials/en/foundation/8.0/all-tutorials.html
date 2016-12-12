@@ -14,9 +14,9 @@ Develop your applications by following the tutorials bellow: set-up your develop
 <div id="container">
     <div class="row">
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
-            <form style="margin: 0 0 10px 15px" role="search" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="Search for..." name="q">
                 </div>
             </form>
             <div class="col-md-3">
@@ -57,8 +57,8 @@ Develop your applications by following the tutorials bellow: set-up your develop
 
 <hr />
 
-<div>
-    <h3><a href="../product-overview/">Product Overview</a></h3>
+<div id="tutorials-list">
+    <h2><a href="../product-overview/">Product Overview</a></h2>
     Learn about the {{ site.data.keys.product }} offering.
     
     <ul>
@@ -76,7 +76,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>
     
-    <h3><a href="../installation-configuration/">Installation and Configuration</a></h3>
+    <h2><a href="../installation-configuration/">Installation and Configuration</a></h2>
     Set up your development or production environment to work with {{ site.data.keys.product_full }}.
     
     <ul>
@@ -117,7 +117,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../installation-configuration/production/pure-application">Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</a></li>
     </ul>
     
-    <h3><a href="../administering-apps/">Administering Applications</a></h3>
+    <h2><a href="../administering-apps/">Administering Applications</a></h2>
     {{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production
     
     <ul>
@@ -129,7 +129,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
     </ul> 
     
-    <h3 id="upgrading_to_current_version"><a href="../upgrading/">Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h3>
+    <h2 id="upgrading_to_current_version"><a href="../upgrading/">Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
     Learn about product changes to prepare and plan for the migration of your {{ site.data.keys.product_adj }} applications.
     
     <ul>
@@ -153,7 +153,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
     
     <hr id="start-here"/>
     
-    <h3><a href="../quick-start/">Quick Start</a></h3>
+    <h2><a href="../quick-start/">Quick Start</a></h2>
     Get a feel of {{ site.data.keys.product }}.
     
     <ul>
@@ -164,7 +164,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../quick-start/web/">Quick Start with Web app</a></li>
     </ul>
     
-    <h3><a href="../application-development/sdk">Adding the {{ site.data.keys.product_adj }} SDK</a></h3>
+    <h2><a href="../application-development/sdk">Adding the {{ site.data.keys.product_adj }} SDK</a></h2>
     Add the {{ site.data.keys.product }} SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
     <ul>
@@ -178,7 +178,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
     
     <hr id="get-sdk-and-apis"/>
 
-    <h3><a href="../application-development">Developing Applications</a></h3>
+    <h2><a href="../application-development">Developing Applications</a></h2>
     Learn to use {{ site.data.keys.product_adj }} APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, {{ site.data.keys.mf_cli }}and more...
 
     <ul>
@@ -230,7 +230,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
     </ul>
     
-    <h3><a href="../adapters/">Developing Adapters</a></h3>
+    <h2><a href="../adapters/">Developing Adapters</a></h2>
     Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
     <ul>
@@ -268,7 +268,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
     
     <hr id="implement-authentication-and-security"/>
 
-    <h3><a href="../authentication-and-security/">Authentication and Security</a></h3>
+    <h2><a href="../authentication-and-security/">Authentication and Security</a></h2>
     Add various layers of protection to your applications.
 
     <ul>
@@ -317,7 +317,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
 
     <hr id="measure-and-engage"/>
 
-    <h3><a href="../notifications">Notifications</a></h3>
+    <h2><a href="../notifications">Notifications</a></h2>
     Send notifications with {{ site.data.keys.product_full }}.  
 
     <ul>
@@ -352,7 +352,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
     </ul>
     
-    <h3><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h3>
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
     Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
     <ul>
@@ -373,7 +373,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
     </ul>
     
-    <h3><a href="../bluemix">Foundation on Bluemix</a></h3>
+    <h2><a href="../bluemix">Foundation on Bluemix</a></h2>
     Deploy {{ site.data.keys.product }} to the cloud using Bluemix.  
 
     <ul>
@@ -394,7 +394,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         </li>
     </ul>
     
-    <h3><a href="../appcenter">Application Center</a></h3>
+    <h2><a href="../appcenter">Application Center</a></h2>
     Install, configure and use IBM MoblieFirst Foundation Application Center.
     
     <ul>
@@ -408,7 +408,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
     </ul>
     
-    <h3><a href="../troubleshooting/">Troubleshooting common problems</a></h3>
+    <h2><a href="../troubleshooting/">Troubleshooting common problems</a></h2>
     Frequantly asked questions and answers.
     
     <ul>
@@ -417,7 +417,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>
     
-    <h3><a href="../../../product-integration/8.0">Product integration</a></h3>
+    <h2><a href="../../../product-integration/8.0">Product integration</a></h2>
     Integrate {{ site.data.keys.product }} 8.0 apps with other IBM products
     
     <ul>

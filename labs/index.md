@@ -3,7 +3,7 @@ layout: default
 title: FoundationLabs
 show_disqus: false
 ---
-<section class="container">
+<section class="container" role="main">
     <h2 class="no-anchor">Welcome to FoundationLabs</h2>
     <article>
         <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
