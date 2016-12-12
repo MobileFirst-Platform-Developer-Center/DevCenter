@@ -63,11 +63,11 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
-##  Cordova based IBM AppCenter client
+##  Cordova based IBM {{ site.data.keys.mf_app_center_short }} client
 Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
 
 ### Introduction
-This is an AppCenter client application that is based on Cordova framework, it does not have any dependency on the MobileFirst Platform client/server APIs. Since this a pure Cordova app, there is no dependency on MobileFirst Platform Studio (v7.1 Studio  for developing MobileFirst Platform apps). This app uses DOJO for the UI.
+This is an AppCenter client application that is based on Cordova framework, it does not have any dependency on the {{ site.data.keys.product_adj }} Platform client/server APIs. Since this a pure Cordova app, there is no dependency on {{ site.data.keys.mf_studio }} (v7.1 Studio  for developing {{ site.data.keys.product_adj }}  Platform apps). This app uses DOJO for the UI.
 
 ### Getting started
 Follow the steps below to get started:
@@ -114,8 +114,6 @@ This might take some time. Once this is done you are ready to customize.
 * Click to open the `IBMAppCenterClient.xcodeproj` file, the project is opened in Xcode and you are ready to customize.
 
 > **Note:** You can refer to the Apache Cordova release notes [here](https://cordova.apache.org/news/2016/05/24/tools-release.html).
-
-
 
 
 
