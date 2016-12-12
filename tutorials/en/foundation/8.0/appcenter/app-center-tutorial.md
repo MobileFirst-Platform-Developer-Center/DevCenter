@@ -63,59 +63,58 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
-##  Cordova based IBM AppCenter client
-Cordova AppCenter client project is part of the `install` directory and is located at *install_dir/ApplicationCenter/installer/CordovaAppCenterClient*.
+## Cordova based IBM AppCenter client
+The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
 
-### Introduction
-This is an AppCenter client application that is based on Cordova framework, it does not have any dependency on the {{ site.data.keys.product_adj }} Platform client/server APIs. Since this a pure Cordova app, there is no dependency on {{ site.data.keys.mf_studio }} (v7.1 Studio  for developing {{ site.data.keys.product_adj }}  Platform apps). This app uses DOJO for the UI.
+This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
+Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
 
-### Getting started
 Follow the steps below to get started:
 
-1.  Install Cordova.
-```
+1. Install Cordova.
+
+```bash
 npm install -g cordova@latest
 ```
-OR
-```
-sudo npm install -g cordova@latest
+
+2. Install Android SDK and set the `ANDROID_HOME`.  
+3. Build and run this project.
+
+Build all platforms:
+
+```bash
+cordova build
 ```
 
-+ Install Android SDK and set the `ANDROID_HOME`.
-+ Build and run this project.
-```
-sudo cordova build
-```
-OR
-```
-sudo cordova build android
-```
-OR
-```
-sudo cordova build ios
+Build only Android:
+
+```bash
+cordova build android
 ```
 
-Once build is successful, you can find `.apk` in *platforms/android/build/outputs/apk/android-debug.apk*.
+Build only iOS:
 
-### Customizing AppCenter client
+```bash
+cordova build ios
+```
 
-####  Android
-The project can be imported into Android studio. For this you will have to follow the steps below:
+### Customizing AppCenter Installer application
+You can further customize the application, such as updating its user interface for your specific company or needs.
+
+> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+
+#### Android
 * Open the Android Studio.
 * Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android*.
+* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
 
 This might take some time. Once this is done you are ready to customize.
+
 > **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
 
-####  iOS
-
-* Go to *install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms*.
-* Click to open the `IBMAppCenterClient.xcodeproj` file, the project is opened in Xcode and you are ready to customize.
-
-> **Note:** You can refer to the Apache Cordova release notes [here](https://cordova.apache.org/news/2016/05/24/tools-release.html).
-
-
+#### iOS
+* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
+* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
 
 ## Preparing mobile clients
 ### For Android phones and tablets
