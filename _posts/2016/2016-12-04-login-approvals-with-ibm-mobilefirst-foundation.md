@@ -8,8 +8,8 @@ tags:
 - Security
 - Push
 - Android
-- Web SDK
-- node.JS
+- Web_SDK
+- nodeJS
 author:
   name: Ishai Borovoy
 additional_authors:

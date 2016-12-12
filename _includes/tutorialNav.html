@@ -1,35 +1,35 @@
-<nav class="navmenu navmenu-default" role="navigation">
-    <ul>
+<nav class="navmenu navmenu-default" aria-label="sidebar navigation">
+    <ul role="menu" aria-label="Sidebar menu">
 {% for language in site.data.tutorials %}
   {% if page.url contains language.url %}
     {% for product in language.children %}
       {% if page.url contains product.url %}
         {% for version in product.children %}
           {% if page.url contains version.url %}
-            <li class="open">
+            <li class="open" role="menuitem">
               <a href="javascript:void(0)" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{product.breadcrumb_title}}</a>
-              <ul class="dropdown-menu navmenu-nav" role="menu">
+              <ul class="dropdown-menu navmenu-nav">
                 {% for category in version.children %}
                   {% if category.show_in_nav == true %}
-                  <li {% if page.url contains category.url %} class="active" {% endif %}>
+                  <li {% if page.url contains category.url %} class="active" role="menuitem" {% endif %}>
                     <a href="{{site.baseurl}}{{category.url}}">{{category.breadcrumb_title}}</a>
                     {% if (page.url contains category.url) and (category.children != empty) %}
-                      <ul>
+                      <ul role="group">
                         {% for tutorial in category.children %}
                         {% if tutorial.show_in_nav == true %}
-                          <li {% if page.url contains tutorial.url %} class="active {% if tutorial.children == empty%} nochildren {% endif %}" {% endif %}>
+                          <li {% if page.url contains tutorial.url %} role="menuitem" class="active {% if tutorial.children == empty%} nochildren {% endif %}" {% endif %}>
                             <a href="{{site.baseurl}}{{tutorial.url}}">{{tutorial.breadcrumb_title}}</a>
                             {% if page.url contains tutorial.url and tutorial.children != empty %}
-                              <ul>
+                              <ul role="group">
                                 {% for childtutorial in tutorial.children %}
                                 {% if childtutorial.show_in_nav == true %}
-                                  <li {% if page.url == childtutorial.url %} class="active"{% elsif page.url contains childtutorial.url %} class="parent-active" {% endif %}>
+                                  <li {% if page.url == childtutorial.url %} role="menuitem" class="active"{% elsif page.url contains childtutorial.url %} class="parent-active" {% endif %}>
                                     <a href="{{site.baseurl}}{{childtutorial.url}}">{{childtutorial.breadcrumb_title}}</a>
                                     {% if page.url contains childtutorial.url and childtutorial.children != empty %}
-                                        <ul>
+                                        <ul role="group">
                                             {% for grandchildtutorial in childtutorial.children %}
                                             {% if grandchildtutorial.show_in_nav == true %}
-                                            <li {% if page.url contains grandchildtutorial.url %} class="active" {% endif %}>
+                                            <li {% if page.url contains grandchildtutorial.url %} role="menuitem" class="active" {% endif %}>
                                                 <a href="{{site.baseurl}}{{grandchildtutorial.url}}">{{grandchildtutorial.breadcrumb_title}}</a>
                                             </li>
                                             {% endif %}
@@ -67,7 +67,7 @@
           {% capture combined_path %}{{version.path}}{{category.path}}{% endcapture %}
           <li class="open">
             <a href="javascript:void(0)" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
-            <ul class="dropdown-menu navmenu-nav" role="menu">
+            <ul class="dropdown-menu navmenu-nav">
               {% for topic in category.children %}
                 {% capture combined_path %}{{version.path}}{{category.path}}{{topic.path}}{% endcapture %}
                 <li {% if page.url contains combined_path %} class="active" {% endif %}>
