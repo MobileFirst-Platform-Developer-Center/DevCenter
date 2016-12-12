@@ -11,17 +11,17 @@ weight: 9
 
 IBM Bluemix is an implementation of IBM's Open Cloud Architecture. It leverages Cloud Foundry to enable developers to rapidly build, deploy, and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.
 
-> Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://www.ng.bluemix.net/docs/overview/overview.html).
+> Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
 
 ### How does it work?
-In a nutshell, there are two ways to run {{ site.data.keys.product }} on Bluemix, depending on the type of license entitlement. 
+In a nutshell, there are two ways to run {{ site.data.keys.product }} on Bluemix, depending on the type of license entitlement.
 
-* Bluemix subscription or PayGo license: {{ site.data.keys.mf_bm_full }} service 
-* On Prem license: Use IBM provided scripts to set up an instance of {{ site.data.keys.product_full }} on IBM Containers or Liberty for Java runtime. 
+* Bluemix subscription or PayGo license: {{ site.data.keys.mf_bm_full }} service
+* On Prem license: Use IBM provided scripts to set up an instance of {{ site.data.keys.product_full }} on IBM Containers or Liberty for Java runtime.
 
 To run {{ site.data.keys.product }} on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
 
-To run {{ site.data.keys.product}} on a Bluemix Liberty for Java runtime, the following components are used: an **Cloudfoundry app** that contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. 
+To run {{ site.data.keys.product}} on a Bluemix Liberty for Java runtime, the following components are used: an **Cloudfoundry app** that contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it.
 ### IBM Containers
 IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
 
