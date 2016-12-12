@@ -100,6 +100,12 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
 
    > **Note:** Because the application was configured using the {{ site.data.keys.product_adj }} template, the {{ site.data.keys.product_adj }} core Cordova plug-in is added automatically as the platform is added in step 3.
 
+4. Prepare the application resources by running the `cordova prepare command`:
+
+   ```bash
+   cordova prepare
+   ```
+
 #### Existing Application
 
 1. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
