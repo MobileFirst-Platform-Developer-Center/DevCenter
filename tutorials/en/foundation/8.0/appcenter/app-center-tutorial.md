@@ -84,15 +84,15 @@ sudo npm install -g cordova@latest
 + Install Android SDK and set the `ANDROID_HOME`.
 + Build and run this project.
 ```
-cordova build
+sudo cordova build
 ```
 OR
 ```
-cordova build android
+sudo cordova build android
 ```
 OR
 ```
-cordova build ios
+sudo cordova build ios
 ```
 
 Once build is successful, you can find `.apk` in *platforms/android/build/outputs/apk/android-debug.apk*.
