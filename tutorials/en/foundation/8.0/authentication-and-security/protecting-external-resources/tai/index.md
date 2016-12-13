@@ -25,7 +25,7 @@ This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by u
 
 ## Server setup
 
-1. Download the OAuth Security Extension from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. Unpack the `mfp-oauth-tai.zip` archive.   
+1. Download the Security Tools .zip from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. In it you will find a `mfp-oauth-tai.zip` archive. Unpack this zip.
 
 2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
 
