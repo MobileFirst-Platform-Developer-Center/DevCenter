@@ -12,10 +12,7 @@ author:
   name: Ryan Berger
 ---
 
-# Integrating Weather Company Data with Mobile Foundation
-
-## Introduction
-
+## Integrating Weather Company Data with Mobile Foundation
 Connecting Bluemix services is a simple way to greatly extend the functions of an application. One way to do this is by using a Mobile Foundation adapter. Adapters can connect many services together, letting the developer focus on security and efficiency by simplifying the way an app accesses the cloud.
 
 ## Contents
@@ -28,7 +25,6 @@ Connecting Bluemix services is a simple way to greatly extend the functions of a
 7. [Conclusion](#conclusion)
 
 ## Benefits
-
 There are several benefits to using a Mobile Foundation adapter:
 
 1. **Reduce requests from the app** - The sample below uses Cloudant and Weather Company Data, and that means it has to make several http requests every time it wants to get the weather. Doing this from a device, such as a phone, means we have to rely on a possibly inconsistent internet connection. If any one of those requests fails we would have problems. Adapters let us make one request to an adapter and make the follow up requests from the cloud.
@@ -37,24 +33,20 @@ There are several benefits to using a Mobile Foundation adapter:
 4. **Hide credentials from users** - Using Bluemix services sometimes requires passing in a username and password or an api key. Mobile Foundation adapters have an option to store those credentials without making them visible to the user, securing our backend services.
 
 ## Scenario
-
 In this sample, we have a list of addresses stored in Cloudant and need to display alerts if there are dangerous weather conditions in the vicinity. To do this we'll be using **Mobile Foundation**, **Cloudant**, and **Weather Company Data**.
 
 In the sections below we'll cover designing the flow, building the adapter, and testing it.
 
 ## Prerequisites
-
 To fully understand this blog we need a basic understanding of adapters work. Start [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/#creating-an-adapter) to learn about creating and deploying a Java adapter.
 
 ## Viewing the API
-
 Before we view the API and design our flow let's go over what address information we have access to. Stored on Cloudant are documents consisting of the street name and number, city, state, and zip code. With that in mind, let's see what Weather Company Data has to offer.
 
 ### Swagger
-
 The best place to start is the api reference that is available [here](https://twcservice.mybluemix.net/rest-api/). Right away we can see that there are several sections, one of which is fortunately titled `Weather Alerts`.
 
-![weather]({{site.baseurl}}/assets/blog/2016-12-15-integrating-weather-company-data-with-mobile-foundation/swagger_alerts.png)
+![swagger alerts]({{site.baseurl}}/assets/blog/2016-12-15-integrating-weather-company-data-with-mobile-foundation/swagger_alerts.png)
 
 There are 5 options here:
 
@@ -68,7 +60,7 @@ Diving into each one narrows down our choices. **Alert details** only gives us m
 
 That leaves us with **area id** and **latitude and longitude**. Unfortunately we don't have either of those in our work order weather document, but the Weather Company Data api also has a section titled `Location Services`, which may be able to help.
 
-![weather]({{site.baseurl}}/assets/blog/2016-12-15-integrating-weather-company-data-with-mobile-foundation/swagger_location.png)
+![swager location]({{site.baseurl}}/assets/blog/2016-12-15-integrating-weather-company-data-with-mobile-foundation/swagger_location.png)
 
 Again we have 5 options for work with:
 
@@ -83,14 +75,12 @@ Let's narrow them down. **Point** takes in a latitude and longitude, which we st
 Testing the output for each query (through swagger) we can see that neither option seems to return an area id. This means that we'll have to search for weather alerts based on latitude and longitude. With that in mind, **postal key** seems like the obvious choice. It returns a single latitude and longitude, whereas **search** returns multiple coordinates, which would make it much more complicated.
 
 ## Designing the adapter
-
 ### Handling limitations
-
 There is a fundamental drawback with only using free services on Bluemix: limits. The free version of the Weather Company Data service only allows us to call the api 10 times a minute. Unfortunately, it takes one call to geocode a zip code and another call to get the alerts for the new latitude and longitude. That means that we're limited to getting the weather for no more than five work orders at a time. If we have more than five active work orders we have a problem. However, finding a way around this only requires that we think about what we want to do in the context of these limits and what tools we have.
 
 The best place to start would be to reduce the number of calls we make each time from two to one. Since we are searching based on zip codes and each zip code returns one latitude and longitude, we can save each zip code and latitude and longitude pair so that we only have to geocode each zip code once. The obvious solution for this is to use Cloudant.
 
-This means we'll have to write a new document. Let's call it `ZipCode.java`. This should be easy as it'll follow the same format as the rest of the documents.
+This means we'll have to write a new document. Let's call it **ZipCode.java**. This should be easy as it'll follow the same format as the rest of the documents.
 
 First we need the getters and setters.
 
@@ -107,9 +97,11 @@ public class ZipCode {
     public void setZip(String zip) {
         this.zip = zip;
     }
-			    .
-    			.
-    			.
+
+    .
+    .
+    .
+    
     /**
      * Cloudant IDs
      */
@@ -156,7 +148,6 @@ public boolean nonNullAndEmpty(String element) {
 Now we can use this to save the geocoded data and work within our limitations.
 
 ### Define the flow
-
 Let's define our flow for getting weather alerts.
 
 1. Get a list of zip codes we want to get alerts for.
@@ -168,9 +159,7 @@ Let's define our flow for getting weather alerts.
 7. Return the alerts.
 
 ## Writing the code
-
 ### Accessing the api
-
 We should start by setting up our Weather Company Data variables. In order to access the api we need to have the username and password for our instance. Adding the following lines in `adapter.xml` adds them as fields in our server console.
 
 ```xml
@@ -178,7 +167,7 @@ We should start by setting up our Weather Company Data variables. In order to ac
 <property name="weatherPassword" displayName="Weather Password" defaultValue=""/>
 ```
 
-Next we need to read them. We are already reading the Cloudant variables in `UtilitiesApplication.java` so we'll do it the same way.
+Next we need to read them. We are already reading the Cloudant variables in **UtilitiesApplication.java** so we'll do it the same way.
 
 ```java
 public String weatherUsername;
@@ -191,7 +180,7 @@ protected void init() throws Exception {
 }
 ```
 
-Before we can move on we still need to use those variables in our `UtilitiesResource.java` file. For our adapter calls we'll use the `okhttp3` library, so we need to set the weather username and password as our credentials.
+Before we can move on we still need to use those variables in our **UtilitiesResource.java** file. For our adapter calls we'll use the **okhttp3** library, so we need to set the weather username and password as our credentials.
 
 ```java
 private String getCredentials() {
@@ -207,7 +196,6 @@ private String getCredentials() {
 Now when we make a call to the api we include the credentials and it will handle authentication.
 
 ### Adding the zip code to Cloudant
-
 This will take a zip code object and POST it to Cloudant. Take note that we will set the `_id` field to be the word "zip" and the zip code. This will make it easier to search for zip codes in the future.
 
 ```java
@@ -238,7 +226,6 @@ private Response addZipCode(ZipCode zipCode) throws Exception {
 ```
 
 ### Geocoding with Weather Company Data
-
 We also need a function to get the latitude and longitude from the Weather Company Data api. This is pretty easy. All we have to do is make a request to the api endpoint, provide the credentials, and parse the output.
 
 ```java
@@ -264,7 +251,6 @@ private JSONObject geocode(String zip) throws Exception {
 ```
 
 ### Getting the alerts
-
 Now that we have the latitude and longitude we can get the alerts. This is almost exactly the same as geocoding. In fact, it's even easier, since we don't have to parse the data at the end, we can just return it as is.
 
 ```java
@@ -284,7 +270,6 @@ private String alerts(String latitude, String longitude) throws Exception {
 ```
 
 ### Writing the endpoint
-
 We should start with the output. Starting from the bottom up, the Weather Company Data api returns alert details as a JSON object, so we'll use that as our lowest level. On top of that are multiple possible alerts for a single location, so we should have a JSON array for each zip code. And since there are multiple zip codes we're returning, the whole thing should be a JSON object.
 
 Notice the line `@OAuthSecurity(scope = "user-restricted")`. That gives this endpoint a protected scope, so that only authorized users will be able to use it. This requires a challenge handler, which in our case would be supplied by a security adapter allowing a user to log in to authenticate. For the case of this blog, the protection can be removed just as easily by removing that line.
@@ -390,5 +375,4 @@ return Response.ok(zipLevel).build();
 By combining all the above pieces together into an adapter we can now use the Mobile Foundation server, Cloudant, and Weather Company Data api to get alerts for individual work orders.
 
 ## Conclusion
-
 IBM Mobile Foundation provides an easy way to connect multiple Bluemix services without worrying about app integration. It can improve app efficiency by moving logic to the backend and increase security by protecting endpoints with authentication.
