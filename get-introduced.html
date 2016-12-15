@@ -2,107 +2,91 @@
 layout: default
 title: Get Introduced
 ---
-<div class="container getintroduced">
-    <h2 class="no-anchor">Get Introduced</h2>
+<div id="get-introduced" class="container" role="main">
+   <h2 class="no-anchor">Get Introduced</h2>
+   <p>{{ site.data.keys.product_full }} provides simple, scalable, time-tested enterprise mobile middleware, deployable on premises or on Cloud.</p>
+   
+   <p>This mobile infrastructure integrates with popular development tools, connects to essential backend services, and is built on top of hybrid cloud technology. Accelerate delivery of mobile apps with rich support for front-end development tools, comprehensive security, application lifecycle management and a complete, backend server-side logic engine.</p>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#welcome" aria-controls="welcome" role="tab" data-toggle="tab">Welcome, Developers</a></li>
-        <li role="presentation"><a href="#foundation" aria-controls="foundation" role="tab" data-toggle="tab">IBM MobileFirst Foundation</a></li>
-        <li role="presentation"><a href="#containers" aria-controls="containers" role="tab" data-toggle="tab">IBM Bluemix and Bluemix Mobile Services</a></li>
-    </ul>
+   <blockquote>To learn more about {{ site.data.keys.product }} features, <a href="{{site.baseurl}}/features">see the features page</a>.</blockquote>
 
-    <br>
-
-    <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="welcome">
-          <h4 class="no-anchor">Welcome to the IBM MobileFirst Foundation Developer Center</h4>
-          <p>We've created this space so that you could find the resources you need to develop Cordova (iOS, Android, Windows), web and native (iOS, Android, Windows) applications that are based on <b>IBM MobileFirst Foundation</b>. Detailed code tutorials, instructional video sessions and technical blog posts; all meant to get you started with ease. These applications can then be further enhanced by integrating with <b>IBM Bluemix Mobile Services</b>.</p>
-          
-          <p>As a developer, this is the place for you to find an encompassing set of tutorials, enabling you to develop, test, manage, and secure your applications.</p>
-          
-          <hr>
-
-          <h4 class="no-anchor">What you get</h4>
-            <ul>
-                <li><b>MobileFirst Server</b>, the core of product, serving &amp; protecting applications, breathing life into adapters, and integrating with other products.</li>
-                <li><b>MobileFirst Operations Console</b>, a modern web UI for DevOps world with quick actions for creating applictions, live security configuration, sending push notifications, access to sample applications, adapters, and lots more.
-                <li><b>MobileFirst CLI</b>, enabling you to manage your artifacts in local and remote MobileFirst Servers, register applications as well as create adapters using simple &amp; intuitive commands.</li>
-                <li><b>Client SDKs</b>, available via the CocoaPods, Maven, NuGet and NPM package managers.</li>
-                <li><b>Adapter tooling</b> based on Maven, to create the backend logic you always wanted.</li>
-            </ul>
-            
-            <br/>
-            <h4 class="no-anchor">What you can do</h4>
-            <ul>
-                <li>Integrate the MobileFirst SDK for Cordova, iOS, Android, Windows 8 Universal and Windows 10 UWP applications</li>
-                <li>Enrich the application with native functionality by using Cordova plug-ins and specialized APIs</li>
-                <li>Implement OAuth-based Security Checks and other authentication methods provided by the MobileFirst security framework</li>
-                <li>Connect to back-end systems to retrieve information using Java and JavaScript adapters</li>
-                <li>Update your (hybrid) application remotely without needing to re-submit to the app store</li>
-                <li>Block specific app versions from accessing the server (due to a security hole or alike)</li>
-                <li>Send targeted (or broadcast) push notifications</li>
-                <li>Glean user &amp; application data using analytics APIs</li>
-                <li>Operate on data by using JSONStore and Cloudant</li>
-            </ul>
-            
-            <br/>
-            <h4 class="no-anchor">Get ready...</h4>
-            <p>Visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">Mobile Foundation Bluemix service</a> tutorial to setup MobileFirst Server on Bluemix. Alternatively, visit the <a href="{{site.baseurl}}/downloads">Downloads page</a> to download the Development Kit for MobileFirst Foundation v8.0 (or installation instructions for our past releases).</p>
-            
-            <br/>
-            <h4 class="no-anchor">Get started!</h4>
-            <p>Visit the <a href="{{site.baseurl}}/tutorials/en/foundation/">Foundation tutorials page</a> to get code done.<br/>
-            <p>You can also find tutorials that are tailored to the specific platform you're looking for:</p>
-            <ul>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/">Cordova</a></li>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ios-tutorials/">iOS</a></li>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/android-tutorials/">Android</a></li>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/windows-8-10-tutorials/">Windows 8 or 10</a></li>
-                
-            </ul>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="foundation">
-            <h4 class="no-anchor">What is IBM MobileFirst Foundation?</h4>
-            <p>IBM MobileFirst Foundation is a mobile development platform that provides development and deploy options both on the cloud (Bluemix) and on-premise (installed locally). MobileFirst Foundation enables you to build, enhance, and continuously deliver mobile apps efficiently and effectively.</p>
-            
-            <p>With the MobileFirst Foundation, organizations can more effectively address the full lifecycle of mobile app development, delivery and on-going management. MobileFirst Foundation supports a wide range of development approaches from native to hybrid as well as web. Therefore, you can evaluate the best approach for each situation, according to skills, time and functionality, without being limited by a specific approach to mobile application development.</p>
-            
-            <p>MobileFirst Foundation extend and integrate development, delivery and management capabilities by adding scalable data services, code scanning, quality assurance, and Bluemix mobile services.</p>
-            
-            <p>The result is an integrated platform that accelerates the delivery of your mobile strategy with increased productivity and security, and provides users with a more engaging experience.</p>
-            
-            <blockquote><a href="http://www-03.ibm.com/software/products/en/ibm-mobilefirst-foundation" target="_blank">Learn more about MobileFirst Foundation</a> in the corporate website</blockquote>
-            
-            <h4 class="no-anchor">Comprehensive Security</h4>
-            <p>Protect data on the device, APIs, and your brand from hackers and vulnerabilities. You don't need to be a security expert to get started right away with building secure apps. Employ best practices by using samples and templates, and quickly make and roll out changes with a configuration-based approach.</p>
-
-            <h4 class="no-anchor">Backend Logic Engine</h4>
-            <p>Add a rich back-end logic engine to power your apps. Write your app business logic in Java or Javascript. Expose your code as REST API endpoints, and document in Swagger to promote collaboration and simplify testing.</p>
-
-            <h4 class="no-anchor">App Lifecycle Management</h4>
-            <p>Adopt a more streamlined and repeatable process for incremental app updates. For example, skip the app store approval by making changes to your app while it's live, with no recompile needed.</p>
-
-            <h4 class="no-anchor">Push and Offline Sync</h4>
-            <p>Get essential back-end services that every app needs, pre-integrated in one easy-to-use SDK.</p>
-            
-            <h4 class="no-anchor">Bluemix Deployment</h4>
-            <p>The Mobile Foundation service provisions and orchestrates the IBM MobileFirst Foundation platform in the Bluemix cloud environment. Your mobile servers are created in IBM Containers, which provide you with a reliable, scalable, and production-ready environment.</p>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="containers">
-            <h3 class="no-anchor">IBM Bluemix</h3>
-            <p>IBM Bluemix is an open-standards, cloud platform for building, running, and managing applications.<br>
-            With Bluemix, developers can focus on building excellent user experiences with flexible compute options, choice of DevOps tooling, and a powerful set of IBM and third-party APIs and services.</p>
-            <br>
-            <p>Visit:</p>
-            <ul>
-                <li><a href="https://www.ng.bluemix.net/docs/#overview/overview.html#overview" target="_blank">Learn more about IBM Bluemix</a></li>
-                <li><a href="https://developer.ibm.com/bluemix/" target="_blank">Developer community</a></li>
-            </ul>
-            <h3 class="no-anchor">Bluemix Mobile Services</h3>
-            <p>With IBM® Bluemix® Mobile Services, you can incorporate pre-built, managed, and scalable cloud services into your mobile applications without relying on IT involvement. You can focus on building your mobile apps instead of the complexities of managing the back-end infrastructure.</p>
-
-            <p>Read more about Bluemix Mobile Services <a href="https://www.ng.bluemix.net/docs/mobile/index.html" target="_blank">in the Bluemix documentation website</a>.
-        </div>
+   <div id="introduction-items" class="row hidden-xs hidden-sm">
+      <div class="col-md-3 intro-item intro-item-border">
+         <img alt="Developer friendly" src="../assets/features/developer_friendly.svg"/>
+         <h4>DevOps friendly</h4>
+         <p>Build an automated DevOps pipeline to speed up deployments &amp; updates to applications.</p>
+      </div>   
+      <div class="col-md-3 intro-item intro-item-border">
+         <img alt="Devops friendly" src="../assets/features/devops_friendly.svg"/>
+         <h4>Scale at ease</h4>
+         <p>Start small and develop in the cloud, then move and scale production workloads on premises or in a dedicated cloud environment.</p>
       </div>
+      <div  class="col-md-3 intro-item intro-item-border">
+         <img alt="API management" src="../assets/features/api_management.svg"/>
+         <h4>API management</h4>
+         <p>Work seamlessly with IBM API Connect and DataPower Gateway to add API creation &amp; management capabilities, and to enforce API &amp; mobile security at the edge of the network.</p>
+      </div>
+      <div  class="col-md-3 intro-item">
+         <img alt="Bluemix" src="../assets/features/bluemix.svg"/>
+         <h4>Build smarter apps</h4>
+         <p>Leverage Bluemix services such as App Content Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and more.<br/></p>
+      </div>
+   </div>     
+   
+   <div id="introduction-items-small" class="visible-xs visible-sm" style="margin-left: 2px">   
+      <img alt="Developer friendly" class="component-img" src="../assets/features/developer_friendly.svg"/>
+      <p><b>DevOps friendly</b><br/>
+      Build an automated DevOps pipeline to speed up deployments &amp; updates to applications to avoid human mistakes.</p>
+      
+      <img alt="Devops friendly" class="component-img" src="../assets/features/devops_friendly.svg"/>
+      <p><b>Scale at ease</b><br/>
+      Start small and develop in the cloud, then move and scale production workload on premises or in a dedicated cloud environment.</p>
+      
+      <img alt="API management" class="component-img" src="../assets/features/api_management.svg"/>
+      <p><b>API management</b><br/>
+      Work seamlessly with IBM API Connect and DataPower Gateway to add API creation &amp; management capabilities, and to enforce API &amp; mobile security at the edge of the network.</p>
+      
+      <img alt="Bluemix" class="component-img" src="../assets/features/bluemix.svg"/>
+      <p><b>Build smarter apps</b><br/>
+      Leverage Bluemix services such as App Content Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and more.</p>
+   </div>
+   
+   <div id="product-components">
+      <h3 class="no-anchor">Product Components</h3>
+      <hr/>
+      <div style="width: 80%">
+         <img alt="Server" class="component-img" src="../assets/features/server.svg"/>
+         <p><b>{{ site.data.keys.mf_server }}</b><br/>
+         The {{ site.data.keys.mf_server }} runs the core capabilities of the product, such as: Security, Push Notifications, Analytics, App lifecycle management, Backend logic connectivity and more.</p>
+
+         <img alt="Operations Console" class="component-img" src="../assets/features/console.svg"/>
+         <p><b>{{ site.data.keys.mf_console }}</b><br/>
+         The {{ site.data.keys.mf_console }} is where you can: register applictions, create adapters, update app and security configuration in real-time, send push notifications, access app analytics, use Live Update to customize your app for different user groups and more.</p>
+
+         <img alt="Command-line interface" class="component-img" src="../assets/features/cli.svg"/>
+         <p><b>{{ site.data.keys.mf_cli }}</b><br/>
+         The CLI uses simple and intuitive commands that enable you register and preview applications, create adapters, and manage server deployments and configurations in local and remote servers.</p>
+
+         <img alt="Client SDKs" class="component-img" src="../assets/features/sdk.svg"/>
+         <p><b>Client SDKs</b><br/>
+         Client SDKs are available for iOS, Android, Windows, Cordova and web apps via popular package managers such as<br/>CocoaPods, Gradle, Nuget and NPM.</p>
+
+         <img alt="Adapters" class="component-img" src="../assets/features/adapter.svg"/>
+         <p><b>Adapters</b><br/>
+         Adapters are server-side entities where you can implement backend business logic for your app and also connect to any backend system.</p>
+      </div>
+   </div>
+      
+   <h3 class="no-anchor">Get Started</h3>
+   <hr/>
+   <p>To get started, <a href="{{site.baseurl}}/downloads">download our Developer Kit</a> for a local installation, or <a href="https://console.ng.bluemix.net/catalog/services/mobile-foundation/">head over to Bluemix</a> to setup a Mobile Foundation server in the cloud.<br/>Once you have a server running, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">follow our tutorials</a>!</p>
+
+   <ul>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/">Cordova tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ios-tutorials/">iOS tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/android-tutorials/">Android tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/windows-8-10-tutorials/">Windows tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/xamarin-tutorials/">Xamarin tutorials</a></li>
+      <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/">Web apps tutorials</a></li>
+   </ul>
 </div>

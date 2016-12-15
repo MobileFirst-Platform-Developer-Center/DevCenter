@@ -108,7 +108,7 @@ You can edit this file with the Design or Source editors.</p>
 
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.
 You can specify the application description, details about the author, and the thumbnail image to be displayed in the MobileFirst Console.</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 	<!-- Attribute "id" must be identical to application folder name -->
 	<application id="HelloWorld" platformVersion="6.3.0.00.20140701-1500"
 	xmlns="http://www.worklight.com/application-descriptor"
@@ -129,7 +129,7 @@ You can specify the application description, details about the author, and the t
 {% endhighlight %}
 
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 	<iphone bundleId="com.HelloWorld" version="1.0">
 		<worklightSettings include="false"/>
 		<security>
@@ -164,7 +164,7 @@ The default application HTML template complies with HTML5 standard markup, but a
 <p>The MobileFirst client-side framework uses the jQuery library for internal functions. By default, the <code>$</code> char is assigned to the internal jQuery in the main HTML file (see below). If using a different jQuery version is required or if jQuery is not required in the application, this line (#12) can be removed.</p>
 <p>The MobileFirst client framework initialization is bound to the <code>onload</code> event specified in the <code>initOptions.js</code> file. For more information about the initialization options, see the user documentation.</p>
 
-{% highlight html linenos %}
+{% highlight html  %}
 	<!DOCTYPE HTML>
 	<html>
 	    	<head>
@@ -206,7 +206,7 @@ It contains a <code>wlCommonInit()</code> function that is invoked automatically
 <p>As discussed previously, the MobileFirst application starts in offline mode by default.
 To begin communicating with MobileFirst Server, follow the instructions provided in the default <code>wlCommonInit()</code> function:</p>
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit(){
 	/*
 	 * Use of WL.Client.connect() API before any connectivity to MobileFirst Server is required.

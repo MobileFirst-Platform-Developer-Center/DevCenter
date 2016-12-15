@@ -13,18 +13,18 @@ author:
 
 ## Overview:
 **IBM MobileFirst Foundation**  can be setup on **Bluemix** in the following two ways:  
-1. Using the [Mobile Foundation Bluemix service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)  
+1. Using the [Mobile Foundation Bluemix service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)  
 2. Deploying Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-prem License entitlement:  
 
-* Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)  
-* Setting up the [MobileFirst Server on IBM Containers using Scripts on IBM Container Service] (https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)  
+* Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)  
+* Setting up the [MobileFirst Server on IBM Containers using Scripts on IBM Container Service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)  
 
 In any of the above options, MobileFirst Server needs a database to store administration and runtime data such as deployed adapters, application configuration data, registered devices and so on.  
 
 The database options for storing the administration and runtime data are as follows:  
 
 1. **The Mobile Foundation Bluemix service:**  
-  *  The **Developer plan** comes with a transient *Derby database*. This is a file system based database and meant only for short term demo purposes. Since derby data is stored in the Liberty application that is deployed, the data is not be persisted across restarts of the Cloud Foundry application.  
+  * The **Developer plan** comes with a transient *Derby database*. This is a file system based database and meant only for short term demo purposes. Since derby data is stored in the Liberty application that is deployed, the data is not be persisted across restarts of the Cloud Foundry application.  
   * All the other plans: **Developer Pro, Professional Per Capacity** or **Professional1Application** plan requires you to provide a *dashDB database service on Bluemix*. Only the transactional plans of dashDB service are supported.  
 2. **MobileFirst Foundation on Bluemix using IBM-provided scripts:**  
  In case of the scripts option, an external database is mandatory. We have the following two options:  
@@ -62,7 +62,7 @@ A single dashDB instance can be shared across multiple Mobile Foundation service
 ### Connecting to a dashDB that is in an Org/space that is different than the MobileFirst Server:  
 
 If you use dashDB service as the database when you deploy Mobile Foundation on Bluemix using scripts, then you need to run the scripts provided along with your MobileFirst Server download.  
-[Follow the instructions] (https://www-01.ibm.com/support/docview.wss?uid=swg2C7000005) in this page to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: CNBL0EN).  
+[Follow the instructions](https://www-01.ibm.com/support/docview.wss?uid=swg2C7000005) in this page to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: CNBL0EN).  
   
 **Option 1:** If you are deploying MobileFirst Server in the same Org and Space where the dashDB service exists:  
 
@@ -89,12 +89,10 @@ A good practice is to prefix or add the user name or app name in the schema name
   
 For example: 
    
-*User1* deploys his Mobile Foundation instance using the schema:  
-` ADMIN_SCHEMA_NAME=MFPDATA_USER1_MYAPP1 `  
+*User1* deploys his Mobile Foundation instance using the schema: `ADMIN_SCHEMA_NAME=MFPDATA_USER1_MYAPP1`  
 (The same schema names can be used for RUNTIME and PUSH schema names)  
   
-*User2* deploys his Mobile Foundation instance using the schema:
-` ADMIN_SCHEMA_NAME=MFPDATA_USER2_MYAPP2 `  
+*User2* deploys his Mobile Foundation instance using the schema: `ADMIN_SCHEMA_NAME=MFPDATA_USER2_MYAPP2`  
 (The same schema names can be used for RUNTIME and PUSH schema names)  
   
 ### Deploying Mobile Foundation using scripts with specific dashDB user accounts:
@@ -107,7 +105,7 @@ To create a new dashDB user:
 1. Navigate to your Bluemix Console and click on ‘All-Items’.
 2. Search for your dashDB service instance, click and then ‘Open’ the dashDB instance
 3. On the **dashDB Transactional** console, navigate to `Settings -> Users & Privileges` on the Left side menu
-4. Click on the `+ `(Plus sign) to add a new user, create a new user, and set a password for the user. Click on `Add user` to save.
+4. Click on the `+` (Plus sign) to add a new user, create a new user, and set a password for the user. Click on `Add user` to save.
 5. Note down the username and password that you have created.
 The user that you have now created will be able to create new schemas in the dashDB service for their own user. But will not be able to use other users’ schemas.
 
@@ -126,15 +124,15 @@ To setup Mobile Foundation using scripts with these settings, run the same steps
 2. `prepareserverdbs.sh` – Creates the required schema and tables in the dashDB database and configures Mobile Foundation to connect to the database. 
 Provide the following properties, that you have noted in the previous steps:   
 
-    ```xml
-    DB_TYPE=DB2   
-    DB2_HOST=aaaaaaa.services.dal.bluemix.net   
-    DB2_DATABASE=BLUDB   
-    DB2_PORT=50000   
-    DB2_USERNAME=newuser   
-    DB2_PASSWORD=xxxxxxxx   
-    ADMIN_SCHEMA_NAME=MFPDATA_NEWUSER
-    ```
+   ```xml
+   DB_TYPE=DB2   
+   DB2_HOST=aaaaaaa.services.dal.bluemix.net   
+   DB2_DATABASE=BLUDB   
+   DB2_PORT=50000   
+   DB2_USERNAME=newuser   
+   DB2_PASSWORD=xxxxxxxx   
+   ADMIN_SCHEMA_NAME=MFPDATA_NEWUSER
+   ```
 
 3. `prepareserver.sh` - Create and upload the app onto Bluemix
 4. `startserver.sh` – Start the Mobile Foundation app

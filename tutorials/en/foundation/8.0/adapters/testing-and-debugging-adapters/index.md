@@ -4,11 +4,12 @@ title: Testing and Debugging Adapters
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 
 You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
 
-This tutorial demonstrates how to test adapters by using the MobileFirst CLI and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
+This tutorial demonstrates how to test adapters by using the {{ site.data.keys.mf_cli }} and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
 
 #### Jump to:
 
@@ -20,7 +21,7 @@ This tutorial demonstrates how to test adapters by using the MobileFirst CLI and
  * [Java adapters](#java-adapters)
 
 ## Testing Adapters
-MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
+Adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
 
 The structure of the URL used to access the adapter resource is:
 
@@ -33,7 +34,7 @@ The structure of the URL used to access the adapter resource is:
 * When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 ### Handling security
-The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
+The {{ site.data.keys.product }} security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
 
 To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
 
@@ -47,7 +48,7 @@ To disable security in JavaScript adapters, add the `secured` attribute to the p
 <procedure name="adapter-procedure-name" secured="false"/>
 ```
 
-Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges.
+Alternatively, the development version of the {{ site.data.keys.mf_server }} includes a test token endpoint to bypass the security challenges.
 
 ### Using Postman
 
@@ -57,7 +58,7 @@ To receive a Test Token, either click the "Run in Postman" button below to impor
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
 
 {% comment %}
-1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
+1. In the {{ site.data.keys.mf_console }} → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes, set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
@@ -100,7 +101,7 @@ Using Swagger, a developer can test the adapter endpoints before they are consum
 
 To access Swagger:
 
-1. Open the MobileFirst Operations Console and select an adapter from the adapters list.
+1. Open the {{ site.data.keys.mf_console }} and select an adapter from the adapters list.
 2. Click on the **Resources** tab.
 3. Click on the **View swagger Docs** button.  
 4. Click on the **Show/Hide** button.
@@ -153,7 +154,7 @@ public Map<String, String> enterInfo(
 
 
 {% comment %}
-### Using MobileFirst CLI
+### Using {{ site.data.keys.mf_cli }}
 
 In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
 You can choose to run the command interactively or directly. The following is an example of using the direct mode:
@@ -220,7 +221,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
     - Click **Browse** and select the Maven project.
     - Click **Debug**.
 
-    ![Image showing how to set MobileFirst Server debug parameters](setting-debug-parameters.png)
+    ![Image showing how to set {{ site.data.keys.mf_server }} debug parameters](setting-debug-parameters.png)
 
 4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
 

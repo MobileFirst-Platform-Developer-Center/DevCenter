@@ -173,15 +173,16 @@ footer a {
 	color: white;
 }
 
-code:not([class*="language-"]) {
-	background-color: inherit;
-	color: $black;
-	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-	padding: 0px;
-	background: #FDFAFB;
-    border: 1px solid #E0E0EA;
-	weight:400;
-}
+//code:not([class*="language-"]) {
+//	background-color: inherit;
+//	color: $black;
+//	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
+//	padding: 0px;
+//	//background: #FDFAFB;
+//   //border: 1px solid #E0E0EA;
+//	weight:400;
+//}
+
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
@@ -240,42 +241,43 @@ blockquote {
 		}
 	}
 }
-:focus, a:focus {
-	outline: none;
-}
-.btn {
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.focus {
-		outline: none;
-	}
-}
+// Focus is kept "unstyled to comply with accessibility guidelines."
+//:focus, a:focus {
+//	outline: none;
+//}
+//.btn {
+//	&:focus {
+//		outline: none;
+//	}
+//	&:active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.focus {
+//		outline: none;
+//	}
+//}
 .btn-color {
 	color: white;
 }
 .container .btn {
 	background-color: $color_rhino_approx;
-	&:focus {
-		background-color: $color_rhino_approx;
-		color: white;
-	}
+	//&:focus {
+	//	background-color: $color_rhino_approx;
+	//	color: white;
+	//}
 	&:hover {
 		background-color: $color_nile_blue_approx;
 		color: white;

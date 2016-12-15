@@ -8,9 +8,9 @@ downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-You can use the IBM MobileFirst Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
+You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
 #### Jump to:
@@ -24,7 +24,7 @@ Items that can be translated are application strings and system messages.
 ## Translating application strings
 Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
 
-- In Cordova applications that use the MobileFirst SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
+- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
 - In Web applications, you need to add it.
 
 ### JSON object structure example
@@ -77,8 +77,8 @@ The below steps explain the implementation of this tutorial's sample application
 
 1. Set up the default application strings in the `index.js` file.
 
-    ```javascript
-    var Messages = {
+   ```javascript
+   var Messages = {
         headerText: "Default header",
         actionsLabel: "Default action label",
         sampleText: "Default sample text",
@@ -86,23 +86,23 @@ The below steps explain the implementation of this tutorial's sample application
         frenchLanguage: "French",
         russianLanguage: "Russian",
         hebrewLanguage: "Hebrew"
-    };
-    ```
+   };
+   ```
 
 2. Override specific strings when required.
 
-    ```javascript
-    function setFrench(){
+   ```javascript
+   function setFrench(){
         Messages.headerText = "Traduction";
         Messages.actionsLabel = "Sélectionnez une langue:";
         Messages.sampleText = "Ceci est un exemple de texte en français.";
-    }
-    ```
+   }
+   ```
 
 3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
 
-    ```javascript
-    function languageChanged(lang) {
+   ```javascript
+   function languageChanged(lang) {
         if (typeof(lang)!="string") 
             lang = $("#languages").val();
         
@@ -129,8 +129,8 @@ The below steps explain the implementation of this tutorial's sample application
         $("#sampleText").html(Messages.sampleText);
         $("#headerText").html(Messages.headerText);
         $("#actionsLabel").html(Messages.actionsLabel);
-    }
-    ```
+   }
+   ```
 
 ## Detecting the device locale and language
 To detect the language used by the device or browser:

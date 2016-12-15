@@ -10,13 +10,14 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../../application-development/sdk/android) to your Native Android project.
+- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/android) to your Native Android project.
 - Learn how to [create adapters](../../../adapters/creating-adapters).
 
 ## WLResourceRequest

@@ -56,7 +56,7 @@ pod 'IBMMobileFirstPlatformFoundation', '~> 7.1.3'
 </li>
 <li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
 {% endhighlight %}
     </li>
@@ -83,7 +83,7 @@ The next step adds the following files to the native directory, as explained in 
 </ol>
 <h2 id="insideNativeApp">Inside a native application containing the MobileFirst Native SDK</h2>
 <p>In addition to the reconfigured project, now containing the MobileFirst Native SDK, three artifacts were added: the <code>worklight.plist</code> file, the application descriptor, and the <code>mobilefirst</code> folder.</p>
-<h3>worklight.plist</h3>
+<h3 id="worklight-plist">worklight.plist</h3>
 <p>The <code>worklight.plist</code> file, located at the root of the project, holds server configuration properties and is user-editable:</p>
 <ul>
 <li><code>protocol</code> – The communication protocol to MobileFirst Server, which is either <code>http</code> or <code>https</code>.</li>

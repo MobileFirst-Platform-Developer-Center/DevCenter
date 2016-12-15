@@ -5,13 +5,14 @@ breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## Analytics Console
 From the Analytics Console, view and configure the Analytics reports. Manage alerts and view client logs.
 
-You can open the Analytics Console from the MobileFirst Operations Console by clicking the  **Analytics Console**  link in the top-right navigation bar.
+You can open the Analytics Console from the {{ site.data.keys.mf_analytics_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
 
 ![Analytics console button](analytics-console-button.png)
 
@@ -37,7 +38,7 @@ In the **Infrastructure** panel you can review analytics data related to: sessio
 From the **Apps → Usage and Devices** tab, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
 
 ### Built-in Analytics
-When you use the MobileFirst client SDK together with the MobileFirst Server, analytics data automatically gets collected for any request that your app makes to the MobileFirst Server. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the MobileFirst Analytics Server.
+When you use the {{ site.data.keys.product_adj }} client SDK together with the {{ site.data.keys.mf_server }}, analytics data automatically gets collected for any request that your app makes to the {{ site.data.keys.mf_server }}. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the {{ site.data.keys.mf_analytics_server }}.
 
 ### Custom Analytics
 You can have your app send custom data and create custom charts for your custom data.
@@ -45,12 +46,12 @@ You can have your app send custom data and create custom charts for your custom 
 > Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
 
 ### Custom charts
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Analytics Console (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
+Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
 
 > Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
 
 ### Manage alerts
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the MobileFirst Analytics Console regularly.
+Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.
 
 From the **Dashboard → Alert Management** tab, you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
 
@@ -60,7 +61,7 @@ From the **Dashboard → Alert Management** tab, you can configure thresholds wh
 App crashes are visualized on the Analytics Console (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
 ### Monitor server and network data
-The MobileFirst Analytics Console monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+The {{ site.data.keys.mf_analytics_console }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
 
 
 ### Collect, search, and report on client logs
@@ -82,7 +83,7 @@ For more information on sending logs from the client, see [Client log collection
 
 
 
-## MobileFirst Operations Console
+## {{ site.data.keys.mf_analytics_console }}
 Configure and administer the Analytics Server with the Operations Console.
 
 If you are in the Analytics Console, access the Operations Console by clicking the **Operations Console** button in the top navigation bar.
@@ -100,8 +101,8 @@ The collection of data for analysis by the Analytics server is enabled by defaul
 
 
 ### Role-based access control
-Content in the MobileFirst Analytics Console is restricted by predefined security roles.  
-The MobileFirst Analytics Console displays different content based on the security role of the logged-in user. The following table shows the security roles and their access to the MobileFirst Analytics Console.
+Content in the {{ site.data.keys.mf_analytics_console }} is restricted by predefined security roles.  
+The {{ site.data.keys.mf_analytics_console }} displays different content based on the security role of the logged-in user. The following table shows the security roles and their access to the {{ site.data.keys.mf_analytics_console }}.
 
 | Role           | Role name                | Viewing Access                                                     | Editing Access  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
@@ -111,7 +112,7 @@ The MobileFirst Analytics Console displays different content based on the securi
 | Support        | analytics_support        | Everything except for the Administration pages.		             | Everything.     |
 | Business       | analytics_business       | Everything except for the Administration and Infrastructure pages. | Everything.     |
 
-> For information on setting up roles, see [Configuring user authentication for MobileFirst Server administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+> For information on setting up roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 
 
 ## Related blog posts

@@ -9,19 +9,19 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
   - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
-
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
+{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../../)
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Platform Foundation SDK to windows applications](../../../application-development/sdk/windows-8-10)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product_adj }} SDK to windows applications](../../../application-development/sdk/windows-8-10)
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
 * [Notifications configuration](#notifications-configuration)
@@ -30,14 +30,13 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ## Notifications Configuration
 Create a new Visual Studio project or use and existing one.  
-If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
-
+If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
 
 ### Adding the Push SDK
 
-1. Select Tools > NuGet Package Manager > Package Manager Console.
-2. Choose the project where you want to install the MobileFirst push component.
-3. Add theMobileFirst push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
+1. Select Tools → NuGet Package Manager → Package Manager Console.
+2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
+3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
 ## Pre-requisite WNS configuration
 1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
@@ -61,7 +60,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
 | [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
 | [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
 | [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
 | [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
@@ -109,7 +108,6 @@ if (Response.Success == true)
 Retrieve all the available tags from the push notification service.
 
 ```csharp
-
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetTags();
 if (Response.Success == true)
 {
@@ -190,15 +188,15 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
 
 1. Create a class by using interface of type MFPPushNotificationListener
 
-    ```csharp
-    internal class NotificationListner : MFPPushNotificationListener
-    {
+   ```csharp
+   internal class NotificationListner : MFPPushNotificationListener
+   {
         public async void onReceive(String properties, String payload)
-    {
-       // Handle push notification here      
-    }
-    }
-    ```
+   {
+        // Handle push notification here      
+   }
+   }
+   ```
 
 2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
 3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.

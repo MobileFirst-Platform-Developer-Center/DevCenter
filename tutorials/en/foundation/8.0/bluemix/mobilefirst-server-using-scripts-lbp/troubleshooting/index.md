@@ -4,7 +4,7 @@ title: Troubleshooting
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Resolving problems with IBM MobileFirst Foundation on Liberty for Java runtime	
 When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
 

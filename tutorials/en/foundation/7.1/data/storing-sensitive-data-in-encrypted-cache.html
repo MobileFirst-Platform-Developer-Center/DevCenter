@@ -48,7 +48,7 @@ The following table shows which browsers support web storage for mobile devices.
 <li><code>onComplete</code> – A callback function to be invoked when cache opening/creating is complete.</li>
 <li><code>onError</code> - A callback function to be invoked when cache is not successfully opened/created.</li>
 </ul>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
 function onOpenComplete(status){
     busyIndicator.hide();
@@ -66,7 +66,7 @@ function onOpenComplete(status){
 <li><code>WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS</code> – An <code>open()</code> or <code>changeCredentials()</code> request is already running.</li>
 </ul>
 <h4>Example</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
 function onOpenComplete(status){
     busyIndicator.hide();
@@ -102,7 +102,7 @@ function onOpenError(status){
 <p>To store data in encrypted cache, use the following API:<br />
 <code>WL.EncryptedCache.write(key, value, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);
 function onWriteSuccess(status){
     alert("Succesfully encrypted into cache.");
@@ -117,7 +117,7 @@ function onWriteFailure(status){
 <p>To read data from the encrypted cache, use the following API:
 <code>WL.EncryptedCache.read(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);
 function onDecryptReadSuccess(value){
     alert("Read success. Retrieved value :: " + key + " = " + value);
@@ -130,7 +130,7 @@ function onDecryptReadFailure(status){
 <p>To remove data from the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.remove(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);
 function onRemoveSuccess(status){
     alert("Succesfully removed from cache.");
@@ -144,7 +144,7 @@ After an encrypted cache is closed, access to its data is not possible without t
 <p>To close the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.close(onComplete, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function destroyCacheClicked(){
     WL.EncryptedCache.destroy(onDestroyCompleteHandler,
     onDestroyErrorHandler);

@@ -4,8 +4,9 @@ title: Administrating applications through Ant
 breadcrumb_title: Administrating using Ant
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-You can administer MobileFirst applications through the **mfpadm** Ant task.
+You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** Ant task.
 
 #### Jump to
 
@@ -13,12 +14,12 @@ You can administer MobileFirst applications through the **mfpadm** Ant task.
 * [Prerequisites](#prerequisites)
 
 ## Comparison with other facilities
-You can execute administration operations with IBM MobileFirst Foundation in the following ways:
+You can execute administration operations with {{ site.data.keys.product_full }} in the following ways:
 
-* The MobileFirst Operations Console, which is interactive.
+* The {{ site.data.keys.mf_console }}, which is interactive.
 * The **mfpadm** Ant task.
 * The **mfpadm** program.
-* The MobileFirst administration REST services.
+* The {{ site.data.keys.product_adj }} administration REST services.
 
 The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for automated or unattended execution of operations, such as:
 
@@ -29,18 +30,18 @@ The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for au
 The **mfpadm** Ant task and the **mfpadm** program are simpler to use and have better error reporting than the REST services. The advantage of the **mfpadm** Ant task over the mfpadm program is that it is platform independent and easier to integrate when integration with Ant is already available.
 
 ## Prerequisites
-The **mfpadm** tool is installed with the MobileFirst Server installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the MobileFirst Server installer.
+The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
 
 Apache Ant is required to run the **mfpadm** task. For information about the minimum supported version of Ant, see System requirements.
 
-For convenience, Apache Ant 1.9.4 is included in MobileFirst Server. In the **product\_install\_dir/shortcuts/** directory, the following scripts are provided.
+For convenience, Apache Ant 1.9.4 is included in {{ site.data.keys.mf_server }}. In the **product\_install\_dir/shortcuts/** directory, the following scripts are provided.
 
 * ant for UNIX / Linux
 * ant.bat for Windows
 
 These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
 
-You can use the **mfpadm** Ant task on a different computer than the one on which you installed MobileFirst Server.
+You can use the **mfpadm** Ant task on a different computer than the one on which you installed {{ site.data.keys.mf_server }}.
 
 * Copy the file **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** to the computer.
 * Make sure that a supported version of Apache Ant and a Java runtime environment are installed on the computer.
@@ -65,7 +66,7 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 </taskdef>
 ```
 
-For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
 
@@ -77,7 +78,7 @@ For more information about running the MobileFirst Server installer, see [Runnin
 * [Commands for troubleshooting](#commands-for-troubleshooting)
 
 ### Calling the mfpadm Ant task
-You can use the **mfpadm** Ant task and its associated commands to administer MobileFirst applications.
+You can use the **mfpadm** Ant task and its associated commands to administer {{ site.data.keys.product_adj }} applications.
 Call the **mfpadm** Ant task as follows:
 
 ```xml
@@ -91,9 +92,9 @@ The **mfpadm** Ant task has the following attributes:
 
 | Attribute      | Description | Required | Default | 
 |----------------|-------------|----------|---------|
-| url	         | The base URL of the MobileFirst web application for administration services | Yes	 | |
+| url	         | The base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes	 | |
 | secure	     | Whether to avoid operations with security risks | No | true |
-| user	         | The user name for accessing the MobileFirst administration services | Yes | |
+| user	         | The user name for accessing the {{ site.data.keys.product_adj }} administration services | Yes | |
 | password	     | The password for the user | Either one is required | |
 | passwordfile   |	The file that contains the password for the user | Either one is required | |	 
 | timeout	     | Timeout for the entire REST service access, in seconds | No | |
@@ -176,7 +177,7 @@ To work around this limitation:
 * Or use the attribute **output="some file name"** to redirect the output of a mfpadm command to a file.
 
 ### Commands for general configuration
-When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM MobileFirst Server or of a runtime.
+When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
 
 #### The `show-global-config` command
 The `show-global-config` command shows the global configuration. It has the following attributes:
@@ -943,10 +944,10 @@ The status can have one of the following values:
 This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
 
 ### Commands for troubleshooting
-You can use Ant task commands to investigate problems with MobileFirst Server web applications.
+You can use Ant task commands to investigate problems with {{ site.data.keys.mf_server }} web applications.
 
 #### The `show-info` command
-The `show-info` command shows basic information about the MobileFirst administration services that can be returned without accessing any runtime nor database. Use this command to test whether the MobileFirst administration services are running at all. It has the following attributes:
+The `show-info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. Use this command to test whether the {{ site.data.keys.product_adj }} administration services are running at all. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
 |----------------|-------------|-------------|---------|
@@ -961,10 +962,10 @@ The `show-info` command shows basic information about the MobileFirst administra
 
 <br/>
 #### The `show-versions` command
-The `show-versions` command displays the MobileFirst versions of various components:
+The `show-versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
 
-* **mfpadmVersion**: the exact MobileFirst Server version number from which the **mfp-ant-deployer.jar **file is taken.
-* **productVersion**: the exact MobileFirst Server version number from which the **mfp-admin-service.war** file is taken.
+* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-ant-deployer.jar **file is taken.
+* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-admin-service.war** file is taken.
 * **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
 
 The command has the following attributes:
@@ -982,7 +983,7 @@ The command has the following attributes:
 
 <br/>
 #### The `show-diagnostics` command
-The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the MobileFirst administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
+The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
 
 | Attribute      | Description |	Required | Default |
 |----------------|-------------|-------------|---------|

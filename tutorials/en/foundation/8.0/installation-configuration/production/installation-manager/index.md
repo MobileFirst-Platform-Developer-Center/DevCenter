@@ -3,48 +3,49 @@ layout: tutorial
 title: Running the IBM Installation Manager
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-IBM  Installation Manager installs the IBM MobileFirst Server files and tools on your computer.
+IBM  Installation Manager installs the {{ site.data.keys.mf_server_full }} files and tools on your computer.
 
-You run Installation Manager to install the binary files of MobileFirst Server and the tools to deploy the MobileFirst Server applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server).
+You run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} and the tools to deploy the {{ site.data.keys.mf_server }} applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
 
-You need IBM Installation Manager V1.8.4 or later to run the MobileFirst Server installer. You can run it either in graphical mode or in command line mode.  
+You need IBM Installation Manager V1.8.4 or later to run the {{ site.data.keys.mf_server }} installer. You can run it either in graphical mode or in command line mode.  
 Two main options are proposed during the installation process:
 
 * Activation of token licensing
-* Installation and deployment of IBM MobileFirst Platform Application Center
+* Installation and deployment of {{ site.data.keys.mf_app_center }}
 
 ### Token licensing
-Token licensing is one of the two licensing methods supported by MobileFirst Server. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure MobileFirst Server for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
+Token licensing is one of the two licensing methods supported by {{ site.data.keys.mf_server }}. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
 
-### IBM MobileFirst Foundation Application Center
-Application Center is a component of IBM MobileFirst Foundation. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
+### {{ site.data.keys.mf_app_center_full }}
+Application Center is a component of {{ site.data.keys.product }}. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
 
 If you choose to install Application Center with Installation Manager, you must provide the database and the application server parameters so that Installation Manager configures the databases and deploys Application Center to the application server. If you choose not to install Application Center with Installation Manager, Installation Manager saves the WAR file and the resources of Application Center to your disk. It does not set up the databases nor deploys Application Center WAR file to your application server. You can do this later by using Ant tasks or manually. This option to install Application Center is a convenient way to discover Application Center because you are guided during the installation process by the graphical Install wizard.
 
-However, for production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to MobileFirst Server from the updates to Application Center.
+However, for production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center.
 
 * Advantage of installing Application Center with Installation Manager.
     * A guided graphical wizard assists you through the installation and deployment process.
 * Disadvantages of installing Application Center with Installation Manager.
     * If Installation Manager is run with the root user on UNIX or Linux, it might create files that are owned by root in the directory of the application server where Application Center is deployed. As a result, you must run the application server as root.
     * You have no access to the database scripts and cannot provide them to your database administrator to create the tables before you run the installation procedure. Installation Manager creates the database tables for you with default settings.
-    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other MobileFirst Server components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installsMobileFirst Server. For more information about Application Center, see [Installing and configuring the Application Center](../../../appcenter).
+    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other {{ site.data.keys.mf_server }} components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installs{{ site.data.keys.mf_server }}. For more information about Application Center, see [Installing and configuring the Application Center](../../../appcenter).
 
-> **Important:** The MobileFirst Server installer installs only the MobileFirst Server binary files and tools on your disk. It does not deploy the MobileFirst Server applications to your application server. After you run the installation with Installation Manager, you must set up the databases and deploy the MobileFirst Server applications to your application server.  
+> **Important:** The {{ site.data.keys.mf_server }} installer installs only the {{ site.data.keys.mf_server }} binary files and tools on your disk. It does not deploy the {{ site.data.keys.mf_server }} applications to your application server. After you run the installation with Installation Manager, you must set up the databases and deploy the {{ site.data.keys.mf_server }} applications to your application server.  
 > Similarly, when you run Installation Manager to update an existing installation, it updates only the files on your disk. You need to perform more actions to update the applications that are deployed to your application servers.
 
 #### Jump to
 * [Administrator versus user mode](#administrator-versus-user-mode)
 * [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
 * [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
-* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files-silent-installation)
-* [Distribution structure of MobileFirst Server](#distribution-structure-of-mobilefirst-server)
+* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
+* [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
 ## Administrator versus user mode
-You can install MobileFirst Server in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
+You can install {{ site.data.keys.mf_server }} in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
 
-IBM MobileFirst Foundation supports the following two Installation Manager modes:
+{{ site.data.keys.product }} supports the following two Installation Manager modes:
 
 * Administrator mode
 * User (nonadministrator) mode
@@ -61,18 +62,18 @@ If you do not run Installation Manager as root, make sure that you have a user a
 For more information about the Installation Manager modes, see [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in the IBM Installation Manager documentation.
 
 ## Installing by using IBM Installation Manager Install wizard
-Follow the steps in the procedure to install the resources of MobileFirst Server, and the tools (such as the Server Configuration Tool, Ant, and mfpadm program).  
+Follow the steps in the procedure to install the resources of {{ site.data.keys.mf_server }}, and the tools (such as the Server Configuration Tool, Ant, and mfpadm program).  
 The decisions in the following two panes in the installation wizard are mandatory:
 
 * The **General settings** panel.
 * The **Choose configuration** panel to install Application Center.
 
 1. Launch Installation Manager.
-2. Add the repository of MobileFirst Server in Installation Manager.
+2. Add the repository of {{ site.data.keys.mf_server }} in Installation Manager.
     * Go to **File → Preferences** and click **Add Repositories...**.
     * Browse for the repository file in the directory where the installer is extracted.
 
-        If you decompress the IBM MobileFirst Foundation V8.0 .zip file for MobileFirst Server in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        If you decompress the {{ site.data.keys.product }} V8.0 .zip file for {{ site.data.keys.mf_server }} in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         You might also want to apply the latest fix pack that can be downloaded from the [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
@@ -82,11 +83,11 @@ The decisions in the following two panes in the installation wizard are mandator
 3. After you accept the license terms of the product, click **Next**.
 4. Choose the package group to install the product.
 
-    IBM MobileFirst Foundation V8.0 is a replacement for the previous releases that have a different installation name:
+    {{ site.data.keys.product }} V8.0 is a replacement for the previous releases that have a different installation name:
     * Worklight for V5.0.6
     * IBM Worklight for V6.0 to V6.3
     
-    If one of these older versions of the product is installed on your computer, Installation Manager offers you an option Use an Existing Package Group at the start of the installation process. This option uninstalls your older version of the product, and reuse your older installation options to upgrade IBM MobileFirst Platform Application Center if it was installed.
+    If one of these older versions of the product is installed on your computer, Installation Manager offers you an option Use an Existing Package Group at the start of the installation process. This option uninstalls your older version of the product, and reuse your older installation options to upgrade {{ site.data.keys.mf_app_center_full }} if it was installed.
     
     For a separate installation, select the Create a New Package group option so that you can install the new version alongside with the older one.  
     If no other version of the product is installed on your computer, choose the Create a new package group option to install the product in a new package group.
@@ -94,58 +95,58 @@ The decisions in the following two panes in the installation wizard are mandator
 5. Click **Next**.
 6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
 
-    If you have a contract to use token licensing with Rational  License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure MobileFirst Server. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
-7. Keep the default option (No) as-is in the **Install IBM MobileFirst Foundation for iOS** section of the **General settings** panel.
+    If you have a contract to use token licensing with Rational  License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure {{ site.data.keys.mf_server }}. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
+7. Keep the default option (No) as-is in the **Install {{ site.data.keys.product }} for iOS** section of the **General settings** panel.
 8. Decide whether to install Application Center in **Choose configuration** panel.
 
-    For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to MobileFirst Server from the updates to Application Center. In this case, select No option in the Choose configuration panel so that Application Center is not installed.
+    For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center. In this case, select No option in the Choose configuration panel so that Application Center is not installed.
 
     If you select Yes, you need to go through the next panes to enter the details about the database you plan to use and the application server where you plan to deploy Application Center. You also need to have the JDBC driver of your database available.
 9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
 
-An installation directory that contains the resources to install MobileFirst components is installed.
+An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
 
 You can find the resources in the following folders:
 
-* **MobileFirstServer** folder for MobileFirst Server
-* **PushService** folder for MobileFirst Server push service
+* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
+* **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
-* **Analytics** folder for MobileFirst Analytics
+* **Analytics** folder for {{ site.data.keys.mf_analytics }}
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ## Installing by running IBM Installation Manager in command line
 
-1. Review the license agreement for MobileFirst Server. The license files can be viewed when you download the installation repository from Passport Advantage .
-2. Extract the compressed file of MobileFirst Server repository, that you downloaded, to a folder.
+1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
+2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
 
-    You can download the repository from the IBM MobileFirst Foundation eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V8.0 .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
     In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
 3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
 
-    If you accept the license agreement after the review in step 1, install MobileFirst Server.
+    If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
     * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
 
-        ```bash
-        imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
-        ```
+      ```bash
+      imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
+      ```
     * For an installation with token licensing enforcement, enter the command:
     
-        ```bash
-            imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
-        ```
+      ```bash
+      imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
+      ```
     
-        The value of **user.licensed.by.tokens** property is set to **true**. You must configure MobileFirst Server for [token licensing](../token-licensing).
+        The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
         
-        The following properties are set to install MobileFirst Server without Application Center:
+        The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
         
         This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
         
-        Set the value of the user.use.ios.edition property to false to install IBM MobileFirst Foundation.
+        Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
         
 5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
 
@@ -153,19 +154,19 @@ You can also find some shortcuts for the Server Configuration Tool, Ant, and mfp
     
     For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
     
-An installation directory that contains the resources to install MobileFirst components is installed.
+An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
 
 You can find the resources in the following folders:
 
-* **MobileFirstServer** folder for MobileFirst Server
-* **PushService** folder for MobileFirst Server push service
+* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
+* **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
-* **Analytics** folder for MobileFirst Analytics    
+* **Analytics** folder for {{ site.data.keys.mf_analytics }}    
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ## Installing by using XML response files - silent installation
-If you want to install IBM MobileFirst Application Center with IBM  Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
+If you want to install {{ site.data.keys.mf_app_center_full }} with IBM Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
 
 Silent installations are defined by an XML file that is called a response file. This file contains the necessary data to complete installation operations silently. Silent installations are started from the command line or a batch file.
 
@@ -175,7 +176,7 @@ Silent installation is described in the Installation Manager user documentation,
 
 There are two ways to create a suitable response file:
 
-* Working with sample response files provided in the MobileFirst user documentation.
+* Working with sample response files provided in the {{ site.data.keys.product_adj }} user documentation.
 * Working with a response file recorded on a different computer.
 
 Both of these methods are documented in the following sections.
@@ -190,7 +191,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     > * For an installation that does not install Application Center on an application server, use the file named **install-no-appcenter.xml**.
     > * For an installation that installs Application Center, pick the sample response file from the following table, depending on your application server and database.
 
-    #### Sample installation response files in the **Silent\_Install\_Sample_Files.zip** file to install the Application Center
+   #### Sample installation response files in the **Silent\_Install\_Sample_Files.zip** file to install the Application Center
     
     <table>
         <tr>
@@ -252,10 +253,11 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     
     > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM DB2 or another DBMS that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
-    For uninstallation, use a sample file that depends on the version of MobileFirst Server or Worklight  Server that you initially installed in the particular package group:
-        * MobileFirst Server uses the package group IBM MobileFirst Platform Server.
-        * Worklight Server V6.x, or later, uses the package group IBM Worklight.
-        * Worklight Server V5.x uses the package group Worklight.
+    For uninstallation, use a sample file that depends on the version of {{ site.data.keys.mf_server }} or Worklight Server that you initially installed in the particular package group:
+    
+    * {{ site.data.keys.mf_server }} uses the package group {{ site.data.keys.mf_server }}.
+    * Worklight Server V6.x, or later, uses the package group IBM Worklight.
+    * Worklight Server V5.x uses the package group Worklight.
 
     <table>
         <tr>
@@ -263,7 +265,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <th>Initial version of MobileFirst Server</th>
+            <th>Initial version of {{ site.data.keys.mf_server }}</th>
             <th>Sample file</th>
         </tr>
         <tr>
@@ -308,7 +310,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     * `<InstallationManagerPath>` is the installation directory of IBM Installation Manager.
     * `<responseFile>` is the name of the file that is selected and updated in step 1.
 
-For more information, see the IBM Installation Manager documentation at [Installing a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+> For more information, see the IBM Installation Manager documentation at [Installing a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
     
 
 ### Working with a response file recorded on a different machine
@@ -321,7 +323,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     * For WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
     * For Apache Tomcat: `conf/server.xml`
 4. Modify the response file to take into account differences between the machine on which the response file was created and the target machine.
-5. Install MobileFirst Server by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+5. Install {{ site.data.keys.mf_server }} by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
 
 ### Command-line (silent installation) parameters
 <table style="word-break:break-all">
@@ -334,7 +336,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
         <td>user.use.ios.edition</td>
         <td>Always</td>
-        <td>Set the value to <code>false</code> if you plan to install IBM MobileFirst Foundation. If you plan to install the product for iOS edition, you must set the value to <code>true</code>.</td>
+        <td>Set the value to <code>false</code> if you plan to install {{ site.data.keys.product }}. If you plan to install the product for iOS edition, you must set the value to <code>true</code>.</td>
         <td><code>true</code> or <code>false</code></td>
     </tr>
     <tr>
@@ -424,7 +426,7 @@ For more information, see the IBM Installation Manager documentation at [Install
     <tr>
       <td>user.appserver.was.serial</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Suffix that distinguishes the applications to be installed from other installations of MobileFirst Server.</td>
+      <td>Suffix that distinguishes the applications to be installed from other installations of {{ site.data.keys.mf_server }}.</td>
       <td>String of 10 decimal digits.</td>
     </tr>
     <tr>
@@ -610,16 +612,18 @@ For more information, see the IBM Installation Manager documentation at [Install
     </tr>
 </table>
 
-## Distribution structure of MobileFirst Server
-The MobileFirst Server files and tools are installed in the MobileFirst Server installation directory.
+## Distribution structure of {{ site.data.keys.mf_server }}
+The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.data.keys.mf_server }} installation directory.
 
 #### Files and subdirectories in the Analytics subdirectory
+
 | Item | Description |
 |------|-------------|
-| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install IBM MobileFirst Analytics. |
-| **configuration-samples** | Contains the sample Ant files to install MobileFirst Analytics with Ant tasks. |
+| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install {{ site.data.keys.mf_analytics }}. |
+| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
 
 #### Files and subdirectories in the ApplicationCenter subdirectory
+
 | Item | Description |
 |------|-------------|
 | **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. | 
@@ -628,33 +632,38 @@ The MobileFirst Server files and tools are installed in the MobileFirst Server i
 | **installer** | Contains the resources to create the Application Center client. | 
 | **tools** | The tools of Application Center. | 
 
-#### Files and subdirectories in the MobileFirstServer subdirectory
+#### Files and subdirectories in the {{ site.data.keys.mf_server }} subdirectory
+
 | Item | Description |
 |------|-------------|
-| **mfp-ant-deployer.jar** | A set of MobileFirst Server Ant tasks. |
-| **mfp-*.war** | The WAR files of the MobileFirst Server components. |
-| **configuration-samples** | Contains the sample Ant files to install MobileFirst Server components with Ant tasks. | 
+| **mfp-ant-deployer.jar** | A set of {{ site.data.keys.mf_server }} Ant tasks. |
+| **mfp-*.war** | The WAR files of the {{ site.data.keys.mf_server }} components. |
+| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_server }} components with Ant tasks. | 
 | **ConfigurationTool** | Contains the binary files of the Server Configuration Tool. The tool is launched from **mfp_server_install_dir/shortcuts**. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for MobileFirst Server components (MobileFirst Server administration service, MobileFirst Server configuration service, and MobileFirst runtime). | 
+| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, and {{ site.data.keys.product_adj }} runtime). | 
 | **external-server-libraries** |  Contains the JAR files that are used by different tools (such as the authenticity tool and the OAuth security tool). |
 
 #### Files and subdirectories in the PushService subdirectory
+
 | Item | Description |
 |------|-------------|
-| **mfp-push-service.war** | The WAR file to install MobileFirst Server push service. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for MobileFirst Server push service. | 
+| **mfp-push-service.war** | The WAR file to install {{ site.data.keys.mf_server }} push service. |
+| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. | 
 
 #### Files and subdirectories in the License subdirectory
-| Item | Description |
-|------|-------------|
-| **Text** | Contains the license for IBM MobileFirst Foundation. | 
 
-#### Files and subdirectories in the MobileFirst Server installation directory
 | Item | Description |
 |------|-------------|
-| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with MobileFirst Server. | 
+| **Text** | Contains the license for {{ site.data.keys.product }}. | 
+
+#### Files and subdirectories in the {{ site.data.keys.mf_server }} installation directory
+
+| Item | Description |
+|------|-------------|
+| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. | 
 
 #### Files and subdirectories in the tools subdirectory
+
 | Item | Description |
 |------|-------------|
-| **tools/apache-ant-<version>** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. | 
+| **tools/apache-ant-version-number** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. | 

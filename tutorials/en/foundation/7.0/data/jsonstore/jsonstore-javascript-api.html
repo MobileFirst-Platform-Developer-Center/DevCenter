@@ -41,7 +41,7 @@ downloads:
 <p>To add JSONStore to your hybrid environment open the <code>application-descriptor.xml</code> simply add <code><JSONStore/></code> under the <code><features></features></code> element.</p>
 
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <application xmlns="http://www.worklight.com/application-descriptor" id="JSONStoreAPI" platformVersion="7.0.0.00.20150312-0731">
     <displayName>JSONStoreAPI</displayName>
@@ -94,7 +94,7 @@ downloads:
 <p>For optional features that you can enable at initialization time, see <strong>Security, Multiple User Support,</strong> and <strong>MobileFirst Adapter Integration</strong> in the second part of this module</p>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collections = {
   people : {
     searchFields: {name: 'string', age: 'integer'}
@@ -110,7 +110,7 @@ WL.JSONStore.init(collections).then(function (collections) {
 <h2 id="get">Get</h2>
 <p>Use <code>get</code> to create an accessor to the collection. You must call <code>init</code> before you call get otherwise the result of get is undefined</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 var people = WL.JSONStore.get(collectionName);
 {% endhighlight %} </p>
@@ -118,7 +118,7 @@ var people = WL.JSONStore.get(collectionName);
 <h2 id="add">Add</h2>
 <p>Use <code>add</code> to store data as documents inside a collection</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 var options = {};
 var data = {name: 'yoel', age: 23};
@@ -132,7 +132,7 @@ WL.JSONStore.get(collectionName).add(data, options).then(function () {
 <h2 id="find">Find</h2>
 <p>Use <code>find</code> to locate a document inside a collection by using a query. Use <code>findAll</code> to retrieve all the documents inside a collection. Use <code>findById</code> to search by the document unique identifier. The default behavior for find is to do a "fuzzy" search</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 <p>var query = {name: 'yoel'};
 <p>var collectionName = 'people';
 <p>var options = {
@@ -150,7 +150,7 @@ WL.JSONStore.get(collectionName).find(query, options).then(function (results) {
 <h2 id="replace">Replace</h2>
 <p>Use <code>replace</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var document = {
   _id: 1, json: {name: 'chevy', age: 23}
 };
@@ -168,7 +168,7 @@ WL.JSONStore.get(collectionName).replace(document, options).then(function (numbe
 <p>Documents are not erased from the collection until you call push. For more information, see the <strong>MobileFirst Adapter Integration</strong> section later in this tutorial</p>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var query = {_id: 1};
 var collectionName = 'people';
 var options = {exact: true};
@@ -183,7 +183,7 @@ WL.JSONStore.get(collectionName).remove(query, options).then(function (numberOfD
 <p>Use <code>removeCollection</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms</p>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollectionReturnCode) {
   // handle success
@@ -202,7 +202,7 @@ WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollect
 </ul>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 WL.JSONStore.destroy().then(function () {
   // handle success
@@ -219,7 +219,7 @@ WL.JSONStore.destroy().then(function () {
 <p>Use <code>closeAll</code> to lock access to all the collections until you call <code>init</code> again. If you think of <code>init</code> as a login function you can think of <code>closeAll</code> as the corresponding logout function.</p>
 <p>Use <code>changePassword</code> to change the password.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collections = {
   people: {
     searchFields: {name: 'string'}
@@ -238,7 +238,7 @@ WL.JSONStore.init(collections, options).then(function () {
 <p>You can create multiple stores that contain different collections in a single MobileFirst application. The <code>init</code> function can take an options object with a username. If no username is given, the default username is <strong>jsonstore</strong></p>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collections = {
   people: {
     searchFields: {name: 'string'}
@@ -260,7 +260,7 @@ WL.JSONStore.init(collections, options).then(function () {
 <h3>Adapter Implementation</h3>
 <p>Create a MobileFirst adapter and name it "<strong>People</strong>". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getPeople() {
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
@@ -292,7 +292,7 @@ function replacePerson(data) {
 
 <h3>Initialize a collection linked to a MobileFirst adapter</h3>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collections = {
   people : {
     searchFields : {name: 'string', age: 'integer'},
@@ -321,7 +321,7 @@ WL.JSONStore.init(collections, options).then(function () {
 <h3>Load data from MobileFirst Adapter</h3>
 <p>When <code>load</code> is called, JSONStore uses some metadata about the adapter (<strong>name</strong> and <strong>procedure</strong>), which you previously passed to <code>init</code>, to determine what data to get from the adapter and eventually store it.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
   // handle success
@@ -333,7 +333,7 @@ WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
 <h3> Get Push Required (Dirty Documents)</h3>
 <p>Calling <code>getPushRequired</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the MobileFirst adapter when <code>push</code> is called.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments) {
   // handle success
@@ -347,7 +347,7 @@ WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments
 <p><code>push</code> sends the documents that changed to the correct MobileFirst adapter procedure (i.e., <code>addPerson</code> is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to <code>init</code>.</p>
 
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).push().then(function (response) {
   // handle success
@@ -362,7 +362,7 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 <p>Use <code>enhance</code> to extend the core API to fit your needs, by adding functions to a collection prototype.</p>
 <p>This example shows how to use <code>enhance</code> to adde the function <code>getValue</code> that works on the <code>keyvalue</code> collection. It takes a <code>key</code> (string) as it's only parameter and returns a single result.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var collectionName = 'keyvalue';
 WL.JSONStore.get(collectionName).enhance('getValue', function (key) {
   var deferred = $.Deferred();

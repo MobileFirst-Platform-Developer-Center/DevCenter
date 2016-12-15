@@ -8,17 +8,18 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
 
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android)
+    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
+    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
     * [Push Notifications Overview](../../)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
 
@@ -29,52 +30,52 @@ Before Android applications are able to handle any received push notifications, 
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android) tutorial.
+If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
 
 ### Project setup
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
 
-	```bash
-	com.google.android.gms:play-services-gcm:9.0.2
-	```
-    - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
+   ```bash
+   com.google.android.gms:play-services-gcm:9.0.2
+   ```
+   - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
 
-    And:
+   And:
 
-
-    ```xml
-    compile group: 'com.ibm.mobile.foundation',
+   ```xml
+   compile group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
             transitive: true
-    ```
+   ```
     
-    Or in a single line:
+   Or in a single line:
 
-    ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
-    ```
+   ```xml
+   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   ```
 
 2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
 	* Add the following permissions to the top the `manifest` tag:
 
-		```xml
-		<!-- Permissions -->
-    	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	  ```xml
+	  <!-- Permissions -->
+      <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    	<!-- GCM Permissions -->
-    	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    	<permission
+      <!-- GCM Permissions -->
+      <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+      <permission
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
-		```
+      ```
+      
 	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
 
-		```xml
-        <!-- GCM Receiver -->
-        <receiver
+	  ```xml
+      <!-- GCM Receiver -->
+      <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -82,30 +83,38 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <category android:name="your.application.package.name" />
             </intent-filter>
-        </receiver>
+      </receiver>
 
-        <!-- MFPPush Intent Service -->
-        <service
+      <!-- MFPPush Intent Service -->
+      <service
             android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-        </service>
+      </service>
 
-        <!-- MFPPush Instance ID Listener Service -->
-        <service
+      <!-- MFPPush Instance ID Listener Service -->
+      <service
             android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
-        </service>
-		```
+      </service>
+	  ```
 
-		> **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
 
-
+    * Add the following `intent-filter` to the application's activity.
+      
+      ```xml
+      <intent-filter>
+          <action android:name="your.application.package.name.IBMPushNotification" />
+          <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+      ```
+      
 ## Notifications API
 
 ### MFPPush Instance
@@ -271,12 +280,12 @@ In the activity in which you wish the handle push notifications.
 2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
 2. Then you will need to add the following *required* method:
 
-	```java
-	@Override
-    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+   ```java
+   @Override
+   public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Handle push notification here
-    }
-	```
+   }
+   ```
 
 3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
 

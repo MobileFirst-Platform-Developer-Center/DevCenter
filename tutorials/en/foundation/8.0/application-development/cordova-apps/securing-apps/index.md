@@ -5,15 +5,15 @@ breadcrumb_title: Securing applications
 relevantTo: [cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Encrypting the web resources of your Cordova packages
-To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the IBM MobileFirst Foundation mfpdev app webencrypt command or the mfpwebencrypt flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
+To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the {{ site.data.keys.mf_cli }} `mfpdev app webencrypt` command or the `mfpwebencrypt` flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
 
 **Prerequisites:**
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the MobileFirst Platform CLI installed.
-* You must have the IBM MobileFirst Foundation plug-in.
+* You must have the {{ site.data.keys.mf_cli }} installed.
+* You must have the { site.data.keys.product_adj }} Cordova plug-in installed.
 
 The best time to complete this procedure is after finishing your app development and are ready to deploy the app. If you run any of the following commands after you complete the web resources encryption procedure, the content that was encrypted becomes decrypted:
 
@@ -52,8 +52,8 @@ When it is enabled, the web resources checksum feature compares the original web
 **Prerequisites:**
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the MobileFirst Platform CLI installed. 
-* You must have the IBM MobileFirst Foundation plugin.
+* You must have the {{ site.data.keys.mf_cli }} installed. 
+* You must have the { site.data.keys.product_adj }} plug-in installed.
 * You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows|browser]` command.
 
 To enable the web resources checksum feature for a Cordova app, complete the following steps:
@@ -61,31 +61,31 @@ To enable the web resources checksum feature for a Cordova app, complete the fol
 1. In a terminal window, navigate to the root directory of your target app.
 2. Enter the following command to enable the web resources checksum feature for an operating system environment of your Cordova app:
 
-    ```bash
-    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_test_web_resources_checksum true
-    ```
+   ```bash
+   mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_test_web_resources_checksum true
+   ```
 
-    For example:  
+   For example:  
     
-    ```bash
-    mfpdev app config android_security_test_web_resources_checksum true
-    ```
+   ```bash
+   mfpdev app config android_security_test_web_resources_checksum true
+   ```
 
-    You can disable the feature by replacing **true** in the command with **false**.
+   You can disable the feature by replacing **true** in the command with **false**.
    
-    > **Tip:** You can view information about the `mfpdev app config` command by entering `mfpdev help app config`.
+   > **Tip:** You can view information about the `mfpdev app config` command by entering `mfpdev help app config`.
     
 3. Enter the following command to identify the types of files that you want to ignore during the checksum test:
 
-    ```bash
-    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
-    ```
+   ```bash
+   mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
+   ```
     
-    Multiple extensions must be separated by a comma with no spaces between them. For example:
+   Multiple extensions must be separated by a comma with no spaces between them. For example:
     
-    ```bash
-    mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
-    ```
+   ```bash
+   mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
+   ```
     
 **Important:** Running this command overwrites the values that are set.
 

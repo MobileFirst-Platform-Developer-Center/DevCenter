@@ -5,6 +5,7 @@ breadcrumb_title: Logging in JavaScript
 relevantTo: [javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in JavaScript (Cordova, Web) applications.
 
@@ -28,9 +29,9 @@ ibmmfpfanalytics.logger.enable(false);
 ```
 
 ## Sending captured logs
-Send logs to the MobileFirst according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data on an interval ensures that you are seeing your log data in near real-time in the MobileFirst Analytics Console.
+> **Note:** Adopt the following pattern when you collect log data. Sending data on an interval ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
 
 #### Cordova apps
 
@@ -93,26 +94,26 @@ ibmmfpfanalytics.autoSendLogs(false);
 ```
 
 ## Fine-tuning with the Logger API
-The MobileFirst client-side SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
 
 As an example to capture logs only where the level is ERROR for the `myApp` package name, follow these steps.
 
 #### Cordova apps
 1. Use a `WL.Logger` instance with the `myApp` package name.
 
-    ```javascript
-    var logger = WL.Logger.create({ pkg: 'MyApp' });
-    ```
+   ```javascript
+   var logger = WL.Logger.create({ pkg: 'MyApp' });
+   ```
 
 2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
 
-    ```javascript
-    WL.Logger.config({
+   ```javascript
+   WL.Logger.config({
         filters: {
             'MyApp': 'ERROR'
         }
-    });
-    ```
+   });
+   ```
 
 3. **Optional:** Control the filters remotely by fetching a server configuration profile.
 
@@ -121,7 +122,7 @@ For the Web SDK the level cannot be set by the client. All logging is sent to th
 
 
 ## Fetching server configuration profiles
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the MobileFirst Operations Console, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the MobileFirst Operations Console, see [Configuring log filters](../../../analytics/console/log-filters/).  For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/).  For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
 
 #### Cordova apps
 
@@ -139,6 +140,7 @@ ibmmfpfanalytics.logger.updateConfigFromServer();
 Outputs to a browser JavaScript console, LogCat, or Xcode console.
 
 ### Cordova
+
 ```javascript
 var MathUtils = function(){
    var logger = WL.Logger.create({pkg: 'MathUtils'});
@@ -153,8 +155,12 @@ var MathUtils = function(){
 ### Web
 For logging with Web applications, use the preceding example and replace
 
-`var logger = WL.Logger.create({pkg: 'MathUtils'});`
+```javascript
+var logger = WL.Logger.create({pkg: 'MathUtils'});
+```
 
 with
 
-`var logger = ibmmfpfanalytics.logger.create({pkg: 'MathUtils'});`
+```javascript
+var logger = ibmmfpfanalytics.logger.create({pkg: 'MathUtils'});
+```

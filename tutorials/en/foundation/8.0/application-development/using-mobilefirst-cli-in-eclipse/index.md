@@ -5,7 +5,7 @@ relevantTo: [ios,android,windows,cordova]
 breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
 
@@ -13,34 +13,34 @@ THyM provides support for importing and managing Cordova projects in Eclipse. Yo
 
 Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
 
-The MobileFirst Studio plug-in for Eclipse exposes the various MobileFirst commands in the Eclipse IDE.
+The {{ site.data.keys.mf_studio }} plug-in for Eclipse exposes the various {{ site.data.keys.product_adj }} commands in the Eclipse IDE.
 Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
 
 This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
 
 **Prerequisites:**
 
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst CLI installed on the developer workstation
+* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
 
-* [Installing the MobileFirst Studio plug-in](#installing-the-mobilefirst-studio-plug-in)
+* [Installing the {{ site.data.keys.mf_studio }} plug-in](#installing-the-mobilefirst-studio-plug-in)
 * [Installing the THyM plug-in](#installing-the-thym-plug-in)
 * [Creating a Cordova project](#creating-a-cordova-project)
 * [Importing an existing Cordova project](#importing-an-existing-cordova-project)
-* [Adding the MobileFirst SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [MobileFirst Commands](#mobilefirst-commands)
+* [Adding the {{ site.data.keys.product_adj }} SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [{{ site.data.keys.product_adj }} Commands](#mobilefirst-commands)
 * [Tips and Tricks](#tips-and-tricks)
 
 
-## Installing the MobileFirst Studio plug-in
+## Installing the {{ site.data.keys.mf_studio }} plug-in
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "mobilefirst" then click "Go"
-3. Click "Install" for IBM MobileFirst Platform Studio
+2. In the find field search "{{ site.data.keys.product_adj }}" then click "Go"
+3. Click "Install"
 
-	![Image of MobileFirsta installation](mff_install.png)
+	![Image of {{ site.data.keys.mf_studio }} installation](mff_install.png)
 
 4. Complete the installation process
 5. Restart Eclipse for the installation to take affect.
@@ -91,8 +91,8 @@ If you import a project without any platforms you will see the following error, 
 **Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
 
 
-## Adding the MobileFirst SDK to Cordova project
-Once you have [installed THyM](#installing-the-thym-plug-in) and the [MobileFirst CLI plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plugin.
+## Adding the {{ site.data.keys.product_adj }} SDK to Cordova project
+Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.data.keys.mf_cli }} plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the {{ site.data.keys.product_adj }} SDK via Cordova plugin.
 
 1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
 2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
@@ -100,8 +100,8 @@ Once you have [installed THyM](#installing-the-thym-plug-in) and the [MobileFirs
 	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
 
 
-## MobileFirst Commands
-To access MobileFirst Foundation's shortcuts right click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
+## {{ site.data.keys.product_adj }} Commands
+To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
 
 | Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
@@ -151,8 +151,8 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 ### Live update
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
 
-### Integrating MobileFirst Server into Eclipse
-Using the MobileFirst Foundation Development Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
+### Integrating {{ site.data.keys.mf_server }} into Eclipse
+Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above with [running the {{ site.data.keys.mf_server }} in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
 
 ### Demo Video
 <div class="sizer">

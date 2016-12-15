@@ -181,7 +181,7 @@ Select the mobile browser simulator option.
 ![ionic-mbs]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/mbs.png)
 
 > **Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
-> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#previewing-an-application-39-s-web-resources).
+> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#previewing-an-applications-web-resources).
 
 ## Implementing the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.

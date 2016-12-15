@@ -5,6 +5,7 @@ breadcrumb_title: Scenario Loader
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 
 > **Note:** The Scenario Loader is *experimental* in nature, and is therefore not fully supported. Use accordingly.

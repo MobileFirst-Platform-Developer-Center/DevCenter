@@ -28,7 +28,7 @@ In Eclipse, navigate to <strong>Window > Preferences > General > Workspace</stro
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_encoding.png"/></p>
 <h2 id="strings">Enabling translation of application strings</h2>
 <p>You can find the <code>messages.js</code> file, which is intended for application strings, in the <code>common\js</code> folder.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 Messages = {
     headerText: "Default header",
     actionsLabel: "Default action label",
@@ -40,7 +40,7 @@ Messages = {
 <ul>
 <li>As a JavaScript object property. For example: <code>Messages.headerText</code></li>
 <li>As an ID of an HTML element with <code>class="translate"</code>.<br />
-{% highlight html linenos %}
+{% highlight html  %}
 <h1 id="headerText" class="translate"></h1>
 {% endhighlight %} 
 </li>
@@ -51,7 +51,7 @@ Messages = {
 System messages are stored in the <code>WL.ClientMessages</code> object.<br />
 You can find a full list of system messages in the <code>www\default\worklight\messages\messages.json</code> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
 To enable the translation of a system message, override it in your JavaScript application.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 {% endhighlight %} </p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
@@ -59,7 +59,7 @@ WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 <p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
 <ol>
 <li>Set up the default application strings in the <code>messages.js</code> file.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 Messages = {
     headerText: "Default header",
     actionsLabel: "Default action label",
@@ -73,7 +73,7 @@ Messages = {
 </li>
 <li>Override specific strings when required.<br />
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function setFrench(){
     Messages.headerText = "Traduction";
     Messages.actionsLabel = "Sélectionnez une langue:";
@@ -84,7 +84,7 @@ function setFrench(){
 <li>Update the GUI components with the new strings.<br />
 You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.<br />
 Each time that an element is updated, it is updated with different strings according to the active language.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function languageChanged(lang) {
     if (typeof(lang)!="string")
         lang = $("#languages").val();
@@ -118,7 +118,7 @@ function languageChanged(lang) {
 <h2 id="detectLocale">Detecting the device locale and language</h2>
 <p>It is possible to detect the locale and the language of the device.<br />
 Use the <code>WL.App.getDeviceLocale()</code> and <code>WL.App.getDeviceLanguage()</code> functions to detect the current locale.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var locale = WL.App.getDeviceLocale();
 var lang = WL.App.getDeviceLanguage();
 WL.Logger.debug(">> Detected locale: " + locale);

@@ -12,6 +12,7 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/ios/) tutorial.
 
@@ -28,7 +29,7 @@ self.submitChallengeAnswer(credentials);
 
 You might also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout or a login failure. Those scenarios are called **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
 
 ```swift
 WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
@@ -62,7 +63,7 @@ else{
 ## Obtaining an access token
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
-The MobileFirst Foundation SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
+The {{ site.data.keys.product }} SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
 
 ```swift
 WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
@@ -109,7 +110,7 @@ Here, `success` has a key called `user` which itself contains a dictionary repre
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
+The {{ site.data.keys.product }} SDK also provides a `logout` API to logout from a specific security check:
 
 ```swift
 WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in

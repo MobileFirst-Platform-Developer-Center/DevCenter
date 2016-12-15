@@ -20,7 +20,7 @@ To create and configure an iOS native project, first follow the "<a href="../../
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-{% highlight objc linenos %}
+{% highlight objc  %}
 MyConnectListener *connectListener = [[MyConnectListener alloc] initWithController:self];
 [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];
 {% endhighlight %}
@@ -29,7 +29,7 @@ MyConnectListener *connectListener = [[MyConnectListener alloc] initWithControll
 </li>
 <li>Create a delegate to be used in the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server. Name the class <code>MyConnectListener</code>.
 The header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
-{% highlight objc linenos %}
+{% highlight objc  %}
 @interface MyConnectListener : NSObject <WLDelegate> {
     @private
     ViewController *vc;
@@ -42,7 +42,7 @@ The header file must specify that it implements the <code>WLDelegate</code> prot
 In both cases, the response object is sent as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)onSuccess:(WLResponse *)response{
     NSLog(@"\nConnection Success: %@", response);
     NSString *resultText = @"Connection success. ";
@@ -62,7 +62,7 @@ In both cases, the response object is sent as an argument.
 <h2>Invoking an adapter procedure</h2>
 <p>To invoke a procedure, create a <code>WLProcedureInvocationData</code> object and specify the adapter name and the procedure name.
 Invoke the procedure by using the shared instance of the <code>WLClient</code>.</p>
-{% highlight objc linenos %}
+{% highlight objc  %}
     WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"RSSReader" procedureName:@"getStories"];
     MyInvokeListener *invokeListener = [[MyInvokeListener alloc] initWithController: self];
     [[WLClient sharedInstance] invokeProcedure:myInvocationData withDelegate:invokeListener];
@@ -71,7 +71,7 @@ Invoke the procedure by using the shared instance of the <code>WLClient</code>.<
 <h2>Receiving a procedure response</h2>
 <p>When the procedure invocation is complete, a delegate method of <code>MyInvokeListener</code> class instance is called.
 Any delegate header file must specify that it complies with a <code>WLDelegate</code> protocol.</p>
-{% highlight objc linenos %}
+{% highlight objc  %}
 @interface MyInvokeListener : NSObject <WLDelegate> {
 @private
     ViewController *vc;
@@ -83,7 +83,7 @@ Any delegate header file must specify that it complies with a <code>WLDelegate</
 <p>After the procedure invocation finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyInvokeListener</code> instance is called.
 In both cases, a response object is sent as an argument.
 Use this object to operate data that is retrieved from the server.</p>
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)onSuccess:(WLResponse *)response {
     NSLog(@"Invocation Success: %@", response);
     NSString *resultText = @"Invocation success. ";</p>

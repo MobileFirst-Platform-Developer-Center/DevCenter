@@ -41,7 +41,7 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <p>You must declare the plug-in in the project, so that Cordova can detect it.
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
 
-{% highlight xml linenos %}
+{% highlight xml  %}
 <feature name="sayHelloPlugin">
     <param name="wp-package" value="sayHelloPlugin" />
 </feature>
@@ -49,7 +49,7 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -65,7 +65,7 @@ function sayHello() {
 </ul>
 
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
         "Response from plug-in", 
@@ -92,7 +92,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
     <li>Create a new C# class.</li>
     <li>Add the new class to your project namespace and add the required import statements.
 
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,7 +113,7 @@ namespace Cordova.Extension.Commands {
 <ol>
     <li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.
 
-{% highlight csharp linenos %}
+{% highlight csharp  %}
         public void sayHello(string options) {
             string optVal = null;
         
@@ -127,7 +127,7 @@ namespace Cordova.Extension.Commands {
     </li>
 
     <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.
-{% highlight csharp linenos %}
+{% highlight csharp  %}
             if (optVal == null) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
             } else {

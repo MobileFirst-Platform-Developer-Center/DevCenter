@@ -5,6 +5,7 @@ breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
 
@@ -70,9 +71,10 @@ The `AuthorizationResponse.addSuccess` method adds the success scope and its exp
 * The expiration of the granted scope.  
 The `getExpiresAt` helper method returns the time at which the current state expires, or 0 if the current state is null:
 
-    ```java
-    public long getExpiresAt()
-    ```
+  ```java
+  public long getExpiresAt()
+  ```
+   
 * The name of the security check.
 
 The `AuthorizationResponse.addFailure` method adds a failure to the response object. It requires:
@@ -103,14 +105,15 @@ Use the following methods to store and obtain data:
 
 * Get the authenticated user set by this security check for the current client:
 
-    ```java
-    AuthenticatedUser getActiveUser();
-    ```
+  ```java
+  AuthenticatedUser getActiveUser();
+  ```
+  
 * Set the active user for the current client by this security check:
 
-    ```java
-    void setActiveUser(AuthenticatedUser user);
-    ```
+  ```java
+  void setActiveUser(AuthenticatedUser user);
+  ```
 
 ## The RegistrationContext Object
 The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
@@ -118,29 +121,33 @@ Use the following methods to store and obtain data:
 
 * Get the user that is registered by this security check for the current client:
 
-    ```java
-    AuthenticatedUser getRegisteredUser();
-    ```
+  ```java
+  AuthenticatedUser getRegisteredUser();
+  ```
+  
 * Register the given user for the current client:
 
-    ```java
-    setRegisteredUser(AuthenticatedUser user);
-    ```
+  ```java
+  setRegisteredUser(AuthenticatedUser user);
+  ```
+  
 * Get the public persistent attributes of the current client:
 
-    ```java
-    PersistentAttributes getRegisteredPublicAttributes();
-    ```
+  ```java
+  PersistentAttributes getRegisteredPublicAttributes();
+  ```
+  
 * Get the protected persistent attributes of the current client:
 
-    ```java
-    PersistentAttributes getRegisteredProtectedAttributes();
-    ```
+  ```java
+  PersistentAttributes getRegisteredProtectedAttributes();
+  ```
+  
 * Find the registration data of mobile clients by the given search criteria:
 
-    ```java
-    List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
-    ```
+  ```java
+  List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
+  ```
 
 ## Sample Application
 For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.

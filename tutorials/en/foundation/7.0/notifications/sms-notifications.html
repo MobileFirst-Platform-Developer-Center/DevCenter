@@ -72,7 +72,7 @@ downloads:
 <ol>
 <li>Start by creating an event source:<br />
 Declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function).<br />
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Server.createEventSource({
         name: 'SMSEventSource',
         onDeviceSubscribe: 'onDeviceSubscribeCallback',
@@ -98,7 +98,7 @@ WL.Server.createEventSource({
 </ul>
 </li>
 <li>Send a notification:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function sendSMS(userId, smsText){
         var userSubscription = WL.Server.getUserNotificationSubscription('SMSAdapter.SMSEventSource', userId);
         if (userSubscription==null){
@@ -195,7 +195,7 @@ These arguments are provided by the back-end system that calls this function.
 <h3>Security</h3>
 <p>By default, the Subscribe SMS servlet is protected as a static resource. By default, the <code>authenticationConfig.xml</code> file is configured to reject all requests to the Subscribe SMS servlet by using a rejecting login module. To allow access to the Subscribe SMS servlet, an administrator must modify the <code>authenticationConfig.xml</code> file with appropriate authenticator and login modules.</p>
 <p>By default, the <code>authenticationConfig.xml</code> file is configured to reject all requests to the Subscribe SMS servlet:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <resource id="subscribeServlet" securityTest="SubscribeServlet">
     <urlPatterns>/subscribeSMS*</urlPatterns>
 </resource>
@@ -210,7 +210,7 @@ These arguments are provided by the back-end system that calls this function.
 </loginModule>
 {% endhighlight %} </p>
 <p>An administrator can change the <code>authenticationConfig.xml</code> file to allow access to the Subscribe SMS servlet:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <resource id="subscribeServlet" securityTest="SubscribeServlet">
     <urlPatterns>/subscribeSMS*</urlPatterns>
 </resource>
@@ -227,14 +227,14 @@ These arguments are provided by the back-end system that calls this function.
 <h2 id="setup">Setup</h2>
 <h3>SMSConfig.xml</h3>
 <p>To send SMS notifications, define in the <code>SMSConfig.xml</code> file the third-party gateway services that are supported by MobileFirst Server.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text">
 <parameter encode="false" name="param1name" value="param1value"/>
 <parameter encode="false" name="param2name" value="param2value"/>
 {% endhighlight %} </p>
 <h3>application-descriptor.xml</h3>
 <p>For an application to use SMS notifications, specify the SMS gateway to use by adding an <code><smsGateway id=“…”/></code> element to the <code>application-descriptor.xml</code> file.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <smsGateway id=“myGateway”/>
 {% endhighlight %} </p>
 <p>The gateway ID in the <code>SMSConfig.xml</code> file must correspond to the SMS gateway ID in the <code>application-descriptor.xml</code> file.</p>

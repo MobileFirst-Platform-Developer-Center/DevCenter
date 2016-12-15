@@ -8,7 +8,7 @@ relevantTo: [hybrid]
 This is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
 <h3>application-descriptor.xml</h3>
 <p>Add the <em>securityTest</em> attribute to the relevant environment element. For example:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
 {% endhighlight %}</p>
 <p>Next, specific environment modifications are required as well.</p>
@@ -21,12 +21,12 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 It can be added either in the Application Description Design view:
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/>
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml linenos %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
+<p>{% highlight xml  %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
 </li>
 <li>Specify the <code>applicationId</code> value. The Application Id value must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file.It can be added either in the Application Description Design view:
     <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" />
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
 {% endhighlight %}</p>
 </li>
@@ -58,7 +58,7 @@ To use the wizard:</p>
 <li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <strong>AndroidManifest.xml</strong>.<br />
 If you decide to change the value to another, verify that you change it in both locations.You can also directly edit <strong>application-descriptor.xml</strong> and add a <em>packageName</em>:</p>
 <p>
-{% highlight xml linenos %}<android version="1.0">
+{% highlight xml  %}<android version="1.0">
     <worklightSettings include="false"/>
     <security>
         <encryptWebResources enabled="false"/>
@@ -80,7 +80,7 @@ If you decide to change the value to another, verify that you change it in both 
 </ol>
 <p>These values can also be supplied in the Application Descriptor Source view. For example:</p>
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>b5542877-7afe-4edc-a817-5341b5027633</uuid>
     <security>

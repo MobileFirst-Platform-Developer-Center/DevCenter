@@ -11,7 +11,7 @@ module Jekyll
       read_yaml(File.join(base, '_layouts'), 'tagpage.html')
       data['tag'] = tag
 
-      data['title'] = tag.dup.tr! '_', ' '
+      data['title'] = tag.tr '_', ' '
       data['filterByTag'] = "#{tag}"
     end
   end

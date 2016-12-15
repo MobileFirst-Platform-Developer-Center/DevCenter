@@ -55,13 +55,13 @@ mfp deploy
             <li>Right-click on any of the added <code>.jar</code> files and select <strong>Add as library</strong> to add all libraries</li>
             <li>Create an <strong>assets</strong> folder under <strong>src\main</strong> and paste into it the <code>wlclient.properties</code> file</li>
             <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-{% highlight xml linenos %} 
+{% highlight xml  %} 
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.GET_TASKS" /> {% endhighlight %} 
             </li>
             <li>Add the MobileFirst UI activity in the <code>AndroidManifest.xml</code> file:
-{% highlight xml linenos %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
+{% highlight xml  %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
         </ul>
     </li>
     <li>
@@ -69,11 +69,11 @@ mfp deploy
         <ul>
             <li><b>Main Activity class</b>
                 Add imports:
-{% highlight java linenos %}import com.worklight.wlclient.api.*;
+{% highlight java  %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Add the following to <code>onCreate</code>:
-                {% highlight java linenos %}
+                {% highlight java  %}
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 
@@ -96,11 +96,11 @@ client.connect(new WLResponseListener() {
         <li><b><code>MyInvokeListener</code> class</b>
                 Add a new <code>MyInvokeListener</code> class
                 Add imports:
-{% highlight java linenos %}import com.worklight.wlclient.api.*;
+{% highlight java  %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Paste the following:
-        {% highlight java linenos %}
+        {% highlight java  %}
 public class MyInvokeListener implements WLResponseListener {
 
     @Override

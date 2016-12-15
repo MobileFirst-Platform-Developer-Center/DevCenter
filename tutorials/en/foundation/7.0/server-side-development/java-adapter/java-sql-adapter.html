@@ -23,7 +23,7 @@ The tutorial covers the following topics:</p>
 <p>MobileFirst Server needs to be configured to connect to the MySQL server. You can store the configuration settings in the <code>server.xml</code> file.</p>
 <p>For Java to be able to connect to a database, a JDBC driver is necessary. For MySQL, you can find the latest driver from this <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Connector/J</a> MySQL page.</p>
 <p>This example uses the underlying application server of MobileFirst Studio.</p>
-<p>{% highlight xml linenos %} <br />
+<p>{% highlight xml  %} <br />
 <library id="MySQLLib"><br />
   <fileset dir="${shared.resource.dir}" includes="mysql-*.jar" /><br />
 </library></p>
@@ -43,7 +43,7 @@ The tutorial covers the following topics:</p>
 </ul>
 <h2 id="userAdapterApp">UserAdapterApplication</h2>
 <p><code>UserAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by the adapter application.</p>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@Override<br />
 	protected void init() throws Exception {<br />
 		UserAdapterResource.init();<br />
@@ -51,7 +51,7 @@ The tutorial covers the following topics:</p>
 	}<br />
  {% endhighlight %} </p>
 <h2 id="userAdapterRes">UserAdapterResource</h2>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 @Path("/")<br />
 public class UserAdapterResource {<br />
 }<br />
@@ -59,7 +59,7 @@ public class UserAdapterResource {<br />
 <p><code>UserAdapterResource</code> is where requests to the adapter are being handled.</p>
 <p><code>@Path("/")</code> means that the resources are available at this URL: <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code></p>
 <h3 id="usingDs">Using DataSource</h3>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
     static DataSource ds = null;<br />
     static Context ctx = null;</p>
 <p>    public static void init() throws NamingException {<br />
@@ -70,7 +70,7 @@ public class UserAdapterResource {<br />
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which gets called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
 <p>The previously defined <code>jndiName</code> is used to find the database configuration.</p>
 <h3>Create User</h3>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@POST<br />
 	public Response createUser(@FormParam("userId") String userId,<br />
 								@FormParam("firstName") String firstName,<br />
@@ -107,7 +107,7 @@ public class UserAdapterResource {<br />
 <p>If the insertion was successful, <code>return Response.ok().build()</code> is used to send a <code>200 OK</code> back to the client. If there was an error, a different <code>Response</code> object can be built with a specific HTTP status code. In this example, <code>409 Conflict</code> is sent. It is better to also check whether all the parameters are sent (not shown here) or any other data validation.</p>
 <p><strong>Important:</strong> Make sure to close resources, such as prepared statements and connections.</p>
 <h3>Get User</h3>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@GET<br />
 	@Produces("application/json")<br />
 	@Path("/{userId}")<br />
@@ -141,7 +141,7 @@ If the user is found, a response is built from the generated <code>JSONObject</c
 <p>Prepending the method with <code>@Produces("application/json")</code> makes sure that the <code>Content-Type</code> of the output is correct.</p>
 <h3>Get all users</h3>
 <p>This method is similar to <code>getUser</code>, except that it loops over the <code>ResultSet</code>.</p>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@GET<br />
 	@Produces("application/json")<br />
 	public Response getAllUsers() throws SQLException{<br />
@@ -163,7 +163,7 @@ If the user is found, a response is built from the generated <code>JSONObject</c
 	}<br />
  {% endhighlight %} </p>
 <h3>Update user</h3>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@PUT<br />
 	@Path("/{userId}")<br />
 	public Response updateUser(@PathParam("userId") String userId,<br />
@@ -198,7 +198,7 @@ If the user is found, a response is built from the generated <code>JSONObject</c
  {% endhighlight %} </p>
 <p>It is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) when updating an existing resource, and to use the resource ID in the <code>@Path</code>.</p>
 <h3>Delete user</h3>
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 	@DELETE<br />
 	@Path("/{userId}")<br />
 	public Response deleteUser(@PathParam("userId") String userId) throws SQLException{<br />

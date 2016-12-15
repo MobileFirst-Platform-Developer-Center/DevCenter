@@ -12,14 +12,15 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- If you are implementing a Cordova application, ensure you have [added the MobileFirst Platform SDK](../../../application-development/sdk/cordova) to your Cordova application.
-- If you are implementing a Web application, ensure you have [added the MobileFirst Platform SDK](../../../application-development/sdk/web) to your Web application.
+- If you are implementing a Cordova application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) to your Cordova application.
+- If you are implementing a Web application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) to your Web application.
 - Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest

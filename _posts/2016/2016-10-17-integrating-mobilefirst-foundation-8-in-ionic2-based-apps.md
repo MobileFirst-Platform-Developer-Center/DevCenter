@@ -33,10 +33,8 @@ npm install -g mfpdev-cli
 To install the Ionic 2 SDK and create Ionic 2 projects, you’ll need to install the latest beta release:
 
 ```bash
-npm install -g ionic@beta
+npm install -g cordova ionic
 ```
-
-> Once Ionic 2 is out of beta you won't need to include `@beta` in the command.
 
 ### Cordova SDK
 Install the Cordova SDK by entering the following command:
@@ -49,7 +47,7 @@ npm install -g cordova
 Create a new Ionic 2 project with a blank template by entering the command below.
 
 ```bash
-ionic start myApp blank --v2
+ionic start --v2 myApp blank
 ```
 
 > Once Ionic 2 is out of beta you won't need to include the `--v2` flag in the command.
@@ -205,7 +203,7 @@ Add the following code in your **home.html** in the `<ion-content padding>` elem
 ```
 
 * The **click** action calls the `getBalance` function.  
-* To display the value of a variable in your view, you surround it with double curly brackets: 
+* To display the value of a variable in your view, you surround it with double curly brackets:
 
 ```xml
 {% raw %}{{ balance }}{% endraw %}
@@ -321,3 +319,6 @@ This calls the ResourceAdapter and you will need to enter your authorization.
 After your username and password is validated, your balance is shown in the app.
 
 ![balance]({{site.baseurl}}/assets/blog/2016-10-17-integrating-mobilefirst-foundation-8-in-ionic2-based-apps/balance.png)
+
+
+View the source code [here](https://github.ibm.com/sdpuryea/ionic2)

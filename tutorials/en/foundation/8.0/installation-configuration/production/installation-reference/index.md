@@ -3,28 +3,29 @@ layout: tutorial
 title: Installation Reference
 weight: 9
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Reference information about Ant tasks and configuration sample files for the installation of IBM MobileFirst  Server, IBM MobileFirst Application Center, and IBM MobileFirst Analytics.
+Reference information about Ant tasks and configuration sample files for the installation of {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }}, and {{ site.data.keys.mf_analytics_full }}.
 
 #### Jump to
 * [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
-* [Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of MobileFirst Server push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 * [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
-* [Ant tasks for installation of MobileFirst Analytics](#ant-tasks-for-installation-of-mobilefirst-analytics)
+* [Ant tasks for installation of {{ site.data.keys.mf_analytics }}](#ant-tasks-for-installation-of-mobilefirst-analytics)
 * [Internal runtime databases](#internal-runtime-databases)
 * [Sample configuration files](#sample-configuration-files)
-* [Sample configuration files for MobileFirst Analytics](#sample-configuration-files-for-mobilefirst-analytics)
+* [Sample configuration files for {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
 
 ## Ant configuredatabase task reference
 Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
 
-The **configuredatabase** Ant task creates the relational databases that are used by MobileFirst Server administration service, MobileFirst Server live update service, MobileFirst Server push service, MobileFirst runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
+The **configuredatabase** Ant task creates the relational databases that are used by {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, {{ site.data.keys.product_adj }} runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
 
-* Checks whether the MobileFirst tables exist and creates them if necessary.
-* If the tables exist for an older version of IBM MobileFirst Foundation, migrates them to the current version.
-* If the tables exist for the current version of IBM MobileFirst Foundation, does nothing.
+* Checks whether the {{ site.data.keys.product_adj }} tables exist and creates them if necessary.
+* If the tables exist for an older version of {{ site.data.keys.product }}, migrates them to the current version.
+* If the tables exist for the current version of {{ site.data.keys.product }}, does nothing.
 
 In addition, if one of the following conditions is met:
 
@@ -45,12 +46,12 @@ The **configuredatabase** task has the following attributes:
 
 | Attribute | Description | Required | Default | 
 |-----------|-------------|----------|---------|
-| kind      | The type of database: In MobileFirst Server: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, or push. In Application Center: ApplicationCenter. | Yes | None |
+| kind      | The type of database: In {{ site.data.keys.mf_server }}: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, or push. In Application Center: ApplicationCenter. | Yes | None |
 | includeConfigurationTables | To specify whether to perform database operations on both the live update service and the administration service or on the administration service only. The value is either true or false. |  No | true |
 | execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true | 
 
 #### kind
-IBM MobileFirst Foundation V8.0.0 supports four kinds of database: MobileFirst runtime uses **MobileFirstRuntime** database. MobileFirst Server administration service uses the **MobileFirstAdmin** database. MobileFirst Server's Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. MobileFirst Server push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
+{{ site.data.keys.product }} supports four kinds of database: {{ site.data.keys.product_adj }} runtime uses **MobileFirstRuntime** database. {{ site.data.keys.mf_server }} administration service uses the **MobileFirstAdmin** database. {{ site.data.keys.mf_server }} Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. {{ site.data.keys.mf_server }} push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
 
 #### includeConfigurationTables
 The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.
@@ -178,7 +179,7 @@ Alternatively, you can use the `<mysql>` element with the following attributes:
 | user	    | The user name for accessing databases. | Yes      | None                  |
 | password	| The password for accessing databases.	 | No       | Queried interactively |
 
-> `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current MobileFirst Server version. You do not have to specify the inner elements `<dba>` or `<client>`.
+> `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner elements `<dba>` or `<client>`.
 
 #### Oracle
 The element `<oracle>` has the following attributes:
@@ -221,21 +222,21 @@ You cannot specify details of table allocation, such as the table space, by usin
 | user	    | The user name for accessing databases. | Yes      | None                  |
 | password	| The password for accessing databases.	 | No       | Queried interactively |
 
-> **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current MobileFirst Server version. You do not have to specify the inner element `<dba>`.
+> **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner element `<dba>`.
 
-## Ant tasks for installation of MobileFirst Operations Console, MobileFirst Server artifacts, MobileFirst Server administration, and live update services
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of MobileFirst Operations Console, the artifacts component, the administration service, and the live update service.
+## Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services
+The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of {{ site.data.keys.mf_console }}, the artifacts component, the administration service, and the live update service.
 
 ### Task effects
 
 #### installmobilefirstadmin
-The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the MobileFirst Operations Console. This task has the following effects:
+The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the {{ site.data.keys.mf_console }}. This task has the following effects:
 
 * It declares the administration service web application in the specified context root, by default /mfpadmin.
 * It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
 * For the relational databases, it declares data sources and on WebSphere  Application Server full profile, JDBC providers for the administration services.
 * It deploys the administration service and the live update service on the application server.
-* Optionally, it declaresMobileFirst Operations Console as a web application in the specified context root, by default /mfpconsole. If the MobileFirst Operations Console instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
+* Optionally, it declares{{ site.data.keys.mf_console }} as a web application in the specified context root, by default /mfpconsole. If the {{ site.data.keys.mf_console }} instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
 
 ```xml
 <target name="adminstall">
@@ -243,26 +244,26 @@ The **installmobilefirstadmin** Ant task configures an application server to run
     <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
 ```
 
-* Optionally, it declares the MobileFirst Server artifacts web application in the specified context root /mfp-dev-artifacts when MobileFirst Operations Console is installed.
+* Optionally, it declares the {{ site.data.keys.mf_server }} artifacts web application in the specified context root /mfp-dev-artifacts when {{ site.data.keys.mf_console }} is installed.
 * It configures the configuration properties for the administration service by using JNDI environment entries. These JNDI environment entries also give some additional information about the application server topology, for example whether the topology is a stand-alone configuration, a cluster, or a server farm.
-* Optionally, it configures users that it maps to roles used by MobileFirst Operations Console, and the administration and live update services web applications.
+* Optionally, it configures users that it maps to roles used by {{ site.data.keys.mf_console }}, and the administration and live update services web applications.
 * It configures the application server for use of JMX.
-* Optionally, it configures the communication with the MobileFirst Server push service.
-* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the MobileFirst Server administration part.
+* Optionally, it configures the communication with the {{ site.data.keys.mf_server }} push service.
+* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the {{ site.data.keys.mf_server }} administration part.
 
 #### updatemobilefirstadmin
-The **updatemobilefirstadmin** Ant task updates an already-configured MobileFirst Server web application on an application server. This task has the following effects:
+The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task has the following effects:
 
 * It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
 * It updates the live update service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the MobileFirst Operations Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+* It updates the {{ site.data.keys.mf_console }} WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
 The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
 
 #### uninstallmobilefirstadmin
 The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
 
 * It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes the WAR files of the administration and live update services, and MobileFirst Operations Console from the application server as an option.
+* It removes the WAR files of the administration and live update services, and {{ site.data.keys.mf_console }} from the application server as an option.
 * For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile the JDBC providers for the administration and live update services.
 * For the relational DBMS, it removes the database drivers that were used by the administration and live update services from the application server.
 * It removes the associated JNDI environment entries.
@@ -274,34 +275,34 @@ The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobi
 
 | Attribute         | Description                                                              | Required | Default | 
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | The common prefix for URLs to the administration service to get information about MobileFirst runtime environments, applications, and adapters. | No | /mfpadmin | 
+| contextroot       | The common prefix for URLs to the administration service to get information about {{ site.data.keys.product_adj }} runtime environments, applications, and adapters. | No | /mfpadmin | 
 | id                | To distinguish different deployments.              | No | Empty | 
-| environmentId     | To distinguish different MobileFirst environments. | No | Empty | 
+| environmentId     | To distinguish different {{ site.data.keys.product_adj }} environments. | No | Empty | 
 | servicewar        | The WAR file for the administration service.       | No | The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file. | 
 | shortcutsDir      | The directory where to place shortcuts.            | No | None | 
 | wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
 
 #### contextroot and id
-The **contextroot** and **id** attributes distinguish different deployments of MobileFirst Operations Console and the administration service.
+The **contextroot** and **id** attributes distinguish different deployments of {{ site.data.keys.mf_console }} and the administration service.
 
 In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
 
 #### environmentId
-Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the MobileFirst runtime projects use when they communicate through Java Management Extensions (JMX).
+Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the {{ site.data.keys.product_adj }} runtime projects use when they communicate through Java Management Extensions (JMX).
 
 #### servicewar
 Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### shortcutsDir
-The **shortcutsDir** attribute specifies where to place shortcuts to the MobileFirst Operations Console. If you set this attribute, you can add the following files to that directory:
+The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_console }}. If you set this attribute, you can add the following files to that directory:
 
-* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the MobileFirst Operations Console in a browser.
-* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the MobileFirst Operations Console in a browser.
-* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the MobileFirst projects that can be managed in JSON format. For each listed MobileFirst project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the MobileFirst project runtime is running or idle.
+* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the {{ site.data.keys.mf_console }} in a browser.
+* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the {{ site.data.keys.mf_console }} in a browser.
+* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the {{ site.data.keys.product_adj }} projects that can be managed in JSON format. For each listed {{ site.data.keys.product_adj }} project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the {{ site.data.keys.product_adj }} project runtime is running or idle.
 * **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
 
 #### wasStartingWeight
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other MobileFirst runtime projects. If MobileFirst projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
+Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
 
 The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
 
@@ -316,20 +317,20 @@ The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobi
 | `<push>`              | The push service.	                               | 0..1  |
 | `<user>`              | The user to be mapped to a security role.	       | 0..   |
 
-### To specify a MobileFirst Operations Console
-The `<console>` element collects information to customize the installation of the MobileFirst Operations Console. This element has the following attributes:
+### To specify a {{ site.data.keys.mf_console }}
+The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_console }}. This element has the following attributes:
 
 | Attribute         | Description                                                               | Required | Default     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | The URI of the MobileFirst Operations Console.                            | No       | /mfpconsole |
-| install           | To indicate whether the MobileFirst Operations Console must be installed. | No       | Yes         |
+| contextroot       | The URI of the {{ site.data.keys.mf_console }}.                            | No       | /mfpconsole |
+| install           | To indicate whether the {{ site.data.keys.mf_console }} must be installed. | No       | Yes         |
 | warfile           | The console WAR file.	                                                    |No        | The mfp-admin-ui.war file is in the same directory as  themfp-ant-deployer.jar file. |
 
 The `<console>` element supports the following element:
 
 | Element               | Description                                      | Count |
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | The MobileFirst Server artifacts.                | 0..1  |
+| `<artifacts>`         | The {{ site.data.keys.mf_server }} artifacts.                | 0..1  |
 | `<property>`	        | The properties.	                               | 0..   |
 
 The `<artifacts>` element has the following attributes:
@@ -339,7 +340,7 @@ The `<artifacts>` element has the following attributes:
 | install           | To indicate whether the artifacts component must be installed.            | No       | true        |
 | warFile           | The artifacts WAR file.                                                   | No       | The mfp-dev-artifacts.war file is in the same directory as the mfp-ant-deployer.jar file |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files.
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
 
 The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
 
@@ -348,9 +349,9 @@ The `<property>` element specifies a deployment property to be defined in the ap
 | name       | The name of the property.  | Yes      | None    | 
 | value	     | The value of the property. |	Yes      | None    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files.
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
 
-For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### To specify an application server
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
@@ -360,7 +361,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 | `<websphereapplicationserver>` or `<was>` | The parameters for WebSphere Application Server. <br/><br/>The `<websphereapplicationserver>` element (or `was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment.               | 0..1  |
 | `<tomcat>`                                | The parameters for Apache Tomcat.	               | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
 However, for the inner element of the `<was>` element for Liberty collective, see the following table:
 
 | Element                  | Description                      | Count |
@@ -402,9 +403,9 @@ The `<user>` element collects the parameters about a user to include in a certai
 | name	      | The user name.	                                                        | Yes      | None    |
 | password	  | The password if the user needs to be created.	                        | No       | None    |
 
-After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in MobileFirst Operations Console: `configadmin`.
+After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in {{ site.data.keys.mf_console }}: `configadmin`.
 
-For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for MobileFirst Server administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 > **Tip:** If the users exist in an external LDAP directory, set only the **role** and **name** attributes but do not define any passwords.
 
@@ -415,7 +416,7 @@ The `<property>` element specifies a deployment property to be defined in the ap
 | name       | The name of the property.  | Yes      | None    | 
 | value	     | The value of the property. |	Yes      | None    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the MobileFirst Operations Console WAR files. For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files. For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### To specify an application server
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
@@ -425,7 +426,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 | `<websphereapplicationserver>` or `<was>`	| The parameters for WebSphere Application Server.<br/><br/>The <websphereapplicationserver> element (or <was> in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1  | 
 | `<tomcat>`   | The parameters for Apache Tomcat.                        | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
 However, for the inner element of the <was> element for Liberty collective, see the following table:
 
 | Element               | Description                  | Count |
@@ -442,32 +443,32 @@ The `<collectiveMember>` element has the following attributes:
 > **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
 
 ### To specify Analytics
-The `<analytics>` element indicates that you want to connect the MobileFirst push service to an already installed MobileFirst Analytics service. It has the following attributes:
+The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
 
 | Attribute     | Description                                                               | Required | Default | 
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | To indicate whether to connect the push service to MobileFirst Analytics. | No       | false   |
-| analyticsURL 	| The URL of MobileFirst Analytics services.	                            | Yes	   | None    |
+| install	    | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No       | false   |
+| analyticsURL 	| The URL of {{ site.data.keys.mf_analytics }} services.	                            | Yes	   | None    |
 | username	    | The user name.	                                                        | Yes	   | None    |
 | password	    | The password.	                                                            | Yes	   | None    |
-| validate	    | To validate whether MobileFirst Analytics Console is accessible or not.	| No	   | true    |
+| validate	    | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	| No	   | true    |
 
 **install**  
-Use the install attribute to indicate that this push service must be connected and send events to MobileFirst Analytics. Valid values are true or false.
+Use the install attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
 
 **analyticsURL**  
-Use the analyticsURL attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.
+Use the analyticsURL attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.
 
 For example: `http://<hostname>:<port>/analytics-service/rest`
 
 **username**  
-Use the username attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the username attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 **password**  
-Use the password attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the password attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 **validate**  
-Use the validate attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+Use the validate attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
 
 ### To specify a connection to the push service database
 
@@ -482,7 +483,7 @@ The `<database>` element has the following attributes:
 | kind          | The kind of database (Push).	                  | Yes	     | None    |
 | validate	    | To validate whether the database is accessible. | No       | true    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Element            | Description                                                      | Count |
 |--------------------|----------------------------------------------------------------- |-------|
@@ -502,7 +503,7 @@ The `<database>` element supports the following elements. For more information a
 | password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
 | dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
 
-## Ant tasks for installation of MobileFirst Server push service
+## Ant tasks for installation of {{ site.data.keys.mf_server }} push service
 The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
 
 ### Task effects
@@ -510,10 +511,10 @@ The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobile
 The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
 It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
 For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
-It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the MobileFirst authorization server, MobileFirst Analytics, and with Cloudant  in case Cloudant is used.
+It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the {{ site.data.keys.product_adj }} authorization server, {{ site.data.keys.mf_analytics }}, and with Cloudant  in case Cloudant is used.
 
 #### updatemobilefirstpush
-The **updatemobilefirstpush** Ant task updates an already-configured MobileFirst Server web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+The **updatemobilefirstpush** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
 
 #### uninstallmobilefirstpush
 The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
@@ -542,12 +543,12 @@ The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobile
 |-----------------------|-------------------------|-------|
 | `<applicationserver>` | The application server. | 1     |
 | `<analytics>`	        | The Analytics.	      | 0..1  | 
-| `<authorization>`	    | The authorization server for authenticating the communication with other MobileFirst Server components. | 1 |
+| `<authorization>`	    | The authorization server for authenticating the communication with other {{ site.data.keys.mf_server }} components. | 1 |
 | `<database>`	        | The databases.	      | 1     |
 | `<property>`	        | The properties.	      | 0..∞  | 
 
 ### To specify the authorization server
-The `<authorization>` element collects information to configure the authorization server for the authentication communication with other MobileFirst Server components. This element has the following attributes:
+The `<authorization>` element collects information to configure the authorization server for the authentication communication with other {{ site.data.keys.mf_server }} components. This element has the following attributes:
 
 | Attribute          | Description                           | Required | Default     | 
 |--------------------|---------------------------------------|----------|-------------|
@@ -561,15 +562,15 @@ The `<authorization>` element collects information to configure the authorizatio
 If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
 
 #### authorizationURL
-The URL of the authorization server. If the authorization server is the MobileFirst runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
+The URL of the authorization server. If the authorization server is the {{ site.data.keys.product_adj }} runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
 
 #### runtimeContextRoot
 The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
 #### pushClientID
-The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from MobileFirst Operations Console.
+The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
 
 #### pushClientSecret
-The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from MobileFirst Operations Console.
+The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
 
 The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
 
@@ -580,7 +581,7 @@ The `<property>` element specifies a deployment property to be defined in the ap
 
 By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the push service WAR file.
 
-For more information about the JNDI properties, see [List of JNDI properties for MobileFirst Server push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### To specify an application server
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
@@ -590,7 +591,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 | <websphereapplicationserver> or <was>	| The parameters for WebSphere Application Server. | The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1 |
 | `<tomcat>` | The parameters for Apache Tomcat. | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 However, for the inner element of the `<was>` element for Liberty collective, see the following table:
 
@@ -608,31 +609,31 @@ The `<collectiveMember>` element has the following attributes:
 > **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
 
 ### To specify Analytics
-The `<analytics>` element indicates that you want to connect the MobileFirst push service to an already installed MobileFirst Analytics service. It has the following attributes:
+The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
 
 | Attribute    | Description                        | Required | Default | 
 |--------------|------------------------------------|----------|---------|
-| install	   | To indicate whether to connect the push service to MobileFirst Analytics. | No | false | 
-| analyticsURL | The URL of MobileFirst Analytics services. | Yes | None | 
+| install	   | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No | false | 
+| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services. | Yes | None | 
 | username	   | The user name. | Yes | None | 
 | password	   | The password. | Yes | None | 
-| validate	   | To validate whether MobileFirst Analytics Console is accessible or not. | No | true | 
+| validate	   | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not. | No | true | 
 
 #### install
-Use the **install** attribute to indicate that this push service must be connected and send events to MobileFirst Analytics. Valid values are true or false.
+Use the **install** attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
 
 #### analyticsURL
-Use the **analyticsURL** attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.  
+Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
 For example: `http://<hostname>:<port>/analytics-service/rest`
 
 #### username
-Use the **username** attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### password
-Use the **password** attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### validate
-Use the **validate** attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
 
 ### To specify a connection to the push service database
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
@@ -646,7 +647,7 @@ The `<database>` element has the following attributes:
 | kind         | The kind of database (Push). | Yes      | None    |
 | validate	   | To validate whether the database is accessible. | No | true |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Element              | Description                               | Count |
 |----------------------|-------------------------------------------|-------|
@@ -666,28 +667,28 @@ The `<database>` element supports the following elements. For more information a
 | password	   | The password of the Cloudant account.	| No  | Queried interactively |
 | dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
 
-## Ant tasks for installation of MobileFirst runtime environments
+## Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments
 Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
 
 ### Task effects
 
 #### installmobilefirstruntime
-The **installmobilefirstruntime** Ant task configures an application server to run a MobileFirst runtime WAR file as a web application. This task has the following effects.
+The **installmobilefirstruntime** Ant task configures an application server to run a {{ site.data.keys.product_adj }} runtime WAR file as a web application. This task has the following effects.
 
-* It declares the MobileFirst web application in the specified context root, by default /mfp.
+* It declares the {{ site.data.keys.product_adj }} web application in the specified context root, by default /mfp.
 * It deploys the runtime WAR file on the application server.
 * It declares data sources and on WebSphere  Application Server full profile JDBC providers for the runtime.
 * It deploys the database drivers in the application server.
-* It sets MobileFirst configuration properties through JNDI environment entries.
-* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the runtime.
+* It sets {{ site.data.keys.product_adj }} configuration properties through JNDI environment entries.
+* Optionally, it sets the {{ site.data.keys.product_adj }} JNDI environment entries to configure the application server as a server farm member for the runtime.
 
 #### updatemobilefirstruntime
-The **updatemobilefirstruntime** Ant task updates a MobileFirst runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
+The **updatemobilefirstruntime** Ant task updates a {{ site.data.keys.product_adj }} runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
 
 #### uninstallmobilefirstruntime
 The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
 
-* It removes the configuration of the MobileFirst web application with the specified context root. The task also removes the settings that are added manually to that application.
+* It removes the configuration of the {{ site.data.keys.product_adj }} web application with the specified context root. The task also removes the settings that are added manually to that application.
 * It removes the runtime WAR file from the application server.
 * It removes the data sources and on WebSphere Application Server full profile the JDBC providers for the runtime.
 * It removes the associated JNDI environment entries.
@@ -699,23 +700,23 @@ The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstall
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
 | contextroot       | The common prefix in URLs to the application (context root).                | No | /mfp  |
 | id	            | To distinguish different deployments.                                       | No | Empty |
-| environmentId	    | To distinguish different MobileFirst environments.                          | No | Empty |
-| warFile	        | The WAR file for MobileFirst runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
+| environmentId	    | To distinguish different {{ site.data.keys.product_adj }} environments.                          | No | Empty |
+| warFile	        | The WAR file for {{ site.data.keys.product_adj }} runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
 | wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           | 
 
 #### contextroot and id
-The **contextroot** and **id** attributes distinguish different MobileFirst projects.
+The **contextroot** and **id** attributes distinguish different {{ site.data.keys.product_adj }} projects.
 
 In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
 
 #### environmentId
-Use the **environmentId** attribute to distinguish several environments, consisting each of MobileFirst Server administration service and MobileFirst runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
+Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
 
 #### warFile
-Use the **warFile** attribute to specify a different directory for the MobileFirst runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.product_adj }} runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### wasStartingWeight
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the MobileFirst Server administration service web application is deployed and started before any other MobileFirst runtime projects. If MobileFirst projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your MobileFirst projects.
+Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the {{ site.data.keys.mf_server }} administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your {{ site.data.keys.product_adj }} projects.
 
 The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
 
@@ -733,7 +734,7 @@ The `<property>` element specifies a deployment property to be defined in the ap
 | name      | The name of the property.	 | Yes      | None    |
 | value	    | The value for the property.| Yes	    | None    |  
 
-The `<applicationserver>` element describes the application server to which the MobileFirst application is deployed. It is a container for one of the following elements:
+The `<applicationserver>` element describes the application server to which the {{ site.data.keys.product_adj }} application is deployed. It is a container for one of the following elements:
 
 | Element                                    | Description                                      | Count |
 |--------------------------------------------|--------------------------------------------------|-------|
@@ -751,7 +752,7 @@ The `<websphereapplicationserver>` element (or `<was>` in its short form) denote
 | libertyEncoding |	The algorithm to encode data source passwords for WebSphere Application Server Liberty. The possible values are none, xor, and aes. Whether the xor or aes encoding is used, the clear password is passed as argument to the securityUtility program, which is called through an external process. You can see the password with a ps command, or in the /proc file system on UNIX operating systems.                                                         | No                       |	xor     |
 | jeeVersion      |	For Liberty profile. To specify whether to install the features of the JEE6 web profile or the JEE7 web profile. Possible values are 6, 7, or auto.| No | auto |
 | configureFarm   |	For WebSphere Application Server Liberty, and WebSphere Application Server full profile (not for WebSphere Application Server Network Deployment edition and Liberty collective). To specify whether the server is a server farm member. Possible values are true or false. | No	      | false   |
-| farmServerId    |	A string that uniquely identify a server in a server farm. The MobileFirst Server administration services and all the MobileFirst runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
+| farmServerId    |	A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
 
 It supports the following element for single-server deployment:
 
@@ -820,13 +821,13 @@ The `<tomcat>` element denotes an Apache Tomcat server. It has the following att
 |---------------|------------------|----------|---------|
 | installdir    | The installation directory of Apache Tomcat. For a Tomcat installation that is split between a CATALINA_HOME directory and a CATALINA_BASE directory, specify the value of the CATALINA_BASE environment variable.     | Yes | None    | 
 | configureFarm | To specify whether the server is a server farm member. Possible values are true or false.	| No | false |
-| farmServerId	| A string that uniquely identify a server in a server farm. The MobileFirst Server administration services and all the MobileFirst runtimes that communicate with it must share the same value. | Yes | None |
+| farmServerId	| A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value. | Yes | None |
 
 The `<database>` element specifies what information is necessary to access a particular database. The `<database>` element is specified like the configuredatabase Ant task, except that it does not have the `<dba>` and `<client>` elements. However, it might have `<property>` elements. The `<database>` element has the following attributes:
 
 | Attribute | Description                                | Required | Default | 
 |-----------|--------------------------------------------|----------|---------|
-| kind      | The kind of database (MobileFirstRuntime). | Yes | None |
+| kind      | The kind of database ({{ site.data.keys.product_adj }} Runtime). | Yes | None |
 | validate  | To validate whether the database is accessible or not. The possible values are true or false. | No | true |
 
 The `<database>` element supports the following elements:
@@ -839,37 +840,37 @@ The `<database>` element supports the following elements:
 | `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
 | `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
 
-The `<analytics>` element indicates that you want to connect the MobileFirst runtime to an already installed MobileFirst Analytics console and services. It has the following attributes:
+The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} runtime to an already installed {{ site.data.keys.mf_analytics_console }} and services. It has the following attributes:
 
 | Attribute    | Description                                                                      | Required | Default | 
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | To indicate whether to connect the MobileFirst runtime to MobileFirst Analytics. | No       | false   |
-| analyticsURL | The URL of MobileFirst Analytics services.	                                      | Yes      | None    |
-| consoleURL   | The URL ofMobileFirst Analytics Console.	                                      | Yes      | None    |
+| install      | To indicate whether to connect the {{ site.data.keys.product_adj }} runtime to {{ site.data.keys.mf_analytics }}. | No       | false   |
+| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services.	                                      | Yes      | None    |
+| consoleURL   | The URL of{{ site.data.keys.mf_analytics_console }}.	                                      | Yes      | None    |
 | username     | The user name.	                                                                  | Yes      | None    |
 | password     | The password.	                                                                  | Yes      | None    |
-| validate     | To validate whether MobileFirst Analytics Console is accessible or not.	      | No	     | true    |
-| tenant       | The tenant for indexing data that is collected from a MobileFirst runtime.	      | No       | Internal identifier |
+| validate     | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	      | No	     | true    |
+| tenant       | The tenant for indexing data that is collected from a {{ site.data.keys.product_adj }} runtime.	      | No       | Internal identifier |
 
 #### install
-Use the **install** attribute to indicate that this MobileFirst runtime must be connected and send events to MobileFirst Analytics. Valid values are **true** or **false**.
+Use the **install** attribute to indicate that this {{ site.data.keys.product_adj }} runtime must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are **true** or **false**.
 
 #### analyticsURL
-Use the **analyticsURL** attribute to specify the URL that is exposed by MobileFirst Analytics, which receives incoming analytics data.  
+Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
 For example: `http://<hostname>:<port>/analytics-service/rest`
 
 #### consoleURL
-Use the **consoleURL** attribute to the URL that is exposed by MobileFirst Analytics, which links to the MobileFirst Analytics console.  
+Use the **consoleURL** attribute to the URL that is exposed by {{ site.data.keys.mf_analytics }}, which links to the {{ site.data.keys.mf_analytics_console }}.  
 For example: `http://<hostname>:<port>/analytics/console`
 
 #### username
-Use the **username** attribute to specify the user name that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### password
-Use the **password** attribute to specify the password that is used if the data entry point for the MobileFirst Analytics is protected with basic authentication.
+Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### validate
-Use the **validate** attribute to validate whether the MobileFirst Analytics Console is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
+Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
 
 #### tenant
 For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
@@ -893,7 +894,7 @@ For more information about the available properties, see the documentation for C
 
 For more information about the available properties for a Liberty server, see the documentation for `properties.derby.embedded` at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
-When the **mfp-ant-deployer.jar** file is used within the installation directory of IBM MobileFirst Foundation, a `<driverclasspath>` element is not necessary.
+When the **mfp-ant-deployer.jar** file is used within the installation directory of {{ site.data.keys.product }}, a `<driverclasspath>` element is not necessary.
 
 ### To specify a DB2 database
 The `<db2>` element has the following attributes:
@@ -1059,7 +1060,7 @@ The **shortcutsDir** attribute specifies where to place shortcuts to the Applica
 * **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
 
 #### aaptDir
-The **aapt** program is part of the IBM MobileFirst Foundation distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
+The **aapt** program is part of the {{ site.data.keys.product }} distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
 If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
 
 The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks support the following elements:
@@ -1086,7 +1087,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 | **websphereapplicationserver** or **was**	| The parameters for WebSphere Application Server. The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core. Liberty collective is not supported for Application Center. | 0..1 | 
 | tomcat            | The parameters for Apache Tomcat. | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 ### To specify a connection to the services database
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
@@ -1100,7 +1101,7 @@ The `<database>` element has the following attributes:
 | kind         | The kind of database (ApplicationCenter).              | Yes      | None    |
 | validate	   | To validate whether the database is accessible or not. | No       | True    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Element           | Description	                            | Count | 
 |-------------------|-------------------------------------------|-------|
@@ -1119,33 +1120,33 @@ The `<user>` element collects the parameters about a user to include in a certai
 | name	       | The user name. | Yes | None |
 | password	   | The password, if you must create the user.	| No | None |
 
-## Ant tasks for installation of MobileFirst Analytics
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of MobileFirst Analytics.
+## Ant tasks for installation of {{ site.data.keys.mf_analytics }}
+The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of {{ site.data.keys.mf_analytics }}.
 
-The purpose of these Ant Tasks is to configure the MobileFirst Analytics console and the MobileFirst Analytics service with the appropriate storage for the data on an application server.
-The task installs MobileFirst Analytics nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
+The purpose of these Ant Tasks is to configure the {{ site.data.keys.mf_analytics_console }} and the {{ site.data.keys.mf_analytics }} service with the appropriate storage for the data on an application server.
+The task installs {{ site.data.keys.mf_analytics }} nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
 
 ### Task effects
 #### installanalytics
-The **installanalytics** Ant task configures an application server to run IBM MobileFirst Analytics. This task has the following effects:
+The **installanalytics** Ant task configures an application server to run IBM {{ site.data.keys.mf_analytics }}. This task has the following effects:
 
-* It deploys the MobileFirst Analytics Service and the MobileFirst Analytics Console WAR files on the application server.
-* It declares the MobileFirst Analytics Service web application in the specified context root /analytics-service.
-* It declares the MobileFirst Analytics Console web application in the specified context root /analytics.
-* It sets MobileFirst Analytics Console and MobileFirst Analytics Services configuration properties through JNDI environment entries.
+* It deploys the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files on the application server.
+* It declares the {{ site.data.keys.mf_analytics }} Service web application in the specified context root /analytics-service.
+* It declares the {{ site.data.keys.mf_analytics_console }} web application in the specified context root /analytics.
+* It sets {{ site.data.keys.mf_analytics_console }} and {{ site.data.keys.mf_analytics }} Services configuration properties through JNDI environment entries.
 * On WebSphere  Application Server Liberty profile, it configures the web container.
-* Optionally, it creates users to use the MobileFirst Analytics Console.
+* Optionally, it creates users to use the {{ site.data.keys.mf_analytics_console }}.
 
 #### updateanalytics
-The **updateanalytics** Ant task updates the already configured MobileFirst Analytics Service and MobileFirst Analytics Console web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
+The **updateanalytics** Ant task updates the already configured {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
 
 The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
 
 #### uninstallanalytics
 The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
 
-* It removes the configuration of both the MobileFirst Analytics Service and the MobileFirst Analytics Console web applications with their respective context roots.
-* It removes the MobileFirst Analytics Service and the MobileFirst Analytics Console WAR files from the application server.
+* It removes the configuration of both the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} web applications with their respective context roots.
+* It removes the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files from the application server.
 * It removes the associated JNDI environment entries.
 
 ### Attributes and elements
@@ -1153,23 +1154,23 @@ The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks 
 
 | Attribute    | Description                                            | Required | Default | 
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | The WAR file for the MobileFirst Analytics Service     | No       | The analytics-service.war file is in the directory Analytics. |
+| serviceWar   | The WAR file for the {{ site.data.keys.mf_analytics }} Service     | No       | The analytics-service.war file is in the directory Analytics. |
 
 #### serviceWar
-Use the **serviceWar** attribute to specify a different directory for the MobileFirst Analytics Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Use the **serviceWar** attribute to specify a different directory for the {{ site.data.keys.mf_analytics }} Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
 
 | Attribute         | Description                               | Required | Default | 
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | MobileFirst Analytics   	                | Yes	   | 1       |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | Yes	   | 1       |
 | user	            | The user to be mapped to a security role.	| No	   | 0..     |
 | storage	        | The type of storage.	                    | Yes 	   | 1       |
 | applicationserver	| The application server.	                | Yes	   | 1       |
 | property          | Properties.	                            | No 	   | 0..     |
 
-### To specify a MobileFirst Analytics Console
-The `<console>` element collects information to customize the installation of the MobileFirst Analytics Console. This element has the following attributes:
+### To specify a {{ site.data.keys.mf_analytics_console }}
+The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_analytics_console }}. This element has the following attributes:
 
 | Attribute    | Description                                  | Required | Default | 
 |--------------|----------------------------------------------|----------|---------|
@@ -1177,13 +1178,13 @@ The `<console>` element collects information to customize the installation of th
 | shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
 
 #### warFile
-Use the **warFile** attribute to specify a different directory for the MobileFirst Analytics Console WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.mf_analytics_console }} WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### shortcutsDir
-The **shortcutsDir** attribute specifies where to place shortcuts to the MobileFirst Analytics Console. If you set this attribute, you can add the following files to that directory:
+The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_analytics_console }}. If you set this attribute, you can add the following files to that directory:
 
-* **analytics-console.url**: This file is a Windows shortcut. It opens the MobileFirst Analytics Console in a browser.
-* **analytics-console.sh**: This file is a UNIX shell script. It opens the MobileFirst Analytics Console in a browser.
+* **analytics-console.url**: This file is a Windows shortcut. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
+* **analytics-console.sh**: This file is a UNIX shell script. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
 
 > Note: These shortcuts do not include the ElasticSearch tenant parameter.
 
@@ -1211,15 +1212,15 @@ The `<user>` element collects the parameters about a user to include in a certai
 | name	      | The user name.	                              | Yes      | None    |
 | password	  | The password if the user needs to be created. | No       | None    |
 
-After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the MobileFirst Operations Console:
+After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the {{ site.data.keys.mf_console }}:
 
 * **mfpmonitor**
 * **mfpoperator**
 * **mfpdeployer**
 * **mfpadmin**
 
-### To specify a type of storage for MobileFirst Analytics
-The `<storage>` element indicates which underlying type of storage MobileFirst Analytics uses to store the information and data it collects.
+### To specify a type of storage for {{ site.data.keys.mf_analytics }}
+The `<storage>` element indicates which underlying type of storage {{ site.data.keys.mf_analytics }} uses to store the information and data it collects.
 
 It supports the following element:
 
@@ -1266,7 +1267,7 @@ If the attribute **dataPath** is not specified, then ElasticSearch cluster data 
 * For Apache Tomcat, the location is `${CATALINA_HOME}/bin/analyticsData`.
 * For WebSphere Application Server and WebSphere Application Server Network Deployment, the location is `${was.install.root}/profiles/<profileName>/analyticsData`.
 
-The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the MobileFirst Analytics Service component receives events.
+The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the {{ site.data.keys.mf_analytics }} Service component receives events.
 
 #### shards
 Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
@@ -1274,7 +1275,7 @@ Use the **shards** attribute to specify the number of shards to create in the El
 #### replicasPerShard
 Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
 
-Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the MobileFirst Analytics. A replica shard can never be started on the same node as its shard.
+Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the {{ site.data.keys.mf_analytics }}. A replica shard can never be started on the same node as its shard.
 
 #### transportPort
 Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
@@ -1282,7 +1283,7 @@ Use the **transportPort** attribute to specify a port that other nodes in the El
 ### To specify an application server
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
 
-**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of MobileFirst runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Element                                   | Description	| Count   | 
 |-------------------------------------------|---------------|---------|
@@ -1308,19 +1309,19 @@ This element has the following attributes:
 ## Internal runtime databases
 Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
 
-### Database used by MobileFirst Server runtime
+### Database used by {{ site.data.keys.mf_server }} runtime
 The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for MobileFirst runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
+| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
 | ADDRESSABLE_DEVICE	         | Stores the addressable device metrics daily. An entry is also added each time that a cluster is started.	| About 400 rows. Entries older than 13 months are deleted daily. |
 | MFP_PERSISTENT_DATA	         | Stores instances of client applications that have registered with the OAuth server, including information about the device, the application, users associated with the client and the device status. | One row per device and application pair. |
 | MFP_PERSISTENT_CUSTOM_ATTR	 | Custom attributes that are associated with instances of client applications. Custom attributes are application-specific attributes that were registered by the application per each client instance. | Zero or more rows per device and application pair |
 | MFP_TRANSIENT_DATA	         | Authentication context of clients and devices | Two rows per device and application pair; if using device single sign-on an extra two rows per device. For more information about SSO, see [Configuring device single sign-on (SSO)](../../../authentication-and-security/device-sso). |
 | SERVER_VERSION	             | The product version.	| One row |
 
-### Database used by MobileFirst Server administration service
+### Database used by {{ site.data.keys.mf_server }} administration service
 The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1335,7 +1336,7 @@ The following table provides a list of administration database tables, their des
 | TRANSACTIONS	                 | Internal cluster synchronization table; stores the state of all current administrative actions. | Tens of rows. |
 | MFPADMIN_VERSION	             | The product version.	| One row. |
 
-### Database used by MobileFirst Server live update service
+### Database used by {{ site.data.keys.mf_server }} live update service
 The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1346,7 +1347,7 @@ The following table provides a list of live update service database tables, thei
 | CS_ATTACHMENTS	             | Stores the attachments for each configuration instance. | One row per attachment. |
 | CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. | 
 
-### Database used by MobileFirst Server push service
+### Database used by {{ site.data.keys.mf_server }} push service
 The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1363,9 +1364,9 @@ The following table provides a list of push service database tables, their descr
 For more information about setting up the databases, see [Setting up databases](../databases).
 
 ## Sample configuration files
-IBM MobileFirst Foundation includes a number of sample configuration files to help you get started with the Ant tasks to install the MobileFirst Server.
+{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_server }}.
 
-The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the MobileFirst Server distribution. For more information about installing MobileFirst Server with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
 
 ### List of sample configuration files
 Pick the appropriate sample configuration file. The following files are provided.
@@ -1373,11 +1374,11 @@ Pick the appropriate sample configuration file. The following files are provided
 | Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
 | Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| Install MobileFirst Server on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
-| Install MobileFirst Server on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
-| Install MobileFirst Server on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
-| Install MobileFirst Server on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| Install MobileFirst Server on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| Install {{ site.data.keys.mf_server }} on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
+| Install {{ site.data.keys.mf_server }} on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
+| Install {{ site.data.keys.mf_server }} on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
+| Install {{ site.data.keys.mf_server }} on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| Install {{ site.data.keys.mf_server }} on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
 **Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM  DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
@@ -1388,23 +1389,23 @@ Pick the appropriate sample configuration file. The following files are provided
 * **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
 * **cell**: To deploy to all the servers on a cell.
 
-## Sample configuration files for MobileFirst Analytics
-BM MobileFirst Foundation includes a number of sample configuration files to help you get started with the Ant tasks to install the MobileFirst Analytics Services, and the MobileFirst Analytics Console.
+## Sample configuration files for {{ site.data.keys.mf_analytics }}
+{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_analytics }} Services, and the {{ site.data.keys.mf_analytics_console }}.
 
-The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the MobileFirst Server distribution.
+The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution.
 
 ### Step 1
 Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
 
 | Task | Application server |
 |------|--------------------|
-| Install MobileFirst Analytics Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml | 
-| Install MobileFirst Analytics Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
-| Install MobileFirst Analytics Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
-| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 
-| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml | 
-| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml | 
-| Install MobileFirst Analytics Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml | 
+| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml | 
 
 **Note on configuration files for WebSphere Application Server Network Deployment:**  
 The configuration files for wasnd contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-analytics.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
@@ -1439,10 +1440,10 @@ The following special characters must be escaped when they are used in the value
 ### Step 5
 Run the command: `ant -f configure-file.xml install`
 
-This command installs your MobileFirst Analytics Services and MobileFirst Analytics Console components in the application server.
-To install updated MobileFirst Analytics Services and MobileFirst Analytics Console components, for example if you apply a MobileFirst Server fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
+This command installs your {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components in the application server.
+To install updated {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components, for example if you apply a {{ site.data.keys.mf_server }} fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
 
 To reverse the installation step, run the command: `ant -f configure-file.xml uninstall`
 
-This command uninstalls the MobileFirst Analytics Services and MobileFirst Analytics Console components.
+This command uninstalls the {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components.
 

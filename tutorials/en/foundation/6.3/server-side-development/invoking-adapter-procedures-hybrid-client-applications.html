@@ -12,13 +12,13 @@ downloads:
 <p>MobileFirst applications can adapt procedures to communicate with any data source without being subjected to same-origin constraints.</p>
 <h2>Basic API</h2>
 <p>Adapter procedures can be called from the client-side JavaScript:</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
  WL.Client.invokeProcedure(invocationData, options);
 {% endhighlight %}
 
 <h2>invocationData</h2>
 <p>The first step to invoke an adapter procedure in JavaScript is to create an <code>invocationData</code> object. The <code>invocationData</code> object is used to provide invocation configuration and procedure parameters. It consists of a JSON block of properties.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var invocationData = {
     adapter : 'RSSReader',
     procedure : 'getFeedsFiltered',
@@ -33,7 +33,7 @@ var invocationData = {
 </ul>
 <h2>Options</h2>
 <p>The second step is to define failure and success behaviors in the <code>options</code> object.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var options = {
     onSuccess : loadFeedsSuccess,
     onFailure : loadFeedsFailure,
@@ -64,7 +64,7 @@ The <code>response</code> typically contains the following properties:</p>
 <h2>Invocation Results</h2>
 <p><code>invocationResult</code> is a JSON object that is returned. It contains the data and more information about the procedure invocation.<br />
 The object is returned to a corresponding success/failure handler.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 {
   "errors": [],
   "info": [],
@@ -99,7 +99,7 @@ The object is returned to a corresponding success/failure handler.</p>
 <p>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), to <code>false</code> otherwise.</p>
 <p>The response can contain other metadata such as <code>responseHeaders</code>, <code>responseTime</code>, <code>statusCode</code>, <code>statusReason</code>, and <code>totalTime</code>.</p>
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back-end, after applying the rules in the XSL file.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function loadFeedsSuccess(result){
     WL.Logger.debug("Feed retrieve success");
     if (result.invocationResult.Items.length>0)

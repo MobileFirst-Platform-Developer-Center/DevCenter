@@ -21,7 +21,7 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:<br />
-{% highlight swift linenos %}
+{% highlight swift  %}
 let connectListener = MyConnectListener(vc: self)
 WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
 {% endhighlight %}
@@ -31,7 +31,7 @@ WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.
 <p>For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
 <p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
-<p>{% highlight swift linenos %}
+<p>{% highlight swift  %}
 class MyConnectListener: NSObject, WLDelegate{
 //...
 }
@@ -43,7 +43,7 @@ class MyConnectListener: NSObject, WLDelegate{
 In both cases, the response object is passed as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>{% highlight swift linenos %}
+<p>{% highlight swift  %}
 func onSuccess(response: WLResponse!) {
     var resultText = "Connection success. "
     if(response != nil){
@@ -66,19 +66,19 @@ func onFailure(response: WLFailResponse!) {
 <p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
 <ol>
 <li>To call a procedure, create a <code>WLResourceRequest</code> object and specify the path to the adapter and the HTTP method.<br />
-{% highlight swift linenos %}
+{% highlight swift  %}
 let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
 {% endhighlight %}
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
-{% highlight swift linenos %}
+{% highlight swift  %}
 request.setQueryParameterValue("['MobileFirst_Platform']", forName: "params")
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
-{% highlight swift linenos %}
+{% highlight swift  %}
 request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 {% endhighlight %}
@@ -86,7 +86,7 @@ request.setQueryParameterValue("value2", forName: "param2")
 </ul>
 </li>
 <li>Call the procedure by using the <code>sendWithCompletionHandler</code> method. Supply a completion handler to manage the retrieved data.
-<p>{% highlight swift linenos %}
+<p>{% highlight swift  %}
 request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
     var resultText = ""
     if(error != nil){
