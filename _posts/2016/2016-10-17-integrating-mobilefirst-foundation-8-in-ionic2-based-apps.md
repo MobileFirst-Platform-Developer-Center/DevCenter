@@ -321,4 +321,4 @@ After your username and password is validated, your balance is shown in the app.
 ![balance]({{site.baseurl}}/assets/blog/2016-10-17-integrating-mobilefirst-foundation-8-in-ionic2-based-apps/balance.png)
 
 
-View the source code [here](https://github.ibm.com/sdpuryea/ionic2)
+View the source code [here](https://github.com/robpuryear/ionic2)
