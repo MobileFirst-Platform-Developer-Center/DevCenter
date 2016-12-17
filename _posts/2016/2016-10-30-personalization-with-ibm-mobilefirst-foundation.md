@@ -39,4 +39,4 @@ In this blog post, we’ll walk you through a sample so you can learn how easy i
 > You can find the sample app in [this GitHub repository](https://github.com/mfpdev/personalization-with-liveupdate).
 
 ## Architecture
-![Archticture]({{site.baseurl}}/assets/blog/2016-30-10-personalization-with-ibm-mobilefirst-foundation/architecture.png)
+![Archticture]({{site.baseurl}}/assets/blog/2016-10-30-personalization-with-ibm-mobilefirst-foundation/architecture.png)

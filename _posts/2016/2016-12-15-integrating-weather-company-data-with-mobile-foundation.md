@@ -1,5 +1,5 @@
 ---
-title: 'Integrating Weather Company Data with Mobile Foundation'
+title: Integrating Weather Company Data with Mobile Foundation
 date: 2016-12-15
 tags:
 - MobileFirst_Foundation
@@ -118,6 +118,7 @@ public class ZipCode {
     public void set_rev(String _rev) {
     	this._rev = _rev;
     }
+}
 ```
 
 Then we need the validation.
@@ -289,6 +290,7 @@ public Response getWeatherAlerts(String[] zipCodes) throws Exception {
      *  - detailLevel: inner most object for alert details
      */
     JSONObject zipLevel = new JSONObject();
+}
 ```
 
 Now we can work to reach our desired output. The first step is to send the zip code array to Cloudant to search for coordinates.
@@ -307,8 +309,8 @@ for (int i = 0; i < zipCodes.length; i++) {
 
         latitude = dbZip.getLatitude();
         longitude = dbZip.getLongitude();
-
 	} 
+}
 ```
 
 We need to wrap our Cloudant search in a try-catch in case the document is missing. In that case we'll call our geocode method and add it to Cloudant.
