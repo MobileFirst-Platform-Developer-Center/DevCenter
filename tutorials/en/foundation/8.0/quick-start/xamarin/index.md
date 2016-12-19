@@ -16,7 +16,6 @@ The purpose of this demonstration is to experience an end-to-end flow:
 **End result**:
 
 * Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
 
 #### Prerequisites:
 
@@ -28,7 +27,6 @@ Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mo
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
-
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 1. Click the **New** button next to **Applications**
@@ -41,37 +39,93 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 
 ### 3. Editing application logic
 
-1. Create a Xamarin project with name and packaging the details during registration.
-2. Add the Xamarin SDK as mentioned in [Adding the SDK](../../application-development/sdk/xamarin/)
-3. Select the **[project-root]/[ProjectName/App.cs]** and paste the following code snippet:
+1. Create a Xamarin project.
+2. Add the Xamarin SDK as mentioned in the [Adding the SDK](../../application-development/sdk/xamarin/) tutorial.
+3. Select the **[project-root]/[ProjectName/App.cs]** and replace it with the following:
+   
+   ```csharp
+   using System;
+   using Xamarin.Forms;
+   using System.Threading.Tasks;
+   using System.Diagnostics;
+   using Worklight;
+   using System.Text;
+   
+   namespace WorklightSample
+    {
+       	public class App : Xamarin.Forms.Application
+       	{
+       		/// <summary>
+       		/// Gets or sets the worklight sample client.
+       		/// </summary>
+       		/// <value>The worklight client.</value>
+       		public static IWorklightClient WorklightClient {get; set;}
+       
+       		public App(){
+       			var navigationPage = new NavigationPage (new HomePage ());
+       			navigationPage.BarBackgroundColor = Color.XamarinBlue.ToFormsColor ();
+       			navigationPage.BarTextColor = Xamarin.Forms.Color.White;
+       			MainPage = navigationPage;
+       			ObtainToken();
+       		}
+       
+       		public async void ObtainToken()
+       		{ 
+       			try
+       			{
+       
+       				IWorklightClient _newClient = App.WorklightClient;
+       				WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
+       
+       				if (accessToken.Value != null && accessToken.Value != "")
+       				{
+       					System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+       					StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
+       
+       					WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
+       					request.SetQueryParameter("name", "world");
+       					WorklightResponse response = await request.Send();
+       
+       					System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+       				}
+       			}
+       			catch (Exception e)
+       			{
+       				System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
+       			}
+       		}
+       	}
+    }
+   ```
 
-    ```csharp
-    try
-	{
-	    IWorklightClient _newClient = App.GetWorklightClient;
+3. If you're using iOS, paste the following code in the **AppDelegate.cs** file:
+  
+```csharp
+public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+{
+   public override bool FinishedLaunching (UIApplication app, NSDictionary options) {
+       global::Xamarin.Forms.Forms.Init();
+       App.WorklightClient = WorklightClient.CreateInstance();
 
-		WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
+       LoadApplication (new App());
+       return base.FinishedLaunching (app, options);
+   } 
+}
+```     
 
-		if (accessToken.Value != null && accessToken.Value != "")
-		{
-			System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
-			mfpstarterxamarinPage.DisplayOutput("Yay!\nConnected to MobileFirst Server");
-              
-            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(),UriKind.Relative), "GET");
+If you're using Android, paste the following code in the **MainActivity.cs** file:
 
-		    request.SetQueryParameter("name", "world");
-		    WorklightResponse response = await request.Send();
+```csharp
+public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity {
+   protected override void OnCreate (Bundle bundle) {
+       base.OnCreate(bundle);
+       global::Xamarin.Forms.Forms.Init (this, bundle);
 
-			System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
-		}
-	}
-	catch (Exception e)
-	{
-		mfpstarterxamarinPage.DisplayOutput("Uh-oh\nClient failed to connect to MobileFirst Server");
-		System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
-	}
-    ```
+       App.WorklightClient = WorklightClient.CreateInstance(this);
+       LoadApplication (new App());
+   } 
+}
+```
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
@@ -80,20 +134,19 @@ Alternatively, click the **New** button next to **Adapters**.
 
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
+   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
-    ```bash
-    mfpdev adapter build
-    ```
+   ```bash
+   mfpdev adapter build
+   ```
 
 3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
 
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+   <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>
 
-<img src="device-screen.png" alt="sample app" style="float:right"/>
-
+<!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Testing the application
 
 1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
