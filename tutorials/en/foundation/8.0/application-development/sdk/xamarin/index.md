@@ -45,7 +45,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
 5. Search for **IBM MobileFirst SDK**. Choose and do **Add to App**.
 ![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Right-click **Packages** and select **Add packages** .Search for and add **Newtonsoft.Json**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
+6. Right-click **Packages** and select **Add packages** .Search for and add **Json.NET**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
 7. Right-click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
 
 ### Registering the application
