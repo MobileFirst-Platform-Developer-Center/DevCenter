@@ -41,12 +41,12 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
 2. Expand the Android or iOS project.
-3. In the Android or iOS project, right click **Components**.
+3. In the Android or iOS project, right-click **Components**.
 4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
 5. Search for **IBM MobileFirst SDK**. Choose and do **Add to App**.
 ![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Right click **Packages** and select **Add packages** .Search for and add **Newtonsoft.Json**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
-7. Right click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
+6. Right-click **Packages** and select **Add packages** .Search for and add **Newtonsoft.Json**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
+7. Right-click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
 
 ### Registering the application
 
@@ -58,13 +58,13 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 ### Completing the setup process
 
 #### mfpclient.plist
-1. Right the Xamarin iOS project and select **Add files..**. Browse and find the `mfpclient.plist` to the root of the project. Choose **Copy file to project** if prompted.
-2. Right click the `mfpclient.plist` file and select **Build action**.Choose **Content**.
+1. Right-click the Xamarin iOS project and select **Add files..**. Browse and find the `mfpclient.plist` to the root of the project. Choose **Copy file to project** if prompted.
+2. Right-click the `mfpclient.plist` file and select **Build action**.Choose **Content**.
 
 #### mfpclient.properties
 
-1. Right the *Assets* folder of Xamarin Android project and select **Add files..**. Browse and find the `mfpclient.properties` to the folder. Choose **Copy file to project** if prompted.
-2. Right click the `mfpclient.properties` file and select **Build action**.Choose **Android asset**.
+1. Right-click the *Assets* folder of Xamarin Android project and select **Add files..**. Browse and find the `mfpclient.properties` to the folder. Choose **Copy file to project** if prompted.
+2. Right-click the `mfpclient.properties` file and select **Build action**.Choose **Android asset**.
 
 
 
