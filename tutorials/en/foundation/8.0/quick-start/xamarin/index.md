@@ -43,46 +43,35 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 
 1. Create a Xamarin project with name and packaging the details during registration.
 2. Add the Xamarin SDK as mentioned in [Adding the SDK](../../application-development/sdk/xamarin/)
-2. Select the **[project-root]/[ProjectName/App.cs]**. You can choose to add the logic in any other .cs file.
-3. Choose  file and paste the following code snippet:
+3. Select the **[project-root]/[ProjectName/App.cs]** and paste the following code snippet:
 
     ```csharp
     try
 	{
-
 	    IWorklightClient _newClient = App.GetWorklightClient;
 
 		WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
 
-		 if (accessToken.Value != null && accessToken.Value != "")
-		 {
-			  System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+		if (accessToken.Value != null && accessToken.Value != "")
+		{
+			System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+			mfpstarterxamarinPage.DisplayOutput("Yay!\nConnected to MobileFirst Server");
+              
+            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
+            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(),UriKind.Relative), "GET");
 
-			  mfpstarterxamarinPage.DisplayOutput("Yay!\nConnected to MobileFirst Server");
+		    request.SetQueryParameter("name", "world");
+		    WorklightResponse response = await request.Send();
 
-			  //Xamarin SDK has an issue with relative URI. As a workaround , use the absolute uri while invoking adapters.
-			  StringBuilder uriBuilder = new StringBuilder().Append(_newClient.ServerUrl.AbsoluteUri)
-					 .Append("/adapters/javaAdapter/resource/greet");
-
-		      WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString()), "GET", "");
-
-			  request.SetQueryParameter("name", "world");
-		      WorklightResponse response = await request.Send();
-
-			  System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
-
-		  }
+			System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+		}
 	}
 	catch (Exception e)
 	{
 		mfpstarterxamarinPage.DisplayOutput("Uh-oh\nClient failed to connect to MobileFirst Server");
 		System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
 	}
-
-
     ```
-
-
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
