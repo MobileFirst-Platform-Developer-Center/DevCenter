@@ -70,7 +70,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <p>You can modify the settings by using the Authentication Configuration Editor.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" /></p>
 <p>Each realm takes a name, a <code>loginModule</code> specification, an authenticator implementation, and optional parameters.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <realms>
   <realm name="SampleAppRealm" loginModule="StrongDummy">
     <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
@@ -81,7 +81,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 </realms>
 {% endhighlight %}</p>
 <p>Each login module takes a name, a login module implementation, and optional parameters.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <loginModules>
   <loginModule name="StrongDummy">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
@@ -97,13 +97,13 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <h3>User Identity</h3>
 <p>Although user authorization can include authorization with several realms, only one of these realms is defined as the <em>user identity realm</em>, and that realm determines the user identity. In an OAuth-based flow, the user identity realm is set according to the <code>userIdentityRealms</code> definition in the <strong>application descriptor</strong>. This is the user identity that will appear in the Devices tab of the console.</p>
 <p><strong>Note:</strong> In the classic (pre-V7.0) flows, the user identity realm is selected according to the definition in the security test. In OAuth-based flows, information about the user identity, which is set by the <code>userIdentityRealms</code> attribute, is part of the data contained in the ID token.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <userIdentityRealms>SampleAppRealm</userIdentityRealms>
 {% endhighlight %}</p>
 <h2 id="protectAdapt">Protecting adapters</h2>
 <h3>Java adapters</h3>
 <p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
     @DELETE
     @Path("/{userId}")
     @OAuthSecurity(scope="adminRealm")

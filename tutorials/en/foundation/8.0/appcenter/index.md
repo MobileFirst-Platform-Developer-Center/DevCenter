@@ -5,8 +5,9 @@ relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 12
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Learn about the Application Center: what it is for, the different components and features, and how to use the console and the client.
+Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
 
 The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
 The Application Center is a tool to make sharing mobile applications within an organization easier.
@@ -39,7 +40,7 @@ For Windows Phone, only the Windows Phone application package (.xap) file format
 
 Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the MobileFirst platform.
+Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
 
 You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
 
@@ -87,7 +88,7 @@ In Application Center, applications have only one version number. The version nu
 The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
 
 ### Server-side component
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM® WebSphere® or Apache Tomcat.
+The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
 
 The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
 
@@ -125,14 +126,14 @@ From the mobile client, you can take the following actions:
 
 The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the MobileFirst platform.To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build MobileFirst applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
 
 ## Preliminary information
-To use the Application Center, you must configure security settings, start the web application server where IBM MobileFirst Foundation is installed, start the Application Center console, and log in.
+To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
 
-When you install IBM MobileFirst Foundation, the Application Center is automatically installed in the specified application server.
+When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
 
-If you install the Application Center in WebSphere® Application Server Liberty profile, the server is created in **installation-directory/server**.
+If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
 
 After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
 
@@ -140,9 +141,9 @@ After the installation is complete, you must configure the security settings for
 
 1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
 
-    ```bash
-    server start worklightServer
-    ```
+   ```bash
+   server start worklightServer
+   ```
     
 2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
 3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:

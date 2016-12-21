@@ -55,14 +55,14 @@ The MobileFirst native API folder serves two purposes:</p>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Create an instance of <code>WLClient</code>.
-{% highlight java linenos %}
+{% highlight java  %}
 private WLClient client;
 public MainMidlet() {
    client = WLClient.createInstance(this);
 {% endhighlight %}
 </li>
 <li>To establish the connection to a MobileFirst Server instance, use the <code>connect</code> method and specify a <code>MyConnectListener</code> class instance as the parameter.
-{% highlight java linenos %}
+{% highlight java  %}
 public void commandAction(Command command, Item item) {
     StringItem itemName = (StringItem)item;
     if(itemName.getText().equals("1.Connect")) {
@@ -75,16 +75,16 @@ public void commandAction(Command command, Item item) {
 <p>The <code>WLClient</code> instance first connects to MobileFirst Server, according to the properties of the <strong>wlclient.properties</strong> file.<br />
 After the connection is established, it calls one of the methods of the <code>MyConnectListener</code> class.<br />
 The <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight java linenos %} public class MyConnectListener implements WLResponseListener  { {% endhighlight %}</p>
+<p>{% highlight java  %} public class MyConnectListener implements WLResponseListener  { {% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface specifies the following methods:</p>
-<p>{% highlight java linenos %} public void onSuccess (WLResponse response) { }{% endhighlight %}</p>
-<p>{% highlight java linenos %} public void onFailure (WLFailResponse response) { } {% endhighlight %}</p>
+<p>{% highlight java  %} public void onSuccess (WLResponse response) { }{% endhighlight %}</p>
+<p>{% highlight java  %} public void onFailure (WLFailResponse response) { } {% endhighlight %}</p>
 <p>Use these methods to process connection success or connection failure.</p>
 <h2>Invoking a MobileFirst Procedure</h2>
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures:</p>
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
-{% highlight java linenos %}
+{% highlight java  %}
 else if(itemName.getText().equals("2.Invoke Procedure")) {
      updateTextView("\nInvoking procedure...");
      String adapterName = "RSSReader";
@@ -94,21 +94,21 @@ else if(itemName.getText().equals("2.Invoke Procedure")) {
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures.
 </li>
 <li>Add the required parameters as an object array and set the request options.
-{% highlight java linenos %}
+{% highlight java  %}
 Object[] parameters = new Object[] {};
 invocationData.setParameters(parameters);
 WLRequestOptions options = new WLRequestOptions();
 {% endhighlight %}
 </li>
 <li>Specify a <code>MyInvokeListener</code> class instance as a parameter.
-<p>{% highlight java linenos %}client.invokeProcedure(invocationData, new MyInvokeListener(), options);{% endhighlight %}</p>
+<p>{% highlight java  %}client.invokeProcedure(invocationData, new MyInvokeListener(), options);{% endhighlight %}</p>
 <p>After the procedure call completes, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 The <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.<br />
 The <code>WLClient</code> calls its <code>onSuccess</code> or <code>onFailure</code> methods.</p>
 <p>If the procedure call is successful, the <code>onSuccess</code> method of the <code>MyInvokeListener</code> instance is called.
 </li>
 <li>Use it to get the data that is retrieved from the adapter.
-{% highlight java linenos %}
+{% highlight java  %}
 import com.worklight.wlclient.api.WLFailResponse;
 import com.worklight.wlclient.api.WLResponse;
 import com.worklight.wlclient.api.WLResponseListener;</p>

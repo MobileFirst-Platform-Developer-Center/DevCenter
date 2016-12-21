@@ -34,7 +34,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -48,7 +48,7 @@ WL.Server.createEventSource({
 <li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 <p>An additional event source option:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
@@ -64,7 +64,7 @@ The following parameters are required:</p>
 </ul>
 <h3>Sending a notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
@@ -78,10 +78,10 @@ function submitNotification(userId, notificationText) {
     };
 }{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js linenos %}function submitNotification(userId, notificationText) {
+<p>{% highlight js  %}function submitNotification(userId, notificationText) {
 {% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>{% highlight js linenos %}{
+<p>{% highlight js  %}{
     userId: 'bjones',
     state: {
         customField: 3
@@ -89,13 +89,13 @@ function submitNotification(userId, notificationText) {
     getDeviceSubscriptions: function()[}
 };{% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js linenos %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
+{% highlight js  %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
-{% highlight js linenos %}if (userSubscription === null) {
+{% highlight js  %}if (userSubscription === null) {
         return { result: "No subscription found for user :: " + userId };
     }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
-{% highlight js linenos %}var badgeDigit = 1;
+{% highlight js  %}var badgeDigit = 1;
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
@@ -103,7 +103,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js linenos %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
+<p>{% highlight js  %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -120,7 +120,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>
 </li>
 <li>Create an instance of <code>onReadyToSubscribeListener</code> and set values for alias, adaptername and eventsource.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];
   readyToSubscribeListener.alias = self.alias;
   readyToSubscribeListener.adapterName = self.adapterName;
@@ -128,36 +128,36 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 {% endhighlight %}</p>
 </li>
 <li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
 {% endhighlight %}</p>
 </li>
 <li>Pass the token to <code>WLPush</code>.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %}
 </li>
 </ol>
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 <p>The user must initialize the <code>WLPush sharedInstance</code> in the application's <code>ViewController</code> load method.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
 [[WLPush sharedInstance]init];
 {% endhighlight %}<br />
 The user must add this method to the app delegate to get the token.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 }
 {% endhighlight %}</p>
 <p>The token that is received by this method must be passed to the WLPush method.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
 {% endhighlight %}</p>
 <h3>Registering the event source</h3>
 <p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 #import "ReadyToSubscribeListener.h"
 #import "MyEventSourceListener.h
 @implementation ReadyToSubscribeListener
@@ -172,7 +172,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <h3>Subscribing to the event source</h3>
 <p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
 <p>To set up subscription to the event source, use the following API:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (IBAction)subscribe:(id)sender {
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];
@@ -187,7 +187,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>Delegates receive a response object if one is required.</p>
 <h3>Unsubscribing  from an event source</h3>
 <p>To set up unsubscription from an event source, use the following API:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (IBAction)unsubscribe:(id)sender {
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];
@@ -204,7 +204,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
 <br clear="all" /><br />
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }

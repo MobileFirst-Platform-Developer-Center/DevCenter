@@ -1,4 +1,16 @@
 [{
+"caption": "IBM MobileFirst Foundation 8.0 Overview Demo - Community Health App",
+"url": "//www.youtube.com/watch?v=L2_AnyGFnfw",
+"thumbnail": "//img.youtube.com/vi/L2_AnyGFnfw/hqdefault.jpg",
+"tags": ["Development"],
+"version": ["8.0"] 
+},{
+"caption": "Mobile App Personalization with IBM MobileFirst Foundation 8.0",
+"url": "//www.youtube.com/watch?v=zko9L9hCGZU",
+"thumbnail": "//img.youtube.com/vi/zko9L9hCGZU/hqdefault.jpg",
+"tags": ["Development", "Live Update"],
+"version": ["8.0"] 
+},{
 "caption": "Troubleshoot your app without Republishing with IBM MobileFirst Foundation",
 "url": "//www.youtube.com/watch?v=6s8CJIGfpJw",
 "thumbnail": "//img.youtube.com/vi/6s8CJIGfpJw/hqdefault.jpg",

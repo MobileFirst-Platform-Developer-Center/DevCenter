@@ -4,8 +4,9 @@ title: Administrating applications through Terminal
 breadcrumb_title: Administrating using terminal
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-You can administer MobileFirst applications through the **mfpadm** program.
+You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
 
 #### Jump to
 
@@ -13,12 +14,12 @@ You can administer MobileFirst applications through the **mfpadm** program.
 * [Prerequisites](#prerequisites)
 
 ## Comparison with other facilities
-You can run administration operations with IBM MobileFirst Foundation in the following ways:
+You can run administration operations with {{ site.data.keys.product_full }} in the following ways:
 
-* The MobileFirst Operations Console, which is interactive.
+* The {{ site.data.keys.mf_console }}, which is interactive.
 * The mfpadm Ant task.
 * The **mfpadm** program.
-* The MobileFirst administration REST services.
+* The {{ site.data.keys.product_adj }} administration REST services.
 
 The **mfpadm** Ant task, mfpadm program, and REST services are useful for automated or unattended execution of operations, such as the following use cases:
 
@@ -29,7 +30,7 @@ The **mfpadm** Ant task, mfpadm program, and REST services are useful for automa
 The **mfpadm** program and the mfpadm Ant task are simpler to use and have better error reporting than the REST services. The advantage of the mfpadm program over the mfpadm Ant task is that it is easier to integrate when integration with operating system commands is already available. Moreover, it is more suitable to interactive use.
 
 ## Prerequisites
-The **mfpadm** tool is installed with the MobileFirst Server installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the MobileFirst Server installer.
+The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
 
 The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** directory as a set of scripts:
 
@@ -39,7 +40,7 @@ The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** d
 These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable **JAVA_HOME** is set, the scripts accept it.  
 To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/** directory into your PATH environment variable, or reference its absolute file name in each call.
 
-For more information about running the MobileFirst Server installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
 
@@ -52,7 +53,7 @@ For more information about running the MobileFirst Server installer, see [Runnin
 
 
 ### Calling the **mfpadm** program
-You can use the **mfpadm** program to administer MobileFirst applications.
+You can use the **mfpadm** program to administer {{ site.data.keys.product_adj }} applications.
 
 #### Syntax
 Call the mfpadm program as follows:
@@ -65,9 +66,9 @@ The **mfpadm** program has the following options:
 
 | Option	| Type | Description | Required | Default | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Base URL of the MobileFirst web application for administration services | Yes | | 
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | | 
 | --secure	 | Boolean | Whether to avoid operations with security risks | No | true | 
-| --user	 | name | User name for accessing the MobileFirst admin services | Yes |  | 	 
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
 | --passwordfile | file | File containing the password for the user | No | 
 | --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
 | --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
@@ -79,7 +80,7 @@ The **mfpadm** program has the following options:
 **url**  
 The URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use this URL:
 
-* For WebSphere® Application Server: https://server:9443/mfpadmin
+* For WebSphere  Application Server: https://server:9443/mfpadmin
 * For Tomcat: https://server:8443/mfpadmin
 
 **secure**  
@@ -206,12 +207,12 @@ Use these commands to store these values in the configuration file.
 | mfpadm [--configfile=file] config lock-timeout seconds | | 
 | mfpadm [--configfile=file] config runtime runtime-name | | 
 
-Use this command to list the values that are stored in the configuration file: mfpadm `[--configfile=file]` config
+Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
 
-The configuration file is a text file, in the encoding of the current locale, in Java™ .properties syntax. Default configuration file:
+The configuration file is a text file, in the encoding of the current locale, in Java **.properties** syntax. These are the default configuration files:
 
-* UNIX: `$HOME/.mfpadm.config`
-* Windows: `My Documents\IBM MobileFirst Platform Server Data\mfpadm.config`
+* UNIX: **${HOME}/.mfpadm.config**
+* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **Note:** When you do not specify a `--configfile` option, the default configuration file is used only in interactive mode and in config commands. For noninteractive use of the other commands, you must explicitly designate the configuration file if you want to use one.
 
@@ -240,7 +241,7 @@ To work around this limitation:
 * Or use the mfpadm Ant task, with attribute `output="some file name"` to redirect the output of a command to a file.
 
 ### Commands for general configuration
-When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM MobileFirst Server or of a runtime.
+When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
 
 #### The `show global-config` command
 The `show global-config` command shows the global configuration.
@@ -1069,7 +1070,7 @@ This command is based on the [Device Application Status (PUT)](http://www.ibm.co
 When you invoke the **mfpadm** program, you can include various commands for troubleshooting.
 
 #### The `show info` command
-The `show info` command shows basic information about the MobileFirst administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the MobileFirst administration services are running at all.
+The `show info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the {{ site.data.keys.product_adj }} administration services are running at all.
 
 Syntax: `show info`
 
@@ -1086,10 +1087,10 @@ show info
 ```
 
 #### The `show versions` command
-The `show versions` command displays the MobileFirst versions of various components:
+The `show versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
 
-* **mfpadmVersion**: the exact MobileFirst Server version number from **which mfp-ant-deployer.jar** is taken.
-* **productVersion**: the exact MobileFirst Server version number from which **mfp-admin-service.war** is taken
+* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from **which mfp-ant-deployer.jar** is taken.
+* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which **mfp-admin-service.war** is taken
 * **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
 
 Syntax: `show versions`
@@ -1107,7 +1108,7 @@ show versions
 ```
 
 #### The `show diagnostics` command
-The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the MobileFirst administration service, such as the availability of the database and of auxiliary services.
+The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services.
 
 Syntax: `show diagnostics`
 

@@ -347,7 +347,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <p></p>
 <h2 id="configureWAS">Configuring IBM WebSphere Application Server Liberty profile (Liberty)</h2>
 <p>Enable the <code>ssl-1.0</code> and <code>appSecurity-2.0</code> features in the <code>server.xml</code> file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <featureManager>
    <feature>ssl-1.0</feature>
    <feature>appSecurity-2.0</feature>
@@ -360,7 +360,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <li>Configure your server HTTP endpoint and allow (but do not require) client-side certificates. To make this configuration available, set the <code>clientAuthenticationSupported="true"</code> property in the Liberty SSL element.</li>
 </ol>
 <p>The following example shows the updated SSL configuration:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!-- default SSL configuration is defaultSSLSettings -->
 <sslDefault sslRef="defaultSSLSettings"/>
 <ssl clientAuthenticationSupported="true" id="defaultSSLSettings" keyStoreRef="defaultKeyStore" trustStoreRef="defaultTrustStore"/>
@@ -370,7 +370,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <h2 id="authConfig">Configuring the authenticationConfig.xml file</h2>
 <ol>
 <li>Uncomment the <code>UserCertificate Login Module</code> section of the <code>authenticationConfig.xml</code> file, as shown below.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!-- Login Module for User Certificate Authentication -->
 <loginModule name="WLUSERCertificateLoginModule">
    <className>com.worklight.core.auth.ext.UserCertificateLoginModule</className>
@@ -378,7 +378,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 {% endhighlight %} 
 </li>
 <li>Uncomment the <code>wl_userCertificateAuthRealm</code> section, as shown below.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!-- Login Module for User Certificate Authentication -->
 <realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
    <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
@@ -395,7 +395,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <p>You cannot change the realm name (<code>wl_userCertificateAuthRealm</code>).<br />
 <br />
 The following examples shows the updates made above.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!--For User Certificate Authentication -->
 <realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
    <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
@@ -407,7 +407,7 @@ The following examples shows the updates made above.<br />
 {% endhighlight %} 
 </li>
 <li>Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!--For User Certificate Authentication -->
 <customSecurityTest name="customx509Tests">
    <test realm="wl_antiXSRFRealm" step="1"/>
@@ -424,7 +424,7 @@ The following examples shows the updates made above.<br />
 <li>Ensure that you added the iOS or Android environment to your MobileFirst application.
 </li>
 <li>Protect your application or environment with your custom security test.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!--For User Certificate Authentication -->
 <android securityTest="customx509Tests" version="1.0">
 <iPhone bundleId="com.SampleApp" securityTest="customx509Tests" version="1.0">

@@ -2,7 +2,7 @@
 layout: default
 ---
 {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
-<div class="container-fluid tagpage">
+<section class="container-fluid tagpage" role="main">
     <div class="row">
         <div class="hidden-xs col-sm-2">
         </div>
@@ -25,4 +25,4 @@ layout: default
         <div class="hidden-xs col-sm-2">
         </div>
     </div>
-</div>
+</section>

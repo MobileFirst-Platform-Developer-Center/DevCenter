@@ -35,7 +35,7 @@ To create and configure a Windows Phone 8 native project, first follow these tut
 <li>
 <h3>Edit the <code>application-descriptor.xml</code> file.</h3>
 <p>Add the "<strong>pushSender</strong>" tag to the <code>application-descriptor.xml</code> file.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731" version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest">
     <displayName>WindowsPhone8NativePush</displayName>
     <description>WindowsPhone8NativePush</description>
@@ -55,7 +55,7 @@ To create and configure a Windows Phone 8 native project, first follow these tut
 <li>
 <h4>Modify the native Windows Phone 8 project.</h4>
 <p>    Edit the <code>Properties\WMAppManifest.xml</code> file and add the following capabilities:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
 <Capability Name="ID_CAP_IDENTITY_DEVICE" />
 {% endhighlight %} </li>

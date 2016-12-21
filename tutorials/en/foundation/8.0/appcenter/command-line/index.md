@@ -5,6 +5,7 @@ breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 To deploy applications to the Application Center through a build process, use the command-line tool.
 
@@ -33,10 +34,10 @@ Use the stand-alone tool by following these steps.
 
 1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
 2. Call the upload tool from the command line:
-
-    ```bash
-    java com.ibm.appcenter.Upload [options] [files]
-    ```
+  
+   ```bash
+   java com.ibm.appcenter.Upload [options] [files]
+   ```
     
 You can pass any of the available options in the command line.
 
@@ -70,9 +71,9 @@ Use the stand-alone tool by following these steps.
 1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
 2. Call the upload tool from the command line:
 
-    ```bash
-    java com.ibm.appcenter.Upload -delete [options] [files or applications]
-    ```
+   ```bash
+   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   ```
     
 You can pass any of the available options in the command line.
 
@@ -107,9 +108,10 @@ Use the stand-alone tool by following these steps.
 1. Add applicationcenterdeploytool.jar and json4j.jar to the java classpath environment variable.
 2. Call the upload tool from the command line:
 
-    ```bash
-    java com.ibm.appcenter.Upload -clearLdapCache [options]
-    ```
+   ```bash
+   java com.ibm.appcenter.Upload -clearLdapCache [options]
+   ```
+   
 You can pass any of the available options in the command line.
 
 | Option | Content indicated by | Description | 
@@ -131,7 +133,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
 Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
 
-For convenience, Apache Ant 1.8.4 is included in IBM MobileFirst Foundation Server. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
+For convenience, Apache Ant 1.8.4 is included in {{ site.data.keys.mf_server }}. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
 
 * ant for UNIX / Linux
 * ant.bat for Windows

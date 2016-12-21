@@ -4,6 +4,7 @@ title: The mobile client
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 You can install applications on your mobile device with the Application Center mobile client.
 
@@ -85,7 +86,7 @@ You can install the mobile client, or any signed application marked with the ins
 
 > **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
 
-The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM® Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
+The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM  Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
 
 When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
 
@@ -160,7 +161,7 @@ After the trust is confirmed, no application that uses that provisioning profile
 ## Installing the client on a Windows Phone 8 Universal mobile device
 You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the IBM MobileFirst Foundation Server. It is uploaded to the MobileFirst Server by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
 
 1. Start the browser on your mobile device.
 2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
@@ -518,7 +519,7 @@ New versions of the mobile client application that are available on the Applicat
 
 f a later version of the application is detected, you are requested to download and install the later version.
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the MobileFirst project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
 
 If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
 

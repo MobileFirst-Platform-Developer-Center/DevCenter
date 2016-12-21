@@ -118,7 +118,7 @@ Step 2: Configuring <code>authenticationConfig.xml</code><br />
 <br />
 Find the <code>authenticationConfig.xml</code> file in for your application, located in: <code>{WAS_HOME}/profiles/{your_profile}/installedApps/{your_node}/{MFP_EAR}/{MFP_WAR}/WEB-INF/classes/conf</code> (if you are in the development environment, this is located in <code>{MFP_Porject_Path}/server/conf</code>)</p>
 <p>Uncomment the realm:<br />
-{% highlight xml linenos %} 
+{% highlight xml  %} 
 <!-- For websphere -->
 <realm name="WASLTPARealm" loginModule="WASLTPAModule">
    <className>com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator</className>
@@ -130,7 +130,7 @@ Find the <code>authenticationConfig.xml</code> file in for your application, loc
 Optionally, you can include the parameters <code>cookie-domain</code>, <code>cookie-name</code>, and <code>httponly-cookie</code>. For more information, see the section about the LTPA authenticator in the product documentation.<br />
 <br />
 In the same <code>authenticationConfig.xml</code>, uncomment the login module:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <!-- For websphere -->
 <loginModule name="WASLTPAModule">
    <className>com.worklight.core.auth.ext.WebSphereLoginModule</className>
@@ -143,7 +143,7 @@ Add security test to the <code>authenticationConfig.xml</code> as appropriate.</
 <li>Add webSecurityTest if you plan to develop for web environments</li>
 <li>Add mobileSecurityTest if you plan to develop for mobile environments</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <!-- For websphere -->
 <securityTest>
    <webSecurityTest name="wasWebSecurity">
@@ -161,7 +161,7 @@ Add security test to the <code>authenticationConfig.xml</code> as appropriate.</
 Create a file that is named <code>login.html</code> or use the <code>login.html</code> that MFP provides you in the <code>{MFP_Project_Path}/server</code> directory. Save the login.html to the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>, if you are working in the development server this is the WAR file located in <code>{MFP_Project_Path}/bin</code>. Unzip that WAR and copy paste the login.html, rezip the project and change the .zip to .war.<br />
 <br />
 If you decide to create your own <code>login.html</code> make sure the form contents are set like the following form:<br />
-{% highlight html linenos %}
+{% highlight html  %}
 <html>
    <head></head>
    <body>
@@ -177,7 +177,7 @@ If you decide to create your own <code>login.html</code> make sure the form cont
 Create the <code>loginError.html</code> error page and place it in the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>. The <code>loginError.html</code> page is used when login fails.<br />
 <br />
 Set its contents as follows:<br />
-{% highlight html linenos %}
+{% highlight html  %}
 <html>
    <head></head>
    <body>
@@ -192,7 +192,7 @@ Locate the <code>web.xml</code> file: <code>{WAS_HOME}/profiles/{your profile}/i
 <br />
 Inside the root tag, add the tags as shown in the code sample below. These tags pass to WebSphere Application Server the configuration that the WAR file expects.<br />
 Note: Tailor this code block to fit your needs. This is just one example of setting the configuration.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <security-constraint id="SecurityConstraint_1">
    <web-resource-collection id="WebResourceCollection_1">
       <web-resource-name>Servlet</web-resource-name>
@@ -226,7 +226,7 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 <ul>
 <li>Uncomment the <code><staticResources></code> element to enable protection of static resources:</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <!-- Uncomment the next element to protect the Worklight console and the first section in securityTests below. -->
 <staticResources>
    <resource id="mobileFirstPlatformConsole" securityTest="MobileFirstPlatformConsole">
@@ -237,7 +237,7 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 <ul>
 <li>Add a <code><customSecurityTest></code> element to your existing security test:</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <securityTests>
    <customSecurityTest name="WorklightConsole">
       <test realm="WASLTPARealm" isInternalUserID="true"/>
@@ -247,13 +247,13 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 <h2 id="clientSide">Creating client-side authentication components</h2>
 <p>Using an existing MobileFirst Platform application from one of the Authentication modules.<br />
 To implement security for an app, follow the same methods as for any other type of realm, and then configure the challenge handler to use your realm:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("WASLTPARealm");<br />
 {% endhighlight %}<br />
 <br />
 In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <common securityTest="wasWebSecurity"/>
 <android version="1.0" securityTest="WAS-securityTest">
    <pushSender key= "keyTest" senderId="senderIdTest"/>

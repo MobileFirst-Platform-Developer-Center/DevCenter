@@ -5,9 +5,9 @@ breadcrumb_title: Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Find information to help resolve issues that you might encounter when you use the MobileFirst Foundation Push service.
+Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.product }} Push service.
 
 <div class="panel panel-default">
   <div class="panel-heading"><h4>How does the Push service treats various “failed to deliver” notification situations?</h4></div>
@@ -40,7 +40,7 @@ Find information to help resolve issues that you might encounter when you use th
 <div class="panel panel-default">
   <div class="panel-heading"><h4>There are Java socket exceptions in the logs when dispatching an APNS notifications and the notification never reaches the device</h4></div>
   <div class="panel-body">
-    <p>APNS requires persistent socket connections between the MobileFirst Server and the APNS service. The Push service  assumes there is an open socket and tries to send the notification out. Many times though, a customer's firewall may be configured to close unused sockets (push might not be frequently used). Such abrupt socket closures cannot be found by either end point – because normal Socket closures happen with either end point sending the signal and the other acknowledging. When the Push service dispatch is attempted over a closed socket, the logs will show socket exceptions.</p>
+    <p>APNS requires persistent socket connections between the {{ site.data.keys.mf_server }} and the APNS service. The Push service  assumes there is an open socket and tries to send the notification out. Many times though, a customer's firewall may be configured to close unused sockets (push might not be frequently used). Such abrupt socket closures cannot be found by either end point – because normal Socket closures happen with either end point sending the signal and the other acknowledging. When the Push service dispatch is attempted over a closed socket, the logs will show socket exceptions.</p>
     
     <p>To avoid, either ensure a firewall rules do not close APNS sockets, or use the <code>push.apns.connectionIdleTimeout</code> <a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">JNDI property of the Push service</a>. By configuring this property, the server will gracefully close the socket used for APNS push notifications within a given timeout (less than the firewall timeout for sockets). This way, a customer can close sockets before it is abruptly shut down by the firewall.</p>
   </div>
@@ -60,7 +60,7 @@ Find information to help resolve issues that you might encounter when you use th
   <div class="panel-body">
     <p>Notifications can be instantaneous or may be delayed. The delay might be a few seconds to a few minutes. There are various reasons that can be accounted for:</p>
     <ul>
-        <li>MobileFirst Server has no control over the notification once it has reached the mediator service.</li>
+        <li>{{ site.data.keys.mf_server }} has no control over the notification once it has reached the mediator service.</li>
         <li>The device’s network or online status (device on /off) needs to be accounted for.</li>
         <li>Check if firewalls or proxies are used and if used, that they are not configured to block the communication to the mediator (and back).</li>
         <li>Do not selectively whitelist IPs in your firewall for the GCM/APNS/WNS mediators instead of using the actual mediators URLs. This can lead to issues, as the mediator URL may resolve to any IP. Customers should allow access to the URL and not the IP. Note that ensuring mediator connectivity by telnetting to the mediator URL does not always provide the complete picture. Specifically for iOS, this only proves outbound connectivity. The actual sending is done over TCP sockets which telnet does not guarantee. by allowing only specific IP address the following may occur, for example For GCM: <blockquote>Caused by: java.net.UnknownHostException:android.googleapis.com:android.googleapis.com: Name or service not known.</blockquote></li>
@@ -83,10 +83,10 @@ Find information to help resolve issues that you might encounter when you use th
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>The Push service is shown as Inactive in the MobileFirst Operations Console</h4></div>
+  <div class="panel-heading"><h4>The Push service is shown as Inactive in the {{ site.data.keys.mf_console }}</h4></div>
   <div class="panel-body">
     <p>The Push service is shown as Inactive despite its .war file deployed and the <code>mfp.admin.push.url</code>,  <code>mfp.push.authorization.server.url</code>, and <code>secret</code> properties are correctly configured in the <b>server.xml</b> file.</p>
-    <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:
+    <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:</p>
 
 {% highlight xml %}
 <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value='"http://localhost:9080/imfpush"'/>

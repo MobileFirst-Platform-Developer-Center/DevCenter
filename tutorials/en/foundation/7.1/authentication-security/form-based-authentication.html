@@ -21,13 +21,13 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_02_flow_diagram.jpg" /></p>
 <h2 id="config">Configuring the authenticationConfig.xml file</h2>
 <p>The default <code>authenticationConfig.xml</code> file already contains a sample realm that is configured to use a form-based authenticator.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <realm name="SampleAppRealm" loginModule="StrongDummy">
   <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
 </realm>
 {% endhighlight %}</p>
 <p>Notice the <code>StrongDummy</code> login module that is used for this realm.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <loginModule name="StrongDummy">
   <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 </loginModule>
@@ -35,7 +35,7 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <p>The <code>NonValidatingLoginModule</code> parameter means that the user credentials are not validated. In other words: any combination of user name and password is valid.</p>
 <p>Define a security test that uses the <code>SampleAppRealm</code>. Remember the security test name, to use it in the subsequent steps.<br />
 <strong>Note:</strong> If you use Java adapters (and not JavaScript adapters), this step is not necessary.</p>
-<p>{% highlight xml linenos %}<br />
+<p>{% highlight xml  %}<br />
 <customSecurityTest name="AuthSecurityTest">
   <test isInternalUserID="true" realm="SampleAppRealm" />
 </customSecurityTest>
@@ -44,10 +44,10 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <ol>
 <li>Create an adapter and name it <code>AuthAdapter</code>.</li>
 <li>Add a <code>getSecretData</code> procedure and protect it with the security test that you created previously.</li>
-<p>{% highlight xml linenos %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}</p>
+<p>{% highlight xml  %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getSecretData(){
     return {
         secretData: '123456'
@@ -60,7 +60,7 @@ function getSecretData(){
 <li>Create a Java adapter. </li>
 <li>Add a <code>getSecretData</code> method and protect it with the realm that you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
 <p>
-{% highlight java linenos %}
+{% highlight java  %}
 @GET
 @Produces("application/json")
 @OAuthSecurity(scope="SampleAppRealm")
@@ -72,7 +72,7 @@ public JSONObject getSecretData(){
 {% endhighlight %}
 </li>
 <li>To set your new realm as the default user identity for the application, add this option to the application descriptor:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <userIdentityRealms>SampleAppRealm</userIdentityRealms>
 {% endhighlight %}
 </li>

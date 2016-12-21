@@ -4,6 +4,7 @@ title: Push Service REST APIs
 relevantTo: [ios,android,windows,cordova]
 weight: 10
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## REST APIs
 You can use the Push Service REST APIs to work with notifications.
 

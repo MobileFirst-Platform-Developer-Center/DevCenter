@@ -150,7 +150,7 @@ You can edit this file in the Design or Source editors.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" /></p>
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.<br />
 You can specify the application description, details about the author, the thumbnail image to be displayed in the MobileFirst Operations Console, and more.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
     <!-- Attribute "id" must be identical to application folder name -->
     <application id="HelloWorld" platformVersion="7.1.0.00.20150701-1029"
     xmlns="http://www.worklight.com/application-descriptor"
@@ -171,7 +171,7 @@ You can specify the application description, details about the author, the thumb
     </application>
     {% endhighlight %}</p>
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
     <iphone bundleId="com.HelloWorld" version="1.0">
         <worklightSettings include="false"/>
         <security>
@@ -201,7 +201,7 @@ In addition, you can use concatenation of the web resources to improve the start
 The default application HTML template complies with HTML5 standard markup, but any other DOCTYPE can be specified.</p>
 <p>The MobileFirst client-side framework uses the jQuery library for internal functions. By default, the <code>$</code> char is assigned to the internal jQuery in the main HTML file (see below). If a different jQuery version is required or if jQuery is not required in the application, this line (#12) can be removed.</p>
 <p>The MobileFirst client framework initialization is bound to the <code>onload</code> event specified in the <code>initOptions.js</code> file. For more information about initialization options, see the user documentation.</p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
     <!DOCTYPE HTML>
     <html>
             <head>
@@ -237,7 +237,7 @@ It contains a <code>wlCommonInit()</code> function which is invoked automaticall
 <p>This function is used in environment-specific JavaScript files to have a common initialization starting point. Additional details are provided in subsequent tutorials.</p>
 <p>As discussed previously, the MobileFirst application starts in offline mode by default.<br />
 To begin communicating with MobileFirst Server, follow the instructions provided in the default <code>wlCommonInit()</code> function:</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function wlCommonInit(){
     /*
      * Use of WL.Client.connect() API before any connectivity to MobileFirst Server is required.

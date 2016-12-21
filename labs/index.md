@@ -3,17 +3,17 @@ layout: default
 title: FoundationLabs
 show_disqus: false
 ---
-<div class="container">
+<section class="container" role="main">
     <h2 class="no-anchor">Welcome to FoundationLabs</h2>
-    <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
+    <article>
+        <p>“FoundationLabs” are are a collection of educational materials with step-by-step instructions.</p>
 
-    <ul>
-        <li>As a developer, experience first-hand the many possibilities available to you when using the MobileFirst Platform suite of products.</li>
-        <li>As an administrator, learn how to setup MobileFirst Platform on Linux, Windows and IBM Bluemix.</li>
-    </ul>
-
-    <br/>
-
+        <ul>
+            <li>As a developer, experience first-hand the many possibilities available to you when using the {{ site.data.keys.product_full }} suite of products.</li>
+            <li>As an administrator, learn how to setup {{ site.data.keys.product }} on Linux, Windows and IBM Bluemix.</li>
+        </ul>
+    </article>
+    
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#forDevelopers" aria-controls="developers" role="tab" data-toggle="tab">For Developers</a></li>
         <li role="presentation"><a href="#forAdministrators" aria-controls="administrators" role="tab" data-toggle="tab">For Administrators</a></li>
@@ -23,13 +23,13 @@ show_disqus: false
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
-            <p>Developers can follow the different labs presented below to learn how to integrate applications with various MobileFirst tools and services.</p>
+            <p>Developers can follow the different labs presented below to learn how to integrate applications with various {{ site.data.keys.product_adj }} tools and services.</p>
             <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="forAdministrators">
             <br/>
-            <p>Administrators can follow the different labs presented below to learn how to setup different MobileFirst environments.</p>
+            <p>Administrators can follow the different labs presented below to learn how to setup different {{ site.data.keys.product_adj }} environments.</p>
             <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/administrators/7.1/intro/" role="button">7.1 labs</a>
         </div>
         
@@ -39,11 +39,11 @@ show_disqus: false
             
             <ul>
                 <li><strong><a href="https://github.com/andriivasylchenko/advancedMessenger">Advanced Messenger</a></strong><br/>
-                MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                {{ site.data.keys.product }} 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridMessenger">Hybrid Messenger</a></strong><br/>
-                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <i><b>Outdated</b></i>. {{ site.data.keys.product }} 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/newHybridWallet">new HybridWallet</a></strong><br/>
-                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <i><b>Outdated</b></i>. {{ site.data.keys.product }} 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridWallet">HybridWallet</a></strong><br/>
                 MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/canteenPOS">canteenPOS</a></strong><br/>
@@ -59,4 +59,4 @@ show_disqus: false
             </ul>
         </div>
     </div>
-</div>
+</section>

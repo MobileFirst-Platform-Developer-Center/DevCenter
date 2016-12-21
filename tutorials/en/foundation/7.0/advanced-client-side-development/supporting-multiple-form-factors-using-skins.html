@@ -41,7 +41,7 @@ Create new <code>.css</code> and <code>.js</code> files in the corresponding fol
 <p>A special, developer-controlled JavaScript file is run when the app starts.<br />
 It determines which skin to load.<br />
 The default <code>skinLoader.js</code> file contains examples of code.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function getSkinName() {
     var skinName = "default";
     
@@ -56,7 +56,7 @@ function getSkinName() {
 <p>Skins are automatically registered in the <code>application-descriptor.xml</code> file.<br />
 Registration determines the hierarchical order between the <code>common</code> folder, environment, and skin.<br />
 If you remove a skin from the project, you must modify the <code>application-decsriptor.xml</code> file manually.</p>
-<p>{% highlight xml linenos %} 
+<p>{% highlight xml  %} 
     <android version="1.0">
         <skins>
             <skin name="default">

@@ -16,6 +16,7 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
 
@@ -44,34 +45,37 @@ In the provided sample application the `PersistentAttributes` object is used in 
 
 * The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
-    ```java
-    @POST
-  	@OAuthSecurity(scope = "setPinCode")
-  	@Path("/setPinCode/{pinCode}")
-  	public Response setPinCode(@PathParam("pinCode") String pinCode){
+  ```java
+  @POST
+  @OAuthSecurity(scope = "setPinCode")
+  @Path("/setPinCode/{pinCode}")
+  
+  public Response setPinCode(@PathParam("pinCode") String pinCode){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		clientData.getProtectedAttributes().put("pinCode", pinCode);
   		adapterSecurityContext.storeClientRegistrationData(clientData);
   		return Response.ok().build();
-  	}
-    ```
-    Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
+  }
+  ```
+  
+  Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
 
 * The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
-    ```java
-    @DELETE
-  	@OAuthSecurity(scope = "unenroll")
-  	@Path("/unenroll")
-  	public Response unenroll(){
+  ```java
+  @DELETE
+  @OAuthSecurity(scope = "unenroll")
+  @Path("/unenroll")
+  
+  public Response unenroll(){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		if (clientData.getProtectedAttributes().get("pinCode") != null){
   			clientData.getProtectedAttributes().delete("pinCode");
   			adapterSecurityContext.storeClientRegistrationData(clientData);
   		}
   		return Response.ok().build();
-  	}
-    ```
+  }
+  ```
 
 ## Security Checks
 The Enrollment sample contains three security checks:
@@ -95,66 +99,70 @@ public AuthenticatedUser getRegisteredUser() {
 ### EnrollmentPinCode
 The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
 
-* In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
+In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
 
-    ```java
-    @SecurityCheckReference
-    private transient EnrollmentUserLogin userLogin;
-    ```
+```java
+@SecurityCheckReference
+private transient EnrollmentUserLogin userLogin;
+```
 
-* When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
+When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
 
-    ```java
-    @Override
-    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-        if (userLogin.isLoggedIn()){
-            setState(STATE_SUCCESS);
-            response.addSuccess(scope, userLogin.getExpiresAt(), getName());
+```java
+@Override
+
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    if (userLogin.isLoggedIn()){
+        setState(STATE_SUCCESS);
+        response.addSuccess(scope, userLogin.getExpiresAt(), getName());
+    }
+}
+```
+
+When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+
+```java
+@Override
+
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+    if (userLogin.isLoggedIn()){
+        setState(STATE_SUCCESS);
+        response.addSuccess(scope, userLogin.getExpiresAt(), getName());
+    } else {
+        super.authorize(scope, credentials, request, response);
+        if (getState().equals(STATE_BLOCKED)){
+            attributes.delete("pinCode");
         }
     }
-    ```
-    When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+}
+```
 
-    ```java
-    @Override
-    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-        if (userLogin.isLoggedIn()){
-            setState(STATE_SUCCESS);
-            response.addSuccess(scope, userLogin.getExpiresAt(), getName());
-        } else {
-            super.authorize(scope, credentials, request, response);
-            if (getState().equals(STATE_BLOCKED)){
-                attributes.delete("pinCode");
-            }
+The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
+
+```java
+@Override
+
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+    if(credentials!=null && credentials.containsKey("pin")){
+        String pinCode = credentials.get("pin").toString();
+
+        if(pinCode.equals(attributes.get("pinCode"))){
+            errorMsg = null;
+            return true;
+        }
+        else {
+            errorMsg = "The pin code is not valid. Hint: " + attributes.get("pinCode");
         }
     }
-    ```
-
-* The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
-
-    ```java
-    @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-        if(credentials!=null && credentials.containsKey("pin")){
-            String pinCode = credentials.get("pin").toString();
-
-            if(pinCode.equals(attributes.get("pinCode"))){
-                errorMsg = null;
-                return true;
-            }
-            else {
-                errorMsg = "The pin code is not valid. Hint: " + attributes.get("pinCode");
-            }
-        }
-        else{
-            errorMsg = "The pin code was not provided.";
-        }
-        //In any other case, credentials are not valid
-        return false;
+    else{
+        errorMsg = "The pin code was not provided.";
     }
-    ```
+    //In any other case, credentials are not valid
+    return false;
+}
+```
 
 ### IsEnrolled
 The `IsEnrolled` security check protects:
@@ -239,69 +247,75 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
  * Set the state to EXPIRED by using the `setState` method.
  * Add failure to the response object by using the `addFailure` method.
 
+<br/>
 The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
-* Set the active user by adding the following code:
 
-    ```java
-    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-        if (attributes.get("pinCode") != null){
-            // Is there a user currently active?
-            if (!userLogin.isLoggedIn()){
-                // If not, set one here.
-                authorizationContext.setActiveUser(userLogin.getRegisteredUser());
-            }
-            setState(SUCCESS_STATE);
-            response.addSuccess(scope, getExpiresAt(), this.getName());
-        } else  {
-            setState(STATE_EXPIRED);
-            Map <String, Object> failure = new HashMap<String, Object>();
-            failure.put("failure", "User is not enrolled");
-            response.addFailure(getName(), failure);
+Set the active user by adding the following code:
+
+```java
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+    if (attributes.get("pinCode") != null){
+        // Is there a user currently active?
+        if (!userLogin.isLoggedIn()){
+            // If not, set one here.
+            authorizationContext.setActiveUser(userLogin.getRegisteredUser());
         }
+        setState(SUCCESS_STATE);
+        response.addSuccess(scope, getExpiresAt(), this.getName());
+    } else  {
+        setState(STATE_EXPIRED);
+        Map <String, Object> failure = new HashMap<String, Object>();
+        failure.put("failure", "User is not enrolled");
+        response.addFailure(getName(), failure);
     }
-    ```
-    Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+}
+```
+   
+Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
 
-    ```java
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    @OAuthSecurity(scope = "transactions")
-    @Path("/transactions")
-    public String getTransactions(){
-      AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
-      return "Transactions for " + currentUser.getDisplayName() + ":\n{'date':'12/01/2016', 'amount':'19938.80'}";
-    }
-    ```
-    > Fore more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
+```java
+@GET
+@Produces(MediaType.TEXT_PLAIN)
+@OAuthSecurity(scope = "transactions")
+@Path("/transactions")
 
-* Add the registered user to the response object by adding the following:
+public String getTransactions(){
+  AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
+  return "Transactions for " + currentUser.getDisplayName() + ":\n{'date':'12/01/2016', 'amount':'19938.80'}";
+}
+```
+    
+> For more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
 
-    ```java
-    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-        if (attributes.get("pinCode") != null){
-            // Is there a user currently active?
-            if (!userLogin.isLoggedIn()){
-                // If not, set one here.
-                authorizationContext.setActiveUser(userLogin.getRegisteredUser());
-            }
-            setState(SUCCESS_STATE);
-            response.addSuccess(scope, getExpiresAt(), getName(), "user", userLogin.getRegisteredUser());
-        } else  {
-            setState(STATE_EXPIRED);
-            Map <String, Object> failure = new HashMap<String, Object>();
-            failure.put("failure", "User is not enrolled");
-            response.addFailure(getName(), failure);
+Add the registered user to the response object by adding the following:
+
+```java
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+    if (attributes.get("pinCode") != null){
+        // Is there a user currently active?
+        if (!userLogin.isLoggedIn()){
+            // If not, set one here.
+            authorizationContext.setActiveUser(userLogin.getRegisteredUser());
         }
+        setState(SUCCESS_STATE);
+        response.addSuccess(scope, getExpiresAt(), getName(), "user", userLogin.getRegisteredUser());
+    } else  {
+        setState(STATE_EXPIRED);
+        Map <String, Object> failure = new HashMap<String, Object>();
+        failure.put("failure", "User is not enrolled");
+        response.addFailure(getName(), failure);
     }
-    ```
-    In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
+}
+```
+    
+In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
 
 <img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
 ## Sample Applications

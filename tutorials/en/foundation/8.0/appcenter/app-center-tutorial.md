@@ -6,14 +6,16 @@ show_in_nav: false
 weight: 7
 ---
 ## Overview
-IBM MobileFirst Platform Application Center is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
 
 Application Center facilitates sharing mobile applications:
 
 * You can **share feedback and rating** information.  
 * You can use access control lists to limit who can install applications.
 
-Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
 You can use Application Center in different contexts. For example:
 
@@ -25,24 +27,25 @@ You can use Application Center in different contexts. For example:
 #### Jump to:
 
 * [Installing and configuring](#installing-and-configuring)
+* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [Preparing mobile clients](#preparing-mobile-clients)
 * [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
 * [The Application Center mobile client](#the-application-center-mobile-client)
 * [Application Center command-line tools](#application-center-command-line-tools)
 
 ## Installing and configuring
-Application Center is installed as part of the installation of MobileFirst Server with IBM Installation Manager.
+Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
 
 **Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
 
-* Application server: Tomcat or WebSphere® Application Server full profile or Liberty profile
-* Database: DB2®, Oracle, or MySQL
+* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
+* Database: DB2 , Oracle, or MySQL
 
 If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
 
 1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
-    > For more information, see the topic about [installing MobileFirst Server](../../installation-configuration).
+    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
 
     Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
 
@@ -60,9 +63,64 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
+## Cordova based IBM AppCenter client
+The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+
+This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
+Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+
+Follow the steps below to get started:
+
+1. Install Cordova.
+
+```bash
+npm install -g cordova@latest
+```
+
+2. Install Android SDK and set the `ANDROID_HOME`.  
+3. Build and run this project.
+
+Build all platforms:
+
+```bash
+cordova build
+```
+
+Build only Android:
+
+```bash
+cordova build android
+```
+
+Build only iOS:
+
+```bash
+cordova build ios
+```
+
+### Customizing AppCenter Installer application
+You can further customize the application, such as updating its user interface for your specific company or needs.
+
+> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+
+#### Android
+* Open the Android Studio.
+* Select **Import project (Eclipse ADT, Gradle, etc.)**
+* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+
+This might take some time. Once this is done you are ready to customize.
+
+> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+
+#### iOS
+* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
+* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+
 ## Preparing mobile clients
 ### For Android phones and tablets
 The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
+
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
 ### For iPad and iPhone
 
@@ -74,6 +132,8 @@ The mobile client is delivered as a compiled application (APK) and is located at
 
 4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
 You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
+
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
 ### For Blackberry
 

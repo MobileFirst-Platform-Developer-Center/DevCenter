@@ -10,10 +10,11 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Prerequisites
 
 * Read the [JSONStore parent tutorial](../)
-* Make sure the MobileFirst Cordova SDK was added to the project. Follow the [Adding the MobileFirst Foundation SDK to Cordova applications](../../../application-development/sdk/cordova/) tutorial. 
+* Make sure the {{ site.data.keys.product_adj }} Cordova SDK was added to the project. Follow the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova/) tutorial. 
 
 #### Jump to:
 
@@ -51,7 +52,7 @@ WL.JSONStore.init(collections).then(function (collections) {
 });
 ```
 
-> For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **MobileFirst Adapter Integration** in the second part of this tutorial.
+> For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
 
 ### Get
 Use `get` to create an accessor to the collection. You must call `init` before you call get otherwise the result of `get` will be undefined.
@@ -144,7 +145,7 @@ This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} 
 Use `remove` to delete a document from a collection.  
 Documents are not erased from the collection until you call push.  
 
-> For more information, see the **MobileFirst Adapter Integration** section later in this tutorial
+> For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial
 
 ```javascript
 var query = {_id: 1};
@@ -212,13 +213,13 @@ WL.JSONStore.init(collections, options).then(function () {
 ```
 
 #### Encryption
-*iOS only*. By default, the MobileFirst Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
+*iOS only*. By default, the {{ site.data.keys.product_adj }} Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
 
 1. Add the cordova-plugin-mfp-encrypt-utils plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
 2. In the applicative logic, use: `WL.SecurityUtils.enableNativeEncryption(false)` to enable the OpenSSL option.
 
 ### Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
+You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
 
 ```javascript
 var collections = {
@@ -234,14 +235,14 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-### MobileFirst Adapter Integration
-This section assumes that you are familiar with MobileFirst Adapters.  
+### {{ site.data.keys.product_adj }} Adapter Integration
+This section assumes that you are familiar with Adapters.  
 
-MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.  
+Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.  
 You can achieve these goals by using`WLResourceRequest` or `jQuery.ajax` if you need more flexibility.
 
 ### Adapter Implementation
-Create a MobileFirst adapter and name it "**People**".  
+Create an adapter and name it "**People**".  
 Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
@@ -301,7 +302,7 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-#### Load data from MobileFirst Adapter
+#### Load data from an Adapter
 When `load` is called, JSONStore uses some metadata about the adapter (**name** and **procedure**), which you previously passed to `init`, to determine what data to get from the adapter and eventually store it.
 
 ```javascript
@@ -314,7 +315,7 @@ WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
 ```
 
 #### Get Push Required (Dirty Documents)
-Calling `getPushRequired` returns an array of so called *"dirty documents"*, which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the MobileFirst adapter when `push` is called.
+Calling `getPushRequired` returns an array of so called *"dirty documents"*, which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the adapter when `push` is called.
 
 ```javascript
 var collectionName = 'people';
@@ -339,7 +340,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 ```
 
 #### Push
-`push` sends the documents that changed to the correct MobileFirst adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
+`push` sends the documents that changed to the correct adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
 
 ```javascript
 var collectionName = 'people';

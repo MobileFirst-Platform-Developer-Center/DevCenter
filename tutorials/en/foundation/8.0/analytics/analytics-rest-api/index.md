@@ -5,8 +5,9 @@ breadcrumb_title: Analytics REST API
 relevantTo: [ios,android,cordova]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation Operational Analytics provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
+{{ site.data.keys.mf_analytics_full }} provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
 
 ## Jump to:
 * [Analytics REST API](#analytics-rest-api)
@@ -40,9 +41,9 @@ User (POST) | /v3/user | Creates a new user.
 
 ## Try it out on Swagger docs
 Try out the analytics REST API on Swagger Docs.  
-In a MobileFirst Server configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
+In a {{ site.data.keys.mf_server }} configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
 
-![Mobile Foundation Operational Analytics Swagger Docs UI](analytics-swagger.png)
+![{{ site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
 
 By clicking on **Expand Operations**, you can see the implementation notes, parameters, and response messages for each method.
 

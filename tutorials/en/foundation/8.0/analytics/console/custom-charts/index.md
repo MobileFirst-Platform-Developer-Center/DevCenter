@@ -2,13 +2,12 @@
 layout: tutorial
 title: Creating Custom Charts
 breadcrumb_title: Custom Charts
-show_disqus: true
-print_pdf: true
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the MobileFirst Operational Analytics Console. This visualization feature is a powerful way to analyze business-critical data.
+Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
 
 Available custom chart types: App Session, Network Transactions, Push Notifications, Client Logs, Server Logs, Custom Data
 
@@ -49,7 +48,7 @@ If you created a **Table chart**, the chart properties can be set to define the 
 
 If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
 
-<img class="gifplayer" alt="Creating a custom chart" src="creating-custom-charts.png"/>
+<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
 
 ## Chart types
 
@@ -118,7 +117,7 @@ The log information also includes contextual information about the device, inclu
 > **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
 
 1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
-2. In the MobileFirst Analytics Console, click the **Custom Charts** tab and continue to a create a chart:
+2. In the {{ site.data.keys.mf_analytics_console }}, click the **Custom Charts** tab and continue to a create a chart:
     * **Chart Title**: Application and Log Levels
     * **Event Type**: Client Logs
     * **Chart Type**: Flow Chart
@@ -140,13 +139,13 @@ You can download the data that is shown for any custom chart.
 * **Edit Chart** - looks like a pencil
 * **Delete Chart** - looks like a trashcan
 
-Click the **Download Chart** icon to download a file in JSON format from the MobileFirst Analytics Console.  
-Click the **Export with URL** icon to generate an export link from the MobileFirst Analytics Console to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console }}.  
+Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
 
 ## Exporting and importing custom chart definitions
-You can export and import custom chart definitions in the MobileFirst Analytics Console. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts on your new cluster.
+You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts on your new cluster.
 
-1. Click the **Custom Charts** tab in the MobileFirst Analytics Console dashboard.
+1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console }} dashboard.
 2. Click **Export Charts** to download a JSON file with your chart definition.
 3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the MobileFirst Analytics Console shows duplicate custom charts.
+4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console }} shows duplicate custom charts.

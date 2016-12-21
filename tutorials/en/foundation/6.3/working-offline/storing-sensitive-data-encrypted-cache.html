@@ -41,7 +41,7 @@ Mobile devices HTML5 web storage support chart:</p>
 <li><code>onComplete</code> – a callback function to be invoked when cache opening/creating is complete</li>
 <li><code>onError</code> - a callback function to be invoked when cache is not successfully opened/created</li>
 </ul>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
 function onOpenComplete(status){
     busyIndicator.hide();
@@ -59,7 +59,7 @@ function onOpenComplete(status){
 <li><code>WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS</code> – an open() or changeCredentials() request is already running</li>
 </ul>
 <h4>Example</h4>
-{% highlight js linenos %}
+{% highlight js  %}
     WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
 function onOpenComplete(status){
     busyIndicator.hide();
@@ -95,7 +95,7 @@ function onOpenError(status){
 <h3><code>WL.EncryptedCache.write(key, value, onSuccess, onFailure);</code></h3>
 
 <h4>Example:</h4>
-{% highlight js linenos %}
+{% highlight js  %}
     WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);
 function onWriteSuccess(status){
     alert("Succesfully encrypted into cache.");
@@ -108,7 +108,7 @@ function onWriteFailure(status){
 <p>To read data from the encrypted cache, use the following API:
 <h3><code>WL.EncryptedCache.read(key, onSuccess, onFailure);</code></h3>
 <h4>Example</h4>
-<p>{% highlight js linenos %}WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);
+<p>{% highlight js  %}WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);
 function onDecryptReadSuccess(value){
     alert("Read success. Retrieved value :: " + key + " = " + value);
 }
@@ -119,7 +119,7 @@ function onDecryptReadFailure(status){
 <p>To remove data from the encrypted cache, use the following API:</p>
 <h3><code>WL.EncryptedCache.remove(key, onSuccess, onFailure);</code></h3>
 <h4>Example:</h4>
-{% highlight js linenos %}WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);
+{% highlight js  %}WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);
 function onRemoveSuccess(status){
     alert("Succesfully removed from cache.");
 }
@@ -133,7 +133,7 @@ To close the encrypted cache, use the following API:
 
 <h3><code>WL.EncryptedCache.close(onComplete, onFailure);</code></h3>
 <h4>Example:</h4>
-{% highlight js linenos %}function destroyCacheClicked(){
+{% highlight js  %}function destroyCacheClicked(){
     WL.EncryptedCache.destroy(onDestroyCompleteHandler,
     onDestroyErrorHandler);
 }

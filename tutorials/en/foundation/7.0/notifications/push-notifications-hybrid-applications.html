@@ -103,7 +103,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <ol>
 <li>Replace <strong>GCM_Key</strong> with the <strong>API Key</strong> value.</li>
 <li>Replace <strong>senderId</strong> with the <strong>Project Number</strong> value.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <android securityTest="PushApplication-strong-mobile-securityTest" version="1.0">
 <pushSender key="GCM_key" senderId="GCM_ID"/>
 {% endhighlight %} </li>
@@ -126,7 +126,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 </ol>
 </li>
 <li>Add a reference to the google-play-services version in the <code><em>your-app</em>\android\native\AndroidManifest.xml</code> file, as the first child of the <code><application></code> element:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
@@ -138,18 +138,18 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Replace <strong>certificate password</strong> with your actual certificate password.</li>
 <li>Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 </ol>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <iphone bundleId="com.PushNotifications" version="1.0">
     <pushSender password=""/>
 {% endhighlight %} </p>
 <h3>Windows Phone 8</h3>
 <h4>Non-authenticated push</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender/> {% endhighlight %} </p>
 <h4>Authenticated push</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender>
@@ -166,7 +166,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Enter the package security identifier in <code>packageSID</code>.</li>
 <li>Enter the secret key in <code>clientSecret</code>.</li>
 </ol>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windows8 version="1.0">
    	<pushSender clientSecret="..." packageSID="..." appIdentityName="..." appIdentityPublisher="..."/>
 {% endhighlight %} </p>
