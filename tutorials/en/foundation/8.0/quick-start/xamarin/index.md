@@ -39,93 +39,60 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 
 ### 3. Editing application logic
 
-1. Create a Xamarin project.
-2. Add the Xamarin SDK as mentioned in the [Adding the SDK](../../application-development/sdk/xamarin/) tutorial.
-3. Select the **[project-root]/[ProjectName/App.cs]** and replace it with the following:
-   
+* Create a Xamarin project.
+* Add the Xamarin SDK as mentioned in the [Adding the SDK](../../application-development/sdk/xamarin/) tutorial.
+* Add a property of type `IWorklightClient` in any class file as below.
+
    ```csharp
-   using System;
-   using Xamarin.Forms;
-   using System.Threading.Tasks;
-   using System.Diagnostics;
-   using Worklight;
-   using System.Text;
+   /// <summary>
+   /// Gets or sets the worklight sample client.
+   /// </summary>
+   /// <value>The worklight client.</value>
+   public static IWorklightClient WorklightClient {get; set;}
+   ```
+* If you're devleoping for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
+
+  ```csharp
+   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+  ```
+* If you're devleoping for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
+
+  ```csharp
+   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+  ```
+* Define a method to obtain the access token and perform a resource request to the MFP Server as below.
    
-   namespace WorklightSample
-    {
-       	public class App : Xamarin.Forms.Application
-       	{
-       		/// <summary>
-       		/// Gets or sets the worklight sample client.
-       		/// </summary>
-       		/// <value>The worklight client.</value>
-       		public static IWorklightClient WorklightClient {get; set;}
+    ```csharp
+    public async void ObtainToken()
+           { 
+            try
+                   {
        
-       		public App(){
-       			var navigationPage = new NavigationPage (new HomePage ());
-       			navigationPage.BarBackgroundColor = Color.XamarinBlue.ToFormsColor ();
-       			navigationPage.BarTextColor = Xamarin.Forms.Color.White;
-       			MainPage = navigationPage;
-       			ObtainToken();
-       		}
+                       IWorklightClient _newClient = App.WorklightClient;
+                       WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
        
-       		public async void ObtainToken()
-       		{ 
-       			try
-       			{
+                       if (accessToken.Value != null && accessToken.Value != "")
+                       {
+                           System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+                           StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
        
-       				IWorklightClient _newClient = App.WorklightClient;
-       				WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
+                           WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
+                           request.SetQueryParameter("name", "world");
+                           WorklightResponse response = await request.Send();
        
-       				if (accessToken.Value != null && accessToken.Value != "")
-       				{
-       					System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
-       					StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
-       					WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
-       					request.SetQueryParameter("name", "world");
-       					WorklightResponse response = await request.Send();
-       
-       					System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
-       				}
-       			}
-       			catch (Exception e)
-       			{
-       				System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
-       			}
-       		}
-       	}
+                           System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+                       }
+                   }
+                   catch (Exception e)
+                   {
+                       System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
+                   }
+               }
+           }
     }
    ```
-
-3. If you're using iOS, paste the following code in the **AppDelegate.cs** file:
   
-```csharp
-public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
-{
-   public override bool FinishedLaunching (UIApplication app, NSDictionary options) {
-       global::Xamarin.Forms.Forms.Init();
-       App.WorklightClient = WorklightClient.CreateInstance();
-
-       LoadApplication (new App());
-       return base.FinishedLaunching (app, options);
-   } 
-}
-```     
-
-If you're using Android, paste the following code in the **MainActivity.cs** file:
-
-```csharp
-public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity {
-   protected override void OnCreate (Bundle bundle) {
-       base.OnCreate(bundle);
-       global::Xamarin.Forms.Forms.Init (this, bundle);
-
-       App.WorklightClient = WorklightClient.CreateInstance(this);
-       LoadApplication (new App());
-   } 
-}
-```
+* Invoke **ObtainToken** method within a class constructor or on click of a button.
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
