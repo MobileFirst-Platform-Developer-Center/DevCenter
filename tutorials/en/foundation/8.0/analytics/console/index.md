@@ -11,7 +11,7 @@ weight: 4
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## {{ site.data.keys.mf_analytics_console_full}}
-From the {{ site.data.keys.mf_analytics_console_short}}, view and configure the Analytics reports. Manage alerts and view client logs.
+From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
 
 You can open the {{ site.data.keys.mf_analytics_console_short}} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
 
@@ -47,7 +47,7 @@ You can have your app send custom data and create custom charts for your custom 
 > Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
 
 ### Custom charts
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console_short}} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
+Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console_short }} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
 
 > Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
 

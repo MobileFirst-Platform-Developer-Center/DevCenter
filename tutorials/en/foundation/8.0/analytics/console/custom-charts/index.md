@@ -9,7 +9,7 @@ weight: 3
 ## Overview
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
 
-Available custom chart types: App Session, Network Transactions, Push Notifications, Client Logs, Server Logs, Custom Data
+Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
 
 #### Jump to
 * [Creating a custom chart](#creating-a-custom-chart)
@@ -19,7 +19,7 @@ Available custom chart types: App Session, Network Transactions, Push Notificati
 * [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
 
 ## Creating a custom chart
-From the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
+In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
 
 ### 1. General settings
 Click the **Create Chart** button in the **Custom Charts** tab.  
@@ -48,7 +48,7 @@ If you created a **Table chart**, the chart properties can be set to define the 
 
 If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
 
-<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
+![Creating a custom chart](creating-custom-charts.png)
 
 ## Chart types
 
@@ -139,13 +139,13 @@ You can download the data that is shown for any custom chart.
 * **Edit Chart** - looks like a pencil
 * **Delete Chart** - looks like a trashcan
 
-Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console }}.  
-Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
+Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
 
 ## Exporting and importing custom chart definitions
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts on your new cluster.
+You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts on your new cluster.
 
-1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console }} dashboard.
+1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
 2. Click **Export Charts** to download a JSON file with your chart definition.
 3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console }} shows duplicate custom charts.
+4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.

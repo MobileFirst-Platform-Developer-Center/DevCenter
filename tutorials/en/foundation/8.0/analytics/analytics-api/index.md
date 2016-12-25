@@ -103,7 +103,7 @@ WLAnalytics.init(this.getApplication());
 
 
 ## Enabling/disabling client event types
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their Analytics Console.
+The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their {{ site.data.keys.mf_analytics_console }}.
 
 The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
 
@@ -120,9 +120,9 @@ The initialization of the analytics API must be written in native code, even in 
 **Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events) on disabling events.
 
 ### Client lifecycle events
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
+After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
 
-As soon as the device is set up to record sessions and you send your data, you can see the analytics console populated with data, as shown below.
+As soon as the device is set up to record sessions and you send your data, you can see the {{ site.data.keys.mf_analytics_console_short }} populated with data, as shown below.
 
 ![sessions-chart](analytics-app-sessions.png)
 
