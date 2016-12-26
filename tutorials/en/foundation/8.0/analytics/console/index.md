@@ -8,7 +8,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 
 ## Overview
-Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
+Configure the way the client works with the {{ site.data.keys.mf_analytics_server }}, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
 ## {{ site.data.keys.mf_analytics_console_full }}
 From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
