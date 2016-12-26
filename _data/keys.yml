@@ -58,7 +58,7 @@ mf_bm_full:                     "IBM Mobile Foundation on Bluemix"              
 product_V_R:                    "8.0"                                                   # DITA: Vartifacts
 product_V_R_stripped:           "80"
 # V.R.M product version number
-product_V_R_M:                  "8.0.0"                                                   
+product_V_R_M:                  "8.0.0"
 product_V_R_M_stripped:         "800"
 # V.R.M.I product version number
 product_V_R_M_I:                "8.0.0.0"
@@ -84,13 +84,13 @@ mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 # NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
 
 ## MF Analytics
-mf_analytics_short:             "Analytics"
+mf_analytics_short:             "Analytics"                                             # added by jsinger 25/12/2016
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
 
 # MF Analytics Console
 mf_analytics_console_short:     "Analytics Console"
-mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short  
+mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short
 mf_analytics_console_full:      "IBM MobileFirst Analytics Console"                     # DITA: anl_cons
 
 # MF Analytics Server
@@ -121,6 +121,7 @@ mf_mbs:                         "Mobile Browser Simulator"                      
 mf_mbs_full:                    "IBM MobileFirst Foundation Mobile Browser Simulator"
 
 ## MF Operations Console
+mf_console_short:               "Operations Console"
 mf_console:                     "MobileFirst Operations Console"                        # DITA: wl_cons
 mf_console_full:                "IBM MobileFirst Operations Console"                    # DITA: console_long
 
@@ -193,5 +194,3 @@ prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
 # WebSphere Application Server Network Deployment [WAS ND profile]
 prod_was_nd:                    "WebSphere Application Server Network Deployment"       # DITA: was_nd
 prod_was_nd_full:               "IBM WebSphere Application Server Network Deployment"
-
-
