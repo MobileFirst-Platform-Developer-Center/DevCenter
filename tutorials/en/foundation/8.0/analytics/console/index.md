@@ -10,14 +10,14 @@ weight: 4
 ## Overview
 Configure the way the client works with the Analytics Server, configure and view a wide range of reports using the Operations and Analytics Consoles.
 
-## {{ site.data.keys.mf_analytics_console_full}}
+## {{ site.data.keys.mf_analytics_console_full }}
 From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
 
-You can open the {{ site.data.keys.mf_analytics_console_short}} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
+You can open the {{ site.data.keys.mf_analytics_console_short }} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
 
 ![Analytics console button](analytics-console-button.png)
 
-After navigating to the {{ site.data.keys.mf_analytics_console_short}}, the default **Dashboard** panel appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated. The **Apps** and **Infrastructure** can be chosen from the navigation bar.
+After navigating to the {{ site.data.keys.mf_analytics_console_short }}, the default **Dashboard** panel appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated. The **Apps** and **Infrastructure** can be chosen from the navigation bar.
 
 ![Analytics console](analytics-console.png)
 
@@ -59,10 +59,10 @@ From the **Dashboard → Alert Management** tab, you can configure thresholds wh
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
 ### Monitor app crashes
-App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short}} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
+App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
 ### Monitor server and network data
-The {{ site.data.keys.mf_analytics_console_short}} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+The {{ site.data.keys.mf_analytics_console_short }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
 
 
 ### Collect, search, and report on client logs
@@ -70,7 +70,7 @@ Client logs can be sent to the server and included in analytics reports.
 
 To include logging information in a report:
 
-1. From the {{ site.data.keys.mf_analytics_console_short}}, choose the **Dashboard → Custom Charts** tab.
+1. From the {{ site.data.keys.mf_analytics_console_short }}, choose the **Dashboard → Custom Charts** tab.
 
 2. Choose **Client Logs** from the **Event Type** pull-down menu.
 
@@ -87,7 +87,7 @@ For more information on sending logs from the client, see [Client log collection
 ## {{ site.data.keys.mf_console_full }}
 Configure and administer the Analytics Server with the {{ site.data.keys.mf_console }}.
 
-If you are in the {{ site.data.keys.mf_analytics_console_short}}, access the {{ site.data.keys.mf_console }} by clicking the **Operations Console** button in the top navigation bar.
+If you are in the {{ site.data.keys.mf_analytics_console_short }}, access the {{ site.data.keys.mf_console }} by clicking the **Operations Console** button in the top navigation bar.
 
 ### Collect analytics data from additional logger packages
 By default, only logging from the package `com.worklight` is sent to analytics. In order to add logging from additional packages see [Forwarding logs to the Analytics Server](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server).

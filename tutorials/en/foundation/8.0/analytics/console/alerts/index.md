@@ -39,7 +39,7 @@ In the {{ site.data.keys.mf_analytics_console }}:
 ### Distribution Method tab
 By default, the alert is displayed in the {{ site.data.keys.mf_analytics_console_short }}.
 
-You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short}} and to a customized URL by selecting the **Analytics Console and Network Post** option.
+You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short }} and to a customized URL by selecting the **Analytics Console and Network Post** option.
 
 The following fields are available if you choose this option:
 

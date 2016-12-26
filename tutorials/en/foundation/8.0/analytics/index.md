@@ -40,7 +40,7 @@ In addition, you can control which logger data is accessed and used by analytics
 
 
 ## The Analytics and Operations Consoles
-{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full}} configures and displays the various Analytics reports.
+{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full }} configures and displays the various Analytics reports.
 
 > Learn more in the [Operations Console](console) tutorial.
 
@@ -50,7 +50,7 @@ In addition, you can control which logger data is accessed and used by analytics
 ## The Analytics Server
 The Analytics Server is available in both the development and production environments.
 
-For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short}} is available for your development needs.
+For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short }} is available for your development needs.
 
 For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/production/analytics/).
 
