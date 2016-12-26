@@ -48,7 +48,7 @@ If you created a **Table chart**, the chart properties can be set to define the 
 
 If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
 
-![Creating a custom chart](creating-custom-charts.png)
+<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
 
 ## Chart types
 
