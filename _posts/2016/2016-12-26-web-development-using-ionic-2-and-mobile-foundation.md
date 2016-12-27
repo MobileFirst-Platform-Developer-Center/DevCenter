@@ -18,13 +18,13 @@ We all know that **IBM MobileFirst Foundation** can be used to develop pure web 
 ## Prerequisites:  
 While in general it is well known how to setup all of required components separately, i would highly recommend to read following materials:
 
-* [Using Mobile Foundation on Bluemix Service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/)
+* [Using Mobile Foundation on Bluemix Service]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/)
 
-* [Setting up the Web development environment](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/)
+* [Setting up the Web development environment]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/)
 
-* [Adding the MobileFirst Foundation SDK to Web Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/web/)
+* [Adding the MobileFirst Foundation SDK to Web Applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/)
 
-* [Integrating MobileFirst Foundation 8.0 in Ionic 2 based apps](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
+* [Integrating MobileFirst Foundation 8.0 in Ionic 2 based apps]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
 
 Additionally to follow our quick start sample you will need to have following packages installed: node, npm, maven, python, cordova, ionic. You also need to setup Mobile Foundation Bluemix service and mfpdev-cli before continue.
 
@@ -112,7 +112,7 @@ The whole file now should look like this
 
 ![copy-config]({{site.baseurl}}/assets/blog/2016-12-26-web-development-using-ionic-2-and-mobile-foundation/3-copyconfig.png)
 
-We will use "ionic serve" to overcome second challenge, but for that there is a need to setup url forwarding, similar to how it done [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/#using-nodejs). Ionic 2 cli has build-in proxy capabilities and we just need to configure them by editing ionic.config.json file in root folder of our project. Details about how to use proxy can be found [here](https://github.com/driftyco/ionic-cli#advanced-serve-options)
+We will use "ionic serve" to overcome second challenge, but for that there is a need to setup url forwarding, similar to how it done [here]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/#using-nodejs). Ionic 2 cli has build-in proxy capabilities and we just need to configure them by editing ionic.config.json file in root folder of our project. Details about how to use proxy can be found [here](https://github.com/driftyco/ionic-cli#advanced-serve-options)
 
 ```json
 "proxies": [
@@ -192,13 +192,13 @@ Whole file will look like this
 
 ![home-ts]({{site.baseurl}}/assets/blog/2016-12-26-web-development-using-ionic-2-and-mobile-foundation/4-homets.png)
 
-Now we can deploy java adapter from samples (or pre-build version from [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/javaAdapter.adapter))
+Now we can deploy java adapter from samples (or pre-build version from [here]({{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/javaAdapter.adapter))
 
-<img class="gifplayer" alt="deploy-adapter" src="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/web/create-an-adapter.png" />
+<img class="gifplayer" alt="deploy-adapter" src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/web/create-an-adapter.png" />
 
 Register our application with applicationID "com.ibm.websample" in MobileFirst Operations Console
 
-<img class="gifplayer" alt="register-app" src="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/web/register-an-application-web.png" />
+<img class="gifplayer" alt="register-app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/web/register-an-application-web.png" />
 
 > **Note:** Make sure you set Application ID to "com.ibm.websample" during web application registration
 
