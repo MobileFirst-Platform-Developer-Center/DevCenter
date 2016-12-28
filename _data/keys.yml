@@ -84,7 +84,7 @@ mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 # NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
 
 ## MF Analytics
-mf_analytics_short:             "Analytics"                                             # added by jsinger 25/12/2016
+mf_analytics_short:             "Analytics"                                             
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
 
