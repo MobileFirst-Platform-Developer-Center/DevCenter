@@ -7,13 +7,13 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the analytics client SDK and build reports using the MobileFirst Analytics Console. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
+Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the {{ site.data.keys.mf_analytics_short }} client SDK and build reports using the {{ site.data.keys.mf_analytics_console }}. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
 
 #### Jump to
 * [App Usage Analytics](#app-usage-analytics)
 * [Crash Capture](#crash-capture)
 
-## App usage Analytics
+## App usage analytics
 
 ### Initializing your client app to capture app usage
 App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the {{ site.data.keys.mf_analytics }} client SDK must be configured to listen for the app lifecycle events.
@@ -31,7 +31,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 [analytics addDeviceEventListener:LIFECYCLE];
 ```
 
- To send the analytics:
+ To send the analytics data:
 
 ```objc
 [[WLAnalytics sharedInstance] send];
@@ -43,7 +43,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To send the analytics:
+To send the analytics data:
 
 ```Swift
 WLAnalytics.sharedInstance().send;
@@ -57,7 +57,7 @@ WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To send the analytic data:
+To send the analytics data:
 
 ```Java
 WLAnalytics.send();
@@ -115,7 +115,7 @@ The **Operating System Usage** chart shows a pie chart of the percentage of app 
 ### Creating a custom chart for average session duration
 The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
 
-1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the Custom Charts page of the Dashboard section.
+1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the **Custom Charts** page of the Dashboard section.
 2. Give your chart a title.
 3. Select **App Session** for **Event Type**.
 4. Select **Bar Graph** for **Chart Type**.
@@ -204,8 +204,8 @@ setInterval(function() {
 ```
 
 ### App crash monitoring
-After a crash, when the app is restarted, the crash logs are sent to the Analytics server. You can quickly see information about your app crashes in the Dashboard section of the {{ site.data.keys.mf_analytics_console }}.  
-In the **Overview** page of the **Dashboard** section, the Crashes bar graph shows a histogram of crashes over time.
+After a crash, when the app is restarted, the crash logs are sent to the {{ site.data.keys.mf_analytics_server }}. You can quickly see information about your app crashes in the **Dashboard** section of the {{ site.data.keys.mf_analytics_console }}.  
+In the **Overview** page of the **Dashboard** section, the **Crashes** bar graph shows a histogram of crashes over time.
 
 The data can be shown in two ways:
 
