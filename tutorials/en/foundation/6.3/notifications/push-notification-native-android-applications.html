@@ -37,7 +37,19 @@ downloads:
 <p>    In case you do not have an API key, you can get one from the <a href="https://code.google.com/apis/console">Google GCM Console</a></p>
 <ul>
 <li>Your project's number is the <code>senderId</code></li>
-<li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)</li>
+<li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)
+
+   <blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+   Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+   To setup FCM:
+
+   <ol>
+      <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+      <li>Create a new project and provide a project name.</li>
+      <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+      <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+   </ol></li>
 </ul>
 <p>{% highlight xml  %}<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
 	<pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/>
