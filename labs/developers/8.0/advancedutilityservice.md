@@ -14,19 +14,18 @@ tabs:
     path: /labs/developers/8.0/advancedwallet
 ---
 
-![lab session for 8.0](../advancedcarservice/screenstory.png)
+![lab session for 8.0](../advancedutilityservice/screenstory.png)
 
 ## Lab Highlights
-* Hybrid, Ionic 1 based
-* Development using CLI with Foundation on Bluemix
-* User Authentication
-* NodeJS to Mock onPrem CRM
-* MessageHub for latency to process requests on a large scale
-* DashDB to cache data to lessen the load on the CRM
-* SecureGateway to tunnel through firewall to use onPrem CRM
+* Using Ionic v1 for hybrid development
+* Develop using the mfpdev CLI with Foundation on Bluemix Service
+* Securing backend APIs with user authentication
+* Using Cloudant to store and retrieve work orders
+* Using Weather Company Data and APIs to get relevant weather alerts
+* Using Watson Speech to Text service to quickly fill out a form
 
-## Pre-requisites and Setup
-Please follow the instructions found in the [Setup Mobile Foundation on Bluemix](https://github.com/MobileFirst-Platform-Developer-Center/MotoCorpService/tree/release80/Lab) lab.
+## Setup and Quick Start
+This lab assumes that you are familiar at this point with developing hybrid mobile applications with Mobile Foundation and using Bluemix services. You will need a Bluemix account and an environment suitable for using Mobile Foundation. To get up and running quickly, please check out the (Quick Start Lab)[https://github.ibm.com/cord-americas/utilities-demo/blob/master/labs/2.%20quick-start.md] that will set up all the services and application for you with a simple script.
 
 ## Overview
 In this lab, imagine you are an Enterprise that owns car service centers utlizing an on-premise CRM. You want to equip service center employees with iPhones, and build an app that will help them coordinate activities in the service center to improve service times and quality of service across potentialy tens of thousands of locations.
