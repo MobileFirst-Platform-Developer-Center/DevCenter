@@ -11,7 +11,7 @@ weight: 3
 
 Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
 
-Elasticsearch is used for storing all mobile and server data in JSON format in the {{ site.data.keys.mf_analytics_server }} in Elasticsearch instances.
+Elasticsearch is used for storing all mobile and server data in JSON format in the Elasticsearch instances on the {{ site.data.keys.mf_analytics_server }}.
 
 The Elasticsearch instances are queried in real-time to populate the {{ site.data.keys.mf_analytics_console_full }}.
 

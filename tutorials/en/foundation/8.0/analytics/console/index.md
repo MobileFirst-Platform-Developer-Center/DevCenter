@@ -22,10 +22,10 @@ After navigating to the {{ site.data.keys.mf_analytics_console_short }}, the def
 ![Analytics console](analytics-console.png)
 
 ### Dashboard
-In the **Dashboard** panel, you can review collected analytics data related to: application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
+In the **Dashboard** panel, you can review collected analytics data related to application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
 
 ### Apps
-In the **Apps** panel, you can review in-depth analytics data related to: usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
+In the **Apps** panel, you can review in-depth analytics data related to usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
 
 
 ### Infrastructure
@@ -59,7 +59,7 @@ From the **Dashboard → Alert Management** tab, you can configure thresholds wh
 > Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
 
 ### Monitor app crashes
-App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server once the application is running again. When crash logs are sent to the analytics server, they automatically populate the crash charts.
+App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server *once the application is running again*. When crash logs are sent to the analytics server, they automatically populate the crash charts.
 
 ### Monitor server and network data
 The {{ site.data.keys.mf_analytics_console_short }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).

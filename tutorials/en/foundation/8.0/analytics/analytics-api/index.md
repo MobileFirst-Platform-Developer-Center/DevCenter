@@ -7,7 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
+{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to set up analytics support on the client application, and lists available APIs.
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
@@ -117,7 +117,7 @@ The initialization of the analytics API must be written in native code, even in 
  * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
  * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events) on disabling events.
+**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, see [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events).
 
 ### Client lifecycle events
 After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
@@ -126,7 +126,7 @@ As soon as the device is set up to record sessions and you send your data, you c
 
 ![sessions-chart](analytics-app-sessions.png)
 
-You can enable or disable the collecting of app sessions by using the following API:
+Enable or disable the collecting of app sessions using the {{ site.data.keys.mf_analytics_short }} API.
 
 #### JavaScript
 **Web**  
