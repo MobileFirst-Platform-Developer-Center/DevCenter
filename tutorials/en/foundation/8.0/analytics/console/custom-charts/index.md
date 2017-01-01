@@ -137,15 +137,15 @@ You can download the data that is shown for any custom chart.
 * **Export with URL** - looks like a chain link
 * **Download Chart** - looks like a down arrow
 * **Edit Chart** - looks like a pencil
-* **Delete Chart** - looks like a trashcan
+* **Delete Chart** - looks like a trash can
 
 Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
 Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
 
 ## Exporting and importing custom chart definitions
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts on your new cluster.
+You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
 
 1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
 2. Click **Export Charts** to download a JSON file with your chart definition.
 3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that exists, you end up with duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
+4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that already exists, you create duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
