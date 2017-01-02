@@ -14,6 +14,7 @@ For example, in the event source-based model, if you were to segment your mobile
 
 #### Jump to
 * [Migration scenarios](#migration-scenarios)
+* [Migration tool](#migration-tool)
 
 <br/>
 
@@ -1450,3 +1451,59 @@ Complete the following steps for every application that was using the same event
 2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
 3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
 4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+
+## Migration tool
+The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.  
+The migration tool simplifies the process with the following functions:
+
+1. Reads the devices, credentials, tags and user subscriptions for each application from the MobileFirst Platform Foundation 7.1 database.
+2. Copies the data to respective tables in {{ site.data.keys.product }} 8.0 database for respective application.
+3. Migrates all the Push data of all v7.1 environments, irrespective of environments in the v8.0 application.
+
+The migration tool doesn't modify any data related to user subscriptions, application environments or devices.  
+
+The following information is important to know before you use the migration tool:
+
+1. You must have Java version 1.6 or above.
+2. Make sure you have both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0 setup and ready.
+3. Make a backup of both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0.
+4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
+	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
+	* Remember the PacakgeName/BundleID and provide the same values for the applications.
+	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will succeed.
+5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
+
+#### Procedure
+1. Download the migration tool from [its following GitHub repository](http://github.com).
+2. After downloading the tool, provide the following details in the **migration.properties** file:
+	
+    | Value                | Description  | Sample Values |
+    |----------------------|--------------|---------------|
+    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB password | pw.db.password=root |
+    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB username     | pw.db.adminusername=root |
+    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB password     | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | MFP 8.0 DB url						        | jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | MFP 8.0 DB username						| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | MFP 8.0 DB password						| pw.db.passwordTarget=root |
+    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB schema | WRKLGT |
+    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB schema     | WLADMIN |
+    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB schema    | MFPDATA |
+    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime name		 | runtime=worklight |
+    | applicationId	       | Provide list of applications registered on MobileFirst Platform Foundation 7.1 separated by comma(,) | HybridTestApp,NativeiOSTestApp |
+    | targetApplicationId  | Provide list of applications registered on {{ site.data.keys.product }} 8.0 separated by comma(,).   | com.HybridTestApp,com.NativeiOSTestApp |
+
+    * Make sure that you have provided values for both **applicationID** and **targetApplicationId** in proper sequence. The mapping is done in 1-1 (or n-n) fashion, i.e. data of the first application in **applicationId** list will be migrated to the first application in the **targetApplicationId** list.
+	* In the **targetApplicationId** list, provide a packageName/BundleId for the application. i.e. for TestApp1 in MobileFirst Platform Foundation 7.1, **targetApplicationId** will be packageName/BundleId of TestApp1 which is com.TestApp1. This is because in MobileFirst Platform Foundation 7.1 **applicationId** is the application name and in {{ site.data.keys.mf_server }} 8.0 it is packageName/BundleId/packageIdentityName based on application environment.
+
+2. Run the tool by using the following command:
+
+   ```bash
+   java -jar pushDataMigration.jar path-to-migration.properties
+   ```
+   
+   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+

@@ -81,6 +81,11 @@ Starting with v8.0, you configure the push service on the server side. The push 
 
 The push service is protected by the OAuth security model. You must configure server-side components that use the push service REST API must be configured as confidential clients of {{ site.data.keys.mf_server }}.
 
+### Push notifications data migration tool
+Also available is a migration tool for push notifications data. The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.
+
+> [Learn more about the migration tool](migrating-push-notifications/#migration-tool).
+
 ## Changes in the server databases and in the server structure
 {{ site.data.keys.mf_server }} enables changes to app security, connectivity and push without code change, app rebuild or redeployment. But these changes imply changes in the database schemas, the data stored in the database, and the installation process.
 
