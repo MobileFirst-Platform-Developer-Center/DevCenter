@@ -109,8 +109,50 @@ Where `copyMFPcore` responsible for copying ibmmfpf.js, `copyMFPanalytics` for i
 > **Note:** We are placing  sjcl,jssha and promiz under `node_modules` folder cause ibmmfpf.js script is looking for them using relative path.
 
 The whole file now should look like this
-
-![copy-config]({{site.baseurl}}/assets/blog/2016-12-26-web-development-using-ionic-2-and-mobile-foundation/3-copyconfig.png)
+```js
+module.exports = {
+  copyAssets: {
+    src: ['{{SRC}}/assets/**/*'],
+    dest: '{{WWW}}/assets'
+  },
+  copyIndexContent: {
+    src: ['{{SRC}}/index.html', '{{SRC}}/manifest.json', '{{SRC}}/service-worker.js'],
+    dest: '{{WWW}}'
+  },
+  copyFonts: {
+    src: ['{{ROOT}}/node_modules/ionicons/dist/fonts/**/*', '{{ROOT}}/node_modules/ionic-angular/fonts/**/*'],
+    dest: '{{WWW}}/assets/fonts'
+  },
+  copyPolyfills: {
+    src: ['{{ROOT}}/node_modules/ionic-angular/polyfills/polyfills.js'],
+    dest: '{{BUILD}}'
+  },
+  copyMFPcore: {
+    src: ['{{ROOT}}/node_modules/ibm-mfp-web-sdk/*.js'],
+    dest: '{{BUILD}}/mfp'
+  },
+  copyMFPmessages: {
+    src: ['{{ROOT}}/node_modules/ibm-mfp-web-sdk/lib/messages/**/*.json'],
+    dest: '{{BUILD}}/mfp/lib/messages'
+  },
+  copyMFPanalytics: {
+    src: ['{{ROOT}}/node_modules/ibm-mfp-web-sdk/lib/analytics/*.js'],
+    dest: '{{BUILD}}/mfp/lib/analytics'
+  },
+  copySJCL: {
+    src: ['{{ROOT}}/node_modules/sjcl/*.js'],
+    dest: '{{BUILD}}/mfp/node_modules/sjcl'
+  },
+  copyJSSHA: {
+    src: ['{{ROOT}}/node_modules/jssha/src/*.js'],
+    dest: '{{BUILD}}/mfp/node_modules/jssha/src'
+  },
+  copyPromiz: {
+    src: ['{{ROOT}}/node_modules/promiz/*.js'],
+    dest: '{{BUILD}}/mfp/node_modules/promiz'
+  }
+}
+```
 
 We will use "ionic serve" to overcome second challenge, but for that there is a need to setup url forwarding, similar to how it done [here]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/#using-nodejs). Ionic 2 cli has build-in proxy capabilities and we just need to configure them by editing ionic.config.json file in root folder of our project. Details about how to use proxy can be found [here](https://github.com/driftyco/ionic-cli#advanced-serve-options)
 
@@ -141,7 +183,7 @@ To be able to use WL API we need to add typings reference. This can be done by o
 
 > **Note:** Make sure you put "///" before reference tag
 
-Let's also add a client side code to verify server connectivity and simple adapter call. In out quick start sample we will do it in `src/pages/home/home.ts` file. We will add MfpInit function under HomePage class
+Let's also add a client side code to verify server connectivity and simple adapter call. In our quick start sample we will do it in `src/pages/home/home.ts` file. We will add MfpInit function under HomePage class
 
 ```js
 MfpInit() {
@@ -166,7 +208,6 @@ MfpInit() {
 
               resourceRequest.send().then(
                   function(response) {
-                      // Will display "Hello world" in an alert dialog.
                       console.debug("-- success: " + response.responseText);
                   },
                   function(response) {
@@ -190,7 +231,58 @@ this.MfpInit();
 
 Whole file will look like this
 
-![home-ts]({{site.baseurl}}/assets/blog/2016-12-26-web-development-using-ionic-2-and-mobile-foundation/4-homets.png)
+```js
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+
+  constructor(public navCtrl: NavController) {
+    this.MfpInit();
+  }
+
+  MfpInit() {
+    console.debug('-- trying to init WL client');
+    var wlInitOptions = {
+        mfpContextRoot : '/mfp',
+        applicationId : 'com.ibm.websample'
+    };
+    WL.Client.init(wlInitOptions).then(
+        function() {
+          console.debug('-- WL client init done');
+
+            console.debug('-- trying to obtain authorization token');
+            WLAuthorizationManager.obtainAccessToken().then(
+              function(success){
+                console.debug('-- succesfully got a token');
+                console.debug('-- trying to call unprotected adapter');
+                var resourceRequest = new WLResourceRequest(
+                    "/adapters/javaAdapter/resource/unprotected/",
+                    WLResourceRequest.GET
+                );
+
+                resourceRequest.send().then(
+                    function(response) {
+                        console.debug("-- success: " + response.responseText);
+                    },
+                    function(response) {
+                        console.error("-- failure: " + JSON.stringify(response));
+                    }
+                );
+              },
+              function(failure){
+                console.error('-- failed to get a token');
+              }
+            );
+         });
+  }
+
+}  
+```
 
 Now we can deploy java adapter from samples (or pre-build version from [here]({{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/javaAdapter.adapter))
 
@@ -214,4 +306,8 @@ You should now be able to see in Developer's console messages about successful W
 
 ## Conclusion
 
-We managed to prepare our web development environment and quick start client-side application with **Ionic 2** and **IBM MobileFirst Foundation**. By following this blog you will have everything you need to start creating you first web apps.
+We managed to prepare our web development environment and quick start client-side application with **Ionic 2** and **IBM MobileFirst Foundation**. By following this blog you will have everything you need to start creating your first web apps.
+
+In case you want to start with already made sample or you are interested to see how security will work with web sdk, feel free to clone existing MFPF WebSDK with Ionic 2 sample from [github](https://github.com/andriivasylchenko/WebSDKtester)
+
+![websdk-sample]({{site.baseurl}}/assets/blog/2016-12-26-web-development-using-ionic-2-and-mobile-foundation/6-appscreenshot.png)
