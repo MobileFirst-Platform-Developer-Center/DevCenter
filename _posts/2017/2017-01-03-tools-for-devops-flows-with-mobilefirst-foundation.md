@@ -73,18 +73,30 @@ These commands pull/push to the MobileFirst Server the adapter configuration, wh
 
 > Learn more in the [Java adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) and [JavaScript adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) documentation topics.
 
-For adapters, the **pull** commands creates by default a config.json file at the root of the adapter folder. You can then copy and paste this file with a different name, i.e. **dev.json**, **qa.json**, **uat.json** and **prod.json** and later on use the **push** command (after deploying the adapter) to configure the adapter with a different configuration depending on the required environment.
+For adapters, the **pull** commands creates by default a **config.json** file at the root of the adapter folder. You can then make copies of this file with different names, i.e. **dev.json**, **qa.json**, **uat.json** and **prod.json** and later on use the **push** command (after deploying the adapter) to configure the adapter with a different configuration depending on the required environment.
 
-For example, to push the settings of the UAT environment to a deployed adapter, run the following command: `mfpdev adapter push --configFile | -c path-to-json-file`.
+For example, to push the settings of the UAT environment to a deployed adapter first make sure you have a copy of the config.json file by running the following Maven command:
+
+```bash
+mvn adapter:configpull -DmfpfConfigFile=config.json
+```
+
+Copy, rename and edit the file as required and then push it:
+
+```bash
+mvn adapter:configpush -DmfpfConfigFile=uat.json
+```
+
+<!-- For example, to push the settings of the UAT environment to a deployed adapter, run the following MobileFirst CLI command: `mfpdev adapter push --configFile | -c path-to-json-file`.
 
 ```bash
 mfpdev adapter push -c uat.json
 ```
 
-Alternatively, you can accomplish the same using the following **Maven** commands: 
+Alternatively, You can accomplish the same using the following **Maven** commands: 
 
 * `mvn adapter:configpull -DmfpfConfigFile=config.json`
-* `mvn adapter:configpush -DmfpfConfigFile=config.json`
+* `mvn adapter:configpush -DmfpfConfigFile=config.json`-->
 
 You can find additional explanation in this [StackOverflow answer](http://stackoverflow.com/questions/40946310/unable-to-build-adapters-using-profiles-and-properties-in-maven/40956730#40956730).
 
