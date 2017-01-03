@@ -2,6 +2,7 @@
 layout: tutorial
 title: Adding the MobileFirst SDK
 weight: 1
+show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ### Overview
@@ -16,8 +17,3 @@ To develop **native iOS/Android/Windows applications**, you must add the {{ site
 Learn in the following tutorials how to integrate the SDK into your application.  
 To continue, select a tutorial:
 
-* [Adding the {{ site.data.keys.product }} SDK to Cordova Applications](cordova)
-* [Adding the {{ site.data.keys.product }} SDK to iOS Applications](ios)
-* [Adding the {{ site.data.keys.product }} SDK to Android Applications](android)
-* [Adding the {{ site.data.keys.product }} SDK to Windows 8.1 Universal or Windows 10 UWP Applications](windows-8-10)
-* [Adding the {{ site.data.keys.product }} SDK to Web Applications](web)
