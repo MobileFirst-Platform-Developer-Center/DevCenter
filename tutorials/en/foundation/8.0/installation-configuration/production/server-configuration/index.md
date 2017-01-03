@@ -528,7 +528,9 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 | mfp.push.apns.connectionIdleTimeout | Optional | APNs Idle Connection Timeout. Default : 0 |
 
 
-<!-- The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+{% comment %}
+<!-- START NON-TRANSLATABLE -->
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
@@ -581,7 +583,8 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 | mfp.push.apns.proxy.password | Optional | Proxy password, if the proxy requires authentication. |
 | mfp.push.apns.connections | Optional | Push APNs max connections. Default : 3 |
 | mfp.push.apns.connectionIdleTimeout | Optional | APNs Idle Connection Timeout. Default : 0 |
--->
+<!-- END NON-TRANSLATABLE -->
+{% endcomment %}
 
 ## Configuring data sources
 Find out some data source configuration details pertaining to the supported databases.
