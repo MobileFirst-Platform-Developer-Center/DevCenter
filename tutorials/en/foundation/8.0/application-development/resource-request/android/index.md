@@ -115,7 +115,7 @@ The `response` object contains the response data and you can use its methods and
 Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
 
 ## For more information
-> For more information about WLResourceRequest, refer to the user documentation.
+> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html).
 
 <img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
 ## Sample application

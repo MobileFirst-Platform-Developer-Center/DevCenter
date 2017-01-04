@@ -114,7 +114,7 @@ The `WorklightResponse` object contains the response data and you can use its me
 In case of request failure, the response object also contains a `error` property.
 
 ## For more information
-> For more information about WLResourceRequest, refer to the user documentation.
+> For more information about WLResourceRequest, [refer to the API Reference](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf
 
 <img alt="Image of the sample application" src="resource-request-success-win8-10.png" style="float:right"/>
 ## Sample application
