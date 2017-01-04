@@ -68,12 +68,13 @@ mfpdev app push
 ```
 
 ### Adapters
-As for adapters, the same commands are available for adapters as well: `mfpdev adapter pull` and `mfpdev adapter push`.  
+<!--As for adapters, the same commands are available for adapters as well: `mfpdev adapter pull` and `mfpdev adapter push`.-->
+As for adapters, the same commands are available for adapters as well via Maven.  
 These commands pull/push to the MobileFirst Server the adapter configuration, which includes its connectivity details and any custom properties you may have added.
 
 > Learn more in the [Java adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) and [JavaScript adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) documentation topics.
 
-For adapters, the **pull** commands creates by default a **config.json** file at the root of the adapter folder. You can then make copies of this file with different names, i.e. **dev.json**, **qa.json**, **uat.json** and **prod.json** and later on use the **push** command (after deploying the adapter) to configure the adapter with a different configuration depending on the required environment.
+For adapters, the **pull** command creates by default a **config.json** file at the root of the adapter folder. You can then make copies of this file with different names, i.e. **dev.json**, **qa.json**, **uat.json** and **prod.json** and later on use the **push** command (after deploying the adapter) to configure the adapter with a different configuration depending on the required environment.
 
 For example, to push the settings of the UAT environment to a deployed adapter first make sure you have a copy of the config.json file by running the following Maven command:
 
