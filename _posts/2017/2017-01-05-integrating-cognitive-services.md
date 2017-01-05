@@ -10,7 +10,6 @@ version: 8.0
 author:
     name: Mike Billau
 ---
-
 ## Integrating Watson Cognitive Services with Foundation Lab
 Using IBM's Watson cognitive services with Bluemix makes it easier than ever to consume Watson services with your Mobile Foundation application. We have created a new lab that shows the process of creating a hybrid Mobile Foundation application that utilizes the Watson Speech to Text service. In this lab, we also show how to integrate with the new Weather Company Data service to get localized weather updates.
 

@@ -9,7 +9,7 @@ version: 8.0
 author:
   name: Mike Billau
 ---
-## Overview
+## Overview 
 By this point you have heard of IBM's Watson, the Cognitive Computer that can do more than just win at Jeopardy! In this blog post, we will show how you can quickly and easily get started with using Watson services in your IBM MobileFirst Foundation hybrid application. This blog post is based on a new Lab (link) that uses a MobileFirst Java adapter to communicate with the [Watson Developer Cloud](http://www.ibm.com/watson/developercloud/) SDK to send an audio file over to the [Watson Speech to Text service](https://speech-to-text-demo.mybluemix.net/) and receive a transcript that we will use to quickly fill out a form.  The techniques in this lab can easily be adapted to use other Watson services that involve sending a chunk of data, such as the image recognition service. If at any point you get stuck, head on over to the Lab for a complete and working example.
 
 ## Recording audio with Cordova
