@@ -1,6 +1,6 @@
 ---
 title: Using Watson Speech To Text with IBM MobileFirst Foundation 8.0
-date: 2017-01-04
+date: 2017-01-05
 tags:
 - MobileFirst_Foundation
 - Cognitive
