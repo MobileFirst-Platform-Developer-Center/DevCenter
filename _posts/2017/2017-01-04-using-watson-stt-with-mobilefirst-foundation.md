@@ -155,45 +155,84 @@ Then open up *pom.xml* and add the Speech to Text artifact:
 </dependency>
 ```
 
-Now we can develop 
+Next, open up the *adapter.xml* file so that we can add some [custom  properties](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/java-adapters/#custom-properties) that we can pull from the server side. This is useful for passing in the Watson username/password:
 
+```
+<property name="Username" defaultValue=""/>
+<property name="Password" defaultValue=""/>
+```
+
+Now we can add the endpoint code to our main *WatsonJava/src/main/java/com/ibm/test1/WatsonJavaResource.java* file. Create a new endpoint with the path */uploadBase64Wav* to match the path we call in the JavaScript. Also, notice how we are using both a FormParam and QueryParam. Finally, because we are sending the audio file as a base64 encoded string, we need to convert it to a *byte[]* which will later be written to a temporary *.wav* file:
+```
+@POST
+@OAuthSecurity(enabled = false)
+@Path("/uploadBase64Wav")
+public Response handleUpload(@FormParam("audioFile") String base64wav, @QueryParam("keywords") String keywords) throws Exception {
+    // Convert the base64 string back into a wav file
+    // http://stackoverflow.com/questions/23979842/convert-base64-string-to-image
+    String base64 = base64wav.split(",")[1]; // remove the "data:audio/x-wav;base64" header
+    byte[] wavBytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64);
+    return callWatson(wavBytes, keywords);
+}
+```
+
+Now, our *callWatson()* method, which will write a temporary wav file and then use the Watson SDK to recognize() this file. This is done in a single synchronous call that will block until Watson returns with a transcript. There are other ways to use Watson, such as opening a session and continuously sending audio to be transcribed - be sure to explore the [various options from the API](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/?java#introduction).
+
+```
+private Response callWatson(byte[] body, String keywords) {
+
+    SpeechToText service = new SpeechToText();
+
+    // Get our username/password for Watson from the Adapter configuration api
+    // See the MobileFirst docs. Be sure to set these values in your mfp dashboard
+    service.setUsernameAndPassword(configApi.getPropertyValue("Username"), configApi.getPropertyValue("Password"));
+    service.setEndPoint("https://stream.watsonplatform.net/speech-to-text/api");
+
+    String[] arr = keywords.split(",");
+    logger.warning("Keyword array:" + arr.toString());
+
+    // Save the audio byte[] to a wav file
+    String result = "";
+    File soundFile = null;
+    try {
+        logger.warning("Have speech file, creating temp file to send to Watson");
+        logger.warning("Using these keywords:" + keywords);
+        soundFile = File.createTempFile("voice", ".wav");
+        FileUtils.writeByteArrayToFile(soundFile, body);
+    } catch (IOException e) {
+        logger.warning("No audio file received");
+        e.printStackTrace();
+        return Response.status(400).entity("No audio file received").build();
+    }
+
+    // Transcribe the wav file using Watson's recognize() API
+    try {
+        if (soundFile.exists()) {
+            logger.warning("Sound file exists!");
+            List < Transcript > transcripts = service.recognize(soundFile, "audio/wav").getResults();
+
+            logger.warning("Got some results!");
+            for (Transcript transcript: transcripts) {
+                for (SpeechAlternative alternative: transcript.getAlternatives()) {
+                    result = alternative.getTranscript() + " ";
+                    logger.warning("result:" + result);
+                }
+            }
+            return Response.ok().entity(result).build();
+        } else {
+            return Response.status(400).entity("Sound file could not be saved to server").build();
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return Response.status(400).entity(e.getMessage()).build();
+    }
+}
+```
+
+That's it! When the adapter receives an audio file as a base64 string, it will decode that to a *.wav* byte array, then save that to a temporary file and send that file off to Watson.
 
 
 ## Conclusion
+In this blog post, we showed how to record data in a hybrid application using a third party Cordova plugin and then send that data off to the Watson Speech to Text service. The techniques used in this blog post can be easily adapted to send any type of large file to any other Watson service, such as the image recognition service. The tricky part about this procedure is that we need to convert the file to a base64 string and send it using *sendFormParameters* API.
 
-
-### Adapters
-As for adapters, the same commands are available for adapters as well: `mfpdev adapter pull` and `mfpdev adapter push`.  
-These commands pull/push to the MobileFirst Server the adapter configuration, which includes its connectivity details and any custom properties you may have added.
-
-> Learn more in the [Java adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) and [JavaScript adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/#pull-and-push-configurations) documentation topics.
-
-For adapters, the **pull** commands creates by default a **config.json** file at the root of the adapter folder. You can then make copies of this file with different names, i.e. **dev.json**, **qa.json**, **uat.json** and **prod.json** and later on use the **push** command (after deploying the adapter) to configure the adapter with a different configuration depending on the required environment.
-
-For example, to push the settings of the UAT environment to a deployed adapter first make sure you have a copy of the config.json file by running the following Maven command:
-
-```bash
-mvn adapter:configpull -DmfpfConfigFile=config.json
-```
-
-Copy, rename and edit the file as required and then push it:
-
-```bash
-mvn adapter:configpush -DmfpfConfigFile=uat.json
-```
-
-<!-- For example, to push the settings of the UAT environment to a deployed adapter, run the following MobileFirst CLI command: `mfpdev adapter push --configFile | -c path-to-json-file`.
-
-```bash
-mfpdev adapter push -c uat.json
-```
-
-Alternatively, You can accomplish the same using the following **Maven** commands:
-
-* `mvn adapter:configpull -DmfpfConfigFile=config.json`
-* `mvn adapter:configpush -DmfpfConfigFile=config.json`-->
-
-You can find additional explanation in this [StackOverflow answer](http://stackoverflow.com/questions/40946310/unable-to-build-adapters-using-profiles-and-properties-in-maven/40956730#40956730).
-
-## Bonus
-Learn about [continuous devliery of adapters]({{site.baseurl}}/blog/2016/08/25/mobilefirst-devops-in-bluemix/) using the Bluemix DevOps service.
+For more information and a more complete example, head on over to the [Utilities lab](https://mobilefirstplatform.ibmcloud.com/labs/developers/8.0/advancedutilityservice/).
