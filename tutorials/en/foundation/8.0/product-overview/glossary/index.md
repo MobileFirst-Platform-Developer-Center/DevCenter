@@ -4,7 +4,21 @@ title: Glossary
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
+When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
+For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
+
+<br/>
 This glossary provides terms and definitions for {{ site.data.keys.product }} software and products.
 
 The following cross-references are used in this glossary:
@@ -82,9 +96,6 @@ In computer security, a digital document that binds a public key to the identity
 ### certificate authority enterprise application
 A company application that provides certificates and private keys for its client applications.
 
-### CRL / Certificate Revocation List (CRL)
-A list of certificates that have been revoked before their scheduled expiration date. Certificate revocation lists are maintained by the certificate authority and used, during a Secure Sockets Layer (SSL) handshake to ensure that the certificates involved have not been revoked.
-
 ### challenge
 A request for certain information to a system. The information, which is sent back to the server in response to this request, is necessary for client authentication.
 
@@ -114,6 +125,9 @@ A reusable object or program that performs a specific function and works with ot
 
 ### credential
 A set of information that grants a user or process certain access rights.
+
+### CRL / Certificate Revocation List (CRL)
+A list of certificates that have been revoked before their scheduled expiration date. Certificate revocation lists are maintained by the certificate authority and used, during a Secure Sockets Layer (SSL) handshake to ensure that the certificates involved have not been revoked.
 
 ## D
 ### data source
@@ -229,19 +243,44 @@ See [Application Center installer](#application-center-installer).
 ### mobile device
 A telephone, tablet, or personal digital assistant that operates on a radio network. See also Android.
 
-### {{ site.data.keys.product_adj }} adapter
+### MobileFirst adapter
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
 See [adapter](#adapter)
 
-### {{ site.data.keys.product_adj }} Data Proxy
+### MobileFirst Data Proxy
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
 A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using {{ site.data.keys.product }} OAuth security capabilities. The {{ site.data.keys.product_adj }} Data Proxy requires an authentication through the trust association interceptor.
 
-### {{ site.data.keys.mf_console }}
+### MobileFirst Operations Console
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
 A web-based interface that is used to control and manage {{ site.data.keys.product_adj }} runtime environments that are deployed in {{ site.data.keys.mf_server }}, and to collect and analyze user statistics.
 
-### {{ site.data.keys.product_adj }} runtime environment
+### MobileFirst runtime environment
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
 A mobile-optimized server-side component that runs the server side of your mobile applications (back-end integration, version management, security, unified push notification). Each runtime environment is packaged as a web application (WAR file).
 
-### {{ site.data.keys.mf_server }}
+### MobileFirst Server
+<!-- START NON-TRANSLATABLE -->
+{% comment %}
+Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
+{% endcomment %}
+<!-- END NON-TRANSLATABLE -->
 A {{ site.data.keys.product_adj }} component that handles security, back-end connections, push notifications, mobile application management, and analytics. The {{ site.data.keys.mf_server }} is a collection of apps that run on an application server and acts as a runtime container for {{ site.data.keys.product_adj }} runtime environments.
 
 ## N
@@ -374,7 +413,7 @@ A pane that is outside of the editor area that can be used to look at or work wi
 ### web app / application
 An application that is accessible by a web browser and that provides some function beyond static display of information, for instance by allowing the user to query a database. Common components of a web application include HTML pages, JSP pages, and servlets. See also [app](#A).
 
-#### web application server
+### web application server
 The runtime environment for dynamic web applications. A Java EE web application server implements the services of the Java EE standard.
 
 ### web resource
@@ -389,3 +428,4 @@ A section of code that contains code that could otherwise not be interpreted by 
 ## X
 ### X.509 certificate
 A certificate that contains information that is defined by the X.509 standard.
+
