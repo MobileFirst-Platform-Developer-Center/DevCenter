@@ -101,7 +101,6 @@ The `<property>` element takes the following attributes:
 ![Console properties](console-properties.png)
 
 #### Pull and Push Configurations
-
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
 To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
 
@@ -109,13 +108,40 @@ Run the commands from the root folder of the adapter Maven project:
 
 **Maven**  
 
-* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=config.json`.
-* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=config.json`.
+* To **pull** the configurations file  
+  ```bash
+  mvn adapter:configpull -DmfpfConfigFile=config.json
+  ```
+  
+* To **push** the configurations file
+  ```bash
+  mvn adapter:configpush -DmfpfConfigFile=config.json
+  ```
 
 **{{ site.data.keys.mf_cli }}**  
 
-* To **pull** the configurations file - `mfpdev adapter pull`.
-* To **push** the configurations file - `mfpdev adapter push`.
+* To **pull** the configurations file
+  ```bash
+  mfpdev adapter pull
+  ```
+  
+* To **push** the configurations file
+  ```bash
+  mfpdev adapter push
+  ```
+
+#### Pushing configurations to multiple servers
+The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
+
+**Maven**  
+Note above how by default you specify a **config.json** file. Create files with different names to address different targets.
+
+**{{ site.data.keys.mf_cli }}**  
+Use the **--configFile** or **-c** flag to specify a different configuration file than the default one:
+
+```bash
+mfpdev adapter pull -c [adapterProject]/alternate_config.json
+```
 
 > Learn more in by using `mfpdev help adapter pull/push`.
 
