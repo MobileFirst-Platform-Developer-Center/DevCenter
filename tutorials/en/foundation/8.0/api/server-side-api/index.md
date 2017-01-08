@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Server-side API Reference
-breadcrumb_title: Server-side APIs
+breadcrumb_title: Server-side API
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -14,7 +14,7 @@ You can use the adapter library to connect to various back-end systems, such as 
 ## Security libraries
 You can use the security libraries to develop security checks and adapters that use the security context. The libraries provide the required interfaces for adapters and security checks to gain access to the security context. For more information about the MobileFirst security framework, see [MobileFirst security framework](../../../authentication-and-security).
 
-## APIs
+## API Reference
 ### JavaScript server-side API
 
 > [Review the JavaScript server-side API set](../api-ref/mfp-server-js-apidoc/html/refjavascript-server/html/index.html)
