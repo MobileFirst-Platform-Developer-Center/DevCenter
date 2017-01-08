@@ -40,8 +40,8 @@ APIs for native Android applications.
 
 ### C Sharp
 APIs for native Windows 10 UWP and Windows 8 Universal applications.
-* **Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps**  
+* **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
     You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
 
-* **Client-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal apps**  
+* **C[lient-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_push_api.pdf)**  
     You can use C# push APIs to develop apps which can send push notifications, for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
