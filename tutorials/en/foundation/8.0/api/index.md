@@ -15,7 +15,7 @@ Below are links to the available APIs.
 * **[MobileFirst server-side API](server-side-api)**  
     Use the server-side API that IBM MobileFirst Platform Foundation defines to modify the behavior of the servers that your mobile applications rely on.
     
-* **MobileFirst Java Token Validator API**  
+* **[MobileFirst Java Token Validator API](java-token-validator)**  
     Use the Java Token Validator API of the MobileFirst Java Token Validator library (mfp-java-token-validator-8.0.0.jar) to protect external Java resources by validating the access tokens for these resources.
 
 * **REST API for the MobileFirst Server administration service**  
