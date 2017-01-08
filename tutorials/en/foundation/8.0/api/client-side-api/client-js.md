@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: API Reference - Client-side JavaScript
+title: Client-side JavaScript API Reference
 breadcrumb_title: Client-side JS
 show_disqus: false
 ---
 ## Overview
-> [Click to view](../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html) the full API reference for client-side JavaScript.
+> [Click to view](api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html) the full API reference for client-side JavaScript.
 
 The following table lists the functions that you can perform in client-side applications, and the corresponding JavaScript client-side API.
 

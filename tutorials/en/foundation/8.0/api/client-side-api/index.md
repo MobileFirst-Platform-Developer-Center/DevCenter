@@ -6,26 +6,42 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-To develop your native or Cordova applications, you can refer to the {{ site.data.keys.product_full }} API in JavaScript, Java and Objective-C.  
-Below are links to the available APIs.
+This collection of topics documents the application programming interface (API) for the supported client platforms.
 
-* **[MobileFirst client-side API](client-js)**  
-    This collection of topics documents the application programming interface (API) for each IBM MobileFirst™ Platform Foundation client platform.
-    
-* **[MobileFirst server-side API](../api-ref/mfp-server-js-apidoc/html/refjavascript-server/html/index.html)**  
-    Use the server-side API that IBM MobileFirst Platform Foundation defines to modify the behavior of the servers that your mobile applications rely on.
-    
-* **MobileFirst Java Token Validator API**  
-    Use the Java Token Validator API of the MobileFirst Java Token Validator library (mfp-java-token-validator-8.0.0.jar) to protect external Java resources by validating the access tokens for these resources.
+### JavaScript
+APIs for Cordova / Web applications.
 
-* **REST API for the MobileFirst Server administration service**  
-    The REST API provides several services to administer runtime adapters, applications, devices, audit, transactions, security, and push notifications.
-    
-* **REST API for the MobileFirst Server push service**  
-    The REST API for Push in the MobileFirst runtime environment enables back-end server applications that were deployed outside of the MobileFirst Server to access Push functions from a REST API endpoint.
-   
-* **REST API for the MobileFirst runtime**  
-    The REST API for the MobileFirst runtime provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more.
-  
-* **REST API for MobileFirst Analytics and Logger**  
-    The MobileFirst Analytics public REST API is documented in Swagger.
+* **[Client-side API](client-js)**  
+    You can use JavaScript API to develop apps for all environments.
+
+* **Client-side push API**  
+    You can use JavaScript push API to run push functions in the client-side applications.
+
+* **Web analytics API**  
+    You can use the web JavaScript API to develop MobileFirst analytics for your web apps. This API is written in pure JavaScript and is not dependent on any other platform SDKs.
+
+### Objective-C
+APIs for native iOS applications.
+
+* **Client-side API**   
+    Use this API to develop native app for iOS environment.
+
+* **Client-side push API**  
+    Use this push API to develop apps for the iOS environment.
+
+### Java
+APIs for native Android applications.
+
+* **Client-side API**  
+    You can use Java API to develop apps for the Android environment.
+
+* **Client-side push API**  
+    You can use Java push API to develop apps for the Android environment.
+
+### C Sharp
+APIs for native Windows 10 UWP and Windows 8 Universal applications.
+* **Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps**  
+    You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
+
+* **Client-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal apps**  
+    You can use C# push APIs to develop apps which can send push notifications, for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
