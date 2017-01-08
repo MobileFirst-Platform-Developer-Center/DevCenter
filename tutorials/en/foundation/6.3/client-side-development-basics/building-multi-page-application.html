@@ -61,14 +61,14 @@ This is required because the main application HTML file loads the MobileFirst cl
         <p>Add <code>/www/default/</code> at the beginning of the URL path string. For example:
 
 Change
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 $("#pagePort").load("pages/MainPage.html", function(){
     (currentPage.init);
 });
 {% endhighlight %}
 
 To
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 $("#pagePort").load("/www/default/pages/MainPage.html", function(){
     (currentPage.init);
 });
@@ -89,7 +89,7 @@ $("#pagePort").load("/www/default/pages/MainPage.html", function(){
 </ul>
 
 <p>To load an HTML file, use the following syntax:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 $(containerSelector).load(filePath, callbackFunction);
 {% endhighlight %}
 
@@ -99,7 +99,7 @@ $(containerSelector).load(filePath, callbackFunction);
 
 <h3>Example:</h3>
 <h4>JavaScript</h4>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
     $("#pagePort").load(path + "pages/MainPage.html", function(){
     $.getScript(path + "js/MainPage.js", function() {
         if (currentPage.init) {
@@ -110,7 +110,7 @@ $(containerSelector).load(filePath, callbackFunction);
 {% endhighlight %}
 
 <h4>HTML</h4>
-{% highlight html linenos %}
+{% highlight html  %}
 <!-- This is a placeholder for dynamic page content -->
 <div id="pagePort"></div>
 {% endhighlight %}
@@ -127,7 +127,7 @@ JavaScript (and CSS, if needed) references from the <b>MainPage.html</b> are loa
 A reference to the currently loaded page must be preserved as well by using a global object variable.<br>
 A reference to the file path is needed for Windows Phone 8.</p>
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var pagesHistory = [];
 var currentPage = {};
 var path = "";
@@ -138,7 +138,7 @@ var path = "";
 
 <ol>
     <li>On application launch, <b>MainPage.html</b> is loaded from the application code and injected into the <code>#pagePort DIV</code>.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function wlCommonInit() {
     // Special case for Windows Phone 8 only.
     if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
@@ -152,7 +152,7 @@ function wlCommonInit() {
 }
 {% endhighlight %}</li>
     <li><b>MainPage.js</b> is loaded as a part of MainPage.html.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 currentPage = {};
 currentPage.init = function() {
     WL.Logger.debug("MainPage :: init");
@@ -171,7 +171,7 @@ currentPage.init = function() {
     <li><b>Page1.html</b> is loaded and injected into <code>#pagePort DIV</code>Page1.js is loaded as a part of <b>Page1.html</b>.</li>
     <li>The <code>currentPage</code> object is declared and overrides the old one.</li>
     <li>The <code>currentPage.init</code> function is declared.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 currentPage = {};
 currentPage.init = function(){
     WL.Logger.debug(“page1 :: init");
@@ -187,7 +187,7 @@ currentPage.init = function(){
 <ol>
     <li>The previous HTML file name is popped from the <code>PagesHistory</code> stack (<b>MainPage.html</b>).</li>
     <li>It is loaded and injected into <code>#pagePort DIV</code>.
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 currentPage.back = function(){
     WL.Logger.debug("Page1 :: back");
     $("#pagePort").load(pagesHistory.pop(),
@@ -204,7 +204,7 @@ currentPage.back = function(){
 
 <p>The <code>currentPage</code> object is declared and overrides the old one.</p>
 <p>The <code>currentPage.init</code> function is declared.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 currentPage = {};
 currentPage.init = function(){
     WL.Logger.debug("MainPage :: init");

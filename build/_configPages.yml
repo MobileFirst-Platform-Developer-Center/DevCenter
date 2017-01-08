@@ -1,9 +1,9 @@
 url: https://pages.github.ibm.com/MFPSamples
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 baseurl: /MFPSamples
-last_modified: true
 future: true
 unpublished: true
+last_modified: true
 exclude:
   - vendor
   - build

@@ -8,6 +8,7 @@ downloads:
   - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that is accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
 
@@ -94,11 +95,11 @@ This example uses `username` for both the `id` and `displayName` parameters.
 
 1. First, modify the `validateCredentials` method to save the `username` argument:
 
-    ```java
-    private String userId, displayName;
+   ```java
+   private String userId, displayName;
 
-    @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
@@ -115,17 +116,17 @@ This example uses `username` for both the `id` and `displayName` parameters.
             errorMsg = "The credentials are not set properly.";
         }
         return false;
-    }
-    ```
+   }
+   ```
 
 2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
 
-    ```java
-    @Override
-    protected AuthenticatedUser createUser() {
+   ```java
+   @Override
+   protected AuthenticatedUser createUser() {
         return new AuthenticatedUser(userId, displayName, this.getName());
-    }
-    ```
+   }
+   ```
 
 You can use `this.getName()` to get the current security check name.
 
@@ -140,6 +141,9 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
 This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
 
+> **Note:**
+> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+
 ## Adding RememberMe functionality
 By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
 
@@ -153,12 +157,12 @@ In this example, the client decides to enable/disable the **RememberMe** feature
 
 1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
 
-    ```java
-    private String userId, displayName;
-    private boolean rememberMe = false;
+   ```java
+   private String userId, displayName;
+   private boolean rememberMe = false;
 
-    @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
@@ -181,17 +185,17 @@ In this example, the client decides to enable/disable the **RememberMe** feature
             errorMsg = "Credentials not set properly";
         }
         return false;
-    }
-    ```
+   }
+   ```
 
 2. Then, override the `rememberCreatedUser()` method:
 
-    ```java
-    @Override
-    protected boolean rememberCreatedUser() {
+   ```java
+   @Override
+   protected boolean rememberCreatedUser() {
         return rememberMe;
-    }
-    ```
+   }
+   ```
 
 ## Configuring the security check
 In the **adapter.xml** file, add a `<securityCheckDefinition>` element:

@@ -34,7 +34,8 @@ body {
 	-webkit-print-color-adjust:exact;
 }
 .logo-icon {
-	background-image:url(../assets/foundation.png);
+	background-image:url(../assets/foundation.svg);
+	background-size: 25px;
 	background-repeat: no-repeat;
 	background-position: 4px 7px;
 }
@@ -118,8 +119,20 @@ hr {
 		//Instead of the line below you could use @include columns($width-and-count)
 		columns: 2 200px;
 	}
+	#announcements {
+		display: none;
+	}	
 	.blogPostsHeading {
 		margin-top: 20px;
+		font-weight: bold;
+		font-size: 24px;
+		color: black;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	.blogPostsHeadingInactive {
+		font-weight: 300;
+		text-decoration: none;
 	}
 }
 .postDate {
@@ -131,48 +144,45 @@ hr {
 .postTitle {
 	font-size: 120%;
 }
+
 footer {
-	//background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
 	background-color: #292a2d;
-	ul {
-		list-style-type: none;
-		margin: 21px 0 0 10px;
-		padding: 10px;
-		color: $color_mountain_mist_approx;
-		li {
-			display: inline;
-			margin: 0;
-			a {
-				color: $color_mountain_mist_approx;
-				padding: 0 10px;
-				&:hover {
-					color: $white;
-					text-decoration: none;
-				}
-				&:active {
-					color: $white;
-					text-decoration: none;
-				}
-			}
-			&:first-child a {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}
+	padding: 15px;
+	margin: 20px 0 0 0;
+	height: 122px;
+	color: #999;
+}
+
+footer a {
+	font-size: 110%;
+	color: #999;
+	&:hover {
+		color: white;
 	}
 }
-.footer-fix {
-	padding-right: 10px;
+
+.footerItem {
+	float: left;
+	//width: 25%;
+	border-left: 2px solid white;
+	padding-left: 10px;
 }
-code:not([class*="language-"]) {
-	background-color: inherit;
-	color: $black;
-	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-	padding: 0px;
-	background: #FDFAFB;
-    border: 1px solid #E0E0EA;
-	weight:400;
+.footerHeading {
+	font-weight: bold;
+	font-size: 120%;
+	color: white;
 }
+
+//code:not([class*="language-"]) {
+//	background-color: inherit;
+//	color: $black;
+//	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
+//	padding: 0px;
+//	//background: #FDFAFB;
+//   //border: 1px solid #E0E0EA;
+//	weight:400;
+//}
+
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
@@ -231,42 +241,43 @@ blockquote {
 		}
 	}
 }
-:focus, a:focus {
-	outline: none;
-}
-.btn {
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.focus {
-		outline: none;
-	}
-}
+// Focus is kept "unstyled to comply with accessibility guidelines."
+//:focus, a:focus {
+//	outline: none;
+//}
+//.btn {
+//	&:focus {
+//		outline: none;
+//	}
+//	&:active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.active {
+//		&:focus {
+//			outline: none;
+//		}
+//		&.focus {
+//			outline: none;
+//		}
+//	}
+//	&.focus {
+//		outline: none;
+//	}
+//}
 .btn-color {
 	color: white;
 }
 .container .btn {
 	background-color: $color_rhino_approx;
-	&:focus {
-		background-color: $color_rhino_approx;
-		color: white;
-	}
+	//&:focus {
+	//	background-color: $color_rhino_approx;
+	//	color: white;
+	//}
 	&:hover {
 		background-color: $color_nile_blue_approx;
 		color: white;
@@ -275,9 +286,6 @@ blockquote {
 
 h4.panel-title, .tutorial h4.panel-title  {
 	font-size: 13px;
-}
-.navbar-toggle {
-	margin-right: 24px;
 }
 
 .error-template {
@@ -330,4 +338,8 @@ hr {
 	font-size: 80%;
 	margin-top: 50px;
 	margin-bottom: 10px;
+}
+
+.timeago {
+	font-size: 10px;
 }

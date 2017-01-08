@@ -4,19 +4,19 @@ title: Troubleshooting
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
-### Resolving problems with IBM MobileFirst Foundation on IBM Containers	
-When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on IBM Containers, be sure to gather this key information before contacting IBM Support.
+<!-- NLS_CHARSET=UTF-8 -->
+### Resolving problems with {{ site.data.keys.product_full }} on IBM Containers	
+When you are unable to resolve a problem encountered while working with {{ site.data.keys.product_full }} on IBM Containers, be sure to gather this key information before contacting IBM Support.
 
 To help expedite the troubleshooting process, gather the following information:
 
-* The version of IBM MobileFirst Platform Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
+* The version of {{ site.data.keys.product }} that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
 * The container size selected. For example, Medium 2GB.
-* The Bluemix® dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
+* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
 * The container ID
 * The public IP address (if assigned)
 * Versions of docker and cloud foundry: `cf -v` and `docker version`
-* The information returned from running the following Cloud Foundry CLI plug-in for IBM Containers (cf ic) commands from the organization and space where your MobileFirst  Foundation container is deployed:
+* The information returned from running the following Cloud Foundry CLI plug-in for IBM Containers (cf ic) commands from the organization and space where your {{ site.data.keys.product }} container is deployed:
  - `cf ic info`
  - `cf ic ps -a` (If more than one container instance is listed, make sure to indicate the one with the problem.)
 * If Secure Shell (SSH) and volumes were enabled during container creation (while running the **startserver.sh** script), collect all files in the following folders: /opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
@@ -43,7 +43,7 @@ If you encounter a registry-related error after executing the prepareserver.sh o
 In general, any network problems that occur while the prepareserver.sh or prepareanalytics.sh scripts are running could cause processing to hang and then fail.
 
 **How to resolve**  
-First, run the initenv.sh script again to log in to the container registry on Bluemix®. Then, rerun the script that previously failed.
+First, run the initenv.sh script again to log in to the container registry on Bluemix . Then, rerun the script that previously failed.
 
 ### Unable to create the mfpfsqldb.xml file
 An error occurs at the end of running the **prepareserverdbs.sh** script:
@@ -57,7 +57,7 @@ The problem might be an intermittent database connectivity issue. Try to run the
 When running the prepareserver.sh script, it takes more than 20 minutes to push an image to the IBM Containers registry.
 
 **Explanation**  
-The **prepareserver.sh** script pushes the entire MobileFirst Foundation stack, which can take from 20 to 60 minutes.
+The **prepareserver.sh** script pushes the entire {{ site.data.keys.product }} stack, which can take from 20 to 60 minutes.
 
 **How to resolve**  
 If the script has not completed after a 60-minute time period has elapsed, the process might be hung because of a connectivity issue. After a stable connection is reestablished, restart the script.
@@ -84,7 +84,7 @@ The Bluemix session might have timed-out. The user must be logged in to Bluemix 
 Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
 
 ### Administration DB, Live Update and Push Service show up as inactive	
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the MobileFirst Foundation Operations Console even though the **prepareserver.sh** script completed successfully.
+Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the {{ site.data.keys.mf_console }} even though the **prepareserver.sh** script completed successfully.
 
 **Explanation**  
 It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
@@ -104,7 +104,7 @@ The **prepareserver.sh** script fails and returns the error 405 Method Not Allow
 **Explanation**  
 The following error occurs when running the **prepareserver.sh** script to push the image to the IBM Containers registry.
 
-> Pushing the MobileFirst Server image to the IBM Containers registry..  
+> Pushing the {{ site.data.keys.mf_server }} image to the IBM Containers registry..  
 > Error response from daemon:  
 > 405 Method Not Allowed  
 > Method Not Allowed  
@@ -113,7 +113,7 @@ The following error occurs when running the **prepareserver.sh** script to push 
 This error typically occurs if the Docker variables have been modified on the host environment. After executing the initenv.sh script, the tooling provides an option to override the local docker environment to connect to IBM Containers using native docker commands.
 
 **How to resolve**  
-Do not modify the Docker variables (such as DOCKER_HOST and DOCKER_CERT_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
+Do not modify the Docker variables (such as DOCKER\_HOST and DOCKER\_CERT\_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
 
 
 

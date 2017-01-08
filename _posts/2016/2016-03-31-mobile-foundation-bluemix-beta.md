@@ -3,6 +3,7 @@ title: Mobile Foundation Bluemix Service - Beta
 date: 2016-03-31
 tags:
 - MobileFirst_Platform
+- Announcement
 - Bluemix
 - Mobile_Foundation
 version:

@@ -7,7 +7,7 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
 
@@ -118,5 +118,5 @@ If `RSSResponse` is not `200 OK`, we write the status code and reason in the res
 The Adapters Maven project includes the **JavaHTTP** adapter described above.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

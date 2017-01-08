@@ -10,6 +10,7 @@ version:
 author:
   name: Ajay Chebbi
 ---
+**Note:** The Mobile Analytics service is now in Beta. It's available in the main section of the Bluemix catalog!
 
 IBM MobileFirst Foundation 8.0 capabilities are now available on Bluemix as a service called [Mobile Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
 
@@ -21,7 +22,7 @@ If you are familiar with the Analytics feture of MFP, you will see the similiari
 
 
 ## Create an instance of the Mobile Analytics service
-Login to your bluemix.net account and go to "All items". Then click the + button on the top right. This lists the catalog. Scroll all the way to the bottom to see a hidden treasure - a link called "Bluemix Experimental Services". Under the Mobile section you will see the "Mobile Analytics" service! phew! Click on it - give it a name - and you are ready to get started. Click on the Mobile Analytics instance tile you just created and go to the tab "Service Credentials". Here you will see a json with the access key. Make a note as you will need this later.
+Login to your bluemix.net account and go to "All items". Then click the + button on the top right. This lists the catalog. In the "Mobile" section of the main catalog you will see the "Mobile Analytics" service. Click on it - give it a name - and you are ready to get started. Click on the Mobile Analytics instance tile you just created and go to the tab "Service Credentials". Here you will see a json with the access key. Make a note as you will need this later.
 
 ```json
 {
@@ -45,8 +46,8 @@ Here, go to the go to the JNDI section in the "Server Configuration" tab. If its
     <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.authorization.server" value='"embedded"'/>
 
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_PUSH_ROOT}"'/>
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_RUNTIME_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_PUSH_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_RUNTIME_ROOT}"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.id" value='"push"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.secret" value='"hsup"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.client.id" value='"admin"'/>
@@ -86,8 +87,8 @@ Now your JNDI entries should look like following
     <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.authorization.server" value='"embedded"'/>
 
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_PUSH_ROOT}"'/>
-    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${env.MFPF_SERVER_HTTPPORT}/${env.MFPF_RUNTIME_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.push.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_PUSH_ROOT}"'/>
+    <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.server.url" value='"http://${env.ADMIN_HOST}:${port}/${env.MFPF_RUNTIME_ROOT}"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.id" value='"push"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.push.authorization.client.secret" value='"hsup"'/>
     <jndiEntry jndiName="${env.MFPF_ADMIN_ROOT}/mfp.admin.authorization.client.id" value='"admin"'/>

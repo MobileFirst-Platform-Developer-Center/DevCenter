@@ -3,6 +3,7 @@ title: IBM MobileFirst Platform Foundation support for iOS 9.3.1
 date: 2016-04-13
 tags:
 - MobileFirst_Platform
+- Announcement
 - iOS
 version:
 - 7.1

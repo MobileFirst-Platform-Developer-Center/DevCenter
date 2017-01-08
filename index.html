@@ -1,103 +1,126 @@
----
-layout: default
+--- 
+layout: default 
 indexed: false
 ---
-<div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel">
+<div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="banner">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 carousel-caption">
-                        <h1 class="no-anchor">Develop, test, manage and secure your mobile applications</h1>
-                        <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download MobileFirst Foundation" data-analytics-label="MobileFirst" href="{{site.baseurl}}/downloads/" role="button">Get the Developer Kit</a></p>
-                        <p><a class="custombtn btn-lg btn-default stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank" role="button">Find answers on Stack Overflow</a></p>
-                    </div>
-                    <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="mobilefirst console"/>
-                    </div>
+         <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>  
+    <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">      
+      <div class="item active">
+         <div class="container">
+             <div class="row">  
+                 <div class="col-md-7 carousel-caption" role="tab">
+                     <h1 class="no-anchor">Develop, test, manage and secure your mobile applications</h1>
+                     <p><a class="custombtn btn-lg btn-default" data-analytics-category="Download" data-analytics-action="Download {{ site.data.keys.product }}" data-analytics-label="MobileFirst" href="{{site.baseurl}}/downloads/" role="button">Get the Developer Kit</a></p>
+                     <p><a class="custombtn btn-lg btn-default stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank" role="button">Find answers on Stack Overflow</a></p>
+                 </div>  
+                 <div class="hidden-xs col-md-5 carousel-caption">
+                     <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="{{ site.data.keys.mf_console }}" />
+                 </div>
+             </div>
+         </div>
+      </div>
+      <div class="item">
+        <div class="container">
+           <div class="row">  
+                <div class="col-md-7 carousel-caption" role="tab">
+                    <h1 class="no-anchor">Featured: Add Login Approvals to your mobile apps</h1>
+                    <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/blog/2016/12/04/login-approvals-with-ibm-mobilefirst-foundation/" target="_blank" role="button">Read the blog post</a></p>
+                </div>  
+                <div class="hidden-xs col-md-5 carousel-caption">
+                    <img src="{{site.baseurl}}/assets/carousel/login-approvals.svg" height="262px" alt="{{ site.data.keys.mf_console }}" />
                 </div>
-            </div>
+           </div>
         </div>
-        <div class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 carousel-caption">
-                        <h1 class="no-anchor">Foundation in the cloud. Introducing the Mobile Foundation Bluemix service</h1>
-                        <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience MobileFirst Foundation on IBM Bluemix</a></p>
-                    </div>
-                    <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 carousel-caption">
-                        <h1 class="no-anchor">Learn developing MobileFirst Foundation apps with self-paced instructional videos</h1>
-                        <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/" role="button">Visit the Labs</a></p>
-                    </div>
-                    <div class="hidden-xs col-md-5 carousel-caption">
-                        <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="mobile development"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+     </div>
+     <div class="item">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-7 carousel-caption" role="tab">
+                     <h1 class="no-anchor">Foundation in the cloud. Introducing the Mobile Foundation Bluemix service</h1>
+                     <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience {{ site.data.keys.product }} on IBM Bluemix</a></p>
+                 </div>
+                 <div class="hidden-xs col-md-5 carousel-caption">
+                     <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix" />
+                 </div>
+             </div>
+         </div>
+      </div>
+      <div class="item">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-7 carousel-caption" role="tab">
+                     <h1 class="no-anchor">Learn developing {{ site.data.keys.product }} apps with self-paced instructional videos</h1>
+                     <p><a class="custombtn btn-lg btn-default" href="{{site.baseurl}}/labs/developers/8.0/intro" role="button">Visit the Labs</a></p>
+                 </div>
+                 <div class="hidden-xs col-md-5 carousel-caption">
+                     <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="mobile development" />
+                 </div>
+             </div>
+         </div>
+      </div>
+   </div>
+   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+   </a>
+   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+   </a>
 </div>
 <!-- /.carousel -->
 
-<div class="container">
-    <div class="row">
-        <div class="mid-nav col-sm-3 col-xs-6">
-            <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to IBM MobileFirst Foundation"></a>
+<div class="container" role="navigation">
+    <div class="row" role="menu" aria-label="main topics menubar">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
+            <a href="{{site.baseurl}}/get-introduced/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-introduced.png" alt="Get introduced to {{ site.data.keys.product_full }}"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/get-introduced/">Get Introduced</a></h2>
-            <p>Introduction to IBM MobileFirst Foundation.</p>
+            <p>Introduction to {{ site.data.keys.product_full }}.</p>
         </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
-            <a href="{{site.baseurl}}/tutorials/en/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-started.png" alt="Learn the product through tutorials"></a>
-            <h2 class="no-anchor"><a href="{{site.baseurl}}/tutorials/en/">Get Started</a></h2>
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
+            <a href="{{site.baseurl}}/features"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Learn the product through tutorials"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/features">Get Familiar</a></h2>
+            <p>Find out about {{ site.data.keys.product_full }} product features.</p>
+        </div>
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
+            <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-started.png" alt="Learn the product through tutorials"></a>
+            <h2 class="no-anchor"><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">Get Started</a></h2>
             <p>Follow our tutorials, and you’ll be up and running in no time.</p>
         </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
-            <a href="http://www.ibm.com/support/knowledgecenter/SSNJXP/welcome.html"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Read user documentation topics"></a>
-            <h2 class="no-anchor"><a href="http://www.ibm.com/support/knowledgecenter/SSNJXP/welcome.html" target="_blank">Get Docs</a></h2>
-            <p>Access full product user documentation in the Knowledge Center.</p>
-        </div>
-        <div class="mid-nav col-sm-3 col-xs-6">
+        <div class="mid-nav col-sm-3 col-xs-6" role="menuitem">
             <a href="{{site.baseurl}}/help/"><img class="img-circle hidden-xs hidden-sm hidden-md" src="{{site.baseurl}}/assets/mid-menu/get-help.png" alt="Receive further assistance for the product"></a>
             <h2 class="no-anchor"><a href="{{site.baseurl}}/help/">Get Help</a></h2>
-            <p>Find answers to your questions and more…</p>
+            <p>Find answers to your questions, submit feature requests and more...</p>
         </div>
     </div>
 </div>
 
 <hr>
 
-<div id="blogPosts" class="container">
-      <h3 class="blogPostsHeading no-anchor">Recent Updates</h3>
-      <div class="twoColumns">
-        {% for post in site.posts limit:10 %}
+<div id="blogPosts" class="container" role="main">
+    <span aria-label="featured blog posts" role="button" id="blogPostsHeadingUpdates" style="margin-right: 10px;" class="blogPostsHeading">Recent Updates</span> <span aria-label="announcement blog posts" role="button"  id="blogPostsHeadingAnnouncements" class="blogPostsHeading blogPostsHeadingInactive hidden-xs">Announcements</span> 
+    <div id="allPosts" class="twoColumns">
+    {% for post in site.posts limit:10 %} 
         <div class="postItem inline">
-          <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
-          <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+            <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
         </div>
-        {% endfor %}
-      </div>
-      <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong>
+    {% endfor %}
+    </div>
+    <div id="announcements" class="twoColumns">
+    {% assign announcementPosts = site.posts | where_exp:"item", "item.tags contains 'Announcement'" %}
+    {% for post in announcementPosts limit:10 %}
+        <div class="postItem inline">
+            <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+        </div>
+    {% endfor %}
+    </div>
+    <strong><a href="{{site.baseurl}}/blog">More blog posts</a></strong> <span role="Separator">|</span> <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">Contribute a blog post</a>
 </div>

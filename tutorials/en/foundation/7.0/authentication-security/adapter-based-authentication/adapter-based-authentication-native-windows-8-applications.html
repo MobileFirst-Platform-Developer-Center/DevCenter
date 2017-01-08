@@ -20,7 +20,7 @@ Your <code>CustomAdapterChallengeHandler</code> class must implement the <code>i
 <p><code></code></p>
 <ul>
 <li>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 public override bool isCustomResponse(WLResponse response)
 {
     JObject responseJSON = response.getResponseJSON();
@@ -37,7 +37,7 @@ public override bool isCustomResponse(WLResponse response)
 </li>
 <li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Use this method to present the login form. Different approaches are available.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 public override void handleChallenge(JObject response)
 {
   CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
@@ -50,7 +50,7 @@ async () =>
 </li>
 </ul>
 <p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 public void sendResponse(String username, String password) {
    WLProcedureInvocationData invData = new WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");
    invData.setParameters(new Object[] { username, password });
@@ -61,7 +61,7 @@ public void sendResponse(String username, String password) {
 <h3>MainPage</h3>
 <p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> class, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger our <code>challengeHandler</code>.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 WLClient wlClient = WLClient.getInstance();
 <p>CustomAdapterChallengeHandler ch = new CustomAdapterChallengeHandler();
 wlClient.registerChallengeHandler((BaseChallengeHandler<JObject>)ch);
@@ -70,7 +70,7 @@ wlClient.connect(mylistener);
 {% endhighlight %} </p>
 <p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
 Invoke the protected adapter procedure. The login form is presented by the  challenge handler.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");
 Object[] parameters = { 0 };
 invocationData.setParameters(parameters);

@@ -15,7 +15,11 @@ author:
 <h3>MobileFirst Platform Foundation with React Native for iOS</h3>
 <p>In the video below I go through a simple app using the MobileFirst Platform Foundation iOS SDK and a MobileFirst Platform Foundation HTTP Adapter with React Native for iOS as the front end framework. Below I will include important snippets of how to export the native MobileFirst iOS SDK methods into the React Native javascript code.</p>
 
-<p>[embed]https://youtu.be/fz3rWIREqTE[/embed]</p>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/fz3rWIREqTE"></iframe>
+    </div>
+</div>
 
 <p>Below I think one of the more important chunks of code to integrate React Native for iOS with the MobileFirst Platform Foundation. The code chunk is the MobileFirst Platform Foundation Adapter invocation call from the file <code>ResourceRequest.m</code> being exported into the React Native javascript code. In this section of code there are two important React Native methods. One being <code>RCT_EXPORT_MODULE();</code> which will allow you to export a native class into the React Native javascript. The other is <code>RCT_EXPORT_METHOD(...)</code> this class explicitly tells React to expose this class's method for use in the React Native javascript. Exporting the particular method below is going to pass in a path named "path" and also a callback named "results." The adapter call is getting a list of movies stored as JSON data to a particular path (this path ended up not being needed). Then that data is passed as the callback into the React Native code.</p>
 

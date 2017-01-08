@@ -20,7 +20,7 @@ breadcrumb_title: iOS
 </ul>
 <h2 id="imfdata">Using the IMFData SDK</h2>
 <p>After the IMFData SDK is installed, you can begin to initialize and use the SDK in your native iOS application.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 // Initialize the IMFDataManager
 IMFDataManager *manager = [IMFDataManager initializeWithUrl:cloudantProxyUrl];
 {% endhighlight %} <br />
@@ -30,7 +30,7 @@ For example: <code>http://localhost:10080/imf-data-proxy</code><br />
 In the native iOS sample that comes with this tutorial, the value for the <code>cloudantProxyUrl</code> is set in the <code>bluelist.plist</code> file.</p>
 <h2 id="creatingLocal">Creating local data stores</h2>
 <p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 //Get reference to IMFDataManager
 IMFDataManager *manager = [IMFDataManager sharedInstance];
 NSString *dbname=@"todosdb";
@@ -47,7 +47,7 @@ if (error) {
 
 <h2 id="creatingRemote">Creating remote data stores</h2>
 <p>You can also create a Store object to allow your application to access a remote database.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 // Get reference to data manager
 IMFDataManager *manager = [IMFDataManager sharedInstance];
 NSString *dbname = @"todosdb";
@@ -64,7 +64,7 @@ NSString *dbname = @"todosdb";
 
 <h2 id="permissions">Setting user permissions for remote stores</h2>
 <p>You can set specific permissions for users to access remote stores.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @"todosdb" completionHander:^(BOOL success, NSError *error) {
     if(error){
         // Handle error
@@ -83,7 +83,7 @@ NSString *dbname = @"todosdb";
 <li>Extend <code>NSObject</code>.</li>
 </ul>
 <h3>TodoItem implementation (<code>TodoItem.h</code>)</h3>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @interface TodoItem : NSObject <CDTDataObject>
 @property NSString *name;
 @property NSNumber *priority;
@@ -93,7 +93,7 @@ NSString *dbname = @"todosdb";
 {% endhighlight %} </p>
 
 <p>You must then register the class and data type with the <code>CDTDataObjectMapper</code>. In the sample, the <code>TableViewController</code> does that after the store is created.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 //using the existing store
  [self.datastore.mapper setDataType:@"TodoItem" forClassName:NSStringFromClass([TodoItem class])];
 {% endhighlight %}
@@ -101,7 +101,7 @@ NSString *dbname = @"todosdb";
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in a data store.</p>
 <h3>Creating Todo Items</h3>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 //using a store that was created previously
 - (void) createItem: (TodoItem*) item
 {
@@ -117,7 +117,7 @@ NSString *dbname = @"todosdb";
 {% endhighlight %} </p>
 
 <h3>Updating Todo Items</h3>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 //using a store that was created previously
 - (void) updateItem: (TodoItem*) item
 {
@@ -134,7 +134,7 @@ NSString *dbname = @"todosdb";
 
 <h3>Deleting data</h3>
 <p>To delete an object in a data store, pass the object to the <code>delete: completionHandler</code> method:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 //using a store that was created previously
 -(void) deleteItem: (TodoItem*) item
 {
@@ -154,7 +154,7 @@ NSString *dbname = @"todosdb";
 <p>By using the data manager API, you can synchronize data between local storage on the device and remote stored instances.</p>
 <h3>Pull replication</h3>
 <p>When pull replication runs, the local database within the mobile device is updated with what exists in the remote database.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (void)pullItems {
     // store is an existing CDTStore object created using IMFDataManager remoteStore
     NSError *replicationError;
@@ -176,7 +176,7 @@ NSString *dbname = @"todosdb";
 
 <h3>Push replication</h3>
 <p>When push replication runs, the data from the local database within the mobile device is sent to the remote database.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (void)pushItems {
     // store is an existing CDTStore object created using IMFDataManager localStore
     NSError *replicationError;
@@ -239,7 +239,7 @@ pod 'CloudantToolkitLocal', '1.0.0'
 <p>Now you can run the sample on the simulators that are provided by Xcode or on a supported iOS device.</p>
 <h2 id="flow">BlueList application flow</h2>
 <p>When the application starts, the <code>AppDelegate</code> instance initializes the connection to MobileFirst Server. After initialization, the application creates and registers the <code>BlueListChallangeHandler</code> handler.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     WLClient *wlClient = [WLClient sharedInstance];
     // Register the Challenge Handler
@@ -250,7 +250,7 @@ pod 'CloudantToolkitLocal', '1.0.0'
 {% endhighlight %} </p>
 
 <p>The sample silently authenticates a user by calling <code>CloudantAutheticationAdapter</code> with the correct username and password parameters. This is completed in the <code>BlueListChallengeHandler</code>.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 -(void) handleChallenge:(WLResponse *)response {
     NSLog(@"Inside handleChallenge - silently loggin in");
     WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"CloudantAuthenticationAdapter" procedureName:@"submitAuthentication"];

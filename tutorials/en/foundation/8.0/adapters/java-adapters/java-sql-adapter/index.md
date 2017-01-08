@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
 This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
@@ -25,7 +25,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * [Sample adapter](#sample-adapter)
 
 ## Setting up the data source
-In order to configure the MobileFirst Server to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the MobileFirst Operations Console.
+In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
 
 Edit the adater.xml file and add the following properties:
 
@@ -63,7 +63,7 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### Using DataSource
-When the adapter is deployed, or whenever the configuration is changed from the MobileFirst console, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
+When the adapter is deployed, or whenever the configuration is changed from the {{ site.data.keys.mf_console }}, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -312,5 +312,5 @@ Also included is an SQL script in the **Utils** folder.
 ### Sample usage
 * Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

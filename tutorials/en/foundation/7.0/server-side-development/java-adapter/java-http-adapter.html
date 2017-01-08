@@ -19,44 +19,44 @@ downloads:
 </ul>
 <h2 id="rssadapterApp">RSSAdapterApplication</h2>
 <p><code>RSSAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by your application.</p>
-<p>{% highlight java linenos %} <br />
-	@Override<br />
-	protected void init() throws Exception {<br />
-		RSSAdapterResource.init();<br />
-		logger.info("Adapter initialized!");<br />
-	}<br />
+<p>{% highlight java  %}
+	@Override
+	protected void init() throws Exception {
+		RSSAdapterResource.init();
+		logger.info("Adapter initialized!");
+	}
  {% endhighlight %} </p>
 <h2 id="rssadapterRes">RSSAdapterResource</h2>
-<p>{% highlight java linenos %} <br />
-@Path("/")<br />
-public class RSSAdapterResource {<br />
-}<br />
+<p>{% highlight java  %}
+@Path("/")
+public class RSSAdapterResource {
+}
  {% endhighlight %} <br />
 <code>RSSAdapterResource</code> handles the requests to your adapter.</p>
 <p><code>@Path("/")</code> means that the resources are available at this URL: <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code></p>
 <h3>HTTP client</h3>
-<p>{% highlight java linenos %} <br />
-	private static CloseableHttpClient client;<br />
-	private static HttpHost host;</p>
-<p>	public static void init() {<br />
-		client = HttpClients.createDefault();<br />
-		host = new HttpHost("rss.cnn.com");<br />
-	}<br />
+<p>{% highlight java  %}
+	private static CloseableHttpClient client;
+	private static HttpHost host;
+	public static void init() {
+		client = HttpClients.createDefault();
+		host = new HttpHost("rss.cnn.com");
+	}
  {% endhighlight %} </p>
 <p>Because each request to your resource creates a new instance of <code>RSSAdapterResource</code>, it is important to reuse objects that might impact performance. In this example, the Http client is a <code>static</code> object and is initialized in a static <code>init</code> method, which gets called by the <code>init</code> method of <code>RSSAdapterApplication</code>, as described above.</p>
 <h3>Procedure resource</h3>
-<p>{% highlight java linenos %} <br />
-	@GET<br />
-	@Produces("application/json")<br />
-	public void get(@Context HttpServletResponse response, @QueryParam("topic") String topic)<br />
-			throws ClientProtocolException, IOException, IllegalStateException, SAXException {<br />
-		if(topic!=null &amp;&amp; !topic.isEmpty()){<br />
-			execute(new HttpGet("/rss/edition_"+ topic+".rss"), response);<br />
-		}<br />
-		else{<br />
-			execute(new HttpGet("/rss/edition.rss"), response);<br />
-		}</p>
-<p>	}<br />
+<p>{% highlight java  %}
+	@GET
+	@Produces("application/json")
+	public void get(@Context HttpServletResponse response, @QueryParam("topic") String topic)
+			throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+		if(topic!=null &amp;&amp; !topic.isEmpty()){
+			execute(new HttpGet("/rss/edition_"+ topic+".rss"), response);
+		}
+		else{
+			execute(new HttpGet("/rss/edition.rss"), response);
+		}
+	}
  {% endhighlight %} </p>
 <p>This adapter exposes just one resource URL which allows you to retrieve the RSS feed from the back-end service.</p>
 <ul>
@@ -69,24 +69,24 @@ public class RSSAdapterResource {<br />
 </ul>
 <p>Depending on whether you pass a <code>topic</code> parameter, the <code>execute</code> method builds a different path and retrieve a different RSS file.</p>
 <h3>execute()</h3>
-<p>{% highlight java linenos %} <br />
-	public void execute(HttpUriRequest req, HttpServletResponse resultResponse)<br />
-			throws ClientProtocolException, IOException,<br />
-			IllegalStateException, SAXException {<br />
-		HttpResponse RSSResponse = client.execute(host, req);<br />
-		ServletOutputStream os = resultResponse.getOutputStream();<br />
-		if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){<br />
-			resultResponse.addHeader("Content-Type", "application/json");<br />
-			String json = XML.toJson(RSSResponse.getEntity().getContent());<br />
-			os.write(json.getBytes(Charset.forName("UTF-8")));</p>
-<p>		}else{<br />
-			resultResponse.setStatus(RSSResponse.getStatusLine().getStatusCode());<br />
-			RSSResponse.getEntity().getContent().close();<br />
-			os.write(RSSResponse.getStatusLine().getReasonPhrase().getBytes());<br />
-		}<br />
-		os.flush();<br />
-		os.close();<br />
-	}<br />
+<p>{% highlight java  %}
+	public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
+			throws ClientProtocolException, IOException,
+			IllegalStateException, SAXException {
+		HttpResponse RSSResponse = client.execute(host, req);
+		ServletOutputStream os = resultResponse.getOutputStream();
+		if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+			resultResponse.addHeader("Content-Type", "application/json");
+			String json = XML.toJson(RSSResponse.getEntity().getContent());
+			os.write(json.getBytes(Charset.forName("UTF-8")));
+		}else{
+			resultResponse.setStatus(RSSResponse.getStatusLine().getStatusCode());
+			RSSResponse.getEntity().getContent().close();
+			os.write(RSSResponse.getStatusLine().getReasonPhrase().getBytes());
+		}
+		os.flush();
+		os.close();
+	}
  {% endhighlight %} </p>
 <ul>
 <li><code>HttpResponse RSSResponse = client.execute(host, req)</code>. The static HTTP client is used to execute the HTTP request and store the response.</li>
@@ -100,102 +100,101 @@ public class RSSAdapterResource {<br />
 <h2 id="results">Results</h2>
 <p>Use the testing techniques as described in the <a href="../#testing" title="Java Adapters">Java adapter</a> tutorial to test your work.</p>
 <p>The adapter should return the RSS feed converted to JSON.</p>
-<p>{% highlight javascript linenos %} <br />
-{<br />
-   "rss": {<br />
-      "channel": {<br />
-         "copyright": "Copyright 2015 Cable News Network LP, LLLP.",<br />
-         "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
-         "image": {<br />
-            "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
-            "height": "33",<br />
-            "link": "http:\/\/edition.cnn.com\/index.html?eref=edition",<br />
-            "title": "CNN.com - Top Stories",<br />
-            "url": "http:\/\/i.cdn.turner.com\/cnn\/.e\/img\/1.0\/logo\/cnn.logo.rss.gif",<br />
-            "width": "144"<br />
-         },<br />
-         "info": {<br />
-            "uri": "rss\/edition"<br />
-         },<br />
-         "item": [<br />
-            {<br />
-               "content": {<br />
-                  "height": "51",<br />
-                  "medium": "image",<br />
-                  "type": "image\/jpeg",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "description": "It was supposed to be an opposition rally against Russia's policies in Ukraine, but following the slaying of Boris Nemtsov, the march has taken on a different theme.",<br />
-               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html",<br />
-               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html?eref=edition",<br />
-               "pubDate": "Sun, 01 Mar 2015 07:03:36 EST",<br />
-               "thumbnail": {<br />
-                  "height": "51",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "title": "Thousands rally in Moscow for slain Putin critic"<br />
-            },<br />
-            {<br />
-               "content": {<br />
-                  "height": "51",<br />
-                  "medium": "image",<br />
-                  "type": "image\/jpeg",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "description": "They share an apocalyptic \"end-of-days\" vision and now there are signs that Boko Haram may be edging towards a pledge of allegiance to IS leader Abu Bakr al-Baghdadi.",<br />
-               "guid": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html",<br />
-               "link": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html?eref=edition",<br />
-               "pubDate": "Sat, 28 Feb 2015 11:40:30 EST",<br />
-               "thumbnail": {<br />
-                  "height": "51",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "title": "Boko Haram and ISIS: Planning an alliance?"<br />
-            },<br />
-            {<br />
-               "content": {<br />
-                  "height": "51",<br />
-                  "medium": "image",<br />
-                  "type": "image\/jpeg",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "description": "Three teen British girls suspected of traveling to Syria appeared on surveillance video in Turkey before they went to their destination.",<br />
-               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html",<br />
-               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html?eref=edition",<br />
-               "pubDate": "Sun, 01 Mar 2015 09:45:52 EST",<br />
-               "thumbnail": {<br />
-                  "height": "51",<br />
-                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",<br />
-                  "width": "90"<br />
-               },<br />
-               "title": "Syria: Missing UK teens caught on video"<br />
-            }<br />
-         ],<br />
-         "language": "en-US",<br />
-         "link": [<br />
-            "http:\/\/edition.cnn.com\/index.html?eref=edition",<br />
-            {<br />
-               "href": "http:\/\/rss.cnn.com\/rss\/edition",<br />
-               "rel": "self",<br />
-               "type": "application\/rss+xml"<br />
-            },<br />
-            {<br />
-               "href": "http:\/\/pubsubhubbub.appspot.com\/",<br />
-               "rel": "hub"<br />
-            }<br />
-         ],<br />
-         "pubDate": "Sun, 01 Mar 2015 10:14:59 EST",<br />
-         "title": "CNN.com - Top Stories",<br />
-         "ttl": "10"<br />
-      },<br />
-      "version": "2.0"<br />
-   }<br />
-}<br />
+<p>{% highlight javascript  %}
+{
+   "rss": {
+      "channel": {
+         "copyright": "Copyright 2015 Cable News Network LP, LLLP.",
+         "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",
+         "image": {
+            "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",
+            "height": "33",
+            "link": "http:\/\/edition.cnn.com\/index.html?eref=edition",
+            "title": "CNN.com - Top Stories",
+            "url": "http:\/\/i.cdn.turner.com\/cnn\/.e\/img\/1.0\/logo\/cnn.logo.rss.gif",
+            "width": "144"
+         },
+         "info": {
+            "uri": "rss\/edition"
+         },
+         "item": [
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",
+                  "width": "90"
+               },
+               "description": "It was supposed to be an opposition rally against Russia's policies in Ukraine, but following the slaying of Boris Nemtsov, the march has taken on a different theme.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html",
+               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html?eref=edition",
+               "pubDate": "Sun, 01 Mar 2015 07:03:36 EST",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Thousands rally in Moscow for slain Putin critic"
+            },
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",
+                  "width": "90"
+               },
+               "description": "They share an apocalyptic \"end-of-days\" vision and now there are signs that Boko Haram may be edging towards a pledge of allegiance to IS leader Abu Bakr al-Baghdadi.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html",
+               "link": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html?eref=edition",
+               "pubDate": "Sat, 28 Feb 2015 11:40:30 EST",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Boko Haram and ISIS: Planning an alliance?"
+            },
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",
+                  "width": "90"
+              },
+               "description": "Three teen British girls suspected of traveling to Syria appeared on surveillance video in Turkey before they went to their destination.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html"
+               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html?eref=edition",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Syria: Missing UK teens caught on video"
+            }
+         ],
+         "language": "en-US",
+         "link": [
+            "http:\/\/edition.cnn.com\/index.html?eref=edition",
+            {
+               "href": "http:\/\/rss.cnn.com\/rss\/edition",
+               "rel": "self",
+               "type": "application\/rss+xml"
+            },
+            {
+               "href": "http:\/\/pubsubhubbub.appspot.com\/",
+               "rel": "hub"
+            }
+         ],
+         "pubDate": "Sun, 01 Mar 2015 10:14:59 EST",
+         "title": "CNN.com - Top Stories",
+         "ttl": "10"
+      },
+      "version": "2.0"
+   }
+}
  {% endhighlight %} </p>
 <h2 id="sample">Sample adapter and application</h2>
 <p>The <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JavaAdaptersProject.zip">attached sample</a> includes an adapter, called <code>RSSAdapter</code>, and a hybrid application, called <code>RSSReader</code>, to test the adapter inside an application.</p>

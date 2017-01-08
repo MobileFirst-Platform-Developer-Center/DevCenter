@@ -30,7 +30,7 @@ To create and configure an iOS native project, first follow these tutorials:</p>
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
     <displayName>iOSNativePush</displayName>
     <description>iOSNativePush</description>
@@ -95,7 +95,7 @@ Categories describe a custom type of notification that your application sends an
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
 <p>    
-{% highlight objc linenos %}
+{% highlight objc  %}
 if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){
   UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
   UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
@@ -113,7 +113,7 @@ if([application respondsToSelector:@selector(registerUserNotificationSettings:)]
 }
 {% endhighlight %} </li>
 <li>Implement the new callback method:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler
 {% endhighlight %} </p>
 <p>This new callback method is invoked when the user clicks the action button.</p>

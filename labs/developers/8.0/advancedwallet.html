@@ -2,20 +2,23 @@
 layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
-  - name: Introduction
+  - name: Lab selection
     path: /labs/developers/8.0/intro/
-  - name: Setup
-    path: /labs/developers/8.0/setup/
+  - name: Advanced Car Service
+    path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
     path: /labs/developers/8.0/advancedwallet
 ---
 <div>
-  <img alt="logo for advanced wallet" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo.png">
+    <img alt="logo for advanced wallet" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/logo.png">
+    <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/screenstory.jpg">
 </div>
 
-<h4>Lab highlights</h4>
+<h2>Lab highlights</h2>
 <ul>
   <li>Migration from MobileFirst Platform 7.1 based app to 8.0</li>
   <li>Hybrid, Ionic 1 based</li>
@@ -28,18 +31,75 @@ tabs:
 
 <p>Time to complete: up to 3 hours</p>
 
-<div>
-  <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedwallet/screenstory.jpg">
-</div>
-
 <br>
-<h4 class="no-anchor">Pre-requisites:</h4>
-<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
+<h2 class="no-anchor">Pre-requisites:</h2>
+<p>Follow the Setup section to install an Ubuntu image, install the {{ site.data.keys.mf_dev_kit }}, archetypes and CLI and register at Bluemix.</p>
 <p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.67 - 2.69)</p>
-<br>
+
+<h2 class="no-anchor">Setup</h2>
+<p>The recommended way to setup your workstation for these labs is to download the prepared VMware image that has all required software installed and ready to be used. However, if you want to do this on your own you will need to setup the dependencies listed below.</p>
+
+<ul>
+    <li>Google Chrome <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">CORS extension</a></li>
+    <li>Visual Studio Code</li>
+    <li>Oracle JDK 7</li>
+    <li>Android SDK</li>
+        <ul>
+            <li>Google Play Services</li>
+            <li>Android Support repository</li>
+            <li>Google Repository</li>
+            <li>API v23</li>
+            <li>Build tools v23</li>
+            <li>Intel x86 Atom_64 image v23</li>
+        </ul>
+    </li>
+    <li>curl</li>
+    <li>nodejs</li>
+    <li>npm</li>
+        <ul>
+            <li>bower</li>
+            <li>gulp</li>
+            <li>cordova</li>
+            <li>ionic@2.0.0-beta.32</li>
+            <li>cdvlive</li>
+            <li>maven</li>
+            <li>git</li>
+            <li>python</li>
+        </ul>
+    </li>
+</ul>
+
+<p>If you will be using ubuntu-based x64 distro, additional packages are required: lib32z1, lib32ncurses5, lib32bz2-1.0, and lib32stdc++6.<br/>
+Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME and add them to your PATH.</p>
+
+<p>Alternatively to watching labs on YouTube, you can download offline version <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a>. The videos are located inside the "labs_en" folder and have "webm" extension. VLC, same as most of media players and browser will be able to play them.</p>
+
+<h3 class="no-anchor">Download and setup the VM image</h3>
+<ul>
+    <li>Download the VMware image archive <a href="https://www.dropbox.com/s/ei1ncazl630w9ej/mfp-seminar-3.1.ova?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/u/s!ArRVJ_BgeJEFiynEo2iizNF_vVuQ" target="_blank">OneDrive</a> (7.7 GB)</li>
+    <li>Import the downloaded .ova file into the latest version of VMware Player / VMware Fusion / VMware Workstation</li>
+    <li>Set the VM settings to at least 2 CPU cores and 4GB of RAM; Enable VT-x/EPT support (may also be required to enable it in the computer BIOS as well)</li>
+    <li>Start the VM image</li>
+    <li>Use user "ibm" and password: “QQqq1234″ to log in. Same password is set for sudo</li>
+</ul>
+
+<h3 class="no-anchor">Download and install {{ site.data.keys.mf_dev_kit }}</h3>
+<ul>
+  <li>Follow the {{ site.data.keys.mf_dev_kit }} <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
+  <li>Install the {{ site.data.keys.mf_cli }} by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
+  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the {{ site.data.keys.mf_console }}.</li>
+</ul>
+
+<h3 class="no-anchor">Register on Bluemix</h3>
+<ul>
+  <li>Navigate to <a href="https://console.ng.bluemix.net/registration/">registration page</a>, fill required info and register.</li>
+  <li>Check your mailbox and verify email</li>
+  <li>Make sure that you are able to login inside <a href="https://console.ng.bluemix.net/">Bluemix console</a></li>
+</ul>
+
+<h2 class="no-anchor">Lab steps</h2>
 
 <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
-
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">

@@ -22,7 +22,7 @@ Only the developers or the enterprise who have the original private key that was
 <h4>authenticationConfig.xml</h4>
 <p>Add the relevant authentication realm to a security test.</p>
 <p>If mobileSecurityTest is used, the testAppAuthenticity child-element must be added to it:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <mobileSecurityTest name="mobileTests">
 	<testAppAuthenticity/>
 	<testDeviceId provisioningType="none" />
@@ -31,7 +31,7 @@ Only the developers or the enterprise who have the original private key that was
 </mobileSecurityTest>
 {% endhighlight %}</p>
 <p>If customSecurityTest is used, the wl_authenticityRealm realm must be added to it:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <customSecurityTest name="customTests">
 	<test realm="wl_antiXSRFRealm" step="1"/>
 	<test realm="wl_authenticityRealm" step="1"/>

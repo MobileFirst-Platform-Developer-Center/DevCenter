@@ -8,7 +8,7 @@ downloads:
   - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
@@ -91,7 +91,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### Configuration class
-You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
+You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
 
 Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
 

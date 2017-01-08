@@ -37,9 +37,21 @@ downloads:
 <p>    In case you do not have an API key, you can get one from the <a href="https://code.google.com/apis/console">Google GCM Console</a></p>
 <ul>
 <li>Your project's number is the <code>senderId</code></li>
-<li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)</li>
+<li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)
+
+   <blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+   Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+   To setup FCM:
+
+   <ol>
+      <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+      <li>Create a new project and provide a project name.</li>
+      <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+      <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+   </ol></li>
 </ul>
-<p>{% highlight xml linenos %}<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
+<p>{% highlight xml  %}<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
 	<pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/>
 </nativeAndroidApp>{% endhighlight %}
 </li>
@@ -90,7 +102,7 @@ downloads:
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 <uses-permission android:name="android.permission.INTERNET" />
  <uses-permission android:name="android.permission.GET_TASKS"/>
@@ -105,7 +117,7 @@ downloads:
  
 <p>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</p>
 
-{% highlight xml linenos %}
+{% highlight xml  %}
 <activity
     android:name="com.worklight.androidnativepush.AndroidNativePush"
     android:label="@string/app_name"
@@ -115,7 +127,7 @@ downloads:
 
 <p>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</p>
 
-{% highlight xml linenos %}
+{% highlight xml  %}
 <intent-filter>
    <action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" />
    <category android:name="android.intent.category.DEFAULT" />
@@ -124,7 +136,7 @@ downloads:
 
 <p>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</p>
 
-{% highlight xml linenos %}
+{% highlight xml  %}
 <service android:name="com.worklight.wlclient.push.GCMIntentService" />
 <receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
    <intent-filter>
@@ -142,7 +154,7 @@ downloads:
 <h3>Creating an event source.</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
 
-{% highlight js linenos %}
+{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -158,7 +170,7 @@ WL.Server.createEventSource({
 </ul>
 <h3>Sending a notification</h3>
 <p>Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-{% highlight js linenos %}
+{% highlight js  %}
     function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
@@ -176,24 +188,24 @@ WL.Server.createEventSource({
 <h2 id="notificationAPIClient">Notification API - Client side</h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 final WLClient client = WLClient.createInstance(this);{% endhighlight %}
 
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLPush push = client.getPush();{% endhighlight %}
 <p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the GCM server to receive push notifications.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 client.getPush().setOnReadyToSubscribeListener(listener);
 client.connect(listener);
 {% endhighlight %}
 
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.</p>
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 public void onReadyToSubscribe() {.....}
 {% endhighlight %}
@@ -208,13 +220,13 @@ public void onReadyToSubscribe() {.....}
 <code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 <p>Example:</p>
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
 {% endhighlight %}
 
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
 
-{% highlight java linenos %}@Override
+{% highlight java  %}@Override
 public void onReadyToSubscribe() {
    WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
 }
@@ -225,7 +237,7 @@ public void onReadyToSubscribe() {
 <ul>
 <p><code>onPause()</code> must call the <code>setForeground(false)</code> method of the <code>WLPush</code> instance to receive the notification in the notification bar when the application is paused.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 protected void onPause() {
     super.onPause();
@@ -236,7 +248,7 @@ protected void onPause() {
 
 <p><code>onResume()</code> must call the <code>setForeground(true)</code> method of the <code>WLPush</code> instance to receive the notification in the callback of the application.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 protected void onResume() {
     super.onResume();
@@ -247,7 +259,7 @@ protected void onResume() {
 
 <p><code>onDestroy()</code> must call the <code>unregisterReceivers</code> method of the <code>WLPush</code> instance to avoid leak exceptions from the receiver when the application exits.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 protected void onDestroy() {
     super.onDestroy();
@@ -267,7 +279,7 @@ protected void onDestroy() {
 </ul>
 <p>Example:</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient client = WLClient.getInstance();
 client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));
 {% endhighlight %}
@@ -286,7 +298,7 @@ client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyLis
 </ul>
 <p>Example:</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient client = WLClient.getInstance();
 client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCRIBE));
 {% endhighlight %}
@@ -299,14 +311,14 @@ client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCR
 <h3>Additional client-side API methods:</h3>
 <p><code>isPushSupported()</code> - Indicates whether push notifications are supported by the device.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient client = WLClient.getInstance();
 boolean supported = client.getPush().isPushSupported();
 {% endhighlight %}
 
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient client = WLClient.getInstance();
 boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");
 {% endhighlight %}
@@ -314,19 +326,19 @@ boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListener, WLEventSourceListener{
 {% endhighlight %}
 
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid", "PushAdapter","PushEventSource", this );
 {% endhighlight %}
 
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
 
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 public void onReceive(String arg0, String arg1) {
     AndroidNativePush.updateTextView("Notification received  " + arg0);
@@ -338,7 +350,7 @@ public void onReceive(String arg0, String arg1) {
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in application-descriptor.xml:<br />
 
-{% highlight xml linenos %}<tags>
+{% highlight xml  %}<tags>
     <tag>
         <name>PushTag1</name>
         <description>About pushTag1</description>

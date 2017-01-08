@@ -8,8 +8,9 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-By using IBM MobileFirst Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+By using HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
 You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
 
@@ -82,7 +83,7 @@ Declare the required procedures below the `connectivity` element:
                     <li><b>port</b>: <i>Optional.</i> The port address. If no port is specified the default HTTP/S port is used (80/443)</li>
                     <li><b>sslCertificateAlias</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The alias of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
                     <li><b>sslCertificatePassword</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The password of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <authentication> element, as follows:
+                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <b>authentication</b>< element, as follows:
                         <ul>
                             <li>Basic authentication
 {% highlight xml %}
@@ -107,7 +108,7 @@ Declare the required procedures below the `connectivity` element:
         <password></password>
     </serverIdentity>
 </authentication>
-{% endhighlight %}</li>
+{% endhighlight %}
                         </ul>
                     </li>
                     <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
@@ -130,12 +131,11 @@ Declare the required procedures below the `connectivity` element:
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>Optional.</i> Defines the maximum number of concurrent connections, which the MobileFirst Server can open to the back end. IBM MobileFirst Foundation does not limit the incoming service requests from applications. This limits only the number of concurrent HTTP connections to the back-end service.
+                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>Optional.</i> Defines the maximum number of concurrent connections, which the {{ site.data.keys.mf_server }} can open to the back end. {{ site.data.keys.product }} does not limit the incoming service requests from applications. This limits only the number of concurrent HTTP connections to the back-end service.
                     <br/><br/>
                     The default number of concurrent HTTP connections is 50. You can modify this number based on the expected concurrent requests to the adapter and the maximum requests allowed on the back-end service. You can also configure the back-end service to limit the number of concurrent incoming requests.
                     <br/><br/>
                     Consider a two-node system, where the expected load on the system is 100 concurrent requests and the back-end service can support up to 80 concurrent requests. You can set maxConcurrentConnectionsPerNode to 40. This setting ensures that no more than 80 concurrent requests are made to the back-end service.
-
                     <br/><br/>
                     If you increase the value, the back-end application needs more memory. To avoid memory issues, do not to set this value too high. Instead, estimate the average and peak number of transactions per second, and evaluate their average duration. Then, calculate the number of required concurrent connections as indicated in this example, and add a 5-10% margin. Then, monitor your back end, and adjust this value as required, to ensure that your back-end application can process all incoming requests.
                     <br/><br/>
@@ -155,7 +155,7 @@ Declare the required procedures below the `connectivity` element:
 
 ## JavaScript implementation
 A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
-Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the MobileFirst procedure.
+Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the procedure.
 
 The following URL parts can be parameterized.
 
@@ -334,5 +334,5 @@ var weatherInfo = {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

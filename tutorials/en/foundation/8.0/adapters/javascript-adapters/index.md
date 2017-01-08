@@ -5,9 +5,9 @@ show_children: true
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
-
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
 
@@ -48,12 +48,12 @@ The `adapter-resources` folder contains an XML configuration file. This configur
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>Mandatory.</i> The name of the adapter. This name must be unique within the MobileFirst Server. It can contain alphanumeric characters and underscores, and must start with a letter. After you define and deploy an adapter, you cannot modify its name.</li>
-					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the MobileFirst Operations Console. If this element is not specified, the value of the name attribute is used instead.</li>
-					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the MobileFirst Operations Console.</li>
+                    <li><b>name</b>: <i>Mandatory.</i> The name of the adapter. This name must be unique within the {{ site.data.keys.mf_server }}. It can contain alphanumeric characters and underscores, and must start with a letter. After you define and deploy an adapter, you cannot modify its name.</li>
+					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the {{ site.data.keys.mf_console }}. If this element is not specified, the value of the name attribute is used instead.</li>
+					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the {{ site.data.keys.mf_console }}.</li>
 					<li><b>connectivity</b>: <i>Mandatory.</i> Defines the mechanism by which the adapter connects to the back-end application. It contains the <code>connectionPolicy</code> subelement.
                         <ul>
-                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-sql-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
+                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-http-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
                         </ul>
                     </li>
                     <li><b>procedure</b>: <i>Mandatory.</i> Defines a process for accessing a service that is exposed by a back-end application.
@@ -66,7 +66,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
                                 </ul>
                             </li>
                             <li><b>scope</b>: <i>Optional.</i> The security scope that protects the adapter resource procedure, as a string of zero or more space-separated scope elements. A scope element can be a keyword that is mapped to a security check, or the name of a security check. The default value of the scope attribute is an empty string. When the value of the <b>secured</b> attribute is false, the scope attribute is ignored. For information on OAuth resource protection, see the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
-                            <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the MobileFirst security framework. The following values are valid:
+                            <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the {{ site.data.keys.product }} security framework. The following values are valid:
                                 <ul>
                                     <li><b>true</b>: Default. The procedure is protected. Calls to the procedure require a valid access token.</li>
                                     <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see the <a href="../../authentication-and-security/#unprotected-resources">Unprotected resources</a> topic in the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
@@ -86,7 +86,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 
 #### Custom properties
 
-The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [getPropertyValue API](#getpropertyvalue) and then further customized at run time.
+The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **{{ site.data.keys.mf_console }} → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [getPropertyValue API](#getpropertyvalue) and then further customized at run time.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `procedure` elements. In the example above we defined a displayName property with a default value, so it could be used later.
 
@@ -101,21 +101,47 @@ The `<property>` element takes the following attributes:
 ![Console properties](console-properties.png)
 
 #### Pull and Push Configurations
-
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the `pull` and `push` commands described below using either Maven or the MobileFirst CLI. For the properties to be shared, you need to *change the default values given to the properties*.
+To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
 
 Run the commands from the root folder of the adapter Maven project:
 
 **Maven**  
 
-* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=config.json`.
-* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=config.json`.
+* To **pull** the configurations file  
+  ```bash
+  mvn adapter:configpull -DmfpfConfigFile=config.json
+  ```
+  
+* To **push** the configurations file
+  ```bash
+  mvn adapter:configpush -DmfpfConfigFile=config.json
+  ```
 
-**MobileFirst CLI**  
+**{{ site.data.keys.mf_cli }}**  
 
-* To **pull** the configurations file - `mfpdev adapter pull`.
-* To **push** the configurations file - `mfpdev adapter push`.
+* To **pull** the configurations file
+  ```bash
+  mfpdev adapter pull
+  ```
+  
+* To **push** the configurations file
+  ```bash
+  mfpdev adapter push
+  ```
+
+#### Pushing configurations to multiple servers
+The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
+
+**Maven**  
+Note above how by default you specify a **config.json** file. Create files with different names to address different targets.
+
+**{{ site.data.keys.mf_cli }}**  
+Use the **--configFile** or **-c** flag to specify a different configuration file than the default one:
+
+```bash
+mfpdev adapter pull -c [adapterProject]/alternate_config.json
+```
 
 > Learn more in by using `mfpdev help adapter pull/push`.
 
@@ -134,24 +160,24 @@ By using server-side JavaScript, a procedure can process the data before or afte
 JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-in-javascript-adapters) code.
 
 ### Using global variables
-The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
+The {{ site.data.keys.mf_server }} does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
 
 ### Adapter response threshold
-Adapter calls are not designed to return huge chunks of data because the adapter response is stored in MobileFirst Server memory as a string. Thus, data that exceeds the amount of available memory might cause an out-of-memory exception and the failure of the adapter invocation. To prevent such failure, you configure a threshold value from which the MobileFirst Server returns gzipped HTTP responses. The HTTP protocol has standard headers to support gzip compression. The client application must also be able to support gzip content in HTTP.
+Adapter calls are not designed to return huge chunks of data because the adapter response is stored in {{ site.data.keys.mf_server }} memory as a string. Thus, data that exceeds the amount of available memory might cause an out-of-memory exception and the failure of the adapter invocation. To prevent such failure, you configure a threshold value from which the {{ site.data.keys.mf_server }} returns gzipped HTTP responses. The HTTP protocol has standard headers to support gzip compression. The client application must also be able to support gzip content in HTTP.
 
 #### Server-side
-In the MobileFirst Operations Console, under **Runtimes > Settings > GZIP compression threshold for adapter responses**, set the desired threshold value. The default value is 20 KB.  
-**Note:** By saving the change in the MobileFirst Operations Console, the change is effective immediately in the runtime.
+In the {{ site.data.keys.mf_console }}, under **Runtimes > Settings > GZIP compression threshold for adapter responses**, set the desired threshold value. The default value is 20 KB.  
+**Note:** By saving the change in the {{ site.data.keys.mf_console }}, the change is effective immediately in the runtime.
 
 #### Client-side
 Ensure that you enable the client to parse a gzip response, by setting the value of the `Accept-Encoding` header to `gzip` in every client request.
 Use the `addHeader` method with your request variable, for example: `request.addHeader("Accept-Encoding","gzip");`
 
 ## Server-side APIs
-JavaScript adapters can use the MobileFirst server-side APIs to perform operations that are related to MobileFirst Server, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
+JavaScript adapters can use server-side APIs to perform operations that are related to {{ site.data.keys.mf_server }}, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
 ### getPropertyValue
-Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the MobileFirst Operations Console:
+Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the {{ site.data.keys.mf_console }}:
 
 ```js
 MFP.Server.getPropertyValue("name");

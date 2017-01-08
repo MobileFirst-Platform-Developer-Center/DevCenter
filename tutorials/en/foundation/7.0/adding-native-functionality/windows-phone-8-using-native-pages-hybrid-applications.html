@@ -21,7 +21,7 @@ downloads:
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> to open the native page.
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
@@ -36,7 +36,7 @@ function openNativePage(){
 </ul>
 </li>
 <li>To handle the callback function:
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }
@@ -47,7 +47,7 @@ function backFromNativePage(data){
 <p>For Windows Phone 8, implement the native page as a Windows Phone User Control, or extend an existing one.</p>
 <h3>Step 1</h3>
 <p>In the new User Control, add <code>using Cordova.Extension.Commands;</code> to the <code>.cs</code> file, and use the same package and class name as in the <code>WL.NativePage</code> API call in the JavaScript:</p>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
 using Cordova.Extension.Commands;
 using Newtonsoft.Json;
 namespace NativePagesInHybridApp {
@@ -58,7 +58,7 @@ namespace NativePagesInHybridApp {
 <p>To retrieve custom data parameters that are passed from the web view, use the <code>WLNativePage.Data:(NSDictionary*)data</code> method.</p>
 <p>In the example below, the data is sent as a JSON string. For this purpose, the external <code>JSON.NET</code> library is used to convert the incoming JSON string to a native dictionary. For more information, see the <a href="http://json.codeplex.com/">JSON.NET</a> page.</p>
 <p>
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 InitializeComponent();
         if (WLNativePage.Data != null) {
             Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(WLNativePage.Data);
@@ -72,7 +72,7 @@ InitializeComponent();
 Data can be passed back to the web view as parameters to the call.</p>
 
 <h3>Objective-C</h3>
-<p>{% highlight csharp linenos %}
+<p>{% highlight csharp  %}
         void DoneButton_Click(object sender, RoutedEventArgs e) {
             Dictionary<string, string> data = new Dictionary<string, string> {
                 { "phoneNumber", tb_returnValue.Text }
@@ -85,7 +85,7 @@ Data can be passed back to the web view as parameters to the call.</p>
 {% endhighlight %} </p>
 
 <h3>JavaScript</h3>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

@@ -4,19 +4,18 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
   matrix:
-    # - BUILD=buildPDF.sh
+   #  - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
     - BUILD=buildBluemix.sh
     - BUILD=buildElastic.sh
 script: ./build/$BUILD
 branches:
-  only:
-  - content-migration    
+  only:  
   - master
 rvm:
-- 2.1.2 # version of `ruby'
+- 2.3.1 # version of `ruby'
 git:
-  depth: 3
+  depth: 9999999
 notifications:
   slack:
     rooms:

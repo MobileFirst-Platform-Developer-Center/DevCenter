@@ -21,7 +21,7 @@
             "path": "/foundation/6.3/all-tutorials"
         }]
     }, {
-        "name": "By Platform",
+        "name": "Developers",
         "path": "",
         "children": [{
             "name": "Cordova",
@@ -36,8 +36,24 @@
             "name": "Windows 8 and 10",
             "path": "/foundation/8.0/windows-8-10-tutorials"
         }, {
+            "name": "Xamarin",
+            "path": "/foundation/8.0/xamarin-tutorials"
+        }, {
             "name": "Web apps",
             "path": "/foundation/8.0/web-tutorials"
+        }]
+    }, {
+        "name": "Admins",
+        "path": "",
+        "children": [{
+            "name": "Installation and Configuration",
+            "path": "/foundation/8.0/installation-configuration"
+        }, {
+            "name": "Administering Applications",
+            "path": "/foundation/8.0/administering-apps"
+        }, {
+            "name": "Application Center",
+            "path": "/foundation/8.0/appcenter"
         }]
     }, {
         "name": "Product Integration",
@@ -56,10 +72,6 @@
             "path": "/6.3"
         }]
     }, {
-            "name": "API Reference",
-            "path": "/foundation/8.0/api-ref",
-        
-    }, {
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
@@ -67,9 +79,6 @@
     "name": "Labs",
     "path": "/labs",
     "children": [{
-        "name": "Welcome to Labs",
-        "path": ""
-    }, {
         "name": "Developers",
         "path": "",
         "children": [{

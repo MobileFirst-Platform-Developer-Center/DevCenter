@@ -4,15 +4,15 @@ title: Troubleshooting
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Resolving problems with IBM MobileFirst Foundation on Liberty for Java runtime	
 When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
 
 To help expedite the troubleshooting process, gather the following information:
 
-* The version of IBM MobileFirst Platform Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
+* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
 * The Liberty for Java runtime size selected. For example, 2GB.
-* The Bluemix® dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
+* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
 * The mfpconsole route
 * Versions of cloud foundry: `cf -v` 
 * The information returned from running the following Cloud Foundry CLI commands from the organization and space where your MobileFirst  Foundation server is deployed:
