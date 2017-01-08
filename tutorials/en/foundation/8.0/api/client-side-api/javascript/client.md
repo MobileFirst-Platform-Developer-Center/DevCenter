@@ -1,23 +1,24 @@
 ---
 layout: tutorial
-title: Client-side JavaScript API Reference
-breadcrumb_title: Client-side JS
+title: JavaScript Client-side API Reference
+breadcrumb_title: Client-side
 show_disqus: false
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-> [Click to view](api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html) the full API reference for client-side JavaScript.
+> [Click to view](../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html) the full API reference for JavaScript applications.
 
-The following table lists the functions that you can perform in client-side applications, and the corresponding JavaScript client-side API.
+The following table lists the functions that you can perform in Javascript applications, and the corresponding API method.
 
 | Function | Description |
 |----------|-------------|
-| Initializing and reloading an application, Globalizing application texts | `WL.Client`, `WL.App` | 
-| Obtain client ID and authorization header | `WLAuthorizationManager` |
-| Defining the application badge | `WL.Badge` |
-| Printing log messages to the log for the environment | `WL.Logger` |
-| Switching the currently displayed, web-based screen with a natively written page | `WL.NativePage` | 
-| Send requests to protected and unprotected resources | `WLResourceRequest` | 
-| Client-side API providing a lightweight, document-oriented storage system | `WL.JSONStore` |
+| `WL.Client`, `WL.App` | Initializing and reloading an application, Globalizing application texts | 
+| `WLAuthorizationManager` | Obtain client ID and authorization header |
+| `WL.Badge` | Defining the application badge |
+| `WL.Logger` | Printing log messages to the log for the environment |
+| `WL.NativePage` | Switching the currently displayed, web-based screen with a natively written page |
+| `WLResourceRequest` | Send requests to protected and unprotected resources | 
+| `WL.JSONStore` | Client-side API providing a lightweight, document-oriented storage system | 
 
 ## Additional information
 ### The Options object
