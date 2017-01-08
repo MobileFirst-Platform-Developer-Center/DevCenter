@@ -11,8 +11,8 @@ This collection of topics documents the application programming interface (API) 
 ### Java
 APIs for native Android applications.
 
-* **Client-side API**  
+* **[Client-side API](client)**  
     You can use Java API to develop apps for the Android environment.
 
-* **Client-side push API**  
+* **[Client-side push API](push)**  
     You can use Java push API to develop apps for the Android environment.
