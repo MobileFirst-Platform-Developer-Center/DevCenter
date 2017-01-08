@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation and Configuration
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

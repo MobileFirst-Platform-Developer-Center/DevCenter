@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Migrating from Earlier Releases
-weight: 11
+weight: 12
 ---
 ## Overview
 {{ site.data.keys.product_full }} v8.0 introduces new concepts for application development and deployment, and some API changes. Learn about these changes to prepare and plan for the migration of your MobileFirst applications.

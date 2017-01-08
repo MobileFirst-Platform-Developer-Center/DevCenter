@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Authentication and Security
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
