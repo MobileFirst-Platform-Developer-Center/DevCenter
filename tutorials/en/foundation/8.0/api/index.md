@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: API Reference
+breadcrumb_title: API Reference
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -8,10 +9,10 @@ weight: 1
 To develop your native or Cordova applications, you can refer to the {{ site.data.keys.product_full }} API in JavaScript, Java and Objective-C.  
 Below are links to the available APIs.
 
-* **[MobileFirst client-side API](client-js)**  
+* **[MobileFirst client-side API](client-side-api)**  
     This collection of topics documents the application programming interface (API) for each IBM MobileFirst™ Platform Foundation client platform.
     
-* **[MobileFirst server-side API](server-js)**  
+* **[MobileFirst server-side API](server-side-api)**  
     Use the server-side API that IBM MobileFirst Platform Foundation defines to modify the behavior of the servers that your mobile applications rely on.
     
 * **MobileFirst Java Token Validator API**  
