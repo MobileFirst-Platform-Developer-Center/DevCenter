@@ -17,8 +17,8 @@ You can use the security libraries to develop security checks and adapters that 
 ## API Reference
 ### JavaScript server-side API
 
-> [Review the JavaScript server-side API set](../api-ref/mfp-server-js-apidoc/html/refjavascript-server/html/index.html)
+> [Review the JavaScript server-side API set](javascript)
 
 ### Java server-side API
 
-> [Review the Java server-side API set](../api-ref/mfp-server-java-apidoc/html/refjava-mfp-server/html/index.html)
+> [Review the Java server-side API set](java)

@@ -6,7 +6,16 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-The REST API provides several services to administer runtime adapters, applications, devices, audit, transactions, security, and push notifications.
+Select an interface:
 
-The REST service API for adapters and applications for each runtime is in **/management-apis/2.0/runtimes/runtime-name/**, where runtime-name is the name of the runtime that is administered through the REST service. Then, the type of object addressed by the service is identified, together with the appropriate method. For example, **/management-apis/2.0/runtimes/runtime-name/Adapters (POST)** refers to the service for deploying an adapter.
-
+* **[REST API for the MobileFirst Server administration service](administration-service)**  
+    The REST API provides several services to administer runtime adapters, applications, devices, audit, transactions, security, and push notifications.
+    
+* **[REST API for the MobileFirst Server push service](push-service)**  
+    The REST API for Push in the MobileFirst runtime environment enables back-end server applications that were deployed outside of the MobileFirst Server to access Push functions from a REST API endpoint.
+   
+* **[REST API for the MobileFirst runtime](runtime)**  
+    The REST API for the MobileFirst runtime provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more.
+  
+* **[REST API for MobileFirst Analytics and Logger](analytics-logger)**  
+    The MobileFirst Analytics public REST API is documented in Swagger.

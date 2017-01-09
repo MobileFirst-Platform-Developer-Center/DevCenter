@@ -13,8 +13,9 @@ On a development server, you can test the runtime REST API with Swagger UI.
 {{ site.data.keys.product_adj }} exposes the runtime REST API at the /doc endpoint: [http(s)://server_ip:server_port/context_root/doc](http(s)://server_ip:server_port/context_root/doc).
 
 ## API Reference
+<iframe width="100%" height="1000px" frameBorder="0" src="../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/overview.html"></iframe>
 
-#### [Read Adapter Swagger Doc (GET)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/getAdapterDocUsingGET.html)
+<!--#### [Read Adapter Swagger Doc (GET)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/getAdapterDocUsingGET.html)
 Return the adapter's swagger documentation for the named adapter
 #### [adapterServing (GET)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/adapterServingUsingGET.html)
 #### [adapterServing (POST)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/adapterServingUsingPOST.html)
@@ -57,4 +58,4 @@ Create a new client, the client ID is returned in the Location header. Protected
 #### [Get client public data (GET)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/getClientUsingGET_3.html)
 Get public client data by ID. Protected by <b>JWT Client assertion</b>
 #### [Client self re-registration (PUT)](../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/updateSelfRegistrationUsingPUT_1.html)
-Submit new registration data for the existing client ID. Protected by app authenticity security check
+Submit new registration data for the existing client ID. Protected by app authenticity security check-->
