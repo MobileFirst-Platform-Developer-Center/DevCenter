@@ -10,7 +10,7 @@ The REST API for the {{ site.data.keys.product_adj }} runtime provides several s
 
 ### Testing the REST API for the MobileFirst runtime with Swagger UI
 On a development server, you can test the runtime REST API with Swagger UI.  
-{{ site.data.keys.product_adj }} exposes the runtime REST API at the /doc endpoint: [http(s)://server_ip:server_port/context_root/doc](http(s)://server_ip:server_port/context_root/doc).
+{{ site.data.keys.product_adj }} exposes the runtime REST API at the /doc endpoint: http(s)://server_ip:server_port/context_root/doc.
 
 ## API Reference
 <iframe width="100%" height="1000px" frameBorder="0" src="../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/overview.html"></iframe>

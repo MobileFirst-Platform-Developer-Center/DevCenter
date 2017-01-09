@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 The MobileFirst Analytics public REST API is documented in Swagger.  
-To view and interact with Swagger, deploy the analytics-service.war (in the devcenter is it pre-deployed) file and load the following address in your browser: [http://hostname:port/analytics-service](http://hostname:port/analytics-service).
+To view and interact with Swagger, deploy the analytics-service.war (in the devcenter is it pre-deployed) file and load the following address in your browser: http://hostname:port/analytics-service.
 
 * Make sure to replace **hostname** and **port** with your server values.
 
