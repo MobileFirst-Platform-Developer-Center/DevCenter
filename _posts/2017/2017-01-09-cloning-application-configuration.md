@@ -1,5 +1,5 @@
 ---
-title: Handling application configuration cloning for new application version deployment
+title: Handling application configuration cloning for new application version deployment in MobileFirst Foundation 8.0
 date: 2017-01-09
 tags:
 - MobileFirst_Foundation
