@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java server-side API
-breadcrumb_title: Java API
+breadcrumb_title: Java
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
