@@ -22,9 +22,9 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Resources can be protected by several security checks. In this case, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
+Resources can be protected by several security checks. In such a scenario, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
 
-A security check can be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
+A security check can also be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
 For example, this tutorial describes an application that has two resources protected by a user name and password, where the second resource also requires an additional PIN code.
 
 **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](../user-authentication) tutorials before continuing.
