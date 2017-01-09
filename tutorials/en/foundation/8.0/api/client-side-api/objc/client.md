@@ -2,7 +2,6 @@
 layout: tutorial
 title: Objective-C Client-side API Reference
 breadcrumb_title: Client-side
-show_disqus: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

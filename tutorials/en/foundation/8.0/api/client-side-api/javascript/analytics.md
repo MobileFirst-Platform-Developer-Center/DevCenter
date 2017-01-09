@@ -2,7 +2,6 @@
 layout: tutorial
 title: JavaScript Analytics API Reference
 breadcrumb_title: Analytics
-show_disqus: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

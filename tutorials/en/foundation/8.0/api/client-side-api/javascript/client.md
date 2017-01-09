@@ -2,7 +2,6 @@
 layout: tutorial
 title: JavaScript Client-side API Reference
 breadcrumb_title: Client-side
-show_disqus: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -14,7 +13,6 @@ The following table lists the functions that you can perform in Javascript appli
 |----------|-------------|
 | `WL.Client`, `WL.App` | Initializing and reloading an application, Globalizing application texts | 
 | `WLAuthorizationManager` | Obtain client ID and authorization header |
-| `WL.Badge` | Defining the application badge |
 | `WL.Logger` | Printing log messages to the log for the environment |
 | `WL.NativePage` | Switching the currently displayed, web-based screen with a natively written page |
 | `WLResourceRequest` | Send requests to protected and unprotected resources | 

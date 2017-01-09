@@ -2,7 +2,6 @@
 layout: tutorial
 title: JavaScript Push Notifications API Reference
 breadcrumb_title: Push notifications
-show_disqus: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
