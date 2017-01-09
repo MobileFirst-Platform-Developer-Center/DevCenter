@@ -12,6 +12,7 @@ script: ./build/$BUILD
 branches:
   only:  
   - master
+  - api-ref
 rvm:
 - 2.3.1 # version of `ruby'
 git:
