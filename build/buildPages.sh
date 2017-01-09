@@ -9,6 +9,10 @@ fi
 # enable error reporting to the console
 set -e
 
+# Get Release API docs
+wget http://halpert.austin.ibm.com/productionBuilds-electra-devops/LATEST-RELEASE/IBM-WL-apidocs.zip
+unzip IBM-WL-apidocs.zip -d tutorials/en/foundation/8.0/api/api-ref
+
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
