@@ -22,7 +22,7 @@ The above enhancements make it easier for you &amp; your team to create DevOps f
 In this blog post I will outline the tools and options provided with MobileFirst Foundation 8.0 that you can use to build a DevOps flow that meets your particular needs.
 
 ## Cloning an application 
-When you want to publish a new version of an application that is integrated with MobileFirst Foundation 8.0, you might want to copy over all the settings from the previous version of your app, such as the scopes, security checks, and other customized options and attributes. For a DevOps flow, there is no IBM-provided CLI path yet, but, thanks to *Jorge Iglesias Fernandez*, you can use this open source tool: [https://github.com/jorgeiglesiasfernandez/CloneApp](https://github.com/jorgeiglesiasfernandez/CloneApp). 
+When you want to publish a new version of an application that is integrated with MobileFirst Foundation 8.0, you might want to copy over all the settings from the previous version of your app, such as the scopes, security checks, and other customized options and attributes. For a DevOps flow, there is no IBM-provided CLI path yet, but, thanks to *Jorge Iglesias Fernandez*, you can [use a program he's authored to accomplish this]({{site.baseurl}}/blog/2017-01-09-cloning-application-configuration).
 
 You also have the option to use the **Clone** button from the MobileFirst Operations Console. In the console, select your application version from the sidebar navigation and then select **Clone Version** from the Action dropdown. The end result will be a new instance of the application with a new version and preserved settings.
 
