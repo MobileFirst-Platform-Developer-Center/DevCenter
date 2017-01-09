@@ -11,3 +11,5 @@ The REST API for Push in the {{ site.data.keys.product_adj }} runtime environmen
 The Push service on the {{ site.data.keys.mf_server }} is exposed over a REST API endpoint that can be directly accessed by non-mobile clients. You can use the REST API runtime services for Push for registrations, subscriptions, messages, and retrieving tags. Paging and filtering is supported for database persistence in both Cloudant® and SQL.
 
 This REST API endpoint is protected by OAuth which requires the clients to be confidential clients and also possess the required access scopes in their OAuth access tokens that is passed by a designated HTTP header.
+
+> [Click to view](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) the REST API reference for the Push service.
