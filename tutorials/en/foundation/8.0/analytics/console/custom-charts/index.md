@@ -7,11 +7,15 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
 
 Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
 
 #### Jump to
+{: #jump-to }
+
 * [Creating a custom chart](#creating-a-custom-chart)
 * [Chart types](#chart-types)
 * [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
@@ -19,18 +23,26 @@ Available custom chart types: **App Session**, **Network Transactions**, **Push 
 * [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
 
 ## Creating a custom chart
+{: #creating-a-custom-chart }
+
 In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
 
 ### 1. General settings
+{: #1-general-settings }
+
 Click the **Create Chart** button in the **Custom Charts** tab.  
 
 In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
 After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
 
 ### 2. The Chart Definition tab
+{: #2-the-chart-definition-tab }
+
 Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
 
 ### 3. The Chart Filters tab
+{: #3-the-chart-filters-tab }
+
 **Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
 For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
 
@@ -42,6 +54,8 @@ For example, if you are interested in seeing the average app session duration fo
 The app name filter is added to the table of filters for your chart.
 
 ### 4. Chart properties
+{: #4-chart-properties }
+
 Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
 
 If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
@@ -51,8 +65,11 @@ If you created a **Bar Graph** or **Line Graph** chart, the chart properties can
 <img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
 
 ## Chart types
+{: #chart-types }
 
 ### Bar graph
+{: #bar-graph }
+
 The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
 
 * **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
@@ -67,6 +84,8 @@ After you define a value for X-Axis, you can define a value for Y-Axis. If you c
 After you define the chart axes, you must choose a value for Property.
 
 ### Line graph
+{: #line-graph }
+
 The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
 
 * **Average** - averages a numeric property in the supplied event type.
@@ -76,6 +95,8 @@ The line graph allows for the visualization of some metric over time. This type 
 After you define the measurement, you must choose a value for Property.
 
 ### Flow chart
+{: #flow-chart }
+
 The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
 
 * **Source** - the value of a source node in the diagram.
@@ -89,6 +110,8 @@ With the flow chart, you can see the density breakdown of various sources that f
 * Select the name of your app for Property.
 
 ### Metric group
+{: #metric-group }
+
 The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
 
 * **Average** - averages a numeric property in the supplied event type.
@@ -98,6 +121,8 @@ The metric group can be used to visualize a single metric that is measured as ei
 After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
 
 ### Pie chart
+{: #pie-chart }
+
 The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
 
 * Select App Session for Event Type.
@@ -107,10 +132,14 @@ The pie chart can be used to visualize the count breakdown of values for a parti
 The resulting pie chart shows the breakdown of app sessions that were closed by the user as opposed to app sessions that were closed by a crash.
 
 ### Table
+{: #table }
+
 The table is useful when you want to see the raw data. Building a table is as simple as adding columns for the raw data that you want to see.  
 Because not all properties are required for specific event types, null values can appear in your table. If you want to prevent these rows from appearing in your table, add an Exists filter for a specific property in the Chart Filters tab.
 
 ## Creating custom charts for client logs
+{: #creating-custom-charts-for-client-logs }
+
 You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
 The log information also includes contextual information about the device, including environment, app name, and app version.
 
@@ -130,6 +159,8 @@ The log information also includes contextual information about the device, inclu
 4. Click the **Save** button.
 
 ## Exporting custom chart data
+{: #exporting-custom-chart-data }
+
 You can download the data that is shown for any custom chart.  
 
 ![Export custom chart data using these icons](export-data.png)
@@ -143,6 +174,8 @@ Click the **Download Chart** icon to download a file in JSON format from the {{ 
 Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
 
 ## Exporting and importing custom chart definitions
+{: #exporting-and-importing-custom-chart-definitions }
+
 You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
 
 1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
