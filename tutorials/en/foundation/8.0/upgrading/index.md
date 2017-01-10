@@ -18,7 +18,7 @@ weight: 11
 * [Migrating push notifications support](#migrating-push-notifications-support)
 * [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
 * [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
-* [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-ibm-mobilefirst-server)
+* [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
 
 ## Changes in the development and deployment process
 {: #changes-in-the-development-and-deployment-process }
@@ -42,7 +42,7 @@ When you develop your app, you use the {{ site.data.keys.mf_cli }} for many task
 {: #migrating-a-cordova-or-hybrid-application }
 You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
 
-Add support for the {{ site.data.keys.product_adj }} features by adding the {{ site.data.keys.product_adj }} plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before).
+Add support for the {{ site.data.keys.product_adj }} features by adding the {{ site.data.keys.product_adj }} plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before).
 
 To migrate a Cordova or hybrid app, you need to
 
