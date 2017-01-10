@@ -7,19 +7,21 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
 
 Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
 
 ## Sending interactive push notification
+{: #sending-interactive-push-notification }
 Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
 
 You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
 
 ![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova application
-
+## Handling interactive push notifications in Cordova applications
+{: #handling-interactive-push-notifications-in-cordova-applications }
 To receive interactive notifications, follow these steps:
 
 1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
@@ -81,7 +83,8 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS application
+## Handling interactive push notifications in native iOS applications
+{: #handling-interactive-push-notifications-in-native-ios-applications }
 Follow these steps to receive interactive notifications:
 
 1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.

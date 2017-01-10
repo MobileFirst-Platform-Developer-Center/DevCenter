@@ -6,13 +6,14 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
 Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
 
 **Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
 
 #### Jump to
-
+{: #jump-to }
 * [Setting-up Notifications](#setting-up-notifications)
     * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
@@ -29,12 +30,14 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Notifications
+{: #setting-up-notifications }
 Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
 Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
 
 On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
 
 ### Google Cloud Messaging / Firebase Cloud Messaging
+{: #google-cloud-messagingfirebase-cloud-messaging }
 > **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
 
 Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
@@ -48,6 +51,7 @@ To setup FCM:
 > You can also setup FCM using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 
 #### Notes
+{: #notes }
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
 * Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
@@ -58,6 +62,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
 
 ### Apple Push Notifications Service
+{: #apple-push-notifications-service }
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
@@ -65,6 +70,7 @@ To setup APNS:
 2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
 
 #### Notes
+{: #notes-apns }
 * For push notifications to be sent, the following servers must be accessible from a {{ site.data.keys.mf_server }} instance:  
     * Sandbox servers:  
         * gateway.sandbox.push.apple.com:2195
@@ -82,6 +88,7 @@ To setup APNS:
 <img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
 ### Windows Push Notifications Service
+{: #windows-push-notifications-service }
 Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
 To setup WNS:
 
@@ -93,6 +100,7 @@ To setup WNS:
 <img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
 ### SMS Notification Service
+{: #sms-notification-service }
 The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the {{ site.data.keys.mf_server }} with the SMS gateway configuration
 
 ```json
@@ -117,6 +125,7 @@ The following JSON is used to setup the SMS gateway for sending SMS notification
 > Find more SMS-related REST APIs [in the Push Service API Reference](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)
 
 ### Scope mapping
+{: #scope-mapping }
 Map the **push.mobileclient** scope element to the application.
 
 1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
@@ -215,6 +224,7 @@ Map the **push.mobileclient** scope element to the application.
     <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
 ### Authenticated Notifications
+{: #authenticated-notifications }
 Authenticated notifications are notifications that are sent to one or more `userIds`.  
 
 Map the **push.mobileclient** scope element to the security check used for the application.  
@@ -225,6 +235,7 @@ Map the **push.mobileclient** scope element to the security check used for the a
     <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
     
 ## Defining Tags
+{: #defining-tags }
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **Create New**.  
 Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
@@ -233,15 +244,18 @@ Provide the appropriate `Tag Name` and `Description` and click **Save**.
 Subscriptions tie together a device registration and a tag. When a device is unregistered from a tag, all associated subscriptions are automatically unsubscribed from the device itself. In a scenario where there are multiple users of a device, subscriptions should be implemented in mobile applications based on user log-in criteria. For example, the subscribe call is made after a user successfully logs in to an application and the unsubscribe call is made explicitly as part of the logout action handling.
 
 ## Sending Notifications
+{: #sending-notifications }
 Push notifications can be sent either from the {{ site.data.keys.mf_console }} or via REST APIs.
 
 * With the {{ site.data.keys.mf_console }}, two types of notifications can be sent: tag and broadcast.
 * With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
 
 ### {{ site.data.keys.mf_console }}
+{: #mobilefirst-operations-console }
 Notifications can be sent to a single Device ID, a single or several User IDs, only iOS devices or only Android devices, or to devices subscribed to tags.
 
 #### Tag notifications
+{: #tag-notifications }
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
 
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Push tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
@@ -249,7 +263,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Sen
 <img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
 #### Broadcast notifications
-
+{: #breadcast-notifications }
 Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
 
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Push tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
@@ -257,6 +271,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Sen
 ![send-to-all](sending-to-all.png)
 
 ### REST APIs
+{: #rest-apis }
 When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
 To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
@@ -269,6 +284,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 > To review all Push Notifications REST APIs, see the [REST API Runtime Services topic](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) in the user documentation.
 
 #### Notification payload
+{: #notification-payload }
 The request can contain the following payload properties: 
 
 Payload Properties| Definition
@@ -329,9 +345,8 @@ phoneNumber | The phone number used for registering the device and receiving not
 }
 ```
 
-
-
 #### Sending the notification
+{ #sending-the-notification }
 The notification can be sent using different tools.  
 For testing purposes, Postman is used as described below:
 
@@ -372,25 +387,28 @@ After clicking on the **Send** button, the device should have now received a not
 ![Image of the sample application](notifications-app.png)
 
 ### Customizing Notifications
+{: #customizing-notifications }
 Before sending the notification message, you can also customize the following notification attributes.  
 
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
 
 ### Android
-
+{: #android }
 * Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
 * If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
 
 ### iOS
-
+{: #ios }
 * Notification sound, custom payload, action key title, notification type and badge number.
 
 ![customizing push notifications](customizing-push-notifications.png)
 
 ## Proxy Support
+{: #proxy-support }
 You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ## Tutorials to follow next
+{: #tutorials-to-follow-next }
 With the server-side now set-up, setup the client-side and handle received notifications.
 
 * Handling push notifications

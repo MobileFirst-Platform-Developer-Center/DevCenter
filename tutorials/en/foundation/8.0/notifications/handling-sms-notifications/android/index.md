@@ -10,6 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
 
 **Prerequisites:**
@@ -23,17 +24,21 @@ SMS notifications are a sub-set of Push Notification, as such make sure to first
 
 
 #### Jump to:
+{: #jump-to }
 * [Notifications API](#notifications-api)   
 * [Using a SMS subscribe servlet](#using-a-sms-subscribe-servlet)     
 * [Sample Application](#sample-application)
 
 ## Notifications API
+{: #notifications-api }
 In SMS notifications, when registering the device, a phone number value is passed.
 
 #### Challenge Handlers
+{: #challenge-handlers }
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
 
 #### Initialization
+{: #initialization }
 Required for the client application to connect to MFPPush service with the right application context.
 
 * The API method should be called first before using any other MFPPush APIs.
@@ -44,7 +49,7 @@ MFPPush.getInstance().initialize(this);
 ```
 
 #### Register Device
-
+{: #register-device }
 Register the device to the push notifications service.
 
 ```java
@@ -77,7 +82,7 @@ catch(Exception ex) {
 > You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
 
 #### Unregister Device
-
+{: #unregister-device }
 Unregister the device from push notification service instance.
 
 ```java
@@ -95,7 +100,8 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Using a SMS subscribe servlet
+## Using an SMS subscribe servlet
+{: #using-an-sms-subscribe-servlet }
 REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
 
 To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
@@ -111,9 +117,11 @@ To send a notification, see the [sending notifications](../../sending-notificati
 
 <img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
 ## Sample application
+{: #sample-application }
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) the Android project.
 
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.
