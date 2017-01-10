@@ -9,7 +9,7 @@ Consider carefully how removed features and API elements affect your {{ site.dat
 
 #### Jump to
 {: #jump-to }
-* [Discontinued features and features that are not included in v8.0](#discontinued-features-and-features-that-are-not-included-in-v80)
+* [Discontinued features and features that are not included in v8.0](#discontinued-features-and-features-that-are-not-included-in-v-80)
 * [Server-side API Changes](#server-side-api-changes)
 * [Client-side API Changes](#client-side-api-changes)
 
@@ -178,7 +178,7 @@ To migrate the server side of your {{ site.data.keys.product_adj }} application,
 The following tables list the discontinued server-side API elements in v8.0, deprecated server-side API elements in v8.0, and suggested migration paths. For more information about migrating the server side of your application, 
 
 ### JavaScript API elements discontinued in v8.0
-{: #javascript-api-elements-discontinued-v-v80 }
+{: #javascript-api-elements-discontinued-v-v-80 }
 #### Security
 {: #security }
 
