@@ -41,7 +41,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existing one.
 
 ### Adding the SDK
-{{: #adding-the-sdk }}
+{: #adding-the-sdk }
 1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
 2. Expand the Android or iOS project.
 3. In the Android or iOS project, right-click **Components**.
