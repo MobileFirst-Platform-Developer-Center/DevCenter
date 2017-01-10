@@ -7,7 +7,7 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-
+{: #overview }
 The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
@@ -21,23 +21,25 @@ In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Nati
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
 
 #### Jump to:
-
+{: #jump-to }
 - [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the {{ site.data.keys.product_adj }} Native SDK
+{: #adding-the-mobilefirst-native-sdk }
 Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Visual Studio project, and to register the application to the {{ site.data.keys.mf_server }}.
 
 Before you start, make sure that the {{ site.data.keys.mf_server }} instance is running.  
 If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
 
 ### Creating an application
+{: #creating-an-application }
 Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 2013/2015 or use an existing project.  
 
 ### Adding the SDK
-
+{: #adding-the-sdk }
 1. To import {{ site.data.keys.product_adj }} packages, use the NuGet package manager.
 NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
 
@@ -58,7 +60,7 @@ NuGet is the package manager for the Microsoft development platform, including .
     - Internet (Client)
 
 ### Registering the application
-
+{: #reigstering-the-application }
 1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
 
 2. Run the command:
@@ -77,6 +79,7 @@ The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf
 > 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
 
 ## Updating the {{ site.data.keys.product_adj }} Native SDK
+{: #updating-the-mobilefirst-native-sdk }
 To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
 
 ```bash
@@ -84,9 +87,9 @@ Nuget update
 ```
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
-
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
-
+{: #mfpclientresw }
 Located in the `strings` folder of the project, this file contains server connectivity properties and is user-editable:
 
 - `protocol` – The communication protocol to {{ site.data.keys.mf_server }}. Either `HTTP` or `HTTPS`.
@@ -97,6 +100,7 @@ Located in the `strings` folder of the project, this file contains server connec
 - `languagePreference` - Sets the default language for client sdk system messages.
 
 ## Tutorials to follow next
+{: #tutorials-to-follow-next }
 With the MobileFirst Native SDK now integrated, you can now:
 
 - Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)

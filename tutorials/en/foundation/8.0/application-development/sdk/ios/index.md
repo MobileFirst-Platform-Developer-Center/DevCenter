@@ -7,6 +7,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
 The pods correspond to core functions and other functions:
 
@@ -26,7 +27,7 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 > **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
 
 #### Jump to:
-
+{: #jump-to }
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
@@ -35,18 +36,20 @@ In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaP
 - [Bitcode and TLS 1.2](#bitcode-and-tls-12)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Adding the MobileFirst Native SDK
-Follow the instructions below to add the MobileFirst Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+## Adding the {{ site.data.keys.product }} Native SDK
+{: #adding-the-mobilefirst-native-sdk }
+Follow the instructions below to add the {{ site.data.keys.product }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
 
 Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 ### Creating an application
+{: #creating-an-application }
 Create an Xcode project or use an existing one (Swift or Objective-C).  
 
 ### Adding the SDK
-
-1. The MobileFirst Native SDK is provided via CocoaPods.
+{: #adding-the-sdk }
+1. The {{ site.data.keys.product }} Native SDK is provided via CocoaPods.
     - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
     - If CocoaPods is not installed, install it as follows:  
         - Open a **Command-line** window and navigate to the root of the Xcode project.
@@ -66,13 +69,14 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
       ```
       - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
-4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the MobileFirst Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
+4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the {{ site.data.keys.product }} Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
     **Note:** The commands might take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 
-### Manually adding the MobileFirst Native SDK
-You can also manually add the MobileFirst SDK:
+### Manually adding the {{ site.data.keys.product }} Native SDK
+{: manually-adding-the-mobilefirst-foundation-native-sdk }
+You can also manually add the {{ site.data.keys.product }} SDK:
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -84,10 +88,10 @@ You can also manually add the MobileFirst SDK:
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b> tab.</p>
+                <p>To manually add the {{ site.data.keys.product }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.</p>
 
                 <ul>
-                    <li>In your Xcode project, add the MobileFirst framework files to your project.
+                    <li>In your Xcode project, add the {{ site.data.keys.product }} framework files to your project.
                         <ul>
                             <li>Select the project root icon in the project explorer.</li>
                             <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
@@ -112,7 +116,7 @@ You can also manually add the MobileFirst SDK:
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant MobileFirst frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
+                            <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
                         </ul>
                     </li>
                     <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
@@ -141,7 +145,7 @@ You can also manually add the MobileFirst SDK:
 </div>
 
 ### Registering the application
-
+{: #registering-the-application }
 1. Open a **Command-line** window and navigate to the root of the Xcode project.  
 
 2. Run the command:
@@ -155,18 +159,19 @@ You can also manually add the MobileFirst SDK:
 
 The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the MobileFirst Operations Console:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
 >
-> 1. Load the MobileFirst Operations Console.
+> 1. Load the {{ site.data.keys.mf_console }}.
 > 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
 > 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
+{: #completing-the-setup-process }
 In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
 
 ### Referencing the SDK
-
-Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Foundation framework:
+{: #referencing-the-sdk }
+Whenever you want to use the {{ site.data.keys.product }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
 
 Objective-C:
 
@@ -182,7 +187,7 @@ import IBMMobileFirstPlatformFoundation
 
 <br>
 #### Note about iOS 9 and above:
-
+{: #note-about-ios-9-and-above }
 > Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
@@ -196,6 +201,7 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 ## Adding Support for Apple watchOS
+{: #adding-support-for-apple-watchos}
 If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
 watchOS 2:
 
@@ -220,8 +226,9 @@ end
 
 Verify that the Xcode project is closed and run the `pod install` command.
 
-## Updating the MobileFirst Native SDK
-To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+## Updating the {{ site.data.keys.product }} Native SDK
+{: #updating-the-mobilefirst-foundation-native-sdk }
+To update the {{ site.data.keys.product }} Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
 
 ```bash
 pod update
@@ -229,9 +236,10 @@ pod update
 
 SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
 
-## Generated MobileFirst Native SDK artifacts
-
+## Generated {{ site.data.keys.product }} Native SDK artifacts
+{: generated-mobilefirst-foundation-native-sdk-artifacts }
 ### mfpclient.plist
+{: #mfpclientplist }
 Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
 
 | Property            | Description                                                         | Example values |
@@ -243,12 +251,14 @@ Located at the root of the project, this file defines the client-side properties
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 
 ## Bitcode and TLS 1.2
+{: #bitcode-and-tls-12 }
 For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
 
 ## Tutorials to follow next
-With the MobileFirst Native SDK now integrated, you can now:
+{: #tutorials-to-follow-next }
+With the {{ site.data.keys.product }} Native SDK now integrated, you can now:
 
-- Review the [Using the MobileFirst Foundation SDK tutorials](../)
+- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
 - Review the [Adapters development tutorials](../../../adapters/)
 - Review the [Authentication and security tutorials](../../../authentication-and-security/)
 - Review the [Notifications tutorials](../../../notifications/)
