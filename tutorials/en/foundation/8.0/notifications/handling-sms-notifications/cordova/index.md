@@ -26,7 +26,7 @@ SMS notifications in Cordova applications are supported for iOS and Android.
 #### Jump to:
 {: #jump-to }
 * [Notifications API](#notifications-api)   
-* [Using a SMS subscribe servlet](#using-a-sms-subscribe-servlet)     
+* [Using an SMS subscribe servlet](#using-an-sms-subscribe-servlet)     
 * [Sample Application](#sample-application)
 
 ## Notifications API
