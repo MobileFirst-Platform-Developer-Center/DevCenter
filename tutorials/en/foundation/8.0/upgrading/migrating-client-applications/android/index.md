@@ -6,16 +6,18 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 To migrate an existing native Android project that was created with IBM MobileFirst Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
 #### Jump to
-
+{: #jump-to }
 * [Scanning existing {{ site.data.keys.product_adj }} native Android apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade)
 * [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
 * [Updating the Android code](#updating-the-android-code)
 
 ## Scanning existing {{ site.data.keys.product_adj }} native Android apps to prepare for a version upgrade
-The migration assistance tool helps you prepare your apps that were created with a previous version of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Android app and generating a report of APIs that are deprecated or discontinued in V8.0.
+{: #scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade }
+The migration assistance tool helps you prepare your apps that were created with a previous version of {{ site.data.keys.product_full }} for migration by scanning the sources of the native Android app and generating a report of APIs that are deprecated or discontinued in V8.0.
 
 The following information is important to know before you use the migration assistance tool:
 
@@ -54,6 +56,7 @@ The migration assistance tool does not modify or move any developer code or comm
    When it is used with the scan command, the migration assistance tool identifies APIs in the existing {{ site.data.keys.product }} app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
 
 ## Migrating an Android project with Gradle
+{: #migrating-an-android-project-with-gradle }
 Migrate your Android application with {{ site.data.keys.product_adj }} SDK using Gradle.
 
 Ensure that your Android Studio and the Android SDK are set up properly. For more information about how to set up your system, see [Android Studio Overview](http://developer.android.com/tools/studio/index.html). Your project must conform to the Android Studio/Gradle setup and compile without errors before you upgrade to {{ site.data.keys.product }}.
@@ -77,14 +80,16 @@ You can now add the V8.0.0 SDK and configuration, by using local or remote SDK f
 You can now start developing your native Android application with the {{ site.data.keys.product_adj }} SDK. You might need to adapt your code to changes in the V8.0.0 API (see [Updating the Android code](#updating-the-android-code)).
 
 #### What to do next
+{: #what-to-do-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Updating the Android code
+{: #updating-the-android-code }
 {{ site.data.keys.product_full }} V8.0 introduces a number of changes to the Android SDK that might require changes to apps developed in earlier versions.  
 The tables below list changes in the {{ site.data.keys.product_adj }} Android SDK.
 
 #### Discontinued Android API elements
-
+{: #discontinued-android-api-elements }
 | API element | Migration path | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | No replacement. | 
@@ -108,7 +113,7 @@ The tables below list changes in the {{ site.data.keys.product_adj }} Android SD
 | `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). | 
 
 #### Android APIs depending on the legacy `org.apach.http` APIs are no longer supported
-
+{: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
 | API element | Migration path | 
 |-------------|----------------|
 | `org.apache.http.Header[]` is now deprecated. Therefore, the following methods are removed: | |
