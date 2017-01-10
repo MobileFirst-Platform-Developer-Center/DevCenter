@@ -27,7 +27,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 
 ## Application Authenticity Flow
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server, the authenticity challenge does not occur again.
+By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
 
 See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
 
