@@ -14,7 +14,7 @@ For more information about the configuration of the {{ site.data.keys.mf_server 
 {: #jump-to }
 
 * [Prerequisites](#prerequisites)
-* [Next topics](#next-topics)
+* [What's Next](#whats-next)
 
 ## Prerequisites
 {: #prerequisites }
