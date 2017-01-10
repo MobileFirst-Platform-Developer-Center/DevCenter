@@ -11,7 +11,7 @@ To migrate an existing Cordova or hybrid application that was created with IBM M
 
 #### Jump to
 {: #jump-to }
-* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before)
+* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
 * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product_full }} 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
 * [Migrating Direct Update](#migrating-direct-update)

@@ -5,14 +5,17 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The IBM {{ site.data.keys.mf_server }} supports two different licensing methods based on what you have purchased.
 
 If you have purchased Perpetual licenses, you can consume what you have purchased and verify your usage and compliance through the **License tracking page** in the {{ site.data.keys.mf_console }} and through [License Tracking report](../../administering-apps/license-tracking/#license-tracking-report). If you have purchased Token licenses, configure your {{ site.data.keys.mf_server }} to communicate with a remote token license server.
 
 ### Application or Addressable Device licenses
+{: #application-or-addressable-device-licenses }
 If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the {{ site.data.keys.mf_console }} and through License Tracking report.
 
 ### Processor value unit (PVU) licensing
+{: #processor-value-unit-pvu-licensing }
 Processor value unit (PVU) licensing is available if you have purchased IBM {{ site.data.keys.product }} Extension (see [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), but only after the purchase of IBM  WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
 
 The PVU license pricing structure is responsive to both the type and number of processors that are available to installed products. Entitlements can be full capacity or subcapacity. Under the processor value unit licensing structure, you license software based on the number of value units assigned to each processor core.
@@ -22,6 +25,7 @@ For example, processor type A is assigned 80 value units per core and processor 
 > [Read more information](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) on PVU licensing.
 
 ### Token Licensing
+{: #token-licensing }
 In a token environment, every product consumes a predefined token value per license, compared to a traditional floating environment where a predefined quantity per license is consumed. The license key has a pool of tokens from which the license server calculates the tokens that are checked in and checked out. Tokens are either consumed or released when a product checks in or checks out licenses from the license server.
 
 Your licensing contract defines whether you might be able to use token licensing, the number of tokens available, and features that are validated by tokens. See Token license validation.

@@ -5,15 +5,18 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Known Issues
+{: #known-issues }
 Click the following link to receive a dynamically generated list of documents for this specific release and all its fix packs, including known issues and their resolutions, and relevant downloads: [http://www.ibm.com/support/search.wss?tc=SSVNUQ&tc=SSHT2F&atrn=SWVersion&atrv=8.0](http://www.ibm.com/support/search.wss?tc=SSVNUQ&tc=SSHT2F&atrn=SWVersion&atrv=8.0).
 
 ## Known Limitations
+{: #known-limitations }
 In this documentation, you can find the description of {{ site.data.keys.product_full }} known limitations in different locations:
 
 * When the known limitation applies to a specific feature, you can find its description in the topic that explains this specific feature. You can then immediately identify how it affects the feature.
 * When the known limitation is general, that is, applies to different and possibly not directly related topics, you can find its description here.
 
 ### Globalization
+{: #globalization }
 If you are developing globalized apps, the following restrictions apply:
 
 * Partial translation: Part of the product {{ site.data.keys.product }} v8.0, including its documentation, is translated in the following languages: Simplified Chinese, Traditional Chinese, French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, and Spanish. User-facing text is translated.
@@ -33,6 +36,7 @@ Although translation into Hebrew is provided for {{ site.data.keys.product }} co
     * In the Find functions for the JSONStore API.
 
 ### {{ site.data.keys.mf_analytics }}
+{: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} has the following limitations:
 
 * Security analytics (data on requests failing security checks) is not supported.
@@ -50,9 +54,11 @@ Although translation into Hebrew is provided for {{ site.data.keys.product }} co
 
 
 ### {{ site.data.keys.mf_app_center_full }} mobile client
+{: #ibm-mobilefirst-foundation-application-center-mobile-client }
 The Application Center mobile client follows the cultural conventions of the running device, such as the date formatting. It does not always follow the stricter International Components for Unicode (ICU) rules.
 
 ### {{ site.data.keys.mf_console_full }}
+{: #ibm-mobilefirst-operations-console }
 The {{ site.data.keys.mf_console }} has the following limitations:
 
 * Provides only partial support for bidirectional languages.
@@ -64,6 +70,7 @@ The {{ site.data.keys.mf_console }} has the following limitations:
 * Response times in the Analytics page of the {{ site.data.keys.mf_console }} depend on several factors, such as hardware (RAM, CPUs), quantity of accumulated analytics data, and {{ site.data.keys.mf_analytics }} clustering. Consider testing your load before you integrate {{ site.data.keys.mf_analytics }} into production.
 
 ### Server Configuration Tool
+{: #server-configuration-tool }
 The Server Configuration Tool has the following restrictions:
 
 * The descriptive name of a server configuration can contain only characters that are in the system character set. On Windows, it is the ANSI character set.
@@ -83,40 +90,51 @@ You might also experience restrictions or anomalies in various aspects of global
 * JSONStore does not handle normalization. The Find functions for the JSONStore API do not take account of language sensitivity such as accent insensitive, case insensitive, and 1-to-2 mapping.
 
 ### Adapters and third-party dependencies
+{: #adapters-and-third-party-dependencies }
 The following known issues pertain to interactions between dependencies and classes in the application server, including the {{ site.data.keys.product_adj }} shared library.
 
 #### Apache HttpClient
+{: #apache-httpclient }
 {{ site.data.keys.product }} uses Apache HttpClient internally. If you add an Apache HttpClient instance as a dependency to a Java adapter, the following APIs do not work properly in the adapter: `AdaptersAPI.executeAdapterRequest, AdaptersAPI.getResponseAsJSON`, and `AdaptersAPI.createJavascriptAdapterRequest`. The reason is that the APIs contain Apache HttpClient types in their signature. The workaround is to use the internal Apache HttpClient but to change the dependency scope in the **pom.xml** provided.
 
 #### Bouncy Castle cryptographic library
+{: #bouncy-castle-cryptographic-library }
 {{ site.data.keys.product }} uses Bouncy Castle itself. It might be possible to use another version of Bouncy Castle in the adapter, but the consequences need to be carefully tested: sometimes, the {{ site.data.keys.product_adj }} Bouncy Castle code populates certain static Singleton fields of the `javax.security` package classes and might prevent the version of Bouncy Castle that is inside an adapter from using features that rely on those fields.
 
 #### Apache CXF implementation of JAR files
+{: #apache-cxf-implementaton-of-jar-files }
 CXF is used in the {{ site.data.keys.product_adj }} JAX-RS implementation, thus preventing you from adding Apache CXF JAR files to an adapter.
 
 ### Application Center mobile client: refresh issues on Android 4.0.x
+{: #application-center-mobile-client-refresh-issues-on-android-40x}
 Android 4.0.x WebView component is known to have several refresh issues. Updating devices to Android 4.1.x should provide a better user experience.
 
 If you build the Application Center client from sources, disabling the hardware acceleration at the application level in the Android manifest should improve the situation for Android 4.0.x. In that case, the application must be built with Android SDK 11 or later.
 
 ### Application Center requires MobileFirst Studio V7.1 for importing and building the Application Center mobile client
+{: #application-center-requires-mobilefirst-studio-v71-for-importing-and-building-the-application-center-mobile-client }
 To build the Application Center mobile client, you need MobileFirst Studio V7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). Click the **Previous MobileFirst Platform Foundation releases** tab for the download link. For installation instructions, see [Installing MobileFirst Studio in the IBM  Knowledge Center for 7.1](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html). For more information about building the Application Center mobile client, see [Preparations for using the mobile client](../../../appcenter/preparations).
 
 ### Application Center and Microsoft Windows Phone 8.1
+{: #application-center-and-microsoft-windows-phone-81 }
 Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
 
 Application Center supports the distribution of app package (.appx) files for Microsoft Windows Store (Desktop applications) only.
 
 ### Administering {{ site.data.keys.product_adj }} applications through Ant or through the command line
+{: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
 The **mfpadm** tool is not available if you download and install only the {{ site.data.keys.mf_dev_kit_full }}. The mfpadm tool is installed with the {{ site.data.keys.mf_server }} with the installer.
 
 ### Confidential clients
+{: #confidential-clients }
 Use ASCII characters only for the values of confidential client IDs and secrets.
 
 ### Direct Update
+{: #direct-update }
 Direct Update on Windows is not supported in V8.0.0.
 
 ### FIPS 140-2 feature limitations
+{: #fips-104-2-feature-limitations }
 The following known limitations apply when you use the FIPS 140-2 feature in {{ site.data.keys.product }}:
 * This FIPS 140-2 validated mode applies only to the protection (encryption) of local data that is stored by the JSONStore feature and protection of HTTPS communications between the {{ site.data.keys.product_adj }} client and the {{ site.data.keys.mf_server }}.
     * For HTTPS communications, only the communications between the {{ site.data.keys.product_adj }} client and the {{ site.data.keys.mf_server }} use the FIPS 140-2 libraries on the client. Direct connections to other servers or services do not use the FIPS 140-2 libraries.
@@ -129,19 +147,23 @@ The following known limitations apply when you use the FIPS 140-2 feature in {{ 
 * The Application Center client does not support the FIPS 140-2 feature.
 
 ### Installation of a fix pack or interim fix to the Application Center or the {{ site.data.keys.mf_server }}
+{: #installation-of-a-fix-pack-or-interim-fix-to-the-application-center-or-the-mobilefirst-server }
 When you apply a fix pack or an interim fix to Application Center or {{ site.data.keys.mf_server }}, manual operations are required, and you might have to shut down your applications for some time.
 
 ### JSONStore supported architectures
+{: #jsonstore-supported-architectures }
 For Android, JSONStore supports the following architectures: ARM, ARM v7, and x86 32-bit. Other architectures are not currently supported. Trying to use other architectures leads to exceptions and potential application crashes.
 
 JSON Store is not supported for Windows native applications.
 
 ### Liberty server limitations
+{: #liberty-server-limitations }
 If you use the Liberty server on a 32-bit JDK 7, Eclipse might not start, and you might receive the following error: "Error occurred during initialization of VM. Could not reserve enough space for object heap. Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit."
 
 To fix this issue, use the 64-bit JDK with the 64-bit Eclipse and 64-bit Windows. If you use the 32-bit JDK on a 64-bit computer, you might configure JVM preferences to **mx512m** and **Xms216m**.
 
 ### LTPA token limitations
+{: #ltpa-token-limitations }
 An `SESN0008E` exception occurs when an LTPA token expires before the user session expires.
 
 An LTPA token is associated with the current user session. If the session expires before an LTPA token expires, a new session is created automatically. However, when an LTPA token expires before a user session expires, the following exception occurs:
@@ -155,29 +177,37 @@ To resolve this limitation, you must force the user session to expire when the L
 **Note:** On certain versions of WebSphere Application Server or WebSphere Application Server Liberty, the exception is still logged, but the session is correctly invalidated. For more information, [see APAR PM85141](http://www.ibm.com/support/docview.wss?uid=swg1PM85141).
 
 ### Microsoft Windows Phone 8
+{: #microsoft-windows-phone-8 }
 For Windows Phone 8.1 environments, x64 architecture is not supported.
 
 ### Microsoft Windows 10 UWP apps
+{: #microsoft-windows-10-uwp-apps }
 Application authenticity feature does not work on {{ site.data.keys.product_adj }} Windows 10 UWP apps when the {{ site.data.keys.product_adj }} SDK is installed through the NuGet package. As a workaround, developers can download the NuGet package and add the {{ site.data.keys.product_adj }} SDK references manually.
 
 ### Nested projects can result in unpredictable results with the CLI
+{: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
 Do not nest projects inside one another when using the {{ site.data.keys.mf_cli }}. Otherwise, the project that is acted upon might not be the one that you expect.
 
 ### Previewing Cordova web resources with the {{ site.data.keys.mf_mbs }}
+{: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
 You can preview your web resources with the {{ site.data.keys.mf_mbs }}, but not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`.
 
 ### Physical iOS device required for testing extended app authenticity
+{: #physical-ios-device-required-for-testing-extended-app-authenticity }
 The testing of the extended app authenticity feature requires a physical iOS device, because an IPA cannot be installed on an iOS simulator.
 
 ### Support of Oracle 12c by {{ site.data.keys.mf_server }}
+{: #support-of-oracle-12c-by-mobilefirst-server }
 The installation tools of the {{ site.data.keys.mf_server }} (Installation Manager, Server Configuration Tool, and Ant tasks) support installation with Oracle 12c as a database.
 
 The users and tables can be created by the installation tools but the database, or databases, must exist before you run the installation tools.
 
 ### Support for push notification
+{: #support-for-push-notification }
 Non-secured push is supported in Cordova (on iOS and Android).
 
 ### Updating cordova-ios platform
+{: #updating-cordova-ios-platform }
 To update the cordova-ios platform of a Cordova app, you must uninstall and reinstall the platform by completing the following steps:
 
 1. Navigate to the project directory for the app by using the command-line interface.
@@ -188,11 +218,13 @@ To update the cordova-ios platform of a Cordova app, you must uninstall and rein
 The update fails if you use the `cordova platform update ios` command.
 
 ### Web applications
+{: #web-applications }
 Web applications have the following limitations:
 - <a name="web_app_limit_ms_ie_n_edge"></a>
 In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative app messages and client web SDK messages are displayed according to the operating system's region-format setting, and not according to the configured browser or operating-system language preferences. See also [Defining administrator messages in multiple languages](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
 ### WKWebView support for iOS Cordova applications
+{: #wkwebview-support-for-ios-cordova-applications }
 App notifications and Direct Update features might not work well in iOS Cordova apps with WKWebView.
 
 This limitation is due to the defect file:// url XmlHttpRequests are not allowed in WKWebViewEgine in **cordova-plugin-wkwebview-engine**.
@@ -204,6 +236,7 @@ Executing this command would run a local web server in your Cordova application,
 **Note:** This Cordova plug-in is not published to the Node package manager (npm).
 
 ### cordova-plugin-statusbar does not work with Cordova application loaded with cordova-plugin-mfp.
+{: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 cordova-plugin-statusbar will not work with Cordova application loaded with cordova-plugin-mfp.
 
 To circumvent this issue, the developer will have to set `CDVViewController` as the root view controller. Replacing the code snippet in the `wlInitDidCompleteSuccessfully` method as suggested below in the **MFPAppdelegate.m** file of the Cordova iOS project.
@@ -239,4 +272,5 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ```
 
 ### Raw IPv6 address not supported in Android applications
+{: #raw-ipv6-address-not-supported-in-android-applications }
 During the configuration of **mfpclient.properties** for your native Android application, if your {{ site.data.keys.mf_server }} is on a host with IPv6 address, then use a mapped host name for the IPV6 address to configure the **wlServerHost** property in **mfpclient.properties**. Configuring the **wlServerHost** property with raw IPv6 address fails the application's attempt to connect to the {{ site.data.keys.mf_server }}.
