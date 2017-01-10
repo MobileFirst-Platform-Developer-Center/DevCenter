@@ -22,6 +22,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Resources can be protected by several security checks. In such a scenario, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
 
 A security check can also be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
@@ -30,7 +31,7 @@ For example, this tutorial describes an application that has two resources prote
 **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](../user-authentication) tutorials before continuing.
 
 #### Jump to:
-
+{: #jump-to }
 * [Referencing a Security Check](#referencing-a-security-check)
 * [State Machine](#state-machine)
 * [The Authorize Method](#the-authorize-method)
@@ -38,6 +39,7 @@ For example, this tutorial describes an application that has two resources prote
 * [Sample Applications](#sample-applications)
 
 ## Referencing a Security Check
+{: #referencing-a-security-check }
 Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as the implementation described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
 
 In this example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should be asked to enter a PIN code only after a successful login to `StepUpUserLogin`. For this purpose, `StepUpPinCode` must be able to **reference** the `StepUpUserLogin` class.  
@@ -56,7 +58,7 @@ To resolve this reference, the framework looks up for a security check with the 
 If there are more than one security check of the same class, the annotation has an optional `name` parameter, which you can use to specify the unique name of the referred check.
 
 ## State machine
-
+{: #state-machine }
 All classes that extend `CredentialsValidationSecurityCheck` (which includes both `StepUpPinCode` and `StepUpUserLogin`) inherit a simple state machine. At any given moment, the security check can be in one of these states:
 
 - `STATE_ATTEMPTING`: A challenge has been sent and the security check is waiting for the client response. The attempt count is maintained during this state.
@@ -75,7 +77,7 @@ public boolean isLoggedIn(){
 ```
 
 ## The Authorize Method
-
+{: #the-authorize-method }
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
 The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.
 
@@ -113,6 +115,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 ```
 
 ## Retrieve current user
+{: #retrieve-current-user }
 In the `StepUpPinCode` security check, you are interested in knowing the current user's ID so that you can look up this user's PIN code in some database.
 
 In the `StepUpUserLogin` security check, add the following method to obtain the current user from the **authorization context**:
@@ -147,16 +150,19 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Challenge Handlers
+{: #challenge-handlers }
 On the client side, there are no special APIs to handle multiple steps. Rather, each challenge handler handles its own challenge. In this example, you must register two separate challenge handlers: one to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpPincode`.
 
 <img alt="Step-up sample application" src="sample_application.png" style="float:right"/>
 ## Sample Applications
-
+{: #sample-applications }
 ### Security check
+{: #security-check }
 The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks project under the StepUp Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
+{: #applications }
 Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova, and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
@@ -167,4 +173,5 @@ Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cord
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.
