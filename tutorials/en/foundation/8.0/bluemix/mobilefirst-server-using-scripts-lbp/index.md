@@ -7,6 +7,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI)
@@ -21,6 +22,7 @@ Finally, you will register your mobile apps as well as deploy your adapters.
 * The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to Bluemix.
 
 #### Jump to:
+{: #jump-to }
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
@@ -30,18 +32,22 @@ Finally, you will register your mobile apps as well as deploy your adapters.
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
 
 ## Register an account at Bluemix
+{: #register-an-account-at-bluemix }
 If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
 
 ### The Bluemix Dashboard
+{: #the-bluemix-dashboard }
 After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name "dev". You can create multiple work areas/spaces if needed.
 
 ## Set up your host machine
+{: #set-up-your-host-machine }
 To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.  
 You can run the scripts using the macOS Terminal.app or a Linux bash shell.
 
 Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 
 ## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+{: #download-the-bm-mfpf-container-8000-archive}
 To set up {{ site.data.keys.product }} on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
@@ -98,6 +104,7 @@ The archive file contains the files for building an file layout (**dependencies*
 
 
 ## Setting Up the {{ site.data.keys.mf_server }} 
+{: #setting-up-the-mobilefirst-server }
 You can choose to run the scripts interactively or by using the configuration files:
 A good place to start is to run the scripts interactively once, which will also record the arguments (**recorded-args**). You can later use the args files to run the scripts in a non interactive mode.
 
@@ -109,6 +116,7 @@ A good place to start is to run the scripts interactively once, which will also 
 If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
 ### {{ site.data.keys.mf_server }}
+{: #mobilefirst-server }
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -244,12 +252,14 @@ Add the remote server by following the instructions in the [Using {{ site.data.k
 With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development.
 
 #### Applying changes
+{: #applying-changes }
 You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments. 
 
 1. ./prepareserver.sh 
 2. ./startserver.sh 
 
 ### Adding analytics server configuration to {{ site.data.keys.mf_server }}
+{: #adding-analytics-server-configuration-to-mobilefirst-server }
 If you have setup a Analytics server and want to connect it to this {{ site.data.keys.mf_server }} then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with `<>` with correct values from yur deployment.
 
 ```xml
@@ -266,6 +276,7 @@ If you have setup a Analytics server and want to connect it to this {{ site.data
 ```
 
 ## Applying {{ site.data.keys.mf_server }} Fixes
+{: #applying-mobilefirst-server-fixes }
 Interim fixes for the {{ site.data.keys.mf_server }} on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
 Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the 
 **package_root/mfpf-server-libertyapp/usr** folders.
@@ -276,6 +287,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 You can now build and deploy the updatd server.
 
 ## Removing the database service configuration from Bluemix	
+{: #removing-the-database-service-configuration-from-bluemix }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the {{ site.data.keys.mf_server }}.
 
 To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
