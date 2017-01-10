@@ -19,8 +19,8 @@ This tutorial demonstrates how to test adapters by using the {{ site.data.keys.m
  * [Using Postman](#using-postman)
  * [Using Swagger](#using-swagger)
 * [Debugging Adapters](#debugging-adapters)
- * [JavaScript adapters](#javascript-adapters)
- * [Java adapters](#java-adapters)
+ * [JavaScript adapters](#debugging-javascript-adapters)
+ * [Java adapters](#debugging-java-adapters)
 
 ## Testing Adapters
 {: #testing-adapters }

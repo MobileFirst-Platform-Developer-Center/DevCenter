@@ -24,7 +24,7 @@ However, writing this logic on the server side could be faster and cleaner.
 * [Sample application](#sample-application)
 
 ## JavaScript adapter API
-{: #javascript-adapters-api }
+{: #javascript-adapter-api }
 
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
