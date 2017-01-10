@@ -7,11 +7,14 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java adapter is a JAX-RS 2.0 service that can easily be deployed to a {{ site.data.keys.mf_server }} instance and has access to {{ site.data.keys.mf_server }} APIs and other 3rd party APIs.
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
 
-#### Jump to:
+#### Jump to
+{: #jump-to }
 
 * [File structure](#file-structure)
 * [JAX-RS 2.0 application class](#jax-rs-20-application-class)
@@ -20,10 +23,13 @@ Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java 
 * [Server-side APIs](#server-side-apis)
 
 ## File structure
+{: #file-structure }
 
 ![mvn-adapter](java-adapter-fs.png)
 
 ### The adapter-resources folder  
+{: #the-adapter-resources-folder }
+
 The **adapter-resources** folder contains an XML configuration file (**adapter.xml**). In this configuration file you configure the class name of the JAX-RS 2.0 application for this adapter. For example: `com.sample.JavaAdapterApplication`.
 
 ```xml
@@ -74,6 +80,7 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 </div>
 
 #### Custom properties
+{: #custom-properties }
 
 The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **{{ site.data.keys.mf_console }} → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [ConfigurationAPI interface](#configuration-api) and then further customized at run time.
 
@@ -91,6 +98,8 @@ The `<property>` element takes the following attributes:
 ![Console properties](console-properties.png)
 
 #### Pull and Push Configurations
+{: #pull-and-push-configurations }
+
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
 To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
 
@@ -121,6 +130,8 @@ Run the commands from the root folder of the adapter Maven project:
   ```
 
 #### Pushing configurations to multiple servers
+{: #pushing-configurations-to-multiple-servers }
+
 The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
 
 **Maven**  
@@ -136,12 +147,16 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 > Learn more in by using `mfpdev help adapter pull/push`.
 
 ### The java folder
+{: #the-java-folder }
+
 the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.ibm.mfp.adapter.api.MFPJAXRSApplication`) and the resources classes.
 
 The JAX-RS 2.0 application and resources classes define the Java methods and their mapping to URLs.  
 `com.sample.JavaAdapterApplication` is the JAX-RS 2.0 application class and `com.sample.JavaAdapterResource` is a JAX-RS 2.0 resource included in the application.
 
 ## JAX-RS 2.0 application class
+{: #jax-rs-20-application-class }
+
 The JAX-RS 2.0 application class tells the JAX-RS 2.0 framework which resources are included in the application.
 
 ```java
@@ -170,6 +185,8 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 The `MFPJAXRSApplication` class scans the package for JAX-RS 2.0 resources and automatically creates a list. Additionally, its `init` method is called by {{ site.data.keys.mf_server }} as soon as the adapter is deployed (before it starts serving) and when the {{ site.data.keys.product }} runtime starts up.
 
 ## Implementing a JAX-RS 2.0 resource
+{: #implementing-a-jax-rs-20-resource }
+
 JAX-RS 2.0 resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.
 
 ```java
@@ -212,12 +229,18 @@ public class JavaAdapterResource {
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 ## HTTP Session
+{: #http-session }
+
 The {{ site.data.keys.mf_server }} does not rely on HTTP sessions and each request may reach a different node. You should not rely on HTTP sessions to keep data from one request to the next.
 
 ## Server-side APIs
+{: #server-side-apis}
+
 Java adapters can use server-side Java APIs to perform operations that are related to {{ site.data.keys.mf_server }}, such as calling other adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
 ### Configuration API
+{: #configuration-api }
+
 The `ConfigurationAPI` class provides an API to retrieve properties defined in the **adapter.xml** or in the {{ site.data.keys.mf_console }}.
 
 Inside your Java class, add the following at the class level:
@@ -240,6 +263,8 @@ The `getServerJNDIProperty` method can also be used to retrieve a JNDI property 
 You can see usage examples on the [Java SQL Adapter tutorial](java-sql-adapter).
 
 ### Adapters API
+{: #adapters-api }
+
 The `AdaptersAPI` class provides an API to retrieve information about the current adapter and send REST requests to other adapters.
 
 Inside your Java class, add the following at the class level:
@@ -252,6 +277,8 @@ AdaptersAPI adaptersAPI;
 You can see usage examples on the [advanced adapter usage mashup tutorial](../advanced-adapter-usage-mashup).
 
 ### Analytics API
+{: #analytics-api }
+
 The `AnalyticsAPI` class provides an API for reporting information to analytics.
 
 Inside your Java class, add the following at the class level:
@@ -264,6 +291,8 @@ AnalyticsAPI analyticsAPI;
 You can see usage examples on the [Analytics API tutorial](../../analytics/analytics-api).
 
 ### Security API
+{: #security-api }
+
 The `AdapterSecurityContext` class provides the security context of an adapter REST call.
 
 Inside your Java class, add the following at the class level:
@@ -280,4 +309,6 @@ AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
 ```
 
 ## Java adapter examples
+{: #java-adapter-examples }
+
 For examples of Java adapters communicating with an HTTP or SQL back end, see:
