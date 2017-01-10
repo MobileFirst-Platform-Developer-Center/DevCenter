@@ -9,7 +9,7 @@ Consider carefully how removed features and API elements affect your {{ site.dat
 
 #### Jump to
 {: #jump-to }
-* [Discontinued features and features that are not included in v8.0](#discontinued-features-and-features-that-are-not-included-in-v-80)
+* [Discontinued features and features that are not included in v8.0](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [Server-side API Changes](#server-side-api-changes)
 * [Client-side API Changes](#client-side-api-changes)
 
