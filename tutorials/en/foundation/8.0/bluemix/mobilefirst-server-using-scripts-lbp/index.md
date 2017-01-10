@@ -47,7 +47,7 @@ You can run the scripts using the macOS Terminal.app or a Linux bash shell.
 Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 
 ## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
-{: #download-the-bm-mfpf-container-8000-archive}
+{: #download-the-ibm-mfpf-container-8000-archive}
 To set up {{ site.data.keys.product }} on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
