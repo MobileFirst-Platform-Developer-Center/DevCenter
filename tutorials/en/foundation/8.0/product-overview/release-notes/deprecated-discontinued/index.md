@@ -8,12 +8,13 @@ weight: 3
 Consider carefully how removed features and API elements affect your {{ site.data.keys.product_full }} environment.
 
 #### Jump to
-
+{: #jump-to }
 * [Discontinued features and features that are not included in v8.0](#discontinued-features-and-features-that-are-not-included-in-v80)
 * [Server-side API Changes](#server-side-api-changes)
 * [Client-side API Changes](#client-side-api-changes)
 
 ## Discontinued features and features that are not included in v8.0
+{: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
 {{ site.data.keys.product }} v8.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in v7.1 are discontinued in v8.0. In most cases, an alternative way to implement the features is suggested. These features are marked discontinued. Some other features that exist in V7.1. are not in v8.0, but not as a consequence of the new design of v8.0. To distinguish these excluded features from the features that are discontinued from v8.0, they are marked not in v8.0.
 
 <table class="table table-striped">
@@ -172,18 +173,21 @@ Consider carefully how removed features and API elements affect your {{ site.dat
 </table>
 
 ## Server-side API Changes
+{: server-side-api-changes }
 To migrate the server side of your {{ site.data.keys.product_adj }} application, take into account the changes to the APIs.  
 The following tables list the discontinued server-side API elements in v8.0, deprecated server-side API elements in v8.0, and suggested migration paths. For more information about migrating the server side of your application, 
 
 ### JavaScript API elements discontinued in v8.0
-
+{: #javascript-api-elements-discontinued-v-v80 }
 #### Security
+{: #security }
 
 | API Element                         | Replacement Path                               |
 |------------------------------------|------------------------------------------------|
 | `WL.Server.getActiveUser`, `WL.Server.getCurrentUserIdentity`,  `WL.Server.getCurrentDeviceIdentity`, `WL.Server.setActiveUser`, `WL.Server.getClientId`, `WL.Server.getClientDeviceContext`, `WL.Server.setApplicationContext` | Use `MFP.Server.getAuthenticatedUser` instead. |
  
 #### Event Source
+{: #event-source }
 
 | API Element                         | Replacement Path                               |
 |------------------------------------|------------------------------------------------|
@@ -194,6 +198,7 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 | `WL.Server.createUSSDEventHandler`	 | Integrate USSD by using third-party services.  |
 
 #### Push
+{: #push }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
@@ -203,25 +208,30 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 | `WL.Server.getSMSSubscription`	            | Use the REST API Push Device Registration GET) to get the device registrations. |
 
 #### Location Services
+{: #location-services }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
 | `WL.Geo.*`	                                | Integrate Location services by using third-party services. |
 
 #### WS-Security
+{: #ws-security }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
 | `WL.Server.signSoapMessage`	                | Use the WS-Security capabilities of WebSphere  Application Server. |
 
 ### Java API elements discontinued in v8.0
+{: #java-api-elements-discontinued-in-v-80 }
 #### Security
+{: #security-java }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
 | `SecurityAPI.getSecurityContext`	        | Use AdapterSecurityContext instead.            |
 
 #### Push
+{: #push-java }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
@@ -230,6 +240,7 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 | `UserSubscription PushAPI.getUserSubscription(String eventSource, String userId)` | To migrate from Event source-based notifications to tag-based notifications, see Migrating to push notifications from event source-based notifications. |
 
 #### Adapters
+{: #adapters-java }
 
 | API Element                                | Replacement Path                               |
 |-------------------------------------------|------------------------------------------------|
@@ -242,10 +253,12 @@ The following tables list the discontinued server-side API elements in v8.0, dep
 | `WLServerAPIProvider` class in the `com.worklight.adapters.rest.api` package | Use the JAX-RS `Context` annotation to access the {{ site.data.keys.product_adj }} API interfaces directly. | 
 
 ## Client-side API Changes
+{: #client-side-api-changes }
 The following changes in the APIs are relevant to migrating your {{ site.data.keys.product_adj }} client application.  
 The following tables list the discontinued client-side API elements in V8.0.0, deprecated client-side API elements in V8.0.0, and suggested migration paths.
 
 ### JavaScript APIs
+{: #javascript-apis }
 These JavaScript APIs that affect the user interface are no longer supported in v8.0. They can be replaced with available third-party Cordova plug-ins, or by creating custom Cordova plug-ins.
 
 | API Element           | Migration Path                           |
@@ -302,6 +315,7 @@ This set of APIs is no longer supported in v8.0.
 | `WL.Client.createProvisioningChallengeHandler()` | No replacement. Device provisioning is now handled automatically by the security framework. | 
 
 #### Deprecated JavaScript APIs
+{: #deprecated-javascript-apis }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -311,7 +325,9 @@ This set of APIs is no longer supported in v8.0.
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
 
 ### Android APIs
+{: #android-apis}
 ####  Discontinued Android API elements
+{: #discontinued-android-api-elements }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -336,6 +352,7 @@ This set of APIs is no longer supported in v8.0.
 | `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. |
 
 #### Deprecated Android APIs
+{: #deprecated-android-apis }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -343,6 +360,7 @@ This set of APIs is no longer supported in v8.0.
 | `WLClient.connect(WLResponseListener responseListener)`, `WLClient.connect(WLResponseListener responseListener,WLRequestOptions options)` | Use `WLAuthorizationManager.obtainAccessToken("", listener)` to check connectivity to the server and apply application management rules. |
 
 #### Android APIs depending on the legacy org.apach.http APIs are no longer supported
+{: #android-apis-depending-on-the-legacy-orgapachehttp-apis-are-no-longer-supported }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -358,6 +376,7 @@ This set of APIs is no longer supported in v8.0.
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
 
 #### The `com.worklight.androidgap.api` package provides the Android platform functionality for Cordova apps. In {{ site.data.keys.product }}, a number of changes were made to accommodate the Cordova integration.
+{: #comworklightandroidgapapi }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -366,7 +385,9 @@ This set of APIs is no longer supported in v8.0.
 | `static WL.getInstance()` |  `static WL.getInstance()` Gets an instance of the WL class. This method cannot be called before `WL.createInstance(Context)`. |
 
 ### Objective-C APIs
+{: #objective-c-apis }
 #### Discontinued iOS Objective C APIs
+{: #discontinued-ios-objective-c-apis }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -392,7 +413,9 @@ This set of APIs is no longer supported in v8.0.
 | `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use ``GatewayChallengeHandler``. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler`. |
 
 ### Windows C# APIs
+{: #windows-c-apis }
 #### Deprecated Windows C# API elements - Classes
+{: #deprecated-windows-c-api-elements-classes }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
@@ -414,6 +437,7 @@ This set of APIs is no longer supported in v8.0.
 | `WLResourceRequest` | Not supported. |
 
 #### Deprecated Windows C# API elements - Interfaces
+{: #deprecated-windows-c-api-elements-interfaces }
 
 | API Element           | Migration Path                           |
 |-----------------------|------------------------------------------|
