@@ -80,7 +80,7 @@ After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../applicatio
 > For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
 ## {{ site.data.keys.product_adj }} SDK Startup Flow
-{: #mobilefirst-sdk-startup-flows }
+{: #mobilefirst-sdk-startup-flow }
 <div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">

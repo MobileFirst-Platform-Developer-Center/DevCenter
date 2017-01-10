@@ -40,8 +40,8 @@ The numbers in the table specify the first browser version that are fully suppor
 - [Secure Origins Policy](#secure-origins-policy)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product }} web SDK
-{: #adding-the-mobilefirst-foundation-web-sdk }
+## Adding the {{ site.data.keys.product_adj }} web SDK
+{: #adding-the-mobilefirst-web-sdk }
 To add the SDK to new or existing web applications, first download it to your workstation and then add it to your web application.
 
 ### Downloading the SDK
@@ -93,8 +93,8 @@ require(['mfp'], function(WL) {
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support, place the **ibmmfpfanalytics.js** file reference **before** the **ibmmfpf.js** file reference.
 
-## Initializing the {{ site.data.keys.product }} web SDK
-{: #initializing-the-mobilefirst-foundation-web-sdk }
+## Initializing the {{ site.data.keys.product_adj }} web SDK
+{: #initializing-the-mobilefirst-web-sdk }
 Initialize the {{ site.data.keys.product }} web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
 
 ```javascript

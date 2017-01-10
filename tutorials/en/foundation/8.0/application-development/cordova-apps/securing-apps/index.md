@@ -48,7 +48,7 @@ If you run one of the listed commands after you encrypt the web resources, you m
 These commands refresh the content that was encrypted in the www folder, and saves it again as decrypted content. If you use these commands, remember to complete the procedure again to encrypt it before you publish the app.
 
 ### Enabling the web resources checksum feature
-{: #enabling-the-web-resources-checksum-features }
+{: #enabling-the-web-resources-checksum-feature }
 When it is enabled, the web resources checksum feature compares the original web resources of an app when it is started to a stored baseline that was captured the first time that app was started. This is a good way of identifying any differences in the app that might indicate that the app was modified. This procedure is compatible with the Direct Update feature.
 
 **Prerequisites:**
