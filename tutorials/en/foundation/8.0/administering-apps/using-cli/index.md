@@ -6,14 +6,17 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
 
 #### Jump to
+{: #jump-to }
 
 * [Comparison with other facilities](#comparison-with-other-facilities)
 * [Prerequisites](#prerequisites)
 
 ## Comparison with other facilities
+{: #comparison-with-other-facilities }
 You can run administration operations with {{ site.data.keys.product_full }} in the following ways:
 
 * The {{ site.data.keys.mf_console }}, which is interactive.
@@ -30,6 +33,7 @@ The **mfpadm** Ant task, mfpadm program, and REST services are useful for automa
 The **mfpadm** program and the mfpadm Ant task are simpler to use and have better error reporting than the REST services. The advantage of the mfpadm program over the mfpadm Ant task is that it is easier to integrate when integration with operating system commands is already available. Moreover, it is more suitable to interactive use.
 
 ## Prerequisites
+{: #prerequisites }
 The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
 
 The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** directory as a set of scripts:
@@ -43,6 +47,7 @@ To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/
 For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
+{: #jump-to-1 }
 
 * [Calling the **mfpadm** program](#calling-the-mfpadm-program)
 * [Commands for general configuration](#commands-for-general-configuration)
@@ -53,9 +58,11 @@ For more information about running the {{ site.data.keys.mf_server }} installer,
 
 
 ### Calling the **mfpadm** program
+{: #calling-the-mfpadm-program }
 You can use the **mfpadm** program to administer {{ site.data.keys.product_adj }} applications.
 
 #### Syntax
+{: #syntax }
 Call the mfpadm program as follows:
 
 ```bash
@@ -146,6 +153,7 @@ The mfpadm calls contains a command. The following commands are supported.
 | remove farm-member [runtime-name] server-id | Removes a server from the list of farm members. |
 
 #### Interactive mode
+{: #interactive-mode }
 Alternatively, you can also call **mfpadm** without any command in the command line. You can then enter commands interactively, one per line.
 The `exit` command, or end-of-file on standard input (**Ctrl-D** on UNIX terminals) terminates mfpadm.
 
@@ -157,6 +165,7 @@ The `exit` command, or end-of-file on standard input (**Ctrl-D** on UNIX termina
 * help device set status
 
 #### Command history in interactive mode
+{: #command-history-in-interactive-mode }
 On some operating systems, the interactive mfpadm command remembers the command history. With the command history, you can select a previous command, using the arrow-up and arrow-down keys, edit it, and execute it.
 
 **On Linux**  
@@ -179,6 +188,7 @@ The command history is enabled in cmd.exe console windows.
 In environments where rlwrap does not work or is not required, you can disable its use through the option `--no-readline`.
 
 #### The configuration file
+{: #the-configuration-file }
 You can also store the options in a configuration file, instead of passing them on the command line at every call. When a configuration file is present and the option –configfile=file is specified, you can omit the following options:
 
 * --url=URL
@@ -219,6 +229,7 @@ The configuration file is a text file, in the encoding of the current locale, in
 > **Important:** The password is stored in an obfuscated format that hides the password from an occasional glimpse. However, this obfuscation provides no security.
 
 #### Generic options
+{: #generic-options }
 There are also the usual generic options:
 
 | Option	| Description | 
@@ -227,9 +238,11 @@ There are also the usual generic options:
 | --version	| Shows the version | 
 
 #### XML format
+{: #xml-format }
 The commands that receive an XML response from the server verify that this response complies with the specific schema. You can disable this check by specifying `--xmlvalidation=none`.
 
 #### Output character set
+{: #output-character-set }
 Normal output that is produced by the mfpadm program is encoded in the encoding format of the current locale. On Windows, this encoding format is "ANSI code page". The effects are as follows:
 
 * Characters outside of this character set are converted to question marks when they are output.
@@ -241,9 +254,11 @@ To work around this limitation:
 * Or use the mfpadm Ant task, with attribute `output="some file name"` to redirect the output of a command to a file.
 
 ### Commands for general configuration
+{: #commands-for-general-configuration }
 When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
 
 #### The `show global-config` command
+{: #the-show-global-config-command }
 The `show global-config` command shows the global configuration.
 
 Syntax: `show global-config`
@@ -264,6 +279,7 @@ This command is based on the [Global Configuration (GET)](http://www.ibm.com/sup
 
 <br/>
 #### The `show user-config` command
+{: #the-show-user-config-command }
 The `show user-config` command shows the user configuration of a runtime.
 
 Syntax: `show user-config [--xml] [runtime-name]`
@@ -290,6 +306,7 @@ This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `set user-config` command
+{: #the-set-user-config-command }
 The `set user-config` command specifies the user configuration of a runtime or a single property among this configuration.
 
 Syntax for the entire configuration: `set user-config [runtime-name] file`
@@ -325,6 +342,7 @@ This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/su
 
 <br/>
 #### The `show confidential-clients` command
+{: #the-show-confidential-clients-command }
 The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `show confidential-clients [--xml] [runtime-name]`
@@ -351,6 +369,7 @@ This command is based on the [Confidential Clients (GET)](http://www.ibm.com/sup
 
 <br/>
 #### The `set confidential-clients` command
+{: #the-set-confidential-clients-command }
 The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `set confidential-clients [runtime-name] file`
@@ -372,6 +391,7 @@ This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/sup
 
 <br/>
 #### The `set confidential-clients-rule` command
+{: #the-set-confidential-clients-rule-command }
 The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
 
 Syntax: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
@@ -395,9 +415,11 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
 
 ### Commands for adapters
+{: #commands-for-adapters }
 When you invoke the **mfpadm** program, you can include various commands for adapters.
 
 ### The `list adapters` command
+{: #the-list-adapters-command }
 The `list adapters` command returns a list of the adapters that are deployed for a runtime.
 
 Syntax: `list adapters [runtime-name]`
@@ -424,6 +446,7 @@ This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowled
 
 <br/>
 #### The `deploy adapter` command
+{: #the-deploy-adapter-command }
 The `deploy adapter` command deploys an adapter in a runtime.
 
 Syntax: `deploy adapter [runtime-name] file`
@@ -445,6 +468,7 @@ This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowled
 
 <br/>
 #### The `show adapter` command
+{: #the-show-adapter-command }
 The `show adapter` command shows details about an adapter.
 
 Syntax: `show adapter [runtime-name] adapter-name`
@@ -472,6 +496,7 @@ This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledg
 
 <br/>
 #### The `delete adapter` command
+{: #the-delete-adapter-command }
 The `delete adapter` command removes (undeploys) an adapter from a runtime.
 
 Syntax: `delete adapter [runtime-name] adapter-name`
@@ -493,6 +518,7 @@ This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowl
 
 <br/>
 #### The `adapter` command prefix
+{: #the-adapter-command-prefix }
 The `adapter` command prefix takes the following arguments before the verb.
 
 | Argument | Description | 
@@ -502,6 +528,7 @@ The `adapter` command prefix takes the following arguments before the verb.
 
 <br/>
 #### The `adapter get binary` command
+{: #the-adapter-get-binary-command }
 The `adapter get binary` command returns the binary adapter file.
 
 Syntax: `adapter [runtime-name] adapter-name get binary [> tofile]`
@@ -522,6 +549,7 @@ This command is based on the [Export runtime resources (GET)](http://www.ibm.com
 
 <br/>
 #### The `adapter show user-config` command
+{: #the-adapter-show-user-config-command }
 The `adapter show user-config` command shows the user configuration of the adapter.
 
 Syntax: `adapter [runtime-name] adapter-name show user-config [--xml]`
@@ -542,6 +570,7 @@ This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `adapter set user-config` command
+{: #the-adapter-set-user-config-command }
 The `adapter set user-config` command specifies the user configuration of the adapter or a single property within this configuration.
 
 Syntax for the entire configuration: `adapter [runtime-name] adapter-name set user-config file`
@@ -574,9 +603,11 @@ adapter mfp MyAdapter set user-config timeout = 240
 This command is based on the [Adapter configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST service.
 
 ### Commands for apps
+{: #commands-for-apps }
 When you invoke the **mfpadm** program, you can include various commands for apps.
 
 #### The `list apps` command
+{: #the-list-apps-command }
 The `list apps` command returns a list of the apps that are deployed in a runtime.
 
 Syntax: `list apps [runtime-name]`
@@ -602,6 +633,7 @@ list apps mfp
 This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
 
 #### The `deploy app` command
+{: #the-deploy-app-command }
 The `deploy app` command deploys an app version in a runtime.
 
 Syntax: `deploy app [runtime-name] file`
@@ -622,6 +654,7 @@ deploy app mfp MyApp/application-descriptor.json
 This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
 
 #### The `show app` command
+{: #the-show-app-command }
 The `show app` command shows details about an app in a runtime, in particular its environments and versions.
 
 Syntax: `show app [runtime-name] app-name`
@@ -648,6 +681,7 @@ show app mfp MyApp
 This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
 
 #### The `delete app` command
+{: #the-delete-app-command }
 The `delete app` command removes (undeploys) an app, from all environments and all versions, from a runtime.
 
 Syntax: `delete app [runtime-name] app-name`
@@ -668,6 +702,7 @@ delete app mfp MyApp
 This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
 
 #### The `show app version` command
+{: #the-show-app-version-command }
 The `show app version` command show details about an app version in a runtime.
 
 Syntax: `show app version [runtime-name] app-name environment version`
@@ -696,6 +731,7 @@ show app version mfp MyApp iPhone 1.1
 This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
 
 #### The `delete app version` command
+{: #the-delete-app-version-command }
 The `delete app version` command removes (undeploys) an app version from a runtime.
 
 Syntax: `delete app version [runtime-name] app-name environment version`
@@ -718,6 +754,7 @@ delete app version mfp MyApp iPhone 1.1
 This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
 
 #### The `app` command prefix
+{: #the-app-command-prefix }
 The `app` command prefix takes the following arguments before the verb.
 
 | Argument | Description | 
@@ -726,6 +763,7 @@ The `app` command prefix takes the following arguments before the verb.
 | app-name | Name of an app. | 
 
 #### The `app show license-config` command
+{: #the-app-show-license-config-command }
 The `app show license-config` command shows the token license configuration of an app.
 
 Syntax: `app [runtime-name] app-name show license-config`
@@ -745,6 +783,7 @@ app mfp MyApp show license-config
 This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
 
 #### The `app set license-config` command
+{: #the-app-set-license-config-command }
 The `app set license-config` command specifies the token license configuration of an app.
 
 Syntax: `app [runtime-name] app-name set license-config app-type license-type`
@@ -765,6 +804,7 @@ app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
 
 #### The `app delete license-config` command
+{: #the-app-delete-license-config-command }
 The `app delete license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
 
 Syntax: `app [runtime-name] app-name delete license-config`
@@ -778,6 +818,7 @@ app mfp MyApp iPhone 1.1 delete license-config
 This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
 
 #### The `app version` command prefix
+{: #the-app-version-command-prefix }
 The `app version` command prefix takes the following arguments before the verb.
 
 | Argument | Description | 
@@ -788,6 +829,7 @@ The `app version` command prefix takes the following arguments before the verb.
 | version | Version of the app | 
 
 #### The `app version get descriptor` command
+{: #the-app-version-get-descriptor-command }
 The `app version get descriptor` command returns the application descriptor of a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
@@ -807,6 +849,7 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST service.
 
 #### The `app version get web-resources` command
+{: #the-app-version-get-web-resources-command }
 The `app version get web-resources` command returns the web resources of a version of an app, as a .zip file.
 
 Syntax: `app version [runtime-name] app-name environment version get web-resources [> tofile]`
@@ -826,6 +869,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
 
 #### The `app version set web-resources` command
+{: #the-app-version-set-web-resources-command }
 The `app version set web-resources` command specifies the web resources for a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version set web-resources file`
@@ -844,6 +888,7 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
 
 #### The `app version get authenticity-data` command
+{: #the-app-version-get-authenticity-data-command }
 The `app version get authenticity-data` command returns the authenticity data of a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
@@ -862,6 +907,7 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
 
 #### The `app version set authenticity-data` command
+{: #the-app-version-set-authenticity-data-command }
 The `app version set authenticity-data` command specifies the authenticity data for a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version set authenticity-data file`
@@ -889,6 +935,7 @@ app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
 
 #### The `app version delete authenticity-data` command
+{: #the-app-version-delete-authenticity-data-command }
 The `app version delete authenticity-data` command deletes the authenticity data for a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version delete authenticity-data`
@@ -902,6 +949,7 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
 
 #### The `app version show user-config` command
+{: #the-app-version-show-user-config-command }
 The `app version show user-config` command shows the user configuration of a version of an app.
 
 Syntax: `app version [runtime-name] app-name environment version show user-config [--xml]`
@@ -921,6 +969,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
 
 ### The `app version set user-config` command
+{: #the-app-version-set-user-config-command }
 The `app version set user-config` command specifies the user configuration for a version of an app or a single property among this configuration.
 
 Syntax for the entire configuration: `app version [runtime-name] app-name environment version set user-config file`
@@ -953,9 +1002,11 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
 
 ### Commands for devices
+{: #commands-for-devices }
 When you invoke the **mfpadm** program, you can include various commands for devices.
 
 #### The `list devices` command
+{: #the-list-devices-command }
 The `list devices` command returns the list of devices that have contacted the apps of a runtime.
 
 Syntax: `list devices [runtime-name] [--query query]`
@@ -986,6 +1037,7 @@ list-devices mfp --query=john
 This command is based on the [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) service.
 
 #### The `remove device` command
+{: #the-remove-device-command }
 The `remove device` command clears the record about a device that has contacted the apps of a runtime.
 
 Syntax: `remove device [runtime-name] id`
@@ -1006,6 +1058,7 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
 
 #### The `device` command prefix
+{: #the-device-command-prefix }
 The `device` command prefix takes the following arguments before the verb.
 
 | Argument | Description | 
@@ -1014,6 +1067,7 @@ The `device` command prefix takes the following arguments before the verb.
 | id | Unique device identifier. | 
 
 #### The `device set status` command
+{: #the-device-set-status-command }
 The `device set status` command changes the status of a device, in the scope of a runtime.
 
 Syntax: `device [runtime-name] id set status new-status`
@@ -1041,6 +1095,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
 
 #### The `device set appstatus` command
+{: #the-device-set-appstatus-command }
 The `device set appstatus` command changes the status of a device, regarding an app in a runtime.
 
 Syntax: `device [runtime-name] id set appstatus app-name new-status`
@@ -1067,9 +1122,11 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
 
 ### Commands for troubleshooting
+{: #commands-for-troubleshooting }
 When you invoke the **mfpadm** program, you can include various commands for troubleshooting.
 
 #### The `show info` command
+{: #the-show-info-command }
 The `show info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the {{ site.data.keys.product_adj }} administration services are running at all.
 
 Syntax: `show info`
@@ -1087,6 +1144,7 @@ show info
 ```
 
 #### The `show versions` command
+{: #the-show-versions-command }
 The `show versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
 
 * **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from **which mfp-ant-deployer.jar** is taken.
@@ -1108,6 +1166,7 @@ show versions
 ```
 
 #### The `show diagnostics` command
+{: #the-show-diagnostics-command }
 The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services.
 
 Syntax: `show diagnostics`
@@ -1125,6 +1184,7 @@ show diagnostics
 ```
 
 #### The `unlock` command
+{: #the-unlock-command }
 The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations.
 
 **Example**
@@ -1134,6 +1194,7 @@ unlock
 ```
 
 #### The `list runtimes` command
+{: #the-list-runtimes-command }
 The `list runtimes` command returns a list of the deployed runtimes.
 
 Syntax: `list runtimes [--in-database]`
@@ -1158,6 +1219,7 @@ list runtimes --in-database
 This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
 
 #### The `show runtime` command
+{: #the-show-runtime-command }
 The `show runtime` command shows information about a given deployed runtime.
 
 Syntax: `show runtime [runtime-name]`
@@ -1183,6 +1245,7 @@ show runtime mfp
 ```
 
 #### The `delete runtime` command
+{: #the-delete-runtime-command }
 The `delete runtime` command deletes a runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped.
 
 Syntax: `delete runtime [runtime-name] condition`
@@ -1203,6 +1266,7 @@ delete runtime mfp empty
 This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
 
 #### The `list farm-members` command
+{: #the-list-farm-members-command }
 The `list farm-members` command returns a list of the farm member servers on which a given runtime is deployed.
 
 Syntax: `list farm-members [runtime-name]`
@@ -1228,6 +1292,7 @@ list farm-members mfp
 This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
 
 #### The `remove farm-member` command
+{: #the-remove-farm-member-command }
 The `remove farm-member` command removes a server from the list of farm members on which the specified runtime is deployed. Use this command when the server has become unavailable or disconnected.
 
 Syntax: `remove farm-member [runtime-name] server-id`

@@ -6,11 +6,13 @@ weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides the capability to deploy and manage {{ site.data.keys.mf_server }} and {{ site.data.keys.product_adj }} applications on IBM  PureApplication System and IBM PureApplication Service on SoftLayer .
 
 {{ site.data.keys.product }} in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of {{ site.data.keys.mf_system_pattern_full }} provides {{ site.data.keys.product }} runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
 
 #### Jump to
+{: #jump-to }
 * [Installing {{ site.data.keys.mf_system_pattern }}](#installing-mobilefirst-system-pattern)
 * [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
 * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
@@ -28,6 +30,7 @@ weight: 10
 * [Upgrading {{ site.data.keys.mf_system_pattern }}](#upgrading-mobilefirst-system-pattern)
 
 ### Key benefits
+{: #key-benefits }
 {{ site.data.keys.mf_system_pattern }} provides the following benefits:
 
 * Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are  
@@ -43,9 +46,11 @@ weight: 10
 * Optional JNDI properties in the runtime deployment script package allow fine-grained tuning for the deployment topology. In addition, deployment topologies that are built with IBM WebSphere Application Server full profile now support accessing the WebSphere Application Server Administration Console, which gives you full control over the configuration of the application server.
 
 ### Important restrictions
+{: #important-restrictions }
 Depending on the pattern template you use, do not change some of the component attributes. If you change any of these component attributes, the deployment of patterns that are based on these templates fails.
 
 #### {{ site.data.keys.product }} (Application Center Liberty single node)
+{: #mobilefirst-foundation-application-center-liberty-single-node }
 Do not change the values for the following attributes in the Liberty profile server:
 
 * WebSphere product Installation directory
@@ -55,6 +60,7 @@ Do not change the values for the following attributes in the Liberty profile ser
 * Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
 
 #### {{ site.data.keys.product }} (Application Center WebSphere Application Server single node)
+{: #mobilefirst-foundation-application-center-websphere-application-server-single-node }
 Do not change the values for the following attributes in the Liberty profile server:
 
 * WebSphere product Installation directory
@@ -66,6 +72,7 @@ Do not change the values for the following attributes in the Liberty profile ser
 * Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
 
 #### {{ site.data.keys.product }} (Liberty single node)
+{: #mobilefirst-foundation-liberty-single-node }
 Do not change the values for the following attributes in the Liberty profile server:
 
 * WebSphere product Installation directory
@@ -75,6 +82,7 @@ Do not change the values for the following attributes in the Liberty profile ser
 * Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
 
 #### {{ site.data.keys.product }} (Liberty server farm)
+{: #mobilefirst-foundation-liberty-server-farm }
 Do not change the values for the following attributes in the Liberty profile server:
 
 * WebSphere product Installation directory
@@ -84,6 +92,7 @@ Do not change the values for the following attributes in the Liberty profile ser
 * Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
 
 #### {{ site.data.keys.product }} (WebSphere Application Server single node) template
+{: #mobilefirst-foundation-websphere-application-server-single-node-template }
 In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
 
 * Cell name
@@ -92,6 +101,7 @@ In the **Standalone server component** of the MobileFirst Platform Server node, 
 * If you change any of these attributes, your pattern deployment fails.
 
 #### {{ site.data.keys.product }} (WebSphere Application Server server farm) template
+{: #mobilefirst-foundation-websphere-application-server-server-farm-template }
 In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
 
 * Cell name
@@ -100,6 +110,7 @@ In the **Standalone server component** of the MobileFirst Platform Server node, 
 * If you change any of these attributes, your pattern deployment fails.
 
 #### {{ site.data.keys.product }} (WebSphere Application Server Network Deployment) template
+{: #mobilefirst-foundation-websphere-application-server-network-deployment-template }
 In the **Deployment manager component** of the **DmgrNode node** or the **Custom nodes component** of the **CustomNode node**, do not unlock or change the values for any of the following attributes:
 
 * Cell name
@@ -109,6 +120,7 @@ In the **Deployment manager component** of the **DmgrNode node** or the **Custom
 If you change any of these attributes, your pattern deployment fails.
 
 ### Limitations
+{: #limitations }
 The following limitations apply:
 
 * Dynamic scaling for WebSphere Application Server Liberty profile server farms and WebSphere Application Server full profile server farms is not supported. The number of server farm nodes can be specified in the pattern by setting the scaling policy but cannot be changed during run time.
@@ -118,6 +130,7 @@ The following limitations apply:
 * The MobileFirst (WebSphere Application Server Network Deployment) pattern template does not support token licensing. If you want to use this pattern, you must use perpetual licensing. All other patterns support token licensing.
 
 ### Composition
+{: #composition }
 {{ site.data.keys.mf_system_pattern }} is composed of the following patterns:
 
 * IBM WebSphere Application Server Network Deployment Patterns 2.2.0.0.
@@ -126,6 +139,7 @@ The following limitations apply:
 * {{ site.data.keys.mf_system_pattern }}.
 
 ### Components
+{: #components }
 In addition to all components provided by IBM WebSphere Application Server Pattern and IBM DB2 with BLU Acceleration Pattern, {{ site.data.keys.mf_system_pattern }} provides the following Script Packages:
 
 * MFP Administration DB
@@ -141,6 +155,7 @@ In addition to all components provided by IBM WebSphere Application Server Patte
 * MFP Server Application Center
 
 ### Compatibility between pattern types and artifacts created with different product versions
+{: #compatibility-between-pattern-types-and-artifacts-created-with-different-product-versions }
 If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, you can upload the associated runtime, application, and adapter artifacts into patterns associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 and later.
 
 Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
@@ -148,6 +163,7 @@ Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_pro
 For versions V6.0.0 and earlier, only the same versions of server, **.war** file, application (**.wlapp** file), and adapters are compatible.
 
 ## Installing {{ site.data.keys.mf_system_pattern }}
+{: #installing-mobilefirst-system-pattern }
 You can find the **{{ site.data.keys.mf_system_pattern_file }}** file. Make sure you extract the file before you start this procedure.
 
 1. Log in to IBM  PureApplication System with an account that has permission to create new pattern types.
@@ -162,6 +178,7 @@ You can find the **{{ site.data.keys.mf_system_pattern_file }}** file. Make sure
 8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
 
 ## Token licensing requirements for {{ site.data.keys.mf_system_pattern }}
+{: #token-licensing-requirements-for-mobilefirst-system-pattern }
 If you use token licensing to license {{ site.data.keys.product }}, you must install IBM  Rational  License Key Server and configure with your licenses before you deploy the {{ site.data.keys.mf_system_pattern_full }}.
 
 > **Important:** The {{ site.data.keys.product }} (WAS ND) pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template. All other pattern templates support token licensing.
@@ -180,6 +197,7 @@ The deployment of {{ site.data.keys.system_pattern }} fails if the license key s
 For details about installing and configuring Rational License Key Server, see [IBM Support - Rational licensing start page](http://www.ibm.com/software/rational/support/licensing/).
 
 ## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server
+{: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server }
 You use a predefined template to deploy {{ site.data.keys.mf_server }} on a single-node WebSphere  Application Server Liberty profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -305,6 +323,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with admin user and password specified in step 3 or step 9.
 
 ## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server
+{: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server }
 You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server Liberty profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -434,6 +453,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
 
 ## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server
+{: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server }
 You use a predefined template to deploy a single-node {{ site.data.keys.mf_server }} to a WebSphere  Application Server full profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -572,6 +592,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with admin user and password specified in step 3 or step 9.
 
 ## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server
+{: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server }
 You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server full profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -712,6 +733,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
 
 ## Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers
+{: #deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers }
 You can use a predefined template to deploy {{ site.data.keys.mf_server }} on clusters of WebSphere  Application Server Network Deployment servers. This {{ site.data.keys.mf_system_pattern_short }} template does not support token licensing.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -873,6 +895,7 @@ For more information about the composition and configuration options of the pred
     If the console does not display the {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console).
 
 ### {{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment
+{: #mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment }
 If you deploy a PureApplication  pattern based on the {{ site.data.keys.product }} (WAS ND) template and run the System Monitoring for WebSphere  Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly, when you deploy the pattern.
 
 A PureApplication virtual system pattern based on the {{ site.data.keys.product }} (WAS ND) template deploys the {{ site.data.keys.product_adj }} administration service and the {{ site.data.keys.product }} runtime into different WebSphere Application Server Network Deployment clusters. For the {{ site.data.keys.product }} runtime to work correctly, it must be started after the {{ site.data.keys.product_adj }} administration service. If the {{ site.data.keys.product }} runtime starts first, the runtime service fails to detect the {{ site.data.keys.product_adj }} administration service, which causes errors in the runtime service.
@@ -882,6 +905,7 @@ When the deployment of a PureApplication pattern is almost complete, the System 
 You must stop the System Monitoring for WebSphere Application Server shared service before you deploy the pattern. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem.
 
 ### Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console
+{: #restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console }
 If your {{ site.data.keys.mf_console }} is empty after you deploy a PureApplication  System pattern based on the {{ site.data.keys.product }} (WAS ND) template, you might need to restart the IBM {{ site.data.keys.product }} runtime from the WebSphere  Application Server administrative console.
 
 This procedure applies only when you are deploying PureApplication virtual system patterns based on the {{ site.data.keys.product }} (WAS ND) template when you are running the System Monitoring for WebSphere Application Server shared service. If you do not use this shared service or are deploying a pattern based on a different template, this procedure does not apply to you.
@@ -932,6 +956,7 @@ To work correctly, the {{ site.data.keys.product_adj }} administration service n
 4. Access the {{ site.data.keys.mf_console }} again and confirm that your {{ site.data.keys.product }} runtimes are now visible.
 
 ## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server
+{: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server }
 You use a predefined template to deploy {{ site.data.keys.mf_app_center }} on a single-node WebSphere  Application Server Liberty profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -1028,6 +1053,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with admin user and password specified in step 3.
 
 ## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server
+{: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server }
 You use a predefined template to deploy a single-node {{ site.data.keys.mf_app_center }} to a WebSphere  Application Server full profile server.
 
 This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
@@ -1136,6 +1162,7 @@ For more information about the composition and configuration options of the pred
     * Log in to the Console with admin user and password specified in step 3.
 
 ## Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository
+{: #configuring-mobilefirst-administration-security-with-an-external-ldap-repository }
 You can configure {{ site.data.keys.product_adj }} administration security to enable connecting out to an external LDAP repository. The configuration is common for both WebSphere  Application Server Liberty profile and full profile.
 
 This procedure involves configuring the LDAP parameters for connecting to the external user registry server. Before you begin, ensure the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
@@ -1292,6 +1319,7 @@ If the runtime to be deployed in the pattern is configured to use LDAP for appli
     * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
 
 ## Configuring an external database with a {{ site.data.keys.mf_system_pattern }}
+{: #configuring-an-external-database-with-a-mobilefirst-system-pattern }
 You can configure {{ site.data.keys.mf_system_pattern }} to enable connecting out to an external database. IBM DB2 is the only supported external database. The configuration is common for all the supported patterns.
 
 **Before you begin**
@@ -1349,6 +1377,7 @@ This procedure involves configuring the external database parameters for connect
         External runtime database password.
 
 ## Deploying and configuring {{ site.data.keys.mf_analytics }}
+{: #deploying-and-configuring-mobilefirst-analytics }
 You can deploy and configure the {{ site.data.keys.mf_analytics }} on both WebSphere  Application Server Liberty profile and full profile to enable the Analytics features in the pattern.
 
 Before you begin,  
@@ -1489,10 +1518,12 @@ If you intend to use an LDAP repository to protect the Analytics Console, ensure
     * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
     
 ## Predefined templates for {{ site.data.keys.mf_system_pattern }}
+{: #predefined-templates-for-mobilefirst-system-pattern }
 {{ site.data.keys.mf_system_pattern }} includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
 The following templates are available:
 
 #### Jump to
+{: #jump-to-1 }
 * [{{ site.data.keys.product }} (Liberty single node) template](#mobilefirst-foundation-liberty-single-node-template)
 * [{{ site.data.keys.product }} (Liberty server farm) template](#mobilefirst-foundation-liberty-server-farm-template)
 * [{{ site.data.keys.product }} (WAS single node) template](#mobilefirst-foundation-was-single-node-template)
@@ -1502,6 +1533,7 @@ The following templates are available:
 * [{{ site.data.keys.mf_app_center }} (WAS single node) template](#mobilefirst-application-center-was-single-node-template)
 
 ### {{ site.data.keys.product }} (Liberty single node) template
+{: #mobilefirst-foundation-liberty-single-node-template }
 The following diagram shows the composition of the "MobileFirst Platform (Liberty single node)" template.
 
 ![{{ site.data.keys.product }} (Liberty single node) template](pureapp_templ_Lib_single_node.jpg)
@@ -1514,6 +1546,7 @@ The {{ site.data.keys.product }} (Liberty single node) template is composed of t
 | MobileFirst Platform DB | **Database Server**<br/>DB2  database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### {{ site.data.keys.product }} (Liberty server farm) template
+{: #mobilefirst-foundation-liberty-server-farm-template }
 The following diagram shows the composition of the "MobileFirst Platform (Liberty server farm)" template.
 
 ![{{ site.data.keys.product }} (Liberty server farm) template](pureapp_templ_Lib_server_farm.jpg)
@@ -1527,6 +1560,7 @@ The {{ site.data.keys.product }} (Liberty server farm) template is composed of t
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### {{ site.data.keys.product }} (WAS single node) template
+{: #mobilefirst-foundation-was-single-node-template }
 The following diagram shows the composition of the "MobileFirst Platform (WAS single node)" template.
 
 ![{{ site.data.keys.product }} (WAS single node) template](pureapp_templ_WAS_single_node.jpg)
@@ -1539,6 +1573,7 @@ The {{ site.data.keys.product }} (WAS single node) template is composed of the f
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### {{ site.data.keys.product }} (WAS server farm) template
+{: #mobilefirst-foundation-was-server-farm-template }
 The following diagram shows the composition of the "MobileFirst Platform (WAS server farm)" template.
 
 ![{{ site.data.keys.product }} (WAS server farm) template](pureapp_templ_WAS_server_farm.jpg)
@@ -1552,6 +1587,7 @@ The {{ site.data.keys.product }} (WAS server farm) template is composed of the f
 | MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
 
 ### {{ site.data.keys.product }} (WAS ND) template
+{: #mobilefirst-foundation-was-nd-template }
 The following diagram shows the composition of the "MobileFirst Platform (WAS ND)" template.
 
 ![{{ site.data.keys.product }} (WAS ND) template](pureapp_templ_WAS_ND.jpg)
@@ -1566,6 +1602,7 @@ The {{ site.data.keys.product }} (WAS ND) template is composed of the following 
 | CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
 
 ### {{ site.data.keys.mf_app_center }} (Liberty single node) template
+{: #mobilefirst-application-center-liberty-single-node-template }
 The following diagram shows the composition of the "MobileFirst Platform Application Center (Liberty single node)" template.
 
 ![{{ site.data.keys.mf_app_center }} (Liberty single node) template](pureapp_templ_appC_Lib_single_node.jpg)
@@ -1578,6 +1615,7 @@ The {{ site.data.keys.mf_app_center }} (Liberty single node) template is compose
 | MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
 
 ### {{ site.data.keys.mf_app_center }} (WAS single node) template
+{: #mobilefirst-application-center-was-single-node-template }
 The diagram shows the composition of the "MobileFirst Platform Application Center (WAS single node)" template.
 
 ![{{ site.data.keys.mf_app_center }} (WAS single node) template](pureapp_templ_appC_WAS_single_node.jpg)
@@ -1591,10 +1629,12 @@ The {{ site.data.keys.mf_app_center }} (WAS single node) template is composed of
 
 
 ## Script packages for {{ site.data.keys.mf_server }}
+{: #script-packages-for-mobilefirst-server }
 {{ site.data.keys.mf_system_pattern }} provides script packages that are the building blocks to compose various pattern topologies.  
 The following sections list and describe the parameters for each script package.
 
 #### Jump to
+{: #jump-to-2 }
 * [MFP Administration DB](#mfp-administration-db)
 * [MFP Analytics](#mfp-analytics)
 * [MFP IHS Configuration](#mfp-ihs-configuration)
@@ -1608,6 +1648,7 @@ The following sections list and describe the parameters for each script package.
 * [MFP Server Runtime Deployment](#mfp-server-runtime-deployment)
 
 ### MFP Administration DB
+{: #mfp-administration-db }
 This script package sets up the administration database schema in a DB2  database. It must be used with the Database Server (DB2) software component.
 
 | Parameter | Description | 
@@ -1618,6 +1659,7 @@ This script package sets up the administration database schema in a DB2  databas
 | other\_db\_args | Mandatory. Four parameters to create the Administration database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. |
 
 ### MFP Analytics
+{: #mfp-analytics }
 This script package sets up {{ site.data.keys.mf_analytics_server }} in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and sets up the connection and mapping of Analytics administration security roles to an external TDS or AD server. It must be used with the WebSphere Application Server Liberty profile server or WebSphere Application Server full profile (display name: Standalone server) software component . It must be installed after the Liberty profile or Standalone server software component.
 
 | Parameter | Description | 
@@ -1647,6 +1689,7 @@ This script package sets up {{ site.data.keys.mf_analytics_server }} in a WebSph
 | mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
 
 ### MFP IHS Configuration
+{: #mfp-ihs-configuration }
 This script package configures the IBM HTTP Server to work as a load balancer for multiple instances of {{ site.data.keys.mf_server }}. It must be used with the IBM HTTP servers software component . It must be installed after the IBM HTTP servers software component.
 
 | Parameter | Description | 
@@ -1659,6 +1702,7 @@ This script package configures the IBM HTTP Server to work as a load balancer fo
 | server_hostname | Mandatory. Host name of IBM HTTP servers. It is mapped to the host output attribute of IBM HTTP servers in the pattern template. | 
 
 ### MFP Open Firewall Ports for WAS
+{: #mfp-open-firewall-ports-for-was }
 This script package is only applicable for Custom nodes in the {{ site.data.keys.product_adj }} (WAS ND) pattern template (WebSphere Application Server Network Deployment). Its purpose is to open the necessary firewall ports of the Custom nodes that host the {{ site.data.keys.product_adj }} Administration Services and runtime. As well as defining some WebSphere Application Server predefined ports, you need to specify the other ports for connecting to the DB2 server and the LDAP server.
 
 | Parameter | Description | 
@@ -1669,6 +1713,7 @@ This script package is only applicable for Custom nodes in the {{ site.data.keys
 | Ports	| Mandatory. Other ports that need to be opened for connecting to DB2 server and LDAP server (optional). Port values can be separated by semicolons; for example, '50000;636'<br/><br/>Default value: 50000. | 
 
 ### MFP WAS SDK Level
+{: #mfp-was-sdk-level }
 This script package is only applicable where ever the WAS Profiles are available in the pattern template (WebSphere Application Server Network Deployment).
 
 | Parameter | Description | 
@@ -1678,6 +1723,7 @@ This script package is only applicable where ever the WAS Profiles are available
 | SDK_name | Name of the SDK that needs to be enabled for this WebSphere installation | 
 
 ### MFP Runtime DB
+{: #mfp-runtime-db }
 This script package sets up the runtime database schema in a DB2 database.
 
 | Parameter | Description | 
@@ -1688,6 +1734,7 @@ This script package sets up the runtime database schema in a DB2 database.
 | other\_db\_args |	Mandatory. Four parameters to create the Runtime database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. | 
 
 ### MFP Server Administration
+{: #mfp-server-administration }
 This script package sets up the {{ site.data.keys.product_adj }} Administration component (including the {{ site.data.keys.mf_console }}) in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and setting up the connection and mapping administration security roles to an external TDS or AD server.
 
 The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the MFP Server Prerequisite but prior to any other MFP * Script Packages in the {{ site.data.keys.mf_server }} VM node.
@@ -1728,6 +1775,7 @@ The script package must be used with the WebSphere Application Server Liberty pr
 | mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
 
 ### MFP Server Application Adapter Deployment
+{: #mfp-server-application-adapter-deployment }
 This script package deploys applications and adapters to the {{ site.data.keys.mf_server }}. It must be installed after the corresponding MFP Server Runtime Deployment script package that installed the runtime where the application and adapter are to be deployed.
 
 | Parameter | Description | 
@@ -1740,6 +1788,7 @@ This script package deploys applications and adapters to the {{ site.data.keys.m
 | webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, it is mapped to the same output attribute of MFP Server Administration. | 
 
 ### MFP Server Application Center
+{: #mfp-server-application-center }
 This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. It must be used with the WebSphere Application Server Liberty profile server and MFP Server Prerequisite or WebSphere Application Server full profile (Standalone server), MFP WAS SDK Level and MFP Server Prerequisite. It must be installed after the Liberty profile or Standalone server software component.
 
 | Parameter | Description | 
@@ -1772,6 +1821,7 @@ This script package sets up the {{ site.data.keys.mf_app_center }} server in a W
 | appcenteradmin | Admin role for {{ site.data.keys.mf_app_center }}. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>{:/}Default value: None | 
 
 ### MFP Server Prerequisite
+{: #mfp-server-prerequisite }
 This script package includes all prerequisites that are required to install the {{ site.data.keys.mf_server }}, including the DB2 JDBC driver and Apache Ant. The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the server software component but prior to any other MFP* script packages in the MobileFirst Platform Server node.
 
 | Parameter | Description |
@@ -1779,6 +1829,7 @@ This script package includes all prerequisites that are required to install the 
 | None | No parameters for this script package. | 
 
 ### MFP Server Runtime Deployment
+{: #mfp-server-runtime-deployment }
 This script package installs the {{ site.data.keys.product }} runtime in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server with the {{ site.data.keys.mf_console }} installed. The script package also sets up the connection to the {{ site.data.keys.mf_analytics_server }}. It must be installed after the MFP Server Administration script package.
 
 | Parameter | Description |
@@ -1807,6 +1858,7 @@ This script package installs the {{ site.data.keys.product }} runtime in a WebSp
 | analytics_admin_password | Optional. Password of administrator of the {{ site.data.keys.mf_analytics_server }}. | 
 
 ## Upgrading {{ site.data.keys.mf_system_pattern }}
+{: #upgrading-mobilefirst-system-pattern }
 To upgrade {{ site.data.keys.mf_system_pattern }}, upload the **.tgz** file that contains the latest updates.
 
 1. Log into IBM  PureApplication  System with an account that is allowed to upload new system plugins.

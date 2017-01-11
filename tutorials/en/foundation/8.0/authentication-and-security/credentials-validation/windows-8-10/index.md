@@ -14,6 +14,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
 This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
 
@@ -32,6 +33,7 @@ The client should then register a **challenge handler** for each security check.
 The challenge handler defines the client-side behavior that is specific to the security check.
 
 ## Creating the challenge handler
+{: #creating-the-challenge-handler }
 A challenge handler is a class that handles the challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
 
 In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
@@ -45,6 +47,7 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 ```
 
 ## Handling the challenge
+{: #handling-the-challenge }
 The minimum requirement from the `SecurityCheckChallengeHandler` class is to implement a constructor and a `HandleChallenge` method, that is responsible for asking the user to provide the credentials. The `HandleChallenge` method receives the challenge as an `Object`.
 
 Add a constructor method:
@@ -98,7 +101,7 @@ public override void HandleChallenge(Object challenge)
 If the credentials are incorrect, you can expect the framework to call `HandleChallenge` again.
 
 ## Submitting the challenge's answer
-
+{: #submitting-the-challenges-answer }
 After the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` methods to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a Boolean value that indicates whether the challenge response should be sent back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```csharp
@@ -118,6 +121,7 @@ public override JObject GetChallengeAnswer()
 ```
 
 ## Cancelling the challenge
+{: #cancelling-the-challenge }
 In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
 
 To achieve this, override the `ShouldCancel` method.
@@ -131,6 +135,7 @@ public override bool ShouldCancel()
 ```
 
 ## Registering the challenge handler
+{: #registering-the-challenge-handler }
 For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
 
 To do so, initialize the challenge handler with the security check as follows:
@@ -147,6 +152,7 @@ client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
 
 ## Sample application
+{: #sample-application }
 The **PinCodeWin8** and **PinCodeWin10** samples are C# applications that use `ResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
@@ -155,6 +161,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.
 
 ![Sample application](sample-application.png)   

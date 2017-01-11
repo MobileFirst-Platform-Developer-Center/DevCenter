@@ -10,11 +10,12 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
 #### Jump to:
-
+{: #jump-to }
 * [Translating application strings](#translating-application-strings)
 * [Translating system messages](#translating-system-messages)
 * [Multilanguage translation](#multilanguage-translation)
@@ -22,12 +23,14 @@ Items that can be translated are application strings and system messages.
 * [Sample application](#sample-application)
 
 ## Translating application strings
+{: #translating-application-strings }
 Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
 
 - In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
 - In Web applications, you need to add it.
 
 ### JSON object structure example
+{: #json-object-structure-example }
 
 ```javascript
 var Messages = {
@@ -52,14 +55,17 @@ Messages.headerText
 ```
 
 ## Translating system messages
+{: #translating-system-messages }
 It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
 
 **Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
 
 ### Web applications
+{: #web-applications }
 You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
 
 ### Cordova applications
+{: #cordova-applications }
 You can find a full list of system messages in the `messages.json` file, located inside the generated project.
 
 - Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
@@ -72,6 +78,7 @@ WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
 
 ## Multilanguage translation
+{: #multilanguage-translation }
 Using JavaScript, you can implement multilanguage translation for your application.  
 The below steps explain the implementation of this tutorial's sample application.
 
@@ -133,12 +140,15 @@ The below steps explain the implementation of this tutorial's sample application
    ```
 
 ## Detecting the device locale and language
+{: #detecting-the-device-locale-and-language }
 To detect the language used by the device or browser:
 
 ### Web applications
+{: #web-applications-locale}
 Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
 
 ### Cordova applications
+{: #cordova-applications-locale }
 Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
 The globalization plug-in is auto-installed when adding a platform to the Cordova application.
 
@@ -173,9 +183,11 @@ The result can then be seen in the device log, for example from Android Studio's
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
+{: #sample-application }
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.

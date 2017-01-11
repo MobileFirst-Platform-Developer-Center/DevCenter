@@ -7,6 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ### Registering Javadocs to an Android Studio Gradle project
+{: #registering-javadocs-to-an-android-studio-gradle-project }
 The {{ site.data.keys.product_adj }} Android Javadocs are included in the *.aar files imported by Gradle. However you need to link them to their relevant library in Android Studio.
 
 1. In Android Studio make sure you are in the **Project** view.
@@ -17,5 +18,6 @@ The {{ site.data.keys.product_adj }} Android Javadocs are included in the *.aar 
 6. Click **OK**. The Javadocs will now be available within your project.
 
 ### Notes
+{: #notes }
 
 * The {{ site.data.keys.product_adj }} APIs cannot be activated from within an Android Service.

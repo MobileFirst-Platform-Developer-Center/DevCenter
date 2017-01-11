@@ -10,6 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
 In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
 
@@ -22,6 +23,7 @@ Using this Message Inspector we will examine the incoming request and validate t
 * Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
 
 #### Jump to:
+{: #jump-to }
 * [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
 * [Define a Message Inspector](#define-a-message-inspector)
 * [Message Inspector Implementation](#message-inspector-implementation)
@@ -31,6 +33,7 @@ Using this Message Inspector we will examine the incoming request and validate t
     * [Post-process Validation](#post-process-validation)
 
 ## Create and configure WCF Web HTTP Service
+{: #create-and-configure-wcf-web-http-service }
 First we will create a **WCF service** and call it `GetBalanceService` which we will protect later by a **message inspector**.
 In our example we are using a console application as a hosting program for the service.
 
@@ -99,6 +102,7 @@ static void Main(string[] args) {
 > For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
 
 ## Define a Message Inspector
+{: #define-a-message-inspector }
 Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
 A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
 
@@ -223,6 +227,7 @@ private void validateRequest(Message request)
 ```
 
 ## Pre-process Validation
+{: #pre-process-validation }
 The pre-process validation is done as part of the getClientTokenFromHeader() method.
 This process is based upon 2 checks:
 
@@ -342,6 +347,7 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 ```
 
 ## Send request to Introspection Endpoint with client token
+{: #send-request-to-introspection-endpoint-with-client-token }
 Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
 Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
 
@@ -357,6 +363,7 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 ```
 
 ## Post-process Validation
+{: #post-process-validation }
 Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
 401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
 
@@ -368,7 +375,7 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }} Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
+The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }}  Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
 If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
 
 ```csharp
@@ -408,11 +415,12 @@ private void postProcess(HttpWebResponse introspectionResponse)
 }
 ```
 
-## Sample
+## Sample application
+{: #sample-application }
 [Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
 
 ### Sample usage
-
+{: #sample-usage }
 1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
 2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.

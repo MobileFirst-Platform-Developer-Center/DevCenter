@@ -7,6 +7,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Bluemix. To achieve this you will go through the following steps: 
 
 * Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
@@ -21,7 +22,7 @@ Finally, you will run the image on IBM Containers as a single Container or a Con
 * The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to IBM Containers.
 
 #### Jump to:
-
+{: #jump-to }
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
 * [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
@@ -32,15 +33,19 @@ Finally, you will run the image on IBM Containers as a single Container or a Con
 * [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
 
 ## Register an account at Bluemix
+{: #register-an-account-at-bluemix }
 If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
 
 ### The Bluemix Dashboard
+{: #the-bluemix-dashboard }
 After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name "dev". You can create multiple work areas/spaces if needed.
 
 ## Set up your host machine
+{: #set-up-your-host-machine }
 To manage containers and images, you need to install the following tools: Docker, Cloud Foundry CLI, and IBM Containers (cf ic) Plug-in.
 
 ### Docker
+{: #docker }
 Go to the [Docker Documentation](https://docs.docker.com/) on the left menu, select **Install → Docker Engine**, select your OS type, and follow the instructions to install the Docker Toolbox.
 
 **Note:** IBM does not support Docker's Kitematic.
@@ -69,11 +74,12 @@ In macOS, two options are available to run Docker commands:
 > For further information consult the Docker documentation.
 
 ### Cloud Foundry Plug-in and IBM Containers plug-in
-
+{: #cloud-foundry-plug-in-and-ibm-containers-plug-in}
 1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
 ## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+{: #download-the-ibm-mfpf-container-8000}-archive 
 To set up {{ site.data.keys.product }} on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
@@ -260,6 +266,7 @@ The archive file contains the files for building an image (**dependencies** and 
 </div>
 
 ## Prerequisites
+{: #prerequisites }
 The below steps are mandatory as you will be running IBM Containers commands during the following section.
 
 1. Login to the IBM Bluemix environment.  
@@ -286,13 +293,16 @@ Run: `cf ic login`.
 > To learn more about IC commands, use the `ic help` command.
 
 ## Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers
+{: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 As explained above, you can choose to run the scripts interactively or by using the configuration files:
 
 * Using the configuration files - run the scripts and pass the respective configuration file as an argument.
 * Interactively - run the scripts without any arguments.
 
 **Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
+
 ### {{ site.data.keys.mf_analytics }}
+{: #mobilefirst-analytics }
 If you intend to use analytics with your {{ site.data.keys.mf_server }} start here.
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
@@ -649,6 +659,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 </div>
 
 ### {{ site.data.keys.mf_server }}
+{: #mobilefirst-server}
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -1073,9 +1084,11 @@ Add the remote server by following the instructions in the [Using {{ site.data.k
 With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development. Review the {{ site.data.keys.product }} [tutorials](../../all-tutorials).
 
 #### Port number limitation
+{: #port-number-limitation }
 There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the {{ site.data.keys.mf_analytics }} container and the {{ site.data.keys.mf_server }} container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
 
 ## Applying {{ site.data.keys.mf_server }} Fixes
+{: #applying-mobilefirst-server-fixes }
 Interim fixes for the {{ site.data.keys.mf_server }} on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
 Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the **package_root/mfpf-analytics/usr** and **package_root/mfpf-server/usr** folders.
 
@@ -1084,7 +1097,8 @@ Before you apply an interim fix, back up your existing configuration files. The 
 
 You can now build and deploy new production-level containers.
 
-##  Removing a Container from Bluemix
+## Removing a Container from Bluemix
+{: #removing-a-container-from-bluemix }
 When you remove a container from Bluemix, you must also remove the image name from the registry.  
 Run the following commands to remove a container from Bluemix:
 
@@ -1098,6 +1112,7 @@ Run the following cf ic commands to remove an image name from the Bluemix regist
 2. `cf ic rmi image_id` (Removes the image from the registry)
 
 ## Removing the database service configuration from Bluemix	
+{: #removing-the-database-service-configuration-from-bluemix }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
 
 To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.

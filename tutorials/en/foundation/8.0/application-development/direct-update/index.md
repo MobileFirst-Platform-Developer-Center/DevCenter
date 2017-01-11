@@ -10,6 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
 
 In order to update an application, the updated web resources of the application need to be packaged and uploaded to the {{ site.data.keys.mf_server }} using the {{ site.data.keys.mf_cli }} or by deploying a generated archive file. Direct Update is then activated automatically  Once activated, it will be enforced on every request to a protected resource.
@@ -32,12 +33,14 @@ At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to 
 > Learn more in [Serving Direct Update requests from a CDN](cdn-support)
 
 ### Notes
+{: #notes }
 
 * Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
 * When you use the Direct Update feature and the [web resources checksum](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) feature is enabled, a new checksum base is established with each Direct Update.
 * If the {{ site.data.keys.mf_server }} was upgraded by using a fix pack, it continues to serve direct updates properly. However, if a recently built Direct Update archive (.zip file) is uploaded, it can halt updates to older clients. The reason is that the archive contains the version of the cordova-plugin-mfp plug-in. Before it serves that archive to a mobile client, the server compares the client version with the plug-in version. If both versions are close enough (meaning that the three most significant digits are identical), Direct Update occurs normally. Otherwise, {{ site.data.keys.mf_server }} silently skips the update. One solution for the version mismatch is to download the cordova-plugin-mfp with the same version as the one in your original Cordova project and regenerate the Direct Update archive.
 
 #### Jump to:
+{: #jump-to}
 
 - [How Direct Update works](#how-direct-update-works)
 - [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
@@ -48,6 +51,7 @@ At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to 
 - [Sample application](#sample-application)
 
 ## How Direct Update works
+{: #how-direct-update-works }
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the {{ site.data.keys.mf_server }}.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** after a Direct Update was performed, it is checked for again after 60 minutes.
@@ -57,9 +61,11 @@ After a Direct Update, the application no longer uses the pre-packaged web resou
 ![Diagram of how direct update works](internal_function.jpg)
 
 ### Versioning
+{: #versioning }
 A Direct Update applies only to a specific version. In other words, updates generated for an application versioned 2.0 cannot be applied to a different version of the same application.
 
 ## Creating and deploying updated web resources
+{: #creating-and-deploying-updated-web-resources }
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the {{ site.data.keys.mf_server }}.
 
 1. Open a **Command-line** window and navigate to the root of the Cordova project.
@@ -95,11 +101,13 @@ Alternatives:
 > Run the command `mfpdev help app webupdate` to learn more.
 
 ## User Experience
+{: #user-experience }
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
 
 ![Direct update example](direct-update-flow.png)
 
 ## Customizing the Direct Update UI
+{: #customizing-the-direct-update-ui }
 The default Direct Update UI that is presented to the end-user can be customized.  
 Add the following inside the `wlCommonInit()` function in **index.js**:
 
@@ -210,6 +218,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### Scenario: Running UI-less direct updates
+{: scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }} supports UI-less direct update when the application is in the foreground.
 
 To run UI-less direct updates, implement `directUpdateCustomListener`. Provide empty function implementations to the `onStart` and `onProgress` methods. Empty implementations cause the direct update process to run in the background.
@@ -248,6 +257,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 **Note:** When the application is sent to the background, the direct-update process is suspended.
 
 ### Scenario: Handling a direct update failure
+{: #scenario-handling-a-direct-update-failure }
 This scenario shows how to handle a direct update failure that might be caused, for example, by loss of connectivity. In this scenario, the user is prevented from using the app even in offline mode. A dialog is displayed offering the user the option to try again.
 
 Create a global variable to store the direct update context so that you can use it subsequently when the direct update process fails. For example:
@@ -309,11 +319,13 @@ var directUpdateCustomListener = {
 When the user clicks the **Try Again** button, the application restarts the direct update process.
 
 ## Delta and Full Direct Update
+{: #delta-and-full-direct-update }
 Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
 
 ## Secure Direct Update
+{: secure-direct-update }
 Disabled by default, Secure Direct Update prevents a 3rd-party attacker from altering the web resources that are transmitted from the {{ site.data.keys.mf_server }} (or from a Content Delivery Network (CDN)) to the client application.
 
 **To enable Direct Update authenticity:**  
@@ -329,7 +341,9 @@ Any future Direct Update deliveries to client applications will be protected by 
 > To configure the application server with the updated keystore file, see [Implementing secure Direct Update](secure-direct-update)
 
 ## Sample application
+{: #sample-application }
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

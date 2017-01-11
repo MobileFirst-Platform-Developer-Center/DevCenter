@@ -10,6 +10,8 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 By using HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
 You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
@@ -20,6 +22,8 @@ Optionally, it is also possible to use XSL to filter received records and fields
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ## The XML File
+{: #the-xml-file }
+
 The XML file contains settings and metadata.  
 To edit the adapter XML file, you must:
 
@@ -154,6 +158,8 @@ Declare the required procedures below the `connectivity` element:
 
 
 ## JavaScript implementation
+{: #javascript-implementation }
+
 A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
 Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the procedure.
 
@@ -189,6 +195,8 @@ function getFeed() {
 > See the API Reference for "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
 
 ## XSL transformation filtering
+{: #xsl-transformation-filtering }
+
 You can also apply XSL transformation to the received data, for example to filter the data.  
 To apply XSL transformation, create a **filtered.xsl** file next to the JavaScript implementation file.
 
@@ -212,6 +220,8 @@ function getFeedFiltered() {
 ```
 
 ## Creating a SOAP-based service request
+{: #creating-a-soap-based-service-request }
+
 You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
 Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can encode the SOAP XML envelope within the request body using **E4X**.
 
@@ -252,6 +262,8 @@ var result = MFP.Server.invokeHttp(input);
 ```
 
 ## Invoking results of SOAP-based service
+{: #invoking-results-of-soap-based-service }
+
 The result is wrapped into a `JSON` object:
 
 ```json
@@ -331,8 +343,12 @@ var weatherInfo = {
 ```
 
 ## Sample adapter
+{: #sample-adapter }
+
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
 
 ### Sample usage
+{: #sample-usage }
+
 * Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

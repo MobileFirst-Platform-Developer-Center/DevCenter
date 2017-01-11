@@ -5,9 +5,11 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Consider your backup and recovery policy, optimize your {{ site.data.keys.mf_server }} Server configuration, and apply access restrictions and security options.
 
 #### Jump to
+{: #jump-to }
 
 * [Endpoints of the {{ site.data.keys.mf_server }} production server](#endpoints-of-the-mobilefirst-server-production-server)
 * [Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v12)
@@ -20,6 +22,7 @@ Consider your backup and recovery policy, optimize your {{ site.data.keys.mf_ser
 * [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters)
 
 ## Endpoints of the {{ site.data.keys.mf_server }} production server
+{: #endpoints-of-the-mobilefirst-server-production-server }
 You can create whitelists and blacklists for the endpoints of the IBM {{ site.data.keys.mf_server }}.
 
 > **Note:** Information regarding URLs that are exposed by {{ site.data.keys.product }} is provided as a guideline. Organizations must ensure the URLs are tested in an enterprise infrastructure, based on what has been enabled for white and black lists.
@@ -42,6 +45,7 @@ You can create whitelists and blacklists for the endpoints of the IBM {{ site.da
 | /registration/v1/self/* | Registration-service client self-registration API | Yes |
 
 ## Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2
+{: #configuring-mobilefirst-server-to-enable-tls-v12 }
 For {{ site.data.keys.mf_server }} to communicate with devices that support only Transport Layer Security v1.2 (TLS) V1.2, among the SSL protocols, you must complete the following instructions.
 
 The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer Security (TLS) V1.2 depend on how {{ site.data.keys.mf_server }} connects to devices.
@@ -50,6 +54,7 @@ The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer 
 * If {{ site.data.keys.mf_server }} communicates directly with devices, the steps to enable TLS V1.2 depend on whether your application serveris Apache Tomcat, WebSphere  Application Server Liberty profile, or WebSphere Application Server full profile.
 
 ### Apache Tomcat
+{: #apache-tomcat }
 1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
     Ensure that you have one of the following JRE versions:
     * Oracle JRE 1.7.0_75 or later
@@ -57,6 +62,7 @@ The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer 
 2. Edit the **conf/server.xml** file and modify the `Connector` element that declares the HTTPS port so that the **sslEnabledProtocols** attribute has the following value: `sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`.
 
 ### WebSphere Application Server Liberty profile
+{: #websphere-application-server-liberty-profile }
 1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
     * If you use an IBM Java SDK, ensure that your IBM Java SDK is patched for the POODLE vulnerability. You can find the minimum IBM Java SDK versions that contain the patch for your version of WebSphere Application Server in [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
 
@@ -69,6 +75,7 @@ The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer 
     * Add the `sslProtocol="SSL_TLSv2"` attribute to all existing `<ssl>` elements.
 
 ### WebSphere Application Server full profile
+{: #websphere-application-server-full-profile }
 1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
 
     Ensure that your IBM Java SDK is patched for the POODLE vulnerability. You can find the minimum IBM Java SDK versions that contain the patch for your version of WebSphere Application Server in [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
@@ -80,6 +87,7 @@ The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer 
     * Click **Apply** and then save the changes.
 
 ## Configuring user authentication for {{ site.data.keys.mf_server }} administration
+{: #configuring-user-authentication-for-mobilefirst-server-administration }
 {{ site.data.keys.mf_server }} administration requires user authentication. You can configure user authentication and choose an authentication method. Then, the configuration procedure depends on the web application server that you use.
 
 > **Important:** If you use stand-alone WebSphere  Application Server full profile, use an authentication method other than the simple WebSphere authentication method (SWAM) in global security. You can use lightweight third-party authentication (LTPA). If you use SWAM, you might experience unexpected authentication failures.
@@ -96,6 +104,7 @@ The {{ site.data.keys.mf_server }} administration has the following Java Platfor
 You must map the roles to the corresponding sets of users. The **mfpmonitor** role can view data but cannot change any data. The following tables list MobileFirst roles and functions for production servers.
 
 #### Deployment
+{: #deployment }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
@@ -104,6 +113,7 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 | Deploy an adapter.     | Yes           | Yes         | No          | No         |
 
 #### {{ site.data.keys.mf_server }} management
+{: #mobilefirst-server-management }
 
 |                            | Administrator | Deployer    | Operator    | Monitor    |
 |----------------------------|---------------|-------------|-------------|------------|
@@ -111,6 +121,7 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 | Configure runtime settings.| Yes           | Yes         | No          | No         |
 
 #### Application management
+{: #mobilefirst-server-management }
 
 |                                     | Administrator | Deployer    | Operator    | Monitor    |
 |-------------------------------------|---------------|-------------|-------------|------------|
@@ -125,6 +136,7 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, and **mfpmonitor** roles can also issue POST and PUT requests, and the **mfpadmin** and **mfpdeployer** roles can also issue DELETE requests.
 
 #### Requests related to push notifications
+{: #requests-related-to-push-notifications }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
@@ -134,6 +146,7 @@ Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, 
 | DELETE requests {::nomarkdown}<ul><li>Delete the registration of a device to push notification</li><li>Delete a subscription</li><li>Unsubscribe a device from a tag</li><li>Delete a GCM configuration</li><li>Delete an APNS configuration</li><li>Delete a tag</li></ul>{:/} | Yes           | Yes         | No          | No         |
 
 #### Disabling
+{: #disabling }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
@@ -144,6 +157,7 @@ Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, 
 If you choose to use an authentication method through a user repository such as LDAP, you can configure the {{ site.data.keys.mf_server }} administration so that you can use users and groups with the user repository to define the Access Control List (ACL) of the {{ site.data.keys.mf_server }} administration. This procedure depends on the type and version of the web application server that you use.
 
 ### Configuring WebSphere Application Server full profile for {{ site.data.keys.mf_server }} administration
+{: #configuring-websphere-application-server-full-profile-for-mobilefirst-server-administration }
 Configure security by mapping the {{ site.data.keys.mf_server }} administration Java EE roles to a set of users for both web applications.
 
 You define the basics of user configuration in the WebSphere  Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`
@@ -163,6 +177,7 @@ You define the basics of user configuration in the WebSphere  Application Server
     * Click **Save** to save the changes.
 
 ### Configuring WebSphere Application Server Liberty profile for {{ site.data.keys.mf_server }} administration
+{: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 In WebSphere  Application Server Liberty profile, you configure the roles of **mfpadmin**, **mfpdeployer**, **mfpmonitor**, and **mfpoperator** in the **server.xml** configuration file of the server.
 
 To configure the security roles, you must edit the **server.xml** file. In the `<application-bnd>` element of each `<application>` element, create `<security-role>` elements. Each `<security-role>` element is for each roles: **mfpadmin**, mfpdeployer, mfpmonitor, and mfpoperator. Map the roles to the appropriate user group name, in this example: **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup**, or **mfpoperatorgroup**. These groups are defined through the `<basicRegistry>` element. You can customize this element or replace it entirely with an `<ldapRegistry>` element or a `<safRegistry>` element.
@@ -216,6 +231,7 @@ Then, to maintain good response times with a large number of installed applicati
    ```
 
 ### Configuring Apache Tomcat for {{ site.data.keys.mf_server }} administration
+{: #configuring-apache-tomcat-for-mobilefirst-server-administration }
 You must configure the Java EE security roles for the {{ site.data.keys.mf_server }} administration on the Apache Tomcat web application server.
 
 1. If you installed the {{ site.data.keys.mf_server }} administration manually, declare the following roles in the **conf/tomcat-users.xml** file:
@@ -236,6 +252,7 @@ You must configure the Java EE security roles for the {{ site.data.keys.mf_serve
 3. You can define the set of users as described in the Apache Tomcat documentation, [Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
 ## List of JNDI properties of the {{ site.data.keys.mf_server }} web applications
+{: #list-of-jndi-properties-of-the-mobilefirst-server-web-applications }
 Configure the JNDI properties for the {{ site.data.keys.mf_server }} web applications that are deployed to the application server.
 
 * [Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications](#setting-up-jndi-properties-for-mobilefirst-server-web-applications)
@@ -245,6 +262,7 @@ Configure the JNDI properties for the {{ site.data.keys.mf_server }} web applica
 * [List of JNDI properties for {{ site.data.keys.mf_server }} push service](#list-of-jndi-properties-for-mobilefirst-server-push-service)
 
 ### Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications
+{: #setting-up-jndi-properties-for-mobilefirst-server-web-applications }
 Set up JNDI properties to configure the {{ site.data.keys.mf_server }} web applications that are deployed to the application server.  
 Set the JNDI environment entries in one of the following ways:
 
@@ -324,11 +342,13 @@ Set the JNDI environment entries in one of the following ways:
   ```
 
 ### List of JNDI properties for {{ site.data.keys.mf_server }} administration service
+{: #list-of-jndi-properties-for-mobilefirst-server-administration-service }
 When you configure {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.mf_console }} for your application server, you set optional or mandatory JNDI properties, in particular for Java Management Extensions (JMX).
 
 The following properties can be set on the administration service web application mfp-admin-service.war.
 
 #### JNDI properties for administration service: JMX
+{: #jndi-properties-for-administration-service-jmx }
 
 | Property                 | Optional or mandatory | Description | Restrictions |
 |--------------------------|-----------------------|-------------|--------------|
@@ -343,6 +363,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.jmx.dmgr.port | Mandatory | Deployment manager RMI or SOAP port. | WebSphere Application Server Network Deployment only. |
 
 #### JNDI properties for administration service: timeout
+{: #jndi-properties-for-administration-service-timeout }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -352,6 +373,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.maxLockTimeInMillis | Optional | The maximal time during which a process can take the transaction lock. Because deployment transactions run sequentially, they use a lock. If the application server fails while a lock is taken, it can happen in rare situations that the lock is not released at the next restart of the application server. In this case, the lock is released automatically after the maximum lock time so that the server is not blocked forever. Set a time that is longer than a normal transaction.<br/><br/>Default value: 1800000 (30 min) |
 
 #### JNDI properties for administration service: logging
+{: #jndi-properties-for-administration-service-logging }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -359,6 +381,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.logging.tosystemerror | Optional | Specifies whether all logging messages are also directed to System.Error. Setting this property is helpful when you debug the server. |
 
 #### JNDI properties for administration service: proxies
+{: #jndi-properties-for-administration-service-proxies }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -368,6 +391,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.proxy.host | Optional | If the {{ site.data.keys.product_adj }} administration server is behind a firewall or reverse proxy, this property specifies the address of the host. Set this property to enable a user outside the firewall to reach the {{ site.data.keys.product_adj }} administration server. Typically, this property is the address of the proxy. |
 
 #### JNDI properties for administration service: topologies
+{: #jndi-properties-for-administration-service-topologies }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -383,6 +407,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. |
 
 #### JNDI properties for administration service: relational database
+{: #jndi-properties-for-administration-service-relational-database }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -395,6 +420,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.db.type | Optional | This property defines the type of database. The default value is inferred from the connection URL. |
 
 #### JNDI properties for administration service: licensing
+{: #jndi-properties-for-administration-service-licensing }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -402,6 +428,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul>{:/} | Port number of the Rational License Key Server. |
 
 #### JNDI properties for administration service: JNDI configurations
+{: #jndi-properties-for-administration-service-jndi-configurations }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -411,6 +438,7 @@ The following properties can be set on the administration service web applicatio
 The administration service uses a live update service as an auxiliary facility to store various configurations. Use these properties to configure how to reach the live update service.
 
 #### JNDI properties for administration service: live update service
+{: #jndi-properties-for-administration-service-live-update-service }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -422,6 +450,7 @@ The administration service uses a live update service as an auxiliary facility t
 The administration service uses a push service as an auxiliary facility to store various push settings. Use these properties to configure how to reach the push service. Because the push service is protected by the OAuth security model, you must set various properties to enable confidential clients in OAuth.
 
 #### JNDI properties for administration service: push service
+{: #jndi-properties-for-administration-service-push-service }
 
 | Property                 | Optional or mandatory | Description  |
 |--------------------------|-----------------------|--------------|
@@ -433,6 +462,7 @@ The administration service uses a push service as an auxiliary facility to store
 | mfp.push.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
 
 ### JNDI properties for {{ site.data.keys.mf_console }}
+{: #jndi-properties-for-mobilefirst-operations-console }
 The following properties can be set on the web application (mfp-admin-ui.war) of {{ site.data.keys.mf_console }}.
 
 | Property                 | Optional or mandatory | Description  |
@@ -444,6 +474,7 @@ The following properties can be set on the web application (mfp-admin-ui.war) of
 | mfp.admin.ui.cors.strictssl | Optional | Set to false to allow CORS situations where the {{ site.data.keys.mf_console }} is secured with SSL (HTTPS protocol) while the {{ site.data.keys.mf_server }} administration service is not, or conversely. This property takes effect only if the **mfp.admin.ui.cors** property is enabled. |
 
 ### List of JNDI properties for {{ site.data.keys.mf_server }} live update service
+{: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
 When you configure the {{ site.data.keys.mf_server }} live update service for your application server, you can set the following JNDI properties. The table lists the JNDI properties for the IBM  relational database live update service.
 
 | Property | Optional or mandatory | Description |
@@ -453,6 +484,7 @@ When you configure the {{ site.data.keys.mf_server }} live update service for yo
 To know how to set those properties, see [Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications](#setting-up-jndi-properties-for-mobilefirst-server-web-applications).
 
 ### List of JNDI properties for {{ site.data.keys.product_adj }} runtime
+{: #list-of-jndi-properties-for-mobilefirst-runtime }
 When you configure the {{ site.data.keys.mf_server }} runtime for your application server, you need to set the optional or mandatory JNDI properties.  
 The following table lists the {{ site.data.keys.product_adj }} properties that are always available as JNDI entries:
 
@@ -484,6 +516,7 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 | ssl.websphere.config | Used to configure the keystore for an HTTP adapter. When set to false (default), instructs the {{ site.data.keys.product_adj }} runtime to use the {{ site.data.keys.product_adj }} keystore. When set to true, instructs the {{ site.data.keys.product_adj }} runtime to use the WebSphere SSL configuration. For more information, see [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters). |
 
 ### List of JNDI properties for {{ site.data.keys.mf_server }} push service
+{: #list-of-jndi-properties-for-mobilefirst-server-push-service }
 
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
@@ -587,6 +620,7 @@ The following table contains an additional 11 analytics push events that were re
 {% endcomment %}
 
 ## Configuring data sources
+{: #configuring-data-sources }
 Find out some data source configuration details pertaining to the supported databases.
 
 * [Managing the DB2 transaction log size](#managing-the-db2-transaction-log-size)
@@ -595,6 +629,7 @@ Find out some data source configuration details pertaining to the supported data
 * [Stale data after creating or deleting apps from {{ site.data.keys.mf_console }}](#stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console)
 
 ### Managing the DB2 transaction log size
+{: #managing-the-db2-transaction-log-size }
 When you deploy an application that is at least 40 MB with IBM {{ site.data.keys.mf_console }}, you might receive a transaction log full error.
 
 The following system output is an example of the transaction log full error code.
@@ -614,6 +649,7 @@ Depending on the largest size of the {{ site.data.keys.product_adj }} applicatio
 Using the `DB2 update db cfg` command, increase the **LOGSECOND** parameter. Space is not allocated when the database is activated. Instead, the space is allocated only as needed.
 
 ### Configuring DB2 HADR seamless failover for {{ site.data.keys.mf_server }} and Application Center data sources
+{: #configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources }
 You must enable the seamless failover feature with WebSphere  Application Server Liberty profile and WebSphere Application Server. With this feature, you can manage an exception when a database fails over and gets rerouted by the DB2  JDBC driver.
 
 > **Note:** DB2 HADR failover is not supported for Apache Tomcat.
@@ -623,6 +659,7 @@ By default with DB2 HADR, when the DB2 JDBC driver performs a client reroute aft
 In this case, the application would have to catch the exception and execute again the transaction. The {{ site.data.keys.product_adj }} and Application Center runtime environments do not manage the exception but rely on a feature that is called seamless failover. To enable this feature, you must set the **enableSeamlessFailover** JDBC property to "1".
 
 #### WebSphere Application Server Liberty profile configuration
+{: #websphere-application-server-liberty-profile-configuration }
 You must edit the **server.xml** file, and add the **enableSeamlessFailover** property to the **properties.db2.jcc** element of the {{ site.data.keys.product_adj }} and Application Center data sources. For example:
 
 ```xml
@@ -636,6 +673,7 @@ You must edit the **server.xml** file, and add the **enableSeamlessFailover** pr
 ```
 
 #### WebSphere Application Server configuration
+{: #websphere-application-server-configuration }
 From the WebSphere Application Server administrative console for each {{ site.data.keys.product_adj }} and Application Center data source:
 
 1. Go to **Resources → JDBC → Data sources → DataSource name**.
@@ -646,6 +684,7 @@ From the WebSphere Application Server administrative console for each {{ site.da
 For more information about how to configure a connection to an HADR-enabled DB2 database, see [Setting up a connection to an HADR-enabled DB2 database](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/tdat_db2_hadr.html?cp=SSAW57_8.5.5%2F3-3-6-3-3-0-7-3&lang=en).
 
 ### Handling stale connections
+{: #handling-stale-connections }
 Configure your application server to avoid database timeout issues.
 
 A **StaleConnectionException** is an exception that is generated by the Java application server profile database connection code when a JDBC driver returns an unrecoverable error from a connection request or operation. The **StaleConnectionException** is raised when the database vendor issues an exception to indicate that a connection currently in the connection pool is no longer valid. This exception can happen for many reasons. The most common cause of **StaleConnectionException** is due to retrieving connections from the database connection pool and finding out that the connection has timed out or dropped when it was unused for a long time.
@@ -653,6 +692,7 @@ A **StaleConnectionException** is an exception that is generated by the Java app
 You can configure your application server to avoid this exception.
 
 #### Apache Tomcat configuration
+{: #apache-tomcat-configuration }
 **MySQL**  
 The MySQL database closes its connections after a period of non-activity on a connection. This timeout is defined by the system variable called **wait_timeout**. The default is 28000 seconds (8 hours).
 
@@ -680,6 +720,7 @@ For example:
 ```
 
 #### WebSphere Application Server Liberty profile configuration
+{: #websphere-application-server-liberty-profile-configuration-1 }
 Edit the **server.xml** file and for every `<dataSource>` element (runtime and Application Center databases) add a `<connectionManager>` element with the agedTimeout property:
 
 ```xml
@@ -691,6 +732,7 @@ The timeout value depends mainly on the number of opened connections in parallel
 > **Note:** MySQL in combination with WebSphere  Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM  DB2  or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
 ### Stale data after creating or deleting apps from {{ site.data.keys.mf_console }}
+{: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 On a Tomcat 8 application server, if you use a MySQL database, some calls from {{ site.data.keys.mf_console }} to services return a 404 error.
 
 On a Tomcat 8 application server, if you work with a MySQL database, when you use {{ site.data.keys.mf_console }} to delete an app, or add a new one, and try to refresh the console a couple of times, you might see stale data. For example, users might see an already deleted app in the list.
@@ -703,6 +745,7 @@ For the meaning of **READ_COMMITTED**, see the [MySQL documentation](http://www.
 * To change the isolation level to **READ_COMMITTED** globally in the database management system, refer to the [SET TRANSACTION Syntax page](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html) of the MySQL documentation at [http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html).
 
 #### WebSphere Application Server full profile configuration
+{: #websphere-application-server-full-profile-configuration }
 **DB2 or Oracle**  
 To minimize the stale connection issues, check the connection pools configuration on each data source in WebSphere Application Server administration console.
 
@@ -727,9 +770,11 @@ For more information, see [Connection pool settings](https://www.ibm.com/support
 > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
 ## Configuring logging and monitoring mechanisms
+{: #configuring-logging-and-monitoring-mechanisms }
 {{ site.data.keys.product }} reports errors, warnings, and informational messages into a log file. The underlying logging mechanism varies by application server.
 
 ### {{ site.data.keys.mf_server }}
+{: #mobilefirst-server }
 {{ site.data.keys.product }} ({{ site.data.keys.mf_server }} for short) uses the standard java.util.logging package. By default, all {{ site.data.keys.product_adj }} logging goes to the application server log files. You can control {{ site.data.keys.mf_server }} logging by using the standard tools that are available in each application server. For example, if you want to activate trace logging in WebSphere  Application Server Liberty, add a trace element to the server.xml file. To activate trace logging in WebSphere Application Server, use the logging screen in the console and enable trace for {{ site.data.keys.product_adj }} logs.
 
 {{ site.data.keys.product_adj }} logs all begin with **com.ibm.mfp**.  
@@ -744,6 +789,7 @@ For more information about the logging models of each application server, includ
 | WebSphere Application Server Version 8.5 Liberty profile | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0) |
 
 ### Log level mappings
+{: #log-level-mappings }
 {{ site.data.keys.mf_server }} uses the **java.util.logging** API. The logging levels map to the following levels:
 
 * WL.Logger.debug: FINE
@@ -752,32 +798,39 @@ For more information about the logging models of each application server, includ
 * WL.Logger.error: SEVERE
 
 ### Log monitoring tools
+{: #log-monitoring-tools }
 For Apache Tomcat, you can use [IBM  Operations Analytics - Log Analysis](http://www.ibm.com/software/products/en/ibm-operations-analytics---log-analysis) or other industry standard log file monitoring tools to monitor logs and highlight errors and warnings.
 
 For WebSphere Application Server, use the log viewing facilities that are described in IBM Knowledge Center. The URLs are listed in the table in the {{ site.data.keys.mf_server }} section of this page.
 
 ### Back-end connectivity
+{: #back-end-connectivity }
 To enable trace to monitor back-end connectivity, see the documentation for your specific application server platform in the table of section {{ site.data.keys.mf_server }} of this page. Use the **com.ibm.mfp.server.js.adapter** package and set the log level to **FINEST**.
 
 ### Audit log for administration operations
+{: #audit-log-for-administration-operations }
 {{ site.data.keys.mf_console }} stores an audit log for login, logout, and for all administration operations, such as deploying apps or adapters or locking apps. You can disable the audit log by setting the JNDI property **mfp.admin.audit** to false on the web application of the {{ site.data.keys.product_adj }} administration service (**mfp-admin-service.war**).
 
 When the audit log is enabled, you can download it from {{ site.data.keys.mf_console }} by clicking the **Audit log** link in the footer of the page.
 
 ### Login and authentication issues
+{: #login-and-authentication-issues }
 To diagnose login and authentication issues, enable the package **com.ibm.mfp.server.security** for trace and set the log level to **FINEST**.
 
 ## Configuring multiple runtimes
+{: #configuring-multiple-runtimes }
 You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creating a visual differentiation between application "types" in the {{ site.data.keys.mf_console }}.
 
 > **Note:** multiple runtimes are not supported in a Mobile Foundation server instance created by the Mobile Foundation Bluemix service. In the Bluemix service, you must create multiple service instances instead.
 
 #### Jump to
+{: #jump-to-1 }
 * [Configuring multiple runtimes in WebSphere Liberty profile](#configuring-multiple-runtimes-in-websphere-liberty-profile)
 * [Registering applications and deploying adapters to different runtimes](#registering-applications-and-deploying-adapters-to-different-runtimes)
 * [Exporting and importing runtime configurations](#exporting-and-importing-runtime-configurations)
 
 ### Configuring multiple runtimes in WebSphere Liberty profile
+{: #configuring-multiple-runtimes-in-websphere-liberty-profile }
 
 1. Open the **server.xml** file of the application server. Typically located in the  **[application-server]/usr/servers/server-name/** folder. For example, with the {{ site.data.keys.mf_dev_kit }}, the file can be found it **[installation-folder]/mfp-server/usrs/servers/mfp/server.xml**.
 
@@ -818,17 +871,20 @@ You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creatin
 5. Restart the application server.
 
 ### Registering applications and deploying adapters to different runtimes
+{: #registering-applications-and-deploying-adapters-to-different-runtimes }
 When a {{ site.data.keys.mf_server }} is configured with multiple runtimes, the registration of applications and deployment of adapters is slightly different.
 
 * [Registering and deploying from the {{ site.data.keys.mf_console }}](#registering-and-deploying-from-the-mobilefirst-operations-console)
 * [Registering and deploying from the Command-line](#registering-and-deploying-from-the-command-line)
 
 #### Registering and deploying from the {{ site.data.keys.mf_console }}
+{: #registering-and-deploying-from-the-mobilefirst-operations-console }
 When performing these actions in the {{ site.data.keys.mf_console }}, you now need to select the runtime to register or deploy to.
 
 <img class="gifplayer" alt="Multiple runtimes in the {{ site.data.keys.mf_console }}" src="register-and-deploy-to-multiple-runtimes.png"/>
 
 #### Registering and deploying from the Command-line
+{: #registering-and-deploying-from-the-command-line }
 When performing these actions using the **mfpdev** command-line tool, you now need to add the runtime name to register or deploy to.
 
 To register an application: `mfpdev app register <server-name> <runtime-name>`.  
@@ -853,6 +909,7 @@ mfpdev adapter deploy local second-runtime
 > * `mfpdev help adapter deploy`
 
 ## Exporting and importing runtime configurations
+{: #exporting-and-importing-runtime-configurations }
 You can export a runtime configuration and import it to another {{ site.data.keys.mf_server }} using the REST APIs of the {{ site.data.keys.mf_server }} **administration service**.
 
 For example, you can setup a runtime configuration in a development environment, export its configuration and then import it to a testing environment for a quick set-up, and then further configure it for the specific needs of the testing environment.
@@ -860,12 +917,14 @@ For example, you can setup a runtime configuration in a development environment,
 > Find out all available REST APIs [in the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
 
 ## Configuring license tracking
+{: #configuring-license-tracking }
 License tracking is enabled by default. Read the following topics to learn how you can configure license tracking. For more information about license tracking, see [License tracking](../../../administering-apps/license-tracking).
 
 * [Configuring license tracking for client device and addressable device](#configuring-license-tracking-for-client-device-and-addressable-device)
 * [Configuring IBM License Metric Tool log files](#configuring-ibm-license-metric-tool-log-files)
 
 ### Configuring license tracking for client device and addressable device
+{: #configuring-license-tracking-for-client-device-and-addressable-device }
 License tracking for client devices and addressable device is enabled by default. License reports are available in the {{ site.data.keys.mf_console }}. You can specify the following JNDI properties to change the default settings for license tracking.
 
 > **Note:** If you have a contract that defines the use of token licensing, see also [Installing and configuring for token licensing](../token-licensing).
@@ -891,6 +950,7 @@ A value that is used to enable or disable license tracking in {{ site.data.keys.
 For more information about specifying JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](#list-of-jndi-properties-for-mobilefirst-runtime).
 
 ### Configuring IBM License Metric Tool log files
+{: #configuring-ibm-license-metric-tool-log-files }
 {{ site.data.keys.product }} generates IBM  Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this to understand how to configure the location and the maximum size of the generated files.
 
 By default, the IBM Software License Metric Tag files are in the following directories:
@@ -911,6 +971,7 @@ To change the default values, you must create a Java property file, with the for
 For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool](../../../administering-apps/license-tracking/#integration-with-ibm-license-metric-tool).
 
 ## WebSphere Application Server SSL configuration and HTTP adapters
+{: #websphere-application-server-ssl-configuration-and-http-adapters }
 By setting a property, you can let HTTP adapters benefit from WebSphere  SSL configuration.
 
 By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the {{ site.data.keys.mf_server }} keystore, which is described in [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between adapters and back-end servers by using self-signed certificates](../../../administering-apps/deployment/#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).

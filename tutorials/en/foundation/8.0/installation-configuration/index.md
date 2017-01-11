@@ -5,9 +5,11 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 
 ### Installing a development environment
+{: #installing-a-development-environment }
 If you develop the client-side or the server-side of mobile apps, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
 
 * [Set-up the MobileFirst development environment](development/mobilefirst/)
@@ -19,6 +21,7 @@ If you develop the client-side or the server-side of mobile apps, use either the
 * [Set-up the Web development environment](development/web)
 
 ### Installing a test or production server on-premises
+{: #installing-a-test-or-production-server-on-premises }
 IBM installations are based on an IBM product called IBM Installation Manager. Install IBM Installation Manager V1.8.4 or later separately before you install {{ site.data.keys.product }}.
 
 > **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
@@ -41,12 +44,14 @@ Afterwards you'll have a working {{ site.data.keys.mf_server }}. However, you ne
 * To install {{ site.data.keys.mf_app_center }}, see [Installing and configuring the Application Center](production/appcenter).
 
 ### Deploying {{ site.data.keys.mf_server }} to the cloud
+{: #deploying-mobilefirst-server-to-the-cloud }
 If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
 
 * [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions
+{: #upgrading-from-earlier-versions }
 For information about upgrading existing installations and applications to a newer version, see [Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
 
 

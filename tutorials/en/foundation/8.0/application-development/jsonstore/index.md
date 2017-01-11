@@ -7,6 +7,7 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The {{ site.data.keys.product_full }} **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
 
 ![JSONStore feature workflow](jstore_workflow.jpg)
@@ -14,6 +15,7 @@ The {{ site.data.keys.product_full }} **JSONStore** is an optional client-side A
 Because it is familiar to developers, relational database terminology is used in this documentation at times to help explain JSONStore. There are many differences between a relational database and JSONStore however. For example, the strict schema that is used to store data in relational databases is different from JSONStore's approach. With JSONStore, you can store any JSON content, and index the content that you need to search.
 
 #### Key features
+{: #key-features }
 * Data indexing for efficient searching
 * Mechanism for tracking local-only changes to the stored data
 * Support for multiple users
@@ -22,10 +24,12 @@ Because it is familiar to developers, relational database terminology is used in
 A single store can have many collections, and each collection can have many documents. It is also possible to have a {{ site.data.keys.product_adj }} application that contains multiple stores. For information, see JSONStore multiple user support.
 
 #### Support level
+{: #support-level }
 * JSONStore is supported in Native iOS and Android applications (no support for native Windows (Universal and UWP)).
 * JSONStore is supported in Cordova iOS, Android and Windows (Universal and UWP) applications.
 
 #### Jump to
+{: #jump-to }
 * [General JSONStore terminology](#general-jsonstore-terminology)
 * [Features table](#features-table)
 * [Multiple User Support](#multiple-user-support)
@@ -38,7 +42,9 @@ A single store can have many collections, and each collection can have many docu
 * [API Usage](#api-usage)
 
 ## General JSONStore Terminology
+{: #general-jsonstore-terminology }
 ### Document
+{: #document }
 A document is the basic building block of JSONStore.
 
 A JSONStore document is a JSON object with an automatically generated identifier (`_id`) and JSON data. It is similar to a record or a row in database terminology. The value of `_id` is always a unique integer inside a specific collection. Some functions like `add`, `replace`, and `remove` in the `JSONStoreInstance` class take an Array of Documents/Objects. These methods are useful to perform operations on various Documents/Objects at a time.
@@ -59,6 +65,7 @@ var docs = [
 ```
 
 ### Collection
+{: #collection }
 A JSONStore collection is similar to a table, in database terminology.  
 The below code example is not the way that the documents are stored on disk, but it is a good way to visualize what a collection looks like at a high level.
 
@@ -70,10 +77,12 @@ The below code example is not the way that the documents are stored on disk, but
 ```
 
 ### Store
+{: #store }
 A store is the persistent JSONStore file that contains one or more collections.  
 A store is similar to a relational database, in database terminology. A store is also referred to as a JSONStore.
 
 ### Search fields
+{: #search-fields }
 A search field is a key/value pair.  
 Search fields are keys that are indexed for fast lookup times, similar to column fields or attributes, in database terminology.
 
@@ -108,6 +117,7 @@ var myObject = {
 ```
 
 ### Queries
+{: #queries }
 Queries are objects that use search fields or extra search fields to look for documents.  
 These examples presumes that the name search field is of type string and the age search field is of type integer.
 
@@ -124,11 +134,13 @@ var query2 = {name: 'carlos', age: 99};
 ```
 
 ### Query parts
+{: #query-parts }
 Query parts are used to build more advanced searches. Some JSONStore operations, such as some versions of `find` or `count` take query parts. Everything within a query part is joined by `AND` statements, while query parts themselves are joined by `OR` statements. The search criteria returns a match only if everything within a query part is **true**. You can use more than one query part to search for matches that satisfy one or more of the query parts.
 
 Find with query parts operate only on top-level search fields. For example: `name`, and not `name.first`. Use multiple collections where all search fields are top-level to get around this. The query parts operations that work with non top-level search fields are: `equal`, `notEqual`, `like`, `notLike`, `rightLike`, `notRightLike`, `leftLike`, and `notLeftLike`. The behavior is undetermined if you use non-top-level search fields.
 
 ## Features table
+{: #features-table }
 Compare JSONStore features to those features of other data storage technologies and formats.
 
 JSONStore is a JavaScript API for storing data inside Cordova applications that use the {{ site.data.keys.product_adj }} plug-in, an Objective-C API for native iOS applications, and a Java API for native Android applications. For reference, here is a comparison of different JavaScript storage technologies to see how JSONStore compares to them.
@@ -154,6 +166,7 @@ JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova S
 * One of the methods that removes data is called.
 
 ## Multiple User Support	
+{: #multiple-user-support }
 With JSONStore, you can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application.
 
 The init (JavaScript) or open (Native iOS and Native Android) API can take an options object with a user name. Different stores are separate files in the file system. The user name is used as the file name of the store. These separate stores can be encrypted with different passwords for security and privacy reasons. Calling the closeAll API removes access to all the collections. It is also possible to change the password of an encrypted store by calling the changePassword API.
@@ -161,6 +174,7 @@ The init (JavaScript) or open (Native iOS and Native Android) API can take an op
 An example use case would be various employees that share a physical device (for example an iPad or Android tablet) and {{ site.data.keys.product_adj }} application. In addition, if the employees work different shifts and handle private data from different customers while they use the {{ site.data.keys.product_adj }} application, multiple user support is useful.
 
 ## Security
+{: #security }
 You can secure all of the collections in a store by encrypting them.
 
 To encrypt all of the collections in a store, pass a password to the `init` (JavaScript) or `open` (Native iOS and Native Android) API. If no password is passed, none of the documents in the store collections are encrypted.
@@ -177,14 +191,16 @@ When the localKeyGen key is present in the JavaScript implementation of the JSON
 
 The trade-off is between opening a store offline and trusting the client to generate that random token (less secure), or opening the store with access to the {{ site.data.keys.mf_server }} (requires connectivity) and trusting the server (more secure).
 
-###  Security Utilities
+### Security Utilities
+{: #security-utilities }
 The {{ site.data.keys.product_adj }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
 
 Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
 
 > Learn more about [JSONStore Security Utilities](security-utilities).
 
-### Windows 8.1 Universal and Windows 10 UWP encryption	
+### Windows 8.1 Universal and Windows 10 UWP encryption
+{: #windows-81-universal-and-windows-10-uwp-encryption }
 You can secure all of the collections in a store by encrypting them.
 
 JSONStore uses [SQLCipher](http://sqlcipher.net/) as its underlying database technology. SQLCipher is a build of SQLite that is produced by Zetetic, LLC adds a layer of encryption to the database.
@@ -196,7 +212,7 @@ Instead, JSONStore for Windows 8 Universal include SQLite as the underlying data
 If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in {{ site.data.keys.product }}.
 
 #### Replacing SQLite with SQLCipher for Windows Universal and Windows UWP
-
+{: #replacing-sqlite-with-sqlcipher-for-windows-universal-and-windows-uwp }
 1. Run the SQLCipher for Windows Runtime 8.1/10 extension that comes with the SQLCipher for Windows Runtime Commercial Edition.
 2. After the extension finishes installing, locate the SQLCipher version of the **sqlite3.dll** file that was just created. There is one for x86, one for x64, and one for ARM.
 
@@ -211,14 +227,17 @@ If you do not need encryption, the JSONStore is fully functional (minus encrypti
    ```
 
 ## Performance
+{: #performance }
 The following are factors that can affect JSONStore performance.
-### Network
 
+### Network
+{: #network }
 * Check network connectivity before you perform operations, such as sending all dirty documents to an adapter.
 * The amount of data that is sent over the network to a client heavily affects performance. Send only the data that is required by the application, instead of copying everything inside your backend database.
 * If you are using an adapter, consider setting the compressResponse flag to true. That way, responses are compressed, which generally uses less bandwidth and has a faster transfer time than without compression.
 
 ### Memory
+{: #memory }
 * When you use the JavaScript API, JSONStore documents are serialized and deserialized as Strings between the Native (Objective-C, Java, or C#) Layer and the JavaScript Layer. One way to mitigate possible memory issues is by using limit and offset when you use the find API. That way, you limit the amount of memory that is allocated for the results and can implement things like pagination (show X number of results per page).
 * Instead of using long key names that are eventually serialized and deserialized as Strings, consider mapping those long key names into smaller ones (for example: `myVeryVeryVerLongKeyName` to `k` or `key`). Ideally, you map them to short key names when you send them from the adapter to the client, and map them to the original long key names when you send data back to the backend.
 * Consider splitting the data inside a store into various collections. Have small documents over various collections instead of monolithic documents in a single collection. This consideration depends on how closely related the data is and the use cases for said data.
@@ -226,6 +245,7 @@ The following are factors that can affect JSONStore performance.
 * JavaScript and Java have garbage collectors, while Objective-C has Automatic Reference Counting. Allow it to work, but do not depend on it entirely. Try to null references that are no longer used and use profiling tools to check that memory usage is going down when you expect it to go down.
 
 ### CPU
+{: #cpu }
 * The amount of search fields and extra search fields that are used affect performance when you call the add method, which does the indexing. Only index the values that are used in queries for the find method.
 * By default, JSONStore tracks local changes to its documents. This behavior can be disabled, thus saving a few cycles, by setting the `markDirty` flag to **false** when you use the add, remove, and replace APIs.
 * Enabling security adds some overhead to the `init` or `open` APIs and other operations that work with documents inside the collection. Consider whether security is genuinely required. For example, the open API is much slower with encryption because it must generate the encryption keys that are used for encryption and decryption.
@@ -234,7 +254,9 @@ The following are factors that can affect JSONStore performance.
 * The `find` APIs (`find`, `findAll`, and `findById`) are affected by encryption, since they must decrypt every document to see whether it is a match or not. For find by query, if a limit is passed, it is potentially faster as it stops when it reaches the limit of results. JSONStore does not need to decrypt the rest of the documents to figure out if any other search results remain.
 
 ## Concurrency
+{: #concurrency }
 ### JavaScript
+{: #javascript }
 Most of the operations that can be performed on a collection, such as add and find, are asynchronous. These operations return a jQuery promise that is resolved when the operation completes successfully and rejected when a failure occurs. These promises are similar to success and failure callbacks.
 
 A jQuery Deferred is a promise that can be resolved or rejected. The following examples are not specific to JSONStore, but are intended to help you understand their usage in general.
@@ -265,7 +287,6 @@ asyncOperation.then(function (response) {
 });
 ```
 
-
 **Example callback definition**
 
 ```javascript
@@ -276,7 +297,6 @@ var asyncOperation = function (callback) {
 };
 ```
 
-
 **Example callback usage**
 
 ```javascript
@@ -285,7 +305,6 @@ asyncOperation(function (response) {
   // response = 'Hello'
 });
 ```
-
 
 **Example events**
 
@@ -300,22 +319,29 @@ $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collection
 ```
 
 ### Objective-C
+{: #objective-c }
 When you use the Native iOS API for JSONStore, all operations are added to a synchronous dispatch queue. This behavior ensures that operations that touch the store are executed in order on a thread that is not the main thread. For more information, see the Apple documentation at [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ).
 
 ### Java
+{: #java }
 When you use the Native Android API for JSONStore, all operations are executed on the main thread. You must create threads or use thread pools to have asynchronous behavior. All store operations are thread-safe.
 
 ## Analytics 
+{: #analytics }
 ou can collect key pieces of analytics information that are related to JSONStore 
 
 ### File information
+{: #file-information }
 File information is collected once per application session if the JSONStore API is called with the analytics flag set to **true**. An application session is defined as loading the application into memory and removing it from memory. You can use this information to determine how much space is being used by JSONStore content in the application.
 
 ### Performance metrics
+{: #performance-metrics }
 Performance metrics are collected every time a JSONStore API is called with information about the start and end times of an operation. You can use this information to determine how much time various operations take in milliseconds.
 
 ### Examples
+{: #examples }
 #### iOS
+{: #ios-example}
 ```objc
 JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 [options setAnalytics:YES];
@@ -324,6 +350,7 @@ JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 ```
 
 #### Android
+{: #android-example }
 ```java
 JSONStoreInitOptions initOptions = new JSONStoreInitOptions();
 initOptions.setAnalytics(true);
@@ -332,6 +359,7 @@ WLJSONStore.getInstance(...).openCollections(..., initOptions);
 ```
 
 #### JavaScript
+{: #java-script-example }
 ```javascript
 var options = {
   analytics : true
@@ -341,19 +369,24 @@ WL.JSONStore.init(..., options);
 ```
 
 ## Working With External Data
+{: #working-with-external-data }
 You can work with external data in several different concepts: **Pull** and **Push**.
 
 ### Pull
+{: #pull }
 Many systems use the term pull to refer to getting data from an external source.  
 There are three important pieces:
 
 #### External Data Source
+{: #external-data-source }
 This source can be a database, a REST or SOAP API, or many others. The only requirement is that it must be accessible from either the {{ site.data.keys.mf_server }} or directly from the client application. Ideally, you want this source to return data in JSON format.
 
 #### Transport Layer
+{: #transport-layer }
 This source is how you get data from the external source into your internal source, a JSONStore collection inside the store. One alternative is an adapter.
 
 #### Internal Data Source API
+{: #internal-data-source-api }
 This source is the JSONStore APIs that you can use to add JSON data to a collection.
 
 **Note:** You can populate the internal store with data that is read from a file, an input field, or hardcoded data in a variable. It does not have to come exclusively from an external source that requires network communication.
@@ -516,17 +549,21 @@ accessor.remove(doc, {markDirty: true})
 ```
 
 ### Push
+{: #push }
 Many systems use the term push to refer to sending data to an external source.
 
 There are three important pieces:
 
 #### Internal Data Source API
+{: #internal-data-source-api-push }
 This source is the JSONStore API that returns documents with local-only changes (dirty).
 
 #### Transport Layer
+{: #transport-layer-push }
 This source is how you want to contact the external data source to send the changes.
 
 #### External Data Source
+{: #external-data-source-push }
 This source is typically a database, REST or SOAP endpoint, among others, that receives the updates that the client made to the data.
 
 All of the following code examples are written in pseudocode that looks similar to JavaScript.
@@ -693,7 +730,9 @@ The backend accepts or rejects changes, and then relays a response back to the c
 After documents are marked as clean, they do not show up in the output from the `getAllDirty` API.
 
 ## Troubleshooting
+{: #troubleshooting }
 For more information, see the [JSONStore troubleshooting](../../troubleshooting/jsonstore) section.
 
 ## API Usage
+{: #api-usage }
 Select a platform: 

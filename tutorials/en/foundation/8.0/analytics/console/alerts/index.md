@@ -7,6 +7,8 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console_full }} regularly.  
 You can set reactive thresholds in the {{ site.data.keys.mf_analytics_console }} to trigger alerts when a specific criteria is met.
 
@@ -19,24 +21,23 @@ Alternate methods are available for distributing the alerts.
 **Prerequisite:** Ensure that the {{ site.data.keys.mf_analytics_server }} is started and ready to receive client logs.
 
 ## Alert management
+{: #alert-management }
+
 ### Creating an alert
+{: #creating-an-alert }
+
 In the {{ site.data.keys.mf_analytics_console }}:
 
-
-
-
 1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button.
-![Alert Management Tab](alert_management_tab.png)
 
-1. Provide the following values: Alert Name, Message, Query Frequency, and Event Type. Depending on the Event Type, populate the additional text boxes that appear with the appropriate values.
+   ![Alert Management Tab](alert_management_tab.png)
 
-2. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
-
-
-
-
+2. Provide the following values: Alert Name, Message, Query Frequency, and Event Type. Depending on the Event Type, populate the additional text boxes that appear with the appropriate values.
+3. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
 
 ### Distribution Method tab
+{: #distribution-method-tab }
+
 By default, the alert is displayed in the {{ site.data.keys.mf_analytics_console_short }}.
 
 You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short }} and to a customized URL by selecting the **Analytics Console and Network Post** option.
@@ -50,6 +51,8 @@ The following fields are available if you choose this option:
 <img class="gifplayer"  alt="Creating an alert" src="creating-an-alert.png"/>
 
 ## Custom web hook
+{: #custom-web-hook }
+
 You can set up a custom distribution method for an alert. For example: define a web hook to which a payload is sent to when an alert threshold is triggered.
 
 Example payload:
@@ -85,6 +88,8 @@ The POST request includes the following attributes:
 * **message** - the user-defined message.
 
 ## Viewing alert details
+{: #viewing-alert-details }
+
 Alert details can be viewed from the **Dashboard→Alert Log** tab in the {{ site.data.keys.mf_analytics_console }}.
 
 ![A new alert log](alert-log.png)

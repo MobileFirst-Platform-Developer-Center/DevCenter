@@ -7,11 +7,12 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 
 {{ site.data.keys.mf_analytics }} data is stored on the server and is available for reporting until the data is purged. You can control which event-type data is retained or purged. The data can be purged at regular intervals, or manually.
 
-
 ## Configuring data retention from the Analytics Console
+{: #configuring-data-retention-from-the-analytics-console }
 
 1. From the {{ site.data.keys.mf_analytics_console }}, click the **Administration** icon (<img  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/>).
 2. Choose the **Settings** tab.

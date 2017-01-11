@@ -6,9 +6,11 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
+{: #overview }
 You can configure Direct Update requests to be served from a CDN (content delivery network) instead of from the {{ site.data.keys.mf_server }}.
 
 #### Advantages of using a CDN
+{: #advantages-of-using-a-cdn }
 Using a CDN instead of the {{ site.data.keys.mf_server }} to serve Direct Update requests has the following advantages:
 
 * Removes network overheads from the {{ site.data.keys.mf_server }}.
@@ -16,6 +18,7 @@ Using a CDN instead of the {{ site.data.keys.mf_server }} to serve Direct Update
 * Ensures a more uniform Direct Update experience for all users regardless of their geographical location.
 
 #### General requirements
+{: #general-requirements }
 To serve Direct Update requests from a CDN, ensure that your configuration conforms to the following conditions:
 
 * The CDN must be a reverse proxy in front of the {{ site.data.keys.mf_server }} (or in front of another reverse proxy if needed).
@@ -30,16 +33,20 @@ In the example, there are additional request parameters that are also part of th
 * The CDN must not change or remove the HTTP headers that are used in the server-client protocol.
 
 ## Example configuration
+{: #example-configuration }
 This example is based on using an Akamai CDN configuration that caches the Direct Update archive. The following tasks are completed by the network administrator, the {{ site.data.keys.product_adj }} administrator, and the Akamai administrator:
 
 #### Network administrator
+{: #network-administrator }
 Create another domain in the DNS for your {{ site.data.keys.mf_server }}. For example, if your server domain is yourcompany.com you need to create an additional domain such as `cdn.yourcompany.com`.
 In the DNS for the new `cdn.yourcompany.com` domain, set a `CNAME` to the domain name that is provided by Akamai. For example, `yourcompany.com.akamai.net`.
 
 #### {{ site.data.keys.product_adj }} administrator
+{: #mobilefirst-administrator }
 Set the new cdn.yourcompany.com domain as the {{ site.data.keys.mf_server }} URL for the {{ site.data.keys.product_adj }} applications. For example, for the Ant builder task, the property is: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
 
 #### Akamai administrator
+{: #akamai-administrator }
 1. Open the Akamai property manager and set the property **host name** to the value of the new domain.
 
     ![Set the property host name to the value of the new domain](direct_update_cdn_3.jpg)
