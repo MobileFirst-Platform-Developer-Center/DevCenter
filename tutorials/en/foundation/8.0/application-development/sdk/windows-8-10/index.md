@@ -23,6 +23,7 @@ In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Nati
 #### Jump to:
 {: #jump-to }
 - [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk)
 - [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
@@ -58,6 +59,50 @@ NuGet is the package manager for the Microsoft development platform, including .
 5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
 
     - Internet (Client)
+
+### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+{: #manually-adding-the-mobilefirst-win-native-sdk }
+
+You can also manually add the {{ site.data.keys.product }} SDK:
+
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="win-sdk">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Click for instructions</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
+            <div class="panel-body">
+                <p>You can prepare your environment for developing MobileFirst applications by getting the framework and library files manually. The {{ site.data.keys.product }} SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is also available from NuGet.</p>
+
+                <ol>
+                    <li>Get the {{ site.data.keys.product }} SDK from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.
+                    </li>
+                    <li>Extract the contents of the downloaded SDK obtained in step 1.</li>
+                    <li>Open the Windows Universal native project in Visual Studio. Perform the following steps.
+                        <ol>
+                            <li>Select <b>Tools → NuGet Package Manager → Package Manager Settings</b>.</li>
+                            <li>Select <b>Package Sources</b> option. Click <b>+</b> icon to add new package source.</li>
+                            <li>Provide a name for the package source (for example: <em>windows8nuget</em>)</li>
+                            <li>Navigate to the MobileFirst SDK folder that was downloaded and extracted. Click <b>OK</b>.</li>
+                            <li>Click <b>Update</b> and then click <b>OK</b>.</li>
+                            <li>Right-click the <b>Solution project-name</b> in <b>Solution explorer</b> tab, which is to the right corner of the screen.</li>
+                            <li>Select <b>Manage NuGet Packages for Solutions → Online → windows8nuget</b>.</li>
+                            <li>Click <b>Install</b> option. You get the option to <b>Select Projects</b>.</li>
+                            <li>Ensure that all the check boxes are checked. Click <b>OK</b>.</li>
+                        </ol>
+
+                    </li>
+                </ol>
+
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 ### Registering the application
 {: #reigstering-the-application }
