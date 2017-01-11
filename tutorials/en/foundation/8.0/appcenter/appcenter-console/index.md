@@ -78,7 +78,7 @@ The behavior is linked to the management by Apache Tomcat of the j_security_chec
 The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
 
 ## Troubleshooting a corrupted login page in Safari browsers
-{: #troubleshotting-a-corrupted-login-page-in-safari-browsers }
+{: #troubleshooting-a-corrupted-login-page-in-safari-browsers }
 You can recover from a corrupted login page of the Application Center console when you use the Safari browser.
 
 When the Application Center console is open in a Safari browser, you might navigate away from the console. When you come back to the console, you might see the login page. Even though you enter the correct login details, you see the following message instead of a successful login: **HTTP Status 404 - appcenterconsole/j_security_check.**

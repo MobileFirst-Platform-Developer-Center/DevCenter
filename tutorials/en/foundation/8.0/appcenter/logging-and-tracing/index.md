@@ -14,13 +14,13 @@ You can set the logging levels and the output file for tracing operations for Ap
 
 #### Jump to
 {: #jump-to }
-* [Enabling logging and tracing in WebSphere Application Server full profile](#enabling-logging-and-tracing-in-websphere-application-server-full-profile)
-* [Enabling logging and tracing in WebSphere Application Server Liberty](#enabling-logging-and-tracing-in-websphere-application-server-liberty)
-* [Enabling logging and tracing in Apache Tomcat](#enabling-logging-and-tracing-in-apache-tomcat)
+* [Enabling logging and tracing in WebSphere Application Server full profile](#logging-in-websphere)
+* [Enabling logging and tracing in WebSphere Application Server Liberty](#logging-in-liberty)
+* [Enabling logging and tracing in Apache Tomcat](#logging-in-tomcat)
 * [JNDI properties for controlling trace output](#jndi-properties-for-controlling-trace-output)
 
 ## Enabling logging and tracing in WebSphere Application Server full profile
-{: #enabling-logging-and-tracing-in-websphere-application-server-full-profile }
+{: #logging-in-websphere }
 You can set the logging levels and the output file for tracing operations on the application server.
 
 When you try to diagnose problems in the Application Center (or other components of {{ site.data.keys.product }}), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
@@ -44,7 +44,7 @@ Where:
 The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
 
 ## Enabling logging and tracing in WebSphere Application Server Liberty
-{: #enabling-logging-and-tracing-in-websphere-application-liberty }
+{: #logging-in-liberty }
 You can set the logging levels and the output file for tracing operations for Application Center on the Liberty application server.
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
@@ -62,7 +62,7 @@ The traces are sent to a file called **trace.log**, not to **messages.log** or t
 For more information, see [Liberty profile: Logging and Trace](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc).
 
 ## Enabling logging and tracing in Apache Tomcat
-{: #enabling-logging-and-tracing-in-apache-tomcat }
+{: #logging-in-tomcat }
 You can set the logging levels and the output file for tracing operations undertaken on the Apache Tomcat application server.
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.

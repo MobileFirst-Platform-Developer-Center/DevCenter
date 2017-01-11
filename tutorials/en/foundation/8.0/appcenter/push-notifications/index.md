@@ -30,10 +30,10 @@ Refer to your device vendor to learn how to configure your mobile device for pus
 
 #### Jump to
 {: #jump-to }
-* [Configuring push notifications for application updates](#configuring-push-notifications-for-application-updates)
-* [Configuring the Application Center server for connection to Google Cloud Messaging](#configuring-the-application-center-server-for-connection-to-google-cloud-messaging)
-* [Configuring the Application Center server for connection to Apple Push Notification Services](#configuring-the-application-center-server-for-connection-to-apple-push-notification-services)
-* [Building a version of the mobile client that does not depend on the GCM API](#building-a-version-of-the-mobile-client-that-does-not-depend-on-the-gcm-api)
+* [Configuring push notifications for application updates](#configuring-push-notifications)
+* [Configuring the Application Center server for connection to Google Cloud Messaging](#gcm)
+* [Configuring the Application Center server for connection to Apple Push Notification Services](#apns)
+* [Building a version of the mobile client that does not depend on the GCM API](#no-gcm)
 
 ## Configuring push notifications for application updates
 {: #configuring-push-notifications }

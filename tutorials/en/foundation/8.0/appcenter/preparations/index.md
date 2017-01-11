@@ -16,7 +16,7 @@ The Appcenter Installer application is used to install apps on mobile devices. Y
 * [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [MobileFirst Studio based IBM AppCenter client](#mobilefirst-studio-based-ibm-appcenter-client)
 * [Customizing features (for experts): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
-* [Deploying the mobile client in Application Center](#deploying-the-mobile-client-in-application-center)
+* [Deploying the mobile client in Application Center](#deploying-the-mobile-client)
 
 ## Prerequisites
 {: #prerequisites }
