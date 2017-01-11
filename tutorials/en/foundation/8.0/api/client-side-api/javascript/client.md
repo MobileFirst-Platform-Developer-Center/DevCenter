@@ -5,7 +5,9 @@ breadcrumb_title: Client-side
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-> [Click to view](#api-reference) the full API reference for JavaScript applications.
+> [Click to view](#javascript-api-reference) the API reference for JavaScript applications.
+
+> [Click to view](#objective-c-api-reference-for-cordova) the Objective-C API reference for JavaScript applications.
 
 The following table lists the functions that you can perform in Javascript applications, and the corresponding API method.
 
@@ -53,8 +55,10 @@ WL.ClientMessages.invalidUsernamePassword="The custom user name and password are
 
 **Note:** You must override the system messages on a global JavaScript level because some parts of the code run only after the application successfully initialized.
 
-## API Reference
+## JavaScript API Reference
 
 <iframe width="100%" height="1000px" frameBorder="0" src="../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html"></iframe>
 
+## Objective-C API reference (for Cordova)
 
+<iframe width="100%" height="1000px" frameBorder="0" src="../../../api-ref/wl-ios-h-objc-apidoc/html/refobjc-worklight-ios-hybrid/html/index.html"></iframe>
