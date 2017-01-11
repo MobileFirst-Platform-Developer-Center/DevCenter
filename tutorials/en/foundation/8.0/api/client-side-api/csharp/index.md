@@ -10,6 +10,7 @@ This collection of topics documents the application programming interface (API) 
 The following are PDF file downloads.
 
 ### C Sharp
+{: #c-sharp }
 APIs for native Windows 10 UWP and Windows 8 Universal applications.
 * **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
     You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.

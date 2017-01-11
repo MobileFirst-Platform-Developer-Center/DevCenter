@@ -9,6 +9,7 @@ weight: 2
 This collection of topics documents the application programming interface (API) for Android.
 
 ### Java
+{: #java }
 APIs for native Android applications.
 
 * **[Client-side API](client)**  

@@ -9,6 +9,7 @@ weight: 1
 This collection of topics documents the application programming interface (API) for the supported client platforms.
 
 ### JavaScript
+{: #javascript }
 APIs for Cordova / Web applications.
 
 * **[Client-side API](client)**  

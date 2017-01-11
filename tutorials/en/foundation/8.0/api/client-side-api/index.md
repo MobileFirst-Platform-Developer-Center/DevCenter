@@ -9,6 +9,7 @@ weight: 1
 This collection of topics documents the application programming interface (API) for the supported client platforms.
 
 ### JavaScript
+{: #javascript }
 APIs for Cordova / Web applications.
 
 * **[Client-side API](javascript/client)**  
@@ -21,6 +22,7 @@ APIs for Cordova / Web applications.
     You can use the web JavaScript API to develop MobileFirst analytics for your web apps. This API is written in pure JavaScript and is not dependent on any other platform SDKs.
 
 ### Objective-C
+{: #objective-c }
 APIs for native iOS applications.
 
 * **[Client-side API](objc/client)**   
@@ -30,6 +32,7 @@ APIs for native iOS applications.
     Use this push API to develop apps for the iOS environment.
 
 ### Java
+{: #java }
 APIs for native Android applications.
 
 * **[Client-side API](java/client)**  
@@ -39,6 +42,7 @@ APIs for native Android applications.
     You can use Java push API to develop apps for the Android environment.
 
 ### C Sharp
+{: #c-sharp }
 APIs for native Windows 10 UWP and Windows 8 Universal applications.
 * **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
     You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
