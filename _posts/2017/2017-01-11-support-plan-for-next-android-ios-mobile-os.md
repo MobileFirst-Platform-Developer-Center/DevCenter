@@ -1,5 +1,5 @@
 ---
-title: Support plan for Apple's and Google's next mobile OS releases
+title: Support plan for Apple and Google's next mobile OS releases
 date: 2017-01-11
 tags:
 - MobileFirst_Platform
