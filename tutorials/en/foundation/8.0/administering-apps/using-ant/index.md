@@ -6,14 +6,17 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** Ant task.
 
 #### Jump to
+{: #jump-to }
 
 * [Comparison with other facilities](#comparison-with-other-facilities)
 * [Prerequisites](#prerequisites)
 
 ## Comparison with other facilities
+{: #comparison-with-other-facilities }
 You can execute administration operations with {{ site.data.keys.product_full }} in the following ways:
 
 * The {{ site.data.keys.mf_console }}, which is interactive.
@@ -30,6 +33,7 @@ The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for au
 The **mfpadm** Ant task and the **mfpadm** program are simpler to use and have better error reporting than the REST services. The advantage of the **mfpadm** Ant task over the mfpadm program is that it is platform independent and easier to integrate when integration with Ant is already available.
 
 ## Prerequisites
+{: #prerequisites }
 The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
 
 Apache Ant is required to run the **mfpadm** task. For information about the minimum supported version of Ant, see System requirements.
@@ -69,6 +73,7 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Jump to
+{: #jump-to-1 }
 
 * [Calling the **mfpadm** Ant task](#calling-the-mfpadm-ant-task)
 * [Commands for general configuration](#commands-for-general-configuration)
@@ -78,6 +83,7 @@ For more information about running the {{ site.data.keys.mf_server }} installer,
 * [Commands for troubleshooting](#commands-for-troubleshooting)
 
 ### Calling the mfpadm Ant task
+{: #calling-the-mfpadm-ant-task }
 You can use the **mfpadm** Ant task and its associated commands to administer {{ site.data.keys.product_adj }} applications.
 Call the **mfpadm** Ant task as follows:
 
@@ -88,6 +94,7 @@ Call the **mfpadm** Ant task as follows:
 ```
 
 #### Attributes
+{: #attributes }
 The **mfpadm** Ant task has the following attributes:
 
 | Attribute      | Description | Required | Default | 
@@ -103,19 +110,19 @@ The **mfpadm** Ant task has the following attributes:
 | connectionRequestTimeout |	Timeout for obtaining an entry from a connection request pool, in seconds | No | |
 | lockTimeout    |	Timeout for acquiring a lock | No | |
 
-**url** 
+**url**<br/>
 The base URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use the following URL.
 
 * For WebSphere  Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
 * For Tomcat: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
 
-**secure**  
+**secure**<br/>
 The default value is **true**. Setting **secure="false"** might have the following effects:
 
 * The user and password might be transmitted in an unsecured way, possibly even through unencrypted HTTP.
 * The server's SSL certificates are accepted even if self-signed or if they were created for a different host name than the specified server's host name.
 
-**password**
+**password**<br/>
 Specify the password either in the Ant script, through the **password** attribute, or in a separate file that you pass through the **passwordfile** attribute. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing this password. To secure the password, before you enter the password into a file, remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
 
 * On UNIX: `chmod 600 adminpassword.txt`
@@ -126,6 +133,7 @@ Additionally, you might want to obfuscate the password to hide it from an occasi
 The **mfpadm** call contains commands that are encoded in inner elements. These commands are executed in the order in which they are listed. If one of the commands fails, the remaining commands are not executed, and the **mfpadm** call fails.
 
 #### Elements
+{: #elements }
 You can use the following elements in **mfpadm** calls:
 
 | Element                       | Description | Count |
@@ -163,9 +171,11 @@ You can use the following elements in **mfpadm** calls:
 | remove-farm-member	        | Removes a server farm member | 0..∞ | 
 
 #### XML Format
+{: #xml-format }
 The output of most commands is in XML, and the input to specific commands, such as `<set-accessrule>`, is in XML too. You can find the XML schemas of these XML formats in the **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** directory. The commands that receive an XML response from the server verify that this response conforms to the specific schema. You can disable this check by specifying the attribute **xmlvalidation="none"**. 
 
 #### Output character set
+{: #output-character-set }
 Normal output from the mfpadm Ant task is encoded in the encoding format of the current locale. On Windows, this encoding format is the so-called "ANSI code page". The effects are as follows:
 
 * Characters outside of this character set are converted to question marks when they are output.
@@ -177,9 +187,11 @@ To work around this limitation:
 * Or use the attribute **output="some file name"** to redirect the output of a mfpadm command to a file.
 
 ### Commands for general configuration
+{: #commands-for-general-configuration }
 When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
 
 #### The `show-global-config` command
+{: #the-show-global-config-command }
 The `show-global-config` command shows the global configuration. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -197,6 +209,7 @@ This command is based on the [Global Configuration (GET)](http://www.ibm.com/sup
 
 <br/>
 #### The `show-user-config` command
+{: #the-show-user-config-command }
 The `show-user-config` command, outside of `<adapter>` and `<app-version>` elements, shows the user configuration of a runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -216,6 +229,7 @@ This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `set-user-config` command
+{: #the-set-user-config-command }
 The `set-user-config` command, outside of `<adapter>` and `<app-version>` elements, specifies the user configuration of a runtime. It has the following attributes for setting the entire configuration.
 
 | Attribute      | Description |	Required | Default |
@@ -245,6 +259,7 @@ This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/su
 
 <br/>
 #### The `show-confidential-clients` command
+{: #the-show-confidential-clients-command }
 The `show-confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -264,6 +279,7 @@ This command is based on the [Confidential Clients (GET)](http://www.ibm.com/sup
 
 <br/>
 #### The `set-confidential-clients` command
+{: #the-set-confidential-clients-command }
 The `set-confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -281,6 +297,7 @@ This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/sup
 
 <br/>
 #### The `set-confidential-clients-rule` command
+{: #the-set-confidential-clients-rule-command }
 The `set-confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -300,9 +317,11 @@ The `set-confidential-clients-rule` command specifies a rule in the configuratio
 This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
 
 ### Commands for adapters
+{: #commands-for-adapters }
 When you call the **mfpadm** Ant task, you can include various commands for adapters.
 
 #### The `list-adapters` command
+{: #the-list-adapters-command }
 The `list-adapters` command returns a list of the adapters deployed for a given runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -321,6 +340,7 @@ This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowled
 
 <br/>
 #### The `deploy-adapter` command
+{: #the-deploy-adapter-command }
 The `deploy-adapter` command deploys an adapter in a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -338,6 +358,7 @@ This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowled
 
 <br/>
 #### The `show-adapter` command
+{: #the-show-adapter-command }
 The `show-adapter` command shows details about an adapter. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -357,6 +378,7 @@ This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledg
 
 <br/>
 #### The `delete-adapter` command
+{: #the-delete-adapter-command }
 The `delete-adapter` command removes (undeploys) an adapter from a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -374,6 +396,7 @@ This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowl
 
 <br/>
 #### The `adapter` command group
+{: #the-adapter-command-group }
 The `adapter` command group has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -391,6 +414,7 @@ The `adapter` command supports the following elements.
 
 <br/>
 #### The `get-binary` command
+{: #the-get-binary-command }
 The `get-binary` command inside an `<adapter>` element returns the binary adapter file. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -409,6 +433,7 @@ This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledg
 
 <br/>
 #### The `show-user-config` command
+{: #the-show-user-config-command-1 }
 The `show-user-config` command, inside an `<adapter>` element, shows the user configuration of the adapter. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -429,6 +454,7 @@ This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `set-user-config` command
+{: #the-set-user-config-command-1 }
 The `set-user-config` command, inside an `<adapter>` element, specifies the user configuration of the adapter. It has the following attributes for setting the entire configuration.
 
 | Attribute      | Description |	Required | Default |
@@ -459,9 +485,11 @@ The command has the following attributes for setting a single property in the co
 This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
 
 ### Commands for apps
+{: #commands-for-apps }
 When you call the **mfpadm** Ant task, you can include various commands for apps.
 
 #### The `list-apps` command
+{: #the-list-apps-command }
 The `list-apps` command returns a list of the apps that are deployed in a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -480,6 +508,7 @@ This command is based on the [Applications (GET)](http://www.ibm.com/support/kno
 
 <br/>
 #### The `deploy-app` command
+{: #the-deploy-app-command }
 The `deploy-app` command deploys an app version in a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -497,6 +526,7 @@ This command is based on the [Application (POST)](http://www.ibm.com/support/kno
 
 <br/>
 #### The `show-app` command
+{: #the-show-app-command }
 The `show-app` command returns a list of the app versions that are deployed in a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -516,6 +546,7 @@ This command is based on the [Application (GET)](http://www.ibm.com/support/know
 
 <br/>
 #### The `delete-app` command
+{: #the-delete-app-command }
 The `delete-app` command removes (undeploys) an app, with all its app versions, for all environments for which it was deployed, from a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -533,6 +564,7 @@ This command is based on the [Application Version (DELETE)](http://www.ibm.com/s
 
 <br/>
 #### The `show-app-version` command
+{: #the-show-app-version-command }
 The `show-app-version` command shows details about an app version in a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -552,6 +584,7 @@ This command is based on the [Application Version (GET)](http://www.ibm.com/supp
 
 <br/>
 #### The `delete-app-version` command
+{: #the-delete-app-version-command }
 The `delete-app-version` command removes (undeploys) an app version from a runtime. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -571,6 +604,7 @@ This command is based on the [Application Version (DELETE)](http://www.ibm.com/s
 
 <br/>
 #### The `app` command group
+{: #the-app-command-group }
 The `app` command group has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -588,6 +622,7 @@ The app command group supports the following elements.
 
 <br/>
 #### The `show-license-config` command
+{: #the-show-license-config-command }
 The `show-license-config` command shows the token license configuration of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -607,6 +642,7 @@ This command is based on the [Application license configuration (GET)](http://ww
 
 <br/>
 #### The `set-license-config` command
+{: #the-set-license-config-command }
 The `set-license-config` command specifies the token license configuration of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -626,6 +662,7 @@ This command is based on the [Application License Configuration (POST)](http://w
 
 <br/>
 #### The `delete-license-config` command
+{: #the-delete-license-config-command }
 The `delete-license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
 
 **Example**  
@@ -640,6 +677,7 @@ This command is based on the [License configuration (DELETE)](http://www.ibm.com
 
 <br/>
 #### The `app-version` command group
+{: #the-app-version-command-group }
 The `app-version` command group has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -664,6 +702,7 @@ The `app-version` command group supports the following elements:
 
 <br/>
 #### The `get-descriptor` command
+{: #the-get-descriptor-command }
 The `get-descriptor` command, inside an `<app-version>` element, returns the application descriptor of a version of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -683,6 +722,7 @@ This command is based on the [Application Descriptor (GET)](http://www.ibm.com/s
 
 <br/>
 #### The `get-web-resources` command
+{: #the-get-web-resources-command }
 The `get-web-resources` command, inside an `<app-version>` element, returns the web resources of a version of an app, as a .zip file. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -701,6 +741,7 @@ This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `set-web-resources` command
+{: #the-set-web-resources-command }
 The `set-web-resources` command, inside an `<app-version>` element, specifies the web resources for a version of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -719,6 +760,7 @@ This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/s
 
 <br/>
 #### The `get-authenticity-data` command
+{: #the-get-authenticity-data-command }
 The `get-authenticity-data` command, inside an `<app-version>` element, returns the authenticity data of a version of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -738,6 +780,7 @@ This command is based on the [Export runtime resources (GET)](http://www.ibm.com
 
 <br/>
 #### The `set-authenticity-data` command
+{: #the-set-authenticity-data-command }
 The `set-authenticity-data` command, inside an `<app-version>` element, specifies the authenticity data for a version of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -768,6 +811,7 @@ This command is based on the [Deploy Application Authenticity Data (POST)](http:
 
 <br/>
 #### The `delete-authenticity-data` command
+{: #the-delete-authenticity-data-command }
 The `delete-authenticity-data` command, inside an `<app-version>` element, deletes the authenticity data of a version of an app. It has no attributes.
 
 **Example**  
@@ -782,6 +826,7 @@ This command is based on the [Application Authenticity (DELETE)](http://www.ibm.
 
 <br/>
 #### The `show-user-config` command
+{: #the-show-user-config-command-2 }
 The `show-user-config` command, inside an `<app-version>` element, shows the user configuration of a version of an app. It has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -808,6 +853,7 @@ This command is based on the [Application Configuration (GET)](http://www.ibm.co
 
 <br/>
 #### The `set-user-config` command
+{: #the-set-user-config-command-2 }
 The `set-user-config` command, inside an `<app-version>` element, specifies the user configuration for a version of an app. It has the following attributes for setting the entire configuration.
 
 | Attribute      | Description |	Required | Default |
@@ -836,9 +882,11 @@ The `set-user-config` command has the following attributes for setting a single 
 ```
 
 ### Commands for devices
+{: #commands-for-devices }
 When you call the **mfpadm** Ant task, you can include various commands for devices.
 
 #### The `list-devices` command
+{: #the-list-devices-command }
 The `list-devices` command returns the list of devices that have contacted the apps of a runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -862,6 +910,7 @@ This command is based on the [Devices (GET)](http://www.ibm.com/support/knowledg
 
 <br/>
 #### The `remove-device` command
+{: #the-remove-device-command }
 The `remove-device` command clears the record about a device that has contacted the apps of a runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -879,6 +928,7 @@ This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowle
 
 <br/>
 #### The `device` command group
+{: #the-device-command-group }
 The `device` command group has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -895,6 +945,7 @@ The `device` command supports the following elements.
 
 <br/>
 #### The `set-status` command
+{: #the-set-status-command }
 The `set-status` command changes the status of a device, in the scope of a runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -921,6 +972,7 @@ This command is based on the [Device Status (PUT)](http://www.ibm.com/support/kn
 
 <br/>
 #### The `set-appstatus` command
+{: #the-set-appstatus-command }
 The `set-appstatus` command changes the status of a device, regarding an app in a runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -944,9 +996,11 @@ The status can have one of the following values:
 This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
 
 ### Commands for troubleshooting
+{: #commands-for-troubleshooting }
 You can use Ant task commands to investigate problems with {{ site.data.keys.mf_server }} web applications.
 
 #### The `show-info` command
+{: #the-show-info-command }
 The `show-info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. Use this command to test whether the {{ site.data.keys.product_adj }} administration services are running at all. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -962,6 +1016,7 @@ The `show-info` command shows basic information about the {{ site.data.keys.prod
 
 <br/>
 #### The `show-versions` command
+{: #the-show-versions-command }
 The `show-versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
 
 * **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-ant-deployer.jar **file is taken.
@@ -983,6 +1038,7 @@ The command has the following attributes:
 
 <br/>
 #### The `show-diagnostics` command
+{: #the-show-diagnostics-command }
 The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -998,6 +1054,7 @@ The `show-diagnostics` command shows the status of various components that are n
 
 <br/>
 #### The `unlock` command
+{: #the-unlock-command }
 The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations. The command has no attributes.
 
 **Example**  
@@ -1008,6 +1065,7 @@ The `unlock` command releases the general-purpose lock. Some destructive operati
 
 <br/>
 #### The `list-runtimes` command
+{: #the-list-runtimes-command }
 The `list-runtimes` command returns a list of the deployed runtimes. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -1030,6 +1088,7 @@ This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowled
 
 <br/>
 #### The `show-runtime` command
+{: #the-show-runtime-command }
 The `show-runtime` command shows information about a given deployed runtime. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -1048,6 +1107,7 @@ This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledg
 
 <br/>
 #### The `delete-runtime` command
+{: #the-delete-runtime-command }
 The `delete-runtime` command deletes the runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped. The command has the following attributes.
 
 | Attribute      | Description |	Required | Default |
@@ -1065,6 +1125,7 @@ This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowl
 
 <br/>
 #### The `list-farm-members` command
+{: #the-list-farm-members-command }
 The `list-farm-members` command returns a list of the farm member servers on which a given runtime is deployed. It has the following attributes:
 
 | Attribute      | Description |	Required | Default |
@@ -1083,6 +1144,7 @@ This command is based on the [Farm topology members (GET)](http://www.ibm.com/su
 
 <br/>
 #### The `remove-farm-member` command
+{: #the-remove-farm-member-command }
 The `remove-farm-member` command removes a server from the list of farm members on which a given runtime is deployed. Use this command when the server has become unavailable or disconnected. The command has the following attributes.
 
 | Attribute      | Description |	Required | Default |
