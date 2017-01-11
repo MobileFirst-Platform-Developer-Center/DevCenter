@@ -7,9 +7,11 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Find information to help resolve issues that you might encounter when you use the JSONStore API.
 
 ## Provide information when you ask for help
+{: #provide-information-when-you-ask-for-help }
 It is better to provide more information than to risk not providing enough information. The following list is a good starting point for the information that is required to help with JSONStore issues.
 
 * Operating system and version. For example, Windows XP SP3 Virtual Machine or Mac OSX 10.8.3.
@@ -23,6 +25,7 @@ It is better to provide more information than to risk not providing enough infor
 * Logs, such as Xcode output on iOS or logcat output on Android.
 
 ## Try to isolate the issue
+{: #try-to-isolate-the-issue }
 Follow these steps to isolate the issue to more accurately report a problem.
 
 1. Reset the emulator (Android) or simulator (iOS) and call the destroy API to start with a clean system.
@@ -67,6 +70,7 @@ Follow these steps to isolate the issue to more accurately report a problem.
 6. Use the debugger.
 
 ## Common issues
+{: #common-issues }
 Understanding the following JSONStore characteristics can help resolve some of the common issues that you might encounter.  
 
 * The only way to store binary data in JSONStore is to first encode it in base64. Store file names or paths instead of the actual files in JSONStore.
@@ -82,6 +86,7 @@ Understanding the following JSONStore characteristics can help resolve some of t
 * This error means that you have 64-bit native libraries in your Android project, and JSONStore does not currently work when you use these libraries. To confirm, go to **src/main/libs** or **src/main/jniLibs** under your Android project, and check whether you have the x86_64 or arm64-v8a folders. If you do, delete these folders, and JSONStore can work again.
 
 ## Store internals	
+{: #store-internals }
 See an example of how JSONStore data is stored.
 
 The key elements in this simplified example:
@@ -105,7 +110,9 @@ The other internal JSONStore fields are:
 * `_operation`: A string that reflects the last operation to be performed on the document (for example, replace).
 
 ## JSONStore errors
+{: #jsonstore-errors }
 ### JavaScript
+{: #javascript }
 JSONStore uses an error object to return messages about the cause of failures.
 
 When an error occurs during a JSONStore operation (for example the `find`, and `add` methods in the `JSONStoreInstance` class) an error object is returned. It provides information about the cause of the failure.
@@ -125,6 +132,7 @@ var errorObject = {
 Not all the key/value pairs are part of every error object. For example, the doc value is only available when the operation failed because of a document (for example the `remove` method in the `JSONStoreInstance` class) failed to remove a document.
 
 ### Objective-C
+{: #objective-c }
 All of the APIs that might fail take an error parameter that takes an address to an NSError object. If you don not want to be notified of errors, you can pass in `nil`. When an operation fails, the address is populated with an NSError, which has an error and some potential `userInfo`. The `userInfo` might contain extra details (for example, the document that caused the failure).
 
 ```objc
@@ -136,6 +144,7 @@ NSError* error = nil;
 ```
 
 ### Java
+{: #java }
 All of the Java API calls throw a certain exception, depending on the error that happened. You can either handle each exception separately, or you can catch `JSONStoreException` as an umbrella for all JSONStore exceptions.
 
 ```java
@@ -149,7 +158,7 @@ catch(JSONStoreException e) {
 ```
 
 ### List of error codes
-
+{: #list-of-error-codes }
 | Error code | Description |
 |------------|-------------|
 | -100 UNKNOWN_FAILURE | Unrecognized error. |

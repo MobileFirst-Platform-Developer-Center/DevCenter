@@ -10,6 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
 
 The Java library is provided as a JAR file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
@@ -24,14 +25,13 @@ This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by u
 ![Flow](TAI_flow.jpg)
 
 ## Server setup
-
-1. Download the OAuth Security Extension from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. Unpack the `mfp-oauth-tai.zip` archive.   
-
+{: #server-setup }
+1. Download the Security Tools .zip from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. In it you will find a `mfp-oauth-tai.zip` archive. Unpack this zip.
 2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
-
 3. Add the `OAuthTai.mf` file to the WebSphere Application Server instance inside **usr/extension/lib/features**.
 
 ### web.xml setup
+{: #webxml-setup }
 Add a security constraint and a security role to the `web.xml` file of the WebSphere Application Server instance:
 
 ```xml
@@ -52,6 +52,7 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
 ```
 
 ### server.xml
+{: #serverxml }
 Modify the WebSphere Application Server `server.xml` file to your external resource.
 
 * Configure the feature manager to include the following features:
@@ -105,7 +106,7 @@ If you are using servlet-2.x , you need to define the security role in your web.
     - **scope**: The resource server authenticates against one or more scopes. A scope can be a security check or a scope element mapped to security checks.
 
 ## Using the Token Introspection Data From the TAI
-
+{: #using-the-token-introspection-data-from-the-tai }
 From your resource, you may want to access the token information that was intercepted and validated by the TAI. You can find the list of data found on the token in this user documentation topic: https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html
 To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
 
@@ -116,12 +117,13 @@ JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
 securityContext.get('mfp-device')
 ```
 
-## Sample
+## Sample application
+{: #sample-application }
 You can deploy the project on supported application servers (WebSphere Application Server full profile and WebSphere Application Server Liberty profile).  
 [Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
 
 ### Sample usage
-
+{: #sample-usage }
 1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.

@@ -7,13 +7,19 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 {{ site.data.keys.mf_analytics_full }} provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
 
 ## Jump to:
+{: #jump-to }
+
 * [Analytics REST API](#analytics-rest-api)
 * [Try It Out on Swagger Docs](#try-it-out-on-swagger-docs)
 
 ## Analytics REST API
+{: #analytics-rest-api }
+
 To use the analytics REST API:
 
 **Base URL**
@@ -40,6 +46,8 @@ Server Log (POST) | /v3/serverlog | Creates a new server log.
 User (POST) | /v3/user | Creates a new user.
 
 ## Try it out on Swagger docs
+{: #try-it-out-on-swagger-docs }
+
 Try out the analytics REST API on Swagger Docs.  
 In a {{ site.data.keys.mf_server }} configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
 

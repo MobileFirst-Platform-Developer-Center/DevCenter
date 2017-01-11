@@ -12,6 +12,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
 
 **Prerequisites:**
@@ -24,38 +25,44 @@ downloads:
 * {{ site.data.keys.mf_cli }} installed on the developer workstation
 
 #### Jump to:
+{: #jump-to }
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 
 ## Notifications Configuration
+{: #notifications-configuration }
 Create a new Visual Studio project or use and existing one.  
 If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
 
 ### Adding the Push SDK
-
+{: #adding-the-push-sdk }
 1. Select Tools → NuGet Package Manager → Package Manager Console.
 2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
 3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
 ## Pre-requisite WNS configuration
+{: pre-requisite-wns-configuration }
 1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
 2. Ensure `Package Identity Name` and `Publisher` should be updated with the values registered with WNS.
 3. (Optional) Delete TemporaryKey.pfx file.
 
 ## Notifications API
+{: #notifications-api }
 ### MFPPush Instance
+{: #mfppush-instance }
 All API calls must be called on an instance of `MFPPush`.  This can be by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
 
 Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
 
 ### Challenge Handlers
+{: #challenge-handlers }
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
 
 > Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
 
 ### Client-side
-
+{: #client-side }
 | C Sharp Methods                                                                                                | Description                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
@@ -68,6 +75,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 | [`UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
 #### Initialization
+{: #initialization }
 Initialization is required for the client application to connect to MFPPush service.
 
 * The `Initialize` method should be called first before using any other MFPPush APIs.
@@ -78,6 +86,7 @@ MFPPush.GetInstance().Initialize();
 ```
 
 #### Is push supported
+{: #is-push-supported }
 Checks if the device supports push notifications.
 
 ```csharp
@@ -91,6 +100,7 @@ if (isSupported ) {
 ```
 
 #### Register device &amp; send device token
+{: #register-device--send-device-token }
 Register the device to the push notifications service.
 
 ```csharp
@@ -105,6 +115,7 @@ if (Response.Success == true)
 ```
 
 #### Get tags
+{: #get-tags }
 Retrieve all the available tags from the push notification service.
 
 ```csharp
@@ -118,6 +129,7 @@ if (Response.Success == true)
 ```
 
 #### Subscribe
+{: #subscribe }
 Subscribe to desired tags.
 
 ```csharp
@@ -136,6 +148,7 @@ else
 ```
 
 #### Get subscriptions
+{: #get-subscriptions }
 Retrieve tags the device is currently subscribed to.
 
 ```csharp
@@ -151,6 +164,7 @@ else
 ```
 
 #### Unsubscribe
+{: #unsubscribe }
 Unsubscribe from tags.
 
 ```csharp
@@ -168,8 +182,8 @@ else
 }
 ```
 
-
 #### Unregister
+{: #unregister }
 Unregister the device from push notification service instance.
 
 ```csharp
@@ -182,8 +196,8 @@ if (Response.Success == true)
 }
 ```
 
-
 ## Handling a push notification
+{: #handling-a-push-notification }
 In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing the following method.
 
 1. Create a class by using interface of type MFPPushNotificationListener
@@ -205,16 +219,17 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
 <img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
 
 ## Windows Universal Push Notifications Service
-
+{: #windows-universal-push-notifications-service }
 No specific port needs to be open in your server configuration.
 
 WNS uses regular http or https requests.
 
 
 ## Sample application
-
+{: #sample-application }
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) the Windows 8.1 Universal project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

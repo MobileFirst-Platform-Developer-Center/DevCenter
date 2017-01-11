@@ -6,6 +6,8 @@ tabs:
     path: /labs/developers/8.0/intro/
   - name: Advanced Car Service
     path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
@@ -30,6 +32,24 @@ In this lab you will be:
 * Implementing MessageHub for latency to process requests on a large scale
 * Caching with DashDB to lessen the load on the CRM
 * Using SecureGateway to tunnel through firewall to use onPrem CRM
+
+---
+
+<div style="max-width: 250px">
+<a href="{{site.baseurl}}/labs/developers/8.0/advancedutilityservice"><img src="{{site.baseurl}}/labs/developers/8.0/advancedutilityservice/logo.png" alt="small logo for advanced utility service app"></a>
+</div>
+
+![lab session for 8.0](../advancedutilityservice/screenstory.png)
+
+<br/>
+In this lab you will be:
+
+* Using Ionic v1 for hybrid development
+* Develop using the mfpdev CLI with Foundation on Bluemix Service
+* Securing backend APIs with user authentication
+* Using Cloudant to store and retrieve work orders
+* Using Weather Company Data and APIs to get relevant weather alerts
+* Using Watson Speech to Text service to quickly fill out a form
 
 ---
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # only proceed script when on "master" branch
-if [ $TRAVIS_BRANCH != 'master' ]; then
+if [ $TRAVIS_BRANCH != 'custom-ids' ]; then
   echo "this is not the staging branch, exiting"
   exit 0
 fi

@@ -3,9 +3,11 @@ layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
   - name: Lab selection
-    path: /labs/developers/8.0/intro
+    path: /labs/developers/8.0/intro/
   - name: Advanced Car Service
     path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
@@ -13,7 +15,7 @@ tabs:
 ---
 
 ![lab session for 8.0](../advancedcarservice/screenstory.png)
-    
+
 ## Lab Highlights
 * Hybrid, Ionic 1 based
 * Development using CLI with Foundation on Bluemix
@@ -43,7 +45,7 @@ We will be utilizing the Bluemix services:
 ![scenario diagram](../advancedcarservice/diagram.png)
 
 In this lab we will cover how to implement the solution above asynchronously. The mobile app will be reading from a cached data repository (DashDB) which will be updated as frequently as possibly. The mobile app will also be writing (creating new customers/visits) via a messaging system (MessageHub). This allows the CRM to consume updates in a more controlled flow, mitigating the peaks and valleys of a service center working day. So if needed, more resources can be added to the CRM to support more load throughout the day, to keep data updated with less latency.
-    
+
 ### Write
 * User creates a new visit in the mobile app (Mobile App)
 * Login adapter validates that the OAuth token for that user is valid (Login Adapter)

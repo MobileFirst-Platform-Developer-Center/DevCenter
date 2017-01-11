@@ -2,9 +2,11 @@
 layout: tutorial
 title: Adding the MobileFirst SDK
 weight: 1
+show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ### Overview
+{: #overview }
 The {{ site.data.keys.product }} client SDKs provide a set of API methods that enable developers to implement various {{ site.data.keys.product_adj }} features, such as: authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and lots more.
 
 You can develop **mobile or Desktop web applications** by using your preferred development environment and tools, and add {{ site.data.keys.product_adj }} features and capabilities to your client application as well as support for analytics data gathering
@@ -16,8 +18,3 @@ To develop **native iOS/Android/Windows applications**, you must add the {{ site
 Learn in the following tutorials how to integrate the SDK into your application.  
 To continue, select a tutorial:
 
-* [Adding the {{ site.data.keys.product }} SDK to Cordova Applications](cordova)
-* [Adding the {{ site.data.keys.product }} SDK to iOS Applications](ios)
-* [Adding the {{ site.data.keys.product }} SDK to Android Applications](android)
-* [Adding the {{ site.data.keys.product }} SDK to Windows 8.1 Universal or Windows 10 UWP Applications](windows-8-10)
-* [Adding the {{ site.data.keys.product }} SDK to Web Applications](web)

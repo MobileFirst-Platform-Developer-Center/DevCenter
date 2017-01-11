@@ -7,31 +7,40 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.  
+{: #overview }
+
+Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console_full }} regularly.  
 You can set reactive thresholds in the {{ site.data.keys.mf_analytics_console }} to trigger alerts when a specific criteria is met.
 
-You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the {{ site.data.keys.mf_analytics_console }}, and also be sent to a pre-configured REST endpoint or custom webhook.
+You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the {{ site.data.keys.mf_analytics_console_short }}, and also be sent to a pre-configured REST endpoint or custom webhook.
 
-Once alerts are triggered, the **Alert** icon (in the title bar) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
+Once alerts are triggered, the **Alert** icon (in the title bar of the {{ site.data.keys.mf_analytics_console_short }}) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
 
 Alternate methods are available for distributing the alerts.
 
 **Prerequisite:** Ensure that the {{ site.data.keys.mf_analytics_server }} is started and ready to receive client logs.
 
 ## Alert management
+{: #alert-management }
+
 ### Creating an alert
-In the {{ site.data.keys.mf_analytics_server }}:
+{: #creating-an-alert }
 
-1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button. The **Alert Definition** tab appears.
+In the {{ site.data.keys.mf_analytics_console }}:
 
-1. Provide the following values: Alert Name, Message, Query Frequency, Event Type, Application Name, Application Version, Threshold Type and Operator.
+1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button.
 
-2. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
+   ![Alert Management Tab](alert_management_tab.png)
+
+2. Provide the following values: Alert Name, Message, Query Frequency, and Event Type. Depending on the Event Type, populate the additional text boxes that appear with the appropriate values.
+3. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
 
 ### Distribution Method tab
-By default, the alert is displayed in the Analytics Console.
+{: #distribution-method-tab }
 
-You can also send a POST message with a JSON payload to both the Analytics Console and to a customized URL by selecting the **Analytics Console and Network Post** option.
+By default, the alert is displayed in the {{ site.data.keys.mf_analytics_console_short }}.
+
+You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short }} and to a customized URL by selecting the **Analytics Console and Network Post** option.
 
 The following fields are available if you choose this option:
 
@@ -39,10 +48,11 @@ The following fields are available if you choose this option:
 * Headers (*optional*)
 * Authentication Type (*required*)
 
-
 <img class="gifplayer"  alt="Creating an alert" src="creating-an-alert.png"/>
 
 ## Custom web hook
+{: #custom-web-hook }
+
 You can set up a custom distribution method for an alert. For example: define a web hook to which a payload is sent to when an alert threshold is triggered.
 
 Example payload:
@@ -78,6 +88,8 @@ The POST request includes the following attributes:
 * **message** - the user-defined message.
 
 ## Viewing alert details
+{: #viewing-alert-details }
+
 Alert details can be viewed from the **Dashboard→Alert Log** tab in the {{ site.data.keys.mf_analytics_console }}.
 
 ![A new alert log](alert-log.png)

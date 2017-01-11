@@ -6,6 +6,7 @@ weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
 Using the CLI you can manage Cordova-based applications that uses the {{ site.data.keys.product_adj }} Cordova plug-in, and Native applications that uses the {{ site.data.keys.product_adj }} Native SDK.
 
@@ -18,7 +19,7 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 > For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the {{ site.data.keys.product }} SDK](../../application-development/sdk/) category.
 
 #### Jump to
-
+{: #jump-to }
 * [Prerequisites](#prerequisites)
 * [Installing the {{ site.data.keys.mf_cli }}](#installing-the-mobilefirst-cli)
 * [List of CLI commands](#list-of-cli-commands)
@@ -30,6 +31,7 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 * [Update and Uninstall the Command Line Interface](#update-and-uninstall-the-command-line-interface)
 
 ## Prerequisites
+{: #prerequisites }
 The {{ site.data.keys.mf_cli }} is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
 Ensure **node.js** is installed in the development environment in order to install NPM packages.  
@@ -45,6 +47,7 @@ v4.2.3
 > **Note:** Minimum supported node.js version is 4.2.3
 
 ## Installing the {{ site.data.keys.mf_cli }}
+{: #installing-the-mobilefirst-cli }
 To install the Command Line Interface run the command:
 
 ```bash
@@ -84,6 +87,7 @@ DESCRIPTION
 ```
 
 ## List of CLI commands
+{: #list-of-cli-commands }
 
 | Command prefix                                                | Command action                               | Description                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
@@ -105,6 +109,8 @@ DESCRIPTION
 |                                                               | deploy                                       | Deploys an adapter to the {{ site.data.keys.mf_server }}.                           |
 |                                                               | deploy all                                   | Finds all of the adapters in the current directory and its subdirectories, and deploys them to the {{ site.data.keys.mf_server }}. |
 |                                                               | call                                         | Calls an adapter's procedure on the {{ site.data.keys.mf_server }}.                 |
+|                                                               | pull                                         | Retrieves an existing adapter configuration from the server.                |
+|                                                               | push                                         | Sends an adapter's configuration to the server.                             |
 | mfpdev                                                        | config                                       | Sets your configuration preferences for preview browser type, preview timeout value, and server timeout value for the mfpdev command-line interface.                                                                                                                   |
 |                                                               | info                                         | Displays information about your environment, including operating system, memory consumption, node version, and command-line interface version. If the current directory is a Cordova application, information provided by the Cordova cordova info command is also displayed. |
 |                                                               | -v                                           | Displays the version number of the {{ site.data.keys.mf_cli }} currently in use. |
@@ -114,6 +120,7 @@ DESCRIPTION
 | mfpdev help                                                   | name of command                              | Displays help for {{ site.data.keys.mf_cli }} (mfpdev) commands. With a arguments, displays more specific help text for each command type or command. i.e "mfpdev help server add" |
 
 ## Interactive and Direct modes
+{: #interactive-and-direct-modes }
 All commands can be executed in **interactive** or **direct mode**. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
 
 Example:
@@ -142,9 +149,11 @@ To find what is the right syntax for a command in direct mode use `mfpdev help <
 
 
 ## Managing {{ site.data.keys.mf_server }} instances
+{: #managing-mobilefirst-server-instances }
 You can use `mfpdev server <option>` command to manage the instances of {{ site.data.keys.mf_server }} that are in use. There must be always at least one server instance listed as the default instance.   The default server is always used if another one was not specified.
 
 ### List server instances
+{: #list-server-instances }
 To list all the {{ site.data.keys.mf_server }} instances available to be used, run the command:
 
 ```bash
@@ -154,7 +163,7 @@ mfpdev server info
 By default, a local server profile is created automatically and used as the current default by the CLI.
 
 ### Add a new server instance
-
+{: #add-a-new-server-instance }
 If you are using another local or remote {{ site.data.keys.mf_server }} instance you can add it to the list of instances available to be used with the command:
 
 ```bash
@@ -182,6 +191,7 @@ Server profile 'MyBluemixServer' added successfully.
 - Replace the "fully qualified URL of this server" with your own.
 
 ### Edit server instances
+{: #edit-server-instances }
 If you want to edit the details of a registered server instance, run the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
 
 ```bash
@@ -195,6 +205,7 @@ mfpdev server edit <server_name> --setdefault
 ```
 
 ### Remove server instances
+{: #remove-server-instances }
 To remove a server instance from the list of registered servers, run the command:
 
 ```bash
@@ -204,6 +215,7 @@ mfpdev server remove
 And select the server from the interactive list
 
 ### Open {{ site.data.keys.mf_console }}
+{: #open-mobilefirst-operations-console }
 To open the console of the default server registered run the command:
 
 ```bash
@@ -217,6 +229,7 @@ mfpdev server console <server_name>
 ```
 
 ### Remove apps and adapters from a server
+{: #remove-apps-and-adapters-from-a-server }
 To remove all apps and adapters registered in a server run the command:
 
 ```bash
@@ -227,9 +240,11 @@ And select the server to clean form the interactive prompt.
 This will put the server instance in a clean state without any app or adapter deployed.
 
 ## Managing applications
+{: #managing-applications }
 The command `mfpdev app <option>` can be used to manage applications created with the {{ site.data.keys.product }} SDK.
 
 ### Register an application in a server instance
+{: #register-an-application-in-a-server-instance }
 An  application must be registered in a {{ site.data.keys.mf_server }} when it is ready to be executed.  
 To register an app, run the following command from the root folder of the app project:
 
@@ -261,6 +276,7 @@ mfpdev app register -w windows8
 ```
 
 ### Configure an application
+{: #configure-an-application }
 When an application is registered, server related attributes are added to its configuration file.  
 To change the values of these attributes, run the following command:
 
@@ -357,6 +373,7 @@ Available configurations are:
 
 
 ### Preview a Cordova application
+{: #preview-a-cordova-application }
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
 Before running the preview command, you must prepare the project by adding the `wlInitOptions` variable. Complete the following steps:
@@ -397,7 +414,7 @@ There are two options of preview: MBS and Browser.
 > For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
 
 ### Update web resources for Direct Update
-
+{: #update-web-resources-for-direct-update }
 The web resources of a cordova app, like .html, .css and .js files inside **www** folder can be updated without the need to reinstall the app at the mobile device. This is possible with the Direct Update feature provided by {{ site.data.keys.product }}.
 
 > For more details about how Direct Update works see the tutorial [Using Direct Update in Cordova applications](../direct-update).
@@ -435,6 +452,7 @@ mfpdev app webupdate --encrypt
 ```
 
 ### Pull and Push the {{ site.data.keys.product_adj }} Application configuration
+{: #pull-and-push-the-mobilefirst-application-configuration }
 After a {{ site.data.keys.product_adj }} Application is registered in a {{ site.data.keys.mf_server }}, it is possible to change some of the application configurations using the {{ site.data.keys.mf_server }} Console and them pull those configurations from the server to the application with the following command:
 
 ```bash
@@ -450,13 +468,14 @@ mfpdev app push
 **Example:** scope mapping to security checks can be performed in the {{ site.data.keys.mf_console }}, and then be pulled from  the server using the abve command. The downloaded .zip file is stored in the project's **[root directory]/mobilefirst** folder, and can be later used with the `mfpdev app push` to upload it to a different {{ site.data.keys.mf_server }}, allowing for fast configuration and setup by re-using the predefined configuration.
 
 ## Managing and Testing Adapters
+{: #managing-and-testing-adapters }
 It is possible to manage adapters with the command `mfpdev adapter <option>`.
 
 > To learn more about adapters see the tutorials at the [Adapters](../../adapters/) category.
 
 
 ### Create an Adapter
-
+{: #create-an-adapter }
 To create a new Adapter, use the command
 
 ```bash
@@ -465,8 +484,8 @@ mfpdev adapter create
 
 And follow the prompt to inform the name, type and group id of the adapter
 
-### Build a Adapter
-
+### Build an Adapter
+{: #build-an-adpater }
 To build an adapter, run the following command from the adapter's root folder:
 
 ```bash
@@ -475,8 +494,8 @@ mfpdev adapter build
 
 This will generate a .adapter file at the **<AdapterName>/target** folder.
 
-### Deploy a Adapter
-
+### Deploy an Adapter
+{: #deploy-an-adapter}
 The following command will deploy the adapter to the default server:
 
 ```bash
@@ -489,8 +508,8 @@ To deploy to a different server, use:
 mfpdev adapter deploy <server_name>
 ```
 
-### Call a Adapter from the command line
-
+### Call an Adapter from the command line
+{: #call-an-adapter-from-the-command-line }
 After an adapter is deployed it is possible to call the adapter from the command line to test it's behavior with the command:
 
 ```bash
@@ -502,7 +521,7 @@ You will be prompted to inform the adapter, procedure and parameters to use. The
 > Learn more in the [Testing and debugging adapters](../../adapters/testing-and-debugging-adapters/) tutorial.
 
 ## Helpful commands
-
+{: #helpful-commands }
 To set preferences of the mfpdev CLI, such as default browser and default preview mode, use the command:
 
 ```bash
@@ -528,7 +547,7 @@ mfpdev -v
 ```
 
 ## Update and Uninstall the Command Line Interface
-
+{: #update-and-uninstall-the-command-line-interface }
 To update the command line interface run the command:
 
 ```bash

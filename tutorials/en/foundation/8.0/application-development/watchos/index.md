@@ -7,9 +7,11 @@ weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 In this example, you will learn how  to set up the development environment for watchOS 2 and later using {{ site.data.keys.product_adj }} framework. The example is created and described using watchOS 2. It also works fine on watchOS 3.
 
 ## Setup
+{: #setup }
 To set up the development environment for watchOS , create the Xcode project, add the watchOS framework, and set up the necessary targets.
 
 1. Create a watchOS 2 app in Xcode.
@@ -50,6 +52,7 @@ To set up the development environment for watchOS , create the Xcode project, ad
 The Xcode project now contains a main app and a watchOS 2 app, each can be developed independently. For Swift, the entry point for the watchOS 2 app is the **InterfaceController.swift** file in the **[project name] watchKit Extension** folder. For Objective-C the entry point is the **ViewController.m** file.
 
 ## Setting up {{ site.data.keys.product_adj }} security for the iPhone app and the watchOS app
+{: #setting-up-mobilefirst-security-for-the-iphone-app-and-the-watchos-app }
 The Apple Watch and iPhone devices differs physically. Therefore the security checks for each must be appropriate for the available input devices. For example, the Apple Watch is limited to a number pad and does not allow the usual username/password security check. Therefore access to protected resources on the server could be enabled using a pin code. Because of these and similar differences, it is necessary to apply different security checks for each target.
 
 Below is one example of creating an app with both an iPhone and an Apple Watch target. This architecture allows each to have its own security check. The differing security checks are just examples of how you can design features for each target. Additional security checks might be available.
@@ -64,6 +67,7 @@ Below is one example of creating an app with both an iPhone and an Apple Watch t
         * For com.worklight.[project_name].watchkitapp.watchkitextension map it to the pin code security check.
 
 ## WatchOS Limitation
+{: #watchos-limitation }
 The optional frameworks that add features to the {{ site.data.keys.product_adj }} app are not provided for watchOS development. Some other features are limited by constraints imposed by the watchOS or Apple Watch device.
 
 | Feature | Limitation |
@@ -77,6 +81,7 @@ The optional frameworks that add features to the {{ site.data.keys.product_adj }
 | Usernames/password security check | use the CredentialsValidation security check |
 
 ### Remote Disable/Notify
+{: #remote-disablenotify }
 With the {{ site.data.keys.mf_console }}, you can configure the {{ site.data.keys.mf_server }} to disable access (and return a message) to client applications based on the version they are running (see [Remotely disabling application access to protected resources](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources). Two options provide default UI alerts:
 
 * when the app is active but a messages is sent: **Active and Notifying**

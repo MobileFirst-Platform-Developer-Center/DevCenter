@@ -6,15 +6,17 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Below are several methods you can follow in order to secure your IBM Container with {{ site.data.keys.mf_server }} instance.
 
 #### Jump to
-
+{: #jump-to }
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
 * [Security configuration for {{ site.data.keys.product_full }} on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
+{: #configuring-app-transport-security-ats }
 ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your container image, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
 
 1. Copy the **ssl_cert.p12** file to the **mfpf-server/usr/security/** folder.
@@ -55,22 +57,28 @@ For development-stage purposes only, you can disable ATS by adding following pro
 ```
 
 ## Security configuration for {{ site.data.keys.product_full }} on IBM Containers	
+{: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
 Your {{ site.data.keys.product }} instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
 ### Encrypting passwords
+{: #encrypting-passwords }
 Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
 
 ### Application-authenticity validation
+{: #application-authenticity-validation }
 To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
 
 ### Configure SSL for {{ site.data.keys.mf_console }} and {{ site.data.keys.mf_analytics_console }}
+{: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
 You can secure access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_server }}.  
 To enable HTTPS on the {{ site.data.keys.mf_server }}, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
 ### Securing a connection to the back end
+{: #securing-a-connection-to-the-back-end }
 If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
 
 #### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+{: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
 The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
 Passwords are configured in the **server.env** files in the **package_root/mfpf-server/usr/env** and **package_root/mfpf-analytics/usr/env** folders. Passwords should be stored in an encrypted format.
 
@@ -86,6 +94,7 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 ```
 
 #### Securing container communication using a private IP address	
+{: securing-container-communication-using-a-private-ip-address }
 To have secure communication between the {{ site.data.keys.mf_server }} container and the {{ site.data.keys.mf_analytics }} container, you must include the private IP address of the {{ site.data.keys.mf_analytics }} container in the `mfpfProperties.xml` file.
 
 To complete this task, you need the private IP of the {{ site.data.keys.mf_analytics }} container, which you can obtain using the following command: `cf ic inspect analytics_container_id`. Look for the IP Address field in the command output. **Remember:** If you are going to use {{ site.data.keys.mf_analytics }}, you must configure, build, and run the {{ site.data.keys.mf_analytics }} image before configuring, deploying, and running the {{ site.data.keys.mf_server }} image.
@@ -99,6 +108,7 @@ Complete the following steps by editing the mfpf-server/usr/config/mfpfpropertie
 2. To ensure that the {{ site.data.keys.mf_analytics_console }} can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
 #### Restricting access to the consoles running on containers	
+{: #restricting-access-to-the-consoles-running-on-containers }
 You can restrict access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
 
 The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
@@ -254,6 +264,7 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
 4. [Build the image and run the container](../). The {{ site.data.keys.mf_console }} and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
 
 ## LDAP configuration for containers
+{: #ldap-configuration-for-containers }
 You can configure a {{ site.data.keys.product }} container to securely connect out to an external LDAP repository.
 
 The external LDAP registry can be used in a container for the following purposes:
@@ -262,6 +273,7 @@ The external LDAP registry can be used in a container for the following purposes
 * To configure the {{ site.data.keys.product_adj }} mobile applications to work with an external LDAP registry.
 
 ### Configuring administration security with LDAP
+{: #configuring-administration-security-with-ldap }
 Configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.  
 The configuration process includes the following steps:
 
@@ -270,9 +282,11 @@ The configuration process includes the following steps:
 * Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
 
 #### LDAP repository
+{: #ldap-repository }
 Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
 
 #### Registry file
+{: #registry-file }
 1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
 
    ```xml
@@ -312,6 +326,7 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
     For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
     
 #### Secure gateway
+{: #secure-gateway }
 To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
 
 1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
@@ -340,6 +355,7 @@ To configure a secure gateway connection to your LDAP server, you must create an
 ```
 
 ### Configuring apps to work with LDAP
+{: #configuring-apps-to-work-with-ldap }
 Configure {{ site.data.keys.product_adj }} mobile apps to work with an external LDAP registry.  
 The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
 
