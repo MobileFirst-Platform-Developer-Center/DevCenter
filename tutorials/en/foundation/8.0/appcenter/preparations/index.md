@@ -7,10 +7,11 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The Appcenter Installer application is used to install apps on mobile devices. You can generate this application by using either the provided Cordova or MobileFirst Studio projects, or use a pre-built version of the MobileFirst Studio project for Android, iOS, or Windows 8 Universal, directly.
 
 #### Jump to
-
+{: #jump-to }
 * [Prerequisites](#prerequisites)
 * [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [MobileFirst Studio based IBM AppCenter client](#mobilefirst-studio-based-ibm-appcenter-client)
@@ -18,17 +19,21 @@ The Appcenter Installer application is used to install apps on mobile devices. Y
 * [Deploying the mobile client in Application Center](#deploying-the-mobile-client-in-application-center)
 
 ## Prerequisites
+{: #prerequisites }
 ### Prerequisites specific to the Android operating system
+{: #prerequisites-specific-to-the-android-operating-system }
 The Native Android version of the mobile client is included in the software delivery in the form of an Android application package (.apk) file. The **IBMApplicationCenter.apk** file is in the directory **ApplicationCenter/installer**. Push notifications are disabled. If you want to enable push notifications, you must rebuild the .apk file. See [Push notifications of application updates](../push-notifications) for more information about push notifications in the Application Center.
 
 To build the Android version, you must have the latest version of the Android development tools.
 
 ### Prerequisites specific to Apple iOS operating system
+{: #prerequisites-specific-to-apple-ios-operating-system }
 The Native iOS version for iPad and iPhone is not delivered as a compiled application. The application must be created from the {{ site.data.keys.product_full }} project named **IBMAppCenter**. This project is also delivered as part of the distribution in the **ApplicationCenter/installer** directory.
 
 To build the iOS version, you must have the appropriate {{ site.data.keys.product_full }} and Apple software. The version of {{ site.data.keys.mf_studio }} must be the same as the version of {{ site.data.keys.mf_server }} on which this documentation is based. The Apple Xcode version is V6.1.
 
 ### Prerequisites specific to Microsoft Windows Phone operating system
+{: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
 The Windows Phone version of the mobile client is included as an unsigned Windows Phone application package (.xap) file in the software delivery. The **IBMApplicationCenterUnsigned.xap** file is in the **ApplicationCenter/installer** directory.
 
 > **Important:** The unsigned .xap file cannot be used directly. You must sign it with your company certificate obtained from Symantec/Microsoft before you can install it on a device.
@@ -36,11 +41,13 @@ The Windows Phone version of the mobile client is included as an unsigned Window
 Optional: If necessary, you can also build the Windows Phone version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
 
 ### Prerequisites specific to Microsoft Windows 8 operating system
+{: #prerequisites-specific-to-microsoft-windows-8-operating-system }
 The Windows 8 version of the mobile client is included as a .zip archive file. The **IBMApplicationCenterWindowsStore.zip** file contains an executable file (.exe) and its dependent Dynamic-Link Library (.dll) files. To use the content of this archive, you download the archive to a location on you local drive and run the executable file.
 
 Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
 
 ## Cordova based IBM AppCenter client
+{: #cordova-based-ibm-appcenter-client }
 The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
 
 This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
@@ -76,11 +83,13 @@ cordova build ios
 ```
 
 ### Customizing AppCenter Installer application
+{: #customizing-appcenter-installer-application }
 You can further customize the application, such as updating its user interface for your specific company or needs.
 
 > **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
 
 #### Android
+{: #android }
 * Open the Android Studio.
 * Select **Import project (Eclipse ADT, Gradle, etc.)**
 * Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
@@ -90,13 +99,16 @@ This might take some time. Once this is done you are ready to customize.
 > **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
 
 #### iOS
+{: #ios }
 * Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
 * Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
 
 ## MobileFirst Studio based IBM AppCenter client
+{: #mobilefirst-studio-based-ibm-appcenter-client }
 Instead of using the Cordova project for iOS and Android, you may also choose to use the previous release of the App Center client application, which is based on MobileFirst Studio 7.1 and supports iOS, Android and Windows Phone.
 
 ### Importing and building the project (Android, iOS, Windows Phone)
+{: #importing-and-building-the-project-android-ios-windows-phone }
 You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }} and then build the project.
 
 > **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
@@ -111,6 +123,7 @@ You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }}
 Build the **IBMAppCenter** project. The MobileFirst project contains a single application named **AppCenter**. Right-click the application and select **Run as → Build All Environments**.
 
 #### Android
+{: #android }
 MobileFirst Studio generates a native Android project in **IBMAppCenter/apps/AppCenter/android/native**. A native Android development tools (ADT) project is in the android/native folder. You can compile and sign this project by using the ADT tools. This project requires Android SDK level 16 to be installed, so that the resulting APK is compatible with all Android versions 2.3 and later. If you choose a higher level of the Android SDK when you build the project, the resulting APK will not be compatible with Android version 2.3.
 
 See the [Android site for developers](https://developer.android.com/index.html) for more specific Android information that affects the mobile client application.
@@ -118,6 +131,7 @@ See the [Android site for developers](https://developer.android.com/index.html) 
 If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
 
 #### iOS
+{: #ios }
 MobileFirst Studio generates a native iOS project in **IBMAppCenter/apps/AppCenter/iphone/native**. The **IBMAppCenterAppCenterIphone.xcodeproj** file is in the iphone/native folder. This file is the Xcode project that you must compile and sign by using Xcode.
 
 See [The Apple developer site](https://developer.apple.com/) to learn more about how to sign the iOS mobile client application. To sign an iOS application, you must change the Bundle Identifier of the application to a bundle identifier that can be used with the provisioning profile that you use. The value is defined in the Xcode project settings as **com.your\_internet\_domain\_name.appcenter**, where **your\_internet\_domain\_name** is the name of your internet domain.
@@ -125,6 +139,7 @@ See [The Apple developer site](https://developer.apple.com/) to learn more about
 If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
 
 #### Windows Phone 8
+{: #windows-phone-8 }
 MobileFirst Studio generates a native Windows Phone 8 project in **IBMAppCenter/apps/AppCenter/windowsphone8/native**. The **AppCenter.csproj** file is in the windowsphone8/native folder. This file is the Visual Studio project that you must compile by using Visual Studio and the Windows Phone 8.0 SDK.
 
 The application is built with the Windows Phone 8.0 SDK so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
@@ -134,6 +149,7 @@ The installation of Visual Studio 2013 enables you to select the installation of
 See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
 
 #### Microsoft Windows 8: Building the project
+{: #microsoft-windows-8-building-the-project }
 The Windows 8 Universal project is provided as a Visual Studio project located at **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj.**  
 You must build the client project in Microsoft Visual Studio 2013 before you can distribute it.
 
@@ -146,8 +162,8 @@ To build the Windows 8 project:
 
 To distribute the mobile client to your Application Center users, you can later generate an installer that will install the generated executable (.exe) file and its dependent Dynamic-Link Library (.dll) files. Alternatively, you can provide these files without including them in an installer.
 
-
 ## Customizing features (for experts): Android, iOS, Windows Phone)
+{: #customizing-features-for-experts-android-ios-windows-phone }
 You can customize features by editing a central property file and manipulating some other resources.
 
 To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/** or **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. If you want to change the default application behavior, you can adapt this property file before you build the project.
@@ -170,33 +186,38 @@ This file contains the properties shown in the following table.
 | allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. |
 
 ### Other resources
+{: #other-resources }
 Other resources that are available are application icons, application name, splash screen images, icons, and translatable resources of the application.
 
 #### Application icons
+{: #application-icons }
 * **Android:** The file named **icon.png** in the Android Studio project's **/res/drawabledensity** directories; one directory exists for each density.
 * **iOS:** Files named **iconsize.png** in the Xcode project's **Resources** directory.
 * **Windows Phone:** Files named **ApplicationIcon.png**, **IconicTileSmallIcon.png**, and **IconicTileMediumIcon.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
 
 #### Application name
-
+{: #application-name }
 * **Android:** Edit the **app_name** property in the Android Studio project's **res/values/strings.xml** file.
 * **iOS:** Edit the **CFBundleDisplayName** key in the Xcode project's **IBMAppCenterAppCenterIphone-Info.plist** file.
 * **Windows Phone:** Edit the **Title** attribute of the App entry in the Visual Studio's **Properties/WMAppManifest.xml** file.
 
 #### Splash screen images
-
+{: #splash-screen-images }
 * **Android:** Edit the file named **splashimage.9.png** in the Android Studio project's **res/drawable/density** directories; one directory exists for each density. This file is a patch 9 image.
 * **iOS:** Files named **Default-size.png** in the Xcode project's **Resources** directory.
 * Cordova/MobileFirst Studio based projects' splash screen during auto login: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Edit the file named **SplashScreenImage.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
 
 #### Icons (buttons, stars, and similar objects) of the application
+{: #icons }
 **IBMAppCenter/apps/AppCenter/common/css/images**.
 
 #### Translatable resources of the application
+{: #translatable-resources }
 **IBMAppCenter/apps/AppCenter/common/js/appcenter/nls/common.js**.
 
 ## Deploying the mobile client in Application Center
+{: #deploying-the-mobile-client }
 Deploy the different versions of the client application to Application Center.
 
 The Windows 8 mobile client is not intended to be deployed in Application Center for later distribution. You can choose to distribute the Windows 8 mobile client either by providing users with the client .exe executable file and dynamic link library .dll files directly packaged in an archive, or by creating an executable installer for the Windows 8 mobile client.

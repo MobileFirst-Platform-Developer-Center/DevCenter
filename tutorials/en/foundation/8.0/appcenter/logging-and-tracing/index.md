@@ -7,17 +7,20 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
 
 You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, {{ site.data.keys.product_full }} provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
 
 #### Jump to
+{: #jump-to }
 * [Enabling logging and tracing in WebSphere Application Server full profile](#enabling-logging-and-tracing-in-websphere-application-server-full-profile)
 * [Enabling logging and tracing in WebSphere Application Server Liberty](#enabling-logging-and-tracing-in-websphere-application-server-liberty)
 * [Enabling logging and tracing in Apache Tomcat](#enabling-logging-and-tracing-in-apache-tomcat)
 * [JNDI properties for controlling trace output](#jndi-properties-for-controlling-trace-output)
 
 ## Enabling logging and tracing in WebSphere Application Server full profile
+{: #enabling-logging-and-tracing-in-websphere-application-server-full-profile }
 You can set the logging levels and the output file for tracing operations on the application server.
 
 When you try to diagnose problems in the Application Center (or other components of {{ site.data.keys.product }}), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
@@ -41,6 +44,7 @@ Where:
 The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
 
 ## Enabling logging and tracing in WebSphere Application Server Liberty
+{: #enabling-logging-and-tracing-in-websphere-application-liberty }
 You can set the logging levels and the output file for tracing operations for Application Center on the Liberty application server.
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
@@ -58,6 +62,7 @@ The traces are sent to a file called **trace.log**, not to **messages.log** or t
 For more information, see [Liberty profile: Logging and Trace](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc).
 
 ## Enabling logging and tracing in Apache Tomcat
+{: #enabling-logging-and-tracing-in-apache-tomcat }
 You can set the logging levels and the output file for tracing operations undertaken on the Apache Tomcat application server.
 
 When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
@@ -73,6 +78,7 @@ com.worklight.level = ALL
 For more information, see [Logging in Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html).
 
 ## JNDI properties for controlling trace output
+{: #jndi-properties-for-controlling-trace-output }
 On all supported platforms, you can use Java™ Naming and Directory Interface (JNDI) properties to format and redirect trace output for Application Center and to print generated SQL statements.
 
 The following JNDI properties are applicable to the web application for Application Center services (**applicationcenter.war**).
