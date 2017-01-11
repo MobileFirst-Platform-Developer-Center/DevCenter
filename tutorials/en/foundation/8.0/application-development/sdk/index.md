@@ -6,6 +6,7 @@ show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ### Overview
+{: #overview }
 The {{ site.data.keys.product }} client SDKs provide a set of API methods that enable developers to implement various {{ site.data.keys.product_adj }} features, such as: authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and lots more.
 
 You can develop **mobile or Desktop web applications** by using your preferred development environment and tools, and add {{ site.data.keys.product_adj }} features and capabilities to your client application as well as support for analytics data gathering

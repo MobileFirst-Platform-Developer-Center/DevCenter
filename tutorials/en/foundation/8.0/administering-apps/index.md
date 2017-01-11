@@ -5,6 +5,7 @@ weight: 11
 show_children: true
 ---
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production. {{ site.data.keys.mf_console }} is the main tool with which you can monitor all deployed {{ site.data.keys.product_adj }} applications from a centralized web-based console.
 
 The main operations that you can perform through {{ site.data.keys.mf_console }} are:
@@ -18,6 +19,7 @@ The main operations that you can perform through {{ site.data.keys.mf_console }}
 * Collect client-side logs for specific applications installed on a specific device.
 
 ## Administration roles
+{: #administration-roles }
 Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following 
 
 {{ site.data.keys.product_adj }} administration roles are defined:
@@ -37,6 +39,7 @@ In this role, a user can perform all application administration operations.
 > For more information about {{ site.data.keys.product_adj }} administration roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 ## Administration tools
+{: #administration-tools }
 {{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
 
 A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
@@ -48,4 +51,5 @@ With this set of REST services, you can perform the same operations that you can
 Similar to the web-based console, the REST services, Ant tasks, and command line tools are secured and require you to provide your administrator credentials.
 
 ### Select a topic:
+{: #select-a-topic }
 

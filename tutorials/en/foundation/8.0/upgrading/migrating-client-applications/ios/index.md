@@ -6,10 +6,11 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 To migrate an existing native iOS project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
 #### Jump to
-
+{: #jump-to }
 * [Scanning existing {{ site.data.keys.product_adj }} native iOS apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
 * [Migrating an existing iOS project manually](#migrating-an-existing-ios-project-manually)
 * [Migrating an existing native iOS project to with CocoaPods](#migrating-an-existing-native-ios-project-with-cocoapods)
@@ -17,6 +18,7 @@ To migrate an existing native iOS project that was created with IBM MobileFirst�
 * [Updating the iOS code](#updating-the-ios-code)
 
 ## Scanning existing {{ site.data.keys.product_adj }} native iOS apps to prepare for a version upgrade
+{: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
 The migration assistance tool helps you prepare your apps that were created with previous versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native iOS apps that were developed by using Swift or Objective-C and generating a report of APIs that are deprecated or discontinued in V8.0.
 
 The following information is important to know before you use the migration assistance tool:
@@ -56,6 +58,7 @@ The migration assistance tool does not modify or move any developer code or comm
     When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
 
 ## Migrating an existing iOS project manually
+{: #migrating-an-existing-ios-project-manually }
 Migrate your existing native iOS project manually within your Xcode project and continue developing with {{ site.data.keys.product }} V8.0.
 
 Before you begin you must:
@@ -94,9 +97,11 @@ Before you begin you must:
 Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
 
 #### What do to next
+{: #what-to-do-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Migrating an existing native iOS project with CocoaPods
+{: #migrating-an-existing-native-ios-project-with-cocoapods }
 Migrate your existing native iOS project to work with V8.0 by getting the {{ site.data.keys.product }} iOS SDK using CocoaPods and making changes in the project configuration.
 
 > **Note:** {{ site.data.keys.product_adj }} development is supported in Xcode from version 7.1 by using iOS 8.0 and later.
@@ -191,6 +196,7 @@ The following optional pods provide additional features.
    If you are using Push or JSONStore, you need to include an independent import.
 
    #### Push
+   {: #push }
     
    **Objective-C**
     
@@ -205,6 +211,7 @@ The following optional pods provide additional features.
    ```
     
    ##### JSONStore
+   {: #jsonstore }
     
    **Objective-C**
     
@@ -228,14 +235,17 @@ The following optional pods provide additional features.
 Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
 
 #### What to do next
+{: #what-to-do-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Migrating encryption in iOS
+{: #migrating-encryption-in-ios }
 If your iOS application used OpenSSL encryption, you might want to migrate your app to the new V8.0 native encryption. Also, if you want to continue using OpenSSL, you must install some additional frameworks.
 
 For more information on the iOS encryption options for migration, see [Enabling OpenSSL for iOS](../../../application-development/sdk/ios/additional-information/#enabling-openssl-for-ios).
 
 ## Updating the iOS code 
+{: #updating-the-ios-code }
 After updating the iOS framework and making necessary configuration changes, a number of issues can be relevant to your specific application code.  
 The iOS API changes are listed in the table below.
 

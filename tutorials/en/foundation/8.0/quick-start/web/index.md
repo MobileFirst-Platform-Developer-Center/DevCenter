@@ -7,6 +7,7 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
@@ -19,17 +20,18 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * Successfully retrieving data using an adapter.
 
 #### Prerequisites:
-
+{: #prerequisites }
 * A modern web browser
 * *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the {{ site.data.keys.mf_server }}
+{: #starting-the-mobilefirst-server }
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating and registering an application
-
+{: #creating-and-registering-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click the **New** button next to **Applications**
@@ -44,7 +46,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
  
 ### 3. Editing application logic
-
+{: #editing-application-logic }
 1. Open the project in your code editor of choice.
 
 2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
@@ -81,6 +83,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    ```
     
 ### 4. Deploy an adapter
+{: #deploy-an-adapter }
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
@@ -102,7 +105,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 <img src="web-success.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
-
+{: #testing-the-application }
 1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
 2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
 3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
@@ -121,6 +124,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 <br>
 #### Secure Origins Policy
+{: #secure-origins-policy }
 When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:
@@ -133,12 +137,14 @@ To overcome this, you can start the Chrome browser with the following flag:
 
 <br clear="all"/>
 ### Results
+{: #results }
 * Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
 * If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then displayed in an alert.
 
 ## Next steps
+{: #next-steps }
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
 
 - Review the [Application development](../../application-development/) tutorials

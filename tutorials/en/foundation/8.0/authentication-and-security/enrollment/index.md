@@ -18,19 +18,20 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
 
 **Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
 
 #### Jump to:
-
+{: #jump-to }
 * [Application Flow](#application-flow)
 * [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
 * [Security Checks](#security-checks)
 * [Sample Applications](#sample-applications)
 
 ## Application Flow
-
+{: #application-flow }
 * When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
 * When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
 * After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
@@ -39,6 +40,7 @@ This sample demonstrates a custom enrollment process and step-up authorization. 
 After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
 
 ## Storing Data in Persistent Attributes
+{: #storing-data-in-persistent-attributes }
 You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
 
 In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
@@ -78,9 +80,11 @@ In the provided sample application the `PersistentAttributes` object is used in 
   ```
 
 ## Security Checks
+{: #security-checks }
 The Enrollment sample contains three security checks:
 
 ### EnrollmentUserLogin
+{: #enrollmentuserlogin }
 The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
 The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
 The `getRegisteredUser` method returns the authenticated user.
@@ -97,6 +101,7 @@ public AuthenticatedUser getRegisteredUser() {
 ```
 
 ### EnrollmentPinCode
+{: #enrollmentpincode }
 The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
 
 In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
@@ -165,6 +170,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### IsEnrolled
+{: #isenrolled }
 The `IsEnrolled` security check protects:
 
 * The **getBalance** resource so that only enrolled users can see the balance.
@@ -172,6 +178,7 @@ The `IsEnrolled` security check protects:
 * The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
 
 #### Creating the Security Check
+{: #creating-the-security-check }
 [Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
@@ -185,6 +192,7 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 ```
 
 #### The IsEnrolledConfig Configuration Class
+{: #the-isenrolledconfig-configuration-class }
 Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
 
 ```java
@@ -210,6 +218,7 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 #### The initStateDurations Method
+{: #the-initstatedurations-method }
 Set the duration for the SUCCESS state to `successStateExpirationSec`:
 
 ```java
@@ -220,6 +229,7 @@ protected void initStateDurations(Map<String, Integer> durations) {
 ```
 
 #### The authorize Method
+{: #the-authorize-method }
 The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
 
 ```java
@@ -319,12 +329,15 @@ In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method 
 
 <img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
 ## Sample Applications
+{: #sample-applications }
 
 ### Security check
+{: #security-check }
 The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
+{: #applications }
 Sample applications are available for iOS (Swift), Android, Cordova, and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
@@ -333,4 +346,5 @@ Sample applications are available for iOS (Swift), Android, Cordova, and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

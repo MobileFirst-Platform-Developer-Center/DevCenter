@@ -10,6 +10,7 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
 
 - The concept of an `AuthenticatedUser`, creating a user identity.

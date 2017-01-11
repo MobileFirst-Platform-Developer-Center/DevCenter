@@ -7,15 +7,20 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
 
 ## File structure
+{: #file-structure }
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### The adapter-resources folder  
+### The adapter-resources folder 
+{: #the-adapter-resources-folder }
+ 
 The `adapter-resources` folder contains an XML configuration file. This configuration file describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
 
 ```xml
@@ -85,6 +90,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 </div>
 
 #### Custom properties
+{: #custom-properties }
 
 The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **{{ site.data.keys.mf_console }} → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [getPropertyValue API](#getpropertyvalue) and then further customized at run time.
 
@@ -101,6 +107,8 @@ The `<property>` element takes the following attributes:
 ![Console properties](console-properties.png)
 
 #### Pull and Push Configurations
+{: #pull-and-push-configurations }
+
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
 To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
 
@@ -131,6 +139,8 @@ Run the commands from the root folder of the adapter Maven project:
   ```
 
 #### Pushing configurations to multiple servers
+{: #pushing-configurations-to-multiple-servers }
+
 The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
 
 **Maven**  
@@ -146,9 +156,13 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 > Learn more in by using `mfpdev help adapter pull/push`.
 
 ### The js folder
+{: #the-js-folder }
+ 
 This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 
 ## JavaScript adapter procedures
+{: #javascript-adapter-procedures }
+
 Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:
 
 * To provide adapter functions to the application
@@ -160,30 +174,43 @@ By using server-side JavaScript, a procedure can process the data before or afte
 JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-in-javascript-adapters) code.
 
 ### Using global variables
+{: #using-global-variables }
+
 The {{ site.data.keys.mf_server }} does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
 
 ### Adapter response threshold
+{: #adapter-response-threshold }
+
 Adapter calls are not designed to return huge chunks of data because the adapter response is stored in {{ site.data.keys.mf_server }} memory as a string. Thus, data that exceeds the amount of available memory might cause an out-of-memory exception and the failure of the adapter invocation. To prevent such failure, you configure a threshold value from which the {{ site.data.keys.mf_server }} returns gzipped HTTP responses. The HTTP protocol has standard headers to support gzip compression. The client application must also be able to support gzip content in HTTP.
 
 #### Server-side
+{: #server-side }
+
 In the {{ site.data.keys.mf_console }}, under **Runtimes > Settings > GZIP compression threshold for adapter responses**, set the desired threshold value. The default value is 20 KB.  
 **Note:** By saving the change in the {{ site.data.keys.mf_console }}, the change is effective immediately in the runtime.
 
 #### Client-side
+{: #client-side }
+
 Ensure that you enable the client to parse a gzip response, by setting the value of the `Accept-Encoding` header to `gzip` in every client request.
 Use the `addHeader` method with your request variable, for example: `request.addHeader("Accept-Encoding","gzip");`
 
 ## Server-side APIs
+{: #server-side-apis }
+
 JavaScript adapters can use server-side APIs to perform operations that are related to {{ site.data.keys.mf_server }}, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
 ### getPropertyValue
+{: #getpropertyvalue }
+
 Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the {{ site.data.keys.mf_console }}:
 
 ```js
 MFP.Server.getPropertyValue("name");
 ```
-{% comment %}
+
 ### getTokenIntrospectionData
+{: #gettokenintrospectiondata }
 
 Use the `MFP.Server.getTokenIntrospectionData()` API to
 
@@ -197,26 +224,35 @@ function getAuthUserId(){
    return "User ID: " + user.getId;
 }
 ```
-{% endcomment %}
 
 ### getAdapterName
+{: #getadaptername }
+
 Use the `getAdapterName()` API to retrieve the adapter name.
 
 ### invokeHttp
+{: #invokehttp }
+
 Use the `MFP.Server.invokeHttp(options)` API in HTTP adapters.  
 You can see usage examples on the [JavaScript HTTP Adapter](js-http-adapter) tutorial.
 
 ### invokeSQL
+{: #invokesql }
+
 Use the `MFP.Server.invokeSQLStatement(options)` and the `MFP.Server.invokeSQLStoredProcedure(options)` APIs in SQL adapters.  
 You can see usage examples on the [JavaScript SQL Adapter](js-sql-adapter) tutorial.
 
 ### addResponseHeader
+{: #addresponseheader }
+
 Use the `MFP.Server.addResponseHeader(name,value)` API to add a new header(s) to the response:
 
 ```js
 MFP.Server.addResponseHeader("Expires","Sun, 5 October 2014 18:00:00 GMT");
 ```
 ### getClientRequest
+{: #getclientrequest }
+
 Use the `MFP.Server.getClientRequest()` API to get a reference to the Java HttpServletRequest object that was used to invoke an adapter procedure:
 
 ```js
@@ -225,11 +261,16 @@ var userAgent = request.getHeader("User-Agent");
 ```
 
 ### invokeProcedure
+{: #invokeprocedure }
+
 Use the `MFP.Server.invokeProcedure(invocationData)` to call other JavaScript adapters.  
 You can see usage examples on the [Advanced Adapter Usage and Mashup](../advanced-adapter-usage-mashup) tutorial.
 
 ### Logging
+{: #logging }
+
 The JavaScript API provides logging capabilities through the MFP.Logger class. It contains four functions that correspond to four standard logging levels.  
 You can see the [server-side log collection](../server-side-log-collection) tutorial for more information.
 
-## JavaScript adapter examples:
+## JavaScript adapter examples
+{:# javascript-adapter-examples }

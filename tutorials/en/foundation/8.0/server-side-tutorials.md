@@ -18,9 +18,9 @@ Server-side development provides the tools and functionality required in order t
 </form>
 
 ## Authentication and security
-
+{: authentication-and-security }
 * [Authentication and security](../authentication-and-security/)
 
 ## Adapters development
-
+{: #adapters-development }
 * [Adapters development](../adapters/)

@@ -6,15 +6,18 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This section provides details to assist you in planning and preparing an installation for your specific environment.  
 For more information about the configuration of the {{ site.data.keys.mf_server }}, see [Configuring {{ site.data.keys.mf_server }}](server-configuration).
 
 #### Jump to
+{: #jump-to }
 
 * [Prerequisites](#prerequisites)
-* [Next topics](#next-topics)
+* [What's Next](#whats-next)
 
 ## Prerequisites
+{: #prerequisites }
 For smooth installation of {{ site.data.keys.mf_server }}, ensure that you fulfill all the software prerequisites.
 
 **Database Management System (DBMS)**  
@@ -57,7 +60,8 @@ The {{ site.data.keys.product }} eAssembly includes the following installers:
 
 For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
 
-## Next topics
+## What's Next
+{: #whats-next }
 
 * [Running IBM Installation Manager](installation-manager)
 * [Setting up databases](databases)

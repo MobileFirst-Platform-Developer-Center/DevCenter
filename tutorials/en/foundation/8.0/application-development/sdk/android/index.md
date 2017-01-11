@@ -7,6 +7,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The {{ site.data.keys.product_full }} SDK consists of a collection of dependencies that are available through [Maven Central](http://search.maven.org/), and which you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
@@ -22,7 +23,7 @@ In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Nati
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Android development environment](../../../installation-configuration/development/android) tutorials.
 
 #### Jump to:
-
+{: #jump-to }
 - [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
@@ -31,16 +32,18 @@ In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Nati
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the {{ site.data.keys.product_adj }} Native SDK
+{: #adding-the-mobilefirst-native-sdk }
 Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Android Studio project, and to register the application to the {{ site.data.keys.mf_server }} instance.
 
 Before you start, make sure that {{ site.data.keys.mf_server }} is running.  
 If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command `./run.sh` on a Mac or Linux OS, or `run.cmd` on Windows.
 
 ### Creating an Android application
+{: #creating-an-android-application }
 Create an Android Studio project or use an existing one.  
 
 ### Adding the SDK
-
+{: #adding-the-sdk }
 1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
 
 2. Add the following lines after `apply plugin: 'com.android.application'`:
@@ -93,6 +96,7 @@ Create an Android Studio project or use an existing one.
 > If a Gradle Sync request appears, accept it.
 
 ### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+{: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product_adj }} SDK:
   
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -135,6 +139,7 @@ repositories {
 
 
 ### Registering the application
+{: #registering-the-application }
 1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
 
 2. Run the command:
@@ -153,6 +158,7 @@ The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf
 > 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
 
 ### Creating a WLClient instance
+{: #creating-a-wlclient-instance }
 Before using any {{ site.data.keys.product_adj }} APIs, create a `WLClient` instance:
 
 ```java
@@ -162,14 +168,16 @@ WLClient.createInstance(this);
 **Note:** Creating a `WLClient` instance should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
 
 ## Updating the {{ site.data.keys.product_adj }} Native SDK
+{: #updating-the-mobilefirst-native-sdk }
 To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
 See step 4 above.
 
 SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#).
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
-
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.properties
+{: #mfpclient.properties }
 Located in the **./app/src/main/assets/** folder of the Android Studio project, this file defines the client-side properties used for registering your Android app on the {{ site.data.keys.mf_server }}.
 
 | Property            | Description                                                         | Example values |
@@ -181,9 +189,11 @@ Located in the **./app/src/main/assets/** folder of the Android Studio project, 
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 
 ## Support for Javadoc and Android Service
+{: #support-for-javadoc-and-android-service }
 For information about support for Javadoc and Android Service see the [Additional Information](additional-information) page.
 
 ## Tutorials to follow next
+{: #tutorials-to-follow-next }
 With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
 
 - Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)

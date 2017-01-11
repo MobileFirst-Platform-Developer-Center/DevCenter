@@ -6,9 +6,11 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 When you finish a development cycle of your application, deploy it to a testing environment, and then to a production environment.
 
 ### Jump to
+{: #jump-to }
 
 * [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment)
 * [Configuring SSL between adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
@@ -18,6 +20,7 @@ When you finish a development cycle of your application, deploy it to a testing 
 * [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production)
 
 ## Deploying or updating an adapter to a production environment
+{: #deploying-or-updating-an-adapter-to-a-production-environment }
 Adapters contain the server-side code of applications that are deployed on and serviced by {{ site.data.keys.product }}. Read this checklist before you deploy or update an adapter to a production environment. For more information about creating and building adapters, see [Developing the server side of a {{ site.data.keys.product_adj }} application](../../adapters).
 
 Adapters can be uploaded, updated, or configured while a production server is running. After all the nodes of a server farm receive the new adapter or configuration, all incoming requests to the adapter use the new settings.
@@ -38,6 +41,7 @@ Adapters can be uploaded, updated, or configured while a production server is ru
     For more information about **mfpadm** for adapters, see [Commands for adapters](../using-cli/#commands-for-adapters).
         
 ## Configuring SSL between adapters and back-end servers by using self-signed certificates
+{: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
 You can configure SSL between adapters and back-end servers by importing the server self-signed SSL certificate to the {{ site.data.keys.product_adj }} keystore.
 
 1. Export the server public certificate from the back-end server keystore.
@@ -48,6 +52,7 @@ You can configure SSL between adapters and back-end servers by importing the ser
 3. Deploy the new the {{ site.data.keys.product_adj }} keystore. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### Example
+{: #example }
 The **CN** name of the back-end certificate must match what is configured in the adapter-descriptor **adapter.xml** file. For example, consider an **adapter.xml** file that is configured as follows:
 
 ```xml
@@ -126,6 +131,7 @@ The following example demonstrates how you complete the configuration by using t
 7. Deploy the new the {{ site.data.keys.mf_server }} keystore.
 
 ## Building an application for a test or production environment
+{: #building-an-application-for-a-test-or-production-environment }
 To build an application for a test or production environment, you must configure it for its target server. To build an application for a production environment, additional steps apply.
 
 1. Make sure that the target server keystore is configured.
@@ -165,9 +171,11 @@ For more information, see [Configuring the {{ site.data.keys.mf_server }} keysto
     * For more information about registering an application to a production server, see [Registering an application to a production environment](#registering-an-application-to-a-production-environment).
 
 ## Registering an application to a production environment
+{: #registering-an-application-to-a-production-environment }
 When you register an application to a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity.
 
 #### Before you begin
+{: #before-you-begin }
 * Verify that {{ site.data.keys.mf_server }} keystore is configured and is not the default keystore. Do not use a server in production with a default keystore. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. You must configure the server's keystore with a secret key before you use it in production. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 * Deploy the adapters used by the app. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
 * Build the application for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
@@ -196,6 +204,7 @@ When you register an application with a production server, you upload its applic
     * In the case of an update, define the update strategy. For more information, see [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production).
 
 ## Transferring server-side artifacts to a test or production server
+{: #transferring-server-side-artifacts-to-a-test-or-production-server }
 You can transfer an application configuration from a one server to another by using command-line tools or a REST API.
 
 The application descriptor file is a JSON file that contains the description and configuration of your application. When you run an app that connects to a {{ site.data.keys.mf_server }} instance, the app must be registered with that server and configured. After you define a configuration for your app, you can transfer the application descriptor to another server, for example to a test server or to a production server. After you transfer the application descriptor to the new server, the app is registered with the new server. Different procedures are available, depending on whether you develop mobile applications and have access to the code, or whether you administer servers and do not have access to the code of the mobile app.
@@ -206,6 +215,7 @@ The application descriptor file is a JSON file that contains the description and
 * If you do not have access to the code of the mobile app, use the administration service.
 
 #### Jump to
+{: #jump-to-1 }
 
 * [Transferring an application configuration by using mfpdev](#transferring-an-application-configuration-by-using-mfpdev)
 * [Transferring an application configuration with the administration service](#transferring-an-application-configuration-with-the-administration-service)
@@ -213,6 +223,7 @@ The application descriptor file is a JSON file that contains the description and
 * [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)
 
 ### Transferring an application configuration by using mfpdev
+{: #transferring-an-application-configuration-by-using-mfpdev }
 After you have developed an application, you can transfer it from your development environment to a test or production environment.
 
 * You must have an existing {{ site.data.keys.product_adj }} app on your local computer. The app must be registered to a {{ site.data.keys.mf_server }}. For information about creating a server profile, run **mfpdev app register**, or the topic about registering your type of app in the Developing applications section of this documentation.
@@ -251,9 +262,11 @@ When you use the **mfpdev app push** command, the application's client propertie
 The app's server-side configuration files are present on the {{ site.data.keys.mf_server }} that you specified in the mfpdev app push command. The app is registered to this new server.
 
 ### Transferring an application configuration with the administration service
+{: #transferring-an-application-configuration-with-the-administration-service }
 As an administrator, you can transfer an application configuration from one server to another by using the administration service of {{ site.data.keys.mf_server }}. No access to the application code is required, but the client app must be built for the target server.
 
 #### Before you begin
+{: #before-you-begin-1 }
 Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
 
 You download the application descriptor from the server where the application is configured and you deploy it to the new server. You can see the application descriptor in the {{ site.data.keys.mf_console }}.
@@ -322,9 +335,11 @@ You can upload it by using the REST API or **mfpadm**.
      ```
 
 ### Transferring server-side artifacts by using the REST API
+{: #transferring-server-side-artifacts-by-using-the-rest-api }
 Whatever your role, you can export applications, adapters, and resources for back-up or reuse purposes by using the {{ site.data.keys.mf_server }} administration service. As an administrator or deployer, you can also deploy an export archive to a different server. No access to the application code is required, but the client app must be built for the target server.
 
 #### Before you begin
+{: #before-you-begin-2 }
 Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
 
 The export API retrieves the selected artifacts for a runtime as a .zip archive. Use the deployment API to reuse archived content.
@@ -362,6 +377,7 @@ The export API retrieves the selected artifacts for a runtime as a .zip archive.
 If you deploy an export archive to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
 
 ### Exporting and importing applications and adapters from the {{ site.data.keys.mf_console }}
+{: #exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console }
 From the console, under certain conditions, you can export an application or one of its versions, and later import it to a different runtime on the same server or a different server. You can also export and reimport adapters. Use this capability for reuse or back-up purposes.
 
 If you are granted the **mfpadmin** administrator role and the **mfpdeployer** deployer role, you can export one version or all versions of an application. The application or version is exported as a .zip compressed file, which saves the application ID, descriptors, authenticity data, and web resources. You can later import the archive to redeploy the application or version to another runtime on the same or on a different server.
@@ -391,11 +407,13 @@ The main console frame displays the details of the imported application or adapt
 If you import to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment at import time does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment at import time, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
 
 ## Updating {{ site.data.keys.product_adj }} apps in production
+{: #updating-mobilefirst-apps-in-production }
 There are general guidelines for upgrading your {{ site.data.keys.product_adj }} apps when they are already in production, on the Application Center or in app stores.
 
 When you upgrade an app, you can deploy a new app version and leave the old version working, or deploy a new app version and block the old version. In the case of an app developed with Apache Cordova, you can also consider only updating the Web resources.
 
 ### Deploying a new app version and leaving the old version working
+{: #deploying-a-new-app-version-and-leaving-the-old-version-working }
 The most common upgrade path, used when you introduce new features or modify native code, is to release a new version of your app. Consider following these steps:
 
 1. Increment the app version number.
@@ -407,6 +425,7 @@ The most common upgrade path, used when you introduce new features or modify nat
 
 
 ### Deploying a new app version and blocking the old version
+{: #deploying-a-new-app-version-and-blocking-the-old-version }
 This upgrade path is used when you want to force users to upgrade to the new version, and block their access to the old version. Consider following these steps:
 
 1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
@@ -421,6 +440,7 @@ This upgrade path is used when you want to force users to upgrade to the new ver
 > **Note:** If you disable the old app, it is no longer able to communicate with {{ site.data.keys.mf_server }}. Users can still start the app and work with it offline unless you force a server connection on app startup.
 
 ### Direct Update (no native code changes)
+{: #direct-update-no-native-code-changes }
 Direct Update is a mandatory upgrade mechanism that is used to deploy fast fixes to a production app. When you redeploy an app to {{ site.data.keys.mf_server }} without changing its version, {{ site.data.keys.mf_server }} directly pushes the updated web resources to the device when the user connects to the server. It does not push updated native code. Things to keep in mind when you consider a Direct Update include:
 
 1. Direct Update does not update the app version. The app remains at the same version, but with a different set of web resources. The unchanged version number can introduce confusion if used for the wrong purpose
