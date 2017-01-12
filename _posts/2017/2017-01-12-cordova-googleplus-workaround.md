@@ -12,18 +12,18 @@ author:
 additional_authors:
   name: Vittal R Pai
 ---
-#Fixing the incompatibility between Cordova Google Plus Authentication Plug-in and MobileFirst Foundation on iOS
-
-When developing hybrid Cordova applications with MobileFirst platform, there is often a need to [use third party plugins](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/03/integrating-3rd-party-cordova-plug-ins/) to achieve advanced functionalty. While it is possible to use [MobileFoundation Platform adapters and the Social Login sample](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) to log into social platforms, you may also seek to achieve this functionality by only using Cordova plugins. It has recently been discovered that some of these third party Cordova plugins do not work well with the MFP plugin, especially on iOS. This blog post will explain the incompatibility between "social login" Cordova plugins and `cordova-plugin-mfp` as well as provide some workarounds for logging into Google+ and Facebook on your mfp application.
+## Fixing the incompatibility between Cordova Google Plus Authentication Plug-in and MobileFirst Foundation on iOS
+When developing hybrid Cordova applications with MobileFirst Foundation, there is often a need to [use third party plugins](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/03/integrating-3rd-party-cordova-plug-ins/) to achieve advanced functionalty. While it is possible to use [MobileFoundation Platform adapters and the Social Login sample](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) to log into social platforms, you may also seek to achieve this functionality by only using Cordova plugins. It has recently been discovered that some of these third party Cordova plugins do not work well with the MFP plugin, especially on iOS. This blog post will explain the incompatibility between "social login" Cordova plugins and `cordova-plugin-mfp` as well as provide some workarounds for logging into Google+ and Facebook on your mfp application.
 
 ## Description
 A common use case for mobile applications is authenticating a user with different social media platforms, such as Facebook and Google Plus. In order to add "social sign-in" capabilities to your Cordova based application ([without using an adapter](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)), you could search the various Cordova plugin repositories ([Apache Cordova](https://cordova.apache.org/plugins/), [plugreg](http://www.plugreg.com/)) and find and implement third-party plugins like:
+
 - [cordova-plugin-facebook4](https://github.com/gigya/cordova-plugin-facebook4) -Facebook, using Facebook SDK
 - [openFB](https://github.com/ccoenraets/OpenFB/) -Facebook, using OAuth
 - [cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus) -Google Plus
 - [ng-cordova-oauth](https://github.com/nraboy/ng-cordova-oauth) -Oauth, for general/other login
 
-Recently it has been discovered that some of these popular social login plugins do not work well with the Mobile Foundation plugin, or with each other. You can read various [descriptions of this problem](https://github.com/jeduan/cordova-plugin-facebook4/issues/166) by [searching the Issues tab](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20openURL) in the various Github repositories, but in general, when the `cordova-plugin-mfp` plugin is installed (or sometimes even without, for example, certain versions of the Facebook and Google+ plugins) you will be unable to programmatically close the login window that appears. Usually, a user is able to actually open a login window and tap in their username/password, but after the authentication request comes back from the third party service, the login window is unable to be closed. As a developer, control does not return back from the InAppBrowser window to your application. Users will generally see a blank screen.
+Recently it has been discovered that some of these popular social login plugins do not work well with the MobileFirst Cordova SDK / plug-in, or with each other. You can read various [descriptions of this problem](https://github.com/jeduan/cordova-plugin-facebook4/issues/166) by [searching the Issues tab](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20openURL) in the various Github repositories, but in general, when the `cordova-plugin-mfp` plugin is installed (or sometimes even without, for example, certain versions of the Facebook and Google+ plugins) you will be unable to programmatically close the login window that appears. Usually, a user is able to actually open a login window and tap in their username/password, but after the authentication request comes back from the third party service, the login window is unable to be closed. As a developer, control does not return back from the InAppBrowser window to your application. Users will generally see a blank screen.
 
 ## Why?
 To explain this behavior, we will look at the `cordova-plugin-googleplus` plugin. This plugin makes use of the [openURL method](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/blob/master/src/ios/GooglePlus.m) provided by the default AppDelegate used in a Cordova application. This method is used by most of the third party Cordova plugins to open up the provider's familiar login screen. By setting breakpoints in Xcode, we can see that this method is never called when the `cordova-plugin-mfp` plugin is installed.
@@ -36,20 +36,22 @@ To fix the integration between `cordova-plugin-googleplus` and `cordova-plugin-m
 ## Use Forked Google Plus Plugin
 The simplest way to start using the Google Plus plugin is to install our forked version, directly from from Github and not from the default cordova plugin repository:
 
-`cordova plugin add https://github.com/vittalpai/cordova-plugin-googleplus/ --save --variable REVERSED_CLIENT_ID=myreversedclientid`
+```
+cordova plugin add https://github.com/vittalpai/cordova-plugin-googleplus/ --save --variable REVERSED_CLIENT_ID=myreversedclientid
+```
 
-That's it! This updated code should work with the `mfp` plugin!
+That's it! This updated code should work with the `cordova-plugin-mfp` plugin!
 
-# Workaround for other social login plugins
+## Workaround for other social login plugins
 To enable social login for other platforms, it is best to use a provided OAuth login flow instead of a Cordova application that might use the `handleOpenURL` method. We recommend using the [`ng-cordova-oauth`](https://github.com/nraboy/ng-cordova-oauth) library to log into other social networking sites, like Facebook, Twitter, etc. This library is built to be used with the Ionic framework - see our other [blog](https://mobilefirstplatform.ibmcloud.com/blog/2016/12/26/web-development-using-ionic-2-and-mobile-foundation/) [posts](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/) about using Ionic! If you are not using Ionic, then there are other plugins available, such as the [openFB library](https://github.com/ccoenraets/OpenFB/) for Facebook.
 
->Note: The `ng-cordova-oauth` library above has removed support for [Google Plus as of 2016](https://github.com/nraboy/ng-cordova-oauth#important-note-about-google), which means that to enable Google Plus login functionality in your MobileFoundation application, you need to follow the above workaround.
+>Note: The `ng-cordova-oauth` library above has removed support for [Google Plus as of 2016](https://github.com/nraboy/ng-cordova-oauth#important-note-about-google), which means that to enable Google Plus login functionality in your MobileFirst Foundation application, you need to follow the above workaround.
 
-# White screen and Troubleshooting
+## White screen and Troubleshooting
 When troubleshooting this workaround, it is important to use both the iOS Device log, accessible by **⌘ + /**:
 
 Also enable the JavaScript console log, accessible by opening up Safari, then clicking **Develop** --> **Simulator** --> **{App Name}**
-> To enable Developer mode,  enable the “Show Develop menu in menu bar” setting found in [Safari’s preferences under the Advanced pane](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html)
+> To enable Developer mode, enable the “Show Develop menu in menu bar” setting found in [Safari’s preferences under the Advanced pane](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html)
 
 ## Check your CSP
 When dealing with outgoing network connections of any time, it is always a good idea to review your security settings and policies. Be sure to check out the [Cordova Security Guide](https://cordova.apache.org/docs/en/latest/guide/appdev/security/) for Cordova security.
@@ -58,14 +60,13 @@ When testing this lab, the Safari JavaScript console showed the following error 
 ```Refused to execute a script for an inline event handler because 'unsafe-inline' appears in neither the script-src directive nor the default-src directive of the Content Security Policy.```
 The solution was to edit the [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) in the *index.html* page.
 
-
-> Mobile Foundation Platform provides a variety of different security features, please review the documentation
+> MobileFirst Foundation provides a variety of different security features, please review the documentation
 
 ## iOS Simulator not updating
 Sometimes you will be able to build the application just fine, but it doesn't seem to update on the simulator. Check your terminal logs careful - a common mistake is missing the *Info.plist* file from Google:
 `Failed to load Info.plist from bundle at path /Users/mike/Library/Developer/CoreSimulator/Devices/91BE3286-5BB6-4795-BE2F-DE9FB7BAE32C/data/Library/Caches/com.apple.mobile.installd.staging/temp.auvJTI/extracted/Payload/HelloCordova.app/Frameworks/GoogleAppUtilities.framework
 `
-When this happens, you need to make sure that the *.plist* file you download from the Google Developers console has been installed. The best way to do this is to open the project in Xcode (click on the */platforms/ios/{ProjectName}.xcodeproj*) and drag the *.plist* file, or just drag it into your `/platforms/ios` folder. *Note:* You will need to add this plist file after every time you remove the *ios* platform or plugin.
+When this happens, you need to make sure that the **.plist** file you download from the Google Developers console has been installed. The best way to do this is to open the project in Xcode (click on the **/platforms/ios/{ProjectName}.xcodeproj**) and drag the **.plist** file, or just drag it into your **/platforms/ios** folder. **Note:** You will need to add this **plist** file after every time you remove the ios platform or plug-in.
 
-# Conclusion
-One of the benefits of aligning the Mobile Foundation client SDK more closely with the open source Cordova project is that it opens up a world of opportunities through third party plugins. Sometimes not all of these plugins will always work well together. In this blog post we showed how to modify the `cordova-plugin-googleplus` plugin code to work with the Mobile Foundation framework and provided a working fork. If you need to use social login features, we still recommend [using an adapter](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) but this method will work if you need a pure Cordova approach.
+## Conclusion
+One of the benefits of aligning the MobileFirst Foundation client SDK more closely with the open source Cordova project is that it opens up a world of opportunities through third party plugins. Sometimes not all of these plugins will always work well together. In this blog post we showed how to modify the `cordova-plugin-googleplus` plugin code to work with the MobileFirst Foundation framework and provided a working fork. If you need to use social login features, we still recommend [using an adapter](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) but this method will work if you need a pure Cordova approach.
