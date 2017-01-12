@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # only proceed script when on "master" branch
-if [ $TRAVIS_BRANCH != 'api-ref' ]; then
+if [ $TRAVIS_BRANCH != 'translation-staging' ]; then
   echo "this is not the staging branch, exiting"
   exit 0
 fi
