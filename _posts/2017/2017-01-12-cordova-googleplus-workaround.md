@@ -8,7 +8,9 @@ tags:
 version:
 - 8.0
 author:
-  name: Mike Billau, Vittal Pai
+  name: Mike Billau
+additional_authors:
+  name: Vittal R Pai
 ---
 #Fixing the incompatibility between Cordova Google Plus Authentication Plug-in and MobileFirst Foundation on iOS
 
