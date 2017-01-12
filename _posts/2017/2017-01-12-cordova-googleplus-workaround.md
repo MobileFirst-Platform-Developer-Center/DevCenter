@@ -33,23 +33,13 @@ To fix the integration between `cordova-plugin-googleplus` and `cordova-plugin-m
 
 ## Use Forked Google Plus Plugin
 The simplest way to start using the Google Plus plugin is to install our forked version, directly from from Github and not from the default cordova plugin repository:
+
 `cordova plugin add https://github.com/vittalpai/cordova-plugin-googleplus/ --save --variable REVERSED_CLIENT_ID=myreversedclientid`
 
-## 2. Modify MFP Plugin code
-We need to modify the mfp plugin code to add the missing `openURL` method. Open up `plugins/cordova-plugin-mfp/src/ios/MFPAppDelegate.m` in any editor and add the following `openURL` method anywhere in the `MFPAppDelegate.m` file:
-```
-(BOOL)application:(UIApplication)application openURL:(NSURL)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
-{
-return YES;
-}
-```
-Save the file. Now when you build and run the application, the changes should be picked up.
-
-You will need to modify this file again every time the `ios` platform is added or removed. You could try [using Cordova hooks](https://cordova.apache.org/docs/en/latest/guide/appdev/hooks/) to do this automatically.
-
+That's it! This updated code should work with the `mfp` plugin!
 
 # Workaround for other social login plugins
-To enable social login for other platforms, it is best to use a provided OAuth login flow instead of a Cordova application that might use the `handleOpenURL` method. We recommend using the `[ng-cordova-oauth](https://github.com/nraboy/ng-cordova-oauth)` library` to log into other social networking sites, like Facebook, Twitter, etc. This library is built to be used with the Ionic framework - see our other [blog](https://mobilefirstplatform.ibmcloud.com/blog/2016/12/26/web-development-using-ionic-2-and-mobile-foundation/) [posts](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/) about using Ionic! If you are not using Ionic, then there are other plugins available, such as the [openFB library ](https://github.com/ccoenraets/OpenFB/) for Facebook.
+To enable social login for other platforms, it is best to use a provided OAuth login flow instead of a Cordova application that might use the `handleOpenURL` method. We recommend using the `[ng-cordova-oauth](https://github.com/nraboy/ng-cordova-oauth)` library to log into other social networking sites, like Facebook, Twitter, etc. This library is built to be used with the Ionic framework - see our other [blog](https://mobilefirstplatform.ibmcloud.com/blog/2016/12/26/web-development-using-ionic-2-and-mobile-foundation/) [posts](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/) about using Ionic! If you are not using Ionic, then there are other plugins available, such as the [openFB library ](https://github.com/ccoenraets/OpenFB/) for Facebook.
 
 >Note: The `ng-cordova-oauth` library above has removed support for [Google Plus as of 2016](https://github.com/nraboy/ng-cordova-oauth#important-note-about-google), which means that to enable Google Plus login functionality in your MobileFoundation application, you need to follow the above workaround.
 
@@ -76,4 +66,4 @@ Sometimes you will be able to build the application just fine, but it doesn't se
 When this happens, you need to make sure that the *.plist* file you download from the Google Developers console has been installed. The best way to do this is to open the project in Xcode (click on the */platforms/ios/{ProjectName}.xcodeproj*) and drag the *.plist* file, or just drag it into your `/platforms/ios` folder. *Note:* You will need to add this plist file after every time you remove the *ios* platform or plugin.
 
 # Conclusion
-One of the benefits of aligning the Mobile Foundation client SDK more closely with the open source Cordova project is that it opens up a world of opportunities through third party plugins. Sometimes not all of these plugins will always work well together. In this blog post we showed how to modify the `cordova-plugin-googleplus` plugin code to work with the Mobile Foundation framework and provided a working fork. We showed how you can modify the mfp code *to add missing functionality*.
+One of the benefits of aligning the Mobile Foundation client SDK more closely with the open source Cordova project is that it opens up a world of opportunities through third party plugins. Sometimes not all of these plugins will always work well together. In this blog post we showed how to modify the `cordova-plugin-googleplus` plugin code to work with the Mobile Foundation framework and provided a working fork. If you need to use social login features, we still recommend [using an adapter](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) but this method will work if you need a pure Cordova approach.
