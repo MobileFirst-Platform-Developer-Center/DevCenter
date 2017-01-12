@@ -5,15 +5,16 @@ breadcrumb_title: Securing applications
 relevantTo: [cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ### Encrypting the web resources of your Cordova packages
-To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the IBM MobileFirst Foundation mfpdev app webencrypt command or the mfpwebencrypt flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
+{: #encrypting-the-web-resources-of-your-cordova-packages }
+To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the {{ site.data.keys.mf_cli }} `mfpdev app webencrypt` command or the `mfpwebencrypt` flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
 
 **Prerequisites:**
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the MobileFirst Platform CLI installed.
-* You must have the IBM MobileFirst Foundation plug-in.
+* You must have the {{ site.data.keys.mf_cli }} installed.
+* You must have the { site.data.keys.product_adj }} Cordova plug-in installed.
 
 The best time to complete this procedure is after finishing your app development and are ready to deploy the app. If you run any of the following commands after you complete the web resources encryption procedure, the content that was encrypted becomes decrypted:
 
@@ -47,13 +48,14 @@ If you run one of the listed commands after you encrypt the web resources, you m
 These commands refresh the content that was encrypted in the www folder, and saves it again as decrypted content. If you use these commands, remember to complete the procedure again to encrypt it before you publish the app.
 
 ### Enabling the web resources checksum feature
+{: #enabling-the-web-resources-checksum-feature }
 When it is enabled, the web resources checksum feature compares the original web resources of an app when it is started to a stored baseline that was captured the first time that app was started. This is a good way of identifying any differences in the app that might indicate that the app was modified. This procedure is compatible with the Direct Update feature.
 
 **Prerequisites:**
 
 * You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the MobileFirst Platform CLI installed. 
-* You must have the IBM MobileFirst Foundation plugin.
+* You must have the {{ site.data.keys.mf_cli }} installed. 
+* You must have the { site.data.keys.product_adj }} plug-in installed.
 * You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows|browser]` command.
 
 To enable the web resources checksum feature for a Cordova app, complete the following steps:

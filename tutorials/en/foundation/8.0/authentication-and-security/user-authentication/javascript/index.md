@@ -16,13 +16,15 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/javascript) tutorial.
 
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
 ## Login
+{: #login }
 In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
 
 ```js
@@ -31,7 +33,7 @@ userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password'
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
 
 ```js
 WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
@@ -63,9 +65,10 @@ if (isChallenged){
 >The  `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `processSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
 
 ## Obtaining an access token
+{: #obtaining-an-access-token }
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
-The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The {{ site.data.keys.product }} SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```js
 WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
@@ -88,6 +91,7 @@ The `obtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
 
 ## Retrieving the authenticated user
+{: #retrieving-the-authenticated-user }
 The challenge handler `handleSuccess` method receives `data` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
 
@@ -117,7 +121,8 @@ Here, `data` has a key called `user` which itself contains a `JSONObject` repres
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `logout` API to log out from a specific security check:
+{: #logout }
+The {{ site.data.keys.product }} SDK also provides a `logout` API to log out from a specific security check:
 
 ```js
 WLAuthorizationManager.logout(securityCheckName).then(
@@ -131,6 +136,7 @@ WLAuthorizationManager.logout(securityCheckName).then(
 ```
 
 ## Sample applications
+{: #sample-applications }
 Two samples are associated with this tutorial:
 
 - **PreemptiveLogin**: An application that always starts with a login screen, using the preemptive `login` API.
@@ -145,6 +151,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 - [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80) the PreemptiveLogin Web project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.
 The username/password for the app must match, i.e. "john"/"john".
 

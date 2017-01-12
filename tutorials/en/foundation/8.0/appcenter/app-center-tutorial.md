@@ -6,14 +6,17 @@ show_in_nav: false
 weight: 7
 ---
 ## Overview
-IBM MobileFirst Platform Application Center is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+{: #overview }
+{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
 
 Application Center facilitates sharing mobile applications:
 
 * You can **share feedback and rating** information.  
 * You can use access control lists to limit who can install applications.
 
-Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+
+> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
 You can use Application Center in different contexts. For example:
 
@@ -23,15 +26,17 @@ You can use Application Center in different contexts. For example:
 > **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
 
 #### Jump to:
-
+{: #jump-to}
 * [Installing and configuring](#installing-and-configuring)
+* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
 * [Preparing mobile clients](#preparing-mobile-clients)
 * [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
 * [The Application Center mobile client](#the-application-center-mobile-client)
 * [Application Center command-line tools](#application-center-command-line-tools)
 
 ## Installing and configuring
-Application Center is installed as part of the installation of MobileFirst Server with IBM Installation Manager.
+{: #installing-and-configuring }
+Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
 
 **Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
 
@@ -42,7 +47,7 @@ If you do not have a database installed, the installation process can also insta
 
 1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
-    > For more information, see the topic about [installing MobileFirst Server](../../installation-configuration).
+    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
 
     Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
 
@@ -60,12 +65,73 @@ The mobile client is the mobile application that you use to browse the catalog a
 
 > **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
 
+## Cordova based IBM AppCenter client
+{: #cordova-based-ibm-appcenter-client }
+The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+
+This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
+Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+
+Follow the steps below to get started:
+
+1. Install Cordova.
+
+```bash
+npm install -g cordova@latest
+```
+
+2. Install Android SDK and set the `ANDROID_HOME`.  
+3. Build and run this project.
+
+Build all platforms:
+
+```bash
+cordova build
+```
+
+Build only Android:
+
+```bash
+cordova build android
+```
+
+Build only iOS:
+
+```bash
+cordova build ios
+```
+
+### Customizing AppCenter Installer application
+{: #customizing-appcenter-installer-application }
+You can further customize the application, such as updating its user interface for your specific company or needs.
+
+> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+
+#### Android
+{: #android }
+* Open the Android Studio.
+* Select **Import project (Eclipse ADT, Gradle, etc.)**
+* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+
+This might take some time. Once this is done you are ready to customize.
+
+> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+
+#### iOS
+{: #ios }
+* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
+* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+
 ## Preparing mobile clients
+{: #preparing-mobile-clients }
 ### For Android phones and tablets
+{: #for-android-phones-and-tablets }
 The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
 
-### For iPad and iPhone
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
+### For iPad and iPhone
+{: #for-ipad-and-iphone }
 1. Compile and sign the client application provided in source code. This is mandatory.
 
 2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
@@ -75,14 +141,16 @@ The mobile client is delivered as a compiled application (APK) and is located at
 4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
 You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
 
-### For Blackberry
+> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
+### For Blackberry
+{: #for-blackberry }
 * To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
 A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
 
 ### For Windows Phone 8
-
+{: #for-windows-phone-8}
 1.  Register a company account with Microsoft.  
 Application Center manages only company applications that are signed with the company certificate that comes with your company account.
 
@@ -100,14 +168,14 @@ Application Center manages only company applications that are signed with the co
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
 
-
 ### For Windows Store Apps for Windows 8.1 Pro
-
+{: #for-windows-store-apps-for-windows-81-pro }
 * The **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
 
 * Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 ## Managing applications in the Application Center console
+{: #managing-applications-in-the-application-center-console }
 ![Image of application management in app center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Use the Application Center console to manage applications in the catalog in the following ways:
@@ -120,7 +188,7 @@ Use the Application Center console to manage applications in the catalog in the 
 * Review registered users and devices
 
 ### Adding new applications to the store
-
+{: #adding-new-applications-to-the-store }
 ![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 To add new applications to the Store:
@@ -149,6 +217,7 @@ The new application is added to the store.
 By default, an application can be installed by any authorized user of the store.
 
 ### Restricting access to a group of users
+{: #restricting-access-to-a-group-of-users }
 To restrict access to a group of users:
 
 1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens.
@@ -158,6 +227,7 @@ To restrict access to a group of users:
 You can also add applications from public app stores such as Google Play or Apple App Store by entering their URLs.
 
 ## The Application Center mobile client
+{: #the-application-center-mobile-client }
 The App Center mobile client is a mobile application to manage the applications on the device. With the mobile client, you can:
 
 * List all applications from the catalog (for which you have access rights).
@@ -166,6 +236,7 @@ The App Center mobile client is a mobile application to manage the applications 
 * Provide feedback and five-star rating for an application.
 
 ### Adding mobile client applications to the catalog
+{: #adding-mobile-client-applications-to-the-catalog }
 You must add Application Center mobile client applications to the catalog.
 
 1. Open the Application Center console.
@@ -177,6 +248,7 @@ You must add Application Center mobile client applications to the catalog.
 The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
 
 ### Windows Phone 8
+{: #windows-phone-8 }
 On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
 
 ![Image of Windows Phone 8 app enrollment]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
@@ -191,6 +263,7 @@ Before you can install the mobile client, you must enroll the device with the co
 6. Click **Add Company Account**. Your device is enrolled.
 
 ### Installing the mobile client on the mobile device
+{: #installing-the-mobile-client-on-the-mobile-device }
 To install the mobile client on the mobile device:
 ![Image of application installer app]({{ site.baseurl }}/assets/backup/installers_smaller.png)
 
@@ -202,6 +275,7 @@ To install the mobile client on the mobile device:
 On **Android** devices, you must open the Android Download application and select **IBM App Center** for installation.
 
 ### Logging in to the mobile client
+{: #logging-in-to-the-mobile-client }
 To log in to the mobile client:
 
 1. Enter your credentials for access to the server.
@@ -212,6 +286,7 @@ To log in to the mobile client:
 ![Login screen]({{ site.baseurl }}/assets/backup/login.png)
 
 ### Application Center mobile client views
+{: #application-center-mobile-client-views }
 * The **Catalog** view displays the list of available applications.
 * Selecting an application opens the **Details** view on the application. You can install applications from the Details view. You can also mark applications as favorites by using the star icon in the Details View.
 
@@ -225,6 +300,7 @@ From the mobile client, you can rate the application and send a review. Reviews 
 ![Reviews]({{ site.baseurl }}/assets/backup/reviewss.png)
 
 ## Application Center command-line tools
+{: #application-center-command-line-tools }
 The **install_dir/ApplicationCenter/tools** directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:
 
 * `applicationcenterdeploytool.jar`: the upload command-line tool.

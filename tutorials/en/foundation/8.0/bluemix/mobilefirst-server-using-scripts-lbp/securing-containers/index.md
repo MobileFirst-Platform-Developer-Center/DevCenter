@@ -4,16 +4,18 @@ title: Securing MobilFirst server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Below are several methods you can follow in order to secure your MobileFirst Server instance.
+{: #overview }
+Below are several methods you can follow in order to secure your {{ site.data.keys.mf_server }} instance.
 
 #### Jump to
-
+{: #jump-to }
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
 * [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
+{: #configuring-app-transport-security-ats }
 ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your server, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
 
 1. Copy the **ssl_cert.p12** file to the **mfpf-server-libertyapp/usr/security/** folder.
@@ -53,21 +55,26 @@ For development-stage purposes only, you can disable ATS by adding following pro
 </dict>
 ```
 
-## Security configuration for IBM MobileFirst Foundation 	
+## Security configuration for {{ site.data.keys.product_full }}
+{: #security-configuration-for-ibm-mobilefirst-foundation }
 Your IBM MobileFirst Foundation instance security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
 ### Encrypting passwords
-Store the passwords for MobileFirst Server users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in MobileFirst Server for instructions.
+{: #encrypting-passwords }
+Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
 
 ### Application-authenticity validation
-To keep unauthorized mobile applications from accessing the MobileFirst Server, enable the application-authenticity security check. Learn more...
+{: #application-authenticity-validation }
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
 
 
 ### Securing a connection to the back end
+{: #securing-a-connection-to-the-back-end }
 If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
 
-#### Encrypting passwords for user roles configured in MobileFirst Server
-The passwords for user roles that are configured for the MobileFirst Server can be encrypted.  
+#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+{: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
+The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
 Passwords are configured in the **server.env** files in the **package_root/mfpf-server-liberty-app/usr/env** . Passwords should be stored in an encrypted format.
 
 1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
@@ -82,6 +89,7 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 ```
 
 #### Restricting access to the consoles running on containers	
+{: #restricting-access-to-the-consoles-running-on-containers }
 You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles.
 
 The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
@@ -240,6 +248,7 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
 4. Re-deploy the server. The MobileFirst Operations Console is now accessible only when the configured TAI security mechanism is satisfied.
 
 ## LDAP configuration for containers
+{: #ldap-configuration-for-containers }
 You can configure an IBM MobileFirst Foundation to securely connect to an external LDAP repository.
 
 The external LDAP registry can be used for the following purposes:
@@ -248,6 +257,7 @@ The external LDAP registry can be used for the following purposes:
 * To configure the MobileFirst mobile applications to work with an external LDAP registry.
 
 ### Configuring administration security with LDAP
+{: #configuring-administration-security-with-ldap }
 Configure the MobileFirst administration security with an external LDAP registry.  
 The configuration process includes the following steps:
 
@@ -256,9 +266,11 @@ The configuration process includes the following steps:
 * Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
 
 #### LDAP repository
+{: #ldap-repository }
 Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
 
 #### Registry file
+{: #registry-file }
 1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
 
    ```xml
@@ -298,6 +310,7 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
    For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
     
 #### Secure gateway
+{: #secure-gateway }
 To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
 
 1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
@@ -326,6 +339,7 @@ To configure a secure gateway connection to your LDAP server, you must create an
 ```
 
 ### Configuring apps to work with LDAP
+{: #configuring-apps-to-work-with-ldap }
 Configure MobileFirst mobile apps to work with an external LDAP registry.  
 The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
 

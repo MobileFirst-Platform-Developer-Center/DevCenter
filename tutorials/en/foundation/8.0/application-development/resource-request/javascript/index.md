@@ -12,17 +12,20 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+{: #overview }
+{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- If you are implementing a Cordova application, ensure you have [added the MobileFirst Platform SDK](../../../application-development/sdk/cordova) to your Cordova application.
-- If you are implementing a Web application, ensure you have [added the MobileFirst Platform SDK](../../../application-development/sdk/web) to your Web application.
+- If you are implementing a Cordova application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) to your Cordova application.
+- If you are implementing a Web application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) to your Web application.
 - Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
+{: #wlresourcerequest }
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
@@ -41,6 +44,7 @@ var resourceRequest = new WLResourceRequest(
 * **timeout**: Optional, request timeout in milliseconds
 
 ## Sending the request
+{: #sending-the-request }
 Request the resource by using the `send()` method.  
 The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
 
@@ -54,6 +58,7 @@ resourceRequest.send().then(
 ```
 
 ### setQueryParameter
+{: #setqueryparameter }
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
 
 ```js
@@ -62,6 +67,7 @@ resourceRequest.setQueryParameter("param2", "value2");
 ```
 
 #### JavaScript adapters
+{: #javascript-adapters-setquery}
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
 > **Note:** The `params` value should be a *string representation* of an array.
@@ -73,6 +79,7 @@ resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 This should be used with `WLResourceRequest.GET`.
 
 ### setHeader
+{: #setheader }
 By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
 
 ```js
@@ -80,6 +87,7 @@ resourceRequest.setHeader("Header-Name","value");
 ```
 
 ### sendFormParameters(json)
+{: #sendformparamtersjson }
 To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body:
 
 ```js
@@ -88,6 +96,7 @@ resourceRequest.sendFormParameters(formParams);
 ```
 
 #### JavaScript adapters
+{: #javascript-adapters-sendform }
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
 ```js
@@ -100,6 +109,7 @@ This should be used with `WLResourceRequest.POST`.
 > For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
 ## The response
+{: #the-response }
 Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
 
 In case of request failure, the `response` object also cotains a `errorMsg` property.  
@@ -128,6 +138,7 @@ Depending if using a Java or JavaScript adapter, the response may contain other 
 ```
 
 ### Handling the response
+{: #handling-the-response }
 The response object is received by the `onSuccess` and `onFailure` callback functions.  
 For example:
 
@@ -142,10 +153,12 @@ onFailure: function(response) {
 ```
 
 ## For more information
-> For more information about WLResourceRequest, refer to the user documentation.
+{: #for-more-information }
+> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
 
 <img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
 ## Sample applications
+{: #sample-applications }
 The **ResourceRequestWeb** and **ResourceRequestCordova** projects demonstrate a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
@@ -154,4 +167,5 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

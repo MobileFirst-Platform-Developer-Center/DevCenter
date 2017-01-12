@@ -8,7 +8,9 @@ downloads:
   - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that is accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
 
 This tutorial uses the example of a security check that asks for a user name and password, and uses the user name to represent an authenticated user.
@@ -16,7 +18,7 @@ This tutorial uses the example of a security check that asks for a user name and
 **Prerequisites:** Make sure to read the [CredentialsValidationSecurityCheck](../../credentials-validation/) tutorial.
 
 #### Jump to:
-
+{: #jump-to }
 * [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
@@ -26,6 +28,7 @@ This tutorial uses the example of a security check that asks for a user name and
 * [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
+{: #creating-the-security-check }
 [Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
@@ -49,6 +52,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 ```
 
 ## Creating the challenge
+{: #creating-the-challenge }
 The challenge is exactly the same as the one described in [Implementing the CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
 
 ```java
@@ -62,6 +66,7 @@ protected Map<String, Object> createChallenge() {
 ```
 
 ## Validating the user credentials
+{: #validating-the-user-credentials }
 When the client sends the challenge answer, the answer is passed to `validateCredentials` as a `Map`. Use this method to implement your logic. The method returns `true` if the credentials are valid.
 
 In this example, credentials are considered "valid" when`username` and `password` are the same:
@@ -87,6 +92,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Creating the AuthenticatedUser object
+{: #creating-the-authenticateduser-object }
 The `UserAuthenticationSecurityCheck` class stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
 Users are represented by an instance of the class `AuthenticatedUser`. Its constructor takes the `id`, `displayName`, and `securityCheckName` parameters.
 
@@ -132,6 +138,7 @@ You can use `this.getName()` to get the current security check name.
 `UserAuthenticationSecurityCheck` calls your `createUser()` implementation after a successful `validateCredentials`.
 
 ### Storing attributes in the AuthenticatedUser
+{: #storing-attributes-in-the-authenticateduser }
 `AuthenticatedUser` has an alternate constructor:
 
 ```java
@@ -140,7 +147,11 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
 This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
 
+> **Note:**
+> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+
 ## Adding RememberMe functionality
+{: #adding-rememberme-functionality }
 By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
 
 If you want to allow users to stay logged-in past the `successStateExpirationSec` value, `UserAuthenticationSecurityCheck` adds this capability.
@@ -156,7 +167,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    ```java
    private String userId, displayName;
    private boolean rememberMe = false;
-   
+
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
@@ -194,6 +205,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    ```
 
 ## Configuring the security check
+{: #configuring-the-security-check }
 In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 
 ```xml
@@ -209,6 +221,7 @@ As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `Cre
 In addition, you can also configure a `rememberMeDurationSec` property.
 
 ## Sample Security Check
+{: #sample-security-check }
 [Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 The Maven project contains an implementation of `UserAuthenticationSecurityCheck`.

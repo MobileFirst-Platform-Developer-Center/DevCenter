@@ -10,19 +10,22 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Prerequisites
+{: #prerequisites }
 
 * Read the [JSONStore parent tutorial](../)
-* Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Foundation SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
 
 #### Jump to:
-
+{: #jump-to }
 * [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
 
 ## Adding JSONStore
+{: #adding-jsonstore }
 1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
 
 2. Add the following to the existing `dependencies` section:
@@ -32,12 +35,14 @@ compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.
 ```
 
 ## Basic Usage
+{: #basic-usage }
 ### Open
+{: #open }
 Use `openCollections` to open one or more JSONStore collections.
 
 Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **MobileFirst Adapter Integration** in the second part of this tutorial.
+For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
 
 ```java
 Context context = getContext();
@@ -55,6 +60,7 @@ try {
 ```
 
 ### Get
+{: #get }
 Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
 
 ```java
@@ -71,6 +77,7 @@ try {
 The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
 
 ### Add
+{: #add }
 Use `addData` to store data as documents inside a collection
 
 ```java
@@ -90,6 +97,7 @@ try {
 ```
 
 ### Find
+{: #find }
 Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
 
 ```java
@@ -113,6 +121,7 @@ try {
 ```
 
 ### Replace
+{: #replace }
 Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
 
 ```java
@@ -134,8 +143,9 @@ try {
 This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
 
 ### Remove
+{: #remove }
 Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
+Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
 
 ```java
 Context context = getContext();
@@ -153,6 +163,7 @@ try {
 ```
 
 ### Remove Collection
+{: #remove-collection }
 Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```java
@@ -168,6 +179,7 @@ try {
 ```
 
 ### Destroy
+{: #destroy }
 Use `destroy` to remove the following data:
 
 * All documents
@@ -186,7 +198,9 @@ try {
 ```
 
 ## Advanced Usage
+{: #advanced-usage }
 ### Security
+{: #security }
 You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
 
 Some security metadata is stored in the shared preferences (Android).  
@@ -214,7 +228,8 @@ try {
 ```
 
 #### Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+{: #multiple-user-support }
+You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
 
 ```java
 Context context = getContext();
@@ -233,12 +248,14 @@ try {
 }
 ```
 
-#### MobileFirst Adapter Integration
-This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+#### {{ site.data.keys.product_adj }} Adapter Integration
+{: #mobilefirst-adapter-integration }
+This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
 You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
 
 #### Adapter Implementation
-Create a MobileFirst adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+{: #adapter-implementation }
+Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -269,8 +286,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from MobileFirst Adapter
-To load data from a MobileFirst Adapter use `WLResourceRequest`.
+#### Load data from {{ site.data.keys.product_adj }} Adapter
+{: #load-data-from-mobilefirst-adapter }
+To load data from an adapter use `WLResourceRequest`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -297,6 +315,7 @@ try {
 ```
 
 #### Get Push Required (Dirty Documents)
+{: #get-push-required-dirty-documents }
 Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
 
 ```java
@@ -314,7 +333,8 @@ try {
 To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
 
 #### Push changes
-To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+{: #push-changes }
+To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -348,6 +368,7 @@ try {
 
 <img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
 ## Sample application
+{: #sample-application }
 The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
 
@@ -355,4 +376,5 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

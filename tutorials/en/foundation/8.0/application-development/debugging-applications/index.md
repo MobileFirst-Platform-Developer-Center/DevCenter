@@ -5,7 +5,9 @@ breadcrumb_title: Debugging applications
 relevantTo: [javascript]
 weight: 10
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
 
 * JavaScript (Cordova, Web) applications consist of web-based resources such as HTML, JavaScript &amp; CSS. Cordova application may also contain optional native code (written in Java, Objective-C, Swift, C#, ...).
@@ -16,16 +18,18 @@ This tutorial explores various approaches to debugging a JavaScript-based applic
 > Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
 #### Jump to:
+{: #jump-to }
 
-* [Debugging with the IBM Mobile Browser Simulator](#debugging-with-the-ibm-mobile-browser-simulator)
+* [Debugging with the {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
 * [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
-* [Debugging with IBM MobileFirst Logger](#debugging-with-ibm-mobilefirst-logger)
+* [Debugging with {{ site.data.keys.product_adj }} Logger](#debugging-with-mobilefirst-logger)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
-## Debugging with the IBM Mobile Browser Simulator
-You can use IBM MobileFirst Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
+## Debugging with the {{ site.data.keys.mf_mbs }}
+{: #debugging-with-the-mobile-browser-simulator }
+You can use the {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
 To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
@@ -40,21 +44,25 @@ mfpdev app preview -p <platform>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
-### Mobile Browser Simulator
+### {{ site.data.keys.mf_mbs }}
+{: #mobile-browser-simulator}
 
 ![MBS](mbs.png)
 
 ### Simple Preview
+{: #simple-preview }
 
 ![MBS](simple.png)
 
-> Learn more about the MobileFirst CLI in the [Using MobileFirst CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the {{ site.data.keys.mf_cli }} in the [Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
+{: #debugging-with-ripple }
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
 It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture locally from your computer.  
 
 ### Installing Ripple
+{: #installing-ripple }
 
 1. Download and install the latest version of [Node.js](https://nodejs.org/en/).
 You can verify Node.js installation by typing `npm -v` in terminal.
@@ -65,6 +73,7 @@ You can verify Node.js installation by typing `npm -v` in terminal.
    ```
 
 ### Running application using Ripple
+{: #running-application-using-ripple }
 After Ripple is installed open terminal from your Cordova project location and type:
 
 ```bash
@@ -76,6 +85,7 @@ ripple emulate
 > More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
 
 ## Debugging with iOS Remote Web Inspector
+{: #debugging-with-ios-remote-web-inspector }
 Starting iOS 6, Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or iOS Simulator) has the **Private Browsing** option turned off.  
 
 1. To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
@@ -86,6 +96,7 @@ Starting iOS 6, Apple introduced a remote [Web Inspector](https://developer.appl
 ![Safari Debugging](safari-debugging.png)
 
 ## Debugging with Chrome Remote Web Inspector
+{: #debugging-with-chrome-remote-web-inspector }
 Using Google Chrome it is possible to remotely inspect web applications on Android devices or the Android Emulator.  
 This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
 
@@ -95,8 +106,9 @@ This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in 
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### Debugging with IBM MobileFirst Logger
-IBM MobileFirst Foundation provides a `WL.Logger` object that can be used to print log messages.  
+### Debugging with {{ site.data.keys.product_adj }} Logger
+{: #debugging-with-mobilefirst-logger }
+{{ site.data.keys.product }} provides a `WL.Logger` object that can be used to print log messages.  
 `WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
 > For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
@@ -109,6 +121,7 @@ IBM MobileFirst Foundation provides a `WL.Logger` object that can be used to pri
 * **Visual Studio Output** when it is running on a Windows devices.
 
 ### Debugging with WireShark
+{: #debugging-with-wireshark }
 **Wireshark is a network protocol analyzer** that can be used to see what happens in the network.  
 You can use filters to follow only what is required.  
 

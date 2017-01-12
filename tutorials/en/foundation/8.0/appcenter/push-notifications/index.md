@@ -5,12 +5,15 @@ breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can configure the Application Center client so that push notifications are sent to users when an update is available for an application in the store.
 
 The Application Center administrator uses push notifications to send notification automatically, to any iOS or Android device. Notifications are sent for updates to favorite applications and of new applications that are deployed on the Application Center server and that are marked as recommended.
 
 ### Push notification process
+{: #push-notification-process }
 Push notifications are sent to a device if the following conditions are met:
 
 * The device has Application Center installed and started it at least one time.
@@ -26,15 +29,18 @@ iOS and modern Android operating system versions offer a way to switch this serv
 Refer to your device vendor to learn how to configure your mobile device for push notifications.
 
 #### Jump to
-* [Configuring push notifications for application updates](#configuring-push-notifications-for-application-updates)
-* [Configuring the Application Center server for connection to Google Cloud Messaging](#configuring-the-application-center-server-for-connection-to-google-cloud-messaging)
-* [Configuring the Application Center server for connection to Apple Push Notification Services](#configuring-the-application-center-server-for-connection-to-apple-push-notification-services)
-* [Building a version of the mobile client that does not depend on the GCM API](#building-a-version-of-the-mobile-client-that-does-not-depend-on-the-gcm-api)
+{: #jump-to }
+* [Configuring push notifications for application updates](#configuring-push-notifications)
+* [Configuring the Application Center server for connection to Google Cloud Messaging](#gcm)
+* [Configuring the Application Center server for connection to Apple Push Notification Services](#apns)
+* [Building a version of the mobile client that does not depend on the GCM API](#no-gcm)
 
 ## Configuring push notifications for application updates
+{: #configuring-push-notifications }
 You must configure the credentials or certificates of Application Center services to be able to communicate with third-party push notification servers.
 
 ### Configuring the server scheduler of the Application Center
+{: #configuring-the-server-scheduler }
 The server scheduler is a background service that automatically starts and stops with the server. This scheduler is used to empty at regular intervals a stack that is automatically filled by administrator actions with push update messages to be sent. The default interval between sending two batches of push update messages is twelve hours. If this default value does not suit you, you can modify it by using the **ibm.appcenter.push.schedule.period.amount** and **ibm.appcenter.push.schedule.period.unit** server environment variables.
 
 The value of **ibm.appcenter.push.schedule.period.amount** is an integer. The value of **ibm.appcenter.push.schedule.period.unit** can be seconds, minutes, or hours. If the unit is not specified, the amount is an interval that is expressed in hours. These variables are used to define the elapsed time between two batches of push messages.
@@ -46,6 +52,7 @@ Use JNDI properties to define these variables.
 See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
 
 ### Example for Apache Tomcat server
+{: tomcat }
 Define these variables with JNDI properties in the server.xml file:
 
 ```xml
@@ -53,7 +60,8 @@ Define these variables with JNDI properties in the server.xml file:
 <Environment name="ibm.appcenter.push.schedule.period.amount" override="false" type="java.lang.String" value="2"/>
 ```
 
-#### WebSphere  Application Server v8.5
+#### WebSphere Application Server v8.5
+{: #websphere }
 To configure JNDI variables for WebSphere Application Server v8.5, proceed as follows:
 
 1. Click **Applications → Application Types → Websphere enterprise applications**.
@@ -62,14 +70,16 @@ To configure JNDI variables for WebSphere Application Server v8.5, proceed as fo
 4. Edit the string in the **Value** column.
 
 #### WebSphere Application Server Liberty profile
+{: #liberty }
 For information about how to configure JNDI variables for WebSphere Application Server Liberty profile, see [Using JNDI binding for constants from the server configuration files](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_dep_jndi.html).
 
 The remaining actions for setting up the push notification service depend on the vendor of the device where the target application is installed.
 
 ## Configuring the Application Center server for connection to Google Cloud Messaging
+{: #gcm }
 To enable Google Cloud Messaging (GCM) for an application, you must attach the GCM services to a developer Google account with the Google API enabled. See [Getting Started with GCM](http://developer.android.com/google/gcm/gs.html) for details.
 
-> Important: The Application Center client without Google Cloud Messaging: The Application Center relies on the availability of the Google Cloud Messaging (GCM) API. This API might not be available on devices in some territories such as China. To support those territories, you can build a version of the Application Center client that does not depend on the GCM API. The push notification feature does not work on that version of the Application Center client. See [Building a version of the mobile client that does not depend on the GCM API](#building-a-version-of-the-mobile-client-that-does-not-depend-on-the-gcm-api) for details.
+> Important: The Application Center client without Google Cloud Messaging: The Application Center relies on the availability of the Google Cloud Messaging (GCM) API. This API might not be available on devices in some territories such as China. To support those territories, you can build a version of the Application Center client that does not depend on the GCM API. The push notification feature does not work on that version of the Application Center client. See [Building a version of the mobile client that does not depend on the GCM API](#no-gcm) for details.
 
 1. If you do not have the appropriate Google account, go to [Create a Google account](https://mail.google.com/mail/signup) and create one for the Application Center client.
 2. Register this account by using the Google API in the [Google API console](https://code.google.com/apis/console/). Registration creates a new default project that you can rename. The name you give to this GCM project is not related to your Android application package name. When the project is created, a GCM project ID is appended to the end of the project URL. You should record this trailing number as your project ID for future reference.
@@ -103,6 +113,7 @@ To enable Google Cloud Messaging (GCM) for an application, you must attach the G
 * You must also ensure that your firewall accepts outgoing connections to android.googleapis.com on port 443 for push notifications to work.
 
 ## Configuring the Application Center server for connection to Apple Push Notification Services
+{: #apns }
 Configure your iOS project for Apple Push Notification Services (APNs). Ensure that the following servers are accessible from Application Center server.
 
 **Sandbox servers**  
@@ -143,6 +154,7 @@ The examples in the table show how the JNDI properties are defined in the server
 See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of JNDI properties that you can set.
 
 ## Building a version of the mobile client that does not depend on the GCM API
+{: #no-gcm }
 You can remove the dependency on Google Cloud Messaging (GCM) API from the Android version of the client to comply with constraints in some territories. Push notifications do not work on this version of the client.
 
 The Application Center relies on the availability of the Google Cloud Messaging (GCM) API. This API might not be available on devices in some territories such as China. To support those territories, you can build a version of the Application Center client that does not depend on the GCM API. The push notification feature does not work on that version of the Application Center client.

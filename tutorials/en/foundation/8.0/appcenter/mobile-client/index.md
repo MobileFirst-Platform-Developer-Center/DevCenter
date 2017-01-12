@@ -4,15 +4,19 @@ title: The mobile client
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can install applications on your mobile device with the Application Center mobile client.
 
 The Application Center mobile client is the application that runs on your Android, iOS, Windows Phone, or Windows device. Only Windows Phone 8 is supported by the current version of the Application Center. You use the mobile client to list the catalog of available applications in the Application Center. You can install these applications on your device. The mobile client is sometimes referred to as the Application Center installer. This application must be present on your device if you want to install on your device applications from your private application repository.
 
 ### Prerequisites
+{: #prerequisites }
 Your system administrator must give you a user name and password before you can download and install the mobile client. The user name and password are required whenever you start the mobile client on your device. For Windows Store applications, the user name and password are required for the mobile client only at run time. For security reasons, do not disseminate these credentials. These credentials are the same credentials used to log in to the Application Center console.
 
 #### Jump to
+{: #jump-to }
 * [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
 * [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
 * [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
@@ -33,6 +37,7 @@ Your system administrator must give you a user name and password before you can 
 * [Viewing reviews](#viewing-reviews)
 
 ## Installing the client on an Android mobile device
+{: #installing-the-client-on-an-android-mobile-device }
 You can install the mobile client, or any signed application marked with the installer flag, on your Android mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
 
 1. Start the browser on your mobile device.
@@ -81,6 +86,7 @@ The installation might be blocked for one of the following reasons:
 * The device has the same app already installed, but it was signed by a different certificate. In this case, you must remove the app before you install it on the device with another signed certificate.
 
 ## Installing the client on an iOS mobile device
+{: #installing-the-client-on-an-ios-mobile-device }
 You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
 
 > **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
@@ -146,21 +152,22 @@ Since iOS 9, when a company application is opened, depending on the type of the 
 To establish trust for a provisioning profile after the application is installed:
 
 #### Until iOS 9.1
-
+{: #until-ios-91 }
 1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
 2. Tap on the profile and confirm the trust.
 
 #### Since iOS 9.2
-
+{: #since-ios-92 }
 1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
 2. Tap on the profile and confirm the trust.
 
 After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
 ## Installing the client on a Windows Phone 8 Universal mobile device
+{: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
 You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the IBM MobileFirst Foundation Server. It is uploaded to the MobileFirst Server by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
 
 1. Start the browser on your mobile device.
 2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
@@ -201,6 +208,7 @@ Before you can install apps published by your company, you must add the company 
 When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
 
 ## The Login view
+{: #the-login-view }
 In the Login view, you can access the fields that are required to connect to the server to view the list of applications available for your device.  
 Use the Login view to enter your credentials to connect to the Application Center server to view the list of applications that are available for your device.
 
@@ -210,9 +218,11 @@ When the application is started, the Login page is displayed. The login credenti
 On iOS devices, the credentials are saved in the keychain. After you successfully log in to the Application Center server, when you later start the application, the login page is not displayed and the previous credentials are used. If login fails, the login view is displayed.
 
 #### User name and password
+{: #user-name-and-password }
 Enter your credentials for access to the server. They are the same user name and password as the ones that were granted by your system administrator for downloading and installing the mobile client.
 
 #### Application Center server address
+{: #application-center-server-address }
 The Application Center server address is composed of the following elements:
 
 * Host name or IP address.
@@ -224,12 +234,14 @@ On a phone, a field is available for each part of the address.
 On a tablet, a single field that contains a preformatted example address is displayed. Use it as a model for entering the correct server address to avoid formatting errors. See [Preparations for using the mobile client](../preparations) for information on filling parts of the address in advance, or hardcode the address and hide the associated fields.
 
 #### Secure Socket Layer (SSL)
+{: #secure-socket-layer-ssl }
 SSL is mandatory on iOS devices. Therefore, this option is not displayed in the login view.
 On the other supported operating systems, select SSL to turn on the SSL protocol for communications over the network. If you tap this field again when SSL is selected, SSL switches off.
 
 SSL selection is available for cases where the Application Center server is configured to run over an SSL connection. Selecting SSL when the server is not configured to handle an SSL layer prevents you from connecting to the server. Your system administrator can inform you whether the Application Center runs over an SSL connection.
 
 ### Connecting to the server
+{: #connecting-to-the-server }
 To connect to the server:
 
 1.Enter your user name and password.
@@ -240,6 +252,7 @@ To connect to the server:
 If this login is successful, the user name and server address are saved to fill the fields when you start the client afterwards.
 
 ## Views in the Application Center client
+{: #views-in-the-application-center-client }
 The client provides views that are adapted to the various tasks that you want to perform.  
 After a successful login, you can choose among these views.
 
@@ -260,6 +273,7 @@ Here are descriptions of the different views:
 When you first start the mobile client, it opens the Login view for you to enter your user name, password, and the address of the Application Center server. This information is mandatory.
 
 ### Displays on different device types
+{: #displays-on-different-device-types }
 The layout of the views is specific to the Android, iOS, Windows Phone, or Windows 8 environment, even though the common functions that you can perform in the views are the same for all operating systems. Different device types might have different page displays. On the phone, a list is displayed. On a tablet, a grid of applications is used.
 
 ![Catalog view on a phone](ac_phone_catalog.jpg)
@@ -267,6 +281,7 @@ The layout of the views is specific to the Android, iOS, Windows Phone, or Windo
 ![Catalog view on a tablet](ac_tablet_catalog.jpg)
 
 ### Features of the views
+{: #features-of-the-views }
 On an Android or iOS tablet, you can sort the lists by tapping one of the sort criteria.  
 On a Windows Phone, Android, or iOS phone, sort criteria are available through the sort button.  
 On the Windows 8 client, you can sort the list of applications within a category. To sort the applications, select from the list of sort criteria in the **Sort By** field.
@@ -285,6 +300,7 @@ To return to the login page:
 * In the Windows 8 version of the client, tap the logout button: <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Windows 8 client"/>
 
 ### The Details view
+{: #the-details-view }
 Tapping an application in the Catalog, Favorites, or Updates view opens the Details view where you can see details of the application properties. Details of the application version are displayed in this view.
 
 On Android, iOS, and Windows Phone clients, the following details of the application version are displayed:
@@ -317,6 +333,7 @@ You can take the following actions in this view.
 * Refresh the view with the latest changes from the Application Center server.
 
 ## Installing an application on an Android device
+{: #installing-an-application-on-an-android-device }
 From the **Details** view, you can install an application on your Android device.  
 In the Details view, if a previous version of the application is not installed, you can install this application version on your Android device.
 
@@ -335,6 +352,7 @@ In the Details view, if a previous version of the application is not installed, 
     If you selected **Cancel**, in the application rights confirmation panel, you can tap **Cancel** in the **Details** view at any time to notify the application that the installation has been canceled. The **Cancel** button appears in the Details view only during the installation steps.
 
 ## Installing an application on an iOS device
+{: #installing-an-application-on-an-ios-device }
 From the **Details** view, you can install an application version on your iOS mobile device.
 
 ![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
@@ -363,18 +381,19 @@ Since iOS 9, when a company application is opened, depending on the type of the 
 To establish trust for a provisioning profile after the application is installed:
 
 #### Until iOS 9.1
-
+{: #until-ios-91-app }
 1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
 2. Tap on the profile and confirm the trust.
 
 #### Since iOS 9.2
-
+{: #since-ios-92-app }
 1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
 2. Tap on the profile and confirm the trust.
 
 After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
 ## Installing an application on a Windows Phone device
+{: #installing-an-application-on-a-windows-phone-device }
 From the **Details** view, you can install a company application on your Windows phone device.  
 The **Details** view of the selected application displays information about the application that you want to install.
 
@@ -415,6 +434,7 @@ When you renew your PFX code-signing certificate, you must also renew the enroll
 In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
 
 ## Installing a Windows Store application on a Windows device
+{: #installing-a-windows-store-application-on-a-windows-device }
 Use sideloading to install Windows Store apps through Application Center.
 
 You must check that your configuration satisfies the application sideloading prerequisites that are described in Prepare to Sideload Apps.  
@@ -450,6 +470,7 @@ The following steps describe how to perform the installation of a Windows Store 
 3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
 
 ## Installing applications through public app stores
+{: #installing-applications-through-public-app-stores }
 You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
 
 The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
@@ -468,6 +489,7 @@ Links to Android applications stored in Google play and to iOS applications stor
 3. Follow the usual procedure of the public app store to install the application.
 
 ## Removing an installed application
+{: #removing-an-installed-application }
 You can remove an application that is installed on your mobile device.
 
 1. Start the removal procedure that is valid for the operating system of your device.
@@ -480,6 +502,7 @@ You can remove an application that is installed on your mobile device.
         * Tap **Uninstall** to uninstall the application version or **Cancel** to notify the application that the uninstallation command has been canceled.
 
 ## Showing details of a specific application version
+{: #showing-details-of-a-specific-application-version }
 You can show the details of the selected version of an application by following the appropriate procedure for an Android or iOS phone or tablet, a Windows Phone device, or a Windows device.
 
 1. Show details of a specific application version on a mobile device by selecting the appropriate procedure for your device.
@@ -497,6 +520,7 @@ You can show the details of the selected version of an application by following 
     * In the menu, select the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
 
 ## Updating an application
+{: #updating-an-application }
 Follow this procedure to make the latest versions of favorite and recommended apps available on your device. Applications that are marked as favorites and that have an updated version are listed in the **Updates** view. The applications that are marked as recommended by the Application Center server administrator are also listed in the **Updates** view, even if they are not favorites.
 
 If a more up-to-date version of an installed application is available on the server, it is listed under **Update or Recommended**.
@@ -512,13 +536,14 @@ If a more up-to-date version of an installed application is available on the ser
     * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
 
 ## Upgrading the Application Center client automatically
+{: #upgrading-the-application-center-client-automatically }
 You can enable automatic detection of new versions of the client application. Then, you can choose whether to download and install the new version on your mobile device. This feature is supported for iOS, Android, and Windows Phone.
 
 New versions of the mobile client application that are available on the Application Center server can be detected automatically. When this feature is enabled, a more recent version of the application, if it exists, can be detected at start up or each time that the Available applications view is refreshed.
 
 f a later version of the application is detected, you are requested to download and install the later version.
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the MobileFirst project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
 
 If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
 
@@ -546,24 +571,29 @@ You must log in to the updated version of the application to run it.
 4. On Windows Phone, the new Application Center client must be signed with the same company account as the old client.
 
 ## Reverting an installed application
+{: #reverting-an-installed-application }
 You can revert the version of an installed application if an earlier version exists on the server.
 
 To replace the currently installed version of an application with an earlier version, from the **Catalog**, **Updates**, or **Favorites** view, navigate to the Details view. In the **Details** view, select an earlier version. See [Showing details of a specific application version](#showing-details-of-a-specific-application-version) for information about how to display details of a specific application version on a mobile device.
 
 ### On Android
+{: #on-android }
 If the installed version of the Android operating system is earlier than 4.2.2, tap **Revert**.  
 If the installed version of the Android operating system is 4.2.2 or later, you must uninstall the current version before you can install the earlier version.
 
 Then, follow the procedure documented in [Installing an application on an Android device](#installing-an-application-on-an-android-device).
 
 ### On iOS
+{: #on-ios }
 Use the normal procedure of the operating system to remove the application.  
 Tap **Install** to install the earlier version of the application. Follow the procedure documented in [Installing an application on an iOS device](#installing-an-application-on-an-ios-device).
 
 ### On Windows Phone
+{: #on-windows-phone }
 Tap **Revert**. Follow the procedue documented in [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device).
 
 ## Marking or unmarking a favorite app
+{: #marking-or-unmarking-a-favorite-app }
 Mark your favorite apps or unmark an app to have it removed from the favorites list.
 
 An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
@@ -573,6 +603,7 @@ To mark or unmark an application as a favorite app, tap the Favorites icon <img 
 An installed application is automatically marked as a favorite app.
 
 ## Submitting a review for an installed application
+{: #submitting-a-review-for-an-installed-application }
 You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
 
 1. In the **Details** view, initiate your review.
@@ -586,11 +617,13 @@ You can review an application version that is installed on your mobile device; t
 4. Tap **Submit** to send your review to the Application Center.
 
 ## Viewing reviews
+{: #viewing-reviews }
 You can view reviews of a specific version of an application or of all versions of an application.  
 
 Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
 
 ### Viewing reviews of a specific version
+{: #viewing-reviews-of-a-specific-version }
 The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
 In the **Details** view of an application version:
 
@@ -598,6 +631,7 @@ In the **Details** view of an application version:
 * On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
 
 ### Viewing reviews of all versions of an application
+{: #viewing-reviews-of-all-versions-of-an-application }
 In the **Details** view of an application version:
 
 * On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.

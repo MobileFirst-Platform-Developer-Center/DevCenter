@@ -8,20 +8,23 @@ downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
+{: #overview }
+{{ site.data.keys.product_full }} provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
 
 This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequesites:**
 
-* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Foundation security framework](../../).
+* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
+* Understanding of the [{{ site.data.keys.product_adj }} Foundation security framework](../../).
 
 ![Flow](JTV_flow.jpg)
 
 ## Adding the .jar file dependency
+{: #adding-the-jar-file-dependency }
 The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven dependency**:
 
 ```xml
@@ -33,19 +36,21 @@ The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven depend
 ```
 
 ## Instantiating the TokenValidationManager
+{: #instantiating-the-tokenvalidationmanager }
 To be able to validate tokens, instantiate `TokenValidationManager`.
 
 ```java
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: the URI of the Authorization server, usually the MobileFirst Server. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID that you configured in the MobileFirst Operations Console.
-- `clientSecret`: The confidential client secret that you configured in the MobileFirst Operations Console.
+- `authorizationURI`: the URI of the Authorization server, usually the {{ site.data.keys.mf_server }}. For example **http://localhost:9080/mfp/api**.
+- `clientId`: The confidential client ID that you configured in the {{ site.data.keys.mf_console }}.
+- `clientSecret`: The confidential client secret that you configured in the {{ site.data.keys.mf_console }}.
 
-> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the MobileFirst Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
+> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the {{ site.data.keys.product_adj }} Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
 ## Validating the credentials
+{: #validating-the-credentials }
 The `validate` API method asks the authorization server to validate the authorization header:
 
 ```java
@@ -60,16 +65,17 @@ You can query the resulting `TokenValidationResult` object for an error or for v
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
 if (tokenValidationRes.getAuthenticationError() != null) {
-  // Error
-  AuthenticationError error = tokenValidationRes.getAuthenticationError();
-  httpServletResponse.setStatus(error.getStatus());
-  httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());
+    // Error
+    AuthenticationError error = tokenValidationRes.getAuthenticationError();
+    httpServletResponse.setStatus(error.getStatus());
+    httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());
 } else if (tokenValidationRes.getIntrospectionData() != null) {
-  // Success logic here
+    // Success logic here
 }
 ```                    
 
 ## Introspection data
+{: #introspection-data }
 The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the user name of the currently active user:
 
 ```java
@@ -82,6 +88,7 @@ String username = introspectionData.getUsername();
 ```
 
 ## Cache
+{: #cache }
 The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
 
 The default cache size is **50000 items**. After this capacity is reached, the oldest token is removed.  
@@ -93,6 +100,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 ```
 
 ## Protecting a simple Java Servlet
+{: #protecting-a-simple-java-servlet }
 1. Create a simple Java Servlet called `GetBalance`, which returns a hardcoded value:
 
    ```java
@@ -183,13 +191,15 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter-mapping>
    ```
 
-## Sample
+## Sample application
+{: #sample-application }
+
 You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  
 [Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
 
 ### Sample usage
-
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
+{: #sample-usage }
+1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
 4. Map the `accessRestricted` scope to the security check.

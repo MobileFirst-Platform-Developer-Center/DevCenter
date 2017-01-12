@@ -4,15 +4,19 @@ title: Migrating push notifications from event source-based notifications
 breadcrumb_title: Migrating push notifications 
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-From IBM MobileFirst Foundation v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of MobileFirst to be moved to v8.0, they must be migrated to the new push service model.
+{: #overview }
+From {{ site.data.keys.product_full }} v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of {{ site.data.keys.product_adj }} to be moved to v8.0, they must be migrated to the new push service model.
 
 During migration, keep in mind that it is not about using one API instead of another, but more about using one model/approach versus another.
 
 For example, in the event source-based model, if you were to segment your mobile application users to send notifications to specific segments, you would model every segment as a distinct event source. In the push service model, you would achieve the same by defining tags that represents segments and have users subscribe to the respective tags. Tag-based notifications is a replacement to event source-based notifications.
 
 #### Jump to
+{: #jump-to }
 * [Migration scenarios](#migration-scenarios)
+* [Migration tool](#migration-tool)
 
 <br/>
 
@@ -21,35 +25,39 @@ The table below provides you with a comparison between the two models.
 | User requirement | Event source model | Push service model | 
 |------------------|--------------------|--------------------|
 | To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
-| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the MobileFirst Server</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
+| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the {{ site.data.keys.mf_server }}</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
 | To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
 | To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
-| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the MobileFirst Server and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
+| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the {{ site.data.keys.mf_server }} and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
 | To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
 | To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
 
 ## Migration Scenarios
-Starting from IBM MobileFirst Foundation v8.0, the event source-based model will not be supported and push notifications capability will be enabled on IBM MobileFirst Platform Foundation entirely by the push service model, which is a more simple and agile alternative to event source model.
+{: #migration-scenarios }
+Starting from {{ site.data.keys.product }} v8.0, the event source-based model will not be supported and push notifications capability will be enabled on {{ site.data.keys.product }} entirely by the push service model, which is a more simple and agile alternative to event source model.
 
 Existing event source-based applications on earlier versions of IBM MobileFirst Platform Foundation need to be migrated to v8.0, to the new push service model.
 
 #### Jump to
-
+{: #jump-to }
 * [Hybrid applications](#hybrid-applications)
 * [Native Android applications](#native-android-applications)
 * [Native iOS applications](#native-ios-applications)
 * [Native Windows Universal applications](#native-windows-universal-applications)
 
 ### Hybrid applications
+{: #hybrid-applications }
 Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
 
 #### Scenario 1: Existing applications using single event source in their application
-Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
+{: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
+Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
 
 ##### Client
+{: #client-hybrid-1 }
 To migrate this in V8.0.0, convert this model to Unicast notification.
 
-1. Initialize the MobileFirst push client instance in your application and in the success callback register the callback method that should receive the notification.
+1. Initialize the {{ site.data.keys.product_adj }} push client instance in your application and in the success callback register the callback method that should receive the notification.
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -111,25 +119,28 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
     * `onReadyToSubscribe()`
 
 ##### Server
+{: #server-hybrid-1 }
 1. Remove the following WL.Server APIs (if used), in your adapter:
     * `notifyAllDevices()`
     * `notifyDevice()`
     * `notifyDeviceSubscription()`
     * `createEventSource()`
 2. Complete the following steps for every application that was using the same event source:
-    1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+    1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
         You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
     2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
     3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
     4. You can use either of the following methods to send notifications:
-        * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+        * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
         * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 #### Scenario 2: Existing applications using multiple event sources in their application
+{: #hybrid-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
 Applications using multiple event sources requires segmentation of users based on subscriptions.
 
 ##### Client
+{: #client-hybrid-2 }
 This maps to tags which segments the users/devices based on topic of interest. To migrate this, this model can be converted to tag-based notification.
 
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
@@ -220,6 +231,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    ```
     
 ##### Server
+{: #server-hybrid-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -229,17 +241,19 @@ Remove the following `WL.Server` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 #### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+{: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
+{: #client-hybrid-3 }
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
 
    ```javascript
@@ -300,20 +314,23 @@ Complete the following steps for every application that was using the same event
     * `onMessage()`
 
 ##### Server
+{: #server-hybrid-3 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.  
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 #### Scenario 4: Existing applications using tag notifications in their application
+{: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
+{: #client-hybrid-4 }
 1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
 
    ```javascript
@@ -402,25 +419,29 @@ Complete the following steps for every application that was using the same event
    ```
 
 ##### Server
+{: #client-hybrid-4 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.  
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
 
 ### Native Android applications
+{: #native-android-applications }
 Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
 
 #### Scenario 1: Existing applications using single event source in their application
+{: #android-scenario-1-existing-applications-using-single-event-source-in-their-application }
 Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
 
 ##### Client
+{: #client-android-1 }
 To migrate this in v8.0, convert this model to Unicast notification.
 
 1. Initialize the MFPPush client instance in your application.
@@ -480,6 +501,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
     * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
 
 ##### Server
+{: #server-android-1 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -489,20 +511,22 @@ Remove the following `WL.Server` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
 
 #### Scenario 2: Existing applications using multiple event sources in their application
+{: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
 Applications using multiple event sources requires the segmentation of users based on the subscriptions.
 
 ##### Client
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in MobileFirst V8.0.0, convert this model to tag based notification.
+{: #client-android-2 }
+This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product }} V8.0.0, convert this model to tag based notification.
 
 1. Initialize the `MFPPush` client instance in your application:
 
@@ -600,6 +624,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    ```
    
 ##### Server
+{: #server-android-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -609,17 +634,19 @@ Remove the following `WL.Server` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.     
 
 #### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+{: #android-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
+{: #client-android-3 }
 
 1. Initialize the `MFPPush` client instance in your application:
 
@@ -675,21 +702,24 @@ Complete the following steps for every application that was using the same event
     * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
 
 ##### Server
+{: #server-android-3 }
 Remove WL.Server.sendMessage()` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
 
 #### Scenario 4: Existing applications using tag notifications in their application
+{: #android-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
+{: #client-android-4 }
 
 1. Initialize the `MFPPush` client instance in your application:
 
@@ -784,26 +814,30 @@ Complete the following steps for every application that was using the same event
    ```
 
 ##### Server
+{: #server-android-4 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 ### Native iOS applications
+{: #native-ios-applications }
 Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
 
 #### Scenario 1: Existing applications using single event source in their application
-Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
+{: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
+Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
 
 ##### Client
+{: #client-ios-1 }
 To migrate this in v8.0, convert this model to Unicast notification.
 
 1. Initialize the `MFPPush` client instance in your application.
@@ -857,6 +891,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    ```
     
 ##### Server
+{: #server-ios-1 }
 Remove the following WL.Server API's (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -866,20 +901,22 @@ Remove the following WL.Server API's (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 #### Scenario 2: Existing applications using multiple event sources in their application
+{: #ios-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
 Applications using multiple event sources requires segmentation of users based on subscriptions.
 
 ##### Client
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to MobileFirstV8.0.0, convert this model to tag based notification.
+{: #client-ios-2}
+This maps to tags which segments the users/devices based on topic of interest. To migrate this to {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
 
 1. Initialize the `MFPPush` client instance in your application.
 
@@ -957,6 +994,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    ```
     
 ##### Server
+:{ #server-ios-2 }
 Remove `WL.Server` (if used) in your adapter.
 
 * `notifyAllDevices()`
@@ -966,17 +1004,19 @@ Remove `WL.Server` (if used) in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
 
 #### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+{: #ios-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
+{: #client-ios-3 }
 1. Initialize the MFPPush client instance in your application:
 
    ```objc
@@ -1019,21 +1059,24 @@ Complete the following steps for every application that was using the same event
     * `WLOnReadyToSubscribeListener` Implementation
 
 ##### Server
+{: #server-ios-3 }
 Remove `WL.Server.sendMessage` (if used) in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
 
 #### Scenario 4: Existing applications using tag notifications in their application
+{: #ios-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
+{: #client-ios-4 }
 
 1. Initialize the MFPPush client instance in your application:
 
@@ -1106,24 +1149,30 @@ Complete the following steps for every application that was using the same event
    ```
 
 ##### Server
+{: server-ios-4 }
 Remove the `WL.Server.sendMessage` (if used), in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the credentials by using the MobileFirst Operations Console. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
 
     You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
 2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
-    * The MobileFirst Operations Console. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
+    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
     * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
 
 ### Native Windows Universal applications
+{: #native-windows-universal-applications }
 Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
 
 #### Scenario 1: Existing applications using single event source in their application
+{: #windows-scenario-1-existing-applications-using-single-event-source-in-their-application }
 To migrate this in v8.0, convert this model to Unicast notification.
+
+##### Client
+{: #windows-client-1}
 
 1. Initialize the `MFPPush` client instance in your application.
 
@@ -1177,6 +1226,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
     * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
 
 ##### Server
+{: #windows-server-1 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -1186,15 +1236,17 @@ Remove the following `WL.Server` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the WNS credentials in the **Push Settings** page of MobileFirst Operations Console or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the Security tab of MobileFirst Operations Console.
+1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
+2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the Security tab of {{ site.data.keys.mf_console }}.
 3. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`, to send message.
 
 #### Scenario 2: Existing applications using multiple event sources in their application
+{: #windows-scenario-2-existing-applications-using-multiple-event-sources-in-their-appliction }
 Applications using multiple event sources requires segmentation of users based on subscriptions.
 
 ##### Client
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in MobileFirst V8.0.0, convert this model to tag based notification.
+{: #windows-client-2 }
+This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
 
 1. Initialize the `MFPPush` client instance in your application:
 
@@ -1278,6 +1330,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    ```
     
 ##### Server
+{: #windows-server-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
 
 * `notifyAllDevices()`
@@ -1287,14 +1340,16 @@ Remove the following `WL.Server` APIs (if used) in your adapter:
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the WNS credentials in the **Push Settings** page of MobileFirst Operations Console or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of MobileFirst Operations Console.
-3. Create Push tags in the **Tags** page of MobileFirst Operations Console.
+1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
+2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
+3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
 4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
 
 #### Scenario 3: Existing applications using broadcast/Unicast notification in their application
-##### Client
+{: #windows-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 
+##### Client
+{:# windows-client-3 }
 1. Initialize the `MFPPush` client instance in your application:
 
    ```csharp
@@ -1344,17 +1399,20 @@ Complete the following steps for every application that was using the same event
     * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
 
 ##### Server
+{: #windows-server-3 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the WNS credentials in the **Push Settings** page of MobileFirst Operations Console or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of MobileFirst Operations Console.
-3. Create Push tags in the **Tags** page of MobileFirst Operations Console.
+1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
+2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
+3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
 4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
 
 #### Scenario 4: Existing applications using tag notifications in their application
+{: #windows-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
+{: #windows-client-4 }
 
 1. Initialize the `MFPPush` client instance in your application:
 
@@ -1441,11 +1499,70 @@ Complete the following steps for every application that was using the same event
    ```
     
 ##### Server
+{: #windows-server-4 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.
 
 Complete the following steps for every application that was using the same event source:
 
-1. Set up the WNS credentials in the **Push Settings** page of MobileFirst Operations Console or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of MobileFirst Operations Console.
-3. Create Push tags in the **Tags** page of MobileFirst Operations Console.
+1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
+2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
+3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
 4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+
+## Migration tool
+{: #migration-tool }
+The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.  
+The migration tool simplifies the process with the following functions:
+
+1. Reads the devices, credentials, tags and user subscriptions for each application from the MobileFirst Platform Foundation 7.1 database.
+2. Copies the data to respective tables in {{ site.data.keys.product }} 8.0 database for respective application.
+3. Migrates all the Push data of all v7.1 environments, irrespective of environments in the v8.0 application.
+
+The migration tool doesn't modify any data related to user subscriptions, application environments or devices.  
+
+The following information is important to know before you use the migration tool:
+
+1. You must have Java version 1.6 or above.
+2. Make sure you have both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0 setup and ready.
+3. Make a backup of both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0.
+4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
+	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
+	* Remember the PacakgeName/BundleID and provide the same values for the applications.
+	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will succeed.
+5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
+
+#### Procedure
+{: #procedure }
+1. Download the migration tool from [its following GitHub repository](http://github.com).
+2. After downloading the tool, provide the following details in the **migration.properties** file:
+	
+    | Value                | Description  | Sample Values |
+    |----------------------|--------------|---------------|
+    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB password | pw.db.password=root |
+    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB username     | pw.db.adminusername=root |
+    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB password     | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | MFP 8.0 DB url						        | jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | MFP 8.0 DB username						| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | MFP 8.0 DB password						| pw.db.passwordTarget=root |
+    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB schema | WRKLGT |
+    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB schema     | WLADMIN |
+    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB schema    | MFPDATA |
+    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime name		 | runtime=worklight |
+    | applicationId	       | Provide list of applications registered on MobileFirst Platform Foundation 7.1 separated by comma(,) | HybridTestApp,NativeiOSTestApp |
+    | targetApplicationId  | Provide list of applications registered on {{ site.data.keys.product }} 8.0 separated by comma(,).   | com.HybridTestApp,com.NativeiOSTestApp |
+
+    * Make sure that you have provided values for both **applicationID** and **targetApplicationId** in proper sequence. The mapping is done in 1-1 (or n-n) fashion, i.e. data of the first application in **applicationId** list will be migrated to the first application in the **targetApplicationId** list.
+	* In the **targetApplicationId** list, provide a packageName/BundleId for the application. i.e. for TestApp1 in MobileFirst Platform Foundation 7.1, **targetApplicationId** will be packageName/BundleId of TestApp1 which is com.TestApp1. This is because in MobileFirst Platform Foundation 7.1 **applicationId** is the application name and in {{ site.data.keys.mf_server }} 8.0 it is packageName/BundleId/packageIdentityName based on application environment.
+
+2. Run the tool by using the following command:
+
+   ```bash
+   java -jar pushDataMigration.jar path-to-migration.properties
+   ```
+   
+   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+

@@ -7,15 +7,16 @@ weight: 2
 ---
 
 ## Overview
-For secure Direct Update to work, a user-defined keystore file must be deployed in MobileFirst Server and a copy of the matching public key must be included in the deployed client application.
+{: #overview }
+For secure Direct Update to work, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in MobileFirst Server, see [Configuring the MobileFirst Server keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in {{ site.data.keys.mf_server }}, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
 
-**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the MobileFirst Server. However, if you previously published the application to the market, without the public key, you must republish it.
+**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the {{ site.data.keys.mf_server }}. However, if you previously published the application to the market, without the public key, you must republish it.
 
-For development purposes, the following default, dummy public key is provided with MobileFirst Server:
+For development purposes, the following default, dummy public key is provided with {{ site.data.keys.mf_server }}:
 
 ```xml
 -----BEGIN PUBLIC KEY-----
@@ -38,10 +39,10 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 > Important: Do not use the public key for production purposes.
 
 ## Generating and deploying the keystore
-
+{: #generating-and-deploying-the-keystore }
 There are many tools available for generating certificates and extracting public keys from a keystore. The following example demonstrates the procedures with the JDK keytool utility and openSSL.
 
-1. Extract the public key from the keystore file that is deployed in the MobileFirst Server.  
+1. Extract the public key from the keystore file that is deployed in the {{ site.data.keys.mf_server }}.  
    Note: The public key must be Base64 encoded.
     
    For example, assume that the alias name is `mfp-server` and the keystore file is **keystore.jks**.  

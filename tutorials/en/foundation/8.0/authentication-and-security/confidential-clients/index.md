@@ -2,20 +2,23 @@
 layout: tutorial
 title: Confidential Clients
 relevantTo: [android,ios,windows,javascript]
-weight: 8
+weight: 10
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Mobile applications can utilize the MobileFirst client SDKs to request access to protected resources.  
+{: #overview }
+Mobile applications can utilize the {{ site.data.keys.product_adj }} client SDKs to request access to protected resources.  
 Other entities which are not mobile applications can do so as well. Such entities are considered as **Confidential Clients**.
 
-Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the MobileFirst authorization server to grant confidential clients access to protected resources, in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the MobileFirst Foundation **REST APIs**, such as the REST API for **push notifications**.
+Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the {{ site.data.keys.product_adj }} authorization server to grant confidential clients access to protected resources, in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the {{ site.data.keys.product }} **REST APIs**, such as the REST API for **push notifications**.
 
-You begin by registering a confidential client with MobileFirst Server. As part of the registration, you provide the credentials of the confidential client, which consist of an ID and a secret. In addition, you set the client's allowed scope, which determines the scopes that can be granted to this client. When a registered confidential client requests an access token from the authorization server, the server authenticates the client by using the registered credentials, and verifies that the requested scope matches the client’s allowed scope.
+You begin by registering a confidential client with {{ site.data.keys.mf_server }}. As part of the registration, you provide the credentials of the confidential client, which consist of an ID and a secret. In addition, you set the client's allowed scope, which determines the scopes that can be granted to this client. When a registered confidential client requests an access token from the authorization server, the server authenticates the client by using the registered credentials, and verifies that the requested scope matches the client’s allowed scope.
 
-Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification. Note that an access token for a confidential client is valid for one hour. If you're using a confidential client for a task that lasts more than an hour, renew the token every hour by sending a new token request.
+Registered confidential clients can obtain a token to be used in all requests to the {{ site.data.keys.mf_server }}. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification. Note that an access token for a confidential client is valid for one hour. If you're using a confidential client for a task that lasts more than an hour, renew the token every hour by sending a new token request.
 
 ## Registering the confidential client
-In the navigation sidebar of the MobileFirst Operations Console, click **Runtime Settings** → **Confidential Clients**. Click **New** to add a new entry.  
+{: #registering-the-confidential-client }
+In the navigation sidebar of the {{ site.data.keys.mf_console }}, click **Runtime Settings** → **Confidential Clients**. Click **New** to add a new entry.  
 You must provide the following information:
 
 - **Display Name**: an optional display name that is used to refer to the confidential client. The default display name is the value of the ID parameter. For example: **Back-end Node server**.
@@ -37,9 +40,11 @@ You must provide the following information:
 <img class="gifplayer" alt="Configurting a confidential client" src="push-confidential-client.png"/>
 
 ## Predefined confidential clients
-The MobileFirst Platform Server comes with some predefined confidential clients:
+{: #predefined-confidential-clients }
+The {{ site.data.keys.mf_server }} comes with some predefined confidential clients:
 
 ### test
+{: #test }
 The `test` client is available only in development mode. It allows you to test your resources easily.
 
 - **ID**: `test`
@@ -47,20 +52,23 @@ The `test` client is available only in development mode. It allows you to test y
 - **Allowed Scope**: `*` (any scope)
 
 ### admin
-The `admin` client is used internally by the MobileFirst Foundation administration service.
+{: #admin }
+The `admin` client is used internally by the {{ site.data.keys.product }} administration service.
 
 ### push
-The `push` client is used internally by the MobileFirst Foundation push service.
+{: #push }
+The `push` client is used internally by the {{ site.data.keys.product }} push service.
 
 ## Obtaining an access token
-A token can be obtained from the MobileFirst Server **token endpoint**.  
+{: #obtaining-an-access-token }
+A token can be obtained from the {{ site.data.keys.mf_server }} **token endpoint**.  
 
 For **testing purposes**, you can use Postman as described below.  
 In a real situation, implement Postman in your back-end logic, with the technology of your choice.
 
 1. Make a **POST** request to **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
     For example: `http://localhost:9080/mfp/api/az/v1/token`
-    - In a development environment, the MobileFirst Server uses a pre-existing `mfp` runtime.  
+    - In a development environment, the {{ site.data.keys.mf_server }} uses a pre-existing `mfp` runtime.  
     - In a production environment, replace the runtime value with your runtime name.
 
 2. Set the request with a content-type of `application/x-www-form-urlencoded`.  
@@ -91,18 +99,23 @@ The response for this request will contain a `JSON` object, including the **acce
 ![Creating a confidential client](confidential-client-access-token.png)
 
 ## Using the access token
+{: #using-the-access-token }
 From here on, you can make requests to the desired resources by adding the **HTTP header**: `Authorization: Bearer eyJhbGciOiJSUzI1NiIsImp ...`, replacing the access token by the one you extracted from the previous JSON object.
 
 ## Possible responses
-In addition to the normal responses that your resource may generate, look out for a few responses that are generated by MobileFirst Server.
+{: #possible-responses }
+In addition to the normal responses that your resource may generate, look out for a few responses that are generated by {{ site.data.keys.mf_server }}.
 
 ### Bearer
+{: #bearer }
 An HTTP **401** response status with the HTTP header `WWW-Authenticate : Bearer` means that no token was found on the `Authorization` header of the original request.
 
 ### invalid_token
+{: #invalid-token }
 An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer error="invalid_token"` means that the token that was sent is **invalid** or **expired**.
 
 ### insufficient_scope
+{: #insufficient-scope }
 An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
 
 When making a request, if you do not know which scope is required by the resource, `insufficient_scope` is the way to determine the answer.  

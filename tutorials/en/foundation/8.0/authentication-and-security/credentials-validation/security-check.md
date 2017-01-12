@@ -8,8 +8,9 @@ downloads:
   - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
 
@@ -18,7 +19,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 **Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
 
 #### Jump to:
-
+{: #jump-to }
 * [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
@@ -26,6 +27,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
+{: #creating-the-security-check }
 [Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
@@ -44,6 +46,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 ```
 
 ## Creating the challenge
+{: #creating-the-challenge }
 When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
 Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
 
@@ -64,6 +67,7 @@ protected Map<String, Object> createChallenge() {
 `getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
+{: #validating-the-user-credentials }
 When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
 
 ```java
@@ -91,7 +95,8 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### Configuration class
-You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
+{: #configuration-class }
+You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
 
 Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
 
@@ -177,6 +182,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Configuring the security check
+{: #configuring-the-security-check }
 In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
@@ -214,6 +220,7 @@ Note that the default value for `blockedStateExpirationSec` is set to `0`: if th
 
 
 ## Sample Security Check
+{: #sample-security-check }
 [Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 The Maven project contains an implementation of CredentialsValidationSecurityCheck.

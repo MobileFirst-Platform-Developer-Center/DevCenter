@@ -4,7 +4,7 @@ date: 2016-10-27
 tags:
 - MobileFirst_Foundation
 - iOS
-- bluemix
+- Bluemix
 - Bluemix_Push_Service
 version:
 - 8.0

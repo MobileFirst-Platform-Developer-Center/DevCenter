@@ -23,7 +23,7 @@ IBM MobileFirst Platform Foundation supports offline development, but requires m
         * cordova-windows (4.2.0+)
 * [Java (JDK 1.7+)](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html): For running a local development server
 * [Maven (3.3.9+)](https://maven.apache.org/download.cgi): For adapter development
-* [MobileFirst Platform Foundation Development Kit (8.0+)]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/#mobilefirst-foundation-development-kit): Includes the MobileFirst Server & MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
+* [MobileFirst Developer Kit (V8.0+)]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/#mobilefirst-developer-kit): Includes the MobileFirst Server & MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
 * [Node.js (0.12.0+)](https://nodejs.org/en/download/releases/): For the MobileFirst CLI and Cordova
 
 For additional offline platform specific development prerequisites see the [tutorial page]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/) for more instructions.

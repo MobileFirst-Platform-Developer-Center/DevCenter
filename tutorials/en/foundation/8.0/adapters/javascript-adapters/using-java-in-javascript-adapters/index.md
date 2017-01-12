@@ -7,14 +7,17 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 
 When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ## Adding custom Java classes 
+{: #adding-custom-java-classes }
+
 ![UsingJavainJS](UsingJavainJS.png)
 
 To use an existing Java library, add the JAR file as a dependency to your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
@@ -42,6 +45,8 @@ public class Calculator {
 ```
 
 ## Invoking custom Java classes from the adapter
+{: #invoking-custom-java-classes-from-the-adapter }
+
 After your custom Java code is created and any required JAR files are added, you can call it from the JavaScript code:
 
 * Invoke the static Java method as shown, and use the full class name to reference it directly:
@@ -66,10 +71,14 @@ function subtractTwoIntegers(a,b){
 ```
 
 ## Sample adapter
+{: #sample-adapter }
+
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+{: #sample-usage }
+
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
 
 When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.

@@ -8,7 +8,7 @@ custom_js:
   - lib/magnific/jquery.magnific-popup.min.js
   - js/search.js
 ---
-<script id="searchResultTemplate" type="text/x-jsrender">
+<script id="searchResultTemplate" type="text/x-jsrender" role="main">
     {% raw %}
     <div class="searchResult">
         {{if highlight && highlight.title}}
@@ -65,6 +65,7 @@ custom_js:
             <option value="ios">iOS</option>
             <option value="android">Android</option>
             <option value="windows">Windows</option>
+            <option value="javascript">Web</option>
         </select>
 
         <select id="versions" multiple="multiple">

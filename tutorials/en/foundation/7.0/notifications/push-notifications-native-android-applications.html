@@ -48,6 +48,19 @@ To create and configure an Android native project, first follow these tutorials:
 <p>{% highlight xml  %}
 <pushSender key="GCM-KEY" senderId="GCM-ID"/>
 {% endhighlight %} 
+        
+<blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
+
+<ol>
+   <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+   <li>Create a new project and provide a project name.</li>
+   <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+   <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+</ol>
+
         </li>
 </ul>
 </li>

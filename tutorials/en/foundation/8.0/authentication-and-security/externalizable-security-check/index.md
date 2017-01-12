@@ -5,7 +5,9 @@ breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
 
 * Externalization - this class implements the `Externalizable` interface, so that the derived classes don't need to implement it themselves.
@@ -18,6 +20,7 @@ This tutorial explains how to implement the class and demonstrates how to manage
 **Prerequisites:** Make sure to read the [Authorization concepts](../) and [Creating a Security Check](../creating-a-security-check) tutorials.
 
 #### Jump to:
+{: #jump-to }
 * [The initStateDurations Method](#the-initstatedurations-method)
 * [The authorize Method](#the-authorize-method)
 * [The introspect Method](#the-introspect-method)
@@ -25,6 +28,7 @@ This tutorial explains how to implement the class and demonstrates how to manage
 * [The RegistrationContext Object](#the-registrationcontext-object)
 
 ## The initStateDurations Method
+{: #the-initstatedurations-method }
 The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method by providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
 
 ```java
@@ -38,6 +42,7 @@ protected void initStateDurations(Map<String, Integer> durations) {
 > For more information about security check configuration, see the [configuration class section](../credentials-validation/security-check/#configuration-class) in the Implementing the CredentialsValidationSecurityCheck tutorial.
 
 ## The authorize Method
+{: #the-authorize-method }
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, managing states and sending a response to the client (success, challenge, or failure).
 
 Use the following helper methods to manage states:
@@ -87,6 +92,7 @@ The `AuthorizationResponse.addChallenge` method adds a challenge to the response
 * A challenge `Map` object.
 
 ## The introspect Method
+{: #the-introspect-method }
 The `SecurityCheck` interface defines a method called `introspect`. This method must make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check must report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does nothing.  
 This method might change the state of the security check and/or the client registration record.
 
@@ -99,6 +105,7 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
 ```
 
 ## The AuthorizationContext Object
+{: #the-authorizationcontext-object }
 The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object which is used for storing transient data associated with the current client for the security check.  
 Use the following methods to store and obtain data:
 
@@ -115,6 +122,7 @@ Use the following methods to store and obtain data:
   ```
 
 ## The RegistrationContext Object
+{: #the-registrationcontext-object }
 The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
 Use the following methods to store and obtain data:
 
@@ -149,4 +157,5 @@ Use the following methods to store and obtain data:
   ```
 
 ## Sample Application
+{: #sample-application }
 For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.

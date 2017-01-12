@@ -5,9 +5,10 @@ breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the MobileFirst template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by IBM MobileFirst Foundation with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+{: #overview }
+If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
 
 You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
 
@@ -16,10 +17,12 @@ You must create a new folder to hold the splash images and icons, and modify the
 3. Update the **config.xml** configuration file to point to your custom files.
 
 ### Android
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the MobileFirst template.
+{: #android }
+If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
 
 #### Splash screens
-If you did *not* use the MobileFirst template when you created your app, the splash images that are displayed are those that are retrieved from the MobileFirst images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+{: #splash-screens }
+If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -29,7 +32,7 @@ If you did *not* use the MobileFirst template when you created your app, the spl
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the MobileFirst template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -43,6 +46,7 @@ If you used the MobileFirst template when you created your app, you must update 
 ```
 
 #### Icons
+{: #icons }
 The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
 
 ```xml
@@ -55,9 +59,11 @@ The file names of the icon files must be the same as the entries in the followin
 ```
 
 ### iOS
+{: #ios }
 If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
     
 #### Splash screens
+{: #splash-screens-ios }
 The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
 
 ```xml
@@ -73,6 +79,7 @@ The paths and file names of the splash screen files must be the same as the name
 ```
 
 #### Icons
+{: #icons-ios}
 The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
 
 ```xml
@@ -96,9 +103,11 @@ The file names of the icon files must be the same as the names in the following 
 ```
 
 ### Windows
+{: #windows }
 If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
 
 #### Splash screens
+{: #splash-screens-windows }
 The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
 
 ```xml
@@ -109,6 +118,7 @@ The paths and file names of the splash screen files must be the same as the name
 ```
 
 #### Icons
+{: #icons-windows }
 The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
 
 ```xml

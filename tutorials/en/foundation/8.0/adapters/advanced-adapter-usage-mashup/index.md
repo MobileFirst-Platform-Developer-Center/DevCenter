@@ -8,21 +8,27 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
 
 In theory, from the client side, you could make several requests successively, one depending on the other.
 However, writing this logic on the server side could be faster and cleaner.
 
-#### Jump to:
-
+#### Jump to
+{: #jump-to}
 * [JavaScript adapter API](#javascript-adapter-api)
 * [Java adapter API](#java-adapter-api)
 * [Data mashup example](#data-mashup-example)
 * [Sample application](#sample-application)
 
 ## JavaScript adapter API
+{: #javascript-adapter-api }
+
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
+{: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
+
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API. This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
@@ -37,6 +43,8 @@ MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions
 > Calling a Java adapter from a JavaScript adapter is not supported
 
 ## Java adapter API
+{: #java-adapter-api }
+
 Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
 
 ```java
@@ -45,6 +53,8 @@ AdaptersAPI adaptersAPI;
 ```
 
 ### Calling a Java adapter from a Java adapter
+{: #calling-a-java-adapter-from-a-java-adapter }
+
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
 
@@ -55,6 +65,8 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
 ### Calling a JavaScript adapter procedure from a Java adapter
+{: calling-a-javascript-adapter-procedure-from-a-java-adapter }
+ 
 When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
 
 ```java
@@ -64,6 +76,8 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
 ## Data mashup example
+{: #data-mashup-example }
+
 The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
 
 In this example we will use 2 adapters:
@@ -92,6 +106,8 @@ Here is a list of the mashup types and the corresponding adapter names:
 
 
 ### Mashup Sample Flow
+{: #mashup sample flow }
+
 **1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
 
 (HTTPAdapterJS adapter) XML:
@@ -287,21 +303,27 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 <img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
 
 ## Sample application
+{: #sample-application }
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
 
 **Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
 
 ### Sample usage
+{: #sample-usage }
+
 #### Adapter setup
+{: #adapter-setup }
+
 An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
-2. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
-3. Open the MobileFirst Console
+2. Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
+3. Open the {{ site.data.keys.mf_console }}
     - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
     - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
 
 #### Application setup
+{: #application-setup }
 
 1. From the command line, navigate to the **CordovaApp** project's root folder.
 2. Add a platform by running the `cordova platform add` command.

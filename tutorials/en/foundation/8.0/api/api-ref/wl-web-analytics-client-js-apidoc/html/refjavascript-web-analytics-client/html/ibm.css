@@ -1,0 +1,301 @@
+/* ibm.css */
+
+
+body { 
+	font-size: 13px;
+	font-family: Arial, Verdana, Helvetica,  sans-serif; 
+    font-style: normal; font-weight: normal; color: #000000; background-color: #FFFFFF; 
+    letter-spacing: normal; text-align: left; word-spacing: normal;}
+    width: 600px;
+}
+
+h1, h1.classTitle, h1.Heading1  {
+	font-size: 16px;
+	line-height:130%;
+	font-weight: bold;
+} 
+
+h2, h2.classTitle, h2.Heading2 {
+	font-size: 16px;
+	line-height:130%;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 13px;
+}
+
+body a:active {color: #cc9900;}
+body a:hover {color: #cc9900;}
+a:link {color: #005da0}
+a:visited {color: #704d90}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code, pre.ShortCode
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+	font-size: 13px;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+.classList, .indexEntries
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-size: 13px;
+	overflow: none;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+table.summaryTable {padding: 0px 0px 6px 0px;}
+table.userTable {padding: 0px 0px 6px 0px; border-spacing: 0 0 0 0; border-collapse: collapse}
+table.inheritedTable {padding: 0px 0px 6px 0px;}
+
+.summaryTable, .userTable { width: 100%;  margin-bottom: 8px; }
+.userTable { margin-top: 8px; }
+.inheritedTable { width: 100%;  margin-bottom: 8px; }
+
+caption, div.sectionTitle
+{
+	background-color: #bfd6e7;
+	font-weight: bold;
+	color: black;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+	font-size: 16px; 
+}
+
+
+/*.TableHeadingColor     { background: #bfd6e7 }  ilog blue */
+/*.TableSubHeadingColor  { background: #E3EDF5 } /ilog gray */
+
+div.sectionTitle { margin-bottom: 12px; margin-top:12px; }
+
+.summaryTable thead { display: none; }
+
+.userTable th
+{
+	border-top: 1px #7F8FB1 solid;
+	border-left: 1px #7F8FB1 solid;
+	background-color: #bfd6e7;
+	border-spacing: 0 0 0 0;
+}
+
+.userTable tr
+{
+	border-spacing: 0 0 0 0;
+}	
+
+.summaryTable td, .userTable td, .userTable th
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+	border-left: 1px #7F8FB1 solid;
+}
+
+.indexTable tr, .indexTable td 
+{
+	vertical-align: top;
+	padding: 0px;
+	margin-top: Opx;
+	margin-bottom : 0px;
+	padding-right: 4px;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	
+	width: 140px;
+	text-align: right;
+}
+
+.userTable td.attributes
+{
+	border-right: 1px #7F8FB1 solid;
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: left;
+}
+
+.inheritedTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+	border-left: 1px #7F8FB1 solid;
+	text-align: left;
+	font-size: 13px;
+}
+
+.inheritedTable caption {
+	font-size: 13px;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	//color: #002EBE;
+	color: black;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.parameters
+{
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.method
+{
+    font-size: 15px;
+	margin-bottom: 12px;
+	margin-top: 12 px;
+	font-weight: bold;
+
+}
+
+.navBar  {
+	background: #E3EDF5;
+	font-size: 13px;
+	padding: 6px 6px 6px 6px;
+}
+
+.frameNavBar  {
+	background: white;
+	font-size: 11px;
+	padding-left: 6px; 
+	padding-right: 6px;
+	padding-bottom:	0px;
+	padding-top: 6px;
+	text-align : right;
+}
+
+.summaryTable td.nameDescription, .description, .userTable td.nameDescription
+{
+	text-align: left;
+	padding-top: 4px;
+	font-size: 13px;
+	line-height: 15px;
+	border-spacing: 0 0 0 0;
+}
+
+.detailedDescription
+{
+	line-height: 15px;
+	padding-top: 12px;
+	font-size: 13px;
+}
+
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+dl { margin-left: 0; }
+
+.detailList {
+	line-height: 15px;
+	font-size: 13px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+	font-size: 13px;
+}
+
+.detailList .detailList
+{
+	padding-bottom: 6px;
+}
+
+div.heading {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 12px;
+	margin-top: 12px;
+
+}
+
+.light, .inheritedTable td.attributes, .summaryTable td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+/* Accessibility for people with Physical disabilities */
+img.ibm-access {
+   border: 0px;
+}
+
+div.ibm-access {
+	font-size:10px;
+    margin-top:-8px;
+ 
+}
+/* Accessibility for people with Physical disabilities */
+img.ibm-access {
+   border: 0px;
+}
+
+div.ibm-access {
+	font-size:10px;
+    margin-top:-8px;
+ 
+}
+
+.skip {
+    position:absolute;
+    top:auto;
+    left:-9999px;
+    overflow:hidden;
+ }

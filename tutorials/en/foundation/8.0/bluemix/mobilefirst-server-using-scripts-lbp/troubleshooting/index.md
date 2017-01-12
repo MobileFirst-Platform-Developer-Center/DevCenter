@@ -4,8 +4,9 @@ title: Troubleshooting
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
-
-### Resolving problems with IBM MobileFirst Foundation on Liberty for Java runtime	
+<!-- NLS_CHARSET=UTF-8 -->
+### Resolving problems with {{ site.data.keys.product_full }} on Liberty for Java runtime	
+{: resolving-problems-with-ibm-mobilefirst-foundation-on-liberty-for-java-runtime }
 When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
 
 To help expedite the troubleshooting process, gather the following information:
@@ -19,6 +20,7 @@ To help expedite the troubleshooting process, gather the following information:
  - `cf app APP_NAME`
 
 ### Unable to create the mfpfsqldb.xml file
+{: #unable-to-create-the-mfpfsqldbxml-file }
 An error occurs at the end of running the **prepareserverdbs.sh** script:
 
 > Error : unable to create mfpfsqldb.xml
@@ -27,6 +29,7 @@ An error occurs at the end of running the **prepareserverdbs.sh** script:
 The problem might be an intermittent database connectivity issue. Try to run the script again.
 
 ### Script fails and returns message about tokens	
+{: #script-fails-and-returns-message-about-tokens }
 Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
 
 **Explanation**  
@@ -36,6 +39,7 @@ The Bluemix session might have timed-out. The user must be logged in to Bluemix 
 Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
 
 ### Administration DB, Live Update and Push Service show up as inactive	
+{: #administration-db-live-update-and-push-service-show-up-as-inactive }
 Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the MobileFirst Foundation Operations Console even though the **prepareserver.sh** script completed successfully.
 
 **Explanation**  

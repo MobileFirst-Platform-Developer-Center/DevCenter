@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SecurityCheckChallengeHandler Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		
+		
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SecurityCheckChallengeHandler Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SecurityCheckChallengeHandler Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/BaseChallengeHandler.html">BaseChallengeHandler</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SecurityCheckChallengeHandler.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>You use this base class to create an IBM MobileFirst Platform challenge handler.
+You must extend this class to implement your own version of an IBM MobileFirst Platform challenge handler, for example RemoteDisableChallengeHandler.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithSecurityCheck:">&ndash;&nbsp;initWithSecurityCheck:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/submitChallengeAnswer:">&ndash;&nbsp;submitChallengeAnswer:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleSuccess:">&ndash;&nbsp;handleSuccess:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleFailure:">&ndash;&nbsp;handleFailure:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleChallenge:">&ndash;&nbsp;handleChallenge:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/handleChallenge:" title="handleChallenge:"></a>
+	<h3 class="subsubtitle method-title">handleChallenge:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is called when the IBM MobileFirst Platform Server returns a challenge for the realm.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)handleChallenge:(NSDictionary *)<em>challenge</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SecurityCheckChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleFailure:" title="handleFailure:"></a>
+	<h3 class="subsubtitle method-title">handleFailure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is called when the IBM MobileFirst Platform Server reports an authentication failure.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)handleFailure:(NSDictionary *)<em>failure</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SecurityCheckChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleSuccess:" title="handleSuccess:"></a>
+	<h3 class="subsubtitle method-title">handleSuccess:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is called when the IBM MobileFirst Platform Server reports an authentication success.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)handleSuccess:(NSDictionary *)<em>success</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SecurityCheckChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithSecurityCheck:" title="initWithSecurityCheck:"></a>
+	<h3 class="subsubtitle method-title">initWithSecurityCheck:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a challenge handler for the specific security check name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithSecurityCheck:(NSString *)<em>securityCheck</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>securityCheck</em></dt>
+			<dd><p>The name of the security check that will be handled.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SecurityCheckChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/submitChallengeAnswer:" title="submitChallengeAnswer:"></a>
+	<h3 class="subsubtitle method-title">submitChallengeAnswer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Send the answer back to the request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)submitChallengeAnswer:(NSDictionary *)<em>answer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>answer</em></dt>
+			<dd><p>A dictionary that will be converted to JSON and sent back to the security check.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SecurityCheckChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		
+	</body>
+</html>

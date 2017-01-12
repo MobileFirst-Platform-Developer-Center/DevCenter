@@ -12,12 +12,15 @@ downloads:
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/android) tutorial.
 
 The challenge handler tutorial demonstrates a few additional features (APIs) such as preemptive `login`, `logout`, and `obtainAccessToken`.
 
 ## Login
+{: #login }
 In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected using a
 Boolean value from a checkbox in the login form.
 
@@ -29,7 +32,7 @@ submitChallengeAnswer(credentials);
 
 You might also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
 
 ```java
 WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
@@ -69,9 +72,10 @@ public void login(JSONObject credentials){
 >The `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `handleSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
 
 ## Obtaining an access token
+{: #obtaining-an-access-token }
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
-The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The {{ site.data.keys.product }} SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```java
 WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenListener() {
@@ -97,6 +101,7 @@ The `obtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scopes** in the [Authorization concepts](../../) tutorial
 
 ## Retrieving the authenticated user
+{: #retrieving-the-authenticated-user }
 The challenge handler `handleSuccess` method takes a `JSONObject identity` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
 
@@ -131,7 +136,8 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
 ```
 
 ## Logout
-The MobileFirst Foundation SDK also provides a `logout` API to log out from a specific security check:
+{: #logout }
+The {{ site.data.keys.product }} SDK also provides a `logout` API to log out from a specific security check:
 
 ```java
 WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutResponseListener() {
@@ -148,6 +154,7 @@ WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutRespo
 ```
 
 ## Sample applications
+{: #sample-applications }
 Two samples are associated with this tutorial:
 
 - **PreemptiveLoginAndroid**: An application that always starts with a login screen, using the preemptive `login` API.
@@ -160,6 +167,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80) the Preemptive Login project.
 
 ### Sample usage
+{: sample-usage }
 Follow the sample's README.md file for instructions.  
 The username/password for the app must match, i.e. "john"/"john".
 

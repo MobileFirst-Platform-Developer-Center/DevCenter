@@ -5,7 +5,9 @@ breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 To deploy applications to the Application Center through a build process, use the command-line tool.
 
 You can upload an application to the Application Center by using the web interface of the Application Center console. You can also upload a new application by using a command-line tool.
@@ -22,12 +24,14 @@ The tools directory contains all the files required to support the use of the to
 * **acdeploytool.sh** and **acdeploytool.bat**: Simple scripts to call java with **applicationcenterdeploytool.jar**.
 
 #### Jump to
+{: #jump-to }
 * [Using the stand-alone tool to upload an application](#using-the-stand-alone-tool-to-upload-an-application)
 * [Using the stand-alone tool to delete an application](#using-the-stand-alone-tool-to-delete-an-application)
 * [Using the stand-alone tool to clear the LDAP cache](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
 * [Ant task for uploading or deleting an application](#ant-task-for-uploading-or-deleting-an-application)
 
 ### Using the stand-alone tool to upload an application
+{: #using-the-stand-alone-tool-to-upload-an-application }
 To upload an application, call the stand-alone tool from the command line.  
 Use the stand-alone tool by following these steps.
 
@@ -64,6 +68,7 @@ java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u d
 ```
 
 ### Using the stand-alone tool to delete an application
+{: #using-the-stand-alone-tool-to-delete-an-application }
 To delete an application from the Application Center, call the stand-alone tool from the command line.  
 Use the stand-alone tool by following these steps.
 
@@ -91,6 +96,7 @@ You can specify files or the application package, operating system, and version.
 * `package`: All versions of all operating systems of this application are deleted from the Application Center.
 
 #### Example
+{: #example-delete }
 In this example, user demo has the password demopassword. Use this command line to delete the iOS application demo.HelloWorld with internal version 3.0.
 
 ```bash
@@ -98,6 +104,7 @@ java com.ibm.appcenter.Upload -delete -s http://localhost:9080 -c applicationcen
 ```
 
 ### Using the stand-alone tool to clear the LDAP cache
+{: #using-the-stand-alone-tool-to-clear-the-ldap-cache }
 Use the stand-alone tool to clear the LDAP cache and make changes to LDAP users and groups visible immediately in the Application Center.
 
 When the Application Center is configured with LDAP, changes to users and groups on the LDAP server become visible to the Application Center after a delay. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call the stand-alone tool from the command line to clear the cache of LDAP data. By using the stand-alone tool to clear the cache, the changes become visible immediately.
@@ -122,6 +129,7 @@ You can pass any of the available options in the command line.
 | -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.| 
 
 #### Example
+{: #example-cache }
 In this example, user demo has the password demopassword.
 
 ```bash
@@ -129,10 +137,11 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 ```
 
 ### Ant task for uploading or deleting an application
+{: ant-task-for-uploading-or-deleting-an-application }
 You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
 Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
 
-For convenience, Apache Ant 1.8.4 is included in IBM MobileFirst Foundation Server. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
+For convenience, Apache Ant 1.8.4 is included in {{ site.data.keys.mf_server }}. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
 
 * ant for UNIX / Linux
 * ant.bat for Windows
@@ -155,6 +164,7 @@ When you use the upload tool as an Ant task, the classname value of the upload A
 | version | The internal version of the application; this parameter is available only in the delete Ant task. Do not use the commercial version here, because the commercial version is unsuitable to identify the version exactly. | 
 
 #### Example
+{: #example-ant }
 You can find an extended example in the **ApplicationCenter/tools/build.xml** directory.  
 The following example shows how to use the Ant task in your own Ant script.
 
@@ -220,7 +230,7 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 ```
 
 #### Properties of the sample Ant script
-
+{: #properties-of-the-sample-ant-script }
 | Property | Comment | 
 |----------|---------|
 | install.dir | Defaults to ../../ | 

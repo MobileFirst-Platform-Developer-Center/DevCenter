@@ -5,25 +5,26 @@ breadcrumb_title: Analytics
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Find information to help resolve issues that you might encounter when you use the MobileFirst Foundation's Operational Analytics.
+{: #overview }
+Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.mf_analytics }}.
 
 <div class="panel panel-default">
   <div class="panel-heading"><h4>There is no data in the analytics console</h4></div>
   <div class="panel-body">
   <p>Check the following possibilities.</p>
   <ul>
-    <li>Verify that your apps are set to point to the MobileFirst Server, which forwards the logs to the MobileFirst Analytics Server. Ensure that the following values are set in the <code>mfpclient.plist</code> (iOS),  <code>mfpclient.properties</code> (Android), or <code>config.xml</code> (Cordova) files.
+    <li>Verify that your apps are set to point to the {{ site.data.keys.mf_server }}, which forwards the logs to the {{ site.data.keys.mf_analytics_server }}. Ensure that the following values are set in the <code>mfpclient.plist</code> (iOS),  <code>mfpclient.properties</code> (Android), or <code>config.xml</code> (Cordova) files.
 
 {% highlight xml %}
 protocol = http or https
-host = the IP address of your MobileFirst Server
+host = the IP address of your {{ site.data.keys.mf_server }}
 port = the HTTP port that is set in the server.xml file for reporting analytics
 wlServerContext = by default "/mfp/"
 {% endhighlight %}</li>
 
-    <li>Ensure that your MobileFirst Server is pointing to your MobileFirst Analytics Server.
+    <li>Ensure that your {{ site.data.keys.mf_server }} is pointing to your {{ site.data.keys.mf_analytics_server }}.
 
 {% highlight xml %}
 /analytics-service
