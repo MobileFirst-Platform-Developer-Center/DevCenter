@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Migrating from Earlier Releases
-weight: 11
+weight: 12
 ---
 ## Overview
 {: #overview }

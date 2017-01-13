@@ -81,7 +81,7 @@ If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in
 {: #notifications-api }
 ### MFPPush Instance
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
+All API calls must be called on an instance of `MFPPush`.  This can be done by using a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
 
 Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
 

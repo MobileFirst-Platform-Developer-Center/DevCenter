@@ -2,7 +2,7 @@
 layout: tutorial
 title: Developing Applications
 show_children: true
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Development Concepts and Overview

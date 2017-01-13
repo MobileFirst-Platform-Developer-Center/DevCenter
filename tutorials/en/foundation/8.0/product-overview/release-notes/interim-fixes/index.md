@@ -52,3 +52,8 @@ Made the following changes to improve the usability of the Migration Assistance 
 #### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
 You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
+
+### Application Center
+{: #application-center}
+
+Cordova based application center client is now available for iOS and Android.
