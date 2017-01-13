@@ -258,7 +258,7 @@ Notifications can be sent to a single Device ID, a single or several User IDs, o
 {: #tag-notifications }
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Push tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
 <img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
@@ -266,7 +266,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Sen
 {: #breadcast-notifications }
 Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Push tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
 ![send-to-all](sending-to-all.png)
 
@@ -390,7 +390,7 @@ After clicking on the **Send** button, the device should have now received a not
 {: #customizing-notifications }
 Before sending the notification message, you can also customize the following notification attributes.  
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Notifications tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
 
 ### Android
 {: #android }
