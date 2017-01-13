@@ -128,7 +128,7 @@ The following JSON is used to setup the SMS gateway for sending SMS notification
 {: #scope-mapping }
 Map the **push.mobileclient** scope element to the application.
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
+1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **Create New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
     <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
@@ -229,7 +229,7 @@ Authenticated notifications are notifications that are sent to one or more `user
 
 Map the **push.mobileclient** scope element to the security check used for the application.  
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **Create New** or edit an existing scope mapping entry.
 2. Select a security check. Then, click **Add**.
 
     <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
