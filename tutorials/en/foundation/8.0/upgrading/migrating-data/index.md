@@ -6,6 +6,7 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
 
 > CloudantToolkit and IMFData frameworks are discontinued in {{ site.data.keys.product_full }} v8.0.
@@ -16,6 +17,7 @@ You can store data for your mobile application in a Cloudant  database. Cloudant
 If you want to access remote stores directly, use REST calls in your application and refer to the [Cloudant API Reference](https://docs.cloudant.com/api.html).
 
 ### Cloudant versus JSONStore
+{: #cloudant-versus-jsonstore }
 You might consider using JSONStore instead of Cloudant in the following scenarios:
 
 * When you are storing data on the mobile device that must be stored in a FIPS 140-2 compliant manner.
@@ -25,7 +27,7 @@ You might consider using JSONStore instead of Cloudant in the following scenario
 For more information about JSONStore, see [JSONStore](../../application-development/jsonstore).
 
 #### Jump to
-
+{: #jump-to }
 * [Integrating {{ site.data.keys.product_adj }} and Cloudant security](#integrating-mobilefirst-and-cloudant-security)
 * [Creating databases](#creating-databases)
 * [Encrypting data on the device](#encrypting-data-on-the-device)
@@ -37,7 +39,9 @@ For more information about JSONStore, see [JSONStore](../../application-developm
 * [Supporting offline storage and synchronization](#supporting-offline-storage-and-synchronization)
 
 ## Integrating {{ site.data.keys.product_adj }} and Cloudant security
+{: #integrating-mobilefirst-and-cloudant-security }
 ### Adapter sample
+{: #adapter-sample }
 To download the sample, see Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise).
 
 To understand the adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security).
@@ -52,6 +56,7 @@ The sample demonstrates how to perform API requests that require admin access on
 The Bluelist sample integrates {{ site.data.keys.product_adj }} security with Cloudant security. The adapter sample maps a {{ site.data.keys.product_adj }} identity to a Cloudant identity. The mobile device receives a Cloudant session cookie to perform non-admin API requests. The sample uses the Couch Security model.
 
 ### Enroll REST endpoint
+{: #enroll-rest-endpoint }
 The following diagram illustrates the integration performed by the Bluelist adapter sample **/enroll** endpoint.
 
 ![sample integration diagram](SecurityIntegration.jpg)
@@ -70,17 +75,22 @@ The following diagram illustrates the integration performed by the Bluelist adap
 7. Mobile device makes requests directly to Cloudant until the session cookie expires.
 
 ### sessioncookie REST Endpoint
+{: #sessioncookie-rest-endpoint }
 In the case of an expired session cookie, the mobile device can exchange a valid {{ site.data.keys.product_adj }} OAuth token for a Cloudant session cookie with the **/sessioncookie** endpoint.
 
 ## Creating databases
+{: #creating-databases }
 ### Accessing local data stores
+{: #accessing-local-data-stores }
 You can use a local data store to store data on the client device for fast access, even when offline.  
 To create Store objects to access a local database, supply a name for the data store.
 
 > **Important:** The database name must be in lowercase.
 
 #### iOS
+{: #ios }
 ##### BEFORE (with IMFData/CloudantToolkit):
+{: #before-with-imdata-cloudanttoolkit }
 
 **Objective-C**  
 
@@ -107,6 +117,7 @@ do {
 ```
 
 ##### AFTER (with Cloudant Sync):
+{: #after-with-cloudant-sync }
 
 **Objective-C**  
 
@@ -137,7 +148,9 @@ do{
 ```
 
 #### Android
+{: #android }
 ##### BEFORE (with IMFData/CloudantToolkit):
+{: before-with-imfdata-cloudanttoolkit }
 
 ```java
 // Get reference to DataManager
@@ -162,7 +175,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 ```
 
 ##### AFTER (with Cloudant Sync):
-
+{: #after-with-cloudant-sync }
 ```java
 // Create DatastoreManager
        File path = context.getDir("databasedir", Context.MODE_PRIVATE);
@@ -174,10 +187,13 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 ```
 
 ### Creating remote data stores
+{: #creating-remote-data-stores }
 To save data in the remote store, supply the data store name.
 
 #### iOS
+{: #ios }
 ##### BEFORE (with IMFData/CloudantToolkit):
+{: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-c**
 
@@ -214,7 +230,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ```
 
 ##### AFTER (with Cloudant Sync):
-
+{: #after-with-cloudant-sync }
 **Objective-c**
 
 ```objc
@@ -226,31 +242,35 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ```
 
 #### Android
+{: #android }
 ##### BEFORE (with IMFData/CloudantToolkit):
+{: #before-with-imfdata-cloudanttoolkit }
 
 ```java
 ```
 
 ##### AFTER (with Cloudant Sync):
-
+{: #after-with-cloudant-sync }
 ```java
 ```
 
 ## Encrypting data on the device
+{: #encrypting-data-on-the-device }
 To enable the encryption of local data stores on mobile devices, you must make updates to your application to include encryption capabilities and create encrypted data stores.
 
 ### Encrypting data on iOS devices
+{: #encrypting-data-on-ios-devices }
 1. Obtain the encryption capabilities with CocoaPods.
    * Open your Podfile and add the following line:
         
    ##### Before (with IMFData/CloudantToolkit):
-        
+   {: # before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
         
    ##### After (with Cloudant Sync):
-
+   {: after-with-cloudant-sync }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
@@ -266,7 +286,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
 2. To use the encryption feature within a Swift application, add the following imports to the associated bridging header for the application: 
     
    ##### Before (with IMFData/CloudantToolkit):
-    
+   {: #before-with-imfdata-cloudanttoolkit}
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
@@ -275,7 +295,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
    ```
     
    ##### After (with Cloudant Sync):
-    
+   {: #after-with-cloudant-sync }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
@@ -286,7 +306,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
    > **Warning:** If you change the password after creating the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database has been encrypted. You must delete the database to change passwords.
 
    ##### BEFORE (with IMFData/CloudantToolkit):
-    
+   {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
    ```objc
@@ -318,7 +338,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
    ```
     
    ##### AFTER (with Cloudant Sync):
-    
+   {: #after-with-cloudant-sync }
    **Objective-C**
 
    ```objc
@@ -353,8 +373,8 @@ To enable the encryption of local data stores on mobile devices, you must make u
     
 4. When you are replicating data with an encrypted local store, you must initialize the CDTPullReplication and CDTPushReplication methods with a key provider.
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
-
+   ##### BEFORE (with IMFData/CloudantToolkit):   
+   {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
    ```objc
@@ -390,15 +410,17 @@ To enable the encryption of local data stores on mobile devices, you must make u
    ```
     
    ##### AFTER (with Cloudant Sync):
+   {: #after-with-cloudant-sync }
    Replication with an encrypted database requires no changes from replication with an unencrypted database.
 
 ### Encrypting data on Android devices
+{: #encrypting-data-on-android-devices }
 To encrypt data on an Android device, obtain encryption capabilities by including the correct libraries in your application. Then, you can initialize your local store for encryption and replicate data.
 
 1. Add the Cloudant Toolkit library as a dependency in your build.gradle file:
 
    ##### BEFORE (with IMFData/CloudantToolkit):
-
+   {: #before-with-imfdata-cloudanttoolkit }
    ```xml
    repositories {
    mavenCentral()
@@ -410,7 +432,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    ```
     
    ##### AFTER (with Cloudant Sync):
-    
+   {: #after-with-cloudant-sync }
     ```xml
     repositories {
         mavenLocal()
@@ -434,7 +456,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    > **Warning:** If you change the password after you create the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database is encrypted. You must delete the database to change passwords.
 
    ##### BEFORE (with IMFData/CloudantToolkit):
-    
+   {: #before-with-imfdata-cloudanttoolkit }
    ```java
    // Get reference to DataManager
    DataManager manager = DataManager.getInstance();
@@ -460,7 +482,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    ```
     
    ##### AFTER (with Cloudant Sync):
-    
+   {: #after-with-cloudant-sync }   
    ```java
    // Load SQLCipher libs
    SQLiteDatabase.loadLibs(context);
@@ -479,7 +501,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
 4. When you are replicating data with an encrypted local store, you must pass a KeyProvider object into the `pullReplicationForStore()` or `pushReplicationForStore()` method.
 
    ##### BEFORE (with IMFData/CloudantToolkit):
-    
+   {: #before-with-imfdata-cloudanttoolkit }
    ```java
    //Get reference to data manager
    DataManager manager = DataManager.getInstance();
@@ -496,13 +518,15 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    ```
 
    ##### AFTER (with Cloudant Sync):
+   {: #after-with-cloudant-sync }
    Replication with an encrypted database requires no changes from replication with an unencrypted database.
 
 ## Setting user permissions
+{: #setting-user-permissions }
 You can set user permissions on remote databases.
 
 ##### BEFORE (with IMFData/CloudantToolkit):
-
+{: #before-with-imfdata-cloudanttoolkit }
 **Objective-C**
 
 ```objc
@@ -554,23 +578,27 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 ```
 
 ##### AFTER (with Cloudant Sync):
+{: #after-with-cloudant-sync }
 You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate {{ site.data.keys.product_adj }} OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
 
 ## Modeling data
+{: #modeling-data }
 Cloudant  stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.
 
 * iOS: Cloudant stores data as JSON documents. The CloudantToolkit framework provided an object mapper to map between native objects and JSON documents. The CDTDatastore API does not provide this feature. The snippets in the following sections demonstrate how to use CDTDatastore objects to accomplish the same operations.
 * Android: AndroidCloudant stores data as JSON documents. The CloudantToolkit API provided an object mapper to map between native objects and JSON documents. Cloudant Sync does not provide this feature. The snippets in the following sections demonstrate how to use DocumentRevision objects to accomplish the same operations.
 
 ## Performing CRUD operations
+{: #performing-crud-operations }
 You can modify the content of a data store.
 
 * For more details on `create`, `retrieve`, `update`, and `delete` (CRUD) operations, see [CDTDatastore CRUD documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md).
 * For `create`, `retrieve`, `update`, and `delete` (CRUD) operations on a remote store, see the [Cloudant  Document API](https://docs.cloudant.com/document.html).
 
 ### Creating data
-
+{: #creating-data }
 ##### BEFORE
+{: #before }
 
 **Objective-C**
 
@@ -637,7 +665,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 ```
 
 ##### AFTER
-
+{: #after }
 ```objc
 // Use an existing store
 CDTDatastore *datastore = existingDatastore;
@@ -698,8 +726,9 @@ DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 ```
 
 ### Reading data
-
+{: #reading-data }
 ##### BEFORE
+{: #before }
 
 **Objective-C**
 
@@ -762,7 +791,7 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 ```
 
 ##### AFTER
-
+{: #after }
 **Objective-C**
 
 ```objc
@@ -810,8 +839,9 @@ DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 ```
 
 ### Updating data
-
+{: #updating-data }
 ##### BEFORE
+{: #before }
 
 **Objective-C**
 
@@ -884,7 +914,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 ```
 
 ##### AFTER
-
+{: #after }
 **Objective-C**
 
 ```objc
@@ -944,10 +974,11 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 ```
 
 ### Deleting data
+{: #deleting-data }
 To delete an object, pass the object that you want to delete to the store.
 
 ##### BEFORE
-
+{: #before }
 **Objective-C**
 
 ```objc
@@ -1008,7 +1039,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 ```
 
 ##### AFTER
-
+{: #after }
 **Objective-C**
 
 ```objc
@@ -1055,6 +1086,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 ```
 
 ## Creating indexes
+{: #creating-indexes }
 To perform queries, you must create an index.
 
 * iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md). For query operations on a remote store, see the [Cloudant  Query API](https://docs.cloudant.com/cloudant_query.html).
@@ -1063,7 +1095,7 @@ To perform queries, you must create an index.
 1. Create an index that includes the data type. Indexing with the data type is useful when an object mapper is set on the data store.
 
    ##### BEFORE
-    
+   {: #before }
    **Objective-C**
     
    ```objc
@@ -1132,7 +1164,7 @@ To perform queries, you must create an index.
    ```
     
    ##### AFTER
-    
+   {: #after }
    **Objective-C**
     
    ```objc
@@ -1180,7 +1212,7 @@ To perform queries, you must create an index.
 2. Delete indexes.
 
    ##### BEFORE
-
+   {: #before }
    **Objective-C**
 
    ```objc
@@ -1240,7 +1272,7 @@ To perform queries, you must create an index.
    ```
 
    ##### AFTER
-
+   {: #after }
    **Objective-C**
 
    ```objc
@@ -1282,6 +1314,7 @@ To perform queries, you must create an index.
    ```
 
 ## Querying data
+{: #querying-data }
 After you create an index, you can query the data in your database.
 
 * iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md).
@@ -1289,7 +1322,9 @@ After you create an index, you can query the data in your database.
 * For query operations on a remote store, see the [Cloudant Query API](https://docs.cloudant.com/cloudant_query.html).
 
 #### iOS
+{: #ios }
 ##### BEFORE (with IMFData/CloudantToolkit):
+{: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-C**
 
@@ -1328,7 +1363,7 @@ store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSEr
 ```
 
 ##### AFTER (with Cloudant Sync):
-
+{: #after-with-cloudant-sync }
 **Objective-C**
 
 ```objc
@@ -1352,10 +1387,11 @@ if(results == nil){
 ```
 
 #### Android
+{: #android }
 To run a query for objects, create a Cloudant query with the query filters on data type. Run the query against a Store object.
 
 ##### BEFORE (with IMFData/CloudantToolkit):
-
+{: #before-with-imfdata-cloudanttoolkit }
 ```java
 // Use an existing store
 Store store = existingStore;
@@ -1405,7 +1441,7 @@ queryTask.continueWith(new Continuation<List, Object>() {
 ```
 
 ##### AFTER (with Cloudant Sync):
-
+{: #after-with-cloudant-sync }
 ```java
 // Use an existing store
 Datastore datastore = existingStore;
@@ -1438,13 +1474,16 @@ QueryResult result = indexManager.find(selectorMap);
 ```
 
 ## Supporting offline storage and synchronization
+{: #supporting-offline-storage-and-synchronization }
 You can synchronize the data on a mobile device with a remote database instance. You can either pull updates from a remote database to the local database on the mobile device, or push local database updates to a remote database.
 
 * iOS: For more details, see [CDTDatastore Replication documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md).
 * Android For more details, see [Cloudant  Sync Replication documentation](https://github.com/cloudant/sync-android/blob/master/doc/replication.md). For CRUD operations on a remote store, see the [Cloudant Replication API](https://docs.cloudant.com/replication.html).
 
 ### Running pull replication
+{: #running-pull-replication }
 ##### BEFORE
+{: #before }
 
 **Objective-C**
 
@@ -1524,7 +1563,7 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
 ```
 
 ##### AFTER
-
+{: #after }
 **Objective-C**
 
 ```objc
@@ -1617,7 +1656,9 @@ replicator.start();
 ```
 
 ### Running push replication
+{: #running-push-replication }
 ##### BEFORE
+{: #before }
 
 **Objective-C**
 
@@ -1696,7 +1737,7 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 ```
 
 ##### AFTER
-
+{: #after }
 **Objective-C**
 
 ```objc

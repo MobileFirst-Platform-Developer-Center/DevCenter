@@ -7,6 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ### Enforcing TLS-secure connections in iOS apps
+{: #enforcing-tls-secure-connections-in-ios-apps }
 Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
 
 Apple App Transport Security (ATS) is a new feature of iOS 9 that enforces best practices for connections between the app and the server. By default, this feature enforces some connection requirements that improve security. These include client-side HTTPS requests and server-side certificates and connection ciphers that conform to Transport Layer Security (TLS) version 1.2 using forward secrecy.
@@ -51,6 +52,7 @@ To prepare for production
 4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
 
 ## Enabling OpenSSL in Cordova Applications
+{: #enabling-openssl-in-cordova-applications }
 The {{ site.data.keys.product_adj }} Cordova SDK for iOS uses native iOS APIs for cryptography. You can configure the application to instead use the OpenSSL cryptography library in your Cordova iOS app.
 
 The encryption/decryption functionalities are provided with the following Javascript APIs:
@@ -59,11 +61,13 @@ The encryption/decryption functionalities are provided with the following Javasc
 * WL.SecurityUtils.decryptWithKey
 
 ### Option 1: Native encryption/decryption
+{: #option-1-native-encryptiondecryption }
 By default {{ site.data.keys.product_adj }} provides native encryption/decryption, without using OpenSSL. This is equivalent to explicitly setting the encryption/decryption behavior:
 
 * WL.SecurityUtils.enableNativeEncryption(true)
 
 ## Option 2: Enabling OpenSSL
+{: #option-2-enabling-openssl }
 {{ site.data.keys.product_adj }} provided OpenSSL is disabled by default.
 
 To install the necessary frameworks for supporting OpenSSL, first install the Cordova plug-in:
@@ -79,6 +83,7 @@ The following code enables the OpenSSL option for the encryption/decryption:
 With this setup, the encryption/decryption calls use OpenSSL as in previous versions of {{ site.data.keys.product }}.
 
 ### Migration options
+{: #migration-options }
 If you have a {{ site.data.keys.product_adj }} project that was written with an earlier version of the product, you might need to incorporate changes to continue using OpenSSL.
 
 * If the application is not using encryption/decryption APIs, and no encrypted data is cached on the device, no action is needed.

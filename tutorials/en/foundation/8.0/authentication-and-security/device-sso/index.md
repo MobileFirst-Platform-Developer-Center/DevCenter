@@ -7,11 +7,13 @@ weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} offers a Single Sign-On (SSO) feature which enables sharing the state of any custom security check between multiple applications on the same device. For example, by using Device SSO, users can successfully sign on to one application on their device and also be authenticated on other applications on the same device that uses the same implementation.
 
 **Prerequisite**: Make sure to read the [Authentication and Security](../) tutorials.
 
 ## Configuring SSO
+{: #configuring-sso }
 In the {{ site.data.keys.mf_console }}:
 
 1. Navigate to **[your application] → Security tab →  Security-Check Configurations** section.
@@ -41,6 +43,7 @@ You can also manually edit the application's configuration JSON file with the re
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 ## Using Device SSO with a Pre-Existing Sample
+{: #using-device-sso-with-a-pre-existing-sample }
 Read the  [Credential Validation](../credentials-validation/) tutorial because its sample is used to configure Device SSO.  
 For this demonstration, the Cordova sample application is used, however you can do the same also with the iOS, Android, and Windows sample applications.
 

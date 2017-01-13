@@ -5,9 +5,11 @@ weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Reference information about Ant tasks and configuration sample files for the installation of {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }}, and {{ site.data.keys.mf_analytics_full }}.
 
 #### Jump to
+{: #jump-to }
 * [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
 * [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
 * [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
@@ -19,6 +21,7 @@ Reference information about Ant tasks and configuration sample files for the ins
 * [Sample configuration files for {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
 
 ## Ant configuredatabase task reference
+{: #ant-configuredatabase-task-reference }
 Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
 
 The **configuredatabase** Ant task creates the relational databases that are used by {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, {{ site.data.keys.product_adj }} runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
@@ -41,6 +44,7 @@ Then, the task can have the following effects:
 > **Note:** The configuredatabase Ant task has not effect if you use it with Cloudant.
 
 ### Attributes and elements for configuredatabase task
+{: #attributes-and-elements-for-configuredatabase-task }
 
 The **configuredatabase** task has the following attributes:
 
@@ -51,12 +55,15 @@ The **configuredatabase** task has the following attributes:
 | execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true | 
 
 #### kind
+{: #kind }
 {{ site.data.keys.product }} supports four kinds of database: {{ site.data.keys.product_adj }} runtime uses **MobileFirstRuntime** database. {{ site.data.keys.mf_server }} administration service uses the **MobileFirstAdmin** database. {{ site.data.keys.mf_server }} Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. {{ site.data.keys.mf_server }} push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
 
 #### includeConfigurationTables
+{: #includeconfigurationtables }
 The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.
 
 #### execute
+{: #execute }
 The **execute** attribute enables or disables the execution of the **configuredatabase** Ant task. The valid value can be true or false. When this attribute is set to false, the **configuredatabase** task performs no configuration or database operations.
 
 The **configuredatabase** task supports the following elements:
@@ -77,6 +84,7 @@ For each database type, you can use a `<property>` element to specify a JDBC con
 | value	    | The value for the property.| Yes	    | None    |   
 
 #### Apache Derby
+{: #apache-derby }
 The `<derby>` element has the following attributes:
 
 | Attribute | Description                                | Required | Default                                                                      | 
@@ -94,6 +102,7 @@ The `<derby>` element supports the following element:
 For the available properties, see [Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html).
 
 #### DB2
+{: #db2 }
 The `<db2>` element has the following attributes:
 
 | Attribute | Description                            | Required | Default | 
@@ -132,6 +141,7 @@ The `<driverclasspath>` element must contain the JAR files for the DB2 JDBC driv
 You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../databases/#db2-database-and-user-requirements).
 
 #### MySQL
+{: #mysql }
 The element `<mysql>` has the following attributes:
 
 | Attribute | Description                            | Required | Default | 
@@ -182,6 +192,7 @@ Alternatively, you can use the `<mysql>` element with the following attributes:
 > `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner elements `<dba>` or `<client>`.
 
 #### Oracle
+{: #oracle }
 The element `<oracle>` has the following attributes:
 
 | Attribute      | Description                                                              | Required | Default | 
@@ -225,11 +236,14 @@ You cannot specify details of table allocation, such as the table space, by usin
 > **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner element `<dba>`.
 
 ## Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services
+{: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
 The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of {{ site.data.keys.mf_console }}, the artifacts component, the administration service, and the live update service.
 
 ### Task effects
+{: #task-effects }
 
 #### installmobilefirstadmin
+{: #installmobilefirstadmin }
 The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the {{ site.data.keys.mf_console }}. This task has the following effects:
 
 * It declares the administration service web application in the specified context root, by default /mfpadmin.
@@ -252,6 +266,7 @@ The **installmobilefirstadmin** Ant task configures an application server to run
 * Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the {{ site.data.keys.mf_server }} administration part.
 
 #### updatemobilefirstadmin
+{: #updatemobilefirstadmin }
 The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task has the following effects:
 
 * It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
@@ -260,6 +275,7 @@ The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.da
 The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
 
 #### uninstallmobilefirstadmin
+{: #uninstallmobilefirstadmin }
 The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
 
 * It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
@@ -271,6 +287,7 @@ The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run 
 * It removes the JMX configuration.
 
 ### Attributes and elements
+{: #attributes-and-elements }
 The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
 
 | Attribute         | Description                                                              | Required | Default | 
@@ -283,17 +300,21 @@ The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobi
 | wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
 
 #### contextroot and id
+{: #contextroot-and-id }
 The **contextroot** and **id** attributes distinguish different deployments of {{ site.data.keys.mf_console }} and the administration service.
 
 In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
 
 #### environmentId
+{: #environmentid }
 Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the {{ site.data.keys.product_adj }} runtime projects use when they communicate through Java Management Extensions (JMX).
 
 #### servicewar
+{: #servicewar }
 Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### shortcutsDir
+{: #shortcutsdir }
 The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_console }}. If you set this attribute, you can add the following files to that directory:
 
 * **mobilefirst-console.url** - this file is a Windows shortcut. It opens the {{ site.data.keys.mf_console }} in a browser.
@@ -302,6 +323,7 @@ The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site
 * **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
 
 #### wasStartingWeight
+{: #wasstartingweight }
 Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
 
 The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
@@ -318,6 +340,7 @@ The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobi
 | `<user>`              | The user to be mapped to a security role.	       | 0..   |
 
 ### To specify a {{ site.data.keys.mf_console }}
+{: #to-specify-a-mobilefirst-operations-console }
 The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_console }}. This element has the following attributes:
 
 | Attribute         | Description                                                               | Required | Default     | 
@@ -354,6 +377,7 @@ By using this element, you can define your own JNDI properties or override the d
 For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### To specify an application server
+{: #to-specify-an-application-server }
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
 
 | Element                                   | Description                                      | Count |
@@ -378,6 +402,7 @@ The `<collectiveController>` element has the following attributes:
 | createControllerAdmin    | To indicate whether the administrative user must be created in the basic registry of the collective controller. Possible values are true or false.                                                              | No	   | true    |
 
 ### To specify the live update service configuration
+{: #to-specify-the-live-update-service-configuration }
 Use the `<configuration>` element to define the parameters that depend on the live update service. The `<configuration>` element has the following attributes.
 
 | Attribute                | Description                                                    | Required | Default | 
@@ -419,6 +444,7 @@ The `<property>` element specifies a deployment property to be defined in the ap
 By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files. For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### To specify an application server
+{: #to-specify-an-application-server-1 }
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
 
 | Element      | Description                                              | Count |
@@ -443,6 +469,7 @@ The `<collectiveMember>` element has the following attributes:
 > **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
 
 ### To specify Analytics
+{: #to-specify-analytics }
 The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
 
 | Attribute     | Description                                                               | Required | Default | 
@@ -471,6 +498,7 @@ Use the password attribute to specify the password that is used if the data entr
 Use the validate attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
 
 ### To specify a connection to the push service database
+{: #to-specify-a-connection-to-the-push-service-database }
 
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
 
@@ -504,19 +532,24 @@ The `<database>` element supports the following elements. For more information a
 | dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
 
 ## Ant tasks for installation of {{ site.data.keys.mf_server }} push service
+{: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
 The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
 
 ### Task effects
+{: #task-effects-1 }
 #### installmobilefirstpush
+{: #installmobilefirstpush }
 The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
 It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
 For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
 It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the {{ site.data.keys.product_adj }} authorization server, {{ site.data.keys.mf_analytics }}, and with Cloudant  in case Cloudant is used.
 
 #### updatemobilefirstpush
+{: #updatemobilefirstpush }
 The **updatemobilefirstpush** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
 
 #### uninstallmobilefirstpush
+{: #uninstallmobilefirstpush }
 The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
 It removes the configuration of the push service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
 It removes the push service WAR file from the application server as an option.
@@ -524,6 +557,7 @@ For the relational DBMS, it removes the data sources and on WebSphere Applicatio
 It removes the associated JNDI environment entries.
 
 ### Attributes and elements
+{: #attributes-and-elements-1 }
 The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks have the following attributes:
 
 | Attribute | Description                           | Required | Default     | 
@@ -532,9 +566,11 @@ The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobile
 | warFile	| The WAR file for the push service.	| No	   | The ../PushService/mfp-push-service.war file is relative to the MobileFirstServer directory that contains the  mfp-ant-deployer.jar file. |
 
 ### Id
+{: #id }
 The **id** attribute distinguishes different deployments of the push service in the same WebSphere Application Server cell. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
 
 ### warFile
+{: #warfile }
 Use the **warFile** attribute to specify a different directory for the push service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks support the following elements:
@@ -548,6 +584,7 @@ The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobile
 | `<property>`	        | The properties.	      | 0..∞  | 
 
 ### To specify the authorization server
+{: #to-specify-the-authorization-server }
 The `<authorization>` element collects information to configure the authorization server for the authentication communication with other {{ site.data.keys.mf_server }} components. This element has the following attributes:
 
 | Attribute          | Description                           | Required | Default     | 
@@ -559,17 +596,22 @@ The `<authorization>` element collects information to configure the authorizatio
 | pushClientSecret	 | The push service confidential client password in the authorization server. | Yes | None |
 
 #### auto
+{: #auto }
 If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
 
 #### authorizationURL
+{: #authorizationurl }
 The URL of the authorization server. If the authorization server is the {{ site.data.keys.product_adj }} runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
 
 #### runtimeContextRoot
+{: #runtimecontextroot }
 The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
 #### pushClientID
+{: #pushclientid }
 The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
 
 #### pushClientSecret
+{: #pushclientsecret }
 The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
 
 The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
@@ -584,6 +626,7 @@ By using this element, you can define your own JNDI properties or override the d
 For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### To specify an application server
+{: #to-specify-an-application-server-2 }
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
 
 | Element                               | Description                                      | Count |
@@ -609,6 +652,7 @@ The `<collectiveMember>` element has the following attributes:
 > **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
 
 ### To specify Analytics
+{: #to-specify-analytics-1 }
 The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
 
 | Attribute    | Description                        | Required | Default | 
@@ -620,22 +664,28 @@ The `<analytics>` element indicates that you want to connect the {{ site.data.ke
 | validate	   | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not. | No | true | 
 
 #### install
+{: #install }
 Use the **install** attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
 
 #### analyticsURL
+{: #analyticsurl }
 Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
 For example: `http://<hostname>:<port>/analytics-service/rest`
 
 #### username
+{: #username }
 Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### password
+{: #password }
 Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### validate
+{: #validate }
 Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
 
 ### To specify a connection to the push service database
+{: #to-specify-a-connection-to-the-push-service-database-1 }
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
 
 You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
@@ -668,11 +718,14 @@ The `<database>` element supports the following elements. For more information a
 | dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
 
 ## Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments
+{: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
 Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
 
 ### Task effects
+{: #task-effects-2 }
 
 #### installmobilefirstruntime
+{: #installmobilefirstruntime }
 The **installmobilefirstruntime** Ant task configures an application server to run a {{ site.data.keys.product_adj }} runtime WAR file as a web application. This task has the following effects.
 
 * It declares the {{ site.data.keys.product_adj }} web application in the specified context root, by default /mfp.
@@ -683,9 +736,11 @@ The **installmobilefirstruntime** Ant task configures an application server to r
 * Optionally, it sets the {{ site.data.keys.product_adj }} JNDI environment entries to configure the application server as a server farm member for the runtime.
 
 #### updatemobilefirstruntime
+{: #updatemobilefirstruntime }
 The **updatemobilefirstruntime** Ant task updates a {{ site.data.keys.product_adj }} runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
 
 #### uninstallmobilefirstruntime
+{: #uninstallmobilefirstruntime }
 The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
 
 * It removes the configuration of the {{ site.data.keys.product_adj }} web application with the specified context root. The task also removes the settings that are added manually to that application.
@@ -694,6 +749,7 @@ The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **
 * It removes the associated JNDI environment entries.
 
 ### Attributes and elements
+{: #attributes-and-elements-2 }
 The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks have the following attributes:
 
 | Attribute         | Description                                                                 | Required   | Default                   | 
@@ -705,17 +761,21 @@ The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstall
 | wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           | 
 
 #### contextroot and id
+{: #contextroot-and-id-1 }
 The **contextroot** and **id** attributes distinguish different {{ site.data.keys.product_adj }} projects.
 
 In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
 
 #### environmentId
+{: #environmentid-1 }
 Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
 
 #### warFile
+{: #warfile-1 }
 Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.product_adj }} runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### wasStartingWeight
+{: #wasstartingweight-1 }
 Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the {{ site.data.keys.mf_server }} administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your {{ site.data.keys.product_adj }} projects.
 
 The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
@@ -853,29 +913,37 @@ The `<analytics>` element indicates that you want to connect the {{ site.data.ke
 | tenant       | The tenant for indexing data that is collected from a {{ site.data.keys.product_adj }} runtime.	      | No       | Internal identifier |
 
 #### install
+{: #install-1 }
 Use the **install** attribute to indicate that this {{ site.data.keys.product_adj }} runtime must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are **true** or **false**.
 
 #### analyticsURL
+{: #analyticsurl-1 }
 Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
 For example: `http://<hostname>:<port>/analytics-service/rest`
 
 #### consoleURL
+{: #consoleurl }
 Use the **consoleURL** attribute to the URL that is exposed by {{ site.data.keys.mf_analytics }}, which links to the {{ site.data.keys.mf_analytics_console }}.  
 For example: `http://<hostname>:<port>/analytics/console`
 
 #### username
+{: #username-1 }
 Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### password
+{: #password-1 }
 Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
 
 #### validate
+{: #validate-1 }
 Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
 
 #### tenant
+{: #tenant }
 For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
 
 ### To specify an Apache Derby database
+{: #to-specify-an-apache-derby-database }
 The `<derby>` element has the following attributes: 
 
 | Attribute  | Description                                | Required | Default | 
@@ -897,6 +965,7 @@ For more information about the available properties for a Liberty server, see th
 When the **mfp-ant-deployer.jar** file is used within the installation directory of {{ site.data.keys.product }}, a `<driverclasspath>` element is not necessary.
 
 ### To specify a DB2 database
+{: #to-specify-a-db2-database }
 The `<db2>` element has the following attributes:
 
 | Attribute  | Description                                | Required | Default | 
@@ -922,6 +991,7 @@ For more information about the available properties for a Liberty server, see th
 The `<driverclasspath>` element must contain JAR files for the DB2 JDBC driver and the associated license. You can download DB2 JDBC drivers from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
 
 ### To specify a MySQL database
+{: #to-specify-a-mysql-database }
 The `<mysql>` element has the following attributes:
 
 | Attribute  | Description                                | Required | Default | 
@@ -955,6 +1025,7 @@ For more information about the available properties for a Liberty server, see th
 The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download it from [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
 
 ### To specify an Oracle database
+{: #to-specify-an-oracle-database }
 The `<oracle>` element has the following attributes:
 
 | Attribute  | Description                                | Required | Default | 
@@ -1002,10 +1073,13 @@ The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`
 | value	     | The value for the property.	              | Yes      |  None   |
 
 ## Ant tasks for installation of Application Center
+{: #ant-tasks-for-installation-of-application-center }
 The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` Ant tasks are provided for the installation of the Application Center Console and Services.
 
 ### Task effects
+{: #task-effects-3 }
 ### <installApplicationCenter>
+{: #installapplicationcenter }
 The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
 
 * It declares the Application Center Services web application in the /applicationcenter context root.
@@ -1018,6 +1092,7 @@ The `<installApplicationCenter>` task configures an application server to run th
 * On WebSphere Application Server, it configures the necessary custom property for the web container.
 
 #### <updateApplicationCenter>
+{: #updateApplicationCenter }
 The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
 
 * It updates the Application Center Services WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
@@ -1028,6 +1103,7 @@ The task does not change the application server configuration, that is, the web 
 > **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
 
 #### <uninstallApplicationCenter>
+{: #uninstallApplicationCenter }
 The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
 
 * It removes the configuration of the Application Center Services web application with the **/applicationcenter** context root. As a consequence, the task also removes the settings that were added manually to that application.
@@ -1038,6 +1114,7 @@ The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run
 * It removes the users who are configured by the `<installApplicationCenter>` invocation.
 
 ### Attributes and elements
+{: #attributes-and-elements-3 }
 The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks have the following attributes:
 
 | Attribute    | Description                                | Required | Default | 
@@ -1048,18 +1125,22 @@ The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallAp
 | aaptDir | The directory that contains the aapt program, from the Android SDK platform-tools package. | No | None |
 
 #### id
+{: #id-1 }
 In WebSphere Application Server full profile environments, the **id** attribute is used to distinguish different deployments of Application Center Console and Services. Without this **id** attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
 
 #### servicewar
+{: #servicewar-1 }
 Use the **servicewar** attribute to specify a different directory for the Application Center Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### shortcutsDir
+{: #shortcutsdir-1 }
 The **shortcutsDir** attribute specifies where to place shortcuts to the Application Center Console. If you set this attribute, the following files are added to this directory:
 
 * **appcenter-console.url**: This file is a Windows shortcut. It opens the Application Center Console in a browser.
 * **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
 
 #### aaptDir
+{: #aaptdir }
 The **aapt** program is part of the {{ site.data.keys.product }} distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
 If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
 
@@ -1073,6 +1154,7 @@ The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallAp
 | user	            | The user to be mapped to a security role. | 0..∞  |
 
 ### To specify an Application Center console
+{: #to-specify-an-application-center-console }
 The `<console>` element collects information to customize the installation of the Application Center Console. This element has the following attributes:
 
 | Attribute    | Description                                      | Required | Default | 
@@ -1080,6 +1162,7 @@ The `<console>` element collects information to customize the installation of th
 | warfile      | The WAR file for the Application Center Console. |	No       | The appcenterconsole.war file is in the Application Center console directory:  **product_install_dir/ApplicationCenter/console**. |
 
 ### To specify an application server
+{: #to-specify-an-application-server-3 }
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
 
 | Element           | Description	                            | Count | 
@@ -1090,6 +1173,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 ### To specify a connection to the services database
+{: #to-specify-a-connection-to-the-services-database }
 The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
 
 You must declare a single database: `<database kind="ApplicationCenter">`. You specify the `<database>` element similarly to the `<configuredatabase>` Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
@@ -1112,6 +1196,7 @@ The `<database>` element supports the following elements. For more information a
 | driverclasspath   | The parameter for JDBC driver class path.	| 0..1  |
 
 ### To specify a user and a security role
+{: #to-specify-a-user-and-a-security-role }
 The `<user>` element collects the parameters about a user to include in a certain security role for an application.
 
 | Attribute    | Description                                            | Required | Default | 
@@ -1121,13 +1206,16 @@ The `<user>` element collects the parameters about a user to include in a certai
 | password	   | The password, if you must create the user.	| No | None |
 
 ## Ant tasks for installation of {{ site.data.keys.mf_analytics }}
+{: #ant-tasks-for-installation-of-mobilefirst-analytics }
 The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of {{ site.data.keys.mf_analytics }}.
 
 The purpose of these Ant Tasks is to configure the {{ site.data.keys.mf_analytics_console }} and the {{ site.data.keys.mf_analytics }} service with the appropriate storage for the data on an application server.
 The task installs {{ site.data.keys.mf_analytics }} nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
 
 ### Task effects
+{: #task-effects-4 }
 #### installanalytics
+{: #installanalytics }
 The **installanalytics** Ant task configures an application server to run IBM {{ site.data.keys.mf_analytics }}. This task has the following effects:
 
 * It deploys the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files on the application server.
@@ -1138,11 +1226,13 @@ The **installanalytics** Ant task configures an application server to run IBM {{
 * Optionally, it creates users to use the {{ site.data.keys.mf_analytics_console }}.
 
 #### updateanalytics
+{: #updateanalytics }
 The **updateanalytics** Ant task updates the already configured {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
 
 The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
 
 #### uninstallanalytics
+{: #uninstallanalytics }
 The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
 
 * It removes the configuration of both the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} web applications with their respective context roots.
@@ -1150,6 +1240,7 @@ The **uninstallanalytics** Ant task undoes the effects of an earlier **installan
 * It removes the associated JNDI environment entries.
 
 ### Attributes and elements
+{: #attributes-and-elements-4 }
 The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks have the following attributes:
 
 | Attribute    | Description                                            | Required | Default | 
@@ -1157,6 +1248,7 @@ The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks 
 | serviceWar   | The WAR file for the {{ site.data.keys.mf_analytics }} Service     | No       | The analytics-service.war file is in the directory Analytics. |
 
 #### serviceWar
+{: #servicewar-2 }
 Use the **serviceWar** attribute to specify a different directory for the {{ site.data.keys.mf_analytics }} Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
@@ -1170,6 +1262,7 @@ The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks 
 | property          | Properties.	                            | No 	   | 0..     |
 
 ### To specify a {{ site.data.keys.mf_analytics_console }}
+{: #to-specify-a-mobilefirst-analytics-console }
 The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_analytics_console }}. This element has the following attributes:
 
 | Attribute    | Description                                  | Required | Default | 
@@ -1178,9 +1271,11 @@ The `<console>` element collects information to customize the installation of th
 | shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
 
 #### warFile
+{: #warfile-2 }
 Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.mf_analytics_console }} WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
 
 #### shortcutsDir
+{: #shortcutsdir-2 }
 The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_analytics_console }}. If you set this attribute, you can add the following files to that directory:
 
 * **analytics-console.url**: This file is a Windows shortcut. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
@@ -1204,6 +1299,7 @@ The `<property>` element has the following attributes:
 | value	     | The value of the property. |	Yes      | None    |
 
 ### To specify a user and a security role
+{: #to-specify-a-user-and-a-security-role-1 }
 The `<user>` element collects the parameters about a user to include in a certain security role for an application.
 
 | Attribute   | Description                                   | Required | Default | 
@@ -1220,6 +1316,7 @@ After you defined users by using the` <user>` element, you can map them to any o
 * **mfpadmin**
 
 ### To specify a type of storage for {{ site.data.keys.mf_analytics }}
+{: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
 The `<storage>` element indicates which underlying type of storage {{ site.data.keys.mf_analytics }} uses to store the information and data it collects.
 
 It supports the following element:
@@ -1241,14 +1338,17 @@ The `<elasticsearch>` element collects the parameters about an ElasticSearch clu
 | transportPort	   | The port used for node-to-node communication in the ElasticSearch cluster.	| No | 9600 | 
 
 #### clusterName
+{: #clustername }
 Use the **clusterName** attribute to specify a name of your choice for the ElasticSearch cluster.
 
 An ElasticSearch cluster consists of one or more nodes that share the same cluster name so you might specify the same value for the **clusterName** attribute if you configure several nodes.
 
 #### nodeName
+{: #nodename }
 Use the **nodeName** attribute to specify a name of your choice for the node to configure in the ElasticSearch cluster. Each node name must be unique in the ElasticSearch cluster even if nodes span on several machines.
 
 #### mastersList
+{: #masterslist }
 Use the **mastersList** attribute to provide a comma-separated list of the master nodes in your ElasticSearch cluster. Each master node in this list must be identified by its host name, and the ElasticSearch node-to-node communication port. This port is 9600 by default, or it is the port number that you specified with the attribute **transportPort** when you configured that master node.
 
 For example: `hostname1:transport-port1, hostname2:transport-port2`.
@@ -1259,6 +1359,7 @@ For example: `hostname1:transport-port1, hostname2:transport-port2`.
 * If the target application server is WebSphere Application Server Network Deployment cluster, and if you add or remove a server from this cluster at a later point in time, you must edit this list manually to keep in sync with the ElasticSearch cluster.
 
 #### dataPath
+{: #datapath }
 Use the **dataPath** attribute to specify a different directory to store ElasticsSearch data. You can specify an absolute path or a relative path.
 
 If the attribute **dataPath** is not specified, then ElasticSearch cluster data is stored in a default directory that is called **analyticsData**, whose location depends on the application server:
@@ -1270,17 +1371,21 @@ If the attribute **dataPath** is not specified, then ElasticSearch cluster data 
 The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the {{ site.data.keys.mf_analytics }} Service component receives events.
 
 #### shards
+{: #shards }
 Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
 
 #### replicasPerShard
+{: #replicaspershard }
 Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
 
 Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the {{ site.data.keys.mf_analytics }}. A replica shard can never be started on the same node as its shard.
 
 #### transportPort
+{: #transportport }
 Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
 
 ### To specify an application server
+{: #to-specify-an-application-server-4 }
 Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
 
 **Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
@@ -1291,6 +1396,7 @@ Use the `<applicationserver>` element to define the parameters that depend on th
 | tomcat	                                | The parameters for Apache Tomcat.	| 0..1 |
 
 ### To specify custom JNDI properties
+{: #to-specify-custom-jndi-properties }
 The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` elements support the following element:
 
 | Element  | Description | Count | 
@@ -1307,9 +1413,11 @@ This element has the following attributes:
 | value	     | The value of the property. |	Yes      | None    |
 
 ## Internal runtime databases
+{: #internal-runtime-databases }
 Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
 
 ### Database used by {{ site.data.keys.mf_server }} runtime
+{: #database-used-by-mobilefirst-server-runtime }
 The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1322,6 +1430,7 @@ The following table provides a list of runtime database tables, their descriptio
 | SERVER_VERSION	             | The product version.	| One row |
 
 ### Database used by {{ site.data.keys.mf_server }} administration service
+{: #database-used-by-mobilefirst-server-administration-service }
 The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1337,6 +1446,7 @@ The following table provides a list of administration database tables, their des
 | MFPADMIN_VERSION	             | The product version.	| One row. |
 
 ### Database used by {{ site.data.keys.mf_server }} live update service
+{: #database-used-by-mobilefirst-server-live-update-service }
 The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1348,6 +1458,7 @@ The following table provides a list of live update service database tables, thei
 | CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. | 
 
 ### Database used by {{ site.data.keys.mf_server }} push service
+{: #database-used-by-mobilefirst-server-push-service }
 The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
 
 | Relational database table name | Description | Order of magnitude |
@@ -1369,6 +1480,7 @@ For more information about setting up the databases, see [Setting up databases](
 The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
 
 ### List of sample configuration files
+{: #list-of-sample-configuration-files }
 Pick the appropriate sample configuration file. The following files are provided.
 
 | Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
@@ -1390,11 +1502,13 @@ Pick the appropriate sample configuration file. The following files are provided
 * **cell**: To deploy to all the servers on a cell.
 
 ## Sample configuration files for {{ site.data.keys.mf_analytics }}
+{: #sample-configuration-files-for-mobilefirst-analytics }
 {{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_analytics }} Services, and the {{ site.data.keys.mf_analytics_console }}.
 
 The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution.
 
 ### Step 1
+{: #step-1 }
 Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
 
 | Task | Application server |
@@ -1416,18 +1530,21 @@ The configuration files for wasnd contain a scope that can be set to **cluster**
 * **cell**: To deploy to all the servers on a cell.
 
 ### Step 2
+{: #step-2 }
 Change the file access rights of the sample file to be as restrictive as possible. Step 3 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
 
 On UNIX: `chmod 600 configure-file.xml`
 On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
 ### Step 3
+{: #step-3 }
 Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
 
 * For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
 * For Apache Tomcat: **conf/server.xml**
 
 ### Step 4
+{: #step-4 }
 Replace the placeholder values for the properties at the beginning of the file.
 
 **Note:**  
@@ -1438,6 +1555,7 @@ The following special characters must be escaped when they are used in the value
 * Double quotation marks (`"`) must be written as `&quot;`, except when it is inside a string that is enclosed in single quotation marks.
 
 ### Step 5
+{: #step-5 }
 Run the command: `ant -f configure-file.xml install`
 
 This command installs your {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components in the application server.

@@ -7,9 +7,11 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Silent notifications are notifications that do not display alerts or otherwise disturb the user. When a silent notification arrives, the application handing code runs in background without bringing the application to foreground. Currently, the silent notifications are supported on iOS devices with version 7 onwards. If the silent notification is sent to iOS devices with version lesser than 7, the notification is ignored if the application is running in background. If the application is running in the foreground, then the notification callback method is invoked.
 
-## Sending silent push notification
+## Sending silent push notifications
+{: #sending-silent-push-notifications }
 Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
 
 The three types of notifications that are supported for iOS are represented by constants `DEFAULT`, `SILENT`, and `MIXED`. When the type is not explicitly specified, the `DEFAULT` type is assumed.
@@ -22,7 +24,8 @@ Based on the requirement choose the appropriate type under **{{ site.data.keys.m
 
 ![Setting notification type for iOS silent notifications in the {{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
 
-## Handling silent push notifications in Cordova application
+## Handling silent push notifications in Cordova applications
+{: #handling-silent-push-notifications-in-cordova-applications }
 In the JavaScript push notification callback method, you must do the following steps:
 
 1. Check the notification type. For example:
@@ -37,7 +40,8 @@ In the JavaScript push notification callback method, you must do the following s
 
 2. If the notification is silent or mixed, after you complete the background job, invoke `WL.Client.Push.backgroundJobDone` API.
 
-## Handling silent push notifications in native iOS application
+## Handling silent push notifications in native iOS applications
+{: #handling-silent-push-notifications-in-native-ios-applications }
 You must follow these steps to receive silent notifications:
 
 1. Enable the application capability to perform background tasks on receiving the remote notifications.

@@ -4,12 +4,15 @@ title: Configuring the MobileFirst Server Keystore
 breadcrumb_title: Configuring the Server Keystore
 weight: 14
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 A keystore is a repository of security keys and certificates that is used to verify and authenticate the validity of parties involved in a network transaction. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. In addition, when an adapter communicates with a back-end server using mutual HTTPS (SSL) authentication, the keystore is used to validate the SSL-client identity of the {{ site.data.keys.mf_server }} instance.
 
 For production-level security, during the move from development to production the administrator must configure {{ site.data.keys.mf_server }} to use a user-defined keystore. The default {{ site.data.keys.mf_server }} keystore is intended to be used only during development.
 
 ### Notes
+{: #notes }
 * To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the {{ site.data.keys.mf_server }} identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
 * Reconfiguring the {{ site.data.keys.mf_server }} keystore after production should be considered carefully. Changing the configuration has the following potential effects:
     * The client might need to acquire a new OAuth token in place of a token signed with the previous keystore. In most cases, this process is transparent to the application.
@@ -17,6 +20,7 @@ For production-level security, during the move from development to production th
     *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
 
 ## Setup
+{: #setup }
 1. Create a Java keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your {{ site.data.keys.mf_server }}. If you already have an appropriate keystore file, skip to the next step.
 
    > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
@@ -44,7 +48,3 @@ For production-level security, during the move from development to production th
 When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
 
 The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
-
-
-
-

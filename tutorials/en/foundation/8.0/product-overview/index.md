@@ -2,10 +2,11 @@
 layout: tutorial
 title: Product Overview
 show_children: true
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} is an integrated platform that helps you extend your business to mobile devices.
 
 {{ site.data.keys.product }} includes a comprehensive development environment, mobile-optimized runtime middleware, a private enterprise application store, and an integrated management and analytics console, all supported by various security mechanisms.

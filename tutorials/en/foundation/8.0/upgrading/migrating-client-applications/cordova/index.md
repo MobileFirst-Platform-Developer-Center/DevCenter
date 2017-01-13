@@ -6,10 +6,12 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 To migrate an existing Cordova or hybrid application that was created with IBM MobileFirst Foundation version 6.2.0 or later, you must create a Cordova project that uses the plug-ins from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can help you in this task.
 
 #### Jump to
-* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v80-versus-v71-and-before)
+{: #jump-to }
+* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
 * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product_full }} 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
 * [Migrating Direct Update](#migrating-direct-update)
@@ -17,6 +19,7 @@ To migrate an existing Cordova or hybrid application that was created with IBM M
 * [Removed components](#removed-components)
 
 ## Comparison of Cordova apps developed with v8.0 versus v7.1 and before
+{: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
 Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Cordova and hybrid apps developed with IBM MobileFirst Platform Foundation v7.1.
 
 | Feature | Cordova app with IBM<br/>{{ site.data.keys.product }} v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
@@ -57,14 +60,17 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | Android Pro Guard | Yes<br/><br/>Note: {{ site.data.keys.product }} V8.0.0 does not include the predefined proguard-project.txt configuration file for Android ProGuard obfuscation with a {{ site.data.keys.product_adj }} Android application. | Yes<br/><br/>Note: See Android documentation to enable Pro Guard. | Yes |
 
 ## Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product }} 8.0
+{: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
 You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst Platform Foundation version 6.2 or later to Cordova apps that are supported by {{ site.data.keys.product }} v8.0.
 
 #### Jump to
+{: #jump-to }
 * [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
 * [Completing migration of a {{ site.data.keys.product_adj }} hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
 * [Completing migration of a {{ site.data.keys.product_adj }} Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### Starting the Cordova app migration with the migration assistance tool
+{: #starting-the-cordova-app-migration-with-the-migration-assistance-tool }
 The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of {{ site.data.keys.product_adj }} for migration by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
 
 The following information is important to know before you use the migration assistance tool:
@@ -152,7 +158,8 @@ The migration assistance tool does not modify or move any developer code or comm
     * Address any remaining API issues that are identified in the **api-report.html** file.
 6. Repeat step 6 to run the scan tool on the new Cordova app until all of the issues are resolved.
 
-### Completing migration of a MobileFirst hybrid app
+### Completing migration of a {{ site.data.keys.product_adj }} hybrid app
+{: #completing-migration-of-a-mobilefirst-hybrid-app }
 After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
 
 * You must have already run the mfpmigrate migration assistance tool on your existing hybrid app. For more information, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
@@ -252,7 +259,8 @@ After you complete the migration, your app can use Cordova platforms and plug-in
 5. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
 6. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the `cordova plugin add` command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
 
-### Completing migration of a MobileFirst Cordova app
+### Completing migration of a {{ site.data.keys.product_adj }} Cordova app
+{: #completing-migration-of-a-mobilefirst-cordova-app }
 After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
 
 * You must have already run the **mfpmigrate** migration assistance tool on your existing Cordova app. For more information, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
@@ -279,11 +287,13 @@ To migrate, you run the migration assistance tool and then make other modificati
 You now have a Cordova app that you can continue to develop with your preferred Cordova tools, but that also includes {{ site.data.keys.product_adj }} functionality.
 
 ## Migrating encryption for iOS Cordova
+{: #migrating-encryption-for-ios-cordova }
 If your iOS Hybrid or Cordova application used OpenSSL encryption, you may want to migrate your app to the new V8.0.0 native encryption. If you want to continue using OpenSSL you need to add an additional Cordova plug-in.
 
 For more information on the iOS Cordova encryption options for migration see the [Migration options](../../../application-development/sdk/cordova/additional-information/#migration-options) section within the [Enabling OpenSSL in Cordova Applications](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications) topic.
 
 ## Migrating Direct Update
+{: #migrating-direct-update }
 Direct Update is triggered after the first access to a protected resource. The process to deploy new web resources has changed in v8.0.
 
 Unlike in previous versions, in v8.0, if an application does not access a secure {{ site.data.keys.product_adj }} resource, the client application does not receive updates, even if updates are available on the server. A resource might be unprotected, for example because OAuth has been disabled by the annotation `@OAuth(security=false)` or by configuration. You can work around this risk in one of the following ways:
@@ -296,6 +306,7 @@ To use Direct Update: Starting with v8.0, you no longer upload a **.wlapp** file
 > For more information, see the [Direct Update documentation](../../../application-development/direct-update).
 
 ## Upgrading the WebView
+{: #upgrading-the-webview }
 IBM MobileFirs Foundation v8.0 Cordova SDK (JavaScript) introduced numerous changes that require adaptations of your code.
 
 The manual migration process involves a few stages:
@@ -309,7 +320,7 @@ Many {{ site.data.keys.product_adj }} API elements were removed in v8.0. Removed
 The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
 
 #### Discontinued JavaScript UI elements
-
+{: #discontinued-javascript-ui-elements }
 | API element | Migration path |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. |
@@ -324,7 +335,7 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. |
 
 #### Other Discontinued JavaScript elements
-
+{: #other-discontinued-javascript-elements }
 | API | Migration path |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
@@ -365,7 +376,7 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Client.createProvisioningChallengeHandler()` | No replacement. Device provisioning is now handled automatically by the security framework. |
 
 #### Deprecated JavaScript APIs
-
+{: #deprecated-javascript-apis }
 | API | Migration path |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. |
@@ -374,13 +385,16 @@ The table below lists those API elements that require removal, with suggestions 
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
 
 ## Removed components
+{: #removed-components }
 The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the {{ site.data.keys.product_adj }} API no longer supports these features.
 
 ### Skins
+{: #skins }
 MobileFirst application skins provided a way of optimizing the UI for adapting to different devices and formats and is no longer supported in v8.0.  
 To replace this type of functionality it is recommended to adopt responsive web design methods provided by Cordova and HTML 5.
 
 ### Shells
+{: #shells }
 **Shells** allowed the development of a set of functionalities to be used by and shared among applications. In this way developers who were more experienced with the native environment could provide a set of core functions. These shells were bundled into **inner applications** and used by developers who are involved with business logic or UI development.
 
 If the previous hybrid app used shells and inner applications, it is recommended to adopt Cordova design patterns and implement the shell components as Cordova plug-ins, that can be shared across applications. Developers may find ways to reuse parts of shell code and migrate them to Cordova plug-ins.
@@ -431,9 +445,11 @@ Then in their **index.html** file or anywhere inside their app they can reuse th
 ```
 
 ### Settings page
+{: #settings-page }
 The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl).
 
 ### Minification
+{: #minification }
 MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.
 
 Many hooks are available for minifying your Javascript and css files and can be placed in the config.xml at the before_prepare event.

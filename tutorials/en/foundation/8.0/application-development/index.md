@@ -2,10 +2,11 @@
 layout: tutorial
 title: Developing Applications
 show_children: true
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Development Concepts and Overview
+{: #development-concepts-and-overview }
 When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 
 In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
@@ -13,12 +14,14 @@ In addition to getting familiar with these concepts, you will also learn about {
 You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
 
 #### Jump to
+{: #jump-to }
 * [Applications](#applications)
 * [{{ site.data.keys.mf_server }}](#mobilefirst-server)
 * [Adapters](#adapters)
 * [Client-side tutorials to follow](#client-side-tutorials-to-follow)
 
 ### Applications
+{: #applications }
 Applications are built for a target {{ site.data.keys.mf_server }} and have a server-side configuration on the target server. You must register your applications on the {{ site.data.keys.mf_server }} before you can configure them.
 
 Applications are identified by the following elements:
@@ -60,6 +63,7 @@ The target deployment platform for the app is independent of whether the app was
 > **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
 
 ### Application configuration
+{: #application-configuration }
 As mentioned, an application is configured on both the client-side and the server-side.  
 
 For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../application-development/sdk/web).
@@ -84,6 +88,7 @@ You can also use these methods to automate configuration of the {{ site.data.key
 On a production server, the app version typically corresponds to the version of the application published to an app store. Some server configuration elements like the configuration for app authenticity, are unique to the app published to the store.
 
 ## {{ site.data.keys.mf_server }}
+{: #mobilefirst-server }
 The server-side of your mobile app is {{ site.data.keys.mf_server }}. {{ site.data.keys.mf_server }} gives you access to features like application management and application security, as well giving your mobile app secure access to your other backend systems through adapters.
 
 {{ site.data.keys.mf_server }} is the core component that delivers many {{ site.data.keys.product }} features, including the following features:
@@ -102,6 +107,7 @@ You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle f
 {{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
 
 ### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
+{: #mobilefirst-and-the-mobilefirst-server-administration-service }
 The operations console is a web interface that you can use to view and edit the {{ site.data.keys.mf_server }} configurations. You can also access the {{ site.data.keys.mf_analytics_console }} from here. The context root for the operations console in the development server is **/mfpconsole**.
 
 The administration service is the main entry point for managing your apps. You can access the administration service through a web-based interface with the {{ site.data.keys.mf_console }}. You can also access the administration service with the **mfpadm** command-line tool or the administration service REST API.
@@ -109,6 +115,7 @@ The administration service is the main entry point for managing your apps. You c
 > Learn more about the [{{ site.data.keys.mf_console }} features](../product-overview/components/console).
 
 ### {{ site.data.keys.product_adj }} runtime
+{: #mobilefirst-runtime }
 The runtime is the main entry point for a {{ site.data.keys.product_adj }} client app. The runtime is also the default authorization server for the {{ site.data.keys.product }} OAuth implementation.
 
 In advanced and rare cases, you can have multiple instances of a device runtime in a single {{ site.data.keys.mf_server }}. Each instance has its own context root. The context root is used to display the name of a runtime in the operations console. Use multiple instances in cases where you require different server-level configuration such as secret keys for keystore.
@@ -116,11 +123,13 @@ In advanced and rare cases, you can have multiple instances of a device runtime 
 If you have only one instance of a device runtime in {{ site.data.keys.mf_server }}, you do not typically need to know the runtime context root. For example, when you register an application to a runtime with the `mfpdev app register` command when the {{ site.data.keys.mf_server }} has only one runtime, the application is registered automatically to that runtime.
 
 ### {{ site.data.keys.mf_server }} push service
+{: #mobilefirst-server-push-service }
 The push service is your main access point for push-related operations like push notifications and push subscriptions. To contact the push services, client apps use the URL of the runtime but replace the context root with /mfppush. You can configure and manage the push service with the {{ site.data.keys.mf_console }} or the push service REST API.
 
 If you run the push services in a separate application server from the {{ site.data.keys.product_adj }} runtime, you must route the push service traffic to the correct application server with your HTTP server.
 
 ### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
+{: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
 {{ site.data.keys.mf_analytics_full }} is an optional component that provides a scalable analytics feature that you can access from the {{ site.data.keys.mf_console }}. This analytics feature lets you search for patterns, problems and platform usage statistics across logs and events that are collected from devices, apps, and servers.
 
 From the {{ site.data.keys.mf_console }}, you can define filters to enable or disable data forwarding to the analytics service. You can also filter the type of information that is sent. On the client side, you can use the client-side log capture API to send events and data to the analytics server.
@@ -135,13 +144,16 @@ After the initial installation and configuration, you do not need to access any 
 When you deploy your app to production, you can deploy your app to the following {{ site.data.keys.mf_server }} production environments:
 
 #### On-premises
+{: #on-premises }
 > For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
 
 #### On the cloud
+{: #on-the-cloud }
 * [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
 
 ## Adapters
+{: #adapters }
 Adapters in {{ site.data.keys.product }} securely connect your back-end systems to client applications and cloud services.  
 
 You can write adapters in either JavaScript or Java, and you can build and deploy adapters as Maven projects.  
@@ -156,3 +168,4 @@ You can deploy an adapter to a {{ site.data.keys.product_adj }} runtime from the
 > Learn more about adapters and how to develop JavaScript and Java adapters in the [Adapters category](../adapters).
 
 ## Client-side tutorials to follow
+{: #client-side-tutorials-to-follow }

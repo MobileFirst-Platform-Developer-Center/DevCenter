@@ -7,12 +7,16 @@ weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-Once Analytics support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
+{: #overview }
+
+Once {{ site.data.keys.mf_analytics }} support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
 
 ## Push reports
-Push Notifications reports become available after Analytics support is configured, and Push events are sent to the Analytics service.
+{: #push-reports }
 
-1. In the Analytics Console, choose the **Infrastructure** section from the navigation bar.
+Push Notifications reports become available after {{ site.data.keys.mf_analytics_short }} support is configured, and Push events are sent to the {{ site.data.keys.mf_analytics_short }} service.
+
+1. In the {{ site.data.keys.mf_analytics_console }}, choose the **Infrastructure** section from the navigation bar.
 2. Choose the **Push Notifications** tab.
 
 Two reports types are displayed:

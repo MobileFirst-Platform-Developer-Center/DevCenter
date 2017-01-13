@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Advanced Samples
-weight: 13
+weight: 14
 print_pdf: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -54,3 +54,13 @@ LDAP (Lightweight Directory Access Protocol) is an essential protocol in the ent
 With MobileFirst Foundation it is fairly straight forward to develop this functionality and make sure it is enforced. The security framework provides the infrastructure to orchestrate sending the license agreement only to users who haven't signed it, and resend when it changes. You can also update the terms & conditions remotely from the Foundation console, and make sure your users sign the new version, without any downtime or code changes. [Continue reading...]({{site.baseurl}}/blog/2016/07/24/implementing-license-agreement-signature-using-mobilefirst-foundation-v8/)
 
 <span style="font-size:90%;margin:0">*Authentication*</span>
+
+### Add Login Approvals to Your Digital Channels with IBM MobileFirst Foundation 8.0
+Account hijacking can be a major problem. There are many ways hackers can steal passwords to users accounts, like phishing, or hacking into a central database where user credentials are stored. To protect users accounts, many companies add a second layer (or more) of security to user sign-ins & transactions called multi-factor authentication. [Continue reading...]({{site.baseurl}}/blog/2016/12/04/login-approvals-with-ibm-mobilefirst-foundation/)
+
+<span style="font-size:90%;margin:0">*Authentication*</span>
+
+### Mobile App Personalization with IBM MobileFirst Foundation 8.0
+Personalization is king. It’s no secret that when companies make us feel special, we are more engaged, satisfied, and likely to buy more from them. Just think of the last time you browsed Amazon, or your Instagram feed. Therefore it should come at no surprise that when Forrester recently surveyed 115 digital experience technology decision makers, they found that 68% marked bringing personalized experiences to their customers as a top investment priority for 2016. This also indicates that personalization is really only still in its infancy, particularly in digital channels other than websites, like in mobile apps. [Continue reading...]({{site.baseurl}}/blog/2016/10/30/personalization-with-ibm-mobilefirst-foundation/)
+
+<span style="font-size:90%;margin:0">*Live Update*</span>
