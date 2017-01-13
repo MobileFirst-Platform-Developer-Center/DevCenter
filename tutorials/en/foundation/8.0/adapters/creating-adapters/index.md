@@ -358,7 +358,7 @@ To group adapters you need to:
 3. Build the adapter Using Maven or {{ site.data.keys.mf_cli }}.
 4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
  * Click on the Deploy Adapter button (step 5).
- * Drag and drop the file into the Create new adapter screen.
+ * Drag and drop the file into the "Create new" adapter screen.
 
     ![Creating adapter using console](Create_adapter_console.png)
 
