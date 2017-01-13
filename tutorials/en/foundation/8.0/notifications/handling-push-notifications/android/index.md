@@ -121,7 +121,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
 {: #notifications-api }
 ### MFPPush Instance
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
 
 Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
 
