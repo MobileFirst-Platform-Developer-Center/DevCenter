@@ -70,7 +70,7 @@ After an authenticity check has completed, it does not occur again until the tok
 
 #### To configure the `expirationSec` property:
 {: #to-configure-the-expirationsec property }
-1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security Check Configurations**, and click on **Create New**.
+1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security-Check Configurations**, and click on **New**.
 
 2. Search for the `appAuthenticity` scope element.
 
