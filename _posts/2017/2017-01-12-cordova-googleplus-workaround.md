@@ -12,7 +12,7 @@ author:
 additional_authors:
   name: Vittal R Pai
 ---
-## Fixing the incompatibility between Cordova Google Plus Authentication Plug-in and MobileFirst Foundation on iOS
+## Fixing the incompatibility between Cordova Google Plus Authentication Plug-in and MobileFirst Foundation on iOS 
 When developing hybrid Cordova applications with MobileFirst Foundation, there is often a need to [use third party plugins](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/03/integrating-3rd-party-cordova-plug-ins/) to achieve advanced functionalty. While it is possible to use [MobileFoundation Platform adapters and the Social Login sample](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/) to log into social platforms, you may also seek to achieve this functionality by only using Cordova plugins. It has recently been discovered that some of these third party Cordova plugins do not work well with the MFP plugin, especially on iOS. This blog post will explain the incompatibility between "social login" Cordova plugins and `cordova-plugin-mfp` as well as provide some workarounds for logging into Google+ and Facebook on your mfp application.
 
 ## Description
