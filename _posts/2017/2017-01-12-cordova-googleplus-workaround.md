@@ -31,10 +31,10 @@ To explain this behavior, we will look at the `cordova-plugin-googleplus` plug-i
 
 When using  `cordova-plugin-mfp`, MobileFirst Foundation uses the `MFPAppDelegate` instead of `AppDelegate` to allow your MobileFirst Foundation-enabled Cordova application many advanced and unique features, such as containing both hybrid and native screen elements.  Unfortunately, it seems that the `MFPAppDelegate` code was forked and does not contain [an updated openURL method](https://github.com/apache/cordova-ios/blob/master/guides/API%20changes%20in%204.0.md#cdvappdelegateh-new), so the Google Plus authentication plug-in can not return the control back to the application.
 
-# Workaround for Google+ plugin
+## Workaround for Google+ plugin
 To fix the integration between `cordova-plugin-googleplus` and `cordova-plugin-mfp` plug-ins, we need to change the Google Plus plugin to implement `MFPAppDelegate` instead of `AppDelegate`, see: [https://github.com/vittalpai/cordova-plugin-googleplus/blob/master/src/ios/GooglePlus.m#L19](https://github.com/vittalpai/cordova-plugin-googleplus/blob/master/src/ios/GooglePlus.m#L19)
 
-## Use Forked Google Plus Plugin
+### Use Forked Google Plus Plugin
 The simplest way to start using the Google+ plug-in is to install our forked version, directly from GitHub and not from the default cordova plug-in repository:
 
 ```
