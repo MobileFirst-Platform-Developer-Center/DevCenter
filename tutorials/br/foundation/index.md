@@ -4,6 +4,7 @@ title: Foundation
 weight: 0
 show_breadcrumb: true
 show_disqus: false
+use_dropdown_home: foundation/8.0/all-tutorials
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
