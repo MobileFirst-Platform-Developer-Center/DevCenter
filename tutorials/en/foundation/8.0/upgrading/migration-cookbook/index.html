@@ -1012,7 +1012,7 @@ export MVN_PATH="/usr/local/bin"
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
                                 <i>Custom Authenticator + LoginModule:</i> an <code>init()</code> method for startup, and <code>processRequest()</code> to authorise requests.
-The authenticator sends the login module the credentials to the <code>login()/logout()</code> methods.</td>
+The authenticator sends the login module's credentials to the <code>login()/logout()</code> methods.</td>
                                 <td>When implementing the security check interface, the user must also implement the <code>authorize()</code> and <code>introspect()</code> methods, which are called by the framework during authorization requests. The security check handles the authentication and login/logout by itself.
                                 </td>
                             </tr>
