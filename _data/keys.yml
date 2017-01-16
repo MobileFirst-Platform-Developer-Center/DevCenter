@@ -80,6 +80,16 @@ mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 
 #####################################################################
+## MF web-apps supported browser versions
+mf_web_browser_support_chrome_ver:  "43+"
+mf_web_browser_support_safari_ver:  "8+"
+mf_web_browser_support_ie_ver:      "10+"
+#mf_web_browser_support_ms_edge_ver ""
+  # [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165.
+mf_web_browser_support_firefox_ver: "38+"
+mf_web_browser_support_android_ver: "Android 4.3+"
+
+#####################################################################
 ## Product components ##
 # NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
 
