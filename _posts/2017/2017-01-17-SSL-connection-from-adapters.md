@@ -1,13 +1,15 @@
 ---
 title: Connecting to a SSL back-end from a Java or Javascript MobileFirst Adapter
-date: 2017-17-01
+date: 2017-01-17
 tags:
 - MobileFirst_Foundation
 - Mobile_Foundation
 - Bluemix
 version: 8.0
 author:
-  name: Ajay Chebbi, Prashanth Bhat 
+  name: Ajay Chebbi 
+additional_authors:
+- Prashanth Bhat
 ---
 
 ## Overview
