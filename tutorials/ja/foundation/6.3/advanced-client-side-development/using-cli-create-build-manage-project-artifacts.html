@@ -1,0 +1,346 @@
+---
+layout: tutorial
+title: Using CLI to create, build, and manage MobileFirst project artifacts
+relevantTo: [hybrid,ios,android,windowsphone8]
+weight: 6
+---
+<br>
+Topics covered in this tutorial:</p>
+<ul>
+<li><a href="#installation">Installation of the Command Line Interface (CLI)</a></li>
+<li><a href="#creatingProjects">Creating MobileFirst projects and native API</a></li>
+<li><a href="#hybridApps">Creating hybrid applications</a></li>
+<li><a href="#testServers">Creating test servers and the build-and-deploy flow</a></li>
+<li><a href="#adapters">Creating and testing adapters</a></li>
+<li><a href="#export">Using the Export command</a></li>
+<li><a href="#import">Importing CLI-generated projects into MobileFirst Studio</a></li>
+</ul>
+<h2 id="installation">Installation of the Command Line Interface (CLI)</h2>
+<p>To get the CLI installer, <a href="https://www14.software.ibm.com/webapp/iwm/web/signup.do?source=swg-worklight&S_PKG=ov1268&S_CMP=web_dw_rt_swd">follow through this page first</a>.</p>
+<ol>
+<li>Extract the <strong>mobilefirst-cli-installer-6.3.zip</strong> archive and navigate to the <strong>mobilefirst-cli-installer-6.3</strong> folder.</li>
+<li>Select the appropriate installer for your operating system and run it.</li>
+<li>Click the <strong>Install</strong> icon to begin the installation.</li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/install1.png"/></p>
+<li>Accept the Software License Agreement.</li>
+<li>Select the installation folder.</li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/chooseFolder.png"/></p>
+<li>Accept the Pre-Installation Summary by clicking <strong>Install</strong> and then select <strong>Done</strong> when installation is complete.</li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/install2.png"/>
+</ol>
+<h2 id="creatingProjects">Creating MobileFirst projects and native API</h2>
+<p>The CLI installer adds the installation folder to your <code>path</code>, so that IBM MobileFirst Platform CLI commands can be run from any directory.</p>
+<p>Create a MobileFirst project from the CLI by using either of these commands:<br />
+<code>mobilefirst create projectName</code>, or <code>mfp create projectName</code><br />
+<strong>Example:</strong><br />
+{% highlight bash %}
+~/CLIexample $ mfp create projectName
+A MobileFirst Project was successfully created at /Users/CLIUser/CLIexample/projectName
+{% endhighlight %}
+
+<h3>Helpful Commands</h3>
+<p><code>mobilefirst help</code> – Shows all command usage:</p>
+    
+{% highlight bash %}
+~/CLIexample $ mfp help
+NAME
+     mobilefirst -- IBM MobileFirst Platform Command Line Interface (CLI).
+SYNOPSIS
+     mfp <command> [options]
+DESCRIPTION
+     Command-line interface to create and manage the applications for IBM MobileFirst Platform.
+Global Commands
+     config [%lt;setting%gt;] [<value>]
+     This command allows you to set your configuration preferences.
+     console
+     This command opens the MobileFirst console in your default browser for the
+     current working directory of your project.
+     create [%lt;name%gt;]
+     This command creates a new MobileFirst project in the current working
+     directory.
+     create-server
+     This command creates a new Liberty server in your default folder.
+     The server is configured to work as a MobileFirst local test server.
+     help [%lt;command%gt;]
+     Displays the syntax summary or command help.
+     status
+     This command shows the status (running or stopped) of the local test
+     server.
+     stop
+     This command stops the local test server.
+Project-Level Commands
+     add adapter [<name> --type|-t <adaptertype> [--jsonstore|-j] [--ussd|-u]]
+     This command creates a new adapter that is generated into the adapters
+     folder of the current project.
+     add api [<name> --environment|-e <environment>]
+     This command creates a new Native API that is generated into the apps
+     folder of the current project.
+     add environment [<type>[,...] [--app|-a <app>]]
+     This command adds a platform specific environment to a hybrid application.
+     You can run mfp add environment (without any arguments). Prompts then
+     request the environments that will be generated.
+     ...
+Command-line Flags/Options
+     -v, --version     prints out this utility's version
+     -d, --debug       debug mode produces verbose log output
+Example usage
+     $ mfp create MyProject
+     $ cd MyProject
+     $ mfp add api MyiOS --environment ios
+     $ mfp add adapter MySQLAdapter --type sql
+     $ cd MySQLAdapter
+     $ mfp build
+     $ mfp deploy
+{% endhighlight %}
+
+<p><code>mobilefirst info</code> - Gives OS release, system memory, node.js version, IBM MobileFirst CLI version</p>
+{% highlight bash %}
+~/CLIexample $ mfp info
+OS: darwin x64
+Release: 13.4.0
+System Memory: 3984MB free out of 16384MB
+Node: v0.10.30
+MobileFirst CLI: 6.3.0.00
+...
+{% endhighlight %}
+
+<p>You can use the <i>interactive</i> or <i>direct</i> options to add native API. First navigate to the MobileFirst project directory.</p>
+<p>Interactive:<br />
+<code>mobilefirst add api</code></p>
+<p>Direct:<br />
+<code>mobilefirst add api --environment ios apiName</code>, or <code>-e</code> for environment</p>
+<p><strong>Example:</strong> (direct mode)</p>
+    
+{% highlight bash %}
+~/CLIexample $ cd projectName
+~/CLIexample/projectName $ mfp add api -e ios apiName
+A new iOS API was added at /Users/CLIUser/CLIexample/projectName/apps/apiName
+{% endhighlight %}
+
+<h2 id="hybridApps">Creating hybrid applications</h2>
+<h3>Add a hybrid application from the CLI</h3>
+<p><code>mobilefirst add hybrid [<name>]</code> – Creates a new hybrid application, which is generated into the <strong>/apps</strong> folder of the current project.</p>
+<p>{% highlight bash %}
+~/CLIexample $ cd projectName
+~/CLIexample/projectName $ mfp add hybrid myApp
+A new hybrid app was added at /Users/CLIUser/CLIexample/projectName/apps/myApp
+{% endhighlight %}
+
+<p><code>mobilefirst add environment</code> – Adds an environment to your application. Can be used in the project directory if the project only contains one app. Otherwise, select which app to add the environment to, or call the command from inside the directory of the hybrid app the environment should be added to.</p>
+
+{% highlight bash %}
+~/CLIexample/myProject $ mfp add environment
+[?] Which hybrid app would you want to add environments? (Use arrow keys)
+❯ myApp
+  myOtherApp
+{% endhighlight %}
+
+<p>Interactive mode allows you to select one or more environments to add.</p>
+{% highlight bash %}
+~/CLIexample/projectName/apps/myApp $ mfp add environment
+[?] :What environments do you want to add to the hybrid app? (Press <space> to select)
+❯⬡ iPhone
+ ⬡ iPad
+ ⬡ Android phone and tablets
+ ⬡ BlackBerry 6 and 7
+ ⬡ BlackBerry 10
+ ⬡ Windows Phone 8
+ ⬡ Windows 8 desktop and tablets
+(Move up and down to reveal more choices)
+{% endhighlight %}
+
+<p>To add environments in direct mode:</p>
+<p>{% highlight bash %}
+~/CLIexample/myProject $ mfp add environment iphone,android --app myOtherApp
+A new android Environment was added at /Users/CLIUser/CLIexample/myProject/apps/myOtherApp/android
+A new iphone Environment was added at /Users/CLIUser/CLIexample/myProject/apps/myOtherApp/iphone
+{% endhighlight %}
+
+<h3>Application skins</h3>
+<p>To add an application skin from the CLI, use these commands:</p>
+<p><code>mobilefirst add skin</code> – Interactive mode prompts for the platform to target and name. The current working directory must be under an existing hybrid application, and at least one environment must already be added to this app.</p>
+{% highlight bash %}
+~/CLIexample/projectName/apps/myApp $ mfp add skin
+[?] What platform do you want to target? Android phone and tablets
+[?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.<suffix>' tablets
+A new android Skin was added at /Users/CLIUser/CLIexample/projectName/apps/myApp
+{% endhighlight %}
+
+<p>Direct mode:<br />
+<code>mfp add skin [--environment|-e android|blackberry|blackberry10|iphone|ipad skin-name]</code></p>
+<h3>Optional features</h3>
+<p>To add optional features to a hybrid application from the CLI, use these commands:</p>
+<p><code>mobilefirst add feature</code> – Interactive mode prompts for the features to add.</p>
+
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid $ mfp add feature
+[?] What feature do you want to install in this application? NOTE: Features you have already installed are not shown: (Use arrow keys)
+  FIPS 140-2
+  IBM Tealeaf SDK
+❯ JSONStore
+A new jsonstore feature was added at /Users/CLIUser/CLIexample/projectName/apps/myHybrid
+{% endhighlight %}
+
+<p>Direct:</p>
+{% highlight bash %}
+~/CLIexample/myProject $ cd apps/myApp/
+~/CLIexample/myProject/apps/myApp $ mfp add feature jsonstore
+A new jsonstore Feature was added at /Users/CLIUser/CLIexample/myProject/apps/myApp
+{% endhighlight %}</p>
+<p>To remove optional features from a hybrid application by using the CLI, use these commands:
+<code>mobilefirst remove feature</code> – Interactive mode prompts for the features to remove.</p>
+
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid $ mfp remove feature
+[?] What feature do you want to uninstall from this application? NOTE: Features you have already uninstalled are not shown: (Use arrow keys)
+❯ JSONStore
+A jsonstore Feature was removed from /Users/CLIUser/CLIexample/projectName/apps/myHybrid
+{% endhighlight %}
+
+<p><code>mobilefirst remove feature [fips|jsonstore|tealeaf]</code> – direct mode</p>
+<h3>Editing files</h3>
+<p>BYOE - Bring Your Own Editor: Use your favorite text editor or IDE to develop from CLI</p>
+<li>Example - <code>vim myAdapterName</code></li>
+
+<h2 id="testServers">Creating test servers and the build-and-deploy flow</h2>
+<p>The instance of the Liberty development server is created on the default user directory. For example:<br />
+<strong>/Users/CLIUser/.ibm/mobilefirst/6.3.0/server</strong></p>
+
+<h3>Server Commands</h3>
+<p><code>mfp start</code> - Starts the server. If the project is not deployed, this command runs the build-all-and deploy flow.</p>
+<p><code>mfp stop</code> - Stops the server.</p>
+<p><code>mfp run</code> - Verbose server mode that outputs server events to console or log.</p>
+<p><code>mfp status</code> - Gives the status of the server.</p>
+<p><code>mfp build</code> - Builds the project. When you are not in the root directory of the project, this command builds the current directory and subdirectories.</p>
+<p><code>mfp deploy</code> - Deploys anything that you built in the root directory of the project. The server will be automatically created and started as needed. When you are in the adapter folder, this command deploys that adapter.</p>
+<p><code>mfp bd</code> - Builds and deploys (a combination of both commands in a single command).</p>
+<p><code>mfp preview [environments-name --noshell|-n]</code>  - Displays a preview of the current application or environment in your default browser.</p>
+<p><code>mfp restart</code> - Restarts the local test server.</p>
+<p><code>mfp console</code> - Opens the MobileFirst Console in your default web browser.</p>
+
+<h2 id="adapters">Creating and testing adapters</h2>
+<p><code>mfp add adapter</code> - interactive mode<br />
+    
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid $ mfp add adapter
+[?] What do you want to name your MobileFirst adapter? myHttpAdapter
+[?] What type of adapter would you like? HTTP
+[?] Create procedures for offline JSONStore? No
+[?] Create procedures for USSD enablement? No
+A new HTTP adapter was added at /Users/CLIUser/CLIexample/projectName/adapters/myHttpAdapter
+{% endhighlight %}
+
+<p><code>mfp add adapter --type http myAdapterName</code>, or <code>-t</code> for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, and JMS.</p>
+
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid $ mfp add adapter --type http testAdapter
+A new http Adapter was added at /Users/CLIUser/CLIexample/projectName/adapters/testAdapter
+{% endhighlight %}
+
+<p><code>mfp invoke</code> - interactive mode<br />
+{% highlight bash %}
+~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke
+[?] Which adapter do you want to use? myHttpAdapter
+[?] Which procedure do you want to invoke? (Use arrow keys)
+ ❯ getStories
+   getStoriesFiltered
+{% endhighlight %}
+
+<p>After a procedure is selected, you are prompted to enter parameters:</p>
+
+{% highlight bash %}
+~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke
+[?] Which adapter do you want to use? myHttpAdapter
+[?] Which procedure do you want to invoke? getStories
+[?] Enter the comma-separated parameters: "world"
+Invoking %s...
+Arguments:
+[
+  "world"
+]
+Invocation result:
+{
+  "statusCode": 200,
+  "errors": [],
+  "isSuccessful": true,
+  "statusReason": "OK",
+  "rss": {
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",
+    "channel": {
+      "pubDate": "Thu, 30 Oct 2014 16:30:19 EDT",
+      "title": "CNN.com - World",
+...
+{% endhighlight %}
+
+<p><code>mfp invoke adapterName:function [parameter1[,parameter2...]]</code> - direct mode</p>
+{% highlight bash %}
+~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke myHttpAdapter:getStories \"world\"
+{<
+  "statusCode": 200,
+  "errors": [],
+  "isSuccessful": true,
+  "statusReason": "OK",
+  "rss": {
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",
+    "channel": {
+      "pubDate": "Tue, 04 Nov 2014 09:45:37 EST",
+      "title": "CNN.com - World",
+...
+{% endhighlight %}
+
+<h2 id="export">Using the Export command</h2>
+<h3>Interactive Mode project export</h3>
+<p>By using the <code>export</code> command, you can create a compressed file, which contains the entire MobileFirst project, or the optimized hybrid assets to use in a native application.</p>
+<p><code>mfp export</code> - Running this command in the project root folder prompts you to enter the path and name of the compressed file to export to.<br />
+The resulting compressed file is intended to be shared with other MobileFirst developers. The compressed file contains source artifacts and everything another developer would need to build the missing artifacts.</p>
+
+{% highlight bash %}
+~/CLIexample/projectName $ mfp export
+[?] Where do you want to export the project? /Users/CLIUser/Desktop
+[?] What do you want to name your zip project? projectName
+Project successfully exported to /Users/CLIUser/Desktop/projectName.zip
+{% endhighlight %}
+
+<h3>Direct Mode project export</h3>
+<p><code>mfp export [<path to zip file>]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
+    
+{% highlight bash %}
+~/CLIexample/projectName $ mfp export /Users/CLIUser/Desktop/myProject.zip
+Project successfully exported to /Users/CLIUser/Desktop/myProject.zip
+{% endhighlight %}
+
+<h3>Interactive Mode hybrid export</h3>
+<p>First make sure that the app is built by using the <code>mfp build</code> command.<br />
+Run the hybrid asset export within the environment folder of the existing hybrid app. Interactive mode asks whether to include the native libraries, the path, and file name of the compressed file to export to.<br />
+The native libraries are built files, which native application IDEs need to ensure the hybrid assets can be used in a native app.<br />
+
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid/iphone $ mfp export
+[?] Would you like to include the native libraries? Yes
+[?] Where do you want to export the project? /Users/CLIUser/Desktop
+[?] What do you want to name your zip project? myProjectName.zip
+Project successfully exported to /Users/CLIUser/Desktop/myProjectName.zip
+{% endhighlight %}
+
+<h3>Direct Mode hybrid export</h3>
+<p><code>mfp export [path to zip file] [-i | --includeNativeLibs]</code> - In direct mode, provide the full path to export hybrid assets. If the arguments <code>-i</code> or <code>--includeNativeLibs</code> are supplied, the native libraries are included.</p>
+
+{% highlight bash %}
+~/CLIexample/projectName/apps/myHybrid/iphone $ mfp export /Users/CLIUser/Desktop/projectName.zip --includeNativeLibs
+Project successfully exported to /Users/CLIUser/Desktop/projectName.zip
+{% endhighlight %}
+
+<h2 id="import">Importing CLI-generated projects into MobileFirst Platform Studio</h2>
+<p>From Eclipse, select <strong>File > Import > Existing Projects into Workspace</strong>.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/existingProj.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/import.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/eclipseProj.png"/></p>
+<p>CLI can also open an existing MobileFirst Studio Eclipse project. Using the command line, navigate to a workspace that was created by Eclipse.</p>
+    
+{% highlight bash %}
+~/Users/CLIUser/Desktop/EclipseWorkspace/projectName $ ls
+adapters    bin     externalServerLibraries services
+apps      components    server
+{% endhighlight %}
+
+<blockquote><p>For more information about the Command Line Interface, see the IBM MobileFirst Platform Foundation user documentation.</p></blockquote>

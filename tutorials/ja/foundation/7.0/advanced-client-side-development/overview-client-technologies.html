@@ -1,0 +1,77 @@
+---
+layout: tutorial
+title: Overview of client technologies
+relevantTo: [hybrid]
+weight: 1
+---
+<br>
+<p>IBM MobileFirst Platform Foundation includes and supports various technologies to help you develop a mobile application.<br />
+Each technology has its advantages and disadvantages. You must know which tool to use in any situation.<br />
+The following tutorial provides an overview of these technologies.<br />
+Each technology is then further covered in separate tutorials.</p>
+<p>MobileFirst supports both native (Objective-C, Java, etc.) applications and hybrid web-based applications.</p>
+<h2>Full native development</h2>
+<p>If your app requires the full power of the environment, you can develop it purely in native code.<br />
+This approach is also useful when your deploy existing native apps on the MobileFirst Server.<br />
+The platform supplies a native MobileFirst client API to manage authentication and back-end access, and to benefit from more server functionality.<br />
+For more information, see the tutorials about developping native applications for MobileFirst.</p>
+<h2>Hybrid web-based development</h2>
+<p>You can choose to develop your MobileFirst application as a hybrid, web-based application.<br />
+You develop MobileFirst hybrid apps by using standard web technologies: a single HTML file, JavaScript, style sheets, and images.</p>
+<ul>
+<li><a href="#env">Environment-specific code</a></li>
+<li><a href="#skins">Skins</a></li>
+<li><a href="#cordovaApi">Cordova APIs</a></li>
+<li><a href="#cordovaPlugins">Cordova plug-ins</a></li>
+<li><a href="#ui">Native UI</a></li>
+<li><a href="#multipage">Multipage techniques</a></li>
+<li><a href="#offline">Offline access</a></li>
+</ul>
+<p>MobileFirst apps use the MobileFirst API to access back-end data and server functionality.</p>
+<p>Some controls are common to most hybrid environments. Examples: modal pop-ups, loading screens, and tab bars.<br />
+MobileFirst provides a JavaScript API to invoke these controls regardless of the environment and automatically renders them in a native way for each platform.<br />
+For more information, see the <a title="Common UI controls" href="../../advanced-client-side-development/common-ui-controls/">Common UI controls</a> tutorial.</p>
+<h3 id="env">Environment-specific code</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_01_environments.png"/><br />
+To achieve maximum adaptation to a specific environment, you can optimize web resources specifically for it.<br />
+For example, an iPhone environment requires an iPhone-specific look and feel which you can obtain by extending CSS or JavaScript files.<br />
+MobileFirst eases the code maintenance of multiple-environment optimization.<br />
+For more information, see the <a title="Optimizing your application for various environments" href="../../client-side-development-basics/optimizing-application-various-environments/">Optimizing your application for various environments</a> tutorial.<br />
+<br clear="all" /></p>
+<h3 id="skins">Skins</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_01_skins.png"/><br />
+Skins provide support for multiple form factors in a single executable file for devices of the same OS family.<br />
+Skins are a subvariant of an environment.<br />
+Skins are packaged together in one app.<br />
+The decision on which skin to use is made automatically at run time.<br />
+For more information, see the <a title="Supporting multiple form-factors using skins" href="../../advanced-client-side-development/supporting-multiple-form-factors-using-skins/">Supporting multiple form factors by using skins</a> tutorial.<br />
+<br clear="all" /></p>
+<h3 id="cordovaApi">Cordova APIs</h3>
+<p><a href="http://cordova.apache.org/" target="_blank">Cordova</a> is an open source development framework that is based on JavaScript for building multiplatform mobile apps.<br />
+The MobileFirst Framework uses the Cordova library. MobileFirst exposes the Cordova APIs so that developers can access native device functions through those services.<br />
+For more information, see the <a title="Apache Cordova overview" href="../../adding-native-functionality/apache-cordova-overview/">Apache Cordova overview</a> tutorial.</p>
+<h3 id="cordovaPlugins">Cordova plug-ins</h3>
+<p>The Cordova plug-in is an abstraction that allows native components to be called by using a JavaScript API.<br />
+With custom plug-ins, you can add native functions such as an encryption library or computational components and call them by using JavaScript.<br />
+By default, a plug-in must be implemented for each supported environment (for example, iPhone).<br />
+Various Cordova plug-ins exist on the market.<br />
+For more information, see the <a title="Adding native functionality to hybrid applications" href="../../adding-native-functionality/">Adding native functionality to hybrid applications</a> tutorial.</p>
+<h3 id="ui">Native UI</h3>
+<p>MobileFirst provides different ways to augment web applications with native pages.<br />
+Users can navigate freely between web and native pages, share data between pages, and share a single server session.<br />
+For example, contact details can be accessed by using the Apache Cordova API. However, if your application can use the contact application in the device, use the Native Page API.<br />
+For more information, see the <a title="Adding native functionality to hybrid applications" href="../../adding-native-functionality/">Using native pages in hybrid applications</a> tutorials.<br />
+You can also modify the native project generated by MobileFirst to write your own custom native code. See <a title="Android – Adding native UI elements to hybrid applications" href="../../adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a> and <a title="iOS – Adding native UI elements to hybrid applications" href="../../adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>.</p>
+<h3 id="multipage">Multipage techniques</h3>
+<p>You can build applications with multiple pages in two ways:</p>
+<ul>
+<li>A single HTML file that contains all app pages. Pages are <em>div</em>s that become hidden or shown at run time.</li>
+<li>A separate HTML file for each application page.</li>
+</ul>
+<p>The first option is better for small apps but is less scalable.<br />
+For more information, see the <a title="Building a multi-page application" href="../../client-side-development-basics/building-multi-page-application/">Building a multipage application</a> tutorial.</p>
+<h3 id="offline">Offline access</h3>
+<p>MobileFirst apps work in concert with the MobileFirst Server.<br />
+In offline mode, developers can detect app connectivity failures and determine the best course of action.<br />
+Developers can define custom application behavior for offline and online status.<br />
+For more information, see the <a href="../../data/">Data</a> tutorial.</p>

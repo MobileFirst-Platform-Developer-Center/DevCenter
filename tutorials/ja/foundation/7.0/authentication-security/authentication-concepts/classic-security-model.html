@@ -1,0 +1,206 @@
+---
+layout: tutorial
+title: Classic security model
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<br>
+This tutorial gives an overview of IBM MobileFirst Platform Foundation authentication concepts in the following topics:</p>
+<ul>
+<li><a href="#concepts">Authentication concepts and entities</a></li>
+<li><a href="#realms">Defining realms, authenticators, and login modules</a></li>
+<li><a href="#security">Defining security tests</a></li>
+<li><a href="#protectApp">Protecting applications</a></li>
+<li><a href="#protectAdapters">Protecting adapters</a></li>
+<li><a href="#protectStatic">Protecting static resources</a></li>
+</ul>
+<h2 id="concepts">Authentication concepts and entities</h2>
+<p>MobileFirst entities such as applications, adapter procedures, and static resources can be protected from unauthorized access.<br />
+Rules are defined by a <strong>security test</strong> that contains one or more <strong>authentication realms</strong>.</p>
+<p>An <strong>authentication realm</strong> defines the process to be used to authenticate users.</p>
+<p>Each authentication realm consists of an <strong>Authenticator</strong> and a <strong>Login module</strong>, which are server-side components.</p>
+<p>The same authentication realm can be used to protect several resources.</p>
+<p>Each authentication realm requires a <strong>challenge handler</strong> component on the client-side.</p>
+<h3>Authenticator</h3>
+<p>An authenticator is a server-side entity that is responsible for collecting the credentials from the client application.</p>
+<p>An authenticator can collect any type of information that is accessible from an HTTP request object: cookies, headers, body, or any other properties.</p>
+<p>IBM MobileFirst Platform Foundation Server comes with a set of predefined authenticators, including:</p>
+<ul>
+<li>A <strong>form-based</strong> authenticator that returns a challenge in the form of an HTML login form, making it useful for web environments and mobile applications.</li>
+<li>An <strong>adapter-based</strong> authenticator that uses the MobileFirst adapter procedure to collect and validate the credentials from the client application.</li>
+<li>A <strong>header-based</strong> authenticator that does not require interactive credentials collection, but checks the specific HTTP header instead.</li>
+</ul>
+<p>In addition to predefined authenticators, you can create your own custom authenticator by using Java code.</p>
+<h3>Login module</h3>
+<p>A login module is a server-side entity that is responsible for verifying the user credentials and for creating a <em>user identity</em> object, which holds the user properties for the remainder of the session.</p>
+<p>Credentials can be validated in one of the following ways:</p>
+<ul>
+<li>By using a web service.</li>
+<li>By looking up the user in a users table in a database.</li>
+<li>By using the WebSphere LTPA token.</li>
+</ul>
+<p>It is possible to add custom user properties according to the enterprise needs.</p>
+<p>A login module destroys the user identity object when the authenticated session terminates (logout or timeout).</p>
+<p>A login module can be configured to automatically record login attempts for audit purposes.</p>
+<p>In addition to predefined login modules, you can create your own custom login module by using the Java code.</p>
+<h3>Authentication realm</h3>
+<p>An authentication realm is a combination of one authenticator and one login module. Each authentication realm defines its authentication flow:</p>
+<ul>
+<li>What should happen after the authentication process is triggered?</li>
+<li>What form of challenge should be sent to the client application?</li>
+<li>Which credentials should be collected?</li>
+<li>How and when should credentials be collected?</li>
+<li>How should credentials be sent to the server?</li>
+<li>How should credentials be validated by the server?</li>
+<li>What will be the result of credentials validation?</li>
+<li>What will be the properties of the user identity object?</li>
+</ul>
+<p>Each authentication realm that is defined in the server authentication configuration must have a corresponding challenge handler in the client application. IBM MobileFirst Platform Foundation provides several predefined authentication realms for security features, such as remote application disablement or application authenticity.</p>
+<h3>Security test</h3>
+<p>A security test is an ordered set of authentication realms that is used to protect a resource such as an adapter procedure, an application, or a static URL.</p>
+<p>A security test defines the realms that the user must authenticate against to get access to the protected resource.</p>
+<p>A developer can define the order in which authentication is processed, for example to request authentication in realm2 only after realm1 authentication succeeds.</p>
+<p>The MobileFirst framework provides definitions of default security tests for mobile and web environments, and the ability to create custom security tests.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"></p>
+<p></a><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config.png"/></p>
+<p>In the example above, a resource - for example, an application or adapter procedure - can be protected by either of two security tests.</p>
+<ul>
+<li>Using <strong>Security test 1</strong> means that the user must authenticate in both <strong>Realm1</strong> and <strong>Realm2</strong>, each one with its own set of rules.</li>
+<li>Using <strong>Security test 2</strong> means that the user must authenticate in <strong>Realm3 only</strong>.<br />
+Each realm defines its own set of <strong>Authenticator</strong> and <strong>Login module</strong>, meaning that each realm has its own rules for collecting credentials and validating them.</li>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"></p>
+<p></a><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config-reuse.png"/><br />
+Realms, authenticators, and login modules can be reused.<br />
+On the updated configuration above, <strong>Realm2</strong> is reused.<br />
+Protecting a resource with <strong>Security test1</strong> means that the user must authenticate in both <strong>Realm1 and Realm2</strong>.<br />
+Protecting a resource with <strong>Security test2</strong> means the user must authenticate in <strong>Realm2 only</strong>.</p>
+<p>When a request is made to the protected entity, IBM MobileFirst Platform Foundation checks whether the session is already authenticated. If it is not, a process is automatically triggered to verify the user's identity.<br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"></p>
+<p></a><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_client-server-flow.png"/></p>
+<h3>Challenge handler</h3>
+<p>A challenge handler is a client-side entity that controls the authentication process. It is a piece of code (JavaScript, Objective-C, Java, etc.) that you write in your client-side project to handle a specific challenge. It is used to detect the authentication challenges in the server responses and handle them.</p>
+<p>Create a separate challenge handler instance for each realm that the application must authenticate in.</p>
+<p>A challenge handler can be used to detect and handle both MobileFirst-related and external authentication challenges, like authentication proxies and gateways. After a challenge handler detects an authentication challenge that is returned from the server, it is responsible for collecting the required credentials and for sending them back to the server.</p>
+<p>After the authentication flow completes, the challenge handler can send a notification back to the MobileFirst framework about the authentication success or failure.</p>
+<p>Though customizable, a challenge handler is created with a preset of methods that you can use to submit the credentials to the built-in user authentication types of the IBM MobileFirst Platform Foundation Server. In your challenge handler, do not add code that modifies the user interface when this modification is not related to the authentication flow.</p>
+<h2 id="realms">Defining realms, authenticators, and login modules</h2>
+<p>Authentication settings are configured in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
+<p>You can modify them by using the Authentication Configuration Editor.<br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"></p>
+<p></a><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/></p>
+<p>Each realm has a name, a <strong>loginModule</strong> specification, a <strong><code>className</code></strong> of an authenticator implementation and optional parameters.</p>
+<p>{% highlight xml  %}
+<realms>
+    <realm name="SampleAppRealm" loginModule="StrongDummy">
+        <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+    </realm>
+    <realm name="SubscribeServlet" loginModule="rejectAll">
+        <className>com.worklight.core.auth.ext.HeaderAuthenticator</className>
+    </realm>
+</realms>
+{% endhighlight %} </p>
+<p>Each login module has a name, a <strong><code>className</code></strong> of the implementation and optional parameters.</p>
+<p>{% highlight xml  %}
+<loginModules>
+    <loginModule name="StrongDummy">
+        <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+    </loginModule>
+    <loginModule name="requireLogin">
+        <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
+    </loginModule>
+    <loginModule name="rejectAll">
+        <className>com.worklight.core.auth.ext.RejectingLoginModule</className>
+    </loginModule>
+</loginModules>
+{% endhighlight %} </p>
+<h2 id="security">Defining security tests</h2>
+<p>With IBM MobileFirst Platform Foundation, you can set up multiple realms for a security test.</p>
+<p>As part of the security test setup, you must set which realms are considered a <strong>user realm</strong> and which are considered a <strong>device realm</strong>.<br />
+Any identity from a realm that is defined as a <strong>user realm</strong> is used as a <em>user identity</em> for features that require one, such as push notification or application usage reports.<br />
+An identity from a realm that is defined as a <strong>device realm</strong> is used as a <em>device identity</em> for features that require one, such as device provisioning, push notification, and SMS notification.</p>
+<p>After you set up your authentication realms, you must define the security tests to be used to protect your applications, adapter procedures, and static resources.<br />
+Three types of security tests can be defined in the <code>authenticationConfig.xml</code> file:</p>
+</ul>
+<ul>
+<li><code>webSecurityTest</code> – A test that enables default web security-related realms.</li>
+<li><code>mobileSecurityTest</code> – A test that enables default mobile security-related realms.</li>
+<li><code>customSecurityTest</code> – A custom security test. Does not contain any default realm.</li>
+</ul>
+<h3>webSecurityTest</h3>
+<p>Use the <strong>webSecurityTest</strong> to protect web applications.<br />
+By default, the <strong>webSecurityTest</strong> includes a protection against XSRF attacks. For more information about this protection, see the user documentation.<br />
+Each <strong>webSecurityTest</strong> must contain one <strong>testUser</strong> element with a realm definition.<br />
+This realm is considered a <strong>user realm</strong>.</p>
+<p>{% highlight xml  %}
+<webSecurityTest name="SampleWebSecurityTest">
+    <testUser realm="SampleRealm" />
+</webSecurityTest>
+{% endhighlight %} </p>
+<h3>mobileSecurityTest</h3>
+<p>Use the <strong>mobileSecurityTest</strong> to protect mobile applications.<br />
+By default, the <strong>mobileSecurityTest</strong> includes:</p>
+<ul>
+<li>A protection against XSRF attacks</li>
+<li>An application authenticity test. For more information, see the user documentation.</li>
+<li>An capability to disable mobile applications remotely from the MobileFirst Operations Console.</li>
+</ul>
+<p>Each <strong>mobileSecurityTest</strong> must contain one <strong>testUser</strong> element with realm definition.<br />
+This realm is considered a <strong>user realm</strong>.</p>
+<p>{% highlight xml  %}
+<mobileSecurityTest name="SampleMobileSecurityTest">
+    <testUser realm="SampleRealm" />
+</mobileSecurityTest>
+{% endhighlight %} </p>
+<h3>customSecurityTest</h3>
+<p>Use the <strong>customSecurityTest</strong> to dictate your own security preferences.<br />
+Unlike the mobile and web security tests, the <strong>customSecurityTest</strong> does not include any predefined authentication realms. It includes only the tests that are defined by the developer.<br />
+Any number of tests can be defined within the <strong>customSecurityTest</strong>.<br />
+You can define which realm to be used as a user realm by adding the <code>isInternalUserId=“true”</code> property.<br />
+You can define the order of realms that the user must authenticate in.</p>
+<p>{% highlight xml  %}
+<customSecurityTest name="SampleCustomSecurityTest">
+    <test realm="SampleRealm1" step="1"/>
+    <test realm="SampleRealm2" step="2"/>
+    <test realm="SampleRealm3" step="3" isInternalUserID="true"/>
+</webSecurityTest>
+{% endhighlight %} </p>
+<h2 id="protectApp">Protecting applications</h2>
+<p>Protecting an application means that authentication is required immediately when the application tries to connect to the MobileFirst Server instance.</p>
+<p>A separate <strong>securityTest</strong> can be defined for each application environment in the <code>application-descriptor.xml</code> file.</p>
+<p>{% highlight xml  %}
+<android version="1.0" securityTest="SampleMobileSecurityTest">
+  ...
+</android>
+{% endhighlight %} </p>
+<p>If no security test is defined for a specific environment, only a minimal set of default platform tests are carried out.</p>
+<h2 id="protectAdapters">Protecting adapters</h2>
+<p>Protecting an adapter procedure means that authentication is required when this adapter procedure is called by a client application.<br />
+A separate <strong>securityTest</strong> can be defined for each adapter procedure in the adapter XML file.</p>
+<p>{% highlight xml  %}
+<wl:adapter name="DummyAdapter"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:wl="http://www.worklight.com/integration"
+    xmlns:http="http://www.worklight.com/integration/http"><
+    <displayName>DummyAdapter</displayName>
+    <description>DummyAdapter</description>
+    <connectivity>
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+            <protocol>http</protocol>
+            <domain>rss.cnn.com</domain>
+            <port>80</port>
+        </connectionPolicy>
+        <loadConstraints maxConcurrentConnectionsPerNode="2" />
+    </connectivity>
+    <procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/>
+</wl:adapter>
+{% endhighlight %} </p>
+<h2 id="protectStatic">Protecting static resources</h2>
+<p>A static resource is a URL that is loaded from the MobileFirst Server instance, for example: the console or mobile web application.</p>
+<p>Protecting a static resource means that MobileFirst Server requires authentication at any attempt to browse to the specified URL.<br />
+The static resources and their protection can be defined in the <code>authenticationConfig.xml</code> file.</p>
+<p>{% highlight xml  %}
+<staticResources>
+    <resource id="mobileFirstConsole" securityTest="SubscribeServlet">
+        <urlPatterns>/console*</urlPatterns>
+    </resource>
+</staticResources>
+{% endhighlight %} </p>

@@ -1,0 +1,178 @@
+---
+layout: tutorial
+title: Building a multipage application
+relevantTo: [hybrid]
+weight: 2
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/MultiPageApp/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#basicsOfMultiPageApplication">The basics of a multipage application</a></li>
+<li><a href="#loadingExternalHTML">Loading an external HTML file</a></li>
+<li><a href="#implementPageNavigationHistory">Implementing page navigation with history</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="basicsOfMultiPageApplication">The basics of a multipage application</h2>
+<p>A MobileFirst hybrid application uses a single DOM model.<br />
+A single DOM model means that you must never navigate between various HTML files by using hyperlinks or changing the <code>window.location</code> property.</p>
+<p>Instead, you must implement <strong>multipage interfaces</strong> by loading external HTML file <strong>content</strong>, and by using Ajax requests and injecting them into the existing DOM.<br />
+This is required because the main application HTML file loads the MobileFirst client-side JavaScript™ framework files, and when the browser navigates from one HTML file to another, the JavaScript context and loaded scripts are lost.</p>
+<p>Most JavaScript UI frameworks that are available today (for example, jQuery Mobile and Dojo Mobile) provide extensive APIs to achieve the required multipage navigation.</p>
+<p>In this tutorial, a multipage MobileFirst application implementation is explained by using <strong>built-in functionality only</strong> with jQuery.</p>
+<p><strong>Important</strong>: Do not use the built-in functionality that is described in this tutorial if you intend to use a JavaScript UI framework. Use the API of that framework instead.</p>
+<h3>Building applications with multiple pages</h3>
+<p>You can build multipage applications in two ways:</p>
+<ul>
+<li>A single HTML file that contains all the application "pages"</li>
+<li>A separate HTML file for each application "page"</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_application_types.jpg" /></p>
+<p>A single HTML file is the preferred model for simpler applications, where the developer is responsible for showing the “current” page <code>DIV</code> and hiding the rest.</p>
+<p>However, larger applications present a challenge:</p>
+<ul>
+<li>The developer must take full responsibility for which DIVs are shown and which DIVs are hidden at any moment.</li>
+<li>If new content is needed in a page, for example a table, a prepared template cannot be loaded. Instead, it must be generated manually.</li>
+<li>A single large HTML file with many pages takes longer to load.</li>
+<li>It is easy to get lost in a single HTML file that contains multiple "pages". Separate files are easier to manage.</li>
+</ul>
+<p>Building a rich dynamic application with multiple pages can be easier with dynamic page loading:</p>
+<ul>
+<li>You can use built-in jQuery APIs to dynamically load, update, and insert DOM elements in your application.</li>
+<li>You can insert HTML pages with CSS and JavaScript as necessary.</li>
+<li>You can implement navigation history.</li>
+<li>You can have JavaScript code executed when pages are loaded or unloaded.</li>
+</ul>
+<h3>Implementation notes</h3>
+<ul>
+<li>When you implement multipage navigation in the Windows Phone 8 environment, you <strong>must</strong> change the URL each time you use the jQuery <code>load()</code> API method. <em>The example project for this training module demonstrates this task in detail.</em>
+<p>Add <code>/www/default/</code> at the beginning of the URL path string. For example:<br />
+Change<br />
+{% highlight js  %}
+$("#pagePort").load("pages/MainPage.html", function(){
+    (currentPage.init);
+});
+{% endhighlight %}</p>
+<p>To<br />
+{% highlight js  %}
+$("#pagePort").load("/www/default/pages/MainPage.html", function(){
+    (currentPage.init);<br />
+});
+{% endhighlight %}</li>
+<li>When you implement multipage navigation for the Windows Phone 8 environment, and jQuery Mobile is used with the <code>changePage()</code> API method, a jQuery Mobile defect prevents it from properly working.<br />
+To overcome the defect, consult the changes that need to be made in the <code>.js</code> file of jQuery Mobile, as described in the following Stack Overflow question: <a href="http://stackoverflow.com/questions/17965560/ibm-worklight-v-5-0-6-cant-navigate-multipages-on-windows-phone-7-5-environme">IBM Worklight v 5.0.6 - Can't navigate multipages on Windows Phone 7.5 environment</a></li>
+</ul>
+<h2 id="loadingExternalHTML">Loading an external HTML file</h2>
+<p>An external HTML file is a segment of HTML code that can be injected into any location in the existing DOM. A single HTML file can contain a hierarchy of multiple HTML elements.</p>
+<ul>
+<li>You can include JavaScript code or files by using the <code>script</code> tag.</li>
+<li>You can include CSS files by using the <code>link</code> tag.</li>
+<li>You can inject the HTML file into the parent element, usually a <code>DIV</code>, but this is not mandatory.</li>
+<li>You can use the jQuery <code>$().load()</code> API method to implement the above.</li>
+</ul>
+<p>To load an HTML file, use the following syntax:<br />
+{% highlight js  %}$(containerSelector).load(filePath, callbackFunction);{% endhighlight %}</p>
+<p><code>containerSelector</code> – The jQuery CSS selector of element to host the loaded content.<br />
+<code>filePath</code> – The relative path to an HTML file. Always relative to the main HTML file.<br />
+<code>callbackFunction</code> - A JavaScript function to run when the loading completes.</p>
+<h3>Example</h3>
+<h4>JavaScript</h4>
+<p>{% highlight js  %}
+$("#pagePort").load(path + "pages/MainPage.html", function(){
+    $.getScript(path + "js/MainPage.js", function() {
+        if (currentPage.init) {
+            currentPage.init();
+        }
+    });
+});
+{% endhighlight %}</p>
+<h4>HTML</h4>
+<p>{% highlight html  %}
+<div id="pagePort"></div>
+{% endhighlight %}</p>
+<p>This code loads the <code>MainPage.html</code> file and inserts its content into the <code>pagePort DIV</code> element.<br />
+JavaScript (and CSS, if needed) references from the <code>MainPage.html</code> are loaded into the DOM.</p>
+<h2 id="implementPageNavigationHistory">Implementing page navigation with history</h2>
+<p>By using the previously described technique to load an external HTML file, you can implement a navigation interface with history.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_mutlipage_history.jpg" /></p>
+<p>The navigation history must be preserved as a stack in a global array object.<br />
+A reference to the currently loaded page must be preserved, too, by using a global object variable.<br />
+A reference to the file path is needed for Windows Phone 8.</p>
+<p>{% highlight js  %}
+var pagesHistory = [];
+var currentPage = {};
+var path = "";
+{% endhighlight %}</p>
+<h3>Implementing page navigation with history: Step 1</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg" /></p>
+<ol>
+<li>On application start, the <code>MainPage.html</code> file is loaded from the application code and injected into the <code>#pagePort DIV</code>.
+<p>{% highlight js  %}
+function wlCommonInit() {
+    // Special case for Windows Phone 8 only.
+    if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
+        path = "/www/default/";
+    }
+    $("#pagePort").load(path + "pages/MainPage.html",function(){
+       if (currentPage.init) {
+           currentPage.init();
+       }
+    });
+}{% endhighlight %}</li>
+<li>The <code>MainPage.js</code> file is loaded as a part of <code>MainPage.html</code>.
+<p>{% highlight js  %}
+currentPage = {};
+currentPage.init = function() {
+    WL.Logger.debug("MainPage :: init");
+};
+{% endhighlight %}</li>
+<li>The currentPage object is declared.</li>
+<li>The <code>currentPage.init</code> function is declared.</li>
+<li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
+</ol>
+<h3>Implementing page navigation with history: Step 2</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_2.jpg" /></p>
+<ol>
+<li><code>MainPage.html</code> is pushed into the <code>pagesHistory</code> stack.</li>
+<li><code>Page1.html</code> is loaded and injected into <code>#pagePort DIV</code>. <code>Page1.js</code> is loaded as a part of <code>Page1.html</code>.</li>
+<li>The <code>currentPage</code> object is declared and overrides the old one.</li>
+<li>The <code>currentPage.init</code> function is declared.
+<p>{% highlight js  %}
+currentPage = {};
+currentPage.init = function(){
+    WL.Logger.debug(“page1 :: init");
+};
+{% endhighlight %}</li>
+<li>When the loading of <code>Page1.html</code> completes, a new <code>currentPage.init</code> method is called.</li>
+</ol>
+<h3>Implementing page navigation with history: Step 3</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_3.jpg" /></p>
+<ol>
+<li>The previous HTML file name is retrieved from the <code>PagesHistory</code> stack (<code>MainPage.html</code>).</li>
+<li>It is loaded and injected into <code>#pagePort DIV</code>.
+<p>{% highlight js  %}
+currentPage.back = function(){
+    WL.Logger.debug("Page1 :: back")
+    $("#pagePort").load(pagesHistory.pop(),
+        function() {
+            if (currentPage.init) {
+               currentPage.init();
+            }
+    });
+};{% endhighlight %}</li>
+<li><code>MainPage.js</code> is loaded as a part of <code>MainPage.html</code>.</li>
+<li>The <code>currentPage</code> object is declared and overrides the old one.</li>
+<li>The <code>currentPage.init</code> function is declared.
+<p>{% highlight js  %}
+currentPage = {};
+currentPage.init = function(){
+    WL.Logger.debug("MainPage :: init");
+};
+{% endhighlight %}</li>
+<li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
+</ol>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/MultiPageApp/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_sample_app.png" /></p>

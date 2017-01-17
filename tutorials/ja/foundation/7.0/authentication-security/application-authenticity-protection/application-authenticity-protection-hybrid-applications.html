@@ -1,0 +1,80 @@
+---
+layout: tutorial
+title: Authenticity Protection in Hybrid applications
+relevantTo: [hybrid]
+---
+<br>
+This tutorial is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
+<h3>The application-descriptor.xml file</h3>
+<p>Add the <code>securityTest</code> attribute to the relevant environment element. For example:</p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
+<p>Next, you must make modifications that are specific to each environment.</p>
+<h3>iOS</h3>
+<p>To enable application authenticity protection check for the iPhone/iPad environment, specify the following identifiers in the <code>application-descriptor.xml</code> file.</p>
+<h4>Specifying the <code>bundleId</code> and <code>applicationId</code> identifiers</h4>
+<ol>
+<li>Specify the <code>bundleId</code> value of the application exactly as it is defined in the <strong>Apple Developer portal</strong>.<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_appId.png"/>You can add the value either in the Application Description Design view:
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/></p>
+<p>Or in the Application Descriptor Source view:</p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" version="1.0"> {% endhighlight %} </p>
+</li>
+<li>Specify the <code>applicationId</code> value. The application identifier must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file. You can add the value either in the Application Description Design view:<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png"/>
+<p>Or in the Application Descriptor Source view:</p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
+</li>
+<li>In Xcode, verify that the following value exists in the <strong>Other Linker Flags</strong> field: <code>-ObjC</code></li>
+</ol>
+<h3>Android</h3>
+<p>To enable application authenticity protection check for the Android hybrid environment, follow these steps:</p>
+<ol>
+<li>Extract the public signing key of the certificate that is used to sign application bundle (<code>.apk</code> file).
+<ul>
+<li>If the application is built for distribution (production), extract the public key from the certificate that is used to sign the production-ready application.</li>
+<li>If the application is built in the development environment, you can use the default public key that is supplied by the Android SDK. You can find the development certificate in a keystore that is in a <code>{user-home}/.android/debug.keystore</code> file.</li>
+<li>You can extract the public signing key either manually or by using the wizard that MobileFirst Studio provides.<br />
+<h4>Extracting the public signing key by using the wizard</h4>
+<ol>
+<li>Right-click the Android environment folder and select <strong>Extract public signing key</strong>.</li>
+<li>Specify the location and the password of a keystore file and click <strong>Load Keystore</strong>.<br />
+    The default password for <strong>debug.keystore</strong> is <code>android</code>.</li>
+<li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
+<p>    A dialog displays the public key.</p>
+<li>Click <strong>Finish</strong>. The public key is automatically pasted to the relevant section of the <code>application-descriptor.xml</code> file. <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-signing-key.png"/></li>
+<li>Add the Application package name by using the Application Descriptor Editor (design view):<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/></li>
+<li>Take the value of the application package name from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code> file.<br />
+If you decide to change the value, make sure that you change it in both locations. You can also directly edit the  <code>application-descriptor.xml</code> file and add a package name.</p>
+<p>{% highlight xml  %}
+<android version="1.0">
+    <worklightSettings include="false"/>
+    <security>
+        <encryptWebResources enabled="false"/>
+        <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        <publicSigningKey>MIGff ...</publicSigningKey>
+        <packageName>com.MyBankApp</packageName>
+    </security>
+</android>
+{% endhighlight %} </p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Windows Phone 8</h3>
+<p>To enable application authenticity check for the Windows Phone 8 hybrid environment, modify the <code>application-descriptor.xml</code> file as follows.</p>
+<ul>
+<li>In the Application Descriptor Design view, supply the <code>applicationId</code> and <code>productId</code> in the Windows Phone 8 Security section:<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_11_windowsphone8-1024x492.png"/></li>
+<p> You can find the <code>productId</code> value in the <code>native\PropertiesWMAppManifest.xml</code> file.<br />
+ The <code>applicationId</code> value must match the value of the <code>wlAppId</code> property, which you can find in the <code>native\wlclient.properties</code> file.</p>
+<li>You can also supply these values in the Application Descriptor Source view. For example:
+<p>{% highlight xml  %}
+<windowsPhone8 version="1.0">
+    <uuid>b5542877-7afe-4edc-a817-5341b5027633</uuid>
+    <security>
+        <productId>fca81480-7b4a-4ed0-b387-078e8fa0c3d5</productId>
+        <applicationId>HelloWorld</applicationId>
+    </security>
+</windowsPhone8>
+{% endhighlight %} </li>
+</ul>

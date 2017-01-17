@@ -1,0 +1,110 @@
+---
+layout: tutorial
+title: iOS - Implementing Cordova plug-ins
+breadcrumb_title: Implementing Cordova plug-ins
+relevantTo: [hybrid]
+weight: 5
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip
+---
+<h2>Overview</h2>
+<p>In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.</p>
+<p>With Apache Cordova, developers can create an Apache Cordova plug-in, which means that they create custom native code blocks, and call these code blocks in their applications by using JavaScript.</p>
+<p>This tutorial demonstrates a simple Apache Cordova plug-in creation and integration for iOS.</p>
+<p><strong>Note:</strong> In Cordova-based applications, developers must check for the <code>deviceready</code> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.</p>
+<p>Instead of implementing this check, you can place implementation code in the <code>wlCommonInit()</code> function in the <code>common\js\main.js</code> file.</p>
+<p>
+The code extracts below are based on the sample application, which is provided at the bottom of this tutorial.</p>
+<p><strong>Plug-in creation overview:</strong></p>
+<ol>
+<li>Declare the plug-in in the <code>config.xml</code> file.</li>
+<li>Use the <code>cordova.exec()</code> API in the JavaScript code.</li>
+<li>Create the plug-in class that will run natively in iOS.<br />
+        The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <code>cordova.exec()</code>.</li>
+</ol>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_03_overview.png"/></p>
+<h2>Declaring a plug-in</h2>
+<p>The plug-in needs to be declared in the project, so that Cordova can detect it.<br />
+To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the iOS environment.</p>
+{% highlight xml  %}
+<feature name="sayHelloPlugin">
+	<param name="ios-package" value="sayHelloPlugin" />
+</feature>
+{% endhighlight %}</p>
+<h2>Implementing cordova.exec() in JavaScript</h2>
+<p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
+{% highlight javascript  %}
+function sayHello() {
+    var name = $("#NameInput").val();
+    cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
+}
+{% endhighlight %}
+
+<p><br clear="all" /><br />
+<code>sayHelloSuccess</code> - Success callback<br />
+<code>sayHelloFailure</code> - Failure callback<br />
+<code>SayHelloPlugin</code> - Plug-in name as declared in config.xml<br />
+<code>sayHello</code> - Action name<br />
+<code>[name]</code> - Parameters array</p>
+<p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
+{% highlight javascript  %}
+function sayHelloSuccess(data){
+    WL.SimpleDialog.show(
+        "Response from plug-in", data,
+	[{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+    );
+}
+function sayHelloFailure(data){
+    WL.SimpleDialog.show(
+	"Response from plug-in", data,
+	[{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+    );
+}
+{% endhighlight %}
+
+<h2>Implementing the Objective-C code of a Cordova plug-in</h2>
+<p>After the plug-in is declared, and the JavaScript implementation is ready, the Cordova plug-in can be implemented.<br />
+For this purpose, ensure that the project is built in Eclipse and opened in the Xcode IDE.</p>
+<p><strong>Step 1</strong></p>
+<ol>
+<li>Add a new Cocoa Touch Class file, make sure that it is a subclass of <code>UIViewController</code>, and save it in the <code>Classes</code> folder of the Xcode project.</li>
+<li>Import the <code>Cordova/CDV.h</code> and inherit the <code>CDVPlugin</code> class.</li>
+<li>Declare the <code>SayHelloPlugin</code> signature.
+{% highlight objc  %}
+#import <Foundation/Foundation.h>
+#import <Cordova/CDV.h>
+<p>@interface SayHelloPlugin : CDVPlugin
+- (void)sayHello:(CDVInvokedUrlCommand*)command;
+@end
+{% endhighlight %}
+<p><strong>Step 2</strong></p>
+<ul>
+<li>Implement the method. The <code>command</code> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
+{% highlight objc  %}
+#import “SayHelloPlugin.h"
+@implementation SayHelloPlugin
+- (void)sayHello:(CDVInvokedUrlCommand*)command {
+{% endhighlight %}
+<p><br clear="all" /></p>
+<li>This statement retrieves the parameters that are sent from JavaScript.<br />
+{% highlight objc  %}NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
+{% endhighlight %}</li>
+<p><br clear="all" /></p>
+<li>The <code>pluginResult</code> object is created with data retrieved from JavaScript. The <code>CDVCommandStatus</code> parameter defines whether the plug-in call was successful or not.<br />
+{% highlight objc  %}CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
+    {% endhighlight %}</li>
+<p><br clear="all" /></p>
+<li>The <code>sendPluginResult</code> method is used to return a response back to JavaScript (invoke callback).<br />
+{% highlight objc  %}[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+@end
+{% endhighlight %}</li>
+</ul>
+<p><br clear="all" /><br />
+<strong>Important:</strong><br />
+If you are working with existing <code>.m</code> and <code>.h</code> files, reference those files while you are working in Xcode.<br />
+Placing the <code>.m</code> and <code>.h</code> files only in the <code>iphone\native\Classes</code> folder in Eclipse is not sufficient, because these files will not be referenced in the Xcode project unless you add them in Xcode.</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip">Click to download</a> the Studio project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_03_sample_app1.png"/></ol>

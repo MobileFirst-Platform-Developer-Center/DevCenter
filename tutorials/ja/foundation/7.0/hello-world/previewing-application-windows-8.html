@@ -1,0 +1,43 @@
+---
+layout: tutorial
+title: Previewing your application on Windows 8
+relevantTo: [hybrid]
+weight: 11
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read <a href="../../hello-world/previewing-applications-web-resources/">Previewing the web resources of your application</a>.</p>
+<p>This tutorial covers the following topics.</p>
+<ul>
+<li><a href="#openVS">Opening the Visual Studio project in Visual Studio Express 2012</a></li>
+<li><a href="#preview">Previewing the application in the Windows 8 Emulator</a></li>
+<li><a href="#run">Running the application in a physical device</a></li>
+</ul>
+<h2 id="openVS">Opening the Visual Studio project in Visual Studio Express 2012</h2>
+<h3>CLI</h3>
+<p>If you are not using MobileFirst Studio Eclipse plug-in, use Visual Studio and navigate to the application folder in order to open the project.</p>
+<h3>MobileFirst Studio</h3>
+<p>You can open a Visual Studio project from the native folder in one of the following ways:</p>
+<ul>
+<li>Right-click the <code>.jsproj</code> file and select <strong>Open</strong>.</li>
+<li>As an alternative, you can manually open the <code>.jsproj</code> file within Microsoft Visual Studio. Click <strong>Open Project</strong> on the left menu and navigate to the project folder.</li>
+<li>If you are running Eclipse in Windows 8, you can also right-click the Windows 8 project file and select <strong>Run As > Visual Studio project</strong>. Visual Studio opens.
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_11_run_on_windows8-1024x882.png" />
+</li>
+</ul>
+<h2 id="preview">Previewing the application in the Windows 8 Emulator</h2>
+<ol>
+<li>In Visual Studio, make sure that <strong>Windows 8 Simulator</strong> is selected:<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_10_windows_8_simulator.png"/>
+</li>
+<li>Click the green play button (or press <strong>F5</strong>) to start your application in debug mode.<br />
+To start your application without debug mode, press <strong>Ctrl + F5</strong> or change <strong>Debug</strong> to <strong>Release</strong> in the dropdown list.</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_11_run_on_windows8_simulator-1024x668.png"/>
+</li>
+</ol>
+<h2 id="run">Running the application in a physical device</h2>
+<ol>
+<li>Make sure that <strong>Device</strong> is selected.</li>
+<li>Make sure that your device is connected and is not in sleep mode.</li>
+<li>Click the green play button (or press <strong>F5</strong>) to start your application in debug mode.</li>
+<li>Click the transparent play button to start your application without debug mode (or press <strong>Ctrl + F5</strong>).</li>
+</ol>

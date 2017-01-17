@@ -1,0 +1,118 @@
+---
+layout: tutorial
+title: Invoking adapter procedures from hybrid client applications
+relevantTo: [hybrid]
+weight: 7
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresHybridProject.zip
+---
+
+<h2>Overview</h2>
+<p>MobileFirst applications can adapt procedures to communicate with any data source. This tutorial explains how to use the REST API for returning data from an HTTP adapter. The same can be applied using other data sources (such as SQL adapters, etc).</p>
+<h2 id="restapi">REST API</h2>
+<p>The REST API works with all adapters and external resources, and is supported in the following hybrid environments: iOS, Android, Windows Phone 8, and  Windows 8.</p>
+<blockquote><p>If your application supports other hybrid environments such as BlackBerry, Mobile Web, or Desktop Browser, see the tutorial for <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-hybrid-client-applications/" title="Invoking adapter procedures from hybrid client applications">MobileFirst 6.3</a>.</p></blockquote>
+<p><br clear="all" /></p>
+<h3>WLResourceRequest</h3>
+<p>{% highlight js  %}
+var resourceRequest = new WLResourceRequest(
+    "/adapters/RSSReader/getFeedsFiltered",
+    WLResourceRequest.GET
+);
+{% endhighlight %} </p>
+<p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
+<p>The parameters for the constructor are:</p>
+<ul>
+<li><strong>request URL</strong>: To access an adapter within the same project, the URL should be <code>/adapters/AdapterName/procedureName</code>.<br />
+     To access resources outside of the project, use the full URL.</li>
+<li><strong>HTTP method</strong>: Most commonly <code>WLResourceRequest.GET</code> or <code>WLResourceRequest.POST</code></li>
+<li><strong>timeout</strong>: optional, request timeout in milliseconds</li>
+</ul>
+<p><br clear="all" /></p>
+<h4>setQueryParameter</h4>
+<p>{% highlight js  %}
+resourceRequest.setQueryParameter("params", "['technology']");
+{% endhighlight %} </p>
+<p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
+<ul>
+<li>In MobileFirst JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name <code>params</code>.
+</li>
+<li>In Java adapters or external resources, use <code>setQueryParameter</code> for each parameter.<br />
+{% highlight js  %}
+resourceRequest.setQueryParameter("param1", "value1");
+resourceRequest.setQueryParameter("param2", "value2");
+{% endhighlight %}
+</li>
+</ul>
+<p><br clear="all" /></p>
+<h4>send(body)</h4>
+<p>{% highlight js  %}
+resourceRequest.send().then(
+	onSuccess,
+	onFailure
+);
+{% endhighlight %} </p>
+<p>The <code>send()</code> method triggers the request.<br />
+Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFailure</code> functions.</p>
+<p><code>send</code> takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.</p>
+<h4>sendFormParameters(json)</h4>
+<p>To send URL encoded form parameters, use <code>sendFormParameters(json)</code> instead. It will convert the JSON to a URL encoded string, set the content-type to <code>application/x-www-form-urlencoded</code>, and set it as the HTTP body.</p>
+<blockquote><p>For more information about <code>WLResourceRequest</code>, see the API reference in the user documentation.</p></blockquote>
+<h2 id="invocationresults">Results</h2>
+<p>Both the <code>onSuccess</code> and <code>onFailure</code> callbacks receive a <code>response</code> object, which typically contains the following properties:</p>
+<ul>
+<li><strong><code>status</code></strong>: The HTTP response status </li>
+<li><strong><code>responseJSON</code></strong>: An object that contains the data that is returned by the invoked procedure, and additional information about the procedure invocation.</li>
+</ul>
+<p>The object is returned to a corresponding success/failure handler.</p>
+<p><br clear="all" /><br />
+{% highlight javascript  %}
+{
+  "errors": [],
+  "info": [],
+  "warnings": [],
+  "isSuccessful": true,
+  "responseHeaders": {
+    "Cache-Control": "no-cache, must-revalidate, post-check=0, pre-check=0"
+  },
+  "responseTime": 491,
+  "statusCode": 200,
+  "statusReason": "OK",
+  "totalTime": 592,
+  "Items": [{
+    "creator": "Jon Fingas",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",
+    "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",
+    "title": "Harvard used cameras to track attendance without telling students"
+  }, {
+    "creator": "Jon Fingas",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated",
+    "pubDate": "Mon, 10 Nov 2014 00:10:00 -0500",
+    "title": "BMW's new street lights will charge your electric car"
+  }, {
+    "creator": "Daniel Cooper",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated",
+    "pubDate": "Sun, 09 Nov 2014 22:43:00 -0500",
+    "title": "How would you change Nokia's Lumia 925?"
+  }]
+}
+{% endhighlight %} </p>
+<ul>
+<li><code>errors</code>, <code>info</code>, and <code>warnings</code> are optional arrays of strings that contain messages.</li>
+<li>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), or to <code>false</code> otherwise.</li>
+<li>The response can contain other metadata such as <code>responseHeaders</code>, <code>responseTime</code>, <code>statusCode</code>, <code>statusReason</code>, and <code>totalTime</code>.</li>
+</ul>
+<h3>Handling the result</h3>
+<p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.</p>
+<p>{% highlight javascript  %}
+function loadFeedsSuccess(result){
+    WL.Logger.debug("Feed retrieve success");
+    if (result.responseJSON.Items.length > 0)
+        displayFeeds(result.responseJSON.Items);
+}
+{% endhighlight %} </p>
+<h2 id="sample">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresHybridProject.zip">Click to download</a> the Studio project.</p>
+<p>The sample uses the HTTP adapter created in the <a href="../../server-side-development/js-http-adapter/">HTTP Adapter tutorial</a>.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_06_results.png"/></p>

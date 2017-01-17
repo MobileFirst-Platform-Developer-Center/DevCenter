@@ -1,0 +1,109 @@
+---
+layout: tutorial
+title: Using a MobileFirst Hybrid application as a container for server-generated pages
+relevantTo: [ios,android,hybrid]
+weight: 8
+downloads:
+  - name: Download MobileFirst project 
+    url: https://github.com/MobileFirst-Platform-Developer-Center/UsingApplicationAsAContainer/tree/release71
+---
+<br>
+<p>
+This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#migration">Migrating applications to IBM MobileFirst Platform Foundation</a></li>
+<li><a href="#android">Running your application on the Android emulator</a></li>
+<li><a href="#ios">Running your application on the iOS emulator</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="migration">Migrating applications to IBM MobileFirst Platform Foundation</h2>
+<ul>
+<li>By using mobile web technology, you can deploy applications to the widest variety of devices.</li>
+<li>The existence of public application stores, such as Apple iTunes and Google Play, changes the way applications are hosted and marketed. These changes make traditional methods of distribution less relevant.</li>
+<li>IBM MobileFirst Platform Foundation provides the solution to build cross-platform applications that can be distributed through the application stores by using the hybrid application programming model.</li>
+<li>In the hybrid model, developers typically package the application HTML, CSS, and JavaScript™ code as part of the application that is deployed to the application store.</li>
+<li>This tutorial shows the remote loading of dynamic content capability, where the HTML, CSS, and JavaScript code is hosted externally from the natively packaged hybrid.</li>
+</ul>
+<h3>Creating MobileFirst applications</h3>
+<h4>CLI</h4>
+<p>From a terminal window, use the following CLI commands to add a project and application:<br />
+{% highlight bash %}
+mfp create UsingApplicationAsAContainer
+cd UsingApplicationAsAContainer
+mfp add hybrid UsingApplicationAsAContainer
+{% endhighlight %}</p>
+<p>Next, add a required environment, for example Android:<br />
+{% highlight bash %}
+cd UsingApplicationAsAContainer
+mfp add environment android
+{% endhighlight %}</p>
+<h4>Studio</h4>
+<p>In MobileFirst Studio, create a new project, "UsingApplicationAsAContainer"<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/new-project-wizzard-1-300x300.png"/></p>
+<p>A project might host multiple applications. However, in this tutorial, you use only one app: <code>UsingApplicationAsAContainer</code><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/new-project-wizzard-2-300x300.png"/></p>
+<p>You can set the target environments either while you are working in the <strong>MobileFirst Project</strong> wizard, or later.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/new-project-wizzard-3-300x300.png"/></p>
+<h3>IBM MobileFirst environments</h3>
+<ul>
+<li>IBM MobileFirst Foundation provides a model for organizing the application project structure for each target environment (for example, Android, iPhone, iPad).</li>
+<li>You select your target environment through the <strong>MobileFirst Environment</strong> wizard.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/environment-new-296x300.png"/><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/environments-300x264.png"/></p>
+<h3 class="clear">IBM MobileFirst Common environment</h3>
+<ul>
+<li>The simplest way to use MobileFirst apps as containers for server-generated pages is through the Common environment.</li>
+<li>Open the <code>application-descriptor.xml</code> file and edit the <code>mainFile</code> tag to point to <code>http://m.ibm.com</code>.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/application-descriptor-300x276.png"/></p>
+<p>{% highlight xml  %}
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.worklight.com/application-descriptor" id="UsingApplicationAsAContainer" platformVersion="6.3.0.00.20141003-1438">
+    <displayName>UsingApplicationAsAContainer</displayName>
+    <description>UsingApplicationAsAContainer</description>
+    <author>
+        <name>application's author</name>
+        <email>application author's e-mail</email>
+        <homepage>http://mycompany.com</homepage>
+        <copyright>Copyright My Company</copyright>
+    </author>
+    <mainFile>http://m.ibm.com</mainFile>
+    <features/>
+    <thumbnailImage>common/images/thumbnail.png</thumbnailImage>
+    <iphone bundleId="com.UsingApplicationAsAContainer" version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        </security>
+    </iphone>
+    <android version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey/>
+            <packageName/>
+        </security>
+    </android>
+</application>
+{% endhighlight %}</p>
+<h2 id="android">Running your application on the Android emulator</h2>
+<ol>
+<li>Build the Android environment.</li>
+<li>Deploy the application. </li>
+<li>Right-click the generated Android project and click <strong>Run As</strong> > <strong>Android Application</strong>.</li>
+</ol>
+<p>You can see that the <code>http://m.ibm.com</code> URL is displayed in your Android emulator.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/android-app-177x300.png" /></p>
+<p><br clear="all" /></p>
+<h2 id="ios">Running your application on the iOS emulator</h2>
+<ol>
+<li>Deploy the application to your iOS emulator. </li>
+<li>Right-click the IOS environment and click <strong>Run As</strong> > <strong>Xcode project</strong>.</li>
+</ol>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iphone-app-150x300.png" /><br />
+<br clear="all" /></p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/UsingApplicationAsAContainer/tree/release71">Click to download</a> the sample.</p>

@@ -1,0 +1,98 @@
+---
+layout: tutorial
+title: Custom Authentication in native Windows Phone 8 applications
+relevantTo: [windowsphone8]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth/tree/release71
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthWP8/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Windows Phone 8 client-side authentication components for custom authentication. Make sure you read <a href="../" title="Custom Authentication">Custom Authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Windows Phone 8 application and add the MobileFirst native APIs following the documentation.</p>
+<h3>CustomChallengeHandler</h3>
+<p>Create a <code>CustomChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+<code>CustomChallengeHandler</code> should implement</p>
+<ul>
+<li><code>isCustomResponse</code> </li>
+<li><code>handleChallenge</code> </li>
+</ul>
+<p><code>isCustomResponse</code> checks every custom response received from MobileFirst Server to see if this is the challenge we are expecting.<br />
+{% highlight csharp  %}
+public override bool isCustomResponse(WLResponse response)
+{
+    if(response == null ||
+       response.getResponseJSON() == null)
+    {
+        return false;
+    }
+    if(response.ToString().IndexOf("authStatus") > -1)
+    {
+        return true;
+    }
+    else
+    
+        return false;
+    }
+}
+{% endhighlight %}</p>
+<p><code>handleChallenge</code> method, is called after the <code>isCustomResponse</code> method returned true.<br />
+Within this method we present our login form. Different approaches may be adopted to present the login form.<br />
+{% highlight csharp  %}
+public override void handleChallenge(JObject response)
+{
+    Deployment.Current.Dispatcher.BeginInvoke(() =>
+    {
+        MainPage._this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
+    });
+}
+{% endhighlight %}</p>
+<p>From the login form , credentials are passed to the <code>CustomChallengeHandler</code> class. The <code>submitLoginForm()</code> method is used to send our input data to the authenticator.<br />
+{% highlight csharp  %}
+public void submitLogin(string username, string password)
+{
+    Dictionary<String, String> parms = new Dictionary<String, String>();
+    parms.Add("username", username);
+    parms.Add("password", password);
+    submitLoginForm("/my_custom_auth_request_url", parms, null, 10000, "post");
+}
+{% endhighlight %}</p>
+<h3>MainPage</h3>
+<p>Within the MainPage class connect to MobileFirst server, register your <code>challengeHandler</code> and invoke the protected adapter procedure.<br />
+The procedure invocation will trigger MobileFirst server to send a challenge that will trigger our <code>challengeHandler</code>.<br />
+{% highlight csharp  %}
+    WLClient client;
+    client = WLClient.getInstance();
+    challengeHandler = new WindowsChallengeHandler();
+    client.registerChallengeHandler((BaseChallengeHandler<JObject>)challengeHandler);
+    client.connect(new MyConnectResponseListener(this));
+{% endhighlight %}</p>
+<p>Since the native API not protected by a defined security test, there is no login form presented during server connection.<br />
+Invoke the protected adapter procedure and the login form is presented by the <code>challengeHandler</code>.<br />
+{% highlight csharp  %}
+    WLProcedureInvocationData invokeData = new WLProcedureInvocationData("AuthAdapter", "getSecretData");
+    WLRequestOptions options = new WLRequestOptions();
+    client.invokeProcedure(invokeData, new MyResponseListener(this), options);
+{% endhighlight %}</p>
+<h2>Worklight Protocol</h2>
+<p>If your custom authenticator uses <code>WorklightProtocolAuthenticator</code>, some simplifications can be made:</p>
+<ul>
+<li>Subclass your challenge handler using <code>WLChallengeHandler</code> instead of <code>ChallengeHandler</code>. Note the <code>WL</code>.</li>
+<li>You no longer need to implement <code>isCustomResponse</code> as the challenge handler will automatically check that the realm name matches.</li>
+<li><code>handleChallenge</code> will receive the challenge as a parameter, not the entire response object.</li>
+<li>Instead of <code>submitLoginForm</code>, use <code>submitChallengeAnswer</code> to send your challenge response as a JSON.</li>
+<li>There is no need to call <code>submitSuccess</code> or <code>submitFailure</code> as the framework will do it for you.</li>
+</ul>
+<blockquote><p>For an example that uses <code>WorklightProtocolAuthenticator</code>, see the <a href="../../../advanced-topics/remember-me/" title="Remember Me">Remember Me</a> tutorial or <a href="{{site.baseurl}}/blog/2015/05/29/ibm-mobilefirst-platform-foundation-custom-authenticators-and-login-modules/" target="_blank">this video blog post</a>.
+</p></blockquote>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthWP8/tree/release71" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>CustomAuth</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>CustomAuthWP8</code> project contains a native WP8 application that uses a MobileFirst native API library.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/WP8CustomLoginModule.png" /></p>

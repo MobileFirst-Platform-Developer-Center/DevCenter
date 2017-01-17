@@ -1,0 +1,77 @@
+---
+layout: tutorial
+title: General information when developing for Android
+breadcrumb_title: General information
+relevantTo: [hybrid]
+weight: 6
+---
+<h2>Overview</h2>
+<p>This tutorial presents general development information for the Android environment: as project structure, access to native capabilities through Apache Cordova, environment-specific resources and design resources.</p>
+
+<h2>Project structure</h2>
+<p>An Android app that is developed using IBM MobileFirst Platform comprises the following components:</p>
+
+<ul>
+    <li>A Java main Android Activity that hosts an instance of a WebView component. The main activity uses a provided template, but can also be a pure Android native activity</li>
+    <li>A set of Java and JavaScript™ libraries that provide access to various device features and capabilities</li>
+    <li>Web application code that is provided by the developer. Such code is written in HTML, CSS, and JavaScript and runs in the WebView instance</li>
+    <li>All application components, including the web code from the developer, that are packaged into a single Android project</li>
+</ul>
+
+<p>The IBM MobileFirst Platform supports Android devices that run Android OS version 2.3.3 and 4.x.<br />
+If a source control management system (such as Rational Team Concert, Git, Subversion and so on), see the user documentation topic: "Integrating with source control system".</p>
+
+<h2>Designing for Android</h2>
+<p><b>Guidelines</b><br />
+It is useful to always consult the Google Design and Develop websites when developing applications:</p>
+
+<ul>
+    <li>Design: <a href="http://developer.android.com/design/index.html">http://developer.android.com/design/index.html</a></li>
+    <li>Develop: <a href="http://developer.android.com/develop/index.html">http://developer.android.com/develop/index.html</a></li>
+</ul>
+
+<p><b>Resolutions</b><br />
+Various Android devices have different screen resolutions, for example:</p>
+
+<ul>
+    <li>HTC Hero – 320 x 480</li>
+    <li>Nexus One – 480 x 800</li>
+    <li>Samsung Galaxy S4 – 1080 x 1920 </li>
+    <li>Google Nexus 4 – 1280 x 768</li>
+</ul>
+
+<p>When displaying graphical elements on wider screens, Android automatically scales images and fonts to the appropriate ratio.<br />
+For example, on a 480-pixel wide screen, a 100-pixel wide image is scaled by 480/320 (= 1.5) to 150 pixels in width, and the text that is displayed with an 18-pixel font is displayed with a 24-pixel font.</p>
+
+<p><b>Screen size support</b><br />
+By default, the <code>AndroidManifest.xml</code> file that is created by MobileFirst Studio defines that the application supports only normal screens:</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_07_screen_size_androidmanifest.png" />
+
+<ul>
+    <li>To support tablets and newer Android devices, it must be declared that the application supports other types of screens</li>
+    <li>Make sure to add appropriately sized resources (icons, images, styling) for those screen types and sizes</li>
+    <li>For more information about supporting multiple screens, see the <em>Supporting multiple form factors using MobileFirst skins</em> tutorial</li>
+    <li>For more information about supporting multiple screens, see <a href="http://developer.android.com">http://developer.android.com</a></li>
+</ul>
+
+<p><b>Look &amp; Feel</b><br />
+By altering the <code>targetSdkVersion</code> value in the <code>AndroidManifest.xml</code> file, it is possible to control the look &amp; feel of the native UI elements that are displayed in the application interface (dialogs, buttons, spinners, display resolution, and so on).</p>
+
+<p>By default, a MobileFirst application is generated with <code>MinSdkVersion=10</code> (Android 2.3.3) and <code>targetSdkVersion=19</code>.<br />
+This means that a device uses the UI elements that fit best to its installed Android OS version. For example, in Android 2.x and Android 4.x, the look and feel of the Options Menu feature differs.</p>
+
+<h2>Environment-specific images</h2>
+<p>As seen in the previous slide, different Android devices come with different resolutions, so they require icons of different sizes.</p>
+
+<p>If the Options Menu feature is to be implemented in an application, all the icons must be placed in the appropriate drawable folder, which is in <code>your-project-name\apps\your-app-name\android\nativeResources\res\drawable-*</code>.</p>
+
+<ul>
+    <li>Designates a screen density (<code>LDPI, MDPI, HDPI, XDPI, XXDPI</code>).<br />
+MobileFirst builder then copies these images to the generated project native folder.</li>
+</ul>
+
+<h2>Apache Cordova</h2>
+<p>The Apache Cordova framework can be used in Android applications to access the native elements of a device, such as contacts, geo-location services, media services, or the accelerometer.</p>
+
+<p>For more information about Apache Cordova development, see the <i>Apache Cordova overview tutorial</i>.</p>

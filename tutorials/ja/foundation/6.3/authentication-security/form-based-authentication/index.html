@@ -1,0 +1,51 @@
+---
+layout: tutorial
+title: Form-based authentication
+show_children: true
+relevantTo: [ios,android,hybrid]
+weight: 2
+---
+<h2>Overview</h2>
+<p>In form-based authentication, the HTML code of a login form is returned in the server response when the application tries to access a protected resource.<br />
+Although form-based authentication is best suited for desktop and web environments, where you actually display and use the returned login form, you can also use this authentication mode in mobile applications.</p>
+<p>To use form-based authentication, you must use a login module to validate the received credentials.<br />
+In this tutorial, you implement a simple form-based authentication mechanism that is based on a user name and a password.</p>
+<p>Jump to:</p>
+<ul>
+<li><a href="#creatingTheClientsideAuthenticationComponents">Creating the client-side authentication components</a></li>
+</ul>
+<h2>Configuring the authenticationConfig.xml</h2>
+<p>The default <strong>authenticationConfig.xml</strong> file already contains a sample realm that is configured to use a form-based authenticator.</p>
+<p>{% highlight xml  %}
+<realm name="SampleAppRealm" loginModule="StrongDummy">
+  <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+</realm>
+{% endhighlight %}</p>
+<p>Notice the <strong>StrongDummy</strong> login module that is used for this realm.</p>
+<p>{% highlight xml  %}
+<loginModule name="StrongDummy">
+  <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+</loginModule>
+{% endhighlight %}</p>
+<p><strong>NonValidatingLoginModule</strong> means that the user credentials are not validated. In other words: any combination of user name and password is valid.</p>
+<p>Define a security test that uses the SampleAppRealm. Remember the security test name, to use it in the subsequent steps.</p>
+<p>{% highlight xml  %}
+<customSecurityTest name="DummyAdapter-securityTest">
+  <test isInternalUserID="true" realm="SampleAppRealm" />
+</customSecurityTest>
+{% endhighlight %}</p>
+<h2>Creating the server-side authentication components</h2>
+<p>The following diagram illustrates the form-based authentication process.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_02_flow_diagram.png" />
+Create an adapter and name it <strong>DummyAdapter</strong>.<br />
+Add a <strong>getSecretData</strong> procedure and protect it with the security test that you created in previous slides.</p>
+<p>{% highlight xml  %}<procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/>{% endhighlight %}</p>
+<p>In this module, the <strong>getSecretData</strong> procedure returns some hardcoded value:</p>
+<p>{% highlight javascript  %}
+function getSecretData(){
+	return {
+		secretData: '123456'
+	};
+}
+{% endhighlight %}</p>
+<h2 id="creatingTheClientsideAuthenticationComponents"  class="hidden-print">Creating the client-side authentication components</h2>

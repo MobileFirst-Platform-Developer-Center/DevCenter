@@ -1,0 +1,55 @@
+---
+layout: tutorial
+title: Remote controlled client-side log collection
+relevantTo: [ios,android,hybrid]
+weight: 7
+show_children: true
+---
+<h2 id="whatIsLogging">Overview</h2>
+<p>Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. Example: <code>java.util.logging</code> in Java.</p>
+<p>Logging libraries typically have verbosity controls, that are frequently called levels. Example, from least to most verbose: ERROR, WARN, INFO, LOG, DEBUG</p>
+<ul>
+<li>Developers can filter by level in their log viewer</li>
+<li>Capture tools can filter by level in their configurations</li>
+</ul>
+<p>Topics Covered:</p>
+<ul>
+<li><a href="#logCapture">Log Capture</a></li>
+<li><a href="#serverPrep">Server Preparation</a></li>
+<li><a href="#adminControl">Admin Control</a></li>
+<li><a href="#crashCapture">Crash Capture</a></li>
+<li><a href="#apiCalls">API calls for specific environments</a></li>
+</ul>
+<h2 id="logCapture">Log Capture</h2>
+<p>Log capture is the ability to persistently record messages that are passed to the logging API.<br />
+Capture is on by default but can be turned off.</p>
+<p>Logging defaults to DEBUG level in development, and FATAL in production. Control levels, and therefore verbosity, with API calls specific to your environment.</p>
+<h2 id="serverPrep">Server preparation</h2>
+<p>Persistently captured log output in browsers and devices in production is useless unless that captured data can be sent for diagnostic inspection.</p>
+<p>The client sends accumulated captured log messages automatically:</p>
+<ul>
+<li>At Worklight client connect success</li>
+<li>At Worklight adapter call success</li>
+</ul>
+<p>Automatic behavior can be turned on or off with API calls specific to your environment, or by calling the <code>send</code> method explicitly in your application.</p>
+<h2>Server preparation (in production)</h2>
+<h3>How to receive and process received logs at the server?</h3>
+<p>The Analytics Platform, and therefore the Analytics Dashboard link in the MobileFirst Platform Console, is installed and available by default in the embedded Liberty server (in MobileFirst Platform Studio development environment).</p>
+<h3>How to receive and process received logs at the server (in MobileFirst Platform production environment)?</h3>
+<p>Two options:</p>
+<ul>
+<li>Install the Analytics Platform WAR file, and/or</li>
+<li>Develop and deploy an adapter that is named <code>WLClientLogReceiver</code> with a function (procedure) that is named <code>log</code></li>
+</ul>
+<blockquote class="clear"><p><strong>Note:</strong> Installation and configuration of Analytics Platform and development of adapters is beyond the scope of this getting started guide. For more information, see the related getting started modules or the IBM MobileFirst Platform user documentation.</p></blockquote>
+<h2 id="adminControl">Admin control of client log capture</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/logprofiles_smaller.png"/></p>
+<p>Use the MobileFirst Platform Operations Console to configure log capture preferences for applications in production. Administrators can control the MobileFirst Platform client SDK log capture and levels from the MobileFirst Platform Operations Console.</p>
+<p>Automatic behavior can be turned on or off with API calls specific to your environment, or by calling the <code>updateConfigFromServer</code> method explicitly in your application.</p>
+<h2 id="crashCapture">Crash Capture</h2>
+<p>MobileFirst Platform client SDK, on Android and iOS, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user.</p>
+<p>MobileFirst Platform client SDK, in JavaScript, captures JavaScript global errors and if possible, a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.</p>
+<p>Crash, uncaught exceptions, and global errors are caught and logged automatically.</p>
+<h2>For more information</h2>
+<p>For more information about Logging and Log Capture, see the IBM MobileFirst Platform Foundation user documentation.</p>
+<h2 id="apiCalls" class="hidden-print">API Calls for specific environments</h2>

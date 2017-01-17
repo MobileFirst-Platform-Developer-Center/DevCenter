@@ -1,0 +1,82 @@
+---
+layout: tutorial
+title: JavaScript adapters
+weight: 2
+show_children: true
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite</strong>: Make sure to read the Adapters Overview tutorial first.</p>
+<p>JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, SAP JCo, and SAP Netweaver. JavaScript adapters also provide a service discovery wizard, which you can use to autogenerate adapters for connecting to WSDL services and more.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#anatomy">Anatomy of JavaScript adapters</a></li>
+<li><a href="#procedureStructure">Structure of a JavaScript adapter procedure</a></li>
+<li><a href="#adapterProcedures">JavaScript adapter procedures</a></li>
+<li><a href="#xmlStructure">XML structure of JavaScript adapters</a></li>
+<li><a href="#javascriptAdapterTypes">JavaScript adapter types</a></li>
+</ul>
+<h2 id="anatomy">Anatomy of JavaScript adapters</h2>
+<p>Each adapter consists of the following elements:</p>
+<ul>
+<li>An XML file, which describes the connectivity options and lists the procedures that are exposed to the application or other adapters</li>
+<li>A JavaScript file, which contains the implementation of procedures that are declared in the XML file</li>
+<li>Zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data</li>
+</ul>
+<p>Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a <strong>JSON object</strong>.</p>
+<h2 id="adapterProcedures">JavaScript adapter procedures</h2>
+<p>Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:</p>
+<ul>
+<li>To provide adapter functions to the application</li>
+<li>To call back-end services to retrieve data or to perform actions</li>
+</ul>
+<p>By using server-side JavaScript, a procedure can process the data before or after it calls the service.<br />
+You can apply more filtering to retrieved data by using simple XSLT code.</p>
+<p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
+<h2 id="xmlStructure">XML structure of JavaScript adapters</h2>
+<p>{% highlight xml  %}
+<wl:adapter name="HelloWorld">
+  <displayName />
+  <description />
+  <connectivity>
+    <connectionPolicy>
+    ...
+    <loadConstraints>
+    ...
+  </connectivity>
+  <procedure />
+  <procedure />
+  ...
+</wl:adapter>
+{% endhighlight %}</p>
+<ul>
+<li><code>name:</code> Mandatory. The name of the adapter</li>
+<li><code>displayName</code>: Optional. The name that is displayed in the MobileFirst Console</li>
+<li><code>description</code>: Optional. Additional information that is displayed in the MobileFirst Console</li>
+<li><code>connectivity</code>:
+<ul>
+<li>Defines the connection properties and load constraints of the back-end system.</li>
+<li>When the back-end system requires user authentication, defines how user credentials are obtained.</li>
+</ul>
+</li>
+<li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
+</ul>
+<p>{% highlight xml  %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
+{% endhighlight %}</p>
+<h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
+<p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
+The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
+<p>{% highlight javascript  %}
+function procedure1(param) {
+  return WL.Server.invokeSQLStatement({
+    preparedStatement: procedure1Statement,
+    parameters: [param]
+  });
+}
+{% endhighlight %}</p>
+<h2 id="globalvars">Using global variables</h2>
+<p>Depending on your infrastructure and configuration, your MobileFirst server may be running with <code>SessionIndependent</code> set to true, where each request may reach a different node and HTTP sessions are not used.<br />
+In such cases you should not rely on global variables to keep data from one request to the next.</p>
+<h2 id="javascriptAdapterTypes">JavaScript adapter types</h2>

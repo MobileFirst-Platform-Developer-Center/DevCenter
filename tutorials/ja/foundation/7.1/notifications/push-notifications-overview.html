@@ -1,0 +1,134 @@
+---
+layout: tutorial
+title: Push Notifications Overview
+show_children: true
+weight: 1
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<h2>Overview</h2>
+<p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to devices on which MobileFirst applications are installed. Notification can be sent in 2 different ways: based on sources of events or based on tags.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#whatIsPushNotifications">What is push notification?</a></li>
+<li><a href="#notificationTypes">Push notification types</a></li>
+<li><a href="#rest">REST API for Push notifications</a></li>
+<li><a href="#environmentType">Supported environments</a></li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/push-example-169x300.png" style="float:right" /></p>
+<h2 id="whatIsPushNotifications">What is push notification?</h2>
+<p>Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.</p>
+<p>Notifications are received regardless of whether the application is currently running.<br />
+Notifications can take several forms:</p>
+<ul>
+<li><strong>Alert (all)</strong>: a pop-up text message</li>
+<li><strong>Badge (iOS), Tile (W8, WP8)</strong>: a graphical representation that allows a short text or image</li>
+<li><strong>Banner (iOS), Toast (W8, WP8)</strong>: a disappearing pop-up text message at the top of the device display</li>
+<li><strong>Sound (all)</strong>: a sound file playing when a notification is received</li>
+<li><strong>Interactive (iOS 8)</strong>: action buttons inside the <strong>Banner</strong> of a received notification</li>
+</ul>
+<h3>Device support</h3>
+<p>Push notifications are supported for the following mobile platforms:</p>
+<ul>
+<li>Android 2.3.5, 4.x, 5.x</li>
+<li>iOS 6, 7, and 8</li>
+<li>Windows Phone 8.x</li>
+<li>Windows 8</li>
+</ul>
+<h2 id="notificationTypes">Push notification types</h2>
+<h3>Event Source notifications</h3>
+<p>Event source push notifications are notification messages that are targeted to devices with a user subscription.</p>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="ReadMore">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#readMore" aria-expanded="true" aria-controls="readMore">Click to read more</a>
+            </h4>
+        </div>
+
+        <div id="readMore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac1">
+            <div class="panel-body">
+<h2 id="notificatioArchitecture">Notification architecture</h2>
+<h3>Terminology</h3>
+<h4>Event source</h4>
+<p>A push notification channel to which mobile applications can register. An event source is defined within a MobileFirst adapter.</p>
+<h4>Device token</h4>
+<p>A unique identifier, obtained from the push mediator (Apple, Google, or Microsoft), which identifies the request of a specific mobile device to receive notifications from the MobileFirst Server.</p>
+<h4>User ID</h4>
+<p>A unique identifier for a user. Obtained through authentication or other unique identifier such as a persistent cookie.</p>
+<h4>Application ID</h4>
+<p>MobileFirst application ID. Identifies a specific MobileFirst application on the mobile market.</p>
+<h3>Subscription</h3>
+<p>To start receiving push notifications, an application must first subscribe to a push notification event source.<br />
+An event source is declared in the MobileFirst adapter that is used by the application for push notification services.</p>
+<p>The end user must approve the push notification subscription.<br />
+After the subscription is approved, the device registers with an Apple, Google, or Microsoft push server to obtain a token that is used to identify the device (“Allow notifications for application X on device Y”), and sends a subscription request to the MobileFirst Server. <em>This operation is performed automatically by the MobileFirst framework.</em></p>
+<h3>Demonstration</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_subscription_1.jpg" /></p>
+<p>When the subscribe API method is called, the device registers with a push service mediator and obtains a device token (done automatically by the framework).</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_subscription_2.jpg" /></p>
+<p>When the token is obtained, the application subscribes to an event source. Both actions are done automatically by a single API method call, as described in <a href="#subscriptionManagement">Subscription management</a>.</p>
+<h2 id="sendingNotifications">Sending notifications</h2>
+<p>IBM MobileFirst Platform Foundation provides a unified API for push notification.</p>
+<p>Use the adapter API for the following actions:</p>
+<ul>
+<li>Managing subscriptions</li>
+<li>Pushing and polling notifications from a back end</li>
+<li>Sending push notifications to devices</li>
+</ul>
+<p>Use the application API for the following actions:</p>
+<ul>
+<li>Subscribing to and unsubscribing from push-notification event sources</li>
+<li>Handling incoming notifications</li>
+</ul>
+<p>Before a notification can be sent, it must first be retrieved from the back end.</p>
+<p>An event source can either <strong>poll</strong> notifications from the back-end system, or wait for the back-end system to explicitly <strong>push</strong> a new notification.<br />
+When a notification is retrieved by the adapter, it is processed and sent through the corresponding push service mediator (Apple, Google, or Microsoft).</p>
+<p>Some custom logic can be added in the adapter to preprocess notifications. The push service mediator receives the notification and sends it to a device.</p>
+<h3>Demonstration</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_1.jpg" /></p>
+<p>Notifications are retrieved by the MobileFirst adapter event source, either by poll or by push from the back-end system.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_2.jpg" /></p>
+<p>The adapter processes the notification and sends it to a push service mediator.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_3.jpg" /></p>
+<p>The push service mediator sends a push notification to the device.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_4.jpg" /></p>
+<p>The device processes the received notification.</p>
+<h2 id="subscriptionManagement">Subscription management</h2>
+<h3>User subscription</h3>
+<h4>Subscription</h4>
+<p>An entity that contains a user ID, a device ID, and an event source ID. It represents the intent of the user to receive notification from a specific event source.</p>
+<h4>Creation</h4>
+<p>The user subscription for an event source is created when the user first subscribes to the event source from any device.</p>
+<h4>Deletion</h4>
+<p>A user subscription is deleted when the user unsubscribes from the event source from all the user’s devices.</p>
+<h4>Notification</h4>
+<p>While the user subscription exists, the MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices that the user subscribed from.</p>
+<h3>Device subscription</h3>
+<p>A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.</p>
+<p>The device subscription is created when the application on a device calls the subscribe method.<br />
+The device subscription is deleted either by an application that calls the <em>unsubscribe</em> method or when the push mediator informs the MobileFirst Server that the device is permanently not accessible.
+</div>
+</div>
+</div>
+</div>
+
+<h3>Tag notifications</h3>
+<p>Tag push notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.</p>
+<h3>Broadcast notifications</h3>
+<p>Broadcast push notifications are a form of tag push notifications that are targeted to all subscribed devices.</p>
+<h3>Unicast notifications</h3>
+<p>Unicast notifications are targeted to a particular device or a <code>userID</code>. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.</p>
+<blockquote><p>For more information about unicast notifications, see the topic about sending push notifications, in the user documentation.
+</p></blockquote>
+<h3>Interactive notifications</h3>
+<p><strong>iOS 8 and above only</strong><br />
+Interactive push notifications enables action buttons to be added for received notifications.</p>
+<h3>Silent notifications</h3>
+<p><strong>iOS 7 and above only</strong><br />
+Silent push notifications enables notifications to be sent without disturbing the user.</p>
+<h2 id="rest">REST API for Push notifications</h2>
+<p>MobileFirst Platform Foundation exposes a REST API endpoint that can be accessed by non-mobile clients. It is another way to use the push service without needing to develop and deploy MobileFirst adapters.</p>
+<blockquote><p>For more information about the REST API for push notification, see the topic about REST API Runtime Services, in the user documentation.
+</p></blockquote>
+<h2 id="environmentType">Supported environments</h2>

@@ -1,0 +1,66 @@
+---
+layout: tutorial
+title: Evaluate IBM MobileFirst Platform Foundation on IBM Containers
+breadcrumb_title: Evaluate
+relevantTo: [ios,android,windows8,windows10,hybrid]
+---
+<br/>
+<blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>Important:</b> This tutorial is superseded with the new Mobile Foundation Bluemix service. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation">Learn more about to the Mobile Foundation service</a>.</blockquote>
+
+<h2>Overview</h2>
+<p>This tutorial goes through the steps that you must follow to evaluate running IBM MobileFirst Platform Foundation on IBM Containers: You register an account at the Bluemix website, you create an IBM Container that contains a preconfigured, self-contained, MobileFirst Platform Foundation "Getting Started" image, you set up this image, and finally you download a sample mobile application and run it with the MobileFirst Server instance that runs inside the Container service on Bluemix.</p>
+
+<p><strong>Prerequisite:</strong> First make sure that you read the <a href="../">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
+
+<b>Topics</b>
+<ul>
+    <li><a href="#registerAccount">Registering an account on Bluemix</a></li>
+    <li><a href="#createContainer">Creating an IBM Container</a></li>
+    <li><a href="#fobOverview">IBM MobileFirst Platform Foundation on IBM Containers Overview page</a></li>
+</ul>
+
+<h2 id="registerAccount">Registering an account on Bluemix</h2>
+<p>If you do not have an account yet, visit the <a href="http://www.bluemix.net">Bluemix website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong> button. You must first fill out a registration form before you can move to the next step.</p>
+
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/bluemix-sign-up.png" /></p>
+
+<p>After signing in to Bluemix, you are presented with the Bluemix Dashboard which provides an overview of the active Bluemix <strong>space</strong>. This is a work area which by default receives the name "dev". You can create multiple work areas/spaces if needed.</p>
+
+<p>The next step is to add an <strong>IBM Container</strong> in the Bluemix space.</p>
+
+<h2 id="createContainer">Creating an IBM Container</h2>
+<ol>
+    <li>In the Bluemix Dashboard, click <strong>Start Containers</strong>.
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/bluemix-create-container.png"  /></li>
+
+    <li>In the screen that display, select the <strong>IBM MobileFirst Platform Foundation Getting Started</strong> image.
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/select_the_image-1024x261.png"  /></li>
+
+    <li>Provide a name for the container.</li>
+    <li>Select <strong>Container size (memory: "Medium")</strong>, request a public IP address, assign public ports (80, 9080).</li>
+    <li>Click <strong>Create</strong> to create the container.
+
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/image_details.png"  /></a></li>
+</ol>
+
+<p>The Container page is then loaded.<br />
+
+<strong>Note:</strong> After the page is loaded, the Container might be still in "building" stage.</p>
+
+<p>To access the container, use the IP address that you have previously binded to it.<br />
+If you haven't done so, you can still do it from the <strong>Public IP address</strong> drop-down menu.</p>
+
+<p>The address to use is: <code>http(s)://binded-IP-address</code>.<br/>
+Before you can access the container, you first go through a one-time registration page.<br />
+After you have registered, the Overview page displays.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/containerpage.png"  /></a>
+
+<h2 id="fobOverview">IBM MobileFirst Platform Foundation on IBM Containers Overview page</h2>
+<p>Use one of the sample applications to reach the final step of the evaluation: connecting an app to a MobileFirst Server instance that runs on top of Bluemix.</p>
+
+<p>The landing page also provides links to various documentation resources.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/overview-page.png"  />
+
+<p>Visit the <a href="../sample-app/">IBM MobileFirst Platform Foundation on IBM Containers sample app</a> tutorial for instructions and downloading, setting up, and runnning the sample application.</p>

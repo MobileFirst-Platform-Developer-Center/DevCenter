@@ -1,0 +1,86 @@
+---
+layout: tutorial
+title: Tag-based notifications in native iOS applications
+relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip
+---
+<h2>Overview</h2>
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
+Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
+
+
+<h2>Setting up tags</h2>
+Tags are defined in the <code>application-descriptor.xml</code> file:
+
+{% highlight xml  %}
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+...
+...
+...
+<tags>
+    <tag>
+        <name>my tag 1</name>
+        <description>About my tag 1</description>
+    </tag>
+    <tag>
+        <name>my tag 2</name>
+        <description>About my tag 2</description>
+    </tag>
+</tags> {% endhighlight %} 
+
+<h2>Tag-based notifications API methods</h2>
+<h4>Client-side methods:</h4>
+
+<ul>
+    <li><code>[[WLPush sharedInstance]subscribeTag:tagName :options)]</code>
+    Subscribes the device to the specified tag name.</li>
+
+    <li><code>[[WLPush sharedInstance]unsubscribeTag:tagName :options)]</code>
+    Unsubscribes the device from the specified tag name.</li>
+
+    <li><code>[WLPush sharedInstance]isTagSubscribed:tagName]</code>
+    Returns whether the device is subscribed to a specified tag name.</li>
+</ul>
+
+<h2>Common API methods for tag-based and broadcast notifications</h2>
+<h4>Client-side API:</h4>
+
+When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called. The logic to handle the notification should be defined here.
+
+{% highlight objc  %} 
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"Received Notification %@",userInfo.description);
+}
+{% endhighlight %} 
+
+<ul>
+    <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
+</ul>
+
+{% highlight objc  %} [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener]; {% endhighlight %} 
+<ul>
+<li>This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.</li>
+</ul>
+
+<h4>Server-side API</h4>
+<ul>
+    <li><code>WL.Server.sendMessage(applicationId,notificationOptions)</code>
+    This method submits a notification based on the specified target parameters and takes two mandatory parameters:
+        <ul>
+           <li><code>applicationId</code> - (mandatory) The name of the MobileFirst application</li>
+            <li><code>notificationOptions</code> - (mandatory) A JSON block containing message properties</li>
+        </ul>
+    </li>
+</ul>
+
+<blockquote>For a full list of message properties, refer to the <code>WL.Server.sendMessage</code> API in the API reference documentation.</blockquote>
+
+<h2>Sample application</h2>
+Before running the application, check the adapter's <code>PushAdapter-impl.js</code> file and verify that the <code>WL.Server.sendMessage()</code> method  use the correct application name. The correct application name can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>.
+
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Click to download the Studio project</a>
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip">Click to download Native project</a>

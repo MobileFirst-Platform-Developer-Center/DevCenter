@@ -1,0 +1,171 @@
+---
+layout: tutorial
+title: Working with Beacons
+show_children: true
+relevantTo: [ios]
+weight: 10
+---
+<h2>Overview</h2>
+<p>Beacons are represented as <code>Beacon</code> objects in IBM MobileFirst Platform Foundation. Beacons are identified by universally unique identifiers (UUID), major and minor values. The UUID in its canonical form is represented by 32 lowercase hexadecimal digits. The major and minor values are positive numbers in the range of 0-65535 (inclusive).</p>
+<p>Beacon objects also contain a <code>customData</code> field which is a JSON payload that specified customer-specific data representing the beacon; for example, the store or location where the beacon is deployed.</p>
+<p>You can register, update, and delete beacons by using REST APIs. For detailed information about REST APIs, see the Reference part of the user documentation.</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#registeringbeacons">Registering beacons</a></li>
+<li><a href="#registeringbeacontriggers">Registering beacon triggers</a></li>
+<li><a href="#associatingbeacons">Associating beacons and beacon triggers</a></li>
+<li><a href="#retrievingbeacons">Using the server-side API to retrieve beacons and triggers</a></li>
+<li><a href="#clientSideApi">Client-side API</a></li>
+</ul>
+<h2 id="registeringbeacons">Registering beacons</h2>
+<p>Register the following beacons by using the beacons (PUT) REST API.<br />
+{% highlight js  %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 1,
+    "minor": 4417,
+    "customData": {
+        "branchName": "Indiranagar, Bangalore"
+    }
+}
+{% endhighlight %} </p>
+
+{% highlight js  %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 2,
+    "minor": 4417,
+    "customData": {
+        "branchName": "Koramangala, Bangalore"
+    }
+}
+{% endhighlight %} </p>
+<h2 id="registeringbeacontriggers">Registering beacon triggers</h2>
+<p>Beacon triggers are represented as <code>BeaconTrigger</code> objects in IBM MobileFirst Platform Foundation. Beacon triggers are identified by the following parameters: <code>triggerName</code>, <code>triggerType</code>, <code>proximityState</code>, <code>dwellingTime</code> (optional), and <code>actionPayload</code>.</p>
+<ul>
+<li>The <code><strong>triggerType</strong></code> parameter determines when the trigger is activated, depending on the device location.<br />
+<table border="1" style="width:100%">
+<tr>
+<td>Trigger Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>The trigger is activated when the device enters the associated beacon region.</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>The trigger is activated when the device leaves the associated beacon region.</td>
+</tr>
+<tr>
+<td>DwellInside</td>
+<td>The trigger is activated when the device remains inside the associated beacon region for a given time period.</td>
+</tr>
+<tr>
+<td>DwellOutside</td>
+<td>The trigger is activated when the device remains outside the associated beacon region for a given time period.</td>
+</tr>
+</table>
+<p><br clear="all" />
+</li>
+<li>The value of the <code><strong>proximityState</strong></code> parameter indicates when the trigger is activated, depending on the distance between the device and the beacon region. The default value is <code>Far</code>.<br />
+<table border="1" style="width:100%">
+<tr>
+<td>Proximity State</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Immediate</td>
+<td>Physically very close</td>
+<td>
+  </td>
+</tr>
+<tr>
+<td>Near</td>
+<td>Approximately 1 to 3 meters</td>
+</tr>
+<tr>
+<td>Far</td>
+<td>Beyond that distance</td>
+</tr>
+</table>
+<p><br clear="all" /></p>
+</li>
+<li>The <code><strong>dwellingTime</strong></code> parameter applies only to the trigger types <code>DwellInside</code> and <code>DwellOutside</code> and is mandatory for those types. It is specified in milliseconds and defines how long the device must be inside or outside a beacon region before the <code>dwellInside</code> or <code>dwellOutside</code> trigger is activated.
+</li>
+<li>The <code><strong>actionPayload</strong></code> parameter represents the details of the action to be taken when the trigger is activated.
+<p><br clear="all" /><br />
+You can register, update, or delete beacon triggers by using REST APIs. For detailed information about the REST APIs, see the Reference part of the user documentation.</p>
+<p>Register the following beacon triggers by using the beacon trigger REST API (POST).</p>
+<p>
+{% highlight js  %}
+{
+    "triggerName": "entryIntoBranch",
+    "triggerType": "Enter",
+    "proximityState": "Near",
+    "actionPayload": {
+        "alert": "Welcome to $branchName branch of IMF Bank"
+    }
+ }
+{% endhighlight %} </p>
+<p><br clear="all" /></p>
+<p>
+{% highlight js  %}
+{
+    "triggerName": "entryIntoLoanSection",
+    "triggerType": "Enter",
+    "proximityState": "Immediate",
+    "actionPayload": {
+        "alert": "Welcome to the Loan processing section. You will be assisted soon by our staff."
+    }
+}
+{% endhighlight %} </p>
+<p><br clear="all" /></p>
+<p>
+{% highlight js  %}
+{
+    "triggerName": "exitFromBranch",
+    "triggerType": "Exit",
+    "proximityState": "Far",
+    "actionPayload": {
+        "alert": "Thank you for visiting our $branchName branch. Have a nice day!"
+    }
+}
+{% endhighlight %} </p>
+<h2 id="associatingbeacons">Associating beacons and beacon triggers</h2>
+<p>An association between a beacon and a beacon trigger is represented as a <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform Foundation. You create, update, or delete associations by using REST APIs. For detailed information about REST APIs, see the Reference part of the user documentation.</p>
+<p>To create associations between beacons and triggers for an application, use the Associate beacons and triggers (PUT) REST API:<br />
+{% highlight js  %}
+{
+    "beacons": [
+        {
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 1,
+            "minor": 4417
+        },
+        {
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 2,
+            "minor": 4417
+        }
+    ],
+    "triggers": [
+        {
+            "triggerName": "entryIntoBranch",
+            "triggerName": "exitFromBranch",
+            "triggerName": "entryIntoLoanSection"
+        }
+    ]
+}
+{% endhighlight %} </p>
+<h2 id="retrievingbeacons">Using the server-side API to retrieve beacons and triggers</h2>
+<p>You can retrieve beacons, triggers, and their associations by using the<br />
+<code>WL.Server.getBeaconsAndTriggers(applicationName, beaconsOfInterest)</code> API.</p>
+<ul>
+<li><code>applicationName</code> – The name of the MobileFirst application</li>
+<li><code>beaconsOfInterest</code> – A JSON block or an array of JSON blocks identifying the beacons whose trigger associations have to be fetched.</li>
+</ul>
+
+<h2 id="clientSideApi" class="hidden-print">To learn about the client-side API, select your environment</h2>
+</li>
+</ul>

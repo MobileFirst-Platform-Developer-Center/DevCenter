@@ -1,0 +1,68 @@
+---
+layout: tutorial
+title: Reports and analytics
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<h2>Introducing Reports</h2>
+<p>IBM MobileFirst Platform provides an extensible mechanism for enterprises to use their own reporting tools to integrate with the IBM MobileFirst platform and use the analytics data that is captured by the platform.</p>
+<p>The figure to the right gives a high-level overview of the reports architecture.</p>
+<h2>Comparison with IBM MobileFirst Platform Operational Analytics</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/reports_highlevel.jpg"/></p>
+<ul>
+<li>
+        IBM MobileFirst Platform Operational Analytics provides the capability to search for specific terms in your mobile infrastructure, including IBM MobileFirst Server logs and client-generated analytic data.
+    </li>
+<li>
+        IBM MobileFirst Platform Operational Analytics is more convenient to set up than BIRT (Business Intelligence Reporting Tool).
+    </li>
+<li>
+        You do not have to configure or administer a database for the specific purpose of managing accumulated analytics data in IBM MobileFirst Platform Operational Analytics.
+    </li>
+</ul>
+<p><br clear="all" /></p>
+<h2>Introducing Device Reports</h2>
+<p>IBM MobileFirst Platform provides two reporting mechanisms:</p>
+<ul>
+<li>
+        <strong>Raw Data</strong> - IBM MobileFirst Platform emits raw data that enables an OLAP system to extract the required information and present it through corporate reporting mechanisms.
+    </li>
+<li>
+        <strong>Device Usage</strong> - Device Usage reports are default aggregations that are based on the Raw Data and are provided for the benefit of organizations that do not have OLAP systems or choose not to integrate IBM MobileFirst Platform with an OLAP system.
+    </li>
+</ul>
+<p>To <strong>enable Raw Data</strong> collection, edit the worklight.properties file:</p>
+<ul>
+<li>
+        Uncomment the <code>reports.exportRawData</code> property and set its value to <code>true</code>.
+    </li>
+<li>
+        Modify the <code>wl.reports.db</code> properties to contain your database settings.
+    </li>
+</ul>
+<h2>Raw data</h2>
+<p>With the Raw Data reports feature, you create collections of analytics information about the usage of your applications and adapters (such as: activity type, device info, or app version).</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/app_activity_report-300x238.png"/></p>
+<p>For more information about how to enable Raw Data reports, see the IBM MobileFirst Platform user documentation.</p>
+<h2>Device Usage Reports</h2>
+<p>To allow simpler and faster access to the reports data, the MobileFirst Server runs an analytics data processor task with a default 24-hour interval.</p>
+<p>This task retrieves the raw entries for the specified time interval from the <code>app_activity_report table</code>, processes them, and fills the <code>fact_activities</code> table.</p>
+<p>For more information about how to enable Device Usage reports, see the IBM MobileFirst Platform user documentation.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/fact_activities-185x300.png"/></p>
+<h2>BIRT reports</h2>
+<p>You can use Business Intelligence Reporting Tool (BIRT) to generate and render report content.</p>
+<p>BIRT provides two different user interfaces:</p>
+<ul>
+<li>
+        Report designer and viewer (an Eclipse plug-in)
+    </li>
+<li>
+        Reports viewer (installed on an application server and accessible via a browser)
+    </li>
+</ul>
+<p>a</p>
+<p>IBM MobileFirst Platform installation contains a number of predefined BIRT reports.<br />
+These reports are configurable XML files that are designed to retrieve and present data from MobileFirst Reports database tables. These files have a <code>.rptdesign</code> extension.</p>
+<p>For more information about how to enable BIRT reports, see the IBM MobileFirst Platform user documentation.</p>
+<h2>Viewing reports</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/piechart.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/bargraph.png"/></p>

@@ -1,0 +1,94 @@
+---
+layout: tutorial
+title: Custom Authenticator and Login Module in native Android applications
+relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeCustomLoginModuleProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeCustomLoginModuleProject.zip
+---
+<br>
+This is a continuation of <a title="Custom Authenticator and Login Module" href="../">Custom Authenticator and Login Module</a>.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Android application and add the IBM MobileFirst Platform Foundation native APIs following the documentation.<br />
+Add an Activity, <em>LoginCustomLoginModule</em>, that will handle and present the login form.<br />
+Remember to add this Activity to the <em>AndroidManifest.xml</em> file as well.</p>
+<p>Create a <em>MyChallengeHandler</em> class as a subclass of <em>ChallengeHandler</em>.<br />
+<em>MyChallengeHandler</em> should implement 2 main methods:</p>
+<ul>
+<li><em>isCustomResponse</em></li>
+<li><em>HandleChallenge</em></li>
+</ul>
+<p>In our sample we add another method to present and handle the received data from our form (<em>submitLogin</em>).</p>
+<h3>isCustomResponse</h3>
+<p>This method checks every custom response received from the MobileFirst Server to see if that’s the challenge we are expecting.</p>
+<p>{% highlight java  %}
+public boolean isCustomResponse(WLResponse response) {
+    if (response == null || response.getResponseJSON() == null) {
+        return false;
+    }
+    if(response.toString().indexOf("authStatus") > -1){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+{% endhighlight %} </p>
+<h3>handleChallenge</h3>
+<p>This method is called after the <em>isCustomResponse</em> method returned <em>true</em>.<br />
+Here we use this method to present our login form.</p>
+<p>{% highlight java  %}
+public void handleChallenge(WLResponse response){
+    try {
+        if(response.getResponseJSON().getString("authStatus") == "complete"){
+            submitSuccess(response);
+        }
+        else {
+            cachedResponse = response;
+            Intent login = new Intent(parentActivity, LoginCustomLoginModule.class);
+            parentActivity.startActivityForResult(login, 1);
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+}
+{% endhighlight %} </p>
+<h3>submitLogin</h3>
+<p>If the user asked to abort this action we use <em>submitFailure()</em> method, otherwise we send the information we collected from our login form to our custom authenticator using <em>submitLoginForm()</em> method.</p>
+<p>{% highlight java  %}
+public void submitLogin(int resultCode, String userName, String password, boolean back){
+    if (resultCode != Activity.RESULT_OK || back) {
+        submitFailure(cachedResponse);
+    } else {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("username", userName);
+        params.put("password", password);
+        submitLoginForm("/my_custom_auth_request_url", params, null, 0, "post");<
+    }
+}
+{% endhighlight %} </p>
+<h3>Main Activity</h3>
+<p>In the Main Activity class connect to the MobileFirst server, register your <em>challengeHandler</em> and invoke the protected adapter procedure.<br />
+The procedure invocation will trigger the MobileFirst server to send a challenge that will trigger our <em>challengeHandler</em>.</p>
+<p>{% highlight java  %}
+final WLClient client = WLClient.createInstance(this);
+client.connect(new MyConnectionListener());
+challengeHandler = new AndroidChallengeHandler(this, realm);
+client.registerChallengeHandler(challengeHandler);
+invokeBtn = (Button) findViewById(R.id.invoke);
+invokeBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");
+        WLRequestOptions options = new WLRequestOptions();
+        options.setTimeout(30000);
+        client.invokeProcedure(invocationData, new MyResponseListener(), options);
+    }
+});
+{% endhighlight %} </p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeCustomLoginModuleProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeCustomLoginModuleProject.zip">Click to download</a> the Native project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_results.png"/></p>

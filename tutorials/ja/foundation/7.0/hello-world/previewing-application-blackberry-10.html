@@ -1,0 +1,45 @@
+---
+layout: tutorial
+title: Previewing your application on BlackBerry 10
+relevantTo: [hybrid]
+weight: 10
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read <a href="../../hello-world/previewing-applications-web-resources/">Previewing the web resources of your application</a>.</p>
+<p>This tutorial covers the following topics.</p>
+<ul>
+<li><a href="#preview">Previewing the application in the BlackBerry Ripple Emulator</a></li>
+<li><a href="#run">Running the application in a physical device or simulator</a></li>
+</ul>
+<h2 id="preview">Previewing the application in the BlackBerry Ripple Emulator</h2>
+<p><strong>Prerequisite:</strong> To be able to preview the application in the Ripple Emulator, you must first install Ripple. Ripple is a Chrome extension that can be downloaded and installed from the Chrome Web Store. After Ripple is installed, follow these steps.</p>
+<h3>CLI</h3>
+<p>From a terminal window, use the <code>mfp console</code> command to open MobileFirst Console.</p>
+<h3>MobileFirst Studio</h3>
+<ol>
+<li>To preview the BlackBerry environment from the MobileFirst Operations Console, click the <strong>eye</strong> icon and then click <strong>Open Simple Preview</strong>.</li>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_09_blakcberry10_mbs-1024x624.png" />
+<li>Enable Ripple by clicking <strong>Enable</strong> from the extension menu in Chrome.</li>
+<li>If you get the following screen, select <strong>BlackBerry 10 WebWorks (1.0.0)</strong> to proceed with previewing the application.</li>
+</ol>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_08_webworks2.png"/>
+<p>The page autorefreshes and the environment web resources are displayed in the Ripple Emulator.</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_09_blackberry10_ripple-1024x271.png"/>
+<h2 id="run">Running the application in a physical device or simulator</h2>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_08_ripple_build_settings-e1410850164363.png"/>
+<strong>Prerequisite:</strong> Before proceeding, you must have the BlackBerry WebWorks SDK installed.<br />
+For more information, see <a href="../../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>.</p>
+<ol>
+<li>In Ripple, on the right menu, click <strong>Build</strong>, and then click the <strong>Settings...</strong> button at the bottom.</li>
+<li>Enter the following package settings.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_08_ripple_settings_bb10.png"/>
+<p><strong>SDK Path:</strong> The path where BlackBerry WebWorks SDK is installed.<br />
+<strong>Project root:</strong> The root folder of your project. To find the root folder, right-click the native folder in your Eclipse blackberry environment and select <strong>Properties</strong>.<br />
+<strong>Archive Name:</strong> The name for your archive.<br />
+<strong>Output Folder:</strong> The folder where to output the application. Specify a folder outside your project.<br />
+<strong>Signing Password:</strong> Sign your app with a BlackBerry 10 developer certificate to run it on a BlackBerry 10 handset. Specify your certificate password here. Signing is NOT required to run the application in the BlackBerry 10 Simulator.<br />
+<strong>Launch:</strong> You can find the Device IP address from the BlackBerry Desktop Manager or in the device settings.
+</li>
+<li>After the package settings are defined, open the Ripple menu in Chrome and click <strong>start services</strong>. </li>
+<li>Select one of the Packaging options.</li>
+</ol>

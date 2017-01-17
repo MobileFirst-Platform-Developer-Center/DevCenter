@@ -1,0 +1,140 @@
+---
+layout: tutorial
+title: Android - Implementing Apache Cordova plugin
+breadcrumb_title: Implementing Apache Cordova plug-ins
+relevantTo: [hybrid]
+weight: 5
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ApacheCordovaPluginsProject.zip
+---
+<h2>
+    Overview</h2>
+<p>In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.</p>
+
+<p>With Apache Cordova, developers can create an Apache Cordova plug-in, which means that they create custom native code blocks and call these code blocks in their applications by using JavaScript.</p>
+
+<p>
+    <strong>Note:</strong> In Cordova-based applications, developers must check for the
+    <code>deviceready</code> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.</p>
+    <p>Instead of implementing this check, you can place implementation code in the
+    <code>wlCommonInit()</code> function in
+    <code>common\js\main.js</code>.</p>
+
+<p>Jump to:</p>
+<ul>
+    <li><a href="#create">Creating a plug-in</a></li>
+    <li><a href="#declare">Declaring a plug-in</a></li>
+    <li><a href="#exec">Implementing cordova.exec() in JavaScript</a></li>
+    <li><a href="#java">Implementing the Java code of a Cordova plug-in</a></li>
+    <li><a href="#sample">Sample application</a></li>
+</ul>
+
+<h2 id="create">Creating a plug-in</h2>
+<ol>
+    <li>Declare the plug-in in the
+        <code>config.xml</code> file.</li>
+    <li>Use the
+        <code>cordova.exec()</code> API in the JavaScript code.</li>
+    <li>Create the plug-in class that will run natively in Android.
+         The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to
+        <code>cordova.exec()</code>.</li>
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_05_overview.jpg" />
+</ol>
+
+<h2 id="declare">Declaring a plug-in</h2>
+<p>You must declare the plug-in in the project, so that Cordova can detect it.
+ To declare the plug-in, add a reference to the
+<code>config.xml</code> file, located in the
+<code>native\res\xml</code> folder in the Android environment.</p>
+
+{% highlight xml  %}
+<feature name="sayHelloPlugin">
+    <param name="android-package" value="sayHelloPlugin" />
+</feature>
+{% endhighlight %}
+
+<h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
+<p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:</p>
+
+{% highlight javascript  %}
+function sayHello() {
+    var name = $("#NameInput").val();
+    cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
+}
+{% endhighlight %}
+
+<p>
+    <code>sayHelloSuccess</code> - Success callback
+
+    <code>sayHelloFailure</code> - Failure callback
+
+    <code>SayHelloPlugin</code> - Plug-in name as declared in
+    <code>config.xml</code>
+
+    <code>sayHello</code> - Action name
+
+    <code>[name]</code> - Parameters array</p>
+
+<p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks:</p>
+{% highlight javascript  %}
+function sayHelloSuccess(data){
+    WL.SimpleDialog.show(
+        "Response from plug-in", data,
+        [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+    );
+}
+
+function sayHelloFailure(data){
+    WL.SimpleDialog.show(
+        "Response from plug-in", data,
+        [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+    );
+}
+{% endhighlight %}
+
+<h2 id="java">Implementing the Java code of a Cordova plug-in</h2>
+<p>After you have declared the plug-in and the JavaScript implementation is ready, you can implement the Cordova plug-in.</p>
+
+<ol>
+    <li>Add a new Java class file.</li>
+    <li>Extend the <code>org.apache.cordova.CordovaPlugin</code> class and add the required import statements.
+{% highlight java  %}
+    public class SayHelloPlugin extends CordovaPlugin {
+{% endhighlight %}
+    </li>
+    <li>Implement an <code>execute</code> method.
+        <ul>
+            <li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context.
+{% highlight java  %}
+public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
+    throws JSONException {
+{% endhighlight %}
+            </li>
+        </ul>
+    </li>
+    <li>If the supplied action is <code>sayHello</code>, retrieve the first argument from the <code>args</code> array, prepare a <code>responseText</code> string and, by using the <code>callbackContext</code> argument, call the <code>success</code> callback with this <code>responseText</code> string as the argument.
+{% highlight java  %}
+if (action.equals("sayHello")){
+    try {
+        String responseText = "Hello " + args.getString(0);
+        callbackContext.success(responseText);
+    } catch (JSONException e){
+        callbackContext.error("Failed to parse parameters");
+    }
+    return true;
+}
+{% endhighlight %}
+    </li>
+    <li>Returning <code>false</code> means that the action that is supplied from JavaScript was not recognized.
+{% highlight java  %}
+    return false;
+}
+{% endhighlight %}
+    </li>
+</ol>
+
+<h2 id="sample">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ApacheCordovaPluginsProject.zip">Click to download</a> the Studio project.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_05_sample_app.png" />

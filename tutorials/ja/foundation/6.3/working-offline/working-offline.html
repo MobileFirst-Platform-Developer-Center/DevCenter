@@ -1,0 +1,133 @@
+---
+layout: tutorial
+title: Working offline
+relevantTo: [hybrid]
+weight: 1
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WorkingOfflineProject.zip
+---
+<h2>Working in offline mode</h2>
+<p>By using IBM MobileFirst Platform Foundation, it is possible to detect application connectivity failures and determine a course of action.<br />
+Application going offline and online can be detected in two ways:</p>
+<ul>
+<li>Explicitly, on invoking server-based procedures</li>
+<li>Implicitly, by using JavaScript event listeners</li>
+</ul>
+<p>It is possible to define custom application behavior for offline and online status.<br />
+The developer is responsible for maintaining the offline or online state within the application, and ensuring that the application can recover from failed attempts to connect to the server.</p>
+<p>For example, before the application logs in a new user or accesses the server under a new user, the application must ensure that a successful logout was received by the server.</p>
+<h2>Active detection</h2>
+<h3>Using methods</h3>
+<p>Connectivity loss can be detected in two locations in the application code:</p>
+<ul>
+<li>Application initialization – <code>WL.Client.init()</code> method, typically called from <code>initOptions.js</code> file</li>
+<li>Adapter procedure invocation – <code>WL.Client.invokeProcedure()</code> method</li>
+</ul>
+<p>To add connectivity failure detection in either location, add the <code>onConnectionFailure</code> property and specify a callback function to invoked if connectivity fails.</p>
+<h4>initOptions.js</h4>
+{% highlight js  %}var wlInitOptions = {
+    onConnectionFailure: function (data){
+    connectionFailure(data);
+}
+{% endhighlight %}
+
+<h4>Implementation JS file</h4>
+{% highlight js  %}WL.Client.invokeProcedure(invocationData, {
+    onSuccess: successHandlerFunction,
+    onConnectionFailure: connectionFailure,
+    timeout: 1000
+});
+{% endhighlight %}
+<h2>Passive detection</h2>
+<h3>Offline and online events</h3>
+<p>Each time the MobileFirst framework attempts to access the MobileFirst Server, it might detect that the application switched from offline to online status or vice versa.</p>
+<p>In both cases, JavaScript events are fired:</p>
+<ul>
+<li><code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> event is fired when connectivity to the MobileFirst Server fails
+    </li>
+<li><code>WL.Events.WORKLIGHT_IS_CONNECTED</code> event is fired when connectivity to the MobileFirst Server is restored
+</li>
+</ul>
+<p>The developer can also add event listeners to the above events and specify the callback functions to handle them.</p>
+{% highlight js  %}
+    document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);
+document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetected, false);{% endhighlight %}
+<p>Note: <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> are namespace constants, not strings.</p>
+    
+<h2>Additional methods</h2>
+<p>More methods are provided by the MobileFirst framework to simplify online and offline development:</p>
+<ul>
+<li><code>WL.Client.connect (options)</code> – attempt to establish a connection to the MobileFirst Server and return to online mode. options is an object that contains the following keys:
+<ul>
+<li><code>onSuccess</code> – Callback function to invoke when server connection is established</li>
+<li><code>onFailure</code> – Callback function to invoke when server connection fails</li>
+<li><code>timeout</code> – Number of milliseconds to wait for the server response before failing with request timeout</li>
+</ul>
+</li>
+<li><code>WL.Device.getNetworkInfo()</code> - this method is available for the Android and iOS environments.<br />
+    A callback must be specified as a function parameter. The callback receives an object with the following properties:</p>
+<ul>
+<li><code>isAirplaneMode</code> – true/false
+        </li>
+<li><code>carrierName</code> – string (for example, AT&T or VERIZON)
+        </li>
+<li><code>telephonyNetworkType</code> – string (for example, UMTS or GPRS)
+        </li>
+<li><code>isRoaming</code> – true/false
+        </li>
+<li><code>networkConnectionType</code> – mobile/WiFi
+        </li>
+<li><code>ipAddress</code> – string
+        </li>
+<li><code>isNetworkConnected</code> – true/false
+    </li>
+</ul>
+</li>
+</ul>
+<h2>Foreground event</h2>
+<p>When a MobileFirst application returns to the foreground, the Cordova <code>resume</code> event is fired.<br />
+The developer can add a listener for this event and specify the callback function that handles it. For example:</p>
+
+{% highlight js  %}document.addEventListener("resume", function() {
+    WL.Device.getNetworkInfo( function(networkInfo) {
+        if (networkInfo.isNetworkConnected) {
+            // Perform client or server actions.
+        }
+    });
+}, false);
+{% endhighlight %}
+
+<h2>Heartbeat</h2>
+<p>The heartbeat pings the server at specified intervals to verify connectivity.<br />
+The heartbeat can used to periodically make sure that the application remains connected to the server.</p>
+<p>Both <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> events can be fired by the heartbeat in designated cases.</p>
+<p>A developer can specify the heartbeat interval by using the <code>WL.Client.setHeartBeatInterval(intervalSeconds)</code> API method.</p>
+<p>The following sample shows an offline and online detection mechanism<br />
+
+{% highlight js  %}
+document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,
+MyApp.connectionFailure, false);
+MyApp.connectionFailure = function() {
+    WL.Client.connect({
+        onSuccess: function() {
+            WL.Logger.debug("online");
+            MyApp.onlineRestored();
+        },<
+        onFailure: function() {
+            WL.Logger.debug("Still offline... Trying to connect again in 5
+            seconds.");
+            window.setTimeout(MyApp.connectionFailure, 5000);
+        }
+    });
+};
+{% endhighlight %}
+<ol>
+<li>An event listener for a <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> event is added to the document. <code>MyApp.connectionFailure()</code> is invoked when the event fires</li>
+<li><code>WL.Client.connect()</code> tries to establish a server connection</li>
+<li>If connection is successfully established, <code>MyApp.onlineRestored()</code> is invoked</li>
+<li>If connection fails, a timeout is set for 5 seconds to invoke <code>MyApp.connectionFailure()</code> again</li>
+</ol>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WorkingOfflineProject.zip">Click to download</a> the Studio project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/06_01_sample.png"/></p>

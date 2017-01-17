@@ -353,7 +353,7 @@ if (document.addEventListener) {
                         <p>To test the migrated application:</p>
                         <ol>
                             <li>Make sure the application is registered in the {{ site.data.keys.mf_server }}.</li>
-                            <li>To avoid encountering <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">Same-origin errors</a>, set up a reverse proxy. For this purpose, you can use Node.js. For an example of a reverse proxy implementation using Node.js, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">Setting up the Web development environment</a> tutorial.</li>
+                            <li>To avoid encountering <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">Same-origin errors</a>, set up a reverse proxy. For this purpose, you can use Node.js. For an example of a reverse proxy implementation using Node.js, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">Setting up the web development environment</a> tutorial.</li>
                         </ol>
                     </div>
                 </div>
@@ -1012,7 +1012,7 @@ export MVN_PATH="/usr/local/bin"
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
                                 <i>Custom Authenticator + LoginModule:</i> an <code>init()</code> method for startup, and <code>processRequest()</code> to authorise requests.
-The authenticator sends the login module the credentials to the <code>login()/logout()</code> methods.</td>
+The authenticator sends the login module's credentials to the <code>login()/logout()</code> methods.</td>
                                 <td>When implementing the security check interface, the user must also implement the <code>authorize()</code> and <code>introspect()</code> methods, which are called by the framework during authorization requests. The security check handles the authentication and login/logout by itself.
                                 </td>
                             </tr>
@@ -1039,7 +1039,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 
                             <tr>
                                 <td><b>Definition</b></td>
-                                <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one dedicated to define the <code>UserID</code>.
+                                <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one security test dedicated to define the <code>UserID</code>.
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>

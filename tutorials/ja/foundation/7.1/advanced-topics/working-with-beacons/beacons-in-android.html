@@ -1,0 +1,124 @@
+---
+layout: tutorial
+title: Beacons in Android
+relevantTo: [android]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Beacons/tree/release71
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/BeaconsAndroid/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial discusses the client-side API for working with beacons in Android.<br />
+This is a continuation of <a href="../">Working with Beacons</a> (introduction, setup, and server side API).</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#applicationconfiguration">Configuring your application</a></li>
+<li><a href="#simplifiedAPIs">Simplified APIs for ranging and monitoring beacons</a></li>
+<li><a href="#sampleresult">Running the sample application</a></li>
+</ul>
+<h2 id="applicationconfiguration">Configuring your application</h2>
+<ol>
+<li>Download the Android Beacon Library v2.1.3 and above from this page: <code>http://altbeacon.github.io/android-beacon-library/download.html</code></li>
+<li>Import the Android Beacon Library into Eclipse.</li>
+<li>Right-click the Android application project and select <strong>Properties -> Android -> Library -> Add</strong>.</li>
+<li>Select <strong>android-beacon-library</strong> and click <strong>Apply -> OK</strong>.</li>
+<li>Add the following entry to the <code>project.properties</code> file.<br />
+          <code>manifestmerger.enabled=true</code></li>
+<li>Copy the source files under <code>/src/com/worklight/wlclient/api</code> into the <code>src</code> folder of the Android application (by preserving the package directories).
+<p>These source files use JSONStore to store beacons, triggers, and associations locally.</p>
+</li>
+<li>Add the libraries to enable JSONStore for your native Android application.
+</li>
+</ol>
+<blockquote><p>For more information, see the topic about copying files of native API applications for Android, in the user documentation.</p></blockquote>
+<p><br clear="all" /></p>
+<h3>Android Manifest configuration</h3>
+<ul>
+<li>Specify minSdkVersion as 18 (Android 4.3).<br />
+ {% highlight xml  %}android:minSdkVersion="18"{% endhighlight %}</p>
+</li>
+<li>Specify permissions for BLUETOOTH and BLUETOOTH_ADMIN.<br />
+{% highlight xml  %}
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+{% endhighlight %}</p>
+</li>
+<li>This is in addition to the following standard Worklight permissions:
+<p>{% highlight xml  %}
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.GET_TASKS" />
+{% endhighlight %}</p>
+</li>
+<li>Specify <code>com.worklight.wlclient.api.WLBeaconsMonitoringApplication</code> as the application name.<br />
+{% highlight xml  %}
+<application
+    android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication">
+    ...
+</application>
+{% endhighlight %}
+</li>
+</ul>
+<h3>Enable the library to show alerts</h3>
+<p>{% highlight java  %}
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ((WLBeaconsMonitoringApplication) this.getApplication()).setAlertHandler(new WLAlertHandler(this));
+    ...
+}
+{% endhighlight %}</p>
+<h2 id="simplifiedAPIs">Simplified APIs for monitoring/ranging beacons</h2>
+<h3>Loading beacons and triggers from the server</h3>
+<p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:</p>
+<p>{% highlight java  %}
+String adapterName = "BeaconsAdapter";
+String procedureName = "getBeaconsAndTriggers";
+
+WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName, new WLResponseListener() {
+    @Override
+    public void onSuccess(WLResponse arg0) {
+        // Successfully fetched beacons, triggers and associations from server and saved in JSONStore.
+    }
+    
+    @Override
+    public void onFailure(WLFailResponse response) {
+        // Failed to fetch beacons, triggers and associations from server
+        String responseText = "WLBeaconsAndTriggersJSONStoreManager.loadBeaconsAndTriggers() failed:\n" + response.getResponseText();
+        Log.d(TAG, responseText);
+    }
+}
+{% endhighlight %}</p>
+<h3>Triggering action</h3>
+<p>To start the monitoring/ranging of Beacons and to fire trigger actions, write the following code:<br />
+{% highlight java  %}
+((WLBeaconsMonitoringApplication) this.getApplication()).startMonitoring();
+{% endhighlight %}</p>
+<p>To let the user opt out of Beacon monitoring, write the following code:<br />
+{% highlight java  %}
+((WLBeaconsMonitoringApplication) this.getApplication()).stopMonitoring();
+{% endhighlight %}</p>
+<h2 id="sampleresult">Running the sample application</h2>
+<p>Download the <a href="https://github.com/MobileFirst-Platform-Developer-Center/Beacons/tree/release71" target="_blank">MobileFirst project</a> and the <a href="https://github.com/MobileFirst-Platform-Developer-Center/BeaconsAndroid/tree/release71" target="_blank">native project</a>.</p>
+<p>The sample contains two projects:</p>
+<ul>
+<li>The <code>BeaconsMFP.zip</code> file contains a <strong>MobileFirst native API</strong> that you can deploy to your MobileFirst Server instance.</li>
+<li>The <code>BeaconsAndroid.zip</code> file contains a <strong>native library</strong> that provides a simplified set of APIs for ranging/monitoring beacons and a <strong>native Android application</strong> that demonstrates the usage of those APIs.</li>
+</ul>
+<p>Make sure to update the <code>wlclient.properties</code> file in AndroidNativeBeacons with the relevant server settings.</p>
+<p>The sample showcases a simple banking scenario where actions are triggered based on proximity:</p>
+<ul>
+<li>When the user enters a Bank branch, a notification action is triggered with a Welcome message.</li>
+<li>When the user stays in the Bank branch, an alert is triggered with a message stating that a bank personnel will assist the user soon.</li>
+<li>When the user exits the Bank branch, a notification action is triggered with a message.</li>
+</ul>
+<h3> What kinds of beacons can be detected? </h3>
+<p>By default, the <code>Android Beacon Library</code> will only find beacons, meeting the open <code>AltBeacon</code> standard.</p>
+<p>The library can be configured to work with different types of beacons. The byte layout of the beacon's advertisement must be specified in <code>WLBeaconsMonitoringApplication</code> class in<br />
+<code>com/worklight/wlclient/api</code> package.</p>
+<blockquote><p>For details refer - http://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconParser.html</p></blockquote>
+<h3> Detecting Beacons After application is killed</h3>
+<p>Application can be configured to detect Beacons even after being killed.</p>
+<blockquote><p>For details refer - http://altbeacon.github.io/android-beacon-library/resume-after-terminate.html</p></blockquote>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleRangingMonitoring.png" style="width:55%"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleNotifications.png" style="width:55%"/></p>

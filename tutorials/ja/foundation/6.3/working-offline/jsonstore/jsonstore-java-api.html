@@ -1,0 +1,84 @@
+---
+layout: tutorial
+title: JSONStore - Java API
+relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPIBasicsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPINativeAndroidNativeProject.zip
+---
+<h2>Follow along with the code sample</h2>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/JSONStore-Native-Java-Basic-300x212.png" />
+<ol>
+<li>Download the compressed file with the code sample that is associated with this tutorial.</li>
+<li>Open the Basic.java "JSONStoreAPINativeAndroid/src/com/worklight/<br />
+    jsonstorenativeandroid/tests/Basic.java" file. The sample image provides context.</li>
+<li>Run the application by using Android JUnit. Right-click the application, select <b>Run As</b> and then click <b>Android JUnit Test</b>.</li>
+</ol>
+<blockquote class="clear"><p><strong>Note:</strong> The code sample uses the built-in JUnit Test framework of Android. Explaining how it works is beyond the scope of this tutorial.</blockquote>
+<h3>Code Sample Walkthough</h3>
+<p>{% highlight java  %}
+        try {
+            Context ctx = getContext();
+            WLJSONStore.getInstance(ctx).destroy();
+            List<JSONStoreCollection> collections =
+                    new LinkedList<JSONStoreCollection>();
+            JSONStoreCollection people = new JSONStoreCollection("people");
+            people.setSearchField("name", SearchFieldType.STRING);
+            people.setSearchField("age", SearchFieldType.INTEGER);
+            collections.add(people);
+            WLJSONStore.getInstance(ctx).openCollections(collections);
+            JSONObject data1 = new JSONObject("{age: 20, name: 'carlos'}");
+            JSONObject data2 = new JSONObject("{age: 30, name: 'mike'}");
+            people.addData(data1);
+            people.addData(data2);
+            List<JSONObject> results = people.findAllDocuments();
+            assertEquals(
+                new JSONObject("{_id: 1, "
+                        + "json: {'name' : 'carlos', 'age' : 20}}")
+                    .toString(),
+                results.get(0)
+                    .toString());
+            assertEquals(
+                new JSONObject("{_id: 2, "
+                        + "json: {name: 'mike', age: 30}}")
+                    .toString(),
+                results.get(1)
+                    .toString());
+        }
+        catch (JSONStoreException ex) {
+            throw ex;
+        }
+        catch (Throwable t) {
+            throw t;
+        }
+{% endhighlight %}
+<p>The <code>destroy</code> API removes all JSONStore content from the application. It is used here to start with no data. Doing it this way ensures that the output is predictable in the code sample.
+<blockquote class="clear"><p><strong>Note:</strong> Explaining Context (<code>ctx</code>) is beyond the scope of this module. For more information about that object, see the Android API documentation.</blockquote>
+<p>To persist data, you must first define at least one collection. These collections are entities that hold data. You can see here the definition of a collection that is called <code>people</code>.
+<p>Search fields are fields that are indexed inside a collection. You can use those fields when you search for data that is inside a collection.<br />
+You can see here the definition of two search fields:
+<ul>
+<li><code>name</code> (string)</li>
+<li><code>age</code> (integer)</li>
+</ul>
+<p>The data types, such as <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, are used to better store input data.
+<p>The <code>open</code> API is used to open one or more collections. If the collection was never opened before, a file is created on the file system to persist data inside the collection. Before the operation finishes, an accessor to that file is created.<br />
+The accessor allows the caller to call collection-level APIs such as <code>add</code> and <code>findAl</code>, which are shown later in this code sample walkthrough.
+<p>The data that is stored inside the <code>people</code> collection is defined here. Notice that the data is a hardcoded array of two JSON objects with key value pairs for <code>name</code> and <code>age</code>. This data can be acquired from multiple sources (for example: Network Request, File I/O, User Input).
+<p>The collection accessor provides access to store data inside the <code>people</code> collection. The input data must be in JSON format.
+<p>There are a couple of different ways to find documents inside a JSONStore collection (for example: <code>find</code>, <code>findById</code>).<br />
+The easiest way, and the way that is shown here, is by using the <code>findAll</code> API. This method returns all the data that is stored inside a collection.
+<p>Data that is stored inside a collection is called a document. Documents have <code>_id</code> and <code>json</code> key value pairs. The <code>_id</code> pair is an internal identifier that is added automatically when data is added. The json pair contains all the data that was added.
+<p>If an error occurs, a <code>JSONStoreException</code> object is thrown. The exception contains information about the error.
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPIBasicsProject.zip">Click to download</a> Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPINativeAndroidNativeProject.zip">Click to download</a> Native project.
+<h2>Expected Output</h2>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/JSONStore-Native-Java-Expected-Results-300x193.png" />
+<p>To execute the tests, right-click <strong>Project</strong> > <strong>Run As</strong> > <strong>Android JUnit Test.</strong><br />
+When the tests are executed, the output looks similar to the sample image.<br />
+The green bar above the tests indicates that everything is working as expected.
+<h2>For more information</h2>
+<p>For more information about JSONStore, see the product user documentation.

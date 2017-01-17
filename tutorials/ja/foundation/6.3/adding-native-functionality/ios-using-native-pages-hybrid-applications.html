@@ -1,0 +1,70 @@
+---
+layout: tutorial
+title: iOS - Using native pages
+breadcrumb_title: Using native pages
+relevantTo: [hybrid]
+weight: 7
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip
+---
+<h2>Overview</h2>
+<p>In this tutorial, integration of native and web "pages" in an iOS application will be explained by using the <code>WL.NativePage.show()</code> API to open a native page from JavaScript.</p>
+<p>With this method, data can be sent from JavaScript to the opened native page, and specify a callback to call after the native page closes.</p>
+<h2>Connecting to the plugin from the JavaScript code</h2>
+<p>As a first step, <code>WL.NativePage.show()</code> needs to be implemented in order to open the native page:</p>
+{% highlight js  %}function openNativePage(){
+    var params = {
+        nameParam : $('#nameInput').val()
+    };
+    WL.NativePage.show(nativePageClassName, backFromNativePage, params);
+}
+{% endhighlight %}
+<ul>
+<li><code>nativePageClassName</code>: The name of a native iOS UIViewController instance to start.</li>
+<li><code>backFromNativePage</code>: A callback function to call when the native page closes.</li>
+<li><code>params</code>: optional custom parameters object to pass to the native code.</li>
+</ul>
+<p>To handle the callback function:</p>
+{% highlight js  %}
+function backFromNativePage(data){
+	alert("Received phone number is: " + data.phoneNumber);
+}
+{% endhighlight %}</p>
+<ul>
+<li><code>backFromNativePage(data)</code>: After the native closes, it can pass data back to the web part of an application.</li>
+</ul>
+<h2>Creating a native page</h2>
+<p>To manage to native page, the generated iOS projects need to be opened in Xcode and afterwards:</p>
+<h4>Step 1</h4>
+<p>Add a new Cocoa Touch Class file, make sure it is a subclass of <code>UIViewController</code>, and save it in the <code>Classes</code> folder of the Xcode project.</p>
+<p><em>Important:</em><br />
+If working with existing .m and .h files, the files must be referenced while in Xcode.<br />
+Placing the .m and .h files only in the <code>iphone\native\Classes></code> folder in Eclipse is not sufficient, as these files will not be referenced in the Xcode project unless added in Xcode.</p>
+<h4>Step 2</h4>
+<p>To retrieve custom data parameters that are passed from the web view, the <code>setDataFromWebView:(NSDictionary*)data</code> method should be used:</p>
+<p>{% highlight objc  %}
+-(void)setDataFromWebView:(NSDictionary*)data{
+    self.nameParam = (NSString*)[data valueForKey:@"nameParam"];
+}{% endhighlight %}
+
+<h2>Returning control to the web view</h2>
+<p>When the native page switches back to the web view, a <code>[NativePage showWebView:]</code> method should be called.<br />
+To pass data back to the web view can be done by using the <code>NSDictionary</code> object. For example:</p>
+<h4>Objective-C:</h4>
+{% highlight objc  %}-(IBAction)returnClicked:(id)sender{
+    NSString *phone = [phoneNumber text];
+    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];
+    [NativePage showWebView:returnedData];
+}
+{% endhighlight %}
+
+<p><br clear="all" /></p>
+<h4>JavaScript:</h4>
+{% highlight js  %}function backFromNativePage(data){
+    alert("Received phone number is: " + data.phoneNumber);
+}
+{% endhighlight %}
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Click to download</a> the Studio project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_02_ios_sample_app.png"/></p>

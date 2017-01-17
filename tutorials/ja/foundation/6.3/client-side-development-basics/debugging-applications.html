@@ -1,0 +1,163 @@
+---
+layout: tutorial
+title: Debugging applications
+relevantTo: [hybrid]
+weight: 3
+---
+<h2>Overview</h2>
+<p>In this tutorial, various approaches to debugging (the web resources of) a MobileFirst application will be explored - before running the application in a device and and while running in a device. Debugging of MobileFirst adapters will be explored as well, and tools available to the developer's disposal in order to conduct the debugging effort.</p>
+
+<p>The available debugging options are:</p>
+<ul>
+    <li><a href="#debugging_on_a_desktop_browser">Debugging on a desktop browser</a></li>
+    <li><a href="#debugging_with_mobile_browser_simulator">Debugging with Mobile Browser Simulator</a></li>
+    <li><a href="#debugging_ios_remote_web_inspector">Debugging with iOS Remote Web Inspector</a></li>
+    <li><a href="#debugging_with_chrome_remote_web_inspector">Debugging with Chrome Remote Web Inspector</a></li>
+    <li><a href="#debugging_with_weinre">Debugging with Weinre</a></li>
+    <li><a href="#debugging_with_ibm_mobilefirst_logger">Debugging with IBM MobileFirst Logger</a></li>
+    <li><a href="#testing_the_adapter_procedures">Testing the adapter procedures</a></li>
+    <li><a href="#debugging_with_wireshark">Debugging with WireShark</a></li>
+</ul>
+
+<h2>Debugging</h2>
+<p>Debugging is a process that consists of finding the cause of defects in the application code and UI.</p>
+
+<ul>
+    <li>MobileFirst applications consist of web-based resources and optional native code (such as Java, Objective-C and C#).</li>
+    <li>Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android LogCat/ADB or Microsoft Visual Studio.</li>
+</ul>
+
+<h2 id="debugging_on_a_desktop_browser">Debugging on a desktop browser</h2>
+<p>Modern browsers, such as Chrome, Firefox, Safari or Opera, provide an easy and convenient way to debug web apps.<br />
+As seen in the previous tutorials, during development you can preview applications in a desktop browser by using the MobileFirst Console.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_mobilefirst_console.png" />
+
+<p>There are many web tools for debugging on various desktop browsers, for example:</p>
+<ul>
+    <li>FireBug</li>
+    <li>Chrome Developer Tools</li>
+    <li>Internet Explorer Developer Tools</li>
+    <li>Dragonfly for Opera</li>
+    <li>Safari Web Inspector</li>
+</ul>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_developer_tools.png"/>
+
+<p>In early application development stages these tools can be used to debug the application just like a regular website. It is not required to install them in a mobile device.<br />
+Changes to HTML and CSS can also be previewed in real time by modifying the values in the inspector.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_developer_tools2.png"/>
+
+<h2 id="debugging_with_mobile_browser_simulator">Debugging with the Mobile Browser Simulator</h2>
+<p>The Mobile Browser Simulator can also be used to preview and debug MobileFirst applications.<br />
+To access it, click on the 'eye' icon beside an environment row in MobileFirst Console.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_click_for_mbs.png"/>
+
+<p>The Mobile Browser Simulator has several added values over Preview as Common Resources, for example:</p>
+<ul>
+    <li>Preview environment-specific resources</li>
+    <li>Emulate different devices and skins</li>
+    <li>Emulate some Cordova features such as access to sensors and other hardware</li>
+</ul>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_mbs-1024x793.png"/>
+
+<h2 id="debugging_ios_remote_web_inspector">Debugging with iOS Remote Web Inspector</h2>
+<p>Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. In order to debug, make sure the device (or simulator) has “Private Browsing” turned off.</p>
+
+<p>To enable Web Inspector on the device: <strong>Settings > Safari > Advanced > Web Inspector</strong>.<br />
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png"/>
+
+<p>To start debugging, connect the iOS device to a Mac, or start the simulator. Safari 6.0 or higher is required.<br />
+In Safari, go to <strong>Preferences > Advanced</strong>, and select the <strong>Show Develop menu in menu bar</strong> checkbox.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png"/>
+
+<p>Now in Safari, select <strong>Develop > [your device ID] > [your application HTML file]</strong>.<br />
+The DOM can now be inspected. It is also possible to alter the CSS and run JavaScript commands, just like in the desktop inspector.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png"/>
+
+<h2 id="debugging_with_chrome_remote_web_inspector">Debugging with Chrome Remote Web Inspector</h2>
+<p>With Google Chrome it is possible to remotely inspect web applications on Android devices.<br />
+This action requires Android 4.4 or later, Chrome 32 or later and IBM MobileFirst Platform Foundation V6.2.0 or later.</p>
+
+<p>Additionally, in the <strong>AndroidManifest.xml</strong> file, <strong>targetSdkVersion</strong> = 19 or above is required.<br />
+In <strong>project.properties</strong>, <strong>target</strong> = 19 or above is required.</p>
+
+<p>Start the application in the Android Emulator or a connected device. Then, in Chrome, enter the following URL: <strong>about:inspect</strong> and then press on "Inspect" for the relevant application. All the features of the Chrome Inspector can now be used to inspect the Android application.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png"/>
+
+<h2 id="debugging_with_weinre">Debugging with Weinre</h2>
+<p><a href="http://people.apache.org/~pmuellr/weinre/">Weinre</a> stands for <strong>We</strong>b 
+
+<strong>In</strong>spector <strong>Re</strong>mote.</p>
+
+<p>Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that Weinre is designed to work remotely.<br />
+Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.</p>
+
+<p>The Weinre architecture includes the following components:<br />
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_weinre.png" />
+
+<p>The Weinre debug server requires a node.js runtime.<br />
+Instructions to install Weinre can be found at: <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html">http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html</a></p>
+
+<p><strong>Debug server</strong><br />
+When the Weinre server is installed, the following command will run it:<br />
+
+<code>weinre --httpPort 8888 --boundHost -all-</code></p>
+
+<p>This command starts a Weinre server on a default (changeable) port 8888.</p>
+
+<p><strong>Target</strong><br />
+The Weinre server must be accessible from the device that will be used for debugging. To make it accessible, add the following code line to the web application:</p>
+
+<p>{% highlight js  %}<script src="http://a.b.c:8888/target/target-script-min.js"></script>{% endhighlight %}</p>
+
+<p>Where a.b.c is the hostname or IP of the Weinre server.</p>
+
+<p><strong>Client</strong><br />
+Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png"/>
+
+<h2 id="debugging_with_ibm_mobilefirst_logger">Debugging with IBM MobileFirst Logger</h2>
+<p>IBM MobileFirst Platform Foundation provides a <code>WL.Logger</code> object that can be used to print log messages to the log for the environment used.</p>
+
+<p>Two of its methods are <code>WL.Logger.debug()</code> and <code>WL.Logger.error()</code>.<br />
+These APIs are multi-platform. The output destination changes according to the platform on which that application runs on:</p>
+
+<ul>
+    <li><strong>Developer console</strong> when it is running on a desktop browser</li>
+    <li><strong>LogCat</strong> when it is running on Android device</li>
+    <li><strong>Visual Studio Output</strong> when it is running on a Windows Phone 8 device and Windows 8 App</li>
+    <li><strong>XCode Console</strong> when it is running on an iOS device</li>
+</ul>
+
+<p><code>WL.Logger</code> contains more methods.<br />
+More information is available in the IBM MobileFirst Platform Foundation user documentation topic for <code>WL.Logger</code>.</p>
+
+<h2 id="testing_the_adapter_procedures">Testing the adapter procedures</h2>
+<p>It is possible to test adapter procedures by using MobileFirst Studio.<br />
+Testing a procedure is done by right-clicking an adapter folder and selecting <strong>Run As > Invoke MobileFirst Procedure</strong>.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png"/>
+
+<p>After selecting to invoke a procedure, the adapter and procedure are selected, followed by optionally entering comma-separated parameters.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_select_adapter_and_procedure.png"/>
+
+<p>Adapter invocation result:</p>
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_adapter_proceudre_invocation_result1.png" />
+
+<h2 id="debugging_with_wireshark">Debugging with WireShark</h2>
+<p>Wireshark is a network protocol analyzer that can be used to see what happens in the network.<br />
+Filtering is available to follow only what is required.</p>
+
+<p>For more information, see <a href="http://www.wireshark.org/">http://www.wireshark.org/</a></p>
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png" />

@@ -1,0 +1,109 @@
+---
+layout: tutorial
+title: Adapter-based authentication in hybrid applications
+relevantTo: [hybrid]
+breadcrumb_title: Hybrid
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth/tree/release71
+---
+<h2>Overview</h2>
+This tutorial illustrates the client-side authentication components for adapter-based authentication in hybrid applications.<br />
+<strong>Prerequisite:</strong> Make sure that you read <a href="../">Adapter-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>The application consists of two main <code>div</code> tags:</p>
+<ul>
+<li>The <code>AppDiv</code> element is used to display the application content.</li>
+<li>The <code>AuthDiv</code> element is used for authentication forms.</li>
+</ul>
+<p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
+When authentication is complete, it does the opposite.</p>
+<h3>AppDiv</h3>
+<p>{% highlight javascript  %}
+<div id="AppDiv">
+      <input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" />
+      <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('AuthRealm', {onSuccess:WL.Client.reloadApp})" />
+      <div id="ResponseDiv"></div>
+</div><br />
+{% endhighlight %}</p>
+<p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
+The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
+<h3>AuthDiv</h3>
+<p>{% highlight javascript  %}
+<div id="AuthDiv" style="display:none">
+    <p id="AuthInfo"></p>
+        <input type="text" placeholder="Enter username" id="AuthUsername"/><br />
+        <input type="password" placeholder="Enter password" id="AuthPassword"/><br />
+        <input type="button" class="formButton" value="Submit" id="AuthSubmitButton" /><input type="button" class="formButton" value="Cancel" id="AuthCancelButton" />
+</div>
+{% endhighlight %}</p>
+<ul>
+<li>The <code>AuthInfo</code> element displays error messages.</li>
+<li>The <code>AuthUsername</code> and <code>AuthPassword</code> elements are used to enter credentials.</li>
+<li>The <code>AuthSubmitButton</code> and <code>AuthCancelButton</code> submits or cancels the authentication request.</li>
+<li>The <code>AuthDiv</code> element is styled as <code>display:none</code> because it must not be displayed before authentication is requested by the server.</li>
+</ul>
+<h3>Challenge handler</h3>
+<p>Use the <code>WL.Client.createChallengeHandler</code> method to create a challenge handler object.<br />
+Supply a realm name as a parameter.</p>
+<p>{% highlight javascript  %}
+var AuthRealmChallengeHandler = WL.Client.createChallengeHandler("AuthRealm");
+{% endhighlight %}</p>
+<p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that is related to this challenge handler. The function returns <code>true</code> or <code>false</code>.</p>
+<p>{% highlight javascript  %}
+AuthRealmChallengeHandler.isCustomResponse = function(response) {
+	if (!response || !response.responseJSON	|| response.responseText === null) {
+		return false;
+	}
+	if (typeof(response.responseJSON.authStatus) !== 'undefined'){
+		return true;
+	} else {
+		return false;
+	}<
+};
+{% endhighlight %}</p>
+<p>If the <code>isCustomResponse</code> function returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.</p>
+<p>{% highlight javascript  %}
+AuthRealmChallengeHandler.handleChallenge = function(response){
+	var authStatus = response.responseJSON.authStatus;
+	if (authStatus == "credentialsRequired"){
+		$("#AppDiv").hide();
+		$("#AuthDiv").show();
+		$("#AuthPassword").empty();
+		$("#AuthInfo").empty();
+		if (response.responseJSON.errorMessage)
+	    	$("#AuthInfo").html(response.responseJSON.errorMessage);
+	} else if (authStatus == "complete"){
+		$("#AppDiv").show();
+		$("#AuthDiv").hide();
+		AuthRealmChallengeHandler.submitSuccess();
+	}
+};
+{% endhighlight %}</p>
+<ul>
+<li>If <code>authStatus</code> value is <code>credentialsRequired</code>, the function shows the login screen, cleans up the password field, and shows an error message (if applicable).</li>
+<li>If <code>authStatus</code> value is <code>complete</code>, the function shows <code>AppDiv</code>, hides <code>AuthDiv</code>, and notifies the framework that authentication completed successfully.</li>
+</ul>
+<p>In addition to the methods that the developer must implement, the challenge handler contains mandatory challenge handler functions that the developer must use:</p>
+<ul>
+<li>The <code>submitAdapterAuthentication</code> function sends collected credentials to a specific adapter procedure. It has the same signature as the <code>WL.Client.invokeProcedure</code> API.</li>
+<li>The <code>submitSuccess</code> function notifies the framework that the authentication process completed successfully. The framework then automatically issues the original request that triggered authentication.</li>
+<li>The <code>submitFailure</code> function notifies the framework that the authentication process completed with failure. The framework then disposes of the original request that triggered authentication.</li>
+</ul>
+<p><strong>Important:</strong> You <strong>must</strong> attach each of these functions to its object. For example: <code>myChallengeHandler.submitSuccess()</code></p>
+<p>Clicking the submit button triggers the function that collects the user name and the password from the HTML input fields and submits them to the adapter. Note the use of the <code>submitAdapterAuthentication</code> method.</p>
+<p>{% highlight javascript  %}
+$("#AuthSubmitButton").bind('click', function () {
+    var username = $("#AuthUsername").val();
+    var password = $("#AuthPassword").val();
+    var invocationData = {<
+        adapter : "AuthAdapter",
+        procedure : "submitAuthentication",
+        parameters : [ username, password ]
+    };<
+    AuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});
+});<
+{% endhighlight %}</p>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AdapterAuth1-1024x586.png" /></p>

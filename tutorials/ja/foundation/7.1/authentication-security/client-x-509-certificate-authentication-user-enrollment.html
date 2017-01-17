@@ -1,0 +1,626 @@
+---
+layout: tutorial
+title: Client X.509 Certificate Authentication and User Enrollment
+relevantTo: [hybrid]
+weight: 10
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/UserCertificateAuthentication/tree/release71
+---
+<h2 id="overview">Overview</h2>
+<p>The X.509 User Certificate Authentication feature is a user realm that establishes user identity with a X.509 client certificate. The user identity is established for a particular user on a specific device and application.</p>
+<p>This feature provides SSL client-side certificate authentication and user enrolment capabilities. SSL client-side certificate authentication consists of establishing a two-way SSL handshake the between MobileFirst client and server which, in turn, enables the client and server both to present their identities and therefore establish mutual trust through the SSL/TLS protocol.</p>
+<p>You can enrol new users to the MobileFirst Platform Mobile Application Management system and your PKI of choice with the user enrolment capabilities. A basic embedded PKI is provided with this feature which is meant to get you started quickly for educational and non-production environments only. For production environments, this feature makes it easy to integrate with your existing PKI. You can use either the PKI Bridge Java interface or built-in MobileFirst adapters to delegate certificate management functions down to an external PKI system.</p>
+<p>In this tutorial, you learn how to enable and configure the User Certificate Authentication.</p>
+<p><strong>Agenda:</strong></p>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#understanding">Understanding how user certificate authentication works</a></li>
+<li><a href="#certificateAuthorities">X.509 certificate and certificate authorities (CAs)</a>
+<ul>
+<li><a href="#overviewCA">Create an OpenSSL configuration file</a></li>
+<li><a href="#createCA">Create a root CA</a></li>
+<li><a href="#signCA">Create a signing CA</a></li>
+<li><a href="#serverCert">Create a server certificate</a></li>
+<li><a href="#serverCertChain">Create a certificate chain for the server certificate</a></li>
+<li><a href="#signPKCS12">Export a PKCS12 file for the signing CA</a></li>
+<li><a href="#serverPKCS12">Export a PKCS12 file for the server certificate</a></li>
+</ul>
+</li>
+<li><a href="#configureWAS">Configuring IBM WebSphere Application Server Liberty profile (Liberty)</a></li>
+<li><a href="#authConfig">Configuring the authenticationConfig.xml file</a></li>
+<li><a href="#appDescriptor">Configuring the application-descriptor.xml file</a></li>
+<li><a href="#installCA">Installing the root CA on iOS and Android</a></li>
+<li><a href="#installApp">Installing and testing the application</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You must have a general understanding of MobileFirst user realms and adapters.<br />
+It is assumed that you follow these instructions by using an application that currently supports form-based authentication.</p>
+<ul>
+<li>The form-based authentication module uses non-validating login modules. These login modules are not recommended for production environments</li>
+<li> Use other user authentication realms, like WASLTPA in production.
+</li>
+</ul>
+<h2 id="understanding">Understanding how user certificate authentication works</h2>
+<p>User certificate authentication is the process in which a X.509 certificate is issued by an existing PKI through the MobileFirst server to a specific user on a specific application and device. The relevant user information is obtained during the user enrolment process with the specified dependent user realm.</p>
+<p>The user enrolment process relies on a dependent user realm to help it establish the initial user identity to which the X.509 certificate is issued.</p>
+<p>IBM MobileFirst Platform Foundation then provisions the device with the X.509 client certificate for use in subsequent connections to the server.</p>
+<p>The first time a user connects to the MobileFirst server, that user must authenticate through the dependent realm to initiate the enrolment process. After a user is enrolled into the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.</p>
+<h3>User enrollment flow</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/UserEnrollFlow1.jpg" /></p>
+<h3>Client certificate authentication flow</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/CleintCertAuthFlow.jpg" /></p>
+<h2 id="certificateAuthorities">X.509 certificate and certificate authorities (CAs)</h2>
+<p>For security reasons, during testing, it is not recommended to use an established CA that uses an embedded PKI in your infrastructure. It is possible to create a self-signed CA that can sign both a server certificate and user certificates.</p>
+<p>This module uses the OpenSSL command-line utility.<br />
+OpenSSL is included in most Linux distributions and in Mac OS X. Windows users can obtain an OpenSSL binary from the OpenSSL website.</p>
+<p>The commands that are shown in this module work on Linux and Mac OS X. For Windows, use the equivalent MS-DOS commands.</p>
+<h3 id="overviewCA">Create an OpenSSL configuration file</h3>
+<ol>
+<li>Create an empty directory and navigate to that path in your system terminal.</li>
+<li id="createopenssl">Create a basic OpenSSL configuration file that is named <code>openSSL.cnf</code>. </li>
+<li>Move this file to the directory that you created.</li>
+</ol>
+<p>If you want different policy requirements, see the OpenSSL configuration documentation for instructions on how to configure the various options.</p>
+<p><code>openSSL.cnf</code> sample file:</p>
+<pre>[ req ]
+    default_bits           = 2048                      # size of keys
+    default_keyfile        = key.pem                   # name of generated keys
+    default_md             = sha1                      # message digest algorithm
+    string_mask            = nombstr                   # permitted characters
+    distinguished_name     = req_distinguished_name
+
+[ req_distinguished_name ]
+0.organizationName = Organization Name (company)
+organizationalUnitName = Organizational Unit Name (department, division)
+emailAddress = Email Address
+emailAddress_max = 40
+localityName = Locality Name (city, district)
+stateOrProvinceName = State or Province Name (full name)
+countryName = Country Name (2-letter code)
+countryName_min = 2
+countryName_max = 2
+commonName = Common Name (hostname, IP, or your name)
+commonName_max = 64
+
+[ policy_match ]
+countryName                  = optional
+stateOrProvinceName          = optional
+localityName                 = optional
+organizationName             = optional
+organizationalUnitName       = supplied
+commonName                   = optional
+emailAddress                 = optional</pre>
+
+<h3 id="createCA">Create a root CA</h3>
+<p>Append the following section to the <code>openSSL.cnf</code> configuration file to set up the root CA requirements.</p>
+<pre>[ root_authority ]
+basicConstraints          = CA:TRUE
+subjectKeyIdentifier      = hash
+
+[ root_authority_ca_config ]
+dir                = ./rootca
+certs              = $dir/certs
+new_certs_dir      = $dir/newcerts
+database           = $dir/index.txt
+certificate        = $dir/root_ca.crt
+private_key        = $dir/root_ca_key.pem
+serial             = $dir/serial
+RANDFILE           = $dir/.rand
+policy             = policy_match</pre>
+
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="LinuxAndMac1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#linuxAndMac1" aria-expanded="true" aria-controls="linuxAndMac1">Instructions for Linux and Mac OS X</a>
+            </h4>
+        </div>
+
+        <div id="linuxAndMac1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac1">
+            <div class="panel-body">
+            <ul>
+            <li>Create the folder structure and requirements for the root CA:
+            <ol>
+            <li>Create a root CA certificate directory structure:<br />
+{% highlight xml  %}
+mkdir rootca
+mkdir rootca/certs rootca/crl rootca/newcerts
+touch rootca/serial
+export HEXOUT=0123456789ABCDEF
+{% endhighlight %}
+            </li>
+            <li>Create a serial list of random numbers:<br />
+            {% highlight xml  %}
+for y in {1..2048}
+do
+export output="";
+for i in {1..16}
+do
+    export randomnum=$RANDOM%16;
+    export output=$output${HEXOUT:$randomnum:1};
+done
+echo "$output" >> rootca/serial
+done
+{% endhighlight %}
+
+{% highlight xml  %}
+touch rootca/index.txt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            <li>Generate an RSA key pair and then self-sign a root CA certificate:<br />
+            The password must remain secure, even for a test environment. For the following example, the password is <em>passRoot</em>.</p>
+            <ol>
+            <li>Create the RSA key pair:<br />
+            The parameter, <em>2048</em>, represents the key length.<br />
+{% highlight xml  %}
+openssl genrsa -des3 -out rootca/root_ca_key.pem -passout pass:passRoot 2048
+{% endhighlight %}
+            </li>
+            <li>Sign a certificate with the key pair:<br />
+{% highlight xml  %}
+export ROOT_CA_SUBJECT="Development Root CA"
+openssl req -new -x509 -nodes -sha1 -days 365 -key rootca/root_ca_key.pem -out rootca/root_ca.crt -config openssl.cnf -subj "/CN=$ROOT_CA_SUBJECT" -extensions root_authority -passin pass:passRoot
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="Windows1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#windows1" aria-expanded="true" aria-controls="windows1">Instructions for Windows</a>
+            </h4>
+        </div>
+
+        <div id="windows1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows1">
+            <div class="panel-body">
+            <ul>
+            <li>Create the folder structure and requirements for the root CA:
+            <ol>
+            <li>Create a root CA certificate directory structure:<br />
+{% highlight xml  %}
+MKDIR rootca
+MKDIR rootca\certs
+MKDIR rootca\crl
+MKDIR rootca\newcerts
+{% endhighlight %}
+            </li>
+            <li>Create a serial list of random numbers:<br />
+{% highlight xml  %}
+openssl rand -hex -out rootca\serial 8
+{% endhighlight %}
+            </li>
+            <li>Create an index for the root CA:<br />
+{% highlight xml  %}
+COPY NUL rootca\index.txt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            <li>Generate an RSA key pair and then self-sign a root CA certificate:<br />
+            The password must remain secure, even for a test environment. For the following example, the password is <em>passRoot</em>.</p>
+            <ol>
+            <li>Create the RSA key pair:<br />
+            The parameter, <em>2048</em>, represents the key length.<br />
+{% highlight xml  %}
+openssl genrsa -des3 -out rootca\root_ca_key.pem -passout pass:passRoot 2048
+{% endhighlight %}
+            </li>
+            <li>Sign a certificate with the key pair:<br />
+{% highlight xml  %}
+openssl req -new -x509 -nodes -sha1 -days 365 -key rootca\root_ca_key.pem -out rootca\root_ca.cert -config openssl.cnf -subj "/CN=Development Root CA" -extensions root_authority -passin pass:passRoot
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="signCA">Create a signing CA</h3>
+<p>To set up the signing CA configuration options, edit the <code>openssl.conf</code> file that you created <a href="#createopenssl">earlier</a> and append the following configuration:</p>
+<pre>[ signing_authority ]
+basicConstraints            = CA:TRUE,pathlen:0
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always, issuer:always
+
+[ signing_authority_ca_config ]
+dir            = ./signingca
+certs          = $dir/certs
+new_certs_dir  = $dir/newcerts
+database       = $dir/index.txt
+certificate    = $dir/signing_ca.crt
+private_key    = $dir/signing_ca_key.pem
+serial         = $dir/serial
+RANDFILE       = $dir/.rand
+policy         = policy_match
+email_in_dn    = false</pre>
+
+<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="LinuxAndMac2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#linuxAndMac2" aria-expanded="true" aria-controls="linuxAndMac2">Instructions for Linux and Mac OS X</a>
+            </h4>
+        </div>
+
+        <div id="linuxAndMac2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac2">
+            <div class="panel-body">
+            <ul>
+            <li>Create the folder structure and requirements for the signing CA:<br />
+            Run these commands from the base directory.</p>
+            <ol>
+            <li>Create a signing CA certificate directory structure:
+<p>{% highlight xml  %}
+mkdir signingca
+mkdir signingca/certs signingca/crl signingca/newcerts
+touch signingca/serial
+export HEXOUT=0123456789ABCDEF
+{% endhighlight %}
+            </li>
+            <li>Create a serial list of random numbers:<br />
+{% highlight xml  %}
+for y in {1..2048}
+do
+export output="";
+for i in {1..16}
+do
+    export randomnum=$RANDOM%16;
+    export output=$output${HEXOUT:$randomnum:1};
+done
+echo "$output" >> signingca/serial
+done
+{% endhighlight %}<br />
+{% highlight xml  %}
+touch signingca/index.txt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            <li>Generate an RSA key pair and then sign a signing CA CSR with the root CA:<br />
+            For this example, the password is <em>passSigning</em>.</p>
+<p>{% highlight xml  %}
+export SIGNING_CA_SUBJECT="Development Signing CA"
+openssl genrsa -des3 -out signingca/signing_ca_key.pem -passout pass:passSigning 2048
+openssl req -new -key signingca/signing_ca_key.pem -out signingca/signing_ca.csr -config openssl.cnf -subj "/CN=$SIGNING_CA_SUBJECT" -passin pass:passSigning
+openssl ca -in signingca/signing_ca.csr -out signingca/signing_ca.crt -keyfile rootca/root_ca_key.pem -cert rootca/root_ca.crt -config openssl.cnf -name root_authority_ca_config -extensions signing_authority -md sha512 -days 365 -passin pass:passRoot
+{% endhighlight %}
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="Windows2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#windows2" aria-expanded="true" aria-controls="windows2">Instructions for Windows</a>
+            </h4>
+        </div>
+
+        <div id="windows2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows2">
+            <div class="panel-body">
+            <ul>
+            <li>Create the folder structure and requirements for the signing CA:<br />
+            Run these commands from the base directory.</p>
+            <ol>
+            <li>Create a signing CA certificate directory structure:<br />
+{% highlight xml  %}
+MKDIR signingca
+MKDIR signingca\certs
+MKDIR signingca\crl
+MKDIR signingca\newcerts
+{% endhighlight %}
+            </li>
+            <li>Create a serial list of random numbers for the signing CA:<br />
+{% highlight xml  %}
+openssl rand -hex -out signingca\serial 8
+{% endhighlight %}
+            </li>
+            <li>Create index for signing CA:<br />
+{% highlight xml  %}
+COPY NUL signingca\index.txt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            <li>Generate an RSA key pair and then sign a signing CA CSR with the root CA.<br />
+            For this example, the password is <em>passSigning</em>. Run these commands from the base directory.</p>
+<p>{% highlight xml  %}
+openssl genrsa -des3 -out signingca\signing_ca_key.pem -passout pass:passSigning 2048
+openssl req -new -key signingca\signing_ca_key.pem -out signingca\signing_ca.csr -config openssl.cnf -subj "/CN=Development Signing CA" -passin pass:passSigning
+openssl ca -in signing_ca.csr -out signingca\signing_ca.crt -keyfile rootca\root_ca_key.pem -cert rootca\root_ca.crt -config openssl.cnf -name root_authority_ca_config -extensions signing_authority -md sha512 -days 365 -passin pass:passRoot
+{% endhighlight %}</p>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="serverCert">Create a server certificate</h3>
+<p>Edit the <code>openssl.cnf</code> file that you created <a href="#createopenssl">earlier</a> and append the following configuration to set up the server certificate configuration options.</p>
+<pre>[ server_identity ]
+basicConstraints        = CA:TRUE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always;issuer:always</pre>
+
+<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="LinuxAndMac3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#linuxAndMac3" aria-expanded="true" aria-controls="linuxAndMac3">Instructions for Linux and Mac OS X</a>
+            </h4>
+        </div>
+
+        <div id="linuxAndMac3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac3">
+            <div class="panel-body">
+            <ul>
+            <li>Generate an RSA key pair and sign the new certificate with the signing CA:<br />
+            This certificate is your server identity certificate. The example uses <em>passServer</em> as the password. Run these commands from the base directory.</p>
+            <ol>
+            <li>Use the full host name of your MobileFirst Platform server (if you don't provide a full host name or use an IP address - SSL will break):<br />
+{% highlight xml  %}
+export SERVER_FULL_HOSTNAME=dev.yourcompany.com
+mkdir server
+{% endhighlight %}
+            </li>
+            <li>Create the RSA key pair and generate a CSR:<br />
+{% highlight xml  %}
+openssl genrsa -des3 -out server/server_key.pem -passout pass:passServer 2048
+openssl req -new -key server/server_key.pem -out server/server.csr -config openssl.cnf -subj "/CN=$SERVER_FULL_HOSTNAME" -passin pass:passServer
+{% endhighlight %}
+            </li>
+            <li>Sign the CSR with the signing CA:<br />
+{% highlight xml  %}
+openssl ca -in server/server.csr -out server/server.crt -keyfile signingca/signing_ca_key.pem -cert signingca/signing_ca.crt -config openssl.cnf -name signing_authority_ca_config -extensions server_identity -md sha512 -days 365 -passin pass:passSigning
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="Windows3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#windows3" aria-expanded="true" aria-controls="windows3">Instructions for Windows</a>
+            </h4>
+        </div>
+
+        <div id="windows3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows3">
+            <div class="panel-body">
+            <ul>
+            <li>Generate an RSA key pair and sign the new certificate with the signing CA:<br />
+            This certificate is your server identity certificate. The example uses <em>passServer</em> as the password. Run these commands from the base directory.</p>
+            <ol>
+            <li>Use the full host name of your MobileFirst Platform server (if you don't provide a full host name or use an IP address - SSL will break):<br />
+{% highlight xml  %}
+REM mkdir server
+{% endhighlight %}
+            </li>
+            <li>Create the RSA key pair and generate a CSR:<br />
+{% highlight xml  %}
+REM openssl genrsa -des3 -out server\server_key.pem -passout pass:passServer 2048
+openssl req -new -key server\server_key.pem -out server\server.csr -config openssl.cnf -subj "/CN=%HOSTNAME%" -passin pass:passServer
+{% endhighlight %}
+            </li>
+            <li>Sign the CSR with the signing CA:<br />
+{% highlight xml  %}
+REM openssl ca -in server\server.csr -out server\server.crt -keyfile signingca\signing_ca_key.pem -cert signingca\signing_ca.crt -config openssl.cnf -name signing_authority_ca_config -extensions server_identity -md sha512 -days 365 -passin pass:passSigning
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="serverCertChain">Create a certificate chain for the server certificate</h3>
+
+<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="LinuxAndMac4">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion4" href="#linuxAndMac4" aria-expanded="true" aria-controls="linuxAndMac3">Instructions for Linux and Mac OS X</a>
+            </h4>
+        </div>
+
+        <div id="linuxAndMac4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac4">
+            <div class="panel-body">
+            <ul>
+            <li>Send a full certificate chain all the way up to the trust anchor (root CA) for iOS and Android environments:<br />
+            You can concatenate the certificate files to the trust anchor (root CA).</p>
+            <ol>
+            <li>Create a chain for the signing CA:<br />
+{% highlight xml  %}
+cat signingca/signing_ca.crt rootca/root_ca.crt > signing_ca_chain.crt
+{% endhighlight %}
+            </li>
+            <li>Create a chain for the server certificate:<br />
+{% highlight xml  %}
+cat server/server.crt signingca/signing_ca.crt rootca/root_ca.crt > server_chain.crt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="Windows4">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion4" href="#windows4" aria-expanded="true" aria-controls="windows3">Instructions for Windows</a>
+            </h4>
+        </div>
+
+        <div id="windows4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows4">
+            <div class="panel-body">
+            <ul>
+            <li>Send a full certificate chain all the way up to the trust anchor (root CA) for Windows environments:<br />
+            You can concatenate the certificate files to the trust anchor (root CA).</p>
+            <ol>
+            <li>Create a chain for the signing CA:<br />
+{% highlight xml  %}
+copy rootca\root_ca.crt+signingca\signing_ca.crt signing_ca_chain.crt
+{% endhighlight %}
+            </li>
+            <li>Create a chain for the server certificate:<br />
+{% highlight xml  %}
+copy rootca\root_ca.crt+signingca\signing_ca.crt+server\server.crt server_chain.crt
+{% endhighlight %}
+            </li>
+            </ol>
+            </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="signPKCS12">Export a PKCS12 file for the signing CA</h3>
+<p>Export the private key and certificate for the signing CA into a <code>.p12</code> keystore file so that the embedded PKI can sign the user certificates with the signing CA.</p>
+<p>{% highlight xml  %}
+openssl pkcs12 -export -in signingca/signing_ca.crt -inkey signingca/signing_ca_key.pem -out signingca/signing_ca.p12 -passin pass:passSigning -passout pass:passSigningP12
+{% endhighlight %}</p>
+
+<h3 id="serverPKCS12">Export a PKCS12 file for the server certificate</h3>
+<p>Export the private key and certificate for the server into a <code>.p12</code> keystore file so that the server can send the client a valid server certificate.</p>
+<p>{% highlight xml  %}
+openssl pkcs12 -export -in server_chain.crt -inkey server/server_key.pem -out server/server.p12 -passout pass:passServerP12 -passin pass:passServer
+{% endhighlight %}</p>
+<p></p>
+<h2 id="configureWAS">Configuring IBM WebSphere Application Server Liberty profile (Liberty)</h2>
+<p>Enable the <code>ssl-1.0</code> and <code>appSecurity-2.0</code> features in the <code>server.xml</code> file:<br />
+{% highlight xml  %}
+<featureManager>
+   <feature>ssl-1.0</feature>
+   <feature>appSecurity-2.0</feature>
+</featureManager>
+{% endhighlight %}</p>
+<p>Liberty requires setting up the keystore and truststore to establish trust for the generated client certificates. For more information, see the <a href="http://pic.dhe.ibm.com/infocenter/wasinfo/v8r5/index.jsp?topic=/com.i bm.websphere.wlp.nd.doc/ae/rwlp_ssl.html">WebSphere Application Server Network Deployment documentation</a>.</p>
+<ol>
+<li>Set up your server keystore to use the <code>server.p12</code> file that was generated earlier.</li>
+<li>Set up your truststore to use the <code>signing_ca.p12</code> file that was generated earlier.</li>
+<li>Configure your server HTTP endpoint and allow (but do not require) client-side certificates. To make this configuration available, set the <code>clientAuthenticationSupported="true"</code> property in the Liberty SSL element.</li>
+</ol>
+<p>The following example shows the updated SSL configuration:<br />
+{% highlight xml  %}
+<!-- default SSL configuration is defaultSSLSettings -->
+<sslDefault sslRef="defaultSSLSettings"/>
+<ssl clientAuthenticationSupported="true" id="defaultSSLSettings" keyStoreRef="defaultKeyStore" trustStoreRef="defaultTrustStore"/>
+<keyStore id="defaultKeyStore" location="server.p12" password="passServerP12" type="PKCS12" />
+<keyStore id="defaultTrustStore" location="signing_ca.p12" password="passSigningP12" type="PKCS12"/>
+{% endhighlight %}<br /></p>
+<h2 id="authConfig">Configuring the authenticationConfig.xml file</h2>
+<ol>
+<li>Uncomment the <code>UserCertificate Login Module</code> section of the <code>authenticationConfig.xml</code> file, as shown below.<br />
+{% highlight xml  %}
+<!-- Login Module for User Certificate Authentication -->
+<loginModule name="WLUSERCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateLoginModule</className>
+</loginModule>
+{% endhighlight %}
+</li>
+<li>Uncomment the <code>wl_userCertificateAuthRealm</code> section, as shown below.<br />
+{% highlight xml  %}
+<!-- Login Module for User Certificate Authentication -->
+<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
+   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/>
+   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/>
+</realm><br />
+{% endhighlight %}
+</li>
+<li>Update the value of the <code>embedded-pki-bridge-ca-p12-file-path</code> element to the full path of your signing CA <code>.p12</code> file.
+</li>
+<li>Update the value of the <code>embedded-pki-bridge-ca-p12-password</code> element to the <code>passSigningP12</code> password that was used to create the <code>.p12</code> file.
+</li>
+<li>Update the value of the <code>dependent-user-auth-realm</code> realm to the dependent realm that you want to use (<code>SampleAppRealm</code>).
+<p>You cannot change the realm name (<code>wl_userCertificateAuthRealm</code>).<br />
+<br />
+The following examples shows the updates made above.<br />
+{% highlight xml  %}
+<!--For User Certificate Authentication -->
+<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
+   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/>
+   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/>
+   <parameter name="embedded-pki-bridge-ca-p12-file-path" value="YOUR_BASE_DIRECTORY/signing_ca.p12"/>
+   <parameter name="embedded-pki-bridge-ca-p12-password" calue="passSigningP12"/>
+</realm>
+{% endhighlight %}
+</li>
+<li>Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
+{% highlight xml  %}
+<!--For User Certificate Authentication -->
+<customSecurityTest name="customx509Tests">
+   <test realm="wl_antiXSRFRealm" step="1"/>
+   <test realm="wl_authenticityRealm" step="1"/>
+   <test realm="wl_directUpdateRealm" mode="perSession" step="1"/>
+   <test realm="wl_userCertificateAuthRealm" isInternalUserID="true" step="1"/>
+   <test realm="wl_deviceNoProvisioningRealm" isInternalUserID="true" step="2"/>
+</customSecurityTest>
+{% endhighlight %}
+</li>
+</ol>
+<h2 id="appDescriptor">Configuring the application-descriptor.xml file</h2>
+<ol>
+<li>Ensure that you added the iOS or Android environment to your MobileFirst application.
+</li>
+<li>Protect your application or environment with your custom security test.<br />
+{% highlight xml  %}
+<!--For User Certificate Authentication -->
+<android securityTest="customx509Tests" version="1.0">
+<iPhone bundleId="com.SampleApp" securityTest="customx509Tests" version="1.0">
+{% endhighlight %}
+</li>
+<li>Build and deploy your application and adapters to MobileFirst Server.</li>
+</ol>
+<h2 id="installCA">Installing a root CA on iOS and Android</h2>
+<p>You must install the root CA that you generated in the previous steps onto your client devices for your devices to trust MobileFirst Server over SSL. Email or host the <code>root_ca.crt</code> file, and then open the file on your device. The iOS and Android devices ask for approval when you manually attempt to install certificates.<br />
+<br />
+<center><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png" /><br />
+</center><br /></p>
+<h2 id="installApp">Installing and testing the application</h2>
+<ol>
+<li>Deploy your application to MobileFirst Server by selecting <strong>Run as > Run on <em>server_name</em></strong>.
+</li>
+<li>Update the deploy target for HTTPS.
+<ol>
+<li>Select <strong>Run as > Build Settings and Deploy Target</strong>.</li>
+<li>Select <strong>Build the application to work with a different MobileFirst Server</strong>. </li>
+<li>Enter the server HTTPS address: <code>https://<em>host</em>:<em>https port#</em></code></li>
+<li>Enter the context path: <code>/<em>path</em></code>.</li>
+</ol>
+</li>
+<li>Build the application with the updated deploy target by selecting <strong>Run as > Build All Environments</strong>.
+</li>
+<li>Run the application on the specified environments.</li>
+</ol>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/UserCertificateAuthentication/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p>To confirm a successful configuration, ensure that you see a log-in form the first time that you try to access a protected resource. If <code>WL.Client.connect()</code> is uncommented in the <code>main.js</code> file, the log-in form is displayed when the application starts. Otherwise, <code>WL.Client.connect()</code> must be invoked before you call an adapter procedure to see a log-in form after the adapter is called.<br />
+<br />
+After you log in through the dependent realm, a successful response from the adapter invocation indicates that the user was successfully enrolled.<br />
+<br />
+On subsequent connections to the server, you are no longer asked to log in and the adapter calls continue to return successfully.</p>
+<blockquote><p>For more information, see the "User certificate authentication" topic in the user documentation.
+</p></blockquote>

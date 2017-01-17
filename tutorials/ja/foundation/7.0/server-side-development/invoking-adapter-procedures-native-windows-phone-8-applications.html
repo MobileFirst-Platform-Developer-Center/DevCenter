@@ -1,0 +1,114 @@
+---
+layout: tutorial
+title: Invoking adapter procedures from native Windows Phone 8 applications
+relevantTo: [windowsphone8]
+weight: 12
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWP8Project.zip
+
+---
+To create and configure a Windows Phone 8 native project, first follow the <a href="../../hello-world/creating-first-native-windows-phone-8-mobilefirst-application/" title="Creating your first native Windows Phone 8 MobileFirst application">Creating your first Native WP8 MobileFirst application</a> tutorial.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#initialize">Initializing WLClient</a></li>
+<li><a href="#invoke">Invoking an adapter procedure</a></li>
+<li><a href="#response">Receiving a procedure response</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="initialize">Initializing WLClient</h2>
+<p>{% highlight csharp  %}
+WLClient client = WLClient.getInstance();
+{% endhighlight %} </p>
+<ol>
+<li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
+{% highlight csharp  %}
+client.connect(new MyConnectResponseListener(this));
+{% endhighlight %} </p>
+<p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
+After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
+</li>
+<li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
+<p>{% highlight csharp  %}
+public class MyConnectResponseListener : WLResponseListener
+{% endhighlight %} </p>
+<p>The <code>WLResponseListener</code> interface defines two methods:</p>
+<ul>
+<li><code>public void </code><code>onSuccess (WLResponse response) { }</code></li>
+<li><code>public void </code><code>onFailure (WLFailResponse response) { }</code></li>
+</ul>
+</li>
+<li>Use the previous methods to process connection success or connection failure.
+</li>
+</ol>
+<h2 id="invoke">Invoking an adapter procedure</h2>
+<p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLClient</code> instance to invoke adapter procedures.</p>
+<ol>
+<li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
+</li>
+<li>Add the required parameters as an object array and set request options (for example: Invocation Context).
+</li>
+<li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
+</li>
+<li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
+<p>{% highlight csharp  %}
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");<
+invocationData.setParameters(new Object[]{});
+String myContextObject = "InvokingAdapterProceduresWP8";
+WLRequestOptions options = new WLRequestOptions();
+options.setInvocationContext(myContextObject);
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
+{% endhighlight %}
+</li>
+</ol>
+<h2 id="response">Receiving a procedure response</h2>
+<p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
+As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
+<p>{% highlight csharp  %}
+using IBM.Worklight;
+namespace InvokingAdapterProceduresWP8{
+  public class MyInvokeListener : WLResponseListener
+    { }
+{
+{% endhighlight %} </p>
+<p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code>. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
+<p>{% highlight csharp  %}
+public void onSuccess(WLResponse response)
+{
+    WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);>
+    JObject items;
+    try
+    {
+        items = invocationResponse.getResponseJSON();
+        Deployment.Current.Dispatcher.BeginInvoke(() =>
+        {
+            myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());
+        });
+    }
+    catch (JsonReaderException e)
+    {
+        Deployment.Current.Dispatcher.BeginInvoke(() =><
+        {
+            myMainPage.AddTextToReceivedTextBlock("JSONException : " + e.Message);
+        });
+    }
+}
+
+public void onFailure(WLFailResponse response)
+{
+    Deployment.Current.Dispatcher.BeginInvoke(() =>
+    {
+        myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());
+    });
+}
+{% endhighlight %} </p>
+<h2 id="sample">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWP8Project.zip">Click to download</a> the Native project.</p>
+<p>The sample contains two projects:<br />
+- The <code>InvokingAdapterProceduresNativeProject.zip</code> file contains a <strong>MobileFirst Native API</strong> to deploy to MobileFirst Server.<br />
+- The <code>InvokingAdapterProceduresWP8project.zip</code> file contains a <strong>native Windows Phone 8 application</strong> that uses a MobileFirst native API library to communicate with a MobileFirst Server instance.</p>
+<p>Make sure to update the <code>wlclient.properties</code> file in <code>InvokingAdapterProceduresWP8</code> with the relevant server settings.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_10_results.jpg"/></p>

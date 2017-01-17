@@ -1,0 +1,111 @@
+---
+layout: tutorial
+title: Tag and Broadcast Notifications in Native iOS Applications
+relevantTo: [ios]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications/tree/release71
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsObjC/tree/release71
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../" title="Push notifications in native iOS applications">Push notifications in native iOS applications</a> tutorial first.</p>
+<p>Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.<br />
+Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
+<p>Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved <code>Push.all</code> tag (auto-created for every device). Broadcast notifications can be disabled by by unsubscribing from the reserved <code>Push.all</code> tag.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#configuration">Notifications configuration</a></li>
+<li><a href="#notificationsAPI">Notifications API</a></li>
+</ul>
+<h2 id="configuration">Notifications configuration</h2>
+<h3>Tag Notifications configuration</h3>
+<h4>Setting up tags</h4>
+<p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
+<p>{% highlight xml  %}
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+...
+...
+...
+<tags>
+    <tag>
+        <name>my tag 1</name>
+        <description>About my tag 1</description>
+    </tag>
+    <tag>
+        <name>my tag 2</name>
+        <description>About my tag 2</description>
+    </tag>
+</tags>
+{% endhighlight %}</p>
+<h2 id="notificationsAPI">Notifications API</h2>
+<h3>API methods for tag notifications</h3>
+<h4>Client-side API</h4>
+<ul>
+<li><code>[[WLPush sharedInstance]subscribeTag:tagName :options)]</code><br />
+    Subscribes the device to the specified tag name.</li>
+<li><code>[[WLPush sharedInstance]unsubscribeTag:tagName :options)]</code><br />
+    Unsubscribes the device from the specified tag name.</li>
+<li><code>[WLPush sharedInstance]isTagSubscribed:tagName]</code><br />
+    Returns whether the device is subscribed to a specified tag name.</li>
+</ul>
+<h3>Common API methods for tag and broadcast notifications</h3>
+<h4>Client-side API:</h4>
+<ul>
+<li><code>didReceiveRemoteNotification</code><br />
+When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is   called. The logic to handle the notification should be defined here.</p>
+<p>
+{% highlight objc  %}
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"Received Notification %@",userInfo.description);
+}
+{% endhighlight %}</p>
+<ul>
+<li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
+</ul>
+</li>
+<li><code>setOnReadyToSubscribeListener</code><br />
+This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.<br />
+{% highlight objc  %}[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];{% endhighlight %}</li>
+</ul>
+<h4>Server-side API</h4>
+<p><code>WL.Server.sendMessage(applicationId,notificationOptions)</code><br />
+    This method submits a notification based on the specified target parameters and takes two mandatory parameters:</p>
+<ul>
+<li><code>applicationId</code> - (mandatory) The name of the MobileFirst application</li>
+<li><code>notificationOptions</code> - (mandatory) A JSON block containing message properties</li>
+</ul>
+<blockquote><p>For a full list of message properties, refer to the <code>WL.Server.sendMessage</code> API in the API reference documentation.</p></blockquote>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications/tree/release71" target="_blank">Click to download</a> the MobileFirst project.<br />
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsObjC/tree/release71" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>TagNotifications</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>TagNotificationsObjC</code> project contains a native iOS application that uses a MobileFirst native API library to subscribe for push notification and receive notifications from APNS.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-08-30-at-11.15.57.png" /></p>
+<h3>Sending a notification</h3>
+<p>To test the application is able to receive a push notification you can perform one of the following:</p>
+<ol>
+<li>From MobileFirst Studio, right-click the adapter folder, select <strong>Call MobileFirst Adapter</strong> and:
+<ul>
+<li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
+<li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml  %}<application ... id="NativeiOSTagNotifications" ...>{% endhighlight %}</li>
+</ul>
+</li>
+<li>If using the CLI:
+<p>{% highlight bash %}
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification
+[?] Enter the comma-separated parameters: "NativeiOSTagNotifications","hello"
+[?] How should the procedure be called? GET{% endhighlight %}
+Or:
+{% highlight bash %}
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/sendTagNotification
+[?] Enter the comma-separated parameters: "NativeiOSTagNotifications","hello","sample-tag1,sample-tag2"
+[?] How should the procedure be called? GET
+{% endhighlight %}</li>
+</ol>

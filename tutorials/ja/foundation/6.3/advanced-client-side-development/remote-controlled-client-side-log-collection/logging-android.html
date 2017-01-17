@@ -1,0 +1,29 @@
+---
+layout: tutorial
+title: Logging in native Android (Java)
+relevantTo: [android]
+---
+<br>
+<p>Android MobileFirst Platform SDK cannot persistently capture log data until the <code>com.worklight.common.Logger.setContext(Context)</code> method is called.</p>
+<h2 id="loggingAndroid">Logging example for native Android (Java):</h2>
+<h3>Outputs to LogCat:</h3>
+{% highlight java  %}
+import com.worklight.common.Logger;
+public class MathUtils{
+  private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
+  public int sum(final int a, final int b){
+  int sum = a + b;
+  logger.debug("sum called with args " + a + " and " + b + ". Returning " + sum);
+  return sum;
+  }
+}
+{% endhighlight %}
+<h2>API calls for specific tasks</h2>
+<h3>Turn log capture on or off:</h3>
+<p><code>Logger.setCapture(boolean)</code></p>
+<h3>Control capture level (verbosity):</h3>
+<p><code>Logger.setLevel(LEVEL)</code></p>
+<h3>Turn automatic log sending on or off:</h3>
+<p><code>Logger.setAutoSendLogs(boolean)</code></p>
+<h3>Turn automatic configuration retrieval on or off:</h3>
+<p><code>Logger.setAutoUpdateConfig(boolean)</code></p>

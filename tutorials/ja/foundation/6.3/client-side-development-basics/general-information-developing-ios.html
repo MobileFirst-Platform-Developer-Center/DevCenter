@@ -1,0 +1,74 @@
+---
+layout: tutorial
+title: General information when developing for iOS
+breadcrumb_title: General information
+relevantTo: [hybrid]
+weight: 7
+---
+<h2>Overview</h2>
+<p>In this tutorial a general development information for the iOS environment will be presented, covering topics such as project structure, accessing native capabilities using Apache Cordova, environment-specific &amp; design resources and deployment.</p>
+
+<h2>Project structure</h2>
+<p>An iPhone/iPad application that is developed by using IBM MobileFirst Platform comprises the following components:</p>
+
+<ul>
+    <li>An Objective-C ("native") Main App Delegate is provided, and hosts an instance of a UIWebView component</li>
+    <li>www.bundle files, that are written in HTML, CSS and JavaScript, and that run in the UIWebView instance</li>
+    <li>A set of Objective-C and JavaScript libraries that provide access to various iOS features and capabilities</li>
+    <li>All application components, including the web code that the developer provides, are packaged into a single universal iOS application</li>
+</ul>
+
+<p>If a source control management system is used (such as Rational Team Concert, Git, Subversion and so on...), see the user documentation topic: "Integrating with source control system".</p>
+
+<h2>Designing for iOS</h2>
+<p><b>Guidelines</b><br />
+Starting iOS7, the design language of the operating system has changed drastically.<br />
+It is therefore highly encouraged and useful for developers to consult the Apple iOS Human Interface Guidelines at <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/" target="_blank">https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/</a>.</p>
+
+<p>When developing for iOS, it is also useful to consult the iOS Developer Library at <a href="https://developer.apple.com/library/ios/navigation/">https://developer.apple.com/library/ios/navigation/</a>.</p>
+
+<p><b>Resolutions</b><br />
+iOS devices have various screen resolutions:</p>
+
+<ul>
+    <li>iPhone 1/2/3/3GS – 320 x 480</li>
+    <li>iPhone 4/4S – 640 x 960</li>
+    <li>iPhone 5/5s – 640 x 1136</li>
+    <li>iPhone 6 - 1334 x 750</li>
+    <li>iPhone 6 plus - 1920 x 1080</li>
+    <li>iPad 1/2/mini – 768 x 1024</li>
+    <li>iPad 3/4/5 – 1,536 x 2,048</li>
+</ul>
+
+<p>When displaying graphical elements on wider screens, iOS automatically scales images and fonts to the appropriate ratio.<br />
+For example, on a 640-pixel wide screen, a 100-pixel wide image is scaled by 640/320 (= 2) to 200 pixels in width, and the text that is displayed with an 18-pixel font is displayed with a 36-pixel font.</p>
+
+<p><b>The following then falls under the responsibility of the developer:</b></p>
+
+<ul>
+    <li>Ensure that images look good at all resolutions:
+        <ul>
+            <li>Provide images for the environment with the highest resolution requirements.</li>
+            <li>In the CSS, scale the image width to the lower resolution.</li>
+            <li>In the previous example, provide an image with a width of 200 pixels, and in the CSS, scale it to 100 pixels. iOS scales it back by a factor of 2 to be 200 pixels wide.</li>
+        </ul>
+    </li>
+    <li>Make sure that text is displayed appropriately at all resolutions</li>
+    <li>Consider specifying font sizes in ems, rather than in pixels.</li>
+</ul>
+
+<h2>Environment-specific images</h2>
+<p>Image file sizes differ depending on your iDevice. For more information, see the <a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/mobilehig/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27-SW1">Apple iOS UI Development Guidelines for icon and image sizes</a>.</p>
+
+<h2>Apache Cordova</h2>
+<p>The Apache Cordova framework can be used in iOS applications to access the native elements of a device, such as contacts, geo-location services, media services, or the accelerometer.</p>
+
+<p>For more information about Apache Cordova development, see the <i>Apache Cordova overview tutorial</i>.</p>
+
+<h2>Deployment</h2>
+<p>iOS application deployment is done through the Apple App Store.</p>
+
+<p><b>Important:</b> Before you build a production version of your application, make sure that the <code>worklightSettings</code> property inside the application's application-descriptor.xml file is set to <code>false</code>.</p>
+
+<p>Go through the App Store approval process.<br />
+Manage your apps on the App Store.</p>

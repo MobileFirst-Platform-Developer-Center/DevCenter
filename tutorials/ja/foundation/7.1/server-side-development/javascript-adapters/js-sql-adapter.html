@@ -1,0 +1,150 @@
+---
+layout: tutorial
+title: JavaScript SQL Adapter
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+downloads: 
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release71
+---
+<h2>Overview</h2>
+<p>An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source.<br />
+You can use plain SQL queries or stored procedures.<br />
+As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the <code>server\lib\</code> folder of a MobileFirst project.<br />
+You can download the JDBC connector driver from the appropriate vendor website.<br />
+In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.</p>
+<ul>
+<li><a href="#createAdapt">Creating the adapter</a></li>
+<li><a href="#xml">Adapter XML</a></li>
+<li><a href="#jsImpl">JavaScript implementation file</a></li>
+<li><a href="#results">Invocation results</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="createAdapt">Creating the adapter</h2>
+<h3>CLI</h3>
+<p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
+<h3>Studio</h3>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_03_create-adapter.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_03-filestruct.png" /></p>
+<ol>
+<li>In MobileFirst Studio, create a MobileFirst adapter and choose the SQL adapter type.<br />
+A standard SQL adapter file structure is created.
+</li>
+<li>Save the downloaded JDBC connector file in the project <code>server\lib\</code> folder.<br />
+<br clear="all" />
+</li>
+</ol>
+<h2 id="xml">Adapter XML</h2>
+<p>Settings and metadata are stored in the adapter XML file.<br />
+You can use either the Design or the Source editor in the Studio, or use your favorite XML editor to modify the adapter XML file.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_03_visual-xml.png" /></p>
+<ol>
+<li>In the adapter XML file, declare the following parameters:
+<p>- Driver Class<br />
+- Database URL<br />
+- Username<br />
+- Password</p>
+<p>{% highlight xml  %}
+  <connectivity>
+    <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+      <dataSourceDefinition>
+        <driverClass>com.mysql.jdbc.Driver</driverClass>
+        <url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
+          <user>mobilefirst</user>
+          <password>mobilefirst</password>
+      </dataSourceDefinition>
+    </connectionPolicy>
+  </connectivity>
+{% endhighlight %}</p>
+</li>
+<li>Declare a procedure in the adapter XML file.
+<p>{% highlight xml  %}
+<procedure name="getAccountTransactions1"/>
+{% endhighlight %}
+</li>
+</ol>
+<h2 id="jsImpl">JavaScript implementation file</h2>
+<p>The adapter JavaScript file is used to implement the procedure logic.</p>
+<p><strong>Important:</strong> The name that is declared in the XML file must be used for the procedure JavaScript function.</p>
+<p>There are two ways of running SQL statements:</p>
+<ul>
+<li>SQL statement query</li>
+<li>SQL stored procedure</li>
+</ul>
+<ol>
+<li>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
+The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.</li>
+<li>Add more parameters, if necessary.
+<p>{% highlight javascript  %}
+//Create SQL query
+var getAccountsTransactionsStatement = WL.Server.createSQLStatement(
+  "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
+  "FROM accounttransactions " +
+  "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
+  "ORDER BY transactionDate DESC " +
+  "LIMIT 20;"
+);
+{% endhighlight %}
+</li>
+<li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
+<li>Return the result to the application or to another procedure.
+<p>{% highlight javascript  %}
+//Invoke prepared SQL query and return invocation result
+function getAccountTransactions1(accountId){
+  return WL.Server.invokeSQLStatement({
+    preparedStatement : getAccountsTransactionsStatement,
+    parameters : [accountId, accountId]
+  });
+}
+{% endhighlight %}
+</li>
+<li>To run a SQL stored procedure, use the <code>WL.Server.invokeSQLStoredProcedure</code> method.<br />
+Specify a SQL stored procedure name as an invocation parameter.</li>
+<li>Add more parameters, if necessary.</li>
+<li>Return the invocation result to the application or to another procedure.
+<p>{% highlight javascript  %}
+//Invoke stored SQL procedure and return invocation result
+function getAccountTransactions2(accountId){
+  return WL.Server.invokeSQLStoredProcedure({
+    procedure : "getAccountTransactions",
+    parameters : [accountId]
+  });
+}
+{% endhighlight %}
+</li>
+</ol>
+<h2 id="results">Invocation Results</h2>
+<p>{% highlight javascript  %}
+{
+  "isSuccessful": true,
+  "resultSet": [{
+    "fromAccount": "12345",
+    "toAccount": "54321",
+    "transactionAmount": 180.00,
+    "transactionDate": "2009-03-11T11:08:39.000Z",
+    "transactionId": "W06091500863",
+    "transactionType": "Funds Transfer"
+  }, {
+    "fromAccount": "12345",
+    "toAccount": null,
+    "transactionAmount": 130.00,
+    "transactionDate": "2009-03-07T11:09:39.000Z",
+    "transactionId": "W214122\/5337",
+    "transactionType": "ATM Withdrawal"
+  }]
+}
+{% endhighlight %}</p>
+<p>The result is retrieved as a JSON object.</p>
+<ul>
+<li>The <code>isSuccessful</code> property defines whether the invocation was successful.</li>
+<li>The <code>resultSet</code> object is an array of returned records.</li>
+<li>To access the <code>resultSet</code> object on the client-side: <code>result.invocationResult.resultSet</code></li>
+<li>To access the <code>resultSet</code> object on the server-side: <code>result.ResultSet</code></li>
+</ul>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p>The sample project contains an SQL adapter.</p>
+<ul>
+<li>To run the sample, execute the <code>mobilefirstTraining.sql</code> file (which you can find under the Server folder of the sample) on your local MySQL server.</li>
+<li>Make sure that the <code>mobilefirst@% user</code> has all access permissions assigned to it.</li>
+<li>Remember to download and set the MySQL Java Connector in your project.</li>
+</ul>

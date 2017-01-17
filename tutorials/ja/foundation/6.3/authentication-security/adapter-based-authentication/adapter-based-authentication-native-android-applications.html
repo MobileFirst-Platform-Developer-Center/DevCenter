@@ -1,0 +1,84 @@
+---
+layout: tutorial
+title: Adapter-based authentication in native Android applications
+relevantTo: [android]
+breadcrumb_title: Native Android
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeAdapterBasedAuthProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidNativeAdapterBasedAuthProject.zip
+---
+<br>
+This is a continuation of the <a href="../" title="Adapter-based authentication">Adapter-based authentication</a> tutorial.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Android application and add the MobileFirst native APIs following the documentation.<br />
+Add an Activity, <code>LoginAdapterBasedAuth</code>, that will handle and present the login form.<br />
+Remember to add this Activity to the <code>AndroidManifest.xml</code> file as well.</p>
+<p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.</p>
+<p><code>isCustomResponse</code> checks every custom response received from MobileFirst Server to see if that’s the challenge we are expecting. In the example adapter code a <code>authRequired</code> variable is sent for this purpose.</p>
+<p>
+{% highlight java  %}
+public boolean isCustomResponse(WLResponse response) {
+	try {
+		if(response!= null&&
+				response.getResponseJSON()!=null &&
+				response.getResponseJSON().isNull("authRequired") != true &&
+				response.getResponseJSON().getBoolean("authRequired") == true){
+			return true;
+		}
+	} catch (JSONException e) {
+		e.printStackTrace();
+	}
+	return false;
+}
+{% endhighlight %}</p>
+<p>
+<code>handleChallenge</code> is called after the <code>isCustomResponse</code> method returned true.<br />
+Here we use this method to present our login form.</p>
+<p>{% highlight java  %}
+public void handleChallenge(WLResponse response){
+	cachedResponse = response;
+	Intent login = new Intent(parentActivity, LoginAdapterBasedAuth.class);
+	parentActivity.startActivityForResult(login, 1);
+}
+{% endhighlight %}</p>
+<p>
+In <code>submitLogin</code>, if the user asked to abort this action we use the  <code>submitFailure()</code> method, otherwise we invoke our adapter authentication procedure using the <code>submitAdapterAuthentication()</code> method.</p>
+<p>{% highlight java  %}
+public void submitLogin(int resultCode, String userName, String password, boolean back){
+	if (resultCode != Activity.RESULT_OK || back) {
+		submitFailure(cachedResponse);
+	} else {
+		Object[] parameters = new Object[]{userName, password};
+		WLProcedureInvocationData invocationData = new  WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");
+		invocationData.setParameters(parameters);
+		WLRequestOptions options = new WLRequestOptions();
+		options.setTimeout(30000);
+		submitAdapterAuthentication(invocationData, options);
+	}
+}
+{% endhighlight %}</p>
+<p>
+In the Main Activity class, connect to the MobileFirst server, register your <code>challengeHandler</code> and invoke the protected adapter procedure.<br />
+The procedure invocation will trigger the MobileFirst server to send a challenge that will trigger our <code>challengeHandler</code>.
+{% highlight java  %}
+final WLClient client = WLClient.createInstance(this);
+client.connect(new MyConnectionListener());
+challengeHandler = new AndroidChallengeHandler(this, realm);
+client.registerChallengeHandler(challengeHandler);
+invokeBtn = (Button) findViewById(R.id.invoke);
+invokeBtn.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
+		WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");
+		WLRequestOptions options = new WLRequestOptions();
+		options.setTimeout(30000);
+		client.invokeProcedure(invocationData, new MyResponseListener(), options);
+	}
+});
+{% endhighlight %}</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeAdapterBasedAuthProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidNativeAdapterBasedAuthProject.zip">Click to download</a> the Native project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_07_result.png" style="width: 75%"/></p>

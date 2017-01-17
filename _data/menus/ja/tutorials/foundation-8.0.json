@@ -1,74 +1,45 @@
 {
-   "name": "Japanese Foundation 8.0",
-   "path": "/tutorials/ja/foundation/8.0",
-   "children": [{
-           "name": "Foundation",
-           "path": "",
-           "children": [{
-               "name": "クイック・スタート",
-               "path": "/quick-start"
-           }, {
-               "name": "開発環境のセットアップ",
-               "path": "/setting-up-your-development-environment"
-           }, {
-               "name": "MobileFirst Platform Foundation SDK の追加",
-               "path": "/adding-the-mfpf-sdk"
-           }, {
-               "name": "クライアント・サイド開発",
-               "path": "/client-side-development"
-           }, {
-               "name": "サーバー・サイド開発",
-               "path": "/server-side-development"
-           }, {
-               "name": "認証およびセキュリティー",
-               "path": "/authentication-and-security"
-           }, {
-               "name": "通知",
-               "path": "/notifications"
+    "name": "Foundation 8.0",
+    "path": "/tutorials/ja/foundation/8.0",
+    "children": [
+        {
+            "name": "Developers",
+            "path": "",
+            "children": [{
+                "name": "Cordova",
+                "path": "/cordova-tutorials"
             }, {
-               "name": "分析",
-               "path": "/analytics"
-           }, {
-               "name": "実稼働環境への移行",
-               "path": "/moving-to-production",
-           }, ]
-       }, {
-           "name": "IBM Countainers",
-           "path": "/ibm-containers",
-           "children": [{
-               "name": "概要",
-               "path": ""
-           }, {
-               "name": "評価",
-               "path": "/evaluate"
-           }, {
-               "name": "実行",
-               "path": "/run"
-           }, {
-               "name": "サンプル・アプリケーション",
-               "path": "/sample-app"
-           }]
-       }, {
-           "name": "プラットフォーム別のチュートリアル",
-           "path": "",
-           "children": [{
-               "name": "iOS",
-               "path": "/ios-tutorials"
-           }, {
-               "name": "Android",
-               "path": "/android-tutorials"
-           }, {
-                "name": "Windows 8 Universal",
-               "path": "/windows-8-tutorials"
-           }, {
-               "name": "Windows 10 UWP",
-               "path": "/windows-10-tutorials"
-           }, {
-               "name": "Cordova",
-               "path": "/cordova-tutorials"
-           }, {
-               "name": "サーバー・サイド",
-               "path": "/server-side-tutorials"
-           }]
-       }]
-   }
+                "name": "iOS",
+                "path": "/ios-tutorials"
+            }, {
+                "name": "Android",
+                "path": "/android-tutorials"
+            }, {
+                "name": "Windows 8.1 and 10",
+                "path": "/windows-8-10-tutorials"
+            }, {
+                "name": "Xamarin",
+                "path": "/xamarin-tutorials"
+            }, {
+                "name": "Web apps",
+                "path": "/web-tutorials"
+            }, {
+                "name": "Server-side",
+                "path": "/server-side-tutorials"
+            }]
+        },
+        {
+            "name": "Admins",
+            "path": "",
+            "children": [{
+                "name": "Installation and Configuration",
+                "path": "/installation-configuration"
+            }, {
+                "name": "Administering Applications",
+                "path": "/administering-apps"
+            }, {
+                "name": "Application Center",
+                "path": "/appcenter"
+            }]
+        }]
+    }

@@ -1,0 +1,201 @@
+---
+layout: tutorial
+title: Java HTTP Adapter
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JavaAdaptersProject.zip
+---
+
+<h2>Overview</h2>
+<p>This tutorial is a continuation of the <a href="../" title="Java Adapter">Java adapters</a> tutorial and assumes previous knowledge of the concepts that are described there.</p>
+<p>Java adapters gives you control over connectivity to your back end. It is therefore your responsibility to ensure best practices regarding performance and other implementation details.</p>
+<p>This tutorial shows an example of a Java adapter that connects to an RSS feed by using a Java <code>HttpClient</code>, and covers the following topics:</p>
+<ul>
+<li><a href="#rssadapterApp">RSSAdapterApplication</a></li>
+<li><a href="#rssadapterRes">RSSAdapterResource</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#sample">Sample adapter and application</a></li>
+</ul>
+<h2 id="rssadapterApp">RSSAdapterApplication</h2>
+<p><code>RSSAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by your application.</p>
+<p>{% highlight java  %}
+	@Override
+	protected void init() throws Exception {
+		RSSAdapterResource.init();
+		logger.info("Adapter initialized!");
+	}
+ {% endhighlight %} </p>
+<h2 id="rssadapterRes">RSSAdapterResource</h2>
+<p>{% highlight java  %}
+@Path("/")
+public class RSSAdapterResource {
+}
+ {% endhighlight %} <br />
+<code>RSSAdapterResource</code> handles the requests to your adapter.</p>
+<p><code>@Path("/")</code> means that the resources are available at this URL: <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code></p>
+<h3>HTTP client</h3>
+<p>{% highlight java  %}
+	private static CloseableHttpClient client;
+	private static HttpHost host;
+	public static void init() {
+		client = HttpClients.createDefault();
+		host = new HttpHost("rss.cnn.com");
+	}
+ {% endhighlight %} </p>
+<p>Because each request to your resource creates a new instance of <code>RSSAdapterResource</code>, it is important to reuse objects that might impact performance. In this example, the Http client is a <code>static</code> object and is initialized in a static <code>init</code> method, which gets called by the <code>init</code> method of <code>RSSAdapterApplication</code>, as described above.</p>
+<h3>Procedure resource</h3>
+<p>{% highlight java  %}
+	@GET
+	@Produces("application/json")
+	public void get(@Context HttpServletResponse response, @QueryParam("topic") String topic)
+			throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+		if(topic!=null &amp;&amp; !topic.isEmpty()){
+			execute(new HttpGet("/rss/edition_"+ topic+".rss"), response);
+		}
+		else{
+			execute(new HttpGet("/rss/edition.rss"), response);
+		}
+	}
+ {% endhighlight %} </p>
+<p>This adapter exposes just one resource URL which allows you to retrieve the RSS feed from the back-end service.</p>
+<ul>
+<li><code>@GET</code> means that this procedure responds only to <code>HTTP GET</code> requests.</li>
+<li><code>@Produces("application/json")</code> specifies the Content Type of the response to send back. The adapter sends the response as a <code>JSON</code> object to make it easier on the client side.</li>
+<li>Use <code>@Context HttpServletResponse response</code> to write to the response output stream. This enables more granularity than returning a simple string.</li>
+<li><code>@QueryParam("topic")</code> The <code>topic</code> String parameter enables the procedure to receive a parameter. The choice of <code>QueryParam</code> means that the parameter is to be passed in the query (<code>/RSSAdapter/?topic=technology</code>). Other options include <code>@PathParam</code>, <code>@HeaderParam</code>, <code>@CookieParam</code>, <code>@FormParam</code>, etc.</li>
+<li><code>throws ClientProtocolException, ...</code> means that any exception is forwarded back to the client. The client code is responsible for handling potential exceptions, which are received as <code>HTTP 500</code> errors. Another solution (more likely in production code) is to handle exceptions in the server Java code and decide what to send to the client, based on the exact error.</li>
+<li><code>execute(new HttpGet("/rss/edition.rss"), response)</code>. The actual HTTP request to the back-end service is handled by another method, which is defined later.</li>
+</ul>
+<p>Depending on whether you pass a <code>topic</code> parameter, the <code>execute</code> method builds a different path and retrieve a different RSS file.</p>
+<h3>execute()</h3>
+<p>{% highlight java  %}
+	public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
+			throws ClientProtocolException, IOException,
+			IllegalStateException, SAXException {
+		HttpResponse RSSResponse = client.execute(host, req);
+		ServletOutputStream os = resultResponse.getOutputStream();
+		if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+			resultResponse.addHeader("Content-Type", "application/json");
+			String json = XML.toJson(RSSResponse.getEntity().getContent());
+			os.write(json.getBytes(Charset.forName("UTF-8")));
+		}else{
+			resultResponse.setStatus(RSSResponse.getStatusLine().getStatusCode());
+			RSSResponse.getEntity().getContent().close();
+			os.write(RSSResponse.getStatusLine().getReasonPhrase().getBytes());
+		}
+		os.flush();
+		os.close();
+	}
+ {% endhighlight %} </p>
+<ul>
+<li><code>HttpResponse RSSResponse = client.execute(host, req)</code>. The static HTTP client is used to execute the HTTP request and store the response.</li>
+<li><code>ServletOutputStream os = resultResponse.getOutputStream()</code>. This is the output stream to write a response to the client.</li>
+<li><code>resultResponse.addHeader("Content-Type", "application/json")</code>. As mentioned before, the response is sent in  JSON format.</li>
+<li><code>String json = XML.toJson(RSSResponse.getEntity().getContent())</code>. The adapter uses <code>org.apache.wink.json4j.utils.XML</code> to convert the XML RSS to a JSON string.</li>
+<li><code>os.write(json.getBytes(Charset.forName("UTF-8")))</code> the resulting JSON string is written to the output stream.</li>
+<li>The output stream is then <code>flush</code>ed and <code>close</code>d.</li>
+</ul>
+<p>If <code>RSSResponse</code> is not <code>200 OK</code>, the status code and reason are written in the response instead.</p>
+<h2 id="results">Results</h2>
+<p>Use the testing techniques as described in the <a href="../#testing" title="Java Adapters">Java adapter</a> tutorial to test your work.</p>
+<p>The adapter should return the RSS feed converted to JSON.</p>
+<p>{% highlight javascript  %}
+{
+   "rss": {
+      "channel": {
+         "copyright": "Copyright 2015 Cable News Network LP, LLLP.",
+         "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",
+         "image": {
+            "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",
+            "height": "33",
+            "link": "http:\/\/edition.cnn.com\/index.html?eref=edition",
+            "title": "CNN.com - Top Stories",
+            "url": "http:\/\/i.cdn.turner.com\/cnn\/.e\/img\/1.0\/logo\/cnn.logo.rss.gif",
+            "width": "144"
+         },
+         "info": {
+            "uri": "rss\/edition"
+         },
+         "item": [
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",
+                  "width": "90"
+               },
+               "description": "It was supposed to be an opposition rally against Russia's policies in Ukraine, but following the slaying of Boris Nemtsov, the march has taken on a different theme.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html",
+               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/russia-opposition-leader-killed\/index.html?eref=edition",
+               "pubDate": "Sun, 01 Mar 2015 07:03:36 EST",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150301114729-russia-nemtsov-protest-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Thousands rally in Moscow for slain Putin critic"
+            },
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",
+                  "width": "90"
+               },
+               "description": "They share an apocalyptic \"end-of-days\" vision and now there are signs that Boko Haram may be edging towards a pledge of allegiance to IS leader Abu Bakr al-Baghdadi.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html",
+               "link": "http:\/\/edition.cnn.com\/2015\/02\/25\/world\/boko-haram-lister-analysis\/index.html?eref=edition",
+               "pubDate": "Sat, 28 Feb 2015 11:40:30 EST",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150115214405-hunter-fight-boko-haram-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Boko Haram and ISIS: Planning an alliance?"
+            },
+            {
+               "content": {
+                  "height": "51",
+                  "medium": "image",
+                  "type": "image\/jpeg",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",
+                  "width": "90"
+              },
+               "description": "Three teen British girls suspected of traveling to Syria appeared on surveillance video in Turkey before they went to their destination.",
+               "guid": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html"
+               "link": "http:\/\/edition.cnn.com\/2015\/03\/01\/europe\/turkey-uk-missing-girls\/index.html?eref=edition",
+               "thumbnail": {
+                  "height": "51",
+                  "url": "http:\/\/i2.cdn.turner.com\/cnn\/dam\/assets\/150223154312-wolf-intv-havlicek-isis-teen-girls-00020908-top-tease.jpg",
+                  "width": "90"
+               },
+               "title": "Syria: Missing UK teens caught on video"
+            }
+         ],
+         "language": "en-US",
+         "link": [
+            "http:\/\/edition.cnn.com\/index.html?eref=edition",
+            {
+               "href": "http:\/\/rss.cnn.com\/rss\/edition",
+               "rel": "self",
+               "type": "application\/rss+xml"
+            },
+            {
+               "href": "http:\/\/pubsubhubbub.appspot.com\/",
+               "rel": "hub"
+            }
+         ],
+         "pubDate": "Sun, 01 Mar 2015 10:14:59 EST",
+         "title": "CNN.com - Top Stories",
+         "ttl": "10"
+      },
+      "version": "2.0"
+   }
+}
+ {% endhighlight %} </p>
+<h2 id="sample">Sample adapter and application</h2>
+<p>The <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JavaAdaptersProject.zip">attached sample</a> includes an adapter, called <code>RSSAdapter</code>, and a hybrid application, called <code>RSSReader</code>, to test the adapter inside an application.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-http-app.png"/></p>

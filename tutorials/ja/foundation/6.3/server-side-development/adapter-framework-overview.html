@@ -1,0 +1,123 @@
+---
+layout: tutorial
+title: Adapters overview
+relevantTo: [ios,android,windowsphone8,hybrid]
+weight: 1
+---
+<h2>Overview</h2>
+<p>This tutorial presents how to develop server-side code (adapters) that is used for integrating between the client application, through the MobileFirst Platform, with enterprise back-end applications and cloud services.</p>
+<p>The tutorial is followed by explanations and examples for HTTP, SQL, Cast Iron, and JMS adapters. It also shows how to invoke adapter procedures from hybrid and native applications, advanced adapter usage, and how to use Java in adapters.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation1.png"/></p>
+<h2>Benefits</h2>
+<h3>Universality</h3>
+<ul>
+<li>Adapters support multiple integration technologies and back-end information systems.</li>
+</ul>
+<h3>Read-only and transactional capabilities</h3>
+<ul>
+<li>Adapters support read-only and transactional access modes to back-end systems.</li>
+</ul>
+<h3>Fast development</h3>
+<ul>
+<li>Adapters use simple XML syntax and are easily configured with JavaScript API.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Adapters use flexible authentication facilities to create connections with back-end systems.</li>
+<li>Adapters offer control over the identity of the connected user.</li>
+</ul>
+<h3>Transparency</h3>
+<ul>
+<li>Data that is retrieved from back-end applications is exposed in a uniform manner, regardless of the adapter type.</li>
+</ul>
+<h2>Adapters anatomy</h2>
+<p>Each adapter consists of:</p>
+<ul>
+<li>An XML file, which describes the connectivity options and lists the procedures that are exposed to the application or other adapters.</li>
+<li>A JavaScript file, which contains the implementation of procedures that are declared in the XML file.</li>
+<li>Zero, one or more XSL files, which contain a transformation scheme for retrieved raw XML data.</li>
+</ul>
+<p>Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a <strong>JSON object</strong>.</p>
+<h2>Adapter procedures anatomy</h2>
+<p>Procedures provide adapter functions to the application.<br />
+Procedures call back-end services to retrieve data or to perform actions.<br />
+Procedures are declared in XML and are implemented with server-side JavaScript.<br />
+By using server-side JavaScript, a procedure can process the data before or after it calls the service.<br />
+More filtering can be applied to retrieved data with simple XSLT.<br />
+Usually, adapter procedures are implemented in JavaScript, but because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
+<h2>Adapter creation</h2>
+<ol>
+<li>In Eclipse, click the MobileFirst icon that is located in the toolbar and select <strong>MobileFirst Adapter</strong>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation2.png"/></li>
+<li>Select a MobileFirst project and an adapter type.
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_21.png"/></li>
+<li>Select an adapter type and type an adapter name. Applications use this name to access the adapter.</li>
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_41.png"/><br />
+This generates both an XML file, which declares procedures and connection properties, and a JavaScript file, which defines procedures and the adapter logic.<br />
+<br clear="all" /></p>
+<h2>Adapter deployment</h2>
+<ol>
+<li>Select an adapter to deploy.
+</li>
+<li>Right-click the adapter and select <strong>Run As > Deploy MobileFirst Adapter</strong>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_51.png"/>
+</li>
+</ol>
+<p>MobileFirst Studio archives the adapter code and deploys it to the MobileFirst Server instance.<br />
+You can see the deployed adapter in the MobileFirst Console.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01-console.png"/></p>
+<h2>Testing adapter procedures</h2>
+<p>MobileFirst Studio can be used to test the adapter procedures.<br />
+To run a procedure test:</p>
+<ol>
+<li>Select <strong>Run As > Invoke MobileFirst Procedure</strong>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_invoke-menu.png"/></p>
+</li>
+<li>Select the procedure that you want to test.
+</li>
+<li>Enter comma-separated procedure parameters and click <strong>Run</strong>.
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
+</ol>
+<h2>Adapter XML structure</h2>
+<p>{% highlight xml  %}
+<wl:adapter name="HelloWorld">
+	<displayName />
+	<description />
+	<connectivity>
+		<connectionPolicy>
+		<loadConstraints>
+	</connectivity>
+	<procedure />
+	<procedure />
+	...
+</wl:adapter>
+{% endhighlight %}</p>
+<ul>
+<li> <code>name: Mandatory. The name of the adapter.</code></li>
+<li><code>displayName</code>: Optional. The name that is displayed in MobileFirst Console</li>
+<li><code>description</code>: Optional. Additional information that is displayed in the MobileFirst Console</li>
+<li><code>connectivity</code>
+<ul>
+<li>Defines the connection properties and load constraints of the back-end system.</li>
+<li>When the back-end system requires user authentication, defines how user credentials are obtained.</li>
+</ul>
+</li>
+<li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
+</ul>
+{% highlight xml  %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
+{% endhighlight %}
+<h2>Adapter JavaScript structure</h2>
+<p>Each procedure declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
+<code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
+<p>{% highlight javascript  %}
+function procedure1(param) {
+  return WL.Server.invokeSQLStatement({
+    preparedStatement: procedure1Statement,
+    parameters: [param]
+  });
+}
+{% endhighlight %}</p>

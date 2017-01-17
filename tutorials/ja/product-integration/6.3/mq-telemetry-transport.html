@@ -1,0 +1,521 @@
+---
+layout: tutorial
+title: MQ Telemetry Transport
+downloads:
+ - name: Download Studio project
+   url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MQTTWhiteboardProject.zip
+---
+<h2>Overview</h2>
+<p>IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is designed for Internet of Things (IoT) and mobule connectivity.</p>
+
+<p>Jump to:</p>
+<ul>
+    <li><a href="#gettingStartedWithMQTelemetryTransport">Getting Started with MQ Telemetry Transport</a></li>
+    <li><a href="#building">Building a collaborative application (Whiteboard)</a></li>
+    <li><a href="#connect">Connecting to an MQTT broker</a>
+        <ul>
+            <li><a href="#mosquitto">Mosquitto</a></li>
+            <li><a href="#message">IBM MessageSight</a></li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="gettingStartedWithMQTelemetryTransport">Getting started with MQ Telemetry Transport</h2>
+<p>MQ Telemetry Transport provides:</p>
+<ul>
+    <li>Reliable message delivery over unreliable connections</li>
+    <li>Secure message delivery to the enterprise</li>
+    <li>One-to-many message delivery (publish/subscribe)</li>
+    <li>New real-time push of data from server (no polling)</li>
+    <li>Minimal footprint on-the-wire (only 2-byte header)</li>
+    <li>Reduced battery usage</li>
+</ul>
+
+<p>MQ Telemetry Transport enables real-time data push from server to mobile devices, which makes it ideal for dynamic mobile applications.</p>
+
+<p>Examples:</p>
+<ul>
+    <li>Stock ticker</li>
+    <li>Chat application</li>
+    <li>Collaboration apps (Whiteboard)</li>
+    <li>Real-time emergency alerts</li>
+    <li>Live match score updates</li>
+</ul>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt//MQTTimg1.png" class="img-responsive"/></a>
+
+<p>MQTT client libraries are available in Java<sup>TM</sup>, C, JavaScript<sup>TM</sup>, C++, Python, Objective-C, and many other programming languages.</p>
+
+</p>The Eclipse Paho project  (<a href="http://www.eclipse.org/paho/">http://www.eclipse.org/paho/</a>) provides many open source MQTT clients (<a href="http://www.eclipse.org/paho/">http://www.eclipse.org/paho/</a>).</p>
+
+</p>IBM provides MQTT clients in a Mobile Messaging &amp; M2M Client Pack, available from the IBM Messaging community on <a href="https://developer.ibm.com/messaging/messagesight/">developerWorks</a>.</p>
+
+</p>This tutorial uses the Eclipse Paho JavaScript MQTT client for publish/subscribe messaging in MobileFirst Platform® application.</p>
+
+</p>The MQTT clients have a simple API for publish/subscribe messaging.</p>
+
+</p>The following examples use the Eclipse Paho JavaScript MQTT client to <b>Connect</b> to an MQTT broker, <b>Subscribe</b> to an MQTT topic, <b>Receive and process</b> messages from the broker, and <b>Publish</b> a message on an MQTT topic.</p>
+
+<h4>Connect</h4>
+
+{% highlight javascript linenos %}
+function connect() {
+   client = new Messaging.Client(hostname, port, clientId);
+   client.onMessageArrived = onMsgCallback;
+   client.onConnectionLost = onConnLostCallback;
+   client.connect({ onSuccess: onSuccessCallback });
+}
+{% endhighlight %}
+
+<h4>Publish</h4>
+{% highlight javascript linenos %}
+function publish(topic, data) {
+   var msg = new Messaging.Message(data);
+   msg.destinationName = topic;
+   client.send(msg);
+}
+{% endhighlight %}
+
+<h4>Subscribe</h4>
+{% highlight javascript linenos %}
+function subscribe(topic) {
+   client.subscribe(topic);
+}
+{% endhighlight %}
+
+<h4>Receive</h4>
+{% highlight javascript linenos %}
+function onMsgCallback(msg) {
+   var topic = msg.destinationName;
+   var data = msg.payloadString;
+   console.log(topic, data);
+}
+{% endhighlight %}
+
+<h2 id="building">Building a collaborative application (Whiteboard)</h2>
+<p>In this tutorial, you build a dynamic application (Whiteboard) with MobileFirst
+and MQ Telemetry Transport that lets users draw on a shared canvas in real time. Create this application in two steps:</p>
+
+<ul>
+    <li>Build the MobileFirst application
+        <ul>
+            <li>Implement the "single-user" mode (run the sample without any MQTT publishes).</li>
+            <li>The application captures touch/click events, and you can paint on the canvas.</li>
+        </ul>
+    </li>
+    <li> Implement collaboration by using an MQTT client and server
+        <ul>
+            <li>Add a JavaScript MQTT client to the Whiteboard application that communicates with other clients through an MQTT server.</li>
+            <li>The MQTT server options are covered in a subsequent slide.</li>
+            <li>Note: MQTT data does not use the MobileFirst Platform security and authentication mechanism.</li>
+        </ul>
+    </li>
+</ul>
+
+<p>The Whiteboard application usesMQTT messaging to prived a shared canvas for all users.</p>
+
+<p>Each Whiteboard publishes all the drawing actions as MQTT messages on a topic that is uniqte to the application session.</p>
+
+<p>Each Whiteboard also subscribes to the set of all the drawing topics, and draws the actions of the others that are based on this data.</p>
+
+<p>With MQTT publish/subscribe messaging capabilities, the real-time collaborative experience can scale to many connected applications.</p>
+
+<p>This scenario cannot be efficiently implemented by using traditional polling (HTTP) or mobile push notifications.</p>
+<ul>
+    <li>To provide a real-time experience, drawing actions should be reflected on other canvasses within milliseconds.</li>
+    <li>HTTP polling is high bandwidth (each request requires a now client connection) and result in poor latency</li>
+    <li>Push notifications minimize bandwith, but are inappropriate for small in-application updates.</li>
+    <li>MQTT publish/subscribe messaging minimizes bandwidth and latency: an MQTT connections is established once from client to server, and messages are pushed directly to the application with low latency.</li>
+</ul>
+
+<h4>Whiteboard - Create Project</h4>
+<p>Create a WhiteboardProject project with a Hybrid Application named Whiteboard. Add the jQuery Mobile 1.3.1 library, obtained separately.</p>
+
+<ul>
+    <li>For more information, see the Working with UI frameworks tutorial</li>
+</ul>
+
+<h4Whiteboard - Build UI</h4>
+<p>Add a header, a canvas, and a button to clear the canvas.</p>
+
+<b>index.html</b>
+
+{% highlight html linenos %}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Whiteboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"> <link rel="shortcut icon" href="images/favicon.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> <link href="jqueryMobile/jquery.mobile-1.3.1.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+        <script>window.$ = window.jQuery = WLJQ;</script>
+        <script src="jqueryMobile/jquery.mobile-1.3.1.js"></script>
+</head>
+<body style="display: none;">
+    <div data-role="page" id="page">
+        <div data-role="header" id="header" data-position="fixed">
+            <h3>MQTT Whiteboard</h3>
+            <a onclick="app.clear()" class="ui-btn-left" data- role="button" data-icon="delete" data-theme="b">Clear</a>
+        </div>
+        <canvas id="whiteboard"></canvas> </div>
+        <script src="js/initOptions.js"></script> <script src="js/main.js"></script> <script src="js/Whiteboard.js"></script> <script src="js/messages.js"></script>
+  </body>
+</html>
+{% endhighlight %}
+
+<b>main.css</b>
+{% highlight css linenos %}
+/* Reset CSS */
+a, abbr, address, article, aside, ......... {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0 auto;
+}
+canvas {
+    position: absolute;
+}
+{% endhighlight %}
+
+<b>main.js</b>
+{% highlight javascript linenos %}
+function wlCommonInit(){
+    window.app = new WhiteboardApp();
+    $("#whiteboard").on("vmousemove", function(event) {
+        if (app.drawOn) {
+            var x = event.pageX;
+            var y = event.pageY - $("canvas").offset().top; app.draw(x, y, app.size, app.color);
+        }
+        event.preventDefault();
+    });
+    $("#whiteboard").on("vmousedown", function(event) {
+        var x = event.pageX;
+        var y = event.pageY - $("canvas").offset().top;
+        app.draw(x, y, app.size, app.color);
+        app.drawOn = true;
+    });
+    $("#whiteboard").on("vmouseup", function(event) {
+        app.drawOn = false;
+    });
+    $("#whiteboard").bind("tap", function(event) {
+        event.preventDefault();
+    });
+    $(window).resize(function() { resize(); });
+    resize();
+}
+var resize = function() {
+    var winSize = {
+        width: window.innerWidth || document.body.clientWidth,
+        height: window.innerHeight || document.body.clientHeight
+    };
+    // make canvas fill space under header
+    $("canvas").css("top", $("#header").innerHeight() + "px"); $("canvas")[0].width = winSize.width;
+    $("canvas")[0].height = winSize.height - $("#header").innerHeight();
+}
+{% endhighlight %}
+
+<b>Whiteboard.js</b>
+{% highlight javascript linenos %}
+var Colors = [
+    "rgb(255,0,0)", "rgb(0,170,0)", "rgb(0,0,255)",
+    "rgb(0,0,0)", "rgb(0,255,255)", "rgb(127,255,212)",
+    "rgb(139,69,19)"];
+function WhiteboardApp() {
+    this.size = 8;
+    this.color = Colors[Math.floor(Math.random() * Colors.length)]; this.drawOn = false;
+    this.canvas = $("canvas")[0];
+}
+WhiteboardApp.prototype.draw = function(x, y, size, color) {
+    var context = this.canvas.getContext("2d");
+    for (var i = 1; i <= size; i+=2) {
+        context.save();
+        context.beginPath();
+        var alpha = 1.0 - Math.pow(i/size, 2);
+        context.globalAlpha = alpha;
+        context.strokeStyle = color;
+        context.arc(x, y, i, 0, 2*Math.PI);
+        context.stroke();
+        context.restore();
+    }
+}
+WhiteboardApp.prototype.clear = function() {
+    var context = this.canvas.getContext("2d");
+    context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
+{% endhighlight %}
+
+<h4>Whiteboard - Run the Application</h4>
+<p>Before you add collaboration through MQTT messaging, test the application by deploying it to your local MobileFirst Platform Server.</p>
+
+<div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
+    <div class="column" style="float:left;margin:0;width: 46%;">
+        <ul>
+            <li>Select <strong>Run As > Run on MobileFirst Development Server</strong></li>
+            <li>Right click the project and select "Open MobileFirst Console"</li>
+            <li>Click Applications -> WhiteBoard -> Preview (Common Resources)</li>
+            <li>Click/tap to draw on the canvas</li>
+        </ul>
+    </div>
+
+    <div class="column" style="float:left;margin:0;width:20%;"></div>
+    <div class="column" style="float:right;margin:0;width:33%;">
+
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTimg3-259x300.png" class="img-responsive" />
+
+    </div>
+</div>
+
+<h4>Whiteboard - Adding Collaboration</h4>
+<p>You can now add collaborative features to the application with publish/subscribe MQTT messaging. Add an MQTT client to the Whiteboard application and connect to an MQTT broker when the application loads.</p>
+
+<p>To create a shared canvas, each Whiteboard client publishes draw and clear actions on a topic that is unique to the client. The type of action and options are described in the MQTT message payload as JSON data.</p>
+
+<p>Example: draw</p>
+<ul>
+    <li><code>Topic: whiteboard/&lt;cleintId&gt;</code></li>
+    <li><code>Payload: {"type" : "draw", "x" : "127", "y" : "53", "color": "rgb(255,0,0)"}</code></li>
+    </ul>
+    <p>Example: clear</p>
+    <ul>
+    <li><code>Topic: whiteboard/&lt;cleintId&gt;</code></li>
+    <li><code>Payload: {"type" : "clear" }</code></li>
+</ul>
+
+<p>When another Whiteboard client receives this message, <code>WhiteboardApp.draw</code> or <code>WhiteboardApp.clear()</code> is called with the parameters from the JSON message.</p>
+
+<h4>Whiteboard - Add MQTT client</h4>
+<p>Add Eclipse Paho JavaScript MQTT client to the project:</p>
+
+<ul>
+    <li><code>WhiteboardProject/apps/Whiteboard/common/js/mqttws31.js</code></li>
+</ul>
+
+<p>Load the .js file in <code>index.html</code>:</p>
+{% highlight html linenos %}
+&<html>
+    <head>
+        ...
+    </head>
+<body style="display: none;">
+    ...
+    <script src="js/initOptions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mqttws31.js"></script>
+    ...
+{% endhighlight %}
+
+<p>On application load, invoke connect the client:</p>
+
+{% highlight javascript linenos %}
+function wlCommonInit(){
+    window.app = new WhiteboardApp();
+    app.connect();
+    ...
+{% endhighlight %}
+
+<div id="contentBox" style="width:100%;float:left;">
+When you initialize and connect the MQTT client, specify the following configuration parameters and connection options.
+
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTimg4.png" class="img-responsive" />
+
+</div>
+
+<p>If you do not have an MQTT broker available, see Connecting to an MQTT broker later in this tutorial for details about how to find your own broker.</p>
+
+<b>Whiteboard.js</b>
+{% highlight javascript linenos %}
+function WhiteboardApp() {
+    ...
+    this.host = "<My MQTT broker IP>";
+    this.port = "<My MQTT broker port>";
+    // generate a 6-character alpha-num unique ID
+    this.uuid = Math.random().toString(36).slice(2).substring(0, 6);
+    this.clientId = "whiteboard-"+this.uuid;
+    this.client = new Messaging.Client(this.host, this.port, this.clientId);
+}
+WhiteboardApp.prototype.connect = function() {
+    this.client.onMessageArrived = (function(self) {
+        return function(msg) { self.onMsg(msg); }
+    })(this);
+    this.client.onConnectionLost = function() {
+        alert("Connection lost!");
+    };
+    var connectOptions = new Object();
+    // extend keep-alive to one hour
+    connectOptions.keepAliveInterval = 3600;
+    connectOptions.onSuccess = (function(self) {
+    return function() {
+        self.onConn;
+    } }) (this);
+    connectOptions.onFailure = function() {
+        alert("Failed to connect!");
+    };
+    this.client.connect(connectOptions);
+}
+{% endhighlight %}
+
+<h4>Whiteboard - Add callbacks</h4>
+<p>Next, implement the onMesg and onConn callbacks.</p>
+
+<p>When the MQTT connection succeeds, subscribe to the wildcard topic of all Whiteboard applications: <code>whiteboard/+</code></p>
+
+<p>You must make the difference between the draw and clear actions that come from other Whiteboards from the ones that your Whiteboard initiates.</p>
+
+<p>For the actions that you initiate, publish an MQTT message. If you receive the action from an MQTT message, do not republish this action as a new message.</p>
+
+<b>Whiteboard.js</b>
+{% highlight javascript linenos %}
+WhiteboardApp.prototype.onConn = function() {
+    this.client.subscribe("whiteboard/+");
+}
+hiteboardApp.prototype.onMsg = function(msg) {
+    var topic = msg.destinationName;
+    var payload = msg.payloadString;
+    // make sure the topic matches whiteboard/*
+    if (topic.indexOf("whiteboard/") == 0) {
+        var sourceUUID = topic.split("/")[1];
+        // do not process own actions
+        if (sourceUUID == this.uuid) { return; }
+        var data = JSON.parse(payload);
+        if (data.type == "draw") {
+            this.draw( data.x, data.y, this.size, data.color, true);
+        } else if (data.type == "clear") {
+            this.clear(true);
+        }
+    }
+}
+WhiteboardApp.prototype.draw = function(x, y, size, color, fromOutside) {
+    ...
+    if (!fromOutside) {
+        this.publishDraw(x, y, color); }
+    }
+    WhiteboardApp.prototype.clear = function(fromOutside) {
+    ...
+    if (!fromOutside) {
+        this.publishClear();
+    }
+}
+WhiteboardApp.prototype.publishDraw = function(x, y, color) {
+    var topic = "whiteboard/" + this.uuid;
+    var data = JSON.stringify({
+        type: "draw",
+        x: x,
+        y: y,
+        color: color,
+    });
+    var msg = new Messaging.Message(data);
+    msg.destinationName = topic;
+    msg.qos = 0;
+    msg.retained = false;
+    this.client.send(msg);
+}
+{% endhighlight %}
+
+<p>MQ Telemetry Transport provides three qualities of service to deliver messages between clients and servers:</p>
+<p>QoS 0 = "at most once"<br>
+QoS 1 = "at least once"<br>
+QoS 2 = "exactly once"</p>
+
+<p>A retained message is retained on the MQTT server and transmitted to new subscribers to the message topic.</p>
+
+{% highlight javascript linenos %}
+WhiteboardApp.prototype.publishClear = function() {
+    var topic = "whiteboard/" + this.uuid;
+    var data = JSON.stringify({type: "clear"});
+    var msg = new Messaging.Message(data);
+    msg.destinationName = topic;
+    msg.qos = 0;
+    msg.retained = false;
+    this.client.send(msg);
+}
+{% endhighlight %}
+
+<h2>Run the sample</h2>
+<p>Deploy to the MobileFirst development server again, and open the application in
+two (or more) windows.</p>
+
+<p>Draw in one Whiteboard, and MQTT messages are published to all the other subscribing Whiteboard applications.</p>
+<div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTimg5.png" class="img-responsive" />
+
+</div>
+
+<p>Extending the collaboration scenario
+This collaboration scenario can be modified and extended to build other types of real-time applications:</p>
+<div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
+<div class="column" style="float:left;margin:0;width: 33%;">
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTStockEx-300x181.png" class="img-responsive" />
+
+  </div>
+<div class="column" style="float:left;margin:0;width:33%;">
+  </div>
+<div class="column" style="float:right;margin:0;width:33%;">
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTemtEx-300x157.png" class="img-responsive" />
+
+  </div>
+</div>
+<div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/mqtt/MQTTchatEx-300x157.png" class="img-responsive" />
+
+</div>
+
+<ul>
+    <li>Stock ticker: clients subscribe to trade data for an exchange (for example, MarketData/NYSE/IBM) and update in real time.</li>
+    <li>Real-time emergency alerts: clients subscribe to a topic for their own geographic location, and the emergency services publish alerts onto these same topics (for example, emergency/&lt;X&gt;/&lt;Y&gt;/alert).</li>
+    <li>Chat application: clients publish and subscribe on a topic for a particular chat room (for example, chat/room123/user1).</li>
+</ul>
+
+<h2 id="connect">Connecting to an MQTT broker</h2>
+<p>An MQTT server is required to broker messages between MQTT clients. To support JavaScript MQTT clients (such as Eclipse Paho), the MQTT server must implement the WebSocket transport.</p>
+<p>Several MQTT servers are available, both open source and commercial.</p>
+
+<ul>
+    <li>Development MQTT servers:
+        <ul>
+            <li>Mosquitto (open source, multi-platform)</li>
+            <li>IBM Message Sight for Developers (virtual appliance image)</li>
+        </ul>
+    </li>
+    <li>Enterprise MQTT servers:
+        <ul>
+            <li>IBM MessageSight (appliance)</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="mosquitto">Mosquitto</h3>
+<p>Mosquitto is an open source, lightweight implementation of MQ Telemetry Transport V3.1, part of the Eclipse Paho messaging project.</p>
+
+<p>The Mosquitto broker is available for many different platforms (Windows, OS X, Linux distributions).</p>
+<p>For more information go to:</p>
+
+<ul>
+    <li><a href="http://mosquitto.org">http://mosquitto.org</a></li>
+    <li><a href="http://projects.eclipse.org/projects/technology.mosquitto">http://projects.eclipse.org/projects/technology.mosquitto</a></li>
+</ul>
+
+<p>Download Mosquitto:</p>
+<ul>
+    <li><a href="http://mosquitto.org/download/">http://mosquitto.org/download/</a></li>
+</ul>
+
+<h3 id="message">IBM MessageSight</h3>
+<p>IBM MessageSight for Developers is a virtual IBM MessageSight appliance image.</p>
+<p>IBM MessageSight is a low-latency, reliable, and scalable messaging server with strong security and easy management.</p>
+<p>The developer image can be run with virtualization software such as VMWare, Oracle VirtualBox, and KVM.</p>
+<p>For more information go to:</p>
+
+<ul>
+    <li><a href="http://ibm.com/messagesight">http://ibm.com/messagesight</a></li>
+    <li><a href="https://www.ibmdw.net/messaging/messagesight/">https://www.ibmdw.net/messaging/messagesight/</a></li>
+    <li><a href="http://www.youtube.com/watch?v=kcEDoRqhkhA">http://www.youtube.com/watch?v=kcEDoRqhkhA</a></li>
+</ul>
+
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MQTTWhiteboardProject.zip">Click to download</a> the Studio project.</p>

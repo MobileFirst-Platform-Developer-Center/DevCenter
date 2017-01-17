@@ -1,0 +1,43 @@
+---
+layout: tutorial
+title: Previewing your application on Windows Phone 8
+relevantTo: [hybrid]
+weight: 12
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read <a href="../../hello-world/previewing-applications-web-resources/">Previewing the web resources of your application</a>.</p>
+<p>This tutorial covers the following topics.</p>
+<ul>
+<li><a href="#openVisualStudio">Opening the Visual Studio project in Visual Studio Express 2012</a></li>
+<li><a href="#preview">Previewing the application in the Windows Phone 8 Emulator</a></li>
+<li><a href="#run">Running the application in a physical device</a></li>
+</ul>
+<h2 id="openVisualStudio">Opening the Visual Studio project in Visual Studio Express 2012</h2>
+<h3>CLI</h3>
+<p>If you are not using MobileFirst Studio's Eclipse plug-in, use Visual Studio and navigate to the application folder in order to open it.</p>
+<h3>MobileFirst Studio</h3>
+<p>You can open the Visual Studio project  from the native folder in one of the following ways:</p>
+<ul>
+<li>Right-click the <code>windowsphone8\native\.csproj</code> file and select <strong>Open</strong>.</li>
+<li>As an alternative, you can manually open the <code>.csproj</code> file within Microsoft Visual Studio.<br />
+Click <strong>Open Project</strong> on the left menu and navigate to the project folder.</li>
+<li>If you are running Eclipse in Windows 8, you can also right-click the Windows Phone 8 project file and select <strong>Run As > Visual Studio project</strong>. The MobileFirst Studio plug-in then builds and deploys the application to MobileFirst Server and automatically opens the project in Visual Studio.
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_10_running_in_windows8_menu-1024x846.png"/>
+</li>
+</ul>
+<h2 id="preview">Previewing the application in the Windows Phone 8 Emulator</h2>
+<ol>
+<li>In Visual Studio, make sure that both <strong>Windows Phone 8 Emulator</strong> and the x86 platform are selected.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_09_emulator_selected.png" />
+<li>Click the green play button (or press <strong>F5</strong>) to start your application in debug mode.<br />
+To start your application without debug mode, press <strong>Ctrl + F5</strong> or change <strong>Debug</strong> to <strong>Release</strong> in the drop-down list.</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_10_running_in_emulator-1024x657.png"/>
+</li>
+</ol>
+<h2 id="run">Running the application in a physical device</h2>
+<ol>
+<li>Make sure that <strong>Device</strong> is selected in the toolbar instead of the Windows Phone 8 Emulator.</li>
+<li>Make sure that your device is connected and is not in sleep mode.</li>
+<li>Click the green play button (or press <strong>F5</strong>) to start your application in debug mode.</li>
+<li>Click the transparent play button to start your application without debug mode (or press <strong>Ctrl + F5</strong>).</li>
+</ol>

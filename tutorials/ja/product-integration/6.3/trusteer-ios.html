@@ -1,0 +1,254 @@
+---
+layout: tutorial
+title: Trusteer iOS Integration
+relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/TrusteerIntegrationProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/TrusteerAndroidNativeProject.zip
+---
+### Overview
+<p>Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels.</p>
+
+<p>In your IBM MobileFirst Platform Foundation application, you may want to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted.</p>
+
+<p>For example, you could prevent a malware-ridden device from logging into your banking app, and prevent rooted devices from using the “transfer funds” feature.</p>
+
+<h2>Obtain Trusteer SDK for iOS</h2>
+<p>Before starting make sure you have the following items:</p>
+<ul>
+    <li>Trusteer Mobile iOS library (libtas_full.a)</li>
+    <li>A MobileFirst-compatible Trusteer license file (tas.license)</li>
+    <li>A Trusteer configuration package (default_conf.rpkg)</li>
+    <li>A Trusteer Application Security Manifest (manifest.rpkg)</li>
+</ul>
+
+<p>See Trusteer documentation or contact Trusteer support if you are missing any of those items.<br />
+You may receive those items either as standalone files, or as an MobileFirst Application Component.<br />
+To learn more about installing an MobileFirst Application Component (*.WLC) see MobileFirst documentation.<br />
+<strong>Note:</strong> You still need to follow the following steps if you use a WLC file.</p>
+
+<h2>Copy Files Into XCode Project</h2>
+<p>Create a directory on your system called “tas” containing the 4 above files. If you’ve installed Trusteer as an Application Component, this folder will be created for you in the native folder.<br />
+In your XCode project (whether MobileFirst-generated Hybrid, or your own using MobileFirst Native API), drag the folder created above onto your project navigator.<br />
+Check “Copy items into destination group’s folder (if needed)”.<br />
+Select “Create folder references for any added folders”. Make sure your target is selected.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/trusteer-drag-ios.png" class="img-responsive" />
+
+<p>Drag the “<strong>tas.license</strong>” file from the tas folder into the “<strong>Resources</strong>” folder.<br />
+Make sure the file contains your license information.<br />
+The format of the file should be:</p>
+
+{% highlight xml linenos %}
+vendorId=com.mycompany
+clientId=my.client.id
+clientKey=YMAQAABNFUWS2
+{% endhighlight %}
+
+<h2>Link Trusteer Libraries</h2>
+<p>In <strong>Build Phases → Link Binary With Libraries</strong>, drag and drop <strong>libtas_full.a</strong> to link your project with the Trusteer library. If you get linker errors, move <strong>libWorklightStaticLibProject.a</strong> to the top of the list.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_link-library.png" class="img-responsive" /></a>
+
+<p>In <strong>Build Settings → Linking → Other Linker Flags</strong>, add:<code>-force_load "$(SRCROOT)/tas/libtas_full.a"</code>.
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_forceload.png" class="img-responsive" /></a>
+
+<p>In <strong>Build Settings → Linking → Dead Code Stripping</strong>, select <code>NO</code>.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_deadcode.png" class="img-responsive" /></a>
+
+<p>In <strong>Build Settings → Deployment → Strip Linked Product</strong>, select <code>NO</code>.</p>
+
+<p><strong>Note :</strong> If the iOS project is native, please follow the standard MobileFirst native requirements are described in the MobileFirst documentation as well as the requirements described in the Trusteer documentation. For example, Trusteer requires CoreMotion.framework in addition to MobileFirst's standard requirements.</p>
+
+<h2>Access Risk Items in JavaScript</h2>
+<p>Optionally, you can access the client-side generated Trusteer data object using the following API:<br />
+{% highlight javascript linenos %}
+WL.Trusteer.getRiskAssessment(onSuccess, onFailure);
+{% endhighlight %}
+
+Where onSuccess is a function that will receive a <code>JSON</code> object containing all the data processed by Trusteer. See Trusteer documentation to get information on each risk item.<br />
+{% highlight javascript linenos %}
+function onSuccess(result) {
+  //See in the logs what the full result looks like
+  WL.Logger.debug(JSON.stringify(result));
+  //Check for a specific flag
+  if (result["os.rooted"]["value"] != 0) {
+    alert("This device is jailbroken!");
+  }
+}
+{% endhighlight %}
+
+<h2>Access Risk Items in Objective-C</h2>
+<p>Optionally, you can access the client-side generated Trusteer data object using the following API:
+
+{% highlight objc linenos %}
+#import “WLTrusteer.h”
+NSDictionary* risks =[[WLTrusteer sharedInstance] riskAssessment];<br />
+{% endhighlight %}
+This returns an <code>NSDictionary</code> of all the data processed by Truster. See Trusteer documentation to get information on each risk item.<br />
+{% highlight objc linenos %}
+//See in the logs what the full result looks like
+NSLog(@"%@",risks);
+//Check for a specific flag
+NSNumber* rooted = [[risks objectForKey:@"os.rooted"] objectForKey:@"value"];
+if([rooted intValue]!= 0){
+	NSLog(@"Device is jailbroken!");
+}
+{% endhighlight %}
+
+<h2>Authentication Config</h2>
+<p>To prevent access to specific resources when a device is at risk, you can protect your adapter procedures or your applications with a custom security test containing a Trusteer realm. See MobileFirst documentation for general information on security tests and realms.</p>
+
+<p>The Trusteer realm will check the data generated by the Trusteer SDK and allow/reject the request based on the parameters you set.</p>
+
+<p>Here is an example of a Trusteer realm and login module you can add to your <strong>authenticationConfig.xml</strong>.</p>
+{% highlight xml linenos %}
+<realms>
+  ...
+  <realm name="wl_basicTrusteerFraudDetectionRealm" loginModule="trusteerFraudDetectionLogin">
+    <className>
+      com.worklight.core.auth.ext.TrusteerAuthenticator
+    </className>
+    <parameter name="rooted-device" value="block" />
+    <parameter name="device-with-malware" value="block" />
+    <parameter name="rooted-hiders" value="block" />
+    <parameter name="unsecured-wifi" value="alert" />
+    <parameter name="outdated-configuration" value="alert" />
+  </realm>
+</realms>
+{% endhighlight %}
+
+<p>{% highlight xml linenos %}
+<loginModules>
+  ...
+  <loginModule name="trusteerFraudDetectionLogin">
+    <className>
+      com.worklight.core.auth.ext.TrusteerLoginModule
+    </className>
+  </loginModule>
+</loginModules>
+{% endhighlight %}
+<p>This realm contains 5 parameters:</p>
+<ul>
+    <li><strong>rooted-device</strong> - indicates whether the device is rooted (android) or jailbroken (iOS)</li>
+    <li><strong>device-with-malware</strong>  - indicates whether the device contains malware</li>
+    <li><strong>rooted-hiders</strong> - indicate that the device contains root hiders applications that hides the fact that the device is rooted/jailbroken</li>
+    <li><strong>unsecured-wifi</strong> - indicates that the device is currently connected to an insecure wifi.</li>
+    <li><strong>outdated-configuration</strong> - indicates that Trusteer SDK  configuration hasn't updated for some time (didn't connect to the Trusteer server).</li>
+</ul>
+
+<p>The possible values are <code>block</code>, <code>alert</code> or <code>accept</code>.</p>
+
+<h2>JavaScript Challenge Handler</h2>
+<p>Assuming you’ve added a Trusteer realm to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.</p>
+
+{% highlight javascript linenos %}
+var trusteerChallengeHandler = WL.Client.createWLChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
+{% endhighlight %}
+
+Notice that you are registering a <code>WLChallengeHandler</code> and not a <code>ChallengeHandler</code>. See IBM MobileFirst documentation on <code>WLChallengeHandler</code>.</p>
+
+<p>If you have set one of your realm options to <code>block</code>, a blocking event will trigger <code>handleFailure</code>.</p>
+
+{% highlight javascript linenos %}
+trusteerChallengeHandler.handleFailure = function(error) {
+      WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")",  [{text:"OK"}]);<br />
+};
+{% endhighlight %}
+
+<strong><code>error.reason</code></strong> can be one of the following:</p>
+<ul>
+    <li><code>TAS_ROOT</code></li>
+    <li><code>TAS_ROOT_EVIDENCE</code></li>
+    <li><code>TAS_MALWARE</code></li>
+    <li><code>TAS_WIFI</code></li>
+    <li><code>TAS_OUTDATED</code></li>
+    <li><code>TAS_INVALID_HEADER</code></li>
+    <li><code>TAS_NO_HEADER</code></li>
+</ul>
+
+<p>If your have set one of your realm options to alert, you can catch the alert event by implementing the <code>processSuccess</code> method.</p>
+{% highlight javascript linenos %}
+trusteerChallengeHandler.processSuccess = function(identity) {
+  var alerts = identity.attributes.alerts; //Array of alerts codes
+  if (alerts.length > 0) {
+    WL.SimpleDialog.show("Warning", "Please note that your device is: " + alerts, [{
+      text: "OK "
+    }]);
+  }
+};
+{% endhighlight %}
+
+<h2>Native Challenge Handler</h2>
+<p>Assuming you’ve added a Trusteer realm to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.</p>
+
+<p>Create a class that extends <code>WLChallengeHandler</code>:</p>
+{% highlight objc linenos %}
+#import "WLChallengeHandler.h"
+@interface TrusteerChallengeHandler : WLChallengeHandler
+@end
+{% endhighlight %}
+
+<p>Register your newly created challenge handler for your Trusteer realm:</p>
+{% highlight objc linenos %}
+[[WLClient sharedInstance] registerChallengeHandler:[[TrusteerChallengeHandler alloc] initWithRealm:@"wl_basicTrusteerFraudDetectionRealm"]];
+{% endhighlight %}
+
+<p>If you have set one of your realm options to <code>block</code>, a blocking event will trigger <code>handleFailure</code>.</p>
+{% highlight objc linenos %}
+@implementation TrusteerChallengeHandler
+//...
+-(void) handleFailure: (NSDictionary *)failure {
+    NSLog(@"Your request could not be completed. Reason code: %@",failure[@"reason"]);
+}
+//...
+@end
+{% endhighlight %}
+
+<p><strong><code>error.reason</code></strong> can be one of the following:</p>
+<ul>
+    <li><code>TAS_ROOT</code></li>
+    <li><code>TAS_ROOT_EVIDENCE</code></li>
+    <li><code>TAS_MALWARE</code></li>
+    <li><code>TAS_WIFI</code></li>
+    <li><code>TAS_OUTDATED</code></li>
+    <li><code>TAS_INVALID_HEADER</code></li>
+    <li><code>TAS_NO_HEADER</code></li>
+</ul>
+
+<p>If your have set one of your realm options to <code>alert</code>, you can catch the alert event by implementing the <code>handleSuccess</code> method.</p>
+
+{% highlight objc linenos %}
+@implementation TrusteerChallengeHandler
+//...
+-(void) handleSuccess:(NSDictionary *)success{
+    NSArray* alerts = success[@"attributes"][@"alerts"];
+    if(alerts &amp;&amp; alerts.count){
+        for(NSString* alert in alerts){
+            NSLog(@"This device is %@", alert);
+        }
+    }
+}
+//...
+@end
+{% endhighlight %}
+
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/TrusteerIntegrationProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/TrusteeriOSNativeProject.zip">Click to download</a> the Native project.</p>
+
+<h3>Sample Setup</h3>
+<p>Download the <strong>TrusteerIntegrationProject</strong>.<br />
+Import it into your IBM MobileFirst Studio workspace.<br />
+For pure native, download and open <strong>TrusteeriOSNativeProject</strong> as well (update worklight.plist with your IP address).<br />
+Install the Trusteer SDK into your application(s) following the steps explained previously.<br />
+Deploy and run it on your iOS device.</p>
+
+<p>The sample will display whether or not it successfully loaded the Trusteer SDK.<br />
+It will display whether your device is jailbroken or not.<br />
+It features a button to “get sensitive data”, which invokes a dummy procedure protected by a Trusteer realm.<br />
+Depending on the state of your device, you should see “this is sensitive data”, or an error explaining why your request was rejected.</p>

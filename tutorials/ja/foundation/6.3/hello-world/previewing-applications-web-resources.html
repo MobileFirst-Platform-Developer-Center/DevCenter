@@ -1,0 +1,56 @@
+---
+layout: tutorial
+title: Previewing your application's web resources
+relevantTo: [hybrid]
+weight: 5
+---
+<h2>Overview</h2>
+<p>In this tutorial the following topics are covered.</p>
+
+<ul>
+    <li>Adding an environment to the MobileFirst project</li>
+    <li>Reviewing the environment's folder structure</li>
+    <li>Previewing the environment's web resources</li>
+</ul>
+
+<p>In the next tutorials, you learn how to preview the application in the specific mobile environment.</p>
+
+<h2>Adding an environment</h2>
+<p>To add an environment, click the MobileFirst icon in the menubar and select <strong>MobileFirst Environment</strong>.<br />
+        
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/08_05_adding_an_environment.png"/>
+
+<p>Next, select the application that you would like to add an environment to, and select the environment(s).<br />
+After clicking <strong>Finish</strong>, a new folder with the environment's name is added to the project structure.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/08_05_selecting_an_environment.png" />
+
+<h2>A mobile environment's folder structure</h2>
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/08_05_environment_folder_structure-196x300.png" style="float:right"/>
+
+<em>The screen shot to the right depicts the iPhone environment, but the explanation below is relevant to any mobile environment (iPhone, iPad, Android, BlackBerry, Windows Phone 8, Windows 8).</em></p>
+
+<p><strong>The mobile environment includes the following folders:</strong><br />
+<strong>CSS</strong> – The properties that are specified in this folder override the CSS files from the common folder.</p>
+
+<p><strong>Images</strong> – environment-specific images can be added in this folder. If images with the same file name exist in the common folder, they are overwritten in the application.</p>
+
+<p><strong>JavaScript</strong> – Contains JavaScript that can extend, and override if required, JavaScript from the common folder.</p>
+
+<p>The <strong>native</strong> folder contains automatically generated native project code.<br />
+Files in the native\www folder are regenerated each time when the application is built. Any changes that are made to these files are lost.</p>
+
+<p>The <strong>nativeResources</strong> folder contains resources that are used by the native code.</p>
+
+<h2>Previewing the environment's web resources</h2>
+<p>Once the application is built and deployed in MobileFirst Studio, it can be previewed in the Mobile Browser Simulator (MBS).<br />
+Right-click the project and select <strong>Open MobileFirst Console</strong>, or browse to the MobileFirst Console (typically the URL is http://localhost:10080/worklightconsole) and click "Preview as common web resources" to view the common web resources.</p>
+
+<p>To preview the environment's web resources, click the "eye" icon that is next to the environment's name.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/08_05_previewing_from_the_console.png" />
+
+<p>The Mobile Browser Simulator can be used to emulate Cordova or preview your application with different device skins.<br />
+<em>Limitation about Mobile Browser Simulator:</em> To preview an application that contains security tests that rely on the device (such as auto-provisioning or authenticity), you must temporarily change the security tests so that they do not use the device identification.</p>
+
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/08_05_mbs_preview-1024x712.png" />

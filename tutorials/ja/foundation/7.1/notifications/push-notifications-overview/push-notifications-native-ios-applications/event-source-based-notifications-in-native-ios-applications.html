@@ -1,0 +1,233 @@
+---
+layout: tutorial
+title: Event Source Notifications in Native iOS Applications
+relevantTo: [ios]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications/tree/release71
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsObjC/tree/release71
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../" title="Push notifications in native iOS applications">Push notifications in native iOS applications</a> tutorial first.</p>
+<p>Event source notifications are notification messages that are targeted to devices with a user subscription.<br />
+While the user subscription exists, MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices from which the user subscribed.</p>
+<p>To learn more about the architecture and terminology of event-source push notifications refer to the <a href="../../../push-notifications-overview/#notificationTypes" title="Push notification overview">Push notification overview</a> tutorial.</p>
+<p>Implementation of the push notification API consists of the following main steps:</p>
+<h4>On the server side:</h4>
+<ul>
+<li>Creating an event source</li>
+<li>Sending notification</li>
+</ul>
+<h4>On the client side:</h4>
+<ul>
+<li>Sending the token and initializing the <code>WLPush</code> class</li>
+<li>Registering the event source</li>
+<li>Subscribing to/unsubscribing from the event source</li>
+</ul>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#serverSidenotificationAPI">Notification API - server-side</a></li>
+<li><a href="#clientSideApi">Notification API - Client-side</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
+<h3>Creating an event source</h3>
+<p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
+<p>{% highlight js  %}
+WL.Server.createEventSource({
+    name: 'PushEventSource',
+    onDeviceSubscribe: 'deviceSubscribeFunc',
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
+    securityTest:'PushApplication-strong-mobile-securityTest'
+});{% endhighlight %}</p>
+<ul>
+<li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
+<li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
+<li><strong><code>onDeviceUnsubscribe</code></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
+<li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
+</ul>
+<p>An additional event source option:<br />
+{% highlight js  %}
+poll: {
+    interval: 3,
+    onPoll: 'getNotificationsFromBackend'
+}{% endhighlight %}</p>
+<ul>
+<li><strong><code>poll</code></strong> – a method that is used for notification retrieval.<br />
+The following parameters are required:</p>
+<ul>
+<li><strong><code>interval</code></strong> – the polling interval in seconds.</li>
+<li><strong><code>onPoll</code></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
+</ul>
+</li>
+</ul>
+<h3>Sending a notification</h3>
+<p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
+<p>{% highlight js  %}
+function submitNotification(userId, notificationText) {
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
+    if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }
+    var badgeDigit = 1;
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
+        WL.Server.notifyAllDevices(userSubscription, notification);
+    return {
+        result: "Notification sent to user :: " + userId
+    };
+}{% endhighlight %}</p>
+<p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
+<p>{% highlight js  %}function submitNotification(userId, notificationText) {
+{% endhighlight %}</p>
+<p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
+<p>{% highlight js  %}{
+    userId: 'bjones',
+    state: {
+        customField: 3
+    },
+    getDeviceSubscriptions: function()[}
+};{% endhighlight %}</p>
+<p>Next line:<br />
+{% highlight js  %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
+<p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
+{% highlight js  %}if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }{% endhighlight %}</p>
+<p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
+{% highlight js  %}var badgeDigit = 1;
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
+<ul>
+<li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
+<li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
+<li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
+</ul>
+<p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
+<p>{% highlight js  %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
+<p><br clear="all" /></p>
+<h4>Several APIs exist for sending notifications:</h4>
+<ul>
+<li><code>WL.Server.notifyAllDevices(userSubscription, options)</code> - to send notification to all user’s devices.</li>
+<li><code>WL.Server.notifyDevice(userSubscription, device, options)</code> - to send notification to a specific device that belongs to a specific user subscription. </li>
+<li><code>WL.Server.notifyDeviceSubscription(deviceSubscription, options)</code> - to send the notification to a specific device.</li>
+</ul>
+<h2 id="clientSideApi">Notification API - Client-side </h2>
+<p>A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.</p>
+<p>The device subscription is created when the application on a device calls the <code>[[WLPush sharedInstance]subscribe]</code> method.</p>
+<p>The device subscription is deleted either by an application that calls <code>[[WLPush sharedInstance] unsubscribe]</code> or when the push mediator informs MobileFirst Platform Server that the device is permanently not accessible.</p>
+<ol>
+<li>Access the <code>WLPush</code> functionality by using <code>[WLPush sharedInstance]</code> anywhere in your application.
+<p>
+</li>
+<li>Create an instance of <code>onReadyToSubscribeListener</code> and set values for alias, adaptername and eventsource.
+<p>{% highlight objc  %}
+ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];
+  readyToSubscribeListener.alias = self.alias;
+  readyToSubscribeListener.adapterName = self.adapterName;
+  readyToSubscribeListener.eventSourceName = self.eventSourceName;
+{% endhighlight %}</p>
+</li>
+<li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
+<p>{% highlight objc  %}
+[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
+{% endhighlight %}</p>
+</li>
+<li>Pass the token to <code>WLPush</code>.<br />
+{% highlight objc  %}
+[[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
+{% endhighlight %}
+</li>
+</ol>
+<h3>Sending token to client and initializing <code>WLPush</code></h3>
+<p>The user must initialize the <code>WLPush sharedInstance</code> in the application's <code>ViewController</code> load method.<br />
+{% highlight objc  %}
+AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+[[WLPush sharedInstance]init];
+{% endhighlight %}<br />
+The user must add this method to the app delegate to get the token.<br />
+{% highlight objc  %}
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+}
+{% endhighlight %}</p>
+<p>The token that is received by this method must be passed to the WLPush method.<br />
+{% highlight objc  %}
+[[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
+{% endhighlight %}</p>
+<h3>Registering the event source</h3>
+<p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
+Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
+<p>This function is called when authentication finishes.<br />
+{% highlight objc  %}
+#import "ReadyToSubscribeListener.h"
+#import "MyEventSourceListener.h
+@implementation ReadyToSubscribeListener
+-(void)OnReadyToSubscribe{
+  MyEventSourceListener *eventSourceListener=[[MyEventSourceListener alloc]init];
+  [[WLPush sharedInstance] registerEventSourceCallback:self.alias :self.adapterName
+  :self.eventSourceName :eventSourceListener];
+}
+@end
+{% endhighlight %}</p>
+<p><br clear="all" /></p>
+<h3>Subscribing to the event source</h3>
+<p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
+<p>To set up subscription to the event source, use the following API:<br />
+{% highlight objc  %}
+- (IBAction)subscribe:(id)sender {
+  MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
+  [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];
+}
+{% endhighlight %}</p>
+<p><code>[[WLPush sharedInstance] subscribe]</code> takes the following parameters:</p>
+<ul>
+<li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
+<li><code>WLPushOptions</code> -  instance contains the custom subscription parameters that the event source supports (optional)</li>
+<li><code>id <em>WLDelegate</em></code> - The listener object instance, whose <code>onSuccess</code> and <code>onFailure</code> callback methods are called (optional)</li>
+</ul>
+<p>Delegates receive a response object if one is required.</p>
+<h3>Unsubscribing  from an event source</h3>
+<p>To set up unsubscription from an event source, use the following API:<br />
+{% highlight objc  %}
+- (IBAction)unsubscribe:(id)sender {
+  MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];
+  [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];
+}
+{% endhighlight %}<br />
+<code>[[WLPush sharedInstance] unsubscribe]</code> takes the following parameters:</p>
+<ul>
+<li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
+<li><code>id <em>WLDelegate</em></code> - The listener object instance, whose <code>onSuccess</code> and <code>onFailure</code> callback methods are called (optional)</li>
+</ul>
+<p>Delegates receive a response object if one is required.</p>
+<h3>Additional client-side APIs</h3>
+<p><code>[[WLPush sharedInstance]isPushSupported]</code> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.<br />
+<code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
+<br clear="all" /><br />
+When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.</p>
+<p>{% highlight objc  %}
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"Received Notification %@",userInfo.description);
+}
+{% endhighlight %}<br />
+If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsObjC/tree/release71" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>EventSourceNotifications</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>EventSourceNotificationsObjC</code> project contains a native iOS application that uses a MobileFirst native API library to subscribe for push notification and receive notifications from APNS.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_0014.png" /></p>
+<h3>Sending a notification</h3>
+<p>To test the application is able to receive a push notification you can perform one of the following:</p>
+<ol>
+<li>Right-click the adapter in MobileFirst Studio and select <strong>Call MobileFirst Adapter</strong></li>
+<li>If using the CLI, for example:<br />
+{% highlight bash %}
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/submitNotification
+[?] Enter the comma-separated parameters: "the-user-name", "hello!"
+[?] How should the procedure be called? GET
+{% endhighlight %}</li>
+</ol>

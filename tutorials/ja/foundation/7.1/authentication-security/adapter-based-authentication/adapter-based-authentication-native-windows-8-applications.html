@@ -1,0 +1,90 @@
+---
+layout: tutorial
+title: Adapter-based authentication in native Windows 8 applications
+breadcrumb_title: Windows 8
+relevantTo: [windows8]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth/tree/release71
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWin8/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Windows 8 Universal client-side authentication components for adapter-based authentication.<br />
+<strong>Prerequisite:</strong> Make sure that you read <a href="../">Adapter-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Windows 8 Universal application and add the MobileFirst native APIs as explained in the documentation.</p>
+<h3>CustomAdapterChallengeHandler</h3>
+<p>Create a <code>CustomAdapterChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+Your <code>CustomAdapterChallengeHandler</code> class must implement the <code>isCustomResponse</code> and <code>handleChallenge</code> methods.<br />
+<code></code></p>
+<p><code></code></p>
+<ul>
+<li>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
+{% highlight csharp  %}
+public override bool isCustomResponse(WLResponse response)
+{
+    JObject responseJSON = response.getResponseJSON();
+    if (response == null ||
+        response.getResponseText() == null ||
+        responseJSON["authStatus"] == null || String.Compare(responseJSON["authStatus"].ToString(), "complete", StringComparison.OrdinalIgnoreCase) == 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+{% endhighlight %}</p>
+</li>
+<li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
+Use this method to present the login form. Different approaches are available.<br />
+{% highlight csharp  %}
+public override void handleChallenge(JObject response)
+{
+  CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+async () =>
+  {
+     MainPage._this.LoginGrid.Visibility = Visibility.Visible;
+  });
+}
+{% endhighlight %}
+</li>
+</ul>
+<p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
+{% highlight csharp  %}
+public void sendResponse(String username, String password)
+{
+   WLProcedureInvocationData invData = new WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");
+   invData.setParameters(new Object[] { username, password });
+   submitAdapterAuthentication(invData, new WLRequestOptions());
+}
+{% endhighlight %}</p>
+<p><br clear="all" /></p>
+<h3>MainPage</h3>
+<p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> class, and invoke the protected adapter procedure.<br />
+The procedure invocation triggers MobileFirst Server to send a challenge that will trigger our <code>challengeHandler</code>.<br />
+{% highlight csharp  %}
+WLClient wlClient = WLClient.getInstance();
+CustomAdapterChallengeHandler ch = new CustomAdapterChallengeHandler();
+wlClient.registerChallengeHandler((BaseChallengeHandler<JObject>)ch);
+MyResponseListener mylistener = new MyResponseListener(this);
+wlClient.connect(mylistener);
+{% endhighlight %}</p>
+<p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
+Invoke the protected adapter procedure. The login form is presented by the  challenge handler.<br />
+{% highlight csharp  %}
+WLResourceRequest adapter = new WLResourceRequest("/adapters/AuthAdapter/getSecretData", "GET");
+MyInvokeListener listener = new MyInvokeListener(this);
+adapter.send(listener);
+{% endhighlight %}</p>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWin8/tree/release71" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>AdapterBasedAuth</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>AdapterBasedAuthWin8</code> project contains a native Windows 8 Universal application that uses a MobileFirst native API library.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AdapterAuthWin8-1024x254.png" /></p>

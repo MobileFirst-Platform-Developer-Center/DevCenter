@@ -1,0 +1,75 @@
+---
+layout: tutorial
+title: General information when developing desktop applications
+breadcrumb_title: General information
+relevantTo: [hybrid]
+weight: 12
+---
+<h2>Overview</h2>
+<p>In this tutorial a general development information for supported Desktop environment will be presented.<br />
+IBM MobileFirst Platform supports the following desktop environments:</p>
+
+<ul>
+    <li>Windows Store Apps – Built into the Windows 8 OS</li>
+    <li>Adobe Air</li>
+    <li>Desktop Browser web page</li>
+</ul>
+
+<h2>Development environments</h2>
+<p>Development for Windows 8 apps (known as Windows Store apps) is done in MobileFirst Studio and later continued in Microsoft Visual Studio Express 2012 for Windows 8.<br />
+To open the project in Visual Studio Express 2012 for Windows 8, double-click the <code>application-name.jsproj</code> file that is in the native folder.</p>
+
+<p>For the Adobe Air and Desktop browser web page environments, The development is done entirely in the MobileFirst Platform Studio.</p>
+
+<h2>Design</h2>
+<p>It is useful to consult with the Microsoft Design and Develop websites when developing applications:</p>
+
+<ul>
+    <li>Design: <a href="http://msdn.microsoft.com/en-US/windows/apps/hh779072">http://msdn.microsoft.com/en-US/windows/apps/hh779072</a></li>
+    <li>Develop: <a href="http://msdn.microsoft.com/en-US/windows/apps/br229519">http://msdn.microsoft.com/en-US/windows/apps/br229519</a></li>
+</ul>
+
+<h2>Application optimizations</h2>
+<p><b>Windows 8</b><br />
+In Windows 8, it is possible to override icons in an application with default icons provided by the system. To do so:<br />
+<code>document.getElementById('#ID').winControl.icon = 'refresh';</code></p>
+
+<p>Other Windows 8 APIs:<br />
+<code>Windows.Devices.Geolocation<br />
+Windows.Media.Capture<br />
+Windows.ApplicationModel.Contacts</code></p>
+
+<p><b>Adobe Air</b><br />
+Minimize a window: <code>window.nativeWindow.minimize();</code><br />
+Maximize a window: <code>window.nativeWindow.maximize();</code><br />
+Restore a window: <code>window.nativeWindow.restore();</code><br />
+Close a window: <code>window.nativeWindow.close();</code></p>
+
+<h2>Network optimizations</h2>
+<p>When developing a Desktop browser application, network performance is a highly important optimization to think about.<br />
+Network performance can be optimized by implementing the following two actions:</p>
+
+<ul>
+    <li>Use Minification and Concatenation to reduce the number of files that are used within the application</li>
+    <li>Use HTML 5 Application Cache</li>
+</ul>
+
+<p>For more information about the MobileFirst Cache Manifest, the Minification and the Concatenation controls, see the user documentation topic: "Optimizing MobileFirst applications".</p>
+
+<h2>Publishing</h2>
+<p><b>Windows 8</b><br />
+Microsoft Visual Studio Express 2012 for Windows 8 is needed in order to create App Packages.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_12_desktopbrowser.png" />
+
+<p><b>Adobe Air</b><br />
+The Adobe Air package can be downloaded from the m the IBM MobileFirst Platform Console.<br />
+When clicking the Install link, an .exe file is downloaded. This file is the Adobe Air Installer that installs the application on the PC.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_12_air.png"  />
+
+<p><b>Desktop browser</b><br />
+The Desktop Browser web page must be embedded in the website code to be used.<br />
+To get the URL of the application, click the Embed in Web Page link that is next to the Desktop Browser icon. Copy the URL from the pop-up window and embed it in your HTML.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_12_generate_app.png" />

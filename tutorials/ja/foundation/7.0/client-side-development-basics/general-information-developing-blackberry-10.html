@@ -1,0 +1,34 @@
+---
+layout: tutorial
+title: General information when developing for BlackBerry 10
+relevantTo: [hybrid]
+weight: 8
+---
+<h2>Overview</h2>
+<p>This tutorial presents general development information for the BlackBerry 10 environment in the following topics:</p>
+<ul>
+<li><a href="#struct">Project structure</a></li>
+<li><a href="#cordova">Accessing native capabilities by using Apache Cordova</a></li>
+<li><a href="#appOptim">Optimizing applications</a></li>
+<li><a href="#publish">Publishing</a></li>
+</ul>
+<h2 id="struct">Project structure</h2>
+<p>A BlackBerry application that is developed with IBM MobileFirst Platform Foundation comprizes the following components:</p>
+<ul>
+<li>A set of JavaScript libraries that provide access to various device features and capabilities</li>
+<li>Web application code that is provided by the developer, that is written in HTML, CSS, and JavaScript, and that runs in one or more instances of the browser</li>
+<li>All the application components, including the web code that the developer provides, packaged into a single BlackBerry project</li>
+</ul>
+<p>IBM MobileFirst Platform supports BlackBerry devices that run BlackBerry OS version 6, 7.x, and 10.x.<br />
+If you use a source control management system (such as Rational Team Concert™, Git, Subversion, and so on), see the topic about integrating with source control system, in the user documentation.</p>
+<h2 id="cordova">Accessing native capabilities by using Apache Cordova</h2>
+<p>You can use the Apache Cordova framework to access the native elements of the device, such as contacts, geolocation services, media services, and accelerometer.<br />
+For more information about Apache Cordova development, see the <a href="../../adding-native-functionality/apache-cordova-overview">Apache Cordova overview</a> tutorial.</p>
+<h2 id="appOptim">Optimizing applications</h2>
+<p>When developing a mobile application, you can use minification and concatenation to reduce the size and number of files that are used within the application. This feature is available for the following environments: Android, iOS, Windows 8, Windows Phone 8, BlackBerry 10, Mobile Web and Desktop Browser.</p>
+<blockquote><p>
+For more information about minification and concatenation, see the topic about optimizing MobileFirst applications, in the user documentation.
+</p></blockquote>
+<h2 id="publish">Publishing</h2>
+<p>BlackBerry applications are published through BlackBerry App World.</p>
+<p>For more information about this process, see the documentation about building and signing a completed app at <a href="https://developer.blackberry.com/html5/documentation/v2_1/build_and_sign_your_app.html#kba1371063698995">https://developer.blackberry.com/html5/documentation/v2_1/build_and_sign_your_app.html#kba1371063698995</a>.</p>

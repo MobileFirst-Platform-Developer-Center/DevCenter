@@ -1,0 +1,127 @@
+---
+layout: tutorial
+title: OAuth-based security model
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<h2>Overview</h2>
+<p>The <a href="http://oauth.net/" target="_blank">OAuth 2.0</a> protocol is based on the acquisition of an access token, which encapsulates the authorization that is granted to the client. In that context, IBM MobileFirst Platform Server serves as an authorization server and is able to generate such tokens. The client can then use these tokens to access resources on a resource server, which can be either MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. This separation between resource server and authorization server in the new OAuth-based model allows you to enforce MobileFirst security on resources that are running outside MobileFirst Server.</p>
+<p>To support backward compatibility, <a href="../classic-security-model/" title="Classic security model">the classic (pre-V7.0) MobileFirst security model</a> is still used in the flows that are based on the existing MobileFirst APIs (for example, <code>invokeProcedure</code> in Java). The new client APIs trigger flows that conform to the OAuth-based security model. IBM MobileFirst Platform Foundation V7.0 provides seamless integration between the two security models. The platform allows you to mix classic and new APIs in the same application, while keeping a consistent security context on the server side.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#authflow">Authorization flow</a></li>
+<li><a href="#authEntities">Authorization entities</a></li>
+<li><a href="#define">Defining realms, authenticators, and login modules</a></li>
+<li><a href="#protectAdapt">Protecting adapters</a></li>
+<li><a href="#protectExtRes">Protecting external resources</a></li>
+<li><a href="#protectAppStaticRes">Protecting applications and static resources</a></li>
+</ul>
+<h2 id="authflow">Authorization flow</h2>
+<p>The new MobileFirst end-to-end authorization flow has two phases: the client acquires the token and then uses it to access a protected resource.</p>
+<h3>Acquiring a token</h3>
+<p>In this phase, the client undergoes security checks in order to receive an access token. These security checks use authorization entities, which are described in <a href="#authEntities">the next section</a>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg"/></p>
+<h3>Using a token to access a protected resource</h3>
+<p>It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial <a href="../../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg"/></p>
+<h2 id="authEntities">Authorization entities</h2>
+<p>You can protect MobileFirst resources such as adapter procedures from unauthorized access by specifying a <strong>scope</strong> that contains one or more <i>authentication realms</i>.</p>
+<p>An <strong>authentication realm</strong> defines the process to be used to authenticate users.</p>
+<p>Each realm consists of an <strong>Authenticator</strong> and a <strong>Login Module</strong>, which are server-side components.</p>
+<p>The same realm can be used to protect several resources.</p>
+<p>Each realm requires a <strong>challenge handler</strong> component on the client side.</p>
+<h3>Authenticator</h3>
+<p>An authenticator is a server-side entity that is responsible for collecting the credentials from the client application.</p>
+<p>An authenticator can collect any type of information that is accessible from an HTTP request object: cookies, headers, body, or any other properties.</p>
+<p>MobileFirst Server comes with a set of predefined authenticators, including:</p>
+<ul>
+<li>A <strong>form-based</strong> authenticator that returns a challenge in the form of an HTML login form, making it useful for web environments and mobile applications.</li>
+<li>An <strong>adapter-based</strong> authenticator that uses the MobileFirst adapter infrastructure to collect and validate the credentials from the client application.</li>
+<li>A <strong>header-based</strong> authenticator that does not require interactive credentials collection, but checks the specific HTTP header instead.</li>
+</ul>
+<p>In addition to predefined authenticators, you can create your own custom authenticators by using Java code, as explained in tutorial <a href="../../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
+<h3>Login Module</h3>
+<p>A login module is a server-side entity that is responsible for verifying the user credentials provided by the authenticator.</p>
+<p>The credentials validation can be done, for example, in one of the following ways:</p>
+<ul>
+<li>By using a web service.</li>
+<li>By looking up the user in a users table in a database.</li>
+<li>By using the WebSphere LTPA token.</li>
+</ul>
+<p>It is possible to add custom user properties according to the enterprise needs.</p>
+<p>A login module can be configured to automatically record login attempts for audit purposes.</p>
+<p>In addition to predefined login modules, you can create your own custom login module by using the Java code, , as explained in tutorial <a href="../../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
+<h3>Authentication realm</h3>
+<p>An authentication realm is a combination of one authenticator and one login module. Each authentication realm defines its authentication flow:</p>
+<ul>
+<li>What should happen after the authentication process is triggered?</li>
+<li>What form of challenge should be sent to the client application?</li>
+<li>Which credentials should be collected?</li>
+<li>How and when should credentials be collected?</li>
+<li>How should credentials be sent to the server?</li>
+<li>How should credentials be validated by the server?</li>
+<li>What will be the result of credentials validation?</li>
+</ul>
+<p>Each authentication realm that is defined in the server authentication configuration must have a corresponding challenge handler in the client application. IBM MobileFirst Platform Foundation provides several predefined authentication realms for security features, such as remote application disablement or application authenticity.</p>
+<h3>Scope</h3>
+<p>To protect a resource, you must define a scope.<br />
+A scope is a list of realm names - the realms that the user must authenticate against to get access to the protected resource.</p>
+<h2 id="define">Defining realms, authenticators, and login modules</h2>
+<p>You configure authentication settings in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
+<p>You can modify the settings by using the Authentication Configuration Editor.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/></p>
+<p>Each realm takes a name, a <code>loginModule</code> specification, an authenticator implementation, and optional parameters.</p>
+<p>{% highlight xml  %}
+<realms><br />
+    <realm name="SampleAppRealm" loginModule="StrongDummy">
+        <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+    </realm>
+    <realm name="SubscribeServlet" loginModule="rejectAll">
+        <className>com.worklight.core.auth.ext.HeaderAuthenticator</className>
+    </realm>
+</realms>
+{% endhighlight %} </p>
+<p>Each login module takes a name, a login module implementation, and optional parameters.</p>
+<p>{% highlight xml  %} <br />
+<loginModules>
+    <loginModule name="StrongDummy">
+        <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+    </loginModule>
+    <loginModule name="requireLogin">
+        <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
+    </loginModule>
+    <loginModule name="rejectAll">
+        <className>com.worklight.core.auth.ext.RejectingLoginModule</className>
+    </loginModule>
+</loginModules>
+{% endhighlight %} </p>
+<h3>User Identity</h3>
+<p>Although user authorization can include authorization with several realms, only one of these realms is defined as the <em>user identity realm</em>, and that realm determines the user identity. In an OAuth-based flow, the user identity realm is set according to the <code>userIdentityRealms</code> definition in the <strong>application descriptor</strong>. This is the user identity that will appear in the Devices tab of the console.</p>
+<p><strong>Note:</strong> In the classic (pre-V7.0) flows, the user identity realm is selected according to the definition in the security test. In OAuth-based flows, information about the user identity, which is set by the <code>userIdentityRealms</code> attribute, is part of the data contained in the ID token.</p>
+<p>{% highlight xml  %}
+<userIdentityRealms>SampleAppRealm</userIdentityRealms>
+{% endhighlight %} </p>
+<h2 id="protectAdapt">Protecting adapters</h2>
+<h3>Java adapters</h3>
+<p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
+<p>{% highlight java  %}
+    @DELETE
+    @Path("/{userId}")
+    @OAuthSecurity(scope="adminRealm")
+    //This will serve: DELETE /users/{userId}
+    public void deleteUser(@PathParam("userId") String userId){
+        ...
+    }
+{% endhighlight %} </p>
+<p>In this example, the <code>deleteUser</code> procedure uses the annotation <code>@OAuthSecurity(scope="adminRealm")</code>, which means that it is protected by a scope containing the realm <code>adminRealm</code>.</p>
+<p>A scope can be made of several realms, space-separated: <code>@OAuthSecurity(scope="realm1 realm2 realm3")</code>.</p>
+<p>If you do not specify the <code>@OAuthSecurity</code> annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.</p>
+<p>If you want to disable MobileFirst default security, you can use: <code>@OAuthSecurity(enabled=false)</code>.</p>
+<p>You can use the <code>@OAuthSecurity</code> annotation also at the resource class level, to define a scope for the entire Java class.</p>
+<h3>JavaScript adapters</h3>
+<p>JavaScript adapters such as HTTP adapters, SQL adapters, etc, need to be protected by a <em>security test</em>. Security tests are covered in the <a href="../classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>
+<p>Remember that adapters protected via the previous "classic" model can still be accessed via REST APIs and respond to OAuth authentication requests.</p>
+<h2 id="protectExtRes">Protecting external resources</h2>
+<p>With IBM MobileFirst Platform Foundation V7.0, you can enforce MobileFirst security on resources that run outside MobileFirst Server. To this end, you can use the built-in <code>Node.js</code> and Java validation modules, or implement your own custom validation module in the technology of your choice, by using the online validation endpoint.</p>
+<p>See <a href="../../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
+<h2 id="protectAppStaticRes">Protecting applications and static resources</h2>
+<p>Additionally, entire applications are protected by a security test. Security tests are covered in the <a href="../classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>

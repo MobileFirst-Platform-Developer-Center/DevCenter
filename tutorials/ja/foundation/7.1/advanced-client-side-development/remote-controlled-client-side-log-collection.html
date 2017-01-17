@@ -1,0 +1,52 @@
+---
+layout: tutorial
+title: Remote controlled client-side log collection
+show_children: true
+relevantTo: [ios,android,hybrid]
+weight: 7
+---
+<h2 id="whatIsLogging">Overview</h2>
+<p>Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. Example: <code>java.util.logging</code> in Java.</p>
+<p>Logging libraries typically have verbosity controls, that are frequently called <em>levels</em>. From least to most verbose: ERROR, WARN, INFO, LOG, DEBUG</p>
+<ul>
+<li>Developers can filter by level in their log viewer.</li>
+<li>Capture tools can filter by level in their configurations.</li>
+</ul>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#logCapture">Log capture</a></li>
+<li><a href="#serverPrep">Server preparation (in production)</a></li>
+<li><a href="#adminControl">Admin control for client logs</a></li>
+<li><a href="#crashCapture">Crash capture</a></li>
+<li><a href="#moreInfo">For more information</a></li>
+<li><a href="#apiCalls">API calls for specific environments</a></li>
+</ul>
+<h2 id="logCapture">Log capture</h2>
+<p>Log capture is the ability to persistently record messages that are passed to the logging API.<br />
+Capture is on by default but can be turned off.</p>
+<p>Logging defaults to DEBUG level in development, and to FATAL in production. You can control levels, and therefore verbosity, with API calls that are specific to your environment.</p>
+<h2 id="serverPrep">Server preparation (in production)</h2>
+<p>It is useless to persistently capture log output in browsers and devices in production unless that captured data can be sent for diagnostic inspection. You can send captured data by calling the send method explicitly in your application.</p>
+<p>You can turn the automatic behavior on or off with API calls that are specific to your environment, or by calling the <code>send</code> method explicitly in your application.</p>
+<h3>How to receive and process logs at the server?</h3>
+<p>There are two ways to receive client logs on MobileFirst Server:</p>
+<ol>
+<li>Install the IBM MobileFirst Platform Operational Analytics (MobileFirst Operational Analytics for short).</li>
+<li>Develop and deploy an adapter that is named <code>WLClientLogReceiver</code> with a function (procedure) that is named <code>log</code>.</li>
+</ol>
+<p>The MobileFirst Operational Analytics is available by default in the embedded Liberty server in the MobileFirst Studio development environment. You can open the Analytics Console from the MobileFirst Operations Console. When MobileFirst Operational Analytics is properly installed and configured, client logs that are sent to MobileFirst Server are automatically forwarded to MobileFirst Operational Analytics.</p>
+<blockquote><p>For more information about installing MobileFirst Operational Analytics in a production environment, see the topic about installing MobileFirst Operational Analytics, in the user documentation.</p></blockquote>
+<p>If you do not wish to use MobileFirst Operational Analytics, you can still collect and process client logs by creating an adapter. By default, MobileFirst Platform Foundation is configured to forward client logs to an adapter named <code>WLClientLogReceiver</code>, which exposes a method called <code>log</code>.</p>
+<p>If MobileFirst Operational Analytics and the adapter have both been configured, MobileFirst Platform Foudation sends logs to both endpoints. Using both may be useful if you want to take benefit of MobileFirst Operational Analytics log searching capabilities AND do some custom operations on client logs by using your own adapter.</p>
+<p><strong>Note:</strong> Installation and configuration of MobileFirst Operational Analytics and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the topic about installing MobileFirst Operational Analytics, in the user documentation, and the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
+<h2 id="adminControl">Admin control of client log capture</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/comsole-project-buttons1.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/client-log-profiles.png" /></p>
+<p>To configure log capture preferences for applications in production, use the MobileFirst Operations Console. Administrators can control the MobileFirst client SDK log capture and levels from the MobileFirst Operations Console.</p>
+<h2 id="crashCapture">Crash capture</h2>
+<p>The MobileFirst client SDK, on Android and iOS, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view.</p>
+<p>The MobileFirst client SDK, in JavaScript, captures JavaScript global errors and if possible, a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.</p>
+<p>Crash, uncaught exceptions, and global errors are caught and logged automatically.</p>
+<h2 id="moreInfo">For more information</h2>
+<p>For more information about logging and log capture, see the user documentation.</p>
+<h2 id="apiCalls"  class="hidden-print">API calls for specific environments</h2>

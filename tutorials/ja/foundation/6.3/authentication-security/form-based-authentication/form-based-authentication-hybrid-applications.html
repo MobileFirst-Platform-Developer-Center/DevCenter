@@ -1,0 +1,125 @@
+---
+layout: tutorial
+title: Form-based authentication in hybrid applications
+relevantTo: [hybrid]
+breadcrumb_title: Hybrid
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/FormBasedAuthenticationHybridProject.zip
+---
+<h2>Overview</h2>
+<p>This tutorial illustrates the JavaScript client-side authentication components for form-based authentication. Make sure you read <a title="Form-based authentication" href="../">Form-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>The application consists of two main <code>div</code> elements:<br />
+The <code>AppDiv</code> element is used to display the application content.<br />
+The <code>AuthDiv</code> element is used for authentication form purposes.<br />
+When authentication is required, the application hides <code>AppDiv</code> and shows <code>AuthDiv</code>.<br />
+When authentication is complete, it does the opposite.</p>
+<h3>AppDiv</h3>
+<p>{% highlight html  %}
+<div id="AppDiv">
+  <input type="button" id="getSecretDataButton" value="Call protected adapter procedure" onclick="getSecretData()" />
+  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SampleAppRealm', {onSuccess:  WL.Client.reloadApp});" />
+  <div id="ResponseDiv"></div>
+</div>
+{% endhighlight %}</p>
+<p>The buttons are used to call the <strong>getSecretData</strong> procedure and to log-out.</p>
+<h3>AuthDiv</h3>
+<p>{% highlight html  %}
+<div id="AuthDiv" style="display: none">
+  <div id="loginForm">
+    <input type="text" placeholder="Enter username" id="AuthUsername" />
+    <br /><br />
+    <input type="password" placeholder="Enter password" id="AuthPassword" />
+    <br/><br />
+    <input type="button" class="formButton" id="AuthSubmitButton" value="Login" />
+    <input type="button" class="formButton" id="AuthCancelButton" value="Cancel" />
+  </div>
+</div>
+{% endhighlight %}</p>
+<p>The AuthDiv element is styled as display:none because it must not be displayed before authentication is requested by the server.</p>
+<h3>Challenge Handler</h3>
+<p>Use the <code>WL.Client.createChallengeHandler()</code> method to create a challenge handler object. The realm name is a mandatory parameter.</p>
+<p>{% highlight javascript  %}
+var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("SampleAppRealm");
+{% endhighlight %}</p>
+<p>The <strong>isCustomResponse</strong> function of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.</p>
+<p>{% highlight javascript  %}
+sampleAppRealmChallengeHandler.isCustomResponse = function(response) {
+	return false;
+};
+{% endhighlight %}</p>
+<p>If <code>isCustomResponse</code> returns true, the framework calls the <strong>handleChallenge()</strong> function. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+<p>{% highlight javascript  %}
+sampleAppRealmChallengeHandler.handleChallenge = function(response) {
+};
+{% endhighlight %}</p>
+<p>Create a challenge handler to define a customized authentication flow. In your challenge handler, do not add code that modifies the user interface when this modification is not related to the authentication flow.</p>
+<p>In addition to the methods that the developer must implement, the challenge handler contains functionality that the developer might want to use:</p>
+<ul>
+<li><code>submitLoginForm()</code> sends the collected credentials to a specific URL. The developer can also specify request parameters, headers, and callback.</li>
+<li><code>submitSuccess()</code> notifies the MobileFirst framework that the authentication successfully finished. The framework then automatically issues the original request that triggered the authentication.</li>
+<li><code>submitFailure()</code> notifies the MobileFirst framework that the authentication process completed with failure. The framework then disposes of the original request that triggered the authentication.</li>
+</ul>
+<p><strong>* Note that each of these functions must be attached to its object. For example:</strong> <code>SampleAppRealmChallengeHandler.submitSuccess()</code></p>
+<p>The default login form that is returned from the MobileFirst server contains the <code>j_security_check</code> string. If the challenge handler detects it in the response, return true.</p>
+<p>{% highlight javascript  %}
+sampleAppRealmChallengeHandler.isCustomResponse = function(response) {
+    if (!response || response.responseText === null) {
+        return false;
+    }
+    var indicatorIdx = response.responseText.search('j_security_check');
+    if (indicatorIdx >= 0){
+		return true;
+	}
+	return false;
+};
+{% endhighlight %}</p>
+<p>After the client application detects that the server sent a login form, which means that the server is requesting authentication, the application hides the <code>AppDiv</code>, shows the <code>AuthDiv</code>, and cleans up the <code>AuthPassword</code>.</p>
+<p>{% highlight javascript  %}
+sampleAppRealmChallengeHandler.handleChallenge = function(response) {
+	$('#AppDiv').hide();
+	$('#AuthDiv').show();
+	$('#AuthPassword').val('');
+};
+{% endhighlight %}</p>
+<p>Clicking the <code>login</code> button triggers a function that collects the user name and password from the HTML input fields and submits them to the server.<br />
+It is possible to set request headers here, and specify callback.<br />
+The form-based authenticator uses a hardcoded <code>j_security_check</code> URL component. You cannot have more than one instance of it.</p>
+<p>{% highlight javascript  %}
+$('#AuthSubmitButton').bind('click', function () {
+    var reqURL = '/j_security_check';
+    var options = {};
+    options.parameters = {
+        j_username : $('#AuthUsername').val(),
+        j_password : $('#AuthPassword').val()
+    };
+    options.headers = {};
+    sampleAppRealmChallengeHandler.submitLoginForm(reqURL, options, sampleAppRealmChallengeHandler.submitLoginFormCallback);
+});
+{% endhighlight %}</p>
+<p>Clicking the cancel button hides the <code>authDiv</code>, shows the <code>appDiv</code>, and notifies the framework that authentication failed.</p>
+<p>{% highlight javascript  %}
+$('#AuthCancelButton').bind('click', function () {
+	sampleAppRealmChallengeHandler.submitFailure();
+	$('#AppDiv').show();
+	$('#AuthDiv').hide();
+});
+{% endhighlight %}</p>
+<p>The callback function checks the response for the containing server challenge again. If a challenge is found, the <code>handleChallenge()</code> function is called again.<br />
+No challenge present in the server response means that the authentication successfully completed. In this case, <code>AppDiv</code> is shown, <code>AuthDiv</code> is hidden, and the framework is notified about the authentication success.</p>
+<p>{% highlight javascript  %}
+sampleAppRealmChallengeHandler.submitLoginFormCallback = function(response) {
+    var isLoginFormResponse = sampleAppRealmChallengeHandler.isCustomResponse(response);
+    if (isLoginFormResponse){
+    	sampleAppRealmChallengeHandler.handleChallenge(response);
+    } else {
+		$('#AppDiv').show();
+		$('#AuthDiv').hide();
+		sampleAppRealmChallengeHandler.submitSuccess();
+    }
+};
+{% endhighlight %}</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/FormBasedAuthenticationHybridProject.zip">Click to download</a> the Studio project.</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_02_results.png" style="width: 75%"/>

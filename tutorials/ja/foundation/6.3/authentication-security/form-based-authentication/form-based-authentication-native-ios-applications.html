@@ -1,0 +1,90 @@
+---
+layout: tutorial
+title: Form-based authentication in native iOS applications
+relevantTo: [ios]
+breadcrumb_title: Native iOS
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeFormBasedAuthProject.zip
+---
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Android client-side authentication components for form-based authentication. Make sure you read <a href="../" title="Form-based authentication">Form-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native iOS application and add the MobileFirst native APIs following the documentation.<br />
+In your storyboard, add a ViewController containing a login form.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_03_storyboard.png" />
+<p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code><br />
+We will implement some of the <code>ChallengeHandler</code> methods to respond to the form-based challenge.</p>
+<p>{% highlight objc  %}
+@interface MyChallengeHandler : ChallengeHandler
+@property ViewController* vc;
+//A convenient way of updating the View
+-(id)initWithViewController: (ViewController*) vc;
+@end<
+{% endhighlight %}</p>
+<p>The <code>isCustomResponse</code> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either true or false.<br />
+The default login form that is returned from the MobileFirst server contains the <code>j_security_check</code> string. If the challenge handler detects it in the response, return true.</p>
+<p>{% highlight objc  %}
+@implementation MyChallengeHandler
+//...
+-(BOOL) isCustomResponse:(WLResponse *)response {
+    if(response &amp;&amp; response.responseText){
+        if ([response.responseText rangeOfString:@"j_security_check" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+            NSLog(@"Detected login form - return true");
+            return true;
+        }
+    }
+    return false;
+}
+@end
+{% endhighlight %}</p>
+<p>
+If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+<p>{% highlight objc  %}
+@implementation MyChallengeHandler
+//...
+-(void) handleChallenge:(WLResponse *)response {
+    NSLog(@"Inside handleChallenge - need to show form on the screen");
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    loginController.challengeHandler = self;
+    [self.vc.navigationController pushViewController:loginController animated:YES];<br />
+}
+@end
+{% endhighlight %}</p>
+<p>
+<code>onSuccess</code> and <code>>onFailure</code> get triggered when the authentication ends.<br />
+You need to call <code>submitSuccess</code> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
+<p>{% highlight objc  %}
+@implementation MyChallengeHandler
+//...
+-(void) onSuccess:(WLResponse *)response {
+    NSLog(@"inside challenge success");
+    [self.vc.navigationController popViewControllerAnimated:YES];
+    [self submitSuccess:response];
+}
+-(void) onFailure:(WLFailResponse *)response {
+    NSLog(@"inside challenge failure");
+    [self submitFailure:response];
+}
+@end
+{% endhighlight %}</p>
+<p>
+In your <code>LoginViewController</code>, when the user clicks to submit his credentials, you need to call <code>submitLoginForm</code> to send the credentials to the MobileFirst Server.</p>
+<p>{% highlight objc  %}
+@implementation LoginViewController
+//***
+- (IBAction)login:(id)sender {
+    [self.challengeHandler submitLoginForm:@"j_security_check"
+         requestParameters:@{@"j_username": self.username.text, @"j_password": self.password.text}
+         requestHeaders:nil
+         requestTimeoutInMilliSeconds:0
+         requestMethod:@"POST"];
+}
+@end
+{% endhighlight %}</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_03_results.png" style="width: 75%"/>

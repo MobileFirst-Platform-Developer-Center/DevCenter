@@ -1,0 +1,207 @@
+---
+layout: tutorial
+title: Operational Analytics
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+---
+<h2>Overview</h2>
+<p>The MobileFirst Platform Operational Analytics Console is a web-based UI that is dedicated to the ongoing monitoring of the deployed applications, adapters, and servers.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#introAnalytics">Introducing IBM MobileFirst Platform Operational Analytics</a></li>
+<li><a href="#viewingDashboard">Viewing the Analytics Dashboard - Configurations</a></li>
+<li><a href="#capturingData">Capturing data</a></li>
+<li><a href="#applicationActivities">Capturing data - Network Activities</a></li>
+<li><a href="#notificationActivities">Capturing data - Notification Activities</a></li>
+<li><a href="#serverLogs">Capturing data - Server logs</a></li>
+<li><a href="#clientLogs">Capturing data - Client logs</a></li>
+<li><a href="#analyticsLogs">Analytics logs</a></li>
+<li><a href="#sendingData">Sending data</a></li>
+<li><a href="#creatingCustomChart">Creating a custom chart</a></li>
+<li><a href="#alerts">Alerts</a></li>
+<li><a href="#migration">Migration</a></li>
+</ul>
+<h2 id="introAnalytics">Introducing IBM MobileFirst Platform Operational Analytics</h2>
+<p>MobileFirst Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mfp_operational_analytics.jpg" /></p>
+<p>Starting with IBM MobileFirst Platform Foundation V7.0, MobileFirst Operational Analytics is delivered as an EAR file which contains two WAR files: <code>analytics.war</code> and <code>analytics-service.war</code>. You can deploy the EAR file to the following supported application servers:</p>
+<ul>
+<li>Liberty</li>
+<li>WebSphere  Application Server</li>
+<li>Tomcat</li>
+</ul>
+<p>In MobileFirst Studio, the two WAR files are installed and available by default in the embedded Liberty server.</p>
+<h2 id="viewingDashboard">Viewing the Analytics Dashboard - Configurations</h2>
+<p>The <code>wl.analytics.url</code> property must be set to send data to the Analytics server and the <code>wl.analytics.console.url</code> must be set to access the Analytics dashboard.</p>
+<ol>
+<li style="float : left; width: 100%;">
+
+<div style="width: 100%;">You can set these two properties in the <code>server.xml</code> file:</p>
+<p>{% highlight xml  %}
+<jndiEntry jndiName="AppName/wl.analytics.url" value="http://localhost:10080/analytics-service/data"/>
+<jndiEntry jndiName="AppName/wl.analytics.console.url" value="http://localhost:10080/analytics/console"/>
+{% endhighlight %}</p>
+<p>After the property is set, the <strong>Analytics Dashboard</strong> link appears in the MobileFirst Operations Console.</div>
+<div style="width: 100%;">
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/71ConsoleAnalytics.png" />
+</div>
+</li>
+<li style="float : left; width: 100%;">
+
+<div style="width: 100%;">Click the <strong>Analytics Dashboard</strong> link to open up the dashboard in a new window.</div>
+<div style="width: 100%;">
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/71AnalyticsSession.png" /></div>
+</li>
+</ol>
+<h2 id="capturingData">Capturing data</h2>
+<p>Different types of analytics events are captured by the MobileFirst Operational Analytics server: network activities, notification activities, server logs, and client logs.</p>
+<h3><a href="#applicationActivities">Network activities</a></h3>
+<ul>
+<li>Client interacting with the server</li>
+</ul>
+<h3><a href="#notificationActivities">Notification activities</a></h3>
+<ul>
+<li>Push notifications</li>
+</ul>
+<h3><a href="#serverLogs">Server Logs</a></h3>
+<ul>
+<li>Server events</li>
+<li>Server stack traces</li>
+</ul>
+<h3><a href="#clientLogs">Client Logs</a></h3>
+<ul>
+<li>Debug logs</li>
+<li>Crashes</li>
+<li>Custom events</li>
+<li>Network latency information</li>
+</ul>
+<h2 id="applicationActivities">Capturing data - Network activities</h2>
+<p>When a network activity occurs, the event is captured automatically and forwarded to the MobileFirst Operational Analytics server.</p>
+<ul>
+<li>The following API call results in a <em>session hit</em> that is visualized on MobileFirst Operational Analytics:
+    </li>
+<p>    
+{% highlight javascript  %}
+// a 'session hit' will be recorded upon a successful connection
+WL.Client.connect();
+{% endhighlight %}</p>
+<li>The following API call results in an <em>adapter hit</em> and a <em>session hit</em> that are visualized on the MobileFirst Operational Analytics dashboard:</li>
+{% highlight javascript  %}
+// an 'adapter hit' and a 'session hit' will be recorded upon a successful adapter invocation
+WLResourceRequest.send();
+{% endhighlight %}</p>
+</ul>
+<div style="width: 100%;">
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/71AnalyticsOnlySessions.png" />
+</div>
+<h2 id="notificationActivities">Capturing data - Notification Activities</h2>
+<p>When a push notification occurs, the event is captured automatically and forwarded to the MobileFirst Operational Analytics server.</p>
+<div style="width: 100%;">
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/71AnalyticsPush.png" />
+</div>
+<h2 id="serverLogs">Capturing data - Server Logs</h2>
+<p>The log data that is generated by MobileFirst Server is automatically forwarded to the MobileFirst Operational Analytics server, where the data can be searched and downloaded.</p>
+<div style="width: 100%;">
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/71AnalyticsServer.png" />
+</div>
+<p>To disable this behavior, set the <code>wl.analytics.logs.forward</code> property to <code>false</code>.</p>
+<h2 id="clientLogs">Capturing data - Client Logs</h2>
+<p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
+<p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
+<p>{% highlight javascript  %}
+// Set the log level to trace so that all logs are captured
+WL.Logger.config({"level": "TRACE"});
+// Create a client side log that is persisted locally until it is sent to the server
+WL.Logger.trace("Create a client log at the TRACE level.");
+WL.Logger.debug("Create a client log at the DEBUG level.");
+WL.Logger.info("Create a client log at the INFO level.");
+WL.Logger.warn("Create a client log at the WARN level.");
+WL.Logger.error("Create a client log at the ERROR level.");
+WL.Logger.fatal("Create a client log at the FATAL level.");
+{% endhighlight %}</p>
+<h2 id="analyticsLogs">Analytics Logs</h2>
+<p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
+<p>
+{% highlight javascript  %}
+// Create an analytics log message
+WL.Analytics.log("Analytics log message");
+// Create a custom activity>
+WL.Analytics.log({_activity: "customActivity"});
+// Create a custom activity with a log message
+WL.Analytics.log({_activity: "customActivity"}, "Analytics log message");
+{% endhighlight %}</p>
+<h2 id="sendingData">Sending data</h2>
+<p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
+<p>{% highlight javascript  %}
+// Logs sent upon successful connection
+WL.Client.connect();
+// Logs sent upon successful adapter invocation
+WLResourceRequest.send();
+{% endhighlight %}</p>
+<p>You can disable this automatic behavior by using the following call:</p>
+{% highlight javascript  %}
+// Disable automatic sending of client and analytics logs
+WL.Logger.config({autoSendLogs: false});
+{% endhighlight %}</p>
+If you want to send this data more frequently, you can use the following API calls:</p>
+<p>
+{% highlight javascript  %}
+// Send client debug logs
+WL.Logger.send();
+// Send analytics logs
+WL.Analytics.send();
+{% endhighlight %}</p>
+<h2 id="customCharts">Custom charts</h2>
+<p>Custom charts are a new feature of MobileFirst Platform Operational Analytics 7.0 and later. By using custom charts, you can take data that is already collected, like device ID, device model, device OS, etc., or log your own custom data and create charts. To understand how to log and send data, see <a href="#analyticsLogs">Analytics logs</a> and <a href="#sendingData">Sending data</a>.</p>
+<h3>Chart types</h3>
+<ul>
+<li>Bar Graph</li>
+<li>Flow Chart</li>
+<li>Line Graph</li>
+<li>Metric Group</li>
+<li>Pie Chart</li>
+<li>Table</li>
+</ul>
+<h2 id="creatingCustomChart">Creating a custom chart</h2>
+<p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.</p>
+<p>The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:</p>
+<p>{% highlight javascript  %}
+WL.Analytics.log({buttonPress: "buttonA"}, "press");
+WL.Analytics.log({buttonPress: "buttonB"}, "press");
+WL.Analytics.log({buttonPress: "buttonC"}, "press");
+{% endhighlight %}</p>
+<p>To create a chart, follow these steps.</p>
+<ol>
+<li>Go to the <strong>Custom Charts</strong> tab and click <strong>Create Chart</strong>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-1-1024x275.png"/><br />
+The following will appear.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-2-1024x713.png"/><br />
+As you fill out your information, more input fields are displayed.
+</li>
+<li>Enter a <strong>Chart Title</strong></li>
+<li>Select <strong>Custom Data</strong> as the <strong>Event Type</strong></li>
+<li>Select a <strong>Chart Type</strong>. This example uses a <strong>Pie Chart</strong>.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-type-1024x627.png" />
+</li>
+<li>Click on the <strong>Chart Definition</strong> tab.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-3-e1437662521800-1024x404.png" />
+</li>
+<li>Select a <strong>Property</strong>. This example uses <code>buttonPress</code>. 
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-4-1024x693.png"  /></li>
+<li>Click <strong>Save</strong>. The chart is saved under the <strong>Custom Charts</strong> tab in the main dashboard.<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/custom-chart-5-1024x642.png" /></li>
+</ol>
+<h2 id="alerts">Alerts</h2>
+<p>If you are using the latest interim fix of MobileFirst, you can set thresholds in alert definitions in the IBM MobileFirst™ Platform Operational Analytics Console to better monitor your activities.</p>
+<p>You can configure thresholds, which if exceeded, trigger alerts to notify the MobileFirst Operational Analytics Console monitor. The triggered alerts can be visualized on the console, or the alerts can be handled by a custom webhook. This feature provides a proactive means of detecting client log errors, server log errors, extended periods of network latency, and authentication failures. Reactive thresholds and alerts keep you from having to sift through your data and set thresholds at a wide spectrum of granularity.</p>
+<h3>Navigating Alerts</h3>
+<p>To navigate to the Alert's dashboard there is a button with a bell in the top right corner as indicated in the picture below. The button may have a number associated, like in the image below. This number represents the number of alerts that have gone off since the last time last time a user has marked that they were notified of the alerts.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AlertsDashboard.jpg.png" /></p>
+<p>The initial page to the Alert's dashboard is the Alert's log page. In the Alert's log page you can see previous alerts that  you were alerted about. If an alert has not been marked as viewed, then you will see a red circle over the alert count. To mark this as viewed, just press on the red circle.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AlertsManagment.jpg.png" /></p>
+<p>If you navigate to the 'Alert Management' tab, you can see the previous alerts that have been created. Here you can enable the alerts, copy the alerts for a starting point when creating a new alert, edit an existing alert, delete an existing alert, or create a new alert.</p>
+<h3>Creating an Alert</h3>
+<p>To create an alert, press the 'Create Alert' button under the 'Alert Management' tab in the Alert's dashboard. When creating an alert, the alert's information will populate as you are filling in information because not every alert will take the same values. Below you can see an alert with information already filled in.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-09-22-at-11.48.27-AM.png" /></p>
+<h2 id="migration">Migration</h2>
+<p>MobileFirst Platform Foundation Analytics now has a simple migration tool for users who are on an earlier version of Operational Analytics than MobileFirst Platform Foundation 7.1.0. This feature is needed because some of the search mappings in previous versions of IBM MobileFirst Platform Foundation that are necessary to populate the Analytics console have been changed.</p>
+<p>To run this search, go to the <strong>Administration</strong> tab on the left side of the console. After the administration console loads, click the <strong>Migration</strong> tab on the top tab bar. You can then see how many documents you have to migrate and the progress of the migration. You can perform a migration by pressing the <strong>Perform Migration</strong> button. After the migration process, all your data is migrated to IBM MobileFirst Platform Foundation 7.1.0 with all the correct mappings. You can see an example of the migration tab below.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-06-24-at-2.12.12-PM.png" /></p>

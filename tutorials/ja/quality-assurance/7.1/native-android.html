@@ -1,0 +1,147 @@
+---
+layout: tutorial
+title: MobileFirst Quality Assurance for native Android applications
+relevantTo: [android]
+weight: 5
+---
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> This tutorial is a continuation of the <a href="../overview/">MobileFirst Quality Assurance</a> tutorial. To follow it, you must first set up IBM Mobile Quality Assurance (MQA).</p>
+<p>This tutorial explains how to install and configure the Mobile Quality Assurance client SDK for Android, and how to enable apps to send back bug reports and feedback.</p>
+
+<h3>Jump to:</h3>
+<ul>
+    <li><a href="#creatingapp">Creating a simple Android app</a></li>
+    <li><a href="#installingLibraries">Installing the Android libraries</a></li>
+    <li><a href="#configuringSession">Configuring how MQA communicates with your app</a></li>
+    <li><a href="#Testing">Testing your app</a></li>
+    <li><a href="#otherfeatures">Further discovery</a></li>
+</ul>
+
+<h2 id="creatingapp">Creating a simple Android app</h2>
+<p>If you do not already have an Android app to use for this procedure, create a Hello World app by completing the following steps in Android Studio:</p>
+
+<ol>
+    <li>Open Android Studio and select <strong>File</strong> > <strong>New</strong> > <strong>New project</strong>.</li>
+    <li>Name your new application <em>Helloworld</em>.</li>
+    <li>Identify the location where you want your project files stored, or select the default path. Click <strong>Next</strong>.</li>
+    <li>Select <strong>Phone and Tablet</strong> for your device type and accept the default minimum SDK of Android that is listed. Click <strong>Next</strong>.</li>
+    <li>Select the blank activity type, and click <strong>Next</strong>.</li>
+    <li>You can leave the default values in the Customize the Activity window for this example. Click <strong>Finish</strong>.</li>
+    <li>After the app builds, you can test it by running it in an emulator by selecting <strong>Run 'app'</strong> from the <strong>Run</strong> menu.</li>
+</ol>
+
+<h2 id="installingLibraries">Installing the Android libraries</h2>
+<p>The libraries support both preproduction mode or production mode. Use preproduction mode when you want internal testers to report bugs and feedback with detailed information and have apps under test automatically report crashes.
+Complete the procedure for production mode when the app is publicly available and you want to gather information after it is released. Complete these steps when using the Android platform:</p>
+
+<ol>
+    <li>Download the most recent version of the Mobile Quality Assurance SDK for Android. For more information about downloading the SDK, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/c_AndroidSDKsForDownload.html" title="Android SDK for download" target="_blank">Android SDK for download</a>.
+
+        <p><strong>Important:</strong> Ensure that you download the SDK that corresponds to your Android IDE, either Android Studio or Android Development Tools (ADT).</li>
+        <li>Add Mobile Quality Assurance to your project by using Android Studio.
+            <ol>
+                <li>Click <strong>File</strong> > <strong>New Module</strong>.</li>
+                <li>In the Create New Module wizard, under <em>More Modules</em>, select <strong>Import .JAR or .AAR Package</strong>, then click   <strong>Next</strong>.</li>
+                <li>In the File name field, enter the name of the Mobile Quality Assurance SDK <code>.aar</code> file that you downloaded.
+                    <strong>Tip:</strong> To browse to the file, click <strong>...</strong>.</li>
+                <li>Click <strong>Finish</strong>.</li>
+            </ol>
+        </li>
+        <li>Add Mobile Quality Assurance to your mobile app by using Android Studio:
+            <ol>
+                <li>Click <strong>File</strong> > <strong>Project Structure</strong>.</li>
+                <li>In the Project Structure window, select the module for your app, and then select the <strongm>Dependencies tab.</strongm></li>
+                <li>Click <strong>+</strong> > <strong>Module Dependency</strong>.</li>
+                <li>In the Choose Modules window, select the Mobile Quality Assurance Android module that you imported, and then click <strong>OK</strong>. The Choose Modules window closes.</li>
+                <li>Click <strong>OK</strong> to close the Project Structure window.</li>
+            </ol>
+        </li>
+        <li>Update the <code>AndroidManifest.xml</code> file:
+            <strong>Tip:</strong> The manifest file included with the SDK contains all the activities and permissions for Mobile Quality Assurance. The optional permissions are commented out. To enable them, remove the
+        < -- and --> tags that surround each permission.</p>
+            <ol>
+                <li>Declare the Mobile Quality Assurance preproduction or production activities. Ensure that the manifest file includes an application that contains the following activities:
+                    {% highlight xml linenos %}
+                    <activity android:name="com.ibm.mqa.ui.ProblemActivity"></activity>
+                    <activity android:name="com.ibm.mqa.ui.FeedbackActivity"></activity>
+                    <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity"></activity>
+                    {% endhighlight %}
+                </li>
+                <li>Ensure that the following required permissions are listed in the manifest file:
+                    <ul>
+                        <li>INTERNET - Mobile Quality Assurance uses this permission to connect with the IBM® Mobile Quality Assurance for Bluemix server. The following code snippet shows the INTERNET permission entry that you must include:
+                            <p>{% highlight xml linenos %}
+<uses-permission android:name="android.permission.INTERNET" />{% endhighlight %}
+                        </li>
+                        <li>SYSTEM_ALERT_WINDOW - <strong>Note:</strong> This permission is required as of Android 5.1. Mobile Quality Assurance requires this permission to open windows on top of your application, such as the Mobile Quality Assurance app tester log-in window in preproduction mode, the Mobile Quality Assurance bug and feedback reporting window in preproduction mode, and the Mobile Quality Assurance feedback window in production mode. The following code snippet shows the <code>SYSTEM_ALERT_WINDOW</code> permission entry that you must include:
+                        {% highlight xml linenos %}
+                        <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+                        {% endhighlight %}
+                        <strong>Important:</strong> If you do not add the permission, the app might fail with an <code>InvalidDisplayException</code> error: In preproduction mode, the app might fail to start. In production mode, if the app uses the <code>MQA.feedback()</code> API, it might crash when the API is called.</li>
+                        <li>For optional settings that you can enable, see <a href="http://www-01.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_DownloadingAndInstallingTheAndroidLibraries.html" title="Installing the Android libraries" target="_blank">Installing the Android libraries</a> in IBM Knowledge Center.</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </li>
+</ol>
+
+<h2 id="configuringSession">Configuring how MQA communicates with your app</h2>
+<ol>
+    <li>Configure MQA to start a new Mobile Quality Assurance session each time your app starts in the Java file:
+        <ol>
+            <li>Ensure that Mobile Quality Assurance is imported by verifying that your code includes the following lines:
+                {% highlight java linenos %}
+                import com.ibm.mqa.MQA;
+                import com.ibm.mqa.MQA.Mode;
+                import com.ibm.mqa.config.Configuration;
+                {% endhighlight %}
+            </li>
+            <li>Build a configuration object that specifies how Mobile Quality Assurance behaves.</li>
+            <li>Call the <code>MQA.startNewSession()</code> method in the <code>onCreate</code> event of your main activity.
+                {% highlight java linenos %}
+                public class MainActivity extends Activity {
+                    public static final String APP_KEY = "Your-Application-Key-Goes-Here";
+
+                    @Override public void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_main);
+                        Configuration configuration = new Configuration.Builder(this)
+                       .withAPIKey(APP_KEY); // Provides the quality assurance application APP_KEY
+                        .withMode(Mode.QA)  // Selects the quality assurance application mode
+                        .withReportOnShakeEnabled(true) // Enables shake report trigger
+                        .build();
+                        MQA.startNewSession(MainActivity.this, configuration);
+                    }
+                }
+                {% endhighlight %}
+                <blockquote><p>To learn more about starting a Mobile Quality Assurance session, including details about the different session configuration options, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_StartingAnAndroidSession.html" title="Starting an Android session" target="_blank">Starting an Android session</a>.</p></blockquote>
+            </li>
+            <li>Add your valid application key to send data to Mobile Quality Assurance. <strong>Tip:</strong> If you already have an account, you can find your app key in the Mobile Quality Assurance web pane under App Settings. In the code snippet in which you created the configuration object, replace the <em>Your-Application-Key-Goes-Here</em> variable with your application key from Mobile Quality Assurance.</li>
+        </ol>
+    </li>
+    <li>Send your log calls to Mobile Quality Assurance. Mobile Quality Assurance comes with its own logging library <em>com.ibm.mqa.Log</em>, which you can use in place of the standard Android logging library. To have all of your logs go through Mobile Quality Assurance, replace the <code>import android.util.Log;</code> import statement with: <code>import com.ibm.mqa.Log;</code>.</li>
+    <li>Gather user feedback (preproduction only). If your app is in preproduction with Mobile Quality Assurance, you can get user feedback from within the app.</li>
+</ol>
+
+<h2 id="Testing">Testing your app</h2>
+<p>After the environment is set up, you can load your app on your Android device and start testing it.  Complete the following steps to report a bug or provide feedback during testing:</p>
+
+<ol>
+    <li>Shake your mobile device lightly if the shake option is enabled. If it is not enabled, you can tap the MQA icon on your notifications bar.</li>
+    <li>Select <strong>Report a bug</strong> or <strong>Give feedback</strong>.</li>
+    <li>Enter the required information and select <strong>Send</strong> to send the information.</li>
+    <li>View the bug reports and feedback in your Bluemix MQA instance where you retrieved the AppKey.</li>
+</ol>
+
+<p>For more information about reporting bugs, see <a href="https://www.ibm.com/support/knowledgecenter/#!/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/topics/t_ReportingBugsOnAndroidDevices.html">Reporting bugs on Android devices</a>. For more information about submitting feedback, see <a href="https://www.ibm.com/support/knowledgecenter/#!/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/topics/tandroidFeedback.html">Submitting feedback on an Android device</a>.</p>
+
+<h2 id="otherfeatures">Further discovery</h2>
+<p>After you are comfortable with the basics of setting up MQA with your app, you can read content in IBM Knowledge Center to learn and explore some of the other things that you can do.  For example:</p>
+
+<ul>
+    <li><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ManagingTesters.html">Managing users and testers</a>. You can manage the roles and access of your team as they apply to your app and MQA instance.</li>
+    <li><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_DistributingBuilds.html">Distributing and managing builds</a>. You can distribute test builds and production builds to the appropriate audience.</li>
+    <li><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ManagingReports.html">Managing reports</a>. You can automatically distribute test builds and production builds to your audience.</li>
+    <li><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/UserSentiment.html">User sentiment analytics</a>. You can use MQA to analyze and monitor user comments and information about your app. You can also compare the analysis of those comments with the analysis of the user feedback from similar apps.</li>
+</ul>

@@ -1,0 +1,52 @@
+---
+layout: tutorial
+title: Application Authenticity Protection in Native Android applications
+breadcrumb_title: Native Android
+relevantTo: [android]
+---
+<br>
+This is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
+<h2>Adding required files</h2>
+<p>From the MobileFirst project's Native API folder, copy the following folders to your native's project <code>lib</code> folder: <code>armabi</code>, <code>armabi-v7a</code>, <code>mips</code>, <code>x86</code>.</p>
+<h2>application-descriptor.xml</h2>
+<h4>Adding the security test</h4>
+<p>Modify the <code>application-descriptor.xml</code> file of your application.<br />
+Add the <em>securityTest</em> attribute to the Android or iPhone/iPad environment element. For example:</p>
+<p>{% highlight xml  %}
+<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
+{% endhighlight %}</p>
+
+<h4>Adding the public signing key</h4>
+<p><strong>Extract the public signing key of the certificate that is used to sign application bundle (<em>.apk</em> file). </strong></p>
+<ul>
+<li>If building the application for distribution (production), extract the public key from the certificate that is used to sign the production ready application.</li>
+<li>If building an application in the development environment, the default public key that is supplied by the Android SDK can be used. The development certificate can be found in a keystore that is in a <strong>{user-home}/.android/debug.keystore</strong> file.</li>
+</ul>
+<p>The public signing key can be extracted either manually or by using the wizard that MobileFirst Studio provides.<br />
+To use the wizard:</p>
+<ul>
+<li>Right-click the Android NativeAPI folder and select <strong>Extract public signing key</strong>.</li>
+<li>Specify the location and the password of a keystore file, and click <strong>Load Keystore</strong>. The default password for <code>debug.keystore</code> is “android”.</li>
+<li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
+<li>A dialog opens that displays the public key.</li>
+<li>Click <strong>Finish</strong> to automatically paste the public signing key to the relevant section of the <code>application-descriptor.xml</code> file.</li>
+</ul>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_11_adding_public_signing_key-300x127.png"/>
+<p><strong>Add the Application package name by using the Application Descriptor Editor (design view):</strong></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/>
+<p>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <strong>AndroidManifest.xml</strong>.<br />
+If you decide to change the value to another, verify that you change it in both locations.</p>
+<p>The <code>application-descriptor.xml</code> file can also be edited directly to add the <em>packageName</em>:</p>
+<p>
+{% highlight xml  %}
+<android version="1.0" securityTest="customTests">
+     <worklightSettings include="false"/>
+     <security>
+         <encryptWebResources enabled="false"/>
+         <testWebResourcesChecksum enabled="false"
+             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+         <publicSigningKey>MIGfM …</publicSigningKey>
+         <packageName>com.MyBankApp</packageName>
+     </security>
+</android>
+{% endhighlight %}</p>

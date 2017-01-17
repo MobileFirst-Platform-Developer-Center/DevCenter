@@ -1,0 +1,219 @@
+---
+layout: tutorial
+title: Using the MobileFirst Server to authenticate external resources
+relevantTo: [hybrid]
+weight: 11
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/OAuthExternalServer/tree/release71
+---
+<h2>Overview</h2>
+<p>By using MobileFirst Server, you can protect external resources by applying the OAuth 2.0 protocol. The OAuth 2.0 protocol is based on acquiring an access token, which encapsulates the authorization that is granted to the client.</p>
+<ul>
+<li>MobileFirst Server acts as an Authorization Server and issues an access token that can be validated by the external service.</li>
+<li>Client applications request the access token from MobileFirst Server and sends the token to the external services.</li>
+<li>The scope of the access token is a realm (or several realms), which are defined in the MobileFirst project.</li>
+</ul>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#mobilefirst_authentication_oath">Authenticating through an access token over OAuth 2.0</a></li>
+<li><a href="#mobile_first_project_configuration">Configuring the MobileFirst project</a></li>
+<li><a href="#mobilefirst_configuration_keystore">Configuring MobileFirst Server to use a keystore</a></li>
+<li><a href="#use_of_the_client_side_api">Using the WLResourceRequest API</a></li>
+<li><a href="#reporting_analytics">Reporting analytics</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="mobilefirst_authentication_oath">Authentication through an access token over OAuth 2.0</h2>
+<p>The OAuth 2.0 authorization framework enables an application from independent software vendors (also called third-party application) to obtain limited access to an HTTP service.</p>
+<p>The implementation uses three roles of the OAuth protocol:</p>
+<ul>
+<li><strong>Resource Server</strong>: third-party server<br />The server that hosts the protected resources. It can accept, and respond to, protected resource requests by using access tokens.</li>
+<li><strong>Client</strong>: app<br />An application that requests protected resources.</li>
+<li><strong>Authorization Server</strong>: MobileFirst Server<br />The server that issues access tokens to the client after it has successfully authenticated the resource owner and obtained authorization.</li>
+</ul>
+<h3>Overview of the Resource Server component</h3>
+<p>The <strong>Resource Server</strong> is an external server that hosts the available resource.</p>
+<p>One use case is that services are deployed on a cloud, such as <strong>Bluemix</strong>. But this flow is not restricted to that case and works with any third-party server.</p>
+<p>The public key that is necessary to verify the token must be configured for this component.</p>
+<p>Java and <code>node.js</code> libraries are provided for offline validation.</p>
+<h3>Overview of the client component</h3>
+<p>As of IBM MobileFirst Platform Foundation 7.1, the <strong>MobileFirst SDK</strong> can now also be used to access the Resource Server through <code>WLResourceRequest</code>. This API handles the OAuth-based security model protocol and invokes the required challenges.</p>
+<p>An <strong>External SDK</strong> can also be used to access the Resource Server. The external SDK must be able to attach a header to the request.</p>
+<h3>Overview of the MobileFirst Server component</h3>
+<p><strong>MobileFirst Server</strong> uses the authentication infrastructure to issue an access token for the requested scope (MobileFirst realm).</p>
+<h2 id="mobile_first_project_configuration">Configuring the MobileFirst project</h2>
+<p>Configuring the MobileFirst project consists in configuring the scope for the access token. The scope of an access token must be a predefined realm in a MobileFirst project. You configure realms in the <code><em>MobileFirst_project</em>/server/conf/authenticationConfig.xml</code> file.</p>
+<p>The expiration period of a scope token (realm name) is defined by the expiration attribute of the login module that is associated with the realm.</p>
+<p>If you want to configure a login module called <code>StrongDummy</code> with an expiration attribute, edit the <code>authenticationConfig.xml</code> file in the login module section as follows::</p>
+<p>{% highlight xml  %}
+<loginModule name="StrongDummy" expirationInSeconds="1800">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+</loginModule>
+{% endhighlight %}</p>
+<p>If you want to configure a realm called <code>SampleAppRealm</code> that is associated with <code>StrongDummy</code>, edit the <code>authenticationConfig.xml</code> file in the realm section as follows:</p>
+<p>{% highlight xml  %}
+<realm name="SampleAppRealm" loginModule="StrongDummy">
+	<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+</realm>
+{% endhighlight %}</p>
+<h2 id="mobilefirst_configuration_keystore">Configuring MobileFirst Server to use a keystore</h2>
+<p>To use this feature, preferably use or create your own keystore and configure MobileFirst Server to use it.</p>
+<p>For an example in an unrelated context, see the topic about configuring device auto provisioning, in the product documentation.</p>
+<p><strong>Important:</strong> Using the default MobileFirst Server keystore is <strong>NOT</strong> secure!</p>
+<h2 id="external_service_configuration">Configuring the external service</h2>
+<p>For your external service to accept the access token, you must add a validation library to your service, which must be able to validate the token with either online or offline validation.</p>
+<p>You can use one of two libraries for this purpose:</p>
+<ul>
+<li><code>com.ibm.imf.oauth.common_1.0.0.jar</code> - Java lib</li>
+<li>The <code>node.js</code> library, which can be downloaded through <code>npm</code>.</li>
+</ul>
+<p>For MobileFirst Server installation - You can find the necessary java library and files in: <br /><code><em>installation_dir</em>/MobileFirstServer/external-server-libraries</code></p>
+<p>For MobileFirst Studio - When you create a new project, you can find the java library and files in: <br /><code><em>project_dir</em>/externalServerLibraries</code></p>
+<h3>External service configuration - Using Java</h3>
+<p>The purpose of this module is to enable offline validation of access tokens that are generated by MobileFirst Server for Java web applications.</p>
+<p>Validation of access tokens that are generated by MobileFirst Server is also possible for <code>node.js</code> servers.</p>
+<p>To use the Java library, you need three files:</p>
+<ul>
+<li><code>Certificate</code> - For the associated sample, the certificate that has been exported from the MobileFirst Server Keystore. You can use the Java keytool. In production, preferably use your own keystore as explained in <a href="#mobilefirst_configuration_keystore">Configuring MobileFirst Server to use a keystore</a>.</li>
+<li><code>com.ibm.imf.oauth.common_1.0.0.jar</code></li>
+<li><code>OAuthTai-1.0.mf</code></li>
+<li><code>server.env</code> - It may also be useful to create this file in the same directory as the <code>server.xml</code> in the external server. In this file you will add the URL to the authorization server so this way it will be included in the environment variables of your deployment.
+</li>
+</ul>
+<h3>External service configuration - Using Java: servlet filter</h3>
+<ol>
+<li>Add the <code>com.ibm.imf.oauth.common_1.0.0.jar</code> file to your server under this path: <code>usr/extension/lib</code></li>
+<li>Add the <code>OAuthTai-1.0.mf</code> file to the path <code>usr/extension/lib/features</code>
+</li>
+<li> Add following entry in environment variables of your deployment. One of the ways is to add it into server.env, which locates in the same directory of your server.xml.<br />
+<code>publicKeyServerUrl=URL_to_authorization_server</code><br />
+where <code>URL_to_authorization_server</code> is:<br />
+<code>http://<ip-address-to-MobileFirst-server>:<port-number>/<project-context-root></code></li>
+<li>Add a security constraint and a security role to the <code>web.xml</code> file of your external server, as shown below:
+<p>{% highlight xml  %}
+<security-constraint>
+   <web-resource-collection>
+      <web-resource-name>RESTServlet</web-resource-name>
+      <url-pattern>/api/protected</url-pattern>
+   </web-resource-collection>
+   <auth-constraint>
+      <role-name>TAIUserRole</role-name>
+   </auth-constraint>
+</security-constraint></p>
+<p><security-role id="SecurityRole_TAIUserRole" >
+   <description>This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty</description>
+   <role-name>TAIUserRole</role-name>
+</security-role>
+{% endhighlight %}
+</li>
+<li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:
+{% highlight xml  %}
+<featureManager>
+   <feature>jsp-2.2</feature>
+   <feature>appSecurity-2.0</feature>
+   <feature>usr:OAuthTai-1.0</feature>
+   <feature>servlet-3.0</feature>
+   <feature>jndi-1.0</feature>
+</featureManager>
+{% endhighlight %}
+</li>
+<li>In your application, add a security role:
+{% highlight xml  %}
+<application ...>
+   ...
+   <application-bnd>
+      <security-role name="TAIUserRole">
+         <special-subject type="ALL_AUTHENTICATED_USERS"/>
+      </security-role>
+   </application-bnd>
+</application>
+{% endhighlight %}
+</li>
+<li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
+{% highlight xml  %}
+<usr_OAuthTAI id="myOAuthTAI">
+   <securityconstraint httpMethods="GET POST" scope="SampleAppRealm" securedURLs="/REST-Server/api/protected"></securityconstraint>
+</usr_OAuthTAI>
+{% endhighlight %}
+The scopes that you provide are all defined in the <code>authenticationConfig.xml</code> file of the MobileFirst Project. You can provide multiple scopes.
+</li>
+</ol>
+<h2 id="use_of_the_client_side_api">Using the WLResourceRequest API</h2>
+<p>The MobileFirst <code>WLResourceRequest</code> API provides built-in support fur using MobileFirst access tokens for the following platforms:</p>
+<ul>
+<li>Hybrid - JavaScript<sup>TM</sup></li>
+<li>Android</li>
+<li>iOS</li>
+<li>Windows Phone 8.1
+</li>
+</ul>
+<h3>Use of WLResourceRequest: JavaScript example</h3>
+<p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
+<p>{% highlight javascript  %}
+function callProtectedRestAPI() {
+	var url = EXTERNAL_SERVER_URL + REST_CONTEXT_ROOT+PATH_PROTECTED;
+	var request = new WLResourceRequest(url, WLResourceRequest.GET);
+	request.send().then(
+			function(response){
+				showResult(response.responseJSON.description);
+			},
+			function(error){
+				showErrorResult("failed to get scope!");
+			}
+	);
+}
+{% endhighlight %}</p>
+<h2 id="reporting_analytics">Reporting analytics</h2>
+<h3>Java</h3>
+<p>The <strong>TAI</strong> library is capable of reporting analytic events to IBM MobileFirst Platform Operational Analytics. To do this, you must configure the Resource Server that contains the <strong>TAI</strong> with your Analytics URL and credentials.</p>
+<p>The MobileFirst Operational Analytics server is protected by basic authentication. When you installed this server, you configured the data entry point and basic authentication credentials. To configure the <strong>Resource Server</strong>, you must provide the Analytics credentials, specifically the URL to the data entry point, the user name, and password. These properties are set with the following property names:<br />
+- <code>imf.analytics.url</code><br />
+- <code>imf.analytics.username</code><br />
+- <code>imf.analytics.password</code></p>
+<ul>
+<li>If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your <code>server.xml</code> file. For example:
+<p>{% highlight bash %}
+<jndiEntry jndiName="imf.analytics.username" value="admin"/>
+{% endhighlight %}
+</li>
+<li>If your Resource Server is running on WebSphere Application Server, configure these properties as environment entries.<br />
+To do this, navigate from the WebSphere Application Server administration console to <strong>Servers > Server Type > WebSphere application servers</strong> > <em>{your_server}</em> > <strong>Server Infrastructure</strong> > <strong>Java and Process Management</strong> > <strong>Process Definition</strong> > <strong>Additional Properties</strong> > <strong>Environment Entries</strong> > <strong>New</strong>.<br />
+This is where you had to set <code>publicKeyServerUrl</code> when you set up OAuthTAI.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/WasEnvironmentEntries.png" />
+</li>
+</ul>
+<p>After these properties are set, the <strong>TAI</strong> will post its events to MobileFirst Operational Analytics.</p>
+<h3>Node.js</h3>
+<p>You can protect your resources that are running on <code>Node.js</code> servers with OAuth-based MobileFirst security. Like the Java implementation, the MobileFirst Operational Analytics server is protected by basic authentication. You must configure the <strong>Resource Server</strong> by connecting the <code>passport-mfp-token-validation</code> module to the Analytics server.</p>
+<p>The <code>passport-mfp-token-validation</code> npm module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server.</p>
+<p>The following example shows how to use <code>mfpStrategy</code> in a node application:<br />
+{% highlight javascript  %}
+    var express = require('express'),
+    passport = require('passport-mfp-token-validation').Passport,
+    mfpStrategy = require('passport-mfp-token-validation').Strategy;
+//the configuration ('config') is optional if you wish to report
+//events to the Analytics Server.
+    var config = {
+        url : 'http://localhost:10080/worklight-analytics-service/data',
+        username : 'admin',
+        password : 'admin'
+    };
+    passport.use(new mfpStrategy({publicKeyServerUrl:'http://localhost:10080/WLProject', analytics : {onpremise: config}}));</p>
+    var app = express();
+    app.use(passport.initialize());</p>
+//protect api with MFP strategy using scope Realm1 Realm2 Realm3
+        app.get('/v1/apps/:appid/service', passport.authenticate('mobilefirst-strategy', {session: false, scope: 'Realm1 Realm2 Realm3' }),
+            function(req, res){
+                res.send(200, req.securityContext);
+            }
+        );
+    app.listen(3000);
+{% endhighlight %}</p>
+<p>To start this example, issue the following commands:<br />
+{% highlight bash %}
+$ npm install express
+$ npm install passport
+$ npm install passport-mfp-token-validation@71.0.X
+{% endhighlight %}</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/OAuthExternalServer/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>

@@ -1,0 +1,99 @@
+---
+layout: tutorial
+title: Learning MobileFirst hybrid client-side API
+breadcrumb_title: Learning client-side API
+relevantTo: [hybrid]
+weight: 1
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LearningMobileFirstHybridClientSideAPIProject.zip
+---
+<h2>Overview</h2>
+<p>To complete this tutorial, you must have previous experience with web development technologies such as HTML, CSS, JavaScript and DOM events &amp; manipulations. To learn these technologies, visit <a href="http://www.w3schools.com/" target="_blank">http://www.w3schools.com/</a>.<br />
+Although not required, a basic knowledge of jQuery and object-oriented JavaScript libraries is an advantage.</p>
+
+<h2>MobileFirst application components</h2>
+<h3>Application resources</h3>
+<p>The following files are essential resources in a MobileFirst application:</p>
+
+<ul>
+    <li><b>index.html:</b> Main HTML file</li>
+    <li><b>main.js:</b> Main JavaScript file</li>
+    <li><b>messages.js:</b> Messages file for storing application strings, primarily used for translation</li>
+    <li><b>initOptions.js:</b> Used for defining application <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html%23init">initialization options</a></li>
+    <li><b>wljq.js:</b> An encapsulated version of jQuery</li>
+    <li><b>worklight.js:</b> The MobileFirst client API uses the WL namespace. This namespace provides bridging to native mobile platform APIs and other elements</li>
+</ul>
+
+<h2>The <code>WL</code> namespace</h2>
+<p>The <code>WL</code> namespace is used to invoke MobileFirst APIs: <code>WL.Client, WL.App, WL.SimpleDialog,</code> ...<br />
+The <code>WL</code> namespace exposes the API objects, methods, and constants (usually enums).<br />
+The <code>WL</code> namespace is available in the application by having worklight.js automatically referenced in index.html when the application is generated in MobileFirst Studio.</p>
+
+<h3>WL.Client</h3>
+<p>With <code>WL.Client</code>, you can perform the following type of tasks.<br />
+Additional API methods are available in the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?cp=SSHS8R_6.3.0%2F9-0-0-1-7">IBM MobileFirst user documentation topic for <code>WL.Client</code></a>.</p>
+
+<h4>Initialize and reload the application:</h4>
+<ul>
+    <li><code>WL.Client.init(onSuccess, onFailure, timeout, ...)</code></li>
+    <li><code>WL.Client.reloadApp()</code></li>
+</ul>
+
+<h4>Trigger login and logout:</h4>
+<ul>
+    <li><code>WL.Client.login(realm, options)</code></li>
+    <li><code>WL.Client.logout(realm, options)</code></li>
+</ul>
+
+<h4>Obtain general app information:</h4>
+<ul>
+    <li><code>WL.Client.getEnvironment()</code></li>
+    <li><code>WL.Environment.ADOBE_AIR</code></li>
+    <li>...</li>
+</ul>
+
+<h4>Retrieve and update data from corporate information systems:</h4>
+<ul>
+    <li><code>WL.Client.invokeProcedure (invocationData, options)</code></li>
+</ul>
+
+<h4>Store and retrieve user preferences across sessions:</h4>
+<ul>
+    <li><code>WL.Client.setUserPref(key, value, options)</code></li>
+    <li><code>WL.Client.setUserPrefs({key1:value1,  …}, options)</code></li>
+    <li><code>WL.Client.getUserPref(key)</code></li>
+    <li><code>WL.Client.deleteUserPref(key, options)</code></li>
+    <li><code>WL.Client.hasUserPref(key)</code></li>
+</ul>
+
+<h4>Specify environment-specific user interface behavior:</h4>
+<ul>
+    <li><code>WL.App.openURL</code></li>
+    <li><code>WL.App.getDeviceLanguage</code></li>
+    <li><code>WL.App.getDeviceLocale</code></li>
+    <li><code>WL.BusyIndicator</code></li>
+    <li><code>WL.TabBar</code></li>
+    <li><code>WL.SimpleDialog</code></li>
+    <li><code>WL.OptionsMenu</code></li>
+    <li>...</li>
+</ul>
+
+<h4>Store custom log lines for auditing and reporting purposes in special database tables:</h4>
+<ul>
+    <li><code>WL.Client.logActivity(activityType)</code></li>
+</ul>
+
+<h4>Write debug lines to a logger window (for example: Chrome's Dev Tools console):</h4>
+<ul>
+    <li><code>WL.Logger.debug</code></li>
+</ul>
+
+<h3><code>WL.Logger</code></h3>
+<p><code>WL.Logger</code> helps you troubleshoot errors in environments without debugging tools.<br />
+<code>WL.Logger</code> outputs to an environment console, such as Xcode console, Adobe AIR, Android LogCat, Chrome Dev Tools and the like.</p>
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_01_WL_Logger.png" />
+
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LearningMobileFirstHybridClientSideAPIProject.zip">Click to download</a> the Studio project.</p>

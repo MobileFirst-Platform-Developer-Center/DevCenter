@@ -1,0 +1,81 @@
+---
+layout: tutorial
+title: Optimizing your application for various environments
+relevantTo: [hybrid]
+weight: 5
+---
+<h2 id="overview">Overview</h2>
+<p>MobileFirst applications run in mobile, tablet, and web environments.</p>
+<p>These runtime environments differ in many aspects such as screen size, orientation, specific UI guidelines and components, physical user interface, and unique environment functionalities.</p>
+<p>This tutorial explore the ways in which you can optimize an environment.</p>
+<h2 id="whatisOptim">What is environment optimization?</h2>
+<p>IBM MobileFirst Platform Foundation increases development efficiency and productivity by providing an environment optimization framework. The core logic and design guidelines of the app are implemented by using web technologies (HTML, CSS, and JavaScript) and are shared by all environments. You can then add environment-specific optimizations when needed.</p>
+<p>If you use a source control management system (such as Rational Team Concert™, Git, or Subversion), refer to the topic about integrating with source control systems, in the user documentation.</p>
+<h2 id="supportEnv">Currently supported environments</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_smartphones.png"/><br />
+<strong>Smartphones</strong></p>
+<ul>
+<li>iOS 6 and later</li>
+<li>Android 2.3.3, 4.x and later</li>
+<li>BlackBerry OS 6 and later</li>
+<li>Windows Phone 8 and later</li>
+</ul>
+<p><br clear="all" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_tablets.png"/><br />
+<strong>Tablets</strong></p>
+<ul>
+<li>iOS 6 and later</li>
+<li>Android 2.3.3, 4.x and later</li>
+<li>Windows 8 and later</li>
+</ul>
+<p><br clear="all" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_web.png"/><br />
+<strong>Web</strong></p>
+<ul>
+<li>Modern browsers that support HTML 4, CSS 2.1, and JavaScript 1.5 at a minimum</li>
+<li>Browsers that support HTML 5 and CSS 3</li>
+</ul>
+<p><br clear="all" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_browsers.png"/><br />
+<strong>Browsers</strong></p>
+<ul>
+<li>Modern browsers that support HTML 4, CSS 2.1, and JavaScript 1.5 at a minimum</li>
+<li>Browsers that support HTML 5 and CSS 3</li>
+</ul>
+<p><br clear="all" /></p>
+<h2>How does optimization work?</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_common_folder_structure-219x300.png"/></p>
+<p>The MobileFirst application structure is divided into environment folders (iPhone, Android, BlackBerry, and so on).</p>
+<p>Each environment folder contains the web resources (CSS, JS, images, and so on) that are relevant for that specific environment.</p>
+<p>A newly created application contains the base environment in the <code>common</code> folder. The web resources that are in the <code>common</code> folder serve as the basis for the optimized environments that might be added later on.</p>
+<p>The <code>common</code> folder must hold <strong>only</strong> resources that are shared by all environments.</p>
+<h3>Adding an environment</h3>
+<h4>Using the CLI</h4>
+<p>one of the following ways:</p>
+<ul>
+<li>In a terminal window, navigate to the application folder and use the command: <code>mfp add environment</code>. An interactive menu will be displayed.</li>
+<li>
+</li>
+</ul>
+<h4>Using the Studio</h4>
+<ul>
+<li>Click the MobileFirst icon from the Eclipse menu bar and select <strong>MobileFirst Environment</strong>.</li>
+<li>Right-click the MobileFirst project folder and select <strong>New > MobileFirst Environment</strong>.</li>
+</ul>
+<h3>HTML optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The new environment HTML code overrides the common HTML file.<br />
+<strong>Note:</strong> By default, a new environment does not include a new HTML file because the common HTML file is shared by all environments.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_html.jpg"/></p>
+<h3>JavaScript optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The JavaScript file from an environment folder has a <code>wlEnvInit()</code> function that invokes the <code>wlCommonInit()</code> JavaScript function from the <code>common</code> folder.</p>
+<p>Technically, the JavaScript from an environment folder is appended to the file from the <code>common</code> folder.<br />
+Using the same variable names as in the <code>common</code> folder redefines their meaning.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_javascript.jpg"/></p>
+<h3>CSS optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The CSS file from an environment folder is appended to the CSS file from the <code>common</code> folder.</p>
+<p>Using the same property names as the ones in the <code>common</code> folder overrides their settings.<br />
+<strong>Note:</strong> The CSS from the environment folder might contain some default CSS rules that match the environment needs.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_css.jpg"/></p>
+<h3>Images optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: Image files in the images folder of the environment folder that have the same file name as the image files in the <code>common</code> folder override the image files in the <code>common</code> folder.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_iphone.jpg"/></p>

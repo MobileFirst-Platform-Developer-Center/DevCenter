@@ -1,0 +1,297 @@
+---
+layout: tutorial
+title: iOS - Cloudant NoSQL DB API
+relevantTo: [ios]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial shows how to apply technology available in IBM MobileFirst Platform Foundation to store data for iOS mobile applications. By using Cloudant NoSQL DB APIs, you can complete specific database operations, such as creating, reading, updating, deleting, and synchronizing data between local and remote databases. This tutorial provides a basic overview of these APIs and explains how to configure and run the sample, in the following topics:</p>
+<ul>
+<li><a href="#imfdata">Using the IMFData SDK</a></li>
+<li><a href="#creatingLocal">Creating local data stores</a></li>
+<li><a href="#creatingRemote">Creating remote data stores</a></li>
+<li><a href="#permissions">Setting user permissions for remote stores</a></li>
+<li><a href="#modeling">Modeling data for iOS applications</a></li>
+<li><a href="#creating">Creating and updating data</a></li>
+<li><a href="#sync">Supporting synchronization and offline storage</a></li>
+<li><a href="#running">Running the iOS sample</a></li>
+<li><a href="#sdks">Obtaining and configuring the required SDKs</a></li>
+<li><a href="#encrypt">Enabling encryption</a></li>
+<li><a href="#flow">BlueList application flow</a></li>
+</ul>
+<h2 id="imfdata">Using the IMFData SDK</h2>
+<p>After the IMFData SDK is installed, you can begin to initialize and use the SDK in your native iOS application.</p>
+<p>{% highlight objc  %}
+// Initialize the IMFDataManager
+IMFDataManager *manager = [IMFDataManager initializeWithUrl:cloudantProxyUrl];
+{% endhighlight %}<br />
+The value for <code>cloudantProxyUrl</code> is the URL of the MobileFirst Data Proxy as it was configured during installation. The URL includes the IP address, host, and context root that you defined.<br />
+For example: <code>http://localhost:10080/imf-data-proxy</code><br />
+In the native iOS sample that comes with this tutorial, the value for the <code>cloudantProxyUrl</code> is set in the <code>bluelist.plist</code> file.</p>
+<h2 id="creatingLocal">Creating local data stores</h2>
+<p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
+<p>{% highlight objc  %}
+//Get reference to IMFDataManager
+IMFDataManager *manager = [IMFDataManager sharedInstance];
+NSString *dbname=@"todosdb";
+NSError *error = nil;
+//Create local store
+CDTStore *datastore = [manager localStore:dbname error:&error];
+if (error) {
+        [NSException raise:@"DBCreationFailure" format: @"Could not create DB with name %@", dbname];
+    }
+    else{
+        NSLog(@"Local data store created successfully");
+    }
+{% endhighlight %}</p>
+<h2 id="creatingRemote">Creating remote data stores</h2>
+<p>You can also create a Store object to allow your application to access a remote database.</p>
+<p>{% highlight objc  %}
+// Get reference to data manager
+IMFDataManager *manager = [IMFDataManager sharedInstance];
+NSString *dbname = @"todosdb";
+// Create remote store
+[manager remoteStore:dbname completionHandler:^(CDTStore *store, NSError *error) {
+    if(error){
+        // Handle error
+    }else{
+        CDTStore *remotedatastore = store;
+        NSLog(@"Successfully created store);
+    }
+}];
+{% endhighlight %}</p>
+<h2 id="permissions">Setting user permissions for remote stores</h2>
+<p>You can set specific permissions for users to access remote stores.</p>
+<p>{% highlight objc  %}
+[manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @"todosdb" completionHander:^(BOOL success, NSError *error) {
+    if(error){
+        // Handle error
+    }else{
+        // setting permissions was successful
+    }
+}];
+{% endhighlight %}<br />
+<strong>Note:</strong> In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth?lang=en">configuring OAuth security documentation.</a></p>
+<h2 id="modeling">Modeling data for iOS applications</h2>
+<p>In iOS applications, you can use the <code>CDTDataObjectMapper</code> class to map native objects to the JSON document format.  When you create a data store with the <code>IMFDataManager</code> API, a <code>CDTDataObjectMapper</code> is created automatically and is set on the <code>CDTStore</code> object. In the sample, a custom <code>TodoItem</code> class enables you to store custom data as objects in the application. When you create a custom <code>CDTDataObjectMapper</code> class, make sure that it meets the following requirements:</p>
+<ul>
+<li>Conform to the <code>IMFDataObject</code> protocol.</li>
+<li>Have the <code>IMFDataObject</code> protocol metadata property set on the class interface.</li>
+<li>Extend <code>NSObject</code>.</li>
+</ul>
+<h3>TodoItem implementation (<code>TodoItem.h</code>)</h3>
+<p>{% highlight objc  %}
+@interface TodoItem : NSObject <CDTDataObject>
+@property NSString *name;
+@property NSNumber *priority;<
+//Required by the IMFDataObject protocol
+@property (strong, nonatomic, readwrite) CDTDataObjectMetadata *metadata;
+@end
+{% endhighlight %}</p>
+<p>You must then register the class and data type with the <code>CDTDataObjectMapper</code>. In the sample, the <code>TableViewController</code> does that after the store is created.<br />
+{% highlight objc  %}
+//using the existing store
+[self.datastore.mapper setDataType:@"TodoItem" forClassName:NSStringFromClass([TodoItem class])];
+{% endhighlight %}</p>
+<h2 id="creating">Creating and updating data</h2>
+<p>Using the same operation, you can save new objects and save changes to existing objects in a data store.</p>
+<h3>Creating Todo Items</h3>
+<p>{% highlight objc  %}
+//using a store that was created previously
+- (void) createItem: (TodoItem*) item {
+    //save will perform a create because the item object does not exist yet in the DB.
+    [self.datastore save:item completionHandler:^(NSObject *object, NSError *error) {
+        if (error) {
+            NSLog(@"createItem failed with error: %@", error);
+        } else {
+            [self listItems:nil];
+        }
+    }];
+}
+{% endhighlight %}</p>
+<h3>Updating Todo Items</h3>
+<p>{% highlight objc  %}
+//using a store that was created previously
+- (void) updateItem: (TodoItem*) item
+{<
+    //save will perform a create because the CDTDocumentRevision already exists.
+    [self.datastore save:item completionHandler:^(NSObject *object, NSError *error) {
+        if (error) {
+            NSLog(@"updateItem failed with error: %@", error);
+        } else {
+            [self listItems:nil];
+        }
+    }];
+}
+{% endhighlight %}</p>
+<h3>Deleting data</h3>
+<p>To delete an object in a data store, pass the object to the <code>delete: completionHandler</code> method:</p>
+<p>{% highlight objc  %}
+//using a store that was created previously
+-(void) deleteItem: (TodoItem*) item
+{
+    [self.datastore delete:item completionHandler:^(NSString *deletedObjectId, NSString *deletedRevisionId, NSError *error) {
+        if (error != nil) {
+            NSLog(@"deleteItem failed with error: %@", error);
+        } else {
+            [self listItems:nil];
+        }
+    }];
+}
+{% endhighlight %}</p>
+<h3>Querying data</h3>
+<p>You can query for objects that have an object mapper. The Cloudant query API provides convenient methods for querying with <code>NSPredicate</code> and for querying by data type. For more information about these functions, see <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_sdk_query.html">Querying data</a> in the user documentation.</p>
+<h2 id="sync">Supporting synchronization and offline storage</h2>
+<p>By using the data manager API, you can synchronize data between local storage on the device and remote stored instances.</p>
+<h3>Pull replication</h3>
+<p>When pull replication runs, the local database within the mobile device is updated with what exists in the remote database.<br />
+{% highlight objc  %}
+- (void)pullItems {
+// store is an existing CDTStore object created using IMFDataManager remoteStore
+NSError *replicationError;
+CDTPullReplication *pull = [manager pullReplicationForStore: store.name];
+CDTReplicator *replicator = [manager.replicatorFactory oneWay:pull error:&replicationError];
+if(replicationError){
+    // Handle error
+}else{
+    // replicator creation was successful
+}
+[replicator startWithError:&replicationError];
+if(replicationError){
+    // Handle error
+}else{
+    // replicator start was successful
+}
+}
+{% endhighlight %}</p>
+<h3>Push replication</h3>
+<p>When push replication runs, the data from the local database within the mobile device is sent to the remote database.<br />
+{% highlight objc  %}
+- (void)pushItems {
+    // store is an existing CDTStore object created using IMFDataManager localStore
+    NSError *replicationError;
+    CDTPushReplication *push = [manager pushReplicationForStore: store.name];
+    CDTReplicator *replicator = [manager.replicatorFactory oneWay:push error:&replicationError];
+    if(replicationError){
+        // Handle error
+    }else{
+        // replicator creation was successful
+    }
+    [replicator startWithError:&replicationError];
+    if(replicationError){
+        // Handle error
+    }else{
+        // replicator start was successful
+    }
+}
+{% endhighlight %}</p>
+<p><strong>Note:</strong> The code snippets above might be different from the code that you can see in the sample. These snippets have been created to give the clearest and most understandable outline of the APIs and how they are used. For the sample to be easier to use, all the implementation for the above operations can be found in the <code>TableViewController</code>.</p>
+<h2 id="running">Running the iOS sample</h2>
+<p>Make sure that you have properly configured and started the following instances:</p>
+<ul>
+<li>MobileFirst Server with <code>CloudantAuthenticationAdapter</code> and <code>iOSBlueList</code> Native API deployed</li>
+<li>Cloudant Data Local Layer Edition</li>
+<li>MobileFirst Data Proxy Server configured against MobileFirst Server and the Cloudant Data Layer Local Edition</li>
+</ul>
+<p>If you have not completed some of these tasks, review the proper setup section of the <a href="../#overview">Working with Cloudant NoSQL DB API</a> tutorial.</p>
+<h2 id="sdks">Obtaining and configuring the required SDKs</h2>
+<ol>
+<li>Make sure that you have correctly installed and set up CocoaPods. If you have not done so, complete the following:
+<ol>
+<li>Install CocoaPods by entering the following terminal command:<br />
+{% highlight bash %}
+$ sudo gem install cocoapods
+{% endhighlight %}
+</li>
+<li>Set up CocoaPods by entering the following terminal command:<br />
+{% highlight bash %}
+$ pod setup
+{% endhighlight %}
+</li>
+<p>The next step is to download and install the required dependencies for this project by using the provided </ol>
+<p><code>Podfile</code>. If you want to create or have your own <code>podfile</code>, include the following content:</p>
+<p>{% highlight bash %}
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+pod 'IMFDataLocal', '1.0.0'
+{% endhighlight %}
+</li>
+</ol>
+<li>To install the dependencies as defined in a <code>podfile</code>, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:
+<p>{% highlight bash %}
+$ pod install
+{% endhighlight %}</p>
+<p><strong>Note:</strong> For the <code>pod install</code> command to work correctly, your <code>podfile</code> must be named <code>Podfile</code> or <code>podfile</code>.
+</li>
+<li>After the dependencies are installed, open the <code>bluelist-objective-c.xcworkspace</code> file. When using CocoaPods, you must use the <code>.xcworkspace</code> file instead of the <code>.xcodeproject</code> file because of how the dependencies are configured. This pod installation will also pull in the <code>IBMMobileFirstPlatformFoundation</code> framework as it is a required dependency of <code>IMFDataLocal</code>.
+</li>
+<li>After the project is open, check and update the following items:
+<ul>
+<li>In the <code>bluelist.plist</code> file, set the <code>cloudantProxyUrl</code> to your MobileFirst Data Proxy Server location.</li>
+<li>In the <code>worklight.plist</code> file, make sure to check all the values and update them to match the MobileFirst Server instance that you have deployed.</li>
+</ul>
+</li>
+<p>Now you can run the sample on the simulators that are provided by Xcode or on a supported iOS device.</p>
+<h2 id="encrypt">NEW: Enabling encryption</h2>
+<p>It is possible to encrypt the local data stores in order to secure data that is being stored on the device.</p>
+<p><strong>Prerequisite:</strong> To use the encryption functionality as explained here, you must have the <code>IMFDataLocal/SQLCipher</code> pod installed.</p>
+<p>To begin the process of encrypting the local databases, you must first edit the <code>podfile</code> to include the <code>IMFDataLocal/SQLCipher</code> pod. This pod replaces the IMFDataLocal reference in the current <code>podfile</code>. Here is an example of the modified <code>podfile</code>:</p>
+<p>{% highlight bash %}
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+pod 'IMFDataLocal/SQLCipher'
+{% endhighlight %}</p>
+<p>A <code>pod install</code> must be completed after these changes have been made in order to have the correct encryption dependencies configured. To accomplish this, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:</p>
+<p>{% highlight bash %}
+$ pod install
+{% endhighlight %}</p>
+<p>Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an <code>CDTEncryptionKeyProvider</code> and then create a local data store with this <code>keyProvider</code>:</p>
+<p>{% highlight objc  %}
+//Initialize a key provider
+id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@"password" forIdentifier:@"user"];
+//Initialize a local store
+self.datastore = [manager localStore:dbname withEncryptionKeyProvider:keyProvider error:&dbCreateError];
+{% endhighlight %}</p>
+<p>You must also use the <code>CDTEncryptionKeyProvider</code> that you defined when you created <code>CDTPullReplication</code> and <code>CDTPushReplication</code>:<br />
+{% highlight objc  %}
+//pull replication
+self.pullReplication = [[IMFDataManager sharedInstance] pullReplicationForStore:dbname withEncryptionKeyProvider:keyProvider];
+//push replication
+self.pushReplication = [[IMFDataManager sharedInstance] pushReplicationForStore:dbname withEncryptionKeyProvider:keyProvider];
+{% endhighlight %}</p>
+<p>In the sample application, the encryption code is already provided in the <code>TableViewController</code>. By default, encryption is not enabled until an <code>encryptionPassword</code> is provided in the <code>bluelist.plist</code> file. After <code>encryptionPassword</code> is configured, the application uses this password to encrypt the local data store by using the above mechanisms. If <code>encryptionPassword</code> is left blank in the <code>bluelist.plist</code> file, encryption does not occur.</p>
+<h2 id="flow">BlueList application flow</h2>
+<p>When the application starts, the <code>AppDelegate</code> instance initializes the connection to MobileFirst Server. After initialization, the application creates and registers the <code>BlueListChallangeHandler</code> handler.</p>
+<p>{% highlight objc  %}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    WLClient *wlClient = [WLClient sharedInstance];
+    // Register the Challenge Handler
+    BlueListChallengeHandler *challengeHandler = [[BlueListChallengeHandler alloc] init];
+    [wlClient registerChallengeHandler: challengeHandler];
+    return YES;
+}
+{% endhighlight %}</p>
+<p>The sample silently authenticates a user by calling <code>CloudantAutheticationAdapter</code> with the correct username and password parameters. This is completed in the <code>BlueListChallengeHandler</code>.</p>
+<p>{% highlight objc  %}
+-(void) handleChallenge:(WLResponse *)response {
+    NSLog(@"Inside handleChallenge - silently loggin in");
+    WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc]initWithAdapterName:@"CloudantAuthenticationAdapter" procedureName:@"submitAuthentication"];<
+    invocationData.parameters = @[@"james", @"42"];
+    [self submitAdapterAuthentication: invocationData options: nil];
+}
+{% endhighlight %}</p>
+<p>After authentication, the database is configured in the <code>setupIMFDatabase</code> method in the <code>TableViewController</code>. This database configuration consists of the following steps:</p>
+<ol>
+<li>Initializing the SDK</li>
+<li>Creating the local and remote databases.</li>
+<li>Setting permissions for the user that was created.</li>
+<li>Setting the <code>replicatorFactory</code>, <code>pullReplication</code> and <code>pushReplication</code>.</li>
+<li>Registering the <code>TodoItem</code> class and data type with the <code>CDTDataObjectMapper</code>.</li>
+</ol>
+<p><strong>Note:</strong> For simplicity, the name of the database that gets created is currently set to the variable <code>IBM_DB_NAME</code> in the <code>TableViewController</code>. By design, the <code>setupIMFDatabase</code> method allows you to pass any database name as a parameter.</p>
+<p>The <code>TableViewController</code> class provides functions for creating, updating, deleting, and listing items, and functions for push and pull replication.</p>
+<p>After completing initialization, the application does an initial pull from the remote database. The user can now add, delete, and modify list items in the application, and update the corresponding priority (red = high, yellow = medium, white = low). By design, the application starts synchronization only when the user manually pulls down the list. On pull down, the application first completes a pull replication from the remote database to the local. After this operation has completed, push replication occurs, which sends any updated local data to the remote database. The local and remote databases are then synchronized.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/BlueList_Todos_1.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/BlueList_Todos_2.png" /></p>

@@ -1,0 +1,118 @@
+---
+layout: tutorial
+title: Enabling translation
+relevantTo: [hybrid]
+weight: 4
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/EnablingTranslationProject.zip
+---
+
+<h2>Overview</h2>
+<p>You can use the IBM MobileFirst Platform Foundation framework to enable the translation of applications into other languages.<br />
+Items that can be translated are:<br />
+Application strings.<br />
+System messages.<br /><br/>
+The platform can automatically translate application strings according to a designated file.<br />
+
+You can implement multilingual translation by using JavaScript.</p>
+<h2>Encoding</h2>
+<p>The default workspace encoding in Eclipse is Cp1252.<br />
+Before you create the MobileFirst project and start the translation work, you must change the default encoding of the Eclipse workspace.<br />
+In Eclipse, navigate to Window > Preferences > General > Workspace, and change the encoding to<br />
+UTF-8.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_encoding.png"/></p>
+<h2>Enabling translation of application strings</h2>
+<p>You can find the <em>messages.js</em> file, which is intended for application strings, in the <em>common\js</em> folder.<br />
+{% highlight javascript  %}
+Messages = {
+	headerText: "Default header",
+	actionsLabel: "Default action label",
+	sampleText: "Default sample text",
+};
+{% endhighlight %}
+<p>Application messages that are stored in the <em>messages.js</em> file can be referenced in two ways:<br />
+As a JavaScript object property, for example: <em>Messages.headerText</em> or as an ID of an HTML element with <code>class="translate"</code>.<br />
+{% highlight html  %}
+<h1 id="headerText" class="translate"></h1>
+{% endhighlight %}
+
+<h2>Enabling translation of system messages</h2>
+<p>It is also possible to translate system messages that the application shows, for example "Internet connection is not available" or "Invalid username or password".<br />
+System messages are stored in the <em>WL.ClientMessages</em> object.<br />
+You can find a full list of system messages in the <em>www\default\worklight\messages\messages.json</em> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
+To enable the translation of a system message, override it in your JavaScript application.<br />
+{% highlight javascript  %}
+WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
+{% endhighlight %}
+<p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
+
+<h2>Multilanguage translation</h2>
+<p>Using JavaScript, you can implement multilanguage translation for your applications.<br />
+Set up the default application strings in the <em>messages.js</em> file.<br />
+{% highlight javascript  %}
+Messages = {
+	headerText: "Default header",
+	actionsLabel: "Default action label",
+	sampleText: "Default sample text",
+	englishLanguage : "English",
+	frenchLanguage : "French",
+	russianLanguage : "Russian",
+	hebrewLanguage : "Hebrew"
+};
+{% endhighlight %}
+
+Override specific strings when required.<br />
+{% highlight javascript  %}<br />
+function setFrench(){<br />
+	Messages.headerText = "Traduction";<br />
+	Messages.actionsLabel = "Sélectionnez langue:";<br />
+	Messages.sampleText = "ceci est un exemple de texte en français.";<br />
+}<br />
+{% endhighlight %}</p>
+<p>Update GUI components with the new strings.<br />
+<p>You can perform more tasks, such as setting text direction for right-to-left languages such as Hebrew or Arabic.<br />
+Each time that an element is updated, it is updated with different strings according to the active language.</p>
+
+{% highlight javascript  %}
+function languageChanged(lang) {
+	if (typeof(lang)!="string")
+		lang = $("#languages").val();</p>
+   switch (lang){
+    	case "english":
+    		setEnglish();
+    		break;
+    	case "french":
+    		setFrench();
+    		break;
+    	case "russian":
+    		setRussian();
+    		break;
+    	case "hebrew":
+    		setHebrew();
+    		break;
+    }
+   if ($("#languages").val()=="hebrew")
+    	$("#wrapper").css({direction: 'rtl'});
+    else
+    	$("#wrapper").css({direction: 'ltr'});</p>
+    $("#sampleText").html(Messages.sampleText);
+    $("#headerText").html(Messages.headerText);
+    $("#actionsLabel").html(Messages.actionsLabel);
+}
+{% endhighlight %}
+
+<h2>Detecting the device locale and language</h2>
+<p>It is possible to detect the locale and the language of the device.<br />
+Use the <em>WL.App.getDeviceLocale()</em> and <em>WL.App.getDeviceLanguage()</em> functions to detect the current locale.<br />
+{% highlight javascript  %}
+var locale = WL.App.getDeviceLocale();
+var lang = WL.App.getDeviceLanguage();
+WL.Logger.debug(">> Detected locale: " + locale);
+WL.Logger.debug(">> Detected language: " + lang);
+{% endhighlight %}
+
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png"/></p>
+
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/EnablingTranslationProject.zip">Click to download</a> the Studio project.</p>

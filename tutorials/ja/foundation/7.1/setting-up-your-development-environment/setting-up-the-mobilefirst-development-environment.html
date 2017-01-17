@@ -1,0 +1,72 @@
+---
+layout: tutorial
+title: Setting up the MobileFirst development environment
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 1
+---
+<h2>Overview</h2>
+<p>This tutorial covers the basics of the IBM MobileFirst development environment: supported Eclipse versions, installation of Eclipse and MobileFirst Studio and a tour of the Eclipse UI, installation of the IBM MobileFirst Command line tool (CLI), and an introduction to the capabilities of the tools.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#devEnv">Development environment: choice of operating system</a></li>
+<li><a href="#introStudio">Introduction to MobileFirst Studio</a></li>
+<li><a href="#introCLI">Introduction to MobileFirst CLI</a></li>
+<li><a href="#download">Download and install MobileFirst Studio or MobileFirst CLI</a></li>
+</ul>
+<h2 id="devEnv">Development environment: choice of operating system</h2>
+<p>MobileFirst Studio and MobileFirst CLI are supported on the following operating systems:</p>
+<ul>
+<li>Windows</li>
+<li>Apple OS X</li>
+<li>Linux</li>
+</ul>
+<p><strong>Note:</strong> Using MobileFirst Studio, it is possible to create projects and applications for iOS also on Windows or Linux. However, due to restrictions set by Apple you can compile an iOS applications only in OS X using the Xcode IDE.</p>
+<h2 id="introStudio">Introduction to MobileFirst Studio</h2>
+<p>IBM MobileFirst Platform Studio is an Eclipse plug-in that supports the development of rich, mobile web, native, and hybrid apps. It contains an embedded version of MobileFirst Server, a bidirectional WYSIWYG editor, and standard web technologies and tools.</p>
+<p>You use MobileFirst Studio to:</p>
+<ul>
+<li>Develop rich HTML5, hybrid and native applications for all supported modern devices</li>
+<li>Maximize code sharing by defining custom behavior and styling guidelines that match the target environment</li>
+<li>Access device APIs by using native code or standard web languages over a uniform Apache Cordova bridge</li>
+<li>Preview and manage applications by using MobileFirst Console</li>
+<li>Create custom server-side Java code that can be used by MobileFirst adapters</li>
+<li>Create, modify and test MobileFirst Java and JavaScript adapters</li>
+<li>Use both native and standard web languages within the same application to achieve development efficiency and provide a rich user experience</li>
+<li>Use third-party tools, libraries, and frameworks</li>
+</ul>
+<h2 id="introCLI">Introduction to MobileFirst CLI</h2>
+<p>IBM MobileFirst Platform Foundation provides a command-line interface tool to easily create and manage apps. The CLI lets you use your preferred text editors or alternative IDEs to create mobile applications.</p>
+<p>The commands support tasks such as creating, adding, and configuring with the API library, adding the client-side properties file and performing the build and deploy of the application. From the command-line, you can create and deploy adapters, and test them locally. You can administer your project from CLI or REST services, or the Console, where you can control the local server and observe the logs.</p>
+<p>To learn more about the MobileFirst CLI, see this tutorial: <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/"> Using CLI to create, build, and manage MobileFirst project artifacts</a>.</p>
+<h2 id="download">Download and install MobileFirst Studio or MobileFirst CLI</h2>
+<p>Before you can install MobileFirst Studio you must install Eclipse. Instructions for installing a supported version of Eclipse and the MobileFirst Studio plug-in, or the MobileFirst command line tool are included with the IBM MobileFirst Platform Foundation Developer Edition:</p>
+<p><a class="pn-btn pn-btn-secondary" style="margin-top: 20px; margin-bottom: 20px;" href="https://www14.software.ibm.com/webapp/iwm/web/signup.do?source=swg-worklight&amp;S_PKG=ov1268&amp;S_CMP=web_dw_rt_swd">Get the Foundation Developer Edition</a></p>
+<p>If you have done so already - continue with the Hybrid or Native tutorials from the menu tree to the left.</p>
+<blockquote><p>For more information about downloading and installing the Consumer Edition or Enterprise Edition, see the user documentation.</p></blockquote>
+<h3>Eclipse overview</h3>
+<p>The following screen captures depict the Eclipse interface.<br />
+Click on the image to see a larger version.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/01_01_eclipse_workbench-1024x571.png" style="width:55%" /></p>
+<h3 style="color: black;">Workspace</h3>
+<p>The term <em>workspace</em> is used to describe the environment where you do all your work. The workspace contains the menu bar, toolbars, and one or more perspectives.</p>
+<h3 style="color: blue;">Menubar and toolbar</h3>
+<p>Comply with typical graphical user interface (GUI) applications. Provide the commands to perform standard tasks such as saving and editing files.</p>
+<h3 style="color: red;">Perspectives</h3>
+<p>A perspective is a special layout of particular views and tools that you need to use in your work. The currently open perspective occupies most of the Eclipse workbench. You can have more than one perspective open at a time, but only the active one is visible. You can access other open perspectives by using the toolbar on the upper-right side of the workbench.</p>
+<h3 style="color: orange;">Views</h3>
+<p>Views are designed to support interaction with information in your workbench. Eclipse is extensible, so that views can be designed to show nearly any information. Most common views are views of the file system, program output, and text files (generally dealt with in a special view called an editor). To add a view, select <strong>Window > Show View</strong>.</p>
+<h3 style="color: green;">Editors</h3>
+<p>Editors are a special view, which is designed for viewing and editing data. One of the most common uses of an editor is for editing source code.</p>
+<h3>Encoding</h3>
+<p>If you are working on a Windows platform, before you begin to create projects and work with your Eclipse installation, go to <strong>Window > Preferences > General > Workspace</strong>, and change the text file encoding to UTF-8.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/01_01_encoding-1024x819.png" style="width:55%"/></p>
+<h3>Shortcuts</h3>
+<p>CTRL + F: find<br />
+CTRL + K: find next<br />
+CTRL + J: incremental find next<br />
+CTRL + L: go to line<br />
+CTRL + SHIFT + R: open resource<br />
+CTRL + Q: last edit location<br />
+ALT + ← (left): back<br />
+ALT + → (right): forward</p>
+<p><strong>Note:</strong> The CTRL key is for Linux and Windows. On a Mac computer, use the CMD key instead.</p>

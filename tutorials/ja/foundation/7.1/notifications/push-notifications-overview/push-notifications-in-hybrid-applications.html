@@ -1,0 +1,170 @@
+---
+layout: tutorial
+title: Push Notifications in Hybrid Applications
+show_children: true
+relevantTo: [hybrid]
+---
+<h2>Overview</h2>
+<p>This tutorial explains how to configure a MobileFirst hybrid application to support push notifications.<br />
+Also mentioned are the addresses and ports that are required to be accessible for notifications to arrive to/from the supported Push Notification Service vendors (APNS, GCM, WNS, and MPNS).</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#setupAndGuidelines">Setup and guidelines</a>
+<ul>
+<li><a href="#setupiOS">iOS</a></li>
+<li><a href="#setupAndroid">Android</a></li>
+<li><a href="#setupWP8">Windows Phone 8</a></li>
+<li><a href="#setupWin8">Windows 8</a></li>
+</ul>
+</li>
+<li><a href="#notificationTypes">Notification types</a></li>
+</ul>
+<h2 id="setupAndGuidelines">Setup and guidelines</h2>
+<p>Push notification support is set up differently depending on the platform:</p>
+<h3 id="setupiOS">iOS</h3>
+<p>To send push notifications to iOS devices, you use the Apple Push Notifications Service (APNS).<br />
+You must be a registered Apple iOS Developer to obtain an APNS certificate for your application.<br />
+<ul>
+<li>During the development phase, use the <code>apns-certificate-sandbox.p12</code> sandbox certificate file.</li>
+<li>During the production phase, use the <code>apns-certificate-production.p12</code> production certificate file.</li>
+<li>Place the certificate file either in the application root folder or in the application environment (iPhone or iPad) folder. The environment root folder takes the highest priority.</li>
+</ul>
+
+<p><strong>Note:</strong> APNS certificates must have a non-blank password.</p>
+<p><strong>Note:</strong> The APNS production certificate can only be used to send notifications to applications built for production. For in-house enterprise applications, this includes applications built with the corporate production certificates and distribution profiles. For Apple App Store applications, this includes applications installed via TestFlight or the Apple App Store.</p>
+
+<p>When the hybrid application has both iPhone and iPad environments, it requires separate certificates for push notification for each environment. In that case, place those certificates in the corresponding environment folders.</p>
+<blockquote><p>To learn about setting up push notifications required certificates, see this blog post: <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en">Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)</a></p></blockquote>
+<h4>Apple Push Notifications Service</h4>
+<p>For push notifications to be sent, the following servers must be accessible from a MobileFirst Server instance:<br />
+<u>Sandbox servers:</u><br />
+gateway.sandbox.push.apple.com:2195<br />
+feedback.sandbox.push.apple.com:2196</p>
+<p><u>Production servers:</u><br />
+gateway.push.apple.com:2195<br />
+Feedback.push.apple.com:2196</p>
+<p>1-courier.push.apple.com 5223</p>
+<h4>Project configuration</h4>
+<ol>
+<li>Place the APNS certificate file at the root of the application folder or at the root of the environment folder.</li>
+<li>In the <code>application-descriptor.xml</code> file, add the <code>pushSender</code> element under the iphone environment. You can also edit these settings with the Application Descriptor Editor in Design mode.
+<ul>
+<li>Replace the <code>password</code> value with the .p12 certificate password.</li>
+<li>Replace the <code>bundleId</code> value with your application <code>bundleId</code>. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
+</ul>
+<p>{% highlight xml  %}
+<iphone bundleId="com.REPLACE-WITH-BUNDLE-ID" version="1.0">
+    <worklightSettings include="false"/>
+    <pushSender password="REPLACE-WITH-CERTIFICATE-PASSWORD" />
+    <security>
+        <encryptWebResources enabled="false"/>
+        <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+    </security>
+</iphone>
+{% endhighlight %}
+</li>
+</ol>
+<h3 id="setupAndroid">Android</h3>
+<p>To send push notifications to Android devices, you use the Google Cloud Messaging (GCM) service.<br />
+To register to the GCM service, you need a valid Gmail account.</p>
+
+<blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
+
+<ol>
+   <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+   <li>Create a new project and provide a project name.</li>
+   <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+   <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+</ol>
+
+<h4>Project configuration</h4>
+<p>To set up push notifications, edit the <code>application-descriptor.xml</code> file. Add the <code>pushSender</code> element under the Android environment. You can also edit these settings with the Application Descriptor Editor in Design mode.</p>
+<p>{% highlight xml  %}
+    <android version="1.0">
+        <worklightSettings include="false"/>
+        <pushSender key="REPLACE-WITH-API-KEY-VALUE" senderId="REPLACE-WITH-PROJECT-NUMBER" />
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey/>
+            <packageName/>
+        </security>
+    </android>
+{% endhighlight %}</p>
+<p>Use the values that you previously created in the GCM website:</p>
+<ul>
+<li>Replace <code><strong>key</strong></code> value with the <strong>API Key</strong> value.</li>
+<li>Replace <code><strong>senderId</strong></code> value with the <strong>Project Number</strong> value.</li>
+</ul>
+<h4>Add Google Play Services</h4>
+<p>For instructions about how to setup Google Play Services, see the <a href="http://developer.android.com/google/play-services/setup.html" target="_blank">Setting Up Google Play Services</a> topic at the Android Developer website.</p>
+<h4>Android Push Notifications Service</h4>
+<p>If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:</p>
+<ul>
+<li>Configure the firewall to allow connectivity with GCM in order for your GCM client apps to receive messages. The ports to open are 5228, 5229, and 5230. GCM typically uses only 5228, but it sometimes uses 5229 and 5230. GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google's ASN of 15169. For more information, see <a href="https://developers.google.com/cloud-messaging/http">Implementing an HTTP Connection Server</a>.</li>
+<li>Ensure that your firewall accepts outgoing connections from MobileFirst Server to <code>android.googleapis.com</code> on port 443.</li>
+</ul>
+<h3 id="setupWP8">Windows Phone 8</h3>
+<p>To send push notifications to Windows Phone 8 devices, you use the Microsoft Push Notifications Service (MPNS).</p>
+<ul>
+<li>Non-authenticated push notification does not require any setup from the developer. Authenticated push notification requires a Windows Phone Dev Center account.</li>
+<li>To use authenticated push, you must use a certificate that is issued by a Microsoft-trusted root certificate authority. <em>For production, consider using authenticated push notification to ensure that the information is not compromised.</em></li>
+</ul>
+<h4>Windows Phone 8 Push Notifications Service</h4>
+<p>No specific port needs to be open in your server configuration.<br />
+MPNS uses regular http or https requests.</p>
+<h4>Project configuration</h4>
+<p>To set up push notifications, edit the <code>application-descriptor.xml</code> file. Add the <code>pushSender</code> element under the windowsPhone8 environment. You can also edit these settings with the Application Descriptor Editor in Design mode.</p>
+<ul>
+<li>Non-authenticated push
+<p>{% highlight xml  %}
+<windowsPhone8 version="1.0">
+    <uuid>auto-generated by the platform</uuid>
+    <pushSender />
+</windowsPhone8>
+{% endhighlight %}
+</li>
+<li>Authenticated push
+<p>{% highlight xml  %}
+<windowsPhone8 version="1.0">
+    <uuid>auto-generated by the platform</uuid>
+    <pushSender>
+         <authenticatedPush serviceName="" keyAlias="" keyAliasPassword=""/>
+    </pushSender>
+</windowsPhone8>
+{% endhighlight %}</p>
+<ul>
+<li>Replace <code><strong>serviceName</strong></code> value with the service name.</li>
+<li>Replace <code><strong>keyAlias</strong></code> value with the certificate alias.</li>
+<li>Replace <code><strong>keyAliasPassword</strong></code> value with the certificate password.</li>
+</ul>
+</li>
+</ul>
+<blockquote><p>For more information about using the certificate file, see the topic about setting up push notifications for Windows Phone 8, in the user documentation.
+</p></blockquote>
+<h3 id="setupWin8">Windows 8</h3>
+<p>To send push notifications to Windows 8 devices, the Windows Push Notification Service (WNS) is used.<br />
+As a developer, you need to register your app with Windows Store through the Windows Dev Center by using your Microsoft account.</p>
+<p>For more information about how to get WNS credentials (which you will use later in the MobileFirst project), see <a href="http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx">http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx</a></p>
+<h4>Windows 8 Push Notifications Service</h4>
+<p>No specific port needs to be open in your server configuration.<br />
+WNS uses regular http or https requests.</p>
+<h4>Project configuration</h4>
+<p>To set up push notifications, edit the <code>application-descriptor.xml</code> file. Add the <code>pushSender</code> element under the windows8 environment. You can also edit these settings with the Application Descriptor Editor in Design mode.<br />
+{% highlight xml  %}
+<windows8 version="1.0">
+    <uuid>auto-generated by the platform</uuid>
+    <pushSender clientSecret="" packageSID="" appIdentityName="" appIdentityPublisher=""/>
+</windows8>
+{% endhighlight %}<br />
+Use the values that you previously generated in the Windows Store Dashboard:</p>
+<ul>
+<li>Replace <code><strong>clientSecret</strong></code> value with the secret key.</li>
+<li>Replace <code><strong>packageSID</strong></code> value with the package security identifier.</li>
+<li>Replace <code><strong>appIdentityName</strong></code> value with the package name.</li>
+<li>Replace <code><strong>appIdentityPublisher</strong></code> value with the subject name of the certificate.</li>
+</ul>
+<h2 id="notificationTypes">Notification Types</h2>

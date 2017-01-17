@@ -1,0 +1,46 @@
+---
+layout: tutorial
+title: Push Notifications in Native Windows 8 Universal Applications
+show_children: true
+relevantTo: [windowsphone8]
+---
+<h2>Overview</h2>
+<p>This tutorial explains how to configure a MobileFirst Native Windows Universal application to support push notifications.<br />
+Also mentioned are the addresses and ports that are required for notifications to arrive to the supported Windows Push Notification Services vendor (WNS).</p>
+<p><strong>Prerequisite:</strong> Make sure that you read the <a href="../../../hello-world/configuring-a-native-windows-8-application-with-the-mfp-sdk/"> Configuring a native Windows Universal application with the MobileFirst Platform SDK</a> tutorial first.</p>
+<h2 id="settingUpPushNotifications">Setting up push notification</h2>
+<p>To send push notifications to Windows Universal devices, use Windows Push Notification Services (WNS).<br />
+As a developer, you need to register your app with Windows Store through the Windows Dev Center by using your Microsoft account.</p>
+<p>For more information about how to get WNS credentials (which you will use later in the MobileFirst project), see <a href="http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx">http://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx</a></p>
+<h3>Server side</h3>
+<p>In the <code>application-descriptor.xml</code> file, Add the <strong>pushSender</strong> element under the nativeWindows8App environment (these settings are also editable with the Application Descriptor Editor in Design mode).</p>
+<p>{% highlight xml  %}
+<nativeWindows8App id="AppName" platformVersion="7.0.0.00.20150312-0731"
+	version="1.0" xmlns="http://www.worklight.com/native-windows8-descriptor">
+	<displayName>AppName</displayName>
+	<description>AppName</description><
+	<pushSender clientSecret="" packageSID=""/>
+</nativeWindows8App>
+{% endhighlight %}</p>
+<p>Use the values that you previously generated in the Windows Store Dashboard:</p>
+<ul>
+<li>Replace <strong>clientSecret</strong> value with the secret key.</li>
+<li>Replace <strong>packageSID</strong> value with the package security identifier.</li>
+</ul>
+<h3>Client side</h3>
+<p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
+<p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <code>VisualElements</code> element in the package manifest.</p>
+<p>{% highlight xml  %}
+<Applications><br />
+    <Application Id="App" ...>
+        <VisualElements  ... ToastCapable="true">
+         ...
+        </VisualElements>
+    </Application>
+</Applications><
+{% endhighlight %}</p>
+<blockquote><p>For more information about setting up your native Windows Universal application for push notification, see the topic about "Setting up push notifications for Windows Universal" in the user documentation.</p></blockquote>
+<h2>Windows Universal Push Notifications Service</h2>
+<p>No specific port needs to be open in your server configuration.<br />
+WNS uses regular http or https requests.</p>
+<h2 id="selectNotificationType">Notification Types</h2>

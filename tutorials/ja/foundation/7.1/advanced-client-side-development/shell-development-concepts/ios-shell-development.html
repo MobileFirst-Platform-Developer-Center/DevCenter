@@ -1,0 +1,96 @@
+---
+layout: tutorial
+title: iOS shell development
+relevantTo: [hybrid]
+breadcrumb_title: iOS
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ShellDevelopment/tree/release71
+---
+<h2>Overview</h2>
+<p>This tutorial complements <a title="Shell development concepts" href="../">Shell Development Concepts</a>.</p>
+<p>In this tutorial, you learn how to add an iOS environment to your shell component, test application, and inner application.</p>
+<p>This tutorial covers the following topics.</p>
+<ul>
+<li><a href="#addingIOSEnv">Adding an iOS environment to a shell component</a></li>
+<li><a href="#addingObjCCode">Adding custom Objective-C code to a shell component</a></li>
+<li><a href="#usingNativeEmptyApp">Using the NativeEmptyApp project</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="addingIOSEnv">Adding an iOS environment to a shell component</h2>
+<p>Start by adding an iPhone environment to your shell component. Follow the same procedure as for a standard IBM MobileFirst Platform Foundation application.<br />
+<img  src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" alt="10_02_new-environment" width="501" height="394" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" /></p>
+<p>The following folder structure is created:</p>
+<ul>
+<li>The <strong><code>css</code>, <code>images</code>, <code>fragments</code></strong>, and <strong><code>js</code></strong> folders contain resources that override or extend resources from the shell component <code>common</code> folder.</li>
+<li>The <strong><code>native</code></strong> folder contains an application template to be used when you create an iOS project from an inner application.</li>
+<li>The <strong><code>nativeEmptyApp</code></strong> folder contains an application that is built from the shell component and an empty inner application as described in the <a title="Shell development concepts" href="../">Shell Development Concepts</a> tutorial.</li>
+</ul>
+<p>The files in the <code>native</code> folder are templates that are used to create the inner application iOS project.<br />
+Some of the folder and file names contain placeholder elements that are populated during the build.<br />
+For example:</p>
+<ul>
+<li>The placeholder <em>${xcodeProjectName}.xcodeproj.wluser</em> is populated with a package name used in the application.</li>
+<li>The <em>${xcodeProjectName}-Info.plist.wltemplate.wluser</em> is populated with the application name, thus creating the main application <code>plist</code> file.</li>
+</ul>
+<p>Files with the <code>.wluser</code> name extension are template files that shell developers can modify.<br />
+<br clear="all" /></p>
+<h2 id="addingObjCCode">Adding custom Objective-C code to a shell component</h2>
+<p>Because the <code>iphone\native</code> folder of a shell component is not an iOS project, advanced features such as autocomplete are not provided when you work on it directly.<br />
+The solution is to use the iPhone environment of the test application to create, modify, and debug the Objective-C code.<br />
+The generated iOS project is created under the test application <code>native\</code> folder.<br />
+Use it to work with your Objective-C code.</p>
+<ol>
+<li>Open the generated iOS project in Xcode.</li>
+<li>Add an Objective-C<code> MyCustomAlert</code> class in the <code>Classes</code> folder.</li>
+<li>Add a method signature to the <code>MyCustomAlert.h</code> file and a method implementation to the <code>MyCustomAlert.m</code> file:
+<p>{% highlight objc  %}
+#import "MyCustomAlert.h"
+
+@implementation MyCustomAlert
++(void)showUIAlert:(NSString *)text{
+  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"
+        message:text
+        delegate:nil
+        cancelButtonTitle:@"Close"
+        otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+@end
+{% endhighlight %}
+</li>
+<li>Import <code>MyCustomAlert.h</code> and call this method from the <code>viewDidLoad</code> method of the application <code>ViewController</code> instance:
+<p>{% highlight objc  %}
+- (void)viewDidLoaad {
+  [super viewDidLoad];
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];
+}
+{% endhighlight %}
+</li>
+<li>Run your application to see the implemented functions.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png" />
+</li>
+<li>Finally, copy your Objective-C code from the iPhone project that you used to develop it back to the shell component.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png" />
+</li>
+</ol>
+<p>You can copy the custom Objective-C classes added to the iPhone project to keep the folder structure intact.<br />
+Xcode stores its own project structure in a <code>project.pbxproj</code> file. Therefore, the content of this file must also be copied from the test application to the shell component.</p>
+<p>The <code>native</code> folder of the test application is not being rebuilt from the shell component each time you build the iOS application.<br />
+Doing so avoids overwriting the test application native code with the one in the shell component on each build, thus enabling shell developers to debug their code conveniently.<br />
+If you want your native folder to be fully recreated from a shell component, erase it in the test application, and then build and deploy the application.</p>
+<h2 id="usingNativeEmptyApp">Using the NativeEmptyApp project</h2>
+<p>The <code>NativeEmptyApp</code> project is a native application project that uses the shell component and that has an empty inner application.<br />
+This project can be built as an APK or IPA by a shell developer and sent to inner application developers for debugging their applications.<br />
+After the <code>NativeEmptyApp</code> project is installed on the device, an inner application developer can specify the URL of the MobileFirst Server instance from which to load the inner application.<br />
+Doing so helps inner application developers to test their code without having native SDKs installed. For example: to develop and test an iPhone application without a Mac.<br />
+To use the <code>NativeEmptyApp</code> project, open it as an Xcode project.</p>
+<p>When the application is built and deployed to an iOS device, go to <strong>Settings</strong> to change the URL from which this inner application content is loaded.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" /></p>
+<p><strong>Important</strong>:<br />
+<code>NativeEmptyApp</code> cannot load a remote inner application that has device provisioning enabled.<br />
+<code>NativeEmptyApp</code> can be used only in the development environment.</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/ShellDevelopment/tree/release71" target="_blank">Click to download</a> the MobileFirst project.</p>

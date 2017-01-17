@@ -1,0 +1,286 @@
+---
+layout: tutorial
+title: Working with iBeacons
+relevantTo: [ios]
+weight: 11
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iBeaconsNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeiBeaconsProject.zip
+---
+<h2>Overview</h2>
+<p>In this tutorial, the concept, API and usage of Beacon APIs available in IBM MobileFirst Platform Foundation are discussed in the context of native iOS applications.</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#registeringbeacons">Registering Beacons</a></li>
+<li><a href="#registeringbeacontriggers">Registering Beacon Triggers</a></li>
+<li><a href="#associatingbeacons">Associating Beacons and Beacon Triggers</a></li>
+<li><a href="#retrievingbeacons">Server side API</a></li>
+<li><a href="#applicationconfiguration">Application configuration steps</a></li>
+<li><a href="#simplifiedapis">Simplified APIs for ranging/monitoring of iBeacons</a></li>
+<li><a href="#sampleresult">Sample application</a></li>
+</ul>
+<h2 id="registeringbeacons">Registering Beacons</h2>
+<p>Beacons are represented as <code>Beacon</code> objects in IBM MobileFirst Platform. Beacons are identified using UUID, major and minor values. The UUID in its canonical form is represented by 32 lowercase hexadecimal digits. The major and minor values are positive numbers in range of 0-65535 (inclusive).
+Beacon objects also contains a field <code>customData</code> which is a JSON payload representing customer-specific data representing the beacon. For example, the store/location where the beacon is deployed.
+Beacons can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
+<p>Register the following beacons using the Beacons (PUT) REST API
+{% highlight js  %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 1,
+    "minor": 4417,
+    "customData": {
+        "branchName": "Indiranagar, Bangalore"
+    }
+}{% endhighlight %}</p>
+<p>{% highlight js  %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 2,
+    "minor": 4417,
+    "customData": {
+        "branchName": "Koramangala, Bangalore"
+    }
+}{% endhighlight %}</p>
+<h2 id="registeringbeacontriggers">Registering Beacon Triggers</h2>
+<p>Beacon triggers are represented as <code>BeaconTrigger</code> objects in IBM MobileFirst Platform. Beacon Triggers are identified by a triggerName and contain triggerType, proximityState, dwellingTime (optional) and actionPayload.</p>
+<p><b>triggerType</b> can take any of the following values:</p>
+<table class="table table-striped">
+<tr>
+<td>Trigger Type</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>The trigger is activated when the device enters the associated beacon region</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>The trigger is activated when the device leaves the associated beacon region</td>
+</tr>
+<tr>
+<td>DwellInside</td>
+<td>The trigger is activated when the device remains inside the associated beacon region for a given time period</td>
+</tr>
+<tr>
+<td>DwellOutside</td>
+<td>The trigger is activated when the device remains outside the associated beacon region for a given time period</td>
+</tr>
+</table>
+
+<b>proximityState</b> can take any of the following values (Default value: Far):</p>
+<table class="table table-striped">
+<tr>
+<td>Proximity State</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Immediate</td>
+<td>The proximity of the device to this beacon region should be "immediate" (physically very close) for the trigger to be activated</td>
+</tr>
+<tr>
+<td>Near</td>
+<td>The proximity of the device to this beacon region should be at least "near" (approximately 1-3 meters) for the trigger to be activated</td>
+</tr>
+<tr>
+<td>Far</td>
+<td>The proximity of the device to this beacon region should be at least "far" for the trigger to be activated</td>
+</tr>
+</table>
+
+<p><b>dwellingTime</b> is applicable only for triggerTypes: "DwellInside" and "DwellOutside". It should be specified in milliseconds and defines how long the device must be inside, or outside a beacon region before the dwellInside or dwellOutside trigger is activated. Mandatory with triggerType of "DwellInside" and "DwellOutside"</p>
+<p><b>actionPayload</b> represents the details of the action to be taken when trigger is activated</p>
+<p>
+Beacon triggers can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
+<p>Register the following beacon triggers using the Beacon Triggers (POST) REST API.</p>
+<p>{% highlight js  %}
+{
+    "triggerName": "entryIntoBranch",
+     "triggerType": "Enter",
+     "proximityState": "Near",
+     "actionPayload": {
+        "alert": "Welcome to $branchName branch of IMF Bank"
+     }
+ }{% endhighlight %}</p>
+
+<p>{% highlight js  %}
+{
+    "triggerName": "dwellInsideBank",
+     "triggerType": "DwellInside",
+     "dwellingTime": 5000,
+     "proximityState": "Near",
+     "actionPayload": {
+        "alert": "You will be assisted soon by our staff."
+     }
+ }{% endhighlight %}</p>
+
+<p>{% highlight js  %}
+{
+    "triggerName": "exitFromBranch",
+     "triggerType": "Exit",
+     "proximityState": "Far",
+     "actionPayload": {
+        "alert": "Thank you for visiting our $branchName branch. Have a nice day!"
+     }
+ }{% endhighlight %}</p>
+<h2 id="associatingbeacons">Associating Beacons and Beacon Triggers</h2>
+<p>An association between a beacon and a beacon trigger is represented as <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform. The association can be created / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the user documentation topics</p>
+<p>Creating the association between beacons and triggers for an application can be achieved using the Associate beacons and triggers (PUT) REST API:
+{% highlight js  %}
+{
+    "beacons": [
+        {
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 1,
+            "minor": 4417
+        },
+        {
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 2,
+            "minor": 4417
+        }
+    ],
+    "triggers": [
+        {
+            "triggerName": "entryIntoBranch",
+            "triggerName": "exitFromBranch",
+            "triggerName": "dwellInsideBank"
+        }
+    ]
+}{% endhighlight %}</p>
+<h2 id="retrievingbeacons">Retrieving beacons and triggers - Server side API</h2>
+<p>Retrieving beacons, triggers and their associations can be achieved by using
+<code>WL.Server.getBeaconsAndTriggers(applicationName, beaconsOfInterest)</code> API</p>
+<ul>
+<li><code>applicationName</code> – is the name of the MobileFirst application</li>
+<li><code>beaconsOfInterest</code> – is a JSON block or an array of JSON blocks identifying the beacon(s) whose trigger associations have to be fetched.</li>
+</ul>
+<h2 id="applicationconfiguration">Application configuration steps</h2>
+<p>Allowing the application to do ranging/monitoring for iBeacon regions can be achieved by selecting the following background modes:</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Capabilities.png"/></p>
+<table class="table table-striped">
+<tr>
+<td>Background modes</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Location updates</td>
+<td>Ensures the application gets callbacks when device enters/exits iBeacon regions.</td>
+</tr>
+<tr>
+<td>Uses Bluetooth LE accesssories</td>
+<td>Ensures the application can do ranging for iBeacons</td>
+</tr>
+<tr>
+<td>Acts as a Bluetooth LE accessory</td>
+<td>Enables the device to act as an iBeacon.</td>
+</tr>
+<tr>
+<td>External accessory communication</td>
+<td>Enables the application to communicate with accessories attached to the device.</td>
+</tr>
+</table>
+<p><br clear="all" /></p>
+<p>On iOS 8 and above, to enable Location services, add <code>NSLocationAlwaysUsageDescription</code> in native iOS project's Info.plist.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iOS8LocationServices.png"/></p>
+<p>Copy the "iOSNativeiBeaconsLibrary" folder in the iOSNativeiBeacons project into your native iOS application. This contains the library that provides the simplified set of APIs for ranging/monitoring of iBeacons.</p>
+<p>Requesting permission to use location services and local/push notifications can be achieved by:</p>
+<p>{% highlight objc  %}
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	...
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseLocationServices];
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseNotifications];
+}{% endhighlight %}</p>
+<h2 id="simplifiedapis">Simplified APIs for ranging/monitoring of iBeacons</h2>
+<h3>Loading beacons and triggers from server</h3>
+<p>Loading beacons information, triggers and their associations from server and storing it in the application JSONStore can be achieved by:
+{% highlight objc  %}
+[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"iBeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {
+	if (success) {
+		[self showBeaconsAndTriggers];
+	} else {
+		[self updateView:error];
+	}
+}];{% endhighlight %}</p>
+<p><br clear="all" /></p>
+<h3>Triggering actions</h3>
+<p>Monitoring/ranging of iBeacons and firing of trigger actions can be achieved using:</p>
+<p>{% highlight objc  %}
+	[[WLBeaconsLocationManager sharedInstance] startMonitoring];{% endhighlight %}</p>
+<p>If the user wishes to opt out of iBeacon monitoring, it can achieved using:</p>
+<p>{% highlight objc  %}
+	[[WLBeaconsLocationManager sharedInstance] stopMonitoring];
+	// Optionally reset monioring/ranging state
+	[[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState]; {% endhighlight %}</p>
+<p><br clear="all" /></p>
+<h3>Turn the device to an iBeacon</h3>
+<p>Turning the device into an an iBeacon can be achieved using:</p>
+<p>{% highlight objc  %}
+	NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";
+	int major = 1;
+	int minor = 4417;
+	[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {
+		[self updateView:turnIntoiBeaconStatusDetails];
+	}];{% endhighlight %}</p>
+<p>This is generally for testing /development purpose. The UUID string here should match the UUID of beacons registered on server.</p>
+<h3>Increasing application running time</h3>
+<p>Increasing the running time of the application when in background (as part of iBeacon monitoring) can be achieved using:</p>
+<p>{% highlight objc  %}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	...
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidFinishLaunchingWithOptions];
+}</p>
+<p>- (void)applicationDidEnterBackground:(UIApplication *)application {
+	...
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidEnterBackground];
+}</p>
+<p>- (void)applicationDidBecomeActive:(UIApplication *)application {
+	...
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidBecomeActive];
+}
+{% endhighlight %}
+This increases the running time of the application up to 3 minutes from the default 10 seconds.</p>
+<h3>Handling local notifications</h3>
+<p>Handling local notifications originating from the application can be achieved by:
+{% highlight objc  %}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	...
+	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	if (localNotif) {
+		application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;
+		[self processLocalNotification:localNotif];
+	}
+	return YES;
+}</p>
+<p>- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+	application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;
+	[self processLocalNotification:notification];
+}</p>
+<p>- (void)processLocalNotification:(UILocalNotification *)notification
+{
+	NSString *alertMessage = [notification.userInfo objectForKey:@"alertMessage"];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Received local notification" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+	[alert show];
+}{% endhighlight %}</p>
+<h2 id="sampleresult">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iBeaconsNativeProject.zip">Click to download</a> the Studio project.
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeiBeaconsProject.zip">Click to download</a> the Native project.</p>
+<p>The sample contains two projects:</p>
+<ul>
+<li>The <strong>iBeaconsNativeProject.zip</strong> file contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <strong>iOSNativeiBeaconsProject.zip</strong> file contains a native library that provides a simplified set of APIs for ranging/monitoring of iBeacons and a native iOS application that demonstrates the usage of those APIs.</li>
+</ul>
+<p>Make sure to update the <strong>worklight.plist</strong> file in iOSNativePush with the relevant server settings.</p>
+<p>The sample showcases a simple banking scenario where actions are triggered based on proximity:</p>
+<ul>
+<li>When the user enters a Bank branch, a notification action is triggered with a Welcome message</li>
+<li>When the user stays in the Bank branch, an alert is triggered with a message stating that a bank personnel will assist the user soon</li>
+<li>When the user exits the Bank branch, a notification action is triggered with a message</li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/InitialApplicationPermissions.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Apprunning.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Appnotrunning.png"/></p>

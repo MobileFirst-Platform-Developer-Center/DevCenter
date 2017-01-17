@@ -1,0 +1,79 @@
+---
+layout: tutorial
+title: Adapter-based authentication in native Windows Phone 8 applications
+relevantTo: [windowsphone8]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeAdapterBasedAuthProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeAdapterBasedAuthProject.zip
+---
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Windows Phone 8 client-side authentication components for adapter-based authentication.<br />
+<strong>Prerequisite:</strong> Make sure that you read <a href="../" title="Adapter-based authentication">Adapter-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Windows Phone 8 application and add the MobileFirst native APIs as explained in the documentation.</p>
+<h3>CustomAdapterChallengeHandler</h3>
+<p>Create a <code>CustomAdapterChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+Your <code>CustomAdapterChallengeHandler</code> class must implement the <code>isCustomResponse</code> and <code>handleChallenge</code> methods.</p>
+<ul>
+<li>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
+{% highlight csharp  %}
+public override bool isCustomResponse(WLResponse response) {
+    if (response == null ||
+        response.getResponseJSON() == null ||
+        response.getResponseText() == null ||
+        response.getResponseJSON()["authRequired"] == null ||
+        String.Compare(response.getResponseJSON()["authRequired"].ToString(), "false", StringComparison.OrdinalIgnoreCase) == 0)
+    {
+        return false;
+    }
+    return true;
+}
+{% endhighlight %} 
+</li>
+<li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
+Use this method to present the login form. Different approaches are available.<br />
+{% highlight csharp  %}
+public override void handleChallenge(JObject challenge)
+{
+    Deployment.Current.Dispatcher.BeginInvoke(() =>
+    {
+        MainPage._this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
+    });
+}
+{% endhighlight %} 
+</li>
+</ul>
+<p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
+{% highlight csharp  %}
+public void submitLogin(string userName, string password)
+{
+    object[] parameters = new object[] { userName, password };
+    WLProcedureInvocationData invocationData = new WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");
+    invocationData.setParameters(parameters);
+    WLRequestOptions options = new WLRequestOptions();
+    submitAdapterAuthentication(invocationData, options);
+}
+{% endhighlight %} </p>
+<h3>MainPage</h3>
+<p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code>, and invoke the protected adapter procedure.<br />
+The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the challenge handler.<br />
+{% highlight csharp  %}
+    WLClient client;
+    client = WLClient.getInstance();
+    challengeHandler = new WindowsChallengeHandler();
+    client.registerChallengeHandler((BaseChallengeHandler<JObject>)challengeHandler);
+    client.connect(new MyConnectResponseListener(this))
+{% endhighlight %} </p>
+<p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
+Invoke the protected adapter procedure. The login form is presented by the <code>challengeHandler</code>.<br />
+{% highlight csharp  %}
+    WLProcedureInvocationData invokeData = new WLProcedureInvocationData("NativeAdapterBasedAdapter", "getSecretData");
+    WLRequestOptions options = new WLRequestOptions();
+    client.invokeProcedure(invokeData, new MyResponseListener(this), options);
+{% endhighlight %} </p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeAdapterBasedAuthProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/WP8NativeAdapterBasedAuthProject.zip">Click to download</a> the Native project.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/WP8AdapterBasedAuth.png"/></p>

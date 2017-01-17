@@ -1,0 +1,125 @@
+---
+layout: tutorial
+title: Testing MobileFirst applications with IBM MobileFirst Platform Test Workbench
+relevantTo: [hybrid]
+weight: 9
+---
+<h2>Overview</h2>
+<p>IBM MobileFirst Platform Test Workbench provides several unique resources to test MobileFirst applications.</p>
+<ul>
+<li>With the test workbench, you can create functional tests hybrid and native applications that run on iOS 7.x or Android</li>
+<li>The test workbench creates tests in a natural language, and provides visual test editing</li>
+<li>The test workbench runs within Eclipse, and is integrated with MobileFirst Studio</li>
+</ul>
+<p>The testing approach with the test workbench consists of four stages:</p>
+<ul>
+<li>Recording: You first play your test with the recording-ready app, and generate a test script</li>
+<li>Authoring: You edit and enhance the test script by adding verification points and others instructions</li>
+<li>Playback: You run the test script on a real device or a simulator</li>
+<li>Reporting: You generate an HTML report</li>
+</ul>
+<p>Jump to:</p>
+<ul>
+<li><a href="#installingAndConfiguring">Installing and configuring</a></li>
+<li><a href="#theMobileClient">The mobile client</a></li>
+<li><a href="#installingTheAndroidMobileClient">Installing the Android mobile client</a></li>
+<li><a href="#installingTheiOSMobileClient">Installing the iOS mobile client</a></li>
+<li><a href="#creatingAtestProject">Creating a test project</a></li>
+<li><a href="#preparingTheApplication">Preparing an application for testing</a></li>
+<li><a href="#creatingAtest">Creating a test</a></li>
+<li><a href="#editingAtest">Editing a test</a></li>
+<li><a href="#runningAtest">Running a test</a></li>
+<li><a href="#moreInformation">For more information</a></li>
+</ul>
+<h2 id="installingAndConfiguring">Installing and configuring</h2>
+<p>To use the IBM Mobile Test Workbench, you must install an Eclipse plug-in into an existing instance of MobileFirst Studio.</p>
+<p>In MobileFirst Studio, go to <strong>Help > Eclipse Marketplace</strong>, and search for "mobilefirst".<br />
+When you locate the IBM Mobile Test Workbench, click on <strong>Install</strong>.</p>
+<p><strong>Note:</strong> New installations of IBM Mobile Test Workbench require the latest version of MobileFirst Studio.</p>
+<p>After the Mobile Test Workbench plug-in is installed, you can see that a new Test Workbench perspective is available in Eclipse:</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/test_workbench_toolbar.png"/></p>
+<p>If you do not see the perspective button above, select <strong>Window > Open Perspective > Other...</strong> and choose <strong>Test Workbench</strong>.</p>
+<p>Also, note the following icons in the Eclipse toolbar:</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_eclipse_toolbar.png"/></p>
+<ul>
+<li>The left icon, opens the Mobile Applications view. This view lists all the applications that are available for testing</li>
+<li>The right icon, opens the Mobile Devices view. This view lists the devices that you use to test your application</li>
+</ul>
+<h2 id="theMobileClient">The Mobile Client</h2>
+<p>With the mobile client application, you can record tests, run test playbacks and view reports on the mobile device.<br />
+The mobile application must be installed on a real device or on a simulator/emulator.</p>
+<p>The mobile client communicates with the test workbench to install applications, store test scripts and to test results. Important to note the Workbench URL in the Mobile Devices view:</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_mobiledevices_view.png"/></p>
+<h2 id="installingTheAndroidMobileClient">Installing the Android mobile client</h2>
+<p>To install the mobile client on an Android device or a Emulator:</p>
+<ul>
+<li>Use the QR code that is available in the Mobile Devices view to open an installation page on the device.</li>
+<li>On the device, the QR code opens a page that displays installation instructions. </li>
+</ul>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_qr_code.png"/><br />
+<br clear="all" /></p>
+<p>Follow the instructions to download and install the mobile application on your Android device.<br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_install_android_app-168x300.png"/></p>
+<p>When the IBM Rational Test Workbench application is installed on your device, start the application.</p>
+<ul>
+<li>Configure the address of the test workbench in the Workbench settings section. The URL is the same as the URL of the page opened by the QR code, without /mobile at the end. The URL has the following structure: <code>http://host-ipaddress:7878</code>
+<p> <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_android_app_ip_address-168x300.png"/></li>
+</ul>
+<p>Press the device's Back button. If the connection is correctly established, you can see the connection icon at the bottom of the screen.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_android_app_screen-167x300.png"/></p>
+<h2 id="installingTheiOSMobileClient">Installing the iOS mobile client</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_ios_client-168x300.png"/><br />
+On iOS, the mobile client is a web application that runs in the Safari or Chrome browser on your device.</p>
+<p>To run the client, type the Workbench URL in the following format, in a browser on your device: <code>http://Workbench_URL:port/mobile</code>.</p>
+<p>When using the mobile test client on an iOS device, make sure to enable pop-up windows. Pop-up windows must be allowed for the<br />
+Workbench IP address. Safari silently disables pop-up windows and Google Chrome prompts you to allow pop-up windows. To change this setting for Safari, navigate to <strong>Settings.app > Safari</strong> and disable the option to <strong>Block Pop-ups</strong>.</p>
+<h2 id="creatingATestProject">Creating a test project</h2>
+<p>To start testing an IBM MobileFirst application, you must create a test project.</p>
+<p>There are 2 paths to create a test project:</p>
+<ol>
+<li>After creating the MobileFirst application, and before clicking on <strong>Finish</strong>, select to create a test project from the IBM Mobile Test Workbench section:
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_create_a_test_project-1024x1022.png"/></p>
+</li>
+<li>You can also go to <strong>File > New > Test Workbench Project</strong> to create a test project.
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_new_test_project_2-1024x971.png"/></p>
+<h2 id="preparingTheApplication">Preparing an application for testing</h2>
+<p>Before you can test a MobileFirst hybrid application, you must make sure that:</p>
+<ul>
+<li>You performed a build and deployment action on your project by right-clicking the project name, and clicking <strong>Run As > Run on MobileFirst Development Server</strong>, in order to ensure the native project is built and the application is deployed to the server</li>
+<li>If building for iOS in order to test on a physical device, make sure the appropriate certificate is specified in Xcode</li>
+<li>Right-click the Android, iPhone, or iPad environment in your IBM MobileFirst application, and click <strong>Run As > Test with IBM Mobile Test Workbench</strong>
+<p> <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_run_test_project.png"/></li>
+<li>You can now see the test-ready application in the Mobile Applications view in the test workbench (and in the mobile client as well):
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_ready_app_for_testing-1024x474.png"/></li>
+<li>The state of the application must be set to <strong>Available</strong> in the Mobile Applications view before you can start recording a test.</li>
+</ul>
+<h2 id="creatingAtest">Creating a test</h2>
+<h3>Android</h3>
+<p>To start recording a test on the Android client: select the application in the list of managed apps, and click <strong>Record</strong> in the mobile client on the device.</p>
+<h3>iOS</h3>
+<p>To start recording a test on the iOS web client: select the application in the list of managed apps, install the app on the device by clicking <strong>Install</strong>. When the installation is complete, click <strong>Record</strong>.</p>
+<p>If you are using an iOS 7.1 or higher, it is not possible to click the install button.<br />
+Instead, the application can be installed from the Mobile Devices view:</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_install_on_ios.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_record_test-1024x853.png"/></p>
+<p>Everything that you do with the application is recorded and sent to the test workbench. For example, the script records the moment when you press a button, or enter text in an entry field.</p>
+<p>To stop recording, close the application by clicking Home (iOS) or Back (Android).</p>
+<p>A message that reports the availability of a new recording is displayed on the test workbench.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_test_available-1024x356.png"/></p>
+<p>Follow the wizard instructions to generate a test from the recording. You are then asked to store the test in the test project.<br />
+For more information about how to create a test, see the <a href="http://www-01.ibm.com/support/knowledgecenter/SS2HS7_8.6.0/com.ibm.rational.test.lt.mob.rtwm.ditaval.doc/topics/tintro_create_test.html">Rational Test Workbench Mobile Test Edition user documentation</a>.</p>
+<h2 id="editingAtest">Editing a test</h2>
+<p>After the recording, you can edit the test in the natural language editor.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_edit_test-1024x474.png"/></p>
+<p>You can edit the test to insert <strong>verification points</strong> (for example, to verify the value of a user interface element), to replace recorded test values with variable test data, or to add dynamic data to the test.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_edit_test_2-1024x475.png"/></p>
+<p>For more information about how to edit the test script, <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.rational.test.lt.mob.rtwm.ditaval.doc/topics/cmobtesteditovw.html">see the Rational Test Workbench Mobile Test Edition user documentation</a>.</p>
+<h2 id="runningAtest">Running a test</h2>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mtw_run_a_test-168x300.png"/></p>
+<p>Run a test to ensure that the app matches the expected behavior that is defined in the verification points.<br />
+During the test, each verification point is checked, and receives a <strong>pass</strong>, <strong>fail</strong> or <strong>inconclusive</strong> status.</p>
+<p>The available tests are visible in the mobile client, and you can run the test from this application.<br />
+<br clear="all" /></p>
+<h2 id="moreInformation">For more information</h2>
+<p>For more information about IBM MobileFirst Platform functional testing and the IBM Mobile Test Workbench, <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.test.doc/test/c_wl_mobile_test_ovw.html">see this user documentation</a> topic.</li>
+</ol>

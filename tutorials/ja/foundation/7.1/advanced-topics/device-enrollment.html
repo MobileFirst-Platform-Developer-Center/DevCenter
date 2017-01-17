@@ -1,0 +1,379 @@
+---
+layout: tutorial
+title: Device Enrollment
+relevantTo: [hybrid]
+weight: 5
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/DeviceEnrollment/tree/release71
+---
+<h2>Overview</h2>
+<p>Device enrollment consists of registering a specific device as a trusted device from a customer’s perspective. From an enrolled device, a customer might want to see some basic information without needing to log in, more secure information would require a PIN code, while changes to the account might require full credentials.</p>
+<p><strong>Prequisite:</strong> This advanced tutorial requires good understanding of IBM MobileFirst Platform Foundation security concepts such as security tests, realms, challenge handlers, etc. Review the tutorials and IBM knowledge center if you are not comfortable with those concepts.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#flow">Example flow</a></li>
+<li><a href="#securityTest">Username/password security test</a></li>
+<li><a href="#enrollment">Enrollment</a></li>
+<li><a href="#pin">PIN code protection</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="flow">Example flow</h2>
+<p>Here is the application flow for this example:</p>
+<ol>
+<li>When the application is opened, it sends a request to the server to check whether this device is currently enrolled.
+</li>
+<li>If the device is not recognized, the enrollment process is started.
+</li>
+<li>To enroll, the user first needs to log in with standard credentials.
+</li>
+<li>After authentication, the user is prompted to set a PIN code for quick access to sensitive information.
+</li>
+<li>After successful enrollment, the user has access to the bank account balance.
+</li>
+<li>Closing the application and reopening it shows the balance page immediately without the user having to log in again.
+</li>
+<li>For access to a button to see detailed transactions, the user must enter the defined PIN code each time.
+</li>
+<li>By using a Logout button, the user can start everything from the beginning.
+</li>
+</ol>
+<h2 id="securityTest">Username/password security test</h2>
+<p>For a username/password security test, the sample application uses a simple adapter-based realm.</p>
+<h3>Login module</h3>
+<p>{% highlight xml  %}
+<loginModule name="UsernamePasswordModule">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+</loginModule>
+{% endhighlight %}<br />
+This simple <code>NonValidatingLoginModule</code> module lets the adapter-based authenticator handle the validation.</p>
+<h3>Realm</h3>
+<p>{% highlight xml  %}
+<realm name="UsernamePasswordRealm" loginModule="UsernamePasswordModule">
+    <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    <parameter name="login-function" value="MyAdapter.UsernamePasswordRequired" />
+</realm>
+{% endhighlight %}<br />
+By using <code>AdapterAuthenticator</code>, you can write the login logic in an adapter. The <code>login-function</code> parameter is used to trigger a challenge.</p>
+<h3>Security test</h3>
+<p>{% highlight xml  %}
+<customSecurityTest name="UsernamePasswordAuthentication">
+    <test realm="wl_directUpdateRealm" step="1" />
+    <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" />
+    <test realm="wl_antiXSRFRealm" step="1" />
+    <test isInternalUserID="true" realm="UsernamePasswordRealm" step="1" />
+</customSecurityTest>
+{% endhighlight %}<br />
+<code>UsernamePasswordRealm</code> is used as the internal user ID, while the built-in <code>wl_deviceNoProvisioningRealm</code> helps get the device ID automatically from the device. The direct update and anti-XSRF realms are additional internal realms that are not specific to this scenario.</p>
+<h3>Adapter code</h3>
+<p>{% highlight javascript  %}
+function UsernamePasswordRequired() {
+    return {
+        usernamePasswordRequired: true,
+    };
+}<br />
+{% endhighlight %}<br />
+This procedure notifies the client that the given resource requires username/password authentication. You must implement a  challenge handler to react to this flag.</p>
+<p>{% highlight javascript  %}
+function verifyUsernamePassword(username, password) {
+    if (username && password && username == password) {
+        WL.Server.setActiveUser("UsernamePasswordRealm", {
+            'userId': username
+        });
+        return {
+            success: true
+        };
+    } else {
+        return {
+            success: false,
+            usernamePasswordRequired: true,
+            error: 'username and password must be the same and not empty'
+        };
+    }
+}
+{% endhighlight %}</p>
+<p>This procedure checks the validity of the user name and password and, if they are validated, sets the current user in the session. In this example, a "correct" username/password combination is any 2 strings that are exactly the same. In the real world, of course, the combination is verified by a database or a back-end service.</p>
+<h3>Challenge handler</h3>
+<p>{% highlight javascript  %}
+var usernamePasswordRealm = WL.Client.createChallengeHandler("UsernamePasswordRealm");
+usernamePasswordRealm.isCustomResponse = function(response) {
+    return response && response.responseJSON && response.responseJSON.usernamePasswordRequired;
+};
+{% endhighlight %}<br />
+The challenge handler needs to be registered. The <code>usernamePasswordRequired</code> check in the response determines whether the challenge needs to be handled.</p>
+<p>{% highlight javascript  %}
+usernamePasswordRealm.handleChallenge = function(response) {
+    $('.section').hide();
+    $('#loginBody').show();
+    if (response.responseJSON.error) {
+        alert(response.responseJSON.error);
+    }
+};
+{% endhighlight %}<br />
+If the challenge needs to be handled, simply show an HTML login form (and show errors if any). The submit button of this form is linked to the <code>login()</code> function below.</p>
+<p>{% highlight javascript  %}
+function login() {
+    usernamePasswordRealm.submitAdapterAuthentication({
+        adapter: 'MyAdapter'
+        procedure: 'verifyUsernamePassword',
+        parameters: [$('#username').val(), $('#password').val()]
+    }, {
+        onSuccess: function(response) {
+            $('.section').hide();
+            usernamePasswordRealm.submitSuccess();
+        }
+    });
+}
+{% endhighlight %}<br />
+The <code>login</code> function uses the <code>submitAdapterAuthentication</code> API (which is the same as the <code>invokeProcedure</code> API) to send the entered user name and password for verification against the adapter. Upon success, use <code>submitSuccess</code> to let the application continue its flow.</p>
+<h2 id="enrollment">Enrollment</h2>
+<p>Enrolled devices need to be saved in a database of trusted devices that are associated with their user account.</p>
+<h3>Login module</h3>
+<p>{% highlight xml  %}
+<loginModule name="EnrollmentModule">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+</loginModule>
+{% endhighlight %}<br />
+This non-validating login module leaves the responsibility of validating the data to you.</p>
+<h3>Realm</h3>
+<p>{% highlight xml  %}
+<realm name="EnrollmentRealm" loginModule="EnrollmentModule">
+    <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    <parameter name="login-function" value="MyAdapter.enrollmentRequired" />
+</realm>
+{% endhighlight %}<br />
+Again, an <code>AdapterAuthenticator</code> object is used to check the enrollment.</p>
+<p>In the adapter, this procedure is defined to let the client know that a given resource requires enrollment.<br />
+{% highlight javascript  %}
+function enrollmentRequired() {
+    return {
+        enrollmentRequired: true
+    };
+}
+{% endhighlight %}</p>
+<h3>Security test</h3>
+<p>{% highlight xml  %}
+<customSecurityTest name="EnrolledDevice">
+    <test realm="wl_directUpdateRealm" step="1" />
+    <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" />
+    <test realm="wl_antiXSRFRealm" step="1" />
+    <test isInternalUserID="true" realm="EnrollmentRealm" step="1" />
+</customSecurityTest>
+{% endhighlight %}<br />
+Similar to the previous security test, this security test uses some predefined realms in addition to our <code>EnrollmentRealm</code> realm.</p>
+<h3>Storage</h3>
+<p>In your application, you might want to use an external database or a back-end service to safely store the list of enrolled devices. This sample includes a Java class that emulates storage of JSON objects for a given ID string. The implementation of this class is not important and its public API features 3 methods: <code>getInfo(id)</code>, <code>setInfo(id, info)</code>, <code>removeInfo(id)</code>, where <code>info</code> is an arbitrary JSON object.</p>
+<p>In the adapter code, a reference to this class is declared:<br />
+{% highlight javascript  %}
+var enrolledDevices = com.ibm.sample.EnrolledDeviceStore;
+{% endhighlight %}</p>
+<blockquote><p>In a multi-node environment, when using a <code>SessionIndependent</code> architecture, using global variables to persist data across requests is <a href="../../server-side-development/javascript-adapters/#globalvars">not supported</a>. </p></blockquote>
+<h3>Enroll device</h3>
+<p>{% highlight javascript  %}
+function enroll(pin) {
+    var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
+    var userId = WL.Server.getCurrentUserIdentity().userId;
+    enrolledDevices.setInfo(deviceId, {
+        'userId': userId,
+        'pin': pin
+    });
+    WL.Server.setActiveUser("EnrollmentRealm", {
+        'userId': userId
+    });
+    return {
+        'success': true
+    };
+}
+{% endhighlight %}<br />
+For a device to be enrolled, the current device ID and the currently logged-in user need to be retrieved. Together with a PIN code provided by the user, this information is saved in the enrolled devices storage.</p>
+<p>Because only logged-in users can enroll, this procedure is protected by the username/password realm.<br />
+{% highlight xml  %}
+<procedure name="getTransactions" securityTest="PinCode"/>
+{% endhighlight %}</p>
+<h3>Check enrollment</h3>
+<p>{% highlight javascript  %}
+function checkEnrollment() {
+    var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
+    var enrollInfo = enrolledDevices.getInfo(deviceId);
+
+    if (enrollInfo) {
+        //Clean up if any
+        WL.Server.setActiveUser("EnrollmentRealm", null);
+        //Log into the enrollment realm
+        WL.Server.setActiveUser("EnrollmentRealm", {
+            'userId': enrollInfo.userId
+        });
+    }
+}
+{% endhighlight %}<br />
+This adapter procedure retrieves the current device ID and checks it against the enrolled list. If the device is enrolled, the user is logged in to the enrollment realm.</p>
+<h3>Remove device</h3>
+<p>To make testing easier, a procedure is added so that you can remove the current device from the list of devices and log out from all realms.<br />
+{% highlight javascript  %}
+function removeDevice() {
+    var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
+    enrolledDevices.removeInfo(deviceId);
+    WL.Server.setActiveUser(enrollmentRealm, null);
+    WL.Server.setActiveUser(pinCodeRealm, null);
+    WL.Server.setActiveUser(userPwdRealm, null);
+}
+{% endhighlight %}</p>
+<h3>Pre-emptive login and enrollment</h3>
+<p>While you could wait for a challenge, you can also write client logic to pre-emptively trigger a login or enrollment.<br />
+In this sample, when the application starts, the following method is called.<br />
+{% highlight javascript  %}
+function checkEnrollment() {
+    if (WL.Client.isUserAuthenticated("EnrollmentRealm")) {
+        getBalance();
+    } else {
+        WL.Client.invokeProcedure({
+            adapter: 'MyAdapter',
+            procedure: 'checkEnrollment'
+        }, {
+            onSuccess: function(result) {
+                busyInd.hide();
+                if (WL.Client.isUserAuthenticated("EnrollmentRealm")) {
+                    getBalance();
+                } else {
+                    WL.Client.login("UsernamePasswordRealm", {
+                        onSuccess: function() {
+                            $('.section').hide();
+                            $('#enrollBody').show();
+                        }
+                    });
+                }
+            },
+            onFailure: function(error) {
+                console.log(error);
+            }
+        });
+    }
+}
+{% endhighlight %}</p>
+<p>This code checks whether the device is already enrolled. If it is, the account balance is shown. If the device is not enrolled, the code triggers the username/password authentication. Upon success, it shows the actual enrollment form, which requires to set up a PIN code.<br />
+Submitting this form triggers the <code>setPinCode()</code> function, then allows the user to see the balance.</p>
+<p>{% highlight javascript  %}
+function setPinCode() {
+    if ($('#newPin').val() != "" && $('#newPin').val() == $('#repeatPin').val()) {
+        WL.Client.invokeProcedure({
+            adapter: 'MyAdapter',
+            procedure: 'enroll',
+            parameters: [$('#newPin').val()]
+        }, {
+            onSuccess: function(response) {
+                $('.section').hide();
+                getBalance();
+            }
+        });
+    } else {
+        alert("Please enter the PIN code twice");
+    }
+}
+{% endhighlight %}</p>
+<p>Because device enrollment is triggered pre-emptively by the client, the challenge handler for the <code>EnrollmentRealm</code> should not occur. To catch a rare case, a simple challenge handler could reload the application when it happens.</p>
+<p>{% highlight javascript  %}
+var enrollmentRealm = WL.Client.createChallengeHandler("EnrollmentRealm");
+enrollmentRealm.isCustomResponse = function(response) {
+    return response && response.responseJSON && response.responseJSON.enrollmentRequired;
+};
+
+enrollmentRealm.handleChallenge = function(response) {
+    //This should not happen, we enroll pre-emptively
+    WL.Client.reloadApp();
+}
+{% endhighlight %}</p>
+<h2 id="pin">PIN code protection</h2>
+<p>Some resources can be protected with the PIN code. In this sample, the <code>getTransactions</code> procedure is protected by a PIN code.<br />
+{% highlight xml  %}
+<procedure name="getTransactions" securityTest="PinCode"/>
+{% endhighlight %}</p>
+<h3>Login module</h3>
+<p>{% highlight xml  %}
+<loginModule name="PinCodeModule">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+ </loginModule>
+{% endhighlight %}</p>
+<h3>Realm</h3>
+<p>{% highlight xml  %}
+<realm name="PinCodeRealm" loginModule="PinCodeModule"><
+    <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    <parameter name="login-function" value="MyAdapter.pinCodeRequired" />
+ </realm>
+{% endhighlight %}</p>
+<p>{% highlight javascript  %}
+function pinCodeRequired() {
+    return {
+        pinCodeRequired: true
+    };
+}
+{% endhighlight %}</p>
+<h3>Security test</h3>
+<p>{% highlight xml  %}<br />
+<customSecurityTest name="PinCode"><br />
+      <test realm="wl_directUpdateRealm" step="1" /><br />
+      <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /><br />
+      <test realm="wl_antiXSRFRealm" step="1" /><br />
+      <test realm="EnrollmentRealm" step="1" /><br />
+      <test isInternalUserID="true" realm="PinCodeRealm" step="2" /><br />
+</customSecurityTest><br />
+{% endhighlight %}<br />
+Accessing a PIN-protected resource requires both <code>PinCodeRealm</code> and <code>EnrollmentRealm</code>.</p>
+<h3>Challenge handler</h3>
+<p>{% highlight javascript  %}
+var pinCodeRealm = WL.Client.createChallengeHandler("PinCodeRealm");
+pinCodeRealm.isCustomResponse = function(response) {
+    return response && response.responseJSON && response.responseJSON.pinCodeRequired;
+};
+
+pinCodeRealm.handleChallenge = function(response) {
+    $('.section').hide();
+    $('#checkPinCode').show();
+    if (response.responseJSON.error) {
+        alert(response.responseJSON.error);
+    }
+};
+{% endhighlight %}</p>
+<p>When a resource is protected by a <code>PinCodeRealm</code> realm, the challenge handler is called. It shows a form that prompts the user to enter the valid PIN code. Clicking the button triggers the <code>verifyPinCode</code> function.</p>
+<p>{% highlight javascript  %}
+function verifyPinCode() {
+    pinCodeRealm.submitAdapterAuthentication({
+        adapter: 'MyAdapter',
+        procedure: 'verifyPinCode',
+        parameters: [$('#pin').val()]
+    }, {
+        onSuccess: function(response) {
+            pinCodeRealm.submitSuccess();
+        },
+        onFailure: function(response) {
+            alert("error");
+        }
+    });
+}<br />
+{% endhighlight %}</p>
+<p>This function sends the PIN code attempt to the adapter for verification.</p>
+<p>{% highlight javascript  %}
+function verifyPinCode(pin) {
+    var userId = WL.Server.getCurrentUserIdentity().userId;
+    var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
+    var enrollInfo = enrolledDevices.getInfo(deviceId);
+
+    if (enrollInfo && enrollInfo.pin == pin) {
+        WL.Server.setActiveUser("PinCodeRealm", null);
+        WL.Server.setActiveUser("PinCodeRealm", {
+            'userId': userId
+        });
+        return {
+            success: true
+        };
+    }
+    return {
+        success: false,
+        pinCodeRequired: true,
+        error: "Wrong PIN Code"
+    };
+}
+{% endhighlight %}</p>
+<p>This procedure retrieves the enrollment information from the enrolled devices list and compares the set PIN code. A successful procedure means that the device was found in the list and that the PIN that was entered matches the stored one. When the procedure is successful, the state is saved in the session.</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/DeviceEnrollment/tree/release71">Click to download</a> the sample application.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_13_results.png" /></p>

@@ -1,0 +1,170 @@
+---
+layout: tutorial
+title: Android Quick Start demonstration
+relevantTo: [android]
+---
+<br>
+<p>The purpose of this demonstration is to make you experience an end-to-end flow where IBM MobileFirst Platform Foundation SDK for Android is integrated into an Android project and used to retrieve data by using a MobileFirst adapter.</p>
+<p>To learn more about creating projects and applications, using adapters and lots more, <a href="../">visit the Native Android Development</a> landing page.</p>
+<p><strong>Prerequisite:</strong> Make sure that you have installed the following software:</p>
+<ul>
+<li>MobileFirst Platform command line tool (<a href="{{site.baseurl}}/downloads">download</a>)</li>
+<li>Android Studio</li>
+</ul>
+<hr />
+<ol>
+<li>
+<h3>Create a MobileFirst back-end project and adapter.</h3>
+<ul>
+<li>
+<h4>Create a back-end project in a location of your choice.</h4>
+<p>
+{% highlight bash %}
+mfp create MyProject
+cd MyProject
+{% endhighlight %}
+            </li>
+<li>
+<h4>Add an HTTP adapter to the project.</h4>
+<p>
+{% highlight bash %}
+mfp add adapter MyAdapter -t http
+{% endhighlight %}
+            </li>
+</ul>
+</li>
+<li>
+<h3>Deploy artifacts to the MobileFirst Server.</h3>
+<ul>
+<li>
+<h4>Start the MobileFirst Server and deploy the adapter.</h4>
+<p>
+{% highlight bash %}
+mfp start
+mfp push
+{% endhighlight %}
+            </li>
+</ul>
+</li>
+<li>
+<h3>Create an Android project in Android Studio.</h3>
+</li>
+<li>
+<h3>Add the MobileFirst Android SDK to the Android Studio project</h3>
+<ul>
+<li>In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.</li>
+<li>After <code>apply plugin: 'com.android.application'</code>, add the following line:<br />
+{% highlight xml  %}
+repositories {
+    jcenter()
+}
+{% endhighlight %}
+    </li>
+<li>Inside <code>android</code>, add the following lines:<br />
+{% highlight xml  %}
+packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}
+{% endhighlight %}</li>
+<li>Inside <code>dependencies</code>, add the following lines:<br />
+{% highlight xml  %}
+compile group: 'com.ibm.mobile.foundation',
+    name: 'ibmmobilefirstplatformfoundation',
+    version: '7.1.0.0',
+    ext: 'aar',
+    transitive: true
+{% endhighlight %}</li>
+<li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
+{% highlight xml  %}
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.GET_TASKS" />
+{% endhighlight %}</li>
+<li>Add the MobileFirst UI activity:<br />
+{% highlight xml  %}
+<activity android:name="com.worklight.wlclient.ui.UIActivity" />
+{% endhighlight %}</li>
+<li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
+{% highlight xml  %}
+mfp push
+{% endhighlight %}
+</li>
+<li>
+<h3>Implement MobileFirst adapter invocation.</h3>
+<ul>
+<li>
+<h4>Main <code>Activity</code> class</h4>
+<p>                Make sure that your MainActivity class extends the <code>Activity</code> class:<br />
+{% highlight java  %}
+public class MainActivity extends Activity {
+...
+{% endhighlight %}<br />
+                Add the following <code>import</code> statements:<br />
+{% highlight java  %}
+import com.worklight.wlclient.api.*;
+import android.util.Log;
+import java.net.URI;
+import java.net.URISyntaxException;
+{% endhighlight %}</p>
+<p>                Add the following lines to the <code>onCreate</code> method:<br />
+{% highlight java  %}
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+final WLClient client = WLClient.createInstance(this);
+client.connect(new WLResponseListener() {
+    @Override
+    public void onSuccess(WLResponse wlResponse) {
+        URI adapterPath = null;
+        try {
+           adapterPath = new URI("/adapters/MyAdapter/getFeed");
+        } catch (URISyntaxException e) {
+           e.printStackTrace();
+        }
+        WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+        request.send(new MyInvokeListener());
+    }
+    @Override
+    public void onFailure(WLFailResponse wlFailResponse) {
+        Log.i("MFPMyProject","Failed connecting to the MobileFirst Server: " + wlFailResponse.getErrorMsg());
+    }
+});
+{% endhighlight %}</li>
+<li>
+<h4><code>MyInvokeListener</code> class</h4>
+<p>                Add a new <code>MyInvokeListener</code> class.<br />
+                Add the following <code>import</code> statements:<br />
+{% highlight java  %}
+import com.worklight.wlclient.api.*;
+import android.util.Log;
+{% endhighlight %}</p>
+<p>                Paste the following lines:<br />
+{% highlight java  %}
+public class MyInvokeListener implements WLResponseListener {
+    @Override
+    public void onSuccess(WLResponse wlResponse) {
+        Log.i("MFPMyProject","Adapter invocation response: " + wlResponse.getResponseJSON());
+    }
+    @Override
+    public void onFailure(WLFailResponse wlFailResponse) {
+        Log.i("MFPMyProject", "Adapter invocation response: " + wlFailResponse.getErrorMsg());
+    }
+}
+{% endhighlight %}</li>
+</ul>
+</li>
+<li>
+<h3>Final configurations</h3>
+<ul>
+<li>Create an Android Virtual Device (AVD).</li>
+</ul>
+</li>
+<li>
+<h3>Click <strong>Run</strong>.</h3>
+<p>    Review the LogCat view for the data retrieved by the adapter request.</p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-14-at-17.31.24-1024x586.png" />
+    </li>
+</ul>
+</li>
+</ol>
