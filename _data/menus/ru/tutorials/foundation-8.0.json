@@ -1,6 +1,6 @@
 {
     "name": "Foundation 8.0",
-    "path": "/tutorials/ru/foundation/8.0",
+    "path": "/tutorials/en/foundation/8.0",
     "children": [
         {
             "name": "Developers",
@@ -18,11 +18,11 @@
                 "name": "Windows 8.1 and 10",
                 "path": "/windows-8-10-tutorials"
             }, {
+                "name": "Web",
+                "path": "/web-tutorials"
+            }, {
                 "name": "Xamarin",
                 "path": "/xamarin-tutorials"
-            }, {
-                "name": "Web apps",
-                "path": "/web-tutorials"
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"
