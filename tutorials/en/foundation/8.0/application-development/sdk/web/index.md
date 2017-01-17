@@ -17,21 +17,9 @@ The SDK includes the following files:
 - **ibmmfpf.js** - The core of the SDK.
 - **ibmmfpfanalytics.js** - Provides support for {{ site.data.keys.mf_analytics }}.
 
-**Prerequisite:**
-To run NPM commands, [Node.js](https://nodejs.org) is required.
-
-#### SDK Limitations
-{: #sdk-limitations }
-The numbers in the table specify the first browser version that are fully supported.
-
-|      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
-|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-| Supported Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
-
-(*) Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
-
-#### Jump to:
+#### Jump to
 {: #jump-to }
+- [Prerequisites](#prerequisites)
 - [Adding the {{ site.data.keys.product_adj }} web SDK](#adding-the-mobilefirst-web-sdk)
 - [Initializing the {{ site.data.keys.product_adj }} web SDK](#initializing-the-mobilefirst-web-sdk)
 - [Registering the web application](#registering-the-web-application)
@@ -39,6 +27,12 @@ The numbers in the table specify the first browser version that are fully suppor
 - [Same Origin Policy](#same-origin-policy)
 - [Secure Origins Policy](#secure-origins-policy)
 - [Tutorials to follow next](#tutorials-to-follow-next)
+
+## Prerequisites
+{: #prerequisites }
+-   See the [supported web browsers](../../../installation-configuration/development/web/#web-app-supported-browsers) prerequisite for setting up the web development environment.
+
+-   To run NPM commands, you must install [Node.js](https://nodejs.org).
 
 ## Adding the {{ site.data.keys.product_adj }} web SDK
 {: #adding-the-mobilefirst-web-sdk }

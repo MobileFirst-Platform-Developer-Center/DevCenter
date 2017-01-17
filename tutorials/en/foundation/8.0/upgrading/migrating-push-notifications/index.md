@@ -1528,7 +1528,7 @@ The following information is important to know before you use the migration tool
 4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
 	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
 	* Remember the PacakgeName/BundleID and provide the same values for the applications.
-	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will succeed.
+	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will not succeed.
 5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
 
 #### Procedure

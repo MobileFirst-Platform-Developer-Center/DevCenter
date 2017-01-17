@@ -352,13 +352,13 @@ To group adapters you need to:
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
 1. Open your browser of choice and load the {{ site.data.keys.mf_console }} using the address `http://<IP>:<PORT>/mfpconsole/`.  
-2. Click on the "Create new" button next to Adapters. You have two options to create an adapter:
+2. Click on the "New" button next to Adapters. You have two options to create an adapter:
  * Using Maven or {{ site.data.keys.mf_cli }} as previously explained above.
  * Download a template adapter project (step 2).
 3. Build the adapter Using Maven or {{ site.data.keys.mf_cli }}.
 4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
  * Click on the Deploy Adapter button (step 5).
- * Drag and drop the file into the Create new adapter screen.
+ * Drag and drop the file into the "Create new" adapter screen.
 
     ![Creating adapter using console](Create_adapter_console.png)
 
