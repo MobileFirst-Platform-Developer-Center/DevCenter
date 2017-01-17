@@ -4,9 +4,9 @@ title: IBM MobileFirst Platform Tutorials
 hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: true
-breadcrumb_title: English
+breadcrumb_title: 日本語
 use_dropdown: true
-use_dropdown_url_replace: false
+use_dropdown_home: foundation/8.0/all-tutorials
 print_pdf: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
