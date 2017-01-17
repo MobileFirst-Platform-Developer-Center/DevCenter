@@ -190,7 +190,7 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 ### Callback queue for completionHandler and delegate
 In order to avoid blocking the UI while receiving responses, a private callback queue can be specified to execute completionHandler block or delegate for `sendWithCompletionHandler` and `sendWithDelegate` set of APIs.
 
-#### Objective-C
+Objective-C
 
 ```objc
 //creating callback queue
@@ -205,7 +205,7 @@ dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callba
     }
 }];
 ```
-#### Swift
+Swift
 
 ```swift
 //creating callback queue
