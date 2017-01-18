@@ -9,8 +9,8 @@ weight: 10
 {: #rest-apis }
 You can use the Push Service REST APIs to work with notifications.
 
-* Use [Administration service REST API](../api/rest/administration-service) for adapters and applications.
-* Use [Push service REST API](../api/rest/push-service) to access Push functions from a REST API endpoint.
+* Use [Administration service REST API](../../api/rest/administration-service) for adapters and applications.
+* Use [Push service REST API](../../api/rest/push-service) to access Push functions from a REST API endpoint.
 
 ## Swagger
 {: #swagger }
