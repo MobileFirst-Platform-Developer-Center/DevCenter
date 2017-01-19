@@ -18,7 +18,7 @@ As correções temporárias fornecem correções e atualizações para corrigir 
 [Leia o que há de novo nas correções temporárias](interim-fixes).
 
 ### Recursos e elementos de API descontinuados
-{ #deprecated-features-and-api-elements }
+{: #deprecated-features-and-api-elements }
 Novas liberações do {{site.data.keys.product }} podem apresentar recursos ou elementos de API que suplantem recursos
 e elementos de API de liberações anteriores. Recursos e elementos de API substituídos são descontinuados e poderão ser removidos em liberações futuras.  
 [Leia sobre recursos e elementos de API descontinuados](deprecated-discontinued).
