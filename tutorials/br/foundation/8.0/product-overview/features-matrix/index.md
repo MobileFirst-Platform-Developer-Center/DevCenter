@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Matrix of features & platforms
+title: Matriz de recursos e plataformas
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} provides many features and supports many platforms.
+O {{site.data.keys.product_full }} fornece muitos recursos e suporta muitas plataformas.
 
-The [Mobile OS feature mapping for {{ site.data.keys.product }} technote](http://www.ibm.com/support/docview.wss?uid=swg27039422) on the IBM Support Portal lists the features that are available on each of the platforms that {{ site.data.keys.product }} supports.
+A [nota técnica Mapeamento de recurso do sistema operacional de dispositivo móvel para o {{site.data.keys.product }}](http://www.ibm.com/support/docview.wss?uid=swg27039422) no Portal de Suporte IBM lista os recursos que estão disponíveis em cada uma das plataformas que o {{site.data.keys.product }} suporta.

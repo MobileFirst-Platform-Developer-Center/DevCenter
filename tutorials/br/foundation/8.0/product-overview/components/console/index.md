@@ -1,189 +1,190 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Operations Console
+title: Usando o MobileFirst Operations Console
 breadcrumb_title: MobileFirst Operations Console
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-The {{ site.data.keys.mf_console_full }} is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+O {{site.data.keys.mf_console_full }} é uma UI baseada na web que possibilita fluxos de trabalho simplificados para o desenvolvedor e o administrador para criar, monitorar, proteger e administrar aplicativos e adaptadores.
 
-#### As a developer
+#### Como um desenvolvedor
 {: #as-a-developer }
-* Develop applications for any environment and register them to {{ site.data.keys.mf_server }}.
-* See all your deployed applications and adapters at a glance. See the Dashboard.
-* Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
-* Set up push notification by deploying certificates, creating notification tags, and sending notification.
-* Create and deploy adapters.
-* Download samples.
+* Desenvolva aplicativos para qualquer ambiente e registre-os no {{site.data.keys.mf_server }}.
+* Veja todos os seus aplicativos e adaptadores implementados em uma visão rápida. Consulte o Painel.
+* Gerencie e configure aplicativos registrados, incluindo Atualização Direta, desativação remota e parâmetros de segurança para autenticidade do aplicativo e autenticação do usuário.
+* Configure notificação push implementando certificados, criando tags de notificação e enviando notificação.
+* Crie e implemente adaptadores.
+* Faça download de amostras.
 
-#### As an IT administrator
+#### Como um administrador de TI
 {: #as-an-it-administrator }
-* Monitor various services.
-* Search for devices that access {{ site.data.keys.mf_server }} and manage their access rights.
-* Update adapter configurations dynamically.
-* Adjust client logger configurations through log profiles.
-* Track how product licenses are used.
+* Monitore diversos serviços.
+* Procure dispositivos que acessem o {{site.data.keys.mf_server }} e gerencie seus direitos de acesso.
+* Atualize as configurações do adaptador dinamicamente.
+* Ajuste as configurações do criador de logs do cliente por meio de perfis de log.
+* Controle como as licenças do produto são usadas.
 
-#### Jump to:
+#### Ir para:
 {: #jump-to }
-* [Accessing the console](#accessing-the-console)
-* [Navigating the console](#navigating-the-console)
+* [Acessando o Console](#accessing-the-console)
+* [Navegando no Console](#navigating-the-console)
 
-## Accessing the console
+## Acessando o console
 {: #accessing-the-console }
-The {{ site.data.keys.mf_console }} can be accessed in the following ways:
+O {{site.data.keys.mf_console }} pode ser acessado das maneiras a seguir:
 
-### From a locally installed {{ site.data.keys.mf_server }}
+### De um {{site.data.keys.mf_server }} instalado localmente
 {: #from-a-locally-installed-mobilefirst-server }
-#### Desktop Browser
+#### Navegador da área de trabalho
 {: #desktop-browser }
-From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Em seu navegador de opção, carregue a URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome do usuário/senha são *admin/admin*.
 
-#### Command-line
+#### Linha de Comandos
 {: #command-line }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, run the command: `mfpdev server console`.
+A partir de uma janela de **Linha de comandos**, com o {{site.data.keys.mf_cli }} instalado, execute o comando: `mfpdev server console`.
 
-### From a remotely installed {{ site.data.keys.mf_server }}
+### A partir de um {{site.data.keys.mf_server }} instalado remotamente
 {: #from-a-remotely-installed-mobilefirst-server }
-#### Desktop Browser
+#### Navegador da área de trabalho
 {: #desktop-browser-remote }
-From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
+No seu navegador de opção, carregue a URL `http://the-server-host:server-port-number/mfpconsole`.  
+O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM Bluemix, IBM [Mobile Foundation](../../../bluemix/).
 
-#### Command-line
+#### Linha de Comandos
 {: #command-line-remote }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
+Em uma janela de **Linha de comandos**, com o {{site.data.keys.mf_cli }} instalado, 
 
-1. Add a remote server definition:
+1. Inclua uma definição do servidor remoto:
 
-    *Interactive Mode*  
-    Run the command: `mfpdev server add` and follow the on-screen instructions.
+    *Modo Interativo*  
+    Execute o comando: `mfpdev server add` e siga as instruções na tela.
 
-    *Direct Mode*  
-    Run the command with the following structure: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. For example:
+    *Modo Direto*  
+    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por
+exemplo:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
    ```
 
-2. Run the command: `mfpdev server console MyRemoteServer`.
+2. Execute o comando: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Saiba mais sobre os vários comandos da CLI no tutorial [Usando a CLI para gerenciar artefatos do {{site.data.keys.product_adj }}](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
-## Navigating the console
+## Navegando no console
 {: #navigating-the-console }
 ### Dashboard
 {: #dashboard }
-The Dashboard provides a glance view of the deployed projects.
+O Painel fornece uma visualização rápida dos projetos implementados.
 
-![Image of the console dashboard](dashboard.png)
+![Imagem do painel do console](dashboard.png)
 
-#### Actions dropdown
+#### Lista suspensa Ações
 {: #actions-dropdown }
-The dropdown provides quick access to various console actions.
+A lista suspensa fornece acesso rápido a várias ações do console.
 
-![Image of Actions dropdown](actions-dropdown.png)
+![Imagem da lista suspensa Ações](actions-dropdown.png)
 
-### Runtime settings
+### Configurações de tempo de execução
 {: #runtime-settings }
-Edit runtime properties, global security variables, server keystore and confidential clients.
+Edite as propriedades de tempo de execução, as variáveis de segurança global, o keystore do servidor e os clientes confidenciais.
 
-![Image of the Runtime Settings screen ](runtime-settings.png)
+![Imagem da tela Configurações de tempo de execução ](runtime-settings.png)
 
-### Error log
+### log de erro
 {: #error-log }
-The Error log shows a list of the failed management operations that were initiated from the {{ site.data.keys.mf_console }}, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+O log de erro mostra uma lista das operações de gerenciamento com falha que foram iniciadas a partir do {{site.data.keys.mf_console }} ou da linha de comandos no ambiente de tempo de execução atual. Use o log para ver o efeito da falha nos servidores.
 
-> For more information, see the topic about error log of operations on runtime environments in the user documentation.
+> Para obter mais informações, consulte o tópico sobre log de erro de operações em ambientes de tempo de execução na documentação do usuário.
 
-![Image of error logs screen](error-log.png)
+![Imagem da tela de logs de erro](error-log.png)
 
-### Devices
+### Dispositivos
 {: #devices }
-Administrators can search for devices that access the {{ site.data.keys.mf_server }} and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+Os administradores podem procurar dispositivos que acessem o {{site.data.keys.mf_server }} e podem gerenciar direitos de acesso.  
+Os dispositivos podem ser procurados usando qualquer ID do usuário ou usando um nome fácil. O ID do usuário é o identificador que foi usado para efetuar login.  
+Um nome fácil é um nome que é associado com o dispositivo para distingui-lo de outros dispositivos que compartilham o ID do usuário. 
 
-> For more information, see the topic about device access management in the user documentation.
+> Para obter mais informações, consulte o tópico sobre gerenciamento de acesso ao dispositivo na documentação do usuário.
 
-![Image of device management screen](devices.png)
+![Imagem da tela de gerenciamento de dispositivo](devices.png)
 
-### Applications
+### Aplicações
 {: #applications }
-#### Registering applications
+#### Registrando Aplicativos
 {: #registering-applications }
-Provide basic application values and download Starter Code. 
+Forneça valores de aplicativo básicos e faça download do código de início. 
 
-![Image of application registration screen](register-applications.png)
+![Imagem da tela de registro do aplicativo](register-applications.png)
 
-#### Managing applications
+#### Gerenciando aplicativos
 {: #managing-applications }
-Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/).
+Gerencie e configure aplicativos registrados usando [Atualização Direta](../../../application-development/direct-update/), Desativação remota, [Autenticação do aplicativo](../../../authentication-and-security/application-authenticity/) e [configurando parâmetros de segurança](../../../authentication-and-security/).
 
-![Image of application management screen](application-management.png)
+![Imagem da tela de gerenciamento de aplicativo](application-management.png)
 
-#### Authentication and Security
+#### Autenticação e Segurança
 {: #authentication-and-security }
-Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+Configure parâmetros de segurança do aplicativo, como o valor de expiração do token padrão, mapeie elementos do escopo para verificações de segurança, defina os escopos de aplicativos obrigatórios e configure opções de verificação de segurança.
 
-> [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
+> [Saiba mais](../../../authentication-and-security/) sobre a estrutura de segurança do {{site.data.keys.product_adj }}.
 
-![Image of application security configuration screen](authentication-and-security.png)
+![Imagem da tela de configuração de segurança do aplicativo](authentication-and-security.png)
 
-#### Application Settings
+#### Configurações de Aplicativo
 {: #application-settings }
-Configure the display name of the application in the console as well as the application type and licensing.
+Configure o nome de exibição do aplicativo no console, assim como o tipo de aplicativo e o licenciamento.
 
-![Image of application settings screen](application-settings.png)
+![Imagem da tela de configurações do aplicativo](application-settings.png)
 
-#### Notifications
+#### Notificações
 {: #notifications }
-Set-up [push notifications](../../../notifications/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+Configure [notificações push](../../../notifications/) e parâmetros relacionados, como certificados e detalhes do GCM, defina tags e envie notificações para os dispositivos.
 
-![Image of push notifications setup scren](push-notifications.png)
+![Imagem da tela de configuração de notificações push](push-notifications.png)
 
-### Adapters
+### Adaptadores
 {: #adapters }
-#### Creating adapters
+#### Criando adaptadores
 {: #creating-adapters }
-[Register an adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+[Registre um adaptador](../../../adapters/), faça download do código de início e atualize um adaptador rapidamente, atualizando suas propriedades sem precisar reconstruir e reimplementar o artefato do adaptador.
 
-![Image of adapter registration screen](create-adapter.png)
+![Imagem da tela de registro do adaptador](create-adapter.png)
 
-#### Adapter properties
+#### Propriedades do adaptador
 {: #adapter-properties }
-After an adapter is deployed, it can be configured in the console.
+Após a implementação de um adaptador, ele pode ser configurado no console.
 
-![Image of adapter configuration screen](adapter-configuration.png)
+![Imagem da tela de configuração de adaptador](adapter-configuration.png)
 
-### Client logs
+### Logs do cliente
 {: #client-logs }
-Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
+Os administradores podem usar perfis de log para ajustar configurações do criador de logs do cliente, como filtros de nível de log e de pacote de log, para qualquer combinação de sistema operacional, versão do sistema operacional, aplicativo, versão do aplicativo e modelo de dispositivo.
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.
+Quando um administrador cria um perfil de configuração, a configuração de log é concatenada com chamadas de API de respostas, como `WLResourceRequest`, e é aplicada automaticamente.
 
-> For more information, see the topic about client-side log capture configuration in the user documentation.
+> Para obter mais informações, consulte o tópico sobre configuração de captura de log do lado do cliente na documentação do usuário.
 
-![Image of client logs screen](client-logs.png)
+![Imagem da tela de logs do cliente](client-logs.png)
 
-### License tracking
+### Rastreamento de licença
 {: #license-tracking }
-Accessible from the top Settings buttons.
+Acessível a partir dos botões de Configurações na parte superior.
 
-License terms vary depending on which edition (Enterprise or Consumer) of {{ site.data.keys.product }} is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+Os termos de licença variam conforme a edição (Enterprise ou Consumer) do {{site.data.keys.product }} que está sendo usada.   O rastreamento de licença está ativado por padrão e controla métricas relevantes para a política de licenciamento, como dispositivos do cliente ativos e aplicativos instalados. Essas informações ajudam a determinar se o uso atual do {{site.data.keys.product }} está dentro dos níveis de titularidade de licença e podem evitar potenciais violações de licença.
 
-By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
+Ao rastrear o uso de dispositivos do cliente e determinar se os dispositivos estão ativos, os administradores podem desativar dispositivos que não deveriam mais estar acessando o serviço. Essa situação pode surgir se um funcionário deixou a empresa, por exemplo.
 
-> For more information, see the topic about license tracking in the user documentation.
+> Para obter mais informações, consulte o tópico sobre o rastreamento de licença na documentação do usuário.
 
-![Image of client logs screen](license-tracking.png)
+![Imagem da tela de logs do cliente](license-tracking.png)
 
 ### Downloads
 {: #downloads }
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of {{ site.data.keys.product }} from the Download Center in the {{ site.data.keys.mf_console }}.
+Para situações em que a conectividade com a Internet não está disponível, é possível fazer download de uma captura instantânea dos vários artefatos de desenvolvimento do {{site.data.keys.product }} a partir do Download Center no {{site.data.keys.mf_console }}.
 
-![Image of available artifacts](downloads.png)
+![Imagem de artefatos disponíveis](downloads.png)
 

@@ -1,94 +1,135 @@
 ---
 layout: tutorial
-title: Product Components
+title: Componentes do produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-{{ site.data.keys.product_full }} consists of the following components: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, client-side runtime components, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }}, and the {{ site.data.keys.mf_system_pattern }}.
+O {{site.data.keys.product_full }} consiste nos componentes a seguir: {{site.data.keys.mf_cli }}, {{site.data.keys.mf_server }}, componentes de tempo de execução do lado do cliente, {{site.data.keys.mf_console }}, {{site.data.keys.mf_app_center }} e {{site.data.keys.mf_system_pattern }}.
 
-The following figure shows the components of {{ site.data.keys.product }}:
+A figura a seguir
+mostra os componentes do {{site.data.keys.product }}:
 
-![Architecture of the {{ site.data.keys.product }} solution](architecture.jpg)
+![Arquitetura da solução {{site.data.keys.product }}](architecture.jpg)
 
-### {{ site.data.keys.mf_cli }}
+### {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-You can use the {{ site.data.keys.mf_cli_full }} to develop and manage applications, in addition to using the IBM {{ site.data.keys.mf_console }}. Some aspects of the {{ site.data.keys.product_adj }} development process must be done with the CLI.
+É possível usar o {{site.data.keys.mf_cli_full }} para desenvolver e gerenciar aplicativos, além de usar o IBM {{site.data.keys.mf_console }}. Alguns aspectos do processo de desenvolvimento do {{site.data.keys.product_adj }} devem ser executado com CLI.
 
-The commands, all prefaced with **mfpdev**, support the following types of tasks:
+Os comandos, todos prefaciados com **mfpdev**, suportam os seguintes tipos de tarefas:
 
-* Registering apps with the {{ site.data.keys.mf_server }}
-* Configuring your app
-* Creating, building, and deploying adapters
-* Previewing and updating Cordova apps
-* For more information, see the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+* Registrar aplicativos com {{site.data.keys.mf_server }}
+* Configurar seu aplicativo
+* Criar, construir e implementar adaptadores
+* Visualizar e atualizar aplicativos Cordova
+* Para obter mais informações, consulte o tutorial [Usando a CLI para gerenciar artefatos do {{site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
-### {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The {{ site.data.keys.mf_server }} provides secured backend connectivity, application management, push notification support and analytics capabilities and monitoring to {{ site.data.keys.product_adj }} applications. It is not an application server in the Java Platform, Enterprise Edition (Java EE) sense. It acts as a container for {{ site.data.keys.product }} application packages, and is in fact a collection of web applications, optionally packaged as an EAR (enterprise archive) file that run on top of traditional application servers.
+O {{site.data.keys.mf_server }} fornece conectividade backend segura, gerenciamento de aplicativo, suporte à notificação push e recursos de análise de dados, além de monitoramento para aplicativos {{site.data.keys.product_adj }}. Não é um servidor de aplicativos no sentido de Java Platform, Enterprise Edition (Java EE). Ele age como um contêiner para pacotes de aplicativos do {{site.data.keys.product }}
+e é, de fato, uma coleção de aplicativos da web, empacotados opcionalmente
+como um arquivo EAR (enterprise archive) que é executado em cima
+de servidores de aplicativos tradicionais.
 
-{{ site.data.keys.mf_server }} integrates into your enterprise environment and uses existing resources and infrastructure. This integration is based on adapters that are server-side software components responsible for channeling back-end enterprise systems and cloud-based services to the user device. You can use adapters to retrieve and update data from information sources, and to allow users to perform transactions and start other services and applications.
+O {{site.data.keys.mf_server }} integra-se a seu ambiente corporativo e usa recursos e infraestrutura existentes. Essa integração baseia-se em adaptadores
+que são componentes de software do lado do servidor responsáveis pelo direcionamento
+de sistemas corporativos de backend e serviços baseados em nuvem para o dispositivo do usuário. É possível usar adaptadores para recuperar e atualizar dados de origens de
+informações, e para permitir que os usuários executem transações e iniciem outros
+serviços e aplicativos.
 
-[Learn more about the {{ site.data.keys.mf_server }}](server).
+[Saiba mais sobre o {{site.data.keys.mf_server }}](server).
 
-### Client-side runtime components
+### Componentes de Tempo de Execução do Lado do Cliente
 {: #client-side-runtime-components }
-{{ site.data.keys.product }} provides client-side runtime code that embeds server functionality within the target environment of deployed apps. These runtime client APIs are libraries that are integrated into the locally stored app code. You use them to add {{ site.data.keys.product_adj }} features to your client apps. The APIs and libraries can be installed with the {{ site.data.keys.mf_dev_kit_full }} or you can download them from repositories for your development platform.
+O {{site.data.keys.product }} fornece o código de tempo de execução do lado do cliente que integra a funcionalidade do servidor dentro do ambiente de destino de aplicativos implementados. Essas APIs do cliente de tempo de execução são bibliotecas que estão
+integradas ao código de aplicativo armazenado localmente. Você as usa para incluir recursos do {{site.data.keys.product_adj }} em seus aplicativos clientes. As APIs e bibliotecas podem ser instaladas com o {{site.data.keys.mf_dev_kit_full }} ou é possível fazer seu download a partir dos repositórios para sua plataforma de desenvolvimento.
 
-### {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-The {{ site.data.keys.mf_console }} is used for the control and management of the mobile applications. The {{ site.data.keys.mf_console }} is also an entry point to learn about {{ site.data.keys.product }} development. From the console, you can download code examples, tools, and SDKs.
+O {{site.data.keys.mf_console }} é
+usado para o controle e gerenciamento dos aplicativos móveis. O
+{{site.data.keys.mf_console }}
+também é um ponto de entrada para aprender sobre o desenvolvimento do
+{{site.data.keys.product }}. No console, é possível fazer download dos exemplos de código,
+ferramentas e SDKs.
 
-You can use the {{ site.data.keys.mf_console }} for the following tasks:
+Você pode utilizar o {{site.data.keys.mf_console }} para executar as seguintes tarefas:
 
-* Monitor and configure all deployed applications, adapters, and push notification rules from a centralized, web-based console.
-* Remotely disable the ability to connect to {{ site.data.keys.mf_server }} by using preconfigured rules of app version and device type.
-* Customize messages that are sent to users on application launch.
-* Collect user statistics from all running applications.
-* Generate built-in, pre-configured reports about user adoption and usage (number and frequency of users that are engaging with the server through the applications).
-* Configure data collection rules for application-specific events.
-* [Learn more about the {{ site.data.keys.mf_console }}](console).
+* Monitorar e configurar todos os aplicativos implementados, adaptadores e regras de notificação push a partir de um console baseado na Web centralizado.
+* Desativar remotamente a capacidade de se conectar ao {{site.data.keys.mf_server }} usando regras pré-configuradas de versão do aplicativo e tipo de dispositivo.
+* Customizar mensagens que são enviadas aos usuários na ativação do aplicativo.
+* Coletar estatísticas do usuário a partir de todos os aplicativos em execução.
+* Gerar relatórios integrados, pré-configurados sobre a adoção de usuário e o uso
+(número e frequência de usuários que estão engajados com o servidor por meio dos  aplicativos).
+* Configurar regras de coleta de dados para eventos específicos do aplicativo.
+* [Saiba mais sobre o {{site.data.keys.mf_console }}](console).
 
-### {{ site.data.keys.mf_analytics }}
+### {{site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.product }} includes a scalable operational {{ site.data.keys.mf_analytics_short }} feature that is accessible from the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics.
+O {{site.data.keys.product }} inclui um recurso operacional escalável {{site.data.keys.mf_analytics_short }} que está acessível a partir do {{site.data.keys.mf_console }}. O recurso {{site.data.keys.mf_analytics_short }} permite que as empresas procurem padrões, problemas e estatísticas de uso da plataforma em logs e eventos que são coletados de dispositivos, aplicativos e servidores.
 
-The data for {{ site.data.keys.mf_analytics }} includes the following sources:
+Os dados para {{site.data.keys.mf_analytics }} incluem as origens a seguir:
 
-* Crash events of an application on iOS and Android devices (crash events for native code and JavaScript errors).
-* Interactions of any application-to-server activity (anything that is supported by the {{ site.data.keys.mf_cli }}ent/server protocol, including push notification).
-* Server-side logs that are captured in traditional {{ site.data.keys.product_adj }} log files.
+* Eventos de travamento de um aplicativo em dispositivos iOS e Android (eventos de travamento para código nativo e erros de JavaScript).
+* Interações de qualquer atividade de aplicativo para servidor (qualquer coisa que seja suportada pelo protocolo cliente/servidor {{site.data.keys.mf_cli }}, incluindo notificação push).
+* Logs do lado do servidor que são capturados em arquivos de log do {{site.data.keys.product_adj }}
+tradicionais.
 
-[Learn more about {{ site.data.keys.mf_analytics }}](../../analytics).
+[Saiba mais sobre {{site.data.keys.mf_analytics }}](../../analytics).
 
-### Application Center
+### Centro de aplicativos
 {: #application-center }
-With the Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications. Development team members can use the Application Center to share applications with members of the team. This process facilitates collaboration between all the people who are involved in the development of an application.
+Com o Application
+Center, é possível compartilhar aplicativos remotos que estão em desenvolvimento
+na organização em um único repositório de aplicativos remotos. Os membros da equipe de desenvolvimento podem usar o Application Center para compartilhar aplicativos com membros da equipe. Este processo facilita a colaboração entre
+todas as pessoas envolvidas no desenvolvimento de um aplicativo.
 
-Your company can typically use the Application Center as follows:
+Em geral,
+sua empresa pode usar o Application Center, conforme a seguir:
 
-1. The development team creates a version of an application.
-2. The development team uploads the application to the Application Center, enters its description, and asks the extended team to review and test it.
-3. When the new version of the application is available, a tester runs the Application Center installer application, which is the mobile client. Then, the tester locates this new version of the application, installs it on their mobile device, and tests it.
-4. After the tests, the tester rates the application and submits feedback, which is visible to the developer from the Application Center console.
+1. A equipe de desenvolvimento cria uma versão de um aplicativo.
+2. A equipe de desenvolvimento faz upload do aplicativo para o Application
+Center, insere sua descrição e solicita à equipe estendida para revisá-la
+e testá-la.
+3. Quando a nova versão do aplicativo está disponível, um testador
+executa o aplicativo instalador do Application Center, que é o cliente
+remoto. Em seguida, o testador localiza essa nova versão do aplicativo, instala-a no dispositivo móvel e testa-a.
+4. Após os testes, o testador classifica o aplicativo e envia o
+feedback, que fica visível para o desenvolvedor no console do Application
+Center.
 
-The Application Center is aimed for private use within a company, and you can target some mobile applications to specific groups of users. You can use the Application Center as an enterprise application store.
+O Application Center é destinado para uso privado dentro de
+uma empresa e você pode destinar alguns aplicativos remotos para grupos específicos
+de usuários. É possível usar o Application Center como um armazenamento de
+aplicativo corporativo.
 
-### {{ site.data.keys.mf_system_pattern }}
+### {{site.data.keys.mf_system_pattern }}
 {: #mobilefirst-system-pattern }
-With the {{ site.data.keys.mf_system_pattern_full }}, you can deploy {{ site.data.keys.mf_server }} on IBM PureApplication System or IBM PureApplication Service on SoftLayer. With these patterns, administrators and corporations can respond quickly to changes in the business environment by taking advantage of on-premises Cloud technologies. This approach simplifies the deployment process, and improves the operational efficiency to cope with increased mobile demand. The demand accelerates iteration of solutions that exceed traditional demand cycles. Using {{ site.data.keys.mf_server }} Pattern also gives access to best practices and built-in expertise, such as built-in scaling policies.
+Com o {{site.data.keys.mf_system_pattern_full }}, é possível implementar o {{site.data.keys.mf_server }} no IBM PureApplication System ou o IBM PureApplication Service no SoftLayer. Com estes padrões,
+administradores e corporações podem responder rapidamente a mudanças
+no ambiente de negócios tirando vantagem de tecnologias de
+Nuvem no local. Essa abordagem simplifica o processo de implementação e
+melhora a eficiência operacional para lidar com uma maior demanda
+móvel. A demanda acelera a iteração de soluções que excedem os
+ciclos de demanda tradicionais. Usar o {{site.data.keys.mf_server }} Pattern também fornece acesso a melhores práticas e conhecimento integrado, como políticas de ajuste de escala integradas.
 
 #### PureApplication System
 {: #pureapplication-system }
-IBM PureApplication System is an integrated, highly scalable system that is based on IBM X-Architecture, providing an application-centric computing model in a cloud environment.
+O IBM PureApplication System é um sistema integrado altamente escalável que é baseado no IBM X-Architecture, fornecendo um modelo de computação centralizado no aplicativo em um ambiente de nuvem.
 
-An application-centric system is an efficient way to manage complex applications and the tasks and processes that are invoked by the application. The entire system implements a diverse virtual computing environment, in which different resource configurations are automatically tailored to different application workloads. The application management capabilities of the IBM PureApplication System platform make deployment of middleware and other application components quick, easy, and repeatable.
+Um sistema centralizado em aplicativos é uma maneira eficiente de gerenciar aplicativos complexos e as tarefas e processos que são chamados pelo aplicativo. Todo o sistema implementa um ambiente de computação virtual diferente, no qual diferentes configurações de recursos
+são customizadas automaticamente para diferentes cargas de trabalho de aplicativos. Os recursos de gerenciamento de aplicativo da plataforma IBM PureApplication System tornam a implementação de middleware e de outros componentes de aplicativo rápida, fácil e repetida.
 
-IBM PureApplication System provides virtualized workloads and a scalable infrastructure that is delivered in one integrated system.
+O IBM PureApplication System fornece cargas de trabalho virtualizadas e uma infraestrutura escalável que são entregues em um sistema integrado.
 
-#### Virtual System Patterns
+#### Padrões de Sistema Virtual
 {: #virtual-system-patterns }
-Virtual system patterns are a logical representation of a recurring topology for a set of deployment requirements.
+Padrões de sistema virtual são uma representação lógica de uma topologia
+recorrente para um conjunto de requisitos de implementação.
 
-Virtual system patterns enable efficient and repeatable deployments of systems that include one or more virtual machine instances, and the applications that run on them. You can completely automate the deployment and eliminate the need to perform multiple time-consuming manual tasks. Such a deployment eliminates problems that are introduced by error-prone, manual configuration processes, especially in complex production topologies such as server farms, and accelerates solution deployment.
+Padrões do sistema virtual permitem implementações repetidas e eficientes de sistemas que incluem uma ou mais instâncias de máquina virtual e dos aplicativos que são executados nelas. É possível automatizar completamente a implementação e eliminar a necessidade de executar várias tarefas manuais demoradas. Uma implementação desse tipo
+elimina problemas que são introduzidos por processos de configuração
+manuais propensos a erro, especialmente em topologias de produção
+complexas como server farms, e acelera a implementação da
+solução.

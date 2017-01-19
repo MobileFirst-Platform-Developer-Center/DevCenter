@@ -1,71 +1,110 @@
 ---
 layout: tutorial
-title: Accessibility features for IBM MobileFirst Foundation
-breadcrumb_title: Accessibility features
+title: Recursos de acessibilidade para o IBM MobileFirst Foundation
+breadcrumb_title: Recursos de acessibilidade
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Accessibility features assist users who have a disability, such as restricted mobility or limited vision, to use information technology content successfully.
+Os recursos de acessibilidade ajudam os usuários que têm uma deficiência, como mobilidade restrita ou visão limitada, a usar conteúdo de tecnologia da informação com sucesso.
 
-### Accessibility features
+### Recursos de Acessibilidade
 {: #accessibility-features }
-{{ site.data.keys.product_full }} includes the following major accessibility features:
+{{site.data.keys.product_full }}
+inclui os principais recursos de acessibilidade a seguir:
 
-* Keyboard-only operation
-* Operations that support the use of a screen reader
+* Operação somente por teclado
+* Operações que suportam o uso de um leitor de tela
 
-{{ site.data.keys.product }} uses the latest W3C Standard, [WAI-ARIA 1.0](http://www.w3.org/TR/wai-aria/) to ensure compliance to [US Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards), and [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/). To take advantage of accessibility features, use the latest release of your screen reader in combination with the latest web browser that is supported by this product.
+{{site.data.keys.product }}
+usa o W3C Standard, [WAI-ARIA
+1.0](http://www.w3.org/TR/wai-aria/) mais recente para garantir a conformidade com a
+[US
+Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards) e o [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/). Para
+aproveitar os recursos de acessibilidade, use a liberação mais
+recente do seu leitor de tela junto com o navegador da web mais
+recente suportado por este produto.
 
-### Keyboard navigation
+### Navegação pelo Teclado
 {: #keyboard-navigation }
-This product uses standard navigation keys.
+Esse produto usa as chaves de navegação padrão
 
-### Interface information
+### Informações de interface
 {: #interface-informaton }
-The {{ site.data.keys.product }} user interfaces do not have content that flashes 2 - 55 times per second.
+As
+interfaces com o usuário do
+{{site.data.keys.product }}
+não possuem conteúdo que é atualizado de 2 a 55 vezes por segundo.
 
-You can use a screen reader with a digital speech synthesizer to hear what is displayed on your screen. Consult the documentation with your assistive technology for details about how to use it with this product and its documentation.
+É possível usar um leitor de tela com um sintetizador de voz digital para ouvir o que é exibido em sua tela. Consulte a documentação sobre tecnologia assistiva para obter detalhes sobre como usá-la com este produto e sua documentação.
 
-### {{ site.data.keys.mf_cli }}
+### {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-By default, status messages that are displayed by the {{ site.data.keys.mf_cli }} use various colors to indicate success, errors, and warnings. You can use the `--no-color` option on any {{ site.data.keys.mf_cli }} command to suppress the use of these colors for that command. When `--no-color` is specified, output is displayed in the text display colors that are set for your operating system console.
+Por padrão, as mensagens de status que são exibidas pelo {{site.data.keys.mf_cli }} usam
+várias cores para indicar sucesso, erros e avisos. É possível usar a opção `--no-color` em qualquer comando {{site.data.keys.mf_cli }} para suprimir o uso dessas cores para aquele comando. Quando `--no-color` é especificado, a saída é exibida nas cores de exibição do texto configuradas para o console do sistema operacional.
 
-### Web interface 
+### interface da Web 
 {: #web-interface }
-The {{ site.data.keys.product }} web user interfaces rely on cascading style sheets to render content properly and to provide a usable experience. The application provides an equivalent way for low-vision users to use a users system display settings, including high-contrast mode. You can control font size by using the device or web browser settings.
+As interfaces com o usuário da web do
+{{site.data.keys.product }}
+dependem das folhas de estilo em cascata para renderizar o conteúdo
+corretamente e fornecem uma experiência utilizável. O aplicativo
+fornece uma forma equivalente para usuários de baixa visão usarem
+configurações de exibição do sistema de usuários, incluindo o modo de
+alto contraste. É possível controlar o tamanho de fonte usando as configurações do dispositivo ou do navegador da
+web.
 
-You can navigate through the different {{ site.data.keys.product_adj }} environments and their documentation by using keyboard shortcuts. Eclipse provides accessibility features for its development environments. Internet browsers also provide accessibility features for web applications, such as the {{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_analytics_console }}, the {{ site.data.keys.product }} Application Center console, and the {{ site.data.keys.product }} Application Center mobile client.
+É possível navegar pelos diferentes ambientes do
+{{site.data.keys.product_adj }}
+e sua documentação usando os atalhos de teclado. O Eclipse
+fornece os recursos de acessibilidade para os seus ambientes
+de desenvolvimento. Navegadores da Internet também fornecem recursos de acessibilidade para aplicativos da web, como o {{site.data.keys.mf_console }}, o {{site.data.keys.mf_analytics_console }}, o console do {{site.data.keys.product }} Application Center e o cliente móvel do {{site.data.keys.product }} Application Center.
 
-The {{ site.data.keys.product }} web user interface includes WAI-ARIA navigational landmarks that you can use to quickly navigate to functional areas in the application.
+A
+interface com o usuário da web do
+{{site.data.keys.product }}
+inclui referências de navegação WAI-ARIA que você pode
+usar para navegar rapidamente para as áreas funcionais no
+aplicativo.
 
-### Installation and configuration
+### Instalação e configuração
 {: #installation-and-configuration }
-There are two ways to install and configure {{ site.data.keys.product }}: by graphical user interface (GUI), or by command-line.
+Há duas maneiras de instalar e configurar o {{site.data.keys.product }}:
+pela interface gráfica com o usuário (GUI) ou pela linha de comandos.
 
-Although the graphical user interface (IBM Installation Manager in wizard mode or Server Configuration Tool) does not provide information about user interface objects, equivalent function is available with the command-line interface. All the functions in the GUI are supported through the command-line, and some particular installation and configuration features are only available with the command-line. You can read about the accessibility features of [IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) in the IBM Knowledge Center.
+Embora a interface gráfica com o usuário (IBM Installation Manager no modo do assistente ou a Ferramenta de
+Configuração do Servidor) não forneça informações sobre objetos da interface com o usuário, uma função equivalente
+está disponível com a interface da linha de comandos. Todas as funções na GUI são suportadas por meio da
+linha de comandos e alguns recursos particulares de instalação e configuração estão disponíveis apenas com
+a linha de comandos. É possível ler sobre os recursos de acessibilidade do [IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) no IBM Knowledge Center.
 
-The following topics provide you with the information on how the installation and configuration can be done without GUI:
+Os tópicos a seguir fornecem informações sobre como a instalação e a configuração
+podem ser feitas sem a GUI:
 
-* Working with sample response files for IBM Installation Manager
-This method enables silent installation and configuration of {{ site.data.keys.mf_server }} and Application Center. You have the possibility to not install Application Center by using the response file named install-no-appcenter.xml. You can then use Ant task to install it at a later stage. See Installing the Application Center with Ant tasks. In this case, the installation and the upgrading of Application Center can be done independently.
-* Installing with Ant Tasks
-* Installing the Application Center with Ant tasks
+* Trabalhando com arquivos de resposta de amostra para o IBM Installation Manager
+Este método permite a instalação e a configuração silenciosas do {{site.data.keys.mf_server }} e do Application Center. Você tem a possibilidade de não instalar o Application Center usando o arquivo de resposta denominado install-no-appcenter.xml. Você pode, então, usar a tarefa Ant
+para instalá-lo posteriormente. Consulte Instalando o Application Center com tarefas Ant. Nesse caso, a instalação e o upgrade do Application Center podem ser feitos de forma independente.
+* Instalando com tarefas Ant
+* Instalando o Application Center com tarefas Ant
 
-### Vendor software
+### Software do fornecedor
 {: #vendor-software }
-{{ site.data.keys.product }} includes certain vendor software that is not covered under the IBM license agreement. IBM makes no representation about the accessibility features of these products. Contact the vendor for the accessibility information about its products.
+{{site.data.keys.product }} inclui certos produtos de software de fornecedor que não estão cobertos
+no contrato de licença da IBM. A IBM não representa nenhum recurso de acessibilidade
+desses produtos. Entre em contato com o fornecedor para obter informações de acessibilidade sobre seus produtos.
 
-### Related accessibility information
+### Informações Relacionadas à Acessibilidade
 {: #related-accessibility-information }
-In addition to standard IBM help desk and support websites, IBM has established a TTY telephone service for use by deaf or hard of hearing customers to access sales and support services:
+Além do IBM help desk padrão e websites de suporte, a IBM estabeleceu um serviço de telefone TTY
+para uso por clientes com deficiência auditiva para acessar serviços de vendas e suporte:
 
-TTY service  
+Serviço TTY  
 800-IBM-3383 (800-426-3383)  
-(within North America)
+(na América do Norte)
 
-### IBM and accessibility
+### IBM e acessibilidade
 {: #ibm-and-accessibility }
-For more information about the commitment that IBM has to accessibility, see [IBM Accessibility](http://www.ibm.com/able).
+Para obter mais informações sobre o compromisso da
+IBM com a acessibilidade, veja [Acessibilidade IBM](http://www.ibm.com/able).
 
 

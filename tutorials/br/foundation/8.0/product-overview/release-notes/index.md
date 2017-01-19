@@ -5,32 +5,35 @@ weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Identify the latest information about this product release and all its fix packs.
+Identifique as informações mais recentes sobre esta liberação do produto e todos os seus fix packs.
 
-### What's new in v8.0
+### O que há de novo na v8.0
 {: #whats-new-in-v-80 }
-{{ site.data.keys.product_full }} v8.0 brings significant changes that modernize your {{ site.data.keys.product_adj }} application development, deployment, and management experience.  
-[Read what's new](whats-new/).
+O {{site.data.keys.product_full }} v8.0 traz mudanças significativas que modernizam sua experiência de desenvolvimento de aplicativo implementação e gerenciamento no {{site.data.keys.product_adj }}.  
+[Leia o que há de novo](whats-new/).
 
-### What's new in v8.0 interim fixes
+### O que há de novo nas correções temporárias da v8.0
 {: #whats-new-in-v-80-interim-fixes }
-Interim fixes provide patches and updates to correct problems and keep IBM MobileFirst Foundation current for new releases of mobile operating systems.  
-[Read what's new in interim fixes](interim-fixes).
+As correções temporárias fornecem correções e atualizações para corrigir problemas e manter o IBM MobileFirst Foundation atualizado para novas liberações de sistemas operacionais de dispositivo móvel.  
+[Leia o que há de novo nas correções temporárias](interim-fixes).
 
-### Deprecated features and API elements
+### Recursos e elementos de API descontinuados
 { #deprecated-features-and-api-elements }
-New releases of {{ site.data.keys.product }} might introduce features or API elements that supersede features and API elements from past releases. Superseded features and API elements are deprecated and they might be removed in future releases.  
-[Read about deprecated features and API elements](deprecated-discontinued).
+Novas liberações do {{site.data.keys.product }} podem apresentar recursos ou elementos de API que suplantem recursos
+e elementos de API de liberações anteriores. Recursos e elementos de API substituídos são descontinuados e poderão ser removidos em liberações futuras.  
+[Leia sobre recursos e elementos de API descontinuados](deprecated-discontinued).
 
-### Discontinued features and API elements
+### Recursos e elementos da API descontinuados
 {: #discontinued-features-and-api-elements }
-Consider carefully how removed features and API elements affect your {{ site.data.keys.product_adj }} environment.  
-[Read about discontinued features and APIs](deprecated-discontinued).
+Considere como os recursos e elementos de API removidos afetam seu ambiente do {{site.data.keys.product_adj }}.  
+[Leia sobre recursos e APIs descontinuados](deprecated-discontinued).
 
-### Known issues and limitations
+### Problemas conhecidos e limitações
 {: #known-issues-and-limitations }
-You can identify the latest known issues and their resolutions, for this product release and all its fix packs, by browsing this dynamic list of documents.  
-General limitations apply to {{ site.data.keys.product_adj }} as detailed here. Limitations that apply to specific features are explained in the topics that describe these features.  
+É possível identificar os mais recentes problemas conhecidos e suas resoluções
+para essa liberação do produto e para todos os fix packs relativos a ela, navegando por esta dinâmica lista de documentos.  
+Limitações gerais que se aplicam ao {{site.data.keys.product_adj }} conforme detalhado aqui. Limitações que se aplicam a recursos específicos são explicadas nos tópicos
+que descrevem esses recursos.  
 
-[Read about known issues and limitations](known-issues-limitations).
+[Leia sobre problemas e limitações conhecidos](known-issues-limitations).
 
