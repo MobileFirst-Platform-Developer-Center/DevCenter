@@ -60,7 +60,7 @@ Create a new Cordova project or use an existing one, and add one or more of the 
    ```
 
 ### iOS platform
-{ #ios-platform }
+{: # ios-platform }
 The iOS platform requires an additional step.  
 In Xcode, enable push notifications for your application in the **Capabilities** screen.
 

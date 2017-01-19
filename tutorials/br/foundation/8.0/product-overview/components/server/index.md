@@ -20,7 +20,7 @@ As operações de administração e implementação dos artefatos do {{site.data
 Uma versão simplificada do {{site.data.keys.mf_server }}, que vem pré-configurada e não precisa de pré-requisitos de software, como banco de dados ou servidor de aplicativos, está disponível para desenvolvedores. Consulte [Configurando o {{site.data.keys.product_adj }} Development Server](../../../installation-configuration/development).
 
 ## Componentes do {{site.data.keys.mf_server }}
-{ #mobilefirst-server-components }
+{: # mobilefirst-server-components }
 A arquitetura dos componentes do {{site.data.keys.mf_server }} é ilustrada da seguinte maneira:
 
 ![Componentes que formam o {{site.data.keys.mf_server }}](server_components.jpg)
