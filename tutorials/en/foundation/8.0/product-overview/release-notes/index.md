@@ -18,7 +18,7 @@ Interim fixes provide patches and updates to correct problems and keep IBM Mobil
 [Read what's new in interim fixes](interim-fixes).
 
 ### Deprecated features and API elements
-{ #deprecated-features-and-api-elements }
+{: # deprecated-features-and-api-elements }
 New releases of {{ site.data.keys.product }} might introduce features or API elements that supersede features and API elements from past releases. Superseded features and API elements are deprecated and they might be removed in future releases.  
 [Read about deprecated features and API elements](deprecated-discontinued).
 
