@@ -68,6 +68,15 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 
 ![image of where is the capability in Xcode](push-capability.png)
 
+### Android platform
+{: #android-platform }
+The Android platform requires an additional step.  
+In Android Studio, add the following `activity` to the `application` tag:
+
+```xml
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
+```
+
 ## Notifications API
 {: #notifications-api }
 ### Client-side
