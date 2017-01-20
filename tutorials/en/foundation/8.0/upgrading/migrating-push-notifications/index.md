@@ -994,7 +994,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    ```
     
 ##### Server
-:{: # server-ios-2 }
+:{: #server-ios-2 }
 Remove `WL.Server` (if used) in your adapter.
 
 * `notifyAllDevices()`

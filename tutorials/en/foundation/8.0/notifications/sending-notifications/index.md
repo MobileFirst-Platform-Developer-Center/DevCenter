@@ -346,7 +346,7 @@ phoneNumber | The phone number used for registering the device and receiving not
 ```
 
 #### Sending the notification
-{: # sending-the-notification }
+{: #sending-the-notification }
 The notification can be sent using different tools.  
 For testing purposes, Postman is used as described below:
 
