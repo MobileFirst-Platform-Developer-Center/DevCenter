@@ -10,20 +10,20 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{ site.data.keys.product_full }} 从根本上简化了使用一组全面的预集成移动应用程序服务来构建、管理和更新移动应用程序的过程。
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+开发人员可以使用其选择的前端框架和工具来构建自己的应用程序，还可以利用各种受支持的移动平台上可用的 {{ site.data.keys.product }} 软件开发包 (SDK)，轻松地将推送、认证、脱机同步和业务逻辑添加到自己的应用程序中。通过 {{ site.data.keys.product }}，您可以控制自己的应用程序（从客户机到服务器），因此可以捕获交互时的业务数据。通过 {{ site.data.keys.product }}，您还可以将简化的可重复过程用于递增式应用程序更新，并在灵活的混合云模式中运行应用程序。
 
-To review all categories and tutorials visit:
+要查看所有类别和教程，请访问：
 
-* [All Tutorials](all-tutorials/)
+* [所有教程](all-tutorials/)
 
-For curated content visit: 
+要获取专业内容，请访问： 
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Cordova 开发](cordova-tutorials/)
+* [iOS 开发](ios-tutorials/) 
+* [Android 开发](android-tutorials/) 
+* [Windows 8.1 Universal 和 Windows 10 UWP 开发](windows-8-10-tutorials/)
+* [Xamarin 开发](xamarin-tutorials/)
+* [Web 应用程序开发](web-tutorials/)
+* [服务器端开发](server-side-tutorials/)
