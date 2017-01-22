@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="JavaScript web-analytics-client-side API" topic="html/refjavascript-web-analytics-client/html/intro.html">
+<topic label="Overview" href="html/refjavascript-web-analytics-client/html/intro.html"/>
+	<topic label="Classes">
+		<topic label="ibmmfpfanalytics" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html">
+<topic label="addEvent" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#addEvent"/>
+<topic label="enable" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#enable"/>
+<topic label="enableAutoSend" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#enableAutoSend"/>
+<topic label="init" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#init"/>
+<topic label="send" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#send"/>
+<topic label="setUserContext" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#setUserContext"/>
+<topic label="state" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.html#state"/>
+</topic>
+<topic label="ibmmfpfanalytics.logger" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html">
+<topic label="capture" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#capture"/>
+<topic label="debug" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#debug"/>
+<topic label="enable" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#enable"/>
+<topic label="error" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#error"/>
+<topic label="fatal" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#fatal"/>
+<topic label="info" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#info"/>
+<topic label="log" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#log"/>
+<topic label="pkg" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#pkg"/>
+<topic label="state" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#state"/>
+<topic label="trace" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#trace"/>
+<topic label="updateConfigFromServer" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#updateConfigFromServer"/>
+<topic label="warn" href="html/refjavascript-web-analytics-client/html/ibmmfpfanalytics.logger.html#warn"/>
+</topic>
+
+	</topic>	
+</toc>

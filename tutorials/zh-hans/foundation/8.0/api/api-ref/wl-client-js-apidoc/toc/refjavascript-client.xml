@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="JavaScript client-side API" topic="html/refjavascript-client/html/intro.html">
+<topic label="Overview" href="html/refjavascript-client/html/intro.html"/>
+	<topic label="Classes">
+		<topic label="LogInstance" href="html/refjavascript-client/html/LogInstance.html">
+<topic label="debug" href="html/refjavascript-client/html/LogInstance.html#debug"/>
+<topic label="error" href="html/refjavascript-client/html/LogInstance.html#error"/>
+<topic label="fatal" href="html/refjavascript-client/html/LogInstance.html#fatal"/>
+<topic label="info" href="html/refjavascript-client/html/LogInstance.html#info"/>
+<topic label="trace" href="html/refjavascript-client/html/LogInstance.html#trace"/>
+<topic label="warn" href="html/refjavascript-client/html/LogInstance.html#warn"/>
+</topic>
+<topic label="WL.Analytics" href="html/refjavascript-client/html/WL.Analytics.html">
+<topic label="disable" href="html/refjavascript-client/html/WL.Analytics.html#disable"/>
+<topic label="enable" href="html/refjavascript-client/html/WL.Analytics.html#enable"/>
+<topic label="log" href="html/refjavascript-client/html/WL.Analytics.html#log"/>
+<topic label="restart" href="html/refjavascript-client/html/WL.Analytics.html#restart"/>
+<topic label="send" href="html/refjavascript-client/html/WL.Analytics.html#send"/>
+<topic label="state" href="html/refjavascript-client/html/WL.Analytics.html#state"/>
+</topic>
+<topic label="WL.App" href="html/refjavascript-client/html/WL.App.html">
+<topic label="__copyToClipboard" href="html/refjavascript-client/html/WL.App.html#__copyToClipboard"/>
+<topic label="addActionReceiver" href="html/refjavascript-client/html/WL.App.html#addActionReceiver"/>
+<topic label="getDeviceLanguage" href="html/refjavascript-client/html/WL.App.html#getDeviceLanguage"/>
+<topic label="getDeviceLocale" href="html/refjavascript-client/html/WL.App.html#getDeviceLocale"/>
+<topic label="getErrorMessage" href="html/refjavascript-client/html/WL.App.html#getErrorMessage"/>
+<topic label="getServerUrl" href="html/refjavascript-client/html/WL.App.html#getServerUrl"/>
+<topic label="hideSplashScreen" href="html/refjavascript-client/html/WL.App.html#hideSplashScreen"/>
+<topic label="openURL" href="html/refjavascript-client/html/WL.App.html#openURL"/>
+<topic label="removeActionReceiver" href="html/refjavascript-client/html/WL.App.html#removeActionReceiver"/>
+<topic label="sendActionToNative" href="html/refjavascript-client/html/WL.App.html#sendActionToNative"/>
+<topic label="setServerUrl" href="html/refjavascript-client/html/WL.App.html#setServerUrl"/>
+<topic label="showSplashScreen" href="html/refjavascript-client/html/WL.App.html#showSplashScreen"/>
+</topic>
+<topic label="WL.Badge" href="html/refjavascript-client/html/WL.Badge.html">
+<topic label="setNumber" href="html/refjavascript-client/html/WL.Badge.html#setNumber"/>
+</topic>
+<topic label="WL.Client" href="html/refjavascript-client/html/WL.Client.html">
+<topic label="addGlobalHeader" href="html/refjavascript-client/html/WL.Client.html#addGlobalHeader"/>
+<topic label="clearSharedToken" href="html/refjavascript-client/html/WL.Client.html#clearSharedToken"/>
+<topic label="createGatewayChallengeHandler" href="html/refjavascript-client/html/WL.Client.html#createGatewayChallengeHandler"/>
+<topic label="createSecurityCheckChallengeHandler" href="html/refjavascript-client/html/WL.Client.html#createSecurityCheckChallengeHandler"/>
+<topic label="deleteCookie" href="html/refjavascript-client/html/WL.Client.html#deleteCookie"/>
+<topic label="getCookies" href="html/refjavascript-client/html/WL.Client.html#getCookies"/>
+<topic label="getDeviceDisplayName" href="html/refjavascript-client/html/WL.Client.html#getDeviceDisplayName"/>
+<topic label="getEnvironment" href="html/refjavascript-client/html/WL.Client.html#getEnvironment"/>
+<topic label="getLanguage" href="html/refjavascript-client/html/WL.Client.html#getLanguage"/>
+<topic label="getSharedToken" href="html/refjavascript-client/html/WL.Client.html#getSharedToken"/>
+<topic label="init" href="html/refjavascript-client/html/WL.Client.html#init"/>
+<topic label="invokeProcedure" href="html/refjavascript-client/html/WL.Client.html#invokeProcedure"/>
+<topic label="pinTrustedCertificatePublicKey" href="html/refjavascript-client/html/WL.Client.html#pinTrustedCertificatePublicKey"/>
+<topic label="reloadApp" href="html/refjavascript-client/html/WL.Client.html#reloadApp"/>
+<topic label="removeGlobalHeader" href="html/refjavascript-client/html/WL.Client.html#removeGlobalHeader"/>
+<topic label="setCookie" href="html/refjavascript-client/html/WL.Client.html#setCookie"/>
+<topic label="setDeviceDisplayName" href="html/refjavascript-client/html/WL.Client.html#setDeviceDisplayName"/>
+<topic label="setHeartBeatInterval" href="html/refjavascript-client/html/WL.Client.html#setHeartBeatInterval"/>
+<topic label="setSharedToken" href="html/refjavascript-client/html/WL.Client.html#setSharedToken"/>
+</topic>
+<topic label="WL.Client.AbstractChallengeHandler" href="html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html">
+<topic label="cancel" href="html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html#cancel"/>
+<topic label="handleChallenge" href="html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html#handleChallenge"/>
+</topic>
+<topic label="WL.JSONStore" href="html/refjavascript-client/html/WL.JSONStore.html">
+<topic label="changePassword" href="html/refjavascript-client/html/WL.JSONStore.html#changePassword"/>
+<topic label="clearPassword" href="html/refjavascript-client/html/WL.JSONStore.html#clearPassword"/>
+<topic label="closeAll" href="html/refjavascript-client/html/WL.JSONStore.html#closeAll"/>
+<topic label="commitTransaction" href="html/refjavascript-client/html/WL.JSONStore.html#commitTransaction"/>
+<topic label="destroy" href="html/refjavascript-client/html/WL.JSONStore.html#destroy"/>
+<topic label="documentify" href="html/refjavascript-client/html/WL.JSONStore.html#documentify"/>
+<topic label="fileInfo" href="html/refjavascript-client/html/WL.JSONStore.html#fileInfo"/>
+<topic label="get" href="html/refjavascript-client/html/WL.JSONStore.html#get"/>
+<topic label="getErrorMessage" href="html/refjavascript-client/html/WL.JSONStore.html#getErrorMessage"/>
+<topic label="init" href="html/refjavascript-client/html/WL.JSONStore.html#init"/>
+<topic label="initCollection" href="html/refjavascript-client/html/WL.JSONStore.html#initCollection"/>
+<topic label="QueryPart" href="html/refjavascript-client/html/WL.JSONStore.html#QueryPart"/>
+<topic label="rollbackTransaction" href="html/refjavascript-client/html/WL.JSONStore.html#rollbackTransaction"/>
+<topic label="startTransaction" href="html/refjavascript-client/html/WL.JSONStore.html#startTransaction"/>
+<topic label="usePassword" href="html/refjavascript-client/html/WL.JSONStore.html#usePassword"/>
+</topic>
+<topic label="WL.JSONStore.JSONStoreInstance" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html">
+<topic label="add" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#add"/>
+<topic label="advancedFind" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#advancedFind"/>
+<topic label="change" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#change"/>
+<topic label="clear" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#clear"/>
+<topic label="count" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#count"/>
+<topic label="countAllDirty" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#countAllDirty"/>
+<topic label="enhance" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#enhance"/>
+<topic label="erase" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#erase"/>
+<topic label="find" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#find"/>
+<topic label="findAll" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#findAll"/>
+<topic label="findById" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#findById"/>
+<topic label="getAllDirty" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#getAllDirty"/>
+<topic label="isDirty" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#isDirty"/>
+<topic label="load" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#load"/>
+<topic label="markClean" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#markClean"/>
+<topic label="push" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#push"/>
+<topic label="pushSelected" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#pushSelected"/>
+<topic label="refresh" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#refresh"/>
+<topic label="remove" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#remove"/>
+<topic label="removeCollection" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#removeCollection"/>
+<topic label="replace" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#replace"/>
+<topic label="store" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#store"/>
+<topic label="toString" href="html/refjavascript-client/html/WL.JSONStore.JSONStoreInstance.html#toString"/>
+</topic>
+<topic label="WL.JSONStore.QueryPart" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html">
+<topic label="between" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#between"/>
+<topic label="equal" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#equal"/>
+<topic label="greaterOrEqualThan" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#greaterOrEqualThan"/>
+<topic label="greaterThan" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#greaterThan"/>
+<topic label="inside" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#inside"/>
+<topic label="leftLike" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#leftLike"/>
+<topic label="lessOrEqualThan" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#lessOrEqualThan"/>
+<topic label="lessThan" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#lessThan"/>
+<topic label="like" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#like"/>
+<topic label="notBetween" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notBetween"/>
+<topic label="notEqual" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notEqual"/>
+<topic label="notInside" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notInside"/>
+<topic label="notLeftLike" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notLeftLike"/>
+<topic label="notLike" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notLike"/>
+<topic label="notRightLike" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#notRightLike"/>
+<topic label="rightLike" href="html/refjavascript-client/html/WL.JSONStore.QueryPart.html#rightLike"/>
+</topic>
+<topic label="WL.Logger" href="html/refjavascript-client/html/WL.Logger.html">
+<topic label="config" href="html/refjavascript-client/html/WL.Logger.html#config"/>
+<topic label="create" href="html/refjavascript-client/html/WL.Logger.html#create"/>
+<topic label="ctx" href="html/refjavascript-client/html/WL.Logger.html#ctx"/>
+<topic label="debug" href="html/refjavascript-client/html/WL.Logger.html#debug"/>
+<topic label="error" href="html/refjavascript-client/html/WL.Logger.html#error"/>
+<topic label="fatal" href="html/refjavascript-client/html/WL.Logger.html#fatal"/>
+<topic label="info" href="html/refjavascript-client/html/WL.Logger.html#info"/>
+<topic label="log" href="html/refjavascript-client/html/WL.Logger.html#log"/>
+<topic label="metadata" href="html/refjavascript-client/html/WL.Logger.html#metadata"/>
+<topic label="off" href="html/refjavascript-client/html/WL.Logger.html#off"/>
+<topic label="on" href="html/refjavascript-client/html/WL.Logger.html#on"/>
+<topic label="send" href="html/refjavascript-client/html/WL.Logger.html#send"/>
+<topic label="setNativeOptions" href="html/refjavascript-client/html/WL.Logger.html#setNativeOptions"/>
+<topic label="status" href="html/refjavascript-client/html/WL.Logger.html#status"/>
+<topic label="trace" href="html/refjavascript-client/html/WL.Logger.html#trace"/>
+<topic label="updateConfigFromServer" href="html/refjavascript-client/html/WL.Logger.html#updateConfigFromServer"/>
+<topic label="warn" href="html/refjavascript-client/html/WL.Logger.html#warn"/>
+</topic>
+<topic label="WL.NativePage" href="html/refjavascript-client/html/WL.NativePage.html">
+<topic label="show" href="html/refjavascript-client/html/WL.NativePage.html#show"/>
+</topic>
+<topic label="WL.OptionsMenu" href="html/refjavascript-client/html/WL.OptionsMenu.html">
+<topic label="addItem" href="html/refjavascript-client/html/WL.OptionsMenu.html#addItem"/>
+<topic label="getItem" href="html/refjavascript-client/html/WL.OptionsMenu.html#getItem"/>
+<topic label="init" href="html/refjavascript-client/html/WL.OptionsMenu.html#init"/>
+<topic label="isEnabled" href="html/refjavascript-client/html/WL.OptionsMenu.html#isEnabled"/>
+<topic label="removeItem" href="html/refjavascript-client/html/WL.OptionsMenu.html#removeItem"/>
+<topic label="removeItems" href="html/refjavascript-client/html/WL.OptionsMenu.html#removeItems"/>
+<topic label="setEnabled" href="html/refjavascript-client/html/WL.OptionsMenu.html#setEnabled"/>
+<topic label="setOpacity" href="html/refjavascript-client/html/WL.OptionsMenu.html#setOpacity"/>
+<topic label="setVisible" href="html/refjavascript-client/html/WL.OptionsMenu.html#setVisible"/>
+</topic>
+<topic label="WL.SecurityUtils" href="html/refjavascript-client/html/WL.SecurityUtils.html">
+<topic label="base64Decode" href="html/refjavascript-client/html/WL.SecurityUtils.html#base64Decode"/>
+<topic label="base64Encode" href="html/refjavascript-client/html/WL.SecurityUtils.html#base64Encode"/>
+<topic label="decrypt" href="html/refjavascript-client/html/WL.SecurityUtils.html#decrypt"/>
+<topic label="enableOSNativeEncryption" href="html/refjavascript-client/html/WL.SecurityUtils.html#enableOSNativeEncryption"/>
+<topic label="encrypt" href="html/refjavascript-client/html/WL.SecurityUtils.html#encrypt"/>
+<topic label="keygen" href="html/refjavascript-client/html/WL.SecurityUtils.html#keygen"/>
+<topic label="localRandomString" href="html/refjavascript-client/html/WL.SecurityUtils.html#localRandomString"/>
+</topic>
+<topic label="WLAuthorizationManager" href="html/refjavascript-client/html/WLAuthorizationManager.html">
+<topic label="clearAccessToken" href="html/refjavascript-client/html/WLAuthorizationManager.html#clearAccessToken"/>
+<topic label="getAuthorizationServerUrl" href="html/refjavascript-client/html/WLAuthorizationManager.html#getAuthorizationServerUrl"/>
+<topic label="getResourceScope" href="html/refjavascript-client/html/WLAuthorizationManager.html#getResourceScope"/>
+<topic label="isAuthorizationRequired" href="html/refjavascript-client/html/WLAuthorizationManager.html#isAuthorizationRequired"/>
+<topic label="login" href="html/refjavascript-client/html/WLAuthorizationManager.html#login"/>
+<topic label="logout" href="html/refjavascript-client/html/WLAuthorizationManager.html#logout"/>
+<topic label="obtainAccessToken" href="html/refjavascript-client/html/WLAuthorizationManager.html#obtainAccessToken"/>
+<topic label="setAuthorizationServerUrl" href="html/refjavascript-client/html/WLAuthorizationManager.html#setAuthorizationServerUrl"/>
+</topic>
+<topic label="WLResourceRequest" href="html/refjavascript-client/html/WLResourceRequest.html">
+<topic label="addHeader" href="html/refjavascript-client/html/WLResourceRequest.html#addHeader"/>
+<topic label="getHeader" href="html/refjavascript-client/html/WLResourceRequest.html#getHeader"/>
+<topic label="getHeaderNames" href="html/refjavascript-client/html/WLResourceRequest.html#getHeaderNames"/>
+<topic label="getHeaders" href="html/refjavascript-client/html/WLResourceRequest.html#getHeaders"/>
+<topic label="getMethod" href="html/refjavascript-client/html/WLResourceRequest.html#getMethod"/>
+<topic label="getQueryParameters" href="html/refjavascript-client/html/WLResourceRequest.html#getQueryParameters"/>
+<topic label="getTimeout" href="html/refjavascript-client/html/WLResourceRequest.html#getTimeout"/>
+<topic label="getUrl" href="html/refjavascript-client/html/WLResourceRequest.html#getUrl"/>
+<topic label="send" href="html/refjavascript-client/html/WLResourceRequest.html#send"/>
+<topic label="sendFormParameters" href="html/refjavascript-client/html/WLResourceRequest.html#sendFormParameters"/>
+<topic label="setHeader" href="html/refjavascript-client/html/WLResourceRequest.html#setHeader"/>
+<topic label="setHeaders" href="html/refjavascript-client/html/WLResourceRequest.html#setHeaders"/>
+<topic label="setQueryParameter" href="html/refjavascript-client/html/WLResourceRequest.html#setQueryParameter"/>
+<topic label="setQueryParameters" href="html/refjavascript-client/html/WLResourceRequest.html#setQueryParameters"/>
+<topic label="setTimeout" href="html/refjavascript-client/html/WLResourceRequest.html#setTimeout"/>
+</topic>
+
+	</topic>	
+</toc>
