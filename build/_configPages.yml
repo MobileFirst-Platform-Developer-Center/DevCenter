@@ -13,3 +13,4 @@ exclude:
   - Staticfile.auth
   - Staticfile
   - pdf
+  - tutorials/ja
