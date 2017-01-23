@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Server-side Development
+title: 服务器端开发
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -9,18 +9,17 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Server-side development provides the tools and functionality required in order to connect an application to the {{ site.data.keys.mf_server }} or serve content to an application from  Enterprise back-end systems and cloud services. Authentication and security is tighly related to server-side development, and should be reviewed as well.
-
+服务器端开发提供了将应用程序连接到 {{ site.data.keys.mf_server }} 或从企业后端系统或云服务向应用程序提供内容所需的工具和功能。认证和安全性与服务器端开发密切相关，也应加以复查。
 <form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
-        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Search for..." name="q">
+        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="搜索..." name="q">
     </div>
 </form>
 
-## Authentication and security
+## 认证和安全性
 {: authentication-and-security }
-* [Authentication and security](../authentication-and-security/)
+* [认证和安全性](../authentication-and-security/)
 
-## Adapters development
+## 适配器开发
 {: #adapters-development }
-* [Adapters development](../adapters/)
+* [适配器开发](../adapters/)

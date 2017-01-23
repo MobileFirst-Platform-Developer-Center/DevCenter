@@ -1,117 +1,125 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: 故障诊断
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on IBM Containers	
+### 解决使用 IBM Containers 上的 {{ site.data.keys.product_full }} 时遇到的问题	
 {: #resolving-problems-with-ibm-mobilefirst-foundation-on-ibm-containers }
-When you are unable to resolve a problem encountered while working with {{ site.data.keys.product_full }} on IBM Containers, be sure to gather this key information before contacting IBM Support.
+当无法解决使用 IBM Containers 上的 {{ site.data.keys.product_full }} 所遇到的问题时，请在联系 IBM 支持前确保收集以下关键信息。
 
-To help expedite the troubleshooting process, gather the following information:
+为帮助加速故障诊断过程，请收集以下信息：
 
-* The version of {{ site.data.keys.product }} that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The container size selected. For example, Medium 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
-* The container ID
-* The public IP address (if assigned)
-* Versions of docker and cloud foundry: `cf -v` and `docker version`
-* The information returned from running the following Cloud Foundry CLI plug-in for IBM Containers (cf ic) commands from the organization and space where your {{ site.data.keys.product }} container is deployed:
+* 使用的 {{ site.data.keys.product }} 的版本（必须为 V8.0.0 或更高版本）和应用的任何临时修订。
+* 所选容器大小。例如，Medium 2GB。
+* Bluemix dashDB 数据库规划类型。例如，EnterpriseTransactional 2.8.50。
+* 容器标识
+* 公共 IP 地址（如果指定）
+* Docker 和 Cloud Foundry 的版本：`cf -v` 和 `docker version`
+* 通过运行以下 IBM Containers (cf ic) 的 Cloud Foundry CLI 插件 (cf
+ic) 命令从组织和空间（在其中部署 {{ site.data.keys.product }} 容器）返回的信息：
  - `cf ic info`
- - `cf ic ps -a` (If more than one container instance is listed, make sure to indicate the one with the problem.)
-* If Secure Shell (SSH) and volumes were enabled during container creation (while running the **startserver.sh** script), collect all files in the following folders: /opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
-* If only volume was enabled and SSH was not, collect the available log information using the Bluemix dashboard. After you click on the container instance in the Bluemix dashboard, click the Monitoring and Logs link in the sidebar. Go to the Logging tab and then click ADVANCED VIEW. The Kibana dashboard opens separately. Using the search toolbar, search for the exception stack trace and then collect the complete details of the exception, @time-stamp, _id.
+ - `cf ic ps -a`（如果列出多个容器实例，那么确保指示具有问题的实例。）
+* 如果在容器创建（在运行 **startserver.sh** 脚本时）期间启用了 Secure Shell (SSH) 和卷，那么收集以下文件夹中的所有文件：/opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
+* 如果仅启用卷而不启用 SSH，那么使用 Bluemix 仪表板收集可用日志信息。在单击 Bluemix 仪表板中的容器实例后，单击侧边栏中的监控和日志链接。转至“日志记录”选项卡，然后单击“高级视图”。Kibana 仪表板将单独打开。使用搜索工具栏，搜索异常堆栈跟踪，然后收集异常 @time-stamp,
+_id 的完整详细信息。
 
-### Docker-related error while running script	
+### 运行脚本期间出现的 Docker 相关错误	
 {: #docker-related-error-while-running-script }
-If you encounter Docker-related errors after executing the initenv.sh or prepareserver.sh scripts, try restarting the Docker service.
+如果在执行 initenv.sh 或  prepareserver.sh 脚本后遇到 Docker 相关错误，请尝试重新启动 Docker 服务。
 
-**Example message** 
+**示例消息** 
 
 > Pulling repository docker.io/library/ubuntu  
 > Error while pulling image: Get https://index.docker.io/v1/repositories/library/ubuntu/images: dial tcp: lookup index.docker.io on 192.168.0.0:00: DNS message ID mismatch
 
-**Explanation**  
-The error could occur when the internet connection has changed (such as connecting to or disconnecting from a VPN or network configuration changes) and the Docker runtime environment has not yet restarted. In this scenario, errors would occur when any Docker command is issued.
+**说明**  
+在因特网连接发生更改（例如，连接到 VPN 或与 VPN 断开连接，或者网络配置发生更改）且 Docker 运行时环境尚未重新启动时，可能发生错误。在此场景中，在发出任何 Docker 命令时可能发生错误。
 
-**How to resolve**  
-Restart the Docker service. If the error persists, reboot the computer and then restart the Docker service.
+**解决方法**  
+重新启动 Docker 服务。如果错误仍存在，请重新引导计算机，然后重新启动 Docker 服务。
 
-### Bluemix registry error	
+### Bluemix 注册表错误	
 {: #bluemix-registry-error }
-If you encounter a registry-related error after executing the prepareserver.sh or prepareanalytics.sh scripts, try running the initenv.sh script first.
+如果在执行 prepareserver.sh 或  prepareanalytics.sh 脚本之后遇到注册表相关错误，那么首先尝试运行 initenv.sh 脚本。
 
-**Explanation**  
-In general, any network problems that occur while the prepareserver.sh or prepareanalytics.sh scripts are running could cause processing to hang and then fail.
+**说明**  
+通常，在 prepareserver.sh 或  prepareanalytics.sh 脚本运行期间发生的任何网络问题可能导致处理挂起，然后失败。
 
-**How to resolve**  
-First, run the initenv.sh script again to log in to the container registry on Bluemix . Then, rerun the script that previously failed.
+**解决方法**  
+首先，再次运行 initenv.sh 脚本以登录到 Bluemix 上的容器注册表。然后，重新运行之前失败的脚本。
 
-### Unable to create the mfpfsqldb.xml file
+### 无法创建 mfpfsqldb.xml 文件
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+在 **prepareserverdbs.sh** 脚本运行结束时出现错误：
 
 > Error : unable to create mfpfsqldb.xml
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**解决方法**  
+问题可能是间歇性数据库连接问题。请尝试重新运行该脚本。
 
-### Taking a long time to push image	
+
+### 推送映像耗时过长	
 {: #taking-a-long-time-to-push-image }
-When running the prepareserver.sh script, it takes more than 20 minutes to push an image to the IBM Containers registry.
+运行 prepareserver.sh 脚本时，将映像推送到 IBM Containers 注册表花费了 20 多分钟。
 
-**Explanation**  
-The **prepareserver.sh** script pushes the entire {{ site.data.keys.product }} stack, which can take from 20 to 60 minutes.
+**说明**  
+**prepareserver.sh** 脚本会推送整个 {{ site.data.keys.product }} 堆栈，这需要 20 到 60 分钟的时间。
 
-**How to resolve**  
-If the script has not completed after a 60-minute time period has elapsed, the process might be hung because of a connectivity issue. After a stable connection is reestablished, restart the script.
+**解决方法**  
+如果 60 分钟过后脚本仍未完成，该进程可能因连接问题而挂起。
+在重新建立稳定的连接后，重新启动该脚本。
 
-### Binding is incomplete error	
+### “绑定未完成”错误	
 {: #binding-is-incomplete-error }
-When running a script to start a container (such as **startserver.sh** or **startanalytics.sh**) you are prompted to manually bind an IP address because of an error that the binding is incomplete.
+在运行脚本以启动容器（例如，**startserver.sh** 或 **startanalytics.sh**）时，由于“绑定未完成”错误，系统会提示您手动绑定 IP 地址。
 
-**Explanation**  
-The script is designed to exit after a certain time duration has passed.
+**说明**  
+脚本被设计为在特定持续时间过后退出。
 
-**How to resolve**  
-Manually bind the IP address by running the related cf ic command. For example, cf ic ip bind.
+**解决方法**  
+通过运行相关的 cf ic 命令来手动绑定 IP 地址。例如，cf ic ip bind。
 
-If binding the IP address manually is not successful, ensure that the status of the container is running and then try binding again.  
-**Note:** Containers must be in a running state to be bound successfully.
+如果手动绑定 IP 地址失败，请确保容器的状态为正在运行，然后尝试再次绑定。  
+**注：**容器必须为正在运行状态才能够成功绑定。
 
-### Script fails and returns message about tokens	
+### 脚本失败并返回有关令牌的消息	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+脚本运行失败，并返回类似 Refreshing cf tokens 或 Failed to refresh token 的消息。
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the container scripts.
+**说明**  
+Bluemix 会话可能已超时。用户必须登录到 Bluemix，然后才能运行容器脚本。
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**解决方法**
+再次运行 initenv.sh 脚本以登录到 Bluemix，然后再次运行失败的脚本。
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### 管理数据库、实时更新和推送服务显示为不活动	
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the {{ site.data.keys.mf_console }} even though the **prepareserver.sh** script completed successfully.
+“管理数据库”、“实时更新”和“推送服务”显示为不活动或者 {{ site.data.keys.mf_console }} 中未列出任何运行时，即使 **prepareserver.sh** 脚本成功完成也如此。
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**说明**  
+可能是因为未建立到数据库服务的连接，或者在部署期间附加其他值时，server.env 文件中出现了格式化问题。
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+
+如果向 server.env 文件添加了其他值，但却未使用换行符，那么将不会解析属性。
+可通过检查日志文件，查找由于未解析的属性导致的类似如下的错误，证实这一潜在问题：
+
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the containers. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**解决方法**  
+手动重新启动容器。如果问题仍然存在，请检查数据库服务的连接数是否超过了数据库计划规定的连接数。如果是，请进行任何必要的调整，然后继续。
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
 
-### prepareserver.sh script fails	
+如果问题由未解析的属性导致，请确保您的编辑器在编辑任何提供的文件时都添加了换行 (LF) 符来区分行末。例如，macOS 上的 TextEdit 应用程序使用 CR 字符而不是 LF 标记行末，这可能会导致问题。
+
+### prepareserver.sh 脚本失败	
 {: #prepareserversh-script-fails }
-The **prepareserver.sh** script fails and returns the error 405 Method Not Allowed.
+**prepareserver.sh** 脚本失败并返回错误 405 Method Not Allowed。
 
-**Explanation**  
-The following error occurs when running the **prepareserver.sh** script to push the image to the IBM Containers registry.
+**说明**  
+在运行 **prepareserver.sh** 脚本以将映像推送到 IBM Containers 注册表时发生以下错误。
 
 > Pushing the {{ site.data.keys.mf_server }} image to the IBM Containers registry..  
 > Error response from daemon:  
@@ -119,7 +127,7 @@ The following error occurs when running the **prepareserver.sh** script to push 
 > Method Not Allowed  
 > The method is not allowed for the requested URL.
 
-This error typically occurs if the Docker variables have been modified on the host environment. After executing the initenv.sh script, the tooling provides an option to override the local docker environment to connect to IBM Containers using native docker commands.
+如果修改了主机环境上的 Docker 变量，那么通常会发生此错误。在执行 initenv.sh 脚本后，工具提供选项来覆盖本地 Docker 环境从而使用本机 Docker 命令连接到 IBM Containers。
 
-**How to resolve**  
-Do not modify the Docker variables (such as DOCKER\_HOST and DOCKER\_CERT\_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
+**解决方法**  
+请勿修改 Docker 变量（例如，DOCKER\_HOST 和 DOCKER\_CERT\_PATH）以指向 IBM Containers 注册表环境。要使 **prepareserver.sh** 脚本正确工作，Docker 变量必须指向本地 Docker 环境。

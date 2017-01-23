@@ -3,44 +3,44 @@ layout: tutorial
 breadcrumb_title: Foundation on Bluemix
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 10
+weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} can be hosted on Bluemix. Following is some basic information about Bluemix.
+{{ site.data.keys.product_full }} 可在 Bluemix 上托管。以下是有关 Bluemix 的一些基本信息。
 
-IBM Bluemix is an implementation of IBM's Open Cloud Architecture. It leverages Cloud Foundry to enable developers to rapidly build, deploy, and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.
+IBM Bluemix 是 IBM 的开放云架构 (Open Cloud Architecture) 的实现。它利用 Cloud Foundry 来支持开发人员快速构建、部署和管理其云应用程序，同时利用可用服务和运行时框架的不断增长的生态系统。
 
-> Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
+> 通过 [Bluemix Web 站点](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview)了解有关 Bluemix 架构和 Bluemix 概念的更多信息。
 
-### How does it work?
+### 它如何运作？
 {: #how-does-it-work }
-In a nutshell, there are two ways to run {{ site.data.keys.product }} on Bluemix, depending on the type of license entitlement.
+简而言之，根据许可权利的类型，有两种在 Bluemix 上运行 {{ site.data.keys.product }} 的方式。
 
-* Bluemix subscription or PayGo license: {{ site.data.keys.mf_bm_full }} service
-* On Prem license: Use IBM provided scripts to set up an instance of {{ site.data.keys.product_full }} on IBM Containers or Liberty for Java runtime.
+* Bluemix 预订或 PayGo 许可证：{{ site.data.keys.mf_bm_full }} 服务
+* 本地许可证：使用 IBM 提供的脚本在 IBM Containers 或 Liberty for Java 运行时上设置 {{ site.data.keys.product_full }} 的实例。
 
-To run {{ site.data.keys.product }} on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
+要在 Bluemix IBM Containers 上运行 {{ site.data.keys.product }}，多个组件必须彼此进行交互：第一个组件是 **image**，其中包含 **Linux 分发版，此分发版中安装有 WebSphere Liberty**，并部署了一个 **{{ site.data.keys.mf_server }} 实例**。随后，此映像存储于 **IBM Container** 内，此 IBM Containers 由 **Bluemix** 进行管理。
 
-To run {{ site.data.keys.product}} on a Bluemix Liberty for Java runtime, the following components are used: an **Cloudfoundry app** that contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it.
+要在 Bluemix Liberty for Java 运行时上运行 {{ site.data.keys.product}}，需使用以下组件：**Cloudfoundry 应用程序**，其中包含 **WebSphere Liberty 安装**，并部署了一个 **{{ site.data.keys.mf_server }} 实例**。
 
-### IBM Containers
+### IBM Container
 {: #ibm-containers }
-IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
+IBM Containers 是用于在托管云环境内运行映像的对象。IBM Containers 可保存应用程序运行所需的一切。
 
-IBM Container infrastructure includes a private registry for your images, so that you can upload, store, and retrieve them. You can make those images available for Bluemix to manage them. A command line interface is then used to manage your containers on Bluemix - More on this in the following tutorials.
+IBM Containers 基础结构包含针对映像的专用注册表，以便您可以上载、存储和检索这些映像。您可以使用 Bluemix 来管理这些映像。随后可使用命令行界面在 Bluemix 上管理容器 - 在以下教程中提供了有关于此的更多信息。
 
-[Learn more about IBM Containers](https://www.ng.bluemix.net/docs/containers/container_index.html).
+[了解有关 IBM Containers 的更多信息](https://www.ng.bluemix.net/docs/containers/container_index.html)。
 
-### Liberty for Java runtime
+### Liberty for Java 运行时
 {: #liberty-for-java-runtime }
-The Liberty for Java runtime is powered by the liberty-for-java buildpack. The liberty-for-java buildpack provides a complete runtime environment for running applications on top of WebSphere Liberty profile. A command line interface is then used to manage your apps on Bluemix.
+Liberty for Java 运行时由 liberty-for-java buildpack 给予支持。liberty-for-java buildpack 为基于 WebSphere Liberty 概要文件运行应用程序提供了完整的运行时环境。随后可使用命令行界面在 Bluemix 上管理应用程序。
 
-[Learn more about Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
+[了解有关 Liberty for Java 的更多信息](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html)。
 
-## Tutorials to follow next
+## 后续教程
 {: #tutorials-to-follow-next }
-* Create a {{ site.data.keys.mf_server }} instance [using the {{ site.data.keys.mf_bm }} service](using-mobile-foundation/).
-* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
-* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.
+* 创建 {{ site.data.keys.mf_server }} 实例[使用 {{ site.data.keys.mf_bm }} 服务](using-mobile-foundation/)。
+* 在 Bluemix 上创建 {{ site.data.keys.mf_server }} 实例[使用 IBM 提供的脚本](mobilefirst-server-using-scripts/)使用 IBM Container。
+* 在 Bluemix 上创建 {{ site.data.keys.mf_server }} 实例[使用 IBM 提供的脚本](mobilefirst-server-using-scripts-lbp/)使用 Liberty Build Pack。

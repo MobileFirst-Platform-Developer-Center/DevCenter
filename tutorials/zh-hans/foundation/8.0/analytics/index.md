@@ -4,74 +4,74 @@ title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
-weight: 9
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and more.
+{{ site.data.keys.mf_analytics_full }} 将从 {{ site.data.keys.mf_server }} 和客户机设备中的应用程序到服务器活动、客户机日志、客户机崩溃和服务器端日志中收集数据。然后，收集的数据将提供针对移动状况和服务器基础结构的丰富视图。其中包含：用户保留时间、崩溃报告、设备类型和操作系统细分、定制数据和定制图表、网络使用情况、推送通知结果、应用程序内行为、调试日志收集等的缺省报告。
 
-{{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the {{ site.data.keys.mf_analytics_server }}. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
+{{ site.data.keys.mf_server }} 随附经过预检测的网络基础结构报告。当客户机和服务器同时报告网络使用情况时，将汇总数据以便您可以将性能欠佳归因于网络、服务器或后端系统。此外，您还可以通过在客户机端和 {{ site.data.keys.mf_analytics_server }} 上定义过滤器来控制分析所访问和使用的记录器数据。选择所报告事件的详细程度和数据保留策略、设置条件警报、构建定制图表和使用新数据。
 
-#### Platform support
+#### 平台支持
 {: #platform-support }
 
-{{ site.data.keys.mf_analytics }} supports:
+{{ site.data.keys.mf_analytics }} 支持：
 
-* Native iOS and Android clients
-* Cordova applications (iOS, Android)
-* Web applications
-* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
+* 本机 iOS 和 Android 客户机
+* Cordova 应用程序（iOS 和 Android）
+* Web 应用程序
+* 支持**不可用**于 Windows 8.1 Universal 或 Windows 10 UWP
 
-IBM {{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
+IBM {{ site.data.keys.mf_server }} 随附经过预检测的网络基础结构报告。当客户机和服务器同时报告其网络使用情况时，将汇总数据以便您可以将性能欠佳归因于网络、服务器或后端系统。
 
-## Client development
+## 客户机开发
 {: #client-development }
 
-Two client classes work together to send raw data to the server: the Logger and Analytics classes.
+下面两个客户机类协力将原始数据发送至服务器：Logger 类和 Analytics 类。
 
-### The Analytics API
+### Analytics API
 {: #the-analytics-api }
 
-The Analytics client API collects data on a wide range of events and sends them to the {{ site.data.keys.mf_analytics_server }}.
-> Learn more in the [Analytics Client Development](analytics-api) tutorial.
+分析客户机 API 收集有关各种事件的数据并将其发送至 {{ site.data.keys.mf_analytics_server }}。
+> 在[分析客户机开发](analytics-api)教程中了解更多信息。
 
-### The Logger API
+### Logger API
 {: #the-logger-api }
 
-The Logger functions as a standard logger. From the client you can also send logger data to the {{ site.data.keys.mf_analytics_server }} at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
+Logger 将作为标准记录器运行。您也可以在任何日志记录级别将记录器数据从客户机发送至 {{ site.data.keys.mf_analytics_server }}。但是，服务器配置将控制允许的日志记录请求级别。将忽略在此阈值下发送的请求。
 
-Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
+需要控制日志记录级别以均衡两个需求：收集信息的需求和限制数据量以适应有限存储能力的需求。 
 
-> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
+> 在[客户机日志记录](../application-development/client-side-log-collection/)教程中了解更多信息。
 
-In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the {{ site.data.keys.mf_analytics_server }}.
+此外，您还可以通过在客户端和 {{ site.data.keys.mf_analytics_server }}上定义过滤器来控制分析所访问和使用的记录器数据。
 
-## The Analytics and Operations Consoles
+## Analytics Console 和 Operations Console
 {: #the-analytics-and-operations-consoles }
 
-{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full }} configures and displays the various Analytics reports.
+{{ site.data.keys.product_full }} 提供 Analytics Console 和 Operations Console。{{ site.data.keys.mf_console_full }} 可配置分析服务器与客户机应用程序的协作方式。{{ site.data.keys.mf_analytics_console_full }} 配置并显示各种分析报告。
 
-> Learn more in the [Operations Console](console) tutorial.
+> 在 [Operations Console](console) 教程中了解更多信息。
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
+> 在[定制图表](console/custom-charts)教程中了解有关使用 Analytics Console 创建定制图表的更多信息。
 
-## The Analytics Server
+## 分析服务器
 {: #the-analytics-server }
 
-The Analytics Server is available in both the development and production environments.
+分析服务器在开发和生产环境中可用。
 
-For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short }} is available for your development needs.
+对于开发，分析服务器将与 {{ site.data.keys.mf_dev_kit }} 一起安装。有关更多信息，请参阅[设置 {{ site.data.keys.product_adj }} 开发环境](../installation-configuration/development/mobilefirst/)。安装工具包之后，{{ site.data.keys.mf_analytics_console_short }} 可满足您的开发需求。
 
-For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/production/analytics/).
+对于生产，根据您的可用的基础结构、业务需求、系统设计等提供不同的安装和配置选项。有关更多信息，请参阅[设置 {{ site.data.keys.product_adj }} 开发环境](../installation-configuration/production/analytics/)。
 
-{{ site.data.keys.mf_analytics }} uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in {{ site.data.keys.product }}.
+{{ site.data.keys.mf_analytics }} 使用 Elasticsearch。[了解如何使用 Elasticsearch](elasticsearch)（在 {{ site.data.keys.product }} 中）。
 
-## Troubleshooting
+## 故障诊断
 {: #troubleshotting }
 
-For information on troubleshooting {{ site.data.keys.mf_analytics }}, see [Analytics Troubleshooting](../troubleshooting/analytics/).
+有关对 {{ site.data.keys.mf_analytics }} 进行故障诊断的信息，请参阅[分析故障诊断](../troubleshooting/analytics/)。
 
-## What to read next
+## 接下来要阅读的内容
 {: #what-to-read-next }

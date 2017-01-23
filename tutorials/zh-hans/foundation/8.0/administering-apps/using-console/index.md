@@ -1,141 +1,146 @@
 ---
 layout: tutorial
-title: Administrating applications through the MobileFirst Operations Console
-breadcrumb_title: Administrating using the console
+title: 通过 MobileFirst Operations Console 管理应用程序
+breadcrumb_title: 使用控制台管理
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the {{ site.data.keys.mf_console }} by locking apps or denying access, or by displaying notification messages.
+您可以通过锁定应用程序或拒绝访问或者显示通知消息，通过 {{ site.data.keys.mf_console }}    来管理 {{ site.data.keys.product_adj }}    应用程序。
 
-You can start the console by entering one of the following URLs:
+您可以通过输入以下任一 URL 启动控制台：
 
-* Secure mode for production or test: `https://hostname:secure_port/mfpconsole`
-* Development: `http://server_name:port/mfpconsole`
+* 用于生产或测试的安全方式：`https://hostname:secure_port/mfpconsole`
+* 开发：`http://server_name:port/mfpconsole`
 
-You must have a login and password that grant you authorization to access the {{ site.data.keys.mf_console }}. For more information, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+您必须具有授权您访问
+{{ site.data.keys.mf_console }}    的登录名和密码。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}    管理的用户认证](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)。
 
-You can use the {{ site.data.keys.mf_console }} to manage your applications.
+可以使用 {{ site.data.keys.mf_console }}    管理应用程序。
 
-From the {{ site.data.keys.mf_console }}, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
+从 {{ site.data.keys.mf_console }}   中，您也可以访问分析控制台，并控制移动数据的收集，供分析服务器分析。有关更多信息，请参阅[从 {{ site.data.keys.mf_console }}    启用或禁用数据收集](../../analytics/console/#enabledisable-analytics-support)。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Mobile-application management](#mobile-application-management)
-* [Application status and token licensing](#application-status-and-token-licensing)
-* [Error log of operations on runtime environments](#error-log-of-operations-on-runtime-environments)
-* [Audit log of administration operations](#audit-log-of-administration-operations)
+* [移动应用程序管理](#mobile-application-management)
+* [应用程序状态和令牌许可](#application-status-and-token-licensing)
+* [运行时环境上操作的错误日志](#error-log-of-operations-on-runtime-environments)
+* [管理操作的审计日志](#audit-log-of-administration-operations)
 
-## Mobile-application management
+## 移动应用程序管理
 {: #mobile-application-management }
-The {{ site.data.keys.product_adj }} mobile-application-management capabilities provide {{ site.data.keys.mf_server }} operators and administrators with granular control over user and device access to their applications.
+{{ site.data.keys.product_adj }}    移动应用程序管理功能为 {{ site.data.keys.mf_server }}    操作员和管理员提供针对用户和设备访问其应用程序的精细控制能力。
 
-{{ site.data.keys.mf_server }} tracks all attempts to access your mobile infrastructure, and stores information about the application, the user, and the device on which the application is installed. The mapping between the application, the user, and the device, forms the basis for the server's mobile-application management capabilities.
+{{ site.data.keys.mf_server }}    可跟踪所有对移动基础架构的访问尝试过程，并可存储有关应用程序、用户以及安装应用程序的设备的信息。应用程序、用户与设备间的映射构成服务器的移动应用程序管理功能的基础。
 
-Use IBM {{ site.data.keys.mf_console }} to monitor and manage access to your resources:
+使用 {{ site.data.keys.mf_console }}    来监控和管理资源访问：
 
-* Search for a user by name, and view information about the devices and applications that they are using to access your resources.
-* Search for a device by its display name, and view the users that are associated with the device, and the registered {{ site.data.keys.product_adj }} applications that are used on this device.
-* Block access to your resources from all instances of your applications on a specific device. This is useful when a device is lost or stolen.
-* Block access to your resources only for a specific application on a specific device. For example, if an employee changes departments, you can block the employee's access for an application of the previous department, but allow the employee access from other applications on the same device.
-* Unregister a device, and delete all the registration and monitoring data that was gathered for the device.
+* 按名称搜索用户，并查看有关用于访问资源的设备和应用程序的信息。
+* 按显示名称搜索设备，并查看与设备关联的用户以及该设备上使用的已注册 {{ site.data.keys.product_adj }}    应用程序。
+* 阻止从特定设备上的所有应用程序实例访问资源。当设备丢失或失窃时，这将非常有用。
+* 仅阻止访问特定设备上的特定应用程序的资源。例如，如果员工更换了部门，那么可以阻止员工访问先前部门的应用程序，但允许员工从同一设备上的其他应用程序进行访问。
+* 注销设备并删除为设备收集的所有注册和监控数据。
 
-Access-blocking has the following characteristics:
+阻止访问功能具有以下特征：
 
-* The blocking operation is reversible. You can remove the block by changing the device or application status in {{ site.data.keys.mf_console }}.
-* The block applies only to protected resources. A blocked client can still use the application to access an unprotected resource. See Unprotected resources.
-* Access to adapter resources on {{ site.data.keys.mf_server }} is blocked immediately when you select this operation. However, this might not be the case for resources on an external server because the application might still have a valid access token that has not expired.
+* 阻止操作是可逆的。可通过在 {{ site.data.keys.mf_console }}    中更改设备或应用程序状态来除去阻止功能。
+* 阻止功能仅适用于受保护资源。被阻止客户端仍可以使用应用程序来访问不受保护的资源。请参阅“不受保护的资源”。
+* 选择此操作时，将立即阻止访问 {{ site.data.keys.mf_server }}    上的适配器资源。但是，对于外部服务器上的资源可能不会如此，因为应用程序仍可能具有未到期的有效访问令牌。
 
-### Device status
+### 设备状态
 {: #device-status }
-{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
+{{ site.data.keys.mf_server }}    保留了可访问服务器的每台设备的状态信息。可能的状态值有**活动**、**丢失**、**失窃**、**到期**和**禁用**。 
 
-The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
+缺省设备状态为**活动**，它指示未阻止从该设备访问。可以将状态更改为**丢失**、**失窃**或**禁用**，以阻止从设备访问应用程序资源。可以始终恢复**活动**状态以允许重新访问。请参阅[在 {{ site.data.keys.mf_console }}    中管理设备访问](#managing-device-access-in-mobilefirst-operations-console)。
 
-The **Expired** status is a special status that is set by {{ site.data.keys.mf_server }} after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
+自上一次设备连接到该服务器实例起经过预配置非活动时段后，**到期**状态为 {{ site.data.keys.mf_server }}    设置的特殊状态。此状态用于跟踪许可证，并且不会影响设备访问权。当状态为**到期**的设备重新连接到服务器时，其状态会恢复为**活动**，并将授权设备访问服务器。
 
-### Device display name
+### 设备显示名称
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{ site.data.keys.mf_server }}    可按 {{ site.data.keys.product_adj }}    客户机 SDK 分配的唯一设备标识来识别设备。设置设备的显示名称允许您按其显示名称搜索设备。应用程序开发者可使用 `WLClient` 类的 `setDeviceDisplayName` 方法来设置设备显示名称。请参阅 [{{ site.data.keys.product_adj }}   客户端 API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html) 中的 `WLClient` 文档。（JavaScript 类为 `WL.Client`。）Java 适配器开发者（包含安全检查开发者）还可以使用 com.ibm.mfp.server.registration.external.model `MobileDeviceData` 类的 `setDeviceDisplayName` 方法来设置设备显示名称。请参阅 [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc)。
 
-### Managing device access in {{ site.data.keys.mf_console }}
+### 在 {{ site.data.keys.mf_console }}    中管理设备访问
 {: #managing-device-access-in-mobilefirst-operations-console }
-To monitor and manage device access to your resources, select the Devices tab in the {{ site.data.keys.mf_console }} dashboard.
+要监控和管理设备对资源的访问，请选择 {{ site.data.keys.mf_console }}    仪表板中的“设备”选项卡。
 
-Use the search field to search for a device by the user ID that is associated with the device, or by the display name of the device (if set). See [Device display name](#device-display-name). You can also search for part of the user ID or the device display name (at least three characters).
+使用搜索字段来按与设备关联的用户标识或按设备的显示名称（如果已设置）搜索设备。请参阅[设备显示名称](#device-display-name)。还可以搜索用户标识或设备显示名称的某一部分（至少有三个字符）。
 
-The search results display all the devices that match the specified user ID or device display name. For each device, you can see the device ID and display name, the device model, the operating system, and the list of users IDs that are associated with the device.
+搜索结果会显示与指定用户标识或设备显示名称相匹配的所有设备。对于每台设备，您都可以看到设备标识和显示名称、设备型号、操作系统以及与设备关联的用户标识列表。
 
-The Device Status column shows the status of the device. You can change the status of the device to **Lost**, **Stolen**, or **Disabled**, to block access from the device to protected resources. Changing the status back to **Active** restores the original access rights.
+“设备状态”列显示设备的状态。可以将设备状态更改为**丢失**、**失窃**或**禁用**，以阻止从该设备访问受保护资源。将状态更改回**活动**，将恢复原始访问权。
 
-You can unregister a device by selecting **Unregister** in the **Actions** column. Unregistering a device deletes the registration data of all the {{ site.data.keys.product_adj }} applications that are installed on the device. In addition, the device display name, the lists of users that are associated with the device, and the public attributes that the application registered for this device are deleted.
+可选择**操作**列中的**注销**来注销设备。
+注销设备会删除设备上安装的所有 {{ site.data.keys.product_adj }}    应用程序的注册数据。此外，还会删除设备显示名称、与设备关联的用户列表以及应用程序为该设备注册的公共属性。
 
-**Note:** The **Unregister** action is not reversible. The next time that one of the {{ site.data.keys.product_adj }} applications on the device attempts to access the server, it will be registered again with a new device ID. When you select to register the device again, the device status is set to **Active**, and the device has access to protected resources, regardless of any previous blocks. Therefore, if you want to block a device, do not unregister it. Instead, change the device status to **Lost**, **Stolen**, or **Disabled**.
+**注：****注销**操作是不可逆的。下一次设备上的其中一个 {{ site.data.keys.product_adj }}    应用程序尝试访问服务器时，将使用新的设备标识重新注册。选择重新注册设备时，设备状态将设置为**活动**，并且无论先前阻止情况如何，设备都有权访问受保护资源。因此，如果要阻止设备，请不要注销。相反，应将设备状态更改为**丢失**、**失窃**或**禁用**。
 
-To view of all the applications that were accessed on a specific device, select the expand arrow icon next to the device ID in the devices table. Each row in the displayed applications table contains the name of the application, and the application's access status (whether access to protected resources is enabled for this application on this device). You can change the application's status to **Disabled** to block access from the application specifically on this device.
+要查看特定设备上访问的所有应用程序，请选择设备表中的设备标识旁的展开箭头图标。所显示的应用程序表中的每一行均包含应用程序名称以及应用程序的访问状态（无论是否为该设备上的该应用程序启用受保护资源访问功能）。可以将应用程序状态更改为**禁用**，以专门阻止从该设备上的应用程序进行访问。
 
-#### Jump to
+#### 跳转至
 {: #jump-to-1 }
 
-* [Remotely disabling application access to protected resources](#remotely-disabling-application-access-to-protected-resources)
-* [Displaying an administrator message](#displaying-an-administrator-message)
-* [Defining administrator messages in multiple languages](#defining-administrator-messages-in-multiple-languages)
+* [远程禁用应用程序对受保护资源的访问权](#remotely-disabling-application-access-to-protected-resources)
+* [显示管理员消息](#displaying-an-administrator-message)
+* [定义多种语言的管理员消息](#defining-administrator-messages-in-multiple-languages)
 
-### Remotely disabling application access to protected resources
+### 远程禁用应用程序对受保护资源的访问权
 {: #remotely-disabling-application-access-to-protected-resources }
-Use {{ site.data.keys.mf_console }} (the console) to disable user access to a specific version of an application on a specific mobile operating system, and provide a custom message to the user.
+使用 {{ site.data.keys.mf_console }}   （控制台）可禁止用户访问特定移动操作系统上应用程序的特定版本，并向用户提供定制消息。
 
-1. Select your application version from the **Applications** section of the console's navigation sidebar, and then select the application **Management** tab.
-2. Change the status to **Access Disabled**.
-3. In the **URL of latest version** field, optionally provide a URL for a newer version of the application (usually in the appropriate public or private app store). For some environments, the Application Center provides a URL to access the Details view of an application version directly. See [Application properties](../../appcenter/appcenter-console/#application-properties).
-4. In the **Default notification message** field, add the custom notification message to display when the user attempts to access the application. The following sample message directs users to upgrade to the latest version:
+1. 从控制台的导航侧边栏的**应用程序**部分中选择应用程序版本，然后选择应用程序**管理**选项卡。
+2. 将状态更改为**已禁用访问**。
+3. 在**最新版本的 URL** 字段中，可选择为更新版本的应用程序提供 URL（通常在相应的公共或专用应用程序商店中）。对于某些环境，Application Center 提供一个 URL，用于直接访问应用程序版本的“详细信息”视图。
+请参阅[应用程序属性](../../appcenter/appcenter-console/#application-properties)。
+4. 在**缺省通知消息**字段中，添加当用户尝试访问应用程序时要显示的定制通知消息。以下样本消息会指导用户升级至最新版本：
+
 
    ```bash
-   This version is no longer supported. Please upgrade to the latest version.
+   This version is no longer supported. 请升级至最新版本。
    ```
 
-5. In the **Supported locales** section, you can optionally provide the notification message in other languages.
-6. Select **Save** to apply your changes.
+5. 在**受支持的语言环境**部分中，可选择以其他语言提供通知消息。
+6. 选择**保存**以应用您的更改。
 
-When a user runs an application that was remotely disabled, a dialog window with your custom message is displayed. The message is displayed on any application interaction that requires access to a protected resource, or when the application tries to obtain an access token. If you provided a version-upgrade URL, the dialog has a **Get new version** button for upgrading to a newer version, in addition to the default **Close** button. If the user closes the dialog window without upgrading the version, they can continue to work with the parts of the application that do not require access to protected resources. However, any application interaction that requires access to a protected resource causes the dialog window to be displayed again, and the application is not granted access to the resource.
+当用户运行远程禁用的应用程序时，将显示一个包含定制消息的对话框窗口。需要访问受保护资源的任何应用程序交互或应用程序尝试获取访问令牌时，都将显示此消息。如果提供了版本升级 URL，那么除缺省**关闭**按钮外，此对话框还有一个**获取新版本**按钮，用于升级至更新版本。如果用户在不升级版本的情况下关闭对话框窗口，那么他可以继续处理应用程序的某些部分，无需访问受保护资源。但是，需要访问受保护资源的任何应用的交互过程都会导致再次显示对话框窗口，并且也未授权应用程序访问资源。
 
 <!-- **Note:** For cross-platform applications, you can customize the default remote-disable behavior: provide an upgrade URL for your application, as outlined in Step 3, and set the **showCloseOnRemoteDisableDenial** attribute in your application's initOptions.js file to false. If the attribute is not defined, define it. When an application-upgrade URL is provided and the value of **showCloseOnRemoteDisableDenial** is false, the **Close** button is omitted from the remote-disable dialog window, leaving only the Get new version button. This forces the user to upgrade the application. When no upgrade URL is provided, the **showCloseOnRemoteDisableDenial** configuration has no effect, and a single **Close** button is displayed. -->
 
-### Displaying an administrator message
+### 显示管理员消息
 {: #displaying-an-administrator-message }
-Follow the outlined procedure to configure the notification message. You can use this message to notify application users of temporary situations, such as a planned service downtime.
+请遵循所述过程来配置通知消息。可使用此消息向应用程序用户通知临时情况（如计划的服务停机时间）。
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application Management tab.
-2. Change the status to **Active and Notifying**.
-3. Add a custom startup message. The following sample message informs the user of planned maintenance work for the application:
+1. 从 {{ site.data.keys.mf_console }}    导航侧边栏的**应用程序**部分中选择应用程序版本，然后选择应用程序“管理”选项卡。
+2. 将状态更改为**激活并通知**。
+3. 添加定制启动消息。以下样本消息将通知用户对应用程序进行计划的维护工作：
+
 
    ```bash
    The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
    ```
 
-4. In the Supported locales section, you can optionally provide the notification message in other languages.
+4. 在受支持的语言环境部分中，可选择以其他语言提供通知消息。
 
-5. Select **Save** to apply your changes.
+5. 选择**保存**以应用您的更改。
 
-The message is displayed when the application first uses {{ site.data.keys.mf_server }} to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
+应用程序初次使用 {{ site.data.keys.mf_server }}    访问受保护资源或获取访问令牌时，将显示此消息。如果应用程序在启动时获取访问令牌，那么将在此阶段显示此消息。否则，应用程序发出要访问受保护资源或获取访问令牌的第一条请求时，将显示此消息。初次交互时，消息仅显示一次。
 
-### Defining administrator messages in multiple languages
+### 定义多种语言的管理员消息
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format setting, and not according to the configured browser or operating-system language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>注：</b>在 Microsoft Internet Explorer (IE) 和 Microsoft Edge 中，将根据操作系统的区域格式设置而不根据配置的浏览器或操作系统语言首选项来显示管理消息。请参阅 [IE 和 Edge Web 应用程序限制](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)。请遵循所述过程配置多种语言，以显示您通过控制台定义的应用程序管理消息。这些消息将基于设备的语言环境发送，并且必须符合移动操作系统用于指定语言环境的标准。
 
-Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
+1. 从 {{ site.data.keys.mf_console }}    导航侧边栏的**应用程序**部分中选择应用程序版本，然后选择应用程序**管理**选项卡。
+2. 选择**激活并通知**或**已禁用访问**状态。
+3. 选择**更新语言环境**。在所显示的对话框窗口的**上载文件**部分中，选择**上载**，然后浏览至定义语言环境的 CSV 文件的位置。
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application **Management** tab.
-2. Select the status **Active and Notifying** or **Access Disabled**.
-3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
 
-   Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
+   CSV 文件中的每一行均包含一对逗号分隔字符串。第一个字符串为语言环境代码（如 fr-FR 表示法语（法国），en 表示英语），第二个字符串为对应的语言形式的消息文本。指定的语言环境代码必须符合移动操作系统用于指定语言环境的标准，如 ISO 639-1、ISO 3166-2 和 ISO 15924。
     
-   > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
+   > **注：**要创建 CSV 文件，必须使用支持 UTF-8 编码的编辑器（如记事本）。
 
-   Following is a sample CSV file that defines the same message for multiple locales:
+   以下是为多个语言环境定义相同消息的样本 CSV 文件：
+
 
    ```xml
    en,Your application is disabled
@@ -145,60 +150,63 @@ Follow the outlined procedure to configure multiple languages for displaying the
    he,האפליקציה חסמומה
    ```
 
-4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
-You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
-5. Select **Save** to apply your changes.
+4. 在**验证通知消息**部分中，可从 CSV 文件查看语言环境代码和消息的表格。验证消息，然后选择**确定**。可以随时选择“编辑”以替换语言环境 CSV 文件。还可以使用该选项来上载空的 CSV 文件以除去所有语言环境。
+5. 选择**保存**以应用您的更改。
 
-The localized notification message is displayed on the user's mobile device, according to the locale of the device. If no message was configured for the device locale, the default message that you provided is displayed.
+根据设备语言环境，用户的移动设备上会显示本地化通知消息。如未对设备语言环境配置消息，那么将显示您提供的缺省消息。
 
-## Application status and token licensing
+## 应用程序状态和令牌许可
 {: #application-status-and-token-licensing }
-You must manually restore the correct application status in {{ site.data.keys.mf_console }} after Blocked status because of insufficient tokens.
+在因缺少足够令牌而导致“已阻止”状态后，您必须在 {{ site.data.keys.mf_console }}    中手动恢复正确的应用程序状态。
 
-If you use token licensing and you no longer have enough license tokens for an application, the application status of all versions of the application changes to **Blocked**. You are no longer able to change the status of any version of the application. The following message is displayed in {{ site.data.keys.mf_console }}:
+如果您采用的是令牌许可，但是不再有足够的许可证令牌用于应用程序，那么该应用程序的所有版本的应用程序状态都将更改为**已阻止**。您将无法再更改该应用程序任何版本的该状态。
+{{ site.data.keys.mf_console }}   中显示以下消息：
 
 ```bash
 The application got blocked because its license expired
 ```
 
-If later enough tokens to run the application become free or your organization purchases more tokens, the following message is displayed in {{ site.data.keys.mf_console }}:
+如果之后有足够的令牌可用于运行该应用程序，或者贵组织购买了更多令牌，那么将会在 {{ site.data.keys.mf_console }}   中显示以下消息：
 
 ```bash
 The application got blocked because its license expired but a license is available now
 ```
 
-The display status is still **Blocked**. You must restore the correct current status manually from memory or your own records by editing the Status field. {{ site.data.keys.product }} does not manage the display of **Blocked** status in {{ site.data.keys.mf_console }} of an application that was blocked because of insufficient license tokens. You are responsible for restoring such a blocked application to a real status that can be displayed through {{ site.data.keys.mf_console }}.
+显示状态仍然为**已阻止**。您必须通过编辑“状态”字段，手动从存储空间或您自己的记录中恢复正确的当前状态。{{ site.data.keys.product }}   不管理因许可证令牌不足而被阻止的应用程序在 {{ site.data.keys.mf_console }}   中显示的**已阻止**状态。
+您应当自行将此类已阻止应用程序恢复为可通过 {{ site.data.keys.mf_console }}   显示的实际状态。
 
-## Error log of operations on runtime environments
+## 运行时环境上操作的错误日志
 {: #error-log-of-operations-on-runtime-environments }
-Use the error log to access failed management operations initiated from {{ site.data.keys.mf_console }} or the command line on the selected runtime environment, and to see the effect of the failure on the servers.
+使用错误日志可访问在选择的运行时环境中从 {{ site.data.keys.mf_console }}    或命令行启动的失败管理操作以及查看失败对服务器产生的影响。
 
-When a transaction fails, the status bar displays a notification of the error and shows a link to the error log. Use the error log to have more detail about the error, for example, the status of each server with a specific error message, or to have a history of errors. The error log shows the most recent operation first.
+事务失败时，状态栏中会显示错误通知和一个到错误日志的链接。
+使用错误日志获取有关该错误的更多详细信息（例如，具有特定错误消息的每台服务器的状态），或者获取错误的历史记录。
+在错误日志中，最新的操作显示在前面。
 
-You access the error log by clicking **Error log** of a runtime environment in {{ site.data.keys.mf_console }}.
+通过单击 {{ site.data.keys.mf_console }}    中运行时环境的**错误日志**来访问错误日志。
 
-Expand the row that refers to the failed operation to access more information about the current state of each server. To access the complete log, download the log by clicking **Download log**.
+展开涉及失败操作的行，以访问有关每个服务器当前状态的更多信息。要访问完整的日志，请单击**下载日志** 以下载日志。
 
-![error log in the console](error-log.png)
+![控制台中的错误日志](error-log.png)
 
-## Audit log of administration operations
+## 管理操作的审计日志
 {: #audit-log-of-administration-operations }
-In the {{ site.data.keys.mf_console }}, you can refer to an audit log of administration operations.
+在 {{ site.data.keys.mf_console }}    中，您可以参考管理操作的审计日志。
 
-{{ site.data.keys.mf_console }} provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the {{ site.data.keys.product_adj }} administration service to **false**.
+{{ site.data.keys.mf_console }}    允许您访问针对登录、注销和所有管理操作（如部署应用程序或适配器或者锁定应用程序）的审计日志。可通过在 {{ site.data.keys.product_adj }}    管理服务的 Web 应用程序上将 **mfp.admin.audit** Java 命名和目录接口 (JNDI) 属性设置为 **false** 来禁用审计日志。
 
-To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
+要访问审计日志，请单击标题栏中的用户名，选择**关于**，单击**其他支持信息**，然后选择**下载审计日志**。
 
-| Field name | Description | 
+| 字段名称 | 描述 | 
 |------------|-------------|
-| Timestamp	 | Date and time when the record was created. |
-| Type	     | The type of operation. See list of operation types below for the possible values. |
-| User	     | The **username** of the user who is signed in. |
-| Outcome	 | The outcome of the operation; possible values are SUCCESS, ERROR, PENDING. |
-| ErrorCode	 | If the outcome is ERROR, ErrorCode indicates what the error is. |
-| Runtime	 | Name of the {{ site.data.keys.product_adj }} project that is associated with the operation. |
+| 时间戳记	 | 记录的创建日期和时间。 |
+| 类型	     | 操作的类型。请参阅下面的操作类型列表以获取可能值。 |
+| 用户	     | 已登录用户的**用户名**。 |
+| 结果	 | 操作的结果；可能值为 SUCCESS、ERROR 以及 PENDING。 |
+| ErrorCode	 | 如果结果为 ERROR，那么 ErrorCode 指示是什么错误。 |
+| 运行时	 | 与操作相关联的 {{ site.data.keys.product_adj }}    项目的名称。 |
 
-The following list shows the possible values of Type of operation.
+以下列表显示了操作类型的可能值。
 
 * Login
 * Logout

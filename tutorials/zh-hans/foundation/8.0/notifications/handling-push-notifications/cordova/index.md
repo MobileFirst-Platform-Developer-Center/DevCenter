@@ -1,98 +1,98 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Cordova
+title: 在 Cordova 中处理推送通知
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
-  - name: Download Cordova project
+  - name: 下载 Cordova 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+在 iOS、Android 和 Windows Cordova 应用程序可以接收和显示推送通知之前，需要将 **cordova-plugin-mfp-push** Cordova 插件添加到 Cordova 项目中。在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备、预订和取消预订标记以及处理通知。在本教程中，您将学会如何在 Cordova 应用程序中处理推送通知。
 
-> **Note:** Authenticated notifications are currently **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
+> **注：**在此发行版中，Cordova 应用程序因为某个缺陷而**不支持**已认证的通知。但是，提供了以下变通方法：可通过 `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` 来包装每个 `MFPPush` API 调用。提供的样本应用程序中使用了此变通方法。
 
-For information about Silent or Interactive notifications in iOS, see:
+有关 iOS 中的静默通知或交互式通知的信息，请参阅：
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
+* [静默通知](../silent)
+* [交互式通知](../interactive)
 
-**Prequisites:**
+**先决条件：**
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
-* Cordova CLI installed on the developer workstation
+* 确保您已阅读过下列教程：
+    * [设置 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/#installing-a-development-environment)
+    * [将 {{site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)
+    * [推送通知概述](../../)
+* 本地运行的 {{ site.data.keys.mf_server }} 或远程运行的 {{ site.data.keys.mf_server }}
+* 安装在开发人员工作站上的 {{ site.data.keys.mf_cli }}
+* 安装在开发人员工作站上的 Cordova CLI
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
-* [Notifications Configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [通知配置](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [处理推送通知](#handling-a-push-notification)
+* [样本应用程序](#sample-application)
 
-## Notifications Configuration
+## 通知配置
 {: #notifications-configuration }
-Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
+创建新的 Cordova 项目或使用现有项目，并添加一个或多个受支持的平台：iOS、Android 或 Windows。
 
-> If the {{ site.data.keys.product_adj }} Cordova SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
+> 如果该项目中还没有 {{ site.data.keys.product_adj }} Cordova SDK，请遵循[将 {{site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)教程中的指示信息。
 
-### Adding the Push plug-in
+### 添加“推送”插件
 {: #adding-the-push-plug-in }
-1. From a **command-line** window, navigate to the root of the Cordova project.  
+1. 从**命令行**窗口中，浏览至 Cordova 项目的根目录。  
 
-2. Add the push plug-in to by running the command:
+2. 运行以下命令以添加“推送”插件：
 
    ```bash
    cordova plugin add cordova-plugin-mfp-push
    ```
 
-3. Build the Cordova project by running the command:
+3. 运行以下命令以构建 Cordova 项目：
 
    ```bash
    cordova build
    ```
 
-### iOS platform
-{: # ios-platform }
-The iOS platform requires an additional step.  
-In Xcode, enable push notifications for your application in the **Capabilities** screen.
+### iOS 平台
+{ #ios-platform } 
+iOS 平台需要完成一个额外的步骤。  
+在 Xcode 的**功能**屏幕中，为您的应用程序启用推送通知。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**为应用程序选择的 bundleId 必须与 Apple Developer 站点中先前创建的 AppId 相匹配。请参阅[推送通知概述]教程。
 
-![image of where is the capability in Xcode](push-capability.png)
+![该功能在 Xcode 中的位置的图像](push-capability.png)
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### Client-side
+### 客户端
 {: #client-side }
 
-| Javascript Function | Description |
+| Javascript 函数 | 描述 |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications. | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service. | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance. | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag. | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Unsubscribes from a particular tag. | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Unregisters the device from the Push Notifications Service | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | 初始化 MFPPush 实例。 | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | 设备是否支持推送通知。 | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | 向推送通知服务注册设备。 | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | 在推送通知服务实例中检索所有可用标记。 | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 预订特定标记。 | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | 检索设备当前预订的标记。 | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 取消对特定标记的预订。 | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | 从推送通知服务注销设备。 | 
 
-### API implementation
+### API 实现
 {: #api-implementation }
-#### Initialization
+#### 初始化
 {: #initialization }
-Initialize the **MFPPush** instance.
+初始化 **MFPPush** 实例。
 
-- Required for the client application to connect to MFPPush service with the right application context.  
-- The API method should be called first before using any other MFPPush APIs.
-- Registers the callback function to handle received push notifications.
+- 在客户机应用程序使用适当的应用程序上下文连接到 MFPPush 服务时为必需项。  
+- 应先调用此 API 方法，然后再使用任何其他 MFPPush API。
+- 注册回调函数以处理已收到的推送通知。
 
 ```javascript
 MFPPush.initialize (
@@ -106,9 +106,9 @@ MFPPush.initialize (
 );
 ```
 
-#### Is push supported
+#### 是否支持推送
 {: #is-push-supported }
-Check if the device supports push notifications.
+检查设备是否支持推送通知。
 
 ```javascript
 MFPPush.isPushSupported (
@@ -121,9 +121,9 @@ MFPPush.isPushSupported (
 );
 ```
 
-#### Register device
+#### 注册设备
 {: #register-device }
-Register the device to the push notifications service. If no options are required, options can be set to `null`.
+向推送通知服务注册设备。如果不需要任何选项，可将 options 设置为 `null`。
 
 
 ```javascript
@@ -139,9 +139,9 @@ MFPPush.registerDevice(
 );
 ```
 
-#### Get tags
+#### 获取标记
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+从推送通知服务检索所有可用标记。
 
 ```javascript
 MFPPush.getTags (
@@ -154,9 +154,9 @@ MFPPush.getTags (
 );
 ```
 
-#### Subscribe
+#### 预订
 {: #subscribe }
-Subscribe to desired tags.
+预订所需的标记。
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -172,9 +172,9 @@ MFPPush.subscribe(
 );
 ```
 
-#### Get subscriptions
+#### 获取预订
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+检索设备当前预订的标记。
 
 ```javascript
 MFPPush.getSubscriptions (
@@ -187,9 +187,9 @@ MFPPush.getSubscriptions (
 );
 ```
 
-#### Unsubscribe
+#### 取消预订
 {: #unsubscribe }
-Unsubscribe from tags.
+取消对标记的预订。
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -205,9 +205,9 @@ MFPPush.unsubscribe(
 );
 ```
 
-#### Unregister
+#### 注销
 {: #unregister }
-Unregister the device from push notification service instance.
+从推送通知服务实例注销设备。
 
 ```javascript
 MFPPush.unregisterDevice(
@@ -220,9 +220,9 @@ MFPPush.unregisterDevice(
 );
 ```
 
-## Handling a push notification
+## 处理推送通知
 {: #handling-a-push-notification }
-You can handle a received push notification by operating on its response object in the registered callback function.
+通过在已注册的回调函数中对响应对象执行操作，可以处理已收到的推送通知。
 
 ```javascript
 var notificationReceived = function(message) {
@@ -230,13 +230,13 @@ var notificationReceived = function(message) {
 };
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="样本应用程序图像" src="notifications-app.png" style="float:right"/>
+## 样本应用程序
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) Cordova 项目。
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+**注：**要运行此样本，需要在任何 Android 设备上安装最新版本的 Google Play Services。
 
-### Sample usage
+### 用法样例
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请查看样本的 README.md 文件以获取指示信息。

@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: Configuring Log Filters
-breadcrumb_title: Log Filters
+title: 配置日志过滤器
+breadcrumb_title: 日志过滤器
 relevantTo: [ios,android,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Administrators can control the {{ site.data.keys.product_adj }} client SDK log capture and levels from the **{{ site.data.keys.mf_console }} → [your application] → [version] → Log Filters**.  
-Through `Log Filters` you can create a filter level that you can log at. The log level can be set globally (all logger instances) or for a specific package or packages.
+管理员可以从 **{{ site.data.keys.mf_console }} → [您的应用程序] → [版本] → 日志过滤器**控制 {{ site.data.keys.product_adj }} 客户机 SDK 日志捕获和级别。  
+通过`日志过滤器`，您可以创建可以记录的过滤器级别。可以全局（所有记录器实例）或针对特定的一个或多个包设置日志级别。
 
-<img class="gifplayer"  alt="Creating a log filter" src="add-log-filter.png"/>
+<img class="gifplayer"  alt="创建日志过滤器" src="add-log-filter.png"/>
 
-For the application to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+为便于应用程序访存服务器上设置的配置覆盖，必须从定期运行的代码中某一位置调用 `updateConfigFromServer` 方法，例如，在应用程序生命周期回调中。
 
 
 #### Android
@@ -45,12 +45,12 @@ WL.Logger.updateConfigFromServer();
 ibmmfpfanalytics.logger.updateConfigFromServer();
 ```
 
-The `Logger` configuration values that the server returns take precedence over any values that are set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client receives an empty payload. In this case, the `Logger` configuration defaults to what was originally configured on the client.
+服务器返回的 `Logger` 配置值优先于在客户机端设置的任何值。当已除去客户机日志概要文件并且客户机尝试检索客户机日志概要文件时，客户机将收到空有效内容。在这种情况下，`Logger` 配置缺省为最初在客户机上配置的内容。
 
-## Forwarding server logs
+## 转发服务器日志
 {: #forwarding-server-logs }
 
-The {{ site.data.keys.mf_console }} also gives the server administrator the ability to persist logs and send those logs to the {{ site.data.keys.mf_analytics_console }}.
+{{ site.data.keys.mf_console }} 还使服务器管理员能够持久存储日志并将这些日志发送至 {{ site.data.keys.mf_analytics_console }}。
 
-To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the {{ site.data.keys.mf_analytics_console_short }}. This is useful for a user to take advantage of triaging adapter logs in the {{ site.data.keys.mf_analytics_console_short }} without having to collect all server logs.
+要转发服务器日志，请浏览至运行时**设置**屏幕，并在**其他包**下指定记录器包。  
+然后，可以在 {{ site.data.keys.mf_analytics_console_short }} 中查看收集的日志。如果用户要在无须收集所有服务器日志的情况下在 {{ site.data.keys.mf_analytics_console_short }} 中利用分类适配器日志，这将很有用。

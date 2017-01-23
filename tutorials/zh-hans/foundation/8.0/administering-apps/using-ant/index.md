@@ -1,56 +1,58 @@
 ---
 layout: tutorial
-title: Administrating applications through Ant
-breadcrumb_title: Administrating using Ant
+title: 通过 Ant 管理应用程序
+breadcrumb_title: 使用 Ant 管理
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** Ant task.
+可以通过 **mfpadm** Ant 任务管理 {{ site.data.keys.product_adj }}    应用程序。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [与其他设备比较](#comparison-with-other-facilities)
+* [先决条件](#prerequisites)
 
-## Comparison with other facilities
+## 与其他设备比较
 {: #comparison-with-other-facilities }
-You can execute administration operations with {{ site.data.keys.product_full }} in the following ways:
+可以通过以下方式对 {{ site.data.keys.product_full }}    执行管理操作：
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The **mfpadm** Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* {{ site.data.keys.mf_console }}   ，属于交互式。
+* **mfpadm** Ant 任务。
+* **mfpadm** 程序。
+* {{ site.data.keys.product_adj }}    管理 REST 服务。
 
-The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for automated or unattended execution of operations, such as:
+**mfpadm** Ant 任务、**mfpadm** 程序和 REST 服务对于操作的自动执行或无人照管执行很有用，例如：
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+* 消除操作员在重复操作中引入的错误，或
+* 在操作员正常工作时间以外操作，或
+* 使用与测试或预生产服务器相同的设置来配置生产服务器。
 
-The **mfpadm** Ant task and the **mfpadm** program are simpler to use and have better error reporting than the REST services. The advantage of the **mfpadm** Ant task over the mfpadm program is that it is platform independent and easier to integrate when integration with Ant is already available.
+相比 REST 服务，**mfpadm** Ant 任务和 **mfpadm** 程序更易于使用且具有更强的错误报告功能。
+**mfpadm** Ant 任务相对于 mfpadm 程序的优势在于，它独立于平台，并且当与 Ant 的集成已经可用时，它更易于集成。
 
-## Prerequisites
+## 先决条件
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
+**mfpadm** 工具可通过 {{ site.data.keys.mf_server }}    安装程序进行安装。在本页的其余部分中，**product\_install\_dir** 表示 {{ site.data.keys.mf_server }}    安装程序的安装目录。
 
-Apache Ant is required to run the **mfpadm** task. For information about the minimum supported version of Ant, see System requirements.
+运行 **mfpadm** 任务需要 Apache Ant。有关 ANT 的最低受支持版本的信息，请参阅“系统需求”。
 
-For convenience, Apache Ant 1.9.4 is included in {{ site.data.keys.mf_server }}. In the **product\_install\_dir/shortcuts/** directory, the following scripts are provided.
+为方便起见，{{ site.data.keys.mf_server }}    中包含了 Apache Ant 1.9.4。
+在 **product\_install\_dir/shortcuts/** 目录中，提供了以下脚本。
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+* 针对 UNIX/Linux 的 ant
+* 针对 Windows 的 ant.bat
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+这些脚本能够运行，这意味着不需要特定的环境变量。如果设置了环境变量 JAVA_HOME，那么脚本将接受该环境变量。
 
-You can use the **mfpadm** Ant task on a different computer than the one on which you installed {{ site.data.keys.mf_server }}.
+可以在安装 {{ site.data.keys.mf_server }}    的计算机以外的其他计算机上使用 **mfpadm** Ant 任务。
 
-* Copy the file **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** to the computer.
-* Make sure that a supported version of Apache Ant and a Java runtime environment are installed on the computer.
+* 将文件 **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** 复制到该计算机上。
+* 确保在此计算机上安装了受支持的 Apache Ant 版本和 Java 运行时环境。
 
-To use the **mfpadm** Ant task, add this initialization command to the Ant script:
+要使用 **mfpadm** Ant 任务，请在 Ant 脚本中添加以下初始化命令：
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/deployers/antlib.xml">
@@ -60,7 +62,8 @@ To use the **mfpadm** Ant task, add this initialization command to the Ant scrip
 </taskdef>
 ```
 
-Other initialization commands that refer to the same **mfp-ant-deployer.jar** file are redundant because the initialization by **defaults.properties** is also implicitly done by antlib.xml. Here is one example of a redundant initialization command:
+涉及同一 **mfp-ant-deployer.jar** 文件的其他初始化命令都是冗余的，因为由 **defaults.properties** 执行的初始化也由 antlib.xml 隐式执行。以下是冗余初始化命令的一个示例：
+
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/defaults.properties">
@@ -70,22 +73,21 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 </taskdef>
 ```
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+有关运行 {{ site.data.keys.mf_server }}    安装程序的更多信息，请参阅[运行 IBM Installation Manager](../../installation-configuration/production/installation-manager/)。
 
-#### Jump to
+#### 跳转至
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** Ant task](#calling-the-mfpadm-ant-task)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [调用 **mfpadm** Ant 任务](#calling-the-mfpadm-ant-task)
+* [常规配置命令](#commands-for-general-configuration)
+* [适配器命令](#commands-for-adapters)
+* [应用程序命令](#commands-for-apps)
+* [设备命令](#commands-for-devices)
+* [故障诊断命令](#commands-for-troubleshooting)
 
-### Calling the mfpadm Ant task
+### 调用 mfpadm Ant 任务
 {: #calling-the-mfpadm-ant-task }
-You can use the **mfpadm** Ant task and its associated commands to administer {{ site.data.keys.product_adj }} applications.
-Call the **mfpadm** Ant task as follows:
+可以使用 **mfpadm** Ant 任务及其相关命令来管理 {{ site.data.keys.product_adj }}    应用程序。调用 **mfpadm** Ant 任务，如下所示：
 
 ```xml
 <mfpadm url=... user=... password=...|passwordfile=... [secure=...]>
@@ -93,159 +95,164 @@ Call the **mfpadm** Ant task as follows:
 </mfpadm>
 ```
 
-#### Attributes
+#### 属性
 {: #attributes }
-The **mfpadm** Ant task has the following attributes:
+**mfpadm** Ant 任务具有以下属性：
 
-| Attribute      | Description | Required | Default | 
+| 属性      | 描述 | 必需 | 缺省值 | 
 |----------------|-------------|----------|---------|
-| url	         | The base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes	 | |
-| secure	     | Whether to avoid operations with security risks | No | true |
-| user	         | The user name for accessing the {{ site.data.keys.product_adj }} administration services | Yes | |
-| password	     | The password for the user | Either one is required | |
-| passwordfile   |	The file that contains the password for the user | Either one is required | |	 
-| timeout	     | Timeout for the entire REST service access, in seconds | No | |
-| connectTimeout |	Timeout for establishing a network connection, in seconds | No | |	 
-| socketTimeout  |	Timeout for detecting the loss of a network connection, in seconds | No | |
-| connectionRequestTimeout |	Timeout for obtaining an entry from a connection request pool, in seconds | No | |
-| lockTimeout    |	Timeout for acquiring a lock | No | |
+| url	         | Administration Services 的 {{ site.data.keys.product_adj }}    web 应用程序的基本 URL | 是	 | |
+| secure	     | 是否避免存在安全风险的操作 | 否 | true |
+| user	         | 用于访问 {{ site.data.keys.product_adj }}    Administration Services 的用户名 | 是 | |
+| password	     | 用户的密码 | 需要其中任一项 | |
+| passwordfile   |	包含用户密码的文件 | 需要其中任一项 | |	 
+| timeout	     | 整个 REST 服务访问超时，以秒为单位 | 否 | |
+| connectTimeout |	建立网络连接超时，以秒为单位 | 否 | |	 
+| socketTimeout  |	检测网络连接断开超时，以秒为单位 | 否 | |
+| connectionRequestTimeout |	从连接请求池获取条目超时，以秒为单位 | 否 | |
+| lockTimeout    |	获取锁定时超时 | 否 | |
 
 **url**<br/>
-The base URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use the following URL.
+基本 URL 最好使用 HTTPS 协议。例如，如果使用缺省端口和上下文根，请使用以下 URL。
 
-* For WebSphere  Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
-* For Tomcat: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
+* 对于 WebSphere Application Server：[https://server:9443/worklightadmin](https://server:9443/worklightadmin)
+* 对于 Tomcat：[https://server:8443/worklightadmin](https://server:8443/worklightadmin)
 
 **secure**<br/>
-The default value is **true**. Setting **secure="false"** might have the following effects:
+缺省值是 **true**。设置 **secure="false"** 可能会有以下影响：
 
-* The user and password might be transmitted in an unsecured way, possibly even through unencrypted HTTP.
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name than the specified server's host name.
+
+* 用户和密码可能以一种不安全的方式（甚至可能通过未加密的 HTTP）传送。
+* 接受服务器的 SSL 证书，即使是自签名证书或为不同于指定服务器主机名的其他主机名创建的证书也是如此。
 
 **password**<br/>
-Specify the password either in the Ant script, through the **password** attribute, or in a separate file that you pass through the **passwordfile** attribute. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing this password. To secure the password, before you enter the password into a file, remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+在 Ant 脚本（通过 **password** 属性）或独立文件（通过 **passwordfile** 属性传递）中指定密码。密码是敏感信息，因此需要保护。
+必须防止相同计算机上的其他用户知道此密码。为保护密码，在将密码输入文件之前，必须除去除您之外的其他用户对此文件的读许可权。例如，可以使用以下某个命令：
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* 在 UNIX 上：`chmod 600 adminpassword.txt`
+* 在 Windows 上：`cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-Additionally, you might want to obfuscate the password to hide it from an occasional glimpse. To do so, use the **mfpadm** config password command to store the obfuscated password in a configuration file. Then, you can copy and paste the obfuscated password to the Ant script or to the password file.
+另外，您可能要想隐藏加密密码以防被他人偶尔瞥见。
+要执行此操作，请使用 **mfpadm** config password 命令将模糊处理的密码存储在配置文件中。之后，可以将已模糊处理的密码复制并粘贴到 Ant 脚本或密码文件。
 
-The **mfpadm** call contains commands that are encoded in inner elements. These commands are executed in the order in which they are listed. If one of the commands fails, the remaining commands are not executed, and the **mfpadm** call fails.
+**mfpadm** 调用包含通过内部元素编码的命令。这些命令将按照列出的顺序执行。如果某个命令失败，那么将不会执行剩余命令，并且 **mfpadm** 调用将失败。
 
-#### Elements
+#### 元素
 {: #elements }
-You can use the following elements in **mfpadm** calls:
+可以在 **mfpadm** 调用中使用以下元素：
 
-| Element                       | Description | Count |
+| 元素                       | 描述 | 计数 |
 |-------------------------------|-------------|-------|
-| show-info	                    | Shows user and configuration information | 0..∞ | 
-| show-global-config	        | Shows global configuration information | 0..∞ | 
-| show-diagnostics              | Shows diagnostics information | 0..∞ | 
-| show-versions	                | Shows versions information | 0..∞ | 
-| unlock	                    | Releases the general-purpose lock | 0..∞ | 
-| list-runtimes	                | Lists the runtimes | 0..∞ | 
-| show-runtime      	        | Shows information about a runtime | 0..∞ | 
-| delete-runtime	            | Deletes a runtime | 0..∞ | 
-| show-user-config	            | Shows the user configuration of a runtime | 0..∞ | 
-| set-user-config	            | Specifies the user configuration of a runtime | 0..∞ | 
-| show-confidential-clients	    | Shows the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients	    | Specifies the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients-rule	| Specifies a rule for the confidential clients configuration of a runtime | 0..∞ | 
-| list-adapters	                | Lists the adapters | 0..∞ | 
-| deploy-adapter	            | Deploys an adapter | 0..∞ | 
-| show-adapter	                | Shows information about an adapter | 0..∞ | 
-| delete-adapter	            | Deletes an adapter | 0..∞ | 
-| adapter	                    | Other operations on an adapter | 0..∞ | 
-| list-apps	                    | Lists the apps | 0..∞ | 
-| deploy-app	                | Deploys an app | 0..∞ | 
-| show-app	                    | Shows information about an app | 0..∞ | 
-| delete-app	                | Deletes an app | 0..∞ | 
-| show-app-version              | Shows information about an app version | 0..∞ | 
-| delete-app-version            | Delete a version of an app | 0..∞ | 
-| app	                        | Other operations on an app | 0..∞ | 
-| app-version	                | Other operations on an app version | 0..∞ | 
-| list-devices	                | Lists the devices | 0..∞ | 
-| remove-device	                | Removes a device | 0..∞ | 
-| device	                    | Other operations for a device | 0..∞ | 
-| list-farm-members	            | Lists the members of the server farm | 0..∞ | 
-| remove-farm-member	        | Removes a server farm member | 0..∞ | 
+| show-info	                    | 显示用户和配置信息 | 0..∞ | 
+| show-global-config	        | 显示全局配置信息 | 0..∞ | 
+| show-diagnostics              | 显示诊断信息 | 0..∞ | 
+| show-versions	                | 显示版本信息 | 0..∞ | 
+| unlock	                    | 释放通用锁定 | 0..∞ | 
+| list-runtimes	                | 列出运行时 | 0..∞ | 
+| show-runtime      	        | 显示有关运行时的信息 | 0..∞ | 
+| delete-runtime	            | 删除运行时 | 0..∞ | 
+| show-user-config	            | 显示运行时的用户配置 | 0..∞ | 
+| set-user-config	            | 指定运行时的用户配置 | 0..∞ | 
+| show-confidential-clients	    | 显示运行时的保密客户机配置 | 0..∞ | 
+| set-confidential-clients	    | 指定运行时的保密客户机配置 | 0..∞ | 
+| set-confidential-clients-rule	| 指定运行时的保密客户机配置规则 | 0..∞ | 
+| list-adapters	                | 列出适配器 | 0..∞ | 
+| deploy-adapter	            | 部署适配器 | 0..∞ | 
+| show-adapter	                | 显示有关适配器的信息 | 0..∞ | 
+| delete-adapter	            | 删除适配器 | 0..∞ | 
+| adapter	                    | 针对适配器的其他操作 | 0..∞ | 
+| list-apps	                    | 列出应用程序 | 0..∞ | 
+| deploy-app	                | 部署应用程序 | 0..∞ | 
+| show-app	                    | 显示有关应用程序的信息 | 0..∞ | 
+| delete-app	                | 删除应用程序 | 0..∞ | 
+| show-app-version              | 显示有关应用程序版本的信息 | 0..∞ | 
+| delete-app-version            | 删除应用程序的版本 | 0..∞ | 
+| app	                        | 针对应用程序的其他操作 | 0..∞ | 
+| app-version	                | 针对应用程序版本的其他操作 | 0..∞ | 
+| list-devices	                | 列出设备 | 0..∞ | 
+| remove-device	                | 除去设备 | 0..∞ | 
+| device	                    | 针对设备的其他操作 | 0..∞ | 
+| list-farm-members	            | 列出服务器场的成员 | 0..∞ | 
+| remove-farm-member	        | 除去服务器场成员 | 0..∞ | 
 
-#### XML Format
+#### XML 格式
 {: #xml-format }
-The output of most commands is in XML, and the input to specific commands, such as `<set-accessrule>`, is in XML too. You can find the XML schemas of these XML formats in the **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** directory. The commands that receive an XML response from the server verify that this response conforms to the specific schema. You can disable this check by specifying the attribute **xmlvalidation="none"**. 
+大部分命令的输出都是 XML 格式，特定命令（如 `<set-accessrule>`）的输入也是 XML 格式。您可以在 **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** 目录中找到这些 XML 格式的 XML 模式。从服务器接收 XML 响应的命令将验证此响应是否符合特定的模式。
+通过指定属性 **xmlvalidation="none"**，可以禁用此检查。 
 
-#### Output character set
+#### 输出字符集
 {: #output-character-set }
-Normal output from the mfpadm Ant task is encoded in the encoding format of the current locale. On Windows, this encoding format is the so-called "ANSI code page". The effects are as follows:
+mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编码。在 Windows 上，此编码格式即所谓的“ANSI 代码页”。影响如下所示：
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in the so-called "OEM code page".
+* 此字符集外的字符将在输出时转换为问号。
+* 输出发送至 Windows 命令提示符窗口 (cmd.exe) 时，非 ASCII 字符将无法正确显示，因为此类窗口假定字符采用所谓的“OEM 代码页”编码。
 
-To work around this limitation:
+要解决此限制：
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This locale is the default locale on Red Hat Linux and macOS. Many other operating systems have the en_US.UTF-8 locale.
-* Or use the attribute **output="some file name"** to redirect the output of a mfpadm command to a file.
+* 在除 Windows 之外的操作系统上，使用其编码为 UTF-8 的语言环境。此语言环境是 Red Hat Linux 和 macOS 上的缺省语言环境。其他多个操作系统采用 en_US.UTF-8 语言环境。
+* 或者，使用属性 **output="some file name"** 来将 mfpadm 命令的输出重定向到某个文件。
 
-### Commands for general configuration
+### 常规配置命令
 {: #commands-for-general-configuration }
-When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+在调用 **mfpadm** Ant 任务时，可以包含各种用于访问 IBM {{ site.data.keys.mf_server }}    或运行时全局配置的命令。
 
-#### The `show-global-config` command
+#### `show-global-config` 命令
 {: #the-show-global-config-command }
-The `show-global-config` command shows the global configuration. It has the following attributes:
+`show-global-config` 显示可显示全局配置。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output	     | Name of the output file.  |	No	   | Not applicable |
-| outputproperty | Name of the Ant property for the output. | No | Not applicable |
+| output	     | 输出文件的名称。  |	否	   | 不适用 |
+| outputproperty | 输出的 Ant 属性名称。 | 否 | 不适用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <show-global-config/>
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+此命令基于[全局配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `show-user-config` command
+<br /> 
+#### `show-user-config` 命令
 {: #the-show-user-config-command }
-The `show-user-config` command, outside of `<adapter>` and `<app-version>` elements, shows the user configuration of a runtime. It has the following attributes:
+`<adapter>` 和 `<app-version>` 元素外的 `show-user-config` 命令可显示运行时的用户配置。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime.      | Yes     |	Not available |
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| runtime	     | 运行时的名称。      | 是     |	不可用 |
+| format	     | 指定输出格式。json 或 xml。 | 是 | 不可用       | 
+| output	     | 用于存储输出的文件的名称。   | 否  | 不适用      | 
+| outputproperty | 用于存储输出的 Ant 属性的名称。
+  | 否 | 不适用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <show-user-config runtime="mfp" format="xml"/>
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+此命令基于[运行时配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` 命令
 {: #the-set-user-config-command }
-The `set-user-config` command, outside of `<adapter>` and `<app-version>` elements, specifies the user configuration of a runtime. It has the following attributes for setting the entire configuration.
+位于 `<adapter>` 和 `<app-version>` 元素外部的 `set-user-config` 命令指定运行时的用户配置。它具有以下用于设置整个配置的属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | 运行时的名称。 | 是 | 不可用 | 
+| 文件	         | 包含新配置的 JSON 或 XML 文件的名称。 | 是 | 不可用 | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+`set-user-config` 命令具有以下用于设置配置中单个属性 (property) 的属性 (attribute)。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| property	     | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	         | The value of the property. | Yes | Not available |
+| runtime	     | 运行时的名称。 | 是 | 不可用 | 
+| property	     | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 | 是 | 不可用 | 
+| value	         | 属性的值。 | 是 | 不可用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <set-user-config runtime="mfp" file="myconfig.json"/>
@@ -255,173 +262,182 @@ The `set-user-config` command has the following attributes for setting a single 
 <set-user-config runtime="mfp" property="timeout" value="240"/>
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+此命令基于[运行时配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 服务。
 
-<br/>
-#### The `show-confidential-clients` command
+<br /> 
+#### `show-confidential-clients` 命令
 {: #the-show-confidential-clients-command }
-The `show-confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+`show-confidential-clients` 命令显示可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。此命令具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| format         | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output         | Name of the file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| runtime        | 运行时的名称。 | 是 | 不可用 | 
+| format         | 指定输出格式。json 或 xml。 | 是 | 不可用 | 
+| output         | 用于存储输出的文件的名称。 | 否 | 不适用 | 
+| outputproperty | 用于存储输出的 Ant 属性的名称。
+ | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-confidential-clients runtime="mfp" format="xml" output="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST service.
+此命令基于[保密客户机 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST 服务。
 
-<br/>
-#### The `set-confidential-clients` command
+<br /> 
+#### `set-confidential-clients` 命令
 {: #the-set-confidential-clients-command }
-The `set-confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+`set-confidential-clients` 命令指定可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。此命令具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | 运行时的名称。 | 是 | 不可用 | 
+| file	         | 包含新配置的 JSON 或 XML 文件的名称。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <set-confidential-clients runtime="mfp" file="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+此命令基于[保密客户机 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 服务。
 
-<br/>
-#### The `set-confidential-clients-rule` command
+<br /> 
+#### `set-confidential-clients-rule` 命令
 {: #the-set-confidential-clients-rule-command }
-The `set-confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+`set-confidential-clients-rule` 命令指定可以访问运行时的保密客户机的配置中的规则。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。此命令具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| id             | The identifier of the rule. | Yes | Not available | 
-| displayName    | The display name of the rule. | Yes | Not available | 
-| secret         | The secret of the rule. | Yes | Not available | 
-| allowedScope   | The scope of the rule. A space-separated list of tokens. | Yes | Not available | 
+| runtime        | 运行时的名称。 | 是 | 不可用 | 
+| id             | 规则的标识。 | 是 | 不可用 | 
+| displayName    | 规则的显示名称。 | 是 | 不可用 | 
+| secret         | 规则的密钥。 | 是 | 不可用 | 
+| allowedScope   | 规则的作用域。空格分隔的令牌列表。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <set-confidential-clients-rule runtime="mfp" id="push" displayName="Push" secret="lOa74Wxs" allowedScope="**"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+此命令基于[保密客户机 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 服务。
 
-### Commands for adapters
+### 适配器命令
 {: #commands-for-adapters }
-When you call the **mfpadm** Ant task, you can include various commands for adapters.
+在调用 **mfpadm** Ant 任务时，可以包含各种适配器命令。
 
-#### The `list-adapters` command
+#### `list-adapters` 命令
 {: #the-list-adapters-command }
-The `list-adapters` command returns a list of the adapters deployed for a given runtime. It has the following attributes.
+`list-adapters` 命令返回针对给定的运行时部署的适配器列表。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | 	Yes | Not available | 
-| output	     | Name of output file. | 	No  | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime        | 运行时的名称。 | 	是 | 不可用 | 
+| output	     | 输出文件的名称。 | 	否  | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <list-adapters runtime="mfp"/>
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 服务。
 
-<br/>
-#### The `deploy-adapter` command
+<br /> 
+#### `deploy-adapter` 命令
 {: #the-deploy-adapter-command }
-The `deploy-adapter` command deploys an adapter in a runtime. It has the following attributes.
+`deploy-adapter` 命令在运行时中部署适配器。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| file           | Binary adapter file (.adapter). | Yes | Not available |
+| runtime	     | 运行时的名称。 | 是 | 不可用 | 
+| file           | 二进制适配器文件 (.adapter)。 | 是 | 不可用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <deploy-adapter runtime="mfp" file="MyAdapter.adapter"/>
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+此命令基于[适配器 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 服务。
 
-<br/>
-#### The `show-adapter` command
+
+<br /> 
+#### `show-adapter` 命令
 {: #the-show-adapter-command }
-The `show-adapter` command shows details about an adapter. It has the following attributes.
+`show-adapter` 命令显示有关适配器的详细信息。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 适配器的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 服务。
 
-<br/>
-#### The `delete-adapter` command
+
+<br /> 
+#### `delete-adapter` 命令
 {: #the-delete-adapter-command }
-The `delete-adapter` command removes (undeploys) an adapter from a runtime. It has the following attributes.
+`delete-adapter` 命令从运行时中除去（取消部署）适配器。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name    | Name of an adapter. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name    | 适配器的名称。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <delete-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+此命令基于[适配器 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 服务。
 
-<br/>
-#### The `adapter` command group
+
+<br /> 
+#### `adapter` 命令组
 {: #the-adapter-command-group }
-The `adapter` command group has the following attributes.
+`adapter` 命令组具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 适配器的名称。 | 是 | 不可用 | 
 
-The `adapter` command supports the following elements.
+`adapter` 命令支持以下元素。
 
-| Element          | Description |	Count    | 
+| 元素          | 描述 |	计数    | 
 |------------------|-------------|-------------|
-| get-binary	   | Gets the binary data. | 0..∞ | 
-| show-user-config | Shows the user configuration. | 0..∞ | 
-| set-user-config  | Specifies the user configuration. | 0..∞ | 
+| get-binary	   | 获取二进制数据。 | 0..∞ | 
+| show-user-config | 显示用户配置。 | 0..∞ | 
+| set-user-config  | 指定用户配置。 | 0..∞ | 
 
-<br/>
-#### The `get-binary` command
+<br /> 
+#### `get-binary` 命令
 {: #the-get-binary-command }
-The `get-binary` command inside an `<adapter>` element returns the binary adapter file. It has the following attributes.
+`adapter` 元素内的 `<get-binary>` 命令返回二进制适配器文件。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| tofile	     | Name of the output file. | Yes | Not available | 
+| tofile	     | 输出文件的名称。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -429,20 +445,22 @@ The `get-binary` command inside an `<adapter>` element returns the binary adapte
 </adapter>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 服务。
 
-<br/>
-#### The `show-user-config` command
+
+<br /> 
+#### `show-user-config` 命令
 {: #the-show-user-config-command-1 }
-The `show-user-config` command, inside an `<adapter>` element, shows the user configuration of the adapter. It has the following attributes.
+`<adapter>` 元素中的 `show-user-config` 命令可显示适配器的用户配置。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| format	     | 指定输出格式。json 或 xml。 | 是 | 不可用       | 
+| output	     | 用于存储输出的文件的名称。   | 否  | 不适用      | 
+| outputproperty | 用于存储输出的 Ant 属性的名称。
+  | 否 | 不适用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -450,25 +468,25 @@ The `show-user-config` command, inside an `<adapter>` element, shows the user co
 </adapter>
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+此命令基于[适配器配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` 命令
 {: #the-set-user-config-command-1 }
-The `set-user-config` command, inside an `<adapter>` element, specifies the user configuration of the adapter. It has the following attributes for setting the entire configuration.
+`<adapter>` 元素中的 `set-user-config` 命令可指定适配器的用户配置。它具有以下用于设置整个配置的属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| file	Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| file	| 包含新配置的 JSON 或 XML 文件的名称。 | 是 | 不可用 | 
 
-The command has the following attributes for setting a single property in the configuration.
+此命令具有以下用于设置配置中单个属性 (property) 的属性 (attribute)。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value | The value of the property. | Yes | Not available | 
+| property | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 | 是 | 不可用 | 
+| value | 属性的值。 | 是 | 不可用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -482,155 +500,161 @@ The command has the following attributes for setting a single property in the co
 </adapter>
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+此命令基于[
+应用程序配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 服务。
 
-### Commands for apps
+### 应用程序命令
 {: #commands-for-apps }
-When you call the **mfpadm** Ant task, you can include various commands for apps.
+在调用 **mfpadm** Ant 任务时，可以包含各种应用程序命令。
 
-#### The `list-apps` command
+#### `list-apps` 命令
 {: #the-list-apps-command }
-The `list-apps` command returns a list of the apps that are deployed in a runtime. It has the following attributes.
+`list-apps` 命令返回在运行时中部署的应用程序列表。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes	Not available | 
-| output | Name of the output file. | No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <list-apps runtime="mfp"/>
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+此命令基于[应用程序 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST 服务。
 
-<br/>
-#### The `deploy-app` command
+<br /> 
+#### `deploy-app` 命令
 {: #the-deploy-app-command }
-The `deploy-app` command deploys an app version in a runtime. It has the following attributes.
+`deploy-app` 命令可在运行时中部署应用程序版本。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| file | The application descriptor, a JSON file. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| 文件 | 作为应用程序描述符的 JSON 文件。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <deploy-app runtime="mfp" file="MyApp/application-descriptor.json"/>
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+此命令基于[应用程序 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST 服务。
 
-<br/>
-#### The `show-app` command
+<br /> 
+#### `show-app` 命令
 {: #the-show-app-command }
-The `show-app` command returns a list of the app versions that are deployed in a runtime. It has the following attributes.
+`show-app` 命令返回在运行时中部署的应用程序版本列表。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+此命令基于[应用程序 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST 服务。
 
-<br/>
-#### The `delete-app` command
+<br /> 
+#### `delete-app` 命令
 {: #the-delete-app-command }
-The `delete-app` command removes (undeploys) an app, with all its app versions, for all environments for which it was deployed, from a runtime. It has the following attributes.
+`delete-app` 命令从运行时中针对部署了某个应用程序的所有环境除去（取消部署）该应用程序及其所有应用程序版本。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <delete-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+此命令基于[应用程序版本 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 服务。
 
-<br/>
-#### The `show-app-version` command
+<br /> 
+#### `show-app-version` 命令
 {: #the-show-app-version-command }
-The `show-app-version` command shows details about an app version in a runtime. It has the following attributes.
+`show-app-version` 命令可显示有关运行时中应用程序版本的详细信息。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
+| environment	| 移动平台。 | 是 | 不可用 | 
+| version	| 应用程序的版本号。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+此命令基于[应用程序版本 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST 服务。
 
-<br/>
-#### The `delete-app-version` command
+<br /> 
+#### `delete-app-version` 命令
 {: #the-delete-app-version-command }
-The `delete-app-version` command removes (undeploys) an app version from a runtime. It has the following attributes.
+`delete-app-version` 命令从运行时中除去（取消部署）应用程序版本。
+它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
+| environment	| 移动平台。 | 是 | 不可用 | 
+| version	| 应用程序的版本号。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <delete-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+此命令基于[应用程序版本 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 服务。
 
-<br/>
-#### The `app` command group
+<br /> 
+#### `app` 命令组
 {: #the-app-command-group }
-The `app` command group has the following attributes.
+`app` 命令组具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
 
-The app command group supports the following elements.
+app 命令组支持以下元素。
 
-| Element | Description | Count | 
+| 元素 | 描述 | 计数 | 
 |---------|-------------|-------|
-| show-license-config | Shows the token license configuration. | 0.. | 
-| set-license-config | Specifies the token license configuration. | 0.. | 
-| delete-license-config | Removes the token license configuration. | 0.. | 
+| show-license-config | 显示令牌许可证配置。 | 0.. | 
+| set-license-config | 指定令牌许可证配置。 | 0.. | 
+| delete-license-config | 除去令牌许可证配置。 | 0.. | 
 
-<br/>
-#### The `show-license-config` command
+<br /> 
+#### `show-license-config` 命令
 {: #the-show-license-config-command }
-The `show-license-config` command shows the token license configuration of an app. It has the following attributes.
+`show-license-config` 命令可显示应用程序的令牌许可证配置。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output         |	Name of a file in which to store the output. | Yes | Not available |
-| outputproperty | 	Name of an Ant property in which to store the output. | Yes	| Not available |
+| output         |	用于存储输出的文件的名称。 | 是 | 不可用 |
+| outputproperty | 	用于存储输出的 Ant 属性的名称。
+ | 是	| 不可用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -638,19 +662,20 @@ The `show-license-config` command shows the token license configuration of an ap
 </app-version>
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+此命令基于[
+应用程序许可证配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 服务。
 
-<br/>
-#### The `set-license-config` command
+<br /> 
+#### `set-license-config` 命令
 {: #the-set-license-config-command }
-The `set-license-config` command specifies the token license configuration of an app. It has the following attributes.
+`set-license-config` 命令可指定应用程序的令牌许可证配置。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| appType | Type of app: B2C or B2E | Yes | Not available | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | Yes | Not available | 
+| appType | 应用程序类型：B2C 或 B2E | 是 | 不可用 | 
+| licenseType | 应用程序类型：APPLICATION、ADDITIONAL_BRAND_DEPLOYMENT 或 NON_PRODUCTION。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -658,14 +683,15 @@ The `set-license-config` command specifies the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+此命令基于[
+应用程序许可证配置 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 服务。
 
-<br/>
-#### The `delete-license-config` command
+<br /> 
+#### `delete-license-config` 命令
 {: #the-delete-license-config-command }
-The `delete-license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+`delete-license-config` 命令可重置应用程序的令牌许可证配置，即将其还原至初始状态。
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -673,44 +699,45 @@ The `delete-license-config` command resets the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+此命令基于[许可证配置 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST 服务。
 
-<br/>
-#### The `app-version` command group
+<br /> 
+#### `app-version` 命令组
 {: #the-app-version-command-group }
-The `app-version` command group has the following attributes.
+`app-version` 命令组具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| environment | Mobile platform. | Yes | Not available | 
-| version | Version of the app. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| name | 应用程序的名称。 | 是 | 不可用 | 
+| environment | 移动平台。 | 是 | 不可用 | 
+| version | 应用程序的版本。 | 是 | 不可用 | 
 
-The `app-version` command group supports the following elements:
+`app-version` 命令组支持以下元素：
 
-| Element | Description | Count | 
+| 元素 | 描述 | 计数 | 
 |---------|-------------|-------|
-| get-descriptor | Gets the descriptor. | 0.. | 
-| get-web-resources | Gets the web resources. | 0.. | 
-| set-web-resources | Specifies the web resources. | 0.. | 
-| get-authenticity-data | Gets the authenticity data. | 0.. | 
-| set-authenticity-data | Specifies the authenticity data. | 0.. | 
-| delete-authenticity-data | Deletes the authenticity data. | 0.. | 
-| show-user-config | Shows the user configuration. | 0.. | 
-| set-user-config | Specifies the user configuration. | 0.. | 
+| get-descriptor | 获取描述符。 | 0.. | 
+| get-web-resources | 获取 Web 资源。 | 0.. | 
+| set-web-resources | 指定 Web 资源。 | 0.. | 
+| get-authenticity-data | 获取真实性数据。 | 0.. | 
+| set-authenticity-data | 指定真实性数据。 | 0.. | 
+| delete-authenticity-data | 删除真实性数据。 | 0.. | 
+| show-user-config | 显示用户配置。 | 0.. | 
+| set-user-config | 指定用户配置。 | 0.. | 
 
-<br/>
-#### The `get-descriptor` command
+<br /> 
+#### `get-descriptor` 命令
 {: #the-get-descriptor-command }
-The `get-descriptor` command, inside an `<app-version>` element, returns the application descriptor of a version of an app. It has the following attributes.
+`<app-version>` 元素内的 `get-descriptor` 命令返回应用程序版本的应用程序描述符。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output | Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | 用于存储输出的文件的名称。 | 否 | 不适用 | 
+| outputproperty | 用于存储输出的 Ant 属性的名称。
+ | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -718,18 +745,18 @@ The `get-descriptor` command, inside an `<app-version>` element, returns the app
 </app-version>
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) service.
+此命令基于[应用程序描述符 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) 服务。
 
-<br/>
-#### The `get-web-resources` command
+<br /> 
+#### `get-web-resources` 命令
 {: #the-get-web-resources-command }
-The `get-web-resources` command, inside an `<app-version>` element, returns the web resources of a version of an app, as a .zip file. It has the following attributes.
+`<app-version>` 元素内的 `get-web-resources` 命令返回应用程序版本的 Web 资源（以 .zip 文件形式）。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| tofile | 	Name of the output file. | Yes |Not available | 
+| tofile | 	输出文件的名称。 | 是 |不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -737,18 +764,18 @@ The `get-web-resources` command, inside an `<app-version>` element, returns the 
 </app-version>
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+此命令基于[检索 Web 资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST 服务。
 
-<br/>
-#### The `set-web-resources` command
+<br /> 
+#### `set-web-resources` 命令
 {: #the-set-web-resources-command }
-The `set-web-resources` command, inside an `<app-version>` element, specifies the web resources for a version of an app. It has the following attributes.
+`<app-version>` 元素内的 `set-web-resources` 命令可指定应用程序版本的 Web 资源。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file (must be a .zip file). | Yes |Not available |
+| 文件 | 输入文件的名称（必须为 .zip 文件）。 | 是 |不可用 |
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -756,19 +783,20 @@ The `set-web-resources` command, inside an `<app-version>` element, specifies th
 </app-version>
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+此命令基于[部署 Web 资源 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST 服务。
 
-<br/>
-#### The `get-authenticity-data` command
+<br /> 
+#### `get-authenticity-data` 命令
 {: #the-get-authenticity-data-command }
-The `get-authenticity-data` command, inside an `<app-version>` element, returns the authenticity data of a version of an app. It has the following attributes.
+`<app-version>` 元素内的 `get-authenticity-data` 命令可返回应用程序版本的真实性数据。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output | 	Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | 	用于存储输出的文件的名称。 | 否 | 不适用 | 
+| outputproperty | 用于存储输出的 Ant 属性的名称。
+ | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -776,18 +804,19 @@ The `get-authenticity-data` command, inside an `<app-version>` element, returns 
 </app-version>
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+此命令基于[
+导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
-<br/>
-#### The `set-authenticity-data` command
+<br /> 
+#### `set-authenticity-data` 命令
 {: #the-set-authenticity-data-command }
-The `set-authenticity-data` command, inside an `<app-version>` element, specifies the authenticity data for a version of an app. It has the following attributes.
+`<app-version>` 元素内的 `set-authenticity-data` 命令可指定应用程序版本的真实性数据。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file:<ul><li>Either a authenticity_data file,</li><li>or a device file (.ipa, .apk, or .appx file), from which the authenticity data is extracted.</li></ul> |  Yes | Not available | 
+| 文件 | 输入文件的名称：<ul><li>从中抽取真实性数据的 authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx 文件）。</li></ul> |  是 | 不可用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -807,14 +836,15 @@ The `set-authenticity-data` command, inside an `<app-version>` element, specifie
 </app-version>
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+此命令基于[
+部署应用程序真实性数据 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 服务。
 
-<br/>
-#### The `delete-authenticity-data` command
+<br /> 
+#### `delete-authenticity-data` 命令
 {: #the-delete-authenticity-data-command }
-The `delete-authenticity-data` command, inside an `<app-version>` element, deletes the authenticity data of a version of an app. It has no attributes.
+`<app-version>` 元素内的 `delete-authenticity-data` 命令可删除应用程序版本的真实性数据。它没有任何属性。
 
-**Example**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -822,20 +852,21 @@ The `delete-authenticity-data` command, inside an `<app-version>` element, delet
 </app-version>
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+此命令基于[
+应用程序真实性 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 服务。
 
-<br/>
-#### The `show-user-config` command
+<br /> 
+#### `show-user-config` 命令
 {: #the-show-user-config-command-2 }
-The `show-user-config` command, inside an `<app-version>` element, shows the user configuration of a version of an app. It has the following attributes.
+`<app-version>` 元素内的 `show-user-config` 命令可显示应用程序版本的用户配置。它具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| format | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output | Name of the output file.	No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| format | 指定输出格式。json 或 xml。 | 是 | 不可用 | 
+| output | 输出文件的名称。否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性名称。 | 否 | 不适用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -849,25 +880,25 @@ The `show-user-config` command, inside an `<app-version>` element, shows the use
 </app-version>
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+此命令基于[应用程序配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` 命令
 {: #the-set-user-config-command-2 }
-The `set-user-config` command, inside an `<app-version>` element, specifies the user configuration for a version of an app. It has the following attributes for setting the entire configuration.
+`<app-version>` 元素内的 `set-user-config` 命令可指定应用程序版本的用户配置。它具有以下用于设置整个配置的属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| file | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 | 是 | 不可用 | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+`set-user-config` 命令具有以下用于设置配置中单个属性 (property) 的属性 (attribute)。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	| The value of the property. | Yes | Not available | 
+| property | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 | 是 | 不可用 | 
+| value	| 属性的值。 | 是 | 不可用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -881,22 +912,23 @@ The `set-user-config` command has the following attributes for setting a single 
 </app-version>
 ```
 
-### Commands for devices
+### 设备命令
 {: #commands-for-devices }
-When you call the **mfpadm** Ant task, you can include various commands for devices.
+在调用 **mfpadm** Ant 任务时，可以包含各种设备命令。
 
-#### The `list-devices` command
+#### `list-devices` 命令
 {: #the-list-devices-command }
-The `list-devices` command returns the list of devices that have contacted the apps of a runtime. It has the following attributes:
+`list-devices` 命令返回已联系运行时的应用程序的设备列表。
+它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| query	 | A friendly name or user identifier to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this | string (with case-insensitive matching) are returned. | No | Not applicable | 
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| query	 | 要搜索的友好名称或用户标识。此参数可指定要搜索的字符串。将返回其友好名称或用户标识中包含此 | 字符串（以不区分大小写的方式匹配）的所有设备。 | 否 | 不适用 | 
+| output | 	输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 	输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <list-devices runtime="mfp"/>
@@ -906,53 +938,56 @@ The `list-devices` command returns the list of devices that have contacted the a
 <list-devices runtime="mfp" query="john"/>
 ```
 
-This command is based on the [Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST service.
+此命令基于[设备 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST 服务。
 
-<br/>
-#### The `remove-device` command
+
+<br /> 
+#### `remove-device` 命令
 {: #the-remove-device-command }
-The `remove-device` command clears the record about a device that has contacted the apps of a runtime. It has the following attributes:
+`remove-device` 命令清除有关已联系运行时的应用程序的设备的记录。
+它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| id | 唯一设备标识。 | 是 | 不可用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <remove-device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6"/>
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+此命令基于[设备 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST 服务。
 
-<br/>
-#### The `device` command group
+
+<br /> 
+#### `device` 命令组
 {: #the-device-command-group }
-The `device` command group has the following attributes.
+`device` 命令组具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| id | 唯一设备标识。 | 是 | 不可用 | 
 
-The `device` command supports the following elements.
+`device` 命令支持以下元素。
 
-| Element        | Description |       Count |
+| 元素        | 描述 |       计数 |
 |----------------|-------------|-------------|
-| set-status | Changes the status. | 0..∞ | 
-| set-appstatus | Changes the status for an app. | 0..∞ | 
+| set-status | 更改状态。 | 0..∞ | 
+| set-appstatus | 更改应用程序的状态。 | 0..∞ | 
 
-<br/>
-#### The `set-status` command
+<br /> 
+#### `set-status` 命令
 {: #the-set-status-command }
-The `set-status` command changes the status of a device, in the scope of a runtime. It has the following attributes:
+`set-status` 命令在运行时范围内更改设备的状态。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| status | New status. | Yes | Not available | 
+| status | 新状态。 | 是 | 不可用 | 
 
-The status can have one of the following values:
+状态可以为下列值之一：
 
 * ACTIVE
 * LOST
@@ -960,7 +995,7 @@ The status can have one of the following values:
 * EXPIRED
 * DISABLED
 
-**Example**  
+**示例**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -968,24 +1003,24 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+此命令基于[设备状态 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST 服务。
 
-<br/>
-#### The `set-appstatus` command
+<br /> 
+#### `set-appstatus` 命令
 {: #the-set-appstatus-command }
-The `set-appstatus` command changes the status of a device, regarding an app in a runtime. It has the following attributes:
+`set-appstatus` 命令更改设备的状态，此更改关系到运行时中的应用程序。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| app	| Name of an app. | Yes | Not available | 
-| status | 	New status. | Yes | Not available | 
+| app	| 应用程序的名称。 | 是 | 不可用 | 
+| status | 	新状态。 | 是 | 不可用 | 
 
-The status can have one of the following values:
+状态可以为下列值之一：
 
 * ENABLED
 * DISABLED
 
-**Example**  
+**示例**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -993,88 +1028,90 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+此命令基于[设备应用程序状态 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST 服务。
 
-### Commands for troubleshooting
+
+### 故障诊断命令
 {: #commands-for-troubleshooting }
-You can use Ant task commands to investigate problems with {{ site.data.keys.mf_server }} web applications.
+可以使用 Ant 任务命令来调查 {{ site.data.keys.mf_server }}    Web 应用程序的问题。
 
-#### The `show-info` command
+#### `show-info` 命令
 {: #the-show-info-command }
-The `show-info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. Use this command to test whether the {{ site.data.keys.product_adj }} administration services are running at all. It has the following attributes:
+`show-info` 命令显示有关 {{ site.data.keys.product_adj }}    Administration Services 的基本信息，无需访问任何运行时或数据库即可返回。
+ 此命令用于测试 {{ site.data.keys.product_adj }}    管理服务究竟是否在运行。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 	输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-info/>
 ```
 
-<br/>
-#### The `show-versions` command
+<br /> 
+#### `show-versions` 命令
 {: #the-show-versions-command }
-The `show-versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+`show-versions` 命令显示各种组件的 {{ site.data.keys.product_adj }}    版本：
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-ant-deployer.jar **file is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-admin-service.war** file is taken.
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion**：从中获取 **mfp-ant-deployer.jar ** 文件的精确  {{ site.data.keys.mf_server }}    版本号。
+* **productVersion**：从中获取 **mfp-admin-service.war** 文件的精确 {{ site.data.keys.mf_server }}    版本号。
+* **mfpAdminVersion**：**mfp-admin-service.war** 的精确构建版本号。
 
-The command has the following attributes:
+此命令具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 	输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-versions/>
 ```
 
-<br/>
-#### The `show-diagnostics` command
+<br /> 
+#### `show-diagnostics` 命令
 {: #the-show-diagnostics-command }
-The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
+`show-diagnostics` 命令可显示 {{ site.data.keys.product_adj }}    管理服务正常运行所需的各种组件的状态，例如数据库和辅助服务的可用性。此命令具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 	输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**  
+**示例**  
 
 ```xml
 <show-diagnostics/>
 ```
 
-<br/>
-#### The `unlock` command
+<br /> 
+#### `unlock` 命令
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations. The command has no attributes.
+`unlock` 命令可释放通用锁定。一些破坏性操作会接受此锁定，以防止同时修改相同的配置数据。在极少数情况下，如果中断了此操作，那么锁可能仍处于锁定状态，从而使破坏性操作无法进一步执行。unlock 命令可用于在此类情况下发布锁定。此命令没有任何属性。
 
-**Example**  
+**示例**  
 
 ```xml
 <unlock/>
 ```
 
-<br/>
-#### The `list-runtimes` command
+<br /> 
+#### `list-runtimes` 命令
 {: #the-list-runtimes-command }
-The `list-runtimes` command returns a list of the deployed runtimes. It has the following attributes:
+`list-runtimes` 命令返回已部署的运行时的列表。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Examples**  
+**示例**  
 
 ```xml
 <list-runtimes/>
@@ -1084,79 +1121,83 @@ The `list-runtimes` command returns a list of the deployed runtimes. It has the 
 <list-runtimes inDatabase="true"/>
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST 服务。
 
-<br/>
-#### The `show-runtime` command
+
+<br /> 
+#### `show-runtime` 命令
 {: #the-show-runtime-command }
-The `show-runtime` command shows information about a given deployed runtime. It has the following attributes:
+`show-runtime` 命令可显示有关给定的已部署运行时的信息。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**
+**示例**
 
 ```xml
 <show-runtime runtime="mfp"/>
 ```
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 服务。
 
-<br/>
-#### The `delete-runtime` command
+
+<br /> 
+#### `delete-runtime` 命令
 {: #the-delete-runtime-command }
-The `delete-runtime` command deletes the runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped. The command has the following attributes.
+`delete-runtime` 命令从数据库中删除运行时，包括其应用程序和适配器。
+只有在运行时的 Web 应用程序停止时才能删除运行时。此命令具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime |  Name of the runtime. | Yes | Not available |
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. | No | Not applicable |
+| runtime |  运行时的名称。 | 是 | 不可用 |
+| condition | 删除条件：empty 或 always。**注意：**请慎用 always 选项。 | 否 | 不适用 |
 
-**Example**
+**示例**
 
 ```xml
 <delete-runtime runtime="mfp" condition="empty"/>
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+此命令基于[运行时 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST 服务。
 
-<br/>
-#### The `list-farm-members` command
+
+<br /> 
+#### `list-farm-members` 命令
 {: #the-list-farm-members-command }
-The `list-farm-members` command returns a list of the farm member servers on which a given runtime is deployed. It has the following attributes:
+`list-farm-members` 命令会返回在其上部署了指定运行时的场成员服务器的列表。它具有以下属性：
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| output | 输出文件的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
 
-**Example**
+**示例**
 
 ```xml
 <list-farm-members runtime="mfp"/>
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+此命令基于[场拓扑成员 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST 服务。
 
-<br/>
-#### The `remove-farm-member` command
+<br /> 
+#### `remove-farm-member` 命令
 {: #the-remove-farm-member-command }
-The `remove-farm-member` command removes a server from the list of farm members on which a given runtime is deployed. Use this command when the server has become unavailable or disconnected. The command has the following attributes.
+`remove-farm-member` 命令可从在其上部署了指定运行时的场成员列表中除去某个服务器。在服务器不可用或断开连接时，可使用此命令。此命令具有以下属性。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| serverId | Identifier of the server.	 | Yes | Not applicable | 
-| force | Force removal of a farm member, even if it is available and connected. | No | false | 
+| runtime | 运行时的名称。 | 是 | 不可用 | 
+| serverId | 服务器的标识。	 | 是 | 不适用 | 
+| force | 强制除去场成员（即使在该成员可用且已连接的情况下）。 | 否 | false | 
 
-**Example**
+**示例**
 
 ```xml
 <remove-farm-member runtime="mfp" serverId="srvlx15"/>
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+此命令基于[场拓扑成员 (DELETE) ](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST 服务。

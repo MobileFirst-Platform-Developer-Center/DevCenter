@@ -1,44 +1,44 @@
 ---
 layout: tutorial
-title: Using Analytics API in Client Applications
+title: 在客户机应用程序中使用 Analytics API
 breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to set up analytics support on the client application, and lists available APIs.
+{{ site.data.keys.mf_analytics_full }} 提供客户机端 API，可帮助用户开始收集有关应用程序的分析数据。本教程提供有关如何在客户机应用程序上设置分析支持的信息，并且列出了可用的 API。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
-* [Sending Analytics Data](#sending-analytics-data)
-* [Enabling/Disabling Client Events](#enablingdisabling-client-event-types)
-* [Custom Events](#custom-events)
-* [Tracking Users](#tracking-users)
+* [在客户机端配置分析](#configuring-analytics-on-the-client-side)
+* [发送分析数据](#sending-analytics-data)
+* [启用/禁用客户机事件](#enablingdisabling-client-event-types)
+* [定制事件](#custom-events)
+* [跟踪用户](#tracking-users)
 
-## Configuring analytics on the client side
+## 在客户机端配置分析
 {: #configuring-analytics-on-the-client-side }
 
-Before you can start collecting the predefined data that {{ site.data.keys.mf_analytics }} provides, you must first import the corresponding libraries to initialize the analytics support.
+在可以开始收集 {{ site.data.keys.mf_analytics }} 提供的预定义数据之前，您必须先导入相应的库以初始化分析支持。
 
 ### JavaScript (Cordova)
 {: #javascript-cordova }
 
-In Cordova applications, no setup is required and initialization is built-in.  
+在 Cordova 应用程序中，无需设置，已内置初始化。  
 
 ### JavaScript (Web)
 {: #javascript-web }
 
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the {{ site.data.keys.product_adj }} Web SDK. For more information, see [Adding the {{ site.data.keys.product_adj }} SDK to Web applications](../../application-development/sdk/web) tutorial.  
+在 Web 应用程序中，必须引用分析 JavaScript 文件。确保您已先添加 {{ site.data.keys.product_adj }} Web SDK。有关更多信息，请参阅[将 {{ site.data.keys.product_adj }} SDK 添加到 Web 应用程序](../../application-development/sdk/web)教程。  
 
-Depending on how you've added the {{ site.data.keys.product_adj }} Web SDK, proceed in either of the following ways:
+根据您添加 {{ site.data.keys.product_adj }} Web SDK 的方式，以下列任一方法继续：
 
 
-Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
+在 `HEAD` 元素中引用 {{ site.data.keys.mf_analytics }}：
 
 ```html
 <head>
@@ -48,7 +48,7 @@ Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
 </head>
 ```
 
-Or, if using RequireJS, write:
+或者，如果正在使用 RequireJS，可编写：
 
 ```javascript
 require.config({
@@ -63,19 +63,19 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 });
 ```
 
-Note that you can select your own namespace to replace "ibmmfpfanalytics".
+请注意，您可以选择自己的名称空间以替换“ibmmfpfanalytics”。
 
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+ **要点**：Cordova 与 Web SDK 之间存在一些 JavaScript API 差异。请参阅用户文档中的 [API 参考主题](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html)。
 
 ### iOS
 {: #ios }
 
-#### Import the WLAnalytics library
+#### 导入 WLAnalytics 库
 {: #importing-the-wlanalytics-library }
 
 **Objective-C**
@@ -90,98 +90,98 @@ import "WLAnalytics.h"
 import IBMMobileFirstPlatformFoundation
 ```
 
-#### Initialize Analytics
+#### 初始化分析
 {: #initialize-analytics }
 
 **Objective-C**  
-No setup required. Pre-initialized by default.
+无需设置。缺省情况下已预初始化。
 
 **Swift**  
-Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
+在调用 **WLAnalytics** 类的其他方法之前，调用 `WLAnalytics.sharedInstance()`。
 
 ### Android
 #{: #android }
 
-#### Import WLAnalytics
+#### 导入 WLAnalytics
 {: #import-wlanalytics }
 
 ```java
 import com.worklight.common.WLAnalytics;
 ```
 
-#### Initialize Analytics
+#### 初始化分析
 {: #initialize-analytics }
 
-Inside the `onCreate` method of your main activity include:
+在您的主活动的 `onCreate` 方法内包含：
 
 ```java
 WLAnalytics.init(this.getApplication());
 ```
 
 
-## Enabling/disabling client event types
+## 启用/禁用客户机事件类型
 {: #enablingdisabling-client-event-types }
 
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their {{ site.data.keys.mf_analytics_console }}.
+Analytics API 使开发人员能够自由地启用和禁用要在 {{ site.data.keys.mf_analytics_console }} 上显示的事件的分析收集。
 
-The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
+{{ site.data.keys.mf_analytics }} API 允许捕获以下指标。
 
-* **Lifecycle events**: app usage rates, usage duration, app crash rates
-* **Network usage**: breakdown of API call frequencies, network performance metrics
-* **Users**: users of the app that are identified by a supplied user ID
-* **Custom analytics**: custom key/value pairs that are defined by the app developer
+* **生命周期事件**：应用程序使用率、使用持续时间、应用程序崩溃率
+* **网络使用情况**：API 调用频率明细、网络性能指标
+* **用户**：按提供的用户标识识别的应用程序用户
+* **定制分析**：由应用程序开发者定义的定制键/值对
 
-The initialization of the analytics API must be written in native code, even in Cordova apps.
+必须使用本机代码写入分析 API 的初始化，即使在 Cordova 应用程序中也是如此。
 
- * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
- * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
+ * 要捕获应用程序使用情况，必须在发生相关事件之前以及将数据发送至服务器之前注册应用程序生命周期事件侦听器。
+ * 要使用文件系统或本机语言和设备功能，必须初始化 API。如果 API 的使用需要本机设备功能（如文件系统），但未初始化 API，那么 API 调用失败。在 Android 上尤其如此。
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, see [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events).
+**注意**：要构建 Cordova 应用程序，JavaScript Analytics API 无法启用或禁用 `LIFECYCLE` 或 `NETWORK` 事件的收集。换句话说，缺省情况下 Cordova 应用程序会预先启用 `LIFECYCLE` 和 `NETWORK` 事件。如果要禁用这些事件，请参阅[客户机生命周期事件](#client-lifecycle-events)和[客户机网络事件](#client-lifecycle-events)。
 
-### Client lifecycle events
+### 客户机生命周期事件
 {: #client-lifecycle-events }
 
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
+在配置 Analytics SDK 之后，将开始在用户设备上记录应用程序会话。将应用程序从前台移至后台时将在 {{ site.data.keys.mf_analytics }} 中记录会话，这将在 {{ site.data.keys.mf_analytics_console_short }} 上创建会话。
 
-As soon as the device is set up to record sessions and you send your data, you can see the {{ site.data.keys.mf_analytics_console_short }} populated with data, as shown below.
+一旦将设备设置为记录会话并发送数据，就可以看到 {{ site.data.keys.mf_analytics_console_short }} 已填充有数据，如下所示。
 
-![sessions-chart](analytics-app-sessions.png)
+![会话图表](analytics-app-sessions.png)
 
-Enable or disable the collecting of app sessions using the {{ site.data.keys.mf_analytics_short }} API.
+使用 {{ site.data.keys.mf_analytics_short }} API 来启用或禁用应用程序会话收集。
 
 #### JavaScript
 {: #javascript }
 
 **Web**  
-To use client lifecycle events, initialize analytics:
+要使用客户机生命周期事件，请对分析进行初始化：
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
+要能够捕获生命周期事件，必须在 Cordova 应用程序的本机平台中对其进行初始化。
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
-	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* 对于 iOS 平台：
+	* 打开 **[Cordova 应用程序根文件夹] → platforms → ios → Classes** 文件夹，找到 **AppDelegate.m** (Objective-C) 或 **AppDelegate.swift** (Swift) 文件。
+	* 遵循下面的 iOS 指南以启用或禁用 `LIFECYCLE` 活动。
+	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
-* For the Android platform:
-	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* 对于 Android 平台：
+	* 打开 **[Cordova 应用程序根文件夹] → platforms → android → src→ com → sample → [应用程序名称] → MainActivity.java** 文件。
+	* 查找 `onCreate` 方法，遵循下面的 Android 指南来启用或禁用 `LIFECYCLE` 活动。
+	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
 #### Android
 {: #android }
 
-To enable client lifecycle event logging:
+要启用客户机生命周期事件日志记录：
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+要禁用客户机生命周期事件日志记录：
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
@@ -190,94 +190,94 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 #### iOS
 {: #ios }
 
-To enable client lifecycle event logging:
+要启用客户机生命周期事件日志记录：
 
-**Objective-C:**
+**Objective-C：**
 
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
-**Swift:**
+**Swift：**
 
 ```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+要禁用客户机生命周期事件日志记录：
 
-**Objective-C:**
+**Objective-C：**
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
-**Swift:**
+**Swift：**
 
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
 
-### Client Network Activities
+### 客户机网络活动
 {: #client-network-activities }
 
-Collection on adapters and the network occur in two different locations: on the client and on the server:
+在两个不同的位置进行有关适配器和网络的收集：在客户机和服务器上：
 
-* The client collects information such as roundtrip time and payload size when you start collecting on the `NETWORK` device event.
+* 在您开始收集有关 `NETWORK` 设备事件的信息时，客户机收集诸如双向时间和有效内容大小之类的信息。
 
-* The server collects back-end information such as server processing time, adapter usage, used procedures.
+* 服务器收集诸如服务器处理时间、适配器使用情况和已使用过程等后端信息。
 
-Because the client and the server each collect their own information, charts do not display data until the client is configured to do so. To configure your client, you need to start collecting for the `NETWORK` device event and send it to the server.
+由于客户机和服务器各自收集自己的信息，图表不会显示数据，直至将客户机配置为显示数据。要配置您的客户机，必须对 `NETWORK` 设备事件启动收集并将其发送到服务器。
 
 #### JavaScript
 {: #javascript }
 
 **Web**  
-To use client network events, initialize analytics:
+要使用客户机网络事件，请对分析进行初始化：
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
+要能够捕获网络事件，必须在 Cordova 应用程序的本机平台中对其进行初始化。
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
-	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* 对于 iOS 平台：
+	* 打开 **[Cordova 应用程序根文件夹] → platforms → ios → Classes** 文件夹，找到 **AppDelegate.m** (Objective-C) 或 **AppDelegate.swift** 文件。
+	* 遵循下面的 iOS 指南以启用或禁用 `NETWORK` 活动。
+	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
-* For the Android platform: navigate to the subactivity of the main activity to disable.
-	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* 对于 Android 平台：导航到要禁用的主活动的子活动。
+	* 打开 **[Cordova 应用程序根文件夹] → platforms → ios → src →com → sample → [应用程序名称] → MainActivity.java** 文件。
+	* 查找 `onCreate` 方法，并遵循下面的 Android 指南来启用或禁用 `NETWORK` 活动。
+	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
 #### iOS
 {: #ios }
 
-To enable client network-event logging:
+要启用客户机网络事件日志记录：
 
-**Objective-C:**
+**Objective-C：**
 
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
-**Swift:**
+**Swift：**
 
 ```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
-To disable client network-event logging:
+要禁用客户机网络事件日志记录：
 
-**Objective-C:**
+**Objective-C：**
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
 ```
 
-**Swift:**
+**Swift：**
 
 ```swift
 WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
@@ -286,22 +286,22 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 #### Android
 {: #android }
 
-To enable client network-event logging:
+要启用客户机网络事件日志记录：
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-To disable client network-event logging:
+要禁用客户机网络事件日志记录：
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-## Custom events
+## 定制事件
 {: #custom-events }
 
-Use the following API methods to create custom events.
+使用以下 API 方法来创建定制事件。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }
@@ -313,7 +313,7 @@ WL.Analytics.log({"key" : 'value'});
 #### JavaScript (Web)
 {: #javascript-web }
 
-For the web API, custom data is sent with the `addEvent` method.
+对于 Web API，使用 `addEvent` 方法来发送定制数据。
 
 ```javascript
 ibmmfpfanalytics.addEvent({'Purchases':'radio'});
@@ -323,7 +323,7 @@ ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 #### Android
 {: #android }
 
-After setting the first two configurations, you can start to log data as in this example:
+在设置前两个配置之后，您可以开始记录数据，如该示例中所示：
 
 ```java
 JSONObject json = new JSONObject();
@@ -340,9 +340,9 @@ WLAnalytics.log("Message", json);
 #### iOS
 {: #ios }
 
-After importing WLAnalytics, you can now use the API to collect custom data, as follows:
+在导入 WLAnalytics 之后，您现在可以使用 API 来收集定制数据，如下所示：
 
-**Objective-C:**
+**Objective-C：**
 
 ```objc
 NSDictionary *inventory = @{
@@ -353,24 +353,24 @@ NSDictionary *inventory = @{
 [[WLAnalytics sharedInstance] send];
 ```
 
-**Swift:**
+**Swift：**
 
 ```swift
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 ```
 
-## Tracking users
+## 跟踪用户
 {: #tracking-users }
 
-To track individual users, use the `setUserContext` method:
+要跟踪个别用户，请使用 `setUserContext` 方法：
 
 #### Cordova
 {: #cordova }
 
-Not supported.
+不受支持。
 
-#### Web applications
+#### Web 应用程序
 {: #web-applications }
 
 ```javascript
@@ -399,17 +399,17 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 WLAnalytics.setUserContext("John Doe");
 ```
 
-To un-track individual users, use the `unsetUserContext` method:
+要取消跟踪个别用户，请使用 `setUserContext` 方法：
 
 #### Cordova
 {: #cordova }
 
-Not supported.
+不受支持。
 
-#### Web applications
+#### Web 应用程序
 {: #web-applications }
 
-There is no `unsetUserContext` in the {{ site.data.keys.product_adj }} Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+{{ site.data.keys.product_adj }} Web SDK 中没有 `unsetUserContext`。用户会话将在 30 分钟不活动后结束，除非对 `ibmmfpfanalytics.setUserContext(user)` 发出另一个调用。
 
 #### iOS
 {: #ios }
@@ -433,17 +433,17 @@ WLAnalytics.sharedInstance().unsetUserContext
 WLAnalytics.unsetUserContext();
 ```
 
-## Sending Analytics data
+## 发送分析数据
 {: #sending-analytics-data }
 
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the {{ site.data.keys.mf_analytics_server }} by using `send` method of the Analytics API.
+发送分析是在分析服务器上查看客户机端分析的至关重要的一步。针对分析收集了已配置的事件类型的数据后，分析日志将存储在客户机设备上的日志文件中。将使用 Analytics API 的 `send` 方法将来自该文件中的数据发送到 {{ site.data.keys.mf_analytics_server }}。
 
-Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the {{ site.data.keys.mf_analytics_console }}.
+考虑定期将捕获的日志发送到服务器。定期发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中看到最新分析数据。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }
 
-In a Cordova application, use the following JavaScript API method:
+在 Cordova 应用程序中，使用以下 JavaScript API 方法：
 
 ```javascript
 WL.Analytics.send();
@@ -452,7 +452,7 @@ WL.Analytics.send();
 #### JavaScript (Web)
 {: #javascript-web }
 
-In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+在 Web 应用程序中，使用以下 JavaScript API 方法（取决于您已选择的名称空间）：
 
 ```javascript
 ibmmfpfanalytics.send();
@@ -476,7 +476,7 @@ WLAnalytics.sharedInstance().send();
 #### Android
 {: #android }
 
-In an Android application, use the following Java API method:
+在 Android 应用程序中，使用以下 Java API 方法：
 
 ```java
 WLAnalytics.send();

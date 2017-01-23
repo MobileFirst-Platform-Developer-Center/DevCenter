@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in client applications
-breadcrumb_title: Handling Push Notifications
+title: 在客户机应用程序中处理推送通知
+breadcrumb_title: 处理推送通知
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Before iOS, Android and Windows Native-based or Cordova-based applications are able to receive and display incoming push notifications, the application must first be set-up, and APIs must be implemented.
+在 iOS、Android 和 Windows 基于本机或基于 Cordova 的应用程序可以接收和显示入局推送通知之前，必须先设置该应用程序并且必须实现 API。
 
-Refer to the following topics to learn how to handle incoming push notifications in client applications: 
+请参阅以下主题，以了解如何在客户机应用程序中处理入局推送通知： 

@@ -1,49 +1,49 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in iOS
+title: 在 iOS 中处理推送通知
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Download Xcode project
+  - name: 下载 Xcode 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
+可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在使用 Swift 的 iOS 应用程序中处理推送通知。
 
-For information about Silent or Interactive notifications, see:
+有关静默通知或交互式通知的信息，请参阅：
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
+* [静默通知](../silent)
+* [交互式通知](../interactive)
 
-**Prerequisites:**
+**先决条件：**
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 确保您已阅读过下列教程：
+	* [推送通知概述](../../)
+    * [设置 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/#installing-a-development-environment)
+    * [将 {{ site.data.keys.product }} SDK 添加到 iOS 应用程序](../../../application-development/sdk/ios)
+* 本地运行的 {{ site.data.keys.mf_server }} 或远程运行的 {{ site.data.keys.mf_server }}。
+* 安装在开发人员工作站上的 {{ site.data.keys.mf_cli }}
 
 
-### Jump to:
+### 跳转至：
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [通知配置](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [处理推送通知](#handling-a-push-notification)
 
 
-### Notifications Configuration
+### 通知配置
 {: #notifications-configuration }
-Create a new Xcode project or use and existing one.
-If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
+创建新的 Xcode 项目或使用现有项目。
+如果该项目中还没有 {{ site.data.keys.product_adj }} 本机 iOS SDK，请遵循[将 {{ site.data.keys.product }} SDK 添加到 iOS 应用程序](../../../application-development/sdk/ios)教程中的指示信息。
 
 
-### Adding the Push SDK
+### 添加推送 SDK
 {: #adding-the-push-sdk }
-1. Open the project's existing **podfile** and add the following lines:
+1. 打开该项目的现有 **podfile**，然后添加以下行：
 
    ```xml
    use_frameworks!
@@ -70,55 +70,54 @@ If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in
         end
    end
    ```
-    - Replace **Xcode-project-target** with the name of your Xcode project's target.
+    - 将 **Xcode-project-target** 替换为您的 Xcode 项目目标的名称。
 
-2. Save and close the **podfile**.
-3. From a **Command-line** window, navigate into to the project's root folder.
-4. Run the command `pod install`
-5. Open project using the **.xcworkspace** file.
+2. 保存并关闭该 **podfile**。
+3. 从**命令行**窗口中，浏览至该项目的根文件夹。
+4. 运行 `pod install` 命令。
+5. 通过 **.xcworkspace** 文件打开项目。
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush 实例
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by using a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
+必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可在视图控制器中创建一个 `var`（例如，`var push = MFPPush.sharedInstance();`），然后在视图控制器中调用 `push.methodName()`。
 
-Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
+也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.sharedInstance().methodName()`。
 
-### Challenge Handlers
+### 验证问题处理程序
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
-
-### Client-side
+> 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
+### 客户端
 {: #client-side }
-| Swift Methods                                                                                                | Description                                                             |
+| Swift 方法                                                                                                | 描述                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`initialize()`](#initialization)                                                                            | 针对提供的上下文，初始化 MFPPush。                               |
+| [`isPushSupported()`](#is-push-supported)                                                                    | 设备是否支持推送通知。                             |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | 向推送通知服务注册设备。               |
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | 将设备标记发送到服务器。                                    |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | 在推送通知服务实例中检索可用的标记。 |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | 使设备预订指定的标记。                          |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | 检索设备当前预订的所有标记。               |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 取消对特定标记的预订。                                  |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | 从推送通知服务注销设备。              |
 
-#### Initialization
+#### 初始化
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+客户机应用程序连接到 MFPPush 服务时，需要执行初始化。
 
-* The `initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* 应先调用 `initialize` 方法，然后再使用任何其他 MFPPush API。
+* 它会注册回调函数以处理已收到的推送通知。
 
 ```swift
 MFPPush.sharedInstance().initialize();
 ```
 
-#### Is push supported
+#### 是否支持推送
 {: #is-push-supported }
-Checks if the device supports push notifications.
+检查设备是否支持推送通知。
 
 ```swift
 let isPushSupported: Bool = MFPPush.sharedInstance().isPushSupported()
@@ -130,9 +129,9 @@ if isPushSupported {
 }
 ```
 
-#### Register device &amp; send device token
+#### 注册设备并发送设备标记
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+向推送通知服务注册设备。
 
 ```swift
 MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
@@ -144,17 +143,17 @@ MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error:
 })
 ```
 
-`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.
+`options` 是 `[NSObject : AnyObject]`，这是一个可选参数，用于指定随注册请求（向服务器发送设备标记以使用唯一标识注册设备）一起传递的选项字典。
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 ```
 
-> **Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method.
+> **注：**通常在 `didRegisterForRemoteNotificationsWithDeviceToken` 方法的 **AppDelegate** 中调用此项。
 
-#### Get tags
+#### 获取标记
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+从推送通知服务检索所有可用标记。
 
 ```swift
 MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
@@ -167,15 +166,15 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
             // Successfully retrieved response from server but there where no available tags
         }
     } else {
-        // Failed to receive tags with error
+// Failed to receive tags with error
     }
 })
 ```
 
 
-#### Subscribe
+#### 预订
 {: #subscribe }
-Subscribe to desired tags.
+预订所需的标记。
 
 ```swift
 var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
@@ -190,9 +189,9 @@ MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response
 ```
 
 
-#### Get subscriptions
+#### 获取预订
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+检索设备当前预订的标记。
 
 ```swift
 MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
@@ -205,9 +204,9 @@ MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSErro
 ```
 
 
-#### Unsubscribe
+#### 取消预订
 {: #unsubscribe }
-Unsubscribe from tags.
+取消对标记的预订。
 
 ```swift
 var tags: [String] = {"Tag 1", "Tag 2"};
@@ -222,9 +221,9 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 })
 ```
 
-#### Unregister
+#### 注销
 {: #unregister }
-Unregister the device from push notification service instance.
+从推送通知服务实例注销设备。
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
@@ -237,12 +236,12 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 })
 ```
 
-## Handling a push notification
+## 处理推送通知
 {: #handling-a-push-notification }
 
-Push notifications are handled by the native iOS framework directly. Depending on your application lifecyle, different methods will be called by the iOS framework.
+由本机 iOS 框架直接处理推送通知。根据您的应用程序生命周期，iOS 框架将调用不同的方法。
 
-For example if a simple notification is received while the application is running, **AppDelegate**'s `didReceiveRemoteNotification` will be triggered:
+例如，如果在运行应用程序时收到简单通知，那么将触发 **AppDelegate** 的 `didReceiveRemoteNotification`：
 
 ```swift
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -257,14 +256,14 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 }
 ```
 
-> Learn more about handling notifications in iOS from the Apple documentation: http://bit.ly/1ESSGdQ
+> 从以下 Apple 文档中了解有关在 iOS 中处理通知的更多信息：http://bit.ly/1ESSGdQ
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+<img alt="样本应用程序图像" src="notifications-app.png" style="float:right"/>
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) Xcode 项目。
 
-### Sample usage
+### 用法样例
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请查看样本的 README.md 文件以获取指示信息。

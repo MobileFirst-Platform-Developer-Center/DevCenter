@@ -1,126 +1,126 @@
 ---
 layout: tutorial
-title: Operations and Analytics Consoles
+title: Operations Console 和 Analytics Console
 breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## Overview
-Configure the way the client works with the {{ site.data.keys.mf_analytics_server }}, configure and view a wide range of reports using the Operations and Analytics Consoles.
+## 概述
+使用 Operations Console 和 Analytics Console 配置客户机使用 {{ site.data.keys.mf_analytics_server }} 的方式、配置和查看各种报告。
 
 ## {{ site.data.keys.mf_analytics_console_full }}
-From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
+从 {{ site.data.keys.mf_analytics_console }} 查看和配置分析报告。管理警报和查看客户机日志。
 
-You can open the {{ site.data.keys.mf_analytics_console_short }} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
+您可以通过单击右上导航栏中的 **Analytics Console** 链接，从 {{ site.data.keys.mf_console }} 打开 {{ site.data.keys.mf_analytics_console_short }}。
 
-![Analytics console button](analytics-console-button.png)
+![Analytics Console 按钮](analytics-console-button.png)
 
-After navigating to the {{ site.data.keys.mf_analytics_console_short }}, the default **Dashboard** panel appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated. The **Apps** and **Infrastructure** can be chosen from the navigation bar.
+在导航到 {{ site.data.keys.mf_analytics_console_short }} 之后，将显示缺省的**仪表板**面板。如果客户机应用程序已将日志和分析数据发送到服务器，那么将填充相关报告。可以从导航栏中选择**应用程序**和**基础结构**。
 
-![Analytics console](analytics-console.png)
+![Analytics Console](analytics-console.png)
 
-### Dashboard
-In the **Dashboard** panel, you can review collected analytics data related to application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
+### 仪表板
+在**仪表板**面板中，您可以查看收集的与应用程序崩溃、应用程序会话和服务器处理时间相关的分析数据。另外，您还可以创建定制图表和管理警报。
 
-### Apps
-In the **Apps** panel, you can review in-depth analytics data related to usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
-
-
-### Infrastructure
-In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time, and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
-
-> Learn more in the [Analytics Workflows](../workflows/) tutorial.
-
-## Analytics features
-
-### App Analytics
-From the **Apps → Usage and Devices** tab, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
-
-### Built-in Analytics
-When you use the {{ site.data.keys.product_adj }} client SDK together with the {{ site.data.keys.mf_server }}, analytics data automatically gets collected for any request that your app makes to the {{ site.data.keys.mf_server }}. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the {{ site.data.keys.mf_analytics_server }}.
-
-### Custom Analytics
-You can have your app send custom data and create custom charts for your custom data.
-
-> Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
-
-### Custom charts
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console_short }} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
-
-> Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
-
-### Manage alerts
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.
-
-From the **Dashboard → Alert Management** tab, you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
-
-> Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
-
-### Monitor app crashes
-App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server *once the application is running again*. When crash logs are sent to the analytics server, they automatically populate the crash charts.
-
-### Monitor server and network data
-The {{ site.data.keys.mf_analytics_console_short }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+### 应用程序
+在**应用程序**面板中，您可以查看与使用情况和设备（如设备和应用程序会话总数、活动用户、应用程序使用情况、新设备、型号使用情况和操作系统）相关的深入分析数据以及与崩溃相关的数据。在客户机日志中搜索特定的应用程序和设备（**应用程序 → 客户机日志搜索**）。
 
 
-### Collect, search, and report on client logs
-Client logs can be sent to the server and included in analytics reports.
+### 基础结构
+在**基础结构**面板中，您可以查看与以下项相关的分析数据：会话处理时间、平均请求大小、服务器请求、网络请求、适配器响应时间、过程响应时间、大小和适配器使用情况以及推送通知数据（如通知请求和依据介体）。您也可以在服务器日志中搜索。
 
-To include logging information in a report:
+> 在[分析工作流程](../workflows/)教程中了解更多信息。
 
-1. From the {{ site.data.keys.mf_analytics_console_short }}, choose the **Dashboard → Custom Charts** tab.
+## 分析功能
 
-2. Choose **Client Logs** from the **Event Type** pull-down menu.
+### 应用程序分析
+从**应用程序 → 使用情况和设备**选项卡，您可以查看“应用程序会话”图表和“应用程序使用情况”图表，了解用户使用频率最高的应用程序。
 
-For more information on **Custom Charts**, see [Creating Custom Charts](custom-charts/).
+### 内置分析
+将 {{ site.data.keys.product_adj }} 客户机 SDK 与 {{ site.data.keys.mf_server }} 一起使用时，会针对您的应用程序向 {{ site.data.keys.mf_server }} 发出的任何请求自动收集分析数据。从**仪表板 → 概述**，查看收集并报告至 {{ site.data.keys.mf_analytics_server }} 的基本设备元数据。
 
-Logging data can be filtered. Log filters can be configured and saved on the Analytics Server, and then retrieved by client applications.
+### 定制分析
+您可以让自己的应用程序发送定制数据，并针对定制数据创建定制图表。
 
-For information on configuring log filters, see [Client log searches](log-filters/) tutorial.
+> 在 [Analytics API](../analytics-api/) 教程中了解如何发送定制分析。
 
-For more information on sending logs from the client, see [Client log collection](../../application-development/client-side-log-collection/).
+### 定制图表
+定制图表允许您将分析数据存储库中收集的分析数据直观呈现为缺省情况下在 {{ site.data.keys.mf_analytics_console_short }} 中不可用的图表（**仪表板 → 定制图表**）。该直观呈现功能是分析业务关键型数据的有效方式。
+
+> 在[创建定制图表](custom-charts/)教程中了解如何创建定制图表。
+
+### 管理警报
+警报提供一种主动方式来监控移动应用程序的运行状况，无需定期检查 {{ site.data.keys.mf_analytics_console }}。
+
+从**仪表板 → 警报管理**选项卡，您可以配置阈值，如果超出阈值，将触发警报以通知管理员。您可以在控制台上直观呈现触发的警报，或者使用定制 web hook 处理警报。定制 web hook 允许您控制触发警报后通知谁以及如何通知。
+
+> 在[管理警报](alerts/)教程中了解如何管理警报。
+
+### 监视应用程序崩溃
+应用程序崩溃直观呈现在 {{ site.data.keys.mf_analytics_console_short }} 上（**应用程序 → 崩溃**），您可以在其中快速查看崩溃并相应地采取行动。崩溃日志缺省情况下在设备上收集，并且*在重新运行应用程序后*发送至服务器。在将崩溃日志发送到分析服务器后，它们将自动填充崩溃图表。
+
+### 监视服务器和网络数据
+{{ site.data.keys.mf_analytics_console_short }} 会在将网络数据发送到分析服务器时监视网络数据，并且允许用户以不同的方式查询此信息（**基础结构 → 服务器和网络**）。
+
+
+### 收集、搜索和报告客户机日志
+可以将客户机日志发送至服务器并且包含在分析报告中。
+
+要将日志记录信息包含在报告中：
+
+1. 从 {{ site.data.keys.mf_analytics_console_short }}，选择**仪表板 → 定制图表**选项卡。
+
+2. 从**事件类型**下拉菜单中选择**客户机日志**。
+
+有关**定制图表**的更多信息，请参阅[创建定制图表](custom-charts/)。
+
+可以过滤日志记录数据。可以在分析服务器上配置和保存日志过滤器，然后由客户机应用程序检索。
+
+有关配置日志过滤器的信息，请参阅[客户机日志搜索](log-filters/)教程。
+
+有关从客户机发送日志的更多信息，请参阅[客户机日志收集](../../application-development/client-side-log-collection/)。
 
 
 
 ## {{ site.data.keys.mf_console_full }}
-Configure and administer the Analytics Server with the {{ site.data.keys.mf_console }}.
+使用 {{ site.data.keys.mf_console }} 配置并管理分析服务器。
 
-If you are in the {{ site.data.keys.mf_analytics_console_short }}, access the {{ site.data.keys.mf_console }} by clicking the **Operations Console** button in the top navigation bar.
+如果您位于 {{ site.data.keys.mf_analytics_console_short }} 中，请通过单击顶部导航栏中的 **Operations Console** 按钮来访问 {{ site.data.keys.mf_console }}。
 
-### Collect analytics data from additional logger packages
-By default, only logging from the package `com.worklight` is sent to analytics. In order to add logging from additional packages see [Forwarding logs to the Analytics Server](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server).
-
-
-### Enable/disable Analytics support
-The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
-
-1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
-2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the **Edit** button is not visible because you are not allowed to modify runtime properties.
-3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
-4. Click **Save**.
-5. Click the **Read Only** button to lock the properties again.
+### 从其他记录器软件包收集分析数据
+缺省情况下，只会将来自包 `com.worklight` 的日志记录发送至分析。要添加来自其他软件包的日志记录，请参阅[将日志转发至分析服务器](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server)。
 
 
-![Enable or disable analytics support in the console](enable-disable-analytics.png)
+### 启用/禁用分析支持
+缺省情况下，启用由分析服务器收集数据以进行分析的功能。您可以将其禁用，譬如为节省处理时间。
+
+1. 在导航侧边栏中，单击**运行时设置**。为避免无意中更改，将以只读方式显示运行时属性。
+2. 要使设置可编辑，请单击**编辑**按钮。如果以*管理员*或*部署者*之外的角色登录，**编辑**按钮将不可见，因为不允许您修改运行时属性。
+3. 从**已启用数据收集**下拉菜单中选择 **false** 以禁用数据收集。
+4. 单击**保存**。
+5. 单击**只读**按钮以再次锁定属性。
 
 
-### Role-based access control
-Content in the {{ site.data.keys.mf_analytics_console_short }} is restricted by predefined security roles.  
-The {{ site.data.keys.mf_analytics_console_short }} displays different content based on the security role of the logged-in user. The following table shows the security roles and their access to the {{ site.data.keys.mf_analytics_console_short }}.
+![在控制台中启用或禁用分析支持](enable-disable-analytics.png)
 
-| Role           | Role name                | Viewing Access                                                     | Editing Access  |
+
+### 基于角色的访问控制
+{{ site.data.keys.mf_analytics_console_short }} 中的内容受到预定义的安全角色的限制。  
+{{ site.data.keys.mf_analytics_console_short }} 基于登录用户的安全角色显示不同的内容。下表显示了安全角色及其对 {{ site.data.keys.mf_analytics_console_short }} 的访问权。
+
+| 角色           | 角色名称                | 查看访问权                                                     | 编辑访问权  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| Administrator  | analytics_administrator  | Everything.	                                                     | Everything.     |
-| Infrastructure | analytics_infrastructure	| Everything.	                                                     | Everything.     |
-| Developer      | analytics_developer	    | Everything except for the Administration pages.		             | Everything.     |
-| Support        | analytics_support        | Everything except for the Administration pages.		             | Everything.     |
-| Business       | analytics_business       | Everything except for the Administration and Infrastructure pages. | Everything.     |
+| 管理员  | analytics_administrator  | 全部。	                                                     | 全部。     |
+| 基础结构 | analytics_infrastructure	| 全部。	                                                     | 全部。     |
+| 开发人员      | analytics_developer	    | 除“管理”页面外的全部。		             | 全部。     |
+| 支持        | analytics_support        | 除“管理”页面外的全部。		             | 全部。     |
+| 业务       | analytics_business       | 除“管理”和“基础结构”页面外的全部。 | 全部。     |
 
-> For information on setting up roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+> 有关设置角色的信息，请参阅[为 {{ site.data.keys.mf_server }} 管理配置用户认证](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)。
 
 
-## Related blog posts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+## 相关博客帖子
+* [有关检测定制分析的更多信息]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [有关检测 Webhook 的更多信息]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

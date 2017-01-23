@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Administering Applications
-weight: 11
+title: 管理应用程序
+weight: 10
 show_children: true
 ---
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production. {{ site.data.keys.mf_console }} is the main tool with which you can monitor all deployed {{ site.data.keys.product_adj }} applications from a centralized web-based console.
+{{ site.data.keys.product_full }}    提供了多种方式，用于在开发或生产中管理 {{ site.data.keys.product_adj }}    应用程序。{{ site.data.keys.mf_console }}    是主要工具，可从基于 Web 的集中控制台中监控所有已部署的 {{ site.data.keys.product_adj }}    应用程序。
 
-The main operations that you can perform through {{ site.data.keys.mf_console }} are:
+可通过 {{ site.data.keys.mf_console }}    执行的主要操作为：
 
-* Registering and configuring mobile applications to {{ site.data.keys.mf_server }}.
-* Deploying and configuring adapters to {{ site.data.keys.mf_server }}.
-* Manage application versions to deploy new versions or remotely disable old versions.
-* Manage mobile devices and users to manage access to a specific device or access for a specific user to an application.
-* Display notification messages on application startup.
-* Monitor push notification services.
-* Collect client-side logs for specific applications installed on a specific device.
+* 配置移动应用程序并注册到 {{ site.data.keys.mf_server }}   。
+* 配置适配器并部署到 {{ site.data.keys.mf_server }}   。
+* 管理应用程序版本，以部署新版本或远程禁用旧版本。
+* 管理移动设备和用户，以管理对特定设备的访问或特定用户对应用程序的访问。
+* 在应用程序启动时显示通知消息。
+* 监控推送通知服务。
+* 收集特定设备上安装的特定应用程序的客户端日志。
 
-## Administration roles
+## 管理角色
 {: #administration-roles }
-Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following 
+并非每种类型的管理用户都可以执行每种管理操作。{{ site.data.keys.mf_console }}    和所有管理工具，针对 {{ site.data.keys.product_adj }}    应用程序的管理定义了四种不同的角色。 
 
-{{ site.data.keys.product_adj }} administration roles are defined:
+定义了以下 {{ site.data.keys.product_adj }}    管理角色：
 
-**Monitor**  
-In this role, a user can monitor deployed {{ site.data.keys.product_adj }} projects and deployed artifacts. This role is read-only.
+**监控者**  
+使用此角色，用户可以监控已部署的 {{ site.data.keys.product_adj }}    项目和已部署的工件。此角色为只读。
 
-**Operator**  
-An Operator can perform all mobile application management operations, but cannot add or remove application versions or adapters.
+**操作员**  
+操作员可以执行所有移动应用程序管理操作，但无法添加或除去应用程序版本或适配器。
 
-**Deployer**  
-In this role, a user can perform the same operations as the Operator, but can also deploy applications and adapters.
+**部署者** 
+使用此角色，用户可以执行与操作员相同的操作，另外还可以部署应用程序和适配器。
 
-**Administrator**  
-In this role, a user can perform all application administration operations.
+**管理员**  
+使用此角色，用户可以执行所有应用程序管理操作。
 
-> For more information about {{ site.data.keys.product_adj }} administration roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+> 有关 {{ site.data.keys.product_adj }}  管理角色的更多信息，请参阅[配置 {{ site.data.keys.mf_server }}    管理的用户认证](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)。
 
-## Administration tools
+## 管理工具
 {: #administration-tools }
-{{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
+{{ site.data.keys.mf_console }}    并非管理 {{ site.data.keys.product_adj }}  应用程序的唯一方式。{{ site.data.keys.product }}   还提供了其他工具，可用于将管理操作合并到构建和部署过程。
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+有一套 REST 服务可用于执行管理操作。有关这些服务的 API 参考文档，请参阅 [{{ site.data.keys.mf_server }}  管理服务的 REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi)。
 
-With this set of REST services, you can perform the same operations that you can do in {{ site.data.keys.mf_console }}. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
+使用这套 REST 服务，可以执行与在 {{ site.data.keys.mf_console }}  中相同的操作。可以管理应用程序和适配器，以及上载应用程序的新版本或禁用旧版本，等等。
 
-{{ site.data.keys.product_adj }} applications can also be administered by using Ant tasks or with the **mfpadm** command line tool. See [Administering {{ site.data.keys.product_adj }} applications through Ant](using-ant) or [Administering {{ site.data.keys.product_adj }} applications through the command line](using-cli).
+{{ site.data.keys.product_adj }}  应用程序也可以通过使用 Ant 任务或 **mfpadm** 命令行工具进行管理。请参阅[通过 Ant 管理 {{ site.data.keys.product_adj }}    应用程序](using-ant)或[通过命令行管理 {{ site.data.keys.product_adj }}    应用程序](using-cli)。
 
-Similar to the web-based console, the REST services, Ant tasks, and command line tools are secured and require you to provide your administrator credentials.
+与基于 Web 的控制台相似，REST 服务、Ant 任务和命令行工具都是受保护的，需要您提供管理员凭证。
 
-### Select a topic:
+### 选择主题：
 {: #select-a-topic }
 

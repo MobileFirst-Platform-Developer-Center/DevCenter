@@ -1,185 +1,182 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
+title: 在 Bluemix 服务上使用 Mobile Foundation
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+本教程提供了使用 {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) 服务在 Bluemix 上设置 {{ site.data.keys.mf_server }} 实例的分步指示信息。  
+{{ site.data.keys.mf_bm_short }} 是一项 Bluemix 服务，支持快速轻松在 **Liberty for Java 运行时**上启动 MobileFirst Foundation v8.0 的开发环境或生产环境。
 
-The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
+{{ site.data.keys.mf_bm_short }} 服务提供了以下计划选项：
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序。此计划不支持使用外部数据库或定义多个节点*，并且仅限于开发和测试*。服务器实例支持您注册任意数量的移动应用程序用于开发和测试。
 
-    > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
+    > **注：**“Developer”计划不提供持续性数据库，因此请务必备份配置，如[“故障诊断”部分中](#troubleshooting)所述。
+2. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }} ，并将其部署在 IBM Container 上。Container 费用单独计费。此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。费用取决于环境的总规模。
 
-2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+3. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。它支持大型部署和高可用性。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }} ，并将其部署在 IBM Container 上。Container 费用单独计费。费用取决于环境的总规模。
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+4. **Professional 1 Application**：此计划在 Liberty for Java 运行时上的可扩展 Cloud Foundry 应用程序中提供 {{ site.data.keys.mf_server }}。此计划也需要 dashDB 数据库服务，此服务单独创建并计费。此计划允许用户构建和管理单个移动应用程序。单个移动应用程序可包含多种类型，例如，iOS、Android、Windows 和 Mobile Web。
 
-4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+> [请参阅 Bluemix.net 上的服务页面](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)以获取有关可用计划及其计费方式的更多信息。
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
-
-#### Jump to:
+#### 跳转至：
 {: #jump-to}
-* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
-* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
-* [Adding Analytics support](#adding-analytics-support)
-* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs](#accessing-server-logs)
-* [Troubleshooting](#troubleshooting)
-* [Further reading](#further-reading)
+* [设置 {{ site.data.keys.mf_bm_short }} 服务](#setting-up-the-mobile-foundation-service)
+* [使用 {{ site.data.keys.mf_bm_short }} 服务](#using-the-mobile-foundation-service)
+* [服务器配置](#server-configuration)
+* [高级服务器配置](#advanced-server-configuration)
+* [添加分析支持](#adding-analytics-support)
+* [应用 {{ site.data.keys.mf_server }} 修订](#applying-mobilefirst-server-fixes)
+* [访问服务器日志](#accessing-server-logs)
+* [故障诊断](#troubleshooting)
+* [补充阅读](#further-reading)
 
-## Setting up the {{ site.data.keys.mf_bm_short }} service
+## 设置 {{ site.data.keys.mf_bm_short }} 服务
 {: #setting-up-the-mobile-foundation-service }
-To set up the available plans, first follow these steps:
+要设置可用计划，请首先遵循以下步骤进行操作：
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
-2. Search for **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
-4. Select the desired pricing plan, then click **Create**.
+1. 访问 [bluemix.net](http://bluemix.net)、登录，并单击**目录**。
+2. 搜索 **Mobile Foundation** 并单击生成的选项。
+3. *可选*。输入服务实例的定制名称，或者使用提供的缺省名称。
+4. 选择期望的定价计划，然后单击**创建**。
 
-    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt="创建 {{ site.data.keys.mf_bm_short }} 服务实例" src="service-creation.png"/>
 
-### Setting up the *developer* plan
+### 设置 *developer* 计划
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+1. 启动 {{ site.data.keys.mf_server }}。
+    - 您可以保留服务器配置的基本级别，并单击**启动基本服务器**，或者
+    - 在[“设置”选项卡](#advanced-server-configuration)中更新服务器配置，并单击**启动高级服务器**。
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    在此步骤中，会针对 {{ site.data.keys.mf_bm_short }} 服务生成 Cloud Foundry 应用程序，并初始化 MobileFirst Foundation 环境。此步骤可能需要 5 到 10 分钟才能完成。
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+2. 实例就绪后，您可以[使用服务](#using-the-mobile-foundation-service)。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{ site.data.keys.mf_bm_short }} 设置图示](overview-page.png)
 
-### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
+### 设置 *Developer Pro*、*Professional Per Capacity* 和 *Professional 1 Application* 计划
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
-1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+1. 这些计划需要外部 [dashDB 事务数据库实例](https://console.ng.bluemix.net/catalog/services/dashdb/)。
 
-    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+    > 了解有关[设置 dashDB 数据库实例]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/)的更多信息。
 
-    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
+    如果您有现有的 dashDB 服务实例（DashDB Enterprise Transactional 2.8.500 或 Enterprise Transactional 12.128.1400），请选择**使用现有服务**选项，并提供您的凭证：
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+    ![{{ site.data.keys.mf_bm_short }} 设置图示](create-dashdb-instance-existing.png)
 
-    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+    1.b. 如果当前没有 dashDB 服务实例，请选择**创建新服务**选项并遵循屏幕上的指示信息进行操作：
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+    ![{{ site.data.keys.mf_bm_short }} 设置图示](create-dashdb-instance-new.png)
 
-2. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+2. 启动 {{ site.data.keys.mf_server }}。
+    - 您可以保留服务器配置的基本级别，并单击**启动基本服务器**，或者
+    - 在[“设置”选项卡](#advanced-server-configuration)中更新服务器配置，并单击**启动高级服务器**。
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    在此步骤中，会针对 {{ site.data.keys.mf_bm_short }} 服务生成 Cloud Foundry 应用程序，并初始化 MobileFirst Foundation 环境。此步骤可能需要 5 到 10 分钟才能完成。
 
-3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+3. 实例就绪后，您可以[使用服务](#using-the-mobile-foundation-service)。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{ site.data.keys.mf_bm_short }} 设置图示](overview-page.png)
 
-## Using the {{ site.data.keys.mf_bm_short }} service
+## 使用 {{ site.data.keys.mf_bm_short }} 服务
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
+> **注：**目前只能在**达拉斯**和**英国**地区获取分析服务。{{ site.data.keys.mf_server }} 运行后，会显示以下仪表板：
 
-With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
+![{{ site.data.keys.mf_bm_short }} 设置图示](service-dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
+单击**添加分析**以将 {{ site.data.keys.mf_analytics }} 支持添加到服务器实例中。
+在[添加分析支持](#adding-analytics-support)部分中了解更多信息。
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics }} support to your server instance.
-Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+单击**启动控制台**以打开 {{ site.data.keys.mf_console }}。缺省用户名为“admin”，可通过单击“眼睛”图标来显示密码。
 
-Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
+![{{ site.data.keys.mf_bm_short }} 设置图示](dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
-
-### Server configuration
+### 服务器配置
 {: #server-configuration }
-The basic server instance consists of:
+基本服务器实例包括：
 
-* A single node (server size: "small")
-* 1GB memory
-* 2GB storage capacity
+* 单个节点（服务器大小：“小”）
+* 1GB 内存
+* 2GB 存储容量
 
-### Advanced server configuration
+### 高级服务器配置
 {: #advanced-server-configuration }
-Through the **Settings** tab, you can further customize the server instance with
+通过**设置**选项卡，可以通过添加以下内容来进一步定制服务器实例
 
-* Varying node, memory, and storage combinations
-* {{ site.data.keys.mf_console }} admin password
-* LTPA keys
-* JNDI configuration
-* User registry
-* TrustStore
-* {{ site.data.keys.mf_analytics }} configuration
-* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
+* 不同的节点、内存和存储组合
+* {{ site.data.keys.mf_console }} 管理密码
+* LTPA 密钥
+* JNDI 配置
+* 用户注册表
+* 信任库
+* {{ site.data.keys.mf_analytics }} 配置
+* DashDB Enterprise Transactional 2.8.500 或 Enterprise Transactional 12.128.1400 数据库的选择（可在 *Professional 1 Application* 计划中获取）
 * VPN
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
+![{{ site.data.keys.mf_bm_short }} 设置图示](advanced-server-configuration.png)
 
-## Adding {{ site.data.keys.mf_analytics_short }} support
+## 添加 {{ site.data.keys.mf_analytics_short }} 支持
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。此操作会为 IBM Container 提供 {{ site.data.keys.mf_analytics_server }}  的实例。
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+* 使用 **Developer** 计划时，此操作还会自动将 {{ site.data.keys.mf_analytics_short }} 服务实例与 {{ site.data.keys.mf_server }} 实例挂钩。  
+* 使用 **Developer Pro**、**Professional Per Capacity** 或 **Proffessional1 Application** 计划时，此操作将需要您额外输入以完成选择：可用节点数量、可用内存和存储容量。
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
+操作完成后，请在浏览器中重新装入 {{ site.data.keys.mf_console }} 页面以访问 {{ site.data.keys.mf_analytics_console_short }}。  
 
-> Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+> 在 [{{ site.data.keys.mf_analytics }}类别](../../analytics)中了解有关 {{ site.data.keys.mf_analytics }} 的更多信息。
 
-## Applying {{ site.data.keys.mf_server }} fixes
+## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
-Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+对 {{ site.data.keys.mf_bm }} 服务的更新会自动应用，无需人为干预，无需同意执行更新。档更新可用时，会在服务的“仪表板”页面中显示一个条幅，其中包含指示信息和操作按钮。
 
-## Accessing server logs
+## 访问服务器日志
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+要访问服务器日志，请打开侧边栏并单击**应用程序 → Cloud Foundary 应用程序**。选择服务，然后单击**运行时**。然后单击**文件**选项卡。
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+您可以在 **logs** 文件夹中找到 **messages.log** 和 **trace.log** 文件。
 
-#### Tracing
+#### 跟踪
 {: #tracing }
-To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+要启动跟踪以在 **trace.log** 文件中查看调试级别消息：
 
-1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
-2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+1. 在**运行时 → 内存和实例**中，选择服务实例（以 **0** 开头的实例标识）。
+2. 单击**跟踪**操作选项。
+3. 输入以下跟踪语句：`com.worklight.*=debug=enabled`，然后单击**提交跟踪**。
 
-The **trace.log** file is now available in the above specified location.
+现在，可从以上指定位置获取 **trace.log** 文件。
 
-<img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
+<img class="gifplayer" alt="{{ site.data.keys.mf_bm_short }} 服务的服务器日志" src="server-logs.png"/>
 
-## Troubleshooting
+## 故障诊断
 {: #troubleshooting }
-The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
+Developer 计划不提供持续性数据库，这有时可能会导致数据丢失。要在此类情况下快速开始使用，请确保遵循如下最佳实践：
 
-* Every time you make any of the following server-side actions:
-    * Deploy an adapter or update any adapter configuration or property value
-    * Perform any security configuration such scope-mapping and alike
+* 每次执行以下任意服务器端操作时：
+    * 部署适配器或者更新任何适配器配置或属性值
+    * 执行任何安全配置，如作用域映射等
     
-    Run the following from the command-line to download your configuration to a .zip file:
+    请从命令行运行以下命令以将配置下载至 .zip 文件：
 
   ```bash
   $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
   ```
 
-* In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
+* 如果重新创建服务器或者配置丢失，请从命令行运行以下命令以将配置导入服务器：
 
   ```bash
   $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
   ```
 
-## Further reading
+## 补充阅读
 {: #further-reading }
-Now that the {{ site.data.keys.mf_server }} instance is up and running,
+现在 {{ site.data.keys.mf_server }} 实例已启动并正常运行。
 
-* Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
-* Read through all [available tutorials](../../all-tutorials/).
+* 熟悉 [{{ site.data.keys.mf_console }}](../../product-overview/components/console)。
+* 通过[快速入门教程](../../quick-start)来体验 MobileFirst Foundation。
+* 阅读所有[可用教程](../../all-tutorials/)。

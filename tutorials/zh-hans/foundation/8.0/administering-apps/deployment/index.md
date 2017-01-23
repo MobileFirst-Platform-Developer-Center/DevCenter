@@ -1,87 +1,87 @@
 ---
 layout: tutorial
-title: Deploying applications to test and production environments
-breadcrumb_title: Deploying apps to environments
+title: 将应用程序部署到测试和生产环境
+breadcrumb_title: 将应用程序部署到环境
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-When you finish a development cycle of your application, deploy it to a testing environment, and then to a production environment.
+完成应用程序的开发周期后，请将其部署到测试环境中，然后再将其部署到生产环境中。
 
-### Jump to
+### 跳转至
 {: #jump-to }
 
-* [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment)
-* [Configuring SSL between adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
-* [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment)
-* [Registering an application to a production environment](#registering-an-application-to-a-production-environment)
-* [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server)
-* [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production)
+* [将适配器部署或更新至生产环境](#deploying-or-updating-an-adapter-to-a-production-environment)
+* [使用自签名证书在适配器和后端服务器之间配置 SSL](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
+* [为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)
+* [向生产环境注册应用程序](#registering-an-application-to-a-production-environment)
+* [将服务器端工件传输到测试或生产服务器](#transferring-server-side-artifacts-to-a-test-or-production-server)
+* [在生产环境中更新 {{ site.data.keys.product_adj }}    应用程序](#updating-mobilefirst-apps-in-production)
 
-## Deploying or updating an adapter to a production environment
+## 将适配器部署或更新至生产环境
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
-Adapters contain the server-side code of applications that are deployed on and serviced by {{ site.data.keys.product }}. Read this checklist before you deploy or update an adapter to a production environment. For more information about creating and building adapters, see [Developing the server side of a {{ site.data.keys.product_adj }} application](../../adapters).
+适配器包含 {{ site.data.keys.product }} 上部署并维护的应用程序的服务器端代码。在将适配器部署或更新至生产环境之前，请阅读此核对表。有关创建和构建适配器的更多信息，请参阅[开发 {{ site.data.keys.product_adj }}    应用程序的服务器端](../../adapters)。
 
-Adapters can be uploaded, updated, or configured while a production server is running. After all the nodes of a server farm receive the new adapter or configuration, all incoming requests to the adapter use the new settings.
+在生产服务器运行的同时，可以上载、更新或配置适配器。在服务器机群的所有节点都收到新适配器或配置之后，针对此适配器发出的所有入局请求都将使用新设置。
 
-1. If you update an existing adapter in a production environment, make sure that this adapter contains no incompatibilities or regressions with existing applications that are registered to a server.
+1. 如果在生产环境中更新现有适配器，请确保该适配器与向服务器注册的现有应用程序兼容，并确保不会影响这些应用程序的功能。
 
-    The same adapter can be used by multiple applications, or by multiple versions of the same application, that are already published to the store and used. Before you update the adapter in a production environment, run non-regression tests in a test server against the new adapter and copies of the apps that are built for the test server.
+已发布至应用商店并已使用的多个应用程序或相同应用程序的多个版本可使用相同的适配器。在生产环境中更新适配器之前，请在测试服务器中针对新适配器以及为测试服务器构建的应用程序的副本运行非回归测试。
 
-2. For Java adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the {{ site.data.keys.mf_server }} keystore.
+2. 对于 Java 适配器，如果适配器将 Java URLConnection 与 HTTPS 结合使用，请确保后端证书位于 {{ site.data.keys.mf_server }}    密钥库中。
         
-    For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
+    有关更多信息，请参阅[在 HTTP 适配器中使用 SSL](../../adapters/javascript-adapters/js-http-adapter/using-ssl/)。有关使用自签名证书的更多信息，请参阅[使用自签名证书在适配器和后端服务器之间配置 SSL](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)。
 
-    > **Note:** If the application server is WebSphere  Application Server Liberty, then the certificates must also be in the Liberty truststore.
+    > **注：**如果应用程序服务器为 WebSphere Application Server Liberty，那么这些证书还必须包含在 Liberty 信任库中。
 
-3. Verify the server-side configuration of the adapter.
-4. Use the `mfpadm deploy adapter` and `mfpadm adapter set user-config` commands to upload the adapter and its configuration.
+3. 验证适配器的服务器端配置。
+4. 使用 `mfpadm deploy adapter` 和 `mfpadm adapter set user-config` 命令来上载适配器及其配置。
 
-    For more information about **mfpadm** for adapters, see [Commands for adapters](../using-cli/#commands-for-adapters).
+    有关适用于适配器的 **mfpadm** 的更多信息，请参阅[适配器命令](../using-cli/#commands-for-adapters)。
         
-## Configuring SSL between adapters and back-end servers by using self-signed certificates
+## 使用自签名证书在适配器和后端服务器之间配置 SSL
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
-You can configure SSL between adapters and back-end servers by importing the server self-signed SSL certificate to the {{ site.data.keys.product_adj }} keystore.
+通过将服务器自签名 SSL 证书导入到 {{ site.data.keys.product_adj }}    密钥库，可以在适配器和后端服务器之间配置 SSL。
 
-1. Export the server public certificate from the back-end server keystore.
+1. 从后端服务器密钥库中导出服务器公用证书。
 
-    > **Note:** Export back-end public certificates from the back-end keystore by using keytool or openssl lib. Do not use the export feature in a web browser.
+    > **注：**使用 keytool 或 openssl lib 从后端服务器密钥库导出服务器的公用证书。请勿使用 Web 浏览器中的 export 功能。
+    
+2. 将后端服务器证书导入到 {{ site.data.keys.product_adj }}    密钥库。
+3. 部署新的 {{ site.data.keys.product_adj }}    密钥库。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}    密钥库](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
-2. Import the back-end server certificate into the {{ site.data.keys.product_adj }} keystore.
-3. Deploy the new the {{ site.data.keys.product_adj }} keystore. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-
-### Example
+### 示例
 {: #example }
-The **CN** name of the back-end certificate must match what is configured in the adapter-descriptor **adapter.xml** file. For example, consider an **adapter.xml** file that is configured as follows:
+后端证书的 **CN** 名称必须与在适配器描述符 **adapter.xml** 文件中配置的内容匹配。例如，请考虑配置如下所示的 **adapter.xml** 文件：
 
 ```xml
 <protocol>https</protocol>
 <domain>mybackend.com</domain>
 ```
 
-The back-end certificate must be generated with **CN=mybackend.com**.
+必须使用 **CN=mybackend.com** 生成后端证书。
 
-As another example, consider the following adapter configuration:
+如其他示例所示，请考虑以下适配器配置：
 
 ```xml
 <protocol>https</protocol>
 <domain>123.124.125.126</domain>
 ```
 
-The back-end certificate must be generated with **CN=123.124.125.126**.
+必须使用 **CN=123.124.125.126** 生成后端证书。
 
-The following example demonstrates how you complete the configuration by using the Keytool program.
+以下示例说明如何使用 Keytool 程序完成配置。
 
-1. Create a back-end server keystore with a private certificate for 365 days.
+1. 使用专用证书创建为期 365 天的后端服务器密钥库。
         
     ```bash
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
 
-    > **Note:** The **First and Last Name** field contains your server URL, which you use in the **adapter.xml** configuration file, for example **mydomain.com** or **localhost**.
+    > **注：****姓名**字段包含在 **adapter.xml** 配置文件中使用的服务器 URL（例如，**mydomain.com** 或 **localhost**）。
 
-2. Configure your back-end server to work with the keystore. For example, in Apache Tomcat, you change the **server.xml** file:
+2. 将后端服务器配置为使用此密钥库。例如，在 Apache Tomcat 中，更改 **server.xml** 文件：
 
    ```xml
    <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
@@ -93,7 +93,7 @@ The following example demonstrates how you complete the configuration by using t
       keyAlias="backend"/>
    ```
         
-3. Check the connectivity configuration in the **adapter.xml** file:
+3. 检查 **adapter.xml** 文件中的连接配置：
 
    ```xml
    <connectivity>
@@ -110,190 +110,190 @@ The following example demonstrates how you complete the configuration by using t
    </connectivity>
    ```
         
-4. Export the public certificate from the created back-end server keystore:
+4. 从所创建的后端服务器密钥库中导出公用证书：
 
    ```bash
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
         
-5. Import the exported certificate into your {{ site.data.keys.mf_server }} keystore:
+5. 将导出的证书导入到 {{ site.data.keys.mf_server }}    密钥库中：
 
    ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
         
-6. Check that the certificate is correctly imported in the keystore:
+6. 确保已将证书正确导入密钥库中：
 
    ```bash
    keytool -list -keystore mfp.keystore
    ```
         
-7. Deploy the new the {{ site.data.keys.mf_server }} keystore.
+7. 部署新的 {{ site.data.keys.mf_server }}    密钥库。
 
-## Building an application for a test or production environment
+## 为测试或生产环境构建应用程序
 {: #building-an-application-for-a-test-or-production-environment }
-To build an application for a test or production environment, you must configure it for its target server. To build an application for a production environment, additional steps apply.
+要为测试或生产环境构建应用程序，必须针对目标服务器配置此应用程序。要为生产环境构建应用程序，可能需要其他步骤。
 
-1. Make sure that the target server keystore is configured.
-For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+1. 确保已配置目标服务器密钥库。
+有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}    密钥库](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
-2. If you plan to distribute the app installable artifact, increment the app version.
-3. Before you build your app, configure it for the target server.
+2. 如果计划分发该应用程序的可安装工件，请递增应用程序版本。
+3. 构建应用程序之前，请针对目标服务器配置此应用程序。
 
-    You define the URL and runtime name of the target server in the client properties file. You can also change the target server by using the {{ site.data.keys.mf_cli }}. To configure the app for a target server without registering the app to a running server, you can use the `mfpdev app config server <server URL>`and `mfpdev app config runtime <runtime_name>` commands. Alternatively, you can register the app to a running server by running the `mfpdev app register` command. Use the public URL of the server. This URL is used by the mobile app to connect to {{ site.data.keys.mf_server }}.
+    在客户机属性文件中定义目标服务器的 URL 和运行时名称。您也可以通过 {{ site.data.keys.mf_cli }} 更改目标服务器。要为目标服务器配置应用程序而不向正在运行的服务器注册此应用程序，可以使用 `mfpdev app config server <server URL>` 和 `mfpdev app config runtime <runtime_name>` 命令。也可以通过运行 `mfpdev app register` 命令，向正在运行的服务器注册此应用程序。请使用服务器的公共 URL。此 URL 供移动应用程序用来连接到 {{ site.data.keys.mf_server }}。
     
-    For example, to configure the app for a target server mfp.mycompany.com with a runtime that has the default name mfp, run 
-    `mfpdev app config server https://mfp.mycompany.com` and `mfpdev app config runtime mfp`.
+    例如，要为目标服务器 mfp.mycompany.com 配置应用程序，并使运行时的缺省名称为 mfp，请运行 
+    `mfpdev app config server https://mfp.mycompany.com` 和 `mfpdev app config runtime mfp`。
     
-4. Configure the secret keys and authorized servers for your application.
-    * If your app implements certificate pinning, use the certificate of your target server. For more information about certificate pinning, see [Certificate pinning](../../authentication-and-security/certificate-pinning).
-    * If your iOS app uses App Transport Security (ATS), configure ATS for your target server.
-    * To configure secure Direct Update for an Apache Cordova application, see [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-    * If you develop your app with Apache Cordova, configure the Cordova Content Security Policy (CSP).    
+4. 为应用程序配置密钥和授权服务器。
+    * 如果应用程序实施了证书绑定，请使用目标服务器的证书。有关证书绑定的更多信息，请参阅[证书绑定](../../authentication-and-security/certificate-pinning)。
+    * 如果 iOS 应用程序使用应用程序传输安全性 (ATS)，请为目标服务器配置 ATS。
+    * 要为 Apache Cordova 应用程序配置安全直接更新，请参阅[在客户机端实施安全直接更新](../../application-development/direct-update)。
+    * 如果使用 Apache Cordova 来开发应用程序，请配置 Cordova 内容安全策略 (CSP)。    
 
-5. If you plan to use Direct Update for an application that is developed with Apache Cordova, archive the versions of the Cordova plug-ins you used to build the app.
+5. 如果计划对通过 Apache Cordova 开发的应用程序使用直接更新，请将用于构建此应用程序的 Cordova 插件版本一起打包在内。
 
-    Direct Update cannot be used to update native code. If you changed a native library or one of the build tools in a Cordova project and uploaded such a file to {{ site.data.keys.mf_server }}, the server detects the difference and does not send any updates for the client application. The changes in the native library might include a different Cordova version, a newer Cordova iOS plug-in, or even an mfpdev plug-in fix pack that is newer than the one that was used to build the original application.
+    直接更新无法用于更新本机代码。如果更改了 Cordova 项目中的本机库或某个构建工具，并将此类文件上载至 {{ site.data.keys.mf_server }}，那么服务器将会检测到这一差异，但不会发送客户机应用程序的任何更新。本机库中的更改可能包括不同的 Cordova 版本、较新的 Cordova iOS 插件，甚至是比用于构建原始应用程序的插件修订包更新的 mfpdev 插件修订包。
     
-6. Configure the app for production use.
-    * Consider disabling printing to the device log.
-    * If you plan to use {{ site.data.keys.mf_analytics }}, verify that your app sends collected data to the {{ site.data.keys.mf_server }}.
-    * Consider disabling features of your app that call the `setServerURL` API, unless you plan to make a single build for multiple test servers.
+6. 为生产用途配置应用程序。
+    * 考虑禁用“打印到设备日志”。
+    * 如果计划使用 {{ site.data.keys.mf_analytics }}，请验证应用程序是否将所收集的数据发送到 {{ site.data.keys.mf_server }}   。
+    * 除非计划为多个测试服务器创建同一个构建，否则请考虑禁用应用程序中调用 `setServerURL` API 的功能。
 
-7. If you build for a production server and plan to distribute the installable artifact, archive the app source code to be able to run non regression-tests for this app on a test server.
+7. 如果针对生产服务器进行构建，并且计划分发可安装工件，请归档应用程序源代码，以便能够在测试服务器上针对此应用程序运行非回归测试。
 
-    For example, if you later update an adapter, you might run non-regression tests on already distributed apps that use this adapter. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
+    例如，如果稍后要更新适配器，那么可以在使用此适配器的已分发的应用程序上运行非回归测试。有关更多信息，请参阅[将适配器部署或更新至生产环境](#deploying-or-updating-an-adapter-to-a-production-environment)。
     
-8. Optional: Create the application-authenticity file for your application.
+8. 可选：为应用程序创建应用程序真实性文件。
 
-    You use the application-authenticity file after you register the application to the server to enable the application-authenticity security check.
-    * For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity).
-    * For more information about registering an application to a production server, see [Registering an application to a production environment](#registering-an-application-to-a-production-environment).
+    向服务器注册应用程序以启用应用程序真实性安全检查后，可使用应用程序真实性文件。
+    * 有关更多信息，请参阅[启用应用程序真实性安全性检查](../../authentication-and-security/application-authenticity)。
+    * 有关向生产服务器注册应用程序的更多信息，请参阅[向生产环境注册应用程序](#registering-an-application-to-a-production-environment)。
 
-## Registering an application to a production environment
+## 向生产环境注册应用程序
 {: #registering-an-application-to-a-production-environment }
-When you register an application to a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity.
+向生产服务器注册应用程序时，会上载其应用程序描述符、定义其许可证类型并（可选）激活应用程序真实性。
 
-#### Before you begin
+#### 开始之前
 {: #before-you-begin }
-* Verify that {{ site.data.keys.mf_server }} keystore is configured and is not the default keystore. Do not use a server in production with a default keystore. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. You must configure the server's keystore with a secret key before you use it in production. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-* Deploy the adapters used by the app. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
-* Build the application for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+* 确认已配置 {{ site.data.keys.mf_server }} 密钥库且不是缺省密钥库。请勿在具有缺省密钥库的生产环境中使用服务器。{{ site.data.keys.mf_server }}    密钥库定义了 {{ site.data.keys.mf_server }}    实例的身份，并用于以数字方式签署 OAuth 令牌和直接更新包。您必须使用密钥配置服务器的密钥库，然后才能在生产环境中使用。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}    密钥库](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
+* 部署应用程序使用的适配器。有关更多信息，请参阅[将适配器部署或更新至生产环境](#deploying-or-updating-an-adapter-to-a-production-environment)。
+* 为目标服务器构建应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
 
-When you register an application with a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity. You might also define your update strategy if an older version of your app is already deployed. Read the following procedure to learn about important steps, and about ways to automate them with the **mfpadm** program.
+向生产服务器注册应用程序时，会上载其应用程序描述符、定义其许可证类型并（可选）激活应用程序真实性。如果已部署较低版本的应用程序，那么还可能需要定义更新策略。请查看以下过程，以了解一些重要步骤以及如何使用 **mfpadm** 程序来自动执行这些步骤。
 
-1. If your {{ site.data.keys.mf_server }} is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
+1. 如果对 {{ site.data.keys.mf_server }} 配置了令牌许可，请确保许可证密钥服务器上具有足够的令牌。有关更多信息，请参阅[令牌许可证验证](../license-tracking/#token-license-validation)和[规划使用令牌许可](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing)。
 
-   > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
+   > **提示：**在注册应用程序的第一个版本之前，可设置应用程序的令牌许可证类型。有关更多信息，请参阅[设置应用程序许可证信息](../license-tracking/#setting-the-application-license-information)。
 
-2. Transfer the application descriptor from a test server to the production server.
+2. 将应用程序描述符从测试服务器传输到生产服务器。
 
-   This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server).
+   此操作可向生产服务器注册应用程序并上载其配置。有关传输应用程序描述符的更多信息，请参阅[将服务器端工件传输到测试或生产服务器](#transferring-server-side-artifacts-to-a-test-or-production-server)。
 
-3. Set the application license information For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
-4. Configure the application-authenticity security check. For more information about configuring the application-authenticity security check, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+3. 设置应用程序许可证信息。有关更多信息，请参阅[设置应用程序许可证信息](../license-tracking/#setting-the-application-license-information)。
+4. 配置应用程序真实性安全检查。有关配置应用程序真实性安全检查的更多信息，请参阅[配置应用程序真实性安全检查](../../authentication-and-security/application-authenticity/#configuring-application-authenticity)。
 
-   > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
+ > **注：**您需要应用程序二进制文件来创建应用程序真实性文件。有关更多信息，请参阅[启用应用程序真实性安全性检查](../../authentication-and-security/application-authenticity/#enabling-application-authenticity)。
+ 
+ 5. 如果应用程序使用推送通知，请将推送通知证书上载到服务器。您可以使用 {{ site.data.keys.mf_console }}    来上载应用程序的推送证书。这些证书对于应用程序的所有版本是通用的。
 
-5. If your application uses push notification, upload the push notification certificates to the server. You can upload the push certificates for your application using the {{ site.data.keys.mf_console }}. The certificates are common to all versions of an application.
+> **注：**在将应用程序发布至应用商店之前，可能无法使用生产证书来测试应用程序的推送通知。
 
-   > **Note:** You might not be able to test the push notification for your app with production certificates before your app is published to the store.
+6. 在将应用程序发布至应用商店之前，请验证以下项。
+    * 测试您计划要使用的任何移动应用程序管理功能，如禁用远程应用程序或显示管理员消息。有关更多信息，请参阅[移动应用程序管理](../using-console/#mobile-application-management)。
+    * 在存在更新的情况下，定义更新策略。有关更多信息，请参阅[在生产环境中更新 {{ site.data.keys.product_adj }}    应用程序](#updating-mobilefirst-apps-in-production)。
 
-6. Verify the following items before you publish the application to the store.
-    * Test any mobile application management feature that you plan to use, such as disabling remote applications or displaying of an administrator message. For more information, see [Mobile-application management](../using-console/#mobile-application-management).
-    * In the case of an update, define the update strategy. For more information, see [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production).
-
-## Transferring server-side artifacts to a test or production server
+## 将服务器端工件传输到测试或生产服务器
 {: #transferring-server-side-artifacts-to-a-test-or-production-server }
-You can transfer an application configuration from a one server to another by using command-line tools or a REST API.
+您可以使用命令行工具或 REST API，将应用程序配置从一台服务器传输到另一台服务器。
 
-The application descriptor file is a JSON file that contains the description and configuration of your application. When you run an app that connects to a {{ site.data.keys.mf_server }} instance, the app must be registered with that server and configured. After you define a configuration for your app, you can transfer the application descriptor to another server, for example to a test server or to a production server. After you transfer the application descriptor to the new server, the app is registered with the new server. Different procedures are available, depending on whether you develop mobile applications and have access to the code, or whether you administer servers and do not have access to the code of the mobile app.
+应用程序描述符文件是包含应用程序的描述和配置的 JSON 文件。当您运行连接到 {{ site.data.keys.mf_server }}  实例的应用程序时，必须向该服务器注册此应用程序并进行配置。为应用程序定义配置后，可将应用程序描述符传输到另一台服务器（例如，传输到测试服务器或生产服务器）。在将应用程序描述符传输到新服务器后，系统会向此新服务器注册应用程序。根据您是否正在开发移动应用程序并有权访问代码，或者您是否正在管理服务器并无权访问移动应用程序代码，提供了不同过程。
 
-> **Important:** If you import an application that includes authenticity data, and if the application itself has been recompiled since the authenticity data was generated, you must refresh the authenticity data. For more information, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+> **要点：**如果导入包含真实性数据的应用程序，并且该应用程序本身在生成真实性数据后经过重新编译，那么您必须刷新真实性数据。有关更多信息，请参阅[配置应用程序真实性安全检查](../../authentication-and-security/application-authenticity/#configuring-application-authenticity)。
 
-* If you have access to the code of the mobile app, use the `mfpdev app pull` and `mfpdev app push` commands.
-* If you do not have access to the code of the mobile app, use the administration service.
+* 如果您有权访问移动应用程序代码，请使用 `mfpdev app pull` 和 `mfpdev app push` 命令。
+* 如果您无权访问移动应用程序代码，请使用管理服务。
 
-#### Jump to
+#### 跳转至
 {: #jump-to-1 }
 
-* [Transferring an application configuration by using mfpdev](#transferring-an-application-configuration-by-using-mfpdev)
-* [Transferring an application configuration with the administration service](#transferring-an-application-configuration-with-the-administration-service)
-* [Transferring server-side artifacts by using the REST API](#transferring-server-side-artifacts-by-using-the-rest-api)
-* [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)
+* [使用 mfpdev 传输应用程序配置](#transferring-an-application-configuration-by-using-mfpdev)
+* [使用管理服务传输应用程序配置](#transferring-an-application-configuration-with-the-administration-service)
+* [使用 REST API 传输服务器端工件](#transferring-server-side-artifacts-by-using-the-rest-api)
+* [从 MobileFirst Operations Console 导出和导入应用程序和适配器](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)
 
-### Transferring an application configuration by using mfpdev
+### 使用 mfpdev 传输应用程序配置
 {: #transferring-an-application-configuration-by-using-mfpdev }
-After you have developed an application, you can transfer it from your development environment to a test or production environment.
+开发应用程序后，可以将其从开发环境传输到测试或生产环境。
 
-* You must have an existing {{ site.data.keys.product_adj }} app on your local computer. The app must be registered to a {{ site.data.keys.mf_server }}. For information about creating a server profile, run **mfpdev app register**, or the topic about registering your type of app in the Developing applications section of this documentation.
-* You must have connectivity from your local computer to the server that your app is currently registered to and to the server that you want to transfer your app to.
-* You must have a server profile on the local computer for both the original {{ site.data.keys.mf_server }} and the server that you want to transfer your app to. For information about creating a server profile, run **mfpdev server add**.
-* You must have the {{ site.data.keys.mf_cli }} installed.
+* 您的本地计算机上必须具有现有的 {{ site.data.keys.product_adj }} 应用程序。必须向 {{ site.data.keys.mf_server }} 注册该应用程序。有关创建服务器概要文件的信息，请运行 **mfpdevapp register**，或者参阅本文档的“开发应用程序”部分中有关注册应用程序类型的主题。
+* 您的本地计算机必须已连接到当前向其注册该应用程序的服务器，还必须已连接到要向其传输该应用程序的服务器。
+* 您的本地计算机上必须具有用于原始 {{ site.data.keys.mf_server }}    和要向其传输该应用程序的服务器的服务器概要文件。有关创建服务器概要文件的信息，请运行 **mfpdev server add**。
+* 您必须已安装 {{ site.data.keys.mf_cli }}。
 
-You use the **mfpdev app pull** command to send a copy of the server-side configuration files for your app to your local computer. Then you use the **mfpdev app push** command to send it to another {{ site.data.keys.mf_server }}. The **mfpdev app push** command also registers the app on the specified server.
+可使用 **mfpdev app pull** 命令来将该应用程序的服务器端配置文件的副本发送到本地计算机。然后，可使用 **mfpdev app push** 命令来将其发送到其他 {{ site.data.keys.mf_server }}   。**mfpdev app push** 命令还可在指定服务器上注册该应用程序。
 
-You can also use these commands to transfer a runtime configuration from one server to another.
+您还可以使用这些命令来将运行时配置从一台服务器传输到另一台服务器。
 
-The configuration information includes the contents of the application descriptor, which uniquely identifies the app to the server and other information that is specific to the app. The configuration files are provided as compressed files (.zip format). The .zip files are placed in the directory **appName/mobilefirst** and named as follows:
+配置信息包括用于向服务器唯一标识应用程序的应用程序描述符的内容，以及特定于应用程序的其他信息。配置文件以压缩文件形式（.zip 格式）提供。这些 .zip 文件位于 **appName/mobilefirst** 目录中，并按如下方式命名：
 
 ```bash
 appID-platform-version-artifacts.zip
 ```
 
-where **appID** is the application name, **platform** is one of **android**, **ios**, or **windows**, and version is the version level of your app. For Cordova apps, a separate .zip file is created for each target platform.
+其中，**appID** 是应用程序名称，**platform** 是 **android**、**ios** 或 **windows** 中的一个，而 version 是应用程序的版本级别。对于 Cordova 应用程序，将针对每个目标平台创建一个单独的 .zip 文件。
 
-When you use the **mfpdev app push** command, the application's client properties file is modified to reflect the profile name and URL of the new {{ site.data.keys.mf_server }}.
+使用 **mfpdev app push** 命令时，系统会修改应用程序的客户机属性文件以反映新 {{ site.data.keys.mf_server }}  的概要文件名称和 URL。
 
-1. On your development computer, navigate to a directory that is the root directory of your app or one of its subdirectories.
-2. Run the **mfpdev app pull** command. If you specify the command with no parameters, the app is pulled from the default {{ site.data.keys.mf_server }}. You can also specify a particular server and its administrator password. For example, for an Android application named **myapp1**:
+1. 在开发计算机上，浏览至应用程序根目录或者其中的某一个子目录。
+2. 运行 **mfpdev app pull** 命令。如果指定的命令不含任何参数，那么会从缺省 {{ site.data.keys.mf_server }} 中拉出该应用程序。您还可以指定特定服务器及其管理员密码。例如，针对名为 **myapp1** 的 Android 应用程序：
 
    ```bash
    cd myapp1
    mfpdev app pull Server10 -password secretPassword!
    ```
     
-   This command finds the configuration files for the current application on the {{ site.data.keys.mf_server }} whose server profile is named Server10. Then, it sends the compressed file **myapp1-android-1.0.0-artifacts.zip**, which contains these configuration files, to the local computer and places it in the directory **myapp1/mobilefirst**.
+   此命令会在具有服务器概要文件 Server10 的 {{ site.data.keys.mf_server }}    上查找当前应用程序的配置文件。然后，它会将包含这些配置文件的压缩文件 **myapp1-android-1.0.0-artifacts.zip** 发送到本地计算机，并将其置于 **myapp1/mobilefirst** 目录中。
     
-3. Run the **mfpdev app push** command. If you specify the command with no parameters, the app is pushed to the default {{ site.data.keys.mf_server }}. You can also specify a particular server and its administrator password. For example, for the same application that was pushed in the previous step: `mfpdev app push Server12 -password secretPass234!`.
+3. 运行 **mfpdev app push** 命令。如果指定的命令不含任何参数，那么会将该应用程序推送到缺省 {{ site.data.keys.mf_server }}。您还可以指定特定服务器及其管理员密码。例如，对于在上一步骤中推送的同一应用程序：`mfpdev app push Server12 -password secretPass234!`。
     
-   This command sends the file **myapp1-android-1.0.0-artifacts.zip** to the {{ site.data.keys.mf_server }} whose server profile is named Server12, that has the administrator password **secretPass234!** The client properties file **myapp1/app/src/main/assets/mfpclient.properties** is modified to reflect that the server that the app is registered to is Server12, with the server's URL.
+   此命令会将 **myapp1-android-1.0.0-artifacts.zip** 文件发送到具有服务器概要文件 Server12 的 {{ site.data.keys.mf_server }}（其管理员密码为 **secretPass234!**）。客户机属性文件 **myapp1/app/src/main/assets/mfpclient.properties** 会进行修改，以反映向其注册该应用程序的服务器为 Server12 并显示此服务器的 URL。
 
-The app's server-side configuration files are present on the {{ site.data.keys.mf_server }} that you specified in the mfpdev app push command. The app is registered to this new server.
+该应用程序的服务器端配置文件位于 mfpdev app push 命令中指定的 {{ site.data.keys.mf_server }}中。这样会向此新服务器注册该应用程序。
 
-### Transferring an application configuration with the administration service
+### 使用管理服务传输应用程序配置
 {: #transferring-an-application-configuration-with-the-administration-service }
-As an administrator, you can transfer an application configuration from one server to another by using the administration service of {{ site.data.keys.mf_server }}. No access to the application code is required, but the client app must be built for the target server.
+作为管理员，可使用 {{ site.data.keys.mf_server }}    的管理服务，将应用程序配置从一台服务器传输到另一台服务器。无需访问应用程序代码，但必须为目标服务器构建客户端应用程序。
 
-#### Before you begin
+#### 开始之前
 {: #before-you-begin-1 }
-Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+为目标服务器构建客户端应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
 
-You download the application descriptor from the server where the application is configured and you deploy it to the new server. You can see the application descriptor in the {{ site.data.keys.mf_console }}.
+可从配置了应用程序的服务器中下载应用程序描述符，然后将其部署到新服务器上。您可以在 {{ site.data.keys.mf_console }}    中查看应用程序描述符。
 
-1. Optional: Review the application descriptor in the server where the application server is configured.
-    Open the {{ site.data.keys.mf_console }} for that server, select your application version, and go to the **Configuration Files** tab.
+1. 可选：在配置了应用程序服务器的服务器中查看应用程序描述符。
+    打开该服务器的 {{ site.data.keys.mf_console }}   ，选择应用程序版本，然后转至**配置文件**选项卡。
 
-2. Download the application descriptor from the server where the application is configured. You can download it by using the REST API or **mfpadm**.
+2. 从配置了应用程序的服务器中下载应用程序描述符。可以使用 REST API 或 **mfpadm** 来下载。
 
-   > **Note:** You can also export an application or application version from the {{ site.data.keys.mf_console }}. See [Exporting and importing applications and adapters from the {{ site.data.keys.mf_console }}](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
-    * To download the application descriptor with the REST API, use the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API.
+   > **注：**还可以从 {{ site.data.keys.mf_console }}    导出应用程序或应用程序版本。请参阅[从 {{ site.data.keys.mf_console }}    导出和导入应用程序和适配器](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)。
+    * 要使用 REST API 下载应用程序描述符，请使用[应用程序描述符 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API。
 
-    The following URL returns the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The call is made to the {{ site.data.keys.mf_server }}: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
+    以下 URL 可返回应用程序标识为 **my.test.application** 的应用程序、**ios** 平台以及 **0.0.1** 版本的应用程序描述符。对 {{ site.data.keys.mf_server }}    进行调用：`http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
     
-    For example, you can use such URL with a tool like curl: `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
+    例如，可将此 URL 与诸如 curl 等工具结合使用：`curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`。
     
     <br/>
-    Change the following elements of the URL according to your server configuration:
-     * **9080** is the default HTTP port of {{ site.data.keys.mf_server }} during development.
-     * **mfpadmin** is the default context root of the administration service. 
+    根据您的服务器配置更改 URL 的以下元素：
+     * **9080** 是开发期间 {{ site.data.keys.mf_server }}    的缺省 HTTP 端口。
+     * **mfpadmin** 是管理服务的缺省上下文根。 
 
-    For information about the REST API, see REST API for the {{ site.data.keys.mf_server }} administration service.
-     * Download the application descriptor by using **mfpadm**.
+    有关 REST API 的信息，请参阅 {{ site.data.keys.mf_server }}    管理服务的 REST API。
+     * 使用 **mfpadm** 下载应用程序描述符。
 
-       The **mfpadm** program is installed when you run the {{ site.data.keys.mf_server }} installer. You start it from the **product\_install\_dir/shortcuts/** directory, where **product\_install\_dir** indicates the installation directory of {{ site.data.keys.mf_server }}.
+       运行 {{ site.data.keys.mf_server }}    安装程序时，将安装 **mfpadm** 程序。可以从 **product\_install\_dir/shortcuts/** 目录启动它，其中 **product\_install\_dir** 指示 {{ site.data.keys.mf_server }}    的安装目录。
     
-       The following example creates a password file, which is required by the **mfpadm** command, then downloads the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The provided URL is the HTTPS URL of the {{ site.data.keys.mf_server }} during development.
+       以下示例将创建密码文件（**mfpadm** 命令所需），然后下载应用程序标识为 **my.test.application** 的应用程序、**ios** 平台以及 **0.0.1** 版本的应用程序描述符。所提供的 URL 是开发期间 {{ site.data.keys.mf_server }}    的 HTTPS URL。
     
        ```bash
        echo password=admin > password.txt
@@ -301,32 +301,32 @@ You download the application descriptor from the server where the application is
        rm password.txt
        ```
     
-       Change the following elements of the command line according to your server configuration:
-        * **9443** is the default HTTPS port of {{ site.data.keys.mf_server }} in development.
-        * **mfpadmin** is the default context root of the administration service. 
-        * --secure false indicates that the server's SSL certificate is accepted even if self-signed or if created for a different host name from the server's host name used in the URL.
+       根据您的服务器配置更改命令行的以下元素：
+        * **9443** 是开发中 {{ site.data.keys.mf_server }}    的缺省 HTTPS 端口。
+        * **mfpadmin** 是管理服务的缺省上下文根。 
+        * --secure false 指示接受服务器的 SSL 证书，即使是自签名证书或是为不同于 URL 中使用的服务器主机名的其他主机名创建的证书也是如此。
 
-       For more information about the **mfpadm** program, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../using-cli).
+       有关 **mfpadm** 程序的更多信息，请参阅[通过命令行管理 {{ site.data.keys.product_adj }}    应用程序](../using-cli)。
     
-3. Upload the application descriptor to the new server to register the app or update its configuration.
-You can upload it by using the REST API or **mfpadm**.
-   * To upload the application descriptor with the REST API, use the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API.
+3. 将应用程序描述符上载到新服务器以注册应用程序或更新其配置。
+可以使用 REST API 或 **mfpadm** 来上载。
+   * 要使用 REST API 上载应用程序描述符，请使用[应用程序 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API。
     
-     The following URL uploads the application descriptor to the mfp runtime. You send a POST request, and the payload is the JSON application descriptor. The call in this example is made to server that runs on the local computer and that is configured with an HTTP port set to 9081.
+     以下 URL 将应用程序描述符上载到 mfp 运行时。您可发送 POST 请求，并且有效内容为 JSON 应用程序描述符。在此示例中，调用了在本地计算机上运行运行且 HTTP 端口设置为 9081 的服务器。
     
      ```bash
      http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```
     
-     For example, you can use such URL with a tool like curl.
+     例如，可将此 URL 与诸如 curl 等工具结合使用。
     
      ```bash
      curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```    
     
-   * Upload the application descriptor by using mfpadm.
+   * 使用 mfpadm 上载应用程序描述符。
 
-     The following example creates a password file, which is required by the mfpadm command, then uploads the application descriptor for the application of app ID my.test.application, for the ios platform, and version 0.0.1. The provided URL is the HTTPS URL of a server that runs on the local computer but is configured with an HTTPS port set to 9444, and for a runtime named mfp.
+     以下示例将创建密码文件（mfpadm 命令所需），然后上载应用程序标识为 my.test.application 的应用程序、ios 平台以及 0.0.1 版本的应用程序描述符。所提供的 URL 为本地计算机上运行但 HTTPS 端口设置为 9444 的服务器的 HTTPS URL，并用于名为 mfp 的运行时。
 
      ```bash
      echo password=admin > password.txt
@@ -334,36 +334,36 @@ You can upload it by using the REST API or **mfpadm**.
      rm password.txt
      ```
 
-### Transferring server-side artifacts by using the REST API
+### 使用 REST API 传输服务器端工件
 {: #transferring-server-side-artifacts-by-using-the-rest-api }
-Whatever your role, you can export applications, adapters, and resources for back-up or reuse purposes by using the {{ site.data.keys.mf_server }} administration service. As an administrator or deployer, you can also deploy an export archive to a different server. No access to the application code is required, but the client app must be built for the target server.
+不管您是什么角色，都可以出于备份或复用目的使用 {{ site.data.keys.mf_server }}   管理服务来导出应用程序、适配器和资源。作为管理员或部署者，您还可以将导出归档部署到不同的服务器。无需访问应用程序代码，但必须为目标服务器构建客户端应用程序。
 
-#### Before you begin
+#### 开始之前
 {: #before-you-begin-2 }
-Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+为目标服务器构建客户端应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
 
-The export API retrieves the selected artifacts for a runtime as a .zip archive. Use the deployment API to reuse archived content.
+导出 API 将检索运行时 .zip 归档形式的选定工件。使用部署 API 复用归档的内容。
 
-> **Important:** Carefully consider your use case:  
+> **要点：**请仔细考虑您的用例：  
 >  
-> * The export file includes the application authenticity data. That data is specific to the build of a mobile app. The mobile app includes the URL of the server and its runtime name. Therefore, if you want to use another server or another runtime, you must rebuild the app. Transferring only the exported app files would not work.
-> * Some artifacts might vary from one server to another. Push credentials are different depending on whether you work in a development or production environment.
-> * The application runtime configuration (that contains the active/disabled state and the log profiles) can be transferred in some cases but not all.
-> * Transferring web resources might not make sense in some cases, for example if you rebuild the app to use a new server.
+> * 导出文件包含应用程序真实性数据。该数据特定于移动应用程序的构建。移动应用程序包含服务器的 URL 及其运行时名称。因此，如果希望使用另一个服务器或另一个运行时，则必须重新构建应用程序。仅传输导出的应用程序文件不可行。
+> * 某些工件因服务器而异。推送凭证的操作也有所不同，具体取决于您是处于开发环境还是生产环境。
+> * 在某些情况下（并非所有情况），可以传输应用程序运行时配置（包含活动/禁用状态和日志概要文件）。
+> * 在某些情况下可能无法传输 Web 资源，例如，在重新构建应用程序以使用新服务器时。
 
-* To export all resources, or a selected subset of resources, for one adapter or for all adapters, use the [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) or [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc) API.
-* To export all the resources under a specific application environment (such as Android or iOS), that is all the versions and all the resources for the version for that environment, use the [Export application environment (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_get.html?view=kc) API.
-* To export all the resources for a specific version of an application (for example, version 1.0 or 2.0 of an Android application), use the [Export application environment resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc) API.
-* To export a specific application or all applications for a runtime, use the [Export applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_applications_get.html?view=kc) or [Export application resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_resources_get.html?view=kc) API. **Note:** Credentials for push notification are not exported among the application resources.
-* To export the adapter content, descriptor, license configuration, content, user configuration, keystore, and web resources of an application, use the [Export resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-) API.
-* To export all or selected resources for a runtime, use the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) API. For example, you can use this general curl command to retrieve all resources as a .zip file.
+* 要为一个适配器或所有适配器导出所有资源或选定的资源子集，请使用[导出适配器资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) 或[导出适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc) API。
+* 要在特定应用程序环境（如 Android 或 iOS）下导出所有资源，即所有版本以及针对该环境的版本的所有资源，请使用[导出应用程序环境 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_get.html?view=kc) API。
+* 要导出特定应用程序版本（例如，V1.0 或 V2.0 的 Android 应用程序）的所有资源，请使用[导出应用程序环境资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc) API。
+* 要导出运行时的特定应用程序或所有应用程序，请使用[导出应用程序 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_applications_get.html?view=kc) 或[导出应用程序资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_resources_get.html?view=kc) API。**注：**不会在应用程序资源中导出用于推送通知的凭证。
+* 要导出适配器内容、描述符、许可证配置、内容、用户配置、密钥库以及应用程序的 Web 资源，请使用[导出资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-) API。
+* 要导出运行时的所有资源或选定资源，请使用[导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) API。例如，您可以使用此常规的 curl 命令来检索 .zip 文件形式的所有资源。
 
   ```bash
   curl -X GET -u admin:admin -o exported.zip
   "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
   ```
     
-* To deploy an archive that contains such web application resources as adapter, application, license configuration, keystore, web resource, use the [Deploy (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) API. For example, you can use this curl command to deploy an existing .zip file that contains artifacts.
+* 要部署包含诸如适配器、应用程序、许可证配置、密钥库、Web 资源之类 Web 应用程序资源的归档，请使用[部署 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) API。例如，您可以使用此 curl 命令部署包含工件的现有 .zip 文件。
 
   ```bash
   curl -X POST -u admin:admin -F
@@ -371,81 +371,81 @@ The export API retrieves the selected artifacts for a runtime as a .zip archive.
   "http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi"
   ```
 
-* To deploy application authenticity data, use the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) API.
-* To deploy the web resources of an application, use the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc) API.
+* 要部署应用程序真实性数据，请使用[部署应用程序真实性数据 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) API。
+* 要部署应用程序的 Web 资源，请使用[部署 Web 资源 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc) API。
 
-If you deploy an export archive to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
+如果将导出归档部署到同一个运行时，那么应用程序或版本不一定会恢复，因为其已经导出。也就是说，重新部署不会除去后续所作的修改。然而，如果在导出与重新部署操作之间修改了某些应用程序资源，那么仅会重新部署导出归档中包含的资源（以其原始状态）。例如，如果要导出不含真实性数据的应用程序，可上载真实性数据，然后导入初始归档，此时真实性数据将不会被擦除。
 
-### Exporting and importing applications and adapters from the {{ site.data.keys.mf_console }}
+### 从 {{ site.data.keys.mf_console }} 导出和导入应用程序和适配器
 {: #exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console }
-From the console, under certain conditions, you can export an application or one of its versions, and later import it to a different runtime on the same server or a different server. You can also export and reimport adapters. Use this capability for reuse or back-up purposes.
+在某些情况下，您可以从控制台导出应用程序或其某一版本，并在以后将其导入同一服务器或不同服务器上的另一运行时。您还可以导出并重新导入适配器。此功能可用来复用或备份。
 
-If you are granted the **mfpadmin** administrator role and the **mfpdeployer** deployer role, you can export one version or all versions of an application. The application or version is exported as a .zip compressed file, which saves the application ID, descriptors, authenticity data, and web resources. You can later import the archive to redeploy the application or version to another runtime on the same or on a different server.
+如果您被授予 **mfpadmin** 管理员角色和 **mfpdeployer** 部署者角色，则可以导出应用程序的某一版本或所有版本。应用程序或版本导出为 .zip 压缩文件，该文件保存了应用程序标识、描述符、真实性数据以及 Web 资源。您可以在以后导入归档，以将应用程序或版本重新部署到同一服务器或不同服务器上的另一运行时中。
 
-> **Important:** Carefully consider your use case:  
+> **要点：**请仔细考虑您的用例：  
 > 
-> * The export file includes the application authenticity data. That data is specific to the build of a mobile app. The mobile app includes the URL of the server and its runtime name. Therefore, if you want to use another server or another runtime, you must rebuild the app. Transferring only the exported app files would not work.
-> * Some artifacts might vary from one server to another. Push credentials are different depending on whether you work in a development or production environment.
-> * The application runtime configuration (that contains the active/disabled state and the log profiles) can be transferred in some cases but not all.
-> * Transferring web resources might not make sense in some cases, for example if you rebuild the app to use a new server.
+> * 导出文件包含应用程序真实性数据。该数据特定于移动应用程序的构建。移动应用程序包含服务器的 URL 及其运行时名称。因此，如果希望使用另一个服务器或另一个运行时，则必须重新构建应用程序。仅传输导出的应用程序文件不可行。
+> * 某些工件因服务器而异。推送凭证的操作也有所不同，具体取决于您是处于开发环境还是生产环境。
+> * 在某些情况下（并非所有情况），可以传输应用程序运行时配置（包含活动/禁用状态和日志概要文件）。
+> * 在某些情况下可能无法传输 Web 资源，例如，在重新构建应用程序以使用新服务器时。
 
-You can also transfer application descriptors by using the REST API or the mfpadm tool. For more information, see [Transferring an application configuration with the administration service](#transferring-an-application-configuration-with-the-administration-service).
+还可以使用 REST API 或 mfpadm 工具来传输应用程序描述符。有关更多信息，请参阅[使用管理服务传输应用程序配置](#transferring-an-application-configuration-with-the-administration-service)。
 
-1. From the navigation sidebar, select an application or application version, or an adapter.
-2. Select **Actions → Export Application** or **Export Version** or **Export Adapter**.
+1. 从导航侧边栏中选择应用程序或应用程序版本，或者适配器。
+2. 选择**操作 → 导出应用程序**或**导出版本**或**导出适配器**。
 
-    You are prompted to save the .zip archive file that encapsulates the exported resources. The aspect of the dialog box depends on your browser and the target folder depends on your browser settings.
+    系统将提示您保存封装了导出资源的 .zip 归档文件。对话框的外观取决于您的浏览器，目标文件夹取决于浏览器设置。
 
-3. Save the archive file.
+3. 保存归档文件。
 
-    The archive file name includes the name and version of the application or adapter, for example **export_applications_com.sample.zip**.
+    归档文件名包含应用程序或适配器的名称和版本（例如 *export_applications_com.sample.zip**）。
 
-4. To reuse an existing export archive, select **Actions → Import Application** or **Import Version**, browse to the archive, and click **Deploy**.
+4. 要复用现有导出归档，请选择**操作 → 导入应用程序**或**导入版本**，浏览至归档，然后单击**部署**。
 
-The main console frame displays the details of the imported application or adapter.
+主控制台框架将显示已导入应用程序或适配器的详细信息。
 
-If you import to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment at import time does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment at import time, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
+如果要导入到相同的运行时，那么应用程序或版本不一定会恢复，因为其已经导出。也就是说，导入时重新部署不会除去后续所作的修改。相反，如果导入时，在导出与重新部署操作之间修改了某些应用程序资源，那么仅会重新部署导出归档中包含的资源（以其原始状态）。例如，如果要导出不含真实性数据的应用程序，可上载真实性数据，然后导入初始归档，此时真实性数据将不会被擦除。
 
-## Updating {{ site.data.keys.product_adj }} apps in production
+## 在生产环境中更新 {{ site.data.keys.product_adj }}    应用程序
 {: #updating-mobilefirst-apps-in-production }
-There are general guidelines for upgrading your {{ site.data.keys.product_adj }} apps when they are already in production, on the Application Center or in app stores.
+如果 {{ site.data.keys.product_adj }}    应用程序已存在于生产环境、Application Center 或应用商店中，那么在升级这些应用程序时，需要遵循一般准则。
 
-When you upgrade an app, you can deploy a new app version and leave the old version working, or deploy a new app version and block the old version. In the case of an app developed with Apache Cordova, you can also consider only updating the Web resources.
+升级应用程序时，可以部署新应用程序版本并使旧版本继续工作，或者部署新应用程序版本并阻止旧版本。对于使用 Apache Cordova 开发的应用程序，还可以考虑仅更新 Web 资源。
 
-### Deploying a new app version and leaving the old version working
+### 部署新的应用程序版本并使旧版本保持工作
 {: #deploying-a-new-app-version-and-leaving-the-old-version-working }
-The most common upgrade path, used when you introduce new features or modify native code, is to release a new version of your app. Consider following these steps:
+在您引入新功能或修改本机代码时，最常使用的升级路径就是发布新版本的应用程序。请考虑以下步骤：
 
-1. Increment the app version number.
-2. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
-3. Register the app to {{ site.data.keys.mf_server }} and configure it.
-4. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
-5. Wait for review and approval, and for the apps to become available.
-6. Optional - send notification message to users of the old version, announcing the new version. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
+1. 递增应用程序版本号。
+2. 构建并测试应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
+3. 向 {{ site.data.keys.mf_server }}    注册此应用程序，并对其进行配置。
+4. 将新的 .apk、.ipa、.appx 或 .xap 文件提交到各自的应用商店。
+5. 等待评审和批准，并等待应用程序可用。
+6. 可选 - 向旧版本的用户发送通知消息，宣布新版本。请参阅[显示管理员消息](../using-console/#displaying-an-administrator-message)和[定义多种语言的管理员消息](../using-console/#defining-administrator-messages-in-multiple-languages)。
 
 
-### Deploying a new app version and blocking the old version
+### 部署新的应用程序版本并阻止旧版本
 {: #deploying-a-new-app-version-and-blocking-the-old-version }
-This upgrade path is used when you want to force users to upgrade to the new version, and block their access to the old version. Consider following these steps:
+在您希望强制用户升级到新版本并阻止其访问旧版本时，使用此升级路径。请考虑以下步骤：
 
-1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
-2. Increment the app version number.
-3. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
-4. Register the app to {{ site.data.keys.mf_server }} and configure it.
-5. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
-6. Wait for review and approval, and for the apps to become available.
-7. Copy links to the new app version.
-8. Block the old version of the app in {{ site.data.keys.mf_console }}, supplying a message and link to the new version. See [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+1. 可选 - 向旧版本的用户发送通知消息，宣布数天内将进行强制更新。请参阅[显示管理员消息](../using-console/#displaying-an-administrator-message)和[定义多种语言的管理员消息](../using-console/#defining-administrator-messages-in-multiple-languages)。
+2. 递增应用程序版本号。
+3. 构建并测试应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
+4. 向 {{ site.data.keys.mf_server }}    注册此应用程序，并对其进行配置。
+5. 将新的 .apk、.ipa、.appx 或 .xap 文件提交到各自的应用商店。
+6. 等待评审和批准，并等待应用程序可用。
+7. 复制指向新应用程序版本的链接。
+8. 在 {{ site.data.keys.mf_console }}    中阻止应用程序的旧版本，提供一条消息和指向新版本的链接。请参阅[远程禁用应用程序对受保护资源的访问权](../using-console/#remotely-disabling-application-access-to-protected-resources)。
 
-> **Note:** If you disable the old app, it is no longer able to communicate with {{ site.data.keys.mf_server }}. Users can still start the app and work with it offline unless you force a server connection on app startup.
+> **注：**如果您禁用旧应用程序，那么它就不能再与 {{ site.data.keys.mf_server }} 通信。用户仍然可以启动应用程序并脱机使用，除非您在应用程序启动时强制进行服务器连接。
 
-### Direct Update (no native code changes)
+### 直接更新（无本机代码更改）
 {: #direct-update-no-native-code-changes }
-Direct Update is a mandatory upgrade mechanism that is used to deploy fast fixes to a production app. When you redeploy an app to {{ site.data.keys.mf_server }} without changing its version, {{ site.data.keys.mf_server }} directly pushes the updated web resources to the device when the user connects to the server. It does not push updated native code. Things to keep in mind when you consider a Direct Update include:
+直接更新是一种强制升级机制，用于将快速修订部署到生产应用程序。如果您将应用程序重新部署到 {{ site.data.keys.mf_server }}    而不更改其版本，{{ site.data.keys.mf_server }}    会在用户连接到服务器时直接将更新的 Web 资源推送到设备。它不会推送更新的本机代码。在您考虑直接更新时，要记住的事项包括：
 
-1. Direct Update does not update the app version. The app remains at the same version, but with a different set of web resources. The unchanged version number can introduce confusion if used for the wrong purpose
-2. Direct Update also does not go through the app store review process because it is technically not a new release. This should not be abused because vendors can become displeased if you deploy a whole new version of your app that bypasses their review. It is your responsibility to read each store's usage agreements and abide by them. Direct Update is best used to fix urgent issues that cannot wait for several days.
-3. Direct Update is considered a security mechanism, and therefore it is mandatory, not optional. When you initiate the Direct Update, all users must update their app to be able to use it.
-4. Direct Update does not work if an application is compiled (built) with a different version of {{ site.data.keys.product }} than the one that was used for the initial deployment.
+1. 直接更新不会更新应用程序版本。该应用程序保持在同一版本上，但是具有不同的 Web 资源集合。如果用途不当，未更改的版本号会导致混淆。
+2. 直接更新也不会经过应用商店评审过程，因为它在技术上不是新的发行版。这不应该被滥用，因为如果您部署绕过供应商评审的全新版本的应用程序，那么这些供应商会感到不满。您有责任阅读每家商店的使用协议，并加以遵守。直接更新最好用于修订无法等待数天的紧急问题。
+3. 直接更新被视为安全性机制，因此它是强制的，而不是可选的。在启动直接更新时，所有用户都必须更新其应用程序才可以使用该程序。
+4. 如果使用不同于初始部署所用版本的另一版本 {{ site.data.keys.product }}   编译（构建）应用程序，那么将无法进行直接更新。
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) to learn more.
+> **注：**使用 Test Flight 或 iTunes Connect 进行应用商店 iOS 应用程序的提交/验证时生成的归档/IPA 文件可能会导致运行时崩溃/失败，请阅读博客 [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}  ](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)，以了解更多信息。

@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Push Notifications
-breadcrumb_title: Push Notifications
+title: 推送通知
+breadcrumb_title: 推送通知
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Once {{ site.data.keys.mf_analytics }} support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
+为推送通知设置 {{ site.data.keys.mf_analytics }} 支持（请参阅[设置分析支持](../../../notifications/analytics/)）之后，您可以创建有关推送使用情况的报告。
 
-## Push reports
+## 推送报告
 {: #push-reports }
 
-Push Notifications reports become available after {{ site.data.keys.mf_analytics_short }} support is configured, and Push events are sent to the {{ site.data.keys.mf_analytics_short }} service.
+在配置 {{ site.data.keys.mf_analytics_short }} 支持并且将推送事件发送至 {{ site.data.keys.mf_analytics_short }} 服务之后，“推送通知”报告将变得可用。
 
-1. In the {{ site.data.keys.mf_analytics_console }}, choose the **Infrastructure** section from the navigation bar.
-2. Choose the **Push Notifications** tab.
+1. 在 {{ site.data.keys.mf_analytics_console }} 中，从导航栏选择**基础结构**部分。
+2. 选择**推送通知**选项卡。
 
-Two reports types are displayed:
+将显示两种报告类型：
 
-**Notification Requests**  
-The number of requests is displayed according to the requested period, applications, and versions, broken down by date.
+**通知请求**  
+将根据请求的时间段、应用程序和版本显示请求数，按日期细分。
 
-**Notification by Mediator**  
-The number of requests is broken down by app platform, for the requested period, applications, and versions.
+**通过介体发送的通知**  
+根据应用程序平台、请求的时间段、应用程序和版本来细分请求数。
 
-![Push Notification reports](pushNotifications.png)
+![“推送通知”报告](pushNotifications.png)

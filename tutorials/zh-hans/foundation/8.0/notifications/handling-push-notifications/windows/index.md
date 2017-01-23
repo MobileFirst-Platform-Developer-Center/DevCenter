@@ -1,93 +1,92 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP
+title: 在 Windows 8.1 Universal 和 Windows 10 UWP 中处理推送通知
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Download Windows 8.1 Universal Project
+  - name: 下载 Windows 8.1 Universal 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Download Windows 10 UWP Project
+  - name: 下载 Windows 10 UWP 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
+可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在使用 C# 的本机 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中处理推送通知。
 
-**Prerequisites:**
+**先决条件：**
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product_adj }} SDK to windows applications](../../../application-development/sdk/windows-8-10)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 确保您已阅读过下列教程：
+	* [推送通知概述](../../)
+    * [设置 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/#installing-a-development-environment)
+    * [将 {{ site.data.keys.product_adj }} SDK 添加到 Windows 应用程序](../../../application-development/sdk/windows-8-10)
+* 本地运行的 {{ site.data.keys.mf_server }} 或远程运行的 {{ site.data.keys.mf_server }}。
+* 安装在开发人员工作站上的 {{ site.data.keys.mf_cli }}
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [通知配置](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [处理推送通知](#handling-a-push-notification)
 
-## Notifications Configuration
+## 通知配置
 {: #notifications-configuration }
-Create a new Visual Studio project or use and existing one.  
-If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
+创建新的 Visual Studio 项目或使用现有项目。  
+如果该项目中还没有 {{ site.data.keys.product_adj }} 本机 Windows SDK，请遵循[将 {{ site.data.keys.product_adj }} SDK 添加到 Windows 应用程序](../../../application-development/sdk/windows-8-10)教程中的指示信息。
 
-### Adding the Push SDK
+### 添加推送 SDK
 {: #adding-the-push-sdk }
-1. Select Tools → NuGet Package Manager → Package Manager Console.
-2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
-3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
+1. 选择“工具 → NuGet Package Manager → Package Manager Console”。
+2. 选择要安装 {{ site.data.keys.product_adj }} 推送组件的项目。
+3. 运行 **Install-Package IBM.MobileFirstPlatformFoundationPush** 命令来添加 {{ site.data.keys.product_adj }} 推送 SDK。
 
-## Pre-requisite WNS configuration
+## 必备的 WNS 配置
 {: pre-requisite-wns-configuration }
-1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
-2. Ensure `Package Identity Name` and `Publisher` should be updated with the values registered with WNS.
-3. (Optional) Delete TemporaryKey.pfx file.
+1. 确保应用程序具备 Toast 通知功能。可在 Package.appxmanifest 中启用此功能。
+2. 确保使用向 WNS 注册的值来更新 `Package Identity Name` 和 `Publisher`。
+3. （可选）删除 TemporaryKey.pfx 文件。
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush 实例
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
+必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可创建一个变量（例如，`private MFPPush PushClient = MFPPush.GetInstance();`），然后在该类中调用 `PushClient.methodName()`。
 
-Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
+也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.GetInstance().methodName()`。
 
-### Challenge Handlers
+### 验证问题处理程序
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
-
-### Client-side
+> 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
+### 客户端
 {: #client-side }
-| C Sharp Methods                                                                                                | Description                                                             |
+| C Sharp 方法                                                                                                | 描述                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`Initialize()`](#initialization)                                                                            | 针对提供的上下文，初始化 MFPPush。                               |
+| [`IsPushSupported()`](#is-push-supported)                                                                    | 设备是否支持推送通知。                             |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | 向推送通知服务注册设备。               |
+| [`GetTags()`](#get-tags)                                | 在推送通知服务实例中检索可用的标记。 |
+| [`Subscribe(String[] Tags)`](#subscribe)     | 使设备预订指定的标记。                          |
+| [`GetSubscriptions()`](#get-subscriptions)              | 检索设备当前预订的所有标记。               |
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | 取消对特定标记的预订。                                  |
+| [`UnregisterDevice()`](#unregister)                     | 从推送通知服务注销设备。              |
 
-#### Initialization
+#### 初始化
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+客户机应用程序连接到 MFPPush 服务时，需要执行初始化。
 
-* The `Initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* 应先调用 `Initialize` 方法，然后再使用任何其他 MFPPush API。
+* 它会注册回调函数以处理已收到的推送通知。
 
 ```csharp
 MFPPush.GetInstance().Initialize();
 ```
 
-#### Is push supported
+#### 是否支持推送
 {: #is-push-supported }
-Checks if the device supports push notifications.
+检查设备是否支持推送通知。
 
 ```csharp
 Boolean isSupported = MFPPush.GetInstance().IsPushSupported();
@@ -99,9 +98,9 @@ if (isSupported ) {
 }
 ```
 
-#### Register device &amp; send device token
+#### 注册设备并发送设备标记
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+向推送通知服务注册设备。
 
 ```csharp
 JObject Options = new JObject();
@@ -114,9 +113,9 @@ if (Response.Success == true)
 }
 ```
 
-#### Get tags
+#### 获取标记
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+从推送通知服务检索所有可用标记。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetTags();
@@ -128,9 +127,9 @@ if (Response.Success == true)
 }
 ```
 
-#### Subscribe
+#### 预订
 {: #subscribe }
-Subscribe to desired tags.
+预订所需的标记。
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
@@ -147,9 +146,9 @@ else
 }
 ```
 
-#### Get subscriptions
+#### 获取预订
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+检索设备当前预订的标记。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetSubscriptions();
@@ -163,9 +162,9 @@ else
 }
 ```
 
-#### Unsubscribe
+#### 取消预订
 {: #unsubscribe }
-Unsubscribe from tags.
+取消对标记的预订。
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
@@ -182,9 +181,9 @@ else
 }
 ```
 
-#### Unregister
+#### 注销
 {: #unregister }
-Unregister the device from push notification service instance.
+从推送通知服务实例注销设备。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();         
@@ -196,11 +195,11 @@ if (Response.Success == true)
 }
 ```
 
-## Handling a push notification
+## 处理推送通知
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing the following method.
+要处理推送通知，需要设置 `MFPPushNotificationListener`。可实现以下方法来执行此操作。
 
-1. Create a class by using interface of type MFPPushNotificationListener
+1. 使用 MFPPushNotificationListener 类型的接口创建类
 
    ```csharp
    internal class NotificationListner : MFPPushNotificationListener
@@ -212,24 +211,24 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
    }
    ```
 
-2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
-3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
+2. 通过调用 `MFPPush.GetInstance().listen(new NotificationListner())` 将该类设置为侦听器
+3. 在 onReceive 方法中，您将收到推送通知，并可以处理关于期望行为的通知。
 
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
+<img alt="样本应用程序图像" src="sample-app.png" style="float:right"/>
 
-## Windows Universal Push Notifications Service
+## Windows Universal 推送通知服务
 {: #windows-universal-push-notifications-service }
-No specific port needs to be open in your server configuration.
+无需在服务器配置中打开特定端口。
 
-WNS uses regular http or https requests.
+WNS 使用普通的 http 或 https 请求。
 
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 8.1 Universal 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows10 UWP 项目。
 
-### Sample usage
+### 用法样例
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请查看样本的 README.md 文件以获取指示信息。

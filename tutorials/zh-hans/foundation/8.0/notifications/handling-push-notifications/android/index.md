@@ -1,49 +1,49 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android
+title: 在 Android 中处理推送通知
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Android Studio project
+  - name: 下载 Android Studio 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+在 Android 应用程序处理已收到的任何推送通知之前，需要配置 Google Play Services 支持。在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在 Android 应用程序中处理推送通知。
 
-**Prerequisites:**
+**先决条件：**
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 确保您已阅读过下列教程：
+    * [设置 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/#installing-a-development-environment)
+    * [将 {{ site.data.keys.product }} SDK 添加到 Android 应用程序](../../../application-development/sdk/android)
+    * [推送通知概述](../../)
+* 本地运行的 {{ site.data.keys.mf_server }} 或远程运行的 {{ site.data.keys.mf_server }}。
+* 安装在开发人员工作站上的 {{ site.data.keys.mf_cli }}
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [通知配置](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [处理推送通知](#handling-a-push-notification)
+* [样本应用程序](#sample-application)
 
-## Notifications Configuration
+## 通知配置
 {: #notifications-configuration }
-Create a new Android Studio project or use an existing one.  
-If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
+创建新的 Android Studio 项目或使用现有项目。  
+如果该项目中还没有 {{ site.data.keys.product_adj }} 本机 Android SDK，请遵循[将 {{ site.data.keys.product }} SDK 添加到 Android 应用程序](../../../application-development/sdk/android)教程中的指示信息。
 
-### Project setup
+### 项目设置
 {: #project-setup }
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
+1. 在 **Android → Gradle 脚本**中，选择 **build.gradle（模块：应用程序）**文件，并将以下行添加到 `dependencies` 中：
 
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
+   - **注：**存在一个[已知的 Google 缺陷](https://code.google.com/p/android/issues/detail?id=212879)，此缺陷将阻止使用最新的 Play Services 版本（当前为 9.2.0）。请使用较低的版本。
 
-   And:
+   以及：
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -53,14 +53,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
             transitive: true
    ```
     
-   Or in a single line:
+   或在单独一行中：
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
 
-2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
-	* Add the following permissions to the top the `manifest` tag:
+2. 在 **Android → 应用程序 → 清单**中，打开 `AndroidManifest.xml` 文件。
+	* 向顶部的 `manifest` 标记中添加以下许可权：
 
 	  ```xml
 	  <!-- Permissions -->
@@ -73,7 +73,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
+	* 向 `application` 标记中添加以下内容（`MFPPush Intent Service`、`MFPPush Instance ID Listener Service`）：
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -106,9 +106,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </service>
 	  ```
 
-	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+	  > **注：**请确保将 `your.application.package.name` 替换为您应用程序的实际包名。
 
-    * Add the following `intent-filter` to the application's activity.
+    * 向应用程序的活动中添加以下 `intent-filter`。
       
       ```xml
       <intent-filter>
@@ -117,47 +117,46 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </intent-filter>
       ```
       
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush 实例
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
 
-Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
+也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.getInstance().<api_call>`。
 
-### Challenge Handlers
+### 验证问题处理程序
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
-
-### Client-side
+> 在[凭证验证](../../../authentication-and-security/credentials-validation/android)教程中了解有关验证问题处理程序的更多信息。
+### 客户端
 {: #client-side }
-| Java Methods | Description |
+| Java 方法 | 描述 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+| [`initialize(Context context);`](#initialization) | 针对提供的上下文，初始化 MFPPush。 |
+| [`isPushSupported();`](#is-push-supported) | 设备是否支持推送通知。 |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | 向推送通知服务注册设备。 |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | 在推送通知服务实例中检索可用的标记。 |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 使设备预订指定的标记。 |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | 检索设备当前预订的所有标记。 |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 取消对特定标记的预订。 |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | 从推送通知服务注销设备。 |
 
-#### Initialization
+#### 初始化
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+在客户机应用程序使用适当的应用程序上下文连接到 MFPPush 服务时为必需项。
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* 应先调用此 API 方法，然后再使用任何其他 MFPPush API。
+* 注册回调函数以处理已收到的推送通知。
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Is push supported
+#### 是否支持推送
 {: #is-push-supported }
-Checks if the device supports push notifications.
+检查设备是否支持推送通知。
 
 ```java
 Boolean isSupported = MFPPush.getInstance().isPushSupported();
@@ -169,9 +168,9 @@ if (isSupported ) {
 }
 ```
 
-#### Register device
+#### 注册设备
 {: #register-device }
-Register the device to the push notifications service.
+向推送通知服务注册设备。
 
 ```java
 MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
@@ -187,9 +186,9 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
 });
 ```
 
-#### Get tags
+#### 获取标记
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+从推送通知服务检索所有可用标记。
 
 ```java
 MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
@@ -205,9 +204,9 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
 });
 ```
 
-#### Subscribe
+#### 预订
 {: #subscribe }
-Subscribe to desired tags.
+预订所需的标记。
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -225,9 +224,9 @@ MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
 });
 ```
 
-#### Get subscriptions
+#### 获取预订
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+检索设备当前预订的标记。
 
 ```java
 MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
@@ -243,9 +242,9 @@ MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>
 });
 ```
 
-#### Unsubscribe
+#### 取消预订
 {: #unsubscribe }
-Unsubscribe from tags.
+取消对标记的预订。
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -263,9 +262,9 @@ MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() 
 });
 ```
 
-#### Unregister
+#### 注销
 {: #unregister }
-Unregister the device from push notification service instance.
+从推送通知服务实例注销设备。
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -282,17 +281,17 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Handling a push notification
+## 处理推送通知
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
+要处理推送通知，需要设置 `MFPPushNotificationListener`。可实现以下某种方法来执行此操作。
 
-### Option One
+### 选项 1
 {: #option-one }
-In the activity in which you wish the handle push notifications.
+在要处理推送通知的活动中。
 
-1. Add `implements MFPPushNofiticationListener` to the class declaration.
-2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
-2. Then you will need to add the following *required* method:
+1. 向类声明中添加 `implements MFPPushNofiticationListener`。
+2. 通过在 `onCreate` 方法中调用 `MFPPush.getInstance().listen(this)`，将该类设置为侦听器。
+2. 然后，需要添加以下*必需*方法：
 
    ```java
    @Override
@@ -301,11 +300,11 @@ In the activity in which you wish the handle push notifications.
    }
    ```
 
-3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
+3. 在此方法中，您将收到 `MFPSimplePushNotification`，并可以处理关于期望行为的通知。
 
-### Option Two
+### 选项 2
 {: #option-two }
-Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
+通过对 `MFPPush` 实例调用 `listen(new MFPPushNofiticationListener())` 来创建侦听器，如下所述：
 
 ```java
 MFPPush.getInstance().listen(new MFPPushNotificationListener() {
@@ -316,12 +315,12 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 });
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="样本应用程序图像" src="notifications-app.png" style="float:right"/>
+## 样本应用程序
 {: #sample-application }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) Android Studio 项目。
 
-### Sample usage
+### 用法样例
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请查看样本的 README.md 文件以获取指示信息。

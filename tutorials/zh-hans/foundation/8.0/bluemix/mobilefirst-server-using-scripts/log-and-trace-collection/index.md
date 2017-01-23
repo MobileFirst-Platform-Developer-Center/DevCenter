@@ -1,103 +1,108 @@
 ---
 layout: tutorial
-title: Log and trace collection
+title: 日志和跟踪收集
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview 
+## 概述 
 {: #overview }
-IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
+IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内置日志记录和监控功能。您可以选择更改 {{ site.data.keys.product_adj }}容器的日志级别。
 
-The option to create log files for the {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+缺省情况下，已启用用于为 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 容器创建日志文件的选项（使用级别 `*=info`）。您可通过手动添加代码覆盖或使用给定的脚本文件插入代码，对日志级别进行更改。
+可通过 Kibana 可视化工具从 Bluemix logmet 控制台查看容器日志和服务器或运行时日志。可通过 Grafana（开放式源代码度量仪表板和图形编辑器）从 Bluemix logmet 控制台进行监控。
 
-When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
+在使用 Secure Shell (SSH) 密钥创建 {{ site.data.keys.product_adj }}容器并绑定到公共 IP 地址时，可使用适合的专用密钥以安全地查看容器实例的日志。
 
-### Logging overrides
+### 日志记录覆盖
 {: #logging-overrides }
-You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
+您可通过手动添加代码覆盖或使用给定的脚本文件插入代码，对日志级别进行更改。
+通过手动添加代码覆盖更改日志级别，必须在您首次准备映像时完成。
+您必须将新的日志记录配置作为独立的配置片段添加到 **package\_root/mfpf-[analytics|server]/usr/config** 文件夹，这会复制到 Liberty 服务器上的 configDropins/overrides 文件夹中。
 
-Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**). The following optional command-line arguments are applicable:
+使用给定脚本文件插入代码来更改日志级别，可以在运行 V8.0.0 程序包中提供的任何 start\*.sh 脚本文件（**startserver.sh**、**startanalytics.sh**、**startservergroup.sh** 或 **startanalyticsgroup.sh**）时通过特定命令行参数来完成。以下可选命令行参数适用：
+
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
 * `[-ms|--maxlogsize]` maximum\_size\_of\_log\_files
 
-## Container log files
+## 容器日志文件
 {: #container-log-files }
-Log files are generated for {{ site.data.keys.mf_server }} and Liberty Profile runtime activities for each container instance and can be found in the following locations:
+针对 {{ site.data.keys.mf_server }} 和 Liberty Profile 运行时活动为每个容器实例生成日志文件，日志文件可位于以下位置：
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
 
-You can log in to the container by following the steps in Accessing log files and access the log files.
+您可以通过遵循访问日志文件中的步骤登录到容器并访问日志文件。
 
-To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from Bluemix using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
+要持久存储日志文件，甚至在容器不再存在后仍然保留日志文件，请启用卷。（缺省情况下，未启用卷。）启用卷也可允许您使用 logmet 界面（例如，https://logmet.ng.bluemix.net/kibana）查看 Bluemix 的日志。
 
-**Enabling volume**
-Volume allows for containers to persist log files. The volume for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analyics }} container logs is not enabled by default.
+**启用卷**
+卷支持容器持久存储日志文件。缺省情况下，针对 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analyics }} 容器日志未启用卷。
 
-You can enable volume when running the **start*.sh** scripts by setting `ENABLE_VOLUME [-v | --volume]` to `Y`. This is also configurable in the **args/startserver.properties** and **args/startanalytics.properties** files for interactive execution of the scripts.
+在运行 **start*.sh** 脚本时，可通过将 `ENABLE_VOLUME [-v | --volume]` 设置为 `Y` 启用卷。也可在 **args/startserver.properties** 和 **args/startanalytics.properties** 文件中针对脚本的交互式执行进行配置。
 
-The persisted log files are saved in the **/var/log/rsyslog** and **/opt/ibm/wlp/usr/servers/mfp/logs** folders in the container.  
-The logs can be accessed by issuing an SSH request to the container.
+持久存储的日志文件保存在容器的 **/var/log/rsyslog** 和 **/opt/ibm/wlp/usr/servers/mfp/logs** 文件夹中。  
+可通过向容器发出 SSH 请求来访问日志。
 
-## Accessing log files
+
+## 访问日志文件
 {: #accessing-log-files }
-Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the Bluemix logmet console.
+针对每个容器实例都会创建日志。您可以通过 `cf ic` 命令或者使用 Bluemix logmet 控制台，使用 IBM Container 云服务 REST API 来访问日志文件。
 
-### IBM Container Cloud Service REST API
+### IBM Container 云服务 REST API
 {: #ibm-container-cloud-service-rest-api }
-For any container instance, the **docker.log** and **/var/log/rsyslog/syslog** can be viewed using the [Bluemix logmet service](https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
+对于任何容器实例，可使用 [Bluemix logmet 服务](https://logmet.ng.bluemix.net/kibana/)查看 **docker.log** 和 **/var/log/rsyslog/syslog**。可使用相同的 Kibana 仪表板查看日志活动。
 
-IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running container instances. Alternatively, you can obtain container log files through Secure Shell (SSH).
+IBM Containers CLI 命令 (`cf ic exec`) 可用于获取正在运行的容器实例的访问权。此外，您可以通过 Secure Shell (SSH) 获取容器日志文件。
 
-### Enabling SSH
+### 启用 SSH
 {: #enabling-ssh}
-To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
+要启用 SSH，请先将 SSH 公用密钥复制到 **package_root/[mfpf-server 或 mfpf-analytics]/usr/ssh** 文件夹，然后再运行 **prepareserver.sh** 或 **prepareanalytics.sh** 脚本。这将构建启用 SSH 的映像。从此特定映像创建的任何容器将已启用 SSH。
 
-If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
+如果未作为映像定制的一部分启用 SSH，那么在执行 **startserver.sh** 或 **startanalytics.sh** 脚本时可使用 SSH\_ENABLE 和 SSH\_KEY 参数针对容器启用 SSH。您可以选择定制相关脚本 .properties 文件以包含关键内容。
 
-The container logs endpoint gets stdout logs with the given ID of the container instance.
+容器日志端点获取具有指定的容器实例标识的 stdout 日志。
 
-Example: `GET /containers/{container_id}/logs`
+示例：`GET /containers/{container_id}/logs`
 
-#### Accessing containers from the command line
+#### 从命令行访问容器
 {: #accessing-containers-from-the-command-line }
-You can access running {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} container instances from the command line to obtain logs and traces.
+您可以从命令行访问正在运行的 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 容器实例以获取日志和跟踪。
 
-1. Create an interactive terminal within the container instance by running the following command: `cf ic exec -it container_instance_id "bash"`.
-2. To locate the log files or traces, use the following command example:
+1. 通过运行以下命令在容器实例中创建交互式终端：`cf ic exec -it container_instance_id "bash"`。
+2. 要查找日志文件或跟踪，请使用以下命令示例：
 
    ```bash
    container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
    container_instance@root# vi messages.log
    ```
 
-3. To copy the logs to your local workstation, use the following command example:
+3. 要将日志复制到本地工作站，请使用以下命令示例：
 
    ```bash
    my_local_workstation# cf ic exec -it container_instance_id
    "cat" " /opt/ibm/wlp/usr/servers/mfp/messages.log" > /tmp/local_messages.log
    ```
 
-#### Accessing containers using SSH
+#### 使用 SSH 访问容器
 {: #accessing-containers-using-ssh }
-You can get the syslogs and Liberty logs by using Secure Shell (SSH) to access your {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers.
+您可以使用 Secure Shell (SSH) 来访问 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 容器以获取系统日志和 Liberty 日志。
 
-If you are running a container group, you can bind a public IP address to each instance and view the logs securely using SSH. To enable SSH, make sure to copy the SSH public key to the **mfp-server\server\ssh** folder before you run the **startservergroup.sh** script.
+如果正在运行容器组，那么可以将公共 IP 地址绑定到每个实例并使用 SSH 安全地查看日志。要启用 SSH，确保先将 SSH 公用密钥复制到 **mfp-server\server\ssh** 文件夹，然后再运行 **startservergroup.sh** 脚本。
 
-1. Make an SSH request to the container. Example: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
-2. Archive the log file location. Example:
+1. 向容器发出 SSH 请求。示例：`mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
+2. 归档日志文件位置。示例：
 
 ```bash
 container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-Download the log archive to your local workstation. Example: 
+将日志归档下载到本地工作站。示例： 
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

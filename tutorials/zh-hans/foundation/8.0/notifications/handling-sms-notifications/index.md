@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in client applications
-breadcrumb_title: Handling SMS Notifications
+title: 在客户机应用程序中处理 SMS 通知
+breadcrumb_title: 处理 SMS 通知
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Before iOS and Android Native-based or Cordova-based applications are able to receive and display incoming SMS notifications, the application must first be set-up, and APIs must be implemented.
+在 iOS 和 Android 基于本机或基于 Cordova 的应用程序可以接收和显示入局 SMS 通知之前，必须先设置该应用程序并且必须实现 API。
 
-Refer to the following topics to learn how to handle incoming SMS notifications in client applications: 
+请参阅以下主题，以了解如何在客户机应用程序中处理入局推送通知： 

@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Interactive notifications
+title: 交互式通知
 relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
+通过使用交互式通知，在通知到达时，用户可以在不打开应用程序的情况下执行相应操作。在交互式通知到达时，设备会显示操作按钮以及通知消息。
 
-Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+在装有 iOS V8 及更高版本的设备上支持交互式通知。如果将交互式通知发送到装有 iOS V8 之前版本的 iOS 设备，那么将不会显示通知操作。
 
-## Sending interactive push notification
+## 发送交互式推送通知
 {: #sending-interactive-push-notification }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+准备通知并发送通知。有关更多信息，请参阅[发送推送通知](../../sending-notifications)。
 
-You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+在 **{{ site.data.keys.mf_console }} → [您的应用程序] → 推送 → 发送通知 → iOS 定制设置**下，可对通知对象设置一个字符串来指示通知类别。根据该类别值，将显示相应的通知操作按钮。例如：
 
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
+![在 {{ site.data.keys.mf_console }} 中设置 iOS 交互式通知的类别](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova applications
+## 在 Cordova 应用程序中处理交互式推送通知
 {: #handling-interactive-push-notifications-in-cordova-applications }
-To receive interactive notifications, follow these steps:
+要接收交互式通知，请执行以下步骤：
 
-1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
+1. 在主 JavaScript 中，为交互式通知定义已注册的类别，然后将其传递到设备注册调用 `MFPPush.registerDevice`。
 
    ```javascript
    var options = {
@@ -74,7 +74,7 @@ To receive interactive notifications, follow these steps:
    }
    ```
 
-2. Pass the `options` object while registering device for push notifications.
+2. 在向推送通知服务注册设备时，传递 `options` 对象。
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -83,12 +83,12 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS applications
+## 在本机 iOS 应用程序中处理交互式推送通知
 {: #handling-interactive-push-notifications-in-native-ios-applications }
-Follow these steps to receive interactive notifications:
+请执行以下步骤以接收交互式通知：
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
-2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
+1. 为应用程序启用在后台接收远程通知的功能。如果某些操作支持在后台执行，那么需要执行此步骤。
+2. 为交互式通知定义已注册的类别，然后将其作为 options 对象传递到 `MFPPush.registerDevice`。
 
    ```swift
    //define categories for Interactive Push
@@ -112,4 +112,4 @@ Follow these steps to receive interactive notifications:
 
    // Register device
     MFPPush.sharedInstance().registerDevice(options as [NSObject : AnyObject], completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
-   ```
+```

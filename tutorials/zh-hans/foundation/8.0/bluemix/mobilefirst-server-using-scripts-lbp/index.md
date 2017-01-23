@@ -1,119 +1,119 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Server on Bluemix using Scripts for Liberty for Java
+title: 在 Bluemix 上使用针对 Liberty for Java 的脚本设置 MobileFirst Server
 breadcrumb_title: Liberty for Java
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps: 
+遵循以下指示信息在 Bluemix 上的 Liberty for Java 运行时上配置 {{ site.data.keys.mf_server }} 实例。（{{ site.data.keys.mf_analytics }} 实例只能在 IBM Containers 上运行。）为此您需要完成以下步骤： 
 
-* Setup your host computer with the required tools (Cloud Foundry CLI)
-* Setup your Bluemix account
-* Build a {{ site.data.keys.mf_server }} and push it to the Bluemix as a Cloud Foundry application.
+* 使用所需工具 (Cloud Foundry CLI) 设置主计算机
+* 设置 Bluemix 帐户
+* 构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。
 
-Finally, you will register your mobile apps as well as deploy your adapters.
+最后，注册移动应用程序并部署适配器。
 
-**Notes:**  
+**注：**  
 
-* Windows OS is currently not supported for running these scripts.  
-* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to Bluemix.
+* 当前不支持在 Windows 操作系统上运行这些脚本。  
+* {{ site.data.keys.mf_server }} 配置工具不能用于部署到 Bluemix。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
 
-* [Register an account at Bluemix](#register-an-account-at-bluemix)
-* [Set up your host machine](#set-up-your-host-machine)
-* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
-* [Adding Analytics server information](#adding-analytics-server-configuration-to-mobilefirst-server)
-* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
-* [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [在 Bluemix 上注册帐户](#register-an-account-at-bluemix)
+* [设置主机](#set-up-your-host-machine)
+* [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the-ibm-mfpf-container-8000-archive)
+* [添加分析服务器信息](#adding-analytics-server-configuration-to-mobilefirst-server)
+* [应用 {{ site.data.keys.mf_server }} 修订](#applying-mobilefirst-server-fixes)
+* [从 Bluemix 中除去数据库服务配置](#removing-the-database-service-configuration-from-bluemix)
 
-## Register an account at Bluemix
+## 在 Bluemix 上注册帐户
 {: #register-an-account-at-bluemix }
-If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
 
-### The Bluemix Dashboard
+### Bluemix 仪表板
 {: #the-bluemix-dashboard }
-After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name "dev". You can create multiple work areas/spaces if needed.
+在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。缺省情况下，此工作区命名为“dev”。如果需要，您可以创建多个工作区/空间。
 
-## Set up your host machine
+## 设置主机
 {: #set-up-your-host-machine }
-To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.  
-You can run the scripts using the macOS Terminal.app or a Linux bash shell.
+要管理 Bluemix Cloud Foundry 应用程序，需要安装 Cloud Foundry CLI。  
+您可以使用 macOS Terminal.app 或 Linux bash shell 来运行脚本。
 
-Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
+安装 [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195)。
 
-## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+## 下载 {{ site.data.keys.mf_bm_pkg_name }} 归档
 {: #download-the-ibm-mfpf-container-8000-archive}
-To set up {{ site.data.keys.product }} on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+要在 Liberty on Java 上设置 {{ site.data.keys.product }}，必须首先创建一个文件布局，此文件布局稍后将推送至 Bluemix。  
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">遵循本页面上的指示信息</a>下载 IBM Containers 归档的 {{ site.data.keys.mf_server }} 8.0（.zip 文件，搜索：*CNBL0EN*）。
 
-The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Cloud Foundry app (**mfpf-server-libertyapp**).
+此归档文件包含用于构建文件布局的文件（**dependencies** 和 **mfpf-libs**），用于构建和部署 {{ site.data.keys.mf_analytics }} Container 的文件 (**mfpf-analytics**) 以及用于配置 {{ site.data.keys.mf_server }} Cloud Foundry 应用程序的文件 (**mfpf-server-libertyapp**)。
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击以了解有关归档文件内容的更多信息</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
-                <h4>dependencies folder</h4>
-                <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
+                <img src="zip.png" alt="显示归档文件的文件系统结构的图像" style="float:right;width:570px"/>
+                <h4>dependencies 文件夹</h4>
+                <p>包含 {{ site.data.keys.product }} 运行时和 IBM Java JRE 8。</p>
                 
-                <h4>mfpf-libs folder</h4>
-                <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
+                <h4>mfpf-libs 文件夹</h4>
+                <p>包含 {{ site.data.keys.product_adj }} 产品组件库和 CLI。</p>
                 
-                <h4>mfpf-server-libertyapp folder</h4>
+                <h4>mfpf-server-libertyapp 文件夹</h4>
                 
                 <ul>
                    
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.product }} app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
-                    <li><b>usr</b> folder:
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。它还包含登录 Bluemix、构建 {{ site.data.keys.product }} 应用程序以推送至 BLuemix 和在 Bluemix 上运行服务器时需要运行的脚本。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>usr</b> 文件夹：
                         <ul>
-                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}.</li>
-                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }}. See the supported properties listed in these documentation topics:
+                            <li><b>config</b> 文件夹：包含 {{ site.data.keys.mf_server }} 所使用的服务器配置片段（密钥库、服务器属性、用户注册表）。</li>
+                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。必须在 ./usr/security 文件夹中引用列出的文件。</li>
+                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }} 的配置属性。请参阅以下文档主题中列出的受支持属性：
                                 <ul>
-                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for the {{ site.data.keys.product_adj }} runtime</a></li>
+                               <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service"> {{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime"> {{ site.data.keys.product_adj }} 运行时的 JNDI 属性的列表</a></li>
                                 </ul>
                             </li>
-                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
+                            <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
-                    <br/>
+                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
+		    <br /> 
                     </li>
 
-                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
+                    <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
                 
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
-            </div>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭本节</b></a>
+                                </div>
         </div>
     </div>
 </div>
 
 
-## Setting Up the {{ site.data.keys.mf_server }} 
+## 设置 {{ site.data.keys.mf_server }} 
 {: #setting-up-the-mobilefirst-server }
-You can choose to run the scripts interactively or by using the configuration files:
-A good place to start is to run the scripts interactively once, which will also record the arguments (**recorded-args**). You can later use the args files to run the scripts in a non interactive mode.
+您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：
+最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
 
-> **Note:** Passwords are not recorded and you will have to manually add the passwords to the argument files.
+> **注：**不记录密码，您将需要在自变量文件中手动添加密码。
 
-* Using the configuration files - run the scripts and pass the respective configuration file as an argument.
-* Interactively - run the scripts without any arguments.
+* 使用配置文件 - 运行脚本并传递相应的配置文件作为自变量。
+* 以交互方式 - 运行脚本，不使用任何自变量。
 
-If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
+如果选择以交互方式运行脚本，可以跳过配置，但是强烈建议至少查看并了解一下您将需要提供的自变量。
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
@@ -121,25 +121,25 @@ If you choose to run the scripts interactively, you can skip the configuration b
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">使用配置文件</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or post running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
+            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者在 <b>recorded-args</b> 文件夹中发布以交互方式运行脚本的命令。文件如下：<br/>
             
               <h4>initenv.properties</h4>
-              This file contains properties used to run the environment initialization.
+              此文件包含用于运行环境初始化的属性。
               <h4>prepareserverdbs.properties</h4>
-              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (Any plan that is marked OLTP or Transactional).<br/>
-              <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans is immediate for the plans marked "pay as you go". Make sure you pick one of the suitable plans like <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
-              After you have set up your dashDB instance, provide the required arguments.
+              {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库</i>实例</a>（标记为 OLTP 或 Transactional 的所有计划）。<br/>
+              <b>注：</b>dashDB Enterprise Transactional 计划的部署针对标记为“按使用付费”的计划立即生效。请确保选择合适的计划之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
+              在设置 dashDB 实例后，请提供所需自变量。
               
               <h4>prepareserver.properties</h4>
-              This file is used for the prepareserver.sh script. This prepares the server file layout and pushes it to Bluemix as a Cloud Foundry app.
+              此文件用于 prepareserver.sh 脚本。这可为服务器文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
               <h4>startserver.properties</h4>
-              This file configures tha runtime attributes of the server and starts is. It is strongly recomended that you use a minimum of 1024 MB (<b>SERVER_MEM=1024</b>) and 3 nodes for high availablilty (<b>INSTANCES=3</b>)
+              此文件用于配置服务器的运行时属性并启动服务器。强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
               
             </div>
         </div>
@@ -148,91 +148,91 @@ If you choose to run the scripts interactively, you can skip the configuration b
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">运行脚本</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+              <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
               <ol>
-                  <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                      Run the <b>initenv.sh</b> script to login to Bluemix. Run this for the Org and space where your dashDB service is bound:
+                  <li><b>initenv.sh - 登录 Bluemix </b><br />
+                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。针对 dashDB 服务绑定的组织和空间运行以下脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        您还可以在命令行上传递参数
                         
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        要了解受支持的所有参数及其文档，请运行帮助选项
                         
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserverdbs.sh - Prepare the {{ site.data.keys.mf_server }} database</b><br />
-                  The <b>prepareserverdbs.sh</b> script is used to configure your {{ site.data.keys.mf_server }} with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                  <li><b>prepareserverdbs.sh - 准备 {{ site.data.keys.mf_server }} 数据库</b><br />
+                  <b>prepareserverdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_server }}。在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供了 dashDB 服务的服务实例。请运行：
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        您还可以在命令行上传递参数
 
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        要了解受支持的所有参数及其文档，请运行帮助选项
 
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
                     
                   </li>
-                  <li><b>initenv.sh(Optional) – Logging in to Bluemix</b><br />
-                      This step is required only if you need to create your server in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
+                  <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
+                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }}</b><br />
-                    Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} and push it to  Bluemix as a Cloud Foundry application. To view all the Cloud Foundry applications and theur URLs in the logged in Org and space, run: <code>cf apps</code><br/>
+                  <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }}</b><br />
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登陆的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
                   
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        您还可以在命令行上传递参数
 
 {% highlight bash %}
 prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        要了解受支持的所有参数及其文档，请运行帮助选项
                         
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
                   
                   </li>
-                  <li><b>startserver.sh - Starting the server</b><br />
-                  The <b>startserver.sh</b> script is used to start the {{ site.data.keys.mf_server }} on Liberty for Java Cloud Foundry application. Run:</p> 
+                  <li><b>startserver.sh - 启动服务器</b><br />
+                  <b>startserver.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_server }}。请运行：</p> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        您还可以在命令行上传递参数
 
 {% highlight bash %}
 ./startserver.sh --name APP_NAME 
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        要了解受支持的所有参数及其文档，请运行帮助选项
                         
 {% highlight bash %}
 ./startserver.sh --help
@@ -246,21 +246,21 @@ prepareserver.sh --name APP_NAME
 </div>
 
 
-Launch the {{ site.data.keys.mf_console }} by loading the following URL: `http://APP_HOST.mybluemix.net/mfpconsole` (it may take a few moments).  
-Add the remote server by following the instructions in the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+装入以下 URL 以启动 {{ site.data.keys.mf_console }}：`http://APP_HOST.mybluemix.net/mfpconsole`（可能需要一些时间才能完成）  
+遵循[使用 {{site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }}工件](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)教程中的指示信息来添加远程服务器。  
 
-With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development.
+通过使用 IBM Bluemixmay 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。
 
-#### Applying changes
+#### 应用更改
 {: #applying-changes }
-You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments. 
+您可能需要在部署服务器后对服务器布局应用更改，例如：要在 **/usr/config/mfpfproperties.xml** 中更新分析 URL。请完成更改，然后使用相同的自变量集重新运行以下脚本。 
 
 1. ./prepareserver.sh 
 2. ./startserver.sh 
 
-### Adding analytics server configuration to {{ site.data.keys.mf_server }}
+### 将分析服务器配置添加到 {{ site.data.keys.mf_server }}
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
-If you have setup a Analytics server and want to connect it to this {{ site.data.keys.mf_server }} then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with `<>` with correct values from yur deployment.
+如果已设置分析服务器并且想要将其连接到此 {{ site.data.keys.mf_server }}，那么请按以下指定的方式编辑文件夹 **package_root/mfpf-server-libertyapp/usr/config** 中的 **mfpfproperties.xml** 文件。将以 `<>` 标记的令牌替换为来自部署的正确值。
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -275,24 +275,24 @@ If you have setup a Analytics server and want to connect it to this {{ site.data
 <jndiEntry jndiName="${env.MFPF_PUSH_ROOT}/mfp.push.analytics.password" value='"<AnalyticsPassword>"'/>
 ```
 
-## Applying {{ site.data.keys.mf_server }} Fixes
+## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
-Interim fixes for the {{ site.data.keys.mf_server }} on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the 
-**package_root/mfpf-server-libertyapp/usr** folders.
+Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
+应用临时修订之前，请备份现有的配置文件。配置文件位于 
+**package_root/mfpf-server-libertyapp/usr** 文件夹中。
 
-1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
-2. Restore your backed-up configuration files into the  **/mfpf-server-libertyapp/usr** folders, overwriting the newly installed configuration files.
+1. 下载临时修订归档并将内容解压缩到现有安装文件夹，覆盖现有文件。
+2. 将备份配置文件复原至 **/mfpf-server-libertyapp/usr** 文件夹，覆盖新安装的配置文件。
 
-You can now build and deploy the updatd server.
+现在，您可以构建并部署更新后的服务器。
 
-## Removing the database service configuration from Bluemix	
+## 从 Bluemix 中除去数据库服务配置	
 {: #removing-the-database-service-configuration-from-bluemix }
-If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the {{ site.data.keys.mf_server }}.
+如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。此脚本还会针对 {{ site.data.keys.mf_server }} 创建数据库模式。
 
-To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
+要从 Bluemix 中除去数据库服务配置，请使用 Bluemix 仪表板执行以下过程。
 
-1. From the Bluemix dashboard, select the dashDB service you have used. Choose the dashDB service name that you had provided as parameter while running the **prepareserverdbs.sh** script.
-2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
-3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+1. 从 Bluemix 仪表板，选择使用的 dashDB 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
+2. 启动 dashDB 控制台以使用选中的 dashDB 服务实例的模式和数据库对象。
+3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
+4. 在仔细检查每个模式名称以及其下的对象后，删除模式。这将从 Bluemix 中除去数据库配置。

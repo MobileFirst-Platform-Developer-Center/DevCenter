@@ -1,195 +1,199 @@
 ---
 layout: tutorial
-title: Administrating applications through Terminal
-breadcrumb_title: Administrating using terminal
+title: 通过终端管理应用程序
+breadcrumb_title: 使用终端管理
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
+可以通过 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }}    应用程序。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [与其他设备比较](#comparison-with-other-facilities)
+* [先决条件](#prerequisites)
 
-## Comparison with other facilities
+## 与其他设备比较
 {: #comparison-with-other-facilities }
-You can run administration operations with {{ site.data.keys.product_full }} in the following ways:
+可以通过以下方式对 {{ site.data.keys.product_full }}    运行管理操作：
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The mfpadm Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* {{ site.data.keys.mf_console }}   ，属于交互式。
+* mfpadm Ant 任务。
+* **mfpadm** 程序。
+* {{ site.data.keys.product_adj }}    管理 REST 服务。
 
-The **mfpadm** Ant task, mfpadm program, and REST services are useful for automated or unattended execution of operations, such as the following use cases:
+**mfpadm** Ant 任务、mfpadm 程序和 REST 服务对于操作的自动执行或无人照管执行很有用，如以下用例：
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+* 消除操作员在重复操作中引入的错误，或
+* 在操作员正常工作时间以外操作，或
+* 使用与测试或预生产服务器相同的设置来配置生产服务器。
 
-The **mfpadm** program and the mfpadm Ant task are simpler to use and have better error reporting than the REST services. The advantage of the mfpadm program over the mfpadm Ant task is that it is easier to integrate when integration with operating system commands is already available. Moreover, it is more suitable to interactive use.
+相比 REST 服务，**mfpadm** 程序和 mfpadm Ant 任务更易于使用且具有更强的错误报告功能。mfpadm 程序相对于 mfpadm Ant 任务的优势在于，当与操作系统命令的集成已经可用时，它更易于集成。此外，它更适合以交互方式使用。
 
-## Prerequisites
+## 先决条件
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
+**mfpadm** 工具可通过 {{ site.data.keys.mf_server }}    安装程序进行安装。在本页的其余部分中，**product\_install\_dir** 表示 {{ site.data.keys.mf_server }}    安装程序的安装目录。
 
-The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** directory as a set of scripts:
+在 **product\_install\_dir/shortcuts/** 目录中以一组脚本的形式提供 **mfpadm** 命令：
 
-* mfpadm for UNIX / Linux
-* mfpadm.bat for Windows
+* mfpadm（对于 UNIX/Linux）
+* mfpadm.bat（对于 Windows）
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable **JAVA_HOME** is set, the scripts accept it.  
-To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/** directory into your PATH environment variable, or reference its absolute file name in each call.
+这些脚本能够运行，这意味着不需要特定的环境变量。如果设置了环境变量 **JAVA_HOME**，那么脚本将接受该环境变量。  
+要使用 **mfpadm** 程序，请将 **product\_install\_dir/shortcuts/** 目录放入 PATH 环境变量中，或在每次调用中引用其绝对文件名。
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+有关运行 {{ site.data.keys.mf_server }}    安装程序的更多信息，请参阅[运行 IBM Installation Manager](../../installation-configuration/production/installation-manager/)。
 
-#### Jump to
+#### 跳转至
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** program](#calling-the-mfpadm-program)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [调用 **mfpadm** 程序](#calling-the-mfpadm-program)
+* [常规配置命令](#commands-for-general-configuration)
+* [适配器命令](#commands-for-adapters)
+* [应用程序命令](#commands-for-apps)
+* [设备命令](#commands-for-devices)
+* [故障诊断命令](#commands-for-troubleshooting)
 
 
-### Calling the **mfpadm** program
+### 调用 **mfpadm** 程序
 {: #calling-the-mfpadm-program }
-You can use the **mfpadm** program to administer {{ site.data.keys.product_adj }} applications.
+可以使用 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }}    应用程序。
 
-#### Syntax
+#### 语法
 {: #syntax }
-Call the mfpadm program as follows:
+调用 mfpadm 程序，如下所示：
 
 ```bash
 mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 ```
 
-The **mfpadm** program has the following options:
+**mfpadm** 程序具有以下选项：
 
-| Option	| Type | Description | Required | Default | 
+
+| 选项	| 类型 | 描述 | 必需 | 缺省值 | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | | 
-| --secure	 | Boolean | Whether to avoid operations with security risks | No | true | 
-| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
-| --passwordfile | file | File containing the password for the user | No | 
-| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
-| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
-| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No | 
-| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
-| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 | 
-| --verbose	     | Detailed output | No	| |  
+| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }}    web 应用程序的基本 URL | 是 | | 
+| --secure	 | 布尔值 | 是否避免存在安全风险的操作 | 否 | true | 
+| --user	 | 名称 | 用于访问 {{ site.data.keys.product_adj }}    Administration Services 的用户名 | 是 |  | 	 
+| --passwordfile | 文件 | 包含用户密码的文件 | 否 | 
+| --timeout	     | 数字  | 整个 REST 服务访问超时，以秒为单位 | 否 | 	 
+| --connect-timeout | 数字 | 建立网络连接超时，以秒为单位 | 否 |
+| --socket-timeout  | 数字 | 检测网络连接断开超时，以秒为单位 | 否 | 
+| --connection-request-timeout | 数字 | 从连接请求池获取条目超时，以秒为单位 | 否 |
+| --lock-timeout | 数字 | 获取锁定时的超时，以秒为单位 | 否 | 2 | 
+| --verbose	     | 详细的输出 | 否	| |  
 
 **url**  
-The URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use this URL:
+URL 最好使用 HTTPS 协议。例如，如果使用缺省端口和上下文根，请使用此 URL：
 
-* For WebSphere  Application Server: https://server:9443/mfpadmin
-* For Tomcat: https://server:8443/mfpadmin
+* 对于 WebSphere Application Server：https://server:9443/mfpadmin
+* 对于 Tomcat：https://server:8443/mfpadmin
 
 **secure**  
-The `--secure` option is set to true by default. Setting it to `--secure=false` might have the following effects:
+缺省情况下，`--secure` 选项设置为 true。将其设置为 `--secure=false` 可能会有以下影响：
 
-* The user and password might be transmitted in an unsecured way (possibly even through unencrypted HTTP).
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name from the server's host name.
+* 用户和密码可能以一种不安全的方式（甚至可能通过未加密的 HTTP）传送。
+* 接受服务器的 SSL 证书，即使是自签名证书或为不同于服务器主机名的其他主机名创建的证书也是如此。
 
 **password**  
-Specify the password in a separate file that you pass in the `--passwordfile` option. In interactive mode (see Interactive mode), you can alternatively specify the password interactively. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing these passwords. To secure the password, before you enter the password into a file, you must remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+在独立文件（通过 `--passwordfile` 选项传递）中指定密码。
+在交互方式（请参阅“交互方式”）下，您还可以通过交互方式指定密码。密码是敏感信息，因此需要保护。
+必须防止相同计算机上的其他用户知道这些密码。为保护密码，在将密码输入文件之前，必须除去除您之外的其他用户对此文件的读许可权。
+例如，可以使用以下某个命令：
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* 在 UNIX 上：`chmod 600 adminpassword.txt`
+* 在 Windows 上：`cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-For this reason, do not pass the password to a process through a command-line argument. On many operating systems, other users can inspect the command-line arguments of your processes.
+出于此原因，不要通过命令行参数向进程传递密码。在许多操作系统上，其他用户可以查看您的进程的命令行参数。
 
-The mfpadm calls contains a command. The following commands are supported.
 
-| Command                           | Description | 
+mfpadm 调用包含一个命令。支持以下命令。
+
+| 命令                           | 描述 | 
 |-----------------------------------|-------------|
-| show info	| Shows user and configuration information. | 
-| show global-config | Shows global configuration information. | 
-| show diagnostics | Shows diagnostics information. | 
-| show versions	| Shows version information. | 
-| unlock | Releases the general-purpose lock. | 
-| list runtimes [--in-database] | Lists the runtimes. | 
-| show runtime [runtime-name] | Shows information about a runtime. | 
-| delete runtime [runtime-name] condition | Deletes a runtime. | 
-| show user-config [runtime-name] | Shows the user configuration of a runtime. | 
-| set user-config [runtime-name] file | Specifies the user configuration of a runtime. | 
-| set user-config [runtime-name] property = value | Specifies a property in the user configuration of a runtime. | 
-| show confidential-clients [runtime-name] | Shows the configuration of the confidential clients of a runtime. | 
-| set confidential-clients [runtime-name] file | Specifies the configuration of the confidential clients of a runtime. | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Specifies a rule for the configuration of the confidential clients of a runtime. | 
-| list adapters [runtime-name] | Lists the adapters. | 
-| deploy adapter [runtime-name] property = value | Deploys an adapter.| 
-| show adapter [runtime-name] adapter-name | Shows information about an adapter.| 
-| delete adapter [runtime-name] adapter-name | Deletes an adapter.| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| Get the binary data of an adapter.| 
-| list apps [runtime-name] | Lists the apps.| 
-| deploy app [runtime-name] file | Deploys an app.| 
-| show app [runtime-name] app-name | Shows information about an app.| 
-| delete app [runtime-name] app-name | Deletes an app. | 
-| show app version [runtime-name] app-name environment version | Shows information about an app version. |
-| delete app version [runtime-name] app-name environment version | Deletes a version of an app. |
-| app [runtime-name] app-name show license-config | Shows the token license configuration of an app. |
-| app [runtime-name] app-name set license-config app-type license-type | Specifies the token license configuration for an app. |
-| app [runtime-name] app-name delete license-config | Removes the token license configuration for an app. | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Gets the descriptor of an app version. | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | Gets the web resources of an app version. | 
-| app version [runtime-name] app-name environment version set web-resources file | Specifies the web resources of an app version. | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Gets the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | Specifies the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version delete authenticity-data | Deletes the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version show user-config | Shows the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config file | Specifies the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config property = value | Specifies a property in the user configuration of an app version. |
-| list devices [runtime-name] [--query query] | Lists the devices. |
-| remove device [runtime-name] id | Removes a device. |
-| device [runtime-name] id set status new-status | Changes the status of a device. |
-| device [runtime-name] id set appstatus app-name new-status | Changes the status of a device for an app. |
-| list farm-members [runtime-name] | Lists the servers that are members of the server farm. |
-| remove farm-member [runtime-name] server-id | Removes a server from the list of farm members. |
+| show info	| 显示用户和配置信息。 | 
+| show global-config | 显示全局配置信息。 | 
+| show diagnostics | 显示诊断信息。 | 
+| show versions	| 显示版本信息。 | 
+| unlock | 释放通用锁定。 | 
+| list runtimes [--in-database] | 列出运行时。 | 
+| show runtime [runtime-name] | 显示有关运行时的信息。 | 
+| delete runtime [runtime-name] condition | 删除运行时。 | 
+| show user-config [runtime-name] | 显示运行时的用户配置。 | 
+| set user-config [runtime-name] file | 指定运行时的用户配置。 | 
+| set user-config [runtime-name] property = value | 指定运行时的用户配置中的属性。 | 
+| show confidential-clients [runtime-name] | 显示运行时的保密客户机配置。 | 
+| set confidential-clients [runtime-name] file | 指定运行时的保密客户机配置。 | 
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | 指定运行时的保密客户机配置规则。 | 
+| list adapters [runtime-name] | 列出适配器。 | 
+| deploy adapter [runtime-name] property = value | 部署适配器。| 
+| show adapter [runtime-name] adapter-name | 显示有关适配器的信息。| 
+| delete adapter [runtime-name] adapter-name | 删除适配器。| 
+| adapter [runtime-name] adapter-name get binary [> tofile]	| 获取适配器的二进制数据。| 
+| list apps [runtime-name] | 列出应用程序。| 
+| deploy app [runtime-name] file | 部署应用程序。| 
+| show app [runtime-name] app-name | 显示有关应用程序的信息。| 
+| delete app [runtime-name] app-name | 删除应用程序。 | 
+| show app version [runtime-name] app-name environment version | 显示有关应用程序版本的信息。 |
+| delete app version [runtime-name] app-name environment version | 删除应用程序的版本。 |
+| app [runtime-name] app-name show license-config | 显示应用程序的令牌许可证配置。 |
+| app [runtime-name] app-name set license-config app-type license-type | 指定应用程序的令牌许可证配置。 |
+| app [runtime-name] app-name delete license-config | 除去应用程序的令牌许可证配置。 | 
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| 获取应用程序版本的描述符。 | 
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | 获取应用程序版本的 Web 资源。 | 
+| app version [runtime-name] app-name environment version set web-resources file | 指定应用程序版本的 Web 资源。 | 
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | 获取应用程序版本的真实性数据。 | 
+| app version [runtime-name] app-name environment version set authenticity-data [file] | 指定应用程序版本的真实性数据。 | 
+| app version [runtime-name] app-name environment version delete authenticity-data | 删除应用程序版本的真实性数据。 | 
+| app version [runtime-name] app-name environment version show user-config | 显示应用程序版本的用户配置。 | 
+| app version [runtime-name] app-name environment version set user-config file | 指定应用程序版本的用户配置。 | 
+| app version [runtime-name] app-name environment version set user-config property = value | 指定应用程序版本的用户配置中的属性。 |
+| list devices [runtime-name][--query query] | 列出设备。 |
+| remove device [runtime-name] id | 除去设备。 |
+| device [runtime-name] id set status new-status | 更改设备状态。 |
+| device [runtime-name] id set appstatus app-name new-status | 更改应用程序的设备状态。 |
+| list farm-members [runtime-name] | 列出作为服务器场成员的服务器。 |
+| remove farm-member [runtime-name] server-id | 从场成员列表中除去服务器。 |
 
-#### Interactive mode
+#### 交互方式
 {: #interactive-mode }
-Alternatively, you can also call **mfpadm** without any command in the command line. You can then enter commands interactively, one per line.
-The `exit` command, or end-of-file on standard input (**Ctrl-D** on UNIX terminals) terminates mfpadm.
+另外，也可以调用 **mfpadm**，而不在命令行中指定任何命令。
+然后可以交互式输入命令，每行一个命令。
+`exit` 命令或标准输入上的文件结束符（在 UNIX 终端上为 **Ctrl-D**）可以终止 mfpadm。
 
-`Help` commands are also available in this mode. For example:
+`Help` 命令在此方式中也可用。例如：
 
 * help
 * help show versions
 * help device
 * help device set status
 
-#### Command history in interactive mode
+#### 交互方式下的命令历史记录
 {: #command-history-in-interactive-mode }
-On some operating systems, the interactive mfpadm command remembers the command history. With the command history, you can select a previous command, using the arrow-up and arrow-down keys, edit it, and execute it.
+在某些操作系统上，交互式 mfpadm 命令会记住命令历史记录。通过命令历史记录，您可以使用向上箭头或向下箭头键选择之前的命令、编辑并加以执行。
 
-**On Linux**  
-The command history is enabled in terminal emulator windows if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+**在 Linux 上**  
+如果在 PATH 中已安装并找到 rlwrap 程序包，那么表示在终端仿真器窗口中已启用命令历史记录。要安装 rlwrap 程序包：
 
-* On Red Hat Linux: `sudo yum install rlwrap`
-* On SUSE Linux: `sudo zypper install rlwrap`
-* On Ubuntu: `sudo apt-get install rlwrap`
+* 在 Red Hat Linux 上：`sudo yum install rlwrap`
+* 在 SUSE Linux 上：`sudo zypper install rlwrap`
+* 在 Ubuntu 上：`sudo apt-get install rlwrap` **在 OS X 上**  
+如果在 PATH 中已安装并找到 rlwrap 程序包，那么表示在终端程序中已启用命令历史记录。要安装 rlwrap 程序包：
 
-**On OS X**  
-The command history is enabled in the Terminal program if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+1. 使用 [www.macports.org](http://www.macports.org) 中的安装程序安装 MacPorts。
+2. 运行命令：`sudo /opt/local/bin/port install rlwrap`
+3. 然后，要在 PATH 中使用 rlwrap 程序，请在兼容 Bourne 的 shell 中使用该命令：`PATH=/opt/local/bin:$PATH`
 
-1. Install MacPorts by using the installer from [www.macports.org](http://www.macports.org).
-2. Run the command: `sudo /opt/local/bin/port install rlwrap`
-3. Then, to make the rlwrap program available in PATH, use this command in a Bourne-compatible shell: `PATH=/opt/local/bin:$PATH`
+**在 Windows 上**  
+在 cmd.exe 控制台窗口中已启用命令历史记录。
 
-**On Windows**  
-The command history is enabled in cmd.exe console windows.
+在未运行或不需要 rlwrap 的环境中，您可以通过选项 `--no-readline` 将其禁用。
 
-In environments where rlwrap does not work or is not required, you can disable its use through the option `--no-readline`.
-
-#### The configuration file
+#### 配置文件
 {: #the-configuration-file }
-You can also store the options in a configuration file, instead of passing them on the command line at every call. When a configuration file is present and the option –configfile=file is specified, you can omit the following options:
+也可以在配置文件中存储选项，而不是每次调用时都在命令行上传递这些选项。当存在配置文件并且指定了选项 –configfile=file 时，可以省略以下选项：
 
 * --url=URL
 * --secure=boolean
@@ -202,14 +206,14 @@ You can also store the options in a configuration file, instead of passing them 
 * --lock-timeout=seconds
 * runtime-name
 
-Use these commands to store these values in the configuration file.
+使用这些命令，将这些值存储在配置文件中。
 
-| Command | Comment |
+| 命令 | 注释 |
 |---------|---------| 
 | mfpadm [--configfile=file] config url URL | | 
 | mfpadm [--configfile=file] config secure boolean | | 
 | mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | Prompts for the password. | 
+| mfpadm [--configfile=file] config password | 提示输入密码。 | 
 | mfpadm [--configfile=file] config timeout seconds | | 
 | mfpadm [--configfile=file] config connect-timeout seconds | | 
 | mfpadm [--configfile=file] config socket-timeout seconds | | 
@@ -217,118 +221,123 @@ Use these commands to store these values in the configuration file.
 | mfpadm [--configfile=file] config lock-timeout seconds | | 
 | mfpadm [--configfile=file] config runtime runtime-name | | 
 
-Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
+使用以下命令可列出配置文件中存储的值：`mfpadm [--configfile=file] config`
 
-The configuration file is a text file, in the encoding of the current locale, in Java **.properties** syntax. These are the default configuration files:
+配置文件是文本文件，采用当前语言环境编码和 Java **.properties** 语法。以下是缺省配置文件：
 
-* UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* UNIX：**${HOME}/.mfpadm.config**
+* Windows：**{{ site.data.keys.prod_server_data_dir_win }}  \mfpadm.config**
 
-**Note:** When you do not specify a `--configfile` option, the default configuration file is used only in interactive mode and in config commands. For noninteractive use of the other commands, you must explicitly designate the configuration file if you want to use one.
+**注：**如果未指定 `--configfile` 选项，那么缺省配置文件只用于交互方式和 config 命令。对于其他命令的非交互方式使用，必须显式指定要使用的配置文件。
 
-> **Important:** The password is stored in an obfuscated format that hides the password from an occasional glimpse. However, this obfuscation provides no security.
-
-#### Generic options
+> **要点：**密码以模糊格式存储，可防止密码被窥视。然而，该加密并不安全。
+#### 一般选项
 {: #generic-options }
-There are also the usual generic options:
+有一些常用的一般选项：
 
-| Option	| Description | 
+
+| 选项	| 描述 | 
 |-----------|-------------|
-| --help	| Shows some usage help | 
-| --version	| Shows the version | 
+| --help	| 显示一些用法帮助 | 
+| --version	| 显示版本 | 
 
-#### XML format
+#### XML 格式
 {: #xml-format }
-The commands that receive an XML response from the server verify that this response complies with the specific schema. You can disable this check by specifying `--xmlvalidation=none`.
+从服务器接收 XML 响应的命令将验证此响应是否符合特定的模式。通过指定 `--xmlvalidation=none`，可以禁用此检查。
 
-#### Output character set
+#### 输出字符集
 {: #output-character-set }
-Normal output that is produced by the mfpadm program is encoded in the encoding format of the current locale. On Windows, this encoding format is "ANSI code page". The effects are as follows:
+mfpadm 程序生成的正常输出采用当前语言环境的编码格式进行编码。在 Windows 上，此编码格式为“ANSI 代码页”。影响如下所示：
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in "OEM code page".
+* 此字符集外的字符将在输出时转换为问号。
+* 输出发送至 Windows 命令提示符窗口 (cmd.exe) 时，非 ASCII 字符将无法正确显示，因为此类窗口假定字符采用“OEM 代码页”编码。
 
-To work around this limitation:
+要解决此限制：
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This format is the default locale on Red Hat Linux and OS X. Many other operating systems have a `en_US.UTF-8` locale.
-* Or use the mfpadm Ant task, with attribute `output="some file name"` to redirect the output of a command to a file.
+* 在除 Windows 之外的操作系统上，使用其编码为 UTF-8 的语言环境。此格式为 Red Hat Linux 和 OS X 上的缺省语言环境。其他多个操作系统采用 `en_US.UTF-8` 语言环境。
+* 或者将 mfpadm Ant 任务与属性 `output="some file name"` 配合使用，以将命令输出重定向到某个文件。
 
-### Commands for general configuration
+### 常规配置命令
 {: #commands-for-general-configuration }
-When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+在调用 **mfpadm** 程序时，可以包含各种用于访问 IBM {{ site.data.keys.mf_server }}    或运行时全局配置的命令。
 
-#### The `show global-config` command
+#### `show global-config` 命令
 {: #the-show-global-config-command }
-The `show global-config` command shows the global configuration.
+`show
+global-config` 命令可显示全局配置。
 
-Syntax: `show global-config`
+语法：`show global-config`
 
-It takes the following options:
+它采用以下选项：
 
-| Argument | Description |
+| 参数 | 描述 |
 |----------|-------------|
-| --xml    | Produces XML output instead of tabular output. | 
+| --xml    | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**  
+**示例**  
 
 ```bash
 show global-config
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+此命令基于[全局配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `show user-config` command
+<br /> 
+#### `show user-config` 命令
 {: #the-show-user-config-command }
-The `show user-config` command shows the user configuration of a runtime.
+`show
+user-config` 命令可显示运行时的用户配置。
 
-Syntax: `show user-config [--xml] [runtime-name]`
+语法：`show user-config [--xml][runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description |
+
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 运行时的名称。 |
 
-The `show user-config` command takes the following options after the verb.
+`show user-config` 命令在动词后采用以下选项。
 
-| Argument | Description | Required | Default | 
+| 参数 | 描述 | 必需 | 缺省值 | 
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output | 
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 | 
 
-**Example**  
+**示例**  
 
 ```bash
 show user-config mfp
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+此命令基于[运行时配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `set user-config` command
+<br /> 
+#### `set user-config` 命令
 {: #the-set-user-config-command }
-The `set user-config` command specifies the user configuration of a runtime or a single property among this configuration.
+`set
+user-config` 命令可指定运行时的用户配置或此配置中的单个属性。
 
-Syntax for the entire configuration: `set user-config [runtime-name] file`
+针对整个配置的语法：`set user-config [runtime-name] file`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Attribute | Description | 
+
+| 属性 | 描述 | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | 运行时的名称。 | 
+| file | 包含新配置的 JSON 或 XML 文件的名称。 | 
 
-Syntax for a single property: `set user-config [runtime-name] property = value`
+针对单个属性的语法：`set user-config [runtime-name] property = value`
 
-The `set user-config` command takes the following arguments:
+`set user-config` 命令采用以下参数：
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
-| value | The value of the property. | 
+| runtime-name | 运行时的名称。 | 
+| property | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 |
+| value | 属性的值。 | 
 
-**Examples**  
+**示例**  
 
 ```bash
 set user-config mfp myconfig.json
@@ -338,259 +347,268 @@ set user-config mfp myconfig.json
 set user-config mfp timeout = 240
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+此命令基于[运行时配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 服务。
 
-<br/>
-#### The `show confidential-clients` command
+<br /> 
+#### `show confidential-clients` 命令
 {: #the-show-confidential-clients-command }
-The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`show confidential-clients` 命令显示可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
 
-Syntax: `show confidential-clients [--xml] [runtime-name]`
+语法：`show confidential-clients [--xml][runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Attribute | Description |
+
+| 属性 | 描述 |
 |-----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 运行时的名称。 |
 
-The `show confidential-clients` command takes the following options after the verb.
+`show confidential-clients` 命令在动词后采用以下选项。
 
-| Argument | Description | Required | Default |
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
 
-**Example**
+**示例**
 
 ```bash
 show confidential-clients --xml mfp
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST service.
+此命令基于[保密客户机 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST 服务。
 
-<br/>
-#### The `set confidential-clients` command
+<br /> 
+#### `set confidential-clients` 命令
 {: #the-set-confidential-clients-command }
-The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`set confidential-clients` 命令指定可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
 
-Syntax: `set confidential-clients [runtime-name] file`
+语法：`set confidential-clients [runtime-name] file`
 
-Its takes the following arguments:
+它采用以下参数：
 
-| Attribute | Description | 
+| 属性 | 描述 | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file	Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | 运行时的名称。 | 
+| file	| 包含新配置的 JSON 或 XML 文件的名称。 | 
 
-**Example**
+**示例**
 
 ```bash
 set confidential-clients mfp clients.xml
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+此命令基于[保密客户机 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 服务。
 
-<br/>
-#### The `set confidential-clients-rule` command
+<br /> 
+#### `set confidential-clients-rule` 命令
 {: #the-set-confidential-clients-rule-command }
-The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`set confidential-clients-rule` 命令指定可以访问运行时的保密客户机的配置中的规则。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
 
-Syntax: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
+语法：`set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Attribute	| Description |
+
+| 属性	| 描述 |
 |-----------|-------------|
-| runtime | Name of the runtime. | 
-| id | The identifier of the rule. | 
-| displayName | The display name of the rule. | 
-| secret | The secret of the rule. | 
-| allowedScope | The scope of the rule. A space-separated list of tokens. Use double-quotes to pass a list of two or more tokens. | 
+| runtime | 运行时的名称。 | 
+| id | 规则的标识。 | 
+| displayName | 规则的显示名称。 | 
+| secret | 规则的密钥。 | 
+| allowedScope | 规则的作用域。空格分隔的令牌列表。使用双引号来传递由两个或更多个令牌组成的列表。 | 
 
-**Example**
+**示例**
 
 ```bash
 set confidential-clients-rule mfp push Push lOa74Wxs "**"
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+此命令基于[保密客户机 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 服务。
 
-### Commands for adapters
+### 适配器命令
 {: #commands-for-adapters }
-When you invoke the **mfpadm** program, you can include various commands for adapters.
+在调用 **mfpadm** 程序时，可以包含各种适配器命令。
 
-### The `list adapters` command
+### `list adapters` 命令
 {: #the-list-adapters-command }
-The `list adapters` command returns a list of the adapters that are deployed for a runtime.
+`list adapters` 命令返回为运行时部署的适配器列表。
 
-Syntax: `list adapters [runtime-name]`
+语法：`list adapters [runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 运行时的名称。 |
 
-The `list adapters` command takes the following options after the object.
+`list adapters` 命令在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**  
+**示例**  
 
 ```xml
 list adapters mfp
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 服务。
 
-<br/>
-#### The `deploy adapter` command
+<br /> 
+#### `deploy adapter` 命令
 {: #the-deploy-adapter-command }
-The `deploy adapter` command deploys an adapter in a runtime.
+`deploy adapter` 命令在运行时中部署适配器。
 
-Syntax: `deploy adapter [runtime-name] file`
+语法：`deploy adapter [runtime-name] file`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | Binary adapter file (.adapter) |
+| runtime-name | 运行时的名称。 |
+| file | 二进制适配器文件 (.adapter) |
 
-**Example**
+**示例**
 
 ```bash
 deploy adapter mfp MyAdapter.adapter
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+此命令基于[适配器 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 服务。
 
-<br/>
-#### The `show adapter` command
+
+<br /> 
+#### `show adapter` 命令
 {: #the-show-adapter-command }
-The `show adapter` command shows details about an adapter.
+`show adapter` 命令显示有关适配器的详细信息。
 
-Syntax: `show adapter [runtime-name] adapter-name`
+语法：`show adapter [runtime-name] adapter-name`
 
-It takes the following arguments.
+它采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| adapter-name | Name of an adapter |
+| runtime-name | 运行时的名称。 |
+| adapter-name | 适配器的名称 |
 
-The `show adapter` command takes the following options after the object.
+`show adapter` 命令在对象后采用以下选项。
 
-| Option | Description |
+| 选项 | 描述 |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
-**Example**
+**示例**
 
 ```bash
 show adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 服务。
 
-<br/>
-#### The `delete adapter` command
+
+<br /> 
+#### `delete adapter` 命令
 {: #the-delete-adapter-command }
-The `delete adapter` command removes (undeploys) an adapter from a runtime.
+`delete adapter` 命令从运行时中除去（取消部署）适配器。
 
-Syntax: `delete adapter [runtime-name] adapter-name`
+语法：`delete adapter [runtime-name] adapter-name`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description |
+
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | 运行时的名称。 | 
+| adapter-name | 适配器的名称。 | 
 
-**Example**
+**示例**
 
 ```bash
 delete adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST service.
+此命令基于[适配器 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST 服务。
 
-<br/>
-#### The `adapter` command prefix
+
+<br /> 
+#### `adapter` 命令前缀
 {: #the-adapter-command-prefix }
-The `adapter` command prefix takes the following arguments before the verb.
+`adapter` 命令前缀在动词前采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | 运行时的名称。 | 
+| adapter-name | 适配器的名称。 | 
 
-<br/>
-#### The `adapter get binary` command
+<br /> 
+#### `adapter get binary` 命令
 {: #the-adapter-get-binary-command }
-The `adapter get binary` command returns the binary adapter file.
+`adapter get binary` 命令返回二进制适配器文件。
 
-Syntax: `adapter [runtime-name] adapter-name get binary [> tofile]`
+语法：`adapter [runtime-name] adapter-name get binary [> tofile]`
 
-It takes the following options after the verb.
+它在动词后采用以下选项。
 
-| Option | Description | Required | Default | 
+| 选项 | 描述 | 必需 | 缺省值 | 
 |--------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output |
+| > tofile | 输出文件的名称。 | 否 | 标准输出 |
 
-**Example**
+**示例**
 
 ```bash
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+此命令基于[
+导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
-<br/>
-#### The `adapter show user-config` command
+<br /> 
+#### `adapter show user-config` 命令
 {: #the-adapter-show-user-config-command }
-The `adapter show user-config` command shows the user configuration of the adapter.
+`adapter show user-config` 命令可显示适配器的用户配置。
 
-Syntax: `adapter [runtime-name] adapter-name show user-config [--xml]`
+语法：`adapter [runtime-name] adapter-name show user-config [--xml]`
 
-It takes the following options after the verb.
+它在动词后采用以下选项。
 
-| Option | Description |
+| 选项 | 描述 |
 |--------|-------------|
-| --xml | Produces output in XML format instead of JSON format. | 
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 
 
-**Example**
+**示例**
 
 ```bash
 adapter mfp MyAdapter show user-config
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+此命令基于[适配器配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 服务。
 
-<br/>
-#### The `adapter set user-config` command
+<br /> 
+#### `adapter set user-config` 命令
 {: #the-adapter-set-user-config-command }
-The `adapter set user-config` command specifies the user configuration of the adapter or a single property within this configuration.
+`adapter set user-config` 命令可指定适配器的用户配置或此配置中的单个属性。
 
-Syntax for the entire configuration: `adapter [runtime-name] adapter-name set user-config file`
+针对整个配置的语法：`adapter [runtime-name] adapter-name set user-config file`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. |
+| file | 包含新配置的 JSON 或 XML 文件的名称。 |
 
-Syntax for a single property: `adapter [runtime-name] adapter-name set user-config property = value`
+针对单个属性的语法：`adapter [runtime-name] adapter-name set user-config property = value`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Option | Description |
+| 选项 | 描述 |
 |--------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 | 
+| value | 属性的值。 | 
 
-**Examples**
+**示例**
 
 ```bash
 adapter mfp MyAdapter set user-config myconfig.json
@@ -600,325 +618,345 @@ adapter mfp MyAdapter set user-config myconfig.json
 adapter mfp MyAdapter set user-config timeout = 240
 ```
 
-This command is based on the [Adapter configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST service.
+此命令基于[适配器配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST 服务。
 
-### Commands for apps
+### 应用程序命令
 {: #commands-for-apps }
-When you invoke the **mfpadm** program, you can include various commands for apps.
+在调用 **mfpadm** 程序时，可以包含各种应用程序命令。
 
-#### The `list apps` command
+
+#### `list apps` 命令
 {: #the-list-apps-command }
-The `list apps` command returns a list of the apps that are deployed in a runtime.
+`list apps` 命令返回在运行时中部署的应用程序列表。
 
-Syntax: `list apps [runtime-name]`
+语法：`list apps [runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 运行时的名称。 |
 
-The `list apps` command takes the following options after the object.
+`list apps` 命令在对象后采用以下选项。
 
-| Option | Description |
+| 选项 | 描述 |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
-**Example**
+**示例**
 
 ```bash
 list apps mfp
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+此命令基于[应用程序 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST 服务。
 
-#### The `deploy app` command
+#### `deploy app` 命令
 {: #the-deploy-app-command }
-The `deploy app` command deploys an app version in a runtime.
+`deploy
+app` 命令可在运行时中部署应用程序版本。
 
-Syntax: `deploy app [runtime-name] file`
+语法：`deploy app [runtime-name] file`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | The application descriptor, a JSON file. |
+| runtime-name | 运行时的名称。 |
+| file | 作为应用程序描述符的 JSON 文件。 |
 
-**Example**
+**示例**
 
 ```bash
 deploy app mfp MyApp/application-descriptor.json
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+此命令基于[应用程序 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST 服务。
 
-#### The `show app` command
+#### `show app` 命令
 {: #the-show-app-command }
-The `show app` command shows details about an app in a runtime, in particular its environments and versions.
+`show app` 命令显示有关运行时中应用程序的详细信息，特别是其环境和版本信息。
 
-Syntax: `show app [runtime-name] app-name`
 
-It takes the following arguments:
+语法：`show app [runtime-name] app-name`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称。 | 
 
-The `show app` command takes the following options after the object.
+`show app` 命令在对象后采用以下选项。
 
-| Option | Description |
+| 选项 | 描述 |
 |--------|-------------|
-| --xml	 | Produce XML output instead of tabular output. |
+| --xml	 | 生成 XML 输出（而非表格输出）。 |
 
-**Example**
+**示例**
 
 ```bash
 show app mfp MyApp
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+此命令基于[应用程序 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST 服务。
 
-#### The `delete app` command
+#### `delete app` 命令
 {: #the-delete-app-command }
-The `delete app` command removes (undeploys) an app, from all environments and all versions, from a runtime.
+`delete
+app` 命令可从运行时中除去（取消部署）应用程序（包含所有环境和所有版本）。
 
-Syntax: `delete app [runtime-name] app-name`
+语法：`delete app [runtime-name] app-name`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称 | 
 
-**Example**
+**示例**
 
 ```bash
 delete app mfp MyApp
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+此命令基于[应用程序版本 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 服务。
 
-#### The `show app version` command
+#### `show app version` 命令
 {: #the-show-app-version-command }
-The `show app version` command show details about an app version in a runtime.
+`show app
+version` 命令可显示有关运行时中应用程序版本的详细信息。
 
-Syntax: `show app version [runtime-name] app-name environment version`
+语法：`show app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称。 | 
+| environment | 移动平台。 | 
+| version | 应用程序的版本。 | 
 
-The `show app version` command takes the following options after the object.
+`show app version` 命令在对象后采用以下选项。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 | ---------|-------------|
-| -- xml | Produces XML output instead of tabular output. | 
+| -- xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**
+**示例**
 
 ```bash
 show app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+此命令基于[应用程序版本 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST 服务。
 
-#### The `delete app version` command
+#### `delete app version` 命令
 {: #the-delete-app-version-command }
-The `delete app version` command removes (undeploys) an app version from a runtime.
+`delete app version` 命令从运行时中除去（取消部署）应用程序版本。
 
-Syntax: `delete app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+语法：`delete app version [runtime-name] app-name environment version`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称。 | 
+| environment | 移动平台。 | 
+| version | 应用程序的版本。 | 
 
-**Example**
+**示例**
 
 ```bash
 delete app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+此命令基于[应用程序版本 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 服务。
 
-#### The `app` command prefix
+#### `app` 命令前缀
 {: #the-app-command-prefix }
-The `app` command prefix takes the following arguments before the verb.
+`app` 命令前缀在动词前采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称。 | 
 
-#### The `app show license-config` command
+#### `app show license-config` 命令
 {: #the-app-show-license-config-command }
-The `app show license-config` command shows the token license configuration of an app.
+`app
+show license-config` 命令可显示应用程序的令牌许可证配置。
 
-Syntax: `app [runtime-name] app-name show license-config`
+语法：`app [runtime-name] app-name show license-config`
 
-It takes the following options after the object:
+它在对象后采用以下选项：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**
+**示例**
 
 ```bash
 app mfp MyApp show license-config
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+此命令基于[
+应用程序许可证配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 服务。
 
-#### The `app set license-config` command
+#### `app set license-config` 命令
 {: #the-app-set-license-config-command }
-The `app set license-config` command specifies the token license configuration of an app.
+`app set
+license-config` 命令可指定应用程序的令牌许可证配置。
 
-Syntax: `app [runtime-name] app-name set license-config app-type license-type`
+语法：`app [runtime-name] app-name set license-config app-type license-type`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| appType | Type of app: B2C or B2E. | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | 
+| appType | 应用程序类型：B2C 或 B2E。 | 
+| licenseType | 应用程序类型：APPLICATION、ADDITIONAL_BRAND_DEPLOYMENT 或 NON_PRODUCTION。 | 
 
-**Example**
+**示例**
 
 ```bash
 app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+此命令基于[
+应用程序许可证配置 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 服务。
 
-#### The `app delete license-config` command
+#### `app delete license-config` 命令
 {: #the-app-delete-license-config-command }
-The `app delete license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+`app
+delete license-config` 命令可重置应用程序的令牌许可证配置，即将其还原至初始状态。
 
-Syntax: `app [runtime-name] app-name delete license-config`
+语法：`app [runtime-name] app-name delete license-config`
 
-**Example**
+**示例**
 
 ```bash
 app mfp MyApp iPhone 1.1 delete license-config
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+此命令基于[许可证配置 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST 服务。
 
-#### The `app version` command prefix
+#### `app version` 命令前缀
 {: #the-app-version-command-prefix }
-The `app version` command prefix takes the following arguments before the verb.
+`app version` 命令前缀在动词前采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform | 
-| version | Version of the app | 
+| runtime-name | 运行时的名称。 | 
+| app-name | 应用程序的名称。 | 
+| environment | 移动平台 | 
+| version | 应用程序的版本 | 
 
-#### The `app version get descriptor` command
+#### `app version get descriptor` 命令
 {: #the-app-version-get-descriptor-command }
-The `app version get descriptor` command returns the application descriptor of a version of an app.
+`app
+version get descriptor` 命令返回应用程序版本的应用程序描述符。
 
-Syntax: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
+语法：`app version [runtime-name] app-name environment version get descriptor [> tofile]`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | Required | Default | 
+| 参数 | 描述 | 必需 | 缺省值 | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | 输出文件的名称。 | 否 | 标准输出 | 
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST service.
+此命令基于[应用程序描述符 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST 服务。
 
-#### The `app version get web-resources` command
+#### `app version get web-resources` 命令
 {: #the-app-version-get-web-resources-command }
-The `app version get web-resources` command returns the web resources of a version of an app, as a .zip file.
+`app version get web-resources` 命令返回应用程序版本的 Web 资源（以 .zip 文件形式）。
 
-Syntax: `app version [runtime-name] app-name environment version get web-resources [> tofile]`
+语法：`app version [runtime-name] app-name environment version get web-resources [> tofile]`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | Required | Default | 
+| 参数 | 描述 | 必需 | 缺省值 | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | 输出文件的名称。 | 否 | 标准输出 | 
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+此命令基于[检索 Web 资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST 服务。
 
-#### The `app version set web-resources` command
+#### `app version set web-resources` 命令
 {: #the-app-version-set-web-resources-command }
-The `app version set web-resources` command specifies the web resources for a version of an app.
+`app version set web-resources` 命令可指定应用程序版本的 Web 资源。
 
-Syntax: `app version [runtime-name] app-name environment version set web-resources file`
+语法：`app version [runtime-name] app-name environment version set web-resources file`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | 
-| file | Name of the input file (must be a .zip file). | 
+| 参数 | 描述 |
+| file | 输入文件的名称（必须为 .zip 文件）。| 
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+此命令基于[部署 Web 资源 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST 服务。
 
-#### The `app version get authenticity-data` command
+#### `app version get authenticity-data` 命令
 {: #the-app-version-get-authenticity-data-command }
-The `app version get authenticity-data` command returns the authenticity data of a version of an app.
+`app version get authenticity-data` 命令返回应用程序版本的真实性数据。
 
-Syntax: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
+语法：`app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | Required | Default | 
-| > tofile | Name of the output file. | No | Standard output | 
+| 参数 | 描述 | 必需 | 缺省值 |
+| > tofile | 输出文件的名称。| 否 | 标准输出 | 
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+此命令基于[
+导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
-#### The `app version set authenticity-data` command
+#### `app version set authenticity-data` 命令
 {: #the-app-version-set-authenticity-data-command }
-The `app version set authenticity-data` command specifies the authenticity data for a version of an app.
+`app version set authenticity-data` 命令可指定应用程序版本的真实性数据。
 
-Syntax: `app version [runtime-name] app-name environment version set authenticity-data file`
+语法：`app version [runtime-name] app-name environment version set authenticity-data file`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| file | Name of the input file:<ul><li>Either a .authenticity_data file,</li><li>Or a device file (.ipa or .apk or .appx), from which the authenticity data is extracted.</li></ul>| 
+| file | 输入文件的名称：<ul><li>从中抽取真实性数据的 .authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx）。</li></ul>| 
 
-**Examples**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set authenticity-data /tmp/MyApp.authenticity_data
@@ -932,64 +970,66 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+此命令基于[
+部署应用程序真实性数据 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 服务。
 
-#### The `app version delete authenticity-data` command
+#### `app version delete authenticity-data` 命令
 {: #the-app-version-delete-authenticity-data-command }
-The `app version delete authenticity-data` command deletes the authenticity data for a version of an app.
+`app version delete authenticity-data` 命令可删除应用程序版本的真实性数据。
 
-Syntax: `app version [runtime-name] app-name environment version delete authenticity-data`
+语法：`app version [runtime-name] app-name environment version delete authenticity-data`
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+此命令基于[
+应用程序真实性 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 服务。
 
-#### The `app version show user-config` command
+#### `app version show user-config` 命令
 {: #the-app-version-show-user-config-command }
-The `app version show user-config` command shows the user configuration of a version of an app.
+`app version show user-config` 命令可显示应用程序版本的用户配置。
 
-Syntax: `app version [runtime-name] app-name environment version show user-config [--xml]`
+语法：`app version [runtime-name] app-name environment version show user-config [--xml]`
 
-It takes the following options after the verb.
+它在动词后采用以下选项。
 
-| Argument | Description | Required | Default | 
+| 参数 | 描述 | 必需 | 缺省值 | 
 |----------|-------------|----------|---------|
-| [--xml] | Produce output in XML format instead of JSON format. | No | Standard output | 
+| [--xml] | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 | 
 
-**Example**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 show user-config
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+此命令基于[应用程序配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST 服务。
 
-### The `app version set user-config` command
+### `app version set user-config` 命令
 {: #the-app-version-set-user-config-command }
-The `app version set user-config` command specifies the user configuration for a version of an app or a single property among this configuration.
+`app version set user-config` 命令可指定应用程序版本的用户配置或此配置中的单个属性。
 
-Syntax for the entire configuration: `app version [runtime-name] app-name environment version set user-config file`
+针对整个配置的语法：`app version [runtime-name] app-name environment version set user-config file`
 
-It takes the following arguments after the verb.
+它在动词后采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| file | 包含新配置的 JSON 或 XML 文件的名称。 | 
 
-Syntax for a single property: `app version [runtime-name] app-name environment version set user-config property = value`
+针对单个属性的语法：`app version [runtime-name] app-name environment version set user-config property = value`
 
-The `app version set user-config` command takes the following arguments after the verb.
+`app version set user-config` 命令在动词后采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | JSON 属性的名称。对于嵌套属性，请使用语法 prop1.prop2.....propN。对于 JSON 数组元素，请使用索引代替属性名称。 | 
+| value | 属性的值。 | 
 
-**Examples**
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
@@ -999,32 +1039,37 @@ app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
 app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+此命令基于[
+应用程序配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 服务。
 
-### Commands for devices
+### 设备命令
 {: #commands-for-devices }
-When you invoke the **mfpadm** program, you can include various commands for devices.
+在调用 **mfpadm** 程序时，可以包含各种设备命令。
 
-#### The `list devices` command
+
+#### `list devices` 命令
 {: #the-list-devices-command }
-The `list devices` command returns the list of devices that have contacted the apps of a runtime.
+`list devices` 命令返回已联系运行时的应用程序的设备列表。
 
-Syntax: `list devices [runtime-name] [--query query]`
 
-It takes the following arguments:
+语法：`list devices [runtime-name][--query query]`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| query | A friendly name or user identifier, to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this string (with case-insensitive matching) are returned. | 
+| runtime-name | 运行时的名称。 | 
+| query | 要搜索的友好名称或用户标识。此参数可指定要搜索的字符串。将返回其友好名称或用户标识中包含此字符串（以不区分大小写的方式匹配）的所有设备。
+ | 
 
-The `list devices` command takes the following options after the object.
+`list devices` 命令在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Examples**
+**示例**
 
 ```bash
 list-devices mfp
@@ -1034,51 +1079,58 @@ list-devices mfp
 list-devices mfp --query=john
 ```
 
-This command is based on the [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) service.
+此命令基于[设备 (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) 服务。
 
-#### The `remove device` command
+#### `remove device` 命令
 {: #the-remove-device-command }
-The `remove device` command clears the record about a device that has contacted the apps of a runtime.
+`remove
+device` 命令清除有关某一设备的记录，该设备已联系某一运行时的应用程序。
 
-Syntax: `remove device [runtime-name] id`
 
-It takes the following arguments:
+语法：`remove device [runtime-name] id`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | 运行时的名称。 | 
+| id | 唯一设备标识。 | 
 
-**Example**
+**示例**
 
 ```bash
 remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+此命令基于[设备 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST 服务。
 
-#### The `device` command prefix
+
+#### `device` 命令前缀
 {: #the-device-command-prefix }
-The `device` command prefix takes the following arguments before the verb.
+`device` 命令前缀在动词前采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | 运行时的名称。 | 
+| id | 唯一设备标识。 | 
 
-#### The `device set status` command
+#### `device set status` 命令
 {: #the-device-set-status-command }
-The `device set status` command changes the status of a device, in the scope of a runtime.
+`device
+set status` 命令在运行时范围内更改设备的状态。
 
-Syntax: `device [runtime-name] id set status new-status`
 
-It takes the following arguments:
+语法：`device [runtime-name] id set status new-status`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| new-status | New status. | 
+| new-status | 新状态。 | 
 
-The status can have one of the following values:
+状态可以为下列值之一：
 
 * ACTIVE
 * LOST
@@ -1086,127 +1138,136 @@ The status can have one of the following values:
 * EXPIRED
 * DISABLED
 
-**Example**
+**示例**
 
 ```bash
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+此命令基于[设备状态 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST 服务。
 
-#### The `device set appstatus` command
+#### `device set appstatus` 命令
 {: #the-device-set-appstatus-command }
-The `device set appstatus` command changes the status of a device, regarding an app in a runtime.
+`device set appstatus` 命令更改设备的状态，此更改关系到运行时中的应用程序。
 
-Syntax: `device [runtime-name] id set appstatus app-name new-status`
 
-It takes the following arguments:
+语法：`device [runtime-name] id set appstatus app-name new-status`
 
-| Argument | Description | 
+它采用以下参数：
+
+
+| 参数 | 描述 | 
 |----------|-------------|
-| app-name | Name of an app. | 
-| new-status | New status. | 
+| app-name | 应用程序的名称。 | 
+| new-status | 新状态。 | 
 
-The status can have one of the following values:
+状态可以为下列值之一：
 
 * ENABLED
 * DISABLED
 
 
-**Example**
+**示例**
 
 ```xml
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+此命令基于[设备应用程序状态 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST 服务。
 
-### Commands for troubleshooting
+
+### 故障诊断命令
 {: #commands-for-troubleshooting }
-When you invoke the **mfpadm** program, you can include various commands for troubleshooting.
+在调用 **mfpadm** 程序时，可以包含各种故障诊断命令。
 
-#### The `show info` command
+
+#### `show info` 命令
 {: #the-show-info-command }
-The `show info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the {{ site.data.keys.product_adj }} administration services are running at all.
+`show info` 命令显示有关 {{ site.data.keys.product_adj }}    Administration Services 的基本信息，无需访问任何运行时或数据库即可返回这些信息。
+此命令可用于测试 {{ site.data.keys.product_adj }}    Administration Services 究竟是否在运行。
 
-Syntax: `show info`
+语法：`show info`
 
-It takes the following options after the object.
+它在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. |
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
-**Example**
+**示例**
 
 ```bash
 show info
 ```
 
-#### The `show versions` command
+#### `show versions` 命令
 {: #the-show-versions-command }
-The `show versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+`show versions` 命令显示各种组件的 {{ site.data.keys.product_adj }}    版本：
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from **which mfp-ant-deployer.jar** is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which **mfp-admin-service.war** is taken
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion**：从中获取 **which mfp-ant-deployer.jar** 的精确 {{ site.data.keys.mf_server }}    版本号。
+* **productVersion**：从中可以获取 **mfp-admin-service.war** 的 {{ site.data.keys.mf_server }}    精确版本号。
+* **mfpAdminVersion**：**mfp-admin-service.war** 的精确构建版本号。
 
-Syntax: `show versions`
+语法：`show versions`
 
-It takes the following options after the object.
+它在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**
+**示例**
 
 ```bash
 show versions
 ```
 
-#### The `show diagnostics` command
+#### `show diagnostics` 命令
 {: #the-show-diagnostics-command }
-The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services.
+`show
+diagnostics` 命令可显示 {{ site.data.keys.product_adj }}   
+管理服务正常运行所需的各种组件的状态，例如数据库和辅助服务的可用性。
 
-Syntax: `show diagnostics`
+语法：`show diagnostics`
 
-It takes the following options after the object.
+它在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**
+**示例**
 
 ```bash
 show diagnostics
 ```
 
-#### The `unlock` command
+#### `unlock` 命令
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations.
+`unlock` 命令可释放通用锁定。一些破坏性操作会接受此锁定，以防止同时修改相同的配置数据。在极少数情况下，如果中断了此操作，那么锁可能仍处于锁定状态，从而使破坏性操作无法进一步执行。unlock 命令可用于在此类情况下发布锁定。
 
-**Example**
+**示例**
 
 ```bash
 unlock
 ```
 
-#### The `list runtimes` command
+#### `list runtimes` 命令
 {: #the-list-runtimes-command }
-The `list runtimes` command returns a list of the deployed runtimes.
+`list
+runtimes` 命令返回已部署的运行时的列表。
 
-Syntax: `list runtimes [--in-database]`
+语法：`list runtimes [--in-database]`
 
-It takes the following options:
+它采用以下选项：
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --in-database	| Whether to look in the database instead of via MBeans | 
-| --xml | Produces XML output instead of tabular output. | 
+| --in-database	| 是否在数据库中查看，而不是通过 MBeans
+ | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Examples**
+**示例**
 
 ```bash
 list runtimes
@@ -1216,104 +1277,113 @@ list runtimes
 list runtimes --in-database
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST 服务。
 
-#### The `show runtime` command
+
+#### `show runtime` 命令
 {: #the-show-runtime-command }
-The `show runtime` command shows information about a given deployed runtime.
+`show
+runtime` 命令可显示有关给定的已部署运行时的信息。
 
-Syntax: `show runtime [runtime-name]`
+语法：`show runtime [runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | 运行时的名称。 | 
 
-The `show runtime` command takes the following options after the object.
+`show runtime` 命令在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 服务。
 
-**Example**
+
+**示例**
 
 ```bash
 show runtime mfp
 ```
 
-#### The `delete runtime` command
+#### `delete runtime` 命令
 {: #the-delete-runtime-command }
-The `delete runtime` command deletes a runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped.
+`delete runtime` 命令从数据库中删除运行时，包括其应用程序和适配器。只有在运行时的 Web 应用程序停止时才能删除运行时。
 
-Syntax: `delete runtime [runtime-name] condition`
+语法：`delete runtime [runtime-name] condition`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. |
+| runtime-name | 运行时的名称。 | 
+| condition | 删除条件：empty 或 always。**注意：**请慎用 always 选项。 |
 
-**Example**
+**示例**
 
 ```bash
 delete runtime mfp empty
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+此命令基于[运行时 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST 服务。
 
-#### The `list farm-members` command
+
+#### `list farm-members` 命令
 {: #the-list-farm-members-command }
-The `list farm-members` command returns a list of the farm member servers on which a given runtime is deployed.
+`list
+farm-members` 命令会返回在其上部署了指定运行时的场成员服务器的列表。
 
-Syntax: `list farm-members [runtime-name]`
+语法：`list farm-members [runtime-name]`
 
-It takes the following arguments:
+它采用以下参数：
 
-| Argument | Description | 
+
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | 运行时的名称。 | 
 
-The `list farm-members` command takes the following options after the object.
+`list farm-members` 命令在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 生成 XML 输出（而非表格输出）。 | 
 
-**Example**
+**示例**
 
 ```bash
 list farm-members mfp
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+此命令基于[场拓扑成员 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST 服务。
 
-#### The `remove farm-member` command
+#### `remove farm-member` 命令
 {: #the-remove-farm-member-command }
-The `remove farm-member` command removes a server from the list of farm members on which the specified runtime is deployed. Use this command when the server has become unavailable or disconnected.
+`remove
+farm-member` 命令可从在其上部署了指定运行时的场成员的列表中除去某个服务器。在服务器不可用或断开连接时，可使用此命令。
 
-Syntax: `remove farm-member [runtime-name] server-id`
+语法：`remove farm-member [runtime-name] server-id`
 
-It takes the following arguments.
+它采用以下参数。
 
-| Argument | Description | 
+| 参数 | 描述 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| server-id | Identifier of the server. | 
+| runtime-name | 运行时的名称。 | 
+| server-id | 服务器的标识。 | 
 
-The `remove farm-member` command takes the following options after the object.
+`remove farm-member` 命令在对象后采用以下选项。
 
-| Option | Description | 
+| 选项 | 描述 | 
 |--------|-------------|
-| --force | Force removal of a farm member, even if it is available and connected. | 
+| --force | 强制除去场成员（即使在该成员可用且已连接的情况下）。 | 
 
-**Example**
+**示例**
 
 ```bash
 remove farm-member mfp srvlx15
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+此命令基于[场拓扑成员 (DELETE) ](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST 服务。

@@ -1,57 +1,55 @@
 ---
 layout: tutorial
-title: License tracking
+title: 许可证跟踪
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-License tracking is enabled by default in {{ site.data.keys.product_full }}, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+缺省情况下，{{ site.data.keys.product_full }}    中已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数、可寻址设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }}   的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
 
-Also, by tracking the usage of client devices, and determining whether the devices are active, {{ site.data.keys.product_adj }} administrators can decommission devices that are no longer accessing the {{ site.data.keys.mf_server }}. This situation might arise if an employee leaves the company, for example.
+此外，通过跟踪客户机设备的使用并确定设备是否处于活动状态，{{ site.data.keys.product_adj }}    管理员可以停用不再访问 {{ site.data.keys.mf_server }}    的设备。例如，如果某个员工离开公司，那么可能会出现此情况。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Setting the application license information](#setting-the-application-license-information)
-* [License Tracking report](#license-tracking-report)
-* [Token license validation](#token-license-validation)
-* [Integration with IBM License Metric Tool](#integration-with-ibm-license-metric-tool)
+* [设置应用程序许可证信息](#setting-the-application-license-information)
+* [许可证跟踪报告](#license-tracking-report)
+* [令牌许可证验证](#token-license-validation)
+* [与 IBM License Metric Tool 集成](#integration-with-ibm-license-metric-tool)
 
-## Setting the application license information
+## 设置应用程序许可证信息
 {: #setting-the-application-license-information }
-Learn how to set the application license information for the apps you register to {{ site.data.keys.mf_server }}.
+了解如何针对注册 {{ site.data.keys.mf_server }}    的应用程序设置应用程序许可证信息。
 
-License terms distinguish {{ site.data.keys.product_full }}, {{ site.data.keys.product_full }} Consumer, {{ site.data.keys.product_full }} Enterprise, and IBM {{ site.data.keys.product_adj }} Additional Brand Deployment. Set the license information of an application when you register it to a server so that license tracking reports generate the right license information. If your server is configured for token licensing, the license information is used to check out the right feature from the license server.
+许可条款区分 {{ site.data.keys.product_full }}   、{{ site.data.keys.product_full }}    Consumer、{{ site.data.keys.product_full }}    Enterprise 和 IBM {{ site.data.keys.product_adj }}    Additional Brand Deployment。请在向服务器注册应用程序时设置应用程序的许可证信息，以便许可证跟踪报告能生成正确的许可证信息。如果为令牌许可配置了服务器，那么许可证信息将用于从许可证服务器检出正确的功能部件。
 
-You set the Application Type and the Token License Type.
-The possible values for Application Type are:  
+可设置应用程序类型和令牌许可证类型。应用程序类型的可能的值有：  
 
-* **B2C**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Consumer.
-* **B2E**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Enterprise.
-* **UNDEFINED**: Use this application type if you don't need to track compliance against the Addressable Device metric.
+* **B2C**：如果应用程序作为 {{ site.data.keys.product_full }}    Consumer 获得许可，请使用此应用程序类型。
+* **B2E**：如果应用程序作为 {{ site.data.keys.product_full }}    Enterprise 获得许可，请使用此应用程序类型。
+* **UNDEFINED**：如果您无需跟踪“可寻址设备”度量的合规性，请使用此应用程序类型。
 
-The possible values for Token License Type are:
+令牌许可证类型的可能的值有：
 
-* **APPLICATION**: Use APPLICATION for most applications. This is the default.
-* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Use this ADDITIONAL\_BRAND\_DEPLOYMENT if your application is licensed as IBM {{ site.data.keys.product_adj }} Additional Brand Deployment.
-* **NON_PRODUCTION**: Use NON\_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
+* **APPLICATION**：将 APPLICATION 用于大多数应用程序。这是缺省值。
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**：如果应用程序作为 IBM {{ site.data.keys.product_adj }}    Additional Brand Deployment 获得许可，请使用此 ADDITIONAL\_BRAND\_DEPLOYMENT。
+* **NON_PRODUCTION**：在生产服务器上开发和测试应用程序时，请使用 NON\_PRODUCTION。未对令牌许可证类型为 NON_PRODUCTION 的应用程序检出令牌。
 
-> **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
+> **要点：**将 NON_PRODUCTION 用于生产应用程序违反许可条款。
 
-**Note:** If your server is configured for token licensing and if you plan to register an application with Token License Type ADDITIONAL\_BRAND\_DEPLOYMENT or NON_PRODUCTION, set the application license information before you register the first version of the application. With mfpadm program, you can set the license information for an application before any version is registered. After the license information is set, the right number of tokens is checked out when you register the first version of the app. For more information about token validation, see Token license validation.
+**注：**如果为令牌许可配置了服务器，并且如果您计划使用“令牌许可证类型”ADDITIONAL\_BRAND\_DEPLOYMENT 或 NON_PRODUCTION 注册应用程序，请在注册第一个版本的应用程序前设置应用程序许可证信息。利用 mfpadm 程序，可以在注册任何版本前设置应用程序的许可证信息。设置许可证信息后，在注册第一个版本的应用程序时将检出正确数目的令牌。有关令牌验证的更多信息，请参阅“令牌许可证验证”。
 
-To set the license type with {{ site.data.keys.mf_console }}
+要使用 {{ site.data.keys.mf_console }}    设置许可证类型
 
-1. Select your application
-2. Select **Settings**
-3. Set the **Application Type** and the **Token License Type**
-4. Click **Save**
+1. 选择应用程序
+2. 选择**设置**
+3. 设置**应用程序类型**和**令牌许可证类型**
+4. 单击**保存**。
 
-To set the license type with the mfpadm program,
-Use `mfpadm app <appname> set license-config <application-type> <token license type>`
+要使用 mfpadm 程序设置许可证类型，请使用 `mfpadm app <appname> set license-config <application-type> <token license type>`
 
-The following example sets the license information B2E / APPLICATION to the application named **my.test.application**
+以下示例将许可证信息 B2E / APPLICATION 设置为名为 **my.test.application** 的应用程序
 
 ```bash
 echo password:admin > password.txt
@@ -59,150 +57,166 @@ mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --pas
 rm password.txt
 ```
 
-## License Tracking report
+## 许可证跟踪报告
 {: #license-tracking-report }
-{{ site.data.keys.product }} provides a license tracking report for the Client Device metric, the Addressable Device metric, and the Application metric. The report also provides historical data.
+{{ site.data.keys.product }}   为“客户机设备”度量、“可寻址设备”度量和“应用程序”度量提供许可证跟踪报告。该报告还提供历史数据。
 
-The License Tracking report shows the following data:
+许可跟踪报告显示以下数据：
 
-* The number of applications deployed in the {{ site.data.keys.mf_server }}.
-* The number of addressable devices in the current calendar month.
-* The number of client devices, both active and decommissioned.
-* The highest number of client devices reported over the last n days, where n is the number of days of inactivity after which a client device is decommissioned.
+* 在 {{ site.data.keys.mf_server }}   
+中部署的应用程序数。
+* 当前日历月中的可寻址设备数。
+* 客户机设备（活动设备和已退役的设备）数。
+* 过去 n 天报告的客户机设备的最大数量，其中 n 是停用客户机设备之前所需经过的不活动天数。
 
-You might want to analyze data further. For this purpose, you can download a CSV file that includes the license reports as well as a historical listing of license metrics.
+您可能希望进一步分析数据。为此，可下载 CSV 文件，该文件包含许可证报告以及许可证度量的历史列表。
 
-To access the License Tracking report,
+要访问许可证跟踪报告：
 
-1. Open {{ site.data.keys.mf_console }}.
-2. Click the **Hello, your-Name** menu.
-3. Select **Licenses**.
+1. 打开
+{{ site.data.keys.mf_console }}   。
+2. 单击**您好，您的姓名**菜单。
+3. 选择**许可证**。
 
-To obtain a CSV file from the License Tracking report, click **Actions/Download report**.
+要从许可证跟踪报告获取 CSV 文件，请单击**操作/下载报告**。
 
-## Token license validation
+## 令牌许可证验证
 {: #token-license-validation }
-If you install and configure IBM {{ site.data.keys.mf_server }} for token licensing, the server validates licenses in various scenarios. If your configuration is not correct, the license is not validated at application registration or deletion.
+如果要为令牌许可安装和配置 IBM {{ site.data.keys.mf_server }}   ，那么服务器会在各种场景中验证许可证。如果配置不正确，那么无法在应用程序注册或删除时验证
+许可证。
 
-### Validation scenarios
+### 验证场景
 {: #validation-scenarios }
-Licenses are validated in various scenarios:
+许可证会在各种场景下验证：
 
-#### On application registration
+#### 注册应用程序时
 {: #on-application-registration }
-Application registration fails if not enough tokens are available for the token license type of your application.
+如果没有足够多的令牌可用于应用程序的令牌许可证类型，那么注册应用
+程序将失败。
 
-> **Tip:** You can set the token license type before you register the first version of your app.
+> **提示：**在注册第一个版本的应用程序之前，可设置令牌许可证类型。
 
-Licenses are checked only once per application. If you register a new platform for the same application, or if you register a new version for an existing application and platform, no new token is claimed.
+每个应用程序仅检查一次许可证。如果要为同一应用程序注册新平台，或如果要为现有应用程序和平台注册新版本，那么将不会索要新令牌。
 
-#### On Token License Type change
+#### 更改令牌许可证类型时
 {: #on-token-license-type-change }
-When you change the Token License Type for an application, the tokens for the application are released and then taken back for the new license type.
+更改应用程序的令牌许可证类型时，将发布应用程序的令牌，然后针对新的许可证类型取回此令牌。
 
-#### On application deletion
+#### 删除应用程序时
 {: #on-application-deletion }
-Licenses are checked in when the last version of an application is deleted.
+删除应用程序的最后一个版本时将检入许可证。
 
-#### At server start
+#### 服务器启动时
 {: #at-server-start }
-The license is checked out for every registered application. The server deactivates applications if not enough tokens are available for all applications.
+将针对每个已注册的应用程序检出许可证。如果没有足够多的令牌可用于所有应用程序，那么服务器将取消激活应用程序。
 
-> **Important:** The server does not reactivate the applications automatically. After you increase the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **要点：**服务器未自动重新激活应用程序。增加可用令牌数后，必须手动重新激活应用程序。有关禁用和启用应用程序的更多信息，请参阅[远程禁用应用程序对受保护资源的访问权](../using-console/#remotely-disabling-application-access-to-protected-resources)。
 
-#### On license expiration
+#### 许可证到期时
 {: #on-license-expiration }
-After a certain amount of time, the licenses expire and must be checked out again. The server deactivates applications if not enough tokens are available for all applications.
+特定的一段时间过后，许可证将到期且必须再次检出。如果没有足够多的令牌可用于所有应用程序，那么服务器将取消激活应用程序。
 
-> **Important:** The server does not reactivate the applications automatically. After you augment the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **要点：**服务器未自动重新激活应用程序。扩大可用令牌数后，必须手动重新激活应用程序。有关禁用和启用应用程序的更多信息，请参阅[远程禁用应用程序对受保护资源的访问权](../using-console/#remotely-disabling-application-access-to-protected-resources)。
 
-#### At server shutdown
+#### 服务器关闭时
 {: #at-server-shutdown }
-The license is checked in for every deployed application, during a server shutdown. The tokens are released only when the last server of a cluster of farm is shut down.
+在关闭服务器的过程中，会为每个已部署的应用程序检入许可证。只有关闭场的集群的最后一台服务器时才会发布令牌。
 
-### Causes of license validation failure
+### 许可证验证失败的原因
 {: #causes-of-license-validation-failure }
-License validation might fail when the application is registered or deleted, in the following cases:
+在以下情况下，当注册或删除应用程序时，许可证验证可能会失败：
 
-* The Rational  Common Licensing native library is not installed and configured.
-* The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../installation-configuration/production/token-licensing).
-* Rational License Key Server is not accessible.
-* Sufficient tokens are not available.
-* The license expired.
+* 未安装和配置 Rational Common Licensing 本机库。
+* 未针对令牌许可配置管理服务。
+有关更多信息，请参阅[针对令牌许可进行安装和配置](../../installation-configuration/production/token-licensing)。
+* Rational License Key Server 不可访问。
+* 未提供足够的令牌。
+* 许可证已到期。
 
-### IBM Rational License Key Server feature name used by {{ site.data.keys.product_full }}
+### {{ site.data.keys.product_full }}    所使用的 IBM Rational License Key Server 功能部件名称
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
-Depending on the token license type of an application, the following features are used.
+根据应用程序的令牌许可证类型，将使用以下功能部件。
 
-| Token License Type | Feature name | 
+| 令牌许可证类型 | 功能部件名称 | 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
 | ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (no feature) | 
+| NON_PRODUCTION	| （无功能部件） | 
 
-## Integration with IBM License Metric Tool
+## 与 IBM License Metric Tool 进行集成
 {: #integration-with-ibm-license-metric-tool }
-The IBM  License Metric Tool allows you to evaluate your compliance with your IBM license.
+IBM License Metric Tool 允许您评估是否遵守 IBM 许可证。
 
-If you have not installed a version of IBM License Metric Tool that supports IBM Software License Metric Tag or SWID (software identification) files, you can review the license usage with the License Tracking reports in {{ site.data.keys.mf_console }}. For more information, see [License Tracking report](#license-tracking-report).
+如果尚未安装支持 IBM Software License Metric Tag 或 SWID（软件标识）文件的 IBM License Metric Tool 版本，可以在 {{ site.data.keys.mf_console }}    中使用许可证跟踪报告来复审许可证使用情况。有关更多信息，请参阅[许可证跟踪报告](#license-tracking-report)。
 
-### About PVU-based licensing using SWID files
+### 关于使用 SWID 文件的基于 PVU 的许可
 {: #about-pvu-based-licensing-using-swid-files }
-If you have purchased IBM MobileFirst Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
+如果您已购买 IBM MobileFirst Foundation Extension V8.0.0 产品，将根据处理器价值单元 (PVU) 度量进行许可。
 
-The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installs {{ site.data.keys.mf_server }} or {{ site.data.keys.mf_analytics_server }}. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
+PVU 计算基于 IBM License Metric Tool 对 ISO/IEC 19970-2 和 SWID 文件的支持。在 IBM Installation Manager 安装 {{ site.data.keys.mf_server }}    或 {{ site.data.keys.mf_analytics_server }}   时，将 SWID 文件写入服务器。当 IBM License Metric Tool 根据当前目录发现产品的无效 SWID 文件时，将在“软件目录”窗口小部件上显示一个警告符号。有关 IBM License Metric Tool 如何使用 SWID 文件的更多信息，请参阅 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html)。
 
-The number of Application Center installations is not limited by PVU-based licensing.
+Application Center 安装数量不受基于 PVU 的许可限制。
 
-The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool.
+针对 Foundation Extension 的 PVU 许可证只可以与以下产品许可证一起购买：IBM WebSphere Application Server Network Deployment、IBM API Connect™ Professional 或 IBM API Connect Enterprise。IBM Installation Manager 将添加或更新 SWID 文件以供 License Metric Tool 使用。
 
-> For more information on {{ site.data.keys.product_full }} Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
+> 有关 {{ site.data.keys.product_full }}    Extension 的更多信息，请参阅 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)。
 
-> For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+> 有关 PVU 许可的更多信息，请参阅 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)。
 
-### SLMT tags
+### SLMT 标记
 {: #slmt-tags }
-IBM MobileFirst Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for {{ site.data.keys.mf_server }}, and to configure the generation of the IBM Software License Metric Tag files.
+IBM MobileFirst Foundation 将生成 IBM Software License Metric Tag (SLMT) 文件。支持 IBM Software License Metric Tag 的 IBM License Metric Tool 版本会生成许可证使用量报告。阅读此部分以解释这些 {{ site.data.keys.mf_server }}    报告，并配置 IBM Software License Metric Tag 文件的生成。
 
-Each instance of a running MobileFirst runtime environment generates an IBM Software License Metric Tag file. The metrics monitored are `CLIENT_DEVICE`, `ADDRESSABLE_DEVICE`, and `APPLICATION`. Their values are refreshed every 24 hours.
+正在运行的 MobileFirst 运行时环境的每个实例均生成 IBM Software License Metric Tag 文件。受监控的度量值是
+`CLIENT_DEVICE`、`ADDRESSABLE_DEVICE`
+和 `APPLICATION`。这些值每 24 小时刷新一次。
 
-#### About the CLIENT_DEVICE metric
+#### 关于 CLIENT_DEVICE 度量值
 {: #about-the-client_device-metric }
-The `CLIENT_DEVICE` metric can have the following subtypes:
+`CLIENT_DEVICE` 度量值可以具有以下子类型：
 
-* Active Devices
+* 活动设备数
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were not decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    使用 MobileFirst 运行时环境，或使用属于同一集群或服务器场的其他 MobileFirst 运行时实例，且尚未停用的客户机设备数。有关已停用设备的更多信息，请参阅
+[
+为客户机设备和可寻址设备配置许可证跟踪](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)。
 
-* Inactive Devices
+* 不活动设备
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    使用 MobileFirst 运行时环境，或使用属于同一集群或服务器场的其他 MobileFirst 运行时实例，且已停用的客户机设备数。有关已停用设备的更多信息，请参阅
+[
+为客户机设备和可寻址设备配置许可证跟踪](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)。
 
-The following cases are specific:
+具体情况如下：
 
-* If the decommissioning period of the device is set to a small period, the subtype "Inactive Devices" is replaced by the subtype "Active or Inactive Devices".
-* If device tracking was disabled, only one entry is generated for `CLIENT_DEVICE`, with the value 0, and the metric subtype "Device Tracking Disabled".
+* 如果设备的停用时间段设置为一小段时间，那么“不活动设备”子类型替换为子类型“活动或不活动设备”。
+* 如果已禁用设备跟踪，那么只为 `CLIENT_DEVICE` 生成一个条目，其值为 0，且度量值子类型为“设备跟踪已禁用”。
 
-#### About the APPLICATION metric
+#### 关于 APPLICATION 度量值
 {: #about-the-application-metric }
-The APPLICATION metric has no subtype unless the MobileFirst runtime environment is running in a development server.
+APPLICATION 度量值没有任何子类型，除非 MobileFirst 运行时环境正在开发服务器上运行。
 
-The value reported for this metric is the number of applications that are deployed in the MobileFirst runtime environment. Each application is counted as one unit, whether it is a new application, an additional brand deployment, or an additional type of an existing application (for example native, hybrid, or web).
+为该度量值报告的值是在 MobileFirst 运行时环境中部署的应用程序数。不论是新应用程序、其他品牌部署还是现有应用程序的其他类
+型（例如，本机、混合或 Web），每个应用程序都计算为一个单元。
 
-#### About the ADDRESSABLE_DEVICE metric
+#### 关于 ADDRESSABLE_DEVICE 度量值
 {: #about-the-addressable_device-metric }
-The ADDRESSABLE_DEVICE metric has the following subtype:
+ADDRESSABLE_DEVICE 度量值具有以下子类型：
 
-* Application: `<applicationName>`, Category: `<application type>`
+* 应用程序：`<applicationName>`，类别：`<application
+type>`
 
-The application type is **B2C**, **B2E**, or **UNDEFINED**. To define the application type of an application, see [Setting the application license information](#setting-the-application-license-information).
+应用程序类型为
+**B2C**、**B2E** 或
+**UNDEFINED**。要定义应用程序的应用程序类型，请参阅[设置应用程序许可证信息](#setting-the-application-license-information)。
 
-The following cases are specific:
+具体情况如下：
 
-* If the decommissioning period of the device is set to less than 30 days, the warning "Short decommissioning period" is appended to the subtype.
-* If license tracking was disabled, no addressable report is generated.
+* 如果设备的停用时间段设置为小于 30 天，那么会向子类型附加警告“停用时间段短”。
+* 如果禁用了许可证跟踪，则不会生成可寻址报告。
 
-For more information about configuring license tracking using metrics, see
+有关使用度量值配置许可证跟踪的更多信息，请参阅
 
-* [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
-* [Configuring IBM License Metric Tool log files](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)
+* [
+为客户机设备和可寻址设备配置许可证跟踪](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
+* [配置 IBM License Metric Tool 日志文件](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)

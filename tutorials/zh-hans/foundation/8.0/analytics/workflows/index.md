@@ -1,36 +1,39 @@
 ---
 layout: tutorial
-title: Analytics Workflows
-breadcrumb_title: Workflows
+title: 分析工作流程
+breadcrumb_title: 工作流程
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the {{ site.data.keys.mf_analytics_short }} client SDK and build reports using the {{ site.data.keys.mf_analytics_console }}. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
+利用
+{{ site.data.keys.mf_analytics_full }}
+最好地满足您的业务需要。在识别您的目标之后，使用 {{ site.data.keys.mf_analytics_short }} 客户机 SDK 来收集相应的数据，并使用 {{ site.data.keys.mf_analytics_console }} 来构建报告。以下典型场景将演示收集和报告分析数据的方法。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [App Usage Analytics](#app-usage-analytics)
-* [Crash Capture](#crash-capture)
+* [应用程序使用情况分析](#app-usage-analytics)
+* [崩溃捕获](#crash-capture)
 
-## App usage analytics
+## 应用程序使用情况分析
 {: #app-usage-analytics }
 
-### Initializing your client app to capture app usage
+### 初始化您的客户机应用程序以捕获应用程序使用情况
 {: #initializing-your-client-app-to-capture-app-usage }
 
-App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the {{ site.data.keys.mf_analytics }} client SDK must be configured to listen for the app lifecycle events.
+应用程序使用情况可度量将特定应用程序切换至前台然后发送至后台的次数。要在移动应用程序中捕获应用程序使用情况，{{ site.data.keys.mf_analytics }} 客户机 SDK 必须配置为侦听应用程序生命周期事件。
 
-You can use the {{ site.data.keys.mf_analytics }} API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
+您可以使用 {{ site.data.keys.mf_analytics }}
+API 来捕获应用程序使用情况。确保您已先创建相关的设备侦听器。然后将数据发送到服务器。
 
 #### iOS
 {: #ios }
 
-Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
+在 **AppDelegate.m/AppDeligate.swift** 文件内的应用程序委托 `application:didFinishLaunchingWithOptions` 方法中添加以下代码。
 
 **Objective-C**
 
@@ -39,7 +42,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 [analytics addDeviceEventListener:LIFECYCLE];
 ```
 
- To send the analytics data:
+ 要发送分析数据：
 
 ```objc
 [[WLAnalytics sharedInstance] send];
@@ -51,7 +54,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To send the analytics data:
+要发送分析数据：
 
 ```Swift
 WLAnalytics.sharedInstance().send;
@@ -60,14 +63,14 @@ WLAnalytics.sharedInstance().send;
 #### Android
 {: #android }
 
-Add the following code in your Application subclass `onCreate` method.
+在应用程序子类 `onCreate` 方法中添加以下代码。
 
 ```Java
 WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To send the analytics data:
+要发送分析数据：
 
 ```Java
 WLAnalytics.send();
@@ -76,102 +79,104 @@ WLAnalytics.send();
 #### Cordova
 {: #cordova }
 
-For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
+对于 Cordova 应用程序，必须使用本机平台代码创建侦听器，类似于 iOS 和 Android 应用程序。将数据发送到服务器：
 
 ```javascript
 WL.Analytics.send();
 ```
 
-#### Web apps
+#### Web 应用程序
 {: #web-apps }
 
-For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
+对于 Web 应用程序，不需要任何侦听器。可以通过 `WLlogger` 类来启用和禁用分析。
+
 
 ```javascript                                    
 ibmmfpfanalytics.logger.config({analyticsCapture: true});                
 ibmmfpfanalytics.send();
 ```
 
-### Default Usage and Devices chart
+### 缺省的“使用情况”和“设备”图表
 {: #default-usage-and-devices-charts }
 
-In the **Usage and Devices** page of the Apps section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app usage.
+在 {{ site.data.keys.mf_analytics_console }} 的“应用程序”部分的**使用情况和设备**页面中，提供了一些缺省图表以帮助您管理应用程序使用情况。
 
-#### Total Devices
+#### 设备总数
 {: #total-devices }
 
-The **Total Devices** chart shows the number of total devices.
+**设备总数**图表显示设备总数。
 
-#### Total App Sessions
+#### 应用程序会话总数
 {: #total-app-sessions }
 
-The **Total App Sessions** chart shows the number of total app sessions. An app session is recorded when an app is brought to the foreground of a device.
+**应用程序会话总数**图表显示应用程序会话总数。将应用程序切换至设备前台时，将记录一个应用程序会话。
 
-#### Active Users
+#### 活动用户数
 {: #active-users }
 
-The **Active Users** chart shows an interactive multi-line graph of the following data:
+**活动用户**图表显示以下数据的交互式多线图。
 
-* Active Users - unique users for the displayed time frame.
-* New Users - new users for the displayed time frame.
+* 活动用户 - 所显示时间范围的非重复用户。
+* 新用户 - 所显示时间范围的新用户。
 
-The default displayed time frame is one day with a data point for each hour. If you change the displayed time frame to greater than one day, the data points reflect each day. You can click the corresponding key in the legend to toggle whether to display the line. By default, all keys are displayed, and you cannot toggle all keys to not display any lines.
+缺省显示的时间范围为一天，每个小时一个数据点。如果将显示的时间范围更改为大于一天，那么数据点将反映每天。您可以单击图例中对应的键来切换是否显示此线。缺省情况下，将显示所有键，不能切换所有键以不显示所有行。
 
-To see the most accurate data in the line graph, you must instrument your app code to provide the `userID` by calling the `setUserContext` API. If you want to provide anonymity for the `userID` values, you must hash the value first. If the `userID` is not provided, the ID of the device is used by default. If one device is used by multiple users and the `userID` is not provided, the line graph does not reflect accurate data because the ID of the device counts as one user.
+要在折线图中查看最准确的数据，必须检测您的应用程序代码以通过调用 `setUserContext` API 来提供 `userID`。如果为 `userID` 值提供匿名，那么必须先散列值。如果未提供 `userID`，那么缺省情况下使用设备的标识。如果多个用户使用一个设备并且未提供 `userID`，那么折线图无法反映准确数据，因为会将设备标识视为一个用户。
 
-#### App Sessions
+#### 应用程序会话
 {: #app-sessions }
-The **App Sessions** chart shows a bar graph of app sessions over time.
+**应用程序会话**图表显示随时间推移应用程序会话的条形图。
 
-#### App Usage
+#### 应用程序使用情况
 {: #app-usage }
 
-The **App Usage** chart shows a pie chart of the percentage of app sessions for each app.
+**应用程序使用情况**图表显示每个应用程序的应用程序会话百分比的饼图。
 
-#### New Devices
+#### 新设备
 {: #new-devices }
 
-The **New Devices** chart shows a bar graph of new devices over time.
+**新设备**图表显示随时间推移新设备的条形图。
 
-#### Model Usage
+#### 型号使用情况
 {: #model-usage }
 
-The **Model Usage** chart shows a pie chart of the percentage of app sessions for each device model.
+**型号使用情况**图表显示每个设备型号的应用程序会话百分比的饼图。
 
-#### Operating System Usage
+#### 操作系统使用情况
 {: #operating-system-usage }
-The **Operating System Usage** chart shows a pie chart of the percentage of app sessions for each device operating system.
+**操作系统使用情况**图表显示每个设备操作系统的应用程序会话百分比的饼图。
 
-### Creating a custom chart for average session duration
+### 为平均会话持续时间创建定制图表
 {: #creating-acustom-chart-for-average-session-duration }
 
-The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
+应用程序会话的持续时间是可直观显示的有价值的指标。对于任何应用程序，您都想了解用户花费于特定会话的时间量。
 
-1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the **Custom Charts** page of the Dashboard section.
-2. Give your chart a title.
-3. Select **App Session** for **Event Type**.
-4. Select **Bar Graph** for **Chart Type**.
-5. Click **Next**.
-6. Select **Timeline** for **X-Axis**.
-7. Select **Average** for **Y-Axis**.
-8. Select **Duration** for **Property**.
-9. Click **Save**.
+1. 在 {{ site.data.keys.mf_analytics_console }} 中，单击“仪表板”部分的**定制图表**页面中的**创建图表**。
+2. 为您的图表指定一个标题。
+3. 针对**事件类型**选择**应用程序会话**。
+4. 针对**图表类型**选择**条形图**。
+5. 单击**下一步**。
+6. 针对 **X 轴**选择**时间线**。
+7. 针对 **Y 轴**选择**平均值**。
+8. 针对**属性**选择**持续时间**。
+9. 单击**保存**。
 
-## Crash capture
+## 崩溃捕获
 {: #crash-capture }
 
-{{ site.data.keys.mf_analytics }} includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
+{{ site.data.keys.mf_analytics }} 包含有关应用程序崩溃的数据和报告。将自动与其他生命周期事件数据一起收集此数据。崩溃数据由客户机收集，并且会在应用程序再次启动和运行后发送至服务器。
 
-An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the {{ site.data.keys.mf_analytics }} SDK logs a crash event. This data is sent to the server with the next logger send call.
+发生未捕获异常并导致程序进入不可恢复状态时会记录为应用程序崩溃。在应用程序关闭之前，{{ site.data.keys.mf_analytics }}
+SDK 会记录崩溃事件。通过下一个 logger send 调用将此数据发送至服务器。
 
-### Initializing your app to capture crash data
+### 初始化应用程序以捕获崩溃数据
 {: #initializing-your-app-to-capture-crash-data }
 
-To ensure that crash data is collected and included in the {{ site.data.keys.mf_analytics_console }} reports, make sure the crash data is sent to the server.
+要确保崩溃数据被收集并包含在 {{ site.data.keys.mf_analytics_console }} 报告中，请确保将崩溃数据发送至服务器。
 
-Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
+确保按照[初始化您的客户机应用程序以捕获应用程序使用情况](#initializing-your-client-app-to-capture-app-usage)中所述收集应用程序生命周期事件。
 
-The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
+必须在应用程序重新运行后发送客户机日志，以便获取与崩溃关联的堆栈跟踪。使用计时器确保定期发送日志。
 
 #### iOS
 {: #ios-crash-data }
@@ -243,68 +248,70 @@ setInterval(function() {
 }, 60000);
 ```
 
-### App crash monitoring
+### 应用程序崩溃监控
 {: #app-crash-monitoring }
 
-After a crash, when the app is restarted, the crash logs are sent to the {{ site.data.keys.mf_analytics_server }}. You can quickly see information about your app crashes in the **Dashboard** section of the {{ site.data.keys.mf_analytics_console }}.  
-In the **Overview** page of the **Dashboard** section, the **Crashes** bar graph shows a histogram of crashes over time.
+在崩溃之后，如果重新启动应用程序，会将崩溃日志发送至 {{ site.data.keys.mf_analytics_server }}。您可以在 {{ site.data.keys.mf_analytics_console }}的**仪表板**部分中快速查看有关应用程序崩溃的信息。  
+在**仪表板**部分的**概述**页面中，**崩溃**条形图将显示随时间推移崩溃的直方图。
 
-The data can be shown in two ways:
+可以按照以下两种方式显示数据：
 
-* **Display crash rate**: crash rate over time
-* **Display total crashes**: total crashes over time
+* **显示崩溃率**：随时间变化的崩溃率
+* **显示总崩溃次数**：随时间变化的总崩溃次数
 
-> **Note:** The Crashes chart queries against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the chart can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitation:
+> **注：**“崩溃”图表将查询 `MfpAppSession` 文档。您必须检测应用程序以收集应用程序使用和崩溃次数，使数据显示在图表中。如果未收集 `MfpAppSession` 数据，那么将查询 `MfpAppLog` 文档。在这种情况下，该图表可以计算崩溃次数，但是无法计算崩溃率，因为应用程序使用次数未知，这将导致以下限制：
 >
-> * The **Crashes** bar graph displays no data when **Display Crash Rate** is selected.
+> * 当选择**显示崩溃率** 时，**崩溃**条形图不显示任何数据。
 
-### Default charts for crashes
+### 崩溃的缺省图表
 {: #default-charts-for-crashes }
 
-In the **Crashes** page of the **Apps** section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app crashes.
+在 {{ site.data.keys.mf_analytics_console }}的**应用程序**部分的**崩溃**页面中，提供了一些缺省图表以帮助您管理应用程序崩溃。
 
-The **Crash Overview** chart shows a table of an overview of crashes.  
-The **Crashes** bar graph shows a histogram of crashes over time. You can display the data by crash rate or total crashes. The Crashes bar graph is also in the Crashes page of the Applications section.
+**崩溃概述**图表将显示崩溃概述表。  
+**崩溃**条形图显示崩溃次数随时间变化的直方图。您可以按崩溃率或总崩溃次数来显示数据。“崩溃”条形图也位于“应用程序”部分的“崩溃”页面中。
 
-The **Crash Summary** chart shows a sortable table of a summary of crashes. You can expand the individual crashes by clicking the + icon to view a **Crash Details** table that includes more details about the crashes. In the Crash Details table, you can click the **>** icon to view more details about the specific crash instance.
+**崩溃摘要**图表显示崩溃摘要的可排序表。
+您可以通过单击 + 图标来展开个别崩溃，以查看**崩溃详细信息**表，其中包含有关崩溃的更多详细信息。在“崩溃详细信息”表中，可以单击 **>** 图标以查看有关特定崩溃实例的更多详细信息。
 
-### App crash troubleshooting
+### 应用程序崩溃故障诊断
 {: #app-crash-troubleshooting }
 
-You can view the **Crashes** page in the **Applications** section of the {{ site.data.keys.mf_analytics_console }} to better administer your apps.
+您可以查看 {{ site.data.keys.mf_analytics_console }}的**应用程序**部分中的**崩溃**页面，以更好地管理您的应用程序。
 
-The **Crash Overview** table shows the following data columns:
+**崩溃概述**表显示以下数据列：
 
-* **App:** app name
-* **Crashes:** total number of crashes for that app
-* **Total Uses:** total number of times a user opens and closes that app
-* **Crash Rate:** percentage of crashes per use
+* **应用程序：**应用程序名称
+* **崩溃：**该应用程序的崩溃总数
+* **总使用次数：**用户打开并关闭该应用程序的总次数
+* **崩溃率：**崩溃次数占使用次数的百分比
 
-The **Crashes** bar graph is the same chart that is displayed in the **Overview** page of the **Dashboard** section.
+**崩溃**条形图是显示在**仪表板**部分的**概述**页面中的相同图表。
 
-> **Note:** Both charts query against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the charts can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitations:
+> **注：**这两个图表均查询 `MfpAppSession` 文档。您必须检测应用程序以收集应用程序使用和崩溃次数，使数据显示在图表中。如果未收集 `MfpAppSession` 数据，那么将查询 `MfpAppLog` 文档。在这种情况下，这些图表可以计算崩溃次数，但是无法计算崩溃率，因为应用程序使用次数未知，这将导致以下限制：
 >
-> * The Crash Overview table has empty columns for Total Uses and Crash Rate.
-> * The Crashes bar graph displays no data when Display Crash Rate is selected.
+> * “崩溃概述”表的“总使用次数”和“崩溃率”列为空。
+> * 当选择“显示崩溃率”时，“崩溃”条形图不显示任何数据。
 
-The **Crash Summary** table is sortable and includes the following data columns:
+**崩溃摘要**表可排序，包含以下数据列：
 
-* Crashes
-* Devices
-* Last Crash
-* App
-* OS
-* Message
+* 崩溃
+* 设备
+* 上次崩溃
+* 应用程序
+* 操作系统
+* 消息
 
-You can click on the **+** icon next to any entry to display the **Crash Details** table, which includes the following columns:
+您可以单击任意条目旁的 **+** 图标，以显示包含以下各列的**崩溃详细信息**表：
 
-* Time Crashed
-* App Version
-* OS Version
-* Device Model
-* Device ID
-* Download: link to download the logs that led up to the crash
+* 崩溃时间
+* 应用程序版本
+* 操作系统版本
+* 设备型号
+* 设备标识
+* 下载：用于下载一直到发生此崩溃时的日志的链接
 
-You can expand any entry in the **Crash Details** table to get more details, including a stacktrace.
+您可以展开**崩溃详细信息**表中的任何条目，以获取包含堆栈跟踪在内的更多详细信息。
 
-> **Note:** The data for the **Crash Summary** table is populated by querying the fatal level client logs. If your app does not collect fatal client logs, no data is available.
+
+> **注：**通过查询严重级别的客户机日志来填充**崩溃摘要**表的数据。如果您的应用程序未收集严重客户机日志，将没有可用数据。
