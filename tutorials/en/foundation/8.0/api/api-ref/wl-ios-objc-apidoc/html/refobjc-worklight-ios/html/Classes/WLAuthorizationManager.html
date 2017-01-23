@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>WLAuthorizationManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		
+		
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="WLAuthorizationManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">WLAuthorizationManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">WLAuthorizationManager.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This class manages the OAuth interaction between the client and the authorization server</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authorizationServerURL">&nbsp;&nbsp;authorizationServerURL</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/obtainAccessTokenForScope:withCompletionHandler:">&ndash;&nbsp;obtainAccessTokenForScope:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isGatewayResponse:">&ndash;&nbsp;isGatewayResponse:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logout:withCompletionHandler:">&ndash;&nbsp;logout:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/login:withCredentials:withCompletionHandler:">&ndash;&nbsp;login:withCredentials:withCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAuthorizationRequiredForResponse:">&ndash;&nbsp;isAuthorizationRequiredForResponse:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAuthorizationRequiredForResponseWithStatus:headers:">&ndash;&nbsp;isAuthorizationRequiredForResponseWithStatus:headers:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resourceScopeFromResponse:">&ndash;&nbsp;resourceScopeFromResponse:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearAccessToken:">&ndash;&nbsp;clearAccessToken:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAuthorizationServerURL:">&ndash;&nbsp;setAuthorizationServerURL:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resourceScopeFromResponseHeaders:">&ndash;&nbsp;resourceScopeFromResponseHeaders:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authorizationServerURL" title="authorizationServerURL"></a>
+	<h3 class="subsubtitle method-title">authorizationServerURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the authorization server URL, if this was not set, the default MFP Authorization URL is returned</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (atomic) NSURL *authorizationServerURL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="subsubtitle method-title">sharedInstance</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets the <code>WLAuthorizationManager</code> shared instance</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (WLAuthorizationManager *)sharedInstance</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>WLAuthorizationManager</code> shared instance</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/clearAccessToken:" title="clearAccessToken:"></a>
+	<h3 class="subsubtitle method-title">clearAccessToken:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clears an invalid Access token from the WLAuthorizationManager cache</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)clearAccessToken:(AccessToken *)<em>accessToken</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>AccessToken</em></dt>
+			<dd><p>to remove</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAuthorizationRequiredForResponse:" title="isAuthorizationRequiredForResponse:"></a>
+	<h3 class="subsubtitle method-title">isAuthorizationRequiredForResponse:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks if the response for a request to a MobileFirst protected resource indicates that authorization is required.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAuthorizationRequiredForResponse:(NSURLResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NSURLResponse</em></dt>
+			<dd><p>response.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>true if MobileFirst authorization is required, false otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAuthorizationRequiredForResponseWithStatus:headers:" title="isAuthorizationRequiredForResponseWithStatus:headers:"></a>
+	<h3 class="subsubtitle method-title">isAuthorizationRequiredForResponseWithStatus:headers:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks whether the response is a MobileFirst OAuth error.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAuthorizationRequiredForResponseWithStatus:(NSInteger)<em>status</em> headers:(NSDictionary *)<em>headers</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>status</em></dt>
+			<dd><p>HTTP status</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headers</em></dt>
+			<dd><p><code>NSDictionary</code> of response headers</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>true if the response is a MobileFirst OAuth error, or false otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isGatewayResponse:" title="isGatewayResponse:"></a>
+	<h3 class="subsubtitle method-title">isGatewayResponse:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if the <a href="../Classes/WLResponse.html">WLResponse</a> contains a Gateway Challenge</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isGatewayResponse:(WLResponse *)<em>wlResponse</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>wlResponse</em></dt>
+			<dd><p>The incoming response</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/login:withCredentials:withCompletionHandler:" title="login:withCredentials:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">login:withCredentials:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Login to the specified security check.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)login:(NSString *)<em>securityCheck</em> withCredentials:(NSDictionary *)<em>credentials</em> withCompletionHandler:(void ( ^ ) ( NSError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Completion handler containing the error information in case of failure.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NSString</em></dt>
+			<dd><ul>
+<li>The security check to log in to.</li>
+</ul>
+</dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NSDictionary</em></dt>
+			<dd><ul>
+<li>The credentials to use for login to the security check.</li>
+</ul>
+</dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logout:withCompletionHandler:" title="logout:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">logout:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logout from the specified security check.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logout:(NSString *)<em>securityCheck</em> withCompletionHandler:(void ( ^ ) ( NSError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Completion handler with response containing error information in case of failure.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NSString</em></dt>
+			<dd><ul>
+<li>The security check to log out from.</li>
+</ul>
+</dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/obtainAccessTokenForScope:withCompletionHandler:" title="obtainAccessTokenForScope:withCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">obtainAccessTokenForScope:withCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Obtains an access token for the specified MobileFirst protected resource scope.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)obtainAccessTokenForScope:(NSString *)<em>scope</em> withCompletionHandler:(void ( ^ ) ( AccessToken *accessToken , NSError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>scope</em></dt>
+			<dd><p>The protected resource scope. ToDo - document the behaviour in case of nil or empty scope</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>Completion handler with response containing the access token, or error information in case of failure.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resourceScopeFromResponse:" title="resourceScopeFromResponse:"></a>
+	<h3 class="subsubtitle method-title">resourceScopeFromResponse:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the resource scope from a response for a request to a MobileFirst protected resource.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)resourceScopeFromResponse:(NSURLResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>Response returned for the request to a protected resource.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Scope that is returned in the <code>WWW-Authenticate</code> header</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resourceScopeFromResponseHeaders:" title="resourceScopeFromResponseHeaders:"></a>
+	<h3 class="subsubtitle method-title">resourceScopeFromResponseHeaders:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the resource scope from a response for a request to a MobileFirst protected resource.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)resourceScopeFromResponseHeaders:(NSDictionary *)<em>headers</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NSDictionary</em></dt>
+			<dd><p>Response headers returned for the request to a protected resource.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Scope that is returned in the <code>WWW-Authenticate</code> header</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAuthorizationServerURL:" title="setAuthorizationServerURL:"></a>
+	<h3 class="subsubtitle method-title">setAuthorizationServerURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the authorization server URL
+If this field is not set, the default MFP Authorization server URL is used</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setAuthorizationServerURL:(NSURL *)<em>url</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>the</em></dt>
+			<dd><p>context root of the authorization server</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLAuthorizationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		
+	</body>
+</html>

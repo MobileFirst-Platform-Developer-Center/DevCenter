@@ -16,3 +16,6 @@ node_modules/
 *.swo
 *.*~
 
+# API-reference ZIP file
+IBM-WL-apidocs.zip
+

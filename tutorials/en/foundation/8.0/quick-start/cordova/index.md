@@ -7,6 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
@@ -19,18 +20,19 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * Successfully retrieving data using an adapter.
 
 #### Prerequisites:
-
+{: #prerequisites }
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * Cordova CLI 6.x.
 * *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the {{ site.data.keys.mf_server }}
+{: #1-starting-the-mobilefirst-server }
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating and registering an application
-
+{: #2-creating-and-registering-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click the **New** button next to **Applications**
@@ -46,7 +48,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
  
 ### 3. Editing application logic
-
+{: #3-editing-application-logic }
 1. Open the Cordova project in your code editor of choice.
 
 2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
@@ -83,6 +85,7 @@ WLAuthorizationManager.obtainAccessToken()
 ```
     
 ### 4. Deploy an adapter
+{: #4-deploy-an-adapter }
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
@@ -104,7 +107,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 <img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
-
+{: #5-testing-the-application }
 1. From a **Command-line** window, navigate to the Cordova project's root folder.
 2. Run the command: `cordova platform add ios|android|windows` to add a platform.
 3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
@@ -118,12 +121,14 @@ Otherwise the Simulator or Emulator will be used.
 
 <br clear="all"/>
 ### Results
+{: #results }
 * Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
 * If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then displayed in an alert.
 
 ## Next steps
+{: #next-steps }
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
 
 - Review the [Application development](../../application-development/) tutorials

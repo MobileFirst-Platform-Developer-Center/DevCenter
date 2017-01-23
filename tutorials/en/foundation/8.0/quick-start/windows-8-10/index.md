@@ -7,6 +7,7 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
@@ -19,17 +20,18 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * Successfully retrieving data using an adapter.
 
 #### Prerequisites:
-
+{: #prerequisites }
 * Configured Visual Studio 2013/5
 * *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the {{ site.data.keys.mf_server }}
+{: #1-starting-the-mobilefirst-server }
 Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
 
 ### 2. Creating an application
-
+{: #2-creating-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 1. Click the **New** button next to **Applications**
@@ -45,7 +47,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-windows.png"/>
 
 ### 3. Editing application logic
-
+{: #3-editing-application-logic }
 1. Open the Visual Studio project.
 
 2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
@@ -80,6 +82,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 
 
 ### 4. Deploy an adapter
+{: 4-deploy-an-adapter }
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
@@ -100,7 +103,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
 <img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
-
+{: 5-testing-the-application }
 1. In Visual Studio, select the **mfpclient.resw** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
     * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
@@ -110,6 +113,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 2. Press the **Run App** button.
 
 ### Results
+{: #results }
 * Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
 * If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
 
@@ -118,6 +122,7 @@ The adapter response is then printed in Visual Studio's Outpout console.
 ![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Next steps
+{: #next-steps }
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
 
 - Review the [Application development](../../application-development/) tutorials

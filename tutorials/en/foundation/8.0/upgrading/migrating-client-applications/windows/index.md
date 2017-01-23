@@ -6,15 +6,17 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
 
 #### Jump to
-
+{: #jump-to }
 * [Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
 * [Migrating a Windows project](#migrating-a-windows-project)
 * [Updating the Windows code](#updating-the-windows-code)
 
 ## Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade
+{: #scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade }
 The migration assistance tool helps you prepare your apps that were created with earlier versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Windows app and generating a report of APIs that are deprecated or discontinued in V8.0.
 
 The following information is important to know before you use the migration assistance tool:
@@ -54,6 +56,7 @@ The migration assistance tool does not modify or move any developer code or comm
    When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
     
 ## Migrating a Windows project
+{: #migrating-a-windows-project }
 To work with existing native Windows project that was created with IBM MobileFirst™ Platform Foundation V6.2.0 or later, you must modify the project.
 
 MobileFirst V8.0 only supports Windows Universal environments, that is Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal (Desktop and Phone). Windows Phone 8 Silverlight is not supported.
@@ -77,7 +80,7 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
 
    For example, the following snippet is an example of using the
 
-   ```cshrap
+   ```csharp
    WLResourceRequest request = new WLResourceRequest
                             (new Uri(uriBuilder.ToString()), "GET", "accessRestricted"); 
                             request.send(listener); 
@@ -85,7 +88,7 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
     
    The snippet updated with the new API would be:
     
-   ```cshrap
+   ```csharp
    WorklightResourceRequest request = newClient.ResourceRequest
                             (new Uri(uriBuilder.ToString(), UriKind.Relative), "GET", "accessRestricted");
                             WorklightResponse response = await request.Send();
@@ -96,13 +99,15 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
 You can now start developing your native Windows application with the {{ site.data.keys.product_adj }} SDK. You might need to update your code to reflect the changes for {{ site.data.keys.product_adj }} V8.0.0 API.
 
 #### What to do next
+{: #what-to-do-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Updating the Windows code
+{: #updating-the-windows-code }
 {{ site.data.keys.product }} V8.0 introduces a number of changes to the Windows SDK that might require changes to apps developed in earlier versions.
 
 #### Deprecated Windows C# API Classes
-
+{: #deprecated-windows-c-api-classes }
 | Category | Description | Recommended action | 
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | For custom gateway challenges, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenges, use `SecurityCheckChallengeHandler`. |
@@ -123,7 +128,7 @@ Replace the client-side APIs that are discontinued or not in V8.0.
 | `WLResourceRequest` | 	Use `WorklightResourceRequest` instead. | 
 
 #### Deprecated Windows C# API Interfaces
-
+{: #deprecated-windows-c-api-interfaces }
 | Category | Description | Recommended action | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | Not supported. | 

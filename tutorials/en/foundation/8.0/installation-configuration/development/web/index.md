@@ -1,12 +1,13 @@
 ---
 layout: tutorial
-title: Setting up the Web development environment
+title: Setting up the web development environment
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
 Developers can use their IDE of choice, and any framework(s) that suits their needs.
 
@@ -19,15 +20,34 @@ The policy requirements can be satisfied by using either of the following method
 - Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the {{ site.data.keys.mf_server }}.
 - Using Node.js as a proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
 
-<br/>
-**Prerequisites:**  
-The following requires either Apache Maven or Node.js installed on the developer's workstation.  
-For instructions, refer to the [installation guide](../mobilefirst/installation-guide/).
+#### Jump to
+{: #jump-to }
+- [Prerequisites](#prerequisites)
+- [Using WebSphere Liberty profile to serve the web application resources](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
+- [Using Node.js](#using-nodejs)
+- [Next Steps](#next-steps)
+
+## Prerequisites
+{: #prerequisites }
+-   {: #web-app-supported-browsers }
+    Web applications are supported for the following browser versions. The version numbers indicate the earliest fully supported version of the respective browser.
+
+    | Browser               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android Browser   |
+    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
+    | **Supported Version** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
+
+    <sup>*</sup> In Safari, private browsing mode is supported only for single-page applications (SPAs). Other applications might exhibit unexpected behavior.
+
+    {% comment %} [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165. {% endcomment %}
+
+-   The following setup instructions require either Apache Maven or Node.js installed on the developer's workstation. For further instructions, see the [installation guide](../mobilefirst/installation-guide/).
 
 ## Using WebSphere Liberty profile to serve the web application resources
+{: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
 In order to serve the web application's resources, these need to be stored in a Maven webapp (a **.war** file).
 
 ### Creating a Maven webapp archetype
+{: #creating-a-maven-webapp-archetype }
 1. From a **command-line** window, navigate to a location of your choosing.
 2. Run the command:
 
@@ -38,6 +58,7 @@ In order to serve the web application's resources, these need to be stored in a 
     - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
 
 ### Building the Maven webapp with the web application's resources 
+{: #building-the-maven-webapp-with-the-web-applications-resources }
 1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
 
     > From here on, consider the **webapp** folder as the development location for the web application.
@@ -48,6 +69,7 @@ In order to serve the web application's resources, these need to be stored in a 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
 
 ### Adding the Maven webapp to the application server
+{: #adding-the-maven-webapp-to-the-application-server }
 1. Edit the **server.xml file** of your WebSphere application server.  
     If using the {{ site.data.keys.mf_dev_kit }}, the file is located in: [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** folder. Add the following entry:
 
@@ -58,10 +80,12 @@ In order to serve the web application's resources, these need to be stored in a 
     - The application server is automatically restarted after saving the changes to the **server.xml** file.  
 
 ### Testing the web application
+{: #testing-the-web-application }
 Once you are ready to test your web application, visit the URL: **localhost:9080/MyWebApp**.
     - Replace **MyWebApp** with your own value.
 
 ## Using Node.js
+{: #using-nodejs }
 Node.js can be used as a reverse proxy to tunnel requests from the web application to the {{ site.data.keys.mf_server }}.
 
 1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
@@ -114,6 +138,7 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
     - Replace **app-name** with your own value.
 
 ## Next steps
+{: #next-steps }
 To continue with {{ site.data.keys.product }} development in Web applications, the {{ site.data.keys.product }} web SDK need to be added to the Web application.
 
 * Learn how to add the [{{ site.data.keys.product }} SDK to web applications](../../../application-development/sdk/web/).

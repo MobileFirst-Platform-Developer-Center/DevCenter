@@ -6,6 +6,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 You can administer {{ site.data.keys.product_adj }} applications through the {{ site.data.keys.mf_console }} by locking apps or denying access, or by displaying notification messages.
 
 You can start the console by entering one of the following URLs:
@@ -20,6 +21,7 @@ You can use the {{ site.data.keys.mf_console }} to manage your applications.
 From the {{ site.data.keys.mf_console }}, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
 
 #### Jump to
+{: #jump-to }
 
 * [Mobile-application management](#mobile-application-management)
 * [Application status and token licensing](#application-status-and-token-licensing)
@@ -27,6 +29,7 @@ From the {{ site.data.keys.mf_console }}, you can also access the Analytics cons
 * [Audit log of administration operations](#audit-log-of-administration-operations)
 
 ## Mobile-application management
+{: #mobile-application-management }
 The {{ site.data.keys.product_adj }} mobile-application-management capabilities provide {{ site.data.keys.mf_server }} operators and administrators with granular control over user and device access to their applications.
 
 {{ site.data.keys.mf_server }} tracks all attempts to access your mobile infrastructure, and stores information about the application, the user, and the device on which the application is installed. The mapping between the application, the user, and the device, forms the basis for the server's mobile-application management capabilities.
@@ -46,6 +49,7 @@ Access-blocking has the following characteristics:
 * Access to adapter resources on {{ site.data.keys.mf_server }} is blocked immediately when you select this operation. However, this might not be the case for resources on an external server because the application might still have a valid access token that has not expired.
 
 ### Device status
+{: #device-status }
 {{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
 
 The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
@@ -53,9 +57,11 @@ The default device status is **Active**, which indicates that access from this d
 The **Expired** status is a special status that is set by {{ site.data.keys.mf_server }} after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
 
 ### Device display name
+{: #device-display-name }
 {{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
 
 ### Managing device access in {{ site.data.keys.mf_console }}
+{: #managing-device-access-in-mobilefirst-operations-console }
 To monitor and manage device access to your resources, select the Devices tab in the {{ site.data.keys.mf_console }} dashboard.
 
 Use the search field to search for a device by the user ID that is associated with the device, or by the display name of the device (if set). See [Device display name](#device-display-name). You can also search for part of the user ID or the device display name (at least three characters).
@@ -71,12 +77,14 @@ You can unregister a device by selecting **Unregister** in the **Actions** colum
 To view of all the applications that were accessed on a specific device, select the expand arrow icon next to the device ID in the devices table. Each row in the displayed applications table contains the name of the application, and the application's access status (whether access to protected resources is enabled for this application on this device). You can change the application's status to **Disabled** to block access from the application specifically on this device.
 
 #### Jump to
+{: #jump-to-1 }
 
 * [Remotely disabling application access to protected resources](#remotely-disabling-application-access-to-protected-resources)
 * [Displaying an administrator message](#displaying-an-administrator-message)
 * [Defining administrator messages in multiple languages](#defining-administrator-messages-in-multiple-languages)
 
 ### Remotely disabling application access to protected resources
+{: #remotely-disabling-application-access-to-protected-resources }
 Use {{ site.data.keys.mf_console }} (the console) to disable user access to a specific version of an application on a specific mobile operating system, and provide a custom message to the user.
 
 1. Select your application version from the **Applications** section of the console's navigation sidebar, and then select the application **Management** tab.
@@ -96,6 +104,7 @@ When a user runs an application that was remotely disabled, a dialog window with
 <!-- **Note:** For cross-platform applications, you can customize the default remote-disable behavior: provide an upgrade URL for your application, as outlined in Step 3, and set the **showCloseOnRemoteDisableDenial** attribute in your application's initOptions.js file to false. If the attribute is not defined, define it. When an application-upgrade URL is provided and the value of **showCloseOnRemoteDisableDenial** is false, the **Close** button is omitted from the remote-disable dialog window, leaving only the Get new version button. This forces the user to upgrade the application. When no upgrade URL is provided, the **showCloseOnRemoteDisableDenial** configuration has no effect, and a single **Close** button is displayed. -->
 
 ### Displaying an administrator message
+{: #displaying-an-administrator-message }
 Follow the outlined procedure to configure the notification message. You can use this message to notify application users of temporary situations, such as a planned service downtime.
 
 1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application Management tab.
@@ -113,7 +122,8 @@ Follow the outlined procedure to configure the notification message. You can use
 The message is displayed when the application first uses {{ site.data.keys.mf_server }} to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
 
 ### Defining administrator messages in multiple languages
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format setting, and not according to the configured browser or operating-system language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+{: #defining-administrator-messages-in-multiple-languages }
+<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format preference, and not according to the configured browser or operating-system display-language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
 
 Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
 
@@ -142,6 +152,7 @@ You can select Edit, at any time, to replace the locales CSV file. You can also 
 The localized notification message is displayed on the user's mobile device, according to the locale of the device. If no message was configured for the device locale, the default message that you provided is displayed.
 
 ## Application status and token licensing
+{: #application-status-and-token-licensing }
 You must manually restore the correct application status in {{ site.data.keys.mf_console }} after Blocked status because of insufficient tokens.
 
 If you use token licensing and you no longer have enough license tokens for an application, the application status of all versions of the application changes to **Blocked**. You are no longer able to change the status of any version of the application. The following message is displayed in {{ site.data.keys.mf_console }}:
@@ -159,6 +170,7 @@ The application got blocked because its license expired but a license is availab
 The display status is still **Blocked**. You must restore the correct current status manually from memory or your own records by editing the Status field. {{ site.data.keys.product }} does not manage the display of **Blocked** status in {{ site.data.keys.mf_console }} of an application that was blocked because of insufficient license tokens. You are responsible for restoring such a blocked application to a real status that can be displayed through {{ site.data.keys.mf_console }}.
 
 ## Error log of operations on runtime environments
+{: #error-log-of-operations-on-runtime-environments }
 Use the error log to access failed management operations initiated from {{ site.data.keys.mf_console }} or the command line on the selected runtime environment, and to see the effect of the failure on the servers.
 
 When a transaction fails, the status bar displays a notification of the error and shows a link to the error log. Use the error log to have more detail about the error, for example, the status of each server with a specific error message, or to have a history of errors. The error log shows the most recent operation first.
@@ -170,6 +182,7 @@ Expand the row that refers to the failed operation to access more information ab
 ![error log in the console](error-log.png)
 
 ## Audit log of administration operations
+{: #audit-log-of-administration-operations }
 In the {{ site.data.keys.mf_console }}, you can refer to an audit log of administration operations.
 
 {{ site.data.keys.mf_console }} provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the {{ site.data.keys.product_adj }} administration service to **false**.

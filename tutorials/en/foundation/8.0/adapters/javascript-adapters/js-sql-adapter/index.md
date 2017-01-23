@@ -10,6 +10,8 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 An SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
 To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
@@ -19,6 +21,8 @@ In this tutorial and in the accompanying sample, you learn how to use an adapter
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ## The XML File
+{: #the-xml-file }
+
 The XML file contains settings and metadata.
 
 In the **adapter.xml** file, declare the following parameters:
@@ -96,6 +100,8 @@ With the `connectionPolicy` configured, declare a procedure in the adapter XML f
 ```
 
 ## JavaScript implementation
+{: #javascript-implementation }
+
 The adapter JavaScript file is used to implement the procedure logic.  
 There are two ways of running SQL statements:
 
@@ -103,6 +109,8 @@ There are two ways of running SQL statements:
 * SQL stored procedure
 
 ### SQL statement query
+{: #sql-statement-query }
+
 1. Assign your SQL query to a variable. This must always be done outside the function scope.
 2. Add parameters, if necessary.
 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
@@ -119,16 +127,18 @@ There are two ways of running SQL statements:
 
     // Invoke prepared SQL query and return invocation result
    function getAccountTransactions1(accountId){
-      // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
-      // 4. Return the result to the application or to another procedure.
-         return MFP.Server.invokeSQLStatement({
-	          preparedStatement : getAccountsTransactionsStatement,
-	          parameters : [accountId, accountId]
+   // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
+   // 4. Return the result to the application or to another procedure.
+        return MFP.Server.invokeSQLStatement({
+	       preparedStatement : getAccountsTransactionsStatement,
+	       parameters : [accountId, accountId]
         });
    }
    ```       
 
 ### SQL stored procedure
+{: #sql-stored-procedure }
+
 To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
 
 ```javascript
@@ -143,6 +153,8 @@ function getAccountTransactions2(accountId){
 ```  
 
 ### Using multiple parameters
+{: #using-multiple-parameters }
+ 
 When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
 
 ```javascript
@@ -162,6 +174,8 @@ function getAccountTransactions1(fromAccount, toAccount){
 ```
 
 ## Invocation Results
+{: #invocation-results }
+
 The result is retrieved as a JSON object:
 
 ```json
@@ -190,12 +204,16 @@ The result is retrieved as a JSON object:
  * To access the `resultSet` object on the server-side: `result.ResultSet`
 
 ## Sample adapter
+{: #sample-adapter }
+
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
 
 The Adapters Maven project includes the **JavaScriptSQL** adapter described above.  
 Also included is an SQL script in the **Utils** folder.
 
 ### Sample usage
+{: #sample-usage }
+
 * Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
 * Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).

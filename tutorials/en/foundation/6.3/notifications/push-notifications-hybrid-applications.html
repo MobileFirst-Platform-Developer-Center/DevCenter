@@ -276,13 +276,19 @@ Set this function at a global JavaScript level. The tag name <code>Push.ALL</cod
 <h3>Android</h3>
 <p>To send push notifications to Android devices, you must use the Google Cloud Messaging (GCM).<br />
 Use valid Gmail account to register to the GCM service.</p>
-<p>For more information about how to get a GCM Project Number and API key (to be used later in the MobileFirst project), see the <a href="http://developer.android.com/guide/google/gcm/gs.html">Cloud Messaging</a> page at <code>http://developer.android.com/guide/google/gcm/gs.html</code>.</p>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>When creating an API key, make sure that the type is <strong>server key</strong>.</li>
-<li>Android OS 2.3.5 devices must be synchronized with a Gmail account.</li>
-<li>Android OS 4.x devices do not impose Gmail account synchronization.</li>
-</ul>
+
+<blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
+
+<ol>
+   <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+   <li>Create a new project and provide a project name.</li>
+   <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+   <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+</ol>
+
 <h3>iOS</h3>
 <p>To send push notifications to iOS devices, you must use the Apple Push Notifications Service (APNS).<br />
 As a developer, you must be a registered Apple iOS Developer to obtain an APNS certificate for your application.<br />

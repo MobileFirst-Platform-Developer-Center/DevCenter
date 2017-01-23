@@ -6,6 +6,7 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully.
 
 Before you proceed with installing the components to the application server, ensure that the databases and the tables for the components are prepared and ready to use. For more information, see [Setting up databases](../databases).
@@ -13,6 +14,7 @@ Before you proceed with installing the components to the application server, ens
 The server topology to install the components must also be defined. See [Topologies and network flows](../topologies).
 
 #### Jump to
+{: #jump-to }
 
 * [Application server prerequisites](#application-server-prerequisites)
 * [Installing with the Server Configuration Tool](#installing-with-the-server-configuration-tool) 
@@ -21,6 +23,7 @@ The server topology to install the components must also be defined. See [Topolog
 * [Installing a server farm](#installing-a-server-farm)
 
 ## Application server prerequisites
+{: #application-server-prerequisites }
 Depending on your choice of the application server, select one of the following topics to find out the prerequisites that you must fulfill before you install the {{ site.data.keys.mf_server }} components.
 
 * [Apache Tomcat prerequisites](#apache-tomcat-prerequisites)
@@ -28,6 +31,7 @@ Depending on your choice of the application server, select one of the following 
 * [WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites](#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites)
 
 ### Apache Tomcat prerequisites
+{: #apache-tomcat-prerequisites }
 {{ site.data.keys.mf_server }} has some requirements for the configuration of Apache Tomcat that are detailed in the following topics.  
 Ensure that you fulfill the following criteria:
 
@@ -120,6 +124,7 @@ Ensure that you fulfill the following criteria:
 </div>
 
 ### WebSphere Application Server Liberty prerequisites
+{: #websphere-application-server-liberty-prerequisites }
 {{ site.data.keys.product_full }}has some requirements for the configuration of the Liberty server that are detailed in the following topics.  
 
 Ensure that you fulfill the following criteria:
@@ -161,6 +166,7 @@ liberty_install_dir/bin/productInfo featureInfo
 </div>
 
 ### WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites
+{: #websphere-application-server-and-websphere-application-server-network-deployment-prerequisites }
 {{ site.data.keys.mf_server }} has some requirements for the configuration of WebSphere  Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
 Ensure that you fulfill the following criteria:
 
@@ -192,6 +198,7 @@ Ensure that you fulfill the following criteria:
 </div>
 
 ### File system prerequisites
+{: #file-system-prerequisites }
 To install {{ site.data.keys.mf_server }} to an application server, the {{ site.data.keys.product_adj }} installation tools must be run by a user that has specific file system privileges.  
 The installation tools include:
 
@@ -224,6 +231,7 @@ For Apache Tomcat, you must have the required permission to perform the followin
 For all these application servers, the user who runs the application server must be able to read the files that were created by the user who ran the {{ site.data.keys.product_adj }} installation tools.
 
 ## Installing with the Server Configuration Tool
+{: #installing-with-the-server-configuration-tool }
 Use the Server Configuration Tool to install the {{ site.data.keys.mf_server }} components to your application server.
 
 The Server Configuration Tool can set up the database and install the components to an application server. This tool is meant for a single user. The configuration files are store on the disk. The directory where they are stored can be modified with menu **File → Preferences**. The files must be used only by one instance of the Server Configuration Tool at the time. The tool does not manage concurrent access to the same file. If you have multiple instances of the tool accessing the same file, the data might be lost. For more information about how the tool creates and setup the databases, see [Create the database tables with the Server Configuration Tool](../databases/#create-the-database-tables-with-the-server-configuration-tool). If the databases exist, the tool can detect them by testing the presence and the content of some test tables and does not modify these database tables.
@@ -234,6 +242,7 @@ The Server Configuration Tool can set up the database and install the components
 * [Applying a fix pack by using the Server Configuration Tool](#applying-a-fix-pack-by-using-the-server-configuration-tool)
 
 ### Supported operating systems
+{: #supported-operating-systems }
 You can use the Server Configuration Tool if you are on the following operating systems:
 
 * Windows x86 or x86-64
@@ -243,6 +252,7 @@ You can use the Server Configuration Tool if you are on the following operating 
 The tool is not available on other operating systems. You need to use Ant tasks to install the {{ site.data.keys.mf_server }} components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
 
 ### Supported topologies
+{: #supported-topologies }
 The Server Configuration Tool installs the {{ site.data.keys.mf_server }} components with the following topologies:
 
 * All components ({{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, {{ site.data.keys.mf_console }}, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
@@ -253,6 +263,7 @@ The Server Configuration Tool installs the {{ site.data.keys.mf_server }} compon
 For other topologies or other database settings, you can install the components with Ant Tasks or manually instead.
 
 ### Running the Server Configuration Tool
+{: #running-the-server-configuration-tool }
 Before you run the Server Configuration Tool, make sure that the following requirements are fulfilled:
 
 * The databases and the tables for the components are prepared and ready to use. See [Setting up databases](../databases).
@@ -376,6 +387,7 @@ On WebSphere Application Server Network Deployment, the applications are install
 Keep the configuration file in the Server Configuration Tool. You might reuse it to install the interim fixes. The menu to apply an interim fix is **Configurations > Replace the deployed WAR files**.
 
 ### Applying a fix pack by using the Server Configuration Tool
+{: #applying-a-fix-pack-by-using-the-server-configuration-tool }
 If {{ site.data.keys.mf_server }} is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.
 
 1. Start the Server Configuration Tool.
@@ -387,6 +399,7 @@ If {{ site.data.keys.mf_server }} is installed with the configuration tool and t
 2. Click **Configurations → Replace the deployed WAR files** and select an existing configuration to apply the fix pack or an interim fix.
 
 ## Installing with Ant tasks
+{: #installing-with-ant-tasks }
 Use Ant tasks to install the {{ site.data.keys.mf_server }} components to your application server.
 
 You can find the sample configuration files for installing {{ site.data.keys.mf_server }} in the **mfp\_install\_dir/MobileFirstServer/configuration-samples directory**.
@@ -419,19 +432,24 @@ You can run an Ant file with the Ant distribution that is part of the product in
 After the installation, make a copy of the Ant file so that you can reuse it to apply a fix pack.
 
 ### Applying a fix pack by using the Ant files
+{: #applying-a-fix-pack-by-using-the-ant-files }
+
 #### Updating with the sample Ant file
+{: #updating-with-the-sample-ant-file }
 If you use the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to install {{ site.data.keys.mf_server }}, you can reuse a copy of this Ant file to apply a fix pack. For password values, you can enter 12 stars (\*) instead of the actual value, to be prompted interactively when the Ant file is run.
 
 1. Verify the value of the **mfp.server.install.dir** property in the Ant file. It must point to the directory that contains the product with the fix pack applied. This value is used to take the updated {{ site.data.keys.mf_server }} WAR files.
 2. Run the command: `mfp_install_dir/shortcuts/ant -f your_ant_file update`
 
 #### Updating with own Ant file
+{: #updating-with-own-ant-file }
 If you use your own Ant file, make sure that for each installation task (**installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush**), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are **updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**.
 
 1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an {{ site.data.keys.mf_server }} installation that the fix pack is applied. By default, the updated {{ site.data.keys.mf_server }} WAR files are taken from the location of **mfp-ant-deployer.jar**.
 2. Run the update tasks (**updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**) of your Ant file.
 
 ### Sample Ant files modifications
+{: #sample-ant-files-modifications }
 You can modify the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to adapt to your installation requirements.  
 The following sections provide the details on how you can modify the sample Ant files to adapt the installation to your needs:
 
@@ -444,6 +462,7 @@ The following sections provide the details on how you can modify the sample Ant 
 7. [Manual configuration of the RMI port on Apache Tomcat](#manual-configuration-of-the-rmi-port-on-apache-tomcat)
 
 #### Specify extra JNDI properties
+{: #specify-extra-jndi-properties }
 The **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks declare the values for the JNDI properties that are required for the components to function. These JNDI properties are used to define the JMX communication, and also the links to other components (such the live update service, the push service, the analytics service, or the authorization server). However, you can also define values for other JNDI properties. Use the `<property>` element that exists for these three tasks. For a list of JNDI properties, see:
 
 * [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
@@ -459,6 +478,7 @@ For example:
 ```
 
 #### Specify existing users
+{: #specify-existing-users }
 By default, the **installmobilefirstadmin** Ant task creates users:
 
 * On WebSphere  Application Server Liberty to define a Liberty administrator for the JMX communication.
@@ -485,6 +505,7 @@ To use an existing user instead of creating new user, you can do the following o
 Also, the user that is created by the sample Ant files is mapped to the  of the administration service and the console. With this setting, you can use this user to log on to {{ site.data.keys.mf_server }} after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
 
 #### Specify Liberty Java EE level
+{: #specify-liberty-java-ee-level }
 Some distributions of WebSphere Application Server Liberty support features from Java EE 6 or from Java EE 7. By default, the Ant tasks automatically detect the features to install. For example, **jdbc-4.0** Liberty feature is installed for Java EE 6 and **jdbc-4.1** feature is installed in case of Java EE 7. If the Liberty installation supports both features from Java EE 6 and Java EE 7, you might want to force a certain level of features. An example might be that you plan to run both {{ site.data.keys.mf_server }} V8.0.0 and V7.1.0 on the same Liberty server. {{ site.data.keys.mf_server }} V7.1.0 or earlier supports only Java EE 6 features.
 
 To force a certain level of Java EE 6 features, use the jeeversion attribute of the `<websphereapplicationserver>` element. For example:
@@ -498,6 +519,7 @@ To force a certain level of Java EE 6 features, use the jeeversion attribute of 
 ```
 
 #### Specify data source JDBC properties
+{: #specify-data-source-jdbc-properties }
 You can specify the properties for the JDBC connection. Use the `<property>` element of a `<database>` element. The element is available in **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks. For example:
 
 ```xml
@@ -515,6 +537,7 @@ You can specify the properties for the JDBC connection. Use the `<property>` ele
 ```
 
 #### Run the Ant files on a computer where {{ site.data.keys.mf_server }} is not installed
+{: #run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed }
 To run the Ant tasks on a computer where {{ site.data.keys.mf_server }} is not installed, you need the following items:
 
 * An Ant installation
@@ -529,6 +552,7 @@ To run the Ant tasks on a computer where {{ site.data.keys.mf_server }} is not i
 For more information, see the Ant tasks to install each {{ site.data.keys.mf_server }} component at [Installation reference](../installation-reference).
 
 #### Specify WebSphere Application Server Network Deployment targets
+{: #specify-websphere-application-server-network-deployment-targets }
 To install on WebSphere Application Server Network Deployment, the specified WebSphere Application Server profile must be the deployment manager. You can deploy on the following configurations:
 
 * A cluster
@@ -542,9 +566,11 @@ The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-
 
 
 #### Manual configuration of the RMI port on Apache Tomcat
+{: #manual-configuration-of-the-rmi-port-on-apache-tomcat }
 By default, the Ant tasks modify the **setenv.bat** file or the **setenv.sh** file to open the RMI port. If you prefer to open the RMI port manually, add the **tomcatSetEnvConfig** attribute with the value as false to the `<jmx>` element of the **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** tasks.
 
 ## Installing the {{ site.data.keys.mf_server }} components manually
+{: #installing-the-mobilefirst-server-components-manually }
 You can also install the {{ site.data.keys.mf_server }} components to your application server manually.  
 The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
 
@@ -554,6 +580,7 @@ The following topics provide you the complete information to guide you through t
 * [Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment](#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment)
 
 ### Manual installation on WebSphere Application Server Liberty
+{: #manual-installation-on-websphere-application-server-liberty }
 Make sure that you have also fulfilled the requirements as documented in [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites).
 
 * [Topology constraints](#topology-constraints)
@@ -565,9 +592,11 @@ Make sure that you have also fulfilled the requirements as documented in [WebSph
 * [Configuration details](#configuration-details)
 
 #### Topology constraints
+{: #topology-constraints }
 The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 #### Application server settings
+{: #application-server-settings }
 You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
 
 Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
@@ -581,6 +610,7 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
 You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Liberty features required by the {{ site.data.keys.mf_server }} applications
+{: #liberty-features-required-by-the-mobilefirst-server-applications }
 You can use the following features for Java EE 6 or Java EE 7.
 
 **{{ site.data.keys.mf_server }} administration service** 
@@ -605,6 +635,7 @@ You can use the following features for Java EE 6 or Java EE 7.
 * **usr:MFPDecoderFeature-1.0**
 
 #### Global JNDI entries
+{: #global-jndi-entries }
 The following global JNDI entries are required to configure the JMX communication between the runtime and the administration service:
 
 * **mfp.admin.jmx.host**
@@ -627,6 +658,7 @@ For a farm configuration, see also the following topics:
 * [Installing a server farm](#installing-a-server-farm)
 
 #### Class loader
+{: #class-loader }
 For all applications, the class loader must have the parent last delegation. For example:
 
 ```xml
@@ -638,6 +670,7 @@ For all applications, the class loader must have the parent last delegation. For
 ```
 
 #### Password decoder user feature
+{: #password-decoder-user-feature }
 Copy the password decoder user feature to your Liberty profile. For example:
 
 * On UNIX and Linux systems:
@@ -660,6 +693,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
   ```
     
 #### Configuration details
+{: #configuration-details }
 <div class="panel-group accordion" id="manual-installation-liberty" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service">
@@ -885,6 +919,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 </div>
 
 ### Manual installation on WebSphere Application Server Liberty collective
+{: #manual-installation-on-websphere-application-server-liberty-collective }
 Make sure that you have also fulfilled the requirements as documented in [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites).
 
 * [Topology constraints](#topology-constraints-collective)
@@ -895,12 +930,14 @@ Make sure that you have also fulfilled the requirements as documented in [WebSph
 * [Password decoder user feature](#password-decoder-user-feature-collective)
 * [Configuration details](#configuration-details-collective)
 
-<h4 id="topology-constraints-collective">Topology constraints</h4>
+#### Topology constraints
+{: #topology-constraints-collective }
 The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.mf_console }} must be installed in a Liberty collective controller. The {{ site.data.keys.product_adj }} runtime and the {{ site.data.keys.mf_server }} push service must be installed in every member of the Liberty collective cluster.
 
 The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
-<h4 id="application-server-settings-collective">Application server settings</h4>
+#### Application server settings
+{: #application-server-settings-collective }
 You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
 
 Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
@@ -913,7 +950,8 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
 
 You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
 
-<h4 id="liberty-features-required-by-the-mobilefirst-server-applications-collective">Liberty features required by the {{ site.data.keys.mf_server }} applications</h4>
+#### Liberty features required by the {{ site.data.keys.mf_server }} applications
+{: #liberty-features-required-by-the-mobilefirst-server-applications-collective }
 
 You need to add the following features for Java EE 6 or Java EE 7.
 
@@ -938,7 +976,8 @@ You need to add the following features for Java EE 6 or Java EE 7.
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-<h4 id="global-jndi-entries-collective">Global JNDI entries</h4>
+#### Global JNDI entries
+{: #global-jndi-entries-collective }
 The following global JNDI entries are required to configure the JMX communication between the runtime and the administration service:
 
 * **mfp.admin.jmx.host**
@@ -956,7 +995,8 @@ These global JNDI entries are set with this syntax and are not prefixed by a con
 * For more information about the JNDI properties for the administration service, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 * For more information about the JNDI properties for the runtime, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
-<h4 id="class-loader-collective">Class loader</h4>
+#### Class loader
+{: #class-loader-collective }
 For all applications, the class loader must have the parent last delegation. For example:
 
 ```xml
@@ -967,7 +1007,8 @@ For all applications, the class loader must have the parent last delegation. For
 </application>
 ```
 
-<h4 id="password-decoder-user-feature-collective">Password decoder user feature</h4>
+#### Password decoder user feature
+{: #password-decoder-user-feature-collective }
 Copy the password decoder user feature to your Liberty profile. For example:
 
 * On UNIX and Linux systems:
@@ -988,8 +1029,8 @@ Copy the password decoder user feature to your Liberty profile. For example:
   copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
   LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
-    
-<h4 id="configuration-details-collective">Configuration details</h4>
+#### Configuration details
+{: #configuration-details-collective }
 <div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-collective">
@@ -1228,16 +1269,19 @@ Copy the password decoder user feature to your Liberty profile. For example:
 </div>
 
 ### Manual installation on Apache Tomcat
+{: #manual-installation-on-apache-tomcat }
 Make sure that you have fulfilled the requirements as documented in [Apache Tomcat prerequisites](#apache-tomcat-prerequisites).
 
 * [Topology constraints](#topology-constraints-tomcat)
 * [Application server settings](#application-server-settings-tomcat)
 * [Configuration details](#configuration-details-tomcat)
 
-<h4 id="topology-constraints-tomcat">Topology constraints</h4>
+#### Topology constraints
+{: #topology-constraints-tomcat }
 The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
-<h4 id="application-server-settings-tomcat">Application server settings</h4>
+#### Application server settings
+{: #application-server-settings-tomcat }
 ou must activate the **Single Sign On Valve**. For example:
 
 ```xml
@@ -1249,8 +1293,8 @@ Optionally, you might want to activate the memory realm if the users are defined
 ```xml
 <Realm className="org.apache.catalina.realm.MemoryRealm"/>
 ```
-
-<h4 id="configuration-details-tomcat">Configuration details</h4>
+#### Configuration details
+{: #configuration-details-tomcat }
 <div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-tomcat">
@@ -1468,6 +1512,7 @@ Optionally, you might want to activate the memory realm if the users are defined
 </div>
 
 ### Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment
+{: #manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment }
 Make sure that you have fulfilled the requirements as documented in <a href="#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites">WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites</a>.
 
 * [Topology constraints](#topology-constraints-nd)
@@ -1475,14 +1520,16 @@ Make sure that you have fulfilled the requirements as documented in <a href="#we
 * [Class loader](#class-loader-nd)
 * [Configuration details](#configuration-details-nd)
 
-<h4 id="topology-constraints-nd">Topology constraints</h4>
+#### Topology constraints
+{: #topology-constraints-nd }
 <b>On a stand-alone WebSphere Application Server</b>  
 The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <b>On WebSphere Application Server Network Deployment</b>  
 The deployment manager must be running while {{ site.data.keys.mf_server }} is running. The deployment manager is used for the JMX communication between the runtime and the administration service. The administration service and the live update service must be installed on the same application server. The runtime can be installed on different servers than the administration service, but it must be on the same cell.
 
-<h4 id="application-server-settings-nd">Application server settings</h4>
+#### Application server settings
+{: #application-server-settings-nd }
 The administrative security and the application security must be enabled. You can enable the application security in the WebSphere Application Server administration console:
 
 1. Log in to the WebSphere Application Server administration console.
@@ -1501,7 +1548,8 @@ The server class loader policy must support parent last delegation. The {{ site.
 4. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with local class loader first (parent last)**, do nothing.
 5. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with parent class loader first (parent first)**, change the class-loader policy to **Multiple**. Also, set the class loader order of all applications other than {{ site.data.keys.mf_server }} applications to **Classes loaded with parent class loader first (parent first)**.
 
-<h4 id="class-loader-nd">Class loader</h4>
+#### Class loader
+{: #class-loader-nd }
 For all {{ site.data.keys.mf_server }} applications, the class loader must have the parent last delegation.
 
 To set the class loader delegation to parent last after an application is installed, follow these steps:
@@ -1517,7 +1565,8 @@ To set the class loader delegation to parent last after an application is instal
 9. Click **OK** twice to confirm the selection and back to the **Configuration** panel of the application.
 10. Click **Save** to persist the changes.
 
-<h4 id="configuration-details-nd">Configuration details</h4>
+#### Configuration details
+{: #configuration-details-nd }
 <div class="panel-group accordion" id="manual-installation-nd" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-nd">
@@ -1763,6 +1812,7 @@ To set the class loader delegation to parent last after an application is instal
 </div>
 
 ## Installing a server farm
+{: #installing-a-server-farm }
 You can install your server farm by running Ant tasks, with the Server Configuration Tool, or manually.
 
 * [Planning the configuration of a server farm](#planning-the-configuration-of-a-server-farm)
@@ -1773,6 +1823,7 @@ You can install your server farm by running Ant tasks, with the Server Configura
 * [Lifecycle of a server farm node](#lifecycle-of-a-server-farm-node)
 
 ### Planning the configuration of a server farm
+{: #planning-the-configuration-of-a-server-farm }
 To plan the configuration of a server farm, choose the application server, configure the {{ site.data.keys.product_adj }} databases, and deploy the WAR files of the {{ site.data.keys.mf_server }} components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
 
 When you intend to plan a server farm installation, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
@@ -1780,6 +1831,7 @@ When you intend to plan a server farm installation, see [Constraints on {{ site.
 In {{ site.data.keys.product }}, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. {{ site.data.keys.mf_server }} internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
 
 #### When to declare a server farm
+{: #when-to-declare-a-server-farm }
 **Declare a server farm in the following cases:**
 
 * {{ site.data.keys.mf_server }} is installed on multiple Tomcat application servers.
@@ -1792,9 +1844,11 @@ In {{ site.data.keys.product }}, a server farm is composed of multiple stand-alo
 * Multiple application servers are federated by WebSphere Application Server Network Deployment.
 
 #### Why it is mandatory to declare a farm
+{: #why-it-is-mandatory-to-declare-a-farm }
 Each time a management operation is performed through {{ site.data.keys.mf_console }} or through the {{ site.data.keys.mf_server }} administration service application, the operation needs to be replicated to all instances of a runtime environment. Examples of such management operations are the uploading of a new version of an app or of an adapter. The replication is done via JMX calls performed by the administration service application instance that handles the operation. The administration service needs to contact all runtime instances in the cluster. In environments listed under **When to declare a server farm** above, the runtime can be contacted through JMX only if a farm is configured. If a server is added to a cluster without proper configuration of the farm, the runtime in that server will be in an inconsistent state after each management operation, and until it is restarted again.
 
 ### Installing a server farm with the Server Configuration Tool
+{: #installing-a-server-farm-with-the-server-configuration-tool }
 Use the Server Configuration Tool to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
 
 When you plan a server farm with the Server Configuration Tool, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run the tool that does the following operations:
@@ -1851,6 +1905,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
 </div>
 
 ### Installing a server farm with Ant tasks
+{: #installing-a-server-farm-with-ant-tasks }
 Use Ant tasks to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
 
 When you plan a server farm with Ant tasks, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run Ant tasks to configure the database instance that is shared by the {{ site.data.keys.mf_server }} components. Finally, run Ant tasks to deploy the {{ site.data.keys.mf_server }} components to each server and modify its configuration to make it a member of a server farm.
@@ -1971,6 +2026,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
 </div>
 
 ### Configuring a server farm manually
+{: #configuring-a-server-farm-manually }
 You must configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
 
 When you plan a server farm, first create stand-alone servers that communicate with the same database instance. Then, modify the configuration of these servers to make them members of a server farm.
@@ -2132,6 +2188,7 @@ When you plan a server farm, first create stand-alone servers that communicate w
 </div>
 
 ### Verifying a farm configuration
+{: #verifying-a-farm-configuration }
 The purpose of this task is to check the status of the farm members and verify whether a farm is configured properly.
 
 1. Start all the servers of the farm.
@@ -2142,9 +2199,11 @@ The purpose of this task is to check the status of the farm members and verify w
 ![Status of Farm nodes in the {{ site.data.keys.mf_console }}](farm_nodes_status_list.jpg)
 
 ### Lifecycle of a server farm node
+{: #lifecycle-of-a-server-farm-node }
 You can configure heartbeat rate and timeout values to indicate possible server problems among farm members by triggering a change in status of an affected node.
 
 #### Registration and monitoring servers as farm nodes
+{: #registration-and-monitoring-servers-as-farm-nodes }
 When a server configured as a farm node is started, the administration service on that server automatically registers it as a new farm member.
 When a farm member is shut down, it automatically unregisters from the farm.
 
@@ -2155,6 +2214,7 @@ Farm members that are considered to be down do not serve any more requests to mo
 Having one or more nodes down does not prevent the other farm members from correctly serving requests to mobile applications nor from accepting new management operations that are triggered through the {{ site.data.keys.mf_console }}.
 
 #### Configuring the heartbeat rate and timeout values
+{: #configuring-the-heartbeat-rate-and-timeout-values }
 You can configure the heartbeat rate and timeout values by defining the following JNDI properties:
 
 * **mfp.admin.farm.heartbeat**

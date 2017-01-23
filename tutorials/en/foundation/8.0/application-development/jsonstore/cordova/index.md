@@ -12,18 +12,19 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Prerequisites
-
+{: #prerequisites }
 * Read the [JSONStore parent tutorial](../)
 * Make sure the {{ site.data.keys.product_adj }} Cordova SDK was added to the project. Follow the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova/) tutorial. 
 
 #### Jump to:
-
+{: #jump-to}
 * [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
 
 ## Adding JSONStore
+{: #adding-jsonstore }
 To add JSONStore plug-in to your Cordova application:
 
 1. Open a **Command-line** window and navigate to your Cordova project folder.
@@ -32,8 +33,9 @@ To add JSONStore plug-in to your Cordova application:
 ![Add JSONStore feature](jsonstore-add-plugin.png)
 
 ## Basic Usage
-
+{: #basic-usage }
 ### Initialize
+{: #initialize }
 Use `init` to start one or more JSONStore collections.  
 
 Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
@@ -55,6 +57,7 @@ WL.JSONStore.init(collections).then(function (collections) {
 > For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
 
 ### Get
+{: #get }
 Use `get` to create an accessor to the collection. You must call `init` before you call get otherwise the result of `get` will be undefined.
 
 ```javascript
@@ -65,6 +68,7 @@ var people = WL.JSONStore.get(collectionName);
 The variable `people` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
 
 ### Add
+{: #add }
 Use `add` to store data as documents inside a collection
 
 ```javascript
@@ -80,7 +84,7 @@ WL.JSONStore.get(collectionName).add(data, options).then(function () {
 ```
 
 ### Find
-
+{: #find }
 * Use `find` to locate a document inside a collection by using a query.  
 * Use `findAll` to retrieve all the documents inside a collection.  
 * Use `findById` to search by the document unique identifier.  
@@ -123,6 +127,7 @@ else {
 ```
 
 ### Replace
+{: #replace }
 Use `replace` to modify documents inside a collection. The field that you use to perform the replacement is `_id`, the document unique identifier.
 
 ```javascript
@@ -142,6 +147,7 @@ WL.JSONStore.get(collectionName).replace(document, options).then(function (numbe
 This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
 
 ### Remove
+{: #remove }
 Use `remove` to delete a document from a collection.  
 Documents are not erased from the collection until you call push.  
 
@@ -159,6 +165,7 @@ WL.JSONStore.get(collectionName).remove(query, options).then(function (numberOfD
 ```
 
 ### Remove Collection
+{: #remove-collection }
 Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```javascript
@@ -171,8 +178,9 @@ WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollect
 ```
 
 ## Advanced Usage
-
+{: #advanced-usage }
 ### Destroy
+{: #destory }
 Use `destroy` to remove the following data:
 
 * All documents
@@ -190,6 +198,7 @@ WL.JSONStore.destroy().then(function () {
 ```
 
 ### Security
+{: #security }
 You can secure all the collections in a store by passing a password to the `init` function. If no password is passed, the documents of all the collections in the store are not encrypted.
 
 Data encryption is only available on Android, iOS, Windows 8.1 Universal and Windows 10 UWP environments.  
@@ -213,12 +222,14 @@ WL.JSONStore.init(collections, options).then(function () {
 ```
 
 #### Encryption
+{: #encryption }
 *iOS only*. By default, the {{ site.data.keys.product_adj }} Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
 
 1. Add the cordova-plugin-mfp-encrypt-utils plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
 2. In the applicative logic, use: `WL.SecurityUtils.enableNativeEncryption(false)` to enable the OpenSSL option.
 
 ### Multiple User Support
+{: #multiple-user-support }
 You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
 
 ```javascript
@@ -236,12 +247,14 @@ WL.JSONStore.init(collections, options).then(function () {
 ```
 
 ### {{ site.data.keys.product_adj }} Adapter Integration
+{: #mobilefirst-adapter-integration }
 This section assumes that you are familiar with Adapters.  
 
 Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.  
 You can achieve these goals by using`WLResourceRequest` or `jQuery.ajax` if you need more flexibility.
 
 ### Adapter Implementation
+{: #adapter-implementation }
 Create an adapter and name it "**People**".  
 Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
@@ -274,8 +287,8 @@ function replacePerson(data) {
 }
 ```
 
-#### Initialize a collection linked to a MobileFirst adapter
-
+#### Initialize a collection linked to a {{ site.data.keys.product_adj }} adapter
+{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
   people : {
@@ -303,6 +316,7 @@ WL.JSONStore.init(collections, options).then(function () {
 ```
 
 #### Load data from an Adapter
+{: #load-data-from-an-adapter }
 When `load` is called, JSONStore uses some metadata about the adapter (**name** and **procedure**), which you previously passed to `init`, to determine what data to get from the adapter and eventually store it.
 
 ```javascript
@@ -315,6 +329,7 @@ WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
 ```
 
 #### Get Push Required (Dirty Documents)
+{: #get-push-required-dirty-documents }
 Calling `getPushRequired` returns an array of so called *"dirty documents"*, which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the adapter when `push` is called.
 
 ```javascript
@@ -340,6 +355,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 ```
 
 #### Push
+{: #push }
 `push` sends the documents that changed to the correct adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
 
 ```javascript
@@ -354,6 +370,7 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 ```
 
 ### Enhance
+{: #enhance }
 Use `enhance` to extend the core API to fit your needs, by adding functions to a collection prototype.
 This example (the code snippet below) shows how to use `enhance` to add the function `getValue` that works on the `keyvalue` collection. It takes a `key` (string) as it's only parameter and returns a single result.
 
@@ -381,6 +398,7 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 
 <img alt="JSONStore sample app" src="jsonstore-cordova.png" style="float:right"/>
 ## Sample application
+{: #sample-application }
 The JSONStoreSwift project contains a Cordova application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
 
@@ -388,4 +406,5 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.

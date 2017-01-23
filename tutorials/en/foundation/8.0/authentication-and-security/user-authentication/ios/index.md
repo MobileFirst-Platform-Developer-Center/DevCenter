@@ -14,11 +14,13 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/ios/) tutorial.
 
 The challenge handler tutorial demonstrates a few additional features (APIs) such as preemptive `login`, `logout`, and `obtainAccessTokenForScope`.
 
 ## Login
+{: #login }
 In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
 
 The `credentials` argument is a `JSONObject` containing `username`, `password`, and `rememberMe`:
@@ -61,6 +63,7 @@ else{
 > The `WLAuthorizationManager` `login()` API has its own completion handler, the relevant  `handleSuccess` or `handleFailure` methods of the relevant challenge handler ore **also** called.
 
 ## Obtaining an access token
+{: #obtaining-an-access-token }
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
 The {{ site.data.keys.product }} SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
@@ -86,6 +89,7 @@ The `obtainAccessTokenForScope` API takes in a **scope**. The scope can be the n
 > Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
 
 ## Retrieving the authenticated user
+{: #retrieving-the-authenticated-user }
 The challenge handler `handleSuccess` method receives a dictionary `success` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
 
@@ -110,6 +114,7 @@ Here, `success` has a key called `user` which itself contains a dictionary repre
 ```
 
 ## Logout
+{: #logout }
 The {{ site.data.keys.product }} SDK also provides a `logout` API to logout from a specific security check:
 
 ```swift
@@ -121,6 +126,7 @@ WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) 
 ```
 
 ## Sample applications
+{: #sample-applications }
 Two samples are associated with this tutorial:
 
 - **PreemptiveLoginSwift**: An application that always starts with a login screen, using the preemptive `login` API.
@@ -133,6 +139,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80) the Preemptive Login project.  
 
 ### Sample usage
+{: #sample-usage }
 Follow the sample's README.md file for instructions.  
 The username/password for the app must match, i.e. "john"/"john".
 

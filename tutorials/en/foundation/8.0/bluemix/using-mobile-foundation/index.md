@@ -7,6 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
 {{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
 
@@ -25,7 +26,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 > [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
 
 #### Jump to:
-
+{: #jump-to}
 * [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
 * [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
@@ -37,6 +38,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Further reading](#further-reading)
 
 ## Setting up the {{ site.data.keys.mf_bm_short }} service
+{: #setting-up-the-mobile-foundation-service }
 To set up the available plans, first follow these steps:
 
 1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
@@ -47,7 +49,7 @@ To set up the available plans, first follow these steps:
     <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
 
 ### Setting up the *developer* plan
-
+{: #setting-up-the-developer-plan }
 1. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
@@ -59,14 +61,18 @@ To set up the available plans, first follow these steps:
     ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
-
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+{: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
+1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
 
     > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
 
-    After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance.png)
+    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+
+    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+
+    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
 
 2. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
@@ -79,7 +85,7 @@ To set up the available plans, first follow these steps:
     ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
 
 ## Using the {{ site.data.keys.mf_bm_short }} service
-
+{: #using-the-mobile-foundation-service }
 > **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
 
 With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
@@ -94,6 +100,7 @@ Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The def
 ![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
 
 ### Server configuration
+{: #server-configuration }
 The basic server instance consists of:
 
 * A single node (server size: "small")
@@ -101,6 +108,7 @@ The basic server instance consists of:
 * 2GB storage capacity
 
 ### Advanced server configuration
+{: #advanced-server-configuration }
 Through the **Settings** tab, you can further customize the server instance with
 
 * Varying node, memory, and storage combinations
@@ -116,6 +124,7 @@ Through the **Settings** tab, you can further customize the server instance with
 ![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
 
 ## Adding {{ site.data.keys.mf_analytics_short }} support
+{: #adding-analytics-support }
 You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
 
 * When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
@@ -126,14 +135,17 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 > Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
 
 ## Applying {{ site.data.keys.mf_server }} fixes
+{: #applying-mobilefirst-server-fixes }
 Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
+{: #accessing-server-logs }
 To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
 
 You can find the **messages.log** and **trace.log** files in the **logs** folder.
 
 #### Tracing
+{: #tracing }
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
 1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
@@ -145,6 +157,7 @@ The **trace.log** file is now available in the above specified location.
 <img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
 
 ## Troubleshooting
+{: #troubleshooting }
 The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
 
 * Every time you make any of the following server-side actions:
@@ -164,6 +177,7 @@ The Developer plan does not offer a persistent database, which could cause at ti
   ```
 
 ## Further reading
+{: #further-reading }
 Now that the {{ site.data.keys.mf_server }} instance is up and running,
 
 * Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).

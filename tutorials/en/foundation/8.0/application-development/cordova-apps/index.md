@@ -7,6 +7,7 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 From [http://cordova.apache.org/](http://cordova.apache.org/):
 
 > Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
@@ -16,6 +17,7 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 > **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
 #### Jump to:
+{: #jump-to }
 
 * [Cordova application development](#cordova-application-development)
 * [{{ site.data.keys.product_adj }} APIs](#mobilefirst-apis)
@@ -30,16 +32,20 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Cordova application development
+{: #cordova-application-development }
 Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
 
 ### Hooks
+{: #hooks }
 Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows.  
 Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
 
 ### Merges
+{: #merges }
 The Merges folder provides the ability to have platform-specific web resources (HTML, CSS and JavaScript files). These web resources are then deployed during the `cordova prepare` step to the appropriate native directory. Files placed under the **merges/** folder will override matching files in the **www/** folder of the relevant platform. Read more about [the Merges folder](https://github.com/apache/cordova-cli#merges).
 
 ### Cordova plug-ins
+{: #cordova-plug-ins }
 Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
 
 You can find Cordova plug-ins on [GitHub.com](https://github.com) and in popular Cordova plug-ins websites, such as [Plugreg](http://plugreg.com/) and [NPM](http://npmjs.org).
@@ -51,6 +57,7 @@ Example plug-ins:
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
 ### 3rd-party frameworks
+{: #3rd-party-frameworks }
 Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and many others.
 
 **Integration blog posts**
@@ -60,17 +67,20 @@ Cordova application development can be further enhanced by using frameworks such
 * [Integrating {{ site.data.keys.product }} in Ionic 2 based apps]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
 
 ### 3rd-party packages
+{: #3rd-party-packages }
 Applications can be modified using 3rd party packages to achieve requirements such as Minification &amp; Concatenation of the application's web resources and more. Popular packages to do so are:
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
 ## {{ site.data.keys.product_adj }} APIs
+{: #mobilefirst-apis }
 After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../application-development/sdk/cordova) to a Cordova application, the {{ site.data.keys.product_adj }} set of API methods is now available for use.
 
 > For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
 ## {{ site.data.keys.product_adj }} SDK Startup Flow
+{: #mobilefirst-sdk-startup-flow }
 <div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
@@ -217,6 +227,7 @@ int main(int argc, char *argv[]) {
 </div>
 
 ## Cordova Application Security
+{: #cordova-application-security }
 {{ site.data.keys.product_full }} provides security features that help you protect your Cordova apps.
 
 Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
@@ -235,6 +246,7 @@ Use the following features to improve security on your Cordova apps:
     Helps you prevent man-in-the-middle attacks by associating a host with its expected public key.
 
 ## Cordova Application Resources
+{: #cordova-application-resources }
 Certain resources are needed as part of the Cordova application. In most cases, they are generated for you when you create your Cordova app with your preferred Cordova development tools. If you use the {{ site.data.keys.product }} template, then splash screens and icons are also provided.
 
 You can use a project template that is provided by IBM for use with Cordova projects that are enabled to use {{ site.data.keys.product_adj }} features. If you use this {{ site.data.keys.product_adj }} template, the following resources are made available to you as a starting point. If you do not use the {{ site.data.keys.product_adj }} template, all of the resources are provided except splash screens and icons. You add the template by specifying the `--template` option and the {{ site.data.keys.product_adj }} template when you initially create your Cordova project.
@@ -242,16 +254,20 @@ You can use a project template that is provided by IBM for use with Cordova proj
 If you change the default file names and paths of any resources, you must also specify such changes in the Cordova configuration file (config.xml). In addition, in some cases, you can change the default names and paths with the mfpdev app config command. If you can change names and paths with the mfpdev app config command, it is noted in the section about the specific resource.
 
 ### Cordova configuration file (config.xml)
+{: #cordova-configuration-file-configxml }
 The Cordova configuration file is a required XML file that contains application metadata and is stored in the root directory of the app. The file is automatically generated when you create a Cordova application. You can modify it to add custom properties by using the mfpdev app config command. 
 
 ### Main file (index.html)
+{: #main-file-indexhtml}
 This main file is an HTML5 file that contains the application skeleton. This file loads all the web resources (scripts and stylesheets) that are necessary to define the general components of the application and to hook to required document events. You can find this file in the **your-project-name/www** directory. You can change the name of this file with the `mfpdev app config` command.
 
 ### Thumbnail image
+{: #thumbnail-image }
 The thumbnail image provides a graphical identification for the application on the {{ site.data.keys.mf_console }}. It must be a square image, preferably of size 90 by 90 pixels.  
 A default thumbnail image is provided when you use the template. You can override the default image by using the same file name with a replacement image. You can find thumbnail.png in the **your-project-name/www/img** folder. You can change the name or path of this file with the `mfpdev app config` command.
 
 ### Splash image
+{: #splash-image }
 The splash image is displayed while the application is being initialized. If you use the {{ site.data.keys.product_adj }} default template, splash images are provided. These default images are stored in the following directories:
 
 * iOS: <your project name>/res/screen/ios/
@@ -265,6 +281,7 @@ If you do not use the {{ site.data.keys.product_adj }} template, the default spl
 > For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
 
 ### Application icons
+{: #application-icons }
 Default images for application icons are provided with the template. These default images are stored in the following directories:
 
 * iOS: <your project name>/res/icon/ios/
@@ -276,6 +293,7 @@ You can replace the default image with your own image. Your custom application i
 > For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
 
 ### Stylesheets
+{: #stylesheets }
 The app code can include CSS files to define the application view.
 
 The stylesheet files are located in the <your project name>/www/css directory, and are copied to the following platform-specific folders:
@@ -285,6 +303,7 @@ The stylesheet files are located in the <your project name>/www/css directory, a
 * Windows: <your project name>/platforms/windows/www/css
 
 ### Scripts
+{: #scripts }
 Your app code can include JavaScript files that implement various functions of your app such as interactive user interface components, business logic, and back-end query integration.
 
 The JavaScript file index.js is provided by the template, and is located in the **your-project-name/www/js** folder. This file is copied to the following platform-specific folders:
@@ -294,6 +313,7 @@ The JavaScript file index.js is provided by the template, and is located in the 
 * Windows: <your project name>/platforms/windows/assets/www/js
 
 ## Previewing an application's web resources
+{: #previewing-an-applications-web-resources }
 A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, or physical devices. In {{ site.data.keys.product }}, two additional live-preview options are available: {{ site.data.keys.mf_mbs_full }} and Simple Browser rendering.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`. In this case,
@@ -304,9 +324,11 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 > **Note:** The {{ site.data.keys.mf_server }} in a development environment includes a confidential client "test" that has an unlimited allowed scope ("*"). By default mfpdev app preview uses this confidential client.
 
 #### Simple Browser
+{: #simple-browser }
 In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
 #### {{ site.data.keys.mf_mbs }}
+{: #mobile-browser-simulator }
 The {{ site.data.keys.mf_mbs }} is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
 
 **Supported browsers:**
@@ -316,6 +338,7 @@ The {{ site.data.keys.mf_mbs }} is a web application that enables testing of the
 * Safari 9 and later
 
 ### Previewing
+{: #previewing }
 1. From a **Command-line** window, run the command:
 
     ```bash
@@ -339,13 +362,16 @@ The {{ site.data.keys.mf_mbs }} is a web application that enables testing of the
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### Live preview
+{: #live-preview }
 Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
 ### Live reload
+{: #live-reload }
 To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
 
 ### Running the application on emulator or on a physical device
+{: #running-the-application-on-emulator-or-on-a-physical-device }
 To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
 
 ```bash
@@ -359,19 +385,21 @@ cordova run ios
 ```
 
 ## Implementing JavaScript Code
+{: #implementing-javascript-code }
 Editing the WebView resources is more convenient using an IDE that provides autocompletion for JavaScript.
 
 Xcode, Android Studio, and Visual Studio provide full editing capabilities for editing Objective C, Swift, C#, and Java, however they may be limited in how they assist the editing of JavaScript. To facilitate JavaScript editing, the {{ site.data.keys.product_adj }} Cordova project contains a defintion file for providing autocomplete for {{ site.data.keys.product_adj }} API elements.
 
 Each {{ site.data.keys.product_adj }} Cordova plug-in provides a `d.ts` configuration file for each {{ site.data.keys.product_adj }} JavaScript files. The `d.ts` file name matches the corresponding JavaScript file name and is located within the plug-in folder. For example for the main {{ site.data.keys.product_adj }} SDK the file is here: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
 
-This definition provides autocomplete for all IDEs with TypeScript support: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
+The `d.ts` configuration files provides autocomplete for all IDEs with TypeScript support: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
 
 The resources (HTML and JavaScript files) for the WebView are located in the **[myapp]\www** folder. When the project is built with the cordova build command, or the cordova prepare command is run, these resources are copied to the corresponding **www** folder in the **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, or **[myapp]\platforms\windows\www** folder.
 
 When you open the main app folder with one of the previous IDEs, the context is preserved. The IDE editor will now be linked to the relevant `d.ts` files and autocomplete the {{ site.data.keys.product_adj }} API elements as you type.
 
 ## CrossWalk support for Android
+{: #crosswalk-support-for-android }
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
 To add it:
 
@@ -391,12 +419,14 @@ To add it:
    ```
 
 ## WKWebView support for iOS
+{: #wkwebview-support-for-ios }
 The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
 To add, run the following command from a command-line window: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
 > Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
 ## Further reading
+{: #further-reading }
 Learn more about Cordova:
 
 - [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
@@ -404,4 +434,5 @@ Learn more about Cordova:
 - [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
 
 ## Tutorials to follow next
+{: #tutorials-to-follow-next }
 Get started by [adding the MobileFirst SDK to your Cordova application](../../application-development/sdk/cordova), and review {{ site.data.keys.product_adj }}-provided features in the [All Tutorials](../../all-tutorials/) section.

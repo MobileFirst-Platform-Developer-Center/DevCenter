@@ -5,9 +5,11 @@ weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 Use the graphical mode of IBM  Installation Manager and the Server Configuration Tool to install {{ site.data.keys.mf_server }}.
 
 #### Before you begin
+{: #before-you-begin }
 * Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
         * DB2 
@@ -48,6 +50,7 @@ On other operating systems, you can still run the installation with Installation
 * You cannot configure a server farm. Embedded Derby database does not support access from multiple servers. To configure a server farm, you need DB2, MySQL, or Oracle.
 
 #### Jump to
+{: #jump-to }
 
 * [Installing IBM Installation Manager](#installing-ibm-installation-manager)
 * [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)
@@ -59,6 +62,7 @@ On other operating systems, you can still run the installation with Installation
 * [Testing the farm and see the changes in {{ site.data.keys.mf_console }}](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ### Installing IBM Installation Manager
+{: #installing-ibm-installation-manager }
 You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
 1. Extract the IBM Installation Manager archive that is downloaded. You can find the installer at [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
@@ -67,6 +71,7 @@ You must install Installation Manager V1.8.4 or later. The older versions of Ins
     * Run **userinst.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager.
 
 ### Installing WebSphere Application Server Liberty Core
+{: #installing-websphere-application-server-liberty-core }
 The installer for WebSphere Application Server Liberty Core is provided as part of the package for {{ site.data.keys.product }}. In this task, Liberty profile is installed and a server instance is created so that you can install {{ site.data.keys.mf_server }} on it.
 
 1. Extract the compressed file for WebSphere Application Server Liberty Core that you downloaded.
@@ -102,6 +107,7 @@ The default home page can be viewed at http://localhost:9080.
 > **Note:** For production, you need to make sure that the Liberty server is started as a service when the host computer starts. Making the Liberty server start as a service is not part of this tutorial.
 
 ### Installing {{ site.data.keys.mf_server }}
+{: #installing-mobilefirst-server }
 Run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} on your disk before you create the databases and deploy {{ site.data.keys.mf_server }} to Liberty profile. During the installation of {{ site.data.keys.mf_server }} with Installation Manager, an option is proposed to you to install {{ site.data.keys.mf_app_center }}. Application Center is a different component of the product. For this tutorial, it is not required to be installed with {{ site.data.keys.mf_server }}.
 
 1. Launch Installation Manager.
@@ -120,7 +126,7 @@ Run Installation Manager to install the binary files of {{ site.data.keys.mf_ser
 3. After you accept the license terms of the product, click **Next**.
 4. Select the **Create a new package group** option to install the product in that new package group.
 5. Click **Next**.
-6. Select **Do not activate token licensing with the Rational License Key Server ** option in the **Activate token licensing** section of the **General settings** panel.
+6. Select **Do not activate token licensing** with the **Rational License Key Server** option in the **Activate token licensing** section of the **General settings** panel.
 
     In this tutorial, it is assumed that token licensing is not needed and the steps to configure {{ site.data.keys.mf_server }} for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you have a contract to use token licensing with Rational  License Key Server, select Activate token licensing with the Rational License Key Server option. After you activate token licensing, you must do extra steps to configure {{ site.data.keys.mf_server }}.
 7. Keep the default option (No) as-is in the Install **{{ site.data.keys.product }} for iOS** section of the **General settings** panel.
@@ -139,6 +145,7 @@ The goal of this tutorial is to install {{ site.data.keys.mf_server }} by using 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ### Creating a database
+{: #creating-a-database }
 This task is to ensure that a database exists in your DBMS, and that a user is allowed to use the database, create tables in it, and use the tables.  
 The database is used to store the technical data that is used by the various {{ site.data.keys.product_adj }} components:
 
@@ -178,6 +185,7 @@ If you defined a different user name, replace mfpuser with your own user name.
 > **Note:** The statement does not remove the default privileges granted to PUBLIC in a default DB2 database. For production, you might need to reduce the privileges in that database to the minimum requirement for the product. For more information about DB2 security and an example of the security practices, see [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
 ### Running the Server Configuration Tool
+{: #running-the-server-configuration-tool }
 You use the Server Configuration Tool to run the following operations:
 
 * Create the tables in the database that are needed by the {{ site.data.keys.product_adj }} applications
@@ -186,9 +194,11 @@ You use the Server Configuration Tool to run the following operations:
 The Server Configuration Tool does not deploy the following {{ site.data.keys.product_adj }} applications:
 
 #### {{ site.data.keys.mf_analytics }}
+{: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool will then configure the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}. 
 
 #### Application Center
+{: #application-center }
 This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}.
     
 1. Start the Server Configuration Tool.
@@ -271,14 +281,17 @@ QUIT
 Take note of the following database factors:
 
 #### Database user consideration
+{: #database-user-consideration }
 In the Server Configuration Tool, only one database user is needed. This user is used to create the tables, but is also used as the data source user in the application server at run time. In production environment, you might want to restrict the privileges of the user that is used at run time to the strict minimum (`SELECT / INSERT / DELETE / UPDATE)`, and thus provide a different user for deployment in the application server. The Ant files that are provided as examples also use the same users for both cases. However, in the case of DB2, you might want to create your own versions of files. As such, you can distinguish the user that is used to create the databases from the user that is used for the data source in the application server with the Ant tasks.
 
 #### Database tables creation
+{: #database-tables-creation }
 For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
 
 The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
 
 #### Modification of the application server settings (specific to Liberty):
+{: #modification-of-the-application-server-settings-specific-to-liberty }
 1. The Liberty features are added.
 
     The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
@@ -307,6 +320,7 @@ FWLSE3000E: A server error was detected.
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
 
 #### Declaration of applications
+{: #declaration-of-applications }
 The following applications are installed:
 
 * **mfpadmin**, the administration service
@@ -319,6 +333,7 @@ The Server Configuration Tool installs all the applications on the same server. 
 For an installation on different servers, you cannot use the Server Configuration Tool. Use Ant tasks or install the product manually.
 
 #### Administration service
+{: #administration-service }
 The administration service is the service for managing {{ site.data.keys.product_adj }} applications, adapters, and their configurations. It is secured by security roles. By default, the Server Configuration Tool adds a user (admin) with the administrator role, that you can use to log in to the console for testing. The configuration of the security role must be done after an installation with the Server Configuration Tool (or with Ant tasks). You might want to map the users or the groups that come from the basic registry or an LDAP registry that you configure in your application server to each security role.
 
 The class loader is set with delegation parent last for Liberty profile and WebSphere Application Server, and for all {{ site.data.keys.product_adj }} applications. This setting is to avoid conflicts between the classes packaged in the {{ site.data.keys.product_adj }} applications and the classes of the application server. Forgetting to set the class loader delegation to parent last is a frequent source of error in manual installation. For Apache Tomcat, this declaration is not needed.
@@ -329,6 +344,7 @@ The Server Configuration Tool also defines the JNDI properties (the URL and the 
 The data source to the database that contains the tables for the administration service is declared, as well as a library for its JDBC driver.
 
 #### Live update service
+{: #live-update-service }
 The live update service stores information about the runtime and application configurations. It is controlled by the administration service and must always run on the same server as the administration service. The context root is **context\_root\_of\_admin\_serverconfig**. As such, it is **mfpadminconfig**. The administration service assumes that this convention is respected to create the URL of its requests to the REST services of the live update service.
 
 The class loader is set with delegation parent last as discussed in the administration service section.
@@ -338,6 +354,7 @@ The live update service has one security role, **admin_config**. A user must be 
 It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_config\_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
 #### {{ site.data.keys.mf_console }}
+{: #mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} is declared with the same security roles as the administration service. The users that are mapped to the security roles of {{ site.data.keys.mf_console }} must also be mapped to the same security role of the administration service. Indeed, {{ site.data.keys.mf_console }} runs queries to the administration service on the behalf of the console user.
 
 The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
@@ -345,6 +362,7 @@ The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint*
 The class loader is set with delegation parent last as discussed in the administration service section.
 
 #### {{ site.data.keys.product_adj }} runtime
+{: #mobilefirst-runtime }
 This application is not secured by a security role. It is not required to log in with a user known by the Liberty server, to access this application. The mobile devices requests are routed to the runtime. They are authenticated by other mechanisms specific to the product (such as OAuth) and the configuration of the {{ site.data.keys.product_adj }} applications.
 
 The class loader is set with delegation parent last as discussed in the administration service section.
@@ -352,6 +370,7 @@ The class loader is set with delegation parent last as discussed in the administ
 It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_runtime/jdbc/mfpDS**. In this tutorial, it is defined as **mobilefirst/jdbc/mfpDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the runtime are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
 #### Push service
+{: #push-service }
 This application is secured by OAuth. The valid OAuth tokens must be included in any HTTP request to the service.
 
 The configuration of OAuth is made through the JNDI properties (such as the URL of the authorization server, the client ID, and the password of the push service). The JNDI properties also indicate the security plug-in (**mfp.push.services.ext.security**) and the fact that a relational database is used (**mfp.push.db.type**). The requests from the mobile devices to the push service are routed to this service. The context root of the push service must be /imfpush. The client SDK computes the URL of the push service based on the URL of the runtime with the context root (**/imfpush**). If you want to install the push service on a different server than the runtime, you need to have an HTTP router that can route the device requests to the relevant application server.
@@ -361,9 +380,11 @@ The class loader is set with delegation parent last as discussed in the administ
 It also needs a data source with JNDI name on Liberty profile. The JNDI name is **imfpush/jdbc/imfPushDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the push service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
 #### Other files modification
+{: #other-files-modification }
 The Liberty profile jvm.options file is modified. A property (com.ibm.ws.jmx.connector.client.rest.readTimeout) is defined to avoid timeout issues with JMX when the runtime synchronizes with the administration service.
 
 ### Testing the installation
+{: #testing-the-installation }
 After the installation is complete, you can use this procedure to test the components that are installed.
 
 1. Start the server by using the command **server start mfp1**. The binary file for the server is in **liberty\_install\_dir/bin**.
@@ -380,6 +401,7 @@ After the installation is complete, you can use this procedure to test the compo
 6. Log in again with **admin/admin**. The login and password are encrypted between your web browser and {{ site.data.keys.mf_server }}. In production, you might want to close the HTTP port.
 
 ### Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}
+{: #creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server }
 In this task, you will create a second Liberty server that runs the same {{ site.data.keys.mf_server }} and connected to the same database. In production, you might use more than one server for performance reasons, to have enough servers to serve the number of transactions per second that is needed for your mobile applications at peak time. It is also for high availability reasons to avoid having a single point of failure.
 
 When you have more than one server that runs {{ site.data.keys.mf_server }}, the servers must be configured as a farm. This configuration enables any administration service to contact all the runtimes of a farm. If the cluster is not configured as a farm, only the runtime that runs in the same application server as the management service that runs the management operation is notified. Others runtimes are not aware of the change. For example, you deploy a new version of an adapter in a cluster that is not configured as a farm, only one server would serve the new adapter. The other servers would continue to serve the old adapter. The only situation where you can have a cluster and do not need to configure a farm is when you install your servers on WebSphere Application Server Network Deployment. The administration service is able to find all the servers by querying the JMX beans with the deployment manager. The deployment manager must be running to allow management operations because it is used to provide the list of the {{ site.data.keys.product_adj }} JMX beans of the cell.
@@ -463,6 +485,7 @@ When you create a farm, you also need to configure an HTTP server to send querie
     * In **WLP_USER_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
 
 ## Testing the farm and see the changes in {{ site.data.keys.mf_console }}
+{: #testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console }
 
 1. Start the two servers:
 

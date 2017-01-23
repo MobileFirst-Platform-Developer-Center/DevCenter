@@ -6,11 +6,13 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.mf_analytics_server }} is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 
 {{ site.data.keys.mf_analytics_server }} uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
 
 #### Jump to
+{: #jump-to }
 
 * [System requirements](#system-requirements)
 * [Capacity considerations](#capacity-considerations)
@@ -21,7 +23,10 @@ weight: 1
 * [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
 ## System requirements
+{: #system-requirements }
+
 ### Operating systems
+{: #operating-systems }
 * CentOS/RHEL 6.x/7.x
 * Oracle Enterprise Linux 6/7 with RHEL Kernel only
 * Ubuntu 12.04/14.04
@@ -31,17 +36,20 @@ weight: 1
 * Debian 7
 
 ### JVM
+{: #jvm }
 * Oracle JVM 1.7u55+
 * Oracle JVM 1.8u20+
 * IcedTea OpenJDK 1.7.0.55+
 
 ### Hardware
+{: #hardware }
 * RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java uses memory for pointers.
 * Disk: Use SSDs when possible, or fast spinning traditional disks in RAID 0 configuration if SSDs are not possible.
 * CPU: CPU tends not to be the performance bottleneck. Use systems with 2 to 8 cores.
 * Network: When you cross into the need to scale out horizontally, you need a fast, reliable, data center with 1 GbE to 10 GbE supported speeds.
 
 ### Hardware configuration
+{: #hardware-configuration }
 * Give your JVM half of the available RAM, but do not cross 32 GB
     * Setting the **ES\_HEAP\_SIZE** environment variable to 32g.
     * Setting the JVM flags by using -Xmx32g -Xms32g.
@@ -58,6 +66,7 @@ weight: 1
 * If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
 
 ## Capacity considerations
+{: #capacity-considerations }
 Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
 
 IBM {{ site.data.keys.mf_analytics }} Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
@@ -73,6 +82,7 @@ The built-in charts on the {{ site.data.keys.mf_analytics_console }} are rendere
 When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the {{ site.data.keys.mf_analytics_server }}. Is real-time console visibility truly useful for data from four months ago?
 
 ### Indicies, Shards, and Nodes
+{: #indicies-shards-and-nodes }
 The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The {{ site.data.keys.mf_analytics_server }} creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the {{ site.data.keys.mf_analytics_server }}.
 
 If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
@@ -81,6 +91,7 @@ The same principle applies to **replicas**. Only set **replicas** to something g
 For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
 
 ## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
+{: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
 Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
 
 1. Create a server by running the following command in your **./wlp/bin** folder.
@@ -156,6 +167,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
 For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
 
 ## Installing {{ site.data.keys.mf_analytics }} on Tomcat
+{: #installing-mobilefirst-analytics-on-tomcat }
 Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
 
 1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
@@ -203,6 +215,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
     For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
 
 ## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server
+{: #installing-mobilefirst-analytics-on-websphere-application-server }
 For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
 
 The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
@@ -240,6 +253,7 @@ The following steps describe how to install and run the Analytics EAR file on We
 9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
 
 ## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
+{: #installing-mobilefirst-analytics-with-ant-tasks }
 Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
 
 You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
@@ -270,11 +284,13 @@ You must run the Ant task on the computer where the application server is instal
     **Note:** If you add a node to a cluster of {{ site.data.keys.mf_analytics }}, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
 
 ## Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions
+{: #installing-mobilefirst-analytics-server-on-servers-running-previous-versions }
 Although there is no option to upgrade previous versions of the {{ site.data.keys.mf_analytics_server }}, when you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
 
 For servers previously running earlier of versions of {{ site.data.keys.mf_analytics_server }} update the analytics data and the JNDI properties.
 
 ### Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}
+{: #migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server }
 If you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that was previously running an earlier version of {{ site.data.keys.mf_analytics_server }}, you must update the values of the JNDI properties on the hosting server.
 
 Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
@@ -303,6 +319,7 @@ The following table shows the mapping between old event types and new event type
 | mfpAppVersion	            | appVersion             |
 
 ### Analytics data migration
+{: #analytics-data-migration }
 The internals of the {{ site.data.keys.mf_analytics_console }} were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
 
 When you first view the {{ site.data.keys.mf_analytics_console }} after you upgrade to V8.0.0, no statistics are rendered in the {{ site.data.keys.mf_analytics_console }}. Your data is not lost, but it must be migrated to the new data format.
@@ -314,6 +331,7 @@ The following image shows a sample alert from the **Overview** page of the **Das
 ![Migration alert in the console](migration_alert.jpg)
 
 ### Migration page
+{: #migration-page }
 You can access the Migration page from the wrench icon in the {{ site.data.keys.mf_analytics_console }}. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
 
 The following image shows the **Migration** page when you have documents that must be migrated:

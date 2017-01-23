@@ -5,6 +5,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 IBM  Installation Manager installs the {{ site.data.keys.mf_server_full }} files and tools on your computer.
 
 You run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} and the tools to deploy the {{ site.data.keys.mf_server }} applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
@@ -16,9 +17,11 @@ Two main options are proposed during the installation process:
 * Installation and deployment of {{ site.data.keys.mf_app_center }}
 
 ### Token licensing
+{: #token-licensing }
 Token licensing is one of the two licensing methods supported by {{ site.data.keys.mf_server }}. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
 
 ### {{ site.data.keys.mf_app_center_full }}
+{: #ibm-mobilefirst-foundation-application-center }
 Application Center is a component of {{ site.data.keys.product }}. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
 
 If you choose to install Application Center with Installation Manager, you must provide the database and the application server parameters so that Installation Manager configures the databases and deploys Application Center to the application server. If you choose not to install Application Center with Installation Manager, Installation Manager saves the WAR file and the resources of Application Center to your disk. It does not set up the databases nor deploys Application Center WAR file to your application server. You can do this later by using Ant tasks or manually. This option to install Application Center is a convenient way to discover Application Center because you are guided during the installation process by the graphical Install wizard.
@@ -36,6 +39,7 @@ However, for production installation, use Ant tasks to install Application Cente
 > Similarly, when you run Installation Manager to update an existing installation, it updates only the files on your disk. You need to perform more actions to update the applications that are deployed to your application servers.
 
 #### Jump to
+{: #jump-to }
 * [Administrator versus user mode](#administrator-versus-user-mode)
 * [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
 * [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
@@ -43,6 +47,7 @@ However, for production installation, use Ant tasks to install Application Cente
 * [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
 ## Administrator versus user mode
+{: #administrator-versus-user-mode }
 You can install {{ site.data.keys.mf_server }} in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
 
 {{ site.data.keys.product }} supports the following two Installation Manager modes:
@@ -53,15 +58,18 @@ You can install {{ site.data.keys.mf_server }} in two different IBM  Installatio
 Group mode that is available on Linux or UNIX is not supported by the product.
 
 ### Administrator mode
+{: #administrator-mode }
 In administrator mode, Installation Manager must be run as root under Linux or UNIX, and with administrator privileges under Windows. The repository files of Installation Manager (that is the list of installed software and its version) are installed in a system directory. /var/ibm on Linux or UNIX, or ProgramData on Windows. Do not deploy Application Center with Installation Manager if you run Installation Manager in administrator mode.
 
 ### User (nonadministrator) mode
+{: #user-nonadministrator-mode }
 In user mode, Installation Manager can be run by any user without specific privileges. However, the repository files of Installation manager are stored in the user's home directory. Only that user is able to upgrade an installation of the product.
 If you do not run Installation Manager as root, make sure that you have a user account that is available later when you upgrade the product installation or apply an interim fix.
 
 For more information about the Installation Manager modes, see [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in the IBM Installation Manager documentation.
 
 ## Installing by using IBM Installation Manager Install wizard
+{: #installing-by-using-ibm-installation-manager-install-wizard }
 Follow the steps in the procedure to install the resources of {{ site.data.keys.mf_server }}, and the tools (such as the Server Configuration Tool, Ant, and mfpadm program).  
 The decisions in the following two panes in the installation wizard are mandatory:
 
@@ -116,6 +124,7 @@ You can find the resources in the following folders:
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ## Installing by running IBM Installation Manager in command line
+{: #installing-by-running-ibm-installation-manager-in-command-line }
 
 1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
 2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
@@ -166,6 +175,7 @@ You can find the resources in the following folders:
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
 ## Installing by using XML response files - silent installation
+{: #installing-by-using-xml-response-files---silent-installation }
 If you want to install {{ site.data.keys.mf_app_center_full }} with IBM Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
 
 Silent installations are defined by an XML file that is called a response file. This file contains the necessary data to complete installation operations silently. Silent installations are started from the command line or a batch file.
@@ -182,6 +192,7 @@ There are two ways to create a suitable response file:
 Both of these methods are documented in the following sections.
 
 ### Working with sample response files for IBM Installation Manager
+{: #working-with-sample-response-files-for-ibm-installation-manager }
 Sample response files for IBM Installation Manager are provided in the **Silent\_Install\_Sample_Files.zip** compressed file. The following procedures describe how to use them.
 
 1. Pick the appropriate sample response file from the compressed file. The Silent_Install_Sample_Files.zip file contains one subdirectory per release.
@@ -314,6 +325,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     
 
 ### Working with a response file recorded on a different machine
+{: #working-with-a-response-file-recorded-on-a-different-machine }
 
 1. Record a response file, by running IBM Installation Manager in wizard mode and with option `-record responseFile` on a machine where a GUI is available. For more details, see [Record a response file with Installation Manager](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html).
 2. Change the file access rights of the response file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the **read** permissions of the file for users other than yourself. You can use a command, such as the following examples:
@@ -326,6 +338,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
 5. Install {{ site.data.keys.mf_server }} by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
 
 ### Command-line (silent installation) parameters
+{: #command-line-silent-installation-parameters }
 <table style="word-break:break-all">
     <tr>
         <th>Key</th>
@@ -613,9 +626,11 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
 </table>
 
 ## Distribution structure of {{ site.data.keys.mf_server }}
+{: #distribution-structure-of-mobilefirst-server }
 The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.data.keys.mf_server }} installation directory.
 
 #### Files and subdirectories in the Analytics subdirectory
+{: #files-and-subdirectories-in-the-analytics-subdirectory }
 
 | Item | Description |
 |------|-------------|
@@ -623,6 +638,7 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 | **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
 
 #### Files and subdirectories in the ApplicationCenter subdirectory
+{: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
 | Item | Description |
 |------|-------------|
@@ -633,6 +649,7 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 | **tools** | The tools of Application Center. | 
 
 #### Files and subdirectories in the {{ site.data.keys.mf_server }} subdirectory
+{: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
 | Item | Description |
 |------|-------------|
@@ -644,6 +661,7 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 | **external-server-libraries** |  Contains the JAR files that are used by different tools (such as the authenticity tool and the OAuth security tool). |
 
 #### Files and subdirectories in the PushService subdirectory
+{: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
 | Item | Description |
 |------|-------------|
@@ -651,18 +669,21 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 | **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. | 
 
 #### Files and subdirectories in the License subdirectory
+{: #files-and-subdirectories-in-the-license-subdirectory }
 
 | Item | Description |
 |------|-------------|
 | **Text** | Contains the license for {{ site.data.keys.product }}. | 
 
 #### Files and subdirectories in the {{ site.data.keys.mf_server }} installation directory
+{: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | Item | Description |
 |------|-------------|
 | **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. | 
 
 #### Files and subdirectories in the tools subdirectory
+{: #files-and-subdirectories-in-the-tools-subdirectory }
 
 | Item | Description |
 |------|-------------|

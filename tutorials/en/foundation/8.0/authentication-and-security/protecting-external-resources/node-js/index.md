@@ -10,6 +10,7 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 {{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
 The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
 
@@ -21,6 +22,7 @@ This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by u
 * Understanding of the [{{ site.data.keys.product }} security framework](../../).
 
 ## The passport-mfp-token-validation module
+{: #the-passport-mfp-token-validation-module }
 The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
 
 To install the module, run:
@@ -30,6 +32,7 @@ npm install passport-mfp-token-validation@8.0.X
 ```
 
 ## Usage
+{: #usage }
 * The sample uses the `express` and `passport-mfp-token-validation` modules:
 
   ```javascript
@@ -84,11 +87,12 @@ npm install passport-mfp-token-validation@8.0.X
  * Set `session` to `false`.
  * Specify the `scope` name.
 
-## Sample
+## Sample application 
+{: #sample-application }
 [Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
 
 ### Sample usage
-
+{: #sample-usage }
 1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
 2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
 3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
