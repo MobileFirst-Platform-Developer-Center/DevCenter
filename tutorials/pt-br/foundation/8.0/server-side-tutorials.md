@@ -9,18 +9,18 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Server-side development provides the tools and functionality required in order to connect an application to the {{ site.data.keys.mf_server }} or serve content to an application from  Enterprise back-end systems and cloud services. Authentication and security is tighly related to server-side development, and should be reviewed as well.
+O desenvolvimento do lado do servidor fornece as ferramentas e funcionalidades necessárias para conectar um aplicativo ao {{site.data.keys.mf_server }} ou fornecer conteúdo a um aplicativo a partir de sistemas corporativos de backend e serviços de nuvem. A autenticação e a segurança estão intimamente ligadas ao desenvolvimento do lado do servidor e também devem ser revisadas.
 
 <form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
-        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Search for..." name="q">
+        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Procurar por..." name="q">
     </div>
 </form>
 
-## Authentication and security
+## Autenticação e segurança
 {: authentication-and-security }
-* [Authentication and security](../authentication-and-security/)
+* [Autenticação e segurança](../authentication-and-security/)
 
-## Adapters development
+## Desenvolvimento de adaptadores
 {: #adapters-development }
-* [Adapters development](../adapters/)
+* [Desenvolvimento de adaptadores](../adapters/)
