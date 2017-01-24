@@ -74,13 +74,20 @@ title: Support for MobileFirst Foundation
                 </div>
                 <div role="tabpanel" class="tab-pane" id="mobilefirst-cli">
                     <br/>
-                    <p>To collect debug information from the CLI there are several ways this can be accomplished.  Simply using the debug flags in the table below for specific versions along with the command being ran will output the debug information to the shell.</p>
-                    <p>To collect this information in a format you can use the following steps per platform to output the contents of the terminal to a file in the same directory.</p>
+                    <p>To collect the debug information to send to
+                   support,  you can use the following steps for your platform to output the contents of the terminal to a file in the same directory.</p>
                     <ul>
                         <li>MacOS and Linux: <code>mfp COMMAND -d 2>&1|tee cliOuput.log</code></li>
-                        <li>Windows: </li>
+                        <li>Windows:
+                            <ol>
+                                <li><code>powershell</code></li>
+                                <li><code>mfp COMMAND -d 2>&1 | tee cliOutput.log</code></li>
+                                <li><code>exit</code></li>
+                            </ol>
+                        </li>
                     </ul>
                     <br/>
+                    <p><b>Note: </b>The <code>-dd</code> flag is preferred, if it is available for the version being used.</p>
                     <table border="1">
                         <tr>
                             <td>Version</td>
