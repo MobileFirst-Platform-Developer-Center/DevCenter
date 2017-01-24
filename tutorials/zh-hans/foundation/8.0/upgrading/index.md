@@ -1,115 +1,115 @@
 ---
 layout: tutorial
-title: Migrating from Earlier Releases
-weight: 12
+title: 从较早发行版迁移
+weight: 11
 ---
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} v8.0 introduces new concepts for application development and deployment, and some API changes. Learn about these changes to prepare and plan for the migration of your MobileFirst applications.
+{{ site.data.keys.product_full }}    V8.0 引入了应用程序开发和部署的新概念以及一些 API 更改。了解有关这些更改的信息以准备和计划迁移 MobileFirst 应用程序。
 
-> [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
+> [查看迁移手册](migration-cookbook)以快速开始迁移过程。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Changes in the development and deployment process](#changes-in-the-development-and-deployment-process)
-* [Migrating a Cordova or hybrid application](#migrating-a-cordova-or-hybrid-application)
-* [Migrating a native application](#migrating-a-native-application)
-* [Migrating adapters and security](#migrating-adapters-and-security)
-* [Migrating push notifications support](#migrating-push-notifications-support)
-* [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
-* [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
-* [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
+* [开发和部署过程中的更改](#changes-in-the-development-and-deployment-process)
+* [迁移 Cordova 或混合应用程序](#migrating-a-cordova-or-hybrid-application)
+* [迁移本机应用程序](#migrating-a-native-application)
+* [迁移适配器和安全性](#migrating-adapters-and-security)
+* [迁移推送通知支持](#migrating-push-notifications-support)
+* [服务器数据库和服务器结构中的更改](#changes-in-the-server-databases-and-in-the-server-structure)
+* [在 Cloudant 中存储移动数据](#storing-mobile-data-in-cloudant)
+* [将修订包应用到 {{ site.data.keys.mf_server }}   ](#applying-a-fix-pack-to-mobilefirst-server)
 
-## Changes in the development and deployment process
+## 开发和部署过程中的更改
 {: #changes-in-the-development-and-deployment-process }
-> For a quick hands-on experience of the development process with {{ site.data.keys.product }} V8.0.0, you can review the [Quick Start tutorials](../quick-start).
+> 有关使用 {{ site.data.keys.product }}    V8.0.0 执行开发过程的速成实际经验，可查看[快速入门教程](../quick-start)。
 
-In this version of the product, you no longer create a project WAR file that needs to be installed in the application server that is running {{ site.data.keys.mf_server }} before you can upload your apps. Instead, {{ site.data.keys.mf_server }} is installed once, and you upload the server-side **configuration** of your apps, of the resource security, or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}. You can also upload a new **configuration file** for your apps by using a command-line tool or the server REST API.
+在此版本的产品中，不再创建需要安装在运行 {{ site.data.keys.mf_server }}    的应用程序服务器中的项目 WAR 文件即可上载您的应用程序。而是安装一次 {{ site.data.keys.mf_server }}   ，然后将应用程序、资源安全性或推送服务的服务器端**配置**上载到服务器。您可以使用 {{ site.data.keys.mf_console }}    修改应用程序的配置。也可以使用命令行工具或服务器 REST API 上载应用程序的新**配置文件**。
 
-MobileFirst projects no longer exist. Instead, you develop your mobile app with the development environment of your choice. You develop the server-side of your application separately, in Java™ or in JavaScript. You can develop adapters with Apache Maven or a Maven enabled IDE such as Eclipse, IntelliJ, and others.
+MobileFirst 项目不再存在。相反，您使用所选的开发环境来开发移动应用程序。分别采用 Java™ 或 JavaScript 开发应用程序的服务器端。您可以使用 Apache Maven 或支持 Maven 的 IDE（如 Eclipse 和 IntelliJ 等）开发适配器。
 
-In previous versions, applications were deployed to the server by uploading a .wlapp file. The file contained data that described the application and for hybrid applications, the web resources. In v8.0, the .wlapp file is replaced by an application descriptor JSON file for registering an app to the server. For Cordova applications that use Direct Update, instead of uploading a new version of the .wlapp, you now upload a web resource archive to the server.
+在先前版本中，通过上载 .wlapp 文件将应用程序部署到服务器。该文件包含用于描述应用程序的数据以及（如果是混合应用程序）Web 资源。在 V8.0 中，.wlapp 文件替换为用于向服务器注册应用程序的应用程序描述符 JSON 文件。对于使用“直接更新”的 Cordova 应用程序，现在将 Web 资源归档上载到服务器，而不是上载 .wlapp 的新版本。
 
-When you develop your app, you use the {{ site.data.keys.mf_cli }} for many tasks, such as registering an app to its target server or uploading its server-side configuration.
+开发应用程序时，{{ site.data.keys.mf_cli }}    用于许多任务，例如将应用程序注册到其目标服务器或上载其服务器端配置。
 
-### Discontinued features and replacement path
+### 停用的功能部件和替换路径
 {: #discontinued-features-and-replacement-path}
-{{ site.data.keys.product }} V8.0.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0.
+与先前版本相比，{{ site.data.keys.product }}    V8.0.0 从根本上进行了简化。由于这种简化，V8.0 中已停用了 V7.1 中提供的某些功能。
 
-> For more information about discontinued features and replacement path, see [Features that are discontinued in v8.0 and features that are not included in v8.0](../product-overview/release-notes/deprecated-discontinued).
+> 有关已停用的功能部件和替换路径的更多信息，请参阅 [V8.0 中停用的功能部件和 V8.0 中不包含的功能部件](../product-overview/release-notes/deprecated-discontinued)。
 
-## Migrating a Cordova or hybrid application
+## 迁移 Cordova 或混合应用程序
 {: #migrating-a-cordova-or-hybrid-application }
-You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
+您可以使用 Apache Cordova 命令行工具或支持 Cordova 的 IDE（如 Visual Studio Code、Eclipse、IntelliJ 等）开始开发 Cordova 应用程序。
 
-Add support for the {{ site.data.keys.product_adj }} features by adding the {{ site.data.keys.product_adj }} plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before).
+通过将 {{ site.data.keys.product_adj }}    插件添加到应用程序来添加对 {{ site.data.keys.product_adj }}    功能部件的支持。有关 V7.1 Cordova 或混合应用程序与 V8.0 Cordova 应用程序的差异的更多信息，请参阅[使用 V8.0 开发的 Cordova 应用程序与使用 V7.1 及更低版本开发的 Cordova 应用程序的比较](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)。
 
-To migrate a Cordova or hybrid app, you need to
+要迁移 Cordova 或混合应用程序，您需要
 
-* For planning purposes, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* Replace the client-side APIs that are discontinued or not in V8.0.0. For a list of API changes, see [Upgrading the WebView](migrating-client-applications/cordova/#upgrading-the-webview).
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API instead of `WL.Client.invokeProcedure`, which is deprecated.
-* If you use Direct Update, review [Migrating Direct Update](migrating-client-applications/cordova/#migrating-direct-update).
-* For more information about migrating Cordova or hybrid apps, see [Migrating existing Cordova and hybrid applications](migrating-client-applications/cordova).
+* 要用于规划目的，请在现有项目上运行迁移辅助工具。查看生成的报告并评估迁移操作所需的工作量。有关更多信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
+* 替换 V8.0.0 中停用或不包含的客户端 API。有关 API 更改的列表，请参阅[升级 WebView](migrating-client-applications/cordova/#upgrading-the-webview)。
+* 修改对使用经典安全模型的客户机资源的调用。例如，使用 `WLResourceRequest` API 来代替不推荐使用的 `WL.Client.invokeProcedure`。
+* 如果使用“直接更新”，请查看[迁移“直接更新”](migrating-client-applications/cordova/#migrating-direct-update)。
+* 有关迁移 Cordova 或混合应用程序的更多信息，请参阅[迁移现有 Cordova 和混合应用程序](migrating-client-applications/cordova)。
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in Migrating push notification support.
+> **注：**迁移推送通知支持需要更改客户端和服务器端，稍后会在“迁移推送通知支持”中对此进行描述。
 
-## Migrating a native application
+## 迁移本机应用程序
 {: #migrating-a-native-application }
-To migrate native application, you need to follow these steps:
+要迁移本机应用程序，需要遵循以下步骤：
 
-* For planning purpose, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration.
-* Update your project to use the SDK from {{ site.data.keys.product }} v8.0
-* Replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API, instead of `invokeProcedure`, which is deprecated.
-    * For more information about migrating native iOS apps, see [Migrating existing native iOS applications](migrating-client-applications/ios).
-    * For more information about migrating native Android apps, see [Migrating existing native Android applications](migrating-client-applications/android).
-    * For more information about migrating native Windows apps, see [Migrating existing native Windows applications](migrating-client-applications/windows).
+* 要用于规划目的，请在现有项目上运行迁移辅助工具。查看生成的报告并评估迁移操作所需的工作量。
+* 更新您的项目以使用 {{ site.data.keys.product }}    V8.0 中的 SDK
+* 替换 V8.0 中停用或不包含的客户端 API。迁移辅助工具可扫描您的代码并生成要替换的 API 的报告。
+* 修改对使用经典安全模型的客户机资源的调用。例如，使用 `WLResourceRequest` API 来代替不推荐使用的 `invokeProcedure`。
+    * 有关迁移本机 iOS 应用程序的更多信息，请参阅[迁移现有的本机 iOS 应用程序](migrating-client-applications/ios)。
+    * 有关迁移本机 Android 应用程序的更多信息，请参阅[迁移现有的本机 Android 应用程序](migrating-client-applications/android)。
+    * 有关迁移本机 Windows 应用程序的更多信息，请参阅[迁移现有的本机 Windows 应用程序](migrating-client-applications/windows)。
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in [Migrating push notification support](#migrating-push-notifications-support).
+> **注：**迁移推送通知支持需要更改客户端和服务器端，稍后会在[迁移推送通知支持](#migrating-push-notifications-support)中对此进行描述。
 
-## Migrating adapters and security
+## 迁移适配器和安全性
 {: #migrating-adapters-and-security }
-Starting with v8.0, adapters are Maven projects. The {{ site.data.keys.product_adj }} security framework is based on OAuth, security scopes, and security checks. Security scopes define the security requirements to access a resource. Security checks define how a security requirement is verified. Security checks are written as Java adapters. For a hands-on experience with adapters and security, see the tutorials for [Creating Java and JavaScript Adapters](../adapters/creating-adapters) and [Authorization concepts](../authentication-and-security).
+从 V8.0 开始，适配器是 Maven 项目。{{ site.data.keys.product_adj }}    安全框架基于 OAuth、安全作用域和安全性检查。安全作用域定义访问资源的安全性需求。安全性检查定义如何验证安全性需求。安全性检查编写为 Java 适配器。有关适配器和安全性的实际经验，请参阅[创建 Java 和 JavaScript 适配器](../adapters/creating-adapters)以及[授权概念](../authentication-and-security)教程。
 
-{{ site.data.keys.mf_server }} operates only in session-independent mode and adapters should not store a state locally to a Java virtual machine (JVM).
+{{ site.data.keys.mf_server }}    仅以独立于会话的方式运行，适配器不应该将状态存储到 Java 虚拟机 (JVM) 本地。
 
-You can externalize adapter properties to configure adapters for the context where they run, for example a test server or a production server. But the values of these properties are no longer included in a property file of a project WAR file. Instead, you define them from the {{ site.data.keys.mf_console }}, or by using a command-line tool or the server REST API.
+可以将适配器的属性外部化，从而针对适配器运行的上下文（例如，测试服务器或生产服务器）配置适配器。但是，这些属性的值不再包含在项目 WAR 文件的属性文件中。而是从 {{ site.data.keys.mf_console }}    或通过使用命令行工具或服务器 REST API 来进行定义。
 
-* For more information about migrating adapters, see [Migrating existing adapters](migrating-adapters) to work under {{ site.data.keys.mf_server }} v8.0.
-* For more information about server-side API changes, see [Server-side API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) changes in v8.0.
-* For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
-* For more information on migrating authentication and security see [Migrating Authentication and Security](migrating-security) to {{ site.data.keys.product_adj }} v8.0.
+* 有关迁移适配器的更多信息，请参阅[迁移现有适配器](migrating-adapters)以在 {{ site.data.keys.mf_server }}    V8.0 下工作。
+* 有关服务器端 API 更改的更多信息，请参阅 V8.0 中的[服务器端 API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) 更改。
+* 有关用于开发适配器的 Apache Maven 的简介，请参阅[作为 Apache Maven 项目的适配器](../adapters)。
+* 有关迁移认证和安全性的更多信息，请参阅[迁移认证和安全性](migrating-security)到 {{ site.data.keys.product_adj }}    V8.0。
 
-## Migrating push notifications support
+## 迁移推送通知支持
 {: #migrating-push-notifications-support }
-The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#migration-scenarios).
+不再支持基于事件源的模型。改为使用基于标记的通知。要了解有关迁移客户机应用程序和服务器端组件的推送通知的更多信息，请参阅从基于事件源的通知[迁移推送通知](migrating-push-notifications)和[迁移方案](migrating-push-notifications/#migration-scenarios)。
 
-Starting with v8.0, you configure the push service on the server side. The push certificates are stored on the server. You can set them from the {{ site.data.keys.mf_console }} or you can automate certificate uploads by using a command-line tool or the push service REST API. You can also send push notifications from the {{ site.data.keys.mf_console }}.
+从 V8.0 开始，在服务器端配置推送服务。推送证书存储在服务器上。您可以从 {{ site.data.keys.mf_console }}    进行设置，或通过使用命令行工具或推送服务 REST API 自动上载证书。您也可以从 {{ site.data.keys.mf_console }}    发送推送通知。
 
-The push service is protected by the OAuth security model. You must configure server-side components that use the push service REST API must be configured as confidential clients of {{ site.data.keys.mf_server }}.
+推送服务受 OAuth 安全模型的保护。必须将使用推送服务 REST API 的服务器端组件配置为 {{ site.data.keys.mf_server }}    的机密客户机。
 
-### Push notifications data migration tool
+### 推送通知数据迁移工具
 {: #push-notifications-data-migration-tool }
-Also available is a migration tool for push notifications data. The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.
+此外还提供了推送通知数据迁移工具。此迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }}    8.0。
 
-> [Learn more about the migration tool](migrating-push-notifications/#migration-tool).
+> [了解有关迁移工具的更多信息](migrating-push-notifications/#migration-tool)。
 
-## Changes in the server databases and in the server structure
+## 服务器数据库和服务器结构中的更改
 {: #changes-in-the-server-databases-and-in-the-server-structure }
-{{ site.data.keys.mf_server }} enables changes to app security, connectivity and push without code change, app rebuild or redeployment. But these changes imply changes in the database schemas, the data stored in the database, and the installation process.
+{{ site.data.keys.mf_server }}    支持在不更改代码、重建应用程序或重新部署的情况下更改应用程序安全性、连接和推送。但这些更改暗含对以下项目的更改：数据库模式、数据库中存储的数据以及安装流程。
 
-Because of these changes, {{ site.data.keys.product }} does not include automated scripts to migrate your databases from earlier versions to V8.0.0 or to upgrade an existing server installation. To move new versions of your apps to V8.0.0, install a new server that you can run side by side with your previous server. Then, upgrade your apps and adapters to V8.0.0 and deploy them to the new server.
+由于这些更改，{{ site.data.keys.product }}    不包含用于将数据库从较早版本迁移到 V8.0.0 或升级现有服务器安装的自动化脚本。要将应用程序的新版本移到 V8.0.0，请安装可以与先前服务器并排运行的新服务器。然后，将应用程序和适配器升级到 V8.0.0 并将其部署到新服务器。
 
-## Storing mobile data in Cloudant
+## 在 Cloudant 中存储移动数据
 {: #storing-mobile-data-in-cloudant }
-Storing mobile data in Cloudant  with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
+不再支持使用 IMFData 框架或 CloudantToolkit 在 Cloudant 中存储移动数据。有关备用 API 的信息，请参阅[使用 IMFData 或 Cloudant SDK 迁移在 Cloudant 中存储移动数据的应用程序](migrating-data)。
 
-## Applying a fix pack to {{ site.data.keys.mf_server }}
+## 将修订包应用到 {{ site.data.keys.mf_server }}   
 {: #applying-a-fix-pack-to-mobilefirst-server }
-Find out how to use the Server Configuration Tool to upgrade {{ site.data.keys.mf_server }} V8.0.0 to a fix pack or an interim fix. Alternatively, if you installed {{ site.data.keys.mf_server }} with Ant tasks, you can also use Ant tasks to apply the fix pack or interim fix.
+了解如何使用 Server Configuration Tool 将 {{ site.data.keys.mf_server }}    V8.0.0 升级到修订包或临时修订。或者，如果使用 Ant 任务安装了 {{ site.data.keys.mf_server }}   ，那还可使用 Ant 任务应用修订包或临时修订。
 
-To apply an interim fix or fix pack on {{ site.data.keys.mf_server }}, choose one of the following topics based on your initial installation method:
+要对 {{ site.data.keys.mf_server }}    应用临时修订或修订包，请根据初始安装方法选择以下其中一个主题：
 
-* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [使用 Server Configuration Tool 来应用修订包或临时修订](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [使用 Ant 文件应用修订包](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)

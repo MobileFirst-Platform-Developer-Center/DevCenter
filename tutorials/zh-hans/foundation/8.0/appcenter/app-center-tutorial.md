@@ -1,314 +1,313 @@
 ---
 layout: tutorial
-title: Distributing mobile applications with IBM Application Center
+title: 通过 IBM Application Center 分发移动应用程序
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+{{ site.data.keys.mf_app_center_full }}    是类似于通用应用商店的**移动应用程序存储库**，但其关注的是组织或团队的需求。它是一个专用应用商店。
 
-Application Center facilitates sharing mobile applications:
+Application Center 有助于共享移动应用程序：
 
-* You can **share feedback and rating** information.  
-* You can use access control lists to limit who can install applications.
+* 您可以**共享反馈和评级**信息。  
+* 您可以使用访问控制表来限制可安装应用程序的人员。
 
-Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center 可处理 {{ site.data.keys.product_adj }}    应用程序和非 {{ site.data.keys.product_adj }}    应用程序，并且支持任何 **iOS、Android**、**BlackBerry 6/7** 和 **Windows/Phone 8.x** 应用程序。
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+> **注：**使用 Test Flight 或 iTunes Connect 生成且用于在商店提交/验证 iOS 应用程序的归档/IPA 文件可能导致运行时崩溃/失败，请阅读博客 [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 以了解更多信息。
 
-You can use Application Center in different contexts. For example:
+您可以在不同的上下文中使用 Application Center。例如：
 
-* As an enterprise app store across an organization.
-* During development to distribute applications within a team.
+* 作为整个组织的企业应用商店。
+* 开发期间在团队内分发应用程序。
 
-> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
+> **注：**要构建 iOS AppCenter Installer 应用程序，需要 MobileFirst 7.1。
 
-#### Jump to:
+#### 跳至：
 {: #jump-to}
-* [Installing and configuring](#installing-and-configuring)
-* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
-* [Preparing mobile clients](#preparing-mobile-clients)
-* [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
-* [The Application Center mobile client](#the-application-center-mobile-client)
-* [Application Center command-line tools](#application-center-command-line-tools)
+* [安装和配置](#installing-and-configuring)
+* [基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)
+* [准备移动式客户机](#preparing-mobile-clients)
+* [在 Application Center 控制台中管理应用程序](#managing-applications-in-the-application-center-console)
+* [Application Center 移动式客户机](#the-application-center-mobile-client)
+* [Application Center 命令行工具](#application-center-command-line-tools)
 
-## Installing and configuring
+## 安装和配置
 {: #installing-and-configuring }
-Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
+在使用 IBM Installation Manager 安装 {{ site.data.keys.mf_server }}  期间，安装 Application Center。
 
-**Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
+**先决条件：**在安装 Application Center 之前，必须已安装应用程序服务器和数据库：
 
-* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
-* Database: DB2 , Oracle, or MySQL
+* 应用程序服务器：Tomcat 或 WebSphere Application Server Full Profile/Liberty Profile
+* 数据库：DB、Oracle 或 MySQL
 
-If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
+如果未安装数据库，那么安装过程还可能安装 Apache Derby 数据库。但是，建议不要将 Derby 数据库用于生产环境。
 
-1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
+1. IBM Installation Manager 将引导您使用所选的数据库和应用程序服务器来安装 Application Center。
 
-    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
+    > 有关更多信息，请参阅有关[安装 {{ site.data.keys.mf_server }} ](../../installation-configuration) 的主题。
 
-    Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
+    因为 iOS 7.1 仅支持 https 协议，所以如果您打算针对运行 iOS 7.1 或更高版本的设备分发应用程序，那么必须使用 SSL（至少使用 TLS v.1）来保护 Application Center 服务器。不推荐使用自签名证书，但这类证书可用于测试目的，前提是已将自签名 CA 证书分发到设备上。
 
-2. After Application Center is installed with IBM Installation Manager, open the console: `http://localhost:9080/appcenterconsole`
+2. 在使用 IBM Installation Manager 安装 Application Center 之后，打开控制台：`http://localhost:9080/appcenterconsole`
 
-3. Log in with this user/password combination: demo/demo
+3. 使用以下用户/密码组合登录：demo/demo
 
-4. At this point, you can configure user authentication. For example, you can connect to an LDAP repository.
+4. 此时，您可以配置用户认证。例如，可连接到 LDAP 存储库。
 
-    > For more information, see the topic about [configuring the Application Center after installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > 有关更多信息，请参阅有关[在安装后配置 Application Center](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation) 的主题。
 
-5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8
+5. 为 Android、iOS、BlackBerry 6/7 和 Windows Phone 8 准备移动式客户机
 
-The mobile client is the mobile application that you use to browse the catalog and install the application.
+移动式客户机是用于浏览目录和安装应用程序的移动应用程序。
 
-> **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
+> **注：**对于生产安装，请考虑通过运行所提供的 Ant 任务来安装 Application Center：这可减少因更新 Application Center 而导致更新服务器的次数。
 
-## Cordova based IBM AppCenter client
+## 基于 Cordova 的 IBM AppCenter 客户机
 {: #cordova-based-ibm-appcenter-client }
-The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+基于 Cordova 的 AppCenter 客户机项目位于`安装`目录中：**install_dir/ApplicationCenter/installer/CordovaAppCenterClient**。
 
-This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
-Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }}    客户机/服务器 API。  
+由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}   。此应用程序针对 UI 使用 Dojo。
 
-Follow the steps below to get started:
+请执行以下步骤以开始操作：
 
-1. Install Cordova.
+1. 安装 Cordova。
 
 ```bash
 npm install -g cordova@latest
 ```
 
-2. Install Android SDK and set the `ANDROID_HOME`.  
-3. Build and run this project.
+2. 安装 Android SDK 并设置 `ANDROID_HOME`。  
+3. 构建并运行此项目。
 
-Build all platforms:
+构建所有平台：
 
 ```bash
 cordova build
 ```
 
-Build only Android:
+仅构建 Android：
 
 ```bash
 cordova build android
 ```
 
-Build only iOS:
+仅构建 iOS：
 
 ```bash
 cordova build ios
 ```
 
-### Customizing AppCenter Installer application
+### 定制 AppCenter Installer 应用程序
 {: #customizing-appcenter-installer-application }
-You can further customize the application, such as updating its user interface for your specific company or needs.
+您可以进一步定制应用程序，例如，针对特定公司或需求来更新其用户界面。
 
-> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+> **注：**虽然您可以自由地定制应用程序 UI 和行为，但此类更改不在 IBM 支持协议的服务范围内。
 
 #### Android
 {: #android }
-* Open the Android Studio.
-* Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+* 打开 Android Studio。
+* 选择**导入项目（Eclipse ADT、Gradle 等）**
+* 从 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android** 中选择 android 文件夹。
 
-This might take some time. Once this is done you are ready to customize.
+可能要花费一些时间。一旦完成，即可开始定制。
 
-> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+> **注：**选择此项将会跳过弹出窗口上用于升级 gradle 版本的更新选项。请参阅 `grade-wrapper.properties` 以了解版本。
 
 #### iOS
 {: #ios }
-* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
-* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+* 转至 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**。
+* 单击以打开 **IBMAppCenterClient.xcodeproj** 文件，此时会在 Xcode 中打开项目并且您可以开始定制。
 
-## Preparing mobile clients
+## 准备移动式客户机
 {: #preparing-mobile-clients }
-### For Android phones and tablets
+### 对于 Android 手机和平板电脑
 {: #for-android-phones-and-tablets }
-The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
+移动式客户机作为已编译的应用程序 (APK) 交付，并且位于 **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **注：**如果使用 Cordova 框架来构建 Android 和 iOS AppCenter 客户机，请参阅[基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)。
 
-### For iPad and iPhone
+### 对于 iPad 和 iPhone
 {: #for-ipad-and-iphone }
-1. Compile and sign the client application provided in source code. This is mandatory.
+1. 编译并签署源代码中提供的客户机应用程序。这是必需的操作。
 
-2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
+2. 在 MobileFirst Studio 中，打开以下位置中的 IBMAppCenter 项目：**install\_dir/ApplicationCenter/installer**。
 
-3. Use **Run As → Run on MobileFirst Development Server** to build the project.
+3. 使用**运行为 → 在 MobileFirst Development Server 上运行**以构建该项目。
 
-4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
-You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
+4. 在 Xcode 中使用 Apple iOS Enterprise 概要信息构建和签署应用程序。
+您可以在 Xcode 中手动打开生成的本机项目（在 **iphone\native** 中），或者右键单击 iPhone 文件夹并选择**运行为 → Xcode 项目**。此操作将生成项目并在 Xcode 中打开该项目。
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **注：**如果使用 Cordova 框架来构建 Android 和 iOS AppCenter 客户机，请参阅[基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)。
 
-### For Blackberry
+### 对于 Blackberry
 {: #for-blackberry }
-* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
+* 要构建 BlackBerry 版本，您必须具有带有 BlackBerry SDK 6.0 的 BlackBerry Eclipse IDE（或带有 BlackBerry Java 插件的 Eclipse）。以 BlackBerry SDK 6.0 编译该应用程序时，该应用程序还会在 BlackBerry OS 7 上运行。
 
-A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+以下位置中提供了一个 BlackBerry 项目：**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
 
-### For Windows Phone 8
+### 对于 Windows Phone 8
 {: #for-windows-phone-8}
-1.  Register a company account with Microsoft.  
-Application Center manages only company applications that are signed with the company certificate that comes with your company account.
+1.  向 Microsoft 注册一个公司帐户。
+Application Center 仅管理那些使用公司帐户随附的公司证书签署的公司应用程序。
 
-2. The Windows Phone version of the mobile client is included at: **install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
+2. 以下位置中提供了 Windows Phone 版本的移动式客户机：**install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
 
-* Make sure that also the Application Center mobile client is signed with this company certificate.
+* 确保也使用此公司证书签署 Application Center 移动式客户机。
 
-* To install company applications on a device, first enroll the device with the company by installing a company enrollment token.
+* 要在设备上安装公司应用程序，请先通过安装公司注册标记来向公司注册设备。
 
-> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website → Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
+> 有关公司帐户和注册标记的更多信息，请参阅 [Microsoft 开发人员 Web 站点 → Windows Phone 的企业应用分发](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) 页面。
 
-> For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
+> 有关如何签署 Windows Phone 移动式客户机应用程序的更多信息，请访问 [Microsoft 开发人员 Web 站点](http://dev.windows.com/en-us/develop)。
 
 <br/>
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：****不能**直接使用未签名的 `.xap` 文件。必须先使用从 Symantec 或 Microsoft 获取的公司证书来签署该文件，然后才能在设备上安装。
 
-### For Windows Store Apps for Windows 8.1 Pro
+### 对于 Windows Store Apps for Windows 8.1 Pro
 {: #for-windows-store-apps-for-windows-81-pro }
-* The **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
+* **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** 文件包含 Application Center 客户机的可执行文件。将此文件分发到客户端计算机上并进行解压缩。其中包含可执行程序。
 
-* Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+* 在不使用 Microsoft Windows Store 的情况下安装 Windows Store 应用程序（类型为 `appx` 的文件）称为<em>侧加载</em>应用程序。要侧加载应用程序，您必须遵循 [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) 中的先决条件。
 
-## Managing applications in the Application Center console
+## 在 Application Center 控制台中管理应用程序
 {: #managing-applications-in-the-application-center-console }
-![Image of application management in app center]({{ site.baseurl }}/assets/backup/overview1.png)
+![App Center 中应用程序管理的图像]({{ site.baseurl }}/assets/backup/overview1.png)
 
-Use the Application Center console to manage applications in the catalog in the following ways:
+可在 Application Center 控制台上使用以下方式管理目录中的应用程序：
 
-* Add and remove applications
-* Manage versions of applications    
-* Look at the details of an application
-* Restrict the access of an application to specific users or groups of users
-* Read the reviews for each application
-* Review registered users and devices
+* 添加和除去应用程序
+* 管理应用程序的版本    
+* 查看应用程序的详细信息
+* 将应用程序访问限制为特定用户或用户组
+* 读取每个应用程序的评论
+* 评论已注册的用户和设备
 
-### Adding new applications to the store
+### 向商店添加新应用程序
 {: #adding-new-applications-to-the-store }
-![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![向 App Center 添加应用程序的图像]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
-To add new applications to the Store:
+要向商店添加新应用程序：
 
-1. Open the Application Center console.
-2. Click **Add application**.
-3. Select an application file:
-    * `.ipa`: iOS
-    * `.apk`: Android
-    * `.zip`: BlackBerry 6/7
-    * `.xap`: Windows Phone 8.x
-    * `.appx`: Windows Store 8.x
+1. 打开 Application Center 控制台。
+2. 单击**添加应用程序**。
+3. 选择应用程序文件：
+    * `.ipa`：iOS
+    * `.apk`：Android
+    * `.zip`：BlackBerry 6/7
+    * `.xap`：Windows Phone 8.x
+    * `.appx`：Windows Store 8.x
 
-* Click **Next**.
+* 单击**下一步**。
 
-    In the Application Details views, you can review the information about the new application and enter further information such as the description. You can return to this view later for all applications in the catalog.
+    在“应用程序详细信息”视图中，您可以查看有关新应用程序的信息并输入更多信息（例如，描述）。对于目录中的所有应用程序，您稍后都可以返回到此视图。
 
-    ![Image of application details screen]({{ site.baseurl }}/assets/backup/appDetails1.png)
+    ![“应用程序详细信息”屏幕的图像]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
-* Click **Done** to finish the task.
+* 单击**完成**以完成该任务。
 
-The new application is added to the store.
+此时会将新应用程序添加到商店。
 
-![Image of access control in app center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![App Center 中访问控制的图像]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
-By default, an application can be installed by any authorized user of the store.
+缺省情况下，商店的任何授权用户都可以安装应用程序。
 
-### Restricting access to a group of users
+### 将访问限制为一组用户
 {: #restricting-access-to-a-group-of-users }
-To restrict access to a group of users:
+要将访问限制为一组用户：
 
-1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens.
-2. Select **Access control enabled**. You can now enter the list of users or groups that are authorized to install the application.
-3. If you have configured LDAP, add users and groups that are defined in the LDAP repository.
+1. 在目录视图中，单击应用程序名称旁边的**无限制链接**。此时会打开“安装访问控制”页面。
+2. 选择**启用访问控制**。现在，您可以输入有权安装应用程序的用户或组的列表。
+3. 如果已配置 LDAP，请添加在 LDAP 存储库中定义的用户和组。
 
-You can also add applications from public app stores such as Google Play or Apple App Store by entering their URLs.
+您还可以在通用应用商店（例如，Google Play 或 Apple App Store）中通过输入 URL 来添加应用程序。
 
-## The Application Center mobile client
+## Application Center 移动式客户机
 {: #the-application-center-mobile-client }
-The App Center mobile client is a mobile application to manage the applications on the device. With the mobile client, you can:
+App Center 移动式客户机是用于管理设备上的应用程序的移动应用程序。通过移动式客户机，您可以：
 
-* List all applications from the catalog (for which you have access rights).
-* List the favorite applications.
-* Install an application or upgrade to a new version.
-* Provide feedback and five-star rating for an application.
+* 列出目录中（您具有访问权）的所有应用程序。
+* 列出收藏的应用程序。
+* 安装应用程序或升级到新版本。
+* 针对应用程序提供反馈和五星评级。
 
-### Adding mobile client applications to the catalog
+### 向目录中添加移动式客户机应用程序
 {: #adding-mobile-client-applications-to-the-catalog }
-You must add Application Center mobile client applications to the catalog.
+您必须将 Application Center 移动式客户机应用程序添加到目录中。
 
-1. Open the Application Center console.
-2. Click the **Add Application** button to add the mobile client `.apk`, `.ipa`, `.zip`, or `.xap` file.
-3. Click **Next** to open the Application Details page.
-4. In the Application Details page, select **Installer** to indicate that this application is a mobile client.
-5. Click **Done** to add the Application Center app to the catalog.
+1. 打开 Application Center 控制台。
+2. 单击**添加应用程序**按钮以添加移动式客户机 `.apk`、`.ipa`、`.zip` 或 `.xap` 文件。
+3. 单击**下一步**以打开“应用程序详细信息”页面。
+4. 在“应用程序详细信息”页面中，选择**安装程序**以指示此应用程序是移动式客户机。
+5. 单击**完成**以将 Application Center 应用程序添加到目录中。
 
-The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
+不需要将针对 Windows 8.1 Pro 的 Application Center 客户机添加到目录中。此客户机是 **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** 文件中的常规 Windows `.exe` 程序。只需将其复制到客户端计算机上。
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
+在 Windows Phone 8 上，您还必须将随公司帐户一起收到的注册标记安装到 Application Center 控制台，以便用户可注册其设备。使用可通过齿轮图标打开的“Application Center 设置”页面。
 
-![Image of Windows Phone 8 app enrollment]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Windows Phone 8 应用程序注册的图像]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
-Before you can install the mobile client, you must enroll the device with the company by installing the enrollment token:
+在安装移动式客户机之前，必须通过安装注册标记来向公司注册设备：
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Click **Tokens** to open the list of enrollment tokens.
-5. Select the company in the list. The details of the company account are displayed.
-6. Click **Add Company Account**. Your device is enrolled.
+1. 打开设备上的 Web 浏览器。
+2. 输入 URL：`http://hostname:9080/appcenterconsole/installers.html`
+3. 输入用户名和密码。
+4. 单击**标记**以打开注册标记列表。
+5. 选择该列表中的公司。此时会显示公司帐户的详细信息。
+6. 单击**添加公司帐户**。此时会注册该设备。
 
-### Installing the mobile client on the mobile device
+### 在移动设备上安装移动式客户机
 {: #installing-the-mobile-client-on-the-mobile-device }
-To install the mobile client on the mobile device:
-![Image of application installer app]({{ site.baseurl }}/assets/backup/installers_smaller.png)
+要在移动设备上安装移动式客户机：![应用程序安装程序的图像]({{ site.baseurl }}/assets/backup/installers_smaller.png)
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Select the Application Center application to start the installation.
+1. 打开设备上的 Web 浏览器。
+2. 输入 URL：`http://hostname:9080/appcenterconsole/installers.html`
+3. 输入用户名和密码。
+4. 选择 Application Center 应用程序以启动安装。
 
-On **Android** devices, you must open the Android Download application and select **IBM App Center** for installation.
+在 **Android** 设备上，必须打开“Android 下载”应用程序，然后选择 **IBM App Center** 进行安装。
 
-### Logging in to the mobile client
+### 登录到移动式客户机
 {: #logging-in-to-the-mobile-client }
-To log in to the mobile client:
+要登录到移动式客户机：
 
-1. Enter your credentials for access to the server.
-2. Enter the host name or IP address of the server.
-3. In the **Server port** field, enter the port number if it is not the default one (`9080`).
-4. In the **Application context** field, enter the context: `applicationcenter`.
+1. 输入您的凭证以访问服务器。
+2. 输入服务器的主机名或 IP 地址。
+3. 在**服务器端口**字段中，如果不是使用缺省端口号 (`9080`)，请输入端口号。
+4. 在**应用程序上下文**字段中，输入上下文：`applicationcenter`。
 
-![Login screen]({{ site.baseurl }}/assets/backup/login.png)
+![“登录”屏幕]({{ site.baseurl }}/assets/backup/login.png)
 
-### Application Center mobile client views
+### Application Center 移动式客户机视图
 {: #application-center-mobile-client-views }
-* The **Catalog** view displays the list of available applications.
-* Selecting an application opens the **Details** view on the application. You can install applications from the Details view. You can also mark applications as favorites by using the star icon in the Details View.
+* **目录**视图显示可用应用程序的列表。
+* 如果选中一个应用程序，那么将打开此应用程序的**详细信息**视图。您可以从“详细信息”视图中安装应用程序。您还可以使用“详细信息”视图中的星形图标来将应用程序标记为收藏项。
 
-    ![Catalog details]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
+    ![目录详细信息]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
 
-* The **Favorites** view lists the favorite applications. This list is available on all the devices of a particular user.
-* The **Updates** view lists all available updates. In the Updates view, you can navigate to the Details view. You can select a newer version of the application or take the latest available version. If Application Center is configured to send push notifications, you might be notified of updates by push notification messages.
+* **收藏夹**视图列出收藏的应用程序。在特定用户的所有设备上都会提供此列表。
+* **更新**视图列出所有可用更新。在“更新”视图中，您可以浏览至“详细信息”视图。您可以选择较新版本的应用程序或采用最新可用版本。如果将 Application Center 配置为发送推送通知，那么推送通知消息可能通知您有更新。
 
-From the mobile client, you can rate the application and send a review. Reviews can be viewed on the console or on the mobile device.
+通过移动式客户机，您可以对应用程序进行评级和发送评论。可在控制台或移动设备上查看评论。
 
-![Reviews]({{ site.baseurl }}/assets/backup/reviewss.png)
+![评论]({{ site.baseurl }}/assets/backup/reviewss.png)
 
-## Application Center command-line tools
+## Application Center 命令行工具
 {: #application-center-command-line-tools }
-The **install_dir/ApplicationCenter/tools** directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:
+**install_dir/ApplicationCenter/tools** 目录包含使用命令行工具或 Ant 任务来管理商店中的应用程序所需的所有文件：
 
-* `applicationcenterdeploytool.jar`: the upload command-line tool.
-* `json4jar`: the library for the JSON format that is required by the upload tool.
-* `build.xml`: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
-* `acdeploytool.sh` and `acdeploytool.bat`: Simple scripts to call Java with the `applicationcenterdeploytool.jar` file.
+* `applicationcenterdeploytool.jar`：上载命令行工具。
+* `json4jar`：上载工具所需的 JSON 格式的库。
+* `build.xml`：可用于将单个文件或一系列文件上载到 Application Center 的样本 Ant 脚本。
+* `acdeploytool.sh` 和 `acdeploytool.bat`：用于通过 `applicationcenterdeploytool.jar` 文件调用 Java 的简单脚本。
 
-For example, to deploy an application `app.apk` file to the store in `localhost:9080/applicationcenter` with user ID `demo` and password `demo`, write:
+例如，要使用用户标识 `demo` 和密码 `demo` 将应用程序 `app.apk` 文件部署到 `localhost:9080/applicationcenter` 中的商店，请编写：
 
 ```bash
 Java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demo app.apk

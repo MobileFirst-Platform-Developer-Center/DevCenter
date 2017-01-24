@@ -1,36 +1,37 @@
 ---
 layout: tutorial
-title: Migrating existing adapters to work under MobileFirst Server V8.0.0
-breadcrumb_title: Migrating existing adapters
+title: 迁移现有适配器以在 MobileFirst Server V8.0.0 下工作
+breadcrumb_title: 迁移现有适配器
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Starting with v8.0 of {{ site.data.keys.mf_server }}, adapters are Maven projects. Learn how to upgrade adapters that were developed under earlier versions of {{ site.data.keys.mf_server }}.
+从 {{ site.data.keys.mf_server }}    V8.0 开始，适配器是 Maven 项目。了解如何升级在 {{ site.data.keys.mf_server }}    的较早版本下开发的适配器。
 
-This page describes the steps to take to migrate adapters that were developed to work with MobileFirst Server V6.2 or later so that they work with {{ site.data.keys.mf_server }} v8.0  
-To start, study the changes in adapter APIs that are described in [Deprecated features and API elements and Server-side API changes in v8.0](../../product-overview/release-notes/deprecated-discontinued/).
+本页面描述了迁移适配器（开发为与 MobileFirst Server V6.2 或更高版本一起使用）以与 {{ site.data.keys.mf_server }}    V8.0一起使用所需采取的步骤。  
+首先请了解 [V8.0 中不推荐使用的功能以及 API 元素和服务器端 API 更改](../../product-overview/release-notes/deprecated-discontinued/)中描述的适配器 API 更改。
 
-* Under certain conditions, existing adapters work as-is with {{ site.data.keys.mf_server }} v8.0. See [Using older adapters as-is under {{ site.data.keys.mf_server }} V8.0](#using-older-adapters-as-is-under-mobilefirst-server-v-80).
-* In most cases, you need to upgrade the adapters. For Java™ adapters, see [Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80). For JavaScript adapters, see [Migrating JavaScript adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80).
+* 在某些情况下，现有适配器可按原样与 {{ site.data.keys.mf_server }}    V8.0 一起使用。请参阅[在 {{ site.data.keys.mf_server }}    V8.0 下按原样使用较旧的适配器](#using-older-adapters-as-is-under-mobilefirst-server-v-80)。
+* 在大多数情况下，需要升级适配器。对于 Java™ 适配器，请参阅[针对 {{ site.data.keys.mf_server }}    V8.0 将 Java 适配器迁移到 Maven 项目](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80)。对于 JavaScript 适配器，请参阅[针对 {{ site.data.keys.mf_server }}    V8.0 将 JavaScript 适配器迁移到 Maven 项目](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)。
 
-## Using older adapters as-is under {{ site.data.keys.mf_server }} v8.0
+## 在 {{ site.data.keys.mf_server }}    V8.0 下按原样使用较旧的适配器
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
-An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v8.0, unless it matches any of the following criteria:
+除非符合以下任何条件，否则现有适配器可按原样部署在 {{ site.data.keys.mf_server }}    V8.0 下：
 
-| Adapter type | Condition | 
+| 适配器类型 | 条件 | 
 |--------------|-----------|
-| Java | Uses the PushAPI or SecurityAPI interfaces | 
-| JavaScript | {::nomarkdown}<ul><li>Was built using IBM  Worklight  V6.2 or earlier.</li><li>Uses a connection type that is not HTTP or SQL.</li><li>Contains procedures with securityTest customization</li><li>Contains procedures that use the user identity to connect to the back end</li><li>Uses any of the following APIs:<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
+| Java | 使用 PushAPI 或 SecurityAPI 接口 | 
+| JavaScript | {::nomarkdown}<ul><li>使用 IBM Worklight V6.2 或更低版本构建。</li><li>使用不是 HTTP 或 SQL 的连接类型。</li><li>包含 securityTest 定制过程</li><li>包含使用用户身份来连接到后端的过程</li><li>使用以下任何 API：<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
-## Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0
+## 针对 {{ site.data.keys.mf_server }}    V8.0 将 Java 适配器迁移到 Maven 项目
 {: #migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80}
-1. Create a Maven adapter project with the archetype **adapter-maven-archetype-java**. When setting the parameter **artifactId** use the adapter name and for the parameter **package** use the same package as the one in the existing Java adapter. For more information, see [Creating Java adapters](../../adapters/creating-adapters).
-2. Overwrite the adapter-descriptor file (**adapter.xml**) in the **src/main/adapter-resources** folder of the new adapter project that you created in Step 1. For more details about the descriptor, see The [Java adapter-descriptor file](../../adapters/java-adapters/#the-adapter-resources-folder).
-3. Remove all the files from the **src/main/java** folder of your new adapter project. Then, copy all the Java files from the **src/** folder of your old Java adapter project, but preserve the same folder structure. Copy all the non-Java files from the **src** folder of the old adapter to the **src/main/resources** folder of the new adapter. By default, **src/main/resources** does not exist, so if the adapter contains non-Java files, create it. For the changes in Java adapter APIs, see [Server-side API changes in v8.0](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80).
+1. 创建 archetype 为 **adapter-maven-archetype-java** 的 Maven 适配器项目。
+在设置参数 **artifactId** 时，请使用适配器名称；对于参数 **package**，请使用与现有 Java 适配器中的包相同的包。有关更多信息，请参阅[创建 Java 适配器](../../adapters/creating-adapters)。
+2. 覆盖现有 Java 适配器中已创建项目的 **src/main/adapter-resources** 下的适配器描述符文件 (**adapter.xml**)。有关描述符的更多详细信息，请参阅 [Java 适配器描述符文件](../../adapters/java-adapters/#the-adapter-resources-folder)。
+3. 除去从现有 Java 适配器创建的项目中 **src/main/java** 下的所有文件，然后复制旧适配器的 **src** 文件夹下的所有 Java 文件，但保持相同的文件夹结构。将旧适配器的 **src** 文件夹下的所有非 Java 文件复制到新适配器的 **src/main/resources**。缺省情况下，**src/main/resources** 不存在，因此如果适配器包含非 Java 文件，请创建此目录。有关 Java 适配器 API 中的更改，请参阅 [V8.0 中的服务器端 API 更改](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)。
 
-   The following diagrams illustrate the structure of adapters up to v7.1 and Maven adapters, starting from v8.0:
+   下图说明了 V7.1 之前适配器的结构以及 Maven 适配器（从 V8.0 开始）的结构：
 
    ```xml
     ├── adapters
@@ -44,7 +45,7 @@ An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v
     │                   └── RSSAdapterResource.java
    ```
     
-   New structure of a Java adapter:
+   Java 适配器的新结构：
 
    ```xml
     ├── pom.xml
@@ -59,12 +60,12 @@ An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v
     │                   └── RSSAdapterResource.java
    ```
 
-4. Using either of the following methods, add any JAR files that are not in the Maven repository:
-    * Add the JAR files to a local repository, as described in [Guide to installing third-party JARs](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html), then add them to **dependencies** element.
-    * Add the JAR files to the dependencies element by using the **systemPath** element. For more information, see [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).
+4. 使用以下任一方法，添加 Maven 存储库中未包含的任何 JAR 文件：
+    * 将 JAR 文件添加到本地存储库（如 [Guide to installing third-party JARs](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html) 中所述），然后将其添加到 **dependencies** 元素。
+    * 使用 **systemPath** 元素将 JAR 文件添加到 dependencies 元素中。有关更多信息，请参阅 [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)。
 
-## Migrating JavaScript adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0
+## 针对 {{ site.data.keys.mf_server }}    V8.0 将 JavaScript 适配器迁移到 Maven 项目
 {: #migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80 }
-1. Create a Maven adapter project with the archetype **adapter-maven-archetype-http or adapter-maven-archetype-sql**. When setting the parameter **artifactId** use the adapter name. For more information, see [Creating JavaScript adapters](../../adapters/creating-adapters).
-2. Overwrite the adapter-descriptor file (**adapter.xml**) in the **src/main/adapter-resources** folder of the new adapter project that you created in Step 1. For details about the descriptor, see The [JavaScript adapter-descriptor file](../../adapters/javascript-adapters/#the-adapter-resources-folder).
-3. Overwrite the JavaScript files in the **src/main/adapter-resources/js** folder of your new adapter project.
+1. 创建 archetype 为 **adapter-maven-archetype-http 或 adapter-maven-archetype-sql** 的 Maven 适配器项目。在设置参数 **artifactId** 时，使用适配器名称。有关更多信息，请参阅[创建 JavaScript 适配器](../../adapters/creating-adapters)。
+2. 覆盖现有 JavaScript 适配器中已创建项目的 **src/main/adapter-resources** 下的适配器描述符文件 (**adapter.xml**)。有关描述符的详细信息，请参阅 [JavaScript 适配器描述符文件](../../adapters/javascript-adapters/#the-adapter-resources-folder)。
+3. 覆盖从现有 JavaScript 适配器 JavaScript 文件创建的项目中的 JavaScript 文件 **src/main/adapter-resources/js**。

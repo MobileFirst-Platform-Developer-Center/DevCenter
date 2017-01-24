@@ -1,63 +1,63 @@
 ---
 layout: tutorial
-title: Migrating push notifications from event source-based notifications
-breadcrumb_title: Migrating push notifications 
+title: 从基于事件源的通知迁移推送通知
+breadcrumb_title: 迁移推送通知
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-From {{ site.data.keys.product_full }} v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of {{ site.data.keys.product_adj }} to be moved to v8.0, they must be migrated to the new push service model.
+从 {{ site.data.keys.product_full }}    V8.0 起，基于事件源的模型将不受支持，并且完全由推送服务模型启用推送通知功能。要将 {{ site.data.keys.product_adj }}    先前版本上基于事件源的现有应用程序移至 V8.0，必须将其迁移到新的推送服务模型。
 
-During migration, keep in mind that it is not about using one API instead of another, but more about using one model/approach versus another.
+迁移期间，请谨记，这并不是要用一个 API 代替另一个 API，更多的是使用一种模型/方法代替另一种模型/方法。
 
-For example, in the event source-based model, if you were to segment your mobile application users to send notifications to specific segments, you would model every segment as a distinct event source. In the push service model, you would achieve the same by defining tags that represents segments and have users subscribe to the respective tags. Tag-based notifications is a replacement to event source-based notifications.
+例如，在基于事件源的模型中，如果要对移动应用程序用户进行分段，从而向特定分段发送通知，那么会将每个分段作为不同事件源进行建模。在推送服务模型中，将通过定义表示分段的标记并使用户预订各自的标记来实现相同目的。基于标记的通知将替代基于事件源的通知。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Migration scenarios](#migration-scenarios)
-* [Migration tool](#migration-tool)
+* [迁移方案](#migration-scenarios)
+* [迁移工具](#migration-tool)
 
-<br/>
+<br /> 
 
-The table below provides you with a comparison between the two models.
+下表为您提供两种模型之间的比较。
 
-| User requirement | Event source model | Push service model | 
+| 用户需求 | 事件源模型 | 推送服务模型 | 
 |------------------|--------------------|--------------------|
-| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
-| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the {{ site.data.keys.mf_server }}</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
-| To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
-| To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
-| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the {{ site.data.keys.mf_server }} and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
-| To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
-| To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
+| 为应用程序启用推送通知 | {::nomarkdown}<ul><li>创建事件源适配器并在其中创建 EventSource。</li><li>使用推送凭证配置或设置应用程序。</li></ul>{:/} | 使用推送凭证配置或设置应用程序。 | 
+| 为移动客户机应用程序启用推送通知 | {::nomarkdown}<ul><li>创建 WLClient</li><li>连接到 {{ site.data.keys.mf_server }}   </li><li>获取推送客户机实例</li><li>预订事件源</li></ul>{:/} | {::nomarkdown}<ul><li>实例化推送客户机</li><li>初始化推送客户机</li><li>注册移动设备</li></ul>{:/} |
+| 要为移动式客户机应用程序启用基于特定标记的通知 | 不受支持。 | 预订相关标记（使用标记名称）。 | 
+| 在移动式客户机应用程序中接收并处理通知 | 注册侦听器实施。 | 注册侦听器实施。 |
+| 将推送通知发送到移动式客户机应用程序 | {::nomarkdown}<ul><li>实现用于在内部调用 WL.Server API 来发送推送通知的适配器过程。</li><li>WL 服务器 API 提供发送通知的方式：<ul><li>按用户</li><li>按设备</li><li><li>广播（所有设备）</li></ul></li><li>然后，后端服务器应用程序可以调用适配器过程，以触发作为其应用程序逻辑中的一部分的推送通知。</li></ul>{:/} | {::nomarkdown}<ul><li>后端服务器应用程序可以直接调用消息 REST API。但是，这些应用程序必须作为机密客户机向 {{ site.data.keys.mf_server }}    注册，并获取必须在 REST API 的授权头中传递的有效 OAuth 访问令牌。</li><li>REST API 提供用于发送通知的选项：<ul><li>按用户</li><li>按设备</li><li>按平台</li><li>按标记</li><li>广播（所有设备）</li></ul></li></ul>{:/} |
+| 要按定期时间段（轮询时间间隔）触发推送通知 |  实现用于在事件源适配器内发送推送通知的函数，并将其作为 createEventSource 函数调用的一部分。 | 不受支持。 |
+| 使用名称、URL 和事件类型注册挂钩。 | 在预订或取消预订推送通知的设备的路径上实现挂钩。 | 不受支持。 | 
 
-## Migration Scenarios
+## 迁移方案
 {: #migration-scenarios }
-Starting from {{ site.data.keys.product }} v8.0, the event source-based model will not be supported and push notifications capability will be enabled on {{ site.data.keys.product }} entirely by the push service model, which is a more simple and agile alternative to event source model.
+从 {{ site.data.keys.product }}    V8.0 开始，将不支持基于事件源的模型，并且在 {{ site.data.keys.product }}    上完全由推送服务模型启用推送通知功能，该模型是事件源模型的更简单且灵活的替代方法。
 
-Existing event source-based applications on earlier versions of IBM MobileFirst Platform Foundation need to be migrated to v8.0, to the new push service model.
+IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应用程序需要迁移到 V8.0，从而迁移到新的推送服务模型。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Hybrid applications](#hybrid-applications)
-* [Native Android applications](#native-android-applications)
-* [Native iOS applications](#native-ios-applications)
-* [Native Windows Universal applications](#native-windows-universal-applications)
+* [混合应用程序](#hybrid-applications)
+* [本机 Android 应用程序](#native-android-applications)
+* [本机 iOS 应用程序](#native-ios-applications)
+* [本机 Windows Universal 应用程序](#native-windows-universal-applications)
 
-### Hybrid applications
+### 混合应用程序
 {: #hybrid-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+应用程序已在 {{ site.data.keys.product_adj }}    的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
 
-##### Client
+##### 客户机
 {: #client-hybrid-1 }
-To migrate this in V8.0.0, convert this model to Unicast notification.
+要在 V8.0.0 中对此进行迁移，请将此模型转换为单点广播通知。
 
-1. Initialize the {{ site.data.keys.product_adj }} push client instance in your application and in the success callback register the callback method that should receive the notification.
+1. 初始化应用程序中的 {{ site.data.keys.product_adj }}    推送客户机实例，并在成功回调中注册应接收通知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -67,7 +67,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-2. Implement the notification callback method.
+2. 实施通知回调方法。
 
    ```javascript
    var notificationReceived = function(message) {
@@ -75,7 +75,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    };
    ```
     
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -87,7 +87,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
  
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -99,7 +99,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
+5. 除去 WL.Client.Push.isPushSupported()（如果已使用）并使用：
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -111,39 +111,39 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs, since there will be no event source to subscribe to and register notification callbacks.
+6. 除去以下 `WL.Client.Push` API，因为将没有要预订并用于注册通知回调的事件源。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
     * `onReadyToSubscribe()`
 
-##### Server
+##### 服务器
 {: #server-hybrid-1 }
-1. Remove the following WL.Server APIs (if used), in your adapter:
+1. 除去适配器中的以下 WL.Server API（如果已使用）：
     * `notifyAllDevices()`
     * `notifyDevice()`
     * `notifyDeviceSubscription()`
     * `createEventSource()`
-2. Complete the following steps for every application that was using the same event source:
-    1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+2. 针对使用同一事件源的每个应用程序完成以下步骤：
+    1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-        You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-    2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-    3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-    4. You can use either of the following methods to send notifications:
-        * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-        * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+        您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+    3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+    4. 您可以使用以下任一方法来发送通知：
+        * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+        * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### 方案 2：现有应用程序在其应用中使用多个事件源
 {: #hybrid-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+使用多个事件源的应用程序要求基于预订对用户进行细分。
 
-##### Client
+##### 客户机
 {: #client-hybrid-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this, this model can be converted to tag-based notification.
+这将映射到基于相关主题对用户/设备进行分段的标记。要对此进行迁移，可以将此模型转换为基于标记的通知。
 
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -154,7 +154,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-2. Implement the notification callback method.
+2. 实施通知回调方法。
 
    ```javascript
    var notificationReceived = function(message) {
@@ -162,7 +162,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    };
    ```
 
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -174,7 +174,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-4. (Optional) Unregister the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -186,7 +186,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use.
+5. 除去 `WL.Client.Push.isPushSupported()`（如果已使用）并使用。
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -194,18 +194,18 @@ This maps to tags which segments the users/devices based on topic of interest. T
 	    },
 	  function(failureResponse) {
 		alert("Failed to get the push suport status");
-	    }
+	   }
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs since there will be no event source to subscribe to and register notification callbacks.
+6. 除去以下 `WL.Client.Push` API，因为将没有要预订并用于注册通知回调的事件源。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
     * `onReadyToSubscribe()`
 
-7. Subscribe to tags.
+7. 预订标记。
 
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
@@ -218,7 +218,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
 
-8. (Optional) Unsubscribe from tags.
+8. （可选）从标记取消预订。
 
    ```javascript
    MFPPush.unsubscribe(tags, function(successResponse) {
@@ -230,31 +230,31 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-##### Server
+##### 服务器
 {: #server-hybrid-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+除去适配器中的以下 `WL.Server` API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
 {: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
+##### 客户机
 {: #client-hybrid-3 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -265,7 +265,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
     
-2. Implement the notification callback method.
+2. 实施通知回调方法。
 
    ```javascript
    var notificationReceived = function(message) {
@@ -273,84 +273,7 @@ Complete the following steps for every application that was using the same event
    };
    ```
     
-3. Register the mobile device with the push notification service.
-
-   ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-        alert("Successfully registered");
-        },
-      function(failureResponse) {
-        alert("Failed to register");
-        }
-   );
-   ```
-    
-4. (Optional) Unregister the mobile device from the push notification service.
-
-   ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-        alert("Successfully unregistered");
-        },
-      function(failureResponse) {
-        alert("Failed to unregister");
-        }
-   );
-   ```
-
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
-
-   ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-        alert(successResponse);
-        },
-      function(failureResponse) {
-        alert("Failed to get the push suport status");
-        }
-   );
-   ```
-
-6. Remove the following `WL.Client.Push` APIs:
-    * `onReadyToSubscribe()`
-    * `onMessage()`
-
-##### Server
-{: #server-hybrid-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
-
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
-
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
-
-#### Scenario 4: Existing applications using tag notifications in their application
-{: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
-{: #client-hybrid-4 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
-
-   ```javascript
-   MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
-		function(failureResponse){
-			alert("Failed to initialize");
-		}
-   );
-   ```
-
-2. Implement the notification callback method.
-
-   ```javascript
-   var notificationReceived = function(message) {
-		alert(JSON.stringify(message));
-   };
-   ```
-
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -361,8 +284,8 @@ Complete the following steps for every application that was using the same event
 	    }
    );
    ```
-
-4. (Optional) Un-register the mobile device from push notification service.
+    
+4. （可选）从推送通知服务注销移动设备。
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -373,8 +296,8 @@ Complete the following steps for every application that was using the same event
 	    }
    );
    ```
-    
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use:
+
+5. 除去 WL.Client.Push.isPushSupported()（如果已使用）并使用：
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -386,27 +309,105 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-6. Remove the following `WL.Client.Push` APIs:
+6. 除去以下 `WL.Client.Push` API：
+    * `onReadyToSubscribe()`
+    * `onMessage()`
+
+##### 服务器
+{: #server-hybrid-3 }
+除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。  
+针对使用同一事件源的每个应用程序完成以下步骤：
+
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
+
+#### 方案 4：现有应用程序在其应用中使用标记通知
+{: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
+##### 客户机
+{: #client-hybrid-4 }
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
+
+   ```javascript
+   MFPPush.initialize(function(successResponse){
+		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		function(failureResponse){
+			alert("Failed to initialize");
+		}
+   );
+   ```
+
+2. 实施通知回调方法。
+
+   ```javascript
+   var notificationReceived = function(message) {
+		alert(JSON.stringify(message));
+   };
+   ```
+
+3. 向推送通知服务注册移动设备。
+
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
+		alert("Successfully registered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to register");
+	    }
+   );
+   ```
+
+4. （可选）从推送通知服务注销移动设备。
+
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
+		alert("Successfully unregistered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to unregister");
+	    }
+   );
+   ```
+    
+5. 除去 `WL.Client.Push.isPushSupported()`（如果已使用）并使用：
+
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
+		alert(successResponse);
+	    },
+	  function(failureResponse) {
+		alert("Failed to get the push suport status");
+	    }
+   );
+   ```
+
+6. 除去以下 `WL.Client.Push` API：
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
     * `onReadyToSubscribe()`
     * `onMessage()`
 
-7. Subscribe to tags:
+7. 预订标记：
 
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-		alert("Successfully subscribed");
-	    },
-	  function(failureResponse) {
-		alert("Failed to subscribe");
-	    }
+    	alert("Successfully subscribed");
+        },
+      function(failureResponse) {
+    	alert("Failed to subscribe");
+        }
    );
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. （可选）从标记取消预订：
 
    ```javascript
    MFPPush.unsubscribe(tags, function(successResponse) {
@@ -418,40 +419,40 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-##### Server
+##### 服务器
 {: #client-hybrid-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
+除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。  
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
-### Native Android applications
+### 本机 Android 应用程序
 {: #native-android-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #android-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
+应用程序已在 MobileFirst 的先前版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
 
-##### Client
+##### 客户机
 {: #client-android-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+要在 V8.0 中对此进行迁移，请将此模型转换为单点广播通知。
 
-1. Initialize the MFPPush client instance in your application.
+1. 初始化应用程序中的 MFPPush 客户机实例。
 
    ```java
    MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. 实现接口 MFPPushNotificationListener 并定义 onReceive()。
 
    ```java
    @Override
@@ -460,7 +461,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -476,7 +477,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -492,50 +493,51 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `push.isPushSupported();`。
+6. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-##### Server
+##### 服务器
 {: #server-android-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+除去适配器中的以下 `WL.Server` API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### 方案 2：现有应用程序在其应用中使用多个事件源
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires the segmentation of users based on the subscriptions.
+使用多个事件源的应用程序要求基于预订对用户进行细分。
 
-##### Client
+##### 客户机
 {: #client-android-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product }} V8.0.0, convert this model to tag based notification.
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product }}    V8.0.0，请将此模型转换为基于标记的通知。
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. 实现接口 MFPPushNotificationListener 并定义 onReceive()。
 
    ```java
    @Override
@@ -544,46 +546,47 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```java
-   push.registerDevice(new MFPPushResponseListener<String>(){   
+   push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+             Log.i("Push Notifications", "Registered successfully");
+
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. （可选）从推送通知服务注销移动设备：
   
    ```java
-   push.unregisterDevice(new MFPPushResponseListener<String>(){   
-       @Override
+   push.unregisterDevice(new MFPPushResponseListener<String>(){
+        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
 
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `push.isPushSupported();`。
+6. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
 
-7. `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
-8. Subscribe to tags:
+7. `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
+8. 预订标记：
 
    ```java
    String[] tags = new String[2];
@@ -603,7 +606,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. （可选）从标记取消预订：
  
    ```java
    String[] tags = new String[2];
@@ -623,39 +626,41 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
    
-##### Server
+##### 服务器
 {: #server-android-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+除去适配器中的以下 `WL.Server` API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.     
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。     
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
 {: #android-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
+##### 客户机
 {: #client-android-3 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
     
-2. Implement the interface `MFPPushNotificationListener` and define `onReceive()`.
+2. 实施接口 `MFPPushNotificationListener` 并定义
+`onReceive()`。
 
    ```java
    @Override
@@ -664,7 +669,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -674,61 +679,62 @@ Complete the following steps for every application that was using the same event
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+             Log.i("Push Notifications", "Registered successfully");
 
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
-       @Override
+        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
 
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
 
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following WLClient.Push APIs:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `push.isPushSupported();`。
+6. 除去以下 WLClient.Push API：
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-##### Server
+##### 服务器
 {: #server-android-3 }
-Remove WL.Server.sendMessage()` APIs (if used) in your adapter:
+除去适配器中的 WL.Server.sendMessage()` API（如果已使用）：
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### 方案 4：现有应用程序在其应用中使用标记通知
 {: #android-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### 客户机
 {: #client-android-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. 实现接口 MFPPushNotificationListener 并定义 onReceive()。
  
    ```java
    @Override
@@ -737,7 +743,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
     
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -747,12 +753,13 @@ Complete the following steps for every application that was using the same event
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+             Log.i("Push Notifications", "Registered successfully");
+
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
  
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -763,25 +770,26 @@ Complete the following steps for every application that was using the same event
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `push.isPushSupported()`；
+6. 除去以下 `WLClient.Push` API：
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-7. Subscribe to tags:
+7. 预订标记：
 
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
+
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -794,13 +802,14 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. （可选）从标记取消预订：
 
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
+
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -813,41 +822,42 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-##### Server
+##### 服务器
 {: #server-android-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-### Native iOS applications
+### 本机 iOS 应用程序
 {: #native-ios-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+应用程序已在 {{ site.data.keys.product_adj }}    的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
 
-##### Client
+##### 客户机
 {: #client-ios-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+要在 V8.0 中对此进行迁移，请将此模型转换为单点广播通知。
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 初始化应用程序中的 `MFPPush` 客户机实例。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service.
+2. 在 `didReceiveRemoteNotification()` 中实施通知处理。
+3. 向推送通知服务注册移动设备。
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -859,7 +869,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -871,61 +881,64 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用：
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` implementation
+    * `WLOnReadyToSubscribeListener` 实施
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
+7. 在
+`didRegisterForRemoteNotificationsWithDeviceToken`
+中调用 `sendDeviceToken()`。
 
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
    ```
     
-##### Server
+##### 服务器
 {: #server-ios-1 }
-Remove the following WL.Server API's (if used) in your adapter:
+除去适配器中的以下 WL.Server API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### 方案 2：现有应用程序在其应用中使用多个事件源
 {: #ios-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+使用多个事件源的应用程序要求基于预订对用户进行细分。
 
-##### Client
+##### 客户机
 {: #client-ios-2}
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }}    V8.0.0，请将此模型转换为基于标记的通知。
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 初始化应用程序中的 `MFPPush` 客户机实例。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. 在 `didReceiveRemoteNotification()` 中实施通知处理。
+3. 向推送通知服务注册移动设备：
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -937,7 +950,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. （可选）从推送通知服务注销移动设备：
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -949,21 +962,23 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用：
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
     
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 实施
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. 在
+`didRegisterForRemoteNotificationsWithDeviceToken`
+中调用 `sendDeviceToken()`。
+8. 预订标记：
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -978,7 +993,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. （可选）从标记取消预订：
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -986,45 +1001,46 @@ This maps to tags which segments the users/devices based on topic of interest. T
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
+        	NSLog(@"Failed to unregister");
         }else{
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
     
-##### Server
-:{: # server-ios-2 }
-Remove `WL.Server` (if used) in your adapter.
+##### 服务器
+：{ #server-ios-2 }
+除去适配器中的 `WL.Server`（如果已使用）。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
 {: #ios-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
+##### 客户机
 {: #client-ios-3 }
-1. Initialize the MFPPush client instance in your application:
+1. 初始化应用程序中的 MFPPush 客户机实例：
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. 在 `didReceiveRemoteNotification()` 中实施通知处理。
+3. 向推送通知服务注册移动设备：
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -1036,7 +1052,7 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -1048,44 +1064,45 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用：
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's:
+6. 除去以下 `WLClient.Push` API：
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 实施
 
-##### Server
+##### 服务器
 {: #server-ios-3 }
-Remove `WL.Server.sendMessage` (if used) in your adapter.
+除去适配器中的 `WL.Server.sendMessage`（如果已使用）。
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### 方案 4：现有应用程序在其应用中使用标记通知
 {: #ios-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### 客户机
 {: #client-ios-4 }
 
-1. Initialize the MFPPush client instance in your application:
+1. 初始化应用程序中的 MFPPush 客户机实例：
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. 在 `didReceiveRemoteNotification()` 中实施通知处理。
+3. 向推送通知服务注册移动设备：
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -1097,28 +1114,30 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. （可选）从推送通知服务注销移动设备：
  
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
+        	NSLog(@"Failed to unregister");
         }else{
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `[[MFPPush sharedInstance] isPushSupported]`.
-6. Remove the following `WLClient.Push` API's since there will be no Event source to subscribe to and register notification callbacks:
+5. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `[[MFPPush sharedInstance] isPushSupported]`。
+6. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 实施
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. 在
+`didRegisterForRemoteNotificationsWithDeviceToken`
+中调用 `sendDeviceToken()`。
+8. 预订标记：
  
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1127,13 +1146,13 @@ Complete the following steps for every application that was using the same event
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
 	       NSLog(@"Failed to unregister");
-        }else{    
+        } else {
 	       NSLog(@"Successfully unregistered");
-       }
+        }
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. （可选）从标记取消预订：
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1148,33 +1167,35 @@ Complete the following steps for every application that was using the same event
    }];
    ```
 
-##### Server
+##### 服务器
 {: server-ios-4 }
-Remove the `WL.Server.sendMessage` (if used), in your adapter.
+除去适配器中的以下 `WL.Server.sendMessage()`（如
+果已使用）。
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+    您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
+    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
+4. 您可以使用以下任一方法来发送通知：
+    * {{ site.data.keys.mf_console }}   。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
-### Native Windows Universal applications
+### 本机 Windows Universal 应用程序
 {: #native-windows-universal-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #windows-scenario-1-existing-applications-using-single-event-source-in-their-application }
-To migrate this in v8.0, convert this model to Unicast notification.
+要在 V8.0 中对此进行迁移，请将此模型转换为单点广播通知。
 
-##### Client
+##### 客户机
 {: #windows-client-1}
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 初始化应用程序中的 `MFPPush` 客户机实例。
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1183,13 +1204,13 @@ To migrate this in v8.0, convert this model to Unicast notification.
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+{ 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
     
-2. Register the mobile device with the push notification service.
+2. 向推送通知服务注册移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1203,7 +1224,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. （可选）从推送通知服务注销移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1217,38 +1238,38 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+4. 除去 `WLClient.Push.IsPushSupported()`（如果已使用）并使用 `push.IsPushSupported();`。
+5. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-##### Server
+##### 服务器
 {: #windows-server-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+除去适配器中的以下 `WL.Server` API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the Security tab of {{ site.data.keys.mf_console }}.
-3. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`, to send message.
+1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的“安全性”选项卡的安全性检查部分中。
+3. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId` 配合使用来发送消息。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### 方案 2：现有应用程序在其应用中使用多个事件源
 {: #windows-scenario-2-existing-applications-using-multiple-event-sources-in-their-appliction }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+使用多个事件源的应用程序要求基于预订对用户进行细分。
 
-##### Client
+##### 客户机
 {: #windows-client-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }}    V8.0.0，请将此模型转换为基于标记的通知。
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1257,13 +1278,13 @@ This maps to tags which segments the users/devices based on topic of interest. T
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+{ 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
     
-2. Register the mobile device with the IMFPUSH service.
+2. 向 IMFPUSH 服务注册移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1277,7 +1298,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. (Optional) Un-register the mobile device from the IMFPUSH service:
+3. （可选）从 IMFPUSH 服务注销移动设备：
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1291,15 +1312,15 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no Event Source to subscribe to and register notification callbacks:
+4. 除去 `WLClient.Push.IsPushSupported()`（如果已使用）并使用 `push.IsPushSupported();`。
+5. 除去以下 `WLClient.Push` API，因为将没有要预订并用于注册通知回调的事件源：
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-6. Subscribe to tags:
+6. 预订标记：
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1314,7 +1335,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-7. (Optional) Unsubscribe from tags:
+7. （可选）从标记取消预订：
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1329,28 +1350,28 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-##### Server
+##### 服务器
 {: #windows-server-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+除去适配器中的以下 `WL.Server` API（如果已使用）：
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
 {: #windows-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 
-##### Client
+##### 客户机
 {:# windows-client-3 }
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1359,27 +1380,27 @@ Complete the following steps for every application that was using the same event
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+{ 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
 
-2. Register the mobile device with the push notification service.
+2. 向推送通知服务注册移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   } 
+   }
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. （可选）从推送通知服务注销移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1393,47 +1414,47 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-4. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs:
+4. 除去 `WLClient.Push.isPushSupported()`（如果已使用），并使用 `push.IsPushSupported();`。
+5. 除去以下 `WLClient.Push` API：
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-##### Server
+##### 服务器
 {: #windows-server-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### 方案 4：现有应用程序在其应用中使用标记通知
 {: #windows-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### 客户机
 {: #windows-client-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. 实现接口 MFPPushNotificationListener 并定义 onReceive()。
 
    ```csharp
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+{ 
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. 向推送通知服务注册移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1447,7 +1468,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-4. (Optional) Un-register the mobile device from push notification service.
+4. （可选）从推送通知服务注销移动设备。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1461,14 +1482,14 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-5. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. 除去 `WLClient.Push.IsPushSupported()`（如果已使用）并使用 `push.IsPushSupported()`；
+6. 除去以下 `WLClient.Push` API：
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现
 
-7. Subscribe to tags:
+7. 预订标记：
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1483,7 +1504,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-8. (Optional) Unsubscribe from tags:
+8. （可选）从标记取消预订：
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1498,71 +1519,71 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-##### Server
+##### 服务器
 {: #windows-server-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。
 
-Complete the following steps for every application that was using the same event source:
+针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
-## Migration tool
+## 迁移工具
 {: #migration-tool }
-The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.  
-The migration tool simplifies the process with the following functions:
+迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }}    8.0。  
+迁移工具可通过以下功能简化此过程：
 
-1. Reads the devices, credentials, tags and user subscriptions for each application from the MobileFirst Platform Foundation 7.1 database.
-2. Copies the data to respective tables in {{ site.data.keys.product }} 8.0 database for respective application.
-3. Migrates all the Push data of all v7.1 environments, irrespective of environments in the v8.0 application.
+1. 从 MobileFirst Platform Foundation 7.1 数据库中读取每个应用程序的设备、凭证、标记和用户预订。
+2. 将数据复制到 {{ site.data.keys.product }}    8.0 数据库中各个应用程序的相应表格中。
+3. 迁移所有 V7.1 环境的所有推送数据，而不考虑 V8.0 应用程序中的环境。
 
-The migration tool doesn't modify any data related to user subscriptions, application environments or devices.  
+迁移工具将不会修改与用户预订、应用程序环境或设备相关的任何数据。  
 
-The following information is important to know before you use the migration tool:
+使用迁移工具之前，请务必了解以下信息：
 
-1. You must have Java version 1.6 or above.
-2. Make sure you have both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0 setup and ready.
-3. Make a backup of both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0.
-4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
-	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
-	* Remember the PacakgeName/BundleID and provide the same values for the applications.
-	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will not succeed.
-5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
+1. 您必须已安装 Java V1.6 或更高版本。
+2. 确保 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }}    8.0 均已设置并准备就绪。
+3. 生成 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }}    8.0 的备份。
+4. 在 {{ site.data.keys.mf_server }}    8.0 中注册以上应用程序的最新版本。
+	* 应用程序的显示名称应与 MobileFirst Platform Foundation 7.1 中相应的应用程序相匹配。
+	* 请记住 PacakgeName/BundleID，并为应用程序提供相同的值。
+	* 如果在 {{ site.data.keys.mf_server }}    8.0 上未注册该应用程序，那么迁移将成功。
+5. 为应用程序的每个环境提供作用域-元素映射。[了解有关作用域映射的更多信息](../../notifications/sending-notifications/#scope-mapping)。
 
-#### Procedure
+#### 过程
 {: #procedure }
-1. Download the migration tool from [its following GitHub repository](http://github.com).
-2. After downloading the tool, provide the following details in the **migration.properties** file:
+1. 从[以下 GitHub 存储库](http://github.com)下载迁移工具。
+2. 下载该工具后，在 **migration.properties** 文件中提供以下详细信息：
 	
-    | Value                | Description  | Sample Values |
+    | 值                | 描述  | 样本值 |
     |----------------------|--------------|---------------|
-    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB password | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB username     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB password     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 DB url						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 DB username						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 DB password						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB schema | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB schema     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB schema    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime name		 | runtime=worklight |
-    | applicationId	       | Provide list of applications registered on MobileFirst Platform Foundation 7.1 separated by comma(,) | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | Provide list of applications registered on {{ site.data.keys.product }} 8.0 separated by comma(,).   | com.HybridTestApp,com.NativeiOSTestApp |
+    | w.db.type		       | 正在考虑的数据库类型	           | pw.db.type = db2 可能的值：DB2、Oracle、MySql 或 Derby | 
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight DB URL  | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB URL      | jdbc:mysql://localhost:3306/ADMIN |
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB 用户名 | pw.db.username=root |
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB 密码 | pw.db.password=root |
+    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB 用户名     | pw.db.adminusername=root |
+    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB 密码     | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | MFP 8.0 DB URL						        | jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | MFP 8.0 DB 用户名						| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | MFP 8.0 DB 密码						| pw.db.passwordTarget=root |
+    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB 模式 | WRKLGT |
+    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB 模式     | WLADMIN |
+    | pw.db.targetschema   | {{ site.data.keys.product }}    8.0 Worklight DB 模式    | MFPDATA |
+    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime 名称		 | runtime=worklight |
+    | applicationId	       | 提供 MobileFirst Platform Foundation 7.1 上注册的应用程序列表（用逗号 (,) 分隔） | HybridTestApp,NativeiOSTestApp |
+    | targetApplicationId  | 提供 {{ site.data.keys.product }}    8.0 上注册的应用程序列表（用逗号 (,) 分隔）   | com.HybridTestApp,com.NativeiOSTestApp |
 
-    * Make sure that you have provided values for both **applicationID** and **targetApplicationId** in proper sequence. The mapping is done in 1-1 (or n-n) fashion, i.e. data of the first application in **applicationId** list will be migrated to the first application in the **targetApplicationId** list.
-	* In the **targetApplicationId** list, provide a packageName/BundleId for the application. i.e. for TestApp1 in MobileFirst Platform Foundation 7.1, **targetApplicationId** will be packageName/BundleId of TestApp1 which is com.TestApp1. This is because in MobileFirst Platform Foundation 7.1 **applicationId** is the application name and in {{ site.data.keys.mf_server }} 8.0 it is packageName/BundleId/packageIdentityName based on application environment.
+    * 确保已按正确的顺序提供 **applicationID** 和 **targetApplicationId** 的值。将采用 1-1（或 n-n）方式执行映射，即 **applicationId** 列表中第一个应用程序的数据将迁移到 **targetApplicationId** 列表中的第一个应用程序。
+	* 在 **targetApplicationId** 列表中，提供应用程序的 packageName/BundleId。即，对于 MobileFirst Platform Foundation 7.1 中的 TestApp1，**targetApplicationId** 将作为 TestApp1 的 packageName/BundleId（即 com.TestApp1）。这是因为在 MobileFirst Platform Foundation 7.1 中，**applicationId** 是应用程序名称，在 {{ site.data.keys.mf_server }}    8.0 中，它是基于应用程序环境的 packageName/BundleId/packageIdentityName。
 
-2. Run the tool by using the following command:
+2. 通过使用以下命令来运行该工具：
 
    ```bash
    java -jar pushDataMigration.jar path-to-migration.properties
    ```
    
-   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+   * 如果工具 .jar 文件与属性文件位于不同位置，请将 **path-to-migration.properties** 替换为指向 **migration.properties** 的路径。否则，请从该命令中除去路径。
 

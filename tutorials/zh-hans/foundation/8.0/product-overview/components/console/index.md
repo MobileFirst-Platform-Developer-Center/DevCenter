@@ -1,189 +1,188 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Operations Console
+title: 使用 MobileFirst Operations Console
 breadcrumb_title: MobileFirst Operations Console
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The {{ site.data.keys.mf_console_full }} is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+{{ site.data.keys.mf_console_full }}    是基于 Web 的 UI，支持为开发人员和管理员简化创建、监控、保护和管理应用程序与适配器的工作流程。
 
-#### As a developer
+#### 作为开发人员
 {: #as-a-developer }
-* Develop applications for any environment and register them to {{ site.data.keys.mf_server }}.
-* See all your deployed applications and adapters at a glance. See the Dashboard.
-* Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
-* Set up push notification by deploying certificates, creating notification tags, and sending notification.
-* Create and deploy adapters.
-* Download samples.
+* 开发用于任何环境的应用程序，并且将其注册到 {{ site.data.keys.mf_server }}   。
+* 查看所有已部署的应用程序和适配器概览。查看仪表板。
+* 管理和配置已注册的应用程序，包括直接更新、远程禁用和用于应用程序真实性与用户认证的安全性参数。
+* 通过部署证书、创建通知标记和发送通知来设置推送通知。
+* 创建并部署适配器。
+* 下载样本。
 
-#### As an IT administrator
+#### 作为 IT 管理员
 {: #as-an-it-administrator }
-* Monitor various services.
-* Search for devices that access {{ site.data.keys.mf_server }} and manage their access rights.
-* Update adapter configurations dynamically.
-* Adjust client logger configurations through log profiles.
-* Track how product licenses are used.
+* 监控各种服务。
+* 搜索访问 {{ site.data.keys.mf_server }}    的设备，并管理其访问权。
+* 动态更新适配器配置。
+* 通过日志概要文件来调整客户机记录器配置。
+* 跟踪产品许可证的使用方式。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Accessing the console](#accessing-the-console)
-* [Navigating the console](#navigating-the-console)
+* [访问控制台](#accessing-the-console)
+* [浏览控制台](#navigating-the-console)
 
-## Accessing the console
+## 访问控制台
 {: #accessing-the-console }
-The {{ site.data.keys.mf_console }} can be accessed in the following ways:
+可以如下方式访问 {{ site.data.keys.mf_console }}   ：
 
-### From a locally installed {{ site.data.keys.mf_server }}
+### 从本地安装的 {{ site.data.keys.mf_server }}   
 {: #from-a-locally-installed-mobilefirst-server }
-#### Desktop Browser
+#### 桌面浏览器
 {: #desktop-browser }
-From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+从您选择的浏览器，装入 URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。用户名/密码为 *admin/admin*。
 
-#### Command-line
+#### 命令行
 {: #command-line }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, run the command: `mfpdev server console`.
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}    运行命令：`mfpdev server console`。
 
-### From a remotely installed {{ site.data.keys.mf_server }}
+### 从远程安装的 {{ site.data.keys.mf_server }}   
 {: #from-a-remotely-installed-mobilefirst-server }
-#### Desktop Browser
+#### 桌面浏览器
 {: #desktop-browser-remote }
-From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
+从您选择的浏览器，装入 URL `http://the-server-host:server-port-number/mfpconsole`。  
+主机服务器可以是客户拥有的服务器、IBM Bluemix 服务或 IBM [Mobile Foundation](../../../bluemix/)。
 
-#### Command-line
+#### 命令行
 {: #command-line-remote }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}   ， 
 
-1. Add a remote server definition:
+1. 添加远程服务器定义：
 
-    *Interactive Mode*  
-    Run the command: `mfpdev server add` and follow the on-screen instructions.
+    *交互方式*  
+    运行命令：`mfpdev server add` 并遵循屏幕上的指示信息进行操作。
 
-    *Direct Mode*  
-    Run the command with the following structure: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. For example:
+    *直接方式*  
+    通过以下结构运行命令：`mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`。例如：
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
    ```
 
-2. Run the command: `mfpdev server console MyRemoteServer`.
+2. 运行命令：`mfpdev server console MyRemoteServer`。
 
-> Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
-
-## Navigating the console
+> 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }}    工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
+## 浏览控制台
 {: #navigating-the-console }
-### Dashboard
+### 仪表板
 {: #dashboard }
-The Dashboard provides a glance view of the deployed projects.
+“仪表板”提供了已部署的项目概览。
 
-![Image of the console dashboard](dashboard.png)
+![控制台仪表板图像](dashboard.png)
 
-#### Actions dropdown
+#### 操作下拉菜单
 {: #actions-dropdown }
-The dropdown provides quick access to various console actions.
+此下拉菜单提供了对各种控制台操作的快速访问功能。
 
-![Image of Actions dropdown](actions-dropdown.png)
+![操作下拉菜单图像](actions-dropdown.png)
 
-### Runtime settings
+### 运行时设置
 {: #runtime-settings }
-Edit runtime properties, global security variables, server keystore and confidential clients.
+编辑运行时属性、全局安全性变量、服务器密钥库和保密客户机。
 
-![Image of the Runtime Settings screen ](runtime-settings.png)
+![“运行时设置”屏幕图像](runtime-settings.png)
 
-### Error log
+### 错误日志
 {: #error-log }
-The Error log shows a list of the failed management operations that were initiated from the {{ site.data.keys.mf_console }}, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+“错误日志”可显示当前运行时环境中从 {{ site.data.keys.mf_console }}    或从命令行启动的失败管理操作列表。使用此日志可查看失败对服务器产生的影响。
 
-> For more information, see the topic about error log of operations on runtime environments in the user documentation.
+> 有关更多信息，请参阅用户文档中有关针对运行时环境的操作的错误日志的主题。
 
-![Image of error logs screen](error-log.png)
+![错误日志屏幕图像](error-log.png)
 
-### Devices
+### 设备
 {: #devices }
-Administrators can search for devices that access the {{ site.data.keys.mf_server }} and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+管理员可以搜索访问 {{ site.data.keys.mf_server }}    的设备，并管理访问权。  
+可使用用户标识或使用友好名称来搜索设备。用户标识是用于登录的标识。  
+友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。 
 
-> For more information, see the topic about device access management in the user documentation.
+> 有关更多信息，请参阅用户文档中有关设备访问管理的主题。
 
-![Image of device management screen](devices.png)
+![设备管理屏幕图像](devices.png)
 
-### Applications
+### 应用程序
 {: #applications }
-#### Registering applications
+#### 注册应用程序
 {: #registering-applications }
-Provide basic application values and download Starter Code. 
+提供基本应用程序值和下载起动器代码。 
 
-![Image of application registration screen](register-applications.png)
+![应用程序注册屏幕图像](register-applications.png)
 
-#### Managing applications
+#### 管理应用程序
 {: #managing-applications }
-Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/).
+通过使用[直接更新](../../../application-development/direct-update/)、远程禁用、[应用程序真实性](../../../authentication-and-security/application-authenticity/)和[设置安全性参数](../../../authentication-and-security/)来管理和配置已注册的应用程序。
 
-![Image of application management screen](application-management.png)
+![应用程序管理屏幕图像](application-management.png)
 
-#### Authentication and Security
+#### 认证和安全性
 {: #authentication-and-security }
-Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+配置应用程序安全性参数（例如，缺省令牌到期日期值、将作用域元素映射到安全性检查、定义强制性应用程序作用域和配置安全性检查选项）。
 
-> [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
+> [了解](../../../authentication-and-security/)有关 {{ site.data.keys.product_adj }}    安全性框架的更多信息。
 
-![Image of application security configuration screen](authentication-and-security.png)
+![应用程序安全配置屏幕图像](authentication-and-security.png)
 
-#### Application Settings
+#### 应用程序设置
 {: #application-settings }
-Configure the display name of the application in the console as well as the application type and licensing.
+在控制台中配置应用程序的显示名称以及应用程序类型和许可。
 
-![Image of application settings screen](application-settings.png)
+![应用程序设置屏幕图像](application-settings.png)
 
-#### Notifications
+#### 通知
 {: #notifications }
-Set-up [push notifications](../../../notifications/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+设置[推送通知](../../../notifications/)和相关参数（例如，证书和 GCM 详细信息）、定义标记以及向设备发送通知。
 
-![Image of push notifications setup scren](push-notifications.png)
+![推送通知设置屏幕图像](push-notifications.png)
 
-### Adapters
+### 适配器
 {: #adapters }
-#### Creating adapters
+#### 创建适配器
 {: #creating-adapters }
-[Register an adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+[注册适配器](../../../adapters/)并下载起动器代码，通过更新适配器属性来动态更新适配器，无需重新构建和重新部署适配器工件。
 
-![Image of adapter registration screen](create-adapter.png)
+![适配器注册屏幕图像](create-adapter.png)
 
-#### Adapter properties
+#### 适配器属性
 {: #adapter-properties }
-After an adapter is deployed, it can be configured in the console.
+部署适配器后，可以在控制台中对其进行配置。
 
-![Image of adapter configuration screen](adapter-configuration.png)
+![适配器配置屏幕图像](adapter-configuration.png)
 
-### Client logs
+### 客户机日志
 {: #client-logs }
-Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
+管理员可以使用日志概要文件来针对操作系统、操作系统版本、应用程序、应用程序版本和设备模型的任意组合调整客户机记录器配置（例如，日志级别和日志包过滤器）。
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.
+当管理员创建配置概要文件时，日志配置将与 API 调用的响应（例如，`WLResourceRequest`）合并，并自动应用。
 
-> For more information, see the topic about client-side log capture configuration in the user documentation.
+> 有关更多信息，请参阅用户文档中有关客户端日志捕获配置的主题。
 
-![Image of client logs screen](client-logs.png)
+![客户机日志屏幕图像](client-logs.png)
 
-### License tracking
+### 许可证跟踪
 {: #license-tracking }
-Accessible from the top Settings buttons.
+可从顶部“设置”按钮访问。
 
-License terms vary depending on which edition (Enterprise or Consumer) of {{ site.data.keys.product }} is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+许可条款因使用的 {{ site.data.keys.product }}    版本（Enterprise 或 Consumer）而异。缺省情况下，已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }}    的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
 
-By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
+通过跟踪客户机设备的使用并确定设备是否处于活动状态，管理员可以停用不应再访问服务的设备。例如，如果某个员工已离开公司，那么可能会出现此情况。
 
-> For more information, see the topic about license tracking in the user documentation.
+> 有关更多信息，请参阅用户文档中有关许可证跟踪的主题。
 
-![Image of client logs screen](license-tracking.png)
+![客户机日志屏幕图像](license-tracking.png)
 
-### Downloads
+### 下载
 {: #downloads }
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of {{ site.data.keys.product }} from the Download Center in the {{ site.data.keys.mf_console }}.
+对于因特网连接不可用的情况，可以从 {{ site.data.keys.mf_console }}    中的下载中心下载 {{ site.data.keys.product }}    的各种开发工件快照。
 
-![Image of available artifacts](downloads.png)
+![可用工件图像](downloads.png)
 

@@ -1,497 +1,510 @@
 ---
 layout: tutorial
-title: The Application Center console
+title: Application Center 控制台
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-With the Application Center console, you can manage the repository of the Application Center and your applications.
+通过 Application Center 控制台，您可以管理 Application Center 的存储库以及您的应用程序。
 
-The Application Center console is a web application to manage the repository of the Application Center. The Application Center repository is the central location where you store the mobile applications that can be installed on mobile devices.
+Application Center 控制台是一种 Web 应用程序，用于管理 Application Center 的存储库。Application Center 存储库是用于存储可安装在移动设备上的移动应用程序的中央位置。
 
-Use the Application Center console to:
+使用 Application Center 控制台可执行以下操作：
 
-* Upload applications that are written for these operating systems: Android, iOS, Windows 8 (Windows Store packages only), or Windows Phone 8.
-* Manage several different versions of mobile applications.
-* Review the feedback of testers of mobile applications.
-* Define the users who have the rights to list and install an application on the mobile devices.
-* Track which applications are installed on which devices.
+* 上载针对以下操作系统编写的应用程序：Android、iOS、Windows 8（仅限 Windows Store 包）或 Windows Phone 8。
+* 管理多种不同版本的移动应用程序。
+* 查看测试员对于移动应用程序的反馈。
+* 定义有权在移动设备上列出并安装应用程序的用户。
+* 跟踪在哪些设备上安装了哪些应用程序。
 
-> **Notes:**
+> **注：**
 >
-> * Only users with the administrator role can log in to the Application Center console.
-> * Multicultural support: the user interface of the Application Center console has not been translated.
+> * 只有具有管理员角色的用户才能登录 Application
+Center 控制台。
+> * 多语言支持：Application Center 控制台的用户界面尚未翻译。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Starting the Application Center console](#starting-the-application-center-console)
-* [Troubleshooting a corrupted login page (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
-* [Troubleshooting a corrupted login page in Safari browsers](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
-* [Application Management](#application-management)
-* [Adding a mobile application](#adding-a-mobile-application)
-* [Adding an application from a public app store](#adding-an-application-from-a-public-app-store)
-* [Application properties](#application-properties)
-* [Editing application properties](#editing-application-properties)
-* [Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
-* [Downloading an application file](#downloading-an-application-file)
+* [启动 Application Center 控制台](#starting-the-application-center-console)
+* [对损坏的登录页面 (Apache Tomcat) 进行故障诊断](#troubleshooting-a-corrupted-login-page-apache-tomcat)
+* [在 Safari 浏览器中对损坏的登录页面进行故障诊断](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
+* [应用程序管理](#application-management)
+* [添加移动应用程序](#adding-a-mobile-application)
+* [从通用应用商店添加应用程序](#adding-an-application-from-a-public-app-store)
+* [应用程序属性](#application-properties)
+* [编辑应用程序属性](#editing-application-properties)
+* [在 {{ site.data.keys.mf_server }}    和 Application Center 中升级移动应用程序](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [下载应用程序文件](#downloading-an-application-file)
 
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+在 Application Center 控制台中，您可以查看用户发送的有关移动应用程序版本的评论。
 
-* [User and group management](#user-and-group-management)
-* [Access control](#access-control)
-* [Managing access control](#managing-access-control)
-* [Device Management](#device-management)
-* [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
-* [Signing out of the Application Center console](#signing-out-of-the-application-center-console)
+* [用户和组管理](#user-and-group-management)
+* [访问控制](#access-control)
+* [管理访问控制](#managing-access-control)
+* [设备管理](#device-management)
+* [Windows 8 Universal 中的应用程序注册标记](#application-enrollment-tokens-in-windows-8-universal)
+* [从 Application Center 控制台注销](#signing-out-of-the-application-center-console)
 
-## Starting the Application Center console
+## 启动 Application Center 控制台
 {: #starting-the-application-center-console }
-You can start the Application Center with your web browser and log in if you have the administrator role.
+如果您具有管理员角色，那么可以使用自己的 Web 浏览器启动 Application Center 并登录。
 
-1. Start a web browser session on your desktop.
-2. Contact your system administrator to obtain the address and port of the server where the Application Center is installed.
-3. Enter the following URL: `http://server/appcenterconsole`
-4. Where **server** is the address and port of the server where the Application Center is installed: `http://localhost:9080/appcenterconsole`
+1. 在您的桌面上启动 Web 浏览器会话。
+2. 联系您的系统管理员以获取安装了 Application Center 的服务器的地址和端口。
+3. 输入以下 URL：`http://server/appcenterconsole`
+4. 其中，**server** 是用于安装 Application Center 的服务器的地址和端口：`http://localhost:9080/appcenterconsole`
 
-Log in to the Application Center console. Contact your system administrator to get your credentials so that you can log in to the Application Center console.
+登录到 Application Center 控制台。联系您的系统管理员以获取您的凭证，以便可以登录到 Application Center 控制台。
 
-![Login of the Application Center console](ac_startconsole.jpg)
+![登录 Application Center 控制台](ac_startconsole.jpg)
 
-> **Note:** Only users with the administrator role can log in to the Application Center console.
+> **注：**只有具有管理员角色的用户才能登录到 Application Center 控制台。
 
-## Troubleshooting a corrupted login page (Apache Tomcat)
+## 对损坏的登录页面 (Apache Tomcat) 进行故障诊断
 {: #troubleshooting-a-corrupted-login-page-apache-tomcat }
-You can recover from a corrupted login page of the Application Center console when the Application Center is running in Apache Tomcat.
+当 Application Center 在 Apache Tomcat 中运行时，可以从 Application Center 控制台的损坏登录页面恢复。
 
-When the Application Center is running in Apache Tomcat, the use of a wrong user name or password might corrupt the login page of the Application Center console.
+当 Application Center 在 Apache Tomcat 中运行时，使用错误的用户名或密码可能会破坏 Application Center 控制台的登录页面。
 
-When you try to log in to the console with an incorrect user name or an incorrect password, you receive an error message. When you correct the user name or password, instead of a successful login, you have one of the following errors; the message depends on your web browser.
 
-* The same error message as before
-* The message **The connection was reset**
-* The message **The time allowed for login exceeded**
+当尝试使用错误的用户名或错误的密码登录控制台时，您会收到一条错误消息。
+在纠正用户名或密码后，将会收到以下某个错误，而不是成功登录；消息内容取决于您的 Web 浏览器。
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
 
-The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
+* 与之前相同的错误消息
+* 消息**已重置连接**
+* 消息**超出了允许的登录时间**
 
-## Troubleshooting a corrupted login page in Safari browsers
+该行为与 Apache Tomcat 对 j_security_check servlet 的管理有关。该行为特定于 Apache Tomcat，而不会在任何 WebSphere Application Server 概要文件中出现。
+
+变通方法是单击浏览器的刷新按钮，以在登录失败后刷新 Web 页面。
+然后，输入正确的凭证。
+
+## 在 Safari 浏览器中对损坏的登录页面进行故障诊断
 {: #troubleshooting-a-corrupted-login-page-in-safari-browsers }
-You can recover from a corrupted login page of the Application Center console when you use the Safari browser.
+在使用 Safari 浏览器时，可以从 Application Center 控制台的损坏登录页面恢复。
 
-When the Application Center console is open in a Safari browser, you might navigate away from the console. When you come back to the console, you might see the login page. Even though you enter the correct login details, you see the following message instead of a successful login: **HTTP Status 404 - appcenterconsole/j_security_check.**
+在 Safari 浏览器中打开 Application Center 控制台时，您可能会离开该控制台。在返回到该控制台时，您可能会看到登录页面。即使输入正确的登录详细信息，您仍会看到以下消息而不是成功登录：**HTTP 状态 404 - appcenterconsole/j_security_check。**
 
-The behavior is linked to a caching problem in the Safari browser.
+该行为与 Safari 浏览器中的高速缓存问题有关。
 
-The workaround is to trigger a forced reload when you see the login page without entered or autocompleted credentials. Here is how to trigger a forced reload:
+变通方法是在您看到登录页面时触发强制重新装入，而不输入或自动填写凭证。下面是触发强制重新装入的方法：
 
-* On a Mac computer, press Shift + the **Refresh** button.
-* On an iPad or iPhone device: Double-click the refresh button or clean the cache by closing Safari: you double-click the home button and then swipe Safari away.
+* 在 Mac 计算机上，按 Shift + **刷新**按钮。
+* 在 iPad 或 iPhone 设备上：双击“刷新”按钮或通过关闭 Safari（双击 Home 按钮然后滑动关闭 Safari）来清除高速缓存。
 
-## Application Management
+## 应用程序管理
 {: #application-management }
-You can use Application Management to add new applications and versions and to manage those applications.  
-The Application Center enables you to add new applications and versions and to manage those applications.
+您可以使用“应用程序管理”来添加新的应用程序和版本以及管理这些应用程序。  
+Application Center 支持您添加新应用程序和版本以及管理这些应用程序。
 
-Click **Applications** to access Application Management.
+单击**应用程序**以访问“应用程序管理”。
 
-### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
+
+### 安装在 WebSphere Application Server Liberty Profile 或 Apache Tomcat 上的 Application Center
 {: #application-center-installed-on-websphere-application-server-liberty-profile-or-on-apache-tomcat }
-Installations of the Application Center on these application servers, during installation of {{ site.data.keys.product_full }} with the IBM  Installation Manager package, have two different users defined that you can use to get started.
+使用 IBM Installation Manager 软件包安装 {{ site.data.keys.product_full }}    期间，在这些应用程序服务器上安装 Application Center 的过程会定义两个不同的用户以供您使用。
 
-* User with login **demo** and password **demo**
-* User with login **appcenteradmin** and password **admin**
+* 使用登录名 **demo** 和密码 **demo** 的用户
+* 使用登录名 **appcenteradmin** 和密码 **admin** 的用户
 
-### WebSphere Application Server full profile
+### WebSphere
+Application Server Full Profile
 {: #websphere-application-server-full-profile }
-If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+如果您在 WebSphere Application Server Full Profile 上已安装 Application Center，那么缺省情况下会创建一个名为 appcenteradmin 的用户，其密码由安装程序指示。
 
-![Available applications](ac_app_mgt.jpg)
+![可用应用程序](ac_app_mgt.jpg)
 
-## Adding a mobile application
+## 添加移动应用程序
 {: #adding-a-mobile-application }
-You can add applications to the repository on the server by using the Application Center console. These applications can then be installed on mobile devices by using the mobile client.
+可以使用 Application Center 控制台将应用程序添加到服务器上的存储库中。然后可使用移动式客户机将这些应用程序安装在移动设备上。
 
-In the Applications view, you can add applications to Application Center. Initially the list of applications is empty and you must upload an application file. Application files are described in this procedure.
+在“应用程序”视图中，可以将应用程序添加到 Application Center 中。最初，应用程序列表为空，并且您必须上载应用程序文件。在以下过程中描述了应用程序文件。
 
-To add an application to make it available for installation on mobile devices:
+要添加应用程序以使其可安装在移动设备上：
 
-1. Click **Add Application**.
-2. Click **Upload**.
-3. Select the application file to upload to the Application Center repository.
+1. 单击**添加应用程序**。
+2. 单击**上载**。
+3. 选择要上载至 Application Center 存储库的应用程序文件。
 
    ### Android
    {: #android }
-   The application file name extension is .apk.
+   应用程序文件扩展名为 .apk。
 
    ### iOS
    {: #ios }
-   The application file name extension is .ipa for normal iOS applications.
+   针对正常 iOS 应用程序，应用程序文件扩展名为 .ipa。
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-   The application file name extension is .xap. The application must be signed with a company account. The application enrollment token for this company account must be made available to Windows Phone 8 devices before the application can be installed on the devices. See [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) for details.
+   应用程序文件扩展名为 .xap。应用程序必须使用公司帐户签署。必须使该公司帐户的应用程序注册标记可用于 Windows Phone 8 设备，然后才可在这些设备上安装应用程序。请参阅 [Windows 8 Universal 中的应用程序注册标记](#application-enrollment-tokens-in-windows-8-universal)以获取详细信息。
 
    ### Windows 8
    {: #windows-8 }
-   The application is provided as a Windows Store package; the file extension is .appx.
+   应用程序作为 Windows Store 包提供；文件扩展名为 .appx。
 
-   Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
+   Windows Store .appx 包可依赖于一个或多个 Windows 组件库应用程序包（也称为“框架”包）。Windows 8 的 MobileFirst 混合应用程序依赖于 Microsoft.WinJS 框架包。当使用 Microsoft Visual Studio 生成应用程序包时，还会生成依赖关系包并将其打包为独立的 .appx 文件。要使用移动式客户机成功安装此类应用程序，必须将应用程序 .appx 包以及任何其他依赖关系包上载到 Application Center 服务器。上载依赖关系包时，它在 Application Center 控制台中显示为“不活动”状态。
+预期将发生此行为，使得框架包在客户机中不显示为可安装应用程序。之后，当用户安装应用程序时，移动式客户机会检查设备上是否已安装依赖关系。如果未安装依赖关系包，那么客户机会从 Application Center 服务器中自动检索依赖关系包，并将其安装在设备上。有关依赖关系的更多信息，请参阅 Windows 开发人员文档中有关包和应用程序部署的[依赖关系](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies)。
 
-4. Click **Next** to access the properties to complete the definition of the application.
-5. Complete the properties to define the application. See [Application properties](#application-properties) for information about how to complete property values.
-6. Click **Finish**.
+4. 单击**下一步**以访问属性来完成应用程序的定义。
+5. 填写属性以定义该应用程序。请参阅[应用程序属性](#application-properties)，以获取有关如何填写属性值的信息。
+6. 单击**完成**。
 
-![Application properties, adding an application](ac_add_app_props.jpg)
+![应用程序属性，添加应用程序](ac_add_app_props.jpg)
 
-## Adding an application from a public app store
+## 从通用应用商店添加应用程序
 {: #adding-an-application-from-a-public-app-store }
-Application Center supports adding to the catalog applications that are stored in third-party application stores, such as Google play or Apple iTunes.
+Application Center 支持向目录添加存储在第三方应用商店（如 Google Play 或 Apple iTunes）的应用程序。
 
-Applications from third-party app stores appear in the Application Center catalog like any other application, but users are directed to the corresponding public app store to install the application. You add an application from a public app store in the console, in the same place where you add an application that was created within your own enterprise. See [Adding a mobile application](#adding-a-mobile-application).
+来自第三方应用商店的应用程序可像其他应用程序一样出现在 Application Center 目录中，但是用户将被定向至相应的通用应用商店以安装应用程序。
+在控制台中添加来自通用应用商店的应用程序，同样还可添加自己企业内部创建的应用程序。请参阅[添加移动应用程序](#adding-a-mobile-application)。
 
-> **Note:** Currently, the Application Center supports only Google Play and Apple iTunes. Windows Phone Store and Windows Store are not yet supported.
+> **注：**目前，Application Center 仅支持 Google Play 和 Apple iTunes。尚不支持 Windows Phone Store 和 Windows Store。必须提供到存储应用程序的第三方应用商店的 URL，而不是提供应用程序可执行文件。为更轻松地找到正确的应用程序链接，控制台中的**添加应用程序**页面提供到受支持的第三方应用商店网站的直接链接。
 
-Instead of the application executable file, you must provide a URL to the third-party application store where the application is stored. To find the correct application link more easily, the console provides direct links in the **Add an application** page to the supported third-party application store websites.
+Google Play 商店地址为 [https://play.google.com/store/apps](https://play.google.com/store/apps)。
 
-The Google play store address is [https://play.google.com/store/apps](https://play.google.com/store/apps).
+Apple iTunes 商店地址为 [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/)；请使用 linkmaker 站点，而不是 iTunes 站点，因为您可通过该站点搜索到所有类型的 iTunes 项，包括歌曲、播客以及 Apple 支持的其他项。仅选择 iOS 应用程序会为您提供用于创建应用程序链接的兼容链接。
 
-The Apple iTunes store address is [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/); use the linkmaker site rather than the iTunes site, because you can search this site for all kinds of iTunes items, including songs, podcasts, and other items that are supported by Apple. Only selecting iOS applications provides you with compatible links to create application links.
+1. 单击想要浏览的通用应用商店的 URL。
+2. 将第三方应用商店中的应用程序的 URL 复制到 Application Center 控制台的**添加应用程序**页面中的**应用程序 URL** 文本字段。
+    * **Google Play：**
+        * 在商店中选择应用程序。
+        * 单击应用程序的详细信息页面。
+        * 复制地址栏 URL。
+    * **Apple iTunes：**
+        * 当搜索结果中返回项列表时，选择需要的项。
 
-1. Click the URL of the public app store that you want to browse.
-2. Copy the URL of the application in the third-party app store to the **Application URL** text field in the **Add an application** page of the Application Center console.
-    * **Google Play:**
-        * Select an application in the store.
-        * Click the detail page of the application.
-        * Copy the address bar URL.
-    * **Apple iTunes:**
-        * When the list of items is returned in the search result, select the item that you want.
+        * 在所选应用程序的底部，单击**直接链接**以打开“应用程序详细信息”页面。
 
-        * At the bottom of the selected application, click **Direct Link** to open the application details page.
+        * 复制地址栏 URL。
 
-        * Copy the address bar URL.
+          **注：**请勿将**直接链接**复制到 Application Center。**直接链接**是具有重定向功能的 URL，将需要获取其重定向到的 URL。
 
-          **Note:** Do not copy the **Direct Link** to the Application Center. **Direct Link** is a URL with redirection, you will need to get the URL it redirects to.
+3. 当应用程序链接位于控制台的**应用程序 URL** 文本字段中时，单击**下一步**以验证应用程序链接的创建。
+    * 如果验证失败，那么将在**添加应用程序**页面显示错误消息。您可尝试其他链接或取消尝试创建当前链接。
+    * 如果验证成功，那么该操作将显示应用程序属性。随后您可在执行下一步之前，在应用程序属性中修改应用程序描述。
 
-3. When the application link is in the **Application URL** text field of the console, click **Next** to validate the creation of the application link.
-    * If the validation is unsuccessful, an error message is displayed in the **Add an application** page. You can either try another link or cancel the attempt to create the current link.
-    * If the validation is successful, this action displays the application properties. You can then modify the application description in the application properties before you move to the next step.
+    ![在应用程序属性中修改的应用程序描述](ac_add_public_app_details.jpg)
 
-    ![Modified application description in application properties](ac_add_public_app_details.jpg)
+4. 单击**完成**以创建应用程序链接。
 
-4. Click **Done** to create the application link.
+    该操作使应用程序可用于相应版本的 Application Center 移动式客户机。在应用程序图标上将出现一个小链接图标，表示该应用程序存储在通用应用商店，且不同于二进制应用程序。
 
-    This action makes the application available to the corresponding version of the Application Center mobile client. A small link icon appears on the application icon to show that this application is stored in a public app store and is different from a binary app.
 
-    ![Link to an application stored in Google play](ac_public_app_available.jpg)
+    ![链接至存储在 Google play 中的应用程序](ac_public_app_available.jpg)
 
-## Application properties
+## 应用程序属性
 {: #application-properties }
-Applications have their own sets of properties, which depend on the operating system on the mobile device and cannot be edited. Applications also have a common property and editable properties.
+应用程序拥有自己的属性集，这些属性集取决于移动设备上的操作系统，并且无法进行编辑。应用程序还拥有公共属性和可编辑的属性。
 
-The values of the following fields are taken from the application and you cannot edit them.
+以下字段的值取自应用程序，并且无法进行编辑。
 
-* **Package**.
-* **Internal Version**.
-* **Commercial Version**.
-* **Label**.
-* **External URL**; this property is supported for applications that run on Android, iOS, and Windows Phone 8.
+* **Package**。
+* **Internal Version**。
+* **Commercial Version**。
+* **Label**。
+* **External URL**；Android、iOS 和 Windows Phone 8 上运行的应用程序支持此属性。
 
-### Properties of Android applications
+### Android 应用程序的属性
 {: #properties-of-android-applications }
-For more information about the following properties, see the Android SDK documentation.
+有关以下属性的更多信息，请参阅 Android SDK 文档。
 
-* **Package** is the package name of the application; **package** attribute of the manifest element in the manifest file of the application.
-* **Internal Version** is the internal version identification of the application; **android:versionCode** attribute of the **manifest** element in the manifest file of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **android:label attribute** of the application element in the **manifest** file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** 是应用程序的包名称；应用程序清单文件中 manifest 元素的 **package** 属性。
+* **Internal Version** 是应用程序的内部版本标识；应用程序的清单文件中 **manifest** 元素的 **android:versionCode** 属性。
+* **Commercial Version** 是应用程序的已发布版本。
+* **Label** 是应用程序的标签；应用程序**清单**文件中 application 元素的 **android:label** 属性。
+* **External URL** 是可用于在当前应用程序最新版本的“详细信息”视图中自动启动 Application Center 移动式客户机的 URL。
 
-### Properties of iOS applications
+### iOS 应用程序的属性
 {: #properties-of-ios-applications }
-For more information about the following properties, see the iOS SDK documentation.
+有关以下属性的更多信息，请参阅 iOS SDK 文档。
 
-* **Package** is the company identifier and the product name; **CFBundleIdentifier** key.
-* **Internal Version** is the build number of the application; **CFBundleVersion** key of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **CFBundleDisplayName** key of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** 是公司标识和产品名称；**CFBundleIdentifier** 键。
+* **Internal Version** 是应用程序的构建号；应用程序的 **CFBundleVersion** 键。
 
-### Properties of Windows Phone 8 applications
+* **Commercial Version** 是应用程序的已发布版本。
+* **Label** 是应用程序的标签；应用程序的 **CFBundleDisplayName** 键。
+* **External URL** 是可用于在当前应用程序最新版本的“详细信息”视图中自动启动 Application Center 移动式客户机的 URL。
+
+### Windows Phone 8 应用程序的属性
 {: #properties-of-windows-phone-8-applications }
-For more information about the following properties, see the Windows Phone documentation.
+有关以下属性的更多信息，请参阅 Windows Phone 文档。
 
-* **Package** is the product identifier of the application; **ProductID** attribute of the App element in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute of the App element in the manifest file of the application.
-* **Commercial Version**, like Internal Version, is the version of the application.
-* **Label**() is the title of the application; **Title** attribute of the **App** element in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute of the **App** element in the manifest file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
+* **Package** 是应用程序的产品标识；应用程序清单文件中的 App 元素的 **ProductID** 属性。
+* **Internal Version** 是应用程序的版本标识；应用程序清单文件中 App 元素的 **Version** 属性。
+* **Commercial Version** 类似于 Internal Version，也指的是应用程序的版本。
+* **Label**() 是应用程序的标题；应用程序清单文件中 **App** 元素的 **Title** 属性。
+* **Vendor** 是创建应用程序的供应商；应用程序的清单文件中 **App** 元素的 **Publisher** 属性。
+* **External URL** 是可用于在当前应用程序最新版本的“详细信息”视图中自动启动 Application Center 移动式客户机的 URL。
+* **Commercial Version** 与 **Internal
+Version** 一样是应用程序的版本。
 
-### Properties of Windows Store applications
+### Windows Store 应用程序的属性
 {: #properties-of-windows-store-applications }
-For more information about the following properties, see the Windows Store documentation about application development.
+有关以下属性的更多信息，请参阅与应用程序开发有关的 Windows Store 文档。
 
-* **Package** is the product identifier of the application; **Package** name attribute in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute in the manifest file of the application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
-* **Label** is the title of the application; **Package** display name attribute in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute in the manifest file of the application.
+* **Package** 是应用程序的产品标识；应用程序清单文件中的 **Package name** 属性。
+* **Internal Version** 是应用程序的版本标识；应用程序的清单文件中的 **Version** 属性。
+* **Commercial Version** 与 **Internal
+Version** 一样是应用程序的版本。
+* **Label** 是应用程序的标题；应用程序清单文件中的 **Label display name** 属性。
 
-### Common property: Author
+* **Vendor** 是创建应用程序的供应商；应用程序的清单文件中的 **Publisher** 属性。
+
+### 公共属性：Author
 {: #common-property-author }
-The **Author** field is read-only. It displays the **username** attribute of the user who uploads the application.
+**Author** 字段为只读。它显示上载该应用程序的用户的 **username** 属性。
 
-### Editable properties
+### 可编辑属性
 {: #editable-properties }
-You can edit the following fields:
+您可以编辑以下字段：
 
 **Description**  
-Use this field to describe the application to the mobile user.
+该字段用于向移动用户描述该应用程序。
 
 **Recommended**  
-Select **Recommended** to indicate that you encourage users to install this application. Recommended applications appear as a special list in the mobile client.
+选择 **Recommended** 以指示您鼓励用户安装该应用程序。建议的应用程序在移动式客户机中显示为特殊列表。
 
 **Installer**  
-For the Administrator only: This property indicates that the application is used to install other applications on the mobile device and send feedback on an application from the mobile device to the Application Center. Usually only one application is qualified as **Installer** and is called the mobile client. This application is documented in [The mobile client](../mobile-client).
+仅针对管理员：该属性指示此应用程序用于在移动设备上安装其他应用程序，并将有关应用程序的反馈从移动设备发送至 Application Center。通常只有一个应用程序具备作为 **Installer** 的资格，该应用程序称为移动式客户机。在[移动式客户机](../mobile-client)中记录了该应用程序。
 
 **Active**  
-Select Active to indicate that an application can be installed on a mobile device.
+选择 Active 以指示某个应用程序可安装在移动设备上。
 
-* If you do not select **Active**, the mobile user does not see the application in the list of available applications that is displayed on the device and the application is inactive.
-* In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
+
+* 如果您不选择 **Active**，那么移动用户不会在设备上显示的可用应用程序列表中看到该应用程序，并且该应用程序处于不活动状态。
+* 在“应用程序管理”中的可用应用程序列表中，如果选中了 **Show inactive**，那么该应用程序处于禁用状态。如果未选中 **Show inactive**，那么该应用程序不会显示在可用应用程序的列表中。
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+选择 **Ready for production** 以指示某个应用程序已准备就绪可部署至生产环境中，因此适合由 Tivoli Endpoint Manager 通过其应用商店进行管理。选中该属性的应用程序是唯一向 Tivoli Endpoint Manager 标记的应用程序。
 
-## Editing application properties
+## 编辑应用程序属性
 {: #editing-application-properties }
-You can edit the properties of an application in the list of uploaded applications.  
-To edit the properties of an uploaded application:
+您可以在上载的应用程序的列表中编辑某个应用程序的属性。  
+要编辑上载的应用程序的属性：
 
-1. Select **Applications** to see the list of uploaded applications: Available Applications.
-2. Click the version of the application to edit the properties: Application Details.
-3. Edit any of the editable properties that you want. See [Application properties](#application-properties) for details about these properties. The name of the current application file is shown after the properties.
+1. 选择**应用程序**以查看已上载应用程序的列表：可用应用程序。
+2. 单击要编辑其属性的应用程序版本：应用程序详细信息。
+3. 编辑所需的任何可编辑属性。请参阅[应用程序属性](#application-properties)，以获取有关这些属性的详细信息。在属性后显示了当前应用程序文件的名称。
 
-    > **Important:** If you want to update the file, it must belong to the same package and be the same version number. If either of these properties is not the same you must go back to the application list and add the new version first.
+    > **要点：**如果您要更新此文件，它必须属于相同的包，并且必须为相同的版本号。如果其中任何属性不同，那么必须首先返回至应用程序列表并添加新版本。
+    
+    4. 单击**确定**以保存更改并返回至“可用应用程序”，或者单击**应用**以保存并使“应用程序详细信息”保持打开。
 
-4. Click **OK** to save your changes and return to Available Applications or **Apply** to save and keep Application Details open.
+![要编辑的应用程序属性](ac_edit_app_props.jpg)
 
-![Application properties for editing](ac_edit_app_props.jpg)
-
-## Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center
+## 在 {{ site.data.keys.mf_server }}    和 Application Center 中升级移动应用程序
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
-You can easily upgrade deployed mobile applications by using a combination of {{ site.data.keys.mf_console }} and the Application Center.
+您可以结合使用 {{ site.data.keys.mf_console }}    和 Application Center 来轻松升级已部署的移动应用程序。
 
-The mobile client of the Application Center must be installed on the mobile device. The HelloWorld application must be installed on the mobile device and must connect to {{ site.data.keys.mf_server }} when the application is running.
+Application Center 移动式客户机必须安装在移动设备上。HelloWorld 应用程序必须安装在移动设备上，且此应用程序运行时需要连接到 {{ site.data.keys.mf_server }}   。
 
-You can use this procedure to update Android, iOS, and Windows Phone applications that have been deployed on {{ site.data.keys.mf_server }} and also in the Application Center. In this task, the application HelloWorld version 1.0 is already deployed on {{ site.data.keys.mf_server }} and in the Application Center.
+您可以使用该过程来更新已部署到 {{ site.data.keys.mf_server }}    和 Application Center 中的 Android、iOS 和 Windows Phone 应用程序。在该任务中，应用程序 HelloWorld V1.0 已部署到 {{ site.data.keys.mf_server }}    和 Application Center 中。
 
-HelloWorld version 2.0 is released and you would like users of version 1.0 to upgrade to the later version. To deploy the new version of the application:
+HelloWorld V2.0 已发布，您希望 V1.0 的用户升级到更高版本。要部署新版本的应用程序：
 
-1. Deploy HelloWorld 2.0 in the Application Center. See [Adding a mobile application](#adding-a-mobile-application).
-2. From the Application Details page, copy the setting of the external URL.
+1. 在 Application Center 中部署 HelloWorld 2.0。请参阅[添加移动应用程序](#adding-a-mobile-application)。
+2. 在“应用程序详细信息”页面中，复制外部 URL 的设置。
 
-    ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
+    ![从“应用程序详细信息”复制外部 URL](ac_copy_ext_url.jpg)
 
-3. When the external URL is copied to the clipboard, open the {{ site.data.keys.mf_console }}.
-4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
-5. Paste the external URL into the URL field.
+3. 将外部 URL 复制到剪贴板时，打开 {{ site.data.keys.mf_console }}   。
+4. 将 HelloWorld V1.0 的访问规则更改为“Access Disabled”。
+5. 将外部 URL 粘贴到 URL 字段。
 
-    Running the client: When a mobile device connects to {{ site.data.keys.mf_server }} to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
+    运行客户机：当移动设备连接到 {{ site.data.keys.mf_server }}    以尝试运行 HelloWorld V1.0 时，将请求设备用户升级应用程序版本。
 
-    ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
+    ![远程禁用应用程序的旧版本](ac_remote_disable_app_cli.jpg)
 
-6. Click **Upgrade** to open the Application Center client. When the login details are correctly completed, you access the Details page of HelloWorld version 2.0 directly.
+6. 单击**升级**以打开 Application Center 客户端。正确完成登录详细信息后，您将直接访问 HelloWorld V2.0 的“详细信息”页面。
 
-    ![Details of HelloWorld 2.0 in the Application Center client](ac_cli_app_details_upgrade.jpg)
 
-## Downloading an application file
+    ![Application Center 客户机中 HelloWorld 2.0 的详细信息](ac_cli_app_details_upgrade.jpg)
+
+## 下载应用程序文件
 {: #downloading-an-application-file }
-You can download the file of an application registered in the Application Center.
+您可以下载 Application Center 中注册的应用程序的文件。
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Tap the version of the application under **Application Details**.
-3. Tap the file name in the "Application File" section.
+1. 选择**应用程序**以查看上载的应用程序的列表：**可用应用程序**。
+2. 在**应用程序详细信息**下轻击应用程序的版本。
+3. 轻击“应用程序文件”部分中的文件名。
 
-## Viewing application reviews
+## 查看应用程序评论
 {: #viewing-application-reviews }
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+在 Application Center 控制台中，您可以查看用户发送的有关移动应用程序版本的评论。
 
-Users of mobile applications can write a review, which includes a rating and a comment, and submit the review through the Application Center client. Reviews are available in the Application Center console and the client. Individual reviews are always associated with a particular version of an application.
+移动应用程序的用户可以编写评论（其中包括评级和评论），并通过 Application Center 客户机提交评论。可在 Application Center 控制台和客户机中查看评论。单个评论始终与应用程序的特定版本关联。
 
-To view reviews from mobile users or testers about an application version:
+要查看来自移动用户或测试员的有关应用程序版本的评论：
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Select the version of the application.
-3. In the menu, select **Reviews**.
+1. 选择**应用程序**以查看上载的应用程序的列表：**可用应用程序**。
+2. 选择应用程序的版本。
+3. 在菜单中，选择**评论**。
 
-    ![Reviews of application versions](ac_appfeedbk.jpg)
+    ![应用程序版本的评论](ac_appfeedbk.jpg)
 
-    The rating is an average of the ratings in all recorded reviews. It consists of one to five stars, where one star represents the lowest level of appreciation and five stars represent the highest level of appreciation. The client cannot send a zero star rating.
+    评级是所有已记录的评论中评级的平均值。它包含一到五颗星，一颗星表示最低级别的评论，五颗星表示最高级别的评论。该客户机不能发送零颗星的评级。
 
-    The average rating gives an indication of how the application satisfies the intended use of the application.
+    平均评级指示了应用程序满足其预定用途的程度。
 
-4. Click the two arrow heads <img src="down-arrow.jpg" style="margin:0;display:inline" alt="Double arrow-head button"/> to expand the comment that is part of the review and to view the details of the mobile device where the review is generated.
+4. 单击双箭头 <img src="down-arrow.jpg" style="margin:0;display:inline" alt="双箭头按钮"/> 以展开属于评论的评论，并查看生成评论的移动设备的详细信息。
 
-    For example, the comment can give the reason for submitting the review, such as failure to install.
-    If you want to delete the review, click the trash can icon to the right of the review that you want to delete.
+    例如，评论可以提供提交评论的原因（例如，安装失败）。如果您要删除评论，请单击其右侧的废纸箱图标。
 
-## User and group management
+## 用户和组管理
 {: #user-and-group-management }
-You can use users and groups to define who has access to some features of the Application Center, such as installing applications on mobile devices.  
-Use users and groups in the definition of access control lists (ACL).
+您可以使用用户和组来定义谁有权访问 Application Center 的某些功能，例如在移动设备上安装应用程序。  
+在访问控制表 (ACL) 的定义中使用用户和组。
 
-### Managing registered users
+### 管理注册用户
 {: #managing-registered-users }
-To manage registered users, click the **Users/Groups** tab and select **Registered users**. You obtain a list of registered users of the Application Center that includes:
+要管理注册用户，请单击**用户/组**选项卡，然后选择**注册用户**。您将获得 Application Center 的注册用户列表，其中包括：
 
-* Mobile client users
-* Console users
-* Local group members
-* Members of an access control list
+* 移动式客户机用户
+* 控制台用户
+* 本地组成员
+* 访问控制表的成员
 
-![List of registered users of the Application Center](ac_reg_users.jpg)
+![Application Center 的注册用户列表](ac_reg_users.jpg)
 
-If the Application Center is connected to an LDAP repository, you cannot edit the user display names. If the repository is not LDAP, you can change a user display name by selecting it and editing it.
+如果 Application Center 已连接至 LDAP 存储库，那么您不能编辑用户显示名称。如果存储库不是 LDAP，那么您可以通过选择并编辑用户显示名称来进行更改。
 
-To register new users, click **Register User**, enter the login name and the display name, and click **OK**.  
-To unregister a user, click the trash icon next to the user name.
+要注册新用户，请单击**注册用户**，输入登录名和显示名称，然后单击**确定**。  
+要注销用户，请单击用户名旁的废纸篓图标。
 
-* Removing feedback given by the user
-* Removing the user from the access control lists
-* Removing the user from local groups
+* 除去该用户提供的反馈
+* 从访问控制表中除去该用户
+* 从本地组中除去该用户
 
-> **Note:** When you unregister a user, the user is not removed from the application server or the LDAP repository.
+> **注：**注销用户时，不会从应用程序服务器或 LDAP 存储库中除去该用户。
 
-### Managing local groups
+### 管理本地组
 {: #managing-local-groups }
-To manage local groups, click the **Users/Groups** tab and select **User group**.  
-To create a local group, click **Create group**. Enter the name of the new group and click **OK**.
+要管理本地组，请单击**用户/组**选项卡，然后选择**用户组**。  
+要创建本地组，请单击**创建组**。请输入新组的名称，然后单击**确定**。
 
-If the Application Center is connected to an LDAP repository, the search includes local groups as well as the groups defined in the LDAP repository. If the repository is not LDAP, only local groups are available to the search.
+如果 Application Center 已连接至 LDAP 存储库，那么搜索包含本地组以及 LDAP 存储库中定义的组。
+如果存储库不是 LDAP，那么只能搜索本地组。
 
-![Local user groups](ac_loc_group.jpg)
+![本地用户组](ac_loc_group.jpg)
 
-To delete a group, click the trash icon next to the group name. The group is also removed from the access control lists.  
-To add or remove members of a group, click the **Edit members** link of the group.
+要删除组，请单击组名旁的废纸篓图标。这样还会从访问控制表中除去该组。  
+要添加或除去组成员，请单击组的**编辑成员**链接。
 
-![Managing group membership](ac_grp_members.jpg)
+![管理组成员资格](ac_grp_members.jpg)
 
-To add a new member, search for the user by entering the user display name, select the user, and click **Add**.
+要添加新成员，请通过输入用户显示名称来搜索该用户，选中该用户，然后单击**添加**。
 
-If the Application Center is connected to an LDAP repository, the search for the user is performed in the LDAP repository. If the repository is not LDAP, the search is performed in the list of registered users.
+如果 Application Center 已连接至 LDAP 存储库，那么会在 LDAP 存储库中执行用户搜索。如果存储库不是 LDAP，那么会在注册用户列表中执行搜索。
 
-To remove a member from a group, click the cross icon to the right of the user name.
+要从组中除去成员，请单击该用户名右侧的叉。
 
-## Access control
+## 访问控制
 {: #access-control }
-You can decide whether installation of an application on mobile devices is open to any users or whether you want to restrict the ability to install an application.
+您可以决定是允许任何用户在移动设备上安装应用程序，还是希望限制安装应用程序的功能。
 
-Installation of applications on a mobile device can be limited to specific users or available to any users.
+在移动设备上安装应用程序的功能可限制为特定用户，也可对任何用户可用。
 
-Access control is defined at the application level and not at the version level.
+访问控制在应用程序级别定义，而非在版本级别定义。
 
-By default, after an application is uploaded, any user has the right to install the application on a mobile device.
+缺省情况下，上载应用程序后，任何用户都有权在移动设备上安装应用程序。
 
-The current access control for an application is displayed in Available Applications for each application. The unrestricted or restricted access status for installation is shown as a link to the page for editing access control.
+在每个应用程序的“可用应用程序”中显示了该应用程序的当前访问控制。安装的不受限或受限访问状态显示为指向用于编辑访问控制的页面的链接。
 
-Installation rights are only about the installation of the application on the mobile device. If access control is not enabled, everybody has access to the application.
+安装权利仅与移动设备上应用程序的安装有关。如果未启用访问控制，那么所有人都有权访问该应用程序。
 
-## Managing access control
+## 管理访问控制
 {: #managing-access-control }
-You can add or remove access for users or groups to install an application on mobile devices.  
-You can edit access control:
+您可以为用户或组添加或除去在移动设备上安装应用程序的访问权。  
+您可以编辑访问控制：
 
-1. In Application Management under Available Applications, click the unrestricted or restricted state of Installation of an application.
+1. 在“可用应用程序”下的“应用程序管理”中，单击应用程序的安装状态：无限制或受限制。
 
-    ![Where to click on unrestricted or restricted mode](ac_app_access_state.jpg)
+    ![可在何处单击不受限或受限方式](ac_app_access_state.jpg)
 
-2. Select **Access control enabled** to enable access control.
-3. Add users or groups to the access list.
+2. 选择**启用访问控制**以启用访问控制。
+3. 将用户或组添加到访问列表中。
 
-To add a single user or group, enter a name, select the entry in the matching entries found, and click **Add**.
+要添加单个用户或组，请输入名称，选择找到的匹配条目中的条目，然后单击**添加**。
 
-If the Application Center is connected to an LDAP repository, you can search for users and groups in the repository as well as locally defined groups. If the repository is not LDAP, you can search only local groups and registered users. Local groups are exclusively defined in the **Users/Groups** tab. When you use the Liberty profile federated registry, you can only search for users by using the login name; the result is limited to a maximum of 15 users and 15 groups (instead of 50 users and 50 groups).
+如果 Application Center 已连接到 LDAP 存储库，那么您可以在存储库以及本地定义的组中搜索用户和组。如果存储库不是 LDAP，您只能搜索本地组和注册用户。在**用户/组**选项卡中专门定义了本地组。
+使用 Liberty Profile 联合注册表时，只能使用登录名搜索用户；结果限制为最多 15 个用户和 15 个组（而不是 50 个用户和 50 个组）。
 
-To register a user at the same time as you add the user to the access list, enter the name and click **Add**. Then you must specify the login name and the display name of the user.
+要在将用户添加到访问列表的同时注册该用户，请输入用户名并单击**添加**。然后，您必须指定用户的登录名和显示名称。
 
-To add all the users of an application, click **Add users from application** and select the appropriate application.  
-To remove access from a user or group, click the cross icon on the right of the name.
+要添加应用程序的所有用户，请单击**从应用程序添加用户**，然后选择相应的应用程序。  
+要从用户或组中除去访问权，请单击名称右侧的叉。
 
-![Adding or removing users to the access list](ac_instal_access.jpg)
+![将用户添加到访问列表或从中除去用户](ac_instal_access.jpg)
 
-## Device Management
+## 设备管理
 {: #device-management }
-You can see the devices that connected to the Application Center from the Application Center mobile client and their properties.
+您可以从 Application Center 移动式客户机查看已连接到 Application
+Center 的设备及其属性。
 
-**Device Management** shows under the **Registered Devices** the list of devices that have connected to the Application Center at least once from the Application Center mobile client.
+**设备管理**在**已注册的设备**下显示了从 Application Center 移动式客户机连接到 Application Center 至少一次的设备的列表。
 
-![The device list](ac_reg_devices.jpg)
+![设备列表](ac_reg_devices.jpg)
 
-### Device properties
+### 设备属性
 {: #device-properties }
-Click a device in the list of devices to view the properties of the device or the applications installed on that device.
+单击设备列表中的设备以查看该设备的属性或者安装在该设备上的应用程序。
 
-![Device properties](ac_edit_deviceprops.jpg)
+![设备属性](ac_edit_deviceprops.jpg)
 
-Select **Properties** to view the device properties.
+选择**属性**以查看设备属性。
 
-**Name**  
-The name of the device. You can edit this property.
+**姓名**  
+设备的名称。您可以编辑此属性。
 
-> **Note:** on iOS, the user can define this name in the settings of the device in Settings > General > Information > Name. The same name is displayed on iTunes.
+> **注：**在 iOS 上，用户可以在设备设置的“设置 > 常规 > 信息 > 名称”中定义此名称。在 iTunes 上会显示相同的名称。**用户名**  
+登录到该设备的第一个用户的名称。
 
-**User Name**  
-The name of the first user who logged into the device.
+**制造商**  
+设备的制造商。
 
-**Manufacturer**  
-The manufacturer of the device.
+**型号**  
+型号标识。
 
-**Model**  
-The model identifier.
+**操作系统**  
+移动设备的操作系统。
 
-**Operating System**  
-The operating system of the mobile device.
+**唯一标识**  
+移动设备的唯一标识。
 
-**Unique identifier**  
-The unique identifier of the mobile device.
+如果您编辑了设备名称，请单击**确定**以保存名称并返回至“已注册的设备”，或者单击**应用**以保存并将“编辑设备属性”保持为打开状态。
 
-If you edit the device name, click **OK** to save the name and return to Registered Devices or **Apply** to save and keep Edit Device Properties open.
-
-### Applications installed on device
+### 设备上安装的应用程序
 {: #applications-installed-on-device }
-Select **Applications installed on device** to list all the applications installed on the device.
+选择**设备上安装的应用程序**以列出在该设备上安装的所有应用程序。
 
-![Applications installed on a device](ac_apps_on_device.jpg)
+![设备上安装的应用程序](ac_apps_on_device.jpg)
 
-## Application enrollment tokens in Windows 8 Universal
+## Windows 8 Universal 中的应用程序注册标记
 {: #application-enrollment-tokens-in-windows-8-universal }
-The Windows 8 Universal operating system requires users to enroll each device with the company before users can install company applications on their devices. One way to enroll devices is by using an application enrollment token.
+Windows 8 Universal 操作系统需要用户向公司注册每台设备，然后才能在其设备上安装公司应用程序。注册设备的一种方法是使用应用程序注册标记。
 
-Application enrollment tokens enable you to install company applications on a Windows 8 Universal device. You must first install the enrollment token for a specified company on the device to enroll the device with the company. Then, you can install applications that are created and signed by the corresponding company.
-The Application Center simplifies the delivery of the enrollment token. In your role of administrator of the Application Center catalog, you can manage the enrollment tokens from the Application Center console. Once the enrollment tokens are declared in the Application Center console, they are available for Application Center users to enroll their devices.
+应用程序注册标记可使您在 Windows 8 Universal 设备上安装公司应用程序。您必须首先在设备上安装指定公司的注册标记，以向公司注册设备。然后，您才能安装对应公司创建并签署的应用程序。Application Center 可简化注册标记的交付。您可使用 Application Center 目录的管理员角色，管理来自 Application Center 控制台的注册标记。只要在 Application Center 控制台中声明该注册标记，Application Center 用户即可用其注册自己的设备。
 
-The enrollment tokens interface available from the Application Center console in the Settings view enables you to manage application enrollment tokens for Windows 8 Universal by registering, updating, or deleting them.
+利用 Application Center 控制台的“设置”视图中提供的注册标记界面，您可以通过注册、更新或删除应用程序注册标记来为 Windows 8 Universal 管理这些标记。
 
-### Managing application enrollment tokens
+### 管理应用程序注册标记
 {: #managing-application-enrollment-tokens }
-In your role of administrator of the Application Center, you can access the list of registered tokens by clicking the gear icon in the screen header to display Application Center Settings. Then, select **Enrollment Tokens** to display the list of registered tokens.
+您可使用 Application Center 的管理员角色，通过单击屏幕标题中的齿轮图标来显示“Application Center 设置”，从而访问注册标记的列表。然后选择**注册标记**以显示注册标记的列表。
 
-To enroll a device, the device user must upload and install the token file before installing the Application Center mobile client. The mobile client is also a company application. Therefore, the device must be enrolled before the mobile client can be installed.
+要注册设备，设备用户必须在安装 Application Center 移动式客户机之前，上载和安装标记文件。移动式客户机也是一种公司应用程序。因此，必须注册设备，之后才能安装移动式客户机。
 
-The registered tokens are available through the bootstrap page at `http://hostname:portnumber/applicationcenter/installers.html`, where **hostname** is the host name of the server hosting the Application Center and **portnumber** is the corresponding port number.
+可通过位于以下地址的引导程序页面来访问注册标记：`http://hostname:portnumber/applicationcenter/installers.html`，其中，**hostname** 是托管 Application Center 的服务器的主机名，**portnumber** 是对应的端口号。
 
-To register a token in the Application Center console, click **Upload Token** and select a token file. The token file extension is aetx.  
-To update the certificate subject of a token, select the token name in the list, change the value, and click OK.  
-To delete a token, click the trash can icon on the right side of the token in the list.
+要在 Application Center 控制台中注册标记，请单击**上载标记**并选择标记文件。标记文件扩展名为 aetx。  
+要更新标记的证书主题，请在列表中选择该标记名称，更改其值，然后单击“确定”。  
+要删除标记，请单击列表中该标记右侧的废纸箱图标。
 
-## Signing out of the Application Center console
+## 从 Application Center 控制台注销
 {: #signing-out-of-the-application-center-console }
-For security purposes, you must sign out of the console when you have finished your administrative tasks.
+出于安全目的，您在完成自己的管理任务之后必须从控制台注销。
 
-To log out of the secure sign-on to the Application Center console.  
-To sign out of the Application Center console, click **Sign out** next to the Welcome message that is displayed in the banner of every page.
+注销 Application Center 控制台的安全登录。  
+要从 Application Center 控制台注销，请单击每个页面的条幅中显示的“欢迎”消息旁的**注销**。

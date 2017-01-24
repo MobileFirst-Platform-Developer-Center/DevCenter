@@ -1,227 +1,229 @@
 ---
 layout: tutorial
-title: Preparations for using the mobile client
-breadcrumb_title: Preparations
+title: 准备使用移动式客户机
+breadcrumb_title: 准备
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The Appcenter Installer application is used to install apps on mobile devices. You can generate this application by using either the provided Cordova or MobileFirst Studio projects, or use a pre-built version of the MobileFirst Studio project for Android, iOS, or Windows 8 Universal, directly.
+Appcenter Installer 应用程序用于在移动设备上安装应用程序。您可以使用提供的 Cordova 或 MobileFirst Studio 项目生成此应用程序，或者直接使用针对 Android、iOS 或 Windows 8 Universal 的预先构建的 MobileFirst Studio 项目版本。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Prerequisites](#prerequisites)
-* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
-* [MobileFirst Studio based IBM AppCenter client](#mobilefirst-studio-based-ibm-appcenter-client)
-* [Customizing features (for experts): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
-* [Deploying the mobile client in Application Center](#deploying-the-mobile-client)
+* [先决条件](#prerequisites)
+* [基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)
+* [基于 MobileFirst Studio 的 IBM AppCenter 客户机](#mobilefirst-studio-based-ibm-appcenter-client)
+* [定制功能（针对专家）：Android、iOS 和 Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
+* [在 Application Center 中部署移动式客户机](#deploying-the-mobile-client)
 
-## Prerequisites
+## 先决条件
 {: #prerequisites }
-### Prerequisites specific to the Android operating system
+### Android 操作系统特定的先决条件
 {: #prerequisites-specific-to-the-android-operating-system }
-The Native Android version of the mobile client is included in the software delivery in the form of an Android application package (.apk) file. The **IBMApplicationCenter.apk** file is in the directory **ApplicationCenter/installer**. Push notifications are disabled. If you want to enable push notifications, you must rebuild the .apk file. See [Push notifications of application updates](../push-notifications) for more information about push notifications in the Application Center.
+移动式客户机的本机 Android 版本以 Android 应用程序包 (.apk) 文件的形式包含在软件交付中。**IBMApplicationCenter.apk** 文件位于 **ApplicationCenter/installer** 目录中。
+禁用了推送通知。如果您要启用推送通知，必须重新构建 .apk 文件。请参阅[应用程序更新的推送通知](../push-notifications)，以获取有关 Application Center 中的推送通知的更多信息。
 
-To build the Android version, you must have the latest version of the Android development tools.
+要构建 Android 版本，必须有最新版本的 Android 开发工具。
 
-### Prerequisites specific to Apple iOS operating system
+### iOS 操作系统特定的先决条件
 {: #prerequisites-specific-to-apple-ios-operating-system }
-The Native iOS version for iPad and iPhone is not delivered as a compiled application. The application must be created from the {{ site.data.keys.product_full }} project named **IBMAppCenter**. This project is also delivered as part of the distribution in the **ApplicationCenter/installer** directory.
+iPad 和 iPhone 的本机 iOS 版本不采用已编译应用程序的形式交付。必须从名为 **IBMAppCenter** 的 {{ site.data.keys.product_full }}    项目创建该应用程序。此项目还作为 **ApplicationCenter/installer** 目录中的分发版的一部分进行交付。
 
-To build the iOS version, you must have the appropriate {{ site.data.keys.product_full }} and Apple software. The version of {{ site.data.keys.mf_studio }} must be the same as the version of {{ site.data.keys.mf_server }} on which this documentation is based. The Apple Xcode version is V6.1.
+要构建 iOS 版本，您必须具有相应的 {{ site.data.keys.product_full }}    和 Apple 软件。{{ site.data.keys.mf_studio }}    的版本必须与此文档基于的 {{ site.data.keys.mf_server }}    版本相同。Apple Xcode 版本为 V6.1。
 
-### Prerequisites specific to Microsoft Windows Phone operating system
+### Microsoft Windows Phone 操作系统特定的先决条件
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
-The Windows Phone version of the mobile client is included as an unsigned Windows Phone application package (.xap) file in the software delivery. The **IBMApplicationCenterUnsigned.xap** file is in the **ApplicationCenter/installer** directory.
+Windows Phone 版本的移动式客户机在软件交付中为未签署的 Windows Phone 应用程序包 (.xap) 文件。**IBMApplicationCenterUnsigned.xap** 文件位于 **ApplicationCenter/installer** 目录中。
 
-> **Important:** The unsigned .xap file cannot be used directly. You must sign it with your company certificate obtained from Symantec/Microsoft before you can install it on a device.
+> **要点：**无法直接使用未签署的 .xap 文件。您必须使用从 Symantec/Microsoft 获取的公司证书对其进行签署，然后才能在设备上安装。可选：如果需要，您还可以从源构建 Windows Phone 版本。为此，您必须具有最新版本的 Microsoft Visual Studio。
 
-Optional: If necessary, you can also build the Windows Phone version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
-
-### Prerequisites specific to Microsoft Windows 8 operating system
+### Microsoft Windows 8 操作系统特定的先决条件
 {: #prerequisites-specific-to-microsoft-windows-8-operating-system }
-The Windows 8 version of the mobile client is included as a .zip archive file. The **IBMApplicationCenterWindowsStore.zip** file contains an executable file (.exe) and its dependent Dynamic-Link Library (.dll) files. To use the content of this archive, you download the archive to a location on you local drive and run the executable file.
+Windows 8 版本的移动式客户机作为 .zip 归档文件包含在其中。**IBMApplicationCenterWindowsStore.zip** 文件包含可执行文件 (.exe) 及其从属的动态链接库 (.dll) 文件。要使用此归档的内容，请将归档下载到本地驱动器上的某个位置，然后运行可执行文件。
 
-Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
+可选：如果需要，您还可以从源构建 Windows 8 版本。为此，您必须具有最新版本的 Microsoft Visual Studio。
 
-## Cordova based IBM AppCenter client
+## 基于 Cordova 的 IBM AppCenter 客户机
 {: #cordova-based-ibm-appcenter-client }
-The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+基于 Cordova 的 AppCenter 客户机项目位于`安装`目录中：**install_dir/ApplicationCenter/installer/CordovaAppCenterClient**。
 
-This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
-Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }}    客户机/服务器 API。  
+由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}   。此应用程序针对 UI 使用 Dojo。
 
-Follow the steps below to get started:
+请执行以下步骤以开始操作：
 
-1. Install Cordova.
+1. 安装 Cordova。
 
 ```bash
 npm install -g cordova@latest
 ```
 
-2. Install Android SDK and set the `ANDROID_HOME`.  
-3. Build and run this project.
+2. 安装 Android SDK 并设置 `ANDROID_HOME`。  
+3. 构建并运行此项目。
 
-Build all platforms:
+构建所有平台：
 
 ```bash
 cordova build
 ```
 
-Build only Android:
+仅构建 Android：
 
 ```bash
 cordova build android
 ```
 
-Build only iOS:
+仅构建 iOS：
 
 ```bash
 cordova build ios
 ```
 
-### Customizing AppCenter Installer application
+### 定制 AppCenter Installer 应用程序
 {: #customizing-appcenter-installer-application }
-You can further customize the application, such as updating its user interface for your specific company or needs.
+您可以进一步定制应用程序，例如，针对特定公司或需求来更新其用户界面。
 
-> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
-
+> **注：**虽然您可以自由地定制应用程序 UI 和行为，但此类更改不在 IBM 支持协议的服务范围内。
 #### Android
 {: #android }
-* Open the Android Studio.
-* Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+* 打开 Android Studio。
+* 选择**导入项目（Eclipse ADT、Gradle 等）**
+* 从 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android** 中选择 android 文件夹。
 
-This might take some time. Once this is done you are ready to customize.
+可能要花费一些时间。一旦完成，即可开始定制。
 
-> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
-
+> **注：**选择此项将会跳过弹出窗口上用于升级 gradle 版本的更新选项。请参阅 `grade-wrapper.properties` 以了解版本。
 #### iOS
 {: #ios }
-* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
-* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+* 转至 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**。
+* 单击以打开 **IBMAppCenterClient.xcodeproj** 文件，此时会在 Xcode 中打开项目并且您可以开始定制。
 
-## MobileFirst Studio based IBM AppCenter client
+## 基于 MobileFirst Studio 的 IBM AppCenter 客户机
 {: #mobilefirst-studio-based-ibm-appcenter-client }
-Instead of using the Cordova project for iOS and Android, you may also choose to use the previous release of the App Center client application, which is based on MobileFirst Studio 7.1 and supports iOS, Android and Windows Phone.
+您还可以选择使用先前发行版的 App Center 客户机应用程序（其基于 MobileFirst Studio 7.1 且支持 iOS、Android 和 Windows Phone），而不是将 Cordova 项目用于 iOS 和 Android。
 
-### Importing and building the project (Android, iOS, Windows Phone)
+### 导入并构建项目（Android、iOS 和 Windows Phone）
 {: #importing-and-building-the-project-android-ios-windows-phone }
-You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }} and then build the project.
+您必须将 **IBMAppCenter** 项目导入到 {{ site.data.keys.mf_studio }}    ，然后构建项目。
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
+> **注：**对于 V8.0.0，请使用 MobileFirst Studio 7.1。您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。有关安装指示信息，请参阅 7.1 的 IBM Knowledge Center 中的[安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。
+1. 选择**文件 → 导入**。
+2. 选择**常规 → 将现有项目导入到工作空间中**。
+3. 在下一个页面上，选择**选择根目录**，然后找到 **IBMAppCenter** 项目的根目录。
+4. 选择 **IBMAppCenter** 项目。
+5. 选择**将项目复制到工作空间中**。此选项会在您的工作空间中创建项目副本。在 UNIX 系统上，IBMAppCenter 项目在原始位置中为只读。因此将项目复制到工作空间中可避免文件许可权问题。
+6. 单击**完成**以将 **IBMAppCenter** 项目导入到 MobileFirst Studio。
 
-1. Select **File → Import**.
-2. Select **General → Existing Project into Workspace**.
-3. On the next page, select **Select root directory** and locate the root of the **IBMAppCenter** project.
-4. Select **IBMAppCenter** project.
-5. Select **Copy projects into workspace**. This selection creates a copy of the project in your workspace. On UNIX systems, the IBMAppCenter project is read only at the original location. so copying projects into workspace avoids problems with file permissions.
-6. Click **Finish** to import the **IBMAppCenter** project into MobileFirst Studio.
-
-Build the **IBMAppCenter** project. The MobileFirst project contains a single application named **AppCenter**. Right-click the application and select **Run as → Build All Environments**.
+构建 **IBMAppCenter** 项目。MobileFirst 项目包含一个名为 **AppCenter** 的应用程序。右键单击该应用程序，然后选择**运行为 → 构建所有环境**。
 
 #### Android
 {: #android }
-MobileFirst Studio generates a native Android project in **IBMAppCenter/apps/AppCenter/android/native**. A native Android development tools (ADT) project is in the android/native folder. You can compile and sign this project by using the ADT tools. This project requires Android SDK level 16 to be installed, so that the resulting APK is compatible with all Android versions 2.3 and later. If you choose a higher level of the Android SDK when you build the project, the resulting APK will not be compatible with Android version 2.3.
+MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/android/native** 中生成本机 Android 项目。本机 Android 开发工具 (ADT) 项目位于 android/native 文件夹中。
+您可以使用 ADT 工具来编译和签署此项目。该项目需要安装 Android SDK 级别 16，以便生成的 APK 与所有 Android V2.3 及更高版本兼容。
+如果在构建项目时选择更高级别的 Android SDK，那么生成的 APK 将与 Android V2.3 不兼容。
 
-See the [Android site for developers](https://developer.android.com/index.html) for more specific Android information that affects the mobile client application.
+请参阅[面向开发人员的 Android 站点](https://developer.android.com/index.html)，以获取影响移动式客户机应用程序的更具体的 Android 信息。
 
-If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
+如果您要启用应用程序更新的推送通知，必须首先配置 Application Center 客户机属性。请参阅[为应用程序更新配置推送通知](../push-notifications)以获取更多信息。
 
 #### iOS
 {: #ios }
-MobileFirst Studio generates a native iOS project in **IBMAppCenter/apps/AppCenter/iphone/native**. The **IBMAppCenterAppCenterIphone.xcodeproj** file is in the iphone/native folder. This file is the Xcode project that you must compile and sign by using Xcode.
+MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/iphone/native** 中生成本机 iOS 项目。**IBMAppCenterAppCenterIphone.xcodeproj** 文件位于 iphone/native 文件夹中。该文件是必须使用 Xcode 进行编译和签署的 Xcode 项目。
 
-See [The Apple developer site](https://developer.apple.com/) to learn more about how to sign the iOS mobile client application. To sign an iOS application, you must change the Bundle Identifier of the application to a bundle identifier that can be used with the provisioning profile that you use. The value is defined in the Xcode project settings as **com.your\_internet\_domain\_name.appcenter**, where **your\_internet\_domain\_name** is the name of your internet domain.
+请参阅 [Apple 开发人员站点](https://developer.apple.com/)，以了解有关如何签署 iOS 移动式客户机应用程序的更多信息。要签署 iOS 应用程序，必须将应用程序的捆绑标识更改为可与所使用的供应概要文件共同使用的捆绑标识。在 Xcode 项目设置中将该值定义为 **com.your\_internet\_domain\_name.appcenter**，其中 **your\_internet\_domain\_name** 是因特网域的名称。
 
-If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
+如果您要启用应用程序更新的推送通知，必须首先配置 Application Center 客户机属性。请参阅[为应用程序更新配置推送通知](../push-notifications)以获取更多信息。
 
 #### Windows Phone 8
 {: #windows-phone-8 }
-MobileFirst Studio generates a native Windows Phone 8 project in **IBMAppCenter/apps/AppCenter/windowsphone8/native**. The **AppCenter.csproj** file is in the windowsphone8/native folder. This file is the Visual Studio project that you must compile by using Visual Studio and the Windows Phone 8.0 SDK.
+MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/windowsphone8/native** 中生成本机 Windows Phone 8 项目。**AppCenter.csproj** 文件位于 windowsphone8/native 文件夹中。该文件是必须使用 Visual Studio 和 Windows Phone 8.0 SDK 进行编译的 Visual Studio 项目。
 
-The application is built with the Windows Phone 8.0 SDK so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
 
-The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
+该应用程序是使用 Windows Phone 8.0 SDK 构建的，因此它可以在 Windows Phone 8.0 和 8.1 设备上运行。该应用程序不是使用 Windows Phone 8.1 SDK 构建的，因为使用它构建会导致无法在早期的 Windows Phone 8.0 设备上运行。
 
-See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
+通过安装 Visual Studio 2013，您可以选择在安装 8.1 SDK 外还安装 Windows Phone 8.0 SDK。Windows Phone
+8.0 SDK 也可以从 [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk) 中获取。
 
-#### Microsoft Windows 8: Building the project
+请参阅 [Windows Phone 开发中心](http://dev.windowsphone.com/en-us)，以了解有关如何构建和签署 Windows Phone 移动式客户机应用程序的更多信息。
+
+#### Microsoft Windows 8：构建项目
 {: #microsoft-windows-8-building-the-project }
-The Windows 8 Universal project is provided as a Visual Studio project located at **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj.**  
-You must build the client project in Microsoft Visual Studio 2013 before you can distribute it.
+Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj** 中作为 Visual Studio 项目提供。  
+您必须先在 Microsoft Visual Studio 2013 中构建客户机项目，然后才能进行分发。
 
-Building the project is a prerequisite to distributing it to your users, but the Windows 8 application is not intended to be deployed on Application Center for later distribution.
+构建项目是将项目分发给用户的先决条件，但 Windows 8 应用程序不能部署到 Application Center 中以供稍后分发。
 
-To build the Windows 8 project:
+要构建 Windows 8 项目：
 
-1. Open the Visual Studio project file called **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj** in Microsoft Visual Studio 2013.
-2. Perform a full build of the application.
+1. 在 Microsoft Visual Studio 2013 中打开名为 **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj** 的 Visual Studio 项目文件。
+2. 对应用程序执行完全构建。
 
-To distribute the mobile client to your Application Center users, you can later generate an installer that will install the generated executable (.exe) file and its dependent Dynamic-Link Library (.dll) files. Alternatively, you can provide these files without including them in an installer.
+要将移动式客户机分发给 Application Center 用户，您可以稍后生成一个安装程序，该安装程序将安装所生成的可执行 (.exe) 文件及其从属的动态链接库 (.dll) 文件。或者，可以提供这些文件，而不将它们包含在安装程序中。
 
-## Customizing features (for experts): Android, iOS, Windows Phone)
+## 定制功能（针对专家）：Android、iOS 和 Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
-You can customize features by editing a central property file and manipulating some other resources.
+您可以通过编辑集中属性文件并处理其他某些资源来定制功能。
 
-To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/** or **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. If you want to change the default application behavior, you can adapt this property file before you build the project.
+要定制功能：**IBMAppCenter/apps/AppCenter/common/js/appcenter/** 或 **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 目录中称为 **config.json** 的中央属性文件控制了多项功能。
+如果您要更改缺省应用程序行为，可以在构建项目之前调整该属性文件。
 
-This file contains the properties shown in the following table.
+此文件包含下表中显示的属性。
 
-| Property | Description |
+| 属性 | 描述 |
 |----------|-------------|
-| url | The hardcoded address of the Application Center server. If this property is set, the address fields of the Login view are not displayed. |
-| defaultPort | If the url property is null, this property prefills the port field of the Login view on a phone. This is a default value; the field can be edited by the user. |
-| defaultContext | If the url property is null, this property prefills the context field of the Login view on a phone. This is a default value; the field can be edited by the user. |
-| ssl | The default value of the SSL switch of the Login view. |
-| allowDowngrade | This property indicates whether installation of older versions is authorized or not; an older version can be installed only if the operating system and version permit downgrade. |
-| showPreviousVersions | This property indicates whether the device user can show the details of all the versions of applications or only details of the latest version. |
-| showInternalVersion | This property indicates whether the internal version is shown or not. If the value is false, the internal version is shown only if no commercial version is set. |
-| listItemRenderer | This property can have one of these values:<ul><li>full, the default value; the application lists show application name, rating, and latest version.</li><li>simple: the application lists show the application name only.</li></ul> |
-| listAverageRating | This property can have one of these values:<ul><li>latestVersion: the application lists show the average rating of the latest version of the application.</li><li>allVersions: the application lists show the average rating of all versions of the application.</li></ul> |
-| requestTimeout | This property indicates the timeout in milliseconds for requests to the Application Center server. |
-| gcmProjectId | The Google API project ID (project name = com.ibm.appcenter), which is required for Android push notifications; for example, 123456789012. |
-| allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. |
+| url | Application Center 服务器的硬编码地址。如果设置了该属性，那么不会显示“登录”视图的地址字段。 |
+| defaultPort | 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 port 字段。这是缺省值；用户可编辑该字段。 |
+| defaultContext | 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 context 字段。这是缺省值；用户可编辑该字段。 |
+| ssl | “登录”视图的 SSL 开关的缺省值。 |
+| allowDowngrade | 该属性指示是否授权安装较旧版本；仅当操作系统和版本允许降级时，才可安装较旧版本。 |
+| showPreviousVersions | 此属性指示设备用户可显示应用程序的所有版本的详细信息还是只能显示最新版本的详细信息。 |
+| showInternalVersion | 此属性指示是否显示内部版本。如果值为 false，那么仅当未设置商业版本时才会显示内部版本。 |
+| listItemRenderer | 此属性可具有以下某个值：<ul><li>full：缺省值；应用程序列表显示应用程序名称、评级和最新版本。</li><li>simple：应用程序列表仅显示应用程序名称。</li></ul> |
+| listAverageRating | 此属性可具有以下某个值：<ul><li>latestVersion：应用程序列表显示应用程序的最新版本的平均评级。</li><li>allVersions：应用程序列表显示应用程序的所有版本的平均评级。</li></ul> |
+| requestTimeout | 该属性指示请求 Application Center 服务器的超时（单位为毫秒）。 |
+| gcmProjectId | Google API 项目标识（项目名称 = com.ibm.appcenter），这是 Android 推送通知所必需的；例如，123456789012。 |
+| allowAppLinkReview | 该属性指示能否在 Application Center 中注册和浏览来自外部应用商店的本地应用程序评论。在外部应用商店中看不到这些本地评论。这些评论存储在 Application Center 服务器中。 |
 
-### Other resources
+### 其他资源
 {: #other-resources }
-Other resources that are available are application icons, application name, splash screen images, icons, and translatable resources of the application.
+其他可用资源包括应用程序图标、应用程序名称、启动屏幕图像、图标和可转换的应用程序资源。
 
-#### Application icons
+#### 应用程序图标
 {: #application-icons }
-* **Android:** The file named **icon.png** in the Android Studio project's **/res/drawabledensity** directories; one directory exists for each density.
-* **iOS:** Files named **iconsize.png** in the Xcode project's **Resources** directory.
-* **Windows Phone:** Files named **ApplicationIcon.png**, **IconicTileSmallIcon.png**, and **IconicTileMediumIcon.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Android：**Android Studio 项目的 **/res/drawabledensity** 目录中名为 **icon.png** 的文件；针对每种密度都存在一个目录。
+* **iOS：**Xcode 项目的 **Resources** 目录中名为 **iconsize.png** 的文件。
+* **Windows Phone：**针对 Windows Phone 的 MobileFirst Studio 环境文件夹内的 **native** 目录中名为 **ApplicationIcon.png**、**IconicTileSmallIcon.png** 和 **IconicTileMediumIcon.png** 的文件。
 
-#### Application name
+#### 应用程序名称
 {: #application-name }
-* **Android:** Edit the **app_name** property in the Android Studio project's **res/values/strings.xml** file.
-* **iOS:** Edit the **CFBundleDisplayName** key in the Xcode project's **IBMAppCenterAppCenterIphone-Info.plist** file.
-* **Windows Phone:** Edit the **Title** attribute of the App entry in the Visual Studio's **Properties/WMAppManifest.xml** file.
+* **Android：**编辑 Android Studio 项目的 **res/values/strings.xml** 文件中的 **app_name** 属性。
+* **iOS：**编辑 Xcode 项目的 **IBMAppCenterAppCenterIphone-Info.plist** 文件中的 **CFBundleDisplayName** 键。
+* **Windows Phone：**编辑 Visual Studio 的 **Properties/WMAppManifest.xml** 文件中 App 条目的 **Title** 属性。
 
-#### Splash screen images
+#### 启动屏幕图像
 {: #splash-screen-images }
-* **Android:** Edit the file named **splashimage.9.png** in the Android Studio project's **res/drawable/density** directories; one directory exists for each density. This file is a patch 9 image.
-* **iOS:** Files named **Default-size.png** in the Xcode project's **Resources** directory.
-* Cordova/MobileFirst Studio based projects' splash screen during auto login: **js/idx/mobile/themes/common/idx/Launch.css**
-* **Windows Phone:** Edit the file named **SplashScreenImage.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Android：**编辑 Android Studio 项目的 **res/drawable/density** 目录中名为 **splashimage.9.png** 的文件；对于每种密度都存在一个目录。此文件为补丁 9 映像。
+* **iOS：**Xcode 项目的 **Resources** 目录中名为 **Default-size.png** 的文件。
+* 自动登录期间基于 Cordova/MobileFirst Studio 的项目的启动屏幕：**js/idx/mobile/themes/common/idx/Launch.css**
+* **Windows Phone：**编辑针对 Windows Phone 的 MobileFirst Studio 环境文件夹内的 **native** 目录中名为 **SplashScreenImage.png** 的文件。
 
-#### Icons (buttons, stars, and similar objects) of the application
+#### 应用程序图标（按钮、星型和类似的对象）
 {: #icons }
-**IBMAppCenter/apps/AppCenter/common/css/images**.
+**IBMAppCenter/apps/AppCenter/common/css/images**。
 
-#### Translatable resources of the application
+#### 可转换的应用程序资源
 {: #translatable-resources }
-**IBMAppCenter/apps/AppCenter/common/js/appcenter/nls/common.js**.
+**IBMAppCenter/apps/AppCenter/common/js/appcenter/nls/common.js**。
 
-## Deploying the mobile client in Application Center
+## 在 Application Center 中部署移动式客户机
 {: #deploying-the-mobile-client }
-Deploy the different versions of the client application to Application Center.
+将不同版本的客户机应用程序部署到 Application Center。
 
-The Windows 8 mobile client is not intended to be deployed in Application Center for later distribution. You can choose to distribute the Windows 8 mobile client either by providing users with the client .exe executable file and dynamic link library .dll files directly packaged in an archive, or by creating an executable installer for the Windows 8 mobile client.
+Windows 8 移动式客户机不能部署到 Application Center 中以供稍后分发。您可以选择通过以下方式分发 Windows 8 移动式客户机：通过向用户提供直接打包归档的客户机 .exe 可执行文件和动态链接库 .dll 文件，或通过为 Windows 8 移动式客户机创建可执行安装程序。
 
-The Android, iOS, and Windows Phone versions of the mobile client must be deployed to the Application Center. To do so, you must upload the Android application package (.apk) files, iOS application (.ipa) files, and Windows Phone application (.xap) files, Web directory archive (.zip) files to the Application Center.
+必须将移动式客户机的 Android、iOS 和 Windows Phone 版本部署到 Application Center 中。
+为此，必须将 Android 应用程序包 (.apk) 文件、iOS 应用程序 (.ipa) 文件、Windows Phone 应用程序 (.xap) 文件和 Web 目录归档 (.zip) 文件上载到 Application Center。
 
-Follow the steps described in [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) to add the mobile client application for Android, iOS, and Windows Phone. Make sure that you select the Installer application property to indicate that the application is an installer. Selecting this property enables mobile device users to install the mobile client application easily over the air. To install the mobile client, see the related task that corresponds to the version of the mobile client app determined by the operating system.
+按照[添加移动应用程序](../appcenter-console/#adding-a-mobile-application)中描述的步骤，为 Android、iOS 和 Windows Phone 添加移动式客户机应用程序。请确保选中 Installer 应用程序属性以指示该应用程序是一个安装程序。选择该属性使移动设备用户可以轻松通过无线方式安装移动式客户机应用程序。要安装移动式客户机，请参阅与操作系统确定的移动式客户机应用程序版本对应的相关任务。

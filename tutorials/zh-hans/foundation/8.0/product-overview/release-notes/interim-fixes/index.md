@@ -1,59 +1,53 @@
 ---
 layout: tutorial
-title: What's new in Interim Fixes
-breadcrumb_title: Interim iFixes
+title: 临时修订中的新增内容
+breadcrumb_title: 临时修订
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Interim fixes provide patches and updates to correct problems and keep {{ site.data.keys.product_full }} current for new releases of mobile operating systems.
+临时修订中提供一些修补程序和更新，用于纠正问题并且使 {{ site.data.keys.product_full }}    针对新的移动操作系统发行版来说始终为最新状态。
+临时修订是累积式的。下载最新的 V8.0 临时修订，即表示您已获得较早临时修订中的所有修订。
 
-Interim fixes are cumulative. When you download the latest v8.0 interim fix, you get all of the fixes from earlier interim fixes.
+下载并安装最新临时修订，以获得以下部分中描述的所有修订。如果安装较早的修订，那么可能无法获得此处描述的所有修订。
 
-Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
+> 要获取 {{ site.data.keys.product }}    8.0 的临时修订发行版的列表，[请参阅此处的博客帖子]({{site.baseurl}}/blog/tag/iFix_8.0/)。
 
-> For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see these blog posts]({{site.baseurl}}/blog/tag/iFix_8.0/).
+如果列示了 APAR 编号，那么可以通过在临时修订 README 文件中搜索该 APAR 编号来确认该临时修订中是否具有此功能。
 
-Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
-
-### Licensing
+### 许可
 {: #licensing }
-#### PVU licensing
+#### PVU 许可
 {: #pvu-licensing }
-A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
+可通过处理器价值单元 (PVU) 许可获取新产品：{{ site.data.keys.product }}    Extension V8.0.0。有关 {{ site.data.keys.product }}    Extension 的 PVU 许可的更多信息，请参阅[许可 {{ site.data.keys.product_adj }}   ](../../licensing)。
 
-### Web applications
+### Web 应用程序
 {: #web-applications }
-#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
+#### 从 {{ site.data.keys.mf_cli }}    注册 Web 应用程序 (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
+现在，您可以通过使用 {{ site.data.keys.mf_cli }}    (mfpdev) 作为从 {{ site.data.keys.mf_console }}    注册的替代方法来向 {{ site.data.keys.mf_server }}    注册客户机 Web 应用程序。有关更多信息，请参阅从 {{ site.data.keys.mf_cli }}    注册 Web 应用程序。
 
-### Cordova applications
+### Cordova 应用程序
 {: #cordova-applications }
-#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
+#### 从具有 Studio 插件的 Eclipse 打开 Cordova 项目的本机 IDE。
 {: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
+通过在 Eclipse IDE 中安装 Studio 插件，可以在 Android Studio 或 Xcode 中从 Eclipse 接口打开现有 Cordova 项目，以构建和运行此项目。
 
-#### Added *projectName* directory as an option when you use the Migration Assistance tool
+#### 使用“迁移辅助 (Migration Assistance)”工具时，添加了 *projectName* 目录作为选项
 {: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
+使用迁移辅助工具迁移项目时，可以为 Cordova 项目目录指定名称。如果不提供名称，那么缺省名称为 *app_name-app_id-version*。
 
-#### Usability improvements to the Migration Assistance tool
+#### 针对“迁移辅助”工具的易用性改进
 {: #usability-improvements-to-the-migration-assistance-tool }
-Made the following changes to improve the usability of the Migration Assistance tool:
+通过进行如下更改，改进了“迁移辅助”工具的易用性：
 
-* The Migration Assistance tool scans HTML files and JavaScript files.
-* The scan report opens in your default browser automatically after the scan is finished.
-* The *--out* flag is optional. The working directory is used if it is not specified.
-* When the *--out* flag is specified and the directory does not exist, the directory is created.
+* “迁移辅助”工具会扫描 HTML 文件和 JavaScript 文件。
+* 扫描完成后，会在缺省浏览器中自动打开扫描报告。
+* *--out* 标记为可选。如果未指定此标记，将使用工作目录。
+* 指定 *--out* 标记并且此目录不存在时，将创建此目录。
 
-### Adapters
+### 适配器
 {: #adapters }
-#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
+#### 为 Java 和 JavaScript 适配器配置添加了 `mfpdev push` 和 `pull` 命令
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
-
-### Application Center
-{: #application-center}
-
-Cordova based application center client is now available for iOS and Android.
+可以使用 {{ site.data.keys.mf_cli }}    来将 Java 和 JavaScript 适配器配置推送到 {{ site.data.keys.mf_server }}   ，并从 {{ site.data.keys.mf_server }}    中提取适配器配置。

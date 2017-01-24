@@ -1,638 +1,674 @@
 ---
 layout: tutorial
-title: The mobile client
+title: 移动式客户机
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-You can install applications on your mobile device with the Application Center mobile client.
+您可以使用 Application Center 移动式客户机在自己的移动设备上安装应用程序。
 
-The Application Center mobile client is the application that runs on your Android, iOS, Windows Phone, or Windows device. Only Windows Phone 8 is supported by the current version of the Application Center. You use the mobile client to list the catalog of available applications in the Application Center. You can install these applications on your device. The mobile client is sometimes referred to as the Application Center installer. This application must be present on your device if you want to install on your device applications from your private application repository.
+Application Center 移动式客户机是在 Android、iOS、Windows Phone 或 Windows 设备上运行的应用程序。当前版本的 Application Center 仅支持 Windows Phone 8。您可以使用移动式客户机来列出 Application Center 中可用应用程序的目录。您可以在自己的设备上安装这些应用程序。移动式客户机有时也称为 Application Center 安装程序。如果您要在设备上安装专用应用程序存储库中的应用程序，那么此应用程序必须存在于设备上。
 
-### Prerequisites
+### 先决条件
 {: #prerequisites }
-Your system administrator must give you a user name and password before you can download and install the mobile client. The user name and password are required whenever you start the mobile client on your device. For Windows Store applications, the user name and password are required for the mobile client only at run time. For security reasons, do not disseminate these credentials. These credentials are the same credentials used to log in to the Application Center console.
+您的系统管理员必须为您提供用户名和密码，然后您才能下载和安装移动式客户机。每当您在自己的设备上启动移动式客户机时，用户名和密码是必需的。对于 Windows Store 应用程序，移动式客户机仅在运行时才需要用户名和密码。出于安全原因，请勿公开这些凭证。这些凭证是用于登录 Application Center 控制台的相同凭证。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
-* [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
-* [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
-* [The Login view](#the-login-view)
-* [Views in the Application Center client](#views-in-the-application-center-client)
-* [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-* [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-* [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-* [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
-* [Installing applications through public app stores](#installing-applications-through-public-app-stores)
-* [Removing an installed application](#removing-an-installed-application)
-* [Showing details of a specific application version](#showing-details-of-a-specific-application-version)
-* [Updating an application](#updating-an-application)
-* [Upgrading the Application Center client automatically](#upgrading-the-application-center-client-automatically)
-* [Reverting an installed application](#reverting-an-installed-application)
-* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favorite-app)
-* [Submitting a review for an installed application](#submitting-a-review-for-an-installed-application)
-* [Viewing reviews](#viewing-reviews)
+* [在 Android 移动设备上安装客户机](#installing-the-client-on-an-android-mobile-device)
+* [在 iOS 移动设备上安装客户机](#installing-the-client-on-an-ios-mobile-device)
+* [在 Windows Phone 8 Universal 移动设备上安装客户机](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [登录视图](#the-login-view)
+* [Application Center 客户机中的视图](#views-in-the-application-center-client)
+* [在 Android 设备上安装应用程序](#installing-an-application-on-an-android-device)
+* [在 iOS 设备上安装应用程序](#installing-an-application-on-an-ios-device)
+* [在 Windows Phone 设备上安装应用程序](#installing-an-application-on-a-windows-phone-device)
+* [在 Windows 设备上安装 Windows Store 应用程序](#installing-a-windows-store-application-on-a-windows-device)
+* [通过通用应用商店安装应用程序](#installing-applications-through-public-app-stores)
+* [除去已安装的应用程序](#removing-an-installed-application)
+* [显示特定应用程序版本的详细信息](#showing-details-of-a-specific-application-version)
+* [更新应用程序](#updating-an-application)
+* [自动升级 Application Center 客户机](#upgrading-the-application-center-client-automatically)
+* [还原已安装的应用程序](#reverting-an-installed-application)
+* [标记或取消标记收藏的应用程序](#marking-or-unmarking-a-favorite-app)
+* [提交已安装应用程序的评论](#submitting-a-review-for-an-installed-application)
+* [查看评论](#viewing-reviews)
 
-## Installing the client on an Android mobile device
+## 在 Android 移动设备上安装客户机
 {: #installing-the-client-on-an-android-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your Android mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+您可以通过在浏览器中输入访问 URL，输入您的凭证，并完成所需的步骤，从而在 Android 移动设备上安装移动式客户机或标记有安装程序标志的任何已签署应用程序。
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`
+1. 在移动设备上启动浏览器。
+2. 在地址文本字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html`
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    其中 hostname 是服务器的地址，portnumber 是安装 Application Center 的端口号。系统管理员可以提供此信息。
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page installers.html does not work on your mobile device, you can use inst.html. This page is provided in English only and is not translated into other languages.
+    Application Center 还提供用于在移动设备上安装客户机的替代 URL：`http://hostname:portnumber/applicationcenter/inst.html`。此 URL 的页面在某些较旧的或某些非标准的移动 Web 浏览器上显示效果更佳。如果 installers.html 页面在您的移动设备上无法正常显示，那么可以使用 inst.html。仅提供该页面的英文版本并未翻译为其他语言。
 
-    If you try to open the page with HTTPS and use self-signed certificates, older Android browsers cannot open the page. In this case, you must use a non self-signed certificate or use another browser on the Android device, such as Firefox, Chrome, or Opera. In Android 4 and later, the Android browser displays a security warning about the SSL certificate, but lets you proceed to the website after confirmation that you consent to an unsafe connection.
+    如果尝试打开使用 HTTPS 的页面并使用自签名证书，那么较旧的 Android 浏览器将无法打开该页面。在此情况下，您必须使用非自签名证书或者使用 Android 设备上的其他浏览器，例如，Firefox、Chrome 或 Opera。在 Android 4 及更高版本中，Android 浏览器会显示一条有关 SSL 证书的安全性警告，但是允许您在确认同意使用不安全的连接后继续使用该 Web 站点。
 
-3. Enter your user name and password. When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+3. 请输入您的用户名和密码。验证您的用户名和密码后，会在浏览器中显示与设备兼容的安装应用程序的列表。通常在此列表中仅显示一个应用程序，即移动式客户机。
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device. The Application Center administrator should provide the certificate; see [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
-    * Tap the **SSL-Certificate** tab and select the certificate.
-    * Tap **Install**. You must only perform this action once for the device. You can verify whether the certificate is installed by looking in **Settings → Security → Trusted Credentials → User on the device**. This view shows the SSL certificates that the user has installed on the device. If the self-signed CA certificate is not installed on the device, the Android operating system prevents you from downloading the mobile client in the following steps.
+4. 如果 Web 服务器使用自签名的 CA 证书，那么请在设备上至少安装一次该证书。Application Center 管理员应当提供此证书；请参阅[在 Application Center 测试环境中管理和安装自签名 CA 证书](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)以获取详细信息。
+    * 点击 **SSL 证书**选项卡并选择证书。
 
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
+    * 点击**安装**。只能对设备执行一次该操作。
+通过在设备上查看**设置 → 安全性 → 可信凭证 → 用户**，可以验证是否已安装了证书。该视图显示用户已安装在设备上的 SSL 证书。
+如果未在设备上安装自签名 CA 证书，那么 Android 操作系统会阻止您在以下步骤中下载移动式客户机。
 
-    ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
+    Application Center 管理员必须安装移动式客户机应用程序，然后您才能在可用应用程序列表中看到移动式客户机。管理员会将移动式客户机上载至 Application Center，并将 **Installer** 属性设置为 **true**。请参阅[应用程序属性](../appcenter-console/#application-properties)。
+
+    ![要安装的可用移动式客户机应用程序的列表](ac_instal_client_and1.jpg)
     
-5. Select an item in the list to display the application details. Typically, these details include the application name and its version number.
+5. 选择列表中的某项以显示应用程序详细信息。通常，这些详细信息包含应用程序名称及其版本号。
 
-    ![Application details](ac_app_details.jpg)
+    ![应用程序详细信息](ac_app_details.jpg)
 
-6. Tap **Install Now** to download the mobile client. On newer Android devices, a question might request permission for Chrome to access media files on the device. Select YES. A warning about potential harmful files might be displayed. Select the option to keep the APK file anyway.
+6. 轻击**立即安装**以下载移动式客户机。在较新的 Android 设备上，可能会出现一个问题，要求提供 Chrome 的许可权以访问设备上的介质文件。
+选择“是”。可能会显示一条有关潜在有害文件的警告。选择依旧保留该 APK 文件的选项。
 
-7. Launch the **Android Download** applications. Select the Application Center client installer.
-8. Select the Application Center client installer. You can see the access granted to the application when you choose to install it.
 
-    ![Installation of the mobile client in Android](ac_instal_client_and_rights.jpg)
+7. 启动 **Android 下载**应用程序。选择 Application Center 客户机安装程序。
+8. 选择 Application Center 客户机安装程序。选择安装应用程序时，您可以看到授予该应用程序的访问权。
+
+    ![在 Android 上安装移动式客户机](ac_instal_client_and_rights.jpg)
     
-9. Select **Install** to install the mobile client.
-10. When the application is installed, select **Open** to open the mobile client or **Done** to close the Downloads application.
+9. 选择**安装**以安装移动式客户机。
+10. 安装应用程序时，选择**打开**以打开移动式客户机，或者选择**完成**以关闭“下载”应用程序。
 
-The APK file might fail for one of the following reasons:
+APK 文件可能会因以下某原因而失败：
 
-* The device does not have enough free memory.
-* The SSL certificate of the server is not known to the device.
+* 设备可能没有足够的可用内存。
+* 设备无法识别服务器的 SSL 证书。
 
-The first time that you install an app through the Downloads application, you might receive a request to confirm whether Google should regularly check the device activity for security problems. You can accept or decline according to your preference. The Application Center client is unaffected by your choice.
+在第一次通过“下载”应用程序安装应用程序时，您可能收到了一个请求，要求确认 Google 是否应当定期检查设备活动中的安全性问题。您可以根据自己的偏好接受或拒绝。
+您所做的选择不会影响 Application Center 客户机。
 
-The installation might be blocked for one of the following reasons:
 
-* The device does not permit installation from unknown sources. Go to **Settings → Security** on the device and enable **Unknown sources (Allow installation from unknown sources)**.
-* The device has the same app already installed, but it was signed by a different certificate. In this case, you must remove the app before you install it on the device with another signed certificate.
+安装可能会因以下某原因而被阻止：
 
-## Installing the client on an iOS mobile device
+* 设备不允许从未知来源安装。
+请转至设备上的**设置 → 安全性**，然后启用**未知来源（允许从未知来源安装）**。
+* 设备已安装了同一应用程序，但使用不同的证书签名。
+对此，您必须除去该应用程序，然后在使用其他签名证书的设备上安装该应用程序。
+
+
+## 在 iOS 移动设备上安装客户机
 {: #installing-the-client-on-an-ios-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+您可以通过在浏览器中输入访问 URL，输入您的凭证，并完成所需的步骤，从而在 iOS 移动设备上安装移动式客户机或标记有安装程序标志的任何已签署应用程序。
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **要点：**要在 iOS 设备上安装应用程序，首先必须为 Application Center 服务器配置 SSL。请参阅[配置安全套接字层 (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)。IBM Application Center 服务的 **ibm.appcenter.ios.plist.onetimeurl** JNDI 属性可控制在 iOS 移动设备上安装移动式客户机时是否使用一次性 URL。将此属性设置为 false 可实现最大的安全性。
+将此属性设置为 false 时，用户在安装移动式客户机时必须多次输入其凭证：选择客户机时输入一次，安装客户机时输入一次。
 
-The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM  Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
+将此属性设置为 true 时，用户只需输入一次凭证。当用户输入凭证时，会生成带有加密散列的临时下载 URL。
+此临时下载 URL 有效期为 1 小时，无需再进行认证。此解决方案是安全性和便利性之间的折中。
 
-When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
+指定 **ibm.appcenter.ios.plist.onetimeurl** JNDI 属性的步骤与指定 **ibm.appcenter.proxy.host property** 的步骤类似。请参阅[定义应用程序资源的端点](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources)。
 
-The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the **ibm.appcenter.proxy.host property**. See [Defining the endpoint of the application resources](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
+在 iOS 设备上安装移动式客户机类似于在 Android 上进行安装，但是存在某些区别。在下载之后，安装程序会直接自动启动。
+几乎针对所有安装步骤都会请求您输入用户名和密码凭证。
 
-Installing the mobile client on an iOS device is similar to installing it on Android, but with some differences. The installer is automatically started directly after download. Your user name and password credentials are requested for almost all the installation steps.
+1. 在移动设备上启动浏览器。
+2. 在地址字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html`
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address field: `http://hostname:portnumber/applicationcenter/installers.html`
+    其中 hostname 是服务器的地址，portnumber 是安装 Application Center 的端口号。系统管理员可以提供此信息。
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    Application Center 还提供用于在移动设备上安装客户机的替代 URL：`http://hostname:portnumber/applicationcenter/inst.html`。此 URL 的页面在某些较旧的或某些非标准的移动 Web 浏览器上显示效果更佳。如果 **installers.html** 页面在您的移动设备上无法正常显示，您可以使用 **inst.html**。仅提供该页面的英文版本，并未翻译为其他语言。
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. The page is provided in English only and is not translated into other languages.
+    如果打开使用 HTTPS 的页面并使用自签名证书，那么浏览器会显示一条有关 SSL 证书的安全性警告，但是您可以在确认同意使用不安全的连接后继续使用该 Web 站点。
 
-    If you open the page with HTTPS and use self-signed certificates, the browser displays a security warning about the SSL certificate, but you can proceed to the website after confirmation that you consent to an unsafe connection.
+3. 请输入您的用户名和密码。请参阅[移动式客户机中的先决条件](../preparations)。
 
-3. Enter your user name and password. See the [prerequisites in The mobile client](../preparations).
+    验证您的用户名和密码后，会在浏览器中显示与设备兼容的安装应用程序的列表。通常在此列表中仅显示一个应用程序，即移动式客户机。
 
-    When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+    如果打开使用 https 的页面：
+    * 如果 Web 服务器使用可信认证中心提供的真实 SSL 证书，那么继续步骤 5。
+    * 如果 Web 服务器使用自签名的 CA 证书，那么继续步骤 4。
 
-    If you open the page with https:
-    * If the web server uses a real SSL certificate that is provided by a trusted certificate authority, proceed to step 5.
-    * If the web server uses a self-signed CA certificate, proceed to step 4.
+4. 如果 Web 服务器使用自签名的 CA 证书，那么请在设备上至少安装一次该证书。
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device.
+    Application Center 管理员将提供该证书。请参阅[在 Application Center 测试环境中管理和安装自签名 CA 证书](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)以获取详细信息。
 
-    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
+    * 点击“SSL 证书”选项卡并选择证书。
 
-    * Tap the SSL-Certificate tab and select the certificate.
-    * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
+    * 点击“安装”。只需对设备执行一次该操作。通过在设备上查看**设置 → 常规 → 概要文件**，可以验证是否已安装了证书。该视图显示用户已安装在设备上的 SSL 证书。如果未在设备上安装自签名 CA 证书，那么 iOS 操作系统会阻止您在以下步骤中下载移动式客户机。
+
     
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
+    Application Center 管理员必须安装移动式客户机应用程序，然后您才能在可用应用程序列表中看到移动式客户机。管理员会将移动式客户机上载到 Application Center，并将 Installer 属性设置为 true。请参阅[应用程序属性](../appcenter-console/#application-properties)。
     
-5. Tap the **Installers** tab and select an item in the list to display the application details.
-6. Tap **Install** to download the mobile client.
-7. Enter your credentials to authorize the downloader transaction.
-8. To authorize the download, tap **Install**.
+5. 点击**安装程序**选项卡并选择列表中的某项以显示应用程序详细信息。
+6. 点击**安装**以下载移动式客户机。
+7. 输入您的凭证以授权下载程序事务。
+8. 要授权下载，请轻击**安装**。
 
-    ![Confirm app to be installed](ac_instal_client_ios_conf.jpg)
+    ![确认要安装的应用程序](ac_instal_client_ios_conf.jpg)
     
-9. Enter your credentials to authorize the installation.
-10. Close the browser.
+9. 输入您的凭证以授权安装。
+10. 关闭浏览器。
 
-    The app icon appears on the home screen and you can watch the download progress on the home screen.
+    应用程序图标将显示在主屏中，并且您可以在主屏上看到下载进度。
 
-> **Note:** Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, some versions of iOS might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+> **注：**在设备上安装应用程序需要一个供应概要文件来支持在所选设备上安装此应用程序。
+如果您无意间尝试安装某个对设备无效的应用程序，那么部分 iOS 版本可能会尝试在无限循环中安装此应用程序，而从不会成功或指示任何错误。主屏中会出现显示安装进度的应用程序图标，但由于是无限循环，因此难以删除此应用程序图标以停止该无限循环。
+变通方法是将此设备设定为飞行模式。
+在此模式下，无限循环将停止，这样您可以按照删除 iOS 设备上应用程序的正常步骤来删除此应用程序图标。
+安装可能会因以下某原因而被阻止：
 
-The installation might be blocked for one of the following reasons:
+* 应用程序的供应概要文件对设备无效。
+必须使用其他供应概要文件签署此应用程序。
 
-* The provisioning profile of the application is not valid for the device. The application must be signed with a different provisioning profile.
-* The device has no access to Apple servers to confirm the validity of the provisioning profile.
-* The SSL certificate of the server is not known to the device.
+* 设备无权访问 Apple 服务器以确认供应概要文件的有效性。
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+* 设备无法识别服务器的 SSL 证书。
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+总之，仅当使用供应概要文件对 iOS 应用程序签名之后才能将其安装在设备上。请参阅[导入并构建项目（Android、iOS 和 Windows Phone）](../preparations/#importing-and-building-the-project-android-ios-windows-phone)。
 
-To establish trust for a provisioning profile after the application is installed:
+从 iOS 9 起，打开公司应用程序时，根据供应概要文件类型，可能会显示“不可信的企业开发人员”消息。此消息说明在此设备上尚未信任此供应概要文件。在此情况下，除非建立针对此供应概要文件的信任，否则不会打开此应用程序。只能针对每个供应概要文件建立一次信任。
 
-#### Until iOS 9.1
+要在安装应用程序后建立针对供应概要文件的信任：
+
+#### 对于低于 iOS 9.1 的版本
 {: #until-ios-91 }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. 转至**设置 → 常规 → 概要文件**。在**企业应用程序**标题下，您会看到应用程序的供应概要文件。
+2. 轻击概要文件并确认信任。
 
-#### Since iOS 9.2
+#### 从 iOS 9.2 起
 {: #since-ios-92 }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. 转至**设置 → 常规 → 概要文件 → 设备管理或概要文件和设备管理**。在**企业应用程序**标题下，您会看到应用程序的供应概要文件。
+2. 轻击概要文件并确认信任。
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+确认信任后，所有使用此供应概要文件的应用程序都不会显示“不可信的企业开发人员”消息。有关更多信息，请访问 Apple Web 站点：[https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460)。
 
-## Installing the client on a Windows Phone 8 Universal mobile device
+## 在 Windows Phone 8 Universal 移动设备上安装客户机
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
+您可以通过在浏览器中输入访问 URL，输入您的凭证，并完成所需的步骤，从而在 Windows 8 Universal 上安装移动式客户机或标记有安装程序标志的任何已签署应用程序。必须在您的移动设备上预先安装公司帐户。
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+安装公司发布的应用程序之前，必须将公司帐户添加到您的移动设备上。必须将应用程序注册标记 (AET) 下载到 Windows Phone 设备上。该 AET 必须已经在 {{ site.data.keys.mf_server }} 上。使用 Application Center 控制台将其上载至 {{ site.data.keys.mf_server }}   。请参阅 [Windows 8 Universal 中的应用程序注册标记](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)以获取详细信息。
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
+1. 在移动设备上启动浏览器。
+2. 在地址文本字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html`。
 
-    Where **hostname** is the address of the server and **portnumber** is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    其中 **hostname** 是服务器的地址，**portnumber** 是安装 Application Center 的端口号。系统管理员可以提供此信息。
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. This page is provided in English only and is not translated into other languages.
+    Application Center 还提供用于在移动设备上安装客户机的替代 URL：`http://hostname:portnumber/applicationcenter/inst.html`。此 URL 的页面在某些较旧的或某些非标准的移动 Web 浏览器上显示效果更佳。如果 **installers.html** 页面在您的移动设备上无法正常显示，您可以使用 **inst.html**。仅提供该页面的英文版本并未翻译为其他语言。
 
-3. Enter your credentials to authorize access to the server. On the lower part of the screen, a toolbar contains an **Installers** tab and a **Tokens** tab.
+3. 输入您的凭证以授权访问服务器。在屏幕的下半部分中，有一个包含**安装程序**选项卡和**标记**选项卡的工具栏。
 
-    ![Preparing to install tokens and applications on a Windows Phone device](ac_wp8_toolbar_inst_app.jpg)
+    ![准备在 Windows Phone 设备上安装标记和应用程序](ac_wp8_toolbar_inst_app.jpg)
     
-4. Tap **Tokens** and select an application enrollment token in the list of available tokens to display the token details.
+4. 轻击**标记**并在可用标记列表中选择应用程序注册标记，以显示标记详细信息。
 
-    ![Application Enrollment Token details on a Windows Phone device](ac_wp8_aet_details.jpg)
+    ![Windows Phone 设备上的应用程序注册标记详细信息](ac_wp8_aet_details.jpg)
     
-5. Tap **Add** to download the application enrollment token.
-6. Tap **Add** to add the company account.
+5. 轻击**添加**，下载应用程序注册标记。
+6. 轻击**添加**，添加公司帐户。
 
-    ![Adding a company account in Windows 8 Universal device](ac_wp8_add_co_account.jpg)
+    ![在 Windows 8 Universal 设备中添加公司帐户](ac_wp8_add_co_account.jpg)
     
-    Windows Phone 8 does not provide any feedback about adding the company account.
+    Windows Phone 8 不提供有关添加公司帐户的任何反馈信息。
 
-7. Tap the Back icon to return to the details of application enrollment tokens.
-8. Tap **Installers** and select the mobile client application in the list of available applications. The application details are displayed.
-9. Tap **Install** to download the selected application.
+7. 轻击“后退”图标，返回到应用程序注册标记详细信息。
+8. 轻击**安装程序**并在可用应用程序列表中选择移动式客户机应用程序。这样将显示应用程序的详细信息。
+9. 轻击**安装**，下载所选应用程序。
 
-    ![The application selected to download on a Windows Phone device](ac_wp8_app_details.jpg)
+    ![在 Windows Phone 设备上下载所选应用程序](ac_wp8_app_details.jpg)
     
-10. Tap **Install** to install the application.
+10. 轻击**安装**，安装应用程序。
 
-    ![Installing the downloaded application on a Windows Phone device](ac_wp8_app_install.jpg)
+    ![在 Windows Phone 设备上安装所下载的应用程序](ac_wp8_app_install.jpg)
     
-    Windows 8 Universal does not provide any feedback about installing the application.
+    Windows 8 Universal 不提供有关安装应用程序的任何反馈信息。
 
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
+> **提示：**在设备上安装公司应用程序时，必须将设备连接到 Microsoft 服务器以验证应用程序签名。Microsoft 服务器有时候可能无响应。在此情况下，您可在几分钟之后再次尝试安装。请参阅“在 Windows Phone 设备上安装应用程序”以获取可能的错误消息。
 
-When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
+完成安装之后，移动式客户机应用程序将在 Windows Phone 的应用程序列表中可用。
 
-## The Login view
+## 登录视图
 {: #the-login-view }
-In the Login view, you can access the fields that are required to connect to the server to view the list of applications available for your device.  
-Use the Login view to enter your credentials to connect to the Application Center server to view the list of applications that are available for your device.
+在“登录”视图中，您可以访问连接到服务器（以查看可用于设备的应用程序列表）所需的字段。  
+可使用“登录”视图输入您的凭证，以便连接到 Application Center 服务器来查看设备的可用应用程序列表。
 
-The Login view presents all the mandatory fields for the information that is required to connect to the server.  
-When the application is started, the Login page is displayed. The login credentials are required to connect to the server.
+“登录”视图会显示连接到服务器所需的信息的所有必填字段。  
+启动应用程序时，会显示“登录”页面。登录凭证是连接到服务器所必需的。
 
-On iOS devices, the credentials are saved in the keychain. After you successfully log in to the Application Center server, when you later start the application, the login page is not displayed and the previous credentials are used. If login fails, the login view is displayed.
+在 iOS 设备上，凭证保存在密钥链中。在成功登录到 Application Center 服务器后，当您在稍后启动应用程序时，将不显示登录页面并使用先前的凭证。如果登录失败，将显示登录视图。
 
-#### User name and password
+#### 用户名和密码
 {: #user-name-and-password }
-Enter your credentials for access to the server. They are the same user name and password as the ones that were granted by your system administrator for downloading and installing the mobile client.
+输入您的凭证以访问服务器。这些是系统管理员授予的用于下载和安装移动式客户机的相同用户名和密码。
 
-#### Application Center server address
+#### Application Center 服务器地址
 {: #application-center-server-address }
-The Application Center server address is composed of the following elements:
+Application Center 服务器地址包含以下元素：
 
-* Host name or IP address.
-* Port, which is optional if the default port is used.
-* Context, which is optional if the Application Center is installed at the root of the server.
+* 主机名或 IP 地址。
+* 端口（如果使用缺省端口，那么是可选的）。
+* 上下文（如果在服务器根目录中安装 Application Center，那么是可选的）。
 
-On a phone, a field is available for each part of the address.
+在电话上，针对地址的每个部分提供了一个字段。
 
-On a tablet, a single field that contains a preformatted example address is displayed. Use it as a model for entering the correct server address to avoid formatting errors. See [Preparations for using the mobile client](../preparations) for information on filling parts of the address in advance, or hardcode the address and hide the associated fields.
+在平板电脑上，会显示包含预格式化的示例地址的单个字段。将其用作输入正确服务器地址的范例，以避免格式化错误。请参阅[准备使用移动式客户机](../preparations)，以提前获取有关填充地址中各个部分的信息，或者对地址进行硬编码并隐藏相关字段。
 
-#### Secure Socket Layer (SSL)
+#### 安全套接字层 (SSL)
 {: #secure-socket-layer-ssl }
-SSL is mandatory on iOS devices. Therefore, this option is not displayed in the login view.
-On the other supported operating systems, select SSL to turn on the SSL protocol for communications over the network. If you tap this field again when SSL is selected, SSL switches off.
+SSL 在 iOS 设备上是必需的。因此，该选项未在登录视图中显示。在所支持的其他操作系统上，选择 SSL，为网络通信开启 SSL 协议。如果在 SSL 处于选中状态时再次轻击该字段，将关闭 SSL。
 
-SSL selection is available for cases where the Application Center server is configured to run over an SSL connection. Selecting SSL when the server is not configured to handle an SSL layer prevents you from connecting to the server. Your system administrator can inform you whether the Application Center runs over an SSL connection.
+如果 Application Center 服务器配置为通过 SSL 连接运行，那么 SSL 选项可用。当服务器未配置为处理 SSL 层时选择 SSL 会阻止您连接到服务器。系统管理员可以告知您 Application Center 是否通过 SSL 连接运行。
 
-### Connecting to the server
+### 连接至服务器
 {: #connecting-to-the-server }
-To connect to the server:
+要连接至服务器：
 
-1.Enter your user name and password.
-2. Enter your Application Center server address.
-3. If your configuration of the Application Center runs over the SSL protocol, select **SSL**.
-4. Tap **Log in** to connect to the server.
+1. 输入您的用户名和密码。
+2. 输入您的 Application Center 服务器地址。
+3. 如果您的 Application Center 配置通过 SSL 协议运行，请选择 **SSL**。
+4. 轻击**登录**以连接到服务器。
 
-If this login is successful, the user name and server address are saved to fill the fields when you start the client afterwards.
+如果此登录成功，那么会保存用户名和服务器地址以便在后续启动客户机时用于填充这些字段。
 
-## Views in the Application Center client
+## Application Center 客户机中的视图
 {: #views-in-the-application-center-client }
-The client provides views that are adapted to the various tasks that you want to perform.  
-After a successful login, you can choose among these views.
+此客户机提供适合您要执行的各种任务的视图。  
+成功登录之后，您可以在这些视图中进行选择。
 
-![Views in the client application](ac_android_ios_views.jpg)
+![客户机应用程序中的视图](ac_android_ios_views.jpg)
 
-Use these views to communicate with a server to send or retrieve information about applications or to manage the applications that are located on your device.
+使用这些视图可与服务器通信以发送或检索有关应用程序的信息，或者管理位于您的设备上的应用程序。
 
-The Windows 8 client home screen displays up to six applications in each category. On the Windows 8 client, if you want the full list of applications in a category, click the title of the category.
+Windows 8 客户机主屏在每个类别中最多可显示 6 个应用程序。
+在 Windows 8 客户机上，如果您需要某一类别中应用程序的完整列表，请单击该类别的标题。
 
-![Client homescreen on Windows 8](ac_homeCatalog_w8.JPG)
+![Windows 8 上的客户机主屏](ac_homeCatalog_w8.JPG)
 
-Here are descriptions of the different views:
+以下是不同视图的描述：
 
-* **Catalog**. This view shows the applications that can be installed on a device.
-* **Favorites**. This view shows the list of applications that you marked as favorites.
-* **Updates**. This view shows all applications that you marked as favorite apps and that have a later version available in Application Center than the version, if any, installed on the device.
+* **目录**。此视图显示可安装在设备上的应用程序。
+* **收藏夹**。此视图显示您标记为收藏项的应用程序的列表。
+* **更新**。此视图显示您标记为收藏的应用程序并且在 Application Center 中存在高于设备上已安装版本（如有）的版本的所有应用程序。
 
-When you first start the mobile client, it opens the Login view for you to enter your user name, password, and the address of the Application Center server. This information is mandatory.
+首次启动移动式客户机时，它会为您打开“登录”视图以便您输入自己的用户名、密码和 Application Center 服务器的地址。
+此信息为必填信息。
 
-### Displays on different device types
+### 在不同的设备类型上显示
 {: #displays-on-different-device-types }
-The layout of the views is specific to the Android, iOS, Windows Phone, or Windows 8 environment, even though the common functions that you can perform in the views are the same for all operating systems. Different device types might have different page displays. On the phone, a list is displayed. On a tablet, a grid of applications is used.
+虽然视图中可执行的常用功能对于所有操作系统都是相同的，但是视图布局特定于 Android、iOS、Windows Phone 或 Windows 8 环境。不同的设备类型可能具有不同的页面显示。在电话上，会显示一个列表。
+在平板电脑上，会使用应用程序网格。
 
-![Catalog view on a phone](ac_phone_catalog.jpg)
+![电话上的目录视图](ac_phone_catalog.jpg)
 
-![Catalog view on a tablet](ac_tablet_catalog.jpg)
+![平板电脑上的目录视图](ac_tablet_catalog.jpg)
 
-### Features of the views
+### 视图的功能
 {: #features-of-the-views }
-On an Android or iOS tablet, you can sort the lists by tapping one of the sort criteria.  
-On a Windows Phone, Android, or iOS phone, sort criteria are available through the sort button.  
-On the Windows 8 client, you can sort the list of applications within a category. To sort the applications, select from the list of sort criteria in the **Sort By** field.
+在 Android 或 iOS 平板电脑上，您可以通过轻击某个排序条件对列表进行排序。  
+在 Windows Phone、Android 或 iOS 手机上，可通过排序按钮使用排序条件。  
+在 Windows 8 客户机上，您可以对某一类别中的应用程序列表进行排序。要对应用程序排序，请从**排序方式**字段中的排序条件列表中进行选择。
 
-Applications that are marked as favorites are indicated by a star that is superposed on the application icon.
+标记为收藏项的应用程序通过在应用程序图标上叠放星型来指示。
 
-The average rating of the latest version of an application is shown by using a number of stars and the number of ratings received. [See Preparations for using the mobile client](../preparations) for how to show the rating of all versions of the application instead of the latest version only.
+通过使用若干个星型和收到的评级数来显示应用程序的最新版本的平均评级。请参阅[准备使用移动式客户机](../preparations)，以了解如何显示应用程序的所有版本的评级，而不是仅显示最新的版本。
 
-Tapping an application in the list opens the Details view of the latest installed version of this application.
+轻击列表中的应用程序会打开此应用程序的最新安装版本的“详细信息”视图。
 
-To refresh the view, tap the refresh button: <img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="Button to refresh the view"/>. or, on Windows 8, <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Button to refresh the view on Windows 8 client"/>.
+要刷新视图，请轻击刷新按钮：<img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="用于刷新视图的按钮"/>。或者，在 Windows 8 上，轻击 <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Windows 8 客户机上用于刷新视图的按钮"/>。
 
-To return to the login page:
+要返回至登录页面：
 
-* In Android, iOS, and Windows Phone applications, tap the logout button: <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Android and iOS devices"/>
-* In the Windows 8 version of the client, tap the logout button: <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Windows 8 client"/>
+* 在 Android、iOS 和 Windows Phone 应用程序上，轻击注销按钮：<img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Android 和 iOS 设备上用于返回到“登录”页面并注销的按钮"/>
+* 在客户机的 Windows 8 版本中，轻击注销按钮：<img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Windows 8 客户机上用于返回到“登录”页面并注销的按钮"/>
 
-### The Details view
+### “详细信息”视图
 {: #the-details-view }
-Tapping an application in the Catalog, Favorites, or Updates view opens the Details view where you can see details of the application properties. Details of the application version are displayed in this view.
+轻击“目录”、“收藏夹”或“更新”视图中的应用程序会打开“详细信息”视图，您可以在其中查看应用程序属性的详细信息。应用程序版本的详细信息会显示在此视图中。
 
-On Android, iOS, and Windows Phone clients, the following details of the application version are displayed:
+在 Android、iOS 和 Windows Phone 客户机上，将显示应用程序版本的以下详细信息：
 
-* The name of the application.
-* Commercial version: the published version of the application.
-* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties](../appcenter-console/#application-properties) for technical details about this property on all operating systems.
-* Update date.
-* Approximate size of the application file.
-* Rating of the version and number of ratings received.
-* Description of the application.
+* 应用程序的名称。
+* 商业版本：应用程序的已发布版本。
+* 内部版本：在 Android 上，为应用程序的内部版本标识；在 iOS 上，为应用程序的构建号。请参阅[应用程序属性](../appcenter-console/#application-properties)，以获取所有操作系统上关于此属性的技术详细信息。
+* 更新日期。
+* 应用程序文件的大概大小。
+* 版本的评级和收到的评级数。
+* 应用程序的描述。
 
-On Windows 8 client the following details of the application version are displayed:
+在 Windows 8 客户机上，将显示应用程序版本的以下详细信息：
 
-* Application name.
-* Version.
-* Vendor name.
-* Update date.
-* Rating of the version and the number of ratings received.
-* Existing reviews of either the current version or of all the versions of the current application.
+* 应用程序名称。
+* 版本。
+* 供应商名称。
+* 更新日期。
+* 版本的评级和收到的评级数。
+* 当前版本或当前应用程序的所有版本的现有评论。
 
-You can take the following actions in this view.
+可以在此视图中执行以下操作。
 
-* Install, upgrade, downgrade, or uninstall an application version.
-* Cancel the current operation in progress (if available).
-* Rate the application version if it is installed on the device.
-* List the reviews of this version or of all versions of the application.
-* Show details of a previous version.
-* Mark or unmark the application as a favorite app.
-* Refresh the view with the latest changes from the Application Center server.
+* 安装、升级、降级或卸载某个应用程序版本。
+* 取消正在进行的当前操作（如有）。
+* 对已安装在设备上的应用程序版本评级。
+* 列出应用程序的此版本或所有版本的评论。
+* 显示先前版本的详细信息。
+* 将该应用程序标记或取消标记为收藏的应用程序。
+* 使用来自 Application Center 服务器的最新更改刷新此视图。
 
-## Installing an application on an Android device
+## 在 Android 设备上安装应用程序
 {: #installing-an-application-on-an-android-device }
-From the **Details** view, you can install an application on your Android device.  
-In the Details view, if a previous version of the application is not installed, you can install this application version on your Android device.
+通过**详细信息**视图，可以在 Android 设备上安装应用程序。  
+在“详细信息”视图中，如果未安装应用程序的先前版本，那么可以在 Android 设备上安装此应用程序版本。
 
-![Details view of an app version shown on your Android device](ac_phone_app_details.jpg)
+![Android 设备上显示的应用程序版本的“详细信息”视图](ac_phone_app_details.jpg)
 
-1. In the **Details** view, tap **Install**.
+1. 在**详细信息**视图中，轻击**安装**。
 
-    The application is downloaded. You can tap **Cancel** in the **Details** view at any time during the download to cancel the download. (The **Cancel** button appears only during the installation steps.) If you let the download complete, you will see the rights that are granted to the application.
+    这样会下载该应用程序。您可以在下载期间随时轻击**详细信息**视图中的**取消**以取消下载。（**取消**按钮仅在安装步骤期间显示。）如果您让下载完成，那么将看到授予应用程序的权利。
 
-    ![Application rights on your Android device](ac_app_rights_and.jpg)
+    ![Android 设备上的应用程序权利](ac_app_rights_and.jpg)
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel installation.
+2. 轻击**安装**以确认安装应用程序，或者轻击**取消**以取消安装。
 
-    Depending on the action taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    根据所采取的操作，会安装或不安装该应用程序。应用程序安装成功之后，还会将其标记为收藏的应用程序。
 
-    If you selected **Cancel**, in the application rights confirmation panel, you can tap **Cancel** in the **Details** view at any time to notify the application that the installation has been canceled. The **Cancel** button appears in the Details view only during the installation steps.
+    如果您选择了**取消**，那么在应用程序权利确认面板中，您可以随时轻击**详细信息**视图中的**取消**以通知应用程序安装已取消。仅在执行安装步骤期间才会在“详细信息”视图中显示**取消**按钮。
 
-## Installing an application on an iOS device
+## 在 iOS 设备上安装应用程序
 {: #installing-an-application-on-an-ios-device }
-From the **Details** view, you can install an application version on your iOS mobile device.
+通过**详细信息**视图，您可以在 iOS 移动设备上安装应用程序版本。
 
-![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
+![iOS 移动设备上应用程序版本的“详细信息”视图](ac_phone_app_details_ios.jpg)
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **要点：**要在 iOS 设备上安装应用程序，首先必须为 Application Center 服务器配置 SSL。请参阅[配置安全套接字层 (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)。
+1. 在**详细信息**视图中，轻击**安装**。系统会请求您确认下载和安装应用程序版本。
+2. 轻击**安装**以确认下载和安装应用程序版本，或者轻击**取消**以取消安装。
 
-1. In the **Details** view, tap **Install**. You are requested to confirm the download and installation of the application version.
-2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
-
-    ![Canceling application installation on your iOS device](ac_app_inst_cancel_ios.jpg)
+    ![在 iOS 设备上取消应用程序安装](ac_app_inst_cancel_ios.jpg)
     
-    Depending on the action that is taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    根据所采取的操作，会安装或不安装该应用程序。应用程序安装成功之后，还会将其标记为收藏的应用程序。
 
-    Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, iOS 6 (deprecated) or earlier gives an error message.
+    在设备上安装应用程序需要一个供应概要文件来支持在所选设备上安装此应用程序。
+如果无意间尝试安装某个对设备无效的应用程序，那么 iOS 6（不推荐）或先前版本会给出一条错误消息。
     
-Unlike the Android client, after the installation is finished, the **Install** button in the **Details** view does not change its label to **Uninstall**. In iOS, no **Uninstall** button is available. It is only possible to uninstall applications through the home screen.
+与 Android 客户机不同，安装完成后，“**详细信息**”视图中的**安装**按钮不会将其标签更改为**卸载**。在 iOS 中，没有**卸载**按钮可用。
+只能通过主屏来卸载应用程序。
 
-Some versions of iOS 7 might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+iOS 7 的部分版本可能会尝试在无限循环中安装此应用程序，而从不会成功或指示任何错误。
+主屏中会出现显示安装进度的应用程序图标，但由于是无限循环，因此难以删除此应用程序图标以停止该无限循环。
+变通方法是将此设备设定为飞行模式。
+在此模式下，无限循环将停止，这样您可以按照删除 iOS 设备上应用程序的正常步骤来删除此应用程序图标。
 
-After the application is installed on the device, you can open it.
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+在设备上安装应用程序之后，可以将其打开。
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+总之，仅当使用供应概要文件对 iOS 应用程序签名之后才能将其安装在设备上。请参阅[导入并构建项目（Android、iOS 和 Windows Phone）](../preparations/#importing-and-building-the-project-android-ios-windows-phone)。
 
-To establish trust for a provisioning profile after the application is installed:
+从 iOS 9 起，打开公司应用程序时，根据供应概要文件类型，可能会显示“不可信的企业开发人员”消息。此消息说明在此设备上尚未信任此供应概要文件。在此情况下，除非建立针对此供应概要文件的信任，否则不会打开此应用程序。只能针对每个供应概要文件建立一次信任。
 
-#### Until iOS 9.1
+要在安装应用程序后建立针对供应概要文件的信任：
+
+#### 对于低于 iOS 9.1 的版本
 {: #until-ios-91-app }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. 转至**设置 → 常规 → 概要文件**。在**企业应用程序**标题下，您会看到应用程序的供应概要文件。
+2. 轻击概要文件并确认信任。
 
-#### Since iOS 9.2
+#### 从 iOS 9.2 起
 {: #since-ios-92-app }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. 转至**设置 → 常规 → 概要文件 → 设备管理或概要文件和设备管理**。在**企业应用程序**标题下，您会看到应用程序的供应概要文件。
+2. 轻击概要文件并确认信任。
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+确认信任后，所有使用此供应概要文件的应用程序都不会显示“不可信的企业开发人员”消息。有关更多信息，请访问 Apple Web 站点：[https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460)。
 
-## Installing an application on a Windows Phone device
+## 在 Windows Phone 设备上安装应用程序
 {: #installing-an-application-on-a-windows-phone-device }
-From the **Details** view, you can install a company application on your Windows phone device.  
-The **Details** view of the selected application displays information about the application that you want to install.
+在**详细信息**视图中，您可在 Windows Phone 设备上安装公司应用程序。  
+所选应用程序的**详细信息**视图显示有关想要安装的应用程序的信息。
 
-![Details view of a version of a company application for installation on a Windows Phone device](ac_phone_app_details_wp.jpg)
+![在 Windows Phone 设备上安装的公司应用程序版本的“详细信息”视图](ac_phone_app_details_wp.jpg)
 
-1. In the **Details** view, tap **Install**. The application is downloaded and installed. You can tap **Cancel** at any time during the downloading of the application to cancel the activity. **Cancel** appears only during the downloading step of the installation process.
+1. 在**详细信息**视图中，轻击**安装**。这样会下载和安装该应用程序。您可以在下载应用程序期间随时轻击**取消**以取消该活动。
+**取消**仅在安装过程的下载步骤期间显示。
 
-    At the beginning of the installation process, you are requested to confirm whether you want to add the company application to the applications installed on your mobile device.
+    在安装流程的开始，将请求您确认是否想要将公司应用程序添加到安装在移动设备上的应用程序。
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel the installation. The application is marked as a favorite app.
+2. 轻击**安装**以确认安装应用程序，或轻击**取消**以取消安装。将该应用程序标记为收藏的应用程序。
 
-    ![Confirming or canceling installation of a company application on a Windows Phone device](ac_confirm_instal_app_wp.jpg)
+    ![确认或取消在 Windows Phone 设备上安装公司应用程序](ac_confirm_instal_app_wp.jpg)
     
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later.
+> **提示：**在设备上安装公司应用程序时，必须将设备连接到 Microsoft 服务器以验证应用程序签名。Microsoft 服务器有时候可能无响应。在此情况下，您可在几分钟之后再次尝试安装。可能出现的错误消息如下：
 
-The possible error messages are:
+* **该公司应用程序存在问题。请联系公司的支持人员以获取帮助。**
 
-* **There's a problem with this company app. Contact your company's support person for help.**
+    您可能使用的是未签署的 Windows Phone 应用程序包 (.xap) 文件。在 Application Center 中使用应用程序包 (.xap) 文件之前，必须签署这些文件。如果 Microsoft 服务器无响应且无法验证公司应用程序的签名，也可能出现该消息。在此情况下，请在几分钟之后再次尝试安装。
 
-    You are probably using an unsigned Windows Phone application package (.xap) file. You must sign application package (.xap) files before using them in the Application Center. This message might also occur if the Microsoft server does not respond and the signature of the company application cannot be validated. In this case, try the installation again a few minutes later.
+* **安装该应用程序之前，您需要添加……公司帐户。**
 
-* **Before you install this app, you need to add ... company account.**
+    Windows Phone 应用程序包 (.xap) 文件已签署，但是该设备未注册公司应用程序。必须首先在设备上安装公司的应用程序注册标记。
 
-    The Windows Phone application package (.xap) file is signed, but the device is not enrolled for company applications. You must first install on the device the application enrollment token of the company.
+* **尚未能联系到公司帐户来确保您可安装该应用程序...**
 
-* **We haven't been able to contact the company account to make sure you can install this app. ...**
+    可能是公司帐户到期或被阻塞，或者 Microsoft 服务器暂时无响应。
+确保您的设备连接到因特网并连接到 Microsoft 服务器，然后再次尝试。
 
-    Either the company account is expired or blocked, or the Microsoft server is temporarily not responding. Make sure that your device is connected to the internet and connected to the Microsoft server, and try again.
+> **要点：**如果使用多个公司帐户注册设备，那么 Windows Phone 操作系统可能在以下消息中显示错误的公司帐户：**您想要安装来自 name 公司的应用程序吗？**。该消息不受 Application Center 控制。该情况只是显示问题，不影响功能。根据您所采取的操作，会安装或不安装该应用程序。
 
-> **Note:** If a device is registered with several company accounts, the Windows Phone operating system might display the wrong company account in the message **Would you like to install application from company name?**. This message is outside the control of the Application Center. This situation is a display problem only and does not affect the functionality.
-
-Depending on the action that you take, the application is installed or not.
-
-> **Tip:** The install process will not work if the PFX certificate used to code sign the application package (.xap) file of the application that you want to install has expired. Windows Phone operating system returns an error with **HRESULT 0x81030110**. When you renew your PFX certificate, you must code sign again with this new certificate all the deployed applications that you have in your Application Center catalog.
+> **提示：**如果用于对要安装的应用程序的应用程序包 (.xap) 文件进行代码签名的 PFX 证书到期，那么将不会运行安装过程。Windows Phone 操作系统将返回一个错误，显示 **HRESULT 0x81030110**。当您更新 PFX 证书时，必须使用此新证书对 Application Center 目录中部署的所有应用程序重新进行代码签名。
 > 
-When you renew your PFX code-signing certificate, you must also renew the enrollment token and deploy it on the Application Center console. Devices must also be re-enrolled to the company account with this new token. Users of devices enrolled with an expired token cannot install any applications.
+当您更新 PFX 代码签名证书时，还必须更新注册标记并将其部署在 Application Center 控制台上。
+还必须使用此新标记向公司帐户重新注册设备。使用过期标记注册设备的用户不能安装任何应用程序。
 
-In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
+在 Windows Phone 8.1 中，如果 Application Center 客户机未进行代码签名（例如，在 Visual Studio 中对其调试时），那么您将无法使用此未签署的客户机来安装任何应用程序。在这种情况下，Windows Phone 操作系统将返回一个错误，显示 **HRESULT 0x800703F0**。在 Windows Phone 8.1 中安装应用程序前，必须对客户机的应用程序包 (.xap) 文件进行代码签名。
 
-## Installing a Windows Store application on a Windows device
+
+## 在 Windows 设备上安装 Windows Store 应用程序
 {: #installing-a-windows-store-application-on-a-windows-device }
-Use sideloading to install Windows Store apps through Application Center.
+使用侧加载通过 Application Center 安装 Windows Store 应用程序。
 
-You must check that your configuration satisfies the application sideloading prerequisites that are described in Prepare to Sideload Apps.  
-The device user needs administrator rights on the device to execute the Application Center client.
+您必须查看您的配置是否满足“准备侧加载应用程序”中所述的应用程序侧加载先决条件。  
+设备用户需要具有设备的管理员权限才能够执行 Application Center 客户机操作。
 
-Installing APPX packages through Application Center is done by a process called sideloading. As part of Windows 8.1 Update, sideloading is enabled for all Windows 8.1 Pro devices that are part of an Active Directory domain, which matches the current behavior of Windows 8.1 Enterprise. If you use either of those product versions and the device is part of an Active Directory domain, you have no concerns about sideloading keys or activating sideloading.
 
-When you develop a Windows Store application, Microsoft Visual Studio automatically generates a self-signed certificate and uses it to code sign the application package. To be able to install the application later by using Application Center, you must import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine". Importing the certificate is a manual procedure.
+通过 Application Center 安装 APPX 包的过程可由一个称为“侧加载”的进程来完成。作为 Windows 8.1 更新的一部分，系统会针对属于 Active Directory 域的所有 Windows 8.1 Pro 设备启用侧加载，这与 Windows 8.1 Enterprise 的当前行为相一致。
+如果使用任一此产品版本，并且设备属于 Active Directory 域，那么您不必担心侧加载密钥或激活侧加载。
 
-> **Note:** Manual installation of a certificate is only required for the development phase, because APPX code signing relies on a self-signed certificate generated by Microsoft Visual Studio. In production, your APPX file must be signed by a genuine certificate purchased from a recognized root certificate authority.
+当您开发 Windows Store 应用程序时，Microsoft Visual Studio 会自动生成一份自签名证书，并使用它对应用程序包进行代码签名。为了能够在以后使用 Application Center 安装应用程序，必须将该证书导入“本地计算机”的“可信根认证中心”库中。导入证书是一种手动完成的过程。
 
-The first step of this procedure tells you how to install the certificate before you can install the application through Application Center.
+> **要点：**仅在开发阶段才需要手动安装证书，因为 APPX 代码签名依赖于 Microsoft Visual Studio 所生成的自签名证书。在生产中，必须使用从公认的根认证中心购买的真实证书来对 APPX 文件进行签名。该过程的第一步是告诉您在通过 Application Center 安装应用程序之前如何安装证书。
 
-1. Import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine".
-    * After you have generated an APPX file by using Visual Studio, place this file in your file system. In the folder of the APPX file, you can see a certificate (.cer) file that contains the self-signed certificate that you must import.
-    ![Certificate file in the application package folder](cer_file_win8.jpg)
-    * To open the certificate, double-click the CER file.
-    * Click Install Certificate.
-    ![General information about the certificate](cert_props_win8.jpg)    
-    * Select "Local Machine" and click **Next**.
-    ![Specifying the local machine in the Certificate Import Wizard](cert_localmachine_win8.jpg)    
-    * Select "Place all certificate in the following store" and then browse to select "Trusted Root Certification Authorities".
-    ![Placing the certificate in "Trusted Root Certificate Authorities"](cert_trustedroot_win8.jpg)    
-    * Click **Next** and then **Finish**. The successful import of the certificate should be confirmed.
+1. 将该证书导入到“本地计算机”的“可信根认证中心”库中。
+    * 在使用 Visual Studio 生成 APPX 文件之后，将该文件放入您的文件系统中。在 APPX 文件的文件夹中，可以查看证书 (.cer) 文件，此文件包含您必须导入的自签名证书。
+![应用程序包文件夹中的证书文件](cer_file_win8.jpg)
+    * 要打开该证书，请双击 CER 文件。
+    * 单击“安装证书”。![有关证书的常规信息](cert_props_win8.jpg)    
+    * 选择“本地计算机”，然后单击**下一步**。![在“证书导入向导”中指定本地计算机](cert_localmachine_win8.jpg)    
+    * 选择“将所有证书放入下列库中”，然后浏览并选择“可信根认证中心”。![将证书放入“可信根认证中心”](cert_trustedroot_win8.jpg)    
+    * 单击**下一步**，然后单击**完成**。您应确认已成功导入该证书。
 
-The following steps describe how to perform the installation of a Windows Store application on a Windows device by using Application Center.
+下列步骤描述了如何通过使用 Application Center 在 Windows 设备上安装 Windows Store 应用程序。
 
-1. Log in to the Application Center mobile client for Windows Store applications.
-2. Select the application that you want to install to access its details.
+1. 登录到 Windows Store 应用程序的 Application Center 移动式客户机。
+2. 选择要安装的应用程序以访问其详细信息。
 
-    ![Details view for installing a Windows Store app](ac_details_wstore_app.jpg)
+    ![用于安装 Windows Store 应用程序的“详细信息”视图](ac_details_wstore_app.jpg)
 
-3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
+3. 要安装应用程序，请轻击**安装**。如果已安装了应用程序并且有其他可用版本，那么您可以决定是更新到较高版本还是还原至较低版本。
 
-## Installing applications through public app stores
+## 通过通用应用商店安装应用程序
 {: #installing-applications-through-public-app-stores }
-You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
+您可从移动式客户机链接至存储在受支持的通用应用商店中的应用程序，并遵循通用应用商店的常规过程在兼容设备上安装这些应用程序。
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
+Application Center 管理员可创建到存储在受支持通用应用商店中的已选应用程序的链接，并使 Application Center 移动式客户机用户能够在与这些应用程序匹配的操作系统上使用这些链接。请参阅[从通用应用商店添加应用程序](../appcenter-console/#adding-an-application-from-a-public-app-store)。您可通过兼容设备上的移动式客户机安装这些应用程序。
 
-Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
+设备的应用程序列表列出了存储在 Google
+Play 中的 Android 应用程序链接和存储在 Apple iTunes 中的 iOS 应用程序链接，以及在企业内部创建的专用应用程序的二进制文件。
 
-1. Select an application stored in a public app store from the application list to see the application details. Instead of Install, you see Go to Store.
-2. Tap **Go to Store** to open Google play or Apple iTunes.
+1. 从应用程序列表中选择存储在通用应用商店中的应用程序，以查看应用程序详细信息。您将看到“转至商店”，而不是“安装”。
+2. 轻击**转至商店**以打开 Google play 或 Apple iTunes。
 
     **Android**
-    ![Accessing an application in Google play from the mobile client on the device](ac_and_link_app.jpg)
+    ![从设备上的移动式客户机访问 Google play 中的应用程序](ac_and_link_app.jpg)
     
     **iOS**
-    ![Accessing an application in Apple iTunes from the mobile client on the device](ac_ios_link_app.jpg)
+    ![从设备上的移动式客户机访问 Apple iTunes 中的应用程序](ac_ios_link_app.jpg)
     
-3. Follow the usual procedure of the public app store to install the application.
+3. 遵循通用应用商店的常规过程，安装应用程序。
 
-## Removing an installed application
+## 除去已安装的应用程序
 {: #removing-an-installed-application }
-You can remove an application that is installed on your mobile device.
+您可以除去安装在您的移动设备上的应用程序。
 
-1. Start the removal procedure that is valid for the operating system of your device.
-    * **Android**: See the procedure in step 2.
-    * **iOS**: You can remove applications only from the iOS Home screen, and not through the Application Center client. Use the normal iOS procedure for removing an application.
-    * **Windows Phone**: You can remove applications only from the Windows Phone Home screen, and not through the Application Center client. Use the normal Windows Phone procedure for removing an application.
-    * **Windows Store**: You can remove applications either from the Application Center mobile client or from the Windows home screen.
-2. **Android only**: Remove an application from an Android device.
-    * In the **Details** view of any version of the application, tap **Uninstall**. The **Uninstall** button appears in the **Details** view only when a version of the application is installed. You are requested to confirm that the application version is to be uninstalled.
-        * Tap **Uninstall** to uninstall the application version or **Cancel** to notify the application that the uninstallation command has been canceled.
+1. 启动对您设备的操作系统有效的除去过程。
+    * **Android**：请参阅步骤 2 中的过程。
+    * **iOS**：您只能从 iOS 主屏中除去应用程序，而不能通过 Application Center 客户机除去。使用常规 iOS 过程除去应用程序。
+    * **Windows Phone**：您只能从 Windows Phone 主屏中除去应用程序，而不能通过 Application Center 客户机除去。使用常规 Windows Phone 过程除去应用程序。
+    * **Windows Store**：您既可以通过 Application Center 移动式客户机除去应用程序，也可以从 Windows 主屏中除去应用程序。
+2. **仅限 Android**：从 Android 设备除去应用程序。
+    * 在任何版本的应用程序的**详细信息**视图中，轻击**卸载**。仅当已安装某个应用程序版本时，**卸载**按钮才会显示在**详细信息**视图中。系统会请求您确认是否要卸载该应用程序版本。
+        * 轻击**卸载**以卸载应用程序版本，或者轻击**取消**以通知应用程序已取消卸载命令。
 
-## Showing details of a specific application version
+## 显示特定应用程序版本的详细信息
 {: #showing-details-of-a-specific-application-version }
-You can show the details of the selected version of an application by following the appropriate procedure for an Android or iOS phone or tablet, a Windows Phone device, or a Windows device.
+可以针对 Android 或 iOS 手机/平板电脑、Windows Phone 设备或 Windows 设备执行相应过程来显示所选应用程序版本的详细信息。
 
-1. Show details of a specific application version on a mobile device by selecting the appropriate procedure for your device.
-    * A Windows Phone, Android, or iOS phoneA phone; see step 2.
-    * A Windows device; see step 3
-    * A tablet; see step 4.
-2. **Windows Phone, Android, iOS only**: Show details of a specific application version on a Windows Phone, Android, or iOS phone.
-    * Tap **Select a version** to navigate to the version list view.
-    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg) 
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-3. Windows only: Show details of a specific Windows Store application version on a Windows device. If more than one version is available for the Windows Store application, then you can select which version that you want to install.
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-4. Tablet devices only: Show details of a specific application version on a tablet.
-    * Tap **Select version**.
-    * In the menu, select the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
+1. 针对您的设备选择相应的过程以显示移动设备上特定应用程序版本的详细信息。
+    * 针对 Windows Phone、Android 或 iOS 手机；请参阅步骤 2。
+    * 针对 Windows 设备；请参阅步骤 3
+    * 针对平板电脑：请参阅步骤 4。
+2. **仅限 Windows Phone、Android 和 iOS**：在 Windows Phone、Android 或 iOS 手机上显示特定应用程序版本的详细信息。
+    * 轻击**选择版本**以浏览至版本列表视图。![在 Windows Phone、Android 或 iOS 手机上的版本列表中选中的应用程序的特定版本](ac_version_select.jpg) 
+    * 轻击应用程序的相应版本。**详细信息**视图会更新并显示所选应用程序版本的详细信息。
+3. 仅限 Windows：显示 Windows 设备上特定 Windows Store 应用程序版本的详细信息。如果 Windows Store 应用程序提供有多个版本，那么您可以选择想要安装的版本。
+    * 轻击应用程序的相应版本。**详细信息**视图会更新并显示所选应用程序版本的详细信息。
+4. 仅限平板电脑设备：显示平板电脑上特定应用程序版本的详细信息。
+    * 轻击**选择版本**。
+    * 在菜单中，选择相应的应用程序版本。**详细信息**视图会更新并显示所选应用程序版本的详细信息。
 
-## Updating an application
+## 更新应用程序
 {: #updating-an-application }
-Follow this procedure to make the latest versions of favorite and recommended apps available on your device. Applications that are marked as favorites and that have an updated version are listed in the **Updates** view. The applications that are marked as recommended by the Application Center server administrator are also listed in the **Updates** view, even if they are not favorites.
+遵循该过程以使最新版本的收藏应用程序和推荐应用程序在您的设备上可用。标记为收藏项的应用程序和具有更新版本的应用程序会列在**更新**视图中。Application Center 服务器管理员标记为推荐的应用程序即使不是收藏的应用程序，也会列在**更新**视图中。
 
-If a more up-to-date version of an installed application is available on the server, it is listed under **Update or Recommended**.
+如果在服务器上有已安装应用程序的更新版本可用，那么此版本会列在**更新或推荐**下。
 
-1. In the **Updates** view, navigate to the **Details** view.
-2. In the **Details** view, select a newer version of the application or take the latest available version.
-3. **Android and Windows 8 Universal**: On Android and Windows 8 Universal devices, tap **Update**.
-4. **iOS only**: On iOS devices, tap **Install latest**.
-5. Follow the appropriate application installation procedure.
-    * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-    * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-    * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-    * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
+1. 在**更新**视图中，浏览至**详细信息**视图。
+2. 在**详细信息**视图中，选择应用程序的更新版本或者采用最新的可用版本。
+3. **Android 和 Windows 8 Universal**：在 Android 和 Windows 8 Universal 设备上，轻击**更新**。
+4. **仅限 iOS**：在 iOS 设备上，轻击**安装最新版本**。
+5. 遵循相应的应用程序安装过程进行操作。
+    * [在 Android 设备上安装应用程序](#installing-an-application-on-an-android-device)
+    * [在 iOS 设备上安装应用程序](#installing-an-application-on-an-ios-device)
+    * [在 Windows Phone 设备上安装应用程序](#installing-an-application-on-a-windows-phone-device)
+    * [在 Windows 设备上安装 Windows Store 应用程序](#installing-a-windows-store-application-on-a-windows-device)
 
-## Upgrading the Application Center client automatically
+## 自动升级 Application Center 客户机
 {: #upgrading-the-application-center-client-automatically }
-You can enable automatic detection of new versions of the client application. Then, you can choose whether to download and install the new version on your mobile device. This feature is supported for iOS, Android, and Windows Phone.
+可以启用对客户机应用程序的新版本的自动检测。之后，可以选择是否在移动设备中下载和安装新版本。
+iOS、Android 和 Windows Phone 支持该功能。
 
-New versions of the mobile client application that are available on the Application Center server can be detected automatically. When this feature is enabled, a more recent version of the application, if it exists, can be detected at start up or each time that the Available applications view is refreshed.
+可以自动检测 Application Center 服务器上可用的新移动式客户机应用程序版本。
+启用此功能时，可以在启动时或每次刷新“可用应用程序”视图时检测到更新的应用程序版本（如果存在）。
 
-f a later version of the application is detected, you are requested to download and install the later version.
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+如果检测到应用程序的更新版本，系统将请求您下载并安装此更新版本。
 
-If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
 
-1. When a later version of the client is detected, tap **OK** to start the download and installation sequence.
+缺省情况下，通过将 **appCenterAutoUpgrade** 属性设置为 **true** 启用了 Application Center 客户机应用程序的自动升级。该属性位于 Application Center 的 {{ site.data.keys.product_full }}    项目中：**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**。
 
-    ![Detection of a later version of the client application available on the server](ac_client_autoupgrade_detect.jpg)
+如果要禁用自动升级，必须将此属性设置为 false，并为所需平台重新构建项目。
 
-2. Tap **Install** to install the later version of the application.
 
-    ![Confirm installation of the updated version of the application](ac_client_autoupgrade_install_app.jpg)
+1. 当检测到客户机的更新版本时，轻击**确定**以启动下载和安装序列。
 
-3. Tap **Open** to start the updated application.
 
-    ![Starting the updated application](ac_client_autoupgrade_start_app.jpg)
+    ![检测服务器上可用的客户机应用程序的更新版本](ac_client_autoupgrade_detect.jpg)
+
+2. 轻击**安装**以安装应用程序的更新版本。
+
+
+    ![确认安装应用程序的更新版本](ac_client_autoupgrade_install_app.jpg)
+
+3. 轻击**打开**以启动更新的应用程序。
+
+    ![启动更新的应用程序](ac_client_autoupgrade_start_app.jpg)
     
-You must log in to the updated version of the application to run it.
+必须登录到应用程序的更新版本才能够运行此版本。
 
-![Logging in to the new version of the client application](ac_client_autoupgrade_login_new_version.jpg)
 
-**Note:** To upgrade the Application Center client, the following conditions apply:
+![登录到客户机应用程序的新版本
+](ac_client_autoupgrade_login_new_version.jpg)
 
-1. The new Application Center client must use the same package name or bundle identifier as the old client.
-2. On iOS, the new Application Center client must be signed with the same provisioning profile as the old client.
-3. On Android, the new Application Center client must have the same signature as the old client.
-4. On Windows Phone, the new Application Center client must be signed with the same company account as the old client.
+**注：**要升级 Application Center 客户机，必须满足以下条件：
 
-## Reverting an installed application
+
+1. 新的 Application Center 客户机必须使用与旧客户机相同的包名或捆绑标识。
+2. 在 iOS 上，必须使用与旧客户机相同的供应概要文件签署新的 Application Center 客户机。
+3. 在 Android 上，新的 Application Center 客户机必须具有与旧客户机相同的签名。
+4. 在 Windows Phone 上，必须使用与旧客户机相同的公司帐户签署新的 Application Center 客户机。
+
+## 还原已安装的应用程序
 {: #reverting-an-installed-application }
-You can revert the version of an installed application if an earlier version exists on the server.
+如果在服务器上存在先前版本的应用程序，那么您可以还原已安装应用程序的版本。
 
-To replace the currently installed version of an application with an earlier version, from the **Catalog**, **Updates**, or **Favorites** view, navigate to the Details view. In the **Details** view, select an earlier version. See [Showing details of a specific application version](#showing-details-of-a-specific-application-version) for information about how to display details of a specific application version on a mobile device.
+要将当前安装的应用程序版本替换为先前的版本，请从**目录**、**更新**或**收藏夹**视图中浏览至“详细信息”视图。在**详细信息**视图中，选择先前的版本。
+请参阅[显示特定应用程序版本的详细信息](#showing-details-of-a-specific-application-version)，以获取有关如何在移动设备上显示特定应用程序版本的详细信息的信息。
 
-### On Android
+### 在 Android 上
 {: #on-android }
-If the installed version of the Android operating system is earlier than 4.2.2, tap **Revert**.  
-If the installed version of the Android operating system is 4.2.2 or later, you must uninstall the current version before you can install the earlier version.
+如果安装的 Android 操作系统版本低于 4.2.2，请轻击**还原**。  
+如果安装的 Android 操作系统版本为 4.2.2 或更高版本，那么必须卸载当前版本，然后才能安装先前的版本。
 
-Then, follow the procedure documented in [Installing an application on an Android device](#installing-an-application-on-an-android-device).
+然后，遵循[在 Android 设备上安装应用程序](#installing-an-application-on-an-android-device)中记录的过程。
 
-### On iOS
+### 在 iOS 上
 {: #on-ios }
-Use the normal procedure of the operating system to remove the application.  
-Tap **Install** to install the earlier version of the application. Follow the procedure documented in [Installing an application on an iOS device](#installing-an-application-on-an-ios-device).
+使用操作系统的正常过程来除去应用程序。  
+轻击**安装**以安装应用程序的先前版本。遵循[在 iOS 设备上安装应用程序](#installing-an-application-on-an-ios-device)中记录的过程。
 
-### On Windows Phone
+### 在 Windows Phone 上
 {: #on-windows-phone }
-Tap **Revert**. Follow the procedue documented in [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device).
+轻击**还原**。
+遵循[在 Windows Phone 设备上安装应用程序](#installing-an-application-on-a-windows-phone-device)中记录的过程。
 
-## Marking or unmarking a favorite app
+## 标记或取消标记收藏的应用程序
 {: #marking-or-unmarking-a-favorite-app }
-Mark your favorite apps or unmark an app to have it removed from the favorites list.
+标记收藏的应用程序或取消标记应用程序以将其从收藏夹列表中除去。
 
-An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
+在设备上将应用程序标记为收藏项表示您关注此应用程序。然后，此应用程序会列在收藏的应用程序的列表中，以便于查找该应用程序。该应用程序会显示在属于您且与此应用程序兼容的每个设备上。如果在 Application Center 中提供了该应用程序的更新版本，那么该应用程序会列在**更新**视图中。
 
-To mark or unmark an application as a favorite app, tap the Favorites icon <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Icon in the shape of a star that indicates a favorite app"/>. in the header of the **Details** view.  
+要将某个应用程序标记或取消标记为收藏的应用程序，请轻击**详细信息**视图的标题中的“收藏夹”图标 <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="表示收藏的应用程序的星型图标"/>。  
 
-An installed application is automatically marked as a favorite app.
+已安装的应用程序会自动标记为收藏的应用程序。
 
-## Submitting a review for an installed application
+## 提交已安装应用程序的评论
 {: #submitting-a-review-for-an-installed-application }
-You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
+您可以对移动设备上安装的应用程序版本进行评论；评论必须包含评级和评论。仅当移动设备上已安装某个应用程序版本时，您才能提交对该版本的评论。
 
-1. In the **Details** view, initiate your review.
-    * On iOS phones and tablets, tap **Review version X**.
-    * On Android phones and tablets, tap **Review version X**.
-2. Enter a nonzero star rating.
+1. 在**详细信息**视图中，开始评论。
+    * 在 iOS 手机和平板电脑上，轻击**评论 VX**。
+    * 在 Android 手机和平板电脑上，轻击**评论 VX**。
+2. 输入评论星级（非零）。
 
-    On mobile devices with touchscreens, tap 1 to 5 stars to represent your approval rating of the version of the application. One star represents the lowest level of appreciation and five stars represent the highest level of appreciation.
+    在带有触摸屏的移动设备上，轻击 1 到 5 颗星以表示您对该应用程序的版本的审核评级。一颗星表示最低级别的评论，五颗星表示最高级别的评论。
 
-3. Enter a comment about this version of the application.
-4. Tap **Submit** to send your review to the Application Center.
+3. 输入关于此应用程序版本的评论。
+4. 轻击**提交**以将您的评论发送给 Application Center。
 
-## Viewing reviews
+## 查看评论
 {: #viewing-reviews }
-You can view reviews of a specific version of an application or of all versions of an application.  
+您可以查看应用程序的特定版本或所有版本的评论。  
 
-Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
+评论按降序显示，最近的评论排在最前。
+如果评论数量超过一个屏幕可显示的数量，请轻击**装入更多**以显示更多评论。在 Android、iOS 和 Windows Phone 设备上，可在列表中查看评论的详细信息。
 
-### Viewing reviews of a specific version
+### 查看特定版本的评论
 {: #viewing-reviews-of-a-specific-version }
-The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
-In the **Details** view of an application version:
+**详细信息**视图始终显示特定版本的详细信息。在电话上，评论仅针对该版本。  
+在应用程序版本的**详细信息**视图中：
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the Reviews view.
-* On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
+* 在 Windows Phone、Android 或 iOS 手机上，轻击**查看评论**以浏览至“评论”视图。
+* 在平板电脑上，轻击**评论** xx，其中 xx 是应用程序的显示版本。
 
-### Viewing reviews of all versions of an application
+### 查看应用程序的所有版本的评论
 {: #viewing-reviews-of-all-versions-of-an-application }
-In the **Details** view of an application version:
+在应用程序版本的**详细信息**视图中：
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.
-* On a tablet, tap **All Reviews**.
+* 在 Windows Phone、Android 或 iOS 手机上，轻击**查看评论**以浏览至**评论**视图。然后，轻击设置图标。
+轻击**所有版本**，然后确认选择。
+* 在平板电脑上，轻击**所有评论**。

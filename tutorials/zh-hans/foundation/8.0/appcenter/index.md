@@ -3,182 +3,191 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 13
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
+了解有关 {{ site.data.keys.mf_app_center_full }}  的信息：其用途、不同的组件和功能，以及如何使用控制台和客户机。
 
-The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
-The Application Center is a tool to make sharing mobile applications within an organization easier.
+移动设备的销量现已超出了个人计算机。
+因此，移动应用程序对于企业至关重要。  
+Application Center 是一种便于在组织内共享移动应用程序的工具。
 
-You can use the Application Center as an enterprise application store. With the Application Center, you can target some mobile applications to particular groups of users within the company.
+您可以将 Application Center 用作企业应用商店。通过 Application Center，您可以使某些移动应用程序以公司内的特定用户组为目标。
 
-A development team can also use the Application Center during the development phase of an application to share applications with testers, designers, or executives in the company. In such a scenario, it makes collaboration easier between all the people who are involved in the development process.
+开发团队还可以在应用程序的开发阶段使用 Application Center 来与公司内的测试员、设计者或者主管共享应用程序。在此类场景中，开发流程所涉及的所有人员之间可以更轻松地进行协作。
 
-> You can also review [the Application Center tutorial](app-center-tutorial).
+> 您还可以查看 [Application Center 教程](app-center-tutorial)。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
-* [Concept of Application Center](#concept-of-application-center)
-* [Specific platform requirements](#specific-platform-requirements)
-* [General architecture](#general-architecture)
-* [Preliminary information](#preliminary-information)
-* [What's next](#whats-next)
+* [Application Center 概念](#concept-of-application-center)
+* [特定平台需求](#specific-platform-requirements)
+* [常规体系结构](#general-architecture)
+* [初步信息](#preliminary-information)
+* [下一步是什么](#whats-next)
 
-## Concept of Application Center
+## Application Center 概念
 {: #concept-of-application-center }
-Application Center can be used as an Enterprise application store and is a means of sharing information among different team members within a company.
+Application Center 可以用作企业应用商店，也是在公司内的不同团队成员之间共享信息的一种方式。
 
-The concept of Application Center is similar to the concept of the Apple public App Store or the Android Market, except that it targets only private usage within a company.
+Application Center 的概念类似于 Apple 通用应用商店或 Android Market 的概念，但它专供公司内部使用。
 
-By using Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.
+通过 Application Center，来自同一公司或组织的用户可以从用作移动应用程序存储库的单一位置中，将应用程序下载到手机或平板电脑上。
 
-Application Center targets mobile applications that are installed on the device itself. Those applications can be native applications that are built by using the device SDK or hybrid applications that mix native and web content. Application Center does not target mobile web applications; such applications are delivered to the mobile device web browser through a URL like a website.
+Application Center 将设备本身上安装的移动应用程序作为目标。这些应用程序可以是使用设备 SDK 构建的本机应用程序或者混合了本机内容和 Web 内容的混合应用程序。Application Center 不会将移动 Web 应用程序作为目标；可通过 URL（与 Web 站点类似）将此类应用程序交付到移动设备 Web 浏览器。
 
-In the current version, Application Center supports applications that are built for the Google Android platform, the Apple iOS platform, the Windows Phone 8 platform, and the Windows 8 platform.
+在当前版本中，Application Center 支持针对 Google Android 平台、Apple iOS 平台、Windows Phone 8 平台和 Windows 8 平台构建的应用程序。
 
-For Windows Phone, only the Windows Phone application package (.xap) file format is currently supported, not the app package (.appx) file format (universal app format). For Windows Store (Desktop applications), the app package (.appx) file format is supported.
+对于 Windows Phone，当前仅支持 Windows Phone 应用程序包 (.xap) 文件格式，而不支持应用程序包 (.appx) 文件格式（通用应用程序格式）。对于 Windows Store（桌面应用程序），支持应用程序包 (.appx) 文件格式。
 
-Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
+当前版本的 Application Center 不支持 Windows Phone 7、Windows RT 和 BlackBerry OS。
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
+Application Center 可管理移动应用程序；它支持任何类型的 Android、iOS、Windows Phone 8 或 Windows 8 应用程序，包括基于 {{ site.data.keys.product }}    构建的应用程序。
 
-You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
+可以在应用程序的开发过程中使用 Application Center。Application Center 的典型场景是由一个团队构建一个移动应用程序；开发团队创建新版本的 Android、iOS、Windows Phone 或 Windows 8 应用程序。开发团队希望此新版本由更多团队成员复审和测试。开发人员转至 Application Center 控制台，并将新版本的应用程序上载到 Application Center。
+作为此过程的一部分，此开发人员可以输入应用程序版本的描述。例如，描述可以提及开发团队基于先前的版本添加或修订的元素。然后该应用程序的新版本可供团队的其他成员使用。
 
-Another person, for example, a beta tester, can launch Application Center installer application, the mobile client, to locate this new version of a mobile application in the list of available applications and install it on his mobile device. After testing the new version, the beta tester can rate the application and submit feedback. The feedback is visible to the developer from the Application Center console.
+另一个人（例如，beta 测试员）可以启动 Application Center 安装程序（即移动式客户机）以在可用应用程序列表中查找此新版本的移动应用程序，然后将其安装在自己的移动设备上。在测试新版本之后，此 beta 测试员可以对该应用程序评级并提交反馈。开发人员可以从 Application Center 控制台中看到此反馈。
 
-Application Center is a convenient way to share mobile applications within a company or a group; it is a means of sharing information among team members.
+Application Center 是在公司或团队内共享移动应用程序的一种便捷方式，也是在团队成员之间共享信息的一种方式。
 
-## Specific platform requirements
+## 特定平台需求
 {: #specific-platform-requirements }
-Different operating systems impose specific requirements for deploying, installing, or using applications on the appropriate mobile devices.
+不同的操作系统对于在相应移动设备上部署、安装或使用应用程序有不同的要求。
 
 ### Android
 {: #android }
-The mobile device must be configured for installation from unknown sources. The corresponding toggle can be found in the Android Settings. See [User Opt-in for apps from unknown sources for details](http://developer.android.com/distribute/open.html#unknown-sources).  
+必须配置移动设备，以支持从未知源安装。Android 设置中可找到相应的切换。
+请参阅 [User Opt-in for apps from unknown sources](http://developer.android.com/distribute/open.html#unknown-sources)，以获取详细信息。  
 
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is only used as an informative display string. For Android applications, the internal version is the android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) from the application manifest, and it must be an integer.
+在 Application Center 中，应用程序具有内部版本号和商业版本号。内部版本号用于区别哪个版本更新，而商业版本仅用作参考显示字符串。对于 Android 应用程序，内部版本为来自应用程序清单的 android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode)，并且此版本号必须为整数。
 
 ### iOS
 {: #ios }
-All applications that are managed through Application Center must be packaged for "Ad Hoc Distribution". With an iOS developer account, you can share your application with up to 100 iOS devices. With an iOS enterprise account, you can share your in-house application with an unlimited number of iOS devices. See [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) and [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/) for details.
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is used only as an informative display string. For iOS applications, the internal version is the CFBundleVersion from the application manifest **Info.plist**. The version number must have the following format: `a`, or `a.b`, or `a.b.c`, where `a`, `b`, `c` are non-negative integers, and `a` is not `0`.
+通过 Application Center 管理的所有应用程序都必须按照“特别分发版”打包。通过 iOS 开发人员帐户，
+您最多可与 100 个 iOS 设备共享应用程序。通过 iOS 企业帐户，您可与无限多的 iOS 设备共享内部应用程序。请参阅 [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) 和 [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/)，以获取详细信息。在 Application Center 中，应用程序具有内部版本号和商业版本号。内部版本号用于区别哪个版本更新，而商业版本仅用作为参考显示字符串。对于 iOS 应用程序，内部版本为来自应用程序清单 **Info.plist** 的 CFBundleVersion。版本号必须采用以下格式：`a`、`a.b` 或 `a.b.c`，其中 `a`、`b` 和 `c` 为非负整数，`a` 不为 `0`。
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-Applications are not installed from the Windows Store, but from Application Center, which acts as what Microsoft documentation calls a **Company Hub**. See [Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx) for details.
-To use a company hub, Windows Phone requires you to register a company account with Microsoft and to sign all applications, including the Application Center client, with the company certificate. Only signed applications can be managed through Application Center.
+应用程序不是从 Windows Store 安装的，而是从 Application Center 安装的，这就是 Microsoft 文档中所谓的**公司主数据中心**。请参阅 [Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx)，以获取详细信息。
+要使用公司主数据中心，Windows Phone 要求您向 Microsoft 注册一个公司帐户，并使用公司证书签署所有应用程序（包括 Application Center 客户机）。只有签署的应用程序才可以通过 Application Center 进行管理。
 
-You must enroll all mobile devices through an application enrollment token that is associated with your company account.
+必须通过与公司帐户关联的应用程序注册标记注册所有移动设备。
 
-Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
+Application Center 可帮助您通过用于分发应用程序注册标记的工具来注册设备。[请参阅“Windows 8 Universal 中的应用程序注册标记”以获取详细信息](appcenter-console/#application-enrollment-tokens-in-windows-8-universal)。
 
-Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
+Application Center 支持以 Windows Phone 应用程序包 (.xap) 文件（针对 Microsoft
+Windows Phone 8.0 和 Microsoft
+Windows Phone 8.1）形式分发应用程序。在 Microsoft Windows Phone 8.1 中，Microsoft 引入了一种新的通用格式，即针对 Windows Phone 的应用程序包 (.appx) 文件。目前，Application Center 不支持分发针对 Microsoft
+Windows Phone 8.1 的应用程序包 (.appx) 文件，而仅限于 Windows Phone 应用程序包 (.xap) 文件。
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows Phone 8 applications, the version number is in the **Version** field in the **WMAppManifest.xml** file. This version number must have the following format: `a.b.c.d` where `a`, `b`, `c`, `d` are non-negative integers.
+在 Application Center 中，应用程序只有一个版本号。此版本号用于区别哪个版本更新。对于 Windows Phone 8 应用程序，版本号位于 **WMAppManifest.xml** 文件的 **Version** 字段中。此版本号必须采用以下格式：`a.b.c.d`，其中 `a`、`b`、`c` 和 `d` 为非负整数。
 
 ### Windows 8
 {: #windows-8 }
-The Application Center mobile client is provided as a normal desktop executable file (.exe). Use it to install on the device Windows Store applications, which are packaged as .appx files.
-Installing a file of type appx on your device without using Windows Store is called sideloading an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading store apps to Windows 8.1 devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+Application Center 移动式客户机以一般的桌面可执行文件 (.exe) 形式提供。可使用此客户机在设备上安装 Windows Store 应用程序（打包为 .appx 文件）。在不使用 Windows Store 的情况下在设备上安装 appx 类型的文件称为侧加载应用程序。要侧加载应用程序，您必须遵循 [Prepare tosideload apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx) 中的先决条件。Windows 8.1 更新可简化侧加载的先决条件。有关更多信息，请参阅 [Sideloading store apps to Windows 8.1 devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)。
 
-Files of type .exe cannot be executed on ARM-based tablets, so Application Center does not support Windows RT; only Windows 8 and Windows 8.1 are supported.
+在基于 ARM 的平板电脑上不能执行类型为 .exe 的文件，因此 Application Center 不支持 Windows RT，而只支持 Windows 8 和 Windows 8.1。
 
-The device user needs administrator rights on the device to execute the Application Center client.
+设备用户需要具有设备的管理员权限才能够执行 Application Center 客户机操作。
 
-Application Center does not provide any predefined way of distributing the mobile client.
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows 8 applications, the version number is in the Version field in the AppxManifest.xml file. This version number must have the following format: a.b.c.d, where a, b, c, d are non-negative integers.
+Application Center 未提供任何预定义方式来分发移动式客户机。
 
-## General architecture
+在 Application Center 中，应用程序只有一个版本号。此版本号用于区别哪个版本更新。对于 Windows 8 应用程序，版本号位于 AppxManifest.xml 文件的 Version 字段中。此版本号必须采用以下格式：a.b.c.d（其中 a、b、c 和 d 为非负整数）。
+
+## 常规体系结构
 {: #general-architecture }
-The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
+Application Center 由以下主要元素组成：服务器端组件、存储库、管理控制台和移动式客户机应用程序。
 
-### Server-side component
+### 服务器端组件
 {: #server-side-component }
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
+服务器端组件是必须部署在 Web 应用程序服务器（例如 IBM WebSphere 或 Apache Tomcat）中的 Java™ 企业应用程序。
 
-The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
+服务器端组件包含管理控制台和移动应用程序。此移动应用程序会安装可供客户机组件使用的移动应用程序。
 
-The web console and the installer application communicate through REST services with the server component.
+Web 控制台和安装应用程序通过 REST 服务与服务器组件进行通信。
 
-Several services compose the Application Center server-side component; for example, a service that lists available applications, a service that delivers the application binary files to the mobile device, or a service that registers feedback and ratings.
+Application Center 服务器端组件由多项服务组成；例如，列出可用应用程序的服务、向移动设备交付应用程序二进制文件的服务，或者注册反馈和评级的服务。
 
-### Repository
+### 存储库
 {: #repository }
-A database that stores information such as which application is installed on which devices, the feedback about applications, and the mobile application binary files. The Application Center application is associated with the database when you configure the Application Center for a particular web application server and a supported database.
+这是用于存储信息（如在哪些设备上安装了哪个应用程序）、有关应用程序的反馈以及移动应用程序二进制文件的数据库。当您为特定 Web 应用程序服务器和受支持的数据库配置 Application Center 时，Application
+Center 应用程序与该数据库关联。
 
-### Administration console
+### 管理控制台
 {: #administration-console }
-A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console](appcenter-console).
+这是一种 Web 控制台，管理员可以通过此控制台管理应用程序、针对安装应用程序的用户访问权、有关移动应用程序的用户反馈以及有关在设备上安装的应用程序的详细信息。请参阅 [Application Center 控制台](appcenter-console)。
 
-### Mobile client application
+### 移动式客户机应用程序
 {: #mobile-client-application }
-You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client](mobile-client).
+您可以使用移动式客户机在移动设备上安装应用程序，并向服务器发送有关某个应用程序的反馈。请参阅[移动式客户机](mobile-client)。
 
-The following figure shows an overview of the architecture.
+下图显示了体系结构的概述。
 
-![Application Center architecture](ac_arch.jpg)
+![Application Center 体系结构](ac_arch.jpg)
 
-From the Application Center console, you can take the following actions:
+通过 Application Center 控制台，您可以执行以下操作：
 
-* Upload different versions of mobile applications.
-* Remove unwanted applications.
-* Control access to applications: Each application is associated with the list of people who can install the application.
-* View feedback that mobile users have sent about an application.
-* Obtain information about applications installed on a device.
-* Make an application inactive so that it is not visible in the available applications for download.
+* 上载不同版本的移动应用程序。
+* 除去不需要的应用程序。
+* 控制对应用程序的访问权：每个应用程序都与可安装应用程序的人员列表关联。
+* 查看移动用户发送的有关应用程序的反馈。
+* 获取有关在设备上安装的应用程序的信息。
+* 取消激活某个应用程序，以使其在可供下载的应用程序的列表中不可见。
 
-From the mobile client, you can take the following actions:
+通过移动式客户机，您可以执行以下操作：
 
-* List available mobile applications.
-* Install a new application on a device.
-* Send feedback about an application.
+* 列出可用移动应用程序。
+* 在设备上安装新的应用程序。
+* 发送有关某个应用程序的反馈。
 
-The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
+Application Center 支持针对 Android、iOS、Windows Phone 8 和 Windows 8 设备的应用程序。因此，针对 Android、iOS、Windows Phone 8 和 Windows 8，移动式客户机分别随附了独立版本。
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+Android、iOS 和 Windows Phone 8 移动式客户机是基于 {{ site.data.keys.product }}    构建的。要了解如何在安装产品后在各种 Java 应用程序服务器上配置 Application Center 服务器端组件以及如何为 Application Center 客户机构建 {{ site.data.keys.product_adj }}    应用程序，请参阅[在安装后配置 Application Center](../installation-configuration/production/appcenter)。
 
-## Preliminary information
+## 初步信息
 {: #preliminary-information }
-To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
+要使用 Application Center，您必须配置安全设置，启动安装了 {{ site.data.keys.product }}    的 Web 应用程序服务器，启动 Application Center 控制台，然后登录。
 
-When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
+安装 {{ site.data.keys.product }}    时，Application Center 会自动安装在指定的应用程序服务器中。
 
-If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
+如果在 WebSphere Application Server Liberty Profile 中安装 Application Center，那么会在 **installation-directory/server** 中创建服务器。
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
+在安装完成后，您必须为应用程序配置安全设置。请参阅[为 Application Center 配置用户认证](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center)，或者如果要使用 LDAP 认证，请参阅[使用 LDAP 管理用户](../installation-configuration/production/appcenter/#managing-users-with-ldap)。
 
-### Example: starting the server and the Application Center console on Liberty profile
+### 示例：在 Liberty Profile 上启动服务器和 Application Center 控制台
 {: #example-starting-the-server-and-the-application-center-console-on-liberty-profile}
 
-1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
+1. 使用位于 **installation-directory/server/wlp/bin** 目录中的 **server** 命令来启动 Liberty 服务器。
 
    ```bash
    server start worklightServer
    ```
     
-2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
-3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:
-    * **demo** with password **demo**
-    * **appcenteradmin** with password **admin**
+2. 当服务器正在运行时，通过在浏览器中输入以下地址来启动 Application Center 控制台：`http://localhost:9080/appcenterconsole/`
+3. 登录。缺省情况下，已定义了两个用户，以用于在 Apache Tomcat 或 WebSphere Application Server Liberty Profile 上安装 Application Center。
+    * **demo**，密码为 **demo**
+    * **appcenteradmin**，密码为 **admin**
 
-### For more information
+### 获取更多信息
 {: #for-more-information }
-To use the Application Center console, refer to [The Application Center console](appcenter-console).
+要使用 Application Center 控制台，请参阅 [Application Center 控制台](appcenter-console)。
 
-To install and run the mobile client on the following operating systems, see:
+要在以下操作系统上安装和运行移动式客户机，请参阅：
 
-* Android: See [Installing the client on an Android mobile device](mobile-client/#installing-an-application-on-an-android-device).
-* iOS operating system: See [Installing the client on an iOS mobile device](mobile-client/#installing-an-application-on-an-ios-device).
-* Windows Phone 8: See [Installing the client on Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
-* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project](preparations/#microsoft-windows-8-building-the-project).
+* Android：请参阅[在 Android 移动设备上安装客户机](mobile-client/#installing-an-application-on-an-android-device)。
+* iOS 操作系统：请参阅[在 iOS 移动设备上安装客户机](mobile-client/#installing-an-application-on-an-ios-device)。
+* Windows Phone 8：请参阅[在 Windows8 Universal 上安装客户机](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)。
+* Windows 8：Windows 8 移动式客户机不能部署到 Application Center 中以供稍后分发。请参阅 [Microsoft Windows 8：构建项目](preparations/#microsoft-windows-8-building-the-project)。
 
-## What's next
+## 下一步是什么
 {: #whats-next }
-Follow these topics to use the appcenter mobile client; send notifications to installed applications; learn about the appcenter console, command-line tool, the mobile client; and setting log levels.
+请遵循下列主题来使用 appcenter 移动式客户机；向已安装的应用程序发送通知；了解 appcenter 控制台、命令行工具和移动式客户机；以及设置日志级别。
+
+
 
 
 

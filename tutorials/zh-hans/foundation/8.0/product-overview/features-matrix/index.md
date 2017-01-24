@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Matrix of features & platforms
+title: 功能与平台矩阵
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} provides many features and supports many platforms.
+{{ site.data.keys.product_full }}    提供了许多功能，并且支持许多平台。
 
-The [Mobile OS feature mapping for {{ site.data.keys.product }} technote](http://www.ibm.com/support/docview.wss?uid=swg27039422) on the IBM Support Portal lists the features that are available on each of the platforms that {{ site.data.keys.product }} supports.
+IBM Support Portal 上的 [Mobile OS feature mapping for {{ site.data.keys.product }}    技术说明](http://www.ibm.com/support/docview.wss?uid=swg27039422)列出了在 {{ site.data.keys.product }}    支持的每个平台上可用的功能。

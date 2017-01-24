@@ -11,105 +11,93 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Find all the information you need to install and configure {{ site.data.keys.product_full }} 8.0 in test and production environments.
-
+查找在测试和生产环境中安装和配置 {{ site.data.keys.product_full }} 8.0 所需的所有信息。
 <form style="margin: 0 0 10px 15px" role="searchbox" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
-        <input style="width: 206px" id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+        <input style="width: 206px" id="search-input" type="text" class="form-control" placeholder="搜索..." name="q">
     </div>
 </form>
 
 <div>
-    <h3><a href="../product-overview/">Product Overview</a></h3>
-    Learn about the {{ site.data.keys.product }} offering.
-    
-    <ul>
-        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
-        <li><a href="../product-overview/components">Product Components</a>
+    <h3><a href="../product-overview/">产品概述</a></h3>
+    了解 {{ site.data.keys.product }} 产品。<ul>
+        <li><a href="../product-overview/capabilities">主要功能</a></li>
+        <li><a href="../product-overview/components">产品组件</a>
             <ul>
-                <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }} Server</a></li>
+                <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }} 服务器</a></li>
                 <li><a href="../product-overview/components/console">{{ site.data.keys.mf_console }}</a></li>
             </ul>
         </li>
-        <li><a href="../product-overview/requirements">System Requirements</a></li>
-        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
-        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
-        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full}}</a></li>
-        <li><a href="../product-overview/release-notes">Release Notes</a></li>
+        <li><a href="../product-overview/requirements">系统需求</a></li>
+        <li><a href="../product-overview/licensing">在 {{ site.data.keys.mf_server }} 中许可</a></li>
+        <li><a href="../product-overview/features-matrix">功能和平台列表</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full}} 的辅助功能选项</a></li>
+        <li><a href="../product-overview/release-notes">发行说明</a></li>
     </ul>
     
-    <h3><a href="../installation-configuration/">Installation and Configuration</a></h3>
-    Set up your development or production environment to work with {{ site.data.keys.product_full }}.
-    
-    <ul>
-        <li><a href="../installation-configuration/development">Setting up the development environment</a>
+    <h3><a href="../installation-configuration/">安装和配置</a></h3>
+设置开发或生产环境以使用 {{ site.data.keys.product_full }}。<ul>
+        <li><a href="../installation-configuration/development">设置开发环境</a>
             <ul>
-                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product }} environment</a>
+                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product }} 环境</a>
                     <ul>
-                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">Installation Guide</a></li>
-                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Using {{ site.data.keys.mf_server }} in Eclipse</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">安装指南</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">在 Eclipse 中使用 {{ site.data.keys.mf_server }}</a></li>
                     </ul>
                 </li>
-                <li><a href="../installation-configuration/development/cordova/">Cordova environment</a></li>
-                <li><a href="../installation-configuration/development/ios/">iOS environment</a></li>
-                <li><a href="../installation-configuration/development/android/">Android environment</a></li>
-                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal and Windows 10 UWP environments</a></li>
-                <li><a href="../installation-configuration/development/web/">Web environment</a></li>
+                <li><a href="../installation-configuration/development/cordova/">Cordova 环境</a></li>
+                <li><a href="../installation-configuration/development/ios/">iOS 环境</a></li>
+                <li><a href="../installation-configuration/development/android/">Android 环境</a></li>
+                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal 和 Windows 10 UWP 环境</a></li>
+                <li><a href="../installation-configuration/development/web/">Web 环境</a></li>
             </ul>
         </li>
-        <li><a href="../installation-configuration/production">Setting up the production environment</a>
+        <li><a href="../installation-configuration/production">设置生成环境</a>
             <ul>
-                <li>Production installation tutorials
-                    <ul>
-                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a></li>
-                        <li><a href="../installation-configuration/production/tutorials/command-line">Installing {{ site.data.keys.mf_server }} From Command Line</a></li>
+                <li>产品安装教程<ul>
+                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a></li>
+                        <li><a href="../installation-configuration/production/tutorials/command-line">从命令行安装 {{ site.data.keys.mf_server }}</a></li>
                     </ul>
                 </li>
-                <li><a href="../installation-configuration/production/installation-manager">Running the IBM Installation Manager</a></li>
-                <li><a href="../installation-configuration/production/databases">Setting Up Databases</a></li>
-                <li><a href="../installation-configuration/production/topologies">Topologies and Network flows</a></li>
-                <li><a href="../installation-configuration/production/appserver">Installing the {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/server-configuration">Configuring the {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/token-licensing">Installing and configuring for token licensing</a></li>
-                <li><a href="../installation-configuration/production/analytics">Installing and configuring the {{ site.data.keys.mf_analytics_server }}</a></li>
-                <li><a href="../installation-configuration/production/appcenter">Installing and configuring the Application Center</a></li>
-                <li><a href="../installation-configuration/production/installation-reference">Installation Reference</a></li>
+                <li><a href="../installation-configuration/production/installation-manager">运行 IBM Installation Manager</a></li>
+                <li><a href="../installation-configuration/production/databases">设置数据库</a></li>
+                <li><a href="../installation-configuration/production/topologies">拓扑和网络流</a></li>
+                <li><a href="../installation-configuration/production/appserver">安装 {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">配置 {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">安装和配置令牌许可</a></li>
+                <li><a href="../installation-configuration/production/analytics">安装和配置 {{ site.data.keys.mf_analytics_server }}</a></li>
+                <li><a href="../installation-configuration/production/appcenter">安装和配置 Application Center</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">安装参考</a></li>
             </ul>
         </li>
-        <li><a href="../installation-configuration/production/pure-application">Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</a></li>
+        <li><a href="../installation-configuration/production/pure-application">在 IBM PureApplication System 上部署 {{ site.data.keys.mf_server }}</a></li>
     </ul>
     
-    <h3><a href="../administering-apps/">Administering Applications</a></h3>
-    {{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production
-    
-    <ul>
-        <li><a href="../administering-apps/deployment">Deploying applications to test and production environments</a></li>
-        <li><a href="../administering-apps/using-console/">Administrating applications through the {{ site.data.keys.mf_console }}</a></li>
-        <li><a href="../administering-apps/using-ant/">Administrating applications through Ant</a></li>
-        <li><a href="../administering-apps/using-cli/">Administrating applications through the Command-line</a></li>
-        <li><a href="../administering-apps/federal/">Federal standards support in {{ site.data.keys.product }}</a></li>
-        <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
+    <h3><a href="../administering-apps/">管理应用程序</a></h3>
+    {{ site.data.keys.product_full }} 提供了多种方式，用于在开发或生产中管理 {{ site.data.keys.product_adj }} 应用程序<ul>
+        <li><a href="../administering-apps/deployment">将应用程序部署到测试和生产环境</a></li>
+        <li><a href="../administering-apps/using-console/">通过 {{ site.data.keys.mf_console }} 管理应用程序</a></li>
+        <li><a href="../administering-apps/using-ant/">通过 Ant 管理应用程序</a></li>
+        <li><a href="../administering-apps/using-cli/">通过命令行管理应用程序</a></li>
+        <li><a href="../administering-apps/federal/">{{ site.data.keys.product }} 中支持的联邦标准</a></li>
+        <li><a href="../administering-apps/license-tracking/">许可证跟踪</a></li>
     </ul>   
     
     <h3><a href="../appcenter">Application Center</a></h3>
-    Install, configure and use IBM MoblieFirst Foundation Application Center.
-    
-    <ul>
-        <li><a href="../appcenter/">Application Center Overview</a></li>
-        <li><a href="../appcenter/preparations">Preparations for using the mobile client</a></li>
-        <li><a href="../appcenter/push-notifications">Push notifications of application updates</a></li>
-        <li><a href="../appcenter/appcenter-console">The Application Center console</a></li>
-        <li><a href="../appcenter/command-line">Command-line tool for uploading or deleting an application</a></li>
-        <li><a href="../appcenter/mobile-client">The mobile client</a></li>
-        <li><a href="../appcenter/logging-and-tracing">Setting logging and tracing for Application Center on the application server</a></li>
-        <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
+    安装、配置和使用 IBM MoblieFirst Foundation Application Center。<ul>
+        <li><a href="../appcenter/">Application Center 概述</a></li>
+        <li><a href="../appcenter/preparations">有关使用移动式客户机的准备工作</a></li>
+        <li><a href="../appcenter/push-notifications">应用程序更新的推送通知</a></li>
+        <li><a href="../appcenter/appcenter-console">Application Center 控制台</a></li>
+        <li><a href="../appcenter/command-line">用于上载或删除应用程序的命令行工具</a></li>
+        <li><a href="../appcenter/mobile-client">移动式客户机</a></li>
+        <li><a href="../appcenter/logging-and-tracing">为应用程序服务器上的 Application Center 设置日志记录和跟踪</a></li>
+        <li><a href="../appcenter/app-center-tutorial/">“使用 Application Center 分发移动应用程序”教程</a></li>
     </ul> 
     
-    <h3><a href="../troubleshooting/">Troubleshooting common problems</a></h3>
-    Frequantly asked questions and answers.
-    
-    <ul>
-        <li><a href="../troubleshooting/notifications">Notifications</a></li>
+    <h3><a href="../troubleshooting/">故障诊断常见问题</a></h3>
+    常见问题及回答。<ul>
+        <li><a href="../troubleshooting/notifications">通知</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
     </ul>
     <br/>

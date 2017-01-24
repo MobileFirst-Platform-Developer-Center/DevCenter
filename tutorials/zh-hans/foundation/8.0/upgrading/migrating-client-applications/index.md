@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Migrating client applications
+title: 迁移客户机应用程序
 weight: 2
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Migrate your existing client applications to {{ site.data.keys.product_full }} V8.0.0.
+将现有的客户机应用程序迁移到 {{ site.data.keys.product_full }}    V8.0.0。
 
-Read the following topics to learn how to migrate your client application from IBM MobileFirst Platform Foundation v7.1 to v8.0. To learn more about changes in the development process, in the {{ site.data.keys.product_adj }} security framework and push service, and more, see [Migrating apps from earlier releases](../).
+阅读以下主题来了解如何将客户机应用程序从 IBM MobileFirst Platform Foundation V7.1 迁移到 V8.0。要进一步了解开发过程、{{ site.data.keys.product_adj }}    安全框架和推送服务等组件中的更改，请参阅[从较早发行版迁移应用程序](../)。
 
-### Select a platform to migrate from
+### 选择要从中迁移的平台
 {: #select-a-platform-to-migrate-from }

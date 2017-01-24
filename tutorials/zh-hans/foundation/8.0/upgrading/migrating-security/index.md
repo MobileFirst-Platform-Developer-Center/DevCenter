@@ -1,61 +1,62 @@
 ---
 layout: tutorial
-title: Migrating Authentication and Security Concepts
-breadcrumb_title: Migrating authentication concepts
+title: 迁移认证和安全性概念
+breadcrumb_title: 迁移认证概念
 downloads:
-  - name: Download migration sample
+  - name: 下载迁移样本
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
-## Overview
+## 概述
 {: #overview }
-The security framework of {{ site.data.keys.product_full }} has undergone some major changes in version 8.0, to improve and simplify security development and administration tasks. In particular, the security building blocks have changed – In 8.0, OAuth security scopes and security checks replace the security tests, realms and login modules of previous versions.
+在 V8.0 中，针对 {{ site.data.keys.product_full }}    安全框架做出了一些重大改动，旨在改善和简化安全性开发和管理任务。特别是，已更改了安全性构建块 - 在 8.0 中，OAuth 安全性作用域和安全性检查取代了先前版本中的安全性测试、域和登录模块。
 
-This tutorial guides you through the steps required for migrating the security code of your application. We will use a sample 7.1 application as a starting point, and describe the complete process that will take us from the 7.1 sample application to a 8.0 application, with the same security protection. Both the 7.1 sample app and the migrated application are attached here.
+本指南旨在指导您完成迁移应用程序安全代码所需的步骤。我们将使用 7.1 样本应用程序作为起点，并描述从 7.1 样本应用程序迁移到 8.0 应用程序（具有相同的安全保护）的完整过程。下面附带了 7.1 样本应用程序和迁移的应用程序。
 
-The migration steps that we will describe below are:
-*	Migrating the resource adapter to 8.0, and maintaining the protection of the resources
-*	Migrating the client app
-*	Creating security checks to replace the authentication realms of the 7.1 app
-*	Modifying the challenge handlers on the client-side to use the new challenge handler API.
+下文中描述的迁移步骤包括：
+*	将资源适配器迁移到 8.0 并保留对资源的保护
+*	迁移客户机应用程序
+*	创建安全性检查以取代 7.1 应用程序的认证域
+*	修改客户端的验证问题处理程序以使用新的验证问题处理程序 API。
 
-In the [second part](#migrating-other-types-of-authentication-realms) of this tutorial, we will address additional migration issues that are not demonstrated in the migration of the sample app:
-*	Migrating other types of authorization realms, beyond form-based authentication and adapter-based authentication that are demonstrated in the sample.
-*	Access token expiration
-*	Application-level protection (application security test)
-*	Security configuration settings in 7.1 that are no longer required in the simpler security model of 8.0, such as the user identity realm and the device identity realm
+在本教程的[第二部分](#migrating-other-types-of-authentication-realms)中，我们将解决样本应用程序的迁移过程中未说明的其他迁移问题：
+*	除了样本中说明的基于表单的认证和基于适配器的认证外，还迁移其他类型的授权域。
+*	访问令牌到期时间
+*	应用程序级别保护（应用程序安全性测试）
+*	在 8.0 的更简单安全模型中，不再需要 7.1 中的某些安全配置设置，例如，用户身份域和设备身份域
 
-> Before you start the migration you are advised to go through the [migration cookbook](../migration-cookbook). See also the [Authentication and Security tutorial](../../authentication-and-security) to learn about the basic concepts of the new security framework.
-
-## The sample application
+> 在开始迁移之前，建议您通读[迁移手册](../migration-cookbook)。另请参阅[认证和安全性](../../authentication-and-security)教程，以了解新安全框架的基本概念。
+## 样本应用程序
 {: #the-sample-application }
-Our starting point is a sample 7.1 hybrid application. The application accesses a Java adapter protected with OAuth. The adapter has two methods – the `getBalance` method, which is protected with a form-based authentication realm (login by user name and password), and the `transferMoney` method, protected with an adapter-based authentication realm, requiring the user to provide a pin code. The source code of the 7.1 sample application and the source code of the same application after it has been migrated to 8.0 are available for [download](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample).
+我们的起点是 7.1 样本混合应用程序。该应用程序可访问使用 OAuth 保护的 Java 适配器。该适配器有两个方法 - 由基于表单的认证域（使用用户名和密码登录）保护的 `getBalance` 方法以及由基于适配器的认证域（需要用户提供 pin 码）保护的 `transferMoney` 方法。7.1 样本应用程序的源代码和迁移到 8.0 后的样本应用程序的源代码均可供[下载](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample)。
 
-## Migrating the resource adapter
+## 迁移资源适配器
 {: #migrating-the-resource-adapter }
-We will start the migration process with the resource adapter. In {{ site.data.keys.product }} 8.0 adapters are developed as separate Maven projects, unlike in 7.1 where adapters were part of the project. This means that we can migrate the resource adapter, build and deploy it, independently of the client app. The same is true for the client app itself and the security checks (which are actually also deployed as adapters). This leaves us the freedom to migrate these parts in the order of our choice. In this tutorial, we will migrate the resource adapter first so that we can introduce the OAuth security scope elements by which the resources are protected.
+我们将开始资源适配器的迁移过程。在 {{ site.data.keys.product }}    8.0 中，适配器是作为独立 Maven 项目开发的，这与 7.1（适配器是项目的一部分）中不同。这意味着我们可以迁移、构建和部署资源适配器，这些过程独立于客户机应用程序。对于客户机应用程序本身和安全性检查（实际上也作为适配器进行部署）也同样如此。这使我们可以按自己选择的顺序自由迁移这些部件。在本教程中，我们将首先迁移资源适配器，以便于我们介绍用于保护资源的 OAuth 安全性作用域元素。
 
-Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a {{ site.data.keys.product }} 8.0 security check.
+请注意，我们将要迁移资源适配器 `AccountAdapter`，但不需要迁移适配器 `PinCodeAdapter`，因为后者用于基于适配器的认证，而在 8.0 中不再支持基于适配器的认证。在接下来的某个步骤中，我们会将此适配器替换为 {{ site.data.keys.product }}    8.0 安全性检查。
 
-> For instructions on migrating adapters to 8.0 see the [migration cookbook](../migration-cookbook).
+> 有关将适配器迁移到 8.0 的指示信息，请参阅[迁移手册](../migration-cookbook)。
 
-The methods of `AccountAdpter` in the 7.1 sample are already protected with the `@OAuthSecurity` annotation. The same annotation is used in version 8.0. The only difference is that in 7.1 the scope elements `UserLoginRealm` and `PinCodeRealm` refer to security realms that are defined in the authenticationConfig.xml file. In 8.0, on the other hand, scope elements are mapped to security checks deployed on the server. We could keep the code unchanged with the same names of the scope elements, but let’s rename the scope elements to `UserLogin` and `PinCode` because the term “realm” is no longer used in MFP 8.0:
+7.1 样本中的 `AccountAdpter` 方法已受到 `@OAuthSecurity` 注释的保护。在 V8.0 中使用了相同的注释。唯一的差别在于，在 7.1 中，作用域元素 `UserLoginRealm` 和 `PinCodeRealm` 表示 authenticationConfig.xml 文件中定义的安全域。而另一方面，在 8.0 中，作用域元素映射到服务器上部署的安全性检查。我们可以将代码保持不变，并使用相同的作用域元素名称，但将作用域元素重命名为 `UserLogin` 和 `PinCode`，因为在 MFP 8.0 中不再使用术语“域”：
 
 ```java
 @OAuthSecurity(scope="UserLogin")
+
 @OAuthSecurity(scope="PinCode")
 ```
 
-### Use the new API for getting the user identity
+### 使用新的 API 获取用户身份
 {: #use-the-new-api-for-getting-the-user-identity }
-Our resource adapter uses the server-side security API to obtain the identity of the authenticated user. This API has changed in 8.0, so we need to fix it. Replace the following 7.1 code:
+资源适配器使用服务器端安全性 API 来获取已认证用户的身份。在 8.0 中已更改了此 API，因此，我们需要修复此 API。将以下 7.1 代码：
 
 ```java
 WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
 api.getSecurityAPI().getSecurityContext().getUserIdentity();
 ```
 
-with the new API in 8.0:
+替换为 8.0 中的新 API：
+
 
 ```java
 // Inject the security context
@@ -66,25 +67,24 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}.
+使用 Maven 或 {{ site.data.keys.mf_cli }}   ，[构建适配器并将其部署到服务器](../../adapters/creating-adapters/#build-and-deploy-adapters)。
 
-## Migrating the client application
+## 迁移客户机应用程序
 {: #migrating-the-client-application }
-Next, we will migrate the client application. Refer to the migration cookbook for client application migration instructions.
-For the time being, comment out the code of the challenge handlers. We will fix the challenge handlers later. In the main HTML file of the app, index.html, put a comment around the lines that import the challenge handlers code.
+接下来，我们将迁移客户机应用程序。请参阅迁移手册，以获取客户机应用程序迁移指示信息。请暂时注释掉验证问题处理程序的代码。我们稍后将修复验证问题处理程序。在应用程序的主 HTML 文件 index.html 中，在导入验证问题处理程序代码的行周围放置一条注释。
 
-```html 
-<!--  
+```html
+      <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
  -->
 ```
 
-### Change to the new client API for logout
+### 切换到用于注销的新客户端 API
 {: #change-to-the-new-client-api-for-logout }
-As part of the client migration, you need to handle changes in the client-side APIs of MobileFirst 8.0. For a list of client API changes, see [Upgrading the WebView](../migrating-client-applications/cordova/#upgrading-the-webview).
-In our sample application, there is one client API change related to security – the API for logging out. The method `WL.Client.logout` of 7.1 is not supported in 8.0. Instead, use `WLAuthorizationManager.logout`, and pass the name of the security check that replaces the authorization realm of 7.1.
-The Logout button in our sample app logs the user out from both the `UserLogin` security check and the `PinCode` security check:
+作为客户机迁移的一部分，您需要处理 MobileFirst 8.0 客户端 API 中的更改。要获取客户端 API 更改的列表，请参阅[升级 WebView](../migrating-client-applications/cordova/#upgrading-the-webview)。
+在样本应用程序中，有一项与安全性相关的客户端 API 更改 - 用于注销的 API。在 8.0 中不支持 7.1 的 `WL.Client.logout` 方法。改为使用 `WLAuthorizationManager.logout`，并传递用于替换 7.1 中的授权域的安全性检查的名称。
+样本应用程序中的“注销”按钮将从 `UserLogin` 安全性检查和 `PinCode` 安全性检查中注销用户：
 
 ```javascript
 function logout() {
@@ -104,18 +104,18 @@ function logout() {
 }
 ```
 
-After finishing the steps for migrating the app, build the application, and register it on your {{ site.data.keys.mf_server }} using the command `mfpdev app register`. You should now see the application listed in the {{ site.data.keys.mf_console }}.
+完成应用程序迁移步骤后，构建应用程序，并在 {{ site.data.keys.mf_server }}    上使用 `mfpdev app register` 命令注册该应用程序。现在，您应该会看到 {{ site.data.keys.mf_console }}    中列出了该应用程序。
 
-## Migrating the form-based authentication realm
+## 迁移基于表单的认证域
 {: #migrating-the-form-based-authentication-realm }
-At this stage we already have the client application and the resource adapter migrated and deployed. However if we try to run the application now, it will not be able to access the resources. This is because the application is expected to present an access token that contains the scope elements required by the resource adapter methods (“UserLogin” or “PinCode”), but since we haven’t created the security checks yet, the application cannot obtain an access token and the application is not authorized to access the protected resources.
+在此阶段，我们已迁移并部署了客户机应用程序和资源适配器。但如果尝试立即运行该应用程序，该应用程序将无法访问资源。这是因为该应用程序期望提供一个访问令牌（其中包含资源适配器方法所需的作用域元素（“UserLogin”或“PinCode”）），但由于尚未创建安全性检查，所以该应用程序无法获取访问令牌，因此无权访问受保护的资源。
 
-We will now create an 8.0 security check named “UserLogin” in replacement for the 7.1 form-based authentication realm “UserLoginRealm”. The security check will perform the same authentication steps that were previously implemented by the form-based authenticator and the custom login module – sending a challenge to the client, collecting the credential from the challenge response, validating the credentials and creating a user identity. As you will see below, creating the security check is quite straightforward, and what remain for you is to copy the code for validating the credentials from the 7.1 custom login module to the new security check.
+现在，我们将创建名为“UserLogin”的 8.0 安全性检查，用于代替 7.1 的基于表单的认证域“UserLoginRealm”。此安全性检查执行的认证步骤与基于表单的认证器和定制登录模块先前实施的认证步骤相同 - 向客户机发送验证问题、收集来自验证问题应答的凭证、验证凭证并创建用户身份。如下所示，创建安全性检查非常简单，只需将用于验证来自 7.1 定制登录模块的凭证的代码复制到新的安全性检查即可。
 
-Security checks are implemented as adapters, and therefore we start by [creating a new Java adapter](../../adapters/creating-adapters) named `UserLogin`.
+安全性检查将作为适配器来实现，因此我们从创建名为 `UserLogin` 的[新 Java 适配器](../../adapters/creating-adapters)开始。
 
-When creating a Java adapter, the default template assumes that the adapter will serve resources. The same adapter can be used both for serving resources and for packaging a security test, but in this case we use the new adapter just for the security check. Therefore, we will remove the default resource implementation: delete the files UserLoginApplication.java and UserLoginResource.java. Remove the <JAXRSApplicationClass> element from adapter.xml, too.
-In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+创建 Java 适配器时，缺省模板假定适配器将提供资源。该适配器可用于提供资源和将安全性测试打包，但在此情况下我们仅将新适配器用于安全性检查。因此，我们将除去缺省资源实现：删除 UserLoginApplication.java 和 UserLoginResource.java 文件。同时从 adapter.xml 中除去 <JAXRSApplicationClass> 元素。
+在 Java 适配器的 adapter.xml 文件中，添加一个名为 `securityCheckDefinition` 的 XML 元素。例如：
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -123,21 +123,21 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 </securityCheckDefinition>
 ```
 
-* The name attribute is the name of your security check.
-* The class attribute specifies the implementation Java class of the security check. We will create this class in the next step.
-* The property successStateExpirationSec is equivalent to the expirationInSeconds property of 7.1 login modules. It indicates the interval in seconds during which successful login to this security check holds. The default value of these properties is 3600 seconds in both 7.1 and 8.0. If the 7.1 login module was configured with a different value, you should put the same value here.
+* name 属性是安全性检查的名称。
+* class 属性指定安全性检查的实现 Java 类。我们将在下一步中创建此类。
+* 属性 successStateExpirationSec 等同于 7.1 登录模块的 expirationInSeconds 属性。它表示成功登录此安全性检查保持的时间间隔（以秒计）。在 7.1 和 8.0 中，这些属性的缺省值均为 3600 秒。如果使用其他值配置 7.1 登录模块，那么应在此处放置相同的值。
 
-For the purpose of this tutorial we’re only defining the `successStateExpirationSec` property. There is actually much more you can do with [security check configuration](../../authentication-and-security/creating-a-security-check/#security-check-configuration). In particular, you can configure your security check to use some advanced features such as blocked state expiration, multiple attempts and “remember me”. You can add custom configuration properties, and modify the configuration properties in runtime from the MFP console.
+鉴于本教程，我们仅定义 `successStateExpirationSec` 属性。实际上，您可以通过[安全性检查配置](../../authentication-and-security/creating-a-security-check/#security-check-configuration)完成更多操作。特别是，可以配置安全性检查以使用一些高级功能（例如，已阻止状态的到期时间、多次尝试和“记住我”）。您可以添加定制配置属性，并从 MFP 控制台中修改运行时中的配置属性。
 
-### Creating the security check Java class
+### 创建安全性检查 Java 类
 {: #creating-the-security-check-java-class }
-Create a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck` and add it to the adapter. Next, we override the default implementation of the three methods, `createChallenge`, `validateCredentials` and `createUser`.
+创建用于扩展 `UserAuthenticationSecurityCheck` 的名为 `UserLogin` 的 Java 类，并将其添加到适配器中。接下来，我们将覆盖以下三个方法的缺省实现：`createChallenge`、`validateCredentials` 和 `createUser`。
 
-* The method `validateCredentials` is where we put the authentication logic. Copy the authentication logic code – the code that validates the username and the password – from the 7.1 login module and put it here. In this case the logic is very simple – we just test that the password is the same as the user name.
-* In the method `createChallenge` we create the challenge message (hash map) to be sent to the client. In general, a security check can put here a challenge phrase or some other kind of challenge object that will be used to validate the client’s response. This security check does not require a challenge phrase so all we need to put in the challenge message is the error message (if an error was found).
-* The `createUser` method is the equivalent of the `createIdentity` method in the 7.1 login module.
+* 在 `validateCredentials` 方法中放置认证逻辑。从 7.1 登录模块中复制认证逻辑代码（用于验证用户名和密码的代码），并将其放在此处。在此情况下，该逻辑非常简单 - 仅仅是测试密码与用户名是否相同。
+* 在 `createChallenge` 方法中，创建要发送到客户机的验证问题消息（散列映射）。通常，安全性检查可在此处放置一个验证问题短语或其他类型的验证问题对象，以用于验证客户机的响应。此安全性检查不需要验证问题短语，因此只需在验证问题消息中放入错误消息（前提是已发现错误）即可。
+* `createUser` 方法等同于 7.1 登录模块中的 `createIdentity` 方法。
 
-The complete class is shown below.
+下面是完整的类。
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -162,7 +162,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
                 errorMsg = "Wrong Credentials";
             }
         } else {
-            errorMsg = "Credentials not set properly";
+errorMsg = "Credentials not set properly";
         }
         return false;
     }
@@ -181,17 +181,17 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}. In the {{ site.data.keys.mf_console }} you should see the new adapter UserLogin in the list of adapters
+使用 Maven 或 {{ site.data.keys.mf_cli }}   ，[构建适配器并将其部署到服务器](../../adapters/creating-adapters/#build-and-deploy-adapters)。在 {{ site.data.keys.mf_console }}    中，您应该会在适配器列表中看到新适配器 UserLogin
 
-## Migrating the pin code realm
+## 迁移 pin 码域
 {: #migrating-the-pin-code-realm }
-The pin code realm in our sample is implemented with adapter-based authentication, which is no longer supported in 8.0. We will replace this realm with a new security check.
+样本中的 pin 码域是使用基于适配器的认证实现的，但在 V8.0 中不再支持基于适配器的认证。我们会将此域替换为新的安全性检查。
 
-Create a new Java adapter named `PinCode`. Create a Java class named `PinCode` that extends `CredentialsValidationSecurityCheck` and add it to the adapter. Note that this time we use `CredentialsValidationSecurityCheck` as the base class, and not `UserAuthenticationSecurityCheck`, which we used for the UserLogin security check. This is because the pin code security check only needs to validate the credentials (the pin code) but it doesn’t assign a user identity.
+创建名为 `PinCode` 的新 Java 适配器。创建用于扩展 `CredentialsValidationSecurityCheck` 的名为 `PinCode` 的 Java 类，并将其添加到适配器中。请注意，我们这次使用 `CredentialsValidationSecurityCheck` 作为基类，而不是使用用于 UserLogin 安全性检查的 `UserAuthenticationSecurityCheck`。这是因为 pin 码安全性检查只需验证凭证（pin 码），而不指定用户身份。
 
-To create a security check that extends `CredentialsValidationSecurityCheck` we need to implement two methods: `createChallenge` and `validateCredentials`.
+要创建用于扩展 `CredentialsValidationSecurityCheck` 的安全性检查，需要实现以下两个方法：`createChallenge` 和 `validateCredentials`。
 
-Similar to the `UserLogin` security check, the `PinCode` security check does not have any special information to send to the client as part of the challenge. The `createChallenge` method only puts the error message (if exists) inside the challenge message.
+与 `UserLogin` 安全性检查类似，`PinCode` 安全性检查不会将任何特殊信息作为验证问题的一部分发送到客户机。`createChallenge` 方法仅在验证问题消息中放入错误消息（前提是存在错误消息）。
 
 ```java
     @Override
@@ -202,7 +202,7 @@ Similar to the `UserLogin` security check, the `PinCode` security check does not
     }
 ```
 
-The `validateCredentials` method validates the pin code. In this case, the validation code consists of one line of code, but in general you can copy the validation code from the 7.1 authentication adapter into the `validateCredentials` method.
+`validateCredentials` 方法将验证 pin 码。在此情况下，验证代码包含一行代码，但通常可将 7.1 认证适配器中的验证代码复制到 `validateCredentials` 方法中。
 
 ```java
 @Override
@@ -215,39 +215,39 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
             errorMsg = "Pin code is not valid.";
         }
     } else {
-        errorMsg = "Pin code was not provided";
+errorMsg = "Pin code was not provided";
     }
     return false;
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters).
+[构建适配器并将其部署到服务器](../../adapters/creating-adapters/#build-and-deploy-adapters)。
 
-## Migrating the challenge handlers
+## 迁移验证问题处理程序
 {: #migrating-the-challenge-handlers }
-We’re almost there – we have the client app migrated, the resource adapter and the security checks to protect the resources. The only part missing are the challenge handlers on the client side that allow the client to respond to the challenges and send the credentials to the security check. Remember that when we migrated the client app, we commented out the lines that include the challenge handlers. Now is the time to uncomment these lines, and migrate the challenge handlers to 8.0.
+此时，我们已迁移客户机应用程序，并使用资源适配器和安全性检查来保护资源。唯一缺少的部分是客户端的验证问题处理程序，客户机可通过该处理程序来响应验证问题并将凭证发送到安全性检查。请记住，迁移客户机应用程序时，已经注释掉包含验证问题处理程序的行。现在可以取消注释这些行，然后将验证问题处理程序迁移到 8.0。
 
-We will start with the user login challenge handler. This challenge handler performs the same functions in 8.0 as it does in 7.1 – it’s responsible for presenting the login form to the user upon receiving a challenge, and sending the user name and password to the server. However, the client API for challenge handlers has been changed and simplified, so we need to make the following changes:
+我们将从用户登录验证问题处理程序开始。在 8.0 和 7.1 中，此验证问题处理程序执行相同的功能 - 负责在收到验证问题时向用户显示登录表单，并向服务器发送用户名和密码。但是，验证问题处理程序的客户端 API 已经过更改和简化，因此需要进行如下更改：
 
-* Replace the call for creating challenge handler with:
+* 将用于创建验证问题处理程序的调用替换为：
 
 ```javascript
 var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
 ```
 
-The method `createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges sent by a {{ site.data.keys.product_adj }} security check. In most cases, you should use this method in replacement for either the method `createWLChallengeHandler` or the method `createChallengeHandler` of the 7.1 client API. The only exception is challenge handlers that are designed to handle challenges sent by a third party gateway. This type of challenge handlers, called gateway challenge handlers in 8.0, are created with the method `WL.Client.createGatewayChallengeHandler(). For example, if your resource is protected by a reverse proxy such as DataPower, which sends a custom login form to the client, you should use a gateway challenge handler to handle the challenge. For more information on gateway challenge handlers see the article [Quick Review of Challenge Handlers](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/).
+方法 `createSecurityCheckChallengeHandler` 将创建验证问题处理程序以处理由 {{ site.data.keys.product_adj }}    安全性检查发送的验证问题。在大部分情况下，应使用此方法代替 7.1 客户端 API 的 `createWLChallengeHandler` 方法或 `createChallengeHandler` 方法。唯一的例外是用于处理第三方网关发送的验证问题的验证问题处理程序。此类型的验证问题处理程序（在 8.0 中称为网关验证问题处理程序）是使用 `WL.Client.createGatewayChallengeHandler() 方法创建的。例如，如果资源受到用于将定制登录表单发送到客户机的逆向代理（如 DataPower）的保护，那么应使用网关验证问题处理程序来处理验证问题。有关网关验证问题处理程序的更多信息，请参阅[验证问题处理程序概览](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/)一文。
 
-* Remove the method `isCustomResponse`. It is no longer needed for security check challenge handlers.
-* Replace the method `handleChallenge` with the three methods that a challenge handler must implement – `handleChallenge()`, `handleSuccess()` and `handleFailure`. In 8.0 the challenge handler no longer has to check the response in order to find if the response carries a challenge, success or error. The framework takes care for that, and calls the appropriate method.
-* Remove the call to `submitSuccess`. The framework handles the success response automatically.
-* Replace the call to `submitFailure` with `userLoginChallengeHandler.cancel`.
-* Replace the call to `submitLoginForm` with:
+* 除去 `isCustomResponse` 方法。安全性检查验证问题处理程序不再需要此方法。
+* 将 `handleChallenge` 方法替换为验证问题处理程序必须实现的三个方法 - `handleChallenge()`、`handleSuccess()` 和 `handleFailure`。在 8.0 中，验证问题处理程序不需要再检查响应以了解响应是否携带验证问题（成功或出错）。框架将处理这些任务并调用相应的方法。
+* 除去对 `submitSuccess` 的调用。框架将自动处理成功响应。
+* 将对 `submitFailure` 的调用替换为 `userLoginChallengeHandler.cancel`。
+* 将对 `submitLoginForm` 的调用替换为：
 
 ```javascript
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
 ```
 
-The complete code of the challenge handler after applying these changes is shown below.
+应用这些更改后的验证问题处理程序的完整代码如下所示。
 
 ```javascript
 function createUserLoginChallengeHandler() {
@@ -291,63 +291,62 @@ function createUserLoginChallengeHandler() {
  }
 ```
 
-The migration of the pin code challenge handler is very similar to the migration of the user login challenge handler, and therefore we will not show the details here. See the code of the migrated challenge handler in the attached 8.0 sample.
-This completes the migration of the app. You can now rebuild the application, deploy it to the server, test that it works, and test that access to the resources is protected as expected.
+pin 码验证问题处理程序的迁移与用户登录验证问题处理程序的迁移非常类似，因此在此处不作详细介绍。请参阅附带的 8.0 样本中已迁移的验证问题处理程序的代码。应用程序迁移到此已完成。现在，您可以重新构建应用程序、将其部署到服务器、测试其能否运行并测试是否按预期那样保护对资源的访问。
 
-## Migrating other types of authentication realms
+## 迁移其他类型的认证域
 {: #migrating-other-types-of-authentication-realms }
-In the sections above we described the process for migrating form-based authentication realms and adapter-based authentication realms. Your 7.1 application might include other types of realms, including realms that were explicitly added to the application security test, or included by default in a `mobileSecurityTest` or a `webSecurityTest`. See below guidelines for migrating other types of realms to 8.0.
+在上面的部分中，我们描述了迁移基于表单的认证域和基于适配器的认证域的过程。7.1 应用程序可能包含其他类型的域，其中包括已显式添加到应用程序安全性测试中的域，或缺省情况下包含在 `mobileSecurityTest` 或 `webSecurityTest` 中的域。请参阅有关将其他类型的域迁移到 8.0 的以下准则。
 
-### Application authenticity
+### 应用程序真实性
 {: #application-authenticity }
-Application authenticity is provided as a predefined security check in 8.0. By default, this security check is run during the application's runtime registration with {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. However, as with any {{ site.data.keys.product_adj }} security check, you can also include this predefined check in custom security scopes.
+在 8.0 中，应用程序真实性是作为预定义的安全性检查提供。缺省情况下，在应用程序运行时向 {{ site.data.keys.mf_server }}    注册（在应用程序实例首次尝试连接到服务器时发生）期间运行此安全性检查。但是，与任何 {{ site.data.keys.product_adj }}    安全性检查一样，您也可以在定制安全性作用域中包含此预定义检查。
 
-### LTPA realm
+### LTPA 域
 {: #ltpa-realm }
-Use the predefined 8.0 security check, `LtpaBasedSSO`. For more information, see the tutorial [Protecting {{ site.data.keys.product_adj }} 8.0 application traffic using IBM DataPower]({{ site.baseurl }}/blog/2016/06/17/datapower-integration/).
+使用预定义的 8.0 安全性检查 `LtpaBasedSSO`。有关更多信息，请参阅[使用 IBM DataPower 保护 {{ site.data.keys.product_adj }}    8.0 应用程序流量]({{ site.baseurl }}/blog/2016/06/17/datapower-integration/)教程。
 
-### Device provisioning
+### 设备配置
 {: #device-provisioning }
-The client registration process in 8.0 replaces device provisioning of 7.1. In {{ site.data.keys.product_adj }} 8.0, a client (an instance of an application) registers itself with {{ site.data.keys.mf_server }} on the first attempt to access the server. As part of the registration, the client provides a public key that will be used for authenticating its identity. This protection mechanism is always enabled, and there is no need for you to migrate the device-provisioning realm to 8.0.
+8.0 中的客户机注册过程取代了 7.1 中的设备配置过程。在 {{ site.data.keys.product_adj }}    8.0 中，客户机（应用程序实例）在首次尝试访问服务器时会向 {{ site.data.keys.mf_server }}    进行注册。在注册过程中，客户机将提供用于自身身份认证的公用密钥。此保护机制始终处于启用状态，无需将设备配置域迁移到 8.0。
 
-### Anti-cross site request forgery (anti-XSRF) realm
+### 反跨站请求伪造 (anti-XSRF) 域
 {: #anti-cross-site-request-forgery-anti-xsrf-realm }
-Anti-XSRF is no longer relevant in the OAuth-based security framework of 8.0.
+在 8.0 的基于 OAuth 的安全框架中，不再支持 Anti-XSRF。
 
-### Direct Update realm
+### 直接更新域
 {: #direct-update-realm }
-There is no need to migrate the Direct Update realm to 8.0. The Direct Update feature is supported in {{ site.data.keys.product_adj }} 8.0, but it does not require a security check, such as the Direct Update realm that was required in previous versions. Note however that the steps to deliver updates by using the Direct Update feature have changed. For more information see the [Migrating Direct Update](../migrating-client-applications/cordova/#migrating-direct-update) documentation topic.
+无需将直接更新域迁移到 8.0。虽然在 {{ site.data.keys.product_adj }}    8.0 中支持“直接更新”功能，但无需对它执行安全性检查，如先前版本中所需的直接更新域。但请注意，使用“直接更新”功能来交付更新的步骤已发生更改。有关更多信息，请参阅[迁移直接更新](../migrating-client-applications/cordova/#migrating-direct-update)文档主题。
 
-### Remote disable realm
+### 远程禁用域
 {: #remote-disable-realm }
-There is no need to migrate the Remote Disable realm to 8.0. The remote disable feature in {{ site.data.keys.product_adj }} 8.0 does not require a security check.
+无需将远程禁用域迁移到 8.0。{{ site.data.keys.product_adj }}    8.0 中的“远程禁用”功能无需执行安全性检查。
 
-### Custom authenticators and login modules
+### 定制鉴别符和登录模块
 {: #custom-authenticators-and-login-modules }
-Create a new security check as described above. Use either of the base classes `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck`. Although you cannot migrate the authenticator class or the login module class directly, you may copy relevant code pieces into the security check, such as code for generating the challenge, extracting credentials from the response, and validating the credentials.
+如上所述，创建新的安全性检查。使用基类 `UserAuthenticationSecurityCheck` 或 `CredentialsValidationSecurityCheck`。虽然无法直接迁移鉴别符类或登录模块类，但可以将相关代码片段复制到安全性检查中，例如，用于生成验证问题的代码，用于从响应中抽取凭证的代码以及用于验证凭证的代码。
 
-## Migrating additional security configurations of 7.1
+## 迁移 7.1 的其他安全配置
 {: #migrating-additional-security-configurations-of-71 }
-### The application security test
+### 应用程序安全性测试
 {: #the-application-security-test }
-In addition to the OAuth scopes that are used to protect the resource adapter, our 7.1 sample application is also protected by an application-level security test. This sample does not have the application security test defined in the application-descriptor.xml file, and hence it is protected with the default security test. The default security test for mobile applications in 7.1 consists of realms that either irrelevant in 8.0 (anti-XSRF) or do not require explicit migration (Direct Update, remote disable). Therefore in this case no migration is required for the application security test.
+除了用于保护资源适配器的 OAuth 作用域外，7.1 样本应用程序还受到应用程序级别安全性测试的保护。此样本在 application-descriptor.xml 文件中未定义应用程序安全性测试，因此使用缺省安全性测试来获得保护。7.1 中的移动应用程序的缺省安全性测试由 8.0 (anti-XSRF) 中不相关的域或者不需要显式迁移（直接更新、远程禁用）的域组成。因此，在此情况下，无需迁移应用程序安全性测试。
 
-If your application has an application security test that includes checks (realms) that you still want to keep at the application level after the migration to 8.0, you can configure a mandatory scope for the application. When an application tries to access a protected resource, it has to pass the security checks that are mapped to the mandatory scope in addition to the checks mapped to the scope protecting the resource.
+如果应用程序具有应用程序安全性测试，其中包含在迁移到 8.0 后仍希望在应用程序级别保留的检查（域），那么可以为此应用程序配置强制性作用域。当应用程序尝试访问受保护的资源时，除了映射到用于保护资源的作用域的检查外，它还必须通过那些映射到强制性作用域的安全性检查。
 
-To define a mandatory scope for an application, select the application version in the {{ site.data.keys.mf_console }}, select the Security tab and click the Add to Scope button. You can include in the scope any predefined or custom security checks, or mapped scope elements.
+要为应用程序定义强制性作用域，请在 {{ site.data.keys.mf_console }}    中选择应用程序版本，选择“安全性”选项卡，然后单击“添加到作用域”按钮。您可以在作用域中包含任何预定义或定制的安全性检查或者映射的作用域元素。
 
-### Access token expiration
+### 访问令牌到期时间
 {: #access-token-expiration }
-Check the value of the Access Token Expiration property in application-descriptor.xml file. The default value in both version 7.1 and version 8.0 is 3600 seconds, so unless your application has a different value defined in the application descriptor file, you don’t have to change anything. To set the expiration value in 8.0, navigate to the application version page in the {{ site.data.keys.mf_console }}, select the security tab, and enter the value in the Maximum Token-expiration Period field.
+检查 application-descriptor.xml 文件中“访问令牌到期时间”属性的值。V7.1 和 V8.0 中的缺省值均为 3600 秒，因此，除非您的应用程序在应用程序描述符文件中定义了其他值，否则无需进行任何更改。要在 8.0 中设置该到期时间值，请在 {{ site.data.keys.mf_console }}    中浏览至“应用程序版本”页面，选择“安全性”选项卡，并在“最大令牌到期周期”字段中输入该值。
 
-### User identity realm
+### 用户身份域
 {: #user-identity-realm }
-In MobileFirst 7.1, authentication realms may be configured as user identity realms. Applications that use OAuth authentication flow use the `userIdentityRealms` property in the application descriptor file to define an ordered list of user identity realms. In applications that use the classic Worklight authentication flow (non OAuth), the attribute `isInternalUserId` indicates whether the realm is a user identity realm. These configurations are no longer needed in {{ site.data.keys.product_adj }} 8.0. In {{ site.data.keys.product_adj }} 8.0, the active user identity is set by the last security check that called the `setActiveUser` method. If your security check extends the abstract base class `UserAuthenticationSecurityCheck`, like the UserLogin security check in our sample application, the base class takes care for setting the active user.
+在 MobileFirst 7.1 中，认证域可配置为用户身份域。使用 OAuth 认证流程的应用程序在应用程序描述符文件中使用 `userIdentityRealms` 属性来定义用户身份域的有序列表。在使用经典 Worklight 认证流程（非 OAuth）的应用程序中，属性 `isInternalUserId` 指示该域是否为用户身份域。在 {{ site.data.keys.product_adj }}    8.0 中不再需要这些配置。在 {{ site.data.keys.product_adj }}    8.0 中，活动的用户身份是由调用 `setActiveUser` 方法的最后一次安全性检查来设置。如果安全性检查扩展了抽象基类 `UserAuthenticationSecurityCheck`（如样本应用程序中的 UserLogin 安全性检查），那么此基类将负责设置活动用户。
 
-### Device identity realm
+### 设备身份域
 {: #device-identity-realm }
-In 7.1 applications there must be a realm that is defined as a device identity realm. No migration is needed for this configuration in 8.0. In {{ site.data.keys.product_adj }} 8.0, the device identity isn’t associated with a security check. The device information is registered as part of the client registration flow, which occurs on the first time the client attempts to access a protected resource.
+在 7.1 应用程序中，必须有一个域定义为设备身份域。在 8.0 中无需迁移此配置。在 {{ site.data.keys.product_adj }}    8.0 中，设备身份与安全性检查无关。在客户机注册流程中注册设备信息，即在客户机首次尝试访问受保护的资源时发生。
 
-## Summary
+## 总结
 {: #summary }
-In this tutorial we covered only the basic steps required to migrate the security artifacts of existing applications from previous versions. We encourage you to [learn more about the new security framework](../../authentication-and-security/) and take advantage of additional features that were not covered here.
+在本教程中，我们仅介绍了从先前版本迁移现有应用程序的安全工件所需的基本步骤。我们鼓励您[了解有关新的安全框架的更多信息](../../authentication-and-security/)，并利用本文中未介绍的其他功能。
