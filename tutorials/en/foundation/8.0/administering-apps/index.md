@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administering Applications
-weight: 10
+weight: 11
 show_children: true
 ---
 ## Overview

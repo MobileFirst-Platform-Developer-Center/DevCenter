@@ -81,7 +81,44 @@ Example: In case you are not using camera plugin, follow these steps to remove t
     },
 ```
 - Delete `org.apache.cordova.camera` folder located under www/worklight/plugins folder
-- Remove `CDVCamera.h` and `CDVCamera.m` files from CordovaLib.xcodeproj
+- Remove `CDVCamera.h`, `CDVCamera.m`, `CDVExif.h`, `CDVJpegHeaderWriter.h` and `CDVJpegHeaderWriter.m` files from CordovaLib.xcodeproj
+
+Similarly the following are the plugins which accesses user's private data & its files/folder references which needs to be deleted if you are not using the plugin.
+
+* **cordova-plugin-camera**
+    - www/worklight/plugins/org.apache.cordova.camera folder
+    - Remove org.apache.cordova.camera references in www/worklight/cordova_plugins.js
+    - CDVCamera.h
+    - CDVCamera.m
+    - CDVExif.h
+    - CDVJpegHeaderWriter.h
+    - CDVJpegHeaderWriter.m
+
+* **cordova-plugin-contact**
+    - www/worklight/plugins/org.apache.cordova.contacts folder
+    - Remove org.apache.cordova.contacts references in www/worklight/cordova_plugins.js
+    - CDVContact.h
+    - CDVContact.m
+    - CDVContacts.h
+    - CDVContacts.m   
+
+* **cordova-plugin-geolocation**
+    - www/worklight/plugins/org.apache.cordova.geolocation folder
+    - Remove org.apache.cordova.geolocation references in www/worklight/cordova_plugins.js
+    - CDVLocation.h
+    - CDVLocation.m 
+
+* **cordova-plugin-media**
+    - www/worklight/plugins/org.apache.cordova.media folder
+    - Remove org.apache.cordova.media references in www/worklight/cordova_plugins.js
+    - CDVSound.h
+    - CDVSound.m    
+
+* **cordova-plugin-media-capture**
+    - www/worklight/plugins/org.apache.cordova.media-capture folder
+    - Remove org.apache.cordova.camera references in www/worklight/cordova_plugins.js
+    - CDVCapture.h
+    - CDVCapture.m  
 
 > **Note :** The above solutions need to be applied each time you install a new iFix version to the existing hybrid application for MFP versions prior to 8.0.
 > 

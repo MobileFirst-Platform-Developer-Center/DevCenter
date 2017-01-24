@@ -65,7 +65,7 @@ The predefined LTPA-based single sign-on (SSO) security check (**LtpaBasedSSO**)
 > **Note:** The procedure explains how to use the {{ site.data.keys.mf_console }} to configure the property value. Alternatively, you can also set the property value directly in the **application-descriptor** file. For detailed information, see Configuring application security-check properties.
 
 1. Open a {{ site.data.keys.mf_console }} window. Select your application version from the **navigation sidebar**, and then select the application **Security** tab.
-2. In the **Security-Check Configurations** section, select **Create New**.
+2. In the **Security-Check Configurations** section, select **New**.
 3. In the **Configure Security-Check Properties** window, configure the **LTPA-based SSO** security check:
     * In the **Security Check** field, select **LtpaBasedSSO** from the list.
     * In the **Expiration Period Successful State (seconds)** field, set your preferred expiration period for a successful state of the security check, in seconds.

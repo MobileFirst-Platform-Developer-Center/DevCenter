@@ -123,7 +123,7 @@ The message is displayed when the application first uses {{ site.data.keys.mf_se
 
 ### Defining administrator messages in multiple languages
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format setting, and not according to the configured browser or operating-system language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format preference, and not according to the configured browser or operating-system display-language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
 
 Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
 

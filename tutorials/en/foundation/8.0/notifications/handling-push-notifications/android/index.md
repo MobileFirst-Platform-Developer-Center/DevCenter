@@ -73,7 +73,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
+	* Add the following to the `application` tag:
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -104,6 +104,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
+      
+      <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
+           android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
 	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
@@ -121,7 +124,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
 {: #notifications-api }
 ### MFPPush Instance
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
 
 Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
 

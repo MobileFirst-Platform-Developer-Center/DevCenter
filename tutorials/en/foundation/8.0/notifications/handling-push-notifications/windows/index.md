@@ -51,7 +51,7 @@ If the {{ site.data.keys.product_adj }} Native Windows SDK is not already presen
 {: #notifications-api }
 ### MFPPush Instance
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
+All API calls must be called on an instance of `MFPPush`.  This can be done by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
 
 Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
 

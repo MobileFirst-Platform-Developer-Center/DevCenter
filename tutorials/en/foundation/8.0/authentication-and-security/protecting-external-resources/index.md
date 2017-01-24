@@ -37,7 +37,7 @@ For the external resource server to be able to request a token for the `authoriz
 
 > Learn more in the [Confidential Clients](../confidential-clients/) tutorial.
 
-In the {{ site.data.keys.mf_console }}, under **Settings → Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
+In the {{ site.data.keys.mf_console }}, under **Settings → Confidential Clients**, add a new entry. Choose a **client Secret** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
 
 <img class="gifplayer" alt="Configurting a confidential client" src="confidential-client.png"/>
 

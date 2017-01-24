@@ -353,7 +353,7 @@ if (document.addEventListener) {
                         <p>To test the migrated application:</p>
                         <ol>
                             <li>Make sure the application is registered in the {{ site.data.keys.mf_server }}.</li>
-                            <li>To avoid encountering <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">Same-origin errors</a>, set up a reverse proxy. For this purpose, you can use Node.js. For an example of a reverse proxy implementation using Node.js, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">Setting up the Web development environment</a> tutorial.</li>
+                            <li>To avoid encountering <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">Same-origin errors</a>, set up a reverse proxy. For this purpose, you can use Node.js. For an example of a reverse proxy implementation using Node.js, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">Setting up the web development environment</a> tutorial.</li>
                         </ol>
                     </div>
                 </div>
@@ -774,9 +774,9 @@ export MVN_PATH="/usr/local/bin"
                         <b>HTTP JavaScript adapters</b><br/>
 
                         <ol>
-                            <li>Navigate in your file system to the JavaScript adapter folder, for example: <i>../Desktop/JavaScriptAdapters/adapters/RSSReade</i>.</li>
+                            <li>Navigate in your file system to the JavaScript adapter folder, for example: <i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>.</li>
                             <li>Open another window and navigate to your new Maven project, for example: <i>../Desktop/MigratedAdapter</i> and to the <b>src/main/adapter-resources</b> folder.</li>
-                            <li>Copy and paste your existing adapter files into this folder: <b>filtered.xsl</b> (if used).</li>
+                            <li>Copy and paste your existing adapter files into this folder</li>
                             <li>Edit <b>adapter.xml</b>: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml).</li>
                             <li>Edit <b>js/{adapter-name}-impl.js</b>: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js).</li>
                         </ol>
@@ -1012,7 +1012,7 @@ export MVN_PATH="/usr/local/bin"
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
                                 <i>Custom Authenticator + LoginModule:</i> an <code>init()</code> method for startup, and <code>processRequest()</code> to authorise requests.
-The authenticator sends the login module the credentials to the <code>login()/logout()</code> methods.</td>
+The authenticator sends the login module's credentials to the <code>login()/logout()</code> methods.</td>
                                 <td>When implementing the security check interface, the user must also implement the <code>authorize()</code> and <code>introspect()</code> methods, which are called by the framework during authorization requests. The security check handles the authentication and login/logout by itself.
                                 </td>
                             </tr>
@@ -1039,7 +1039,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 
                             <tr>
                                 <td><b>Definition</b></td>
-                                <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one dedicated to define the <code>UserID</code>.
+                                <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one security test dedicated to define the <code>UserID</code>.
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>

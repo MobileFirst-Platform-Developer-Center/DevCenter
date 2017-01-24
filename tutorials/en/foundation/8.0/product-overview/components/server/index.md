@@ -18,7 +18,7 @@ The administration and deployment operations of the {{ site.data.keys.product_ad
 A simplified version of {{ site.data.keys.mf_server }} that is preconfigured and does not need software prerequisite such as database or an application server is available for developers. See [Setting up the {{ site.data.keys.product_adj }} Development Server](../../../installation-configuration/development).
 
 ## {{ site.data.keys.mf_server }} Components
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 The architecture of the {{ site.data.keys.mf_server }} components is illustrated as follows:
 
 ![Components that make up the {{ site.data.keys.mf_server }}](server_components.jpg)
