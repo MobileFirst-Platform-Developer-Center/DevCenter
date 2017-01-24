@@ -340,7 +340,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
                                                 <ul>
                                                     <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
                                                     <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the  of the administration service and {{ site.data.keys.mf_console }}. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                                    <li>Map one or more users to the security roles of the administration service and {{ site.data.keys.mf_console }}. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -502,7 +502,7 @@ To use an existing user instead of creating new user, you can do the following o
         ...
    ```
     
-Also, the user that is created by the sample Ant files is mapped to the  of the administration service and the console. With this setting, you can use this user to log on to {{ site.data.keys.mf_server }} after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
+Also, the user that is created by the sample Ant files is mapped to the security roles of the administration service and the console. With this setting, you can use this user to log on to {{ site.data.keys.mf_server }} after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
 
 #### Specify Liberty Java EE level
 {: #specify-liberty-java-ee-level }
