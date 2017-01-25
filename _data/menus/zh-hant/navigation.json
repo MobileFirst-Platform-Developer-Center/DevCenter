@@ -1,0 +1,119 @@
+[{
+    "name": "Features",
+    "path": "/features"
+},{
+    "name": "Docs",
+    "path": "/tutorials/en",
+    "children": [{
+        "name": "All Docs",
+        "path": "",
+        "children": [{
+            "name": "Foundation 8.0",
+            "path": "/foundation/8.0/all-tutorials"
+        }, {
+            "name": "Foundation 7.1",
+            "path": "/foundation/7.1/all-tutorials"
+        }, {
+            "name": "Foundation 7.0",
+            "path": "/foundation/7.0/all-tutorials"
+        }, {
+            "name": "Foundation 6.3",
+            "path": "/foundation/6.3/all-tutorials"
+        }]
+    }, {
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "Cordova",
+            "path": "/foundation/8.0/cordova-tutorials"
+        }, {
+            "name": "iOS",
+            "path": "/foundation/8.0/ios-tutorials"
+        }, {
+            "name": "Android",
+            "path": "/foundation/8.0/android-tutorials"
+        }, {
+            "name": "Windows 8 and 10",
+            "path": "/foundation/8.0/windows-8-10-tutorials"
+        }, {
+            "name": "Web",
+            "path": "/foundation/8.0/web-tutorials"
+        }, {
+            "name": "Xamarin",
+            "path": "/foundation/8.0/xamarin-tutorials"
+        }]
+    }, {
+        "name": "Admins",
+        "path": "",
+        "children": [{
+            "name": "Installation and Configuration",
+            "path": "/foundation/8.0/installation-configuration"
+        }, {
+            "name": "Administering Applications",
+            "path": "/foundation/8.0/administering-apps"
+        }, {
+            "name": "Application Center",
+            "path": "/foundation/8.0/appcenter"
+        }]
+    }, {
+        "name": "Product Integration",
+        "path": "/product-integration",
+        "children": [{
+            "name": "Foundation 8.0",
+            "path": "/8.0"
+        }, {
+            "name": "Foundation 7.1",
+            "path": "/7.1"
+        }, {
+            "name": "Foundation 7.0",
+            "path": "/7.0"
+        }, {
+            "name": "Foundation 6.3",
+            "path": "/6.3"
+        }]
+    }, {
+        "name": "Learn More",
+        "path": "../../../learn-more"
+    }]
+}, {
+    "name": "Labs",
+    "path": "/labs",
+    "children": [{
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "Foundation 8.0 Labs",
+            "path": "/developers/8.0/intro"
+        }, {
+            "name": "Foundation 7.1 Labs",
+            "path": "/developers/7.1/setup"
+        }, {
+            "name": "Foundation 7.0 Labs",
+            "path": "/developers/7.0/setup"
+        }]
+    }, {
+        "name": "Administrators",
+        "path": "",
+        "children": [{
+            "name": "Foundation 7.1 Labs",
+            "path": "/administrators/7.1/intro"
+        }]
+    }]
+}, {
+    "name": "Video Gallery",
+    "path": "/video-gallery"
+}, {
+    "name": "Blog",
+    "path": "/blog"
+}, {
+    "name": "Help",
+    "path": "/help"
+}, {
+    "name": "Downloads",
+    "path": "/downloads",
+    "extraClasses": "hidden-xs hidden-sm hidden-md"
+},{
+    "name": "Try Bluemix services",
+    "path": "/bluemix-services",
+    "extraClasses": "hidden-lg hidden-xs hidden-sm hidden-md"
+}]
