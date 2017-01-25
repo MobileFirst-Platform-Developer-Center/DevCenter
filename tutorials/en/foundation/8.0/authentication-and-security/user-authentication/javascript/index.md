@@ -62,7 +62,7 @@ if (isChallenged){
 ```
 
 > **Note:**
->The  `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `processSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
+>The  `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `handleSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
 
 ## Obtaining an access token
 {: #obtaining-an-access-token }

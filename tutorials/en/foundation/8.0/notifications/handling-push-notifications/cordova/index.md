@@ -60,13 +60,22 @@ Create a new Cordova project or use an existing one, and add one or more of the 
    ```
 
 ### iOS platform
-{ #ios-platform }
+{: #ios-platform }
 The iOS platform requires an additional step.  
 In Xcode, enable push notifications for your application in the **Capabilities** screen.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
 
 ![image of where is the capability in Xcode](push-capability.png)
+
+### Android platform
+{: #android-platform }
+The Android platform requires an additional step.  
+In Android Studio, add the following `activity` to the `application` tag:
+
+```xml
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
+```
 
 ## Notifications API
 {: #notifications-api }

@@ -44,13 +44,13 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
 	
-	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
-    	<property name="maxAttempts" defaultValue="3"/>
-	</securityCheckDefinition>
-	
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
+	
+	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+    	<property name="maxAttempts" defaultValue="3"/>
+	</securityCheckDefinition>
 </mfp:adapter>
 ```
 
