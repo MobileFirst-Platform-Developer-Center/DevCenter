@@ -164,8 +164,8 @@ To add, click **New** and provide the requested values.
                             <li><i>id</i> - A unique segment identifier. String, Non-editable.</li>
                             <li><i>name</i> - A descriptive name of segment. String, Editable.</li>
                             <li><i>description</i> – A short description of segment. String, Editable.</li>
-                            <li><i>Features</i>  - A the list of features as defined in the schema, the user can set a static value to a feature which is detached from the schema default.</li>
-                            <li><i>Properties</i> - the list of properties as defined in the schema, the user can set a static value to a property which is detached from the schema default.</li>
+                            <li><i>Features</i> - A list of features as defined in the schema, the user can set a static value to a feature which is different from the schema default.</li>
+                            <li><i>Properties</i> - A list of properties as defined in the schema, the user can set a static value to a property which is different from the schema default.</li>
                         </ul>
                     </li>
                 </ul>
