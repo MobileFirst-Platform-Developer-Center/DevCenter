@@ -24,7 +24,7 @@ Follow the steps provided in the [Android Developers website](http://developer.a
 ### Android SDK
 The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
 
-Once you open Android Studio for the time, you will be able to configure the Android SDK using the SDK Manager.
+Once you open Android Studio for the first time, you will be able to configure the Android SDK using the SDK Manager.
 
 In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
 
