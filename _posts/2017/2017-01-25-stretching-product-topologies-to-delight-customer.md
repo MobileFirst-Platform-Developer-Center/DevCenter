@@ -1,8 +1,8 @@
 ---
-title: Stretching product topologies to delight customer
+title: Stretching product topologies to delight customers
 date: 2017-01-25
 tags:
-- MobileFirst_Foundation
+- MobileFirst_Platform
 - zero_downtime
 version:
 - 7.1
@@ -13,16 +13,16 @@ author:
 > Maurizio Luinetti is an Executive Architect for IBM Software providing technical leadership and driving client adoption of IBM architectures, designing and proposing innovative solutions that address client business goals linking together software capabilities and strategic initiatives and coordinating several specialists from different business units.
 
 ## Overview
-
 For the banking industry, the customer interaction through the mobile channel is predicted to be the prevalent one in the near future. So banks are demanding topologies that allow to achieve a near-zero downtime target. Tailoring the appropriate product topology, IBM MobileFirst Platform Foundation is able to achieve this stringent target. And to delight your clients, you have to satisfy the unexpressed requirements too.
 
-#Stretching product topologies to delight customer
+## Stretching product topologies to delight customer
 I work as an IT architect for a large financial institution and I’m very often challenged to satisfy sophisticated business requirements with the current infrastructure (or with minimum enhancement to it to reduce implementation costs).
 
 Recently, I was asked by my customer to enhance the current topology serving their mobile banking channel, based on IBM MobileFirst Platform Foundation (MFPF), to achieve a near-zero downtime target. I think this is (or will be in the near future) a common requirement due to the increasing importance of the customer direct channels in the banking industry and the fact that the mobile channel is predicted to be the prevalent one in the near future.
 This business requirement poses stringent requests both to the application architecture and to the infrastructure topology, and I cannot start from scratch as if I were in a greenfield project.
 
 The degrees of freedom I had were limited by many factors:
+
 * The current archetype used by the customer for all the WebSphere Application Server (WAS) based products and applications: a 4-nodes geographically dispersed single WAS cell spanning over 4 sites in 2 campuses.
 * The application life cycle management tool in use
 * The current infrastructure management procedures
@@ -32,6 +32,7 @@ The degrees of freedom I had were limited by many factors:
 First, I had to master the product the customer is using. The MFPF runtime environment is a mobile-optimized server-side component that runs the server side of mobile applications (back-end integration, version management, security, unified push notification). Each runtime environment is packaged as a web application (WAR file) and can host one or more MobileFirst applications. Each runtime environment requires a database to host information such as the list of devices that connect to it. Different runtime environments cannot share database tables. If there are multiple runtime environments, the tables must be in different schemas or different databases. Similar runtime environments that run in the same cluster of farm must use the same database unless you implement a disaster recovery topology with replication and conflict management.
 
 Then, I had to analyze the MFPF supported topologies to verify if one of them could satisfy the business requirement I am confronted with. MFPF supports many different topologies, from the trivial “stand-alone server” one to very sophisticated topologies used to provide business continuity.
+
 * Server farm: A farm is a set of individual servers where the same components are deployed and where the same administration database and runtime database are shared between the servers
 * WAS Network Deployment: The administration components and the runtimes are deployed in clusters of the WAS cell. Multiple modes are available to deploy the administration components and the runtimes.
 * Active-active disaster recovery: It involves several instances of MFPF deployed in two or more active sites in combinations with IBM Cloudant database and optionally WebSphere eXtreme scale (WXS). A prerequisite for enabling this topology is to operate MFPF in session-independent mode.
@@ -49,7 +50,8 @@ MFPF Operational Analytics could be added to this topology because several MFPF 
 * Together, so all queries reflect all the data that was sent from every MFPF Server
 * Separately, adding a tenant, so that they can be searched and viewed separately for each tenant
 
-Syntax example:  
+Syntax example: 
+ 
 ![proposed topology]({{site.baseurl}}/assets/blog/2017-01-25-stretching-product-topologies-to-delight-customer/stretching-product-topologies-to-delight-customer.png)
 
 When I was almost ready to discuss my proposal with the customer, a bank of the group came out with a new request: they would like to have a production-like environment where they want to test new functionalities almost ready for the main stream, but offered to a limited set of customers (the so called *Family & Friends*. Obviously, the bank doesn’t want to set up and pay for this new environment, but they would like to share as much as possible.
