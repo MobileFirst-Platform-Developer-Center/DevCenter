@@ -1,8 +1,8 @@
 ---
-title: Stretching product topologies to delight customer
+title: Stretching product topologies to delight customers
 date: 2017-01-25
 tags:
-- MobileFirst_Foundation
+- MobileFirst_Platform
 - zero_downtime
 version:
 - 7.1
@@ -13,16 +13,16 @@ author:
 > Maurizio Luinetti is an Executive Architect for IBM Software providing technical leadership and driving client adoption of IBM architectures, designing and proposing innovative solutions that address client business goals linking together software capabilities and strategic initiatives and coordinating several specialists from different business units.
 
 ## Overview
-
 For the banking industry, the customer interaction through the mobile channel is predicted to be the prevalent one in the near future. So banks are demanding topologies that allow to achieve a near-zero downtime target. Tailoring the appropriate product topology, IBM MobileFirst Platform Foundation is able to achieve this stringent target. And to delight your clients, you have to satisfy the unexpressed requirements too.
 
-#Stretching product topologies to delight customer
+## Stretching product topologies to delight customer
 I work as an IT architect for a large financial institution and I’m very often challenged to satisfy sophisticated business requirements with the current infrastructure (or with minimum enhancement to it to reduce implementation costs).
 
 Recently, I was asked by my customer to enhance the current topology serving their mobile banking channel, based on IBM MobileFirst Platform Foundation v7.x (MFPF), to achieve a near-zero downtime target. I think this is (or will be in the near future) a common requirement due to the increasing importance of the customer direct channels in the banking industry and the fact that the mobile channel is predicted to be the prevalent one in the near future.
 This business requirement poses stringent requests both to the application architecture and to the infrastructure topology, and I cannot start from scratch as if I were in a greenfield project.
 
 The degrees of freedom I had were limited by many factors:
+
 * The current archetype used by the customer for all the WebSphere Application Server (WAS) based products and applications: a 4-nodes geographically dispersed single WAS cell spanning over 4 sites in 2 campuses.
 * The application life cycle management tool in use
 * The current infrastructure management procedures
