@@ -88,7 +88,7 @@ indexed: false
 <!-- Latest blog post -->
 <div id="blogPosts">
    <div class="container" role="section">
-      <span class="latestPost">Latest in the blog: </span><span class="postTitle"><a href="#">dummy text</a></span>
+      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}
    </div>
 </div> 
 
