@@ -73,6 +73,22 @@ body {
 	color: white;
 }
 
+.latestPostTitle {
+	a {
+		color: white;
+		text-decoration: underline;
+		
+		
+		&:hover {
+			text-decoration: none;
+		}
+		&:visited {
+			text-decoration: underline;
+			color: white;
+		}
+	}
+}
+
 #index_sections {
 	margin-top: 50px;
 	font-size: 112.5%;
