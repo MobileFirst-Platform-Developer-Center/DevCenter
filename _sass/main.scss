@@ -148,7 +148,7 @@ body {
 		}
 		
 		.foundation_diamond {
-			height: 330px;
+			height: 370px;
 			margin-left: 150px;
 			margin-top: 21px;
 		}
@@ -168,15 +168,19 @@ body {
 		
 		img {
 			height: 150px;
-			padding: 33px;
+			padding: 33px;	
 		}
-
+		
+		a img {
+			text-decoration: none;
+		}
+		
 		.index_section_left {
 			text-align: center;
 			padding-bottom: 60px;
 			float: left;
 			border-right: 1px solid #DDD;
-			height: 300px;
+			height: 370px;
 		}
 		
 		.index_section_right {
