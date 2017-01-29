@@ -1,8 +1,7 @@
 //colors
-$black: black;
-$wild_sand: #f4f4f4;
 $color_glacier_approx: #75aed0;
-$white: #ffffff;
+$color_chambray_approx: #325c80;
+$color_nile_blue_approx: #1d3649;
 
 //fonts
 $font_0: HelveticaNeue-UltraLight;
@@ -15,8 +14,10 @@ $font_6: Lucida Grande;
 $font_7: sans-serif;
 
 .carousel {
-	height: 290px;
-	margin-bottom: 70px;
+	background-color: #28536f;
+	background-image: url(../assets/front-page/carousel-background.png);
+	height: 380px;
+	
 	.carousel-control {
 		&.left {
 			background-image: none;
@@ -25,25 +26,23 @@ $font_7: sans-serif;
 			background-image: none;
 		}
 	}
+	
 	.carousel-indicators {
-		bottom: -64px;
-		background-color: $color_glacier_approx;
-		padding: 10px;
 		width: 100%;
 		left: auto;
 		margin-left: 0;
 		li {
-			background-color: $white;
+			background-color: white;
 			opacity: 0.5;
 		}
 		.active {
-			background-color: $white;
+			background-color: white;
 			opacity: 1.0;
 		}
 	}
+	
 	.carousel-inner .item {
 		height: 330px;
-		background-color: $wild_sand;
 		img {
 			height: 250px;
 			width: 450px;
@@ -54,14 +53,14 @@ $font_7: sans-serif;
 			font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7;
 			font-weight: 300;
 			h1 {
-				color: $black;
+				color: white;
 				text-align: left;
-				//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 				text-shadow: none;
 			}
 		}
 	}
 }
+
 @media(min-width: 768px) {
 	.carousel .carousel-inner .item .carousel-caption {
 		position: inherit;
@@ -69,7 +68,7 @@ $font_7: sans-serif;
 			margin-bottom: 20px;
 			font-size: 21px;
 			line-height: 1.4;
-			color: $black;
+			color: black;
 		}
 		h1 {
 			margin-bottom: 20px;

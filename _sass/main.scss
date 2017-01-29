@@ -27,122 +27,173 @@ $font_10: Courier New;
 html {
 	height: 100%;
 }
+
 body {
 	height: 100%;
 	padding-top: 0;
 	font-family: $font_0, $font_1, $font_2;
 	-webkit-print-color-adjust:exact;
 }
+
 .logo-icon {
 	background-image:url(../assets/foundation.svg);
 	background-size: 25px;
 	background-repeat: no-repeat;
 	background-position: 4px 7px;
 }
+
 #wrap {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto -60px;
 	padding: 0 0 39px;
 }
-hr {
-	border-top: 1px solid $black;
-	width: 100%;
-	left: auto;
-	margin: auto;
-}
+
 .well {
 	margin-top: 5px;
 }
-.custombtn.btn-default {
-	display: block;
-	width: 300px;
-	background-color: $color_rhino_approx;
-	color: $white;
-	text-align: center;
-	padding: 7px 0;
-	margin: 0 0 10px;
-	border: 1px solid $color_chambray_approx;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 0;
-	text-decoration: none;
-	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	text-shadow: none;
-	font-size: 70%;
-	font-family: $font_0, $font_1, $font_3, $font_2;
-	font-weight: 300;
-	&:hover {
-		background-color: $color_nile_blue_approx;
-		color: $white;
-		text-decoration: none;
-		border: 1px solid $color_chambray_approx;
-	}
 
-	&.containers {
-		width: 400px;
-	}
-	&.stack {
-		background: none;
-		color: $color_chambray_approx;
-		margin-top: -10px;
-		&:hover {
-			background: $color_nile_blue_approx;
-			color: $white;
-		}
-	}
-}
 .logo {
 	padding-top: 13px;
 	padding-right: 5px;
 	padding-left: 16px;
 }
-.img-circle {
-	margin-left: 98px;
-	height: 64px;
-	width: 64px;
-}
-.mid-nav {
-	margin: 20px 0;
-	p {
-		text-align: center;
-		font-size: 100%;
-	}
-	h2 {
-		text-align: center;
-		font-size: 120%;
-	}
-}
+
 #blogPosts {
-	.twoColumns {
-		-webkit-columns: 2 200px;
-		-moz-columns: 2 200px;
-		//Instead of the line below you could use @include columns($width-and-count)
-		columns: 2 200px;
-	}
-	#announcements {
-		display: none;
-	}	
-	.blogPostsHeading {
-		margin-top: 20px;
-		font-weight: bold;
-		font-size: 24px;
-		color: black;
-		cursor: pointer;
-		text-decoration: underline;
-	}
-	.blogPostsHeadingInactive {
-		font-weight: 300;
-		text-decoration: none;
-	}
+	background-color: #5AAAFA;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
 }
-.postDate {
-	font-size: 80%;
-	padding: 0;
-	margin: 0;
-	font-weight: bold;
-}
-.postTitle {
+
+.latestPost {
 	font-size: 120%;
+	font-weight: 400;
+	margin-right: 25px;
+	color: white;
+}
+
+.postTitle {
+	font-size: 100%;
+	font-weight: 200;
+	
+	a {
+		color: white;
+		text-decoration: underline;
+		
+		&:hover {
+			text-decoration: none;
+		}
+		
+		&:visited {
+			color: white;
+			text-decoration: underline;
+		}
+	}
+}
+
+#index_sections {
+	margin-top: 50px;
+	font-size: 112.5%;
+	
+	h1 {
+		font-size: 230%;
+		font-family: HelveticaNeue-UltraLight,Helvetica Neue Light,Helvetica Neue,Open Sans,Helvetica,Arial,Lucida Grande,sans-serif;
+		color: #4A4A4A;
+		margin-bottom: 20px;
+	} 
+	
+	hr {
+		border: 1px solid #DDD !important;
+		margin: 90px 15% 70px 16%;
+	}
+	
+	#index_overview {
+		text-align: center;
+	
+		#index_overview_icons {	
+			.section_text {
+				margin-bottom: 35px;
+			}
+			
+			.index-item {
+				width: 20%;
+				padding: 20px;
+				font-weight: 300;
+				margin-bottom: 35px;
+				
+				img {
+					height: 105px;
+				}
+			}
+		}
+		
+		a.read-more {
+			width: 300px;
+			background-color: #5AAAFA;
+			color: white;
+			text-align: center;
+			padding: 12px;
+			border-radius: 0;
+			text-decoration: none;
+			text-shadow: none;
+			font-size: 80%;
+			font-weight: bold;
+		}
+	}
+
+	#index_benefits {
+		text-align: left;
+		margin-bottom: 30px;
+		
+		.highlight_text {
+			color: #649fe2;
+		}
+		
+		.foundation_diamond {
+			height: 330px;
+			margin-left: 150px;
+			margin-top: 21px;
+		}
+		
+		.benefits {
+			padding-right: 80px;
+		}
+	}
+	
+	#index_getstarted {
+		text-align: center;
+		margin-bottom: 30px;
+		
+		img {
+			height: 100px;
+			padding: 15px;
+		}
+
+		.index_section_left {
+			text-align: center;
+			margin-left: 150px;
+			padding-right: 60px;
+			float: left;
+			border-right: 1px solid #DDD;
+			height: 300px;
+		}
+		
+		.index_section_right {
+			text-align: center;
+			margin-right: 150px;
+			float: right;
+		}
+		
+		.number {
+			border-radius: 50%;
+    		padding: 6px 10px 6px 10px;
+		   border: 1px solid #649fe2;
+		   color: #649fe2;
+			font-size: 95%;
+    		font-weight: bold;
+		}
+	}
 }
 
 footer {
@@ -152,7 +203,6 @@ footer {
 	height: 122px;
 	color: #999;
 }
-
 footer a {
 	font-size: 110%;
 	color: #999;
@@ -163,25 +213,15 @@ footer a {
 
 .footerItem {
 	float: left;
-	//width: 25%;
 	border-left: 2px solid white;
 	padding-left: 10px;
 }
+
 .footerHeading {
 	font-weight: bold;
 	font-size: 120%;
 	color: white;
 }
-
-//code:not([class*="language-"]) {
-//	background-color: inherit;
-//	color: $black;
-//	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-//	padding: 0px;
-//	//background: #FDFAFB;
-//   //border: 1px solid #E0E0EA;
-//	weight:400;
-//}
 
 blockquote {
 	background: #f9f9f9;
@@ -190,6 +230,7 @@ blockquote {
 	font-size: 110%;
 	margin: 0 0 10px;
 }
+
 @media(max-width: 768px) {
 	footer ul {
 		padding: 0;
@@ -201,6 +242,7 @@ blockquote {
 		padding-left: 5px;
 	}
 }
+
 .downloadButtons {
 	margin-bottom: 53px;
 	.btn-group {
@@ -211,7 +253,6 @@ blockquote {
 		}
 	}
 	.download-button {
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 		border-radius: 5px;
 		font-family: $font_1;
 		color: $white;
@@ -221,7 +262,6 @@ blockquote {
 		margin: 21px 0 5px 5px;
 		float: right;
 		border: 1px solid $color_chambray_approx;
-		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 		box-shadow: 0 2px $color_quill_gray_approx;
 		text-decoration: none;
 
@@ -235,49 +275,17 @@ blockquote {
 			text-decoration: none;
 		}
 		&:active {
-			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 			box-shadow: none;
 			margin-top: 22px;
 		}
 	}
 }
-// Focus is kept "unstyled to comply with accessibility guidelines."
-//:focus, a:focus {
-//	outline: none;
-//}
-//.btn {
-//	&:focus {
-//		outline: none;
-//	}
-//	&:active {
-//		&:focus {
-//			outline: none;
-//		}
-//		&.focus {
-//			outline: none;
-//		}
-//	}
-//	&.active {
-//		&:focus {
-//			outline: none;
-//		}
-//		&.focus {
-//			outline: none;
-//		}
-//	}
-//	&.focus {
-//		outline: none;
-//	}
-//}
+
 .btn-color {
 	color: white;
 }
 .container .btn {
 	background-color: $color_rhino_approx;
-	//&:focus {
-	//	background-color: $color_rhino_approx;
-	//	color: white;
-	//}
 	&:hover {
 		background-color: $color_nile_blue_approx;
 		color: white;
@@ -328,9 +336,38 @@ h4.panel-title, .tutorial h4.panel-title  {
 	text-decoration: none;
 }
 
-hr {
-	border: 2px solid #DDD;
-	margin: 15px 0 5px 0;
+// Buttons
+.custombtn.btn-default {
+	display: block;
+	width: 300px;
+	background-color: #41D6C3;
+	color: #4A4A4A;
+	text-align: center;
+	padding: 7px 0;
+	margin: 0 0 10px;
+	border-radius: 0;
+	text-decoration: none;
+	text-shadow: none;
+	font-size: 70%;
+	font-family: arial;
+	font-weight: 500;
+	
+	&:hover {
+		background-color: #82C9FB;
+	}
+
+	&.containers {
+		width: 400px;
+	}
+	
+	&.stack {
+		background-color: white;
+		color: $color_chambray_approx;
+		margin-top: -10px;
+		&:hover {
+			background: #82C9FB;
+		}
+	}
 }
 
 // last mofidied date styling
