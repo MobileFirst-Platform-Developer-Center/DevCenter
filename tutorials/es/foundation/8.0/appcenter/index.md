@@ -3,7 +3,7 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 13
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
