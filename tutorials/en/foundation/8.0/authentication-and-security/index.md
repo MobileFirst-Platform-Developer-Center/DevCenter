@@ -219,13 +219,12 @@ You can protect your resources in various ways:
 {: #mandatory-application-scope }
 At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
 
-**Notes:**
-
+**Note:**
 * The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
 * The access token that is granted for the resource scope does not contain the mandatory application scope.
 
 <br/>
-In the {{ site.data.keys.mf_console }}, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
+In the {{ site.data.keys.mf_console }}, select your application from the **Applications** section of the navigation sidebar, and then select the **Security** tab. Under **Mandatory Application Scope**, select **Add to Scope**.
 
 <img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
 
@@ -346,4 +345,5 @@ After obtaining an access token, the client attaches the obtained token to subse
 
 ## Tutorials to follow next
 {: #tutorials-to-follow-next }
-Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.  
+Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.
+
