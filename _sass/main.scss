@@ -98,14 +98,14 @@ body {
 	
 	h1 {
 		font-size: 230%;
-		font-family: HelveticaNeue-UltraLight,Helvetica Neue Light,Helvetica Neue,Open Sans,Helvetica,Arial,Lucida Grande,sans-serif;
+		font-family: "Helvetica Neue Light","Helvetica Neue","Open Sans",Helvetica,Arial,Lucida Grande,sans-serif;
 		color: #4A4A4A;
 		margin-bottom: 20px;
 	} 
 	
 	hr {
 		border: 1px solid #DDD !important;
-		margin: 90px 15% 70px 16%;
+		margin: 90px 13% 70px 15%;
 	}
 	
 	#index_overview {
@@ -362,7 +362,7 @@ h4.panel-title, .tutorial h4.panel-title  {
 	
 	&.stack {
 		background-color: white;
-		color: $color_chambray_approx;
+		color: #4A4A4A;
 		margin-top: -10px;
 		&:hover {
 			background: #82C9FB;
