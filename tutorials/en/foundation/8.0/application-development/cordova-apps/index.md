@@ -77,7 +77,7 @@ Applications can be modified using 3rd party packages to achieve requirements su
 {: #mobilefirst-apis }
 After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../application-development/sdk/cordova) to a Cordova application, the {{ site.data.keys.product_adj }} set of API methods is now available for use.
 
-> For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
+> For a complete list of available API methods, see the [API Reference](../../api).
 
 ## {{ site.data.keys.product_adj }} SDK Startup Flow
 {: #mobilefirst-sdk-startup-flow }
@@ -93,8 +93,8 @@ After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../applicatio
             <div class="panel-body">
                 <p>In Android Studio, you can review the start-up process of the Cordova app for Android with {{ site.data.keys.product_adj }}. The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b>, has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main html file.</p>
                 
-                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> extending the <code>CordovaActivity</code> native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
-                
+                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> file (which extends <code>CordovaActivity</code>) native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
+        
                 <p>The application native code instrumentation consists of:</p>
                 <ul>
                     <li>Adding <code>com.worklight.androidgap.api.WL</code> API calls to perform the {{ site.data.keys.product_adj }} initialization.</li>

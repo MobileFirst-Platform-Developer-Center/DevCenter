@@ -11,7 +11,7 @@ weight: 6
 Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
 Developers can use their IDE of choice, and any framework(s) that suits their needs.
 
-However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the {{ site.data.keys.mf_server }}.
+However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction imposed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access content that is available on another server, or for that matter, from the {{ site.data.keys.mf_server }}.
 
 [Web apps that are to use the {{ site.data.keys.product }} web SDK](../../../application-development/sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
@@ -96,7 +96,7 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
    npm install --save request
    ```
 
-2. Create a new file next to the **node_modules** folder, for example **proxy.js**.
+2. Create a new file in the **node_modules** folder, for example **proxy.js**.
 3. Add the following code to the file:
 
    ```javascript

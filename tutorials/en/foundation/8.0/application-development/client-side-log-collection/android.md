@@ -53,7 +53,7 @@ Logger.setMaxFileSize(150000);
 
 ## Auto log sending
 {: auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
+By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client.
 
 To enable:
 
@@ -91,7 +91,7 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
 
 ## Fetching server configuration profiles
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. 
+Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages.
 
 > For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/).
 

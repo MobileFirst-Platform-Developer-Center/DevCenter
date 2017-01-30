@@ -61,14 +61,14 @@ The granted access token remains valid until its expiration time elapses. The ac
                 <li>Using the {{ site.data.keys.mf_console }}
                     <ul>
                         <li>Select <b>[your application] → Security</b> tab.</li>
-                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
+                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click <b>Save</b>. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
                     </ul>
                 </li>
                 <li>Editing the application's configuration file
                     <ol>
                         <li>From a <b>command-line window</b>, navigate to the project's root folder and run the <code>mfpdev app pull</code>.</li>
-                        <li>Open the configuration file, located in the <b>[project-folder\mobilefirst</b> folder.</li>
-                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property, key and set its value to the maximum access-token expiration period, in seconds:
+                        <li>Open the configuration file, located in the <b>[project-folder]\mobilefirst</b> folder.</li>
+                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property and set its value to the maximum access-token expiration period, in seconds:
 
 {% highlight xml %}
 {
@@ -196,7 +196,7 @@ scope = `access-restricted deletePrivilege`
 You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
 
 1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder\mobilefirst** folder.
+2. Open the configuration file, located in the **[project-folder]\mobilefirst** folder.
 3. Edit the file by defining a `scopeElementMapping` property, in this property, define data pairs that are each composed of the name of your selected scope element, and a string of zero or more space-separated security checks to which the element maps. For example: 
 
     ```xml
