@@ -376,16 +376,17 @@ h4.panel-title, .tutorial h4.panel-title  {
 // Buttons
 .custombtn.btn-default {
 	display: block;
+	height: 45px;
 	width: 300px;
 	background-color: #41D6C3;
 	color: #4A4A4A;
 	text-align: center;
-	padding: 7px 0;
-	margin: 0 0 10px;
+	padding: 14px 0 11px 0;
+	margin: 0 0 10px 0;
 	border-radius: 0;
 	text-decoration: none;
 	text-shadow: none;
-	font-size: 70%;
+	font-size: 14px;
 	font-family: arial;
 	font-weight: 500;
 	
@@ -399,8 +400,7 @@ h4.panel-title, .tutorial h4.panel-title  {
 	
 	&.stack {
 		background-color: white;
-		color: #4A4A4A;
-		margin-top: -10px;
+		//margin-top: -10px;
 		&:hover {
 			background: #82C9FB;
 		}
