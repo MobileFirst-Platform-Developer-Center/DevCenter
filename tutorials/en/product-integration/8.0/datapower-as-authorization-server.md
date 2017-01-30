@@ -14,7 +14,7 @@ The integration of the {{ site.data.keys.product_adj }} security framework with 
 
 To use DataPower as the authorization server, deploy the provided pattern to your DataPower appliance and configure {{ site.data.keys.mf_server }} to interact with DataPower as the authorization server, as outlined in the following procedure.
 
-> Note: When using DataPower as the authorization server, configure client applications to connect to the DataPower appliance instead of connecting directly to {{ site.data.keys.mf_server }}. For example, in an iOS application, set the **wlServerHost** and **wlServerPort** properties in **mfpclient.plist** to the host IP address and port of the DataPower appliance. If you are using a self-signed SSL certificate for DataPower, you also need to import this certificate into the client application.
+> Note: When using DataPower as the authorization server, configure client applications to connect to the DataPower appliance instead of connecting directly to {{ site.data.keys.mf_server }}. For example, in an iOS application, set the **host** and **port** properties in [**mfpclient.plist**]({{ site.baseurl }}/tutorials/en/foundation/8.0/application-development/sdk/ios/#mfpclientplist) to the host IP address and port of the DataPower appliance. If you are using a self-signed SSL certificate for DataPower, you also need to import this certificate into the client application.[
 
 ## Pattern restrictions
 {: #pattern-restrictions }
