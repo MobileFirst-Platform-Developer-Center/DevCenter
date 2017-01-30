@@ -1,0 +1,831 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		 <!-- Set the page titles as in old javascript doclet  -->
+		
+		    <title>JavaScript web-analytics-client-side API JavaScript Reference: Class ibmmfpfanalytics</title>
+		
+		
+		<!-- Link to the template CSS -->
+		<link rel="stylesheet" type="text/css" href="ibm.css" title="Style" />
+		<link rel="stylesheet" type="text/css" href="github.css" title="Style" />
+	</head>
+
+	<body>
+	<script src="js/rainbow.min.js"></script>
+  <script src="js/language/javascript.js"></script>
+  <script src="js/language/generic.js"></script>
+	
+	
+	<!-- ============================== header ================================= -->	
+	<!-- Add a navigation bar in each class -->
+	
+	<div role="navigation" title ="TOP_Navigation" aria-label ="Top Navigation Bar"/>
+	<div class="topBar">
+	<div class="skip"><a href="#skip-navbar_top" title="Skip navigation links">Skip navigation links</a></div>
+    <div class='navBar'><a href="index-all.html">Index</a>  <a href="intro.html">Overview</a></div><div class='frameNavBar'>  <a href="ibmmfpfanalytics.logger.html">NEXT CLASS</a>  <a href="index.html" target="_blank">FRAMES (opens in new window)</a></div>
+	<a name="skip-navbar_top"></a>
+	</div>
+<hr/>
+<!-- ============================== class title ============================ -->
+<div class="content" role="main"/>
+			<h2 class="classTitle">
+				
+				
+				Class ibmmfpfanalytics
+				
+			</h2>
+	
+
+   <!-- ============ CLASS INHERITANCE BEGIN ========== -->
+
+   <!-- INHERITANCE graph  -->
+   <pre>ibmmfpfanalytics</pre>
+  
+   <!-- ============ CLASS INHERITANCE END ========== -->
+	
+		<hr/>
+	   
+
+		
+<!-- ============================== class summary ========================== -->
+				<!-- Proofread tag  -->
+				
+		
+		<!--	<p class="description"> -->
+				
+				<!-- Module tag  -->
+				
+				<!-- ilog.undocumented.jsFile tag  -->
+								
+				
+					
+				
+				
+				
+				
+				
+					<dl class="detailList">
+						<dt class="heading">Description:</dt>
+							<dd><p>The IBM® MobileFirst® web analytics client API provides the ability to enable, disable and log custom events, and  to send them to the MobileFirst server.</p>
+<p>The data collected via this API is then available in the IBM MobileFirst Analytics Console (Apps -> Client Log Search).</p>
+<p>The user calls the <code>send</code> method in order to deliver the  analytics to the server. In case of an unhandled JavaScript error, analytics data is sent automatically.</p>
+
+<p><code>ibmmfpfanalytics</code> is implemented as UMD JavaScript module. This means it can be consumed as a separate AMD module with <code>require.js</code>, or used under the global context. </p></dd>
+					</dl>
+				
+				
+				<!--  -->
+				
+					
+					
+					
+					<!-- iterating-properties tag  -->
+					
+					<!-- index-resolution tag  -->
+					
+					<!-- available tag  -->
+					
+					<!-- opl-type tag  -->				
+					
+					
+					<!-- Add support to global functions links -->
+					
+					
+					<!-- @example generated Examples out of the description -->
+					
+						<dl class="detailList">
+						<dt class="heading">Example:</dt>
+										
+							<dd></dd>
+							<dd><pre class="code"><code class="example" data-language="javascript"><caption>Usage as AMD module, with 'define':</caption>
+
+define([
+'ibmmfpfanalytics'
+], function(ibmmfpfanalytics){
+ibmmfpfanalytics.send();  
+}
+);</code></pre></dd>
+										
+							<dd></dd>
+							<dd><pre class="code"><code class="example" data-language="javascript"><caption>Usage with global context:</caption>
+
+<script src="ibmmfpfanalytics.js"></script>
+<script>
+ibmmfpfanalytics.send();
+</script></code></pre></dd>
+						
+						</dl>
+					
+					
+					<!-- @note generated notes out of the description -->	
+					
+						
+	<!--		</p> -->
+			<hr />
+<!-- ============================== constructor summary ==================== -->			
+		  
+		  <!-- ilog.undocumented.constructor tag  -->
+		  
+			
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class ibmmfpfanalytics.">
+					<caption>Property Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								
+								<a href="ibmmfpfanalytics.html#.logger">logger</a>
+								
+								<!-- ibmmfpfanalytics.<b><a href="ibmmfpfanalytics.html#.logger">logger</a></b> -->
+								</div>
+								<div class="description">IBM® MobileFirst® logger object that facilitates logging to the IBM MobileFirst server at all levels.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class ibmmfpfanalytics.">
+					 <!-- Customize global functions page  -->
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#addEvent">addEvent</a></b>(event)
+								</div>
+								<div class="description">Submits custom event data (JSON object), events later can be processed and reported.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#enable">enable</a></b>(flag)
+								</div>
+								<div class="description"><p>Sets the enablement flag for data collection.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#enableAutoSend">enableAutoSend</a></b>(autoSend)
+								</div>
+								<div class="description">Enable/Disable the Auto Send Logs feature.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#init">init</a></b>(deviceID, appName, contextRoot)
+								</div>
+								<div class="description"><p>Initializes the <code>ibmmfpfanalytics</code>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#send">send</a></b>()
+								</div>
+								<div class="description">Send all analytics data collected up to this point to the IBM MobileFirst server.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#setUserContext">setUserContext</a></b>(usedId)
+								</div>
+								<div class="description">Specify current application user.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<!-- available tag  -->
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b>
+								<a href="ibmmfpfanalytics.html#state">state</a></b>()
+								</div>
+								<div class="description">Gets the current state of the <code>ibmmfpfanalytics</code> instance.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+<!-- ============================== constructor details ==================== -->		
+			
+			 <!-- ilog.undocumented.constructor tag  -->
+			
+			
+<!-- ============================== Properties details ========================== -->		
+			
+				<div class="sectionTitle">
+					Property Detail
+				</div>
+				
+					<a name=".logger"> </a>
+					<div class="method">
+						logger
+					</div>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="ibmmfpfanalytics.logger.html">ibmmfpfanalytics.logger</a>}</span>
+					<span class="light">ibmmfpfanalytics.</span><b>logger</b>
+					
+					</div>
+					<div class="detailedDescription">
+						IBM® MobileFirst® logger object that facilitates logging to the IBM MobileFirst server at all levels.
+						
+						
+						<!--  -->
+					</div>
+					
+					<!-- proofread tag  -->
+					
+				
+						
+						
+						
+						
+						
+						<!-- available tag  -->							
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+
+					
+				
+			
+<!-- ============================== method details ========================= -->		
+			
+				 <!-- Customize global functions page  -->
+					<div class='sectionTitle'>Method Detail</div>
+				
+					<a name="addEvent"> </a>
+					
+					<div class="method">
+						addEvent
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>addEvent</b>(event)
+					
+					</div>
+					<div class="detailedDescription">
+						Submits custom event data (JSON object), events later can be processed and reported.
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							<!-- Format parameters output -->
+							
+							<dd>
+								<span class="light fixedFont">{object}</span>  
+								<span class="parameters">event</span>
+								
+								 
+								 - The event.
+								
+							</dd>
+							
+							</dl>
+						
+						
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.addEvent({'Purchases':'radio'});
+ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="enable"> </a>
+					
+					<div class="method">
+						enable
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>enable</b>(flag)
+					
+					</div>
+					<div class="detailedDescription">
+						<p>Sets the enablement flag for data collection.</p>
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							<!-- Format parameters output -->
+							
+							<dd>
+								<span class="light fixedFont">{boolean}</span>  
+								<span class="parameters">flag</span>
+								
+								 
+								 - enable or disable analytics collection (if enabled data is being collected and sent by <code>send()</code> call).
+								
+							</dd>
+							
+							</dl>
+						
+						
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.enable(true);</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="enableAutoSend"> </a>
+					
+					<div class="method">
+						enableAutoSend
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>enableAutoSend</b>(autoSend)
+					
+					</div>
+					<div class="detailedDescription">
+						Enable/Disable the Auto Send Logs feature.
+If enabled the logs will be sent automatically after each successful resource request, if no logging has occurred for 60 seconds.
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							<!-- Format parameters output -->
+							
+							<dd>
+								<span class="light fixedFont">{boolean}</span>  
+								<span class="parameters">autoSend</span>
+								
+								
+							</dd>
+							
+							</dl>
+						
+						
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">enableAutoSend(true);</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="init"> </a>
+					
+					<div class="method">
+						init
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>init</b>(deviceID, appName, contextRoot)
+					
+					</div>
+					<div class="detailedDescription">
+						<p>Initializes the <code>ibmmfpfanalytics</code>.</p>
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							<!-- Format parameters output -->
+							
+							<dd>
+								<span class="light fixedFont">{String}</span>  
+								<span class="parameters">deviceID</span>
+								
+								 
+								 - The deviceId.
+								
+							</dd>
+							
+							<dd>
+								<span class="light fixedFont">{String}</span>  
+								<span class="parameters">appName</span>
+								
+								 
+								 - The Application name.
+								
+							</dd>
+							
+							<dd>
+								<span class="light fixedFont">{String}</span>  
+								<span class="parameters">contextRoot</span>
+								
+								 
+								 - The context root (default is mfp).
+								
+							</dd>
+							
+							</dl>
+						
+						
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.init('device-uuid-12345', 'application1', 'mfp');</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="send"> </a>
+					
+					<div class="method">
+						send
+					</div>
+					
+					<div class="fixedFont">
+					
+					<span class="light">{Promise}</span>
+					<b>send</b>()
+					
+					</div>
+					<div class="detailedDescription">
+						Send all analytics data collected up to this point to the IBM MobileFirst server.
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Promise}</span> Resolved with success status, rejected with an error message.</dd>
+							
+							</dl>
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.send()
+.then(function (response) {
+	console.log(response);
+})
+.catch(function (error) {
+	console.log(error);
+ });</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="setUserContext"> </a>
+					
+					<div class="method">
+						setUserContext
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>setUserContext</b>(usedId)
+					
+					</div>
+					<div class="detailedDescription">
+						Specify current application user.  If you want user-based analytics, you must use this method
+call.  Use it when the user logs in. There is no <code>unsetUserContext</code> method. The user session ends after 30 minutes of inactivity, 
+unless another call is made to <code>setUserContext(used)</code>.
+If your application supports user profiles, call this method when the user
+profile changes.
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							<!-- Format parameters output -->
+							
+							<dd>
+								<span class="light fixedFont">{String}</span>  
+								<span class="parameters">usedId</span>
+								
+								 
+								 - User id for current app user.
+								
+							</dd>
+							
+							</dl>
+						
+						
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.setUserContext();</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					<hr />
+				
+					<a name="state"> </a>
+					
+					<div class="method">
+						state
+					</div>
+					
+					<div class="fixedFont">
+					
+					
+					<b>state</b>()
+					
+					</div>
+					<div class="detailedDescription">
+						Gets the current state of the <code>ibmmfpfanalytics</code> instance.
+						<!--  -->
+						<!--  --> 
+					</div>
+					
+					<!-- proofread tag  -->
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>the current state of <code>ibmmfpfanalytics</code>.</dd>
+							
+							</dl>
+										
+									
+						
+						
+						
+						
+						
+						<!-- undocumented javascript file -->
+						<!--  -->
+						
+						
+
+						<!-- available tag  -->
+						
+						
+						<!-- @example generated Examples out of description	the description -->	
+						
+							<dl class="detailList">
+							<dt class="heading">Example:</dt>
+											
+								<dd></dd>
+								<dd><pre class="code"><code class="example" data-language="javascript">ibmmfpfanalytics.state();</code></pre></dd>
+							
+							</dl>
+						
+						
+						<!-- @note generates notes out of the description -->	
+						
+						
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+		
+		<!-- ============================== footer ================================= -->	
+		<hr />
+		<div role="contentinfo" title ="contentinfo_title" aria-label ="Contains footer note"/>
+		<div class="fineprint" style="clear:both">
+			&copy; Copyright IBM Corp. 2011, 2016.
+		</div>
+	</body>
+</html>
