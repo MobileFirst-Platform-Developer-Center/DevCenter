@@ -11,7 +11,7 @@ layout: default
             <h2>Blog posts about
                 <small>{{page.title}}</small>
             </h2>
-            <div id="blogPosts">
+            <div id="blogPostsList">
                 {% for post in posts %}
                 <div class="postItem">
                     <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
