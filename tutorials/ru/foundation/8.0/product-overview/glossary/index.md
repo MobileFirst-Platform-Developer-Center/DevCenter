@@ -28,7 +28,7 @@ The following cross-references are used in this glossary:
 
 For other terms and definitions, see the [IBM Terminology website](http://www.ibm.com/software/globalization/terminology/).
 
-## A {
+## A
 {: #a }
 }
 ### acquisition policy

@@ -28,7 +28,7 @@ ou de uma abreviação para o formato completo.
 
 Para obter outros termos e definições, consulte o [website de Terminologia IBM](http://www.ibm.com/software/globalization/terminology/).
 
-## A {
+## A
 {: #a }
 }
 ### política de aquisição

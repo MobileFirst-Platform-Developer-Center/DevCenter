@@ -30,7 +30,7 @@ Este glosario utiliza las siguientes referencias cruzadas:
 
 Para ver otros términos y definiciones, consulte el [sitio web de terminología de IBM](http://www.ibm.com/software/globalization/terminology/).
 
-## A {
+## A
 {: #a }
 }
 ### adaptador
