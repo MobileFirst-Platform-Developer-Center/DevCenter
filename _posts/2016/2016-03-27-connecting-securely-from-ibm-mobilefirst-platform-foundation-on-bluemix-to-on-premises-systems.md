@@ -10,6 +10,8 @@ version:
 author:
   name: Ajay Chebbi
 ---
+> **Note:** This blog post refers to MobileFirst server running on IBM Containers. For instructions for MobileFirst server running on Liberty buildpacks and Mobile Foundation Bluemix service (which also runs on Liberty buildpack), pl refer to this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/12/mobile-foundation-bluemix-configuration-with-onprem-analytics-server/)
+ 
 You are already aware of the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix" target="_blank">IBM MobileFirst™ Platform Foundation</a> on IBM® Containers offering that allows you to take a locally developed MobileFirst project and run it on IBM Bluemix®. This article demonstrates how to securely connect from the IBM MobileFirst Platform Foundation on IBM Containers to an on-premises data center by using the <a href="https://www.ng.bluemix.net/docs/services/vpn/index.html" target="_blank">Virtual Private Network (VPN)</a> Service on IBM Bluemix.
 
 The IBM VPN Service provides a secure communication channel between your data center and the resources that are running in the IBM Containers. You can configure IBM MobileFirst Platform Foundation to access the Systems of Record (SoR) data securely from the on-premises data center via MobileFirst adapters.

@@ -11,7 +11,7 @@ version:
 author:
   name: Manu George
 ---
-<blockquote><b>Note:</b> This procedure is no longer applicable. Use the <a href="https://console.ng.bluemix.net/docs/services/vpn/index.html">VPN service</a> for MobileFirst Platform Foundation 7.1 on Containers.</blockquote>
+<blockquote><b>Note:</b> This procedure is no longer applicable. Use the <a href="https://console.ng.bluemix.net/docs/services/vpn/index.html">VPN service</a> for MobileFirst Platform Foundation 7.1 on Containers. For instructions for MobileFirst server running on Liberty buildpacks and Mobile Foundation Bluemix service (which also runs on Liberty buildpack), pl refer to  <a href="https://mobilefirstplatform.ibmcloud.com/blog/2016/04/12/mobile-foundation-bluemix-configuration-with-onprem-analytics-server/" >this blog post</a> </blockquote>. 
 
 <h3>Introduction</h3>
 <p>With the IBM MobileFirst  Platform Foundation 7.1 release there is an option to run the MobileFirst Platform Foundation Server on the IBM Container service on IBM Bluemix. This option enables you to build docker images of your IBM MobileFirst Foundation runtimes and then run them on the IBM Container Service. The advantage here is that you do not need to roll your own infrastructure. In this blog post we will deal with the problem of connectivity with on-premise backends. This is a common use case for an enterprise to have its MFP adapters connect to backends that are hosted on-premise. We will use the Mutual Authentication feature provided by the Secure Gateway service to ensure that the traffic between the Secure Gateway client which runs on-premise and the Secure Gateway cloud endpoint is encrypted and thus safe from man in the middle attacks.</p>
