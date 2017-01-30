@@ -26,15 +26,15 @@ The DataPower pattern has the following restrictions:
 
 ## Setup
 ### Preliminary steps
-1. Create a key pair for the DataPower SSL certificate with a public key named **azserver-sscert.pem** and a private key named **azserver-privkey.pem**. The exact procedure for creating the SSL key pair for production depends on your certificate authority, and therefore cannot be documented here. However, during development you can run the following commands from a command-line terminal to create a self-signed certificate:
+1.  Create a key pair for the DataPower SSL certificate with a public key named **azserver-sscert.pem** and a private key named **azserver-privkey.pem**. The exact procedure for creating the SSL key pair for production depends on your certificate authority, and therefore cannot be documented here. However, during development you can run the following commands from a command-line terminal to create a self-signed certificate:
 
     ```bash
     openssl req -x509 -newkey rsa:4096 -keyout azserver-privkey.pem -out azserver-sscert.pem -days 365 -nodes
     ```
     
-2. Create a key to be used by DataPower for encryption of OAuth tokens. The key is a hexadecimal string whose size is at least 32 bytes. Save the key to a file named key. Following is a sample key: **0xabcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234**.
+2.  Create a key to be used by DataPower for encryption of OAuth tokens. The key is a hexadecimal string whose size is at least 32 bytes. Save the key to a file named key. Following is a sample key: **0xabcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234**.
 
-3. Create a file that is named **secret**. This secret is used by DataPower to authenticate itself with {{ site.data.keys.mf_server }}. The secret file is a text file that contains a JSON object with a **secret** entry whose string value defines the secret. The following sample defines a "12345" secret:
+3.  Create a file that is named **secret**. This secret is used by DataPower to authenticate itself with {{ site.data.keys.mf_server }}. The secret file is a text file that contains a JSON object with a **secret** entry whose string value defines the secret. The following sample defines a "12345" secret:
 
     ```xml
     {"secret":"12345"}
@@ -43,26 +43,28 @@ The DataPower pattern has the following restrictions:
 ### Deploying the {{ site.data.keys.product_adj }} DataPower pattern
 In the WebGUI of your DataPower appliance,
 
-1. Create a new DataPower domain.
-2. Switch to the new domain, and upload the file that contains the public and private SSL-certification keys that you created in preliminary Step 1 (**azserver-sscert.pem** and **azserver-privkey.pem**) to the **cert:///** directory.
-3. Upload the **key** file that you created in preliminary Step 2 to the same directory.
-4. Upload the **secret** file that you created in preliminary Step 3 to the **local:///** directory.
-5. Select **Blueprint Console** in the WebGUI navigation sidebar. Then select the **Patterns** tab, and import the pattern by selecting the graphical import button (next to the **New Pattern** button).
-6. Select the pattern archive file (**dp-external-az-pattern.zip**), and wait for the import to complete.
-7. Select **Deploy**, and provide the input in the four required fields: enter a name for the service, the URL of your {{ site.data.keys.mf_server }}, and the DataPower IP address and port that you want the authorization server to listen to.
-8. After the pattern is deployed, select the **Services** tab to ensure that the new authorization service started successfully.
+1.  Create a new DataPower domain.
+2.  Switch to the new domain, and upload the file that contains the public and private SSL-certification keys that you created in preliminary Step 1 (**azserver-sscert.pem** and **azserver-privkey.pem**) to the **cert:///** directory.
+3.  Upload the **key** file that you created in preliminary Step 2 to the same directory.
+4.  Upload the **secret** file that you created in preliminary Step 3 to the **local:///** directory.
+5.  Select **Blueprint Console** in the WebGUI navigation sidebar. Then select the **Patterns** tab, and import the pattern by selecting the graphical import button (next to the **New Pattern** button).
+6.  Select the pattern archive file (**dp-external-az-pattern.zip**), and wait for the import to complete.
+7.  Select **Deploy**, and provide the input in the four required fields: enter a name for the service, the URL of your {{ site.data.keys.mf_server }}, and the DataPower IP address and port that you want the authorization server to listen to.
+8.  After the pattern is deployed, select the **Services** tab to ensure that the new authorization service started successfully.
 
 ### Configuring {{ site.data.keys.mf_server }} to work with DataPower
-1. Add the following JNDI entries to the application-server configuration file of your {{ site.data.keys.mf_server }} (**server.xml**). Replace the **your_secret** placeholder with the secret that you defined in your **secret** file in preliminary Step 3 (for example, "12345"). This secret is used for authenticating the DataPower appliance.
+1.  Add the following JNDI entries to the application-server configuration file of your {{ site.data.keys.mf_server }} (**server.xml**).<br />
+    Replace the **YOUR_SECRET** placeholder with the secret that you defined in your **secret** file in preliminary Step 3 (for example, "12345"). This secret is used for authenticating the DataPower appliance.<br />
+	Replace the **DATAPOWER_HOST_ADDRESS** placeholder with your DataPower host address.
 
     ```xml
     <jndiEntry jndiName="mfp/mfp.authorization.server" value="external"/>
-    <jndiEntry jndiName="mfp.external.authorization.server.secret" value="your_secret"/>
+    <jndiEntry jndiName="mfp.external.authorization.server.secret" value="YOUR_SECRET"/>
     <jndiEntry jndiName="mfp.external.authorization.server.introspection.url"
-        value=“https://<DataPower host address>:8443/az/v1/introspection"/>
+        value=“https://DATAPOWER_HOST_ADDRESS:8443/az/v1/introspection"/>
     ```
     
-2. Import the DataPower public-key certificate file (**azserver-sscert.pem**) into the WebSphere Application Server Liberty keystore of your {{ site.data.keys.mf_server }} to allow the server to connect over SSL. You can run the following commands to import the key into the keystore:
+2.  Import the DataPower public-key certificate file (**azserver-sscert.pem**) into the WebSphere Application Server Liberty keystore of your {{ site.data.keys.mf_server }} to allow the server to connect over SSL. You can run the following commands to import the key into the keystore:
 
     ```bash
     openssl x509 -outform der -in azserver-sscert.pem -out azserver-sscert.der
