@@ -16,6 +16,14 @@ To use DataPower as the authorization server, deploy the provided pattern to you
 
 > Note: When using DataPower as the authorization server, configure client applications to connect to the DataPower appliance instead of connecting directly to {{ site.data.keys.mf_server }}. For example, in an iOS application, set the **wlServerHost** and **wlServerPort** properties in **mfpclient.plist** to the host IP address and port of the DataPower appliance. If you are using a self-signed SSL certificate for DataPower, you also need to import this certificate into the client application.
 
+## Pattern restrictions
+{: #pattern-restrictions }
+
+The DataPower pattern has the following restrictions:
+
+-  The pattern does not support `OPTIONS` HTTP requests.
+-  The maximum response size is 16 MB.
+
 ## Setup
 ### Preliminary steps
 1. Create a key pair for the DataPower SSL certificate with a public key named **azserver-sscert.pem** and a private key named **azserver-privkey.pem**. The exact procedure for creating the SSL key pair for production depends on your certificate authority, and therefore cannot be documented here. However, during development you can run the following commands from a command-line terminal to create a self-signed certificate:
@@ -63,8 +71,3 @@ In the WebGUI of your DataPower appliance,
     
     The first command takes the certificate and converts it into DER format. The second command uses the Java **keytool** utility to import the certificate into the WebSphere Application Server Liberty keystore of your {{ site.data.keys.mf_server }}.
     
-3. Create a special empty scope-element mapping to be used by DataPower. You need to create this mapping in every application that is registered with {{ site.data.keys.mf_server }}. To create a mapping, select the **Security** tab on the application page, and then select **Create New** under **Security-Elements Mapping**. In the Add New Scope-Element Mapping dialog window, create a new mapping (for example, a mapping named none), and leave the **Scope Element** field empty (do not map the scope to any security check). Select Add to complete the mapping.
-
-### Protecting resources with an empty scope
-To protect a resource by requiring an access token, you need to explicitly set the resource's protecting scope to the empty scope element that you mapped in Step 3 of the server-configuration procedure. For information about how to protect your resources with a scope, see [OAuth resource protection](../../../foundation/8.0/authentication-and-security#protecting-resources). On the client side, call WLResourceRequest with a scope parameter that is set to the same empty scope element.
-
