@@ -66,6 +66,17 @@ body {
 	padding: 10px 0 10px 0;
 }
 
+.more-posts {
+	a {
+		font-size: 90%;
+		color: white;
+		
+		&:visited {
+			color: white;
+		}
+	}
+}
+
 .latestPost {
 	font-size: 120%;
 	font-weight: 400;
