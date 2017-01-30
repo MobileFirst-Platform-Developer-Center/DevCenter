@@ -23,7 +23,6 @@ The client certificate is added to a keystore that's specific to your organizati
 
 > **Note:** To complete the following steps, you will need a third-party utility. For example, you can generate a JKS keystore file by running the [Java keytool](http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) utility 
 
-> **Note:** To complete the following steps, you will need a third-party utility. For example, you can generate a JKS keystore file by running the Java keytool utility 
 
 ## Part 1: Get the Client certificate from the back-end server 
 If you have access to the back-end server infrastructure, export the public certificate from the back-end server keystore using the following command:
