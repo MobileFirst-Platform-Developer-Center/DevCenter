@@ -180,7 +180,7 @@ The underlying Elasticsearch data store expects nodes to be homogenous, so do no
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
 Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
 
-Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, use the Elasticsearch setup to define cluster behavior. Do not, for example, create a WebSphere Application Server Liberty farm or use other application server setups.
 
 In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
 
