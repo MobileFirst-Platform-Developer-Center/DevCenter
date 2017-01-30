@@ -30,7 +30,7 @@ Para obter outros termos e definições, consulte o [website de Terminologia IBM
 
 ## A
 {: #a }
-}
+
 ### política de aquisição
 {: #acquisition-policy }
 Uma política que controla como os dados são coletados de um sensor de

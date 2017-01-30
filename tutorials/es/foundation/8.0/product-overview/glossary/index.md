@@ -32,7 +32,7 @@ Para ver otros términos y definiciones, consulte el [sitio web de terminología
 
 ## A
 {: #a }
-}
+
 ### adaptador
 {: #adapter }
 El código del lado del servidor de una aplicación de {{site.data.keys.product_adj }}.
