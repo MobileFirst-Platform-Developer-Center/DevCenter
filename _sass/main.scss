@@ -109,6 +109,11 @@ body {
 		text-align: center;
 	
 		#index_overview_icons {	
+			p {
+				margin-top: 10px;
+				font-family: arial;
+			}
+			
 			.section_text {
 				margin-bottom: 35px;
 			}
@@ -148,7 +153,7 @@ body {
 		}
 		
 		.foundation_diamond {
-			height: 370px;
+			height: 340px;
 			margin-left: 150px;
 			margin-top: 21px;
 		}
@@ -164,11 +169,7 @@ body {
 		
 		p {
 			margin-top: 10px;
-		}
-		
-		img {
-			height: 150px;
-			padding: 33px;	
+			margin-bottom: 20px;
 		}
 		
 		a img {
@@ -180,13 +181,23 @@ body {
 			padding-bottom: 60px;
 			float: left;
 			border-right: 1px solid #DDD;
-			height: 370px;
+			height: 300px;
+			
+			img {
+				height: 80px;
+				padding: 0;	
+			}
 		}
 		
 		.index_section_right {
 			padding: 0;
 			text-align: center;
 			float: right;
+			
+			img {
+				height: 100px;
+				padding: 5px 46px 20px 33px;	
+			}
 		}
 		
 		.number {
@@ -197,6 +208,27 @@ body {
 			font-size: 120%;
     		font-weight: bold;
 			position: initial;
+		}
+		
+		img {
+    		-webkit-transition: all 1s ease; /* Safari and Chrome */
+		   -moz-transition: all 1s ease; /* Firefox */
+		   -ms-transition: all 1s ease; /* IE 9 */
+		   -o-transition: all 1s ease; /* Opera */
+		   transition: all 1s ease;
+			
+			&:hover {
+			   -webkit-transform:scale(1.25); /* Safari and Chrome */
+			   -moz-transform:scale(1.25); /* Firefox */
+			   -ms-transform:scale(1.25); /* IE 9 */
+			   -o-transform:scale(1.25); /* Opera */
+			   transform:scale(1.25);
+			}
+		}
+		
+		#index_getstarted_icons {
+			margin-left: 100px;
+			margin-right: 100px;
 		}
 	}
 }
