@@ -19,8 +19,6 @@ When creating a MobileFirst Server using the [Mobile Foundation bluemix service]
 
 The client certificate is added to a keystore that's specific to your organization. Following steps describe the procedure to add the certificate to the MobileFirst Server. See the [MobileFirst server keystore documentation]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/) before changing the keystore as it can have breaking implications. 
 
-The client certificate is added to a keystore that's specific to your organization. Following steps describe the procedure to add the certificate to the MobileFirst server. See the [MobileFirst server keystore documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/) before changing the keystore as it can have breaking implications. 
-
 > **Note:** To complete the following steps, you will need a third-party utility. For example, you can generate a JKS keystore file by running the [Java keytool](http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) utility 
 
 
