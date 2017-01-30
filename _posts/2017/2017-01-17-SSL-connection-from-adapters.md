@@ -13,19 +13,14 @@ additional_authors:
 ---
 
 ## Overview
-
 Often you have to use SSL (HTTPS) to connect to a back-end REST server from code running in an adapter. For this SSL handshake to happen, you need to add the *Client* certificate of the back-end server into the MobileFirst Server keystore. This establishes the trust relationship between the **Client** (the MobileFirst Server adapter in this case) and the **Server** (the back-end server you are connecting to).
 
 When creating a MobileFirst Server using the [Mobile Foundation bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/) or using scripts, the `mybluemix.net` domain's Client certificate is added by default.The following procedure is not needed to connect to back-ends that are in the `mybluemix.net` domain.
 
 The client certificate is added to a keystore that's specific to your organization. Following steps describe the procedure to add the certificate to the MobileFirst Server. See the [MobileFirst server keystore documentation]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/) before changing the keystore as it can have breaking implications. 
 
-<<<<<<< HEAD
-The client certificate is added to a keystore that's specific to your organization. Following steps describe the procedure to add the certificate to the MobileFirst server. See the [MobileFirst server keystore documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/) before changing the keystore as it can have breaking implications. 
 > **Note:** To complete the following steps, you will need a third-party utility. For example, you can generate a JKS keystore file by running the [Java keytool](http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) utility 
-=======
-> **Note:** To complete the following steps, you will need a third-party utility. For example, you can generate a JKS keystore file by running the Java keytool utility 
->>>>>>> MFPSamples/master
+
 
 ## Part 1: Get the Client certificate from the back-end server 
 If you have access to the back-end server infrastructure, export the public certificate from the back-end server keystore using the following command:
