@@ -92,8 +92,7 @@ indexed: false
 <!-- Latest blog post -->
 <div id="blogPosts">
    <div class="container" role="section">
-      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<br/>
-      <span class="more-posts"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
+      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<span class="more-posts"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
    </div>
 </div> 
 

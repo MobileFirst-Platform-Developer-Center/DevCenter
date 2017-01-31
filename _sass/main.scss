@@ -64,38 +64,41 @@ body {
 	color: white;
 	width: 100%;
 	padding: 10px 0 10px 0;
-}
-
-.more-posts {
-	a {
-		font-size: 90%;
-		color: white;
-		
-		&:visited {
+	font-size: 120%;
+	
+	.latestPost {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+	
+	.latestPostTitle {
+		font-size: 85%;
+		a {
 			color: white;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+			
+			&:visited {
+				text-decoration: underline;
+				color: white;
+			}
 		}
 	}
-}
-
-.latestPost {
-	font-size: 120%;
-	font-weight: 400;
-	margin-right: 25px;
-	color: white;
-}
-
-.latestPostTitle {
-	a {
-		color: white;
-		text-decoration: underline;
+	
+	.more-posts {
+		font-size: 85%;
+		float: right;
+		margin-top: 2px;
 		
-		
-		&:hover {
-			text-decoration: none;
-		}
-		&:visited {
-			text-decoration: underline;
+		a {	
 			color: white;
+			
+			&:visited {
+				color: white;
+			}
 		}
 	}
 }
