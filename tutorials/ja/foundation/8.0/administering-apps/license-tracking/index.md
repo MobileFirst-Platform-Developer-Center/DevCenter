@@ -1,57 +1,80 @@
 ---
 layout: tutorial
-title: License tracking
+title: ライセンス・トラッキング
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-License tracking is enabled by default in {{ site.data.keys.product_full }}, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+ライセンス・トラッキングは、
+{{site.data.keys.product_full }}
+でデフォルトで使用可能になっています。これは、アクティブ・クライアン
+ト・デバイス、アドレス可能デバイス、およびインストールされているアプリ
+など、ライセンス・ポリシーに関連したメトリックを追跡します。この情報は、
+{{site.data.keys.product }}
+の現在の使用がライセンス資格レベル内に収まっているかどうかを判別する
+のに役立ち、ライセンス違反が起こらないようにすることができます。
 
-Also, by tracking the usage of client devices, and determining whether the devices are active, {{ site.data.keys.product_adj }} administrators can decommission devices that are no longer accessing the {{ site.data.keys.mf_server }}. This situation might arise if an employee leaves the company, for example.
+また、クライアント・デバイスの使用を追跡し、デバイスがアクティブか
+どうかを判別することで、
+{{site.data.keys.product_adj }}
+管理者は、
+{{site.data.keys.mf_server }}
+にアクセスしなくなっているデバイスを廃棄できます。このような状況は、例えば従業員が退社した場合に発生することがあります。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Setting the application license information](#setting-the-application-license-information)
-* [License Tracking report](#license-tracking-report)
-* [Token license validation](#token-license-validation)
-* [Integration with IBM License Metric Tool](#integration-with-ibm-license-metric-tool)
+* [アプリケーション・ライセンス情報の設定](#setting-the-application-license-information)
+* [ライセンス・トラッキング・レポート](#license-tracking-report)
+* [トークン・ライセンス検証](#token-license-validation)
+* [IBM License Metric Tool との統合](#integration-with-ibm-license-metric-tool)
 
-## Setting the application license information
+## アプリケーション・ライセンス情報の設定
 {: #setting-the-application-license-information }
-Learn how to set the application license information for the apps you register to {{ site.data.keys.mf_server }}.
+{{site.data.keys.mf_server }}
+に登録するアプリケーションのアプリケーション・ライセンス情報を設定する
+方法を説明します。
 
-License terms distinguish {{ site.data.keys.product_full }}, {{ site.data.keys.product_full }} Consumer, {{ site.data.keys.product_full }} Enterprise, and IBM {{ site.data.keys.product_adj }} Additional Brand Deployment. Set the license information of an application when you register it to a server so that license tracking reports generate the right license information. If your server is configured for token licensing, the license information is used to check out the right feature from the license server.
+ライセンス条項により、{{site.data.keys.product_full }}、{{site.data.keys.product_full }} Consumer、{{site.data.keys.product_full }} Enterprise、および IBM {{site.data.keys.product_adj }} Additional Brand Deployment が識別されます。ライセンス・トラッキング・レポートが正しいラ
+イセンス情報を生成できるように、アプリケーションをサーバー
+に登録する際にアプリケーションのライセンス情報を設定します。サーバーがトークン・ライセンス用に構成
+されている場合、ライセンス情報を使用してライセンス・サーバーから正
+しいフィーチャーをチェックアウトします。
 
-You set the Application Type and the Token License Type.
-The possible values for Application Type are:  
+アプリケーション・タイプとトークン・ライ
+センス・タイプを設定します。アプリケーション・タイプに使用可能な値は次の通りです。  
 
-* **B2C**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Consumer.
-* **B2E**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Enterprise.
-* **UNDEFINED**: Use this application type if you don't need to track compliance against the Addressable Device metric.
+* **B2C**: アプリケーションが {{site.data.keys.product_full }} Consumer のライセンス交付を受けている場合に、このアプリケーション・タイプを使用します。
+* **B2E**: アプリケーションが {{site.data.keys.product_full }} Enterprise のライセンス交付を受けている場合に、このアプリケーション・タイプを使用します。
+* **UNDEFINED**: Addressable Device メトリックに対する準拠性をトラッキングする必要がない場合に、このアプリケーション・タイプを使用します。
 
-The possible values for Token License Type are:
+トークン・ライセンス・タイプに使用可能な値は次の通りです。
 
-* **APPLICATION**: Use APPLICATION for most applications. This is the default.
-* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Use this ADDITIONAL\_BRAND\_DEPLOYMENT if your application is licensed as IBM {{ site.data.keys.product_adj }} Additional Brand Deployment.
-* **NON_PRODUCTION**: Use NON\_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
+* **APPLICATION**: ほとんどのアプリケーションで APPLICATION を使用します。これはデフォルトです。
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**: アプリケーションが IBM {{site.data.keys.product_adj }} Additional Brand Deployment のライセンス交付を受けている場合に、この ADDITIONAL\_BRAND\_DEPLOYMENT を使用します。
+* **NON_PRODUCTION**: 実動サーバー上でアプリケーションを開発およびテストしている間は、NON\_PRODUCTION を使用します。NON_PRODUCTION トークン・ライセンス・タイプの
+アプリケーションに対してチェックアウトされるトークンはありません。
 
-> **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
+> **重要:** 実動アプリケーションに NON_PRODUCTION を使用すると、ライセンス条項に違反することになります。
 
-**Note:** If your server is configured for token licensing and if you plan to register an application with Token License Type ADDITIONAL\_BRAND\_DEPLOYMENT or NON_PRODUCTION, set the application license information before you register the first version of the application. With mfpadm program, you can set the license information for an application before any version is registered. After the license information is set, the right number of tokens is checked out when you register the first version of the app. For more information about token validation, see Token license validation.
+**注:** サーバーがトークン・ライセンス用に構成されていて、トークン・ライセンス・タイプ ADDITIONAL\_BRAND\_DEPLOYMENT または NON_PRODUCTION を指定してアプリケーションを登録する予定の場合、アプリケーションの初期バージョンを登録する前に、アプリケーション・ライセンス情報を設定します。mfpadm プログラムを使用して、バージョンを登録する前にアプリケーションのライセンス情報を設定することができます。ライセンス情報を設定した後、アプリケーションの初期バー
+ジョンを登録する際にトークンの正しい数がチェックアウトされます。トークンの検証について詳しくは、『トークン・ライセンス検証』を参照してください。
 
-To set the license type with {{ site.data.keys.mf_console }}
+{{site.data.keys.mf_console }}
+を使用してライセンス・タイプを設定するには、以下の手順を実行します。
 
-1. Select your application
-2. Select **Settings**
-3. Set the **Application Type** and the **Token License Type**
-4. Click **Save**
+1. アプリケーションを選択します。
+2. **「設定」**を選択します。
+3. **アプリケーション・タイプ**と**トークン・ライセンス・タイプ**を設定します。
+4. **「保存」**をクリックします。
 
-To set the license type with the mfpadm program,
-Use `mfpadm app <appname> set license-config <application-type> <token license type>`
+mfpadm プログラムを使用してライセンス・タイプを設定するには、次を使用します。
+`mfpadm app <appname> set license-config <application-type> <token license type>`
 
-The following example sets the license information B2E / APPLICATION to the application named **my.test.application**
+次の例では、ライセンス
+情報 B2E / APPLICATION を **my.test.application** とい
+う名前のアプリケーションに設定します。
 
 ```bash
 echo password:admin > password.txt
@@ -59,150 +82,195 @@ mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --pas
 rm password.txt
 ```
 
-## License Tracking report
+## ライセンス・トラッキング・レポート
 {: #license-tracking-report }
-{{ site.data.keys.product }} provides a license tracking report for the Client Device metric, the Addressable Device metric, and the Application metric. The report also provides historical data.
 
-The License Tracking report shows the following data:
+{{site.data.keys.product }}
+は、Client Device メトリック、Addressable
+Device メトリック、および Application メトリックのライセンス・
+トラッキング・レポートを表示します。レポートでは履歴データも表示されます。
 
-* The number of applications deployed in the {{ site.data.keys.mf_server }}.
-* The number of addressable devices in the current calendar month.
-* The number of client devices, both active and decommissioned.
-* The highest number of client devices reported over the last n days, where n is the number of days of inactivity after which a client device is decommissioned.
+ライセンス・トラッキング・レポートは以下のデータを表示し
+ます。
 
-You might want to analyze data further. For this purpose, you can download a CSV file that includes the license reports as well as a historical listing of license metrics.
+* {{site.data.keys.mf_server }}
+にデプロイされているアプリケーションの数
+* 現行のカレンダー月のアドレス可能デバイス数
+* アクティブおよび廃棄されたクライアント・デバイス数
+* 直前の n 日間にレポートされたクライアント・デバイスの最高数 (n は、クライアント・デバイスが廃棄されるまでの非アクティブであった日数)。
 
-To access the License Tracking report,
+さらにデータを分析することが必要な場
+合があります。この目的のために、ライセンス・レポートならびにライセンス・メトリックの履歴リストを含む CSV ファイルをダウンロードすることができます。
 
-1. Open {{ site.data.keys.mf_console }}.
-2. Click the **Hello, your-Name** menu.
-3. Select **Licenses**.
+ライセンス・トラッキン
+グ・レポートにアクセスするには、以下を実行します。
 
-To obtain a CSV file from the License Tracking report, click **Actions/Download report**.
+1. 
+{{site.data.keys.mf_console }}
+を開きます。
+2. **「こんにちは、～ さん」**メニューをクリックします。
+3. **「ライセンス」**を選択します。
 
-## Token license validation
+ライセンス・トラッキング・レポートから CSV ファイルを取得するには
+、**「アクション/レポートのダウンロード (Actions/Download
+report)」**をクリックします。
+
+## トークン・ライセンス検証
 {: #token-license-validation }
-If you install and configure IBM {{ site.data.keys.mf_server }} for token licensing, the server validates licenses in various scenarios. If your configuration is not correct, the license is not validated at application registration or deletion.
+IBM {{site.data.keys.mf_server }} をトークン・ライセンス用にインストールして構成すると、各種シナリオでサーバーはライセンスを検証します。構成が正しくない場合、アプリケーションの登録または
+削除でライセンスが検証されません。
 
-### Validation scenarios
+### 検証シナリオ
 {: #validation-scenarios }
-Licenses are validated in various scenarios:
+ライセンスは、次のような各種シナリオで検証されます。
 
-#### On application registration
+#### アプリケーションの登録
 {: #on-application-registration }
-Application registration fails if not enough tokens are available for the token license type of your application.
+ご使用のアプリケーションのトークン・ライセンス・タイプで使用可能
+なトークンが十分ない場合、アプリケーションの登録は失敗します。
 
-> **Tip:** You can set the token license type before you register the first version of your app.
+> **ヒント:** アプリケーションの初期バージョンを登録する前に、トークン・ライセンス・タイプを設定することができます。
 
-Licenses are checked only once per application. If you register a new platform for the same application, or if you register a new version for an existing application and platform, no new token is claimed.
+ライセンスは、アプリケーションにつき 1 回のみチェックされます。
+同じアプリケーションに新規のプラットフォームを登録する場合、または既
+存のアプリケーションとプラットフォームに新規バージョンを登録する場合
+は、新しいトークンは要求されません。
 
-#### On Token License Type change
+#### トークン・ライセンス・タイプの変更
 {: #on-token-license-type-change }
-When you change the Token License Type for an application, the tokens for the application are released and then taken back for the new license type.
+アプリケーションのトークン・ライセンス・タイプを変更すると、
+アプリケーションのトークンがリリースされた後、新規のライセンス・タ
+イプのトークンに戻されます。
 
-#### On application deletion
+#### アプリケーションの削除
 {: #on-application-deletion }
-Licenses are checked in when the last version of an application is deleted.
+アプリケーションの最後のバージョンが削除されると、ライセンスはチ
+ェックインされます。
 
-#### At server start
+#### サーバー始動時
 {: #at-server-start }
-The license is checked out for every registered application. The server deactivates applications if not enough tokens are available for all applications.
+ライセンスは、登録されたすべてのアプリケーションに対してチェ
+ックアウトされます。すべてのアプリケーションについて使用可能なトークンが十分ない場合、サーバーはアプリケーションを非アクティブ化します。
 
-> **Important:** The server does not reactivate the applications automatically. After you increase the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **重要:** サーバーは、アプリケーションを自動的に再アクティブ化しません。使用可能なトークンの数を増やした後は、アプ
+リケーションを手動で再アクティブ化する必要があります。アプリケーションの使用不可化と使用可能化について詳しくは、[保護リソースへのアプリケーション・アクセスのリモート側での無効化](../using-console/#remotely-disabling-application-access-to-protected-resources)を参照してください。
 
-#### On license expiration
+#### ライセンスの期限切れ
 {: #on-license-expiration }
-After a certain amount of time, the licenses expire and must be checked out again. The server deactivates applications if not enough tokens are available for all applications.
+一定の時間が過ぎると、ライセンスの有効期限が切れ、再度チェックア
+ウトする必要があります。すべてのアプリケーションについて使用可能なトークンが十分ない場合、サーバーはアプリケーションを非アクティブ化します。
 
-> **Important:** The server does not reactivate the applications automatically. After you augment the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **重要:** サーバーは、アプリケーションを自動的に再アクティブ化しません。使用可能なトークンの数を増やした後は、アプ
+リケーションを手動で再アクティブ化する必要があります。アプリケーションの使用不可化と使用可能化について詳しくは、[保護リソースへのアプリケーション・アクセスのリモート側での無効化](../using-console/#remotely-disabling-application-access-to-protected-resources)を参照してください。
 
-#### At server shutdown
+#### サーバーのシャットダウン時
 {: #at-server-shutdown }
-The license is checked in for every deployed application, during a server shutdown. The tokens are released only when the last server of a cluster of farm is shut down.
+サーバーのシャットダウン時に、デプロイされているアプリケーション
+ごとにライセンスがチェックインされます。トークンは、ファームのクラスターの最終サーバ
+ーがシャットダウンする場合のみリリースされます。
 
-### Causes of license validation failure
+### ライセンス検証失敗の原因
 {: #causes-of-license-validation-failure }
-License validation might fail when the application is registered or deleted, in the following cases:
+以下の場合、アプリケーションの登録時または削除時にライセンス検証が失敗す
+ることがあります。
 
-* The Rational  Common Licensing native library is not installed and configured.
-* The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../installation-configuration/production/token-licensing).
-* Rational License Key Server is not accessible.
-* Sufficient tokens are not available.
-* The license expired.
+* Rational Common Licensing ネイティブ・ライブラリーがインストールおよび構成されていない。
+* 管理サービスがトークン・ライセンスに対して構成されていない。
+詳しくは、
+[
+トークン・ライセンスのインストールと構成 (Installing
+and configuring for token licensing)](../../installation-configuration/production/token-licensing) を参照してください。
+* Rational License Key Server にアクセスできない。
+* 十分なトークンが使用可能ではない。
+* ライセンスの有効期限が切れた。
 
-### IBM Rational License Key Server feature name used by {{ site.data.keys.product_full }}
+### {{site.data.keys.product_full }} が使用する IBM Rational License Key Server フィーチャーの名前
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
-Depending on the token license type of an application, the following features are used.
+アプリケーションのトークン・ライセンス ・タイプ
+に応じて、以下のフィーチャーが使用されます。
 
-| Token License Type | Feature name | 
+| トークン・ライセンス・タイプ | フィーチャー名 | 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
 | ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (no feature) | 
+| NON_PRODUCTION	| (フィーチャーなし) | 
 
-## Integration with IBM License Metric Tool
+## IBM License Metric Tool との統合
 {: #integration-with-ibm-license-metric-tool }
-The IBM  License Metric Tool allows you to evaluate your compliance with your IBM license.
+IBM License Metric Tool によって、IBM ライセンスのコンプライアンスを評価できます。
 
-If you have not installed a version of IBM License Metric Tool that supports IBM Software License Metric Tag or SWID (software identification) files, you can review the license usage with the License Tracking reports in {{ site.data.keys.mf_console }}. For more information, see [License Tracking report](#license-tracking-report).
+IBM Software License Metric Tag や SWID (ソフトウェア ID) ファイルをサポートする IBM License Metric Tool のバージョンをインストールしていない場合は、{{site.data.keys.mf_console }} のライセンス・トラッキング・レポートを用いてこのライセンスの使用を検討することができます。詳しくは、[ライセンス・トラッキング・レポート](#license-tracking-report)を参照してください。
 
-### About PVU-based licensing using SWID files
+### SWID ファイルを使用した、PVU ベースのライセンス交付
 {: #about-pvu-based-licensing-using-swid-files }
-If you have purchased IBM MobileFirst Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
+IBM MobileFirst Foundation Extension V8.0.0 オファリングを購入した場合、プロセッサー・バリュー・ユニット (PVU) メトリックの下でライセンス交付されます。
 
-The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installs {{ site.data.keys.mf_server }} or {{ site.data.keys.mf_analytics_server }}. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
+PVU 計算は、ISO/IEC 19970-2 および SWID ファイルに対する、IBM License Metric Tool のサポートに基づきます。SWID ファイルは、IBM Installation Manager が {{site.data.keys.mf_server }} や {{site.data.keys.mf_analytics_server }} をインストールするときに、サーバーに書き込まれます。IBM License Metric Tool が現在のカタログによると無効である製品の SWID ファイルを検出すると、ソフトウェア・カタログ・ウィジェットに警告記号が表示されます。IBM License Metric Tool がどのように SWID ファイルと連動するかについて詳しくは、[https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html)を参照してください。
 
-The number of Application Center installations is not limited by PVU-based licensing.
+Application Center のインストール数は、PVU ベースのライセンスによって制限されません。
 
-The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool.
+Foundation Extension の PVU ライセンスは、IBM WebSphere Application Server Network Deployment、IBM API Connect™ Professional、IBM API Connect Enterprise のいずれかの製品ライセンスと共にのみ購入できます。IBM Installation Manager は、License Metric Tool によって使用される SWID ファイルの追加や更新を行います。
 
-> For more information on {{ site.data.keys.product_full }} Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
+> {{site.data.keys.product_full }} Extension について詳しくは、[https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)を参照してください。
 
-> For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+> PVU ライセンス交付について詳しくは、[https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) を参照してください。
 
-### SLMT tags
+### SLMT タグ
 {: #slmt-tags }
-IBM MobileFirst Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for {{ site.data.keys.mf_server }}, and to configure the generation of the IBM Software License Metric Tag files.
+IBM MobileFirst Foundation は IBM Software License Metric Tag (SLMT) ファイルを生成します。IBM Software License Metric Tag をサポートするバージョンの IBM License Metric Tool は、ライセンス消費レポートを生成することができます。このセクションでは、{{site.data.keys.mf_server }} 向けのこれらのレポートを解釈したり、IBM Software License Metric Tag ファイルの生成を構成したりする方法について説明します。
 
-Each instance of a running MobileFirst runtime environment generates an IBM Software License Metric Tag file. The metrics monitored are `CLIENT_DEVICE`, `ADDRESSABLE_DEVICE`, and `APPLICATION`. Their values are refreshed every 24 hours.
+稼働中の MobileFirst ランタイム環境の各インスタンスは、IBM Software License Metric Tag ファイルを生成します。モニター対象のメトリックは、`CLIENT_DEVICE`
+、`ADDRESSABLE_DEVICE`、`APPLICATION`
+です。この値は 24 時間おきに更新されます。
 
-#### About the CLIENT_DEVICE metric
+#### CLIENT_DEVICE メトリックについて
 {: #about-the-client_device-metric }
-The `CLIENT_DEVICE` metric can have the following subtypes:
 
-* Active Devices
+`CLIENT_DEVICE` メトリックは、以下のサブタイプをもつこ
+とができます。
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were not decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+* アクティブ・デバイス
 
-* Inactive Devices
+    MobileFirst ランタイム環境、あるいは同じクラスターまたはサーバー・ファームに属する他の MobileFirst ランタイム・インスタンスを使用したクライアント・デバイスで、使用廃止されていないものの数。使用廃止されたデバイスについて詳しくは、[クライアント・デバイスおよびアドレス可能デバイスに対するライセンス・トラッキングの構成](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)を参照してください。
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+* 非アクティブ・デバイス
 
-The following cases are specific:
+    MobileFirst ランタイム環境、あるいは同じクラスターまたはサーバー・ファームに属する他の MobileFirst ランタイム・インスタンスを使用したクライアント・デバイスで、使用廃止されたものの数。使用廃止されたデバイスについて詳しくは、[クライアント・デバイスおよびアドレス可能デバイスに対するライセンス・トラッキングの構成](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)を参照してください。
 
-* If the decommissioning period of the device is set to a small period, the subtype "Inactive Devices" is replaced by the subtype "Active or Inactive Devices".
-* If device tracking was disabled, only one entry is generated for `CLIENT_DEVICE`, with the value 0, and the metric subtype "Device Tracking Disabled".
+特殊な
+ケースを以下に示します。
 
-#### About the APPLICATION metric
+* デバイスの使用廃止期間が短期間に設定されている場合は、サブタイプ「非アクティブ・デバイス」はサブタイプ「アクティブまたは非アクティブなデバイス」に置き換えられます。
+* デバイス・トラッキングが使用不可になっている場合は、値が 0 で「デバイス・トラッキング使用不可」というメトリック・サブタイプをもつ 1 つのエントリーのみが `CLIENT_DEVICE` に生成されます。
+
+#### APPLICATION メトリックについて
 {: #about-the-application-metric }
-The APPLICATION metric has no subtype unless the MobileFirst runtime environment is running in a development server.
+APPLICATION メトリックは、MobileFirst ランタイム環境が開発サーバーで実行されていない限り、サブタイプをもちません。
 
-The value reported for this metric is the number of applications that are deployed in the MobileFirst runtime environment. Each application is counted as one unit, whether it is a new application, an additional brand deployment, or an additional type of an existing application (for example native, hybrid, or web).
+このメトリックにレポートされる値は、MobileFirst ランタイム環境にデプロイされているアプリケーションの数です。各アプリケーションは、新規アプリケーシ
+ョンや追加ブランドのデプロイメント、既存アプリケーション (例えば、ネイ
+ティブ、ハイブリッド、Web) の追加タイプといった区別なく、いずれも 1 ユ
+ニットとしてカウントされます。
 
-#### About the ADDRESSABLE_DEVICE metric
+#### ADDRESSABLE_DEVICE メトリックについて
 {: #about-the-addressable_device-metric }
-The ADDRESSABLE_DEVICE metric has the following subtype:
+ADDRESSABLE_DEVICE メトリックには以下のサブタイプがあります。
 
-* Application: `<applicationName>`, Category: `<application type>`
+* アプリケーション: `<applicationName>`、カテ
+ゴリー: `<applicationtype>`
 
-The application type is **B2C**, **B2E**, or **UNDEFINED**. To define the application type of an application, see [Setting the application license information](#setting-the-application-license-information).
+アプリ
+ケーション・タイプは、**B2C**、**B2E**、ま
+たは **UNDEFINED** です。アプリケーションのアプリケーション・タイプを定義するには、[アプリケーション・ライセンス情報の設定](#setting-the-application-license-information)を参照してください。
 
-The following cases are specific:
+特殊な
+ケースを以下に示します。
 
-* If the decommissioning period of the device is set to less than 30 days, the warning "Short decommissioning period" is appended to the subtype.
-* If license tracking was disabled, no addressable report is generated.
+* デバイスの使用廃止期間が 30 日未満に設定されている場合は、「Short decommissioning period」という警告がサブタイプに追加されます。
+* ライセンス・トラッキングが使用不可にされた場合、アドレス可能レ
+ポートは生成されません。
 
-For more information about configuring license tracking using metrics, see
+メトリックを使用したライセンス・トラッキングの構成について詳しくは、以下を参照してください。
 
-* [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
-* [Configuring IBM License Metric Tool log files](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)
+* [クライアント・デバイスおよびアドレス可能デバイスに対するライセンス・トラッキングの構成](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
+* [IBM License Metric Tool ログ・ファイルの構成](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)

@@ -1,87 +1,101 @@
 ---
 layout: tutorial
-title: Deploying applications to test and production environments
-breadcrumb_title: Deploying apps to environments
+title: テスト環境および実稼働環境へのアプリケーションのデプロイ
+breadcrumb_title: 環境へのアプリケーションのデプロイ
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-When you finish a development cycle of your application, deploy it to a testing environment, and then to a production environment.
+アプリケーションの開発サイクルが終了した場合、そのアプリケーションをテスト環境にデプロイしてから、実稼働環境にデプロイします。
 
-### Jump to
+### ジャンプ先
 {: #jump-to }
 
-* [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment)
-* [Configuring SSL between adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
-* [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment)
-* [Registering an application to a production environment](#registering-an-application-to-a-production-environment)
-* [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server)
-* [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production)
+* [実稼働環境へのアダプターのデプロイまたは更新](#deploying-or-updating-an-adapter-to-a-production-environment)
+* [自己署名証明書の使用による  アダプターとバックエンド・サーバーの間の SSL の構成](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
+* [テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)
+* [実稼働環境へのアプリケーションの登録](#registering-an-application-to-a-production-environment)
+* [テスト・サーバーまたは実動サーバーへのサーバー・サイド成果物
+の転送](#transferring-server-side-artifacts-to-a-test-or-production-server)
+* [実動での {{site.data.keys.product_adj }} アプリケーションの更新](#updating-mobilefirst-apps-in-production)
 
-## Deploying or updating an adapter to a production environment
+## 実稼働環境へのアダプターのデプロイまたは更新
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
-Adapters contain the server-side code of applications that are deployed on and serviced by {{ site.data.keys.product }}. Read this checklist before you deploy or update an adapter to a production environment. For more information about creating and building adapters, see [Developing the server side of a {{ site.data.keys.product_adj }} application](../../adapters).
+アダプターには、{{site.data.keys.product }} によってデプロイされてサービスを受けるアプリケーションのサーバー・サイド・コードが含まれています。アダプターを実稼働環境にデプロイまたは更新する前に、このチェックリストをお読みください。アダプターの作成およびビルドについて詳しくは、[{{site.data.keys.product_adj }} アプリケーションのサーバー・サイドの開発](../../adapters)を参照してください。
 
-Adapters can be uploaded, updated, or configured while a production server is running. After all the nodes of a server farm receive the new adapter or configuration, all incoming requests to the adapter use the new settings.
+実動サーバーが稼働中に、アダプターをアップロード、更新、および構成することができます。 サーバー・ファームのすべてのノードが新規アダプターまたは構成を受信すると、アダプターへのすべての着信要求は新規の設定を使用します。
 
-1. If you update an existing adapter in a production environment, make sure that this adapter contains no incompatibilities or regressions with existing applications that are registered to a server.
+1. 実稼働環境で既存のアダプターを更新する場合は、このアダプターに、
+サーバーに登録されている既存のアプリケーションとの非互換性および回帰がないことを確認
+します。
 
-    The same adapter can be used by multiple applications, or by multiple versions of the same application, that are already published to the store and used. Before you update the adapter in a production environment, run non-regression tests in a test server against the new adapter and copies of the apps that are built for the test server.
+    ストアに既に公開されて使用されている複数のアプリケーションや同じアプリケーションの複数のバージョンで、同じアダプターを使用するこ
+とができます。テスト・サーバー用にビルドした新規アダプターとアプリケーションのコピーに対して、テスト・サーバーで非回帰テストを実行し
+てから、実稼働環境でアダプターを更新します。
 
-2. For Java adapters, if the adapter uses Java URLConnection with HTTPS, make sure that the back-end certificates are in the {{ site.data.keys.mf_server }} keystore.
+2. Java アダプターが HTTPS を使用した Java URL 接続を使用する場合、バックエンド証明書が {{site.data.keys.mf_server }} 鍵ストアにあることを確認します。
         
-    For more information, see [Using SSL in HTTP adapters](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). For more information about using self-signed certificates, see [Configuring SSL between adapters and back-end servers by using self-signed certificates](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
+    詳しくは、
+[HTTP
+アダプターでの SSL の使用 (Using SSL in HTTP adapters)](../../adapters/javascript-adapters/js-http-adapter/using-ssl/) を参照してください。
+自己署名証明書の使用について詳しくは、[自己署名証明書の使用によるアダプターとバックエンド・サーバーの間の SSL の構成](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)を参照してください。
 
-    > **Note:** If the application server is WebSphere  Application Server Liberty, then the certificates must also be in the Liberty truststore.
+    > **注:** アプリケーション・サーバーが WebSphere  Application Server Liberty の場合、証明書は Liberty のトラストストアにも格納する必要があります。
 
-3. Verify the server-side configuration of the adapter.
-4. Use the `mfpadm deploy adapter` and `mfpadm adapter set user-config` commands to upload the adapter and its configuration.
+3. アダプターのサーバー・サイド構成を確認してください。
+4. `mfpadm deploy adapter` および `mfpadm
+adapter set user-config` コマンドを使用して、アダプターおよびその構
+成をアップロードします。
 
-    For more information about **mfpadm** for adapters, see [Commands for adapters](../using-cli/#commands-for-adapters).
+    アダプター用の **mfpadm** について詳しくは、[アダプター用のコマンド](../using-cli/#commands-for-adapters)を参照してください。
         
-## Configuring SSL between adapters and back-end servers by using self-signed certificates
+## 自己署名証明書の使用による  アダプターとバックエンド・サーバーの間の SSL の構成
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
-You can configure SSL between adapters and back-end servers by importing the server self-signed SSL certificate to the {{ site.data.keys.product_adj }} keystore.
+サーバーの自己署名 SSL 証明書を {{site.data.keys.product_adj }} 鍵ストアにインポートすることにより、アダプターとバックエンド・サーバーとの間の SSL を構成することができます。
 
-1. Export the server public certificate from the back-end server keystore.
+1. サーバーのパブリック証明書をバックエンド・サーバー鍵ストアからエクスポートします。
 
-    > **Note:** Export back-end public certificates from the back-end keystore by using keytool or openssl lib. Do not use the export feature in a web browser.
+    > **注:** keytool または openssl lib を使用して、バックエンド鍵ストアからバックエンド・パブリック証明書をエクスポートします。Web ブラウザーで export フィーチャーを使用しないでください。
 
-2. Import the back-end server certificate into the {{ site.data.keys.product_adj }} keystore.
-3. Deploy the new the {{ site.data.keys.product_adj }} keystore. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+2. バックエンド・サーバー証明書を {{site.data.keys.product_adj }} 鍵ストアにインポートします。
+3. 新しい {{site.data.keys.product_adj }} 鍵ストアをデプロイします。詳しくは、[{{site.data.keys.mf_server }} 鍵ストアの構成](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
 
-### Example
+### 例
 {: #example }
-The **CN** name of the back-end certificate must match what is configured in the adapter-descriptor **adapter.xml** file. For example, consider an **adapter.xml** file that is configured as follows:
+バックエンド証明書の **CN** 名は、アダプター
+記述子ファイル **adapter.xml** 内に構成
+されている名前と一致している必要があります。例えば、次のように構成されている **adapter.xml** ファイルについて検討します。
 
 ```xml
 <protocol>https</protocol>
 <domain>mybackend.com</domain>
 ```
 
-The back-end certificate must be generated with **CN=mybackend.com**.
+バックエンド証明書は、**CN=mybackend.com** を使用して生成される必要があります。
 
-As another example, consider the following adapter configuration:
+別の例として、次のアダプター構成について検討します。
 
 ```xml
 <protocol>https</protocol>
 <domain>123.124.125.126</domain>
 ```
 
-The back-end certificate must be generated with **CN=123.124.125.126**.
+The back-end certificate
+must be generated with **CN=123.124.125.126**.
 
-The following example demonstrates how you complete the configuration by using the Keytool program.
+次の例は、Keytool プログラムを使用して構成を実行する方法を示しています。
 
-1. Create a back-end server keystore with a private certificate for 365 days.
+1. 365 日間のプライベート証明書を含むバックエンド・サーバー鍵ストアを
+作成します。
         
     ```bash
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
 
-    > **Note:** The **First and Last Name** field contains your server URL, which you use in the **adapter.xml** configuration file, for example **mydomain.com** or **localhost**.
+    > **注:** **「ファーストネームおよびラストネーム (First and Last Name)」** フィールドには、**adapter.xml** で使用するサーバー URL が含まれます (**mydomain.com** または **localhost** など)。
 
-2. Configure your back-end server to work with the keystore. For example, in Apache Tomcat, you change the **server.xml** file:
+2. 鍵ストアと連携して動作するようにバックエンド・サーバーを構成します。例えば、Apache Tomcat では、**server.xml** ファイルを次のように変更します。
 
    ```xml
    <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
@@ -93,7 +107,7 @@ The following example demonstrates how you complete the configuration by using t
       keyAlias="backend"/>
    ```
         
-3. Check the connectivity configuration in the **adapter.xml** file:
+3. **adapter.xml** ファイル内の接続性構成をチェックします。
 
    ```xml
    <connectivity>
@@ -110,190 +124,247 @@ The following example demonstrates how you complete the configuration by using t
    </connectivity>
    ```
         
-4. Export the public certificate from the created back-end server keystore:
+4. パブリック証明書を、作成されたバックエンド・サーバー鍵ストアからエクスポートします。
 
    ```bash
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
         
-5. Import the exported certificate into your {{ site.data.keys.mf_server }} keystore:
+5. 以下のようにして、エクスポートした証明書を {{site.data.keys.mf_server }} 鍵ストアにインポートします。
 
    ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
         
-6. Check that the certificate is correctly imported in the keystore:
+6. 証明書が鍵ストアに正しくインポートされたことをチェックします。
 
    ```bash
    keytool -list -keystore mfp.keystore
    ```
         
-7. Deploy the new the {{ site.data.keys.mf_server }} keystore.
+7. 新しい {{site.data.keys.mf_server }} 鍵ストアをデプロイします。
 
-## Building an application for a test or production environment
+## テスト環境または実稼働環境用のアプリケーションのビルド
 {: #building-an-application-for-a-test-or-production-environment }
-To build an application for a test or production environment, you must configure it for its target server. To build an application for a production environment, additional steps apply.
+テスト環境または実稼働環境用にアプリケーションをビルドする
+には、アプリケーションをターゲット・サーバー向けに構成する必要がありま
+す。アプリケーションを実稼働環境用にビルドするには、追加の手順が適用さ
+れます。
 
-1. Make sure that the target server keystore is configured.
-For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+1. ターゲット・サーバーの鍵ストアが構成されていることを確認します。詳しくは、[{{site.data.keys.mf_server }} 鍵ストアの構成](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
 
-2. If you plan to distribute the app installable artifact, increment the app version.
-3. Before you build your app, configure it for the target server.
+2. アプリケーションのインストール可能な成果物を配布する予定の場合は、アプリ
+ケーションのバージョンをインクリメントします。
+3. アプリケーションを、ビルドする前にターゲット・サーバー用に構成します。
 
-    You define the URL and runtime name of the target server in the client properties file. You can also change the target server by using the {{ site.data.keys.mf_cli }}. To configure the app for a target server without registering the app to a running server, you can use the `mfpdev app config server <server URL>`and `mfpdev app config runtime <runtime_name>` commands. Alternatively, you can register the app to a running server by running the `mfpdev app register` command. Use the public URL of the server. This URL is used by the mobile app to connect to {{ site.data.keys.mf_server }}.
+    ターゲット・サーバーの URL とランタイム名を、クライアントのプロパティー・ファイルで定義します。
+{{site.data.keys.mf_cli }}
+を使用してターゲット・サーバーを変更することもできます。実行中のサーバーにアプリ ケーションを登録せずにターゲット・サーバー用にアプリケーションを構成するには、`mfpdev app config server
+<server URL>` および `mfpdev app config
+runtime <runtime_name>` を使用することができます。あるいは、
+`mfpdev app register` コマンドを実行
+して、実行中のサーバーにアプリケーションを登録することもできます。サーバーの公開 URL を使用してください。この URL は、{{site.data.keys.mf_server }}
+に接続するためにモバイル・アプリケーションによって使用されます。
     
-    For example, to configure the app for a target server mfp.mycompany.com with a runtime that has the default name mfp, run 
-    `mfpdev app config server https://mfp.mycompany.com` and `mfpdev app config runtime mfp`.
+    例えば、デフォルトの名前 mfp を持つランタイムを使用して、アプリケーションをターゲット・サーバー mfp.mycompany.com 用に構成するには、`mfpdev app config server https://mfp.mycompany.com` および `mfpdev app config runtime mfp` を実行します。
     
-4. Configure the secret keys and authorized servers for your application.
-    * If your app implements certificate pinning, use the certificate of your target server. For more information about certificate pinning, see [Certificate pinning](../../authentication-and-security/certificate-pinning).
-    * If your iOS app uses App Transport Security (ATS), configure ATS for your target server.
-    * To configure secure Direct Update for an Apache Cordova application, see [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-    * If you develop your app with Apache Cordova, configure the Cordova Content Security Policy (CSP).    
+4. アプリケーションの秘密鍵と許可サーバーを構成します。
+    * ご使用のアプリケーションが証明書のピン留めを実装する場合、ターゲット・サーバーの証明書を使用します。証明書のピン留めについて詳しくは、
+[証明書のピン留め](../../authentication-and-security/certificate-pinning)を参照してください。
+    * iOS アプリケーションが App Transport Security (ATS) を使用する場
+合、ターゲット・サーバー用に ATS を構成します。
 
-5. If you plan to use Direct Update for an application that is developed with Apache Cordova, archive the versions of the Cordova plug-ins you used to build the app.
+    * Apache Cordova アプリケーションのセキュア・ダイレクト・アップデー
+トを構成するには、[クライアント・サイドでのセキュア・ダイレクト・アップデートの実装 (Implementing
+secure Direct Update on the client side)](../../application-development/direct-update) を参照してください。
+    * Apache Cordova を使用してアプリケーションを開発する場合は、
+Cordova Content Security Policy (CSP) を構成します。    
 
-    Direct Update cannot be used to update native code. If you changed a native library or one of the build tools in a Cordova project and uploaded such a file to {{ site.data.keys.mf_server }}, the server detects the difference and does not send any updates for the client application. The changes in the native library might include a different Cordova version, a newer Cordova iOS plug-in, or even an mfpdev plug-in fix pack that is newer than the one that was used to build the original application.
+5. Apache Cordova を使用して開発したアプリケーション用にダイレクト・アップデートを使用する予定の場合は、アプリケーションのビルドに使用した Cordova プラグインのバージョンをアーカイブします。
+
+    ダイレクト・アップデートは、ネイティブ・コードの更新には使用できません。ネイティブ・ライブラリーまたは Cordova プロジェクトのビルド・ツールの 1 つを変更し、そのファイルを
+{{site.data.keys.mf_server }}
+にアップロードした場合は、
+サーバーはこの違いを検出し、クライアント・アプリケーションには一切更
+新を送信しません。ネイティブ・ライブラリーの変更には、異なる Cordova バージョン、新規の Cordova iOS プラグイン、または元のアプリケーションのビルド時に使用したものよりも新しい mfpdev プラグイン・フィックスパックが含まれている可能性があります。
     
-6. Configure the app for production use.
-    * Consider disabling printing to the device log.
-    * If you plan to use {{ site.data.keys.mf_analytics }}, verify that your app sends collected data to the {{ site.data.keys.mf_server }}.
-    * Consider disabling features of your app that call the `setServerURL` API, unless you plan to make a single build for multiple test servers.
+6. 実動用にアプリケーションを構成します。
+    * デバイス・ログへの出力を無効にすることを検討します。
+    * {{site.data.keys.mf_analytics }}
+を使用する予定である場合は、アプリケーションが収集データを
+{{site.data.keys.mf_server }}
+に送信することを確認します。
+    * 複数のテスト・サーバー用の単一のビルドを作成する予定がない場合は、
+`setServerURL` API を呼び出すアプリケーションのフィ
+ーチャーを無効にすることを検討してください。
 
-7. If you build for a production server and plan to distribute the installable artifact, archive the app source code to be able to run non regression-tests for this app on a test server.
+7. 実動サーバー用にビルドしてインストール可能成果物を配布する予定
+の場合は、アプリケーション・ソース・コードをアーカイブして、テスト・サ
+ーバー上でこのアプリケーションに対して非回帰テストを実行できるよう
+にします。
 
-    For example, if you later update an adapter, you might run non-regression tests on already distributed apps that use this adapter. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
+    例えば、アダプターを後から更新する場合、このアダプターを使用する配布済みのアプリケーションに非回帰テストを実行する場合があります。詳しくは、[実稼働環境へのアダプターのデプロイまたは更新](#deploying-or-updating-an-adapter-to-a-production-environment)を参照してください。
     
-8. Optional: Create the application-authenticity file for your application.
+8. オプション: アプリケーションのアプリケーション認証性ファイルを作成します。
 
-    You use the application-authenticity file after you register the application to the server to enable the application-authenticity security check.
-    * For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity).
-    * For more information about registering an application to a production server, see [Registering an application to a production environment](#registering-an-application-to-a-production-environment).
+    アプリケーションをサーバーに登録してアプリケーション認証のセキ
+ュリティー検査を有効にした後に、アプリケーション認証ファイルを使用
+します。
+    * 詳しくは、[アプリケーション認証性セキュリティー検査の有効化](../../authentication-and-security/application-authenticity)を参照してください。
+    * アプリケーションの実動サーバーへの登録について詳しくは、[実稼働環境へのアプリケーションの登録](#registering-an-application-to-a-production-environment)を参照してください。
 
-## Registering an application to a production environment
+## 実稼働環境へのアプリケーションの登録
 {: #registering-an-application-to-a-production-environment }
-When you register an application to a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity.
+アプリケーションを実稼働環境に登録する場合、そのアプリケーション記述子をアップロードし、ライセンス・タイプを定義し、オプションでアプリケーション認証をアクティブにします。
 
-#### Before you begin
+#### 始める前に
 {: #before-you-begin }
-* Verify that {{ site.data.keys.mf_server }} keystore is configured and is not the default keystore. Do not use a server in production with a default keystore. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. You must configure the server's keystore with a secret key before you use it in production. For more information, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-* Deploy the adapters used by the app. For more information, see [Deploying or updating an adapter to a production environment](#deploying-or-updating-an-adapter-to-a-production-environment).
-* Build the application for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+* {{site.data.keys.mf_server }}
+鍵ストアが構成されてデフォルトの鍵ストアではないことを確認します。デフォルトの鍵ストアを指定して実動でサーバーを使用しないでください。
+{{site.data.keys.mf_server }}
+鍵ストアは、
+{{site.data.keys.mf_server }}
+インスタンスの ID を定義し、OAuth トークンおよびダイレク
+ト・アップデート・パッケージにデジタル署名するために使用します。サーバーの鍵ストアを実動で使用するには
+、秘密鍵を使用してこれを構成する必要があります。詳しくは、[{{site.data.keys.mf_server }} 鍵ストアの構成](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
+* アプリケーションが使用するアダプターをデプロイします。
+詳しくは、[実稼働環境へのアダプターのデプロイまたは更新](#deploying-or-updating-an-adapter-to-a-production-environment)を参照してください。
+* ターゲット・サーバー用にアプリケーションをビルドします。詳しくは、[テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)を参照してください。
 
-When you register an application with a production server, you upload its application descriptor, define its license type, and optionally activate application authenticity. You might also define your update strategy if an older version of your app is already deployed. Read the following procedure to learn about important steps, and about ways to automate them with the **mfpadm** program.
+アプリケーションを実稼働環境に登録する場合、そのアプリケ
+ーション記述子をアップロードし、ライセンス・タイプを定義し、オプション
+でアプリケーション認証をアクティブにします。アプリケーションの古いバージョンがデプロイ済みの場合は、更新戦略を定義することもあります。以下の手順で、重要なステップと、**mfpadm** プログラムを使用したステップの自動化の方法について説明します。
 
-1. If your {{ site.data.keys.mf_server }} is configured for token licensing, make sure that you have enough available tokens on the License Key Server. For more information, see [Token license validation](../license-tracking/#token-license-validation) and [Planning for the use of token licensing](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
+1. トークン・ライセンス用に {{site.data.keys.mf_server }} が構成される場合、License Key Server 上に使用可能なトークンが十分にあることを確認します。詳しくは、[トークン・ライセンス検証](../license-tracking/#token-license-validation)および[トークン・ライセンスの使用の計画](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing)を参照してください。
 
-   > **Tip:** You can set the token license type of your app before you register the first version of your app. For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
+   > **ヒント:** アプリケーションの初期バージョンを登録する前に、アプリケーションのトークン・ライセンス・タイプを設定することができます。詳しくは、『[アプリケーション・ライセンス情報の設定 (Setting the application license information)](../license-tracking/#setting-the-application-license-information)』を参照してください。
 
-2. Transfer the application descriptor from a test server to the production server.
+2. テスト・サーバーから実動サーバーへアプリケーション記述子を転送
+します。
 
-   This operation registers your application to the production server and upload its configuration. For more information about transferring an application descriptor, see [Transferring server-side artifacts to a test or production server](#transferring-server-side-artifacts-to-a-test-or-production-server).
+   この演算は、ご使用のアプリケーションを実動サーバーへ登録し、その構成をアップロードします。アプリケーション記述子の転送について詳しくは、[テスト・サーバーまたは実動サーバーへのサーバー・サイド成果物の転送](#transferring-server-side-artifacts-to-a-test-or-production-server)を参照してください。
 
-3. Set the application license information For more information, see [Setting the application license information](../license-tracking/#setting-the-application-license-information).
-4. Configure the application-authenticity security check. For more information about configuring the application-authenticity security check, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+3. アプリケーション・ライセンス情報を設定します。詳しくは、[アプリケーション・ライセンス情報の設定](../license-tracking/#setting-the-application-license-information)を参照してください。
+4. アプリケーション認証のセキュリティー検査を構成します。アプリケーション認証のセキュリティー検査について詳しくは、 [アプリケーション認証のセキュリティー検査の構成](../../authentication-and-security/application-authenticity/#configuring-application-authenticity)を参照してください。
 
-   > **Note:** You need the application binary file to create the application-authenticity file. For more information, see [Enabling the application-authenticity security check](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
+   > **注:** アプリケーション認証ファイルを作成するには、アプリケーション・バイナリー・ファイルが必要です。詳しくは、[アプリケーション認証性セキュリティー検査の有効化](../../authentication-and-security/application-authenticity/#enabling-application-authenticity)を参照してください。
 
-5. If your application uses push notification, upload the push notification certificates to the server. You can upload the push certificates for your application using the {{ site.data.keys.mf_console }}. The certificates are common to all versions of an application.
+5. アプリケーションがプッシュ通知を使用する場合、プッシュ通知証明書をサーバーにアップロードします。{{site.data.keys.mf_console }}を使用してアプリケーションのプッシュ証明書をアップロードできます。証明書はアプリケーションのすべてのバージョンに共通です。
 
-   > **Note:** You might not be able to test the push notification for your app with production certificates before your app is published to the store.
+   > **注:** アプリケーションがストアに公開される前に、実動用の証明書を使用してアプリケーションのプッシュ通知をテストすることができない場合があります。
 
-6. Verify the following items before you publish the application to the store.
-    * Test any mobile application management feature that you plan to use, such as disabling remote applications or displaying of an administrator message. For more information, see [Mobile-application management](../using-console/#mobile-application-management).
-    * In the case of an update, define the update strategy. For more information, see [Updating {{ site.data.keys.product_adj }} apps in production](#updating-mobilefirst-apps-in-production).
+6. アプリケーションをストアに公開する前に、次の項目を確認します。
+    * リモート・アプリケーションの無効化または管理者メッセージの表示など、使用する予定のモバイル・アプリケーション管理フィーチャーをテストします。詳しくは、[モバイル・アプリケーションの管理](../using-console/#mobile-application-management)を参照してください。
+    * 更新の場合、更新戦略を定義します。詳しくは、[実動での {{site.data.keys.product_adj }} アプリケーションの更新](#updating-mobilefirst-apps-in-production)を参照してください。
 
-## Transferring server-side artifacts to a test or production server
+## テスト・サーバーまたは実動サーバーへのサーバー・サイド成果物の転送
 {: #transferring-server-side-artifacts-to-a-test-or-production-server }
-You can transfer an application configuration from a one server to another by using command-line tools or a REST API.
+コマンド・ライン・ツールまたは REST API を使用して、あるサーバーから別のサーバーへアプリケーション構成を転送することができます。
 
-The application descriptor file is a JSON file that contains the description and configuration of your application. When you run an app that connects to a {{ site.data.keys.mf_server }} instance, the app must be registered with that server and configured. After you define a configuration for your app, you can transfer the application descriptor to another server, for example to a test server or to a production server. After you transfer the application descriptor to the new server, the app is registered with the new server. Different procedures are available, depending on whether you develop mobile applications and have access to the code, or whether you administer servers and do not have access to the code of the mobile app.
+アプリケーション記述子ファイルは JSON ファイルであり、アプリケーションの説明と構成を含みます。{{site.data.keys.mf_server }} インスタンスに接続するアプリケーションを実行する場合、アプリケーションはそのサーバーに登録されて構成される必要があります。アプリケーションの構成を定義した後、アプリケーション記述子を別のサーバー (例えばテスト・サーバーや実動サーバー) に転送することができます。アプリケーション記述子を新規サーバーに転送後、アプリケーションは新規サーバーに登録されます。モバイル・アプリケーションを開発していてコードへのアクセス権限があるかどうか、またはサーバーを管理していてモバイル・アプリケーションのコードへのアクセス権限がないかどうかによって、異なる手順が使用可能です。
 
-> **Important:** If you import an application that includes authenticity data, and if the application itself has been recompiled since the authenticity data was generated, you must refresh the authenticity data. For more information, see [Configuring the application-authenticity security check](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+> **重要:** 認証データを含むアプリケーションをインポートする場合で、認証データの生成以降にアプリケーション自体が再コンパイルされている場合、認証データをリフレッシュする必要があります。詳しくは、 [ アプリケーション認証のセキュリティー検査の構成 (Configuring the application-authenticity security check)](../../authentication-and-security/application-authenticity/#configuring-application-authenticity) を参照してください。
 
-* If you have access to the code of the mobile app, use the `mfpdev app pull` and `mfpdev app push` commands.
-* If you do not have access to the code of the mobile app, use the administration service.
+* モバイル・アプリケーションのコードへのアクセス権限がある場合は、 `mfpdev app pull` および `mfpdev app push` コマンドを使用してください。
+* モバイル・アプリケーションのコードへのアクセス権限がない場合、管理サービスを使用してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to-1 }
 
-* [Transferring an application configuration by using mfpdev](#transferring-an-application-configuration-by-using-mfpdev)
-* [Transferring an application configuration with the administration service](#transferring-an-application-configuration-with-the-administration-service)
-* [Transferring server-side artifacts by using the REST API](#transferring-server-side-artifacts-by-using-the-rest-api)
-* [Exporting and importing applications and adapters from the MobileFirst Operations Console](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)
+* [mfpdev を使用したアプリケーション構成の転送](#transferring-an-application-configuration-by-using-mfpdev)
+* [管理サービスを使用したアプリケーション構成の転送](#transferring-an-application-configuration-with-the-administration-service)
+* [REST API を使用したサーバー・サイド成果物の転送](#transferring-server-side-artifacts-by-using-the-rest-api)
+* [MobileFirst Operations Console からのアプリケーションとアダプターのエクスポートとインポート](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)
 
-### Transferring an application configuration by using mfpdev
+### mfpdev を使用したアプリケーション構成の転送
 {: #transferring-an-application-configuration-by-using-mfpdev }
-After you have developed an application, you can transfer it from your development environment to a test or production environment.
+アプリケーションの開発後、アプリケーションを開発環境からテスト環境または実稼働環境へ転送することができます。
 
-* You must have an existing {{ site.data.keys.product_adj }} app on your local computer. The app must be registered to a {{ site.data.keys.mf_server }}. For information about creating a server profile, run **mfpdev app register**, or the topic about registering your type of app in the Developing applications section of this documentation.
-* You must have connectivity from your local computer to the server that your app is currently registered to and to the server that you want to transfer your app to.
-* You must have a server profile on the local computer for both the original {{ site.data.keys.mf_server }} and the server that you want to transfer your app to. For information about creating a server profile, run **mfpdev server add**.
-* You must have the {{ site.data.keys.mf_cli }} installed.
+* ローカル・コンピューターに既存の
+{{site.data.keys.product_adj }}
+アプリケーションが必要です。アプリケーションを
+{{site.data.keys.mf_server }}
+に登録する必要があります。
+サーバー・プロファイルの作成については、**mfpdev app register** を実行するか、この文書の『アプリケーションの開発』セクションにあるアプリケーションのタイプの登録に関するトピックを参照してください。
+* ローカル・コンピューターが、現在アプリケーションが登録されているサーバーと、アプリケーションの転送先とするサーバーに接続されていなければなりません。
+* 元の
+{{site.data.keys.mf_server }}
+およびアプリケーションの転送先とするサーバーの両方に対して、ローカル・コンピューター上にサーバー・プロファイルが必要です。
+サーバー・プロファイルの作成については、**mfpdev server
+add** を実行します。
+* {{site.data.keys.mf_cli }} がインストールされている必要があります。
 
-You use the **mfpdev app pull** command to send a copy of the server-side configuration files for your app to your local computer. Then you use the **mfpdev app push** command to send it to another {{ site.data.keys.mf_server }}. The **mfpdev app push** command also registers the app on the specified server.
+**mfpdev app pull** コマンドを使用して、アプリケーションのサーバー・サイド構成ファイルのコピーをローカル・コンピューターに送信します。次に ** mfpdev app push** コマンドを使用し
+て、これを別の
+{{site.data.keys.mf_server }}
+に送信します。また、** mfpdev app push** コマンドは、指定したサーバーにアプリケーションを登録します。
 
-You can also use these commands to transfer a runtime configuration from one server to another.
+これらのコマンドを使用して、あるサーバーから別のサーバーへランタイム構成を転送することもできます。
 
-The configuration information includes the contents of the application descriptor, which uniquely identifies the app to the server and other information that is specific to the app. The configuration files are provided as compressed files (.zip format). The .zip files are placed in the directory **appName/mobilefirst** and named as follows:
+構成情報には、サーバーに対してアプリケーションを一意に識別するアプリケーション記述子と、アプリケーションに固有のその他の情報が含まれます。構成ファイルは圧縮ファイル
+(.zip 形式) として提供されます。.zip ファイルは、**appName/mobilefirst** ディレクトリーに置かれ、次のように名前が付けられます。
 
 ```bash
 appID-platform-version-artifacts.zip
 ```
 
-where **appID** is the application name, **platform** is one of **android**, **ios**, or **windows**, and version is the version level of your app. For Cordova apps, a separate .zip file is created for each target platform.
+ここで、**appID** はアプリケーション名、**platform** は **android**、**ios**、または **windows** のいずれか、version はアプリケーションのバージョン・レベルです。Cordova アプリケーションでは、各ター
+ゲット・プラットフォーム用に個別の .zip ファイルが作成されます。
 
-When you use the **mfpdev app push** command, the application's client properties file is modified to reflect the profile name and URL of the new {{ site.data.keys.mf_server }}.
+**mfpdev app push** コマンドを使用する場合、新規
+{{site.data.keys.mf_server }}
+のプロファイル名および URL を反映するように、アプリケーションのクライアント・プロパティー・ファイルが変更されます。
 
-1. On your development computer, navigate to a directory that is the root directory of your app or one of its subdirectories.
-2. Run the **mfpdev app pull** command. If you specify the command with no parameters, the app is pulled from the default {{ site.data.keys.mf_server }}. You can also specify a particular server and its administrator password. For example, for an Android application named **myapp1**:
+1. 開発コンピューターで、アプリケーションのルート・ディレクトリーであるディレクトリーまたはそのサブディレクトリーのいずれかにナビゲートします。
+2. **mfpdev app pull** コマンドを実行します。パラメーターを指定せずにコマンドを指定すると、アプリケーションはデフォルトの {{site.data.keys.mf_server }} からプルされます。特定のサーバーとその管理者パスワードを指定することもできます。例えば、**myapp1** という Android アプリケーションの場合は以下のようになります。
 
    ```bash
    cd myapp1
    mfpdev app pull Server10 -password secretPassword!
    ```
     
-   This command finds the configuration files for the current application on the {{ site.data.keys.mf_server }} whose server profile is named Server10. Then, it sends the compressed file **myapp1-android-1.0.0-artifacts.zip**, which contains these configuration files, to the local computer and places it in the directory **myapp1/mobilefirst**.
+   このコマンドは、サーバー・プロファイルの名前が Server 10 である {{site.data.keys.mf_server }} 上で、現行アプリケーションの構成ファイルを検出します。次に、これらの構成ファイルを含む圧縮ファイル **myapp1-android-1.0.0-artifacts.zip** をローカル・コンピューターに送信し、 **myapp1/mobilefirst** ディレクトリーに格納します。
     
-3. Run the **mfpdev app push** command. If you specify the command with no parameters, the app is pushed to the default {{ site.data.keys.mf_server }}. You can also specify a particular server and its administrator password. For example, for the same application that was pushed in the previous step: `mfpdev app push Server12 -password secretPass234!`.
+3. **mfpdev app push** コマンドを実行します。パラメーターを指定せずにコマンドを指定すると、アプリケーションはデフォルトの {{site.data.keys.mf_server }} にプッシュされます。特定のサーバーとその管理者パスワードを指定することもできます。例えば、直前のステップでプッシュされたアプリケーションの場合は以下のようになります。`mfpdev app push Server12 -password secretPass234!`
     
-   This command sends the file **myapp1-android-1.0.0-artifacts.zip** to the {{ site.data.keys.mf_server }} whose server profile is named Server12, that has the administrator password **secretPass234!** The client properties file **myapp1/app/src/main/assets/mfpclient.properties** is modified to reflect that the server that the app is registered to is Server12, with the server's URL.
+   このコマンドは、サーバー・プロファイル名が Server12 で管理者パスワードが **secretPass234!** である {{site.data.keys.mf_server }} に、**myapp1-android-1.0.0-artifacts.zip** ファイルを送信します。サーバーの URL を使用して、アプリケーションが登録されるサーバーが Server12 であることを反映するように、クライアント・プロパティー・ファイル **myapp1/app/src/main/assets/mfpclient.properties** が変更されます。
 
-The app's server-side configuration files are present on the {{ site.data.keys.mf_server }} that you specified in the mfpdev app push command. The app is registered to this new server.
+アプリケーションのサーバー・サイド構成ファイルは、mfpdev app push コマンドで指定した {{site.data.keys.mf_server }} にあります。アプリケーションはこの新規サーバーに登録されます。
 
-### Transferring an application configuration with the administration service
+### 管理サービスを使用したアプリケーション構成の転送
 {: #transferring-an-application-configuration-with-the-administration-service }
-As an administrator, you can transfer an application configuration from one server to another by using the administration service of {{ site.data.keys.mf_server }}. No access to the application code is required, but the client app must be built for the target server.
+管理者は、{{site.data.keys.mf_server }} の管理サービスを使用して、あるサーバーから別のサーバーへアプリケーションの構成を転送することができます。アプリケーション・コードへのアクセスは不要ですが、クライアント・アプリケーションはターゲット・サーバーに対して作成されなければなりません。
 
-#### Before you begin
+#### 始める前に
 {: #before-you-begin-1 }
-Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+ターゲット・サーバー用にクライアント・アプリケーションをビルドします。詳しくは、[テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)を参照してください。
 
-You download the application descriptor from the server where the application is configured and you deploy it to the new server. You can see the application descriptor in the {{ site.data.keys.mf_console }}.
+アプリケーションが構成されているサーバーからアプリケーシ
+ョン記述子をダウンロードし、新規サーバーへデプロイします。アプリケーション記述子は {{site.data.keys.mf_console }} で確認できます。
 
-1. Optional: Review the application descriptor in the server where the application server is configured.
-    Open the {{ site.data.keys.mf_console }} for that server, select your application version, and go to the **Configuration Files** tab.
+1. オプション: アプリケーション・サーバーが構成されているサーバーのアプリケーション記述子を検討します。
+    そのサーバーの {{site.data.keys.mf_console }} を開き、アプリケーション・バージョンを選択して、**「構成ファイル」**タブへ移動します。
 
-2. Download the application descriptor from the server where the application is configured. You can download it by using the REST API or **mfpadm**.
+2. アプリケーションが構成されているサーバーからアプリケーション記述子をダウンロードします。REST API または **mfpadm** を使用してダウンロードすることができます。
 
-   > **Note:** You can also export an application or application version from the {{ site.data.keys.mf_console }}. See [Exporting and importing applications and adapters from the {{ site.data.keys.mf_console }}](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
-    * To download the application descriptor with the REST API, use the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API.
+   > **注:** {{site.data.keys.mf_console }} からアプリケーションまたはアプリケーション・バージョンをエクスポートすることもできます。[{{site.data.keys.mf_console }} からのアプリケーションとアダプターのエクスポートとインポート](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)を参照してください。
+    * REST API を使用してアプリケーション記述子をダウンロードするには、 [ アプリケーション記述子 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API を使用します。
 
-    The following URL returns the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The call is made to the {{ site.data.keys.mf_server }}: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
+    以下の URL は、アプリケーション ID が **my.test.application**、プラットフォームが **ios** 、およびそのバージョンが **0.0.1** のアプリケーションのアプリケーション記述子を返します。{{site.data.keys.mf_server }}: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor` に対する呼び出しが行われます。
     
-    For example, you can use such URL with a tool like curl: `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
+    例えば、次のように、curl のようなツールで、そのような URL を使用できます。`curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`
     
     <br/>
-    Change the following elements of the URL according to your server configuration:
-     * **9080** is the default HTTP port of {{ site.data.keys.mf_server }} during development.
-     * **mfpadmin** is the default context root of the administration service. 
+    サーバー構成に応じて URL の次のエレメントを変更します。
+     * **9080** は、開発中は {{site.data.keys.mf_server }} のデフォルトの HTTP ポートです。
+     * **mfpadmin** は、管理サービスのデフォルトのコンテキスト・ルートです。 
 
-    For information about the REST API, see REST API for the {{ site.data.keys.mf_server }} administration service.
-     * Download the application descriptor by using **mfpadm**.
+    REST API について詳しくは、{{site.data.keys.mf_server }} 管理サービスの REST API を参照してください。
+     * **mfpadm** を使用してアプリケーション記述子をダウンロードします。
 
-       The **mfpadm** program is installed when you run the {{ site.data.keys.mf_server }} installer. You start it from the **product\_install\_dir/shortcuts/** directory, where **product\_install\_dir** indicates the installation directory of {{ site.data.keys.mf_server }}.
+       **mfpadm** プログラムは、{{site.data.keys.mf_server }} インストーラーを実行するとインストールされます。**product\_install\_dir/shortcuts/** ディレクトリーから開始します。ここで、**product\_install\_dir** は {{site.data.keys.mf_server }} のインストール・ディレクトリーを示しています。
     
-       The following example creates a password file, which is required by the **mfpadm** command, then downloads the application descriptor for the application of app ID **my.test.application**, for the **ios** platform, and version **0.0.1**. The provided URL is the HTTPS URL of the {{ site.data.keys.mf_server }} during development.
+       以下の例では、 **mfpadm** コマンドが必要とするパスワード・ファイルを作成します。次にアプリケーション ID が **my.test.application**、プラットフォームが **ios**、およびそのバージョンが **0.0.1** のアプリケーションのアプリケーション記述子をダウンロードします。開発中、指定された URL は {{site.data.keys.mf_server }} の HTTPS URL です。
     
        ```bash
        echo password=admin > password.txt
@@ -301,32 +372,32 @@ You download the application descriptor from the server where the application is
        rm password.txt
        ```
     
-       Change the following elements of the command line according to your server configuration:
-        * **9443** is the default HTTPS port of {{ site.data.keys.mf_server }} in development.
-        * **mfpadmin** is the default context root of the administration service. 
-        * --secure false indicates that the server's SSL certificate is accepted even if self-signed or if created for a different host name from the server's host name used in the URL.
+       サーバ―構成に応じて、次のコマンド・ラインのエレメントを変更します。
+        * **9443** は、開発での {{site.data.keys.mf_server }} のデフォルトの HTTPS ポートです。
+        * **mfpadmin** は、管理サービスのデフォルトのコンテキスト・ルートです。 
+        * --secure false は、サーバーの SSL 証明書が自己署名された場合でも、あるいは URL で使用されるサーバーのホスト名とは異なるホスト名のために作成された場合でも、受け入れられることを示しています。
 
-       For more information about the **mfpadm** program, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../using-cli).
+       **mfpadm** プログラムについて詳しくは、[コマンド・ラインを使用した {{site.data.keys.product_adj }} アプリケーションの管理](../using-cli)を参照してください。
     
-3. Upload the application descriptor to the new server to register the app or update its configuration.
-You can upload it by using the REST API or **mfpadm**.
-   * To upload the application descriptor with the REST API, use the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API.
+3. アプリケーション記述子をアプリケーションを登録する新規サーバーにアップロードするか、その構成を更新します。
+REST API または **mfpadm** を使用してアップロードすることができます。
+   * REST API を使用してアプリケーション記述子をアップロードするには、 [ アプリケーション (POST) ](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API を使用します。
     
-     The following URL uploads the application descriptor to the mfp runtime. You send a POST request, and the payload is the JSON application descriptor. The call in this example is made to server that runs on the local computer and that is configured with an HTTP port set to 9081.
+     以下の URL はアプリケーション記述子をランタイム mfp にアップロードします。POST 要求を送信します。ペイロードは JSON アプリケーション記述子です。この例の呼び出しは、ローカル・コンピューターで実行され、かつ HTTP ポートを 9081 に設定した構成のサーバーに対して行われます。
     
      ```bash
      http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```
     
-     For example, you can use such URL with a tool like curl.
+     例えば、curl のようなツールでそのような URL を使用できます。
     
      ```bash
      curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```    
     
-   * Upload the application descriptor by using mfpadm.
+   * mfpadm を使用してアプリケーション記述子をアップロードします。
 
-     The following example creates a password file, which is required by the mfpadm command, then uploads the application descriptor for the application of app ID my.test.application, for the ios platform, and version 0.0.1. The provided URL is the HTTPS URL of a server that runs on the local computer but is configured with an HTTPS port set to 9444, and for a runtime named mfp.
+     以下の例では、mfpadm コマンドが必要とするパスワード・ファイルを作成します。次にアプリケーション ID が my.test.application、プラットフォームが ios、およびそのバージョンが 0.0.1 のアプリケーションのアプリケーション記述子をアップロードします。指定される URL は、ローカル・コンピューター上で実行されるサーバーの HTTPS URL ですが、9444 に設定された HTTPS ポートで構成され、mfp という名前のランタイム用の HTTPS URL です。
 
      ```bash
      echo password=admin > password.txt
@@ -334,36 +405,36 @@ You can upload it by using the REST API or **mfpadm**.
      rm password.txt
      ```
 
-### Transferring server-side artifacts by using the REST API
+### REST API を使用したサーバー・サイド成果物の転送
 {: #transferring-server-side-artifacts-by-using-the-rest-api }
-Whatever your role, you can export applications, adapters, and resources for back-up or reuse purposes by using the {{ site.data.keys.mf_server }} administration service. As an administrator or deployer, you can also deploy an export archive to a different server. No access to the application code is required, but the client app must be built for the target server.
+使用者の役割にかかわらず、{{site.data.keys.mf_server }} 管理サービスを利用してアプリケーション、アダプター、およびリソースをエクスポートし、バックアップしたり再使用したりすることができます。また管理者またはデプロイヤーとして、エクスポート・アーカイブを異なるサーバーにデプロイすることもできます。アプリケーション・コードへのアクセスは不要ですが、クライアント・アプリケーションはターゲット・サーバーに対して作成されなければなりません。
 
-#### Before you begin
+#### 始める前に
 {: #before-you-begin-2 }
-Build the client app for your target server. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
+ターゲット・サーバー用にクライアント・アプリケーションをビルドします。詳しくは、[テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)を参照してください。
 
-The export API retrieves the selected artifacts for a runtime as a .zip archive. Use the deployment API to reuse archived content.
+エクスポート API は選択された成果物をランタイム用に .zip アーカイブとして取得します。デプロイメント API を使用してアーカイブされたコンテンツを再使用します。
 
-> **Important:** Carefully consider your use case:  
+> **重要:** ユース・ケースをよく考慮してください。  
 >  
-> * The export file includes the application authenticity data. That data is specific to the build of a mobile app. The mobile app includes the URL of the server and its runtime name. Therefore, if you want to use another server or another runtime, you must rebuild the app. Transferring only the exported app files would not work.
-> * Some artifacts might vary from one server to another. Push credentials are different depending on whether you work in a development or production environment.
-> * The application runtime configuration (that contains the active/disabled state and the log profiles) can be transferred in some cases but not all.
-> * Transferring web resources might not make sense in some cases, for example if you rebuild the app to use a new server.
+> * エクスポート・ファイルには、アプリケーション認証データが含まれます。そのデータは、モバイル・アプリケーションのビルドに固有です。モバイル・アプリケーションには、サーバーの URL とそのランタイム名が含まれます。そのため、別のサーバーや別のランタイムを使用する場合は、アプリケーションを再ビルドする必要があります。エクスポートされたアプリケーション・ファイルのみを転送しても機能しません。
+> * 一部の成果物は、サーバーによって異なる可能性があります。プッシュの資格情報は、開発環境で作業するか実稼働環境で作業するかによって異なります。
+> * アプリケーション・ランタイム構成 (アクティブか無効かの状態やログ・プロファイルを含む) は、一部のケースでは転送できますが、すべてのケースで転送できるわけではありません。
+> * Web リソースの転送は、例えば新規サーバーを使用するアプリケーションを再ビルドする場合など、一部のケースでは意味がない可能性があります。
 
-* To export all resources, or a selected subset of resources, for one adapter or for all adapters, use the [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) or [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc) API.
-* To export all the resources under a specific application environment (such as Android or iOS), that is all the versions and all the resources for the version for that environment, use the [Export application environment (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_get.html?view=kc) API.
-* To export all the resources for a specific version of an application (for example, version 1.0 or 2.0 of an Android application), use the [Export application environment resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc) API.
-* To export a specific application or all applications for a runtime, use the [Export applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_applications_get.html?view=kc) or [Export application resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_resources_get.html?view=kc) API. **Note:** Credentials for push notification are not exported among the application resources.
-* To export the adapter content, descriptor, license configuration, content, user configuration, keystore, and web resources of an application, use the [Export resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-) API.
-* To export all or selected resources for a runtime, use the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) API. For example, you can use this general curl command to retrieve all resources as a .zip file.
+* すべてのリソースまたは選択されたリソースのサブセットを 1 つのアダプターまたはすべてのアダプターにエクスポートするには、[アダプター・リソースのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) または [アダプターのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc) の API を使用します。
+* (Android または iOS のような) 固有のアプリケーション環境で、すべてのリソース (つまりすべてのバージョンおよびその環境で対象となるバージョンのすべてのリソース) をエクスポートするには、[アプリケーション環境のエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_get.html?view=kc) の API を使用します。
+* あるアプリケーションの、固有のバージョン (例えば Android アプリケーションのバージョン 1.0 または 2.0) についてすべてのリソースをエクスポートするには、[アプリケーション環境リソースのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc) の API を使用します。
+* ランタイム用に固有のアプリケーションまたはすべてのアプリケーションをエクスポートするには、[アプリケーションのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_applications_get.html?view=kc) または [アプリケーション・リソースのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_resources_get.html?view=kc) の API を使用します。**注:** プッシュ通知の資格情報はアプリケーション・リソース間ではエクスポートされません。
+* アダプターのコンテンツ、記述子、ライセンス構成、コンテンツ、ユーザー構成、鍵ストア、およびアプリケーションの Web リソースをエクスポートするには、[リソースのエクスポート (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-) の API を使用します。
+* ランタイム用にすべてのまたは選択されたリソースをエクスポートするには、[ランタイム・リソースのエクスポート (GET) ](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) の API を使用します。例えば、この汎用の curl コマンドを使ってすべてのリソースを .zip ファイルとして取得できます。
 
   ```bash
   curl -X GET -u admin:admin -o exported.zip
   "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
   ```
     
-* To deploy an archive that contains such web application resources as adapter, application, license configuration, keystore, web resource, use the [Deploy (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) API. For example, you can use this curl command to deploy an existing .zip file that contains artifacts.
+* アダプター、アプリケーション、ライセンス構成、鍵ストア、Web リソースなどの、Web アプリケーション・リソースを含むアーカイブをデプロイするには、[デプロイ (POST) ](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) の API を使用します。例えば、この curl コマンドを使って、成果物を含む既存の .zip ファイルをデプロイすることができます。
 
   ```bash
   curl -X POST -u admin:admin -F
@@ -371,81 +442,106 @@ The export API retrieves the selected artifacts for a runtime as a .zip archive.
   "http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi"
   ```
 
-* To deploy application authenticity data, use the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) API.
-* To deploy the web resources of an application, use the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc) API.
+* アプリケーション認証データをデプロイするには、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) の API を使用します。
+* アプリケーションの Web リソースをデプロイするには、[Web リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc) の API を使用します。
 
-If you deploy an export archive to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
+同じランタイムにエクスポート・アーカイブをデプロイする場合、アプリケーションまたはバージョンは必ずしもエクスポートされた状態で復元されるわけではありません。つまり、再デプロイは、後続の変更を削除しません。むしろ一部のアプリケーション・リソースが、エクスポート時と再デプロイの間に変更される場合は、エクスポート・アーカイブに含まれるリソースのみ、元の状態で再デプロイされます。例えば、認証性データなしでアプリケーションをエクスポートしてから認証性データをアップロードし、その後に初期アーカイブをインポートするとします。この場合、認証性データは消去されません。
 
-### Exporting and importing applications and adapters from the {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }} からのアプリケーションとアダプターのエクスポートとインポート
 {: #exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console }
-From the console, under certain conditions, you can export an application or one of its versions, and later import it to a different runtime on the same server or a different server. You can also export and reimport adapters. Use this capability for reuse or back-up purposes.
+コンソールから、特定の条件でアプリケーションまたはそのバ
+ージョンのいずれかをエクスポートし、後から同一サーバー上の異なるラン
+タイムまたは異なるサーバー上にインポートすることができます。また、アダプターのエクスポートと再インポートも可
+能です。この機能は再使用またはバックアップの目的で使用し
+てください。
 
-If you are granted the **mfpadmin** administrator role and the **mfpdeployer** deployer role, you can export one version or all versions of an application. The application or version is exported as a .zip compressed file, which saves the application ID, descriptors, authenticity data, and web resources. You can later import the archive to redeploy the application or version to another runtime on the same or on a different server.
 
-> **Important:** Carefully consider your use case:  
+**mfpadmin** 管理者ロールおよび
+**mfpdeployer** デプロイヤー・ロールが付与されている
+場合、アプリケ
+ーションの 1 つのバージョンまたはすべてのバージョンのエクスポートが許
+可されます。アプリケーションまたはバージョンは、 .zip 圧縮ファイルとしてエクスポートされ、アプリケーション ID、記述子、 認証性データ、および Web リソースを保存します。後からアーカイブをインポートして、そのアプリケーションまたはバージョ
+ンを同じサーバーまたは別のサーバー上にある別のランタイムに再デプロイ
+することができます。
+
+> **重要:** ユース・ケースをよく考慮してください。  
 > 
-> * The export file includes the application authenticity data. That data is specific to the build of a mobile app. The mobile app includes the URL of the server and its runtime name. Therefore, if you want to use another server or another runtime, you must rebuild the app. Transferring only the exported app files would not work.
-> * Some artifacts might vary from one server to another. Push credentials are different depending on whether you work in a development or production environment.
-> * The application runtime configuration (that contains the active/disabled state and the log profiles) can be transferred in some cases but not all.
-> * Transferring web resources might not make sense in some cases, for example if you rebuild the app to use a new server.
+> * エクスポート・ファイルには、アプリケーション認証データが含まれます。そのデータは、モバイル・アプリケーションのビルドに固有です。モバイル・アプリケーションには、サーバーの URL とそのランタイム名が含まれます。そのため、別のサーバーや別のランタイムを使用する場合は、アプリケーションを再ビルドする必要があります。エクスポートされたアプリケーション・ファイルのみを転送しても機能しません。
+> * 一部の成果物は、サーバーによって異なる可能性があります。プッシュの資格情報は、開発環境で作業するか実稼働環境で作業するかによって異なります。
+> * アプリケーション・ランタイム構成 (アクティブか無効かの状態やログ・プロファイルを含む) は、一部のケースでは転送できますが、すべてのケースで転送できるわけではありません。
+> * Web リソースの転送は、例えば新規サーバーを使用するアプリケーションを再ビルドする場合など、一部のケースでは意味がない可能性があります。
 
-You can also transfer application descriptors by using the REST API or the mfpadm tool. For more information, see [Transferring an application configuration with the administration service](#transferring-an-application-configuration-with-the-administration-service).
+REST API または mfpadm ツールを使用して、アプリケーション記述子を転送することもできます。詳しくは、[管理サービスを使用したアプリケーション構成の転送](#transferring-an-application-configuration-with-the-administration-service)を参照してください。
 
-1. From the navigation sidebar, select an application or application version, or an adapter.
-2. Select **Actions → Export Application** or **Export Version** or **Export Adapter**.
+1. ナビゲーション・サイドバーから、アプリケーション、アプリケー
+ション・バージョン、またはアダプターを選択します。
+2. **「アクション」 → 「アプリケーションのエクスポート」**または**「バージョンのエクスポート」**または**「アダプターのエクスポート」**を選択します。
 
-    You are prompted to save the .zip archive file that encapsulates the exported resources. The aspect of the dialog box depends on your browser and the target folder depends on your browser settings.
+    エクスポートされたリソースをカプセル化する .zip アーカイブ・ファイルを保存するようにプロンプトが出されます。ダイアログ・ボックスの外観はご使用のブラウザーによって
+異なり、ターゲット・フォルダーはご使用のブラウザー設定によって異なります。
 
-3. Save the archive file.
+3. アーカイブ・ファイルを保存します。
 
-    The archive file name includes the name and version of the application or adapter, for example **export_applications_com.sample.zip**.
+    アーカイブ・ファイル名には、例えば
+**export_applications_com.sample.zip** のように、アプリケーション名とバージョン、またはアダプターを含んでいます。
 
-4. To reuse an existing export archive, select **Actions → Import Application** or **Import Version**, browse to the archive, and click **Deploy**.
+4. 既存のエクスポート・アーカイブを再使用するには、**「アクション」 → 「アプリケーションのインポート」**または**「バージョンのインポート」**を選択し、アーカイブを参照して**「デプロイ」**をクリックします。
 
-The main console frame displays the details of the imported application or adapter.
+メイン・コンソール・フレームは、インポートされたアプリケーションま
+たはアダプターの詳細を表示します。
 
-If you import to the same runtime, the application or version is not necessarily restored as it was exported. That is, the redeployment at import time does not remove subsequent modifications. Rather, if some application resources are modified between export time and redeployment at import time, only the resources that are included in the exported archive are redeployed in their original state. For example, if you export an application with no authenticity data, then you upload authenticity data, and then you import the initial archive, the authenticity data is not erased.
+同じランタイムにインポート
+する場合、アプリケーションまたはバージョンは必ずしもエクスポートさ
+れた状態で復元されるわけではありません。つまり、インポート時の再デプロイは、後続の変更を
+削除しません。むしろ一部のアプリケーション・リソースが、エクスポート時
+とインポート時の再デプロイで変更される場合、エクスポート・アーカイブ
+に含まれるリソースのみ、元の状態で再デプロイされます。例えば、認証性データなしでアプリケーションをエクスポートしてから認証性データをアップロードし、その後に初期アーカイブをインポートするとします。この場合、認証性データは消去されません。
 
-## Updating {{ site.data.keys.product_adj }} apps in production
+## 実動での {{site.data.keys.product_adj }} アプリケーションの更新
 {: #updating-mobilefirst-apps-in-production }
-There are general guidelines for upgrading your {{ site.data.keys.product_adj }} apps when they are already in production, on the Application Center or in app stores.
+Application Center またはアプリケーション・ストアで、既に実動の {{site.data.keys.product_adj }} アプリケーションをアップグレードする際の一般ガイドラインが存在します。
 
-When you upgrade an app, you can deploy a new app version and leave the old version working, or deploy a new app version and block the old version. In the case of an app developed with Apache Cordova, you can also consider only updating the Web resources.
+アプリケーションをアップグレードする場合、旧バージョンが機能する状態のままで新規アプリケーション・バージョンをデプロイすることも、新規アプリケーション・バージョンをデプロイして旧バー ジョンをブロックすることもできます。
+Apache Cordova を使用して開発されたアプリケーションの場合、Web リソースのみを更新することを考慮することもできます。
 
-### Deploying a new app version and leaving the old version working
+### 新規アプリケーション・バージョンのデプロイ、旧バージョンの動作の保持
 {: #deploying-a-new-app-version-and-leaving-the-old-version-working }
-The most common upgrade path, used when you introduce new features or modify native code, is to release a new version of your app. Consider following these steps:
-
-1. Increment the app version number.
-2. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
-3. Register the app to {{ site.data.keys.mf_server }} and configure it.
-4. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
-5. Wait for review and approval, and for the apps to become available.
-6. Optional - send notification message to users of the old version, announcing the new version. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
+新機能を導入する際、またはネイティブ・コードを変更する際に使用する最も一般的なアップグレード・パスは、アプリケーションの新規バージョンのリリースです。以下の手順を検討してください。
 
 
-### Deploying a new app version and blocking the old version
+1. アプリケーション・バージョン番号をインクリメントします。
+2. アプリケーションをビルドし、テストします。詳しくは、[テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)を参照してください。
+3. アプリケーションを {{site.data.keys.mf_server }}
+に登録し、構成します。
+4. 新規 .apk、.ipa、.appx、または .xap ファイルをそれぞれのアプリケーション・ストアに送信します。
+5. レビューと承認、およびアプリケーションが使用可能になるのを待ちます。
+6. オプション - 旧バージョンのユーザーに通知メッセージを送信し、新規バージョンを告知します。[管理者メッセージの表示](../using-console/#displaying-an-administrator-message)および[複数言語での管理者メッセージの定義](../using-console/#defining-administrator-messages-in-multiple-languages)を参照してください。
+
+
+### 新規アプリケーション・バージョンのデプロイ、旧バージョンのブロック
 {: #deploying-a-new-app-version-and-blocking-the-old-version }
-This upgrade path is used when you want to force users to upgrade to the new version, and block their access to the old version. Consider following these steps:
+このアップグレード・パスは、ユーザーに新規バージョンへのアップグレードを強制し、旧バージョンへのアクセスをブロックする場合に使用します。以下の手順を検討してください。
 
-1. Optional - send notification message to users of the old version, announcing a mandatory update in a few days. See [Displaying an administrator message](../using-console/#displaying-an-administrator-message) and [Defining administrator messages in multiple languages](../using-console/#defining-administrator-messages-in-multiple-languages).
-2. Increment the app version number.
-3. Build and test your application. For more information, see [Building an application for a test or production environment](#building-an-application-for-a-test-or-production-environment).
-4. Register the app to {{ site.data.keys.mf_server }} and configure it.
-5. Submit the new .apk, .ipa, .appx, or .xap files to their respective app stores.
-6. Wait for review and approval, and for the apps to become available.
-7. Copy links to the new app version.
-8. Block the old version of the app in {{ site.data.keys.mf_console }}, supplying a message and link to the new version. See [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
-> **Note:** If you disable the old app, it is no longer able to communicate with {{ site.data.keys.mf_server }}. Users can still start the app and work with it offline unless you force a server connection on app startup.
+1. オプション - 旧バージョンのユーザーに通知メッセージを送信し、数日での必須の更新を告知します。[管理者メッセージの表示](../using-console/#displaying-an-administrator-message)および[複数言語での管理者メッセージの定義](../using-console/#defining-administrator-messages-in-multiple-languages)を参照してください。
+2. アプリケーション・バージョン番号をインクリメントします。
+3. アプリケーションをビルドし、テストします。詳しくは、[テスト環境または実稼働環境用のアプリケーションのビルド](#building-an-application-for-a-test-or-production-environment)を参照してください。
+4. アプリケーションを {{site.data.keys.mf_server }}
+に登録し、構成します。
+5. 新規 .apk、.ipa、.appx、または .xap ファイルをそれぞれのアプリケーション・ストアに送信します。
+6. レビューと承認、およびアプリケーションが使用可能になるのを待ちます。
+7. リンクを新規アプリケーション・バージョンにコピーします。
+8. {{site.data.keys.mf_console }} でアプリケーションの旧バージョンをブロックし、メッセージと新規バージョンへのリンクを提供します。[保護リソースへのアプリケーション・アクセスのリモート側での無効化](../using-console/#remotely-disabling-application-access-to-protected-resources)を参照してください。
 
-### Direct Update (no native code changes)
+> **注:** 旧アプリケーションを無効にした場合、旧アプリケーションは {{site.data.keys.mf_server }} と通信できなくなります。アプリケーションの開始時にサーバーへの接続を強制しない限り、ユーザーは引き続き、アプリケーションを開始してオフラインで作業できます。
+
+### 直接更新 (ネイティブ・コードの変更なし)
 {: #direct-update-no-native-code-changes }
-Direct Update is a mandatory upgrade mechanism that is used to deploy fast fixes to a production app. When you redeploy an app to {{ site.data.keys.mf_server }} without changing its version, {{ site.data.keys.mf_server }} directly pushes the updated web resources to the device when the user connects to the server. It does not push updated native code. Things to keep in mind when you consider a Direct Update include:
+直接更新は、実動アプリケーションに迅速なフィックスをデプロイするために使用する、必須のアップグレード・メカニズムです。バージョンを変更せずにアプリケーションを {{site.data.keys.mf_server }} に再デプロイすると、{{site.data.keys.mf_server }} は、ユーザーがサーバーに接続したときに、更新された Web リソースをデバイスに直接的にプッシュします。更新されたネイティブ・コードはプッシュされません。直接更新を考慮する際に留意する必要がある事項は、以下のとおりです。
 
-1. Direct Update does not update the app version. The app remains at the same version, but with a different set of web resources. The unchanged version number can introduce confusion if used for the wrong purpose
-2. Direct Update also does not go through the app store review process because it is technically not a new release. This should not be abused because vendors can become displeased if you deploy a whole new version of your app that bypasses their review. It is your responsibility to read each store's usage agreements and abide by them. Direct Update is best used to fix urgent issues that cannot wait for several days.
-3. Direct Update is considered a security mechanism, and therefore it is mandatory, not optional. When you initiate the Direct Update, all users must update their app to be able to use it.
-4. Direct Update does not work if an application is compiled (built) with a different version of {{ site.data.keys.product }} than the one that was used for the initial deployment.
+1. 直接更新はアプリケーション・バージョンを更新しません。アプリケーションは同じバージョンのままですが、異なる Web リソース・セットを使用するようになります。バージョン番号が変更されていないため、正しくない目的で使用すると混乱が生じる可能性があります。
+2. また、直接更新は厳密には新規リリースではないため、アプリケーション・ストアのレビュー・プロセスを受けません。レビューをバイパスしてまったく新しいバージョンのアプリケーションをデプロイすることはベンダーにとって望ましいことではないため、これを乱用すべきではありません。各ストアの使用条件を読んで、それに従うのは、ユーザーの責任です。直接更新の最適な使用は、数日待つことができない緊急の問題を修正する場合です。
+3. 直接更新はセキュリティー・メカニズムと見なされるため、オプションではなく必須です。直接更新を開始した場合、すべてのユーザーはそれを使用できるようにアプリケーションを更新する必要があります。
+4. 最初のデプロイメントで使用したバージョンとは異なるバージョンの {{site.data.keys.product }} を使用してアプリケーションをコンパイル (ビルド) すると、直接更新は機能しません。
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) to learn more.
+> **注:** iOS アプリケーションのサブミット/検証を保管するための Test Flight または iTunes Connect を使用して作成されたアーカイブ/IPA ファイルは、ランタイムのクラッシュ/失敗を発生させる可能性があります。詳しくは、ブログ [Preparing iOS apps for App Store submission を {{site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) でお読みください。

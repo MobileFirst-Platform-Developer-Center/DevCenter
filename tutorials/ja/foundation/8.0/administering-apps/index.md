@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Administering Applications
+title: アプリケーションの管理
 weight: 11
 show_children: true
 ---
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production. {{ site.data.keys.mf_console }} is the main tool with which you can monitor all deployed {{ site.data.keys.product_adj }} applications from a centralized web-based console.
+{{site.data.keys.product_full }} には、開発中および稼働中の {{site.data.keys.product_adj }} アプリケーションを管理するいくつかの方法が用意されています。{{site.data.keys.mf_console }} は、デプロイされているすべての {{site.data.keys.product_adj }} アプリケーションを一元的な Web ベースのコンソールからモニターすることができるメインのツールです。
 
-The main operations that you can perform through {{ site.data.keys.mf_console }} are:
+{{site.data.keys.mf_console }} を通じて実行できる主な操作は以下のとおりです。
 
-* Registering and configuring mobile applications to {{ site.data.keys.mf_server }}.
-* Deploying and configuring adapters to {{ site.data.keys.mf_server }}.
-* Manage application versions to deploy new versions or remotely disable old versions.
-* Manage mobile devices and users to manage access to a specific device or access for a specific user to an application.
-* Display notification messages on application startup.
-* Monitor push notification services.
-* Collect client-side logs for specific applications installed on a specific device.
+* モバイル・アプリケーションを {{site.data.keys.mf_server }} に登録して構成する。
+* アダプターを {{site.data.keys.mf_server }} にデプロイして構成する。
+* アプリケーション・バージョンを管理して、新規バージョンをデプロイしたり、リモート側で古いバージョンを使用不可にしたりする。
+* モバイル・デバイスとユーザーを管理して、特定のデバイスへのアクセスや、特定のユーザーからのアプリケーションへのアクセスを制御する。
+* アプリケーションの開始時に通知メッセージを表示する。
+* プッシュ通知サービスをモニターする。
+* 特定のデバイスにインストールされた特定のアプリケーションについてクライアント・サイド・ログを収集する。
 
-## Administration roles
+## 管理ロール
 {: #administration-roles }
-Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following 
+管理ユーザーの種類によっては、実行できない管理操作があります。{{site.data.keys.mf_console }}、およびすべての管理ツールには、{{site.data.keys.product_adj }} アプリケーションの管理用に定義された 4 つのロールがあります。以下の 
 
-{{ site.data.keys.product_adj }} administration roles are defined:
+{{site.data.keys.product_adj }} 管理ロールが定義されています。
 
-**Monitor**  
-In this role, a user can monitor deployed {{ site.data.keys.product_adj }} projects and deployed artifacts. This role is read-only.
+**モニター**  
+このロールでは、ユーザーはデプロイ済みの {{site.data.keys.product_adj }} プロジェクトとデプロイ済みの成果物をモニターできます。このロールは読み取り専用です。
 
-**Operator**  
-An Operator can perform all mobile application management operations, but cannot add or remove application versions or adapters.
+**オペレーター**  
+オペレーターはすべてのモバイル・アプリケーション管理操作を実行できますが、アプリケーション・バージョンやアダプターの追加および削除はできません。
 
-**Deployer**  
-In this role, a user can perform the same operations as the Operator, but can also deploy applications and adapters.
+**デプロイメント担当者**  
+このロールでは、ユーザーはオペレーターと同じ操作を実行できるだけでなく、アプリケーションとアダプターをデプロイすることもできます。
 
-**Administrator**  
-In this role, a user can perform all application administration operations.
+**管理者**  
+このロールでは、ユーザーはすべてのアプリケーション管理操作を実行できます。
 
-> For more information about {{ site.data.keys.product_adj }} administration roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+> {{site.data.keys.product_adj }} 管理ロールについて詳しくは、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
-## Administration tools
+## 管理ツール
 {: #administration-tools }
-{{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
+{{site.data.keys.mf_console }} が、{{site.data.keys.product_adj }} アプリケーションを管理する唯一の手段であるというわけではありません。{{site.data.keys.product }} も、管理操作をビルド・プロセスやデプロイメント・プロセスに取り込むための他のツールを用意しています。
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+管理操作を実行するために使用可能な REST サービスのセットがあります。これらのサービスの API 参照資料については、[{{site.data.keys.mf_server }} 管理サービスの REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi) を参照してください。
 
-With this set of REST services, you can perform the same operations that you can do in {{ site.data.keys.mf_console }}. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
+この REST サービスのセットを使用すると、{{site.data.keys.mf_console }} で実行できるものと同じ操作を実行できます。アプリケーションやアダプターを管理できるだけでなく、例えば、アプリケーションの新規バージョンをアップロードしたり、古いバージョンを使用不可にしたりすることができます。
 
-{{ site.data.keys.product_adj }} applications can also be administered by using Ant tasks or with the **mfpadm** command line tool. See [Administering {{ site.data.keys.product_adj }} applications through Ant](using-ant) or [Administering {{ site.data.keys.product_adj }} applications through the command line](using-cli).
+{{site.data.keys.product_adj }} アプリケーションは、Ant タスクや **mfpadm** コマンド・ライン・ツールを使用することによっても管理できます。[Ant を使用した {{site.data.keys.product_adj }} アプリケーションの管理](using-ant)または[コマンド・ラインを使用した {{site.data.keys.product_adj }} アプリケーションの管理](using-cli)を参照してください。
 
-Similar to the web-based console, the REST services, Ant tasks, and command line tools are secured and require you to provide your administrator credentials.
+Web ベースのコンソールと同様に、REST サービス、Ant タスク、およびコマンド・ライン・ツールも保護されており、使用するユーザーは管理者の資格情報を提供する必要があります。
 
-### Select a topic:
+### トピックを選択してください。
 {: #select-a-topic }
 

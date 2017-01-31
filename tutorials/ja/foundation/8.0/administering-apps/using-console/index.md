@@ -1,141 +1,212 @@
 ---
 layout: tutorial
-title: Administrating applications through the MobileFirst Operations Console
-breadcrumb_title: Administrating using the console
+title: MobileFirst Operations Console を使用したアプリケーションの管理
+breadcrumb_title: コンソールを使用した管理
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the {{ site.data.keys.mf_console }} by locking apps or denying access, or by displaying notification messages.
+アプリをロックまたはアクセスを拒否するか、通知メッセージを表示することにより、 {{site.data.keys.mf_console }} を使用して {{site.data.keys.product_adj }} アプリケーションを管理することができます。
 
-You can start the console by entering one of the following URLs:
+以下のいずれかの URL を入力することによって、コンソールを開始できます。
 
-* Secure mode for production or test: `https://hostname:secure_port/mfpconsole`
-* Development: `http://server_name:port/mfpconsole`
+* 実動またはテスト用のセキュア・モード: `https://hostname:secure_port/mfpconsole`
+* 開発: `http://server_name:port/mfpconsole`
 
-You must have a login and password that grant you authorization to access the {{ site.data.keys.mf_console }}. For more information, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+{{site.data.keys.mf_console }} にアクセスする権限を持つログインとパスワードが必要です。詳しくは、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
-You can use the {{ site.data.keys.mf_console }} to manage your applications.
+{{site.data.keys.mf_console }} を使用してアプリケーションを管理することができます。
 
-From the {{ site.data.keys.mf_console }}, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
+{{site.data.keys.mf_console }} から Analytics コンソールにアクセスして、Analytics サーバーによる分析用モバイル・データの収集を制御することもできます。詳しくは、[{{site.data.keys.mf_console }} からのデータ収集の有効化または無効化](../../analytics/console/#enabledisable-analytics-support)を参照してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Mobile-application management](#mobile-application-management)
-* [Application status and token licensing](#application-status-and-token-licensing)
-* [Error log of operations on runtime environments](#error-log-of-operations-on-runtime-environments)
-* [Audit log of administration operations](#audit-log-of-administration-operations)
+* [モバイル・アプリケーションの管理](#mobile-application-management)
+* [アプリケーションの状況とトークン・ライセンス](#application-status-and-token-licensing)
+* [ランタイム環境での操作のエラー・ログ](#error-log-of-operations-on-runtime-environments)
+* [管理操作の監査ログ](#audit-log-of-administration-operations)
 
-## Mobile-application management
+## モバイル・アプリケーションの管理
 {: #mobile-application-management }
-The {{ site.data.keys.product_adj }} mobile-application-management capabilities provide {{ site.data.keys.mf_server }} operators and administrators with granular control over user and device access to their applications.
+{{site.data.keys.product_adj }} モバイル・アプリケーション管理機能により、 {{site.data.keys.mf_server }} オペレーターと管理者は、アプリケーションに対するユーザーおよびデバイスのアクセス権限について、より詳細な管理が可能になります。
 
-{{ site.data.keys.mf_server }} tracks all attempts to access your mobile infrastructure, and stores information about the application, the user, and the device on which the application is installed. The mapping between the application, the user, and the device, forms the basis for the server's mobile-application management capabilities.
+{{site.data.keys.mf_server }} は、モバイル・インフラストラクチャーにアクセスする試みをすべてトラッキングし、アプリケーション、ユーザー、アプリケーションがインストールされるデバイスに関する情報を保管します。アプリケーション、ユーザー、およびデバイス間のマッピングは、サーバーのモバイル・アプリケーション管理機能の基礎を形成します。
 
-Use IBM {{ site.data.keys.mf_console }} to monitor and manage access to your resources:
+IBM {{site.data.keys.mf_console }} を使用して、リソースへのアクセスをモニターし管理します。
 
-* Search for a user by name, and view information about the devices and applications that they are using to access your resources.
-* Search for a device by its display name, and view the users that are associated with the device, and the registered {{ site.data.keys.product_adj }} applications that are used on this device.
-* Block access to your resources from all instances of your applications on a specific device. This is useful when a device is lost or stolen.
-* Block access to your resources only for a specific application on a specific device. For example, if an employee changes departments, you can block the employee's access for an application of the previous department, but allow the employee access from other applications on the same device.
-* Unregister a device, and delete all the registration and monitoring data that was gathered for the device.
+* ユーザーを名前で検索し、ユーザーがリソースへのアクセスに使用しているデバイスおよびアプリケーションに関する情報を表示します。
+* デバイスをデバイスの表示名で検索し、デバイスに関連づけられたユーザーおよびこのデバイスで使用される登録された {{site.data.keys.product_adj }} アプリケ―ションを表示します。
+* 特定のデバイス上にあるアプリケーションのすべてのインスタンスからリソースにアクセスするのをブロックします。これは、デバイスが紛失したり盗まれたときに便利です。
+* 特定のデバイス上にある特定のアプリケーションに対してのみ、リソースにアクセスするのをブロックします。例えば、従業員の部署が変更になったときに、その従業員の以前の部署のアプリケーションのアクセスはブロックする一方で、同じデバイス上にある他のアプリケーションからのアクセスは許可することができます。
+* デバイスの登録を抹消し、すべての登録とそのデバイスで収集されたモニター・データを削除します。
 
-Access-blocking has the following characteristics:
+アクセス・ブロックには以下の特徴があります。
 
-* The blocking operation is reversible. You can remove the block by changing the device or application status in {{ site.data.keys.mf_console }}.
-* The block applies only to protected resources. A blocked client can still use the application to access an unprotected resource. See Unprotected resources.
-* Access to adapter resources on {{ site.data.keys.mf_server }} is blocked immediately when you select this operation. However, this might not be the case for resources on an external server because the application might still have a valid access token that has not expired.
+* ブロッキング・オペレーションは元に戻すことができます。{{site.data.keys.mf_console }} でデバイスまたはアプリケーション・ステータスを変更すると、ブロックを解除することができます。
+* ブロックは保護リソースにのみ適用されます。ブロックされたクライアントは、引き続きアプリケーションを使用して保護されていないリソースにアクセスすることができます。保護されていないリソース (Unprotected resources) を参照してください。
+* {{site.data.keys.mf_server }} 上のアダプター・リソースへのアクセスは、この操作を選択した直後にブロックされます。ただし、これは外部サーバー上のリソースには当てはまらない場合があります。アプリケーションに期限切れになっていない有効なアクセス・トークンがまだ存在する可能性があるためです。
 
-### Device status
+### デバイスの状況
 {: #device-status }
-{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
+{{site.data.keys.mf_server }} は、サーバーにアクセスするすべてのデバイスの状況情報を保守します。使用できるステータス値は、 **アクティブ (Active)**、**紛失 (Lost)**、 **盗難 (Stolen)**、**期限切れ (Expired)**、および**使用不可 (Disabled)**です。 
 
-The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
+デフォルト・デバイスの状況は **アクティブ (Active)** で、このデバイスからのアクセスがブロックされないことを示します。このステータスを **紛失 (Lost)**、 **盗難 (Stolen)**、または **使用不可 (Disabled)** に変更して、デバイスからアプリケーション・リソースへのアクセスをブロックすることができます。ステータスはいつでも**アクティブ (Active)** に復元してアクセスを再度許可することができます。[{{site.data.keys.mf_console }} でのデバイス・アクセスの管理](#managing-device-access-in-mobilefirst-operations-console)を参照してください。
 
-The **Expired** status is a special status that is set by {{ site.data.keys.mf_server }} after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
+**期限切れ (Expired)** ステータスは、デバイスがこのサーバー・インスタンスに最後に接続してから事前構成の非活動期間が経過した後に {{site.data.keys.mf_server }} によって設定される、特殊なステータスです。このステータスは、ライセンス・トラッキングに使用され、デバイスのアクセス権に影響しません。**期限切れ (Expired)** ステータスのデバイスがサーバーに再接続すると、そのステータスは **アクティブ (Active)**に復元され、デバイスにサーバーへのアクセス権限が付与されます。
 
-### Device display name
+### デバイスの表示名
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{site.data.keys.mf_server }} は、{{site.data.keys.product_adj }} クライアント SDK が割り当てる固有のデバイス ID でデバイスを識別します。デバイスの表示名を設定すると、デバイスをその表示名で検索することができます。アプリケーション開発者は `WLClient` クラスの `setDeviceDisplayName` メソッドを使用して、デバイスの表示名を設定します。 [{{site.data.keys.product_adj }} クライアント・サイド API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html) の `WLClient` 文書を参照してください。(JavaScript クラスは `WL.Client` です。) Java アダプター開発者 (セキュリティー検査の開発者など) は、com.ibm.mfp.server.registration.external.model `MobileDeviceData` クラスの `setDeviceDisplayName` メソッドを使用してデバイス表示名を設定することもできます。 [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc) を参照してください。
 
-### Managing device access in {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }} でのデバイス・アクセスの管理
 {: #managing-device-access-in-mobilefirst-operations-console }
-To monitor and manage device access to your resources, select the Devices tab in the {{ site.data.keys.mf_console }} dashboard.
+リソースへのデバイス・アクセスをモニターして管理するには、{{site.data.keys.mf_console }} ダッシュボードの「デバイス」タブを選択します。
 
-Use the search field to search for a device by the user ID that is associated with the device, or by the display name of the device (if set). See [Device display name](#device-display-name). You can also search for part of the user ID or the device display name (at least three characters).
+検索フィールドを使用して、デバイスに関連付けられた ユーザー ID でデバイスを検索するか、デバイスの表示名で検索します (設定されている場合)。[デバイスの表示名](#device-display-name)を参照してください。ユーザー ID の一部またはデバイス表示名の一部でも検索することができます (最低 3 文字)。
 
-The search results display all the devices that match the specified user ID or device display name. For each device, you can see the device ID and display name, the device model, the operating system, and the list of users IDs that are associated with the device.
+検索結果には、指定されたユーザー ID またはデバイス表示名に一致するすべてのデバイスが表示されます。デバイスごとに、デバイス ID と表示名、デバイス・モデル、オペレーティング・システム、およびデバイスに関連付けられたユーザー ID のリストを確認することができます。
 
-The Device Status column shows the status of the device. You can change the status of the device to **Lost**, **Stolen**, or **Disabled**, to block access from the device to protected resources. Changing the status back to **Active** restores the original access rights.
+デバイスの状況 (Device Status) 列は、デバイスの状況を表示します。デバイスの状況
+を **紛失 (Lost)**、 **盗難 (Stolen)**、または
+**使用不可 (Disabled)** に変更して、デバイスから保護リソースへのアクセスをブロックすることができます。ステータスを**アクティブ
+(Active)** に戻すと、元のアクセス権限が復元します。
 
-You can unregister a device by selecting **Unregister** in the **Actions** column. Unregistering a device deletes the registration data of all the {{ site.data.keys.product_adj }} applications that are installed on the device. In addition, the device display name, the lists of users that are associated with the device, and the public attributes that the application registered for this device are deleted.
 
-**Note:** The **Unregister** action is not reversible. The next time that one of the {{ site.data.keys.product_adj }} applications on the device attempts to access the server, it will be registered again with a new device ID. When you select to register the device again, the device status is set to **Active**, and the device has access to protected resources, regardless of any previous blocks. Therefore, if you want to block a device, do not unregister it. Instead, change the device status to **Lost**, **Stolen**, or **Disabled**.
+**アクション (Actions)** 列で**登録
+抹消 (Unregister)** を選択して、デバイスの登録を抹消する
+ことができます。
+デバイスの登録抹消は、デバイスにインストールされているすべての {{site.data.keys.product_adj }}
+アプリケーションの登録データを削除します。また、デバイスの表示名、デバイスに関連付けられたユ
+ーザーのリスト、およびアプリケーションがこのデバイスに登録したパブ リック属性が削除されます。
 
-To view of all the applications that were accessed on a specific device, select the expand arrow icon next to the device ID in the devices table. Each row in the displayed applications table contains the name of the application, and the application's access status (whether access to protected resources is enabled for this application on this device). You can change the application's status to **Disabled** to block access from the application specifically on this device.
+**注:** **登録抹消 (Unregister)** アクションは元に戻すことができません。デバイス上の
+{{site.data.keys.product_adj }}
+アプリケーションの 1 つが次回サーバーにアクセスしようとすると、新しい
+デバイス ID を使用して再登録されます。デバイスを再登録することを選択すると、デバイスの状況が**アクティブ (Active)** に設定され、以前のブ
+ロックの有無にかかわらず、デバイスに保護リソースへのアクセス権限が付
+与されます。そのため、デバイスをブロックしたい場合は、デバイスを登録
+抹消しないでください。かわりに、デバイスの状況を**紛失
+(Lost)**、**盗難 (Stolen)**、または**使
+用不可 (Disabled)** に変更してください。
 
-#### Jump to
+特定のデバイス上でアク
+セスされたすべてのアプリケーションを表示するには、デバイス・テー
+ブルのデバイス ID の隣にある拡張矢印アイコンを選択します。
+表示されたアプリケーション・テーブルの各行に、アプリケーションの名
+前とアプリケーションのアクセス状況 (このデバイスのこのアプリケーショ
+ンで保護リソースへのアクセスが可能かどうか) が含まれます。アプリケーションの状況を
+**使用不可（Disabled）** に変更して、このデバイスのアプリケーションに限定してアクセスをブロックすることができます。
+
+#### ジャンプ先
 {: #jump-to-1 }
 
-* [Remotely disabling application access to protected resources](#remotely-disabling-application-access-to-protected-resources)
-* [Displaying an administrator message](#displaying-an-administrator-message)
-* [Defining administrator messages in multiple languages](#defining-administrator-messages-in-multiple-languages)
+* [保護リソースへのアプリケーション・アクセスの
+リモート側での無効化](#remotely-disabling-application-access-to-protected-resources)
+* [管理者メッセージの表示](#displaying-an-administrator-message)
+* [複数言語での管理者メッセージの定義](#defining-administrator-messages-in-multiple-languages)
 
-### Remotely disabling application access to protected resources
+### 保護リソースへのアプリケーション・アクセスの
+リモート側での無効化
 {: #remotely-disabling-application-access-to-protected-resources }
-Use {{ site.data.keys.mf_console }} (the console) to disable user access to a specific version of an application on a specific mobile operating system, and provide a custom message to the user.
+{{site.data.keys.mf_console }}
+(コンソール) を使用して、特定のモバイル・オペレーティング・システム上
+のアプリケーションの特定バージョンへのユーザー・アクセスを無効化し、
+ユーザーにカスタム・メッセージを表示することができます。
 
-1. Select your application version from the **Applications** section of the console's navigation sidebar, and then select the application **Management** tab.
-2. Change the status to **Access Disabled**.
-3. In the **URL of latest version** field, optionally provide a URL for a newer version of the application (usually in the appropriate public or private app store). For some environments, the Application Center provides a URL to access the Details view of an application version directly. See [Application properties](../../appcenter/appcenter-console/#application-properties).
-4. In the **Default notification message** field, add the custom notification message to display when the user attempts to access the application. The following sample message directs users to upgrade to the latest version:
+
+1. コンソールのナビゲーション・サイドバーにある**「アプリケーション」
+**セクションからご使用のアプリケーションのバージョンを選択
+し、次にアプリケーションの**「管理」**タブを選択します。
+2. ステータスを**「アクセス無効」**に変更します。
+3. **最新バージョンの URL」**フィールドで、オプションでアプリケーションの新規バー
+ジョン (通常は、適切なパブリックまたはプライベートのアプリケーション・ストア内にある) の URL を指定します。一部の環境では、アプリケーション・バージョンの「詳細」ビューに直接アクセスするための URL が Application Center によって表示されます。
+[アプリケーション・プロパティー (Application properties)](../../appcenter/appcenter-console/#application-properties) を参照してください。
+4. **「デフォルトの通知メッセージ」**フィールドで、ユーザーがアプリケー
+ションにアクセスしようとする際に表示するカスタム通知メッセージを追加
+します。次のサンプル・メッセージは、最新バージョンにアップグ
+レードするようにユーザーに指示します。
+
 
    ```bash
-   This version is no longer supported. Please upgrade to the latest version.
+   このバージョンは、現在ではサポートされなくなりました。最新バージョンにアップグレードしてください。
    ```
 
-5. In the **Supported locales** section, you can optionally provide the notification message in other languages.
-6. Select **Save** to apply your changes.
+5. **「サポート対象ロケール」**セクションで、オプションで他の言語の通知メッセージを指定することができます。
+6. **「保存」**を選択して変更を適用します。
 
-When a user runs an application that was remotely disabled, a dialog window with your custom message is displayed. The message is displayed on any application interaction that requires access to a protected resource, or when the application tries to obtain an access token. If you provided a version-upgrade URL, the dialog has a **Get new version** button for upgrading to a newer version, in addition to the default **Close** button. If the user closes the dialog window without upgrading the version, they can continue to work with the parts of the application that do not require access to protected resources. However, any application interaction that requires access to a protected resource causes the dialog window to be displayed again, and the application is not granted access to the resource.
+ユーザーがリモート側で無効にされたアプリケーションを実行す
+ると、カスタム・メッセージが記載されたダイアログ・ウィンドウが表示
+されます。メッセージは、保護リソースへのアクセスを必要とするすべてのアプリケーシ
+ョン対話で、またはアプリケーションがアクセス・トークンを取得し
+ようとする場合に表示されます。バージョン・アップグレード URL を指定すると、デフ
+ォルトの **「閉じる」**ボタンに加え、新規バー
+ジョンへアップグレードするための**「新規バージョンを入手」
+**ボタンがダイアログに表示されます。ユーザーがバージョンをアップグレードせず
+にダイアログ・ウィンドウを閉じる場合、保護リソースにアクセスする必要の
+ない一部のアプリケーションで処理を続行することができます。
+ただし、保護リソースへのアクセスを必要とするすべてのアプリケーション
+対話で、再びダイアログ・ウィンドウが表示され、アプリケーションはリ
+ソースへのアクセス権限を付与されません。
 
 <!-- **Note:** For cross-platform applications, you can customize the default remote-disable behavior: provide an upgrade URL for your application, as outlined in Step 3, and set the **showCloseOnRemoteDisableDenial** attribute in your application's initOptions.js file to false. If the attribute is not defined, define it. When an application-upgrade URL is provided and the value of **showCloseOnRemoteDisableDenial** is false, the **Close** button is omitted from the remote-disable dialog window, leaving only the Get new version button. This forces the user to upgrade the application. When no upgrade URL is provided, the **showCloseOnRemoteDisableDenial** configuration has no effect, and a single **Close** button is displayed. -->
 
-### Displaying an administrator message
+### 管理者メッセージの表示
 {: #displaying-an-administrator-message }
-Follow the outlined procedure to configure the notification message. You can use this message to notify application users of temporary situations, such as a planned service downtime.
+通知メッセージを構成するには、以下の手順に従ってください。このメッセージを使用して、計画的
+な保守のダウンタイムなど、一時的な状態をアプリケーション・ユーザーに
+通知することができます。
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application Management tab.
-2. Change the status to **Active and Notifying**.
-3. Add a custom startup message. The following sample message informs the user of planned maintenance work for the application:
+1. {{site.data.keys.mf_console }} ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーションのバージョンを選択し、次にアプリケーションの「管理」タブを選択します。
+2. ステータスを**「アクティブおよび通知 (Active and
+Notifying)」**に変更します。
+3. カスタム始動メッセージを追加します。以下のサンプル・メッセージは、ユーザーにアプリケーションの計画
+的な保守作業をお知らせします。
+
 
    ```bash
-   The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
+   計画的な保守のため、サーバーは土曜日の午前 4 時から午後 6 時まで使用不可となります。
    ```
 
-4. In the Supported locales section, you can optionally provide the notification message in other languages.
+4. 「サポート対象ロケール」セクションで、オプションで他の言語の通知メッセージを指定することができます。
 
-5. Select **Save** to apply your changes.
+5. **「保存」**を選択して変更を適用します。
 
-The message is displayed when the application first uses {{ site.data.keys.mf_server }} to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
+メッセージは、アプリケーションが最初に {{site.data.keys.mf_server }} を使用して保護リソースにアクセスするときや、アクセス・トークンを取得するときに表示されます。
+アプリケーションが始動時にアクセス・トークンを取得すると、メッセージ
+はこの段階で表示されます。それ以外の場合は、メッセージは、保護リソースへアクセス
+するかアクセス・トークンを取得するアプリケーションからの最初の要求で表示さ
+れます。このメッセージは最初の対話時に 1 度しか表示されません。
 
-### Defining administrator messages in multiple languages
+### 複数言語での管理者メッセージの定義
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format setting, and not according to the configured browser or operating-system language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>注:</b> Microsoft Internet Explorer (IE) および Microsoft Edge では、管理メッセージはオペレーティング・システムの地域の形式設定に従って表示され、構成されているブラウザーやオペレーティング・システムの言語の設定に従って表示されるものではありません。[IE および Edge の Web アプリケーションの制限](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)を参照してください。コンソールを使用して定義したアプリケーション管理者メッセージを表示するための複数言語を構成するには、以下の手順を実行してください。これらのメッセージはデバイスのロケールに基づいて送信される
+もので、モバイル・オペレーティング・システムがロケールの指定に使用する標準に準拠していなければなりません。
 
-Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application **Management** tab.
-2. Select the status **Active and Notifying** or **Access Disabled**.
-3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
+1. {{site.data.keys.mf_console }}
+ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーショ
+ンのバージョンを選択し、次にアプリケーションの**「管理」**タブを選択します。
+2. **「アクティブおよび通知 (Active and
+Notifying)」**または**「アクセス無効」**
+のステータスを選択します。
+3. **「ロケールの更新 (Update Locales)」
+**を選択します。ディスプレイ・ダイアログ・ウィンドウの**「ファイルのア
+ップロード (Upload File)」**セクションで、**「アップ
+ロード」**を選択し、ロケールを定義する CSV ファイルの場所を参照し
+ます。
 
-   Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
+   CSV ファイルの各行に、1 対のコンマ区切りの文字列
+が含まれています。最初の文字列は、ロケール・コード (フランス語 (フランス) の場合は fr-FR、英語の場合は en など) で、2 番目の文字列は対応する言語のメッセージ・テキストです。指定されたロケール・コードは、ISO 639-1、ISO 3166-2、および
+ISO 15924 など、モバイル・オペレーティング・システムがロケールの指定
+に使用する標準に準拠していなければなりません。
     
-   > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
+   > **注:** CSV ファイルを作成するには、UTF-8 エンコードをサポートするエディター (Notepad など) を使用する必要があります。
 
-   Following is a sample CSV file that defines the same message for multiple locales:
+   以下に、複数ロケールの同一メッセ
+ージを定義する CSV ファイルの例を示します。
+
 
    ```xml
    en,Your application is disabled
@@ -145,63 +216,91 @@ Follow the outlined procedure to configure multiple languages for displaying the
    he,האפליקציה חסמומה
    ```
 
-4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
-You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
-5. Select **Save** to apply your changes.
+4. **「通知メッセージの確認 (Verify notification
+message)」**セクションで、 CSV ファイルのロケール・コードと
+メッセージの表を確認することができます。メッセージを確認し、**「OK」
+**を選択します。いつでも「編集」を選択して、ロケール CSV ファイルを置き換えることができます。このオプションを使用して、空の CSV フ
+ァイルをアップロードしてすべてのロケールを削除することもできます。
+5. **「保存」**を選択して変更を適用します。
 
-The localized notification message is displayed on the user's mobile device, according to the locale of the device. If no message was configured for the device locale, the default message that you provided is displayed.
+ローカライズされた通知メッセージは、デバイスのロケールに応じて、ユーザーのモバイル・デ
+バイスに表示されます。デバイスのロケールにメッセージが構成されなかった場合は、指
+定したデフォルトのメッセージが表示されます。
 
-## Application status and token licensing
+## アプリケーションの状況とトークン・ライセンス
 {: #application-status-and-token-licensing }
-You must manually restore the correct application status in {{ site.data.keys.mf_console }} after Blocked status because of insufficient tokens.
+不十分なトークンが原因でブロック済みの状況が生じたら、{{site.data.keys.mf_console }} で正しいアプリケーション状況に手動で復元する必要があります。
 
-If you use token licensing and you no longer have enough license tokens for an application, the application status of all versions of the application changes to **Blocked**. You are no longer able to change the status of any version of the application. The following message is displayed in {{ site.data.keys.mf_console }}:
+トークン・ライセンスを使用している場合、アプリケーションのライセンス・トークンが不十分になると、そのアプリケーションのすべてのバージョンのアプリケーション状況が**ブロック済み**に変わります。この場合、そのアプリケーシ
+ョンのいずれのバージョンの状況も変更できなくなります。
+以下のメッセージが
+{{site.data.keys.mf_console }}
+に表示されます。
+
 
 ```bash
-The application got blocked because its license expired
+アプリケーションはライセンスの有効期限が切れたためブロックされました。
 ```
 
-If later enough tokens to run the application become free or your organization purchases more tokens, the following message is displayed in {{ site.data.keys.mf_console }}:
+その後、アプリケーション実行のために十分なトークンが空くか、お客様
+の組織が追加でトークンを購入すれば、
+{{site.data.keys.mf_console }}
+に以下のメッセージが表示されます。
 
 ```bash
-The application got blocked because its license expired but a license is available now
+アプリケーションはライセンスの期限が切れためブロックされましたが、現在ライセンスは使用可能です。
 ```
 
-The display status is still **Blocked**. You must restore the correct current status manually from memory or your own records by editing the Status field. {{ site.data.keys.product }} does not manage the display of **Blocked** status in {{ site.data.keys.mf_console }} of an application that was blocked because of insufficient license tokens. You are responsible for restoring such a blocked application to a real status that can be displayed through {{ site.data.keys.mf_console }}.
+この時点ではまだ、表示された状況は**ブロック済み**の
+ままです。「状況」フィールドを編集することで、メモリーまたは独自のレコードから正しい現在の状況を手動で復元する必要があります。
+{{site.data.keys.product }}
+は、不十分なライセンス・トークンが原因でブロックされたアプリケーショ
+ンの
+{{site.data.keys.mf_console }}
+内の**ブロック済み**状況の表示を管理しません。
+そのようなブロック済みアプリケーションを
+{{site.data.keys.mf_console }}
+で表示可能な本来の状況に復元する作業は、お客様の責任で行ってください。
 
-## Error log of operations on runtime environments
+## ランタイム環境での操作のエラー・ログ
 {: #error-log-of-operations-on-runtime-environments }
-Use the error log to access failed management operations initiated from {{ site.data.keys.mf_console }} or the command line on the selected runtime environment, and to see the effect of the failure on the servers.
+エラー・ログを使用すると、選択したランタイム環境で {{site.data.keys.mf_console }} またはコマンド・ラインから開始され、失敗した管理操作にアクセスして、サーバーへ失敗の影響を確認できます。
 
-When a transaction fails, the status bar displays a notification of the error and shows a link to the error log. Use the error log to have more detail about the error, for example, the status of each server with a specific error message, or to have a history of errors. The error log shows the most recent operation first.
+トランザクションが失敗すると、ステータス・バーにエラーの通知が表示
+され、エラー・ログへのリンクが表示されます。エラー・ログを使用すると、例えば各サーバーの状
+況と具体的なエラー・メッセージなど、エラーの詳細情報を取得したり、エラ
+ーの履歴を調べることができます。
+エラー・ログでは、最新の操作が最初に表示されます。
 
-You access the error log by clicking **Error log** of a runtime environment in {{ site.data.keys.mf_console }}.
+{{site.data.keys.mf_console }} でランタイム環境の**「エラー・ログ」**をクリックして、エラー・ログにアクセスします。
 
-Expand the row that refers to the failed operation to access more information about the current state of each server. To access the complete log, download the log by clicking **Download log**.
+失敗した操作を参照する行を展開し、各サーバーの現在の状態についての詳細にアクセスします。完全なログにアクセスするには、**「ログのダウンロード」**をクリックしてログをダウンロードします。
 
-![error log in the console](error-log.png)
+![コンソールのエラー・ログ](error-log.png)
 
-## Audit log of administration operations
+## 管理操作の監査ログ
 {: #audit-log-of-administration-operations }
-In the {{ site.data.keys.mf_console }}, you can refer to an audit log of administration operations.
+{{site.data.keys.mf_console }} では、管理操作の監査ログを参照することができます。
 
-{{ site.data.keys.mf_console }} provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the {{ site.data.keys.product_adj }} administration service to **false**.
+{{site.data.keys.mf_console }} は、ログインの監査ログ、ログアウトの監査ログ、およびアプリケーションまたはアダプターのデプロイまたはアプリケーションのロックといったすべての管理操作の監査ログへのアクセスを提供します。監査ログは、{{site.data.keys.product_adj }} 管理サービスの Web アプリケーション上の **mfp.admin.audit** Java Naming and Directory Interface (JNDI) プロパティーを **false** に設定することで無効にすることができます。
 
-To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
+監査ログにアクセスするには、ヘッダー・バーのユーザー名をクリックして**「バージョン情報」**を選択し、**「追加サポート情報 (Additional support information)」**、**「監査ログのダウンロード」**とクリックします。
 
-| Field name | Description | 
+| フィールド名 | 説明 | 
 |------------|-------------|
-| Timestamp	 | Date and time when the record was created. |
-| Type	     | The type of operation. See list of operation types below for the possible values. |
-| User	     | The **username** of the user who is signed in. |
-| Outcome	 | The outcome of the operation; possible values are SUCCESS, ERROR, PENDING. |
-| ErrorCode	 | If the outcome is ERROR, ErrorCode indicates what the error is. |
-| Runtime	 | Name of the {{ site.data.keys.product_adj }} project that is associated with the operation. |
+| タイム・スタンプ	 | レコードが作成された日時。
+ |
+| タイプ	     | 操作のタイプ。 可能な値については、以下の操作タイプのリストを参照してください。 |
+| User	     | サインインしているユーザーの**ユーザー名**。 |
+| Outcome	 | 操作の結果。可能な値は、SUCCESS、ERROR、PENDINGです。 |
+| ErrorCode	 | 結果が ERROR の場合、ErrorCode はエラーの内容を示します。 |
+| Runtime
+	 | 操作に関連する {{site.data.keys.product_adj }} プロジェクトの名前。 |
 
-The following list shows the possible values of Type of operation.
+以下のリストに操作の Type の可能な値を示します。
 
 * Login
-* Logout
+* ログアウト
 * AdapterDeployment
 * AdapterDeletion
 * ApplicationDeployment

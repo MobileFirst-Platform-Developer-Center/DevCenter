@@ -1,56 +1,64 @@
 ---
 layout: tutorial
-title: Administrating applications through Ant
-breadcrumb_title: Administrating using Ant
+title: Ant を使用したアプリケーションの管理
+breadcrumb_title: Ant を使用した管理
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** Ant task.
+**mfpadm** Ant タスクを通じて {{site.data.keys.product_adj }} アプリケーションを管理することができます。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [他の機能との比較](#comparison-with-other-facilities)
+* [前提条件
+](#prerequisites)
 
-## Comparison with other facilities
+## 他の機能との比較
 {: #comparison-with-other-facilities }
-You can execute administration operations with {{ site.data.keys.product_full }} in the following ways:
+{{site.data.keys.product_full }} の管理操作は、以下の方法で実行できます。
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The **mfpadm** Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* {{site.data.keys.mf_console }}。対話式です。
+* **mfpadm** Ant タスク。
+* **mfpadm** プログラム。
+* {{site.data.keys.product_adj }} 管理 REST サービス。
 
-The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for automated or unattended execution of operations, such as:
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+**mfpadm** Ant タスク、**mfpadm** プログラム、および REST サービスは、次のような操作の自動化または無人実行に役立ちます。
 
-The **mfpadm** Ant task and the **mfpadm** program are simpler to use and have better error reporting than the REST services. The advantage of the **mfpadm** Ant task over the mfpadm program is that it is platform independent and easier to integrate when integration with Ant is already available.
+* 繰り返しの多い操作でオペレーターのエラーを防止する。
+* オペレーターの通常の作業時間外に操作を行う。
+* テスト・サーバーまたは実動前サーバーと同じ設定で実動サーバーを構成する。
 
-## Prerequisites
+**mfpadm** Ant タスクと **mfpadm** プログラムは、REST サービスよりも使い方が簡単で、エラー・レポートも充実しています。mfpadm プログラムよりも **mfpadm** Ant タスクが優れている点は、プラットフォームに依存しないことと、Ant との統合がすでに使用可能なときに統合が容易であることです。
+
+## 前提条件
+
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
 
-Apache Ant is required to run the **mfpadm** task. For information about the minimum supported version of Ant, see System requirements.
+**mfpadm** ツールは、
+{{site.data.keys.mf_server }}
+インストーラーを使用してインストールされます。
+このページの残りの部分では、**product\_install\_dir** は {{site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
 
-For convenience, Apache Ant 1.9.4 is included in {{ site.data.keys.mf_server }}. In the **product\_install\_dir/shortcuts/** directory, the following scripts are provided.
+**mfpadm** タスクを実行するために Apache Ant が必要です。サポートされる Ant の最小バージョンについて詳しくは、システム要件を参照してください。
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+利便性を考慮して、{{site.data.keys.mf_server }} には Apache Ant 1.9.4 が組み込まれています。**product\_install\_dir/shortcuts/** ディレクトリーで、以下のスクリプトが提供されます。
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+* ant (UNIX / Linux の場合)
+* ant.bat (Windows の場合)
 
-You can use the **mfpadm** Ant task on a different computer than the one on which you installed {{ site.data.keys.mf_server }}.
+これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。
+環境変数 JAVA_HOME が設定された場合、スクリプトはこれを受け入れます。
 
-* Copy the file **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** to the computer.
-* Make sure that a supported version of Apache Ant and a Java runtime environment are installed on the computer.
+**mfpadm** Ant タスクは、{{site.data.keys.mf_server }} をインストールしたコンピューターとは別のコンピューターで使用できます。
 
-To use the **mfpadm** Ant task, add this initialization command to the Ant script:
+* ファイル **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** を目的のコンピューターにコピーします。
+* サポートされているバージョンの Apache Ant と Java ランタイム環境が、目的のコンピューターにインストールされていることを確認します。
+
+**mfpadm** Ant タスクを使用するには、次の初期化コマンドを Ant スクリプトに追加します。
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/deployers/antlib.xml">
@@ -60,7 +68,7 @@ To use the **mfpadm** Ant task, add this initialization command to the Ant scrip
 </taskdef>
 ```
 
-Other initialization commands that refer to the same **mfp-ant-deployer.jar** file are redundant because the initialization by **defaults.properties** is also implicitly done by antlib.xml. Here is one example of a redundant initialization command:
+**defaults.properties** によって実行される初期化は antlib.xml によっても暗黙的に実行されるため、同じ **mfp-ant-deployer.jar** ファイルを参照する他の初期化コマンドは冗長となります。冗長な初期化コマンドの例を以下に示します。
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/defaults.properties">
@@ -70,22 +78,21 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 </taskdef>
 ```
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+{{site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** Ant task](#calling-the-mfpadm-ant-task)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [**mfpadm** Ant タスクの呼び出し](#calling-the-mfpadm-ant-task)
+* [一般構成用のコマンド](#commands-for-general-configuration)
+* [アダプター用のコマンド](#commands-for-adapters)
+* [アプリケーション用のコマンド](#commands-for-apps)
+* [デバイス用のコマンド](#commands-for-devices)
+* [トラブルシューティング用のコマンド](#commands-for-troubleshooting)
 
-### Calling the mfpadm Ant task
+### mfpadm Ant タスクの呼び出し
 {: #calling-the-mfpadm-ant-task }
-You can use the **mfpadm** Ant task and its associated commands to administer {{ site.data.keys.product_adj }} applications.
-Call the **mfpadm** Ant task as follows:
+**mfpadm** Ant タスクとその関連コマンドを使用して、{{site.data.keys.product_adj }} アプリケーションを管理することができます。次のようにして **mfpadm** Ant タスクを呼び出します。
 
 ```xml
 <mfpadm url=... user=... password=...|passwordfile=... [secure=...]>
@@ -93,159 +100,168 @@ Call the **mfpadm** Ant task as follows:
 </mfpadm>
 ```
 
-#### Attributes
+#### 属性
 {: #attributes }
-The **mfpadm** Ant task has the following attributes:
+**mfpadm** Ant タスクには以下の属性があります。
 
-| Attribute      | Description | Required | Default | 
+| 属性      | 説明 | 必要 | デフォルト | 
 |----------------|-------------|----------|---------|
-| url	         | The base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes	 | |
-| secure	     | Whether to avoid operations with security risks | No | true |
-| user	         | The user name for accessing the {{ site.data.keys.product_adj }} administration services | Yes | |
-| password	     | The password for the user | Either one is required | |
-| passwordfile   |	The file that contains the password for the user | Either one is required | |	 
-| timeout	     | Timeout for the entire REST service access, in seconds | No | |
-| connectTimeout |	Timeout for establishing a network connection, in seconds | No | |	 
-| socketTimeout  |	Timeout for detecting the loss of a network connection, in seconds | No | |
-| connectionRequestTimeout |	Timeout for obtaining an entry from a connection request pool, in seconds | No | |
-| lockTimeout    |	Timeout for acquiring a lock | No | |
+| url	         | 管理サービスの {{site.data.keys.product_adj }} Web アプリケーションのベース URL | はい	 | |
+| secure	     | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true |
+| user	         | {{site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい | |
+| password	     | ユーザーのパスワード | どちらか 1 つが必要 | |
+| passwordfile   |	ユーザーのパスワードを含むファイル | どちらか 1 つが必要 | |	 
+| timeout	     | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | |
+| connectTimeout |	ネットワーク接続確立のタイムアウト (秒単位) | いいえ | |	 
+| socketTimeout  |	ネットワーク接続の損失検出のタイムアウト (秒単位) | いいえ | |
+| connectionRequestTimeout |	接続要求プールからのエントリー取得のタイムアウト (秒単位) | いいえ | |
+| lockTimeout    |	ロック取得のタイムアウト | いいえ | |
 
 **url**<br/>
-The base URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use the following URL.
+ベース URL には、HTTPS プロトコルを使用することを推奨します。 例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
 
-* For WebSphere  Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
-* For Tomcat: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
+* WebSphere Application Server の場合: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
+* Tomcat の場合: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
 
 **secure**<br/>
-The default value is **true**. Setting **secure="false"** might have the following effects:
+デフォルト値は **true** です。**secure="false"** を設定すると、以下の影響がある場合があります。
 
-* The user and password might be transmitted in an unsecured way, possibly even through unencrypted HTTP.
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name than the specified server's host name.
+* ユーザーとパスワードが、セキュアでない方法で送信される可能性があります (暗号化されていない HTTP で送信される可能性もあります)。
+* サーバーの SSL 証明書は、たとえ自己署名された場合でも、あるいは指定されたサーバーのホスト名とは異なるホスト名のために作成された場合でも、受け入れられます。
 
 **password**<br/>
-Specify the password either in the Ant script, through the **password** attribute, or in a separate file that you pass through the **passwordfile** attribute. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing this password. To secure the password, before you enter the password into a file, remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+パスワードは、Ant スクリプトで **password** 属性を使用して指定するか、**passwordfile** 属性で渡す別のファイルで指定します。パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除します。例えば、以下のいずれかのコマンドを使用できます。
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* UNIX の場合: `chmod 600 adminpassword.txt`
+* Windows の場合: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-Additionally, you might want to obfuscate the password to hide it from an occasional glimpse. To do so, use the **mfpadm** config password command to store the obfuscated password in a configuration file. Then, you can copy and paste the obfuscated password to the Ant script or to the password file.
+また、偶発的な表示からパスワードを隠すために、パスワードを難読化してことをお勧めします。このためには、**mfpadm** config password コマンドを使用して、難読化したパスワードを構成ファイルに保管します。次に、Ant スクリプトまたはパスワード・ファイルに、難読化したパスワードをコピーして貼り付けることができます。
 
-The **mfpadm** call contains commands that are encoded in inner elements. These commands are executed in the order in which they are listed. If one of the commands fails, the remaining commands are not executed, and the **mfpadm** call fails.
+**mfpadm** の呼び出しには、エンコードされたコマンドが内部エレメントに含まれます。これらのコマンドは、リストされた順番で実行されます。これらのいずれかのコマンドが失敗すると、残りのコマンドは実行されず、**mfpadm** 呼び出しは失敗となります。
 
-#### Elements
+#### エレメント
 {: #elements }
-You can use the following elements in **mfpadm** calls:
+**mfpadm** 呼び出しでは以下のエレメントを使用できます。
 
-| Element                       | Description | Count |
+| エレメント                       | 説明 | カウント |
 |-------------------------------|-------------|-------|
-| show-info	                    | Shows user and configuration information | 0..∞ | 
-| show-global-config	        | Shows global configuration information | 0..∞ | 
-| show-diagnostics              | Shows diagnostics information | 0..∞ | 
-| show-versions	                | Shows versions information | 0..∞ | 
-| unlock	                    | Releases the general-purpose lock | 0..∞ | 
-| list-runtimes	                | Lists the runtimes | 0..∞ | 
-| show-runtime      	        | Shows information about a runtime | 0..∞ | 
-| delete-runtime	            | Deletes a runtime | 0..∞ | 
-| show-user-config	            | Shows the user configuration of a runtime | 0..∞ | 
-| set-user-config	            | Specifies the user configuration of a runtime | 0..∞ | 
-| show-confidential-clients	    | Shows the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients	    | Specifies the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients-rule	| Specifies a rule for the confidential clients configuration of a runtime | 0..∞ | 
-| list-adapters	                | Lists the adapters | 0..∞ | 
-| deploy-adapter	            | Deploys an adapter | 0..∞ | 
-| show-adapter	                | Shows information about an adapter | 0..∞ | 
-| delete-adapter	            | Deletes an adapter | 0..∞ | 
-| adapter	                    | Other operations on an adapter | 0..∞ | 
-| list-apps	                    | Lists the apps | 0..∞ | 
-| deploy-app	                | Deploys an app | 0..∞ | 
-| show-app	                    | Shows information about an app | 0..∞ | 
-| delete-app	                | Deletes an app | 0..∞ | 
-| show-app-version              | Shows information about an app version | 0..∞ | 
-| delete-app-version            | Delete a version of an app | 0..∞ | 
-| app	                        | Other operations on an app | 0..∞ | 
-| app-version	                | Other operations on an app version | 0..∞ | 
-| list-devices	                | Lists the devices | 0..∞ | 
-| remove-device	                | Removes a device | 0..∞ | 
-| device	                    | Other operations for a device | 0..∞ | 
-| list-farm-members	            | Lists the members of the server farm | 0..∞ | 
-| remove-farm-member	        | Removes a server farm member | 0..∞ | 
+| show-info	                    | ユーザーと構成の情報を表示します | 0..∞ | 
+| show-global-config	        | グローバル構成情報を表示します | 0..∞ | 
+| show-diagnostics              | 診断情報を表示します | 0..∞ | 
+| show-versions	                | バージョン情報を表示します | 0..∞ | 
+| unlock	                    | 汎用ロックをリリースします | 0..∞ | 
+| list-runtimes	                | ランタイムをリストします | 0..∞ | 
+| show-runtime      	        | ランタイムに関する情報を表示します | 0..∞ | 
+| delete-runtime	            | ランタイムを削除します | 0..∞ | 
+| show-user-config	            | ランタイムのユーザー構成を表示します | 0..∞ | 
+| set-user-config	            | ランタイムのユーザー構成を指定します | 0..∞ | 
+| show-confidential-clients	    | ランタイムの機密クライアントの構成を表示します | 0..∞ | 
+| set-confidential-clients	    | ランタイムの機密クライアントの構成を指定します | 0..∞ | 
+| set-confidential-clients-rule	| ランタイムの機密クライアント構成のルールを指定します | 0..∞ | 
+| list-adapters	                | アダプターをリストします | 0..∞ | 
+| deploy-adapter	            | アダプターをデプロイします | 0..∞ | 
+| show-adapter	                | アダプターに関する情報を表示します | 0..∞ | 
+| delete-adapter	            | アダプターを削除します | 0..∞ | 
+| adapter	                    | アダプターへの他の操作 | 0..∞ | 
+| list-apps	                    | アプリケーションをリストします | 0..∞ | 
+| deploy-app	                | アプリケーションをデプロイします | 0..∞ | 
+| show-app	                    | アプリケーションに関する情報を表示します | 0..∞ | 
+| delete-app	                | アプリケーションを削除します | 0..∞ | 
+| show-app-version              | アプリケーション・バージョンに関する情報を表示します | 0..∞ | 
+| delete-app-version            | アプリケーションのバージョンを削除します | 0..∞ | 
+| app	                        | アプリケーションへの他の操作 | 0..∞ | 
+| app-version	                | アプリケーション・バージョンに関する他の操作 | 0..∞ | 
+| list-devices	                | デバイスをリストします | 0..∞ | 
+| remove-device	                | デバイスを削除します | 0..∞ | 
+| device	                    | デバイスの他の操作 | 0..∞ | 
+| list-farm-members	            | サーバー・ファームのメンバーをリストします | 0..∞ | 
+| remove-farm-member	        | サーバー・ファーム・メンバーを削除します | 0..∞ | 
 
-#### XML Format
+#### XML 形式
 {: #xml-format }
-The output of most commands is in XML, and the input to specific commands, such as `<set-accessrule>`, is in XML too. You can find the XML schemas of these XML formats in the **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** directory. The commands that receive an XML response from the server verify that this response conforms to the specific schema. You can disable this check by specifying the attribute **xmlvalidation="none"**. 
+ほとんどのコマンドの出力は XML であり、`<set-accessrule>` などの特定のコマンドの入力も XML です。これらの XML 形式の XML スキーマは、**product\_install\_dir/MobileFirstServer/mfpadm-schemas/** ディレクトリーにあります。サーバーから XML 応答を受け取るコマンドは、その応答が特定のスキーマに適合するか検証します。
+**xmlvalidation="none"** 属性を指定することで、この検証を無効にすることができます。 
 
-#### Output character set
+#### 出力文字セット
 {: #output-character-set }
-Normal output from the mfpadm Ant task is encoded in the encoding format of the current locale. On Windows, this encoding format is the so-called "ANSI code page". The effects are as follows:
+mfpadm Ant タスクの通常の出力は、現行のロケールのエンコード・フォーマットでエンコードされます。Windows では、このエンコード・フォーマットは、いわゆる「ANSI コード・ページ」です。以下のような影響があります。
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in the so-called "OEM code page".
+* この文字セット以外の文字は、出力時に疑問符 (?) に変換されます。
+* 出力が Windows コマンド・プロンプト・ウィンドウ (cmd.exe) に送られた場合、そのようなウィンドウでは、いわゆる「OEM コード・ページ」で文字がエンコードされていると仮定しているため、非 ASCII 文字は正しく表示されません。
 
-To work around this limitation:
+この制約を回避するには、以下の手順を実行してください。
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This locale is the default locale on Red Hat Linux and macOS. Many other operating systems have the en_US.UTF-8 locale.
-* Or use the attribute **output="some file name"** to redirect the output of a mfpadm command to a file.
+* Windows 以外のオペレーティング・システムでは、エンコード・フォーマットが UTF-8 のロケールを使用します。これは、Red Hat Linux および macOS ではデフォルト・ロケールです。他の多くのオペレーティング・システムには、en_US.UTF-8 という名前のロケールがあります。
+* それ以外の場合は、**output="some file name"** 属性を使用して、mfpadm コマンドの出力をファイルにリダイレクトします。
 
-### Commands for general configuration
+### 一般構成用のコマンド
 {: #commands-for-general-configuration }
-When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+**mfpadm** Ant タスクを呼び出すときに、IBM {{site.data.keys.mf_server }} またはランタイムのグローバル構成にアクセスするさまざまなコマンドを含めることができます。
 
-#### The `show-global-config` command
+#### `show-global-config` コマンド
 {: #the-show-global-config-command }
-The `show-global-config` command shows the global configuration. It has the following attributes:
 
-| Attribute      | Description |	Required | Default |
+`show-global-config` コマンドは、グローバル構成を表示します。これには、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output	     | Name of the output file.  |	No	   | Not applicable |
-| outputproperty | Name of the Ant property for the output. | No | Not applicable |
+| output	     | 出力ファイルの名前。  |	いいえ	   | 該当なし |
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし |
 
-**Example**  
+**例**  
 
 ```xml
 <show-global-config/>
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+このコマンドは、[グローバル構成 (GET) (Global Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `show-user-config` command
+<br /> 
+#### `show-user-config` コマンド
 {: #the-show-user-config-command }
-The `show-user-config` command, outside of `<adapter>` and `<app-version>` elements, shows the user configuration of a runtime. It has the following attributes:
 
-| Attribute      | Description |	Required | Default |
+`<adapter>` エレメントおよび
+`<app-version>` エレメントの外にある
+`show-user-config` コマンドは、ランタイムの
+ユーザー構成を表示します。これには、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime.      | Yes     |	Not available |
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| runtime	     | ランタイムの名前。      | はい     |	使用不可 |
+| format	     | 出力形式を指定します。json または xml のいずれか。 | はい | 使用不可       | 
+| output	     | 出力を保存する先のファイルの名前。   | いいえ  | 該当なし      | 
+| outputproperty | 出力を保存する先の Ant プロパティーの名前。  | いいえ | 該当なし |
 
-**Example**  
+**例**  
 
 ```xml
 <show-user-config runtime="mfp" format="xml"/>
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+このコマンドは、[ランタイム構成 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` コマンド
 {: #the-set-user-config-command }
-The `set-user-config` command, outside of `<adapter>` and `<app-version>` elements, specifies the user configuration of a runtime. It has the following attributes for setting the entire configuration.
 
-| Attribute      | Description |	Required | Default |
+`<adapter>` エレメントおよび
+`<app-version>` エレメントの外側にある
+`set-user-config` コマンドは、ランタイムのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | ランタイムの名前。 | はい | 使用不可 | 
+| file	         | 新しい構成を含む JSON または XML ファイルの名前。 | はい | 使用不可 | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+`set-user-config` コマンドには、構成内の単一のプロパティーを設定するための以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| property	     | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	         | The value of the property. | Yes | Not available |
+| runtime	     | ランタイムの名前。 | はい | 使用不可 | 
+| property	     | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 | はい | 使用不可 | 
+| value	         | プロパティーの値。 | はい | 使用不可 |
 
-**Example**  
+**例**  
 
 ```xml
 <set-user-config runtime="mfp" file="myconfig.json"/>
@@ -255,173 +271,193 @@ The `set-user-config` command has the following attributes for setting a single 
 <set-user-config runtime="mfp" property="timeout" value="240"/>
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+このコマンドは、[ランタイム構成 (PUT) (Runtime configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST サービスに基づいています。
 
-<br/>
-#### The `show-confidential-clients` command
+<br /> 
+#### `show-confidential-clients` コマンド
 {: #the-show-confidential-clients-command }
-The `show-confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
-| Attribute      | Description |	Required | Default |
+`show-confidential-clients` コマンドは、ランタイムに
+アクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、
+[
+機密クライアント (Confidential
+clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| format         | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output         | Name of the file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| runtime        | ランタイムの名前。 | はい | 使用不可 | 
+| format         | 出力形式を指定します。json または xml のいずれか。 | はい | 使用不可 | 
+| output         | 出力を保存する先のファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力を保存する先の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-confidential-clients runtime="mfp" format="xml" output="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST service.
+このコマンドは、[機密クライアント (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST サービスに基づいています。
 
-<br/>
-#### The `set-confidential-clients` command
+<br /> 
+#### `set-confidential-clients` コマンド
 {: #the-set-confidential-clients-command }
-The `set-confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
-| Attribute      | Description |	Required | Default |
+`set-confidential-clients` コマンドは、ランタ
+イムにアクセスできる機密クライアントの構成を指定します。機密クライアントについて詳しくは、
+[
+機密クライアント (Confidential
+clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | ランタイムの名前。 | はい | 使用不可 | 
+| file	         | 新しい構成を含む JSON または XML ファイルの名前。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <set-confidential-clients runtime="mfp" file="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
-<br/>
-#### The `set-confidential-clients-rule` command
+<br /> 
+#### `set-confidential-clients-rule` コマンド
 {: #the-set-confidential-clients-rule-command }
-The `set-confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
 
-| Attribute      | Description |	Required | Default |
+`set-confidential-clients-rule` コマンドは、ランタイムにアク
+セスできる機密クライアントの構成におけるルールを指定します。機密クライアントについて詳しくは、
+[
+機密クライアント (Confidential
+clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
+
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| id             | The identifier of the rule. | Yes | Not available | 
-| displayName    | The display name of the rule. | Yes | Not available | 
-| secret         | The secret of the rule. | Yes | Not available | 
-| allowedScope   | The scope of the rule. A space-separated list of tokens. | Yes | Not available | 
+| runtime        | ランタイムの名前。 | はい | 使用不可 | 
+| id             | ルールの ID。 | はい | 使用不可 | 
+| displayName    | ルールの表示名。 | はい | 使用不可 | 
+| secret         | ルールのシークレット。 | はい | 使用不可 | 
+| allowedScope   | ルールの適用範囲。スペースで区切られたトークンのリスト。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <set-confidential-clients-rule runtime="mfp" id="push" displayName="Push" secret="lOa74Wxs" allowedScope="**"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
-### Commands for adapters
+### アダプター用のコマンド
 {: #commands-for-adapters }
-When you call the **mfpadm** Ant task, you can include various commands for adapters.
+**mfpadm** Ant タスクを呼び出すときに、アダプター用のさまざまなコマンドを含めることができます。
 
-#### The `list-adapters` command
+#### `list-adapters` コマンド
 {: #the-list-adapters-command }
-The `list-adapters` command returns a list of the adapters deployed for a given runtime. It has the following attributes.
+`list-adapters` コマンドは、
+指定されたランタイムにデプロイされたアダプターのリストを返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | 	Yes | Not available | 
-| output	     | Name of output file. | 	No  | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime        | ランタイムの名前。 | 	はい | 使用不可 | 
+| output	     | 出力ファイルの名前。 | 	いいえ  | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <list-adapters runtime="mfp"/>
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+このコマンドは、[Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `deploy-adapter` command
+<br /> 
+#### `deploy-adapter` コマンド
 {: #the-deploy-adapter-command }
-The `deploy-adapter` command deploys an adapter in a runtime. It has the following attributes.
+`deploy-adapter` コマンドは、
+アダプターをランタイムにデプロイします。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| file           | Binary adapter file (.adapter). | Yes | Not available |
+| runtime	     | ランタイムの名前。 | はい | 使用不可 | 
+| file           | バイナリー・アダプター・ファイル (.adapter)。 | はい | 使用不可 |
 
-**Example**  
+**例**  
 
 ```xml
 <deploy-adapter runtime="mfp" file="MyAdapter.adapter"/>
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+このコマンドは、[Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST サービスに基づいています。
 
-<br/>
-#### The `show-adapter` command
+<br /> 
+#### `show-adapter` コマンド
 {: #the-show-adapter-command }
-The `show-adapter` command shows details about an adapter. It has the following attributes.
+`show-adapter` コマンドは、
+アダプターに関する詳細を表示します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name | アダプターの名前。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `delete-adapter` command
+<br /> 
+#### `delete-adapter` コマンド
 {: #the-delete-adapter-command }
-The `delete-adapter` command removes (undeploys) an adapter from a runtime. It has the following attributes.
+`delete-adapter` コマンドは、
+アダプターをランタイムから削除 (アンデプロイ) します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name    | Name of an adapter. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name    | アダプターの名前。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <delete-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+このコマンドは、[Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `adapter` command group
+<br /> 
+#### `adapter` コマンド・グループ
 {: #the-adapter-command-group }
-The `adapter` command group has the following attributes.
+`adapter` コマンド・グループには以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name | アダプターの名前。 | はい | 使用不可 | 
 
-The `adapter` command supports the following elements.
 
-| Element          | Description |	Count    | 
+`adapter` コマンドは以下のエレメントをサポートします。
+
+| エレメント          | 説明 |	カウント    | 
 |------------------|-------------|-------------|
-| get-binary	   | Gets the binary data. | 0..∞ | 
-| show-user-config | Shows the user configuration. | 0..∞ | 
-| set-user-config  | Specifies the user configuration. | 0..∞ | 
+| get-binary	   | バイナリー・データを取得します。 | 0..∞ | 
+| show-user-config | ユーザー構成を表示します。 | 0..∞ | 
+| set-user-config  | ユーザー構成を指定します。 | 0..∞ | 
 
-<br/>
-#### The `get-binary` command
+<br /> 
+#### `get-binary` コマンド
 {: #the-get-binary-command }
-The `get-binary` command inside an `<adapter>` element returns the binary adapter file. It has the following attributes.
+`adapter` エレメント内の `<get-binary>` コマンドは、バイナリー・アダプター・ファイルを返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| tofile	     | Name of the output file. | Yes | Not available | 
+| tofile	     | 出力ファイルの名前。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -429,20 +465,20 @@ The `get-binary` command inside an `<adapter>` element returns the binary adapte
 </adapter>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `show-user-config` command
+<br /> 
+#### `show-user-config` コマンド
 {: #the-show-user-config-command-1 }
-The `show-user-config` command, inside an `<adapter>` element, shows the user configuration of the adapter. It has the following attributes.
+`<adapter>` エレメント内の `show-user-config` コマンドは、アダプターのユーザー構成を表示します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| format	     | 出力形式を指定します。json または xml のいずれか。 | はい | 使用不可       | 
+| output	     | 出力を保存する先のファイルの名前。   | いいえ  | 該当なし      | 
+| outputproperty | 出力を保存する先の Ant プロパティーの名前。  | いいえ | 該当なし |
 
-**Example**  
+**例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -450,25 +486,28 @@ The `show-user-config` command, inside an `<adapter>` element, shows the user co
 </adapter>
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+このコマンドは、
+[
+アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービ
+スに基づいています。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` コマンド
 {: #the-set-user-config-command-1 }
-The `set-user-config` command, inside an `<adapter>` element, specifies the user configuration of the adapter. It has the following attributes for setting the entire configuration.
+`<adapter>` エレメント内の `set-user-config` コマンドは、アダプターのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| file	Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| file | 新しい構成を含む JSON または XML ファイルの名前。 | はい | 使用不可 | 
 
-The command has the following attributes for setting a single property in the configuration.
+このコマンドには、構成内の単一プロパティーを設定するための次の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value | The value of the property. | Yes | Not available | 
+| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 | はい | 使用不可 | 
+| value | プロパティーの値。 | はい | 使用不可 | 
 
-**Examples**  
+**例**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -482,155 +521,164 @@ The command has the following attributes for setting a single property in the co
 </adapter>
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+このコマンドは、[アプリケーション構成 (PUT) (Application Configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST サービスに基づいています。
 
-### Commands for apps
+### アプリケーション用のコマンド
 {: #commands-for-apps }
-When you call the **mfpadm** Ant task, you can include various commands for apps.
+**mfpadm** Ant タスクを呼び出すときに、アプリケーション用のさまざまなコマンドを含めることができます。
 
-#### The `list-apps` command
+#### `list-apps` コマンド
 {: #the-list-apps-command }
-The `list-apps` command returns a list of the apps that are deployed in a runtime. It has the following attributes.
+`list-apps` コマンドは、
+ランタイムにデプロイされたアプリケーションのリストを返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes	Not available | 
-| output | Name of the output file. | No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい	使用不可 | 
+| output | 出力ファイルの名前。 | いいえ	該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <list-apps runtime="mfp"/>
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+このコマンドは、[Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `deploy-app` command
+<br /> 
+#### `deploy-app` コマンド
 {: #the-deploy-app-command }
-The `deploy-app` command deploys an app version in a runtime. It has the following attributes.
+`deploy-app` コマンドは、アプリケーション・バージョンをランタイムにデプロイします。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| file | The application descriptor, a JSON file. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| file | アプリケーション記述子、JSON ファイル。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <deploy-app runtime="mfp" file="MyApp/application-descriptor.json"/>
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+このコマンドは、[Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST サービスに基づいています。
 
-<br/>
-#### The `show-app` command
+<br /> 
+#### `show-app` コマンド
 {: #the-show-app-command }
-The `show-app` command returns a list of the app versions that are deployed in a runtime. It has the following attributes.
+`show-app` コマンドは、ランタイムにデプロイされたアプリケーション・バージョンのリストを返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name | アプリケーションの名前。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+このコマンドは、[Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `delete-app` command
+<br /> 
+#### `delete-app` コマンド
 {: #the-delete-app-command }
-The `delete-app` command removes (undeploys) an app, with all its app versions, for all environments for which it was deployed, from a runtime. It has the following attributes.
+`delete-app` コマンドは、
+デプロイされていたすべての環境について、アプリケーションとそのすべてのアプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name | アプリケーションの名前。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <delete-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version
+(DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
-<br/>
-#### The `show-app-version` command
+<br /> 
+#### `show-app-version` コマンド
 {: #the-show-app-version-command }
-The `show-app-version` command shows details about an app version in a runtime. It has the following attributes.
+`show-app-version` コマンドは、ランタイムのアプ
+リケーション・バージョンに関する詳細を表示します。
+以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime	ランタイムの名前。 | はい | 使用不可 | 
+| name	アプリケーションの名前。 | はい | 使用不可 | 
+| environment	モバイル・プラットフォーム。 | はい | 使用不可 | 
+| version	アプリケーションのバージョン番号。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+このコマンドは、[アプリケーション・バージョン (GET) (Application Version (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-)
+REST サービスに基づいています。
 
-<br/>
-#### The `delete-app-version` command
+<br /> 
+#### `delete-app-version` コマンド
 {: #the-delete-app-version-command }
-The `delete-app-version` command removes (undeploys) an app version from a runtime. It has the following attributes.
+`delete-app-version` コマンドは、
+アプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime	ランタイムの名前。 | はい | 使用不可 | 
+| name	アプリケーションの名前。 | はい | 使用不可 | 
+| environment	モバイル・プラットフォーム。 | はい | 使用不可 | 
+| version	アプリケーションのバージョン番号。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <delete-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version
+(DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
-<br/>
-#### The `app` command group
+<br /> 
+#### `app` コマンド・グループ
 {: #the-app-command-group }
-The `app` command group has the following attributes.
+`app` コマンド・グループには以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
+| runtime	ランタイムの名前。 | はい | 使用不可 | 
+| name	アプリケーションの名前。 | はい | 使用不可 | 
 
-The app command group supports the following elements.
+app コマンド・グループは以下のエレメントをサポートしています。
 
-| Element | Description | Count | 
+| エレメント | 説明 | カウント | 
 |---------|-------------|-------|
-| show-license-config | Shows the token license configuration. | 0.. | 
-| set-license-config | Specifies the token license configuration. | 0.. | 
-| delete-license-config | Removes the token license configuration. | 0.. | 
+| show-license-config | トークン・ライセンス構成を表示します。 | 0.. | 
+| set-license-config | トークン・ライセンス構成を指定します。 | 0.. | 
+| delete-license-config | トークン・ライセンス構成を削除します。 | 0.. | 
 
-<br/>
-#### The `show-license-config` command
+<br /> 
+#### `show-license-config` コマンド
 {: #the-show-license-config-command }
-The `show-license-config` command shows the token license configuration of an app. It has the following attributes.
+`show-license-config` コマンドは、アプリケーショ
+ンのトークン・ライセンス構成を表示します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output         |	Name of a file in which to store the output. | Yes | Not available |
-| outputproperty | 	Name of an Ant property in which to store the output. | Yes	| Not available |
+| output         |	出力を保存する先のファイルの名前。 | はい | 使用不可 |
+| outputproperty | 	出力を保存する先の Ant プロパティーの名前。 | はい	| 使用不可 |
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -638,19 +686,23 @@ The `show-license-config` command shows the token license configuration of an ap
 </app-version>
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+このコマンドは、
+[
+アプリケーション・ライセンス構成 (GET) (Application license
+configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST サービスに基づいています。
 
-<br/>
-#### The `set-license-config` command
+<br /> 
+#### `set-license-config` コマンド
 {: #the-set-license-config-command }
-The `set-license-config` command specifies the token license configuration of an app. It has the following attributes.
+`set-license-config` コマンドは、アプリケー
+ションのトークン・ライセンス構成を指定します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| appType | Type of app: B2C or B2E | Yes | Not available | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | Yes | Not available | 
+| appType | アプリケーションのタイプ: B2C または B2E | はい | 使用不可 | 
+| licenseType | アプリケーションのタイプ: APPLICATION または ADDITIONAL_BRAND_DEPLOYMENT または NON_PRODUCTION | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -658,14 +710,14 @@ The `set-license-config` command specifies the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+このコマンドは、[アプリケーション・ライセンス構成 (POST) (Application License Configuration (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST サービスに基づいています。
 
-<br/>
-#### The `delete-license-config` command
+<br /> 
+#### `delete-license-config` コマンド
 {: #the-delete-license-config-command }
-The `delete-license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+`delete-license-config` コマンドは、アプリケーションのトークン・ライセンス構成をリセットします。つまり、構成を初期状態に戻します。
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -673,44 +725,48 @@ The `delete-license-config` command resets the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+このコマンドは、[ライセンス構成 (DELETE) (License configuration (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST
+サービスに基づいています。
 
-<br/>
-#### The `app-version` command group
+<br /> 
+#### `app-version` コマンド・グループ
 {: #the-app-version-command-group }
-The `app-version` command group has the following attributes.
+`app-version` コマンド・グループには以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| environment | Mobile platform. | Yes | Not available | 
-| version | Version of the app. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| name | アプリケーションの名前。 | はい | 使用不可 | 
+| environment | モバイル・プラットフォーム。 | はい | 使用不可 | 
+| version | アプリケーションのバージョン。 | はい | 使用不可 | 
 
-The `app-version` command group supports the following elements:
 
-| Element | Description | Count | 
+`app-version` コマンド・グループは、以下のエレメン
+トをサポートしています。
+
+| エレメント | 説明 | カウント | 
 |---------|-------------|-------|
-| get-descriptor | Gets the descriptor. | 0.. | 
-| get-web-resources | Gets the web resources. | 0.. | 
-| set-web-resources | Specifies the web resources. | 0.. | 
-| get-authenticity-data | Gets the authenticity data. | 0.. | 
-| set-authenticity-data | Specifies the authenticity data. | 0.. | 
-| delete-authenticity-data | Deletes the authenticity data. | 0.. | 
-| show-user-config | Shows the user configuration. | 0.. | 
-| set-user-config | Specifies the user configuration. | 0.. | 
+| get-descriptor | 記述子を取得します。 | 0.. | 
+| get-web-resources | Web リソースを取得します。 | 0.. | 
+| set-web-resources | Web リソースを指定します。 | 0.. | 
+| get-authenticity-data | 認証データを取得します。 | 0.. | 
+| set-authenticity-data | 認証データを指定します。 | 0.. | 
+| delete-authenticity-data | 認証データを削除します。 | 0.. | 
+| show-user-config | ユーザー構成を表示します。 | 0.. | 
+| set-user-config | ユーザー構成を指定します。 | 0.. | 
 
-<br/>
-#### The `get-descriptor` command
+<br /> 
+#### `get-descriptor` コマンド
 {: #the-get-descriptor-command }
-The `get-descriptor` command, inside an `<app-version>` element, returns the application descriptor of a version of an app. It has the following attributes.
+`<app-version>` エレメント内の
+`get-descriptor` コマンドは、アプリケーションのバージョンのアプリケーション記述子を返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output | Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | 出力を保存する先のファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力を保存する先の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -718,18 +774,18 @@ The `get-descriptor` command, inside an `<app-version>` element, returns the app
 </app-version>
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) service.
+このコマンドは、[アプリケーション記述子 (GET) (Application Descriptor (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `get-web-resources` command
+<br /> 
+#### `get-web-resources` コマンド
 {: #the-get-web-resources-command }
-The `get-web-resources` command, inside an `<app-version>` element, returns the web resources of a version of an app, as a .zip file. It has the following attributes.
+`<app-version>` エレメント内の `get-web-resources` コマンドは、アプリケーションのバージョンの Web リソースを .zip ファイルとして返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| tofile | 	Name of the output file. | Yes |Not available | 
+| tofile | 	出力ファイルの名前。 | はい |使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -737,18 +793,19 @@ The `get-web-resources` command, inside an `<app-version>` element, returns the 
 </app-version>
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+このコマンドは、[Web リソースの取得 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `set-web-resources` command
+<br /> 
+#### `set-web-resources` コマンド
 {: #the-set-web-resources-command }
-The `set-web-resources` command, inside an `<app-version>` element, specifies the web resources for a version of an app. It has the following attributes.
+`<app-version>` エレメント内の
+`set-web-resources` コマンドは、アプリケーションのバージョンの Web リソースを指定します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file (must be a .zip file). | Yes |Not available |
+| file | 入力ファイルの名前 (.zip ファイルでなければなりません)。 | はい |使用不可 |
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -756,19 +813,23 @@ The `set-web-resources` command, inside an `<app-version>` element, specifies th
 </app-version>
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+このコマンドは、
+[Web
+リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST
+サービスに基づいています。
 
-<br/>
-#### The `get-authenticity-data` command
+<br /> 
+#### `get-authenticity-data` コマンド
 {: #the-get-authenticity-data-command }
-The `get-authenticity-data` command, inside an `<app-version>` element, returns the authenticity data of a version of an app. It has the following attributes.
+`<app-version>` エレメント内の
+`get-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを返します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output | 	Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | 	出力を保存する先のファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力を保存する先の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -776,18 +837,22 @@ The `get-authenticity-data` command, inside an `<app-version>` element, returns 
 </app-version>
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+このコマンドは、
+[
+ランタイム・リソースのエクスポート (GET) (Export runtime resources
+(GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
-<br/>
-#### The `set-authenticity-data` command
+<br /> 
+#### `set-authenticity-data` コマンド
 {: #the-set-authenticity-data-command }
-The `set-authenticity-data` command, inside an `<app-version>` element, specifies the authenticity data for a version of an app. It has the following attributes.
+`<app-version>` エレメント内の
+`set-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを指定します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file:<ul><li>Either a authenticity_data file,</li><li>or a device file (.ipa, .apk, or .appx file), from which the authenticity data is extracted.</li></ul> |  Yes | Not available | 
+| file | 入力ファイルの名前。以下のいずれかです。<ul><li>authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx ファイル)</li></ul> |  はい | 使用不可 | 
 
-**Examples**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -807,14 +872,16 @@ The `set-authenticity-data` command, inside an `<app-version>` element, specifie
 </app-version>
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+このコマンドは、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST サービスに基づ
+いています。
 
-<br/>
-#### The `delete-authenticity-data` command
+<br /> 
+#### `delete-authenticity-data` コマンド
 {: #the-delete-authenticity-data-command }
-The `delete-authenticity-data` command, inside an `<app-version>` element, deletes the authenticity data of a version of an app. It has no attributes.
+`<app-version>` エレメント内の
+`delete-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを削除します。属性はありません。
 
-**Example**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -822,20 +889,24 @@ The `delete-authenticity-data` command, inside an `<app-version>` element, delet
 </app-version>
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+このコマンドは、
+[
+アプリケーション認証性 (DELETE) (Application
+Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST サービスに基づいています。
 
-<br/>
-#### The `show-user-config` command
+<br /> 
+#### `show-user-config` コマンド
 {: #the-show-user-config-command-2 }
-The `show-user-config` command, inside an `<app-version>` element, shows the user configuration of a version of an app. It has the following attributes.
+`<app-version>` エレメント内の
+`show-user-config` コマンドは、アプリケーションのバージョンのユーザー構成を表示します。以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| format | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output | Name of the output file.	No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| format | 出力形式を指定します。json または xml のいずれか。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。いいえ	該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Examples**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -849,25 +920,27 @@ The `show-user-config` command, inside an `<app-version>` element, shows the use
 </app-version>
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+このコマンドは、[アプリケーション構成 (GET) (Application Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-)
+REST サービスに基づいています。
 
-<br/>
-#### The `set-user-config` command
+<br /> 
+#### `set-user-config` コマンド
 {: #the-set-user-config-command-2 }
-The `set-user-config` command, inside an `<app-version>` element, specifies the user configuration for a version of an app. It has the following attributes for setting the entire configuration.
+`<app-version>` エレメント内の
+`set-user-config` コマンドは、アプリケーションのバージョンのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| file | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| file | 新しい構成を含む JSON または XML ファイルの名前。 | はい | 使用不可 | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+`set-user-config` コマンドには、構成内の単一のプロパティーを設定するための以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	| The value of the property. | Yes | Not available | 
+| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 | はい | 使用不可 | 
+| value	| プロパティーの値。 | はい | 使用不可 | 
 
-**Examples**  
+**例**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -881,22 +954,24 @@ The `set-user-config` command has the following attributes for setting a single 
 </app-version>
 ```
 
-### Commands for devices
+### デバイス用のコマンド
 {: #commands-for-devices }
-When you call the **mfpadm** Ant task, you can include various commands for devices.
+**mfpadm** Ant タスクを呼び出すときに、デバイス用のさまざまなコマンドを含めることができます。
 
-#### The `list-devices` command
+#### `list-devices` コマンド
 {: #the-list-devices-command }
-The `list-devices` command returns the list of devices that have contacted the apps of a runtime. It has the following attributes:
+`list-devices` コマンドは、
+ランタイムのアプリケーションと接触のあるデバイスのリストを返します。
+これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| query	 | A friendly name or user identifier to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this | string (with case-insensitive matching) are returned. | No | Not applicable | 
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| query	 | 検索対象の分かりやすい名前またはユーザー ID。このパラメーターには、検索対象のストリングを指定します。このストリングが含まれる (大/小文字を区別しないマッチングによって)、 | 分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。 | いいえ | 該当なし | 
+| output | 	出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 	出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Examples**  
+**例**  
 
 ```xml
 <list-devices runtime="mfp"/>
@@ -906,53 +981,57 @@ The `list-devices` command returns the list of devices that have contacted the a
 <list-devices runtime="mfp" query="john"/>
 ```
 
-This command is based on the [Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST service.
+このコマンドは、[Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `remove-device` command
+<br /> 
+#### `remove-device` コマンド
 {: #the-remove-device-command }
-The `remove-device` command clears the record about a device that has contacted the apps of a runtime. It has the following attributes:
+`remove-device` コマンドは、
+ランタイムのアプリケーションと接触のあるデバイスに関するレコードを消去します。
+これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| id | 固有のデバイス ID。 | はい | 使用不可 | 
 
-**Example**  
+**例**  
 
 ```xml
 <remove-device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6"/>
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+このコマンドは、[Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST サービスに基づいています。
 
-<br/>
-#### The `device` command group
+<br /> 
+#### `device` コマンド・グループ
 {: #the-device-command-group }
-The `device` command group has the following attributes.
+`device` コマンド・グループには以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| id | 固有のデバイス ID。 | はい | 使用不可 | 
 
-The `device` command supports the following elements.
 
-| Element        | Description |       Count |
+`device` コマンドは以下のエレメントをサポートします。
+
+| エレメント        | 説明 |       カウント |
 |----------------|-------------|-------------|
-| set-status | Changes the status. | 0..∞ | 
-| set-appstatus | Changes the status for an app. | 0..∞ | 
+| set-status | 状況を変更します。 | 0..∞ | 
+| set-appstatus | アプリケーションの状況を変更します。 | 0..∞ | 
 
-<br/>
-#### The `set-status` command
+<br /> 
+#### `set-status` コマンド
 {: #the-set-status-command }
-The `set-status` command changes the status of a device, in the scope of a runtime. It has the following attributes:
+`set-status` コマンドは、
+ランタイムの有効範囲でデバイスの状況を変更します。これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| status | New status. | Yes | Not available | 
+| status | 新しい状況。 | はい | 使用不可 | 
 
-The status can have one of the following values:
+この状況の値は、以下のいずれかになります。
 
 * ACTIVE
 * LOST
@@ -960,7 +1039,7 @@ The status can have one of the following values:
 * EXPIRED
 * DISABLED
 
-**Example**  
+**例**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -968,24 +1047,25 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+このコマンドは、[Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST サービスに基づいています。
 
-<br/>
-#### The `set-appstatus` command
+<br /> 
+#### `set-appstatus` コマンド
 {: #the-set-appstatus-command }
-The `set-appstatus` command changes the status of a device, regarding an app in a runtime. It has the following attributes:
+`set-appstatus` コマンドは、
+ランタイム内のアプリケーションに関して、デバイスの状況を変更します。 これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| app	| Name of an app. | Yes | Not available | 
-| status | 	New status. | Yes | Not available | 
+| app	| アプリケーションの名前。 | はい | 使用不可 | 
+| status | 	新しい状況。 | はい | 使用不可 | 
 
-The status can have one of the following values:
+この状況の値は、以下のいずれかになります。
 
 * ENABLED
 * DISABLED
 
-**Example**  
+**例**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -993,88 +1073,98 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+このコマンドは、[Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST サービスに基づいています。
 
-### Commands for troubleshooting
+### トラブルシューティング用のコマンド
 {: #commands-for-troubleshooting }
-You can use Ant task commands to investigate problems with {{ site.data.keys.mf_server }} web applications.
+Ant タスク・コマンドを使用して、
+{{site.data.keys.mf_server }}
+Web アプリケーションでの問題を調査することができます。
 
-#### The `show-info` command
+#### `show-info` コマンド
 {: #the-show-info-command }
-The `show-info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. Use this command to test whether the {{ site.data.keys.product_adj }} administration services are running at all. It has the following attributes:
+`show-info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドを使用して、
+{{site.data.keys.product_adj }}
+管理サービスが実行されているかどうかをテストします。これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 	出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-info/>
 ```
 
-<br/>
-#### The `show-versions` command
+<br /> 
+#### `show-versions` コマンド
 {: #the-show-versions-command }
-The `show-versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+`show-versions` コマンドは、各種コンポーネントの {{site.data.keys.product_adj }} バージョンを表示します。
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-ant-deployer.jar **file is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-admin-service.war** file is taken.
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion**: **mfp-ant-deployer.jar ** ファイルが取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
+* **productVersion**: **mfp-admin-service.war** ファイルが取得される
+{{site.data.keys.mf_server }}
+の正確なバージョン番号。
+* **mfpAdminVersion**: **mfp-admin-service.war** のみの正確なビルド・バー
+ジョン番号。
 
-The command has the following attributes:
+コマンドには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 	出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-versions/>
 ```
 
-<br/>
-#### The `show-diagnostics` command
+<br /> 
+#### `show-diagnostics` コマンド
 {: #the-show-diagnostics-command }
-The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
+`show-diagnostics` コマンドは、データベースや補助サービスの可用性など、{{site.data.keys.product_adj }}
+管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。
+このコマンドには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 	出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**  
+**例**  
 
 ```xml
 <show-diagnostics/>
 ```
 
-<br/>
-#### The `unlock` command
+<br /> 
+#### `unlock` コマンド
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations. The command has no attributes.
+`unlock` コマンドは汎用ロックをリリースします。破棄する動作の一部は
+、同じ構成データの同時修正を防ぐために、このロックを取得します。まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。このような状況でロックをリリースするには、unlock コマンドを使用してください。このコマンドには属性はありません。
 
-**Example**  
+**例**  
 
 ```xml
 <unlock/>
 ```
 
-<br/>
-#### The `list-runtimes` command
+<br /> 
+#### `list-runtimes` コマンド
 {: #the-list-runtimes-command }
-The `list-runtimes` command returns a list of the deployed runtimes. It has the following attributes:
+`list-runtimes` コマンドは、デプロイ済みのランタイムのリストを返します。これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Examples**  
+**例**  
 
 ```xml
 <list-runtimes/>
@@ -1084,79 +1174,83 @@ The `list-runtimes` command returns a list of the deployed runtimes. It has the 
 <list-runtimes inDatabase="true"/>
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+このコマンドは、[Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `show-runtime` command
+<br /> 
+#### `show-runtime` コマンド
 {: #the-show-runtime-command }
-The `show-runtime` command shows information about a given deployed runtime. It has the following attributes:
+`show-runtime` コマンドは、指定されたデプロイ済みのランタイムに関する情報を表示します。これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**
+**例**
 
 ```xml
 <show-runtime runtime="mfp"/>
 ```
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+このコマンドは、
+[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
 
-<br/>
-#### The `delete-runtime` command
+<br /> 
+#### `delete-runtime` コマンド
 {: #the-delete-runtime-command }
-The `delete-runtime` command deletes the runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped. The command has the following attributes.
+`delete-runtime` コマンドは、
+ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。
+ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。コマンドには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime |  Name of the runtime. | Yes | Not available |
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. | No | Not applicable |
+| runtime |  ランタイムの名前。 | はい | 使用不可 |
+| condition | 削除する条件。empty または always のいずれかです。**注意:** always オプションは危険です。 | いいえ | 該当なし |
 
-**Example**
+**例**
 
 ```xml
 <delete-runtime runtime="mfp" condition="empty"/>
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+このコマンドは、[Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST サービスに基づいています。
 
-<br/>
-#### The `list-farm-members` command
+<br /> 
+#### `list-farm-members` コマンド
 {: #the-list-farm-members-command }
-The `list-farm-members` command returns a list of the farm member servers on which a given runtime is deployed. It has the following attributes:
+`list-farm-members` コマンドは、所定のランタイムがデプロイされているファーム・メンバー・サーバーのリストを返します。これには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| output | 出力ファイルの名前。 | いいえ | 該当なし | 
+| outputproperty | 出力用の Ant プロパティーの名前。 | いいえ | 該当なし | 
 
-**Example**
+**例**
 
 ```xml
 <list-farm-members runtime="mfp"/>
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+このコマンドは、[ファーム・トポロジー・メンバー (GET) (Farm topology members (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST サービスに基づきます。
 
-<br/>
-#### The `remove-farm-member` command
+<br /> 
+#### `remove-farm-member` コマンド
 {: #the-remove-farm-member-command }
-The `remove-farm-member` command removes a server from the list of farm members on which a given runtime is deployed. Use this command when the server has become unavailable or disconnected. The command has the following attributes.
+`remove-farm-member` コマンドは、所定のランタイムがデプロイされているファーム・メンバーのリストからサーバーを削除します。
+サーバーが使用不可になったとき、または切断されたときに、このコマンドを使用します。コマンドには、以下の属性があります。
 
-| Attribute      | Description |	Required | Default |
+| 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| serverId | Identifier of the server.	 | Yes | Not applicable | 
-| force | Force removal of a farm member, even if it is available and connected. | No | false | 
+| runtime | ランタイムの名前。 | はい | 使用不可 | 
+| serverId | サーバーの ID。	 | はい | 該当なし | 
+| force | ファーム・メンバーが使用可能の場合、または接続されている場合でも、ファーム・メンバーの削除を強制します。 | いいえ | false | 
 
-**Example**
+**例**
 
 ```xml
 <remove-farm-member runtime="mfp" serverId="srvlx15"/>
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+このコマンドは、[ファーム・トポロジー・メンバー (Farm topology members (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST サービスに基づきます。
