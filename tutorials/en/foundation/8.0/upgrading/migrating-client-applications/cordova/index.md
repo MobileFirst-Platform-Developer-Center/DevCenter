@@ -452,15 +452,15 @@ The **settings page** was a UI available in the MobileFirst hybrid app that allo
 {: #minification }
 MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.
 
-Many hooks are available for minifying your Javascript and css files and can be placed in the config.xml at the before_prepare event.
+Many hooks are available for minifying your JavaScript and CSS files. These hooks can be placed in the `before_prepare` event in the app's **config.xml** file.
 
 Here are some recommended hooks:
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-These hooks can be defined in either a plug-in file or in the app's config.xml file, using the `<hook>` elements.  
-In this example, using the before_prepare hook event, a script is run for minifying before cordova prepare copies the files to each platform's www/ folder:
+These hooks can be defined either in a plug-in file or in the app's **config.xml** file, by using the `<hook>` element.  
+In this example, the `before_prepare` hook event is used to run a script that minifies the code before Cordova prepares to copy the files to each platform's **www/** folder:
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />
