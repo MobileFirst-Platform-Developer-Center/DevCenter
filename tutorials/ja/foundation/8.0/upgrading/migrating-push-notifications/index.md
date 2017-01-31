@@ -1,63 +1,62 @@
 ---
 layout: tutorial
-title: Migrating push notifications from event source-based notifications
-breadcrumb_title: Migrating push notifications 
+title: イベント・ソース・ベース通知からのプッシュ通知のマイグレーション
+breadcrumb_title: プッシュ通知のマイグレーション
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-From {{ site.data.keys.product_full }} v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of {{ site.data.keys.product_adj }} to be moved to v8.0, they must be migrated to the new push service model.
+{{site.data.keys.product_full }} v8.0 から、イベント・ソース・ベースのモデルはサポートされず、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって使用可能になっています。以前のバージョンの {{site.data.keys.product_adj }} における既存のイベント・ソース・ベースのアプリケーションを v8.0 に移行する場合は、それらのアプリケーションを新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
 
-During migration, keep in mind that it is not about using one API instead of another, but more about using one model/approach versus another.
+マイグレーション時には、これは、使用する API を別のものに変更するということではなく、むしろ、使用するモデル/アプローチを別のものに変更するということである点に留意してください。
 
-For example, in the event source-based model, if you were to segment your mobile application users to send notifications to specific segments, you would model every segment as a distinct event source. In the push service model, you would achieve the same by defining tags that represents segments and have users subscribe to the respective tags. Tag-based notifications is a replacement to event source-based notifications.
+例えば、イベント・ソース・ベースのモデルでは、通知を特定のセグメントに送信するためにモバイル・アプリケーション・ユーザーをセグメント化する場合、各セグメントを固有のイベント・ソースとしてモデル化します。プッシュ・サービス・モデルでは、同じことを実現するために、セグメントを表すタグを定義し、ユーザーが各タグをサブスクライブするようにします。タグ・ベースの通知は、イベント・ソース・ベースの通知を置き換えるものです。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Migration scenarios](#migration-scenarios)
-* [Migration tool](#migration-tool)
+* [マイグレーション・シナリオ](#migration-scenarios)
+* [マイグレーション・ツール](#migration-tool)
 
-<br/>
+<br /> 
+次の表に、2 つのモデル間の比較を示します。
 
-The table below provides you with a comparison between the two models.
-
-| User requirement | Event source model | Push service model | 
+| ユーザー要件 | イベント・ソース・モデル | プッシュ・サービス・モデル | 
 |------------------|--------------------|--------------------|
-| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
-| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the {{ site.data.keys.mf_server }}</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
-| To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
-| To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
-| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the {{ site.data.keys.mf_server }} and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
-| To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
-| To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
+| アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>イベント・ソース・アダプターを作成し、その中で EventSource を作成します。</li><li>プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。</li></ul>{:/} | プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。 | 
+| モバイル・クライアント・アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>WLClient を作成します。</li><li>{{site.data.keys.mf_server }} に接続します。</li><li>プッシュ・クライアントのインスタンスを取得します。</li><li>イベント・ソースにサブスクライブします。</li></ul>{:/} | {::nomarkdown}<ul><li>プッシュ・クライアントのインスタンスを生成します。</li><li>プッシュ・クライアントを初期化します。</li><li>モバイル・デバイスを登録します。</li></ul>{:/} |
+| モバイル・クライアント・アプリケーションで特定のタグに基づいた通知を使用可能にするには | サポートされません。 | 対象のタグ (タグ名を使用) をサブスクライブします。 | 
+| モバイル・クライアント・アプリケーションで通知を受け取って処理するには | リスナー実装を登録します。 | リスナー実装を登録します。 |
+| プッシュ通知をモバイル・クライアント・アプリケーションに送信するには | {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。ただし、そのようなアプリケーションは、{{site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
+| 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには |  イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。 | サポートされません。 |
+| フックを名前、URL、およびイベント・タイプで登録するには | プッシュ通知をサブスクライブまたはアンサブスクライブするデバイスのパスに、フックを実装します。 | サポートされません。 | 
 
-## Migration Scenarios
+## マイグレーション・シナリオ
 {: #migration-scenarios }
-Starting from {{ site.data.keys.product }} v8.0, the event source-based model will not be supported and push notifications capability will be enabled on {{ site.data.keys.product }} entirely by the push service model, which is a more simple and agile alternative to event source model.
+{{site.data.keys.product }} v8.0 以降、イベント・ソース・ベースのモデルはサポートされなくなり、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって {{site.data.keys.product }} で使用可能になります。このモデルは、イベント・ソース・モデルよりもシンプルでアジャイルな代替モデルです。
 
-Existing event source-based applications on earlier versions of IBM MobileFirst Platform Foundation need to be migrated to v8.0, to the new push service model.
+以前のバージョンの IBM MobileFirst Platform Foundation における既存のイベント・ソース・ベースのアプリケーションは、v8.0 の新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Hybrid applications](#hybrid-applications)
-* [Native Android applications](#native-android-applications)
-* [Native iOS applications](#native-ios-applications)
-* [Native Windows Universal applications](#native-windows-universal-applications)
+* [ハイブリッド・アプリケーション](#hybrid-applications)
+* [ネイティブ Android アプリケーション](#native-android-applications)
+* [ネイティブ iOS アプリケーション](#native-ios-applications)
+* [ネイティブ Windows ユニバーサル・アプリケーション](#native-windows-universal-applications)
 
-### Hybrid applications
+### ハイブリッド・アプリケーション
 {: #hybrid-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+マイグレーション・シナリオ例では、単一のイベント・ソースまたは複数のイベント・ソース、ブロードキャスト通知またはユニキャスト通知、あるいはタグ通知を使用するアプリケーションを扱っています。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+以前のバージョンの {{site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
 
-##### Client
+##### クライアント
 {: #client-hybrid-1 }
-To migrate this in V8.0.0, convert this model to Unicast notification.
+V8.0.0 にこれをマイグレーションするには、このモデルをユニキャスト通知に変換します。
 
-1. Initialize the {{ site.data.keys.product_adj }} push client instance in your application and in the success callback register the callback method that should receive the notification.
+1. 以下のように、アプリケーションで {{site.data.keys.product_adj }} プッシュ・クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -67,7 +66,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-2. Implement the notification callback method.
+2. 通知コールバック・メソッドを実装します。
 
    ```javascript
    var notificationReceived = function(message) {
@@ -75,7 +74,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    };
    ```
     
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -87,7 +86,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
  
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -99,7 +98,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
+5. WL.Client.Push.isPushSupported() を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -111,39 +110,39 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs, since there will be no event source to subscribe to and register notification callbacks.
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WL.Client.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
     * `onReadyToSubscribe()`
 
-##### Server
+##### サーバー
 {: #server-hybrid-1 }
-1. Remove the following WL.Server APIs (if used), in your adapter:
+1. アダプターで以下の WL.Server API を削除します (使用されている場合)。
     * `notifyAllDevices()`
     * `notifyDevice()`
     * `notifyDeviceSubscription()`
     * `createEventSource()`
-2. Complete the following steps for every application that was using the same event source:
-    1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+2. 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
+    1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-        You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-    2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-    3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-    4. You can use either of the following methods to send notifications:
-        * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-        * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+        [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+    2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+    3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+    4. 以下の方法のいずれかを使用して通知を送信できます。
+        * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+        * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
 {: #hybrid-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+複数のイベント・ソースを使用するアプリケーションでは、サブスクリプションに基づいてユーザーをセグメント化する必要があります。
 
-##### Client
+##### クライアント
 {: #client-hybrid-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this, this model can be converted to tag-based notification.
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。これをマイグレーションするために、このモデルをタグ・ベースの通知に変換できます。
 
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -154,15 +153,15 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-2. Implement the notification callback method.
+2. 通知コールバック・メソッドを実装します。
 
    ```javascript
    var notificationReceived = function(message) {
-		alert(JSON.stringify(message));
+        alert(JSON.stringify(message)); 
    };
    ```
 
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -174,7 +173,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-4. (Optional) Unregister the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -186,214 +185,26 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use.
+5. `WL.Client.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
 		alert(successResponse);
-	    },
-	  function(failureResponse) {
-		alert("Failed to get the push suport status");
-	    }
+	   },
+	   function(failureResponse) {
+	       alert("Failed to get the push suport status");
+	   }
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs since there will be no event source to subscribe to and register notification callbacks.
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WL.Client.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
     * `onReadyToSubscribe()`
 
-7. Subscribe to tags.
-
-   ```javascript
-   var tags = ['sample-tag1','sample-tag2'];
-   MFPPush.subscribe(tags, function(successResponse) {
-    	alert("Successfully subscribed");
-        },
-      function(failureResponse) {
-    	alert("Failed to subscribe");
-        }
-   );
-   ```
-
-8. (Optional) Unsubscribe from tags.
-
-   ```javascript
-   MFPPush.unsubscribe(tags, function(successResponse) {
-		alert("Successfully unsubscribed");
-	    },
-	  function(failureResponse) {
-		alert("Failed to unsubscribe");
-	    }
-   );
-   ```
-    
-##### Server
-{: #server-hybrid-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
-
-* `notifyAllDevices()`
-* `notifyDevice()`
-* `notifyDeviceSubscription()`
-* `createEventSource()`
-
-Complete the following steps for every application that was using the same event source:
-
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
-
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
-
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
-{: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
-{: #client-hybrid-3 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
-
-   ```javascript
-   MFPPush.initialize(function(successResponse){
-        MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
-        function(failureResponse){
-            alert("Failed to initialize");
-        }
-   );
-   ```
-    
-2. Implement the notification callback method.
-
-   ```javascript
-   var notificationReceived = function(message) {
-        alert(JSON.stringify(message));
-   };
-   ```
-    
-3. Register the mobile device with the push notification service.
-
-   ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-        alert("Successfully registered");
-        },
-      function(failureResponse) {
-        alert("Failed to register");
-        }
-   );
-   ```
-    
-4. (Optional) Unregister the mobile device from the push notification service.
-
-   ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-        alert("Successfully unregistered");
-        },
-      function(failureResponse) {
-        alert("Failed to unregister");
-        }
-   );
-   ```
-
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
-
-   ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-        alert(successResponse);
-        },
-      function(failureResponse) {
-        alert("Failed to get the push suport status");
-        }
-   );
-   ```
-
-6. Remove the following `WL.Client.Push` APIs:
-    * `onReadyToSubscribe()`
-    * `onMessage()`
-
-##### Server
-{: #server-hybrid-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
-
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
-
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
-
-#### Scenario 4: Existing applications using tag notifications in their application
-{: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
-{: #client-hybrid-4 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
-
-   ```javascript
-   MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
-		function(failureResponse){
-			alert("Failed to initialize");
-		}
-   );
-   ```
-
-2. Implement the notification callback method.
-
-   ```javascript
-   var notificationReceived = function(message) {
-		alert(JSON.stringify(message));
-   };
-   ```
-
-3. Register the mobile device with the push notification service.
-
-   ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-		alert("Successfully registered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to register");
-	    }
-   );
-   ```
-
-4. (Optional) Un-register the mobile device from push notification service.
-
-   ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-		alert("Successfully unregistered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to unregister");
-	    }
-   );
-   ```
-    
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use:
-
-   ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-		alert(successResponse);
-	    },
-	  function(failureResponse) {
-		alert("Failed to get the push suport status");
-	    }
-   );
-   ```
-
-6. Remove the following `WL.Client.Push` APIs:
-    * `subscribeTag()`
-    * `unsubscribeTag()`
-    * `isTagSubscribed()`
-    * `onReadyToSubscribe()`
-    * `onMessage()`
-
-7. Subscribe to tags:
+7. タグにサブスクライブします。
 
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
@@ -406,7 +217,195 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. (オプション) タグからアンサブスクライブします。
+
+   ```javascript
+   MFPPush.unsubscribe(tags, function(successResponse) {
+		alert("Successfully unsubscribed");
+	    },
+	  function(failureResponse) {
+		alert("Failed to unsubscribe");
+	    }
+   );
+   ```
+    
+##### サーバー
+{: #server-hybrid-2 }
+アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
+
+* `notifyAllDevices()`
+* `notifyDevice()`
+* `notifyDeviceSubscription()`
+* `createEventSource()`
+
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
+
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
+
+#### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
+{: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
+##### クライアント
+{: #client-hybrid-3 }
+1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
+
+   ```javascript
+   MFPPush.initialize(function(successResponse){
+		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		function(failureResponse){
+			alert("Failed to initialize");
+		}
+   );
+   ```
+    
+2. 通知コールバック・メソッドを実装します。
+
+   ```javascript
+   var notificationReceived = function(message) {
+        alert(JSON.stringify(message)); 
+   };
+   ```
+    
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
+
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
+		alert("Successfully registered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to register");
+	    }
+   );
+   ```
+    
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
+
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
+		alert("Successfully unregistered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to unregister");
+	    }
+   );
+   ```
+
+5. WL.Client.Push.isPushSupported() を削除し (使用されている場合)、以下を使用します。
+
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
+		alert(successResponse);
+	   },
+	   function(failureResponse) {
+	       alert("Failed to get the push suport status");
+	   }
+   );
+   ```
+
+6. 以下の `WL.Client.Push` API を削除します。
+    * `onReadyToSubscribe()`
+    * `onMessage()`
+
+##### サーバー
+{: #server-hybrid-3 }
+アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。  
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
+
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
+
+#### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
+{: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
+##### クライアント
+{: #client-hybrid-4 }
+1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
+
+   ```javascript
+   MFPPush.initialize(function(successResponse){
+		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		function(failureResponse){
+			alert("Failed to initialize");
+		}
+   );
+   ```
+
+2. 通知コールバック・メソッドを実装します。
+
+   ```javascript
+   var notificationReceived = function(message) {
+        alert(JSON.stringify(message)); 
+   };
+   ```
+
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
+
+   ```javascript
+   MFPPush.registerDevice(function(successResponse) {
+		alert("Successfully registered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to register");
+	    }
+   );
+   ```
+
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
+
+   ```javascript
+   MFPPush.unregisterDevice(function(successResponse) {
+		alert("Successfully unregistered");
+	    },
+	  function(failureResponse) {
+		alert("Failed to unregister");
+	    }
+   );
+   ```
+    
+5. `WL.Client.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
+
+   ```javascript
+   MFPPush.isPushSupported (function(successResponse) {
+		alert(successResponse);
+	   },
+	   function(failureResponse) {
+	       alert("Failed to get the push suport status");
+	   }
+   );
+   ```
+
+6. 以下の `WL.Client.Push` API を削除します。
+    * `subscribeTag()`
+    * `unsubscribeTag()`
+    * `isTagSubscribed()`
+    * `onReadyToSubscribe()`
+    * `onMessage()`
+
+7. 以下のように、タグにサブスクライブします。
+
+   ```javascript
+   var tags = ['sample-tag1','sample-tag2'];
+   MFPPush.subscribe(tags, function(successResponse) {
+		alert("Successfully subscribed");
+	    },
+	  function(failureResponse) {
+		alert("Failed to subscribe");
+	    }
+   );
+   ```
+
+8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```javascript
    MFPPush.unsubscribe(tags, function(successResponse) {
@@ -418,40 +417,40 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-##### Server
+##### サーバー
 {: #client-hybrid-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
+アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。  
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
-### Native Android applications
+### ネイティブ Android アプリケーション
 {: #native-android-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+マイグレーション・シナリオ例では、単一のイベント・ソースまたは複数のイベント・ソース、ブロードキャスト通知またはユニキャスト通知、あるいはタグ通知を使用するアプリケーションを扱っています。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #android-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
+以前のバージョンの MobileFirst では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
 
-##### Client
+##### クライアント
 {: #client-android-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+v8.0 にこれをマイグレーションするには、このモデルをユニキャスト通知に変換します。
 
-1. Initialize the MFPPush client instance in your application.
+1. アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```java
    MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
 
    ```java
    @Override
@@ -460,7 +459,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -476,7 +475,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -492,50 +491,50 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported();` を使用します。
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` 実装
 
-##### Server
+##### サーバー
 {: #server-android-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires the segmentation of users based on the subscriptions.
+複数のイベント・ソースを使用するアプリケーションでは、サブスクリプションに基づいてユーザーをセグメント化する必要があります。
 
-##### Client
+##### クライアント
 {: #client-android-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product }} V8.0.0, convert this model to tag based notification.
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```java
    MFPPush push = MFPPush.getInstance();
-   push.initialize(_this);
+        push.initialize(_this);
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
 
    ```java
    @Override
@@ -544,46 +543,47 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```java
-   push.registerDevice(new MFPPushResponseListener<String>(){   
+   push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to register");
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+           Log.i("Push Notifications", "Registered successfully");
+
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
   
    ```java
-   push.unregisterDevice(new MFPPushResponseListener<String>(){   
-       @Override
+   push.unregisterDevice(new MFPPushResponseListener<String>(){
+        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
 
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported();` を使用します。
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
 
-7. `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
-8. Subscribe to tags:
+7. `WLOnReadyToSubscribeListener` および `WLNotificationListener` の実装
+8. 以下のように、タグにサブスクライブします。
 
    ```java
    String[] tags = new String[2];
@@ -603,7 +603,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. (オプション) 以下のように、タグからアンサブスクライブします。
  
    ```java
    String[] tags = new String[2];
@@ -623,39 +623,39 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
    
-##### Server
+##### サーバー
 {: #server-android-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.     
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。     
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
 {: #android-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
+##### クライアント
 {: #client-android-3 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```java
    MFPPush push = MFPPush.getInstance();
-   push.initialize(_this);
+        push.initialize(_this);
    ```
     
-2. Implement the interface `MFPPushNotificationListener` and define `onReceive()`.
+2. インターフェース `MFPPushNotificationListener` を実装し、`onReceive()` を定義します。
 
    ```java
    @Override
@@ -664,7 +664,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -674,61 +674,61 @@ Complete the following steps for every application that was using the same event
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+           Log.i("Push Notifications", "Registered successfully");
 
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
-       @Override
+        @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unregister");
 
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
 
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following WLClient.Push APIs:
+5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported();` を使用します。
+6. 以下の WLClient.Push API を削除します。
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` の実装
 
-##### Server
+##### サーバー
 {: #server-android-3 }
-Remove WL.Server.sendMessage()` APIs (if used) in your adapter:
+アダプターで WL.Server.sendMessage() API を削除します (使用されている場合)。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
 {: #android-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### クライアント
 {: #client-android-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```java
    MFPPush push = MFPPush.getInstance();
-   push.initialize(_this);
+        push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
  
    ```java
    @Override
@@ -737,7 +737,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
     
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -747,12 +747,13 @@ Complete the following steps for every application that was using the same event
 	    }
         @Override
         public void onSuccess(String arg0) {
-            Log.i("Push Notifications", "Registered successfully");
+           Log.i("Push Notifications", "Registered successfully");
+
         }
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
  
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -763,25 +764,26 @@ Complete the following steps for every application that was using the same event
         }
         @Override
         public void onSuccess(String arg0) {
-            Log.i( "Push Notifications", "Unregistered successfully");
+             Log.i("Push Notifications", "Unregistered successfully");
         }
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported()`; を使用します。
+6. 以下の `WLClient.Push` API を削除します。
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` の実装
 
-7. Subscribe to tags:
+7. 以下のように、タグにサブスクライブします。
 
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
+
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -794,13 +796,14 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
+
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -813,41 +816,41 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-##### Server
+##### サーバー
 {: #server-android-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-### Native iOS applications
+### ネイティブ iOS アプリケーション
 {: #native-ios-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+マイグレーション・シナリオ例では、単一のイベント・ソースまたは複数のイベント・ソース、ブロードキャスト通知またはユニキャスト通知、あるいはタグ通知を使用するアプリケーションを扱っています。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+以前のバージョンの {{site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
 
-##### Client
+##### クライアント
 {: #client-ios-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+v8.0 にこれをマイグレーションするには、このモデルをユニキャスト通知に変換します。
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service.
+2. `didReceiveRemoteNotification()` で通知処理を実装します。
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -859,85 +862,85 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
-        } else {
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Failed to unregister");
+        }else{
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` implementation
+    * `WLOnReadyToSubscribeListener` 実装
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
+7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
 
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
    ```
     
-##### Server
+##### サーバー
 {: #server-ios-1 }
-Remove the following WL.Server API's (if used) in your adapter:
+アダプターで以下の WL.Server API を削除します (使用されている場合)。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
 {: #ios-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+複数のイベント・ソースを使用するアプリケーションでは、サブスクリプションに基づいてユーザーをセグメント化する必要があります。
 
-##### Client
+##### クライアント
 {: #client-ios-2}
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. `didReceiveRemoteNotification()` で通知処理を実装します。
+3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to register");
-        }else{
-        	NSLog(@"Successfullyregistered");
+    	   NSLog(@"Failed to register");
+        } else {
+            NSLog(@"Successfullyregistered");
         }
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -949,21 +952,21 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
     
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 実装
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
+8. 以下のように、タグにサブスクライブします。
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -978,7 +981,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -986,57 +989,57 @@ This maps to tags which segments the users/devices based on topic of interest. T
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
+        	NSLog(@"Failed to unregister");
         }else{
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
     
-##### Server
-:{: # server-ios-2 }
-Remove `WL.Server` (if used) in your adapter.
+##### サーバー
+:{ #server-ios-2 }
+アダプターで `WL.Server` を削除します (使用されている場合)。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
 {: #ios-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
-##### Client
+##### クライアント
 {: #client-ios-3 }
-1. Initialize the MFPPush client instance in your application:
+1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. `didReceiveRemoteNotification()` で通知処理を実装します。
+3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to register");
-        }else{
-        	NSLog(@"Successfullyregistered");
+    	   NSLog(@"Failed to register");
+        } else {
+            NSLog(@"Successfullyregistered");
         }
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -1048,77 +1051,77 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's:
+6. 以下の `WLClient.Push` API を削除します。
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 実装
 
-##### Server
+##### サーバー
 {: #server-ios-3 }
-Remove `WL.Server.sendMessage` (if used) in your adapter.
+アダプターで `WL.Server.sendMessage` (使用されている場合) を削除します。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
 {: #ios-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### クライアント
 {: #client-ios-4 }
 
-1. Initialize the MFPPush client instance in your application:
+1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. `didReceiveRemoteNotification()` で通知処理を実装します。
+3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to register");
-        }else{
-        	NSLog(@"Successfullyregistered");
+    	   NSLog(@"Failed to register");
+        } else {
+            NSLog(@"Successfullyregistered");
         }
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
  
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
+        	NSLog(@"Failed to unregister");
         }else{
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `[[MFPPush sharedInstance] isPushSupported]`.
-6. Remove the following `WLClient.Push` API's since there will be no Event source to subscribe to and register notification callbacks:
+5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、`[[MFPPush sharedInstance] isPushSupported]` を使用します。
+6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * `WLOnReadyToSubscribeListener` 実装
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
+8. 以下のように、タグにサブスクライブします。
  
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1126,14 +1129,14 @@ Complete the following steps for every application that was using the same event
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
-        }else{    
-	       NSLog(@"Successfully unregistered");
-       }
+        	NSLog(@"Failed to unregister");
+        }else{
+        	NSLog(@"Successfully unregistered");
+        }
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1148,33 +1151,33 @@ Complete the following steps for every application that was using the same event
    }];
    ```
 
-##### Server
+##### サーバー
 {: server-ios-4 }
-Remove the `WL.Server.sendMessage` (if used), in your adapter.
+アダプターで `WL.Server.sendMessage` を削除します (使用されている場合)。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+    [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
+2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
+3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
+4. 以下の方法のいずれかを使用して通知を送信できます。
+    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
-### Native Windows Universal applications
+### ネイティブ Windows ユニバーサル・アプリケーション
 {: #native-windows-universal-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+マイグレーション・シナリオ例では、単一のイベント・ソースまたは複数のイベント・ソース、ブロードキャスト通知またはユニキャスト通知、あるいはタグ通知を使用するアプリケーションを扱っています。
 
-#### Scenario 1: Existing applications using single event source in their application
+#### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #windows-scenario-1-existing-applications-using-single-event-source-in-their-application }
-To migrate this in v8.0, convert this model to Unicast notification.
+v8.0 にこれをマイグレーションするには、このモデルをユニキャスト通知に変換します。
 
-##### Client
+##### クライアント
 {: #windows-client-1}
 
-1. Initialize the `MFPPush` client instance in your application.
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1189,7 +1192,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
     
-2. Register the mobile device with the push notification service.
+2. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1203,7 +1206,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1217,38 +1220,38 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+4. `WLClient.Push.IsPushSupported()` (使用されている場合) を削除し、`push.IsPushSupported();` を使用します。
+5. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` 実装
 
-##### Server
+##### サーバー
 {: #windows-server-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the Security tab of {{ site.data.keys.mf_console }}.
-3. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`, to send message.
+1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の「セキュリティー」タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、`userId`/`deviceId` を指定することで、メッセージを送信することもできます。
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
 {: #windows-scenario-2-existing-applications-using-multiple-event-sources-in-their-appliction }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+複数のイベント・ソースを使用するアプリケーションでは、サブスクリプションに基づいてユーザーをセグメント化する必要があります。
 
-##### Client
+##### クライアント
 {: #windows-client-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1263,7 +1266,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-2. Register the mobile device with the IMFPUSH service.
+2. モバイル・デバイスを IMFPUSH サービスに登録します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1277,7 +1280,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. (Optional) Un-register the mobile device from the IMFPUSH service:
+3. (オプション) 以下のように、モバイル・デバイスを IMFPUSH サービスから登録抹消します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1291,15 +1294,15 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no Event Source to subscribe to and register notification callbacks:
+4. `WLClient.Push.IsPushSupported()` (使用されている場合) を削除し、`push.IsPushSupported();` を使用します。
+5. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` 実装
 
-6. Subscribe to tags:
+6. 以下のように、タグにサブスクライブします。
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1314,7 +1317,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-7. (Optional) Unsubscribe from tags:
+7. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1329,28 +1332,28 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-##### Server
+##### サーバー
 {: #windows-server-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
 {: #windows-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 
-##### Client
+##### クライアント
 {:# windows-client-3 }
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1365,7 +1368,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-2. Register the mobile device with the push notification service.
+2. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1379,7 +1382,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1393,35 +1396,35 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-4. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs:
+4. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.IsPushSupported();` を使用します。
+5. 以下の `WLClient.Push` API を削除します。
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` 実装
 
-##### Server
+##### サーバー
 {: #windows-server-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
 {: #windows-scenario-4-existing-applications-using-tag-notifications-in-their-application }
-##### Client
+##### クライアント
 {: #windows-client-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
 
    ```csharp
    class Pushlistener : MFPPushNotificationListener
@@ -1433,7 +1436,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1447,7 +1450,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-4. (Optional) Un-register the mobile device from push notification service.
+4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1461,14 +1464,14 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-5. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. `WLClient.Push.IsPushSupported()` (使用されている場合) を削除し、`push.IsPushSupported()`; を使用します。
+6. 以下の `WLClient.Push` API を削除します。
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * `WLOnReadyToSubscribeListener` および `WLNotificationListener` 実装
 
-7. Subscribe to tags:
+7. 以下のように、タグにサブスクライブします。
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1483,7 +1486,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-8. (Optional) Unsubscribe from tags:
+8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1498,71 +1501,71 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-##### Server
+##### サーバー
 {: #windows-server-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。
 
-Complete the following steps for every application that was using the same event source:
+同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
-## Migration tool
+## マイグレーション・ツール
 {: #migration-tool }
-The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.  
-The migration tool simplifies the process with the following functions:
+マイグレーション・ツールは、MobileFirst Platform Foundation 7.1 のプッシュ・データ (デバイス、ユーザーのサブスクリプション、資格情報、およびタグ) を {{site.data.keys.product }} 8.0 にマイグレーションする際に役立ちます。  
+マイグレーション・ツールは、以下の機能を使用してこのプロセスを簡素化します。
 
-1. Reads the devices, credentials, tags and user subscriptions for each application from the MobileFirst Platform Foundation 7.1 database.
-2. Copies the data to respective tables in {{ site.data.keys.product }} 8.0 database for respective application.
-3. Migrates all the Push data of all v7.1 environments, irrespective of environments in the v8.0 application.
+1. デバイス、資格情報、タグ、およびユーザー・サブスクリプションを、アプリケーションごとに、MobileFirst Platform Foundation 7.1 データベースから読み取ります。
+2. このデータを、それぞれのアプリケーション用の {{site.data.keys.product }} 8.0 データベース内にある、それぞれの表にコピーします。
+3. v8.0 アプリケーションでの環境にかかわらず、v7.1 の全環境の全プッシュ・データをマイグレーションします。
 
-The migration tool doesn't modify any data related to user subscriptions, application environments or devices.  
+マイグレーション・ツールによってユーザー・サブスクリプション関連、アプリケーション環境関連、およびデバイス関連のデータが変更されることは一切ありません。  
 
-The following information is important to know before you use the migration tool:
+マイグレーション・ツールを使用する前に、以下の情報を知っておくことが重要です。
 
-1. You must have Java version 1.6 or above.
-2. Make sure you have both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0 setup and ready.
-3. Make a backup of both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0.
-4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
-	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
-	* Remember the PacakgeName/BundleID and provide the same values for the applications.
-	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will not succeed.
-5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
+1. Java バージョン 1.6 以上が必要です。
+2. MobileFirst Server 7.1 と {{site.data.keys.mf_server }} 8.0 の両方がセットアップされ、使用できる状態になっていることを確認します。
+3. MobileFirst Server 7.1 と {{site.data.keys.mf_server }} 8.0 の両方のバックアップをとります。
+4. 最新バージョンのアプリケーションを {{site.data.keys.mf_server }} 8.0 に登録します。
+	* アプリケーションの表示名は、MobileFirst Platform Foundation 7.1 内でのそのアプリケーションと一致している必要があります。
+	* PacakgeName/BundleID を覚えておき、同じ値をアプリケーションに対して指定します。
+	* アプリケーションが {{site.data.keys.mf_server }} 8.0 に登録されていないと、マイグレーションは成功しません。
+5. アプリケーションの各環境に応じて、スコープ・エレメントのマッピングを指定します。[スコープのマッピングについてもっとよく知る](../../notifications/sending-notifications/#scope-mapping)。
 
-#### Procedure
+#### 手順
 {: #procedure }
-1. Download the migration tool from [its following GitHub repository](http://github.com).
-2. After downloading the tool, provide the following details in the **migration.properties** file:
+1. [下記の GitHub リポジトリー](http://github.com)からマイグレーション・ツールをダウンロードします。
+2. ツールをダウンロードしたら、**migration.properties** ファイルに以下の詳細を指定します。
 	
-    | Value                | Description  | Sample Values |
+    | 値                | 説明  | サンプル値 |
     |----------------------|--------------|---------------|
-    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB password | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB username     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB password     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 DB url						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 DB username						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 DB password						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB schema | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB schema     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB schema    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime name		 | runtime=worklight |
-    | applicationId	       | Provide list of applications registered on MobileFirst Platform Foundation 7.1 separated by comma(,) | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | Provide list of applications registered on {{ site.data.keys.product }} 8.0 separated by comma(,).   | com.HybridTestApp,com.NativeiOSTestApp |
+    | w.db.type		       | 対象とするデータベースのタイプ	           | pw.db.type = db2 可能な値は DB2、Oracle、MySql、Derby | 
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight データベースの URL  | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin データベースの URL      | jdbc:mysql://localhost:3306/ADMIN |
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight データベースのユーザー名 | pw.db.username=root |
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight データベースのパスワード | pw.db.password=root |
+    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin データベースのユーザー名     | pw.db.adminusername=root |
+    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin データベースのパスワード     | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | MFP 8.0 データベースの URL						        | jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | MFP 8.0 データベースのユーザー名						| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | MFP 8.0 データベースのパスワード						| pw.db.passwordTarget=root |
+    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight データベースのスキーマ | WRKLGT |
+    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ     | WLADMIN |
+    | pw.db.targetschema   | {{site.data.keys.product }} 8.0 Worklight データベースのスキーマ    | MFPDATA |
+    | ランタイム			   | MobileFirst Platform Foundation 7.1 のランタイム名		 | runtime=worklight |
+    | applicationId	       | MobileFirst Platform Foundation 7.1 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。 | HybridTestApp,NativeiOSTestApp |
+    | targetApplicationId  | {{site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。   | com.HybridTestApp,com.NativeiOSTestApp |
 
-    * Make sure that you have provided values for both **applicationID** and **targetApplicationId** in proper sequence. The mapping is done in 1-1 (or n-n) fashion, i.e. data of the first application in **applicationId** list will be migrated to the first application in the **targetApplicationId** list.
-	* In the **targetApplicationId** list, provide a packageName/BundleId for the application. i.e. for TestApp1 in MobileFirst Platform Foundation 7.1, **targetApplicationId** will be packageName/BundleId of TestApp1 which is com.TestApp1. This is because in MobileFirst Platform Foundation 7.1 **applicationId** is the application name and in {{ site.data.keys.mf_server }} 8.0 it is packageName/BundleId/packageIdentityName based on application environment.
+    * **applicationID** と **targetApplicationId** の両方の値が、正しい順序で指定されていることを確認します。マッピングは、1 対 1 (つまり n 対 n) の方式で行われます。すなわち、**applicationId** リスト内の最初のアプリケーションのデータが、**targetApplicationId** リスト内の最初のアプリケーションにマイグレーションされます。
+	* **targetApplicationId** リストには、アプリケーションの packageName/BundleId を指定します。つまり、MobileFirst Platform Foundation 7.1 の TestApp1 ならば、**targetApplicationId** は com.TestApp1 となります (TestApp1 の packageName/BundleId)。これは、MobileFirst Platform Foundation 7.1 では **applicationId** はアプリケーション名であるのに対し、{{site.data.keys.mf_server }} 8.0 ではこれは、アプリケーションの環境に基づいた packageName/BundleId/packageIdentityName であるためです。
 
-2. Run the tool by using the following command:
+2. 以下のコマンドを使用してツールを実行します。
 
    ```bash
    java -jar pushDataMigration.jar path-to-migration.properties
    ```
    
-   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+   * ツールの .jar ファイルとこのプロパティー・ファイルが別々の場所に配置されている場合は、**path-to-migration.properties** を **migration.properties** のパスで置き換えます。そうでない場合は、コマンドからパスを削除します。
 

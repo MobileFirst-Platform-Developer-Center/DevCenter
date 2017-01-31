@@ -1,638 +1,642 @@
 ---
 layout: tutorial
-title: The mobile client
+title: モバイル・クライアント
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can install applications on your mobile device with the Application Center mobile client.
+Application Center のモバイル・クライアントを使用して、モバイル・デバイスにアプリケーションをインストールすることができます。
 
-The Application Center mobile client is the application that runs on your Android, iOS, Windows Phone, or Windows device. Only Windows Phone 8 is supported by the current version of the Application Center. You use the mobile client to list the catalog of available applications in the Application Center. You can install these applications on your device. The mobile client is sometimes referred to as the Application Center installer. This application must be present on your device if you want to install on your device applications from your private application repository.
+Application Center のモバイル・クライアントは、ご使用の Android、iOS、Windows Phone、または Windows デバイスで稼働するアプリケーションです。Application Center の現行バージョンでは Windows Phone 8 のみがサポートされています。モバイル・クライアントを使用して、Application Center にある使用可能なアプリケーションのカタログをリストすることができます。これらのアプリケーションを自分のデバイスにインストールすることができます。
+モバイル・クライアントは Application Center インストーラーと呼ばれることもあります。自分用のプライベート・アプリケーション・リポジトリーから自分のデバイスにアプリケーションをインストールするには、このアプリケーションが自分のデバイスに入っている必要があります。
 
-### Prerequisites
+
+### 前提条件
+
 {: #prerequisites }
-Your system administrator must give you a user name and password before you can download and install the mobile client. The user name and password are required whenever you start the mobile client on your device. For Windows Store applications, the user name and password are required for the mobile client only at run time. For security reasons, do not disseminate these credentials. These credentials are the same credentials used to log in to the Application Center console.
+モバイル・クライアントをダウンロードしてインストールするためには、システム管理者からユーザー名とパスワードを取得する必要があります。
+ユーザー名とパスワードは、デバイスでモバイル・クライアントを開始するたびに必要になります。Windows Store アプリケーションの場合、ランタイム時にのみモバイル・クライアント用のユーザー名とパスワードが必要になります。セキュリティー上の理由から、これらの資格情報を公表しないようにしてください。これらの資格情報は、Application Center コンソールにログインするときに使用する資格情報と同じものです。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
-* [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
-* [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
-* [The Login view](#the-login-view)
-* [Views in the Application Center client](#views-in-the-application-center-client)
-* [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-* [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-* [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-* [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
-* [Installing applications through public app stores](#installing-applications-through-public-app-stores)
-* [Removing an installed application](#removing-an-installed-application)
-* [Showing details of a specific application version](#showing-details-of-a-specific-application-version)
-* [Updating an application](#updating-an-application)
-* [Upgrading the Application Center client automatically](#upgrading-the-application-center-client-automatically)
-* [Reverting an installed application](#reverting-an-installed-application)
-* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favorite-app)
-* [Submitting a review for an installed application](#submitting-a-review-for-an-installed-application)
-* [Viewing reviews](#viewing-reviews)
+* [Android モバイル・デバイスへのクライアントのインストール](#installing-the-client-on-an-android-mobile-device)
+* [iOS モバイル・デバイスへのクライアントのインストール](#installing-the-client-on-an-ios-mobile-device)
+* [Windows Phone 8 Universal モバイル・デバイスへのクライアントのインストール](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [「ログイン」ビュー](#the-login-view)
+* [Application Center クライアントのビュー](#views-in-the-application-center-client)
+* [Android デバイスへのアプリケーションのインストール](#installing-an-application-on-an-android-device)
+* [iOS デバイスへのアプリケーションのインストール](#installing-an-application-on-an-ios-device)
+* [Windows Phone デバイスへのアプリケーションのインストール](#installing-an-application-on-a-windows-phone-device)
+* [Windows デバイスへの Windows Store アプリケーションのインストール](#installing-a-windows-store-application-on-a-windows-device)
+* [公開アプリケーション・ストアを介したアプリケーションのインストール](#installing-applications-through-public-app-stores)
+* [インストール済みアプリケーションの削除
+](#removing-an-installed-application)
+* [特定のアプリケーション・バージョンの詳細の表示](#showing-details-of-a-specific-application-version)
+* [アプリケーションの更新](#updating-an-application)
+* [Application Center クライアントの自動アップグレード](#upgrading-the-application-center-client-automatically)
+* [インストール済みアプリケーションを元に戻す
+](#reverting-an-installed-application)
+* [お気に入りアプリケーションのマーク付けまたはマーク解除
+](#marking-or-unmarking-a-favorite-app)
+* [インストール済みアプリケーションのレビューの送信](#submitting-a-review-for-an-installed-application)
+* [レビューの表示](#viewing-reviews)
 
-## Installing the client on an Android mobile device
+## Android モバイル・デバイスへのクライアントのインストール
 {: #installing-the-client-on-an-android-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your Android mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+モバイル・クライアント、すなわちインストーラー・フラグでマーク付けされた署名済みアプリケーションを Android モバイル・デバイスにインストールすることができます。これを行うには、ブラウザーでアクセス URL を入力し、資格情報を入力し、必要なステップを完了します。
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+1. モバイル・デバイスでブラウザーを開始します。
+2. 次のアクセス URL をアドレス・テキスト・フィールドに入力します。`http://hostname:portnumber/applicationcenter/installers.html`
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page installers.html does not work on your mobile device, you can use inst.html. This page is provided in English only and is not translated into other languages.
+    ここで、hostname はサーバーのアドレス、portnumber は Application Center がインストールされるポートの番号です。これらの情報はシステム管理者から取得することができます。 
 
-    If you try to open the page with HTTPS and use self-signed certificates, older Android browsers cannot open the page. In this case, you must use a non self-signed certificate or use another browser on the Android device, such as Firefox, Chrome, or Opera. In Android 4 and later, the Android browser displays a security warning about the SSL certificate, but lets you proceed to the website after confirmation that you consent to an unsafe connection.
+    また、Application Center は、クライアントをモバイル・デバイスにインストールするための代替 URL を提供します (`http://hostname:portnumber/applicationcenter/inst.html`)。この URL のページは、一部の標準外や古いモバイル Web ブラウザーでよりよく作動します。モバイル・デバイスでページ installers.html が作動しない場合は、inst.html を使用することができます。このページは英語のみで提供され、他言語には翻訳されません。 
 
-3. Enter your user name and password. When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+    HTTPS の付いたページを開き、自己署名証明書の使用を試みると、古い Android ブラウザーではページを開くことができません。その場合は、非自己署名証明書を使用するか、Android デバイスで別のブラウザー (Firefox、Chrome、Opera など) を使用する必要があります。 Android 4 以降では、Android ブラウザーに SSL 証明書についてのセキュリティー警告が表示されますが、ユーザーが安全でない接続に同意することを確認すると、その Web サイトに進むことができます。
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device. The Application Center administrator should provide the certificate; see [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
-    * Tap the **SSL-Certificate** tab and select the certificate.
-    * Tap **Install**. You must only perform this action once for the device. You can verify whether the certificate is installed by looking in **Settings → Security → Trusted Credentials → User on the device**. This view shows the SSL certificates that the user has installed on the device. If the self-signed CA certificate is not installed on the device, the Android operating system prevents you from downloading the mobile client in the following steps.
+3. ユーザー名とパスワードを入力します。ユーザー名とパスワードの妥当性検査が成功すると、デバイスと互換性のあるインストーラー・アプリケーションのリストがブラウザーに表示されます。 通常は、ただ 1 つのアプリケーションすなわちモバイル・クライアントがこのリストに現れます。 
 
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
+4. Web サーバーが自己署名 CA 証明書を使用している場合は、少なくとも 1 回、証明書をデバイスにインストールします。Application Center 管理者は、証明書を提供する必要があります。詳しくは、[Application Center テスト環境における自己署名 CA 証明書の管理とインストール](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)を参照してください。
+    * **「SSL 証明書」**タブをタップして、証明書を選択します。
+    * **「インストール (Install)」**をタップします。デバイスに対し、この操作を行う必要があるのは 1 回のみです。**「設定」→「セキュリティー」→「信頼できる資格情報 (Trusted Credentials)→「デバイス上のユーザー (User on the device)」**で見ると、証明書がインストール済みかどうかを確認できます。このビューには、ユーザーがそのデバイスにインストールした SSL 証明書が表示されます。自己署名 CA 証明書がデバイスにインストールされていない場合、以下のステップでモバイル・クライアントをダウンロードすることは Android オペレーティング・システムにより許可されません。
 
-    ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
+    モバイル・クライアントが使用可能アプリケーションのリストに現れるためには、Application Center 管理者がモバイル・クライアント・アプリケーションをインストールしなければなりません。管理者は、モバイル・クライアントを Application Center にアップロードし、**Installer** プロパティーを **true** に設定します。[アプリケーション・プロパティー (Application properties)](../appcenter-console/#application-properties) を参照してください。
+
+    ![インストールする使用可能なモバイル・クライアント・アプリケーションのリスト](ac_instal_client_and1.jpg)
     
-5. Select an item in the list to display the application details. Typically, these details include the application name and its version number.
+5. リストの中の項目をどれか選択すると、アプリケーションの詳細が表示されます。 通常、これらの詳細には、アプリケーション名とそのバージョン番号が含まれます。 
 
-    ![Application details](ac_app_details.jpg)
+    ![アプリケーションの詳細](ac_app_details.jpg)
 
-6. Tap **Install Now** to download the mobile client. On newer Android devices, a question might request permission for Chrome to access media files on the device. Select YES. A warning about potential harmful files might be displayed. Select the option to keep the APK file anyway.
+6. **「今すぐインストールする (Install Now)」**をタップすると、モバイル・クライアントがダウンロードされます。 新しい Android デバイスでは、Chrome がそのデバイス上のメディア・ファイルにアクセスするための許可を求める質問が表示される場合があります。この場合、「はい」を選択してください。有害な可能性のあるファイルに関する警告が表示されることがあります。いずれにしても APK ファイルを保持するオプションを選択してください。
 
-7. Launch the **Android Download** applications. Select the Application Center client installer.
-8. Select the Application Center client installer. You can see the access granted to the application when you choose to install it.
+7. **「Android Download」**アプリケーションを起動します。Application Center クライアント・インストーラーを選択します。
+8. Application Center クライアント・インストーラーを選択します。アプリケーションのインストールを選択したときにアプリケーションに付与されたアクセス権限が表示されます。 
 
-    ![Installation of the mobile client in Android](ac_instal_client_and_rights.jpg)
+    ![Android へのモバイル・クライアントのインストール](ac_instal_client_and_rights.jpg)
     
-9. Select **Install** to install the mobile client.
-10. When the application is installed, select **Open** to open the mobile client or **Done** to close the Downloads application.
+9. **「インストール (Install)」**を選択すると、モバイル・クライアントがインストールされます。 
+10. アプリケーションがインストールされたら、**「開く (Open)」**を選択してモバイル・クライアントを開くか、または**「完了 (Done)」**を選択して「ダウンロード (Downloads)」アプリケーションを閉じます。
 
-The APK file might fail for one of the following reasons:
+APK ファイルは、以下のいずれかの理由により失敗する場合があります。
 
-* The device does not have enough free memory.
-* The SSL certificate of the server is not known to the device.
+* デバイスに十分な空きメモリーがない。
+* サーバーの SSL 証明書がそのデバイスに認識されていない。
 
-The first time that you install an app through the Downloads application, you might receive a request to confirm whether Google should regularly check the device activity for security problems. You can accept or decline according to your preference. The Application Center client is unaffected by your choice.
+初めて「ダウンロード」アプリケーションを使用してアプリをインストールする際、デバイスのアクティビティーにセキュリティー上の問題がないかどうか Google に定期的にチェックさせるかどうか確認を求められる場合があります。好みに応じて、受け入れるか拒否するかを選択してください。Application Center クライアントはこの選択には影響されません。
 
-The installation might be blocked for one of the following reasons:
+インストールは以下のいずれかの理由によりブロックされることがあります。
 
-* The device does not permit installation from unknown sources. Go to **Settings → Security** on the device and enable **Unknown sources (Allow installation from unknown sources)**.
-* The device has the same app already installed, but it was signed by a different certificate. In this case, you must remove the app before you install it on the device with another signed certificate.
+* デバイスが不明なソースからのインストールを許可していない。デバイスの**「設定」→「セキュリティ」**に移動して**「提供元不明のアプリ (提供元不明アプリのインストールを許可する)」**を有効にしてください。
+* デバイスに同じアプリが既にインストールされているが、それは別の証明書によって署名されている。この場合、そのアプリを削除しないと、別の署名済み証明書でデバイスにそのアプリをインストールすることはできません。
 
-## Installing the client on an iOS mobile device
+## iOS モバイル・デバイスへのクライアントのインストール
 {: #installing-the-client-on-an-ios-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+モバイル・クライアント、すなわちインストーラー・フラグでマーク付けされた署名済みアプリケーションを iOS モバイル・デバイスにインストールすることができます。これを行うには、ブラウザーでアクセス URL を入力し、資格情報を入力し、必要なステップを完了します。 
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **重要:** アプリケーションを iOS デバイスにインストールするには、最初に SSL を適用した Application Center サーバーを構成する必要があります。[Secure Sockets Layer (SSL) の構成](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)を参照してください。
 
-The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM  Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
+IBM Application Center サービスの **ibm.appcenter.ios.plist.onetimeurl** JNDI プロパティーは、モバイル・クライアントを iOS モバイル・デバイスにインストールするときにワンタイム URL を使用するかどうかを制御します。最大限のセキュリティーを得るためには、このプロパティーを false に設定してください。このプロパティーを false に設定すると、ユーザーはモバイル・クライアントをインストールするときに資格情報を複数回入力しなければなりません。つまり、クライアントを選択するときに 1 回と、クライアントをインストールするときに 1 回です。
 
-When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
+このプロパティーを true に設定すると、ユーザーは資格情報を 1 回入力するだけで済みます。ユーザーが資格情報を入力すると、暗号学的ハッシュを備えた一時ダウンロード URL が生成されます。 この一時ダウンロード URL は 1 時間有効であり、さらなる認証を必要としません。この解決策はセキュリティーと人間工学の妥協案です。 
 
-The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the **ibm.appcenter.proxy.host property**. See [Defining the endpoint of the application resources](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
+**ibm.appcenter.ios.plist.onetimeurl** JNDI プロパティーを指定する手順は、**ibm.appcenter.proxy.host** プロパティーの場合とほぼ同じです。[アプリケーション・リソースのエンドポイントの定義](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources)を参照してください。 
 
-Installing the mobile client on an iOS device is similar to installing it on Android, but with some differences. The installer is automatically started directly after download. Your user name and password credentials are requested for almost all the installation steps.
+モバイル・クライアントを iOS デバイスにインストールする手順は、いくつかの違いはありますが、Android にインストールする場合とほぼ同じです。 インストーラーはダウンロード後ただちに自動的に起動されます。ほとんどすべてのインストール・ステップでユーザー名とパスワードの資格情報が要求されます。 
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address field: `http://hostname:portnumber/applicationcenter/installers.html`
+1. モバイル・デバイスでブラウザーを開始します。
+2. 次のアクセス URL をアドレス・フィールドに入力します。`http://hostname:portnumber/applicationcenter/installers.html`
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    ここで、hostname はサーバーのアドレス、portnumber は Application Center がインストールされるポートの番号です。これらの情報はシステム管理者から取得することができます。 
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. The page is provided in English only and is not translated into other languages.
+    また、Application Center は、クライアントをモバイル・デバイスにインストールするための代替 URL を提供します (`http://hostname:portnumber/applicationcenter/inst.html`)。この URL のページは、一部の標準外や古いモバイル Web ブラウザーでよりよく作動します。モバイル・デバイスでページ **installers.html** が作動しない場合は、**inst.html** を使用することができます。 このページは英語のみで提供され、他言語には翻訳されません。
 
-    If you open the page with HTTPS and use self-signed certificates, the browser displays a security warning about the SSL certificate, but you can proceed to the website after confirmation that you consent to an unsafe connection.
+    HTTPS の付いたページを開き、自己署名証明書を使用すると、ブラウザーに SSL 証明書についてのセキュリティー警告が表示されますが、ユーザーが安全でない接続に同意することを確認後、その Web サイトに進むことは可能です。
 
-3. Enter your user name and password. See the [prerequisites in The mobile client](../preparations).
+3. ユーザー名とパスワードを入力します。[モバイル・クライアントでの前提条件](../preparations)を参照してください。
 
-    When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+    ユーザー名とパスワードの妥当性検査が成功すると、デバイスと互換性のあるインストーラー・アプリケーションのリストがブラウザーに表示されます。 通常は、ただ 1 つのアプリケーションすなわちモバイル・クライアントがこのリストに現れます。 
 
-    If you open the page with https:
-    * If the web server uses a real SSL certificate that is provided by a trusted certificate authority, proceed to step 5.
-    * If the web server uses a self-signed CA certificate, proceed to step 4.
+    HTTPS の付いたページを開いた場合:
+    * その Web サーバーが信頼できる認証局により提供された本物の SSL 証明書を使用している場合は、ステップ 5 へ進んでください。
+    * その Web サーバーが自己署名 CA 証明書を使用している場合は、ステップ 4 へ進んでください。
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device.
+4. Web サーバーが自己署名 CA 証明書を使用している場合は、少なくとも 1 回、証明書をデバイスにインストールします。
 
-    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
+    Application Center 管理者が証明書を提供します。詳しくは、[Application Center テスト環境における自己署名 CA 証明書の管理とインストール](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)を参照してください。
 
-    * Tap the SSL-Certificate tab and select the certificate.
-    * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
+    * 「SSL 証明書」タブをタップして、証明書を選択します。
+    * 「インストール (Install)」をタップします。この操作は、デバイスに対して 1 回だけ実行します。デバイスで**「設定」→「一般」→「プロファイル」**を見ると、証明書がインストール済みかどうかを確認できます。このビューには、ユーザーがそのデバイスにインストールした SSL 証明書が表示されます。自己署名 CA 証明書がデバイスにインストールされていない場合、以下のステップでモバイル・クライアントをダウンロードすることは iOS オペレーティング・システムにより許可されません。 
     
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
+    モバイル・クライアントが使用可能アプリケーションのリストに現れるためには、Application Center 管理者がモバイル・クライアント・アプリケーションをインストールしなければなりません。管理者は、モバイル・クライアントを Application Center にアップロードし、Installer プロパティーを true に設定します。[アプリケーション・プロパティー (Application properties)](../appcenter-console/#application-properties) を参照してください。
     
-5. Tap the **Installers** tab and select an item in the list to display the application details.
-6. Tap **Install** to download the mobile client.
-7. Enter your credentials to authorize the downloader transaction.
-8. To authorize the download, tap **Install**.
+5. **「インストーラー」**タブをタップし、リスト内の項目を選択して、アプリケーションの詳細を表示します。
+6. **「インストール」**をタップして、モバイル・クライアントをダウンロードします。
+7. 資格情報を入力してダウンローダー・トランザクションを許可します。
+8. ダウンロードを許可するには、**「インストール (Install)」**をタップします。
 
-    ![Confirm app to be installed](ac_instal_client_ios_conf.jpg)
+    ![インストールされるアプリケーションの確認](ac_instal_client_ios_conf.jpg)
     
-9. Enter your credentials to authorize the installation.
-10. Close the browser.
+9. 資格情報を入力してインストールを許可します。
+10. ブラウザーを閉じます。
 
-    The app icon appears on the home screen and you can watch the download progress on the home screen.
+    ホーム画面にアプリケーション・アイコンが表示され、ダウンロードの進行状況を見ることができます。
 
-> **Note:** Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, some versions of iOS might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+> **注:** アプリケーションをデバイスにインストールするには、選択されたデバイスへのアプリケーションのインストールを可能にするプロビジョニング・プロファイルが必要です。デバイスにとって無効なアプリケーションを誤ってインストールしようとした場合、iOS の一部のバージョンでは、完了もせず、エラーも表示されずに、アプリケーションのインストールが無限ループで試行される場合があります。インストールの進行を示すアプリケーション・アイコンはホーム画面に表示されますが、無限ループとなっているため、このアプリケーション・アイコンを削除して無限ループを停止することは困難です。回避策は、デバイスを機内モードにすることです。このモードでは、無限ループが停止し、iOS デバイスでアプリケーションを削除する通常のステップに従ってアプリケーション・アイコンを削除できます。
 
-The installation might be blocked for one of the following reasons:
+インストールは以下のいずれかの理由によりブロックされることがあります。
 
-* The provisioning profile of the application is not valid for the device. The application must be signed with a different provisioning profile.
-* The device has no access to Apple servers to confirm the validity of the provisioning profile.
-* The SSL certificate of the server is not known to the device.
+* アプリケーションのプロビジョニング・プロファイルがそのデバイスにとって無効である。別のプロビジョニング・プロファイルを使用してアプリケーションに署名する必要があります。
+* デバイスが、プロビジョニング・プロファイルの妥当性を確認するために Apple サーバーにアクセスできない。
+* サーバーの SSL 証明書がそのデバイスに認識されていない。
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+一般的に、iOS アプリケーションをデバイスにインストールできるのは、そのアプリケーションがプロビジョニング・プロファイルで署名されている場合のみです。[プロジェクトのインポートとビルド (Android、iOS、Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone) を参照してください。
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+iOS 9 以降では、企業アプリケーションを開くと、プロビジョニング・プロファイルのタイプに応じて「信頼されていないエンタープライズ開発元 (Untrusted Enterprise Developer)」というメッセージが表示されることがあります。このメッセージは、プロビジョニング・プロファイルがこのデバイスでまだ信頼されていないことを示します。この場合、このプロビジョニング・プロファイルに対するトラストが確立されない限り、アプリケーションは開きません。トラストの確立を実行する必要があるのは、プロビジョニング・プロファイルごとに 1 回だけです。
 
-To establish trust for a provisioning profile after the application is installed:
+アプリケーションをインストールした後で、次のようにしてプロビジョニング・プロファイルのトラストを確立します。
 
-#### Until iOS 9.1
+#### iOS 9.1 以前
 {: #until-ios-91 }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **「設定」→「一般」→「プロファイル」**に進みます。**「エンタープライズ・アプリ (Enterprise apps)」**ヘッダーの下に、アプリのプロビジョニング・プロファイルが表示されます。
+2. プロファイルをタップしてトラストを確認します。
 
-#### Since iOS 9.2
+#### iOS 9.2 以降
 {: #since-ios-92 }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **「設定」→「一般」→「プロファイル」→「デバイス管理」または「プロファイルとデバイス管理 (Profiles  Device Management)」**に進みます。**「エンタープライズ・アプリ (Enterprise apps)」**ヘッダーの下に、アプリのプロビジョニング・プロファイルが表示されます。
+2. プロファイルをタップしてトラストを確認します。
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+トラストを確認した後は、そのプロビジョニング・プロファイルを使用するアプリケーションで「信頼されていないエンタープライズ開発元 (Untrusted Enterprise Developer)」のメッセージが表示されることはありません。詳しくは、Apple Web サイト ([https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460)) を参照してください。
 
-## Installing the client on a Windows Phone 8 Universal mobile device
+## Windows Phone 8 Universal モバイル・デバイスへのクライアントのインストール
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
+モバイル・クライアント、すなわちインストーラー・フラグでマーク付けされた署名済みアプリケーションを Windows 8 Universal にインストールすることができます。これを行うには、ブラウザーでアクセス URL を入力し、資格情報を入力し、必要なステップを完了します。企業アカウントがモバイル・デバイスにプリインストールされていなければなりません。 
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+自社で発行したアプリケーションをインストールするためには、前もって企業アカウントをモバイル・デバイスに追加する必要があります。 アプリケーション登録トークン (AET) を Windows Phone デバイスにダウンロードする必要があります。この AET は既に {{site.data.keys.mf_server }} に存在していなければなりません。Application Center コンソールを使用して {{site.data.keys.mf_server }} にアップロードされます。詳しくは、[Windows 8 Universal のアプリケーション登録トークン](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)を参照してください。
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
+1. モバイル・デバイスでブラウザーを開始します。
+2. 次のアクセス URL をアドレス・テキスト・フィールドに入力します。`http://hostname:portnumber/applicationcenter/installers.html`
 
-    Where **hostname** is the address of the server and **portnumber** is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    ここで、**hostname** はサーバーのアドレス、**portnumber** は Application Center がインストールされるポートの番号です。 これらの情報はシステム管理者から取得することができます。 
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. This page is provided in English only and is not translated into other languages.
+    また、Application Center は、クライアントをモバイル・デバイスにインストールするための代替 URL を提供します (`http://hostname:portnumber/applicationcenter/inst.html`)。この URL のページは、一部の標準外や古いモバイル Web ブラウザーでよりよく作動します。モバイル・デバイスでページ **installers.html** が作動しない場合は、**inst.html** を使用することができます。 このページは英語のみで提供され、他言語には翻訳されません。 
 
-3. Enter your credentials to authorize access to the server. On the lower part of the screen, a toolbar contains an **Installers** tab and a **Tokens** tab.
+3. サーバーへのアクセスを許可する資格情報を入力します。 画面下部のツールバーに**「インストーラー」**タブと**「トークン」**タブがあります。 
 
-    ![Preparing to install tokens and applications on a Windows Phone device](ac_wp8_toolbar_inst_app.jpg)
+    ![Windows Phone デバイスへのトークンおよびアプリケーションのインストールの準備 ](ac_wp8_toolbar_inst_app.jpg)
     
-4. Tap **Tokens** and select an application enrollment token in the list of available tokens to display the token details.
+4. **「トークン」**をタップし、使用可能なトークンのリストからアプリケーション登録トークンを選択すると、そのトークンの詳細が表示されます。 
 
-    ![Application Enrollment Token details on a Windows Phone device](ac_wp8_aet_details.jpg)
+    ![Windows Phone デバイス上のアプリケーション登録トークンの詳細](ac_wp8_aet_details.jpg)
     
-5. Tap **Add** to download the application enrollment token.
-6. Tap **Add** to add the company account.
+5. **「追加 (Add)」**をタップするとアプリケーション登録トークンがダウンロードされます。 
+6. **「追加 (Add)」**をタップすると企業アカウントが追加されます。 
 
-    ![Adding a company account in Windows 8 Universal device](ac_wp8_add_co_account.jpg)
+    ![Windows 8 Universal における企業アカウントの追加](ac_wp8_add_co_account.jpg)
     
-    Windows Phone 8 does not provide any feedback about adding the company account.
+    Windows Phone 8 は、企業アカウントの追加に関するいかなるフィードバックも提供しません。
 
-7. Tap the Back icon to return to the details of application enrollment tokens.
-8. Tap **Installers** and select the mobile client application in the list of available applications. The application details are displayed.
-9. Tap **Install** to download the selected application.
+7. 「戻る」アイコンをタップすると、アプリケーション登録トークンの詳細に戻ります。 
+8. **「インストーラー」**をタップし、使用可能なアプリケーションのリストからモバイル・クライアント・アプリケーションを選択します。 そのアプリケーションの詳細が表示されます。 
+9. **「インストール (Install)」**をタップすると、選択したアプリケーションがダウンロードされます。 
 
-    ![The application selected to download on a Windows Phone device](ac_wp8_app_details.jpg)
+    ![Windows Phone デバイスにダウンロードするために選択されたアプリケーション](ac_wp8_app_details.jpg)
     
-10. Tap **Install** to install the application.
+10. **「インストール (Install)」**をタップすると、そのアプリケーションがインストールされます。 
 
-    ![Installing the downloaded application on a Windows Phone device](ac_wp8_app_install.jpg)
+    ![ダウンロードされたアプリケーションの Windows Phone デバイスへのインストール](ac_wp8_app_install.jpg)
     
-    Windows 8 Universal does not provide any feedback about installing the application.
+    Windows 8 Universal は、アプリケーションのインストールに関するいかなるフィードバックも提供しません。
 
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
+> **ヒント:** 企業アプリケーションをデバイスにインストールするときは、デバイスが Microsoft サーバーに接続してアプリケーション・シグニチャーを検証する必要があります。時には Microsoft サーバーが応答しないこともあります。その場合は、数分後にインストールを再度試みることができます。 表示される可能性のあるエラー・メッセージについては、Windows Phone デバイスへのアプリケーションのインストールを参照してください。
 
-When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
+インストールが終了したら、Windows Phone 内のアプリケーションのリストで当該モバイル・クライアント・アプリケーションが使用可能になっているはずです。
 
-## The Login view
+## 「ログイン」ビュー
 {: #the-login-view }
-In the Login view, you can access the fields that are required to connect to the server to view the list of applications available for your device.  
-Use the Login view to enter your credentials to connect to the Application Center server to view the list of applications that are available for your device.
+「ログイン」ビューで、デバイスで使用可能なアプリケーションのリストを表示するためにサーバーに接続するときに必要なフィールドにアクセスすることができます。   
+「ログイン (Login)」ビューを使用して資格情報を入力すれば、Application Center サーバーに接続され、デバイスで使用可能なアプリケーションのリストを表示することができます。
 
-The Login view presents all the mandatory fields for the information that is required to connect to the server.  
-When the application is started, the Login page is displayed. The login credentials are required to connect to the server.
+「ログイン (Login)」ビューは、サーバーに接続する際に必要な情報を入力するための必須フィールドをすべて備えています。  
+アプリケーションが開始されると、「ログイン」ページが表示されます。サーバーに接続するにはログイン資格情報が必要です。 
 
-On iOS devices, the credentials are saved in the keychain. After you successfully log in to the Application Center server, when you later start the application, the login page is not displayed and the previous credentials are used. If login fails, the login view is displayed.
+iOS デバイスでは、資格情報はキーチェーンに保存されます。Application Center サーバーに正常にログインした後は、次回そのアプリケーションを開始する場合、ログイン・ページは表示されず、以前のログイン資格情報が使用されます。ログインが失敗すると、ログイン・ビューが表示されます。
 
-#### User name and password
+#### ユーザー名とパスワード
 {: #user-name-and-password }
-Enter your credentials for access to the server. They are the same user name and password as the ones that were granted by your system administrator for downloading and installing the mobile client.
+サーバーにアクセスするための資格情報を入力してください。 これは、モバイル・クライアントのダウンロードとインストールのためにシステム管理者から付与されたユーザー名およびパスワードと同じものです。 
 
-#### Application Center server address
+#### Application Center サーバー・アドレス
 {: #application-center-server-address }
-The Application Center server address is composed of the following elements:
+Application Center サーバー・アドレスは以下の要素から構成されます。
 
-* Host name or IP address.
-* Port, which is optional if the default port is used.
-* Context, which is optional if the Application Center is installed at the root of the server.
+* ホスト名または IP アドレス。
+* ポート (デフォルト・ポートが使用された場合はオプション)。
+* コンテキスト (Application Center がサーバーのルートにインストールされている場合はオプション)。
 
-On a phone, a field is available for each part of the address.
+電話の場合は、アドレスの各部分についてフィールドがあります。
 
-On a tablet, a single field that contains a preformatted example address is displayed. Use it as a model for entering the correct server address to avoid formatting errors. See [Preparations for using the mobile client](../preparations) for information on filling parts of the address in advance, or hardcode the address and hide the associated fields.
+タブレットの場合は、フォーマット済みのアドレス例を含む 1 つのフィールドが表示されます。 フォーマット・エラーを避けるために、これを正しいサーバー・アドレス入力の手本として使用してください。 前もってアドレスの各部分を埋めるか ([モバイル・クライアントを使用するための準備](../preparations)を参照)、あるいはアドレスをハードコーディングし、関連フィールドを非表示にしてください。
 
 #### Secure Socket Layer (SSL)
 {: #secure-socket-layer-ssl }
-SSL is mandatory on iOS devices. Therefore, this option is not displayed in the login view.
-On the other supported operating systems, select SSL to turn on the SSL protocol for communications over the network. If you tap this field again when SSL is selected, SSL switches off.
+iOS デバイスでは、SSL が必須です。そのため、このオプションはログイン・ビューに表示されません。
+その他のサポートされているオペレーティング・システムでは、SSL を選択すると、ネットワークを介した通信の SSL プロトコルがオンになります。SSL が選択されているときに、再度このフィールドをタップすると、SSL がオフに切り替わります。 
 
-SSL selection is available for cases where the Application Center server is configured to run over an SSL connection. Selecting SSL when the server is not configured to handle an SSL layer prevents you from connecting to the server. Your system administrator can inform you whether the Application Center runs over an SSL connection.
+Application Center サーバーが SSL 接続経由で稼働するように構成されている場合は、SSL 選択が使用可能です。SSL 層に対応するようにサーバーが構成されていないときに SSL を選択すると、サーバーに接続できなくなります。 システム管理者から、Application Center が SSL 接続経由で稼働しているかどうかを通知してもらうことができます。
 
-### Connecting to the server
+### サーバーへの接続 
 {: #connecting-to-the-server }
-To connect to the server:
+サーバーに接続するには、次のようにします。 
 
-1.Enter your user name and password.
-2. Enter your Application Center server address.
-3. If your configuration of the Application Center runs over the SSL protocol, select **SSL**.
-4. Tap **Log in** to connect to the server.
+1. ユーザー名とパスワードを入力します。
+2. Application Center サーバー・アドレスを入力します。
+3. Application Center の構成が SSL プロトコル経由で機能する場合は、**「SSL」**を選択します。
+4. **「ログイン (Login)」**をタップするとサーバーに接続します。 
 
-If this login is successful, the user name and server address are saved to fill the fields when you start the client afterwards.
+このログインが成功すると、ユーザー名とサーバー・アドレスが保存され、次回からはクライアントを起動するたびこれらのフィールドが埋められます。 
 
-## Views in the Application Center client
+## Application Center クライアントのビュー
 {: #views-in-the-application-center-client }
-The client provides views that are adapted to the various tasks that you want to perform.  
-After a successful login, you can choose among these views.
+このクライアントには、実行したい各種タスクに適したビューがあります。   
+ログインに成功した後、これらのビューの中から選択することができます。
 
-![Views in the client application](ac_android_ios_views.jpg)
+![クライアント・アプリケーションでのビュー](ac_android_ios_views.jpg)
 
-Use these views to communicate with a server to send or retrieve information about applications or to manage the applications that are located on your device.
+これらのビューを使用して、サーバーと通信してアプリケーション関する情報を送信または取得したり、デバイスにあるアプリケーションを管理したりします。 
 
-The Windows 8 client home screen displays up to six applications in each category. On the Windows 8 client, if you want the full list of applications in a category, click the title of the category.
+Windows 8 クライアントのホーム画面には、カテゴリーごとに最大 6 個のアプリケーションが表示されます。Windows 8 クライアントで、カテゴリーのアプリケーションの完全なリストが必要な場合は、カテゴリーのタイトルをクリックします。
 
-![Client homescreen on Windows 8](ac_homeCatalog_w8.JPG)
+![Windows 8 でのクライアントのホーム画面](ac_homeCatalog_w8.JPG)
 
-Here are descriptions of the different views:
+以下は各種ビューの説明です。
 
-* **Catalog**. This view shows the applications that can be installed on a device.
-* **Favorites**. This view shows the list of applications that you marked as favorites.
-* **Updates**. This view shows all applications that you marked as favorite apps and that have a later version available in Application Center than the version, if any, installed on the device.
+* **カタログ (Catalog)**。このビューには、デバイスにインストールできるアプリケーションが表示されます。
+* **お気に入り (Favorites)**。このビューには、お気に入りとしてマークを付けたアプリケーションのリストが表示されます。
+* **更新 (Updates)**。このビューには、お気に入りアプリケーションとしてマークを付けたアプリケーションのうち、デバイスにインストール済みのバージョン (もしあれば) よりも後のバージョンが Application Center で使用可能になっている、すべてのアプリケーションが表示されます。
 
-When you first start the mobile client, it opens the Login view for you to enter your user name, password, and the address of the Application Center server. This information is mandatory.
+モバイル・クライアントを初めて開始すると、ユーザー名、パスワード、および Application Center サーバーのアドレスを入力する「ログイン (Login)」ビューが開きます。これらの情報は必須です。
 
-### Displays on different device types
+### 異なるデバイス・タイプでの表示 
 {: #displays-on-different-device-types }
-The layout of the views is specific to the Android, iOS, Windows Phone, or Windows 8 environment, even though the common functions that you can perform in the views are the same for all operating systems. Different device types might have different page displays. On the phone, a list is displayed. On a tablet, a grid of applications is used.
+ビューで実行できる共通機能はどのオペレーティング・システムの場合でも同じですが、ビューのレイアウトは各環境 (Android、iOS、Windows Phone、または Windows 8) に固有です。デバイス・タイプが異なるとページの表示が異なる場合があります。電話の場合はリストが表示されます。 タブレットの場合はアプリケーションのグリッドが使用されます。
 
-![Catalog view on a phone](ac_phone_catalog.jpg)
+![電話の「カタログ」ビュー ](ac_phone_catalog.jpg)
 
-![Catalog view on a tablet](ac_tablet_catalog.jpg)
+![タブレットの「カタログ」ビュー ](ac_tablet_catalog.jpg)
 
-### Features of the views
+### ビューの機能 
 {: #features-of-the-views }
-On an Android or iOS tablet, you can sort the lists by tapping one of the sort criteria.  
-On a Windows Phone, Android, or iOS phone, sort criteria are available through the sort button.  
-On the Windows 8 client, you can sort the list of applications within a category. To sort the applications, select from the list of sort criteria in the **Sort By** field.
+Android または iOS タブレットの場合は、ソート基準の 1 つをタップしてリストをソートすることができます。  
+Windows Phone、Android、または iOS 電話の場合は、ソート・ボタンによってソート基準が使用可能になります。  
+Windows 8 クライアントでは、カテゴリー内のアプリケーションのリストをソートすることができます。アプリケーションをソートするには、**ソート基準** フィールドのソート基準のリストから選択します。
 
-Applications that are marked as favorites are indicated by a star that is superposed on the application icon.
+お気に入りとしてマーク付けされたアプリケーションは、アプリケーション・アイコンの上に重ねて置かれた星印によって示されます。
 
-The average rating of the latest version of an application is shown by using a number of stars and the number of ratings received. [See Preparations for using the mobile client](../preparations) for how to show the rating of all versions of the application instead of the latest version only.
+アプリケーションの最新バージョンの平均評価は、星印の数と受け取った評価の数を使用して示されます。 アプリケーションの最新バージョンだけでなくすべてのバージョンの評価を表示する方法については、[『モバイル・クライアントを使用するための準備』](../preparations)を参照してください。
 
-Tapping an application in the list opens the Details view of the latest installed version of this application.
+リスト内のアプリケーションをタップすると、そのアプリケーションのインストール済み最新バージョンの「詳細」ビューが開きます。
 
-To refresh the view, tap the refresh button: <img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="Button to refresh the view"/>. or, on Windows 8, <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Button to refresh the view on Windows 8 client"/>.
+ビューを最新表示にするには、「最新表示」ボタン<img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="ビューを最新表示にするためのボタン"/> をタップします。または、Windows 8 の場合は、<img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Windows 8 クライアント上でビューを最新表示にするためのボタン"/> をタップします。
 
-To return to the login page:
+ログイン・ページに戻るには次のようにします。
 
-* In Android, iOS, and Windows Phone applications, tap the logout button: <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Android and iOS devices"/>
-* In the Windows 8 version of the client, tap the logout button: <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Windows 8 client"/>
+* Android、iOS および Windows Phone のアプリケーションでは、ログアウト・ボタン <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Android デバイスおよび iOS デバイス上でログイン・ページに戻り、ログアウトするためのボタン"/> をタップします。
+* クライアントの Windows 8 バージョンでは、ログアウト・ボタン <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Windows 8 クライアント上でログイン・ページに戻り、ログアウトするためのボタン"/> をタップします。
 
-### The Details view
+### 「詳細」ビュー 
 {: #the-details-view }
-Tapping an application in the Catalog, Favorites, or Updates view opens the Details view where you can see details of the application properties. Details of the application version are displayed in this view.
+「カタログ」、「お気に入り」、または「更新」ビューでアプリケーションをタップすると、「詳細」ビューが開きます。このビューで、アプリケーション・プロパティーの詳細を表示することができます。アプリケーション・バージョンの詳細はこのビューに表示されます。 
 
-On Android, iOS, and Windows Phone clients, the following details of the application version are displayed:
+Android、iOS、および Windows Phone クライアントでは、アプリケーション・バージョンに関する以下のような詳細が表示されます。
 
-* The name of the application.
-* Commercial version: the published version of the application.
-* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties](../appcenter-console/#application-properties) for technical details about this property on all operating systems.
-* Update date.
-* Approximate size of the application file.
-* Rating of the version and number of ratings received.
-* Description of the application.
+* アプリケーションの名前。
+* 商用バージョン: アプリケーションの公開バージョン。
+* 内部バージョン: Android では、アプリケーションの内部バージョン識別。iOS では、アプリケーションのビルド番号。すべてのオペレーティング・システムでのこのプロパティーの技術的詳細情報については、[アプリケーション・プロパティー](../appcenter-console/#application-properties)を参照してください。
+* 更新日。
+* アプリケーション・ファイルのおおよそのサイズ。
+* バージョンの評価および受け取った評価の数。
+* アプリケーションの説明。 
 
-On Windows 8 client the following details of the application version are displayed:
+Windows 8 クライアントでは、アプリケーション・バージョンに関する以下のような詳細が表示されます。
 
-* Application name.
-* Version.
-* Vendor name.
-* Update date.
-* Rating of the version and the number of ratings received.
-* Existing reviews of either the current version or of all the versions of the current application.
+* アプリケーション名。
+* バージョン。
+* ベンダー名。
+* 更新日。
+* バージョンの評価および受け取った評価の数。
+* 現行アプリケーションの現行バージョンまたはすべてのバージョンの既存のレビュー
 
-You can take the following actions in this view.
+このビューでは次のアクションを実行できます。
 
-* Install, upgrade, downgrade, or uninstall an application version.
-* Cancel the current operation in progress (if available).
-* Rate the application version if it is installed on the device.
-* List the reviews of this version or of all versions of the application.
-* Show details of a previous version.
-* Mark or unmark the application as a favorite app.
-* Refresh the view with the latest changes from the Application Center server.
+* アプリケーション・バージョンをインストール、アップグレード、ダウングレード、またはアンインストールする。
+* (存在する場合は) 進行中の現行操作を取り消す。
+* アプリケーション・バージョンを評価する (デバイスにインストールされている場合)。
+* アプリケーションのこのバージョンまたはすべてのバージョンのレビューをリストする。
+* 前のバージョンの詳細を表示する。
+* アプリケーションをお気に入りアプリケーションとしてマーク付けまたはマーク解除する。
+* Application Center サーバーからの最新変更を使用してビューを最新の情報に更新する。
 
-## Installing an application on an Android device
+## Android デバイスへのアプリケーションのインストール
 {: #installing-an-application-on-an-android-device }
-From the **Details** view, you can install an application on your Android device.  
-In the Details view, if a previous version of the application is not installed, you can install this application version on your Android device.
+**「詳細 (Details)」**ビューから、Android デバイスにアプリケーションをインストールすることができます。   
+「詳細 (Details)」ビューで、アプリケーションの前のバージョンがインストールされていない場合は、このアプリケーション・バージョンを Android デバイスにインストールすることができます。
 
-![Details view of an app version shown on your Android device](ac_phone_app_details.jpg)
+![Android デバイスに表示されたアプリケーション・バージョンの「詳細」ビュー](ac_phone_app_details.jpg)
 
-1. In the **Details** view, tap **Install**.
+1. **「詳細 (Details)」**ビューで、**「インストール (Install)」**をタップします。
 
-    The application is downloaded. You can tap **Cancel** in the **Details** view at any time during the download to cancel the download. (The **Cancel** button appears only during the installation steps.) If you let the download complete, you will see the rights that are granted to the application.
+    アプリケーションかダウンロードされます。 ダウンロード中いつでも、**「詳細 (Details)」**ビューにある**「キャンセル (Cancel)」**をタップすると、ダウンロードが取り消されます。 (**「キャンセル (Cancel)」**ボタンはインストール手順の間しか表示されません。) ダウンロードが完了すると、アプリケーションに付与される権限が表示されます。 
 
-    ![Application rights on your Android device](ac_app_rights_and.jpg)
+    ![Android デバイス上のアプリケーション権限](ac_app_rights_and.jpg)
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel installation.
+2. **「インストール (Install)」**をタップするとアプリケーションのインストールが確認され、**「キャンセル (Cancel)」**をタップするとインストールが取り消されます。
 
-    Depending on the action taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    実行されたアクションに応じて、アプリケーションはインストールされたりされなかったりします。 アプリケーションが正常にインストールされると、お気に入りアプリケーションとしてマーク付けもされます。
 
-    If you selected **Cancel**, in the application rights confirmation panel, you can tap **Cancel** in the **Details** view at any time to notify the application that the installation has been canceled. The **Cancel** button appears in the Details view only during the installation steps.
+    **「キャンセル (Cancel)」**を選択した場合は、アプリケーション権限確認パネルで、**「詳細 (Details)」**ビューにある**「キャンセル (Cancel)」**をタップして、インストールが取り消されたことをいつでもアプリケーションに通知することができます。 **「キャンセル (Cancel)」**ボタンは、インストール手順の間だけ「詳細 (Details)」ビューに表示されます。
 
-## Installing an application on an iOS device
+## iOS デバイスへのアプリケーションのインストール
 {: #installing-an-application-on-an-ios-device }
-From the **Details** view, you can install an application version on your iOS mobile device.
+**「詳細 (Details)」**ビューから、iOS モバイル・デバイスにアプリケーション・バージョンをインストールすることができます。
 
-![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
+![iOS モバイル・デバイス上のアプリケーション・バージョンの「詳細」ビュー](ac_phone_app_details_ios.jpg)
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **重要:** アプリケーションを iOS デバイスにインストールするには、最初に SSL を適用した Application Center サーバーを構成する必要があります。[Secure Sockets Layer (SSL) の構成](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)を参照してください。
 
-1. In the **Details** view, tap **Install**. You are requested to confirm the download and installation of the application version.
-2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
+1. **「詳細 (Details)」**ビューで、**「インストール (Install)」**をタップします。アプリケーション・バージョンのダウンロードとインストールを確認するよう要求されます。 
+2. **「インストール (Install)」**をタップするとアプリケーション・バージョンのダウンロードとインストールが確認され、**「キャンセル (Cancel)」**をタップするとインストールが取り消されます。
 
-    ![Canceling application installation on your iOS device](ac_app_inst_cancel_ios.jpg)
+    ![iOS デバイス上でのアプリケーション・インストールを取り消す](ac_app_inst_cancel_ios.jpg)
     
-    Depending on the action that is taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    実行されるアクションに応じて、アプリケーションはインストールされたりされなかったりします。 アプリケーションが正常にインストールされると、お気に入りアプリケーションとしてマーク付けもされます。
 
-    Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, iOS 6 (deprecated) or earlier gives an error message.
+    アプリケーションをデバイスにインストールするには、選択されたデバイスへのアプリケーションのインストールを可能にするプロビジョニング・プロファイルが必要です。デバイスに対して有効でないアプリケーションのインストールを誤って試みた場合、iOS バージョン 6 (非推奨) 以前ではエラー・メッセージが表示されます。
     
-Unlike the Android client, after the installation is finished, the **Install** button in the **Details** view does not change its label to **Uninstall**. In iOS, no **Uninstall** button is available. It is only possible to uninstall applications through the home screen.
+Android クライアントとは異なり、インストール完了後、 **「詳細」** ビューで **「インストール」** ボタンのラベルは **「アンインストール」**に変わりません。iOS では、**「アンインストール」** ボタンは使用できません。アプリケーションのアンインストールはホーム画面からのみ可能です。
 
-Some versions of iOS 7 might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+iOS 7 の一部のバージョンでは、アプリケーションをインストールする試みが、完了することなく、またエラーを表示することもなく、無限ループにおちいることがあります。インストールの進行を示すアプリケーション・アイコンはホーム画面に表示されますが、無限ループとなっているため、このアプリケーション・アイコンを削除して無限ループを停止することは困難です。回避策は、デバイスを機内モードにすることです。このモードでは、無限ループが停止し、iOS デバイスでアプリケーションを削除する通常のステップに従ってアプリケーション・アイコンを削除できます。
 
-After the application is installed on the device, you can open it.
+アプリケーションをデバイスにインストールした後、そのアプリケーションを開くことができます。
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+一般的に、iOS アプリケーションをデバイスにインストールできるのは、そのアプリケーションがプロビジョニング・プロファイルで署名されている場合のみです。[プロジェクトのインポートとビルド (Android、iOS、Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone) を参照してください。
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+iOS 9 以降では、企業アプリケーションを開くと、プロビジョニング・プロファイルのタイプに応じて「信頼されていないエンタープライズ開発元 (Untrusted Enterprise Developer)」というメッセージが表示されることがあります。このメッセージは、プロビジョニング・プロファイルがこのデバイスでまだ信頼されていないことを示します。この場合、このプロビジョニング・プロファイルに対するトラストが確立されない限り、アプリケーションは開きません。トラストの確立を実行する必要があるのは、プロビジョニング・プロファイルごとに 1 回だけです。
 
-To establish trust for a provisioning profile after the application is installed:
+アプリケーションをインストールした後で、次のようにしてプロビジョニング・プロファイルのトラストを確立します。
 
-#### Until iOS 9.1
+#### iOS 9.1 以前
 {: #until-ios-91-app }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **「設定」→「一般」→「プロファイル」**に進みます。**「エンタープライズ・アプリ (Enterprise apps)」**ヘッダーの下に、アプリのプロビジョニング・プロファイルが表示されます。
+2. プロファイルをタップしてトラストを確認します。
 
-#### Since iOS 9.2
+#### iOS 9.2 以降
 {: #since-ios-92-app }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **「設定」→「一般」→「プロファイル」→「デバイス管理」または「プロファイルとデバイス管理 (Profiles  Device Management)」**に進みます。**「エンタープライズ・アプリ (Enterprise apps)」**ヘッダーの下に、アプリのプロビジョニング・プロファイルが表示されます。
+2. プロファイルをタップしてトラストを確認します。
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+トラストを確認した後は、そのプロビジョニング・プロファイルを使用するアプリケーションで「信頼されていないエンタープライズ開発元 (Untrusted Enterprise Developer)」のメッセージが表示されることはありません。詳しくは、Apple Web サイト ([https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460)) を参照してください。
 
-## Installing an application on a Windows Phone device
+## Windows Phone デバイスへのアプリケーションのインストール
 {: #installing-an-application-on-a-windows-phone-device }
-From the **Details** view, you can install a company application on your Windows phone device.  
-The **Details** view of the selected application displays information about the application that you want to install.
+**「詳細」**ビューから、Windows Phone デバイスに企業アプリケーションをインストールすることができます。   
+選択したアプリケーションの**「詳細」**ビューには、インストールするアプリケーションに関する情報が表示されます。
 
-![Details view of a version of a company application for installation on a Windows Phone device](ac_phone_app_details_wp.jpg)
+![Windows Phone デバイスにインストールする企業アプリケーションのバージョンの「詳細」ビュー](ac_phone_app_details_wp.jpg)
 
-1. In the **Details** view, tap **Install**. The application is downloaded and installed. You can tap **Cancel** at any time during the downloading of the application to cancel the activity. **Cancel** appears only during the downloading step of the installation process.
+1. **「詳細 (Details)」**ビューで、**「インストール (Install)」**をタップします。選択したアプリケーションがダウンロードされてインストールされます。 アプリケーションのダウンロード中であればいつでも**「キャンセル (Cancel)」**をタップして、ダウンロード活動を取り消すことができます。 **「キャンセル」**は、インストール・プロセスのダウンロード・ステップ中しか表示されません。 
 
-    At the beginning of the installation process, you are requested to confirm whether you want to add the company application to the applications installed on your mobile device.
+    インストール・プロセスの開始時に、モバイル・デバイスにインストールされているアプリケーションに当該企業アプリケーションを加えるかどうかの確認が求められます。 
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel the installation. The application is marked as a favorite app.
+2. アプリケーションのインストールを確定する場合は**「インストール (Install)」**を、インストールを取り消す場合は**「キャンセル (Cancel)」**を、それぞれタップします。アプリケーションはお気に入りアプリケーションとしてマーク付けされます。
 
-    ![Confirming or canceling installation of a company application on a Windows Phone device](ac_confirm_instal_app_wp.jpg)
+    ![Windows Phone デバイスへの企業アプリケーションのインストールの確認または取り消し](ac_confirm_instal_app_wp.jpg)
     
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later.
+> **ヒント:** 企業アプリケーションをデバイスにインストールするときは、デバイスが Microsoft サーバーに接続してアプリケーション・シグニチャーを検証する必要があります。時には Microsoft サーバーが応答しないこともあります。その場合は、数分後にインストールを再度試みることができます。
 
-The possible error messages are:
+次のようなエラー・メッセージが表示される可能性があります。
 
-* **There's a problem with this company app. Contact your company's support person for help.**
+* **この自社アプリには問題があります。 社内サポート担当者に問い合わせてください。** 
 
-    You are probably using an unsigned Windows Phone application package (.xap) file. You must sign application package (.xap) files before using them in the Application Center. This message might also occur if the Microsoft server does not respond and the signature of the company application cannot be validated. In this case, try the installation again a few minutes later.
+    おそらく未署名の Windows Phone アプリケーション・パッケージ (.xap) ファイルを使用しています。アプリケーション・パッケージ (.xap) ファイルを Application Center で使用する前に、これに署名する必要があります。 このメッセージは、Microsoft サーバーが応答しないで、当該企業アプリケーションのシグニチャーを検証できない場合にも発生することがあります。その場合は、数分後にインストールを再度試みてください。 
 
-* **Before you install this app, you need to add ... company account.**
+* **このアプリをインストールするには、... 企業アカウントを追加する必要があります。** 
 
-    The Windows Phone application package (.xap) file is signed, but the device is not enrolled for company applications. You must first install on the device the application enrollment token of the company.
+    Windows Phone アプリケーション・パッケージ (.xap) ファイルに署名はありますが、デバイスが企業アプリケーション用に登録されていません。まず会社のアプリケーション登録トークンをデバイスにインストールする必要があります。 
 
-* **We haven't been able to contact the company account to make sure you can install this app. ...**
+* **このアプリをインストールできるようにするために company の企業アカウントに連絡することができませんでした。...**
 
-    Either the company account is expired or blocked, or the Microsoft server is temporarily not responding. Make sure that your device is connected to the internet and connected to the Microsoft server, and try again.
+    企業アカウントが有効期限切れになっていたりブロックされたりしているか、あるいは Microsoft サーバーが一時的に応答していません。デバイスがインターネットに接続され、かつ Microsoft サーバーにも接続されていることを確認してから、やり直してください。
 
-> **Note:** If a device is registered with several company accounts, the Windows Phone operating system might display the wrong company account in the message **Would you like to install application from company name?**. This message is outside the control of the Application Center. This situation is a display problem only and does not affect the functionality.
+> **注:** 同じデバイスがいくつもの企業アカウントで登録されている場合は、Windows Phone オペレーティング・システムが**「会社 name から application をインストールしますか?」**というメッセージで間違った企業アカウントを表示することがあります。このメッセージは Application Center の制御範囲を超えています。 この状況は単に表示上の問題であり、機能性に影響を及ぼすことはありません。
 
-Depending on the action that you take, the application is installed or not.
+実行するアクションに応じて、アプリケーションはインストールされたりされなかったりします。 
 
-> **Tip:** The install process will not work if the PFX certificate used to code sign the application package (.xap) file of the application that you want to install has expired. Windows Phone operating system returns an error with **HRESULT 0x81030110**. When you renew your PFX certificate, you must code sign again with this new certificate all the deployed applications that you have in your Application Center catalog.
+> **ヒント:** インストールしたいアプリケーションのアプリケーション・パッケージ (.xap) ファイルのコード署名に使用されている PFX 証明書の有効期限が切れている場合、インストール・プロセスは正常に動作しません。Windows Phone オペレーティング・システムは、エラーとなり **HRESULT 0x81030110** を返します。PFX 証明書を更新した場合は、Application Center カタログ内のすべてのデプロイ済みアプリケーションをこの新しい証明書でコード署名する必要があります。
 > 
-When you renew your PFX code-signing certificate, you must also renew the enrollment token and deploy it on the Application Center console. Devices must also be re-enrolled to the company account with this new token. Users of devices enrolled with an expired token cannot install any applications.
+PFX コード署名証明書を更新した場合は、登録トークンも更新し、Application Center コンソールでデプロイする必要があります。デバイスもこの新しいトークンを使用して企業アカウントに再登録する必要があります。有効期限が切れたトークンで登録されているデバイスのユーザーは、アプリケーションをインストールできません。
 
-In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
+Windows Phone 8.1 では、Application Center クライアントがコード署名されていない場合 (例えば Visual Studio でデバッグした場合)、この署名されていないクライアントを使用してアプリケーションをインストールできません。この場合、Windows Phone オペレーティング・システムは、エラーとなり **HRESULT 0x800703F0** を返します。Windows Phone 8.1 でアプリケーションをインストールする前に、クライアントのアプリケーション・パッケージ (.xap) ファイルにコード署名する必要があります。
 
-## Installing a Windows Store application on a Windows device
+## Windows デバイスへの Windows Store アプリケーションのインストール
 {: #installing-a-windows-store-application-on-a-windows-device }
-Use sideloading to install Windows Store apps through Application Center.
+Application Center を通して Windows Store アプリケーションをインストールするには、サイドローディングを使用します。
 
-You must check that your configuration satisfies the application sideloading prerequisites that are described in Prepare to Sideload Apps.  
-The device user needs administrator rights on the device to execute the Application Center client.
+構成が、『アプリケーションのサイドローディングのための準備 (Prepare to Sideload Apps)』に記載されているアプリケーションのサイドローディングの前提条件を満たしていることを確認する必要があります。  
+デバイス・ユーザーが Application Center クライアントを実行するには、そのデバイスでの管理者権限が必要です。
 
-Installing APPX packages through Application Center is done by a process called sideloading. As part of Windows 8.1 Update, sideloading is enabled for all Windows 8.1 Pro devices that are part of an Active Directory domain, which matches the current behavior of Windows 8.1 Enterprise. If you use either of those product versions and the device is part of an Active Directory domain, you have no concerns about sideloading keys or activating sideloading.
+Application Center を通じて APPX パッケージをインストールするには、サイドローディングというプロセスを使用します。Windows 8.1 アップデートの一部として、Active Directory ドメインに含まれるすべての Windows 8.1 Pro デバイスでサイドローディングが使用可能になります。これは、Windows 8.1 Enterprise の現行動作と一致しています。これらのいずれかの製品バージョンを使用し、デバイスが Active Directory ドメインに含まれる場合は、サイドローディング・キーやサイドローディングのアクティブ化について心配する必要はありません。
 
-When you develop a Windows Store application, Microsoft Visual Studio automatically generates a self-signed certificate and uses it to code sign the application package. To be able to install the application later by using Application Center, you must import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine". Importing the certificate is a manual procedure.
+Windows Store アプリケーションを開発するとき、Microsoft Visual Studio は自己署名証明書を自動的に生成し、その証明書をアプリケーション・パッケージのコード署名に使用します。Application Center を使用してアプリケーションを後でインストールできるようにするには、この証明書を「ローカル・マシン」の「トラステッド・ルート認証局」ストアにインポートする必要があります。証明書のインポートは手作業手順です。
 
-> **Note:** Manual installation of a certificate is only required for the development phase, because APPX code signing relies on a self-signed certificate generated by Microsoft Visual Studio. In production, your APPX file must be signed by a genuine certificate purchased from a recognized root certificate authority.
+> **注:** APPX コード署名は Microsoft Visual Studio が生成する自己署名証明書に基づくため、証明書の手動インストールは開発フェーズでのみ必要です。実動では、公認のルート認証局から購入した本物の証明書で APPX ファイルに署名する必要があります。
 
-The first step of this procedure tells you how to install the certificate before you can install the application through Application Center.
+この手順の最初のステップでは、Application Center を通じてアプリケーションをインストールする前に証明書をインストールする方法を説明します。
 
-1. Import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine".
-    * After you have generated an APPX file by using Visual Studio, place this file in your file system. In the folder of the APPX file, you can see a certificate (.cer) file that contains the self-signed certificate that you must import.
-    ![Certificate file in the application package folder](cer_file_win8.jpg)
-    * To open the certificate, double-click the CER file.
-    * Click Install Certificate.
-    ![General information about the certificate](cert_props_win8.jpg)    
-    * Select "Local Machine" and click **Next**.
-    ![Specifying the local machine in the Certificate Import Wizard](cert_localmachine_win8.jpg)    
-    * Select "Place all certificate in the following store" and then browse to select "Trusted Root Certification Authorities".
-    ![Placing the certificate in "Trusted Root Certificate Authorities"](cert_trustedroot_win8.jpg)    
-    * Click **Next** and then **Finish**. The successful import of the certificate should be confirmed.
+1. この証明書を「ローカル・マシン」の「信頼されたルート証明機関」ストアにインポートします。
+    * Visual Studio を使用して APPX ファイルを生成した後、このファイルをファイル・システムに配置します。APPX ファイルのフォルダー内に、インポートする必要のある自己署名証明書を含む証明書 (.cer) ファイルがあります。![アプリケーション・パッケージ・フォルダー内の証明書ファイル](cer_file_win8.jpg)
+    * 証明書を開くには、CER ファイルをダブルクリックします。
+    * 「証明書のインストール」をクリックします。![証明書に関する一般情報](cert_props_win8.jpg)    
+    * 「ローカル・マシン」を選択し、**「次へ」**をクリックします。![「証明書のインポート」ウィザードでのローカル・マシンの指定](cert_localmachine_win8.jpg)    
+    * 「証明書をすべて次のストアに配置する」を選択し、「信頼されたルート証明機関」を選択して参照します。![「信頼されたルート証明機関」への証明書の配置](cert_trustedroot_win8.jpg)    
+    * **「次へ」**をクリックし、**「終了」**をクリックします。証明書のインポートが成功したか確認する必要があります。
 
-The following steps describe how to perform the installation of a Windows Store application on a Windows device by using Application Center.
+以下のステップでは、Application Center を使用して Windows デバイスへの Windows Store アプリケーションのインストールを実行する方法を説明します。
 
-1. Log in to the Application Center mobile client for Windows Store applications.
-2. Select the application that you want to install to access its details.
+1. Windows Store アプリケーション用の Application Center モバイル・クライアントにログインします。
+2. インストールするアプリケーションを選択して、アプリケーションの詳細にアクセスします。
 
-    ![Details view for installing a Windows Store app](ac_details_wstore_app.jpg)
+    ![Windows Store アプリケーションをインストールするための「詳細」ビュー](ac_details_wstore_app.jpg)
 
-3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
+3. アプリケーションをインストールするには、**「インストール (Install)」**をタップします。アプリケーションがすでにインストール済みで、別のバージョンが使用可能である場合、より新しいバージョンにアップデートするか、前のバージョンに戻すかを決定できます。
 
-## Installing applications through public app stores
+## 公開アプリケーション・ストアを介したアプリケーションのインストール
 {: #installing-applications-through-public-app-stores }
-You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
+モバイル・クライアントから、サポートされている公開アプリケーション・ストアに保管されているアプリケーションにリンクし、それらのアプリケーションを互換デバイスにインストールします。この一連の操作は、公開アプリケーション・ストアの通常の手順に従って行うことができます。 
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
+Application Center の管理者は、サポートされている公開アプリケーション・ストアに保管されている選択されたアプリケーションへのリンクを作成し、作成されたリンクを、それらのアプリケーションに適合するオペレーティング・システム上の Application Center モバイル・クライアントのユーザーに対して使用可能にすることができます。 [公開アプリケーション・ストアからのアプリケーションの追加](../appcenter-console/#adding-an-application-from-a-public-app-store)を参照してください。これらのアプリケーションをモバイル・クライアントを通じて互換デバイスにインストールすることができます。 
 
-Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
+Google play に保管されている Android アプリケーションへのリンクと、Apple iTunes に保管されている iOS アプリケーションへのリンクが、自社内で作成されたプライベート・アプリケーションのバイナリー・ファイルとともにデバイス上のアプリケーション・リストに掲載されます。 
 
-1. Select an application stored in a public app store from the application list to see the application details. Instead of Install, you see Go to Store.
-2. Tap **Go to Store** to open Google play or Apple iTunes.
+1. 公開アプリケーション・ストアに保管されているアプリケーションをアプリケーション・リストから選択すると、そのアプリケーションの詳細が表示されます。 「インストール」の代わりに、「ストアに進む」が表示されます。
+2. **「ストアに進む」**をタップすると Google play または Apple iTunes が開きます。
 
     **Android**
-    ![Accessing an application in Google play from the mobile client on the device](ac_and_link_app.jpg)
+    ![デバイス上のモバイル・クライアントから Google play 内のアプリケーションへのアクセス](ac_and_link_app.jpg)
     
     **iOS**
-    ![Accessing an application in Apple iTunes from the mobile client on the device](ac_ios_link_app.jpg)
+    ![デバイス上のモバイル・クライアントから Apple iTunes 内のアプリケーションへのアクセス](ac_ios_link_app.jpg)
     
-3. Follow the usual procedure of the public app store to install the application.
+3. 公開アプリケーション・ストアの通常の手順に従ってアプリケーションをインストールします。 
 
-## Removing an installed application
+## インストール済みアプリケーションの削除 
 {: #removing-an-installed-application }
-You can remove an application that is installed on your mobile device.
+モバイル・デバイスにインストールされているアプリケーションを削除することができます。 
 
-1. Start the removal procedure that is valid for the operating system of your device.
-    * **Android**: See the procedure in step 2.
-    * **iOS**: You can remove applications only from the iOS Home screen, and not through the Application Center client. Use the normal iOS procedure for removing an application.
-    * **Windows Phone**: You can remove applications only from the Windows Phone Home screen, and not through the Application Center client. Use the normal Windows Phone procedure for removing an application.
-    * **Windows Store**: You can remove applications either from the Application Center mobile client or from the Windows home screen.
-2. **Android only**: Remove an application from an Android device.
-    * In the **Details** view of any version of the application, tap **Uninstall**. The **Uninstall** button appears in the **Details** view only when a version of the application is installed. You are requested to confirm that the application version is to be uninstalled.
-        * Tap **Uninstall** to uninstall the application version or **Cancel** to notify the application that the uninstallation command has been canceled.
+1. ご使用のデバイスのオペレーティング・システムに有効な削除手順を開始します。 
+    * **Android**: ステップ 2 の手順を参照してください。
+    * **iOS**: アプリケーションの削除は、iOS ホーム画面からのみ行うことができ、Application Center クライアントを通じて行うことはできません。アプリケーションを削除する通常の iOS 手順を使用してください。
+    * **Windows Phone**: アプリケーションの削除は、Windows Phone ホーム画面からのみ行うことができ、Application Center クライアントを通じて行うことはできません。アプリケーションを削除する通常の Windows Phone 手順を使用してください。
+    * **Windows Store**: アプリケーションの削除は、Application Center モバイル・クライアントまたは Windows ホーム画面から行うことができます。
+2. **Android のみ**: Android デバイスからアプリケーションを削除します。
+    * アプリケーションの任意のバージョンの**「詳細 (Details)」**ビューで、**「アンインストール (Uninstall)」**をタップします。**「アンインストール (Uninstall)」**ボタンは、アプリケーションのバージョンがインストールされているときだけ**「詳細 (Details)」**ビューに表示されます。アプリケーション・バージョンのアンインストールを確認するよう要求されます。
+        * **「アンインストール (Uninstall)」**をタップすると、アプリケーション・バージョンがアンインストールされます。**「キャンセル (Cancel)」**をタップすると、アンインストール・コマンドが取り消されたことをアプリケーションに通知します。
 
-## Showing details of a specific application version
+## 特定のアプリケーション・バージョンの詳細の表示
 {: #showing-details-of-a-specific-application-version }
-You can show the details of the selected version of an application by following the appropriate procedure for an Android or iOS phone or tablet, a Windows Phone device, or a Windows device.
+Android または iOS 電話もしくはタブレット、Windows Phone デバイス、あるいは Windows デバイスの適切な手順に従って、選択したバージョンのアプリケーションの詳細を表示することができます。
 
-1. Show details of a specific application version on a mobile device by selecting the appropriate procedure for your device.
-    * A Windows Phone, Android, or iOS phoneA phone; see step 2.
-    * A Windows device; see step 3
-    * A tablet; see step 4.
-2. **Windows Phone, Android, iOS only**: Show details of a specific application version on a Windows Phone, Android, or iOS phone.
-    * Tap **Select a version** to navigate to the version list view.
-    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg) 
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-3. Windows only: Show details of a specific Windows Store application version on a Windows device. If more than one version is available for the Windows Store application, then you can select which version that you want to install.
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-4. Tablet devices only: Show details of a specific application version on a tablet.
-    * Tap **Select version**.
-    * In the menu, select the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
+1. 自分のデバイスに合った適切な手順を選択して、特定のアプリケーション・バージョンの詳細をモバイル・デバイスで表示します。
+    * Windows Phone、Android、または iOS 電話、電話; ステップ 2 を参照。
+    * Windows デバイス; ステップ 3 を参照。
+    * タブレット; ステップ 4 を参照。
+2. **Windows Phone、Android、iOS のみ**: 特定のアプリケーション・バージョンの詳細を Windows Phone、Android、または iOS の電話で表示します。
+    * **「バージョンの選択 (Select a version)」**をタップして、バージョン・リスト・ビューに移動します。
+   ![Windows Phone、Android、または iOS の電話のバージョンのリストで選択された特定のアプリケーション・バージョン](ac_version_select.jpg) 
+    * 該当のアプリケーション・バージョンをタップします。**「詳細 (Details)」**ビューが更新され、選択したアプリケーション・バージョンの詳細が表示されます。
+3. Windows のみ: 特定の Windows Store アプリケーション・バージョンの詳細を Windows デバイスで表示します。Windows Store アプリケーションの使用可能なバージョンが複数ある場合は、インストールするバージョンを選択できます。
+    * 該当のアプリケーション・バージョンをタップします。**「詳細 (Details)」**ビューが更新され、選択したアプリケーション・バージョンの詳細が表示されます。
+4. タブレット・デバイスのみ: 特定のアプリケーション・バージョンの詳細をタブレットで表示します。
+    * **「バージョンの選択 (Select a version)」**をタップします。
+    * メニューで、該当のアプリケーション・バージョンを選択します。**「詳細 (Details)」**ビューが更新され、選択したアプリケーション・バージョンの詳細が表示されます。
 
-## Updating an application
+## アプリケーションの更新
 {: #updating-an-application }
-Follow this procedure to make the latest versions of favorite and recommended apps available on your device. Applications that are marked as favorites and that have an updated version are listed in the **Updates** view. The applications that are marked as recommended by the Application Center server administrator are also listed in the **Updates** view, even if they are not favorites.
+以下の手順に従い、お気に入りアプリケーションおよび推奨アプリケーションの最新バージョンをデバイスで使用できるようにします。お気に入りとしてマーク付けされ、かつ更新されたバージョンがあるアプリケーションは、**「更新 (Update)」**ビューにリストされます。Application Center サーバー管理者によって推奨としてマーク付けされたアプリケーションも、たとへお気に入りではなくても、**「更新 (Update)」**ビューにリストされます。
 
-If a more up-to-date version of an installed application is available on the server, it is listed under **Update or Recommended**.
+インストール済みアプリケーションのより最新のバージョンがサーバーにある場合は、**「更新または推奨 (Update or Recommended)」**の下にリストされます。
 
-1. In the **Updates** view, navigate to the **Details** view.
-2. In the **Details** view, select a newer version of the application or take the latest available version.
-3. **Android and Windows 8 Universal**: On Android and Windows 8 Universal devices, tap **Update**.
-4. **iOS only**: On iOS devices, tap **Install latest**.
-5. Follow the appropriate application installation procedure.
-    * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-    * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-    * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-    * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
+1. **「更新 (Update)」**ビューで、**「詳細 (Details)」**ビューに移動します。
+2. **「詳細 (Details)」**ビューで、より新しいアプリケーション・バージョンを選択するか、または使用可能な最新のバージョンを取得します。
+3. **Android および Windows 8 Universal**: Android デバイスおよび Windows 8 Universal デバイスでは、**「更新」**をタップします。
+4. **iOS のみ**: iOS デバイスでは、**「最新をインストール (Install latest)」**をタップします。
+5. 適切なアプリケーション・インストール手順に従います。
+    * [Android デバイスへのアプリケーションのインストール](#installing-an-application-on-an-android-device)
+    * [iOS デバイスへのアプリケーションのインストール](#installing-an-application-on-an-ios-device)
+    * [Windows Phone デバイスへのアプリケーションのインストール](#installing-an-application-on-a-windows-phone-device)
+    * [Windows デバイスへの Windows Store アプリケーションのインストール](#installing-a-windows-store-application-on-a-windows-device)
 
-## Upgrading the Application Center client automatically
+## Application Center クライアントの自動アップグレード
 {: #upgrading-the-application-center-client-automatically }
-You can enable automatic detection of new versions of the client application. Then, you can choose whether to download and install the new version on your mobile device. This feature is supported for iOS, Android, and Windows Phone.
+クライアント・アプリケーションの新規バージョンの自動検出を使用可能にすることができます。この後で、新規バージョンをモバイル・デバイスにダウンロードしてインストールするかどうか選択できます。このフィーチャーは、iOS、Android、および Windows Phone でサポートされています。
 
-New versions of the mobile client application that are available on the Application Center server can be detected automatically. When this feature is enabled, a more recent version of the application, if it exists, can be detected at start up or each time that the Available applications view is refreshed.
+Application Center サーバー上で使用可能なモバイル・クライアント・アプリケーションの新規バージョンが自動的に検出できます。このフィーチャーを使用可能にすると、アプリケーションの新しいバージョンが存在する場合、始動時または「使用可能なアプリケーション」ビューが最新表示されるたびに新しいバージョンを検出できます。
 
-f a later version of the application is detected, you are requested to download and install the later version.
+アプリケーションの新しいバージョンが検出されると、ユーザーは新しいバージョンをダウンロードしてインストールするよう求められます。
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Application Center クライアント・アプリケーションの自動アップグレードは、**appCenterAutoUpgrade** プロパティーが **true** に設定されることにより、デフォルトで使用可能になっています。このプロパティーは、Application Center の {{site.data.keys.product_full }} プロジェクトの **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** にあります。
 
-If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
+自動アップグレードを使用不可にするには、このプロパティーを false に設定し、必要なプラットフォームのプロジェクトを再ビルドする必要があります。
 
-1. When a later version of the client is detected, tap **OK** to start the download and installation sequence.
+1. クライアントの新しいバージョンが検出されたら、**「OK」**をタップして、ダウンロードとインストールのシーケンスを開始します。
 
-    ![Detection of a later version of the client application available on the server](ac_client_autoupgrade_detect.jpg)
+    ![サーバー上で使用可能なクライアント・アプリケーションの新しいバージョンの検出](ac_client_autoupgrade_detect.jpg)
 
-2. Tap **Install** to install the later version of the application.
+2. **「インストール」**をタップして、アプリケーションの新しいバージョンをインストールします。
 
-    ![Confirm installation of the updated version of the application](ac_client_autoupgrade_install_app.jpg)
+    ![アプリケーションの更新済みバージョンのインストールの確認](ac_client_autoupgrade_install_app.jpg)
 
-3. Tap **Open** to start the updated application.
+3. **「開く」**をタップして、更新済みアプリケーションを始動します。
 
-    ![Starting the updated application](ac_client_autoupgrade_start_app.jpg)
+    ![更新済みアプリケーションの始動](ac_client_autoupgrade_start_app.jpg)
     
-You must log in to the updated version of the application to run it.
+アプリケーションの更新済みバージョンを実行するには、このバージョンにログインする必要があります。
 
-![Logging in to the new version of the client application](ac_client_autoupgrade_login_new_version.jpg)
+![クライアント・アプリケーションの新規バージョンへのログイン](ac_client_autoupgrade_login_new_version.jpg)
 
-**Note:** To upgrade the Application Center client, the following conditions apply:
+**注:** Application Center クライアントをアップグレードするには、次の条件が適用されます。
 
-1. The new Application Center client must use the same package name or bundle identifier as the old client.
-2. On iOS, the new Application Center client must be signed with the same provisioning profile as the old client.
-3. On Android, the new Application Center client must have the same signature as the old client.
-4. On Windows Phone, the new Application Center client must be signed with the same company account as the old client.
+1. 新規 Application Center クライアントは、古いクライアントと同じパッケージ名またはバンドル ID を使用する必要がある。
+2. iOS で、新規 Application Center クライアントは、古いクライアントと同じプロビジョニング・プロファイルを使用して署名されている必要がある。
+3. Android で、新規 Application Center クライアントは、古いクライアントと同じ署名を持っている必要がある。
+4. Windows Phone で、新規 Application Center クライアントは、古いクライアントと同じ企業アカウントを使用して署名されている必要がある。
 
-## Reverting an installed application
+## インストール済みアプリケーションを元に戻す
 {: #reverting-an-installed-application }
-You can revert the version of an installed application if an earlier version exists on the server.
+インストール済みアプリケーションのバージョンを戻すことができます。ただし、その場合は、それより前のバージョンがサーバーに存在していなければなりません。
 
-To replace the currently installed version of an application with an earlier version, from the **Catalog**, **Updates**, or **Favorites** view, navigate to the Details view. In the **Details** view, select an earlier version. See [Showing details of a specific application version](#showing-details-of-a-specific-application-version) for information about how to display details of a specific application version on a mobile device.
+現在インストールされているアプリケーション・バージョンをそれより前のバージョンで置き換えるには、**「カタログ (Catalog)」**、**「更新 (Update)」**、または**「お気に入り (Favorites)」**ビューから、「詳細 (Details)」ビューに移動します。**「詳細 (Details)」**ビューで、前のバージョンを選択します。モバイル・デバイスで特定のアプリケーション・バージョンの詳細を表示する方法については、[『特定のアプリケーション・バージョンの詳細の表示』](#showing-details-of-a-specific-application-version)を参照してください。
 
-### On Android
+### Android の場合
 {: #on-android }
-If the installed version of the Android operating system is earlier than 4.2.2, tap **Revert**.  
-If the installed version of the Android operating system is 4.2.2 or later, you must uninstall the current version before you can install the earlier version.
+Android オペレーティング・システムのインストール済みバージョンが 4.2.2 より前の場合は、**「元に戻す (Revert)」**をタップします。  
+Android オペレーティング・システムのインストール済みバージョンが 4.2.2 以降の場合は、現行バージョンをアンインストールしなければ、前のバージョンをインストールできません。
 
-Then, follow the procedure documented in [Installing an application on an Android device](#installing-an-application-on-an-android-device).
+次に、[『Android デバイスへのアプリケーションのインストール』](#installing-an-application-on-an-android-device)に記載されている手順に従います。
 
-### On iOS
+### iOS の場合
 {: #on-ios }
-Use the normal procedure of the operating system to remove the application.  
-Tap **Install** to install the earlier version of the application. Follow the procedure documented in [Installing an application on an iOS device](#installing-an-application-on-an-ios-device).
+オペレーティング・システムの通常の手順を使用してアプリケーションを削除します。  
+**「インストール (Install)」**をタップして、前のアプリケーション・バージョンをインストールします。[『iOS デバイスへのアプリケーションのインストール』](#installing-an-application-on-an-ios-device)に記載されている手順に従います。
 
-### On Windows Phone
+### Windows Phone の場合
 {: #on-windows-phone }
-Tap **Revert**. Follow the procedue documented in [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device).
+**「元に戻す (Revert)」**をタップします。[『Windows Phone デバイスへのアプリケーションのインストール』](#installing-an-application-on-a-windows-phone-device)に記載されている手順に従います。
 
-## Marking or unmarking a favorite app
+## お気に入りアプリケーションのマーク付けまたはマーク解除 
 {: #marking-or-unmarking-a-favorite-app }
-Mark your favorite apps or unmark an app to have it removed from the favorites list.
+お気に入りのアプリケーションにマークを付けたり、お気に入りリストから削除するためにアプリケーションをマーク解除したりします。
 
-An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
+デバイスでお気に入りとしてマーク付けされたアプリケーションは、そのアプリケーションに関心があることを示します。その後、このアプリケーションはお気に入りアプリケーションのリストに掲載されて、簡単に見つかるようになります。このアプリケーションは、所有するデバイスのうち、このアプリケーションと互換性のあるすべてのものに表示されます。このアプリケーションの後継バージョンが Application Center にあると、このアプリケーションは**「更新 (Update)」**ビューにリストされます。
 
-To mark or unmark an application as a favorite app, tap the Favorites icon <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Icon in the shape of a star that indicates a favorite app"/>. in the header of the **Details** view.  
+アプリケーションをお気に入りアプリケーションとしてマーク付けしたりマーク解除したりするには、**「詳細」**ビューのヘッダーにある「お気に入り」アイコン<img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="お気に入りアプリケーションを示す星形のアイコン"/> をタップします。   
 
-An installed application is automatically marked as a favorite app.
+インストールされたアプリケーションは自動的にお気に入りアプリケーションとしてマーク付けされます。
 
-## Submitting a review for an installed application
+## インストール済みアプリケーションのレビューの送信
 {: #submitting-a-review-for-an-installed-application }
-You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
+モバイル・デバイスにインストールされているアプリケーション・バージョンを検討することができます。レビューには評価とコメントが含まれていなければなりません。アプリケーション・バージョンのレビューを送信できるのは、そのバージョンがモバイル・デバイスにインストールされている場合だけです。
 
-1. In the **Details** view, initiate your review.
-    * On iOS phones and tablets, tap **Review version X**.
-    * On Android phones and tablets, tap **Review version X**.
-2. Enter a nonzero star rating.
+1. **「詳細 (Details)」**ビューで、レビューを開始します。
+    * iOS 電話およびタブレットでは、**「レビュー・バージョン X (Review version X)」**をタップします。
+    * Android 電話およびタブレットでは、**「レビュー・バージョン X (Review version X)」**をタップします。
+2. ゼロ以外の星評価を入力します。
 
-    On mobile devices with touchscreens, tap 1 to 5 stars to represent your approval rating of the version of the application. One star represents the lowest level of appreciation and five stars represent the highest level of appreciation.
+    タッチスクリーンがあるモバイル・デバイスでは、アプリケーションのバージョンの賛同評価を表す星 (1 つから 5 つ) をタップします。星 1 つはアプリケーションのレベルが最低であることを表します。5 つ星はアプリケーションのレベルが最高であることを表します。
 
-3. Enter a comment about this version of the application.
-4. Tap **Submit** to send your review to the Application Center.
+3. アプリケーションのこのバージョンに関するコメントを入力します。
+4. **「送信 (Submit)」**をタップして、レビューを Application Center に送ります。
 
-## Viewing reviews
+## レビューの表示
 {: #viewing-reviews }
-You can view reviews of a specific version of an application or of all versions of an application.  
+アプリケーションの特定のバージョンまたはアプリケーションのすべてのバージョンのレビューを表示することができます。  
 
-Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
+レビューは、最新のレビューから降順に表示されます。レビューの数が 1 画面を超えている場合は、**「さらにロード (Load more)」**をタップすると、さらにレビューが表示されます。Android、iOS、および Windows Phone デバイスでは、レビューの詳細がリストに表示されます。
 
-### Viewing reviews of a specific version
+### 特定のバージョンのレビューの表示 
 {: #viewing-reviews-of-a-specific-version }
-The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
-In the **Details** view of an application version:
+**「詳細 (Details)」**ビューは常に特定のバージョンの詳細を表示します。電話では、レビューはそのバージョンのレビューです。  
+アプリケーション・バージョンの**「詳細 (Details)」**ビューでは次のとおりです。
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the Reviews view.
-* On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
+* Windows Phone、Android、または iOS の電話の場合は、**「レビューの表示」**をタップして「レビュー」ビューにナビゲートします。
+* タブレットの場合は、**「レビュー」** xx をタップします。ここで、xx はアプリケーションの表示バージョンです。
 
-### Viewing reviews of all versions of an application
+### アプリケーションのすべてのバージョンのレビューの表示
 {: #viewing-reviews-of-all-versions-of-an-application }
-In the **Details** view of an application version:
+アプリケーション・バージョンの**「詳細 (Details)」**ビューでは次のとおりです。
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.
-* On a tablet, tap **All Reviews**.
+* Windows Phone、Android、または iOS の電話の場合は、**「レビューの表示」**をタップして**「レビュー」**ビューにナビゲートします。次に、設定アイコンをタップします。**「すべてのバージョン」**をタップし、この選択を確認します。
+* タブレットの場合は、**「すべてのレビュー」**をタップします。

@@ -1,36 +1,37 @@
 ---
 layout: tutorial
-title: Migrating existing adapters to work under MobileFirst Server V8.0.0
-breadcrumb_title: Migrating existing adapters
+title: MobileFirst Server V8.0.0 で動作するようにするための既存のアダプターのマイグレーション
+breadcrumb_title: 既存のアダプターのマイグレーション
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Starting with v8.0 of {{ site.data.keys.mf_server }}, adapters are Maven projects. Learn how to upgrade adapters that were developed under earlier versions of {{ site.data.keys.mf_server }}.
+{{site.data.keys.mf_server }} の v8.0 以降、アダプターは Maven プロジェクトになりました。以前のバージョンの {{site.data.keys.mf_server }} で開発されたアダプターをアップグレードする方法について説明します。
 
-This page describes the steps to take to migrate adapters that were developed to work with MobileFirst Server V6.2 or later so that they work with {{ site.data.keys.mf_server }} v8.0  
-To start, study the changes in adapter APIs that are described in [Deprecated features and API elements and Server-side API changes in v8.0](../../product-overview/release-notes/deprecated-discontinued/).
+このページでは、MobileFirst Server V6.2 以降で動作するように開発されたアダプターをマイグレーションして、それらが {{site.data.keys.mf_server }} v8.0 で動作するようにするために実行するステップについて説明します。  
+まず、[v8.0 で非推奨となったフィーチャー、および v8.0 での API エレメントとサーバー・サイド API の変更](../../product-overview/release-notes/deprecated-discontinued/)に記載されている、アダプター API の変更について調べます。
 
-* Under certain conditions, existing adapters work as-is with {{ site.data.keys.mf_server }} v8.0. See [Using older adapters as-is under {{ site.data.keys.mf_server }} V8.0](#using-older-adapters-as-is-under-mobilefirst-server-v-80).
-* In most cases, you need to upgrade the adapters. For Java™ adapters, see [Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80). For JavaScript adapters, see [Migrating JavaScript adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80).
+* 特定の条件では、既存のアダプターはそのまま {{site.data.keys.mf_server }} v8.0 で動作します。
+[{{site.data.keys.mf_server }} V8.0 で古いアダプターをそのまま使用する](#using-older-adapters-as-is-under-mobilefirst-server-v-80)を参照してください。
+* ほとんどの場合、アダプターをアップグレードする必要があります。Java™ アダプターの場合は、[{{site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。JavaScript アダプターの場合は、[{{site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの JavaScript アダプターのマイグレーション](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。
 
-## Using older adapters as-is under {{ site.data.keys.mf_server }} v8.0
+## {{site.data.keys.mf_server }} v8.0 で古いアダプターをそのまま使用する
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
-An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v8.0, unless it matches any of the following criteria:
+既存のアダプターは、以下のいずれの条件にも一致していなければ、{{site.data.keys.mf_server }} v8.0 にそのままデプロイできます。
 
-| Adapter type | Condition | 
+| アダプター・タイプ | 条件 | 
 |--------------|-----------|
-| Java | Uses the PushAPI or SecurityAPI interfaces | 
-| JavaScript | {::nomarkdown}<ul><li>Was built using IBM  Worklight  V6.2 or earlier.</li><li>Uses a connection type that is not HTTP or SQL.</li><li>Contains procedures with securityTest customization</li><li>Contains procedures that use the user identity to connect to the back end</li><li>Uses any of the following APIs:<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
+| Java | PushAPI または SecurityAPI インターフェースを使用している | 
+| JavaScript | {::nomarkdown}<ul><li>IBM Worklight V6.2 以前を使用してビルドされた。</li><li>HTTP でも SQL でもない接続タイプを使用している。</li><li>securityTest のカスタマイズが適用されたプロシージャーが含まれている</li><li>ユーザー ID を使用してバックエンドに接続するプロシージャーが含まれている</li><li>以下のいずれかの API を使用している<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
-## Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0
+## {{site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション
 {: #migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80}
-1. Create a Maven adapter project with the archetype **adapter-maven-archetype-java**. When setting the parameter **artifactId** use the adapter name and for the parameter **package** use the same package as the one in the existing Java adapter. For more information, see [Creating Java adapters](../../adapters/creating-adapters).
-2. Overwrite the adapter-descriptor file (**adapter.xml**) in the **src/main/adapter-resources** folder of the new adapter project that you created in Step 1. For more details about the descriptor, see The [Java adapter-descriptor file](../../adapters/java-adapters/#the-adapter-resources-folder).
-3. Remove all the files from the **src/main/java** folder of your new adapter project. Then, copy all the Java files from the **src/** folder of your old Java adapter project, but preserve the same folder structure. Copy all the non-Java files from the **src** folder of the old adapter to the **src/main/resources** folder of the new adapter. By default, **src/main/resources** does not exist, so if the adapter contains non-Java files, create it. For the changes in Java adapter APIs, see [Server-side API changes in v8.0](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80).
+1. archetype として **adapter-maven-archetype-java** を使用して、Maven アダプター・プロジェクトを作成します。パラメーター **artifactId** を設定する際に、アダプター名を使用します。パラメーター **package** には、既存の Java アダプター内のものと同じパッケージを使用します。詳しくは、[Java アダプターの作成](../../adapters/creating-adapters)を参照してください。
+2. 既存の Java アダプターから作成されたプロジェクト内の **src/main/adapter-resources** にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[Java アダプター記述子ファイル](../../adapters/java-adapters/#the-adapter-resources-folder)を参照してください。
+3. 既存の Java アダプターから作成されたプロジェクト内の **src/main/java** にあるすべてのファイルを削除し、古いアダプターの **src** フォルダー内のすべての Java ファイルをコピーします。ただし、同じフォルダー構造を保持してください。古いアダプターの **src** フォルダーにあるすべての非 Java ファイルを新しいアダプターの **src/main/resources** にコピーします。デフォルトでは、**src/main/resources** は存在しないため、アダプターに非 Java ファイルが含まれている場合は、そのフォルダーを作成します。Java アダプター API の変更については、[V8.0 でのサーバー・サイド API の変更](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。
 
-   The following diagrams illustrate the structure of adapters up to v7.1 and Maven adapters, starting from v8.0:
+   以下の図で、v7.1 までのアダプターおよび v8.0 からの Maven アダプターの構造を示します。 
 
    ```xml
     ├── adapters
@@ -44,7 +45,7 @@ An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v
     │                   └── RSSAdapterResource.java
    ```
     
-   New structure of a Java adapter:
+   新しい Java アダプター構造:
 
    ```xml
     ├── pom.xml
@@ -59,12 +60,12 @@ An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v
     │                   └── RSSAdapterResource.java
    ```
 
-4. Using either of the following methods, add any JAR files that are not in the Maven repository:
-    * Add the JAR files to a local repository, as described in [Guide to installing third-party JARs](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html), then add them to **dependencies** element.
-    * Add the JAR files to the dependencies element by using the **systemPath** element. For more information, see [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).
+4. 以下のいずれかの方法を使用して、Maven リポジトリーにない JAR ファイルを追加します。
+    * 『[Guide to installing 3rd party JARs](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html)』の説明に従って JAR ファイルをローカル・リポジトリーに追加してから、それらのファイルを **dependencies** エレメントに追加する。
+    * **systemPath** エレメントを使用して JAR ファイルを dependencies エレメントに追加する。詳しくは、[Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) を参照してください。
 
-## Migrating JavaScript adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0
+## {{site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの JavaScript アダプターのマイグレーション
 {: #migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80 }
-1. Create a Maven adapter project with the archetype **adapter-maven-archetype-http or adapter-maven-archetype-sql**. When setting the parameter **artifactId** use the adapter name. For more information, see [Creating JavaScript adapters](../../adapters/creating-adapters).
-2. Overwrite the adapter-descriptor file (**adapter.xml**) in the **src/main/adapter-resources** folder of the new adapter project that you created in Step 1. For details about the descriptor, see The [JavaScript adapter-descriptor file](../../adapters/javascript-adapters/#the-adapter-resources-folder).
-3. Overwrite the JavaScript files in the **src/main/adapter-resources/js** folder of your new adapter project.
+1. archetype として **adapter-maven-archetype-http または adapter-maven-archetype-sql** を使用して、Maven アダプター・プロジェクトを作成します。パラメーター **artifactId** を設定する際に、アダプター名を使用します。詳しくは、[JavaScript アダプターの作成](../../adapters/creating-adapters)を参照してください。
+2. 既存の JavaScript アダプターから作成されたプロジェクト内の **src/main/adapter-resources** にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[JavaScript アダプター記述子ファイル](../../adapters/javascript-adapters/#the-adapter-resources-folder)を参照してください。
+3. 既存の JavaScript アダプター JavaScript ファイルから作成したプロジェクト内の JavaScript ファイル **src/main/adapter-resources/js** を上書きします。

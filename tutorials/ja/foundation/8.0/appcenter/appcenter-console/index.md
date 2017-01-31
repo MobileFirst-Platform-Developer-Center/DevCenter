@@ -1,497 +1,568 @@
 ---
 layout: tutorial
-title: The Application Center console
+title: Application Center コンソール
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-With the Application Center console, you can manage the repository of the Application Center and your applications.
+Application Center コンソールを使用して、Application Center のリポジトリーおよびアプリケーションを管理することができます。
 
-The Application Center console is a web application to manage the repository of the Application Center. The Application Center repository is the central location where you store the mobile applications that can be installed on mobile devices.
+Application Center コンソールは、Application Center のリポジトリーを管理する Web アプリケーションです。Application Center のリポジトリーは、モバイル・デバイスにインストールできるモバイル・アプリケーションが集中的に保管される中心的な場所です。
 
-Use the Application Center console to:
+Application Center コンソールを使用して以下のことを行います。
 
-* Upload applications that are written for these operating systems: Android, iOS, Windows 8 (Windows Store packages only), or Windows Phone 8.
-* Manage several different versions of mobile applications.
-* Review the feedback of testers of mobile applications.
-* Define the users who have the rights to list and install an application on the mobile devices.
-* Track which applications are installed on which devices.
+* Android、iOS、Windows 8 (Windows Store パッケージのみ)、または Windows Phone 8 の各オペレーティング・システム用に作成されたアプリケーションをアップロードする。
+* バージョンの異なる複数のモバイル・アプリケーションを管理する。
+* モバイル・アプリケーションのテスターのフィードバックを検討する。
+* アプリケーションをリストしてモバイル・デバイスにインストールする権限を有するユーザーを定義する。
 
-> **Notes:**
+* どのアプリケーションがどのデバイスにインストールされているかをトラッキングする。
+
+> **注:**
 >
-> * Only users with the administrator role can log in to the Application Center console.
-> * Multicultural support: the user interface of the Application Center console has not been translated.
+> * Application Center コンソールにログインできるユーザーは、管理者ロールを持つユーザーのみです。
+> * 多文化サポート: Application Center コンソールのユーザー・インターフェースは翻訳されていません。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Starting the Application Center console](#starting-the-application-center-console)
-* [Troubleshooting a corrupted login page (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
-* [Troubleshooting a corrupted login page in Safari browsers](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
-* [Application Management](#application-management)
-* [Adding a mobile application](#adding-a-mobile-application)
-* [Adding an application from a public app store](#adding-an-application-from-a-public-app-store)
-* [Application properties](#application-properties)
-* [Editing application properties](#editing-application-properties)
-* [Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
-* [Downloading an application file](#downloading-an-application-file)
+* [Application Center コンソールの開始
+](#starting-the-application-center-console)
+* [破損したログイン・ページのトラブルシューティング (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
+* [Safari ブラウザーでの破損したログイン・ページのトラブルシューティング](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
+* [Application Management ](#application-management)
+* [モバイル・アプリケーションの追加](#adding-a-mobile-application)
+* [公開アプリケーション・ストアからのアプリケーションの追加](#adding-an-application-from-a-public-app-store)
+* [アプリケーション・プロパティー](#application-properties)
+* [アプリケーション・プロパティーの編集](#editing-application-properties)
+* [{{site.data.keys.mf_server }} および Application Center でのモバイル・アプリケーションのアップグレード](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [アプリケーション・ファイルのダウンロード
+](#downloading-an-application-file)
 
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+Application Center コンソールで、ユーザーから送られてきたモバイル・アプリケーション・バージョンに関するレビューを見ることができます。
 
-* [User and group management](#user-and-group-management)
-* [Access control](#access-control)
-* [Managing access control](#managing-access-control)
-* [Device Management](#device-management)
-* [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
-* [Signing out of the Application Center console](#signing-out-of-the-application-center-console)
 
-## Starting the Application Center console
+* [ユーザーおよびグループ管理
+](#user-and-group-management)
+* [アクセス制御](#access-control)
+* [アクセス制御の管理](#managing-access-control)
+* [デバイス管理](#device-management)
+* [Windows 8 Universal のアプリケーション登録トークン](#application-enrollment-tokens-in-windows-8-universal)
+* [Application Center コンソールからのサインアウト](#signing-out-of-the-application-center-console)
+
+## Application Center コンソールの開始
+
 {: #starting-the-application-center-console }
-You can start the Application Center with your web browser and log in if you have the administrator role.
+管理者ロールを持っていれば、Web ブラウザーで Application Center を開始してログインすることができます。
 
-1. Start a web browser session on your desktop.
-2. Contact your system administrator to obtain the address and port of the server where the Application Center is installed.
-3. Enter the following URL: `http://server/appcenterconsole`
-4. Where **server** is the address and port of the server where the Application Center is installed: `http://localhost:9080/appcenterconsole`
 
-Log in to the Application Center console. Contact your system administrator to get your credentials so that you can log in to the Application Center console.
+1. デスクトップで Web ブラウザー・セッションを開始します。
+2. Application Center がインストールされているサーバーのアドレスとポートをシステム管理者から取得します。
 
-![Login of the Application Center console](ac_startconsole.jpg)
+3. 次の URL を入力します。`http://server/appcenterconsole`
+4. ここで **server** は、Application Center がインストールされているサーバーのアドレスとポートです。`http://localhost:9080/appcenterconsole`
 
-> **Note:** Only users with the administrator role can log in to the Application Center console.
+Application Center コンソールにログインします。Application Center コンソールにログインできるように、システム管理者から資格情報を取得します。
 
-## Troubleshooting a corrupted login page (Apache Tomcat)
+
+![Application Center コンソールのログイン
+](ac_startconsole.jpg)
+
+> **注:** Application Center コンソールにログインできるユーザーは、管理者ロールを持つユーザーのみです。
+
+## 破損したログイン・ページのトラブルシューティング (Apache Tomcat)
 {: #troubleshooting-a-corrupted-login-page-apache-tomcat }
-You can recover from a corrupted login page of the Application Center console when the Application Center is running in Apache Tomcat.
+Application Center が Apache Tomcat で稼働しているときは、Application Center コンソールの破損したログイン・ページから復旧することができます。
 
-When the Application Center is running in Apache Tomcat, the use of a wrong user name or password might corrupt the login page of the Application Center console.
+Application Center が Apache Tomcat で稼働しているとき、誤ったユーザー名やパスワードを使用すると、Application Center コンソールのログイン・ページでエラーが発生することがあります。
 
-When you try to log in to the console with an incorrect user name or an incorrect password, you receive an error message. When you correct the user name or password, instead of a successful login, you have one of the following errors; the message depends on your web browser.
+正しくないユーザー名またはパスワードを使用してコンソールへのログインを試みると、エラー・メッセージが表示されます。ユーザー名またはパスワードを修正すると、
+正常にログインせずに、次のいずれかのエラーが発生します。メッセージは Web ブラウザーによって異なります。
 
-* The same error message as before
-* The message **The connection was reset**
-* The message **The time allowed for login exceeded**
+* 前と同じエラー・メッセージ
+* メッセージ「**接続がリセットされました**」
+* メッセージ「**ログインに許可された時間を超過しました**」
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
+この動作は、Apache Tomcat による j_security_check サーブレットの管理に関連しています。この動作は Apache Tomcat に特有のものであり、どの WebSphere Application Server プロファイルでも発生しません。
 
-The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
+回避策としては、ログインの失敗後、ブラウザーの最新表示ボタンをクリックして、Web ページを最新表示します。次に、正しい資格情報を入力します。
 
-## Troubleshooting a corrupted login page in Safari browsers
+## Safari ブラウザーでの破損したログイン・ページのトラブルシューティング
 {: #troubleshooting-a-corrupted-login-page-in-safari-browsers }
-You can recover from a corrupted login page of the Application Center console when you use the Safari browser.
+Safari ブラウザーを使用している場合、Application Center コンソールの破損したログイン・ページから復旧することができます。
 
-When the Application Center console is open in a Safari browser, you might navigate away from the console. When you come back to the console, you might see the login page. Even though you enter the correct login details, you see the following message instead of a successful login: **HTTP Status 404 - appcenterconsole/j_security_check.**
+Safari ブラウザーで Application Center コンソールを開いているときは、コンソールから離れてナビゲートする場合があります。コンソールに戻ると、ログイン・ページが表示される場合があります。正しいログイン詳細を入力したとしても、ログイン成功の代わりに次のメッセージ **HTTP 状況 404 - appcenterconsole/j_security_check** が表示されます。
 
-The behavior is linked to a caching problem in the Safari browser.
+この動作は、Safari ブラウザーでのキャッシュの問題に関係しています。
 
-The workaround is to trigger a forced reload when you see the login page without entered or autocompleted credentials. Here is how to trigger a forced reload:
+回避策は、ログイン・ページが表示されたときに、資格情報を入力せず、自動入力された資格情報も使用せずに、強制再ロードを起動することです。以下に、強制再ロードを起動する方法を示します。
 
-* On a Mac computer, press Shift + the **Refresh** button.
-* On an iPad or iPhone device: Double-click the refresh button or clean the cache by closing Safari: you double-click the home button and then swipe Safari away.
+* Mac コンピューターの場合、Shift +**「更新」**ボタンを押します。
+* iPad デバイスまたは iPhone デバイスの場合、更新ボタンをダブルクリックするか、Safari を閉じてキャッシュを消去します。ホーム・ボタンをダブルクリックし、Safari をスワイプで一掃します。
 
-## Application Management
+## Application Management 
 {: #application-management }
-You can use Application Management to add new applications and versions and to manage those applications.  
-The Application Center enables you to add new applications and versions and to manage those applications.
+Application Management を使用して、新しいアプリケーションやバージョンを追加したり、それらのアプリケーションを管理したりすることができます。
+  
+Application Center を使用して、新しいアプリケーションやバージョンを追加したり、それらのアプリケーションを管理したりすることができます。
 
-Click **Applications** to access Application Management.
 
-### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
+**「アプリケーション」**をクリックして Application Management にアクセスします。
+
+
+### WebSphere Application Server Liberty プロファイルまたは Apache Tomcat にインストールされる Application Center
 {: #application-center-installed-on-websphere-application-server-liberty-profile-or-on-apache-tomcat }
-Installations of the Application Center on these application servers, during installation of {{ site.data.keys.product_full }} with the IBM  Installation Manager package, have two different users defined that you can use to get started.
+これらのアプリケーション・サーバーへの Application Center のインストールでは、IBM Installation Manager パッケージを使用した {{site.data.keys.product_full }} のインストールで初めに使用できる 2 つの異なるユーザーが定義されています。
 
-* User with login **demo** and password **demo**
-* User with login **appcenteradmin** and password **admin**
+* ログイン **demo** とパスワード **demo** を持つユーザー
+* ログイン **appcenteradmin** とパスワード **admin** を持つユーザー
 
-### WebSphere Application Server full profile
+### WebSphere Application Server フル・プロファイル
 {: #websphere-application-server-full-profile }
-If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+Application Center を WebSphere Application Server フル・プロファイルにインストールした場合は、appcenteradmin という名前の 1 人のユーザーが、デフォルトではインストーラーによって指示されたパスワードで作成されます。
 
-![Available applications](ac_app_mgt.jpg)
+![使用可能なアプリケーション
+](ac_app_mgt.jpg)
 
-## Adding a mobile application
+## モバイル・アプリケーションの追加
 {: #adding-a-mobile-application }
-You can add applications to the repository on the server by using the Application Center console. These applications can then be installed on mobile devices by using the mobile client.
+Application Center コンソールを使用して、サーバー上のリポジトリーにアプリケーションを追加できます。その後、モバイル・クライアントを使用して、これらのアプリケーションをモバイル・デバイスにインストールすることができます。
 
-In the Applications view, you can add applications to Application Center. Initially the list of applications is empty and you must upload an application file. Application files are described in this procedure.
 
-To add an application to make it available for installation on mobile devices:
+「アプリケーション」ビューで、Application Center にアプリケーションを追加することができます。初めはアプリケーションのリストが空になっています。アプリケーション・ファイルをアップロードする必要があります。
+アプリケーション・ファイルについては、この手順で説明します。
 
-1. Click **Add Application**.
-2. Click **Upload**.
-3. Select the application file to upload to the Application Center repository.
+
+アプリケーションを追加して、モバイル・デバイスにインストールできるようにするには、次のようにします。
+
+1. **「アプリケーションの追加 (Add Application)」**をクリックします。
+2. **「アップロード (Upload)」**をクリックします。
+3. Application Center リポジトリーにアップロードするアプリケーション・ファイルを選択します。
 
    ### Android
    {: #android }
-   The application file name extension is .apk.
+アプリケーション・ファイル名拡張子は .apk です。
 
    ### iOS
    {: #ios }
-   The application file name extension is .ipa for normal iOS applications.
+通常の iOS アプリケーションのアプリケーション・ファイル名拡張子は .ipa です。
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-   The application file name extension is .xap. The application must be signed with a company account. The application enrollment token for this company account must be made available to Windows Phone 8 devices before the application can be installed on the devices. See [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) for details.
+アプリケーション・ファイル名拡張子は .xap です。企業アカウントを使用してアプリケーションに署名する必要があります。
+アプリケーションをデバイスにインストールする前に、Windows Phone 8 デバイスがこの企業アカウントのアプリケーション登録トークンを使用できるようにする必要があります。詳しくは、[Windows 8 Universal のアプリケーション登録トークン](#application-enrollment-tokens-in-windows-8-universal)を参照してください。
 
    ### Windows 8
    {: #windows-8 }
-   The application is provided as a Windows Store package; the file extension is .appx.
+このアプリケーションは、Windows Store パッケージとして提供されます。ファイルの拡張子は、.appx です。
 
-   Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
+   Windows Store .appx パッケージは、1 つ以上の Windows コンポーネント・ライブラリー・アプリ・パッケージ (別名「フレームワーク」パッケージ) に依存します。Windows 8 用の MobileFirst ハイブリッド・アプリケーションは、Microsoft.WinJS フレームワーク・パッケージに依存します。Microsoft Visual Studio を使用してアプリケーション・パッケージを生成すると、依存パッケージも生成され、別箇の .appx ファイルとしてパッケージされます。モバイル・クライアントを使用してそのようなアプリケーションを正常にインストールするには、アプリケーションの .appx パッケージおよびその他すべての依存パッケージを Application Center サーバーにアップロードする必要があります。依存パッケージをアップロードすると、Application Center コンソールでは非アクティブとして表示されます。これは、クライアントでフレームワーク・パッケージがインストール可能なアプリケーションとして表示されないようにするための正常な動作です。 その後、ユーザーがアプリケーションをインストールするときに、モバイル・クライアントは依存パッケージがデバイスにすでにインストールされているかどうかをチェックします。依存パッケージがインストールされていない場合、クライアントは、Application Center サーバーから依存パッケージを自動的に取得してデバイスにインストールします。依存関係について詳しくは、パッケージおよびアプリケーションのデプロイメントに関する Windows 開発者向け資料の[依存関係](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies)を参照してください。
 
-4. Click **Next** to access the properties to complete the definition of the application.
-5. Complete the properties to define the application. See [Application properties](#application-properties) for information about how to complete property values.
-6. Click **Finish**.
+4. **「次へ (Next)」**をクリックして、アプリケーションの定義を完了するプロパティーにアクセスします。
 
-![Application properties, adding an application](ac_add_app_props.jpg)
+5. アプリケーションを定義するプロパティーを完了します。
+プロパティー値を完了する方法については、[アプリケーション・プロパティー](#application-properties)を参照してください。
 
-## Adding an application from a public app store
+6. **「終了 (Finish)」**をクリックします。
+
+![アプリケーション・プロパティー、アプリケーションの追加](ac_add_app_props.jpg)
+
+## 公開アプリケーション・ストアからのアプリケーションの追加
 {: #adding-an-application-from-a-public-app-store }
-Application Center supports adding to the catalog applications that are stored in third-party application stores, such as Google play or Apple iTunes.
+Application Center は、サード・パーティーのアプリケーション・ストア (Google play や Apple iTunes など) に保管されているアプリケーションをカタログに追加する操作をサポートします。
 
-Applications from third-party app stores appear in the Application Center catalog like any other application, but users are directed to the corresponding public app store to install the application. You add an application from a public app store in the console, in the same place where you add an application that was created within your own enterprise. See [Adding a mobile application](#adding-a-mobile-application).
+サード・パーティーのアップストアからのアプリケーションは他のアプリケーションと同様に Application Center のカタログに表示されますが、ユーザーはアプリケーションをインストールするための対応する公開アプリケーション・ストアに誘導されます。コンソールで公開アプリケーション・ストアからのアプリケーションを追加する場所は、自社内で作成されたアプリケーションを追加する場所と同じです。[『モバイル・アプリケーションの追加』](#adding-a-mobile-application)を参照してください。
 
-> **Note:** Currently, the Application Center supports only Google Play and Apple iTunes. Windows Phone Store and Windows Store are not yet supported.
+> **注:** 現在、Application Center は Google Play と Apple iTunes のみをサポートします。Windows Phone Store、および Windows Store はまだサポートされていません。
 
-Instead of the application executable file, you must provide a URL to the third-party application store where the application is stored. To find the correct application link more easily, the console provides direct links in the **Add an application** page to the supported third-party application store websites.
+アプリケーションの実行可能ファイルではなく、アプリケーションが保管されているサード・パーティー・アプリケーション・ストアへの URL を提供する必要があります。正しいアプリケーション・リンクを見つけやすいように、コンソールでは、サポートされているサード・パーティー・アプリケーション・ストアの Web サイトへの直接リンクを**「アプリケーションの追加」**ページで提供しています。
 
-The Google play store address is [https://play.google.com/store/apps](https://play.google.com/store/apps).
+Google play ストアのアドレスは [https://play.google.com/store/apps](https://play.google.com/store/apps) です。
 
-The Apple iTunes store address is [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/); use the linkmaker site rather than the iTunes site, because you can search this site for all kinds of iTunes items, including songs, podcasts, and other items that are supported by Apple. Only selecting iOS applications provides you with compatible links to create application links.
+Apple iTunes ストアのアドレスは [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/) です。iTunes サイトではなく linkmaker サイトを使用してください。というのは、このサイトを検索してあらゆる種類の iTunes アイテム (曲、ポッドキャスト、および Apple が提供するその他のアイテムなど) を見つけることができるからです。iOS アプリケーションを選択したときのみ、アプリケーション・リンクを作成する互換リンクが提供されます。
 
-1. Click the URL of the public app store that you want to browse.
-2. Copy the URL of the application in the third-party app store to the **Application URL** text field in the **Add an application** page of the Application Center console.
+
+1. ブラウズする公開アプリケーション・ストアの URL をクリックします。
+
+2. サード・パーティー・アプリケーション・ストア内のアプリケーションの URL を、Application Center コンソールの**「アプリケーションの追加」**ページにある**「アプリケーション URL (Application URL)」**テキスト・フィールドにコピーします。
     * **Google Play:**
-        * Select an application in the store.
-        * Click the detail page of the application.
-        * Copy the address bar URL.
+        * ストア内のアプリケーションを選択します。
+        * そのアプリケーションの詳細ページをクリックします。
+        * アドレス・バーの URL をコピーします。
     * **Apple iTunes:**
-        * When the list of items is returned in the search result, select the item that you want.
+        * 検索結果でアイテムのリストが返されたら、必要なアイテムを選択します。 
 
-        * At the bottom of the selected application, click **Direct Link** to open the application details page.
+        * 選択したアプリケーションの下部で、**「直接リンク」**をクリックしてアプリケーションの詳細ページを開きます。
 
-        * Copy the address bar URL.
+        * アドレス・バーの URL をコピーします。
 
-          **Note:** Do not copy the **Direct Link** to the Application Center. **Direct Link** is a URL with redirection, you will need to get the URL it redirects to.
+          **注:** **直接リンク**を Application Center にコピーしないでください。**直接リンク** は、リダイレクトを含む URL です。リダイレクト先の URL を取得する必要があります。
 
-3. When the application link is in the **Application URL** text field of the console, click **Next** to validate the creation of the application link.
-    * If the validation is unsuccessful, an error message is displayed in the **Add an application** page. You can either try another link or cancel the attempt to create the current link.
-    * If the validation is successful, this action displays the application properties. You can then modify the application description in the application properties before you move to the next step.
+3. アプリケーション・リンクがコンソールの**「アプリケーション URL (Application URL)」**テキスト・フィールドに表示されたら、**「次へ (Next)」**をクリックしてアプリケーション・リンクの作成を検証します。
+    * 検証が失敗した場合は、**「アプリケーションの追加」**ページにエラー・メッセージが表示されます。別のリンクで試すか、さもなければ現行リンクを作成する試みを取り消すことができます。 
+    * 検証が成功した場合は、このアクションによってアプリケーション・プロパティーが表示されます。これで、次のステップに進む前に、アプリケーション・プロパティー内のアプリケーション記述を変更することができます
 
-    ![Modified application description in application properties](ac_add_public_app_details.jpg)
+    ![アプリケーション・プロパティー内の変更されたアプリケーション記述](ac_add_public_app_details.jpg)
 
-4. Click **Done** to create the application link.
+4. **「完了 (Done)」**をクリックしてアプリケーション・リンクを作成します。
 
-    This action makes the application available to the corresponding version of the Application Center mobile client. A small link icon appears on the application icon to show that this application is stored in a public app store and is different from a binary app.
+    このアクションにより、アプリケーションは Application Center モバイル・クライアントの対応するバージョンで使用可能になります。このアプリケーションが公開アプリケーション・ストアに保管され、かつバイナリー・アプリケーションとは異なることを示すために、アプリケーション・アイコンの上に小さいリンク・アイコンが表示されます。
 
-    ![Link to an application stored in Google play](ac_public_app_available.jpg)
+    ![Google play に保管されているアプリケーションへのリンク](ac_public_app_available.jpg)
 
-## Application properties
+## アプリケーション・プロパティー
 {: #application-properties }
-Applications have their own sets of properties, which depend on the operating system on the mobile device and cannot be edited. Applications also have a common property and editable properties.
+アプリケーションには、モバイル・デバイスのオペレーティング・システムに依存し、かつ編集できない独自の一連のプロパティーがあります。アプリケーションにはまた、共通プロパティーおよび編集可能プロパティーもあります。
 
-The values of the following fields are taken from the application and you cannot edit them.
+以下のフィールドの値はアプリケーションから取得されるもので、編集することはできません。 
 
-* **Package**.
-* **Internal Version**.
-* **Commercial Version**.
-* **Label**.
-* **External URL**; this property is supported for applications that run on Android, iOS, and Windows Phone 8.
+* **Package**。
+* **Internal Version**。
+* **Commercial Version**。
+* **Label**。
+* **External URL**; このプロパティーは、Android、iOS、および Windows Phone 8 上で稼働するアプリケーション用にサポートされています。
 
-### Properties of Android applications
+### Android アプリケーションのプロパティー
 {: #properties-of-android-applications }
-For more information about the following properties, see the Android SDK documentation.
+次のプロパティーについて詳しくは、Android SDK の資料を参照してください。
 
-* **Package** is the package name of the application; **package** attribute of the manifest element in the manifest file of the application.
-* **Internal Version** is the internal version identification of the application; **android:versionCode** attribute of the **manifest** element in the manifest file of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **android:label attribute** of the application element in the **manifest** file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** はアプリケーションのパッケージ名です; アプリケーションのマニフェスト・ファイル内の manifest 要素の **package** 属性。
+* **Internal Version** はアプリケーションの内部バージョン識別です; アプリケーションのマニフェスト・ファイル内の **manifest** 要素の **android:versionCode** 属性。 
+* **Commercial Version** はアプリケーションの公開バージョンです。 
+* **Label** はアプリケーションのラベルです; アプリケーションの **manifest** ファイル内のアプリケーション・エレメントの **android:label 属性**。
+* **External URL** は、Application Center のモバイル・クライアントを現行アプリケーションの最新バージョンの「詳細」ビューで自動的に始動できるようにするための URL です。
 
-### Properties of iOS applications
+### iOS アプリケーションのプロパティー
 {: #properties-of-ios-applications }
-For more information about the following properties, see the iOS SDK documentation.
+次のプロパティーについて詳しくは、iOS SDK の資料を参照してください。
 
-* **Package** is the company identifier and the product name; **CFBundleIdentifier** key.
-* **Internal Version** is the build number of the application; **CFBundleVersion** key of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **CFBundleDisplayName** key of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** は会社 ID および製品名です; **CFBundleIdentifier** キー。 
+* **Internal Version** はアプリケーションのビルド番号です; アプリケーションの **CFBundleVersion** キー。 
+* **Commercial Version** はアプリケーションの公開バージョンです。 
+* **Label** はアプリケーションのラベルです; アプリケーションの **CFBundleDisplayName** キー。 
+* **External URL** は、Application Center のモバイル・クライアントを現行アプリケーションの最新バージョンの「詳細」ビューで自動的に始動できるようにするための URL です。
 
-### Properties of Windows Phone 8 applications
+### Windows Phone 8 アプリケーションのプロパティー
 {: #properties-of-windows-phone-8-applications }
-For more information about the following properties, see the Windows Phone documentation.
+以下のプロパティーについて詳しくは、Windows Phone の資料を参照してください。
 
-* **Package** is the product identifier of the application; **ProductID** attribute of the App element in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute of the App element in the manifest file of the application.
-* **Commercial Version**, like Internal Version, is the version of the application.
-* **Label**() is the title of the application; **Title** attribute of the **App** element in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute of the **App** element in the manifest file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
+* **Package** はアプリケーションの製品 ID です; アプリケーションのマニフェスト・ファイル内の App 要素の **ProductID** 属性。
+* **Internal Version** はアプリケーションのバージョン識別です; アプリケーションのマニフェスト・ファイル内の App 要素の **Version** 属性。
+* **Commercial Version** は、Internal Version と同様、アプリケーションのバージョンです。
+* **Label**() はアプリケーションの表題です; アプリケーションのマニフェスト・ファイル内の **App** 要素の **Title** 属性。
+* **Vendor** はアプリケーションを作成したベンダーです; アプリケーションのマニフェスト・ファイル内の **App** 要素の **Publisher** 属性。 
+* **External URL** は、Application Center のモバイル・クライアントを現行アプリケーションの最新バージョンの「詳細」ビューで自動的に始動できるようにするための URL です。
+* **Commercial Version** は、**Internal Version** と同様、アプリケーションのバージョンです。
 
-### Properties of Windows Store applications
+
+### Windows Store アプリケーションのプロパティー
 {: #properties-of-windows-store-applications }
-For more information about the following properties, see the Windows Store documentation about application development.
+次のプロパティーについて詳しくは、アプリケーション開発に関する Windows Store の資料を参照してください。
 
-* **Package** is the product identifier of the application; **Package** name attribute in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute in the manifest file of the application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
-* **Label** is the title of the application; **Package** display name attribute in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute in the manifest file of the application.
+* **Package** はアプリケーションの製品 ID です; アプリケーションのマニフェスト・ファイル内の **Package** 名前属性。
+* **Internal Version** はアプリケーションのバージョン識別です; アプリケーションのマニフェスト・ファイル内の  **Version** 属性。
+* **Commercial Version** は、**Internal Version** と同様、アプリケーションのバージョンです。 
+* **Label** はアプリケーションの表題です; アプリケーションのマニフェスト・ファイル内の **Package** 表示名属性。 
+* **Vendor** はアプリケーションを作成したベンダーです; アプリケーションのマニフェスト・ファイル内の **Publisher** 属性。
 
-### Common property: Author
+### 共通プロパティー: Author
 {: #common-property-author }
-The **Author** field is read-only. It displays the **username** attribute of the user who uploads the application.
+**Author** フィールドは読み取り専用です。ここには、アプリケーションをアップロードしたユーザーの **username** 属性が表示されます。
 
-### Editable properties
+### 編集可能プロパティー 
 {: #editable-properties }
-You can edit the following fields:
+以下のフィールドは編集可能です。
+
 
 **Description**  
-Use this field to describe the application to the mobile user.
+このフィールドを使用して、モバイル・ユーザーにアプリケーションを説明します。 
 
 **Recommended**  
-Select **Recommended** to indicate that you encourage users to install this application. Recommended applications appear as a special list in the mobile client.
+このアプリケーションのインストールをユーザーに推奨することを示すには **Recommended** を選択します。推奨アプリケーションは、モバイル・クライアントに特殊リストとして表示されます。
 
 **Installer**  
-For the Administrator only: This property indicates that the application is used to install other applications on the mobile device and send feedback on an application from the mobile device to the Application Center. Usually only one application is qualified as **Installer** and is called the mobile client. This application is documented in [The mobile client](../mobile-client).
+管理者の場合のみ: このプロパティーは、当該アプリケーションが、他のアプリケーションをモバイル・デバイスにインストールして、アプリケーションに関するフィードバックをモバイル・デバイスから Application Center に送信するために使用されることを示します。通常、**Installer** の資格を与えられるアプリケーションは 1 つだけで、モバイル・クライアントと呼ばれます。このアプリケーションは、[『モバイル・クライアント』](../mobile-client)に記載されています。
 
 **Active**  
-Select Active to indicate that an application can be installed on a mobile device.
+アプリケーションをモバイル・デバイスにインストールできることを示すには、Active を選択します。
 
-* If you do not select **Active**, the mobile user does not see the application in the list of available applications that is displayed on the device and the application is inactive.
-* In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
+* **Active** を選択しなかった場合、そのアプリケーションは非アクティブになり、モバイル・ユーザー用にデバイスに表示される使用可能アプリケーションのリストには表示されません。
+* Application Management の使用可能アプリケーションのリストで、**Show inactive** が選択されていないと、そのアプリケーションは使用不可です。 **Show inactive** が選択されないと、そのアプリケーションは使用可能アプリケーションのリストに表示されません。 
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+アプリケーションが実稼働環境にデプロイできる状態になっていること、したがってそのアプリケーションは Tivoli Endpoint Manager がそのアプリケーション・ストアを介して管理する対象として適切であることを示すには、**Ready for production** を選択します。このプロパティーが選択されたアプリケーションのみが、Tivoli Endpoint Manager に対するフラグが立てられるアプリケーションになります。
 
-## Editing application properties
+## アプリケーション・プロパティーの編集
 {: #editing-application-properties }
-You can edit the properties of an application in the list of uploaded applications.  
-To edit the properties of an uploaded application:
+アップロードされたアプリケーションのリストにあるアプリケーションのプロパティーを編集することができます。   
+アップロードされたアプリケーションのプロパティーを編集するには、次のようにします。
 
-1. Select **Applications** to see the list of uploaded applications: Available Applications.
-2. Click the version of the application to edit the properties: Application Details.
-3. Edit any of the editable properties that you want. See [Application properties](#application-properties) for details about these properties. The name of the current application file is shown after the properties.
+1. **「アプリケーション (Applications)」**を選択してアップロード済みアプリケーションのリストを表示します: 「使用可能なアプリケーション (Available Applications)」。
+2. プロパティーを編集するアプリケーションのバージョンをクリックします: 「アプリケーションの詳細」。
+3. 目的の編集可能プロパティーを編集します。 これらのプロパティーについて詳しくは、[アプリケーション・プロパティー](#application-properties)を参照してください。現在のアプリケーション・ファイルの名前がプロパティーの後に表示されます。
 
-    > **Important:** If you want to update the file, it must belong to the same package and be the same version number. If either of these properties is not the same you must go back to the application list and add the new version first.
+    > **重要:** ファイルを更新したい場合、そのファイルは同じパッケージに属し、かつ同じバージョン番号でなければなりません。これらのプロパティーのうちのどれかが同じでない場合は、アプリケーション・リストに戻り、まず新しいバージョンを追加する必要があります。
 
-4. Click **OK** to save your changes and return to Available Applications or **Apply** to save and keep Application Details open.
+4. **「OK」**をクリックして、変更を保存し、「使用可能なアプリケーション」に戻るか、または**「適用 (Apply)」**をクリックして、変更を保存し、「アプリケーションの詳細」を開いたままにしておきます。 
 
-![Application properties for editing](ac_edit_app_props.jpg)
+![編集のためのアプリケーション・プロパティー ](ac_edit_app_props.jpg)
 
-## Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center
+## {{site.data.keys.mf_server }} および Application Center でのモバイル・アプリケーションのアップグレード
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
-You can easily upgrade deployed mobile applications by using a combination of {{ site.data.keys.mf_console }} and the Application Center.
+{{site.data.keys.mf_console }} と Application Center を組み合わせて、デプロイされたモバイル・アプリケーションを簡単にアップグレードできます。
 
-The mobile client of the Application Center must be installed on the mobile device. The HelloWorld application must be installed on the mobile device and must connect to {{ site.data.keys.mf_server }} when the application is running.
+モバイル・デバイス上に Application Center のモバイル・クライアントをインストールする必要があります。HelloWorld アプリケーションはモバイル・デバイス上にインストールし、アプリケーションの実行時に {{site.data.keys.mf_server }} に接続する必要があります。
 
-You can use this procedure to update Android, iOS, and Windows Phone applications that have been deployed on {{ site.data.keys.mf_server }} and also in the Application Center. In this task, the application HelloWorld version 1.0 is already deployed on {{ site.data.keys.mf_server }} and in the Application Center.
+この手順を使用して、{{site.data.keys.mf_server }} 上および Application Center 内にデプロイされた Android、iOS、および Windows Phone のアプリケーションを更新できます。このタスクでは、アプリケーション HelloWorld バージョン 1.0 は、{{site.data.keys.mf_server }}上および Application Center 内にすでにデプロイされています。
 
-HelloWorld version 2.0 is released and you would like users of version 1.0 to upgrade to the later version. To deploy the new version of the application:
+HelloWorld バージョン 2.0 はリリースされており、バージョン 1.0 のユーザーに最新バージョンへアップグレードしてもらうことを考えています。アプリケーションの新しいバージョンをデプロイするには、次のようにします。
 
-1. Deploy HelloWorld 2.0 in the Application Center. See [Adding a mobile application](#adding-a-mobile-application).
-2. From the Application Details page, copy the setting of the external URL.
+1. Application Center に HelloWorld 2.0 をデプロイします。[『モバイル・アプリケーションの追加』](#adding-a-mobile-application)を参照してください。
+2. 「アプリケーション詳細 (Application Details)」ページから、外部 URL の設定をコピーします。
 
-    ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
+    ![アプリケーション詳細からの外部 URL のコピー](ac_copy_ext_url.jpg)
 
-3. When the external URL is copied to the clipboard, open the {{ site.data.keys.mf_console }}.
-4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
-5. Paste the external URL into the URL field.
+3. 外部 URL をクリップボードにコピーした場合、{{site.data.keys.mf_console }} を開きます。
+4. HelloWorld バージョン 1.0 のアクセス・ルールを"「アクセス無効」"に変更します。
+5. 外部 URL を URL フィールドに貼り付けます。
 
-    Running the client: When a mobile device connects to {{ site.data.keys.mf_server }} to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
+    クライアントの実行: モバイル・デバイスが {{site.data.keys.mf_server }} に接続して HelloWorld バージョン 1.0 を実行しようとすると、デバイス・ユーザーは、アプリケーション・バージョンのアップグレードを要求されます。
 
-    ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
+    ![リモート側での古いバージョンのアプリケーションの無効化](ac_remote_disable_app_cli.jpg)
 
-6. Click **Upgrade** to open the Application Center client. When the login details are correctly completed, you access the Details page of HelloWorld version 2.0 directly.
+6. **「アップグレード (Upgrade)」**をクリックして、Application Center クライアントを開きます。ログイン詳細を正しく入力して、HelloWorld バージョン 2.0 の「詳細 (Details)」ページに直接アクセスします。
 
-    ![Details of HelloWorld 2.0 in the Application Center client](ac_cli_app_details_upgrade.jpg)
+    ![Application Center クライアントの HelloWorld 2.0 の詳細](ac_cli_app_details_upgrade.jpg)
 
-## Downloading an application file
+## アプリケーション・ファイルのダウンロード 
 {: #downloading-an-application-file }
-You can download the file of an application registered in the Application Center.
+Application Center に登録されているアプリケーションのファイルをダウンロードすることができます。 
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Tap the version of the application under **Application Details**.
-3. Tap the file name in the "Application File" section.
+1. **「アプリケーション (Applications)」**を選択してアップロード済みアプリケーションのリストを表示します: **「使用可能なアプリケーション (Available Applications)」**。
+2. **「アプリケーションの詳細 (Application Details)」**でアプリケーションのバージョンをタップします。
+3. 「アプリケーション・ファイル」セクションでファイル名をタップします。
 
-## Viewing application reviews
+## アプリケーション・レビューの表示
 {: #viewing-application-reviews }
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+Application Center コンソールで、ユーザーから送られてきたモバイル・アプリケーション・バージョンに関するレビューを見ることができます。 
 
-Users of mobile applications can write a review, which includes a rating and a comment, and submit the review through the Application Center client. Reviews are available in the Application Center console and the client. Individual reviews are always associated with a particular version of an application.
+モバイル・アプリケーションのユーザーは、評価とコメントを含むレビューを書き、Application Center クライアントを通じてそのレビューを送信することができます。 レビューは、Application Center コンソールおよびクライアントで入手できます。 個々のレビューは、常にアプリケーションの特定のバージョンと関連付けられます。 
 
-To view reviews from mobile users or testers about an application version:
+モバイル・ユーザーやテスターからの、アプリケーション・バージョンに関するレビューを表示するには、次のようにします。 
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Select the version of the application.
-3. In the menu, select **Reviews**.
+1. **「アプリケーション (Applications)」**を選択してアップロード済みアプリケーションのリストを表示します: **「使用可能なアプリケーション (Available Applications)」**。
+2. アプリケーションのバージョンを選択します。
+3. メニューで、**「レビュー (Reviews)」**を選択します。
 
-    ![Reviews of application versions](ac_appfeedbk.jpg)
+    ![アプリケーション・バージョンのレビュー](ac_appfeedbk.jpg)
 
-    The rating is an average of the ratings in all recorded reviews. It consists of one to five stars, where one star represents the lowest level of appreciation and five stars represent the highest level of appreciation. The client cannot send a zero star rating.
+    評価は、記録されたすべてのレビューにある評価の平均です。 評価は 1 から 5 個の星で構成されます。星 1 つはアプリケーションのレベルが最低であることを表します。5 つ星はアプリケーションのレベルが最高であることを表します。 クライアントは星ゼロの評価を送ることはできません。
 
-    The average rating gives an indication of how the application satisfies the intended use of the application.
+    平均評価は、アプリケーションがアプリケーションの使用目的をどの程度満たしているかを示すものです。 
 
-4. Click the two arrow heads <img src="down-arrow.jpg" style="margin:0;display:inline" alt="Double arrow-head button"/> to expand the comment that is part of the review and to view the details of the mobile device where the review is generated.
+4. 二重矢印 <img src="down-arrow.jpg" style="margin:0;display:inline" alt="二重矢印ボタン"/>をクリックして、レビューの一部であるコメントを展開し、レビューが生成されたモバイル・デバイスの詳細を表示します。
 
-    For example, the comment can give the reason for submitting the review, such as failure to install.
-    If you want to delete the review, click the trash can icon to the right of the review that you want to delete.
+    例えば、コメントは、レビューを送った理由 (インストールの失敗など) を示すことができます。
+    レビューを削除したい場合は、削除するレビューの右側のごみ箱アイコンをクリックしてください。 
 
-## User and group management
+## ユーザーおよびグループ管理 
 {: #user-and-group-management }
-You can use users and groups to define who has access to some features of the Application Center, such as installing applications on mobile devices.  
-Use users and groups in the definition of access control lists (ACL).
+ユーザーとグループを使用して、どのユーザーまたはグループが Application Center の一部のフィーチャー (モバイル・デバイスへのアプリケーションのインストールなど) にアクセスできるかを定義することができます。   
+アクセス制御リスト (ACL) の定義でユーザーとグループを使用するため。 
 
-### Managing registered users
+### 登録済みユーザーの管理 
 {: #managing-registered-users }
-To manage registered users, click the **Users/Groups** tab and select **Registered users**. You obtain a list of registered users of the Application Center that includes:
+登録済みユーザーを管理するには、 **「ユーザー/グループ」**タブをクリックし、**「登録済みユーザー」 **を選択します。Application Center の登録済みユーザーのリストを取得します。以下のユーザーが含まれます。 
 
-* Mobile client users
-* Console users
-* Local group members
-* Members of an access control list
+* モバイル・クライアント・ユーザー
+* コンソール・ユーザー
+* ローカル・グループ・メンバー
+* アクセス制御リストのメンバー
 
-![List of registered users of the Application Center](ac_reg_users.jpg)
+![Application Center の登録済みユーザーのリスト](ac_reg_users.jpg)
 
-If the Application Center is connected to an LDAP repository, you cannot edit the user display names. If the repository is not LDAP, you can change a user display name by selecting it and editing it.
+Application Center が LDAP リポジトリーに接続されている場合は、ユーザー表示名を編集できません。 リポジトリーが LDAP でない場合は、選択して編集することでユーザー表示名を変更できます。 
 
-To register new users, click **Register User**, enter the login name and the display name, and click **OK**.  
-To unregister a user, click the trash icon next to the user name.
+新しいユーザーを登録するには、**「ユーザーの登録」**をクリックし、ログイン名と表示名を入力し、**「OK」**をクリックします。   
+ユーザーを登録抹消するには、ユーザー名の横にあるごみ箱アイコンをクリックします。 
 
-* Removing feedback given by the user
-* Removing the user from the access control lists
-* Removing the user from local groups
+* そのユーザーが提供したフィードバックが削除される。
+* アクセス制御リストからそのユーザーが削除される。
+* ローカル・グループからそのユーザーが削除される。
 
-> **Note:** When you unregister a user, the user is not removed from the application server or the LDAP repository.
+> **注:** ユーザーを登録抹消すると、そのユーザーはアプリケーション・サーバーまたは LDAP リポジトリーから削除されません。
 
-### Managing local groups
+### ローカル・グループの管理 
 {: #managing-local-groups }
-To manage local groups, click the **Users/Groups** tab and select **User group**.  
-To create a local group, click **Create group**. Enter the name of the new group and click **OK**.
+ローカル・グループを管理するには、 **「ユーザー/グループ」**タブをクリックし、**「ユーザー・グループ」 **を選択します。  
+ローカル・グループを作成するには、**「グループの作成 (Create group)」**をクリックします。 その新しいグループの名前を入力し、**「OK」**をクリックします。 
 
-If the Application Center is connected to an LDAP repository, the search includes local groups as well as the groups defined in the LDAP repository. If the repository is not LDAP, only local groups are available to the search.
+Application Center が LDAP リポジトリーに接続されている場合は、ローカル・グループのほかに LDAP リポジトリーで定義されているグループが検索に組み込まれます。 リポジトリーが LDAP でない場合は、ローカル・グループのみが検索に有効です。 
 
-![Local user groups](ac_loc_group.jpg)
+![ローカル・ユーザー・グループ](ac_loc_group.jpg)
 
-To delete a group, click the trash icon next to the group name. The group is also removed from the access control lists.  
-To add or remove members of a group, click the **Edit members** link of the group.
+グループを削除するには、グループ名の横にあるごみ箱アイコンをクリックします。
+このグループはアクセス制御リストからも削除されます。
+  
+グループのメンバーを追加または削除するには、そのグループの**「メンバーの編集 (Edit members)」**リンクをクリックします。
 
-![Managing group membership](ac_grp_members.jpg)
 
-To add a new member, search for the user by entering the user display name, select the user, and click **Add**.
+![グループ・メンバーシップの管理
+](ac_grp_members.jpg)
 
-If the Application Center is connected to an LDAP repository, the search for the user is performed in the LDAP repository. If the repository is not LDAP, the search is performed in the list of registered users.
+新しいメンバーを追加するには、ユーザー表示名を入力してユーザーを検索し、ユーザーを選択し、**「追加 (Add)」**をクリックします。
 
-To remove a member from a group, click the cross icon to the right of the user name.
 
-## Access control
+Application Center が LDAP リポジトリーに接続されている場合は、LDAP リポジトリーでユーザーの検索が行われます。
+リポジトリーが LDAP でない場合は、登録済みユーザーのリストで検索が行われます。
+
+
+グループからメンバーを削除するには、ユーザー名の右側にある×アイコンをクリックします。
+
+
+## アクセス制御
 {: #access-control }
-You can decide whether installation of an application on mobile devices is open to any users or whether you want to restrict the ability to install an application.
+モバイル・デバイスへのアプリケーションのインストールがすべてのユーザーに開放されているか、それともアプリケーションをインストールする能力を制限したいかを決定することができます。
 
-Installation of applications on a mobile device can be limited to specific users or available to any users.
 
-Access control is defined at the application level and not at the version level.
+モバイル・デバイスへのアプリケーションのインストールは、特定のユーザーに制限することもできれば、すべてのユーザーに利用可能にすることもできます。
 
-By default, after an application is uploaded, any user has the right to install the application on a mobile device.
 
-The current access control for an application is displayed in Available Applications for each application. The unrestricted or restricted access status for installation is shown as a link to the page for editing access control.
+アクセス制御はアプリケーション・レベルで定義され、バージョン・レベルでは定義されません。
 
-Installation rights are only about the installation of the application on the mobile device. If access control is not enabled, everybody has access to the application.
 
-## Managing access control
+デフォルトでは、アプリケーションがアップロードされた後、そのアプリケーションをモバイル・デバイスにインストールする権限がすべてのユーザーに付与されます。
+
+
+アプリケーションの現在のアクセス制御は、アプリケーションごとに「使用可能なアプリケーション (Available Applications)」に表示されます。インストールのアクセス状況 (無制限または制限付き) は、アクセス制御を編集するためのページへのリンクとして示されます。
+
+
+インストール権限は、モバイル・デバイスへのアプリケーションのインストールのみに関する権限です。
+アクセス制御が使用可能になっていないと、誰でもアプリケーションにアクセスすることができます。
+
+
+## アクセス制御の管理
 {: #managing-access-control }
-You can add or remove access for users or groups to install an application on mobile devices.  
-You can edit access control:
+ユーザーまたはグループがモバイル・デバイスにアプリケーションをインストールするアクセス権限を追加したり削除したりすることができます。
+  
+アクセス制御を編集することができます。
 
-1. In Application Management under Available Applications, click the unrestricted or restricted state of Installation of an application.
+1. 「Application Management」の「使用可能なアプリケーション (Available Applications)」で、アプリケーションのインストールの「無制限 (unrestricted)」または「制限付き (restricted)」状態をクリックします。
 
-    ![Where to click on unrestricted or restricted mode](ac_app_access_state.jpg)
+    ![無制限モードまたは制限付きモードをクリックする場所](ac_app_access_state.jpg)
 
-2. Select **Access control enabled** to enable access control.
-3. Add users or groups to the access list.
+2. **「アクセス制御使用可能 (Access control enabled)」**を選択して、アクセス制御を使用可能にします。
 
-To add a single user or group, enter a name, select the entry in the matching entries found, and click **Add**.
+3. ユーザーまたはグループをアクセス・リストに追加します。
 
-If the Application Center is connected to an LDAP repository, you can search for users and groups in the repository as well as locally defined groups. If the repository is not LDAP, you can search only local groups and registered users. Local groups are exclusively defined in the **Users/Groups** tab. When you use the Liberty profile federated registry, you can only search for users by using the login name; the result is limited to a maximum of 15 users and 15 groups (instead of 50 users and 50 groups).
+ユーザーまたはグループを 1 つだけ追加するには、名前を入力し、見つかった一致項目の中からその項目を選択し、**「追加 (Add)」**をクリックします。
 
-To register a user at the same time as you add the user to the access list, enter the name and click **Add**. Then you must specify the login name and the display name of the user.
+Application Center が LDAP リポジトリーに接続されている場合は、リポジトリー内のユーザーとグループ、およびローカルで定義されたグループを検索することができます。
+リポジトリーが LDAP でない場合は、ローカル・グループと登録済みユーザーのみを検索することができます。
+ローカル・グループは、**「ユーザー/グループ (Users/Groups)」**タブで排他的に定義されます。
+Liberty プロファイル統合レジストリーを使用すると、ログイン名を使用したユーザーしか検索できません。結果は最大 15 ユーザーおよび 15 グループ (50 ユーザーおよび 50 グループではない) に制限されます。
 
-To add all the users of an application, click **Add users from application** and select the appropriate application.  
-To remove access from a user or group, click the cross icon on the right of the name.
 
-![Adding or removing users to the access list](ac_instal_access.jpg)
+ユーザーをアクセス・リストへの追加と同時に登録するには、ユーザーの名前を入力して**「追加」**をクリックします。 その後、そのユーザーのログイン名と表示名を指定する必要があります。
 
-## Device Management
+アプリケーションのすべてのユーザーを追加するには、**「アプリケーションからユーザーを追加 (Add users from application)」**をクリックし、該当するアプリケーションを選択します。  
+ユーザーまたはグループからアクセス権限を削除するには、その名前の右
+側にある×アイコンをクリックします。
+
+
+![アクセス・リストへのユーザーの追加または削除](ac_instal_access.jpg)
+
+## デバイス管理
 {: #device-management }
-You can see the devices that connected to the Application Center from the Application Center mobile client and their properties.
+Application Center モバイル・クライアントから Application Center に接続したデバイスと、それらのデバイスのプロパティーを確認することができます。
 
-**Device Management** shows under the **Registered Devices** the list of devices that have connected to the Application Center at least once from the Application Center mobile client.
 
-![The device list](ac_reg_devices.jpg)
+**「デバイス管理 (Device Management)」**は、**「登録済みデバイス (Registered Devices)」**の下に、Application Center モバイル・クライアントから少なくとも 1 回は Application Center に接続したデバイスのリストを表示します。
 
-### Device properties
+
+![デバイス・リスト](ac_reg_devices.jpg)
+
+### デバイス・プロパティー
+
 {: #device-properties }
-Click a device in the list of devices to view the properties of the device or the applications installed on that device.
+デバイスのリストでデバイスをどれかクリックすると、そのデバイスのプロパティーまたはそのデバイスにインストールされているアプリケーションが表示されます。
 
-![Device properties](ac_edit_deviceprops.jpg)
 
-Select **Properties** to view the device properties.
+![デバイス・プロパティー
+](ac_edit_deviceprops.jpg)
 
-**Name**  
-The name of the device. You can edit this property.
+**「プロパティー (Properties)」**を選択するとデバイス・プロパティーが表示されます。
 
-> **Note:** on iOS, the user can define this name in the settings of the device in Settings > General > Information > Name. The same name is displayed on iTunes.
 
-**User Name**  
-The name of the first user who logged into the device.
+**「名前 (Name)」**  
+装置の名前。 このプロパティーは編集可能です。 
 
-**Manufacturer**  
-The manufacturer of the device.
+> **注:** iOS の場合は、「設定」>「一般」>「情報」>「名前」のデバイス設定で、この名前を定義することができます。同じ名前が iTunes に表示されます。
 
-**Model**  
-The model identifier.
+**「ユーザー名 (User Name)」**  
+当該デバイスに最初にログインしたユーザーの名前。 
 
-**Operating System**  
-The operating system of the mobile device.
+**「メーカー (Manufacturer)」**  
+デバイスのメーカー。 
 
-**Unique identifier**  
-The unique identifier of the mobile device.
+**「モデル (Model)」**  
+モデル ID。 
 
-If you edit the device name, click **OK** to save the name and return to Registered Devices or **Apply** to save and keep Edit Device Properties open.
+**「オペレーティング・システム (Operating System)」**  
+モバイル・デバイスのオペレーティング・システム。 
 
-### Applications installed on device
+**「固有 ID (Unique identifier)」**  
+モバイル・デバイスの固有 ID。 
+
+デバイス名を編集した場合は、**「OK」**をクリックすると、その名前が保存されて「登録済みデバイス」に戻ります。**「適用 (Apply)」**をクリックすると、その名前が保存されて「デバイス・プロパティーの編集 (Edit Device Properties)」は開いたままになります。
+
+### デバイスにインストールされているアプリケーション
+
 {: #applications-installed-on-device }
-Select **Applications installed on device** to list all the applications installed on the device.
+**「デバイスにインストールされているアプリケーション (Applications installed on device)」**を選択すると、当該デバイスにインストールされているすべてのアプリケーションがリストされます。
 
-![Applications installed on a device](ac_apps_on_device.jpg)
 
-## Application enrollment tokens in Windows 8 Universal
+![デバイスにインストールされているアプリケーション
+](ac_apps_on_device.jpg)
+
+## Windows 8 Universal のアプリケーション登録トークン
 {: #application-enrollment-tokens-in-windows-8-universal }
-The Windows 8 Universal operating system requires users to enroll each device with the company before users can install company applications on their devices. One way to enroll devices is by using an application enrollment token.
+Windows 8 Universal オペレーティング・システムでは、各デバイスを会社に登録して初めてユーザーは企業アプリケーションを各自のデバイスにインストールできるようになります。デバイスを登録する一つの方法は、アプリケーション登録トークンを使用する方法です。
 
-Application enrollment tokens enable you to install company applications on a Windows 8 Universal device. You must first install the enrollment token for a specified company on the device to enroll the device with the company. Then, you can install applications that are created and signed by the corresponding company.
-The Application Center simplifies the delivery of the enrollment token. In your role of administrator of the Application Center catalog, you can manage the enrollment tokens from the Application Center console. Once the enrollment tokens are declared in the Application Center console, they are available for Application Center users to enroll their devices.
 
-The enrollment tokens interface available from the Application Center console in the Settings view enables you to manage application enrollment tokens for Windows 8 Universal by registering, updating, or deleting them.
+アプリケーション登録トークンを使用して、企業アプリケーションを Windows 8 Universal デバイスにインストールすることができます。まず、指定された会社の登録トークンをデバイスにインストールしてデバイスをその会社に登録する必要があります。
+登録が完了したら、該当する会社が作成および署名したアプリケーションをインストールできるようになります。
+Application Center は登録トークンの配信を簡略化します。
+Application Center カタログの管理者のロールので、Application Center コンソールから登録トークンを管理することができます。
+Application Center コンソールで登録トークンが宣言されると、Application Center ユーザーはそれらのトークンを使用して各自のデバイスを登録することができます。
 
-### Managing application enrollment tokens
+
+「設定」ビューの、Application Center コンソールから利用できる登録トークン・インターフェースにより、Windows 8 Universal のアプリケーション登録トークンを登録したり、更新したり、削除したりして、これらのトークンを管理することができます。
+
+### アプリケーション登録トークンの管理
+
 {: #managing-application-enrollment-tokens }
-In your role of administrator of the Application Center, you can access the list of registered tokens by clicking the gear icon in the screen header to display Application Center Settings. Then, select **Enrollment Tokens** to display the list of registered tokens.
+Application Center の管理者のロールで、画面ヘッダーにある歯車アイコンをクリックして Application Center の「設定」を表示することにより、登録済みトークンのリストにアクセスすることができます。
+次に、**「登録トークン (Enrollment Tokens)」**を選択すると、登録済みトークンのリストが表示されます。
 
-To enroll a device, the device user must upload and install the token file before installing the Application Center mobile client. The mobile client is also a company application. Therefore, the device must be enrolled before the mobile client can be installed.
 
-The registered tokens are available through the bootstrap page at `http://hostname:portnumber/applicationcenter/installers.html`, where **hostname** is the host name of the server hosting the Application Center and **portnumber** is the corresponding port number.
+デバイスを登録するには、デバイス・ユーザーが、Application Center モバイル・クライアントをインストールする前に、トークン・ファイルをアップロードしてインストールする必要があります。モバイル・クライアントも企業アプリケーションです。
+したがって、デバイスを登録して初めてモバイル・クライアントをインストールできるようになります。
 
-To register a token in the Application Center console, click **Upload Token** and select a token file. The token file extension is aetx.  
-To update the certificate subject of a token, select the token name in the list, change the value, and click OK.  
-To delete a token, click the trash can icon on the right side of the token in the list.
 
-## Signing out of the Application Center console
+登録済みトークンはブートストラップ・ページ (`http://hostname:portnumber/applicationcenter/installers.html`) を通じて使用できます。ここで、**hostname** は Application Center をホストするサーバーのホスト名、**portnumber** は対応するポート番号です。
+
+Application Center コンソールでトークンを登録するには、**「トークンのアップロード (Upload Token)」**をクリックし、トークン・ファイルを選択します。
+トークン・ファイル拡張子は aetx です。  
+トークンの証明書所有者を更新するには、リストでそのトークン名を選択し、値を変更し、「OK」をクリックします。  
+トークンを削除するには、リストでそのトークンの右側にあるごみ箱アイコンをクリックします。
+
+
+## Application Center コンソールからのサインアウト
 {: #signing-out-of-the-application-center-console }
-For security purposes, you must sign out of the console when you have finished your administrative tasks.
+セキュリティーのために、管理用タスクを終了したときはコンソールからサインアウトする必要があります。
 
-To log out of the secure sign-on to the Application Center console.  
-To sign out of the Application Center console, click **Sign out** next to the Welcome message that is displayed in the banner of every page.
+
+Application Center コンソールへのセキュア・サインオンからログアウトすること。  
+Application Center コンソールからサインアウトするには、各ページのバナーに表示されているウェルカム・メッセージの隣にある**「サインアウト」**をクリックします。

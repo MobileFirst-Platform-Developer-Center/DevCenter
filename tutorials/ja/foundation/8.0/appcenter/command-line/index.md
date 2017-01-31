@@ -1,172 +1,173 @@
 ---
 layout: tutorial
-title: Command-line tool for uploading or deleting an application
-breadcrumb_title: Uploading or deleting an app
+title: アプリケーションをアップロードまたは削除するためのコマンド・ライン・ツール
+breadcrumb_title: アプリケーションのアップロードまたは削除
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-To deploy applications to the Application Center through a build process, use the command-line tool.
+ビルド・プロセスを通じてアプリケーションを Application Center にデプロイするには、コマンド・ライン・ツールを使用します。 
 
-You can upload an application to the Application Center by using the web interface of the Application Center console. You can also upload a new application by using a command-line tool.
+Application Center コンソールの Web インターフェースを使用して、アプリケーションを Application Center にアップロードすることができます。 また、コマンド・ライン・ツールを使用して新しいアプリケーションをアップロードすることもできます。 
 
-This is particularly useful when you want to incorporate the deployment of an application to the Application Center into a build process. This tool is located at: **installDir/ApplicationCenter/tools/applicationcenterdeploytool.jar**.
+これは、Application Center へのアプリケーションのデプロイメントをビルド・プロセスに組み込みたいときに特に役立ちます。 このツールは **installDir/ApplicationCenter/tools/applicationcenterdeploytool.jar** にあります。
 
-The tool can be used for application files with extension APK or IPA. It can be used stand alone or as an ant task.
+このツールは、拡張子が APK または IPA のアプリケーション・ファイルに対して使用できます。スタンドアロンで使用することもできれば、Ant タスクとして使用することもできます。 
 
-The tools directory contains all the files required to support the use of the tool.
+このツールの使用をサポートするために必要なファイルはすべて tools ディレクトリーに入っています。
 
-* **applicationcenterdeploytool.jar**: the upload tool.
-* **json4j.jar**: the library for the JSON format required by the upload tool.
-* **build.xml**: a sample ant script that you can use to upload a single file or a sequence of files to the Application Center.
-* **acdeploytool.sh** and **acdeploytool.bat**: Simple scripts to call java with **applicationcenterdeploytool.jar**.
+* **applicationcenterdeploytool.jar**: アップロード・ツール。 
+* **json4j.jar**: アップロード・ツールで必要な JSON フォーマットのライブラリー。 
+* **build.xml**: 1 つのファイルまたは一連のファイルを Application Center にアップロードする際に使用できるサンプル Ant スクリプト。 
+* **acdeploytool.sh** および **acdeploytool.bat**: **applicationcenterdeploytool.jar** で java を呼び出すための簡単なスクリプト。 
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Using the stand-alone tool to upload an application](#using-the-stand-alone-tool-to-upload-an-application)
-* [Using the stand-alone tool to delete an application](#using-the-stand-alone-tool-to-delete-an-application)
-* [Using the stand-alone tool to clear the LDAP cache](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
-* [Ant task for uploading or deleting an application](#ant-task-for-uploading-or-deleting-an-application)
+* [スタンドアロン・ツールを使用したアプリケーションのアップロード](#using-the-stand-alone-tool-to-upload-an-application)
+* [スタンドアロン・ツールを使用したアプリケーションの削除](#using-the-stand-alone-tool-to-delete-an-application)
+* [スタンドアロン・ツールを使用した LDAP キャッシュのクリア](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
+* [アプリケーションをアップロードまたは削除するための Ant タスク](#ant-task-for-uploading-or-deleting-an-application)
 
-### Using the stand-alone tool to upload an application
+### スタンドアロン・ツールを使用したアプリケーションのアップロード
 {: #using-the-stand-alone-tool-to-upload-an-application }
-To upload an application, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+アプリケーションをアップロードするには、コマンド・ラインからスタンドアロン・ツールを呼び出します。   
+以下のステップに従ってスタンドアロン・ツールを使用してください。
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. **applicationcenterdeploytool.jar** および **json4j.jar** を java classpath 環境変数に追加します。
+2. コマンド・ラインからアップロード・ツールを呼び出します。
   
    ```bash
    java com.ibm.appcenter.Upload [options] [files]
    ```
     
-You can pass any of the available options in the command line.
+コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。
 
-| Option | Content indicated by | Description | 
+
+| オプション | 内容 | 説明 | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -d | description | The description of the application to be uploaded. | 
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. | 
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. | 
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. | 
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. | 
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. | 
-| -e	  |  | Shows the full exception stack trace on failure. | 
-| -f	  |  | Force uploading of applications, even if they exist already. | 
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s | serverpath | Application Center サーバーへのパス。 | 
+| -c | context | Application Center Web アプリケーションのコンテキスト。 | 
+| -u | user | Application Center にアクセスするためのユーザー資格情報。 | 
+| -p | password | ユーザーのパスワード。 | 
+| -d | description | アップロードするアプリケーションの説明。 | 
+| -l | label | フォールバック・ラベル。 通常、ラベルは、アップロードされるファイルに保管されたアプリケーション記述子から取得されます。 アプリケーション記述子にラベルが含まれていない場合は、フォールバック・ラベルが使用されます。  | 
+| -isActive | true または false | アプリケーションは、アクティブまたは非アクティブ・アプリケーションとして Application Center に保管されます。  | 
+| -isInstaller | true または false | アプリケーションは、「installer」フラグが適切に設定された Application Center に保管されます。  | 
+| -isReadyForProduction | true または false | アプリケーションは、「ready-for-production」フラグが適切に設定された Application Center に保管されます。  | 
+| -isRecommended | true または false | アプリケーションは、「recommended」フラグが適切に設定された Application Center に保管されます。  | 
+| -e	  |  | 失敗時にフル例外スタック・トレースを表示します。 | 
+| -f	  |  | 既に存在する場合でもアプリケーションのアップロードを強制します。  | 
+| -y	  |  | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。  |  このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。  | 
 
-The files parameter can specify files of type Android application package (.apk) files or iOS application (.ipa) files.  
-In this example user demo has the password demopassword. Use this command line.
+files パラメーターには、タイプが Android アプリケーション・パッケージ (.apk) のファイルまたは iOS アプリケーション (.ipa) のファイルを指定することができます。  
+この例では、ユーザー demo はパスワード demopassword を持っています。次のコマンド・ラインを使用してください。 
 
 ```bash
 java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demopassword -f app1.ipa app2.ipa
 ```
 
-### Using the stand-alone tool to delete an application
+### スタンドアロン・ツールを使用したアプリケーションの削除
 {: #using-the-stand-alone-tool-to-delete-an-application }
-To delete an application from the Application Center, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+Application Center からアプリケーションを削除するには、コマンド・ラインからスタンドアロン・ツールを呼び出します。   
+以下のステップに従ってスタンドアロン・ツールを使用してください。
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. **applicationcenterdeploytool.jar** および **json4j.jar** を java classpath 環境変数に追加します。
+2. コマンド・ラインからアップロード・ツールを呼び出します。
 
    ```bash
    java com.ibm.appcenter.Upload -delete [options] [files or applications]
    ```
     
-You can pass any of the available options in the command line.
+コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。 
 
-| Option | Content indicated by	| Description | 
+| オプション | 内容	| 説明 | 
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s |serverpath | Application Center サーバーへのパス。 | 
+| -c | context | Application Center Web アプリケーションのコンテキスト。 | 
+| -u | user | Application Center にアクセスするためのユーザー資格情報。 | 
+| -p | password | ユーザーのパスワード。 | 
+| -y | | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。  | 
 
-You can specify files or the application package, operating system, and version. If files are specified, the package, operating system and version are determined from the file and the corresponding application is deleted from the Application Center. If applications are specified, they must have one of the following formats:
+ファイルまたはアプリケーション・パッケージ、オペレーティング・システム、およびバージョンを指定することができます。 ファイルが指定された場合は、パッケージ、オペレーティング・システム、およびバージョンはファイルから決定され、対応するアプリケーションが Application Center から削除されます。 アプリケーションが指定された場合は、アプリケーションは次のいずれかの形式を持たなければなりません。 
 
-* `package@os@version`: This exact version is deleted from the Application Center. The version part must specify the “internal version”, not the “commercial version” of the application.
-* `package@os`: All versions of this application are deleted from the Application Center.
-* `package`: All versions of all operating systems of this application are deleted from the Application Center.
+* `package@os@version`: ここで指定されたバージョンは Application Center から削除されます。 バージョン部分は、アプリケーションの「商用バージョン」ではなく、「内部バージョン」を指定しなければなりません。 
+* `package@os`: このアプリケーションのすべてのバージョンが Application Center から削除されます。 
+* `package`: このアプリケーションのすべてのオペレーティング・システムのすべてのバージョンが Application Center から削除されます。 
 
-#### Example
+#### 例
 {: #example-delete }
-In this example, user demo has the password demopassword. Use this command line to delete the iOS application demo.HelloWorld with internal version 3.0.
+この例では、ユーザー demo はパスワード demopassword を持っています。このコマンド・ラインを使用して、iOS アプリケーション demo.HelloWorld を内部バージョン 3.0 と一緒に削除します。
 
 ```bash
 java com.ibm.appcenter.Upload -delete -s http://localhost:9080 -c applicationcenter -u demo -p demopassword demo.HelloWorld@iOS@3.0
 ```
 
-### Using the stand-alone tool to clear the LDAP cache
+### スタンドアロン・ツールを使用した LDAP キャッシュのクリア
 {: #using-the-stand-alone-tool-to-clear-the-ldap-cache }
-Use the stand-alone tool to clear the LDAP cache and make changes to LDAP users and groups visible immediately in the Application Center.
+スタンドアロン・ツールを使用して、LDAP キャッシュをクリアしたり、LDAP ユーザーおよびグループに対する変更が Application Center にただちに表示されるようにしたりします。 
 
-When the Application Center is configured with LDAP, changes to users and groups on the LDAP server become visible to the Application Center after a delay. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call the stand-alone tool from the command line to clear the cache of LDAP data. By using the stand-alone tool to clear the cache, the changes become visible immediately.
+Application Center が LDAP で構成されると、LDAP サーバー上のユーザーとグループに対する変更は少し遅れて Application Center に表示されます。 Application Center は LDAP データのキャッシュを保守管理し、変更はキャッシュの有効期限が切れた後初めて可視になります。 デフォルトでは、遅延は 24 時間です。ユーザーまたはグループに対する変更の後でこの遅延が満了するのを待ちたくない場合は、コマンド・ラインからスタンドアロン・ツールを呼び出して LDAP データのキャッシュをクリアすることができます。 スタンドアロン・ツールを使用してキャッシュをクリアすると、変更はただちに可視になります。 
 
-Use the stand-alone tool by following these steps.
+以下のステップに従ってスタンドアロン・ツールを使用してください。
 
-1. Add applicationcenterdeploytool.jar and json4j.jar to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. applicationcenterdeploytool.jar および json4j.jar を java classpath 環境変数に追加します。
+2. コマンド・ラインからアップロード・ツールを呼び出します。
 
    ```bash
    java com.ibm.appcenter.Upload -clearLdapCache [options]
    ```
    
-You can pass any of the available options in the command line.
+コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。 
 
-| Option | Content indicated by | Description | 
+| オプション | 内容 | 説明 | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.| 
-| -c | context | The context of the Application Center web application.| 
-| -u | user | The user credentials to access the Application Center.| 
-| -p | password | The password of the user.| 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.| 
+| -s | serverpath | Application Center サーバーへのパス。| 
+| -c | context | Application Center Web アプリケーションのコンテキスト。| 
+| -u | user | Application Center にアクセスするためのユーザー資格情報。| 
+| -p | password | ユーザーのパスワード。| 
+| -y | | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。 | 
 
-#### Example
+#### 例
 {: #example-cache }
-In this example, user demo has the password demopassword.
+この例では、ユーザー demo はパスワード demopassword を持っています。
 
 ```bash
 java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applicationcenter -u demo -p demopassword
 ```
 
-### Ant task for uploading or deleting an application
+### アプリケーションをアップロードまたは削除するための Ant タスク
 {: ant-task-for-uploading-or-deleting-an-application }
-You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
-Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
+アップロード・ツールおよび削除ツールを Ant タスクとして使用し、その Ant タスクを独自の Ant スクリプトの中で使用することができます。   
+これらのタスクを実行するには Apache Ant が必要です。 サポートされる Apache Ant の最小バージョンは、[システム要件](../../product-overview/requirements)にリストされています。
 
-For convenience, Apache Ant 1.8.4 is included in {{ site.data.keys.mf_server }}. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
+利便性を考慮して、{{site.data.keys.mf_server }} には Apache Ant 1.8.4 が組み込まれています。product_install_dir/shortcuts/ ディレクトリーで、以下のスクリプトが提供されます。
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+* ant (UNIX / Linux の場合)
+* ant.bat (Windows の場合)
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。 環境変数 JAVA_HOME が設定された場合、スクリプトはこれを受け入れます。
 
-When you use the upload tool as an Ant task, the classname value of the upload Ant task is **com.ibm.appcenter.ant.UploadApps**. The classname value of the delete Ant task is **com.ibm.appcenter.ant.DeleteApps**.
+アップロード・ツールを Ant タスクとして使用した場合、upload Ant タスクの classname 値は **com.ibm.appcenter.ant.UploadApps** です。delete Ant タスクの classname 値は **com.ibm.appcenter.ant.DeleteApps** です。
 
-| Parameters of Ant task | Description | 
+| Ant タスクのパラメーター | 説明 | 
 |------------------------|-------------|
-| serverPath | To connect to the Application Center. The default value is http://localhost:9080. | 
-| context | The context of the Application Center. The default value is /applicationcenter. | 
-| loginUser | The user name with permissions to upload an application. | 
-| loginPass | The password of the user with permissions to upload an application. | 
-| forceOverwrite | If this parameter is set to true, the Ant task attempts to overwrite applications in the Application Center when it uploads an application that is already present. This parameter is available only in the upload Ant task.
-| file | The .apk or .ipa file to be uploaded to the Application Center or to be deleted from the Application Center. This parameter has no default value. | 
-| fileset | To upload or delete multiple files. | 
-| application | The package name of the application; this parameter is available only in the delete Ant task. | 
-| os | The operating system of the application. (For example, Android or iOS.) This parameter is available only in the delete Ant task. | 
-| version | The internal version of the application; this parameter is available only in the delete Ant task. Do not use the commercial version here, because the commercial version is unsuitable to identify the version exactly. | 
+| serverPath | Application Center に接続するため。デフォルト値は http://localhost:9080 です。 | 
+| context | Application Center のコンテキスト。デフォルト値は /applicationcenter です。 | 
+| loginUser | アプリケーションをアップロードする権限があるユーザー名。 | 
+| loginPass | アプリケーションをアップロードする権限があるユーザーのパスワード。 | 
+| forceOverwrite | このパラメーターが true に設定されると、Ant タスクは、既に存在するアプリケーションをアップロードするとき、Application Center 内のアプリケーションを上書きしようと試みます。このパラメーターは upload Ant タスクでのみ使用可能です。
+| file | Application Center にアップロードする、または Application Center から削除する .apk ファイルまたは .ipa ファイル。このパラメーターにはデフォルト値がありません。  | 
+| fileset | 複数のファイルをアップロードまたは削除するため。 | 
+| application | アプリケーションのパッケージ名。このパラメーターは delete Ant タスクでのみ使用可能です。 | 
+| os | アプリケーションのオペレーティング・システム。(例えば、Android または iOS。) このパラメーターは delete Ant タスクでのみ使用可能です。 | 
+| version | アプリケーションの内部バージョン。このパラメーターは delete Ant タスクでのみ使用可能です。ここで商用バージョンを使用しないでください。商用バージョンはバージョンを正確に識別するのには適さないからです。  | 
 
-#### Example
+#### 例
 {: #example-ant }
-You can find an extended example in the **ApplicationCenter/tools/build.xml** directory.  
-The following example shows how to use the Ant task in your own Ant script.
+**ApplicationCenter/tools/build.xml** ディレクトリーに拡張された例があります。  
+次の例は、Ant タスクを独自の Ant スクリプトの中で使用する方法を示しています。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -217,32 +218,32 @@ The following example shows how to use the Ant task in your own Ant script.
 </project>
 ```
 
-This sample Ant script is in the **tools** directory. You can use it to upload a single application to the Application Center.
+このサンプル Ant スクリプトは **tools** ディレクトリーにあります。 これを使用して、アプリケーションを 1 つだけ Application Center にアップロードすることができます。
 
 ```bash
 ant upload.App -Dupload.file=sample.ipa
 ```
 
-You can also use it to upload all applications that are found in a directory hierarchy.
+また、これを使用して、特定のディレクトリー階層にあるすべてのアプリケーションをアップロードすることもできます。
 
 ```bash
 ant upload.AllApps -Dworkspace.root=myDirectory
 ```
 
-#### Properties of the sample Ant script
+#### サンプル Ant スクリプトのプロパティー
 {: #properties-of-the-sample-ant-script }
-| Property | Comment | 
+| プロパティー | コメント | 
 |----------|---------|
-| install.dir | Defaults to ../../ | 
-| server.path | The default value is http://localhost:9080. | 
-| context.path | The default value is applicationcenter. | 
-| upload.file | This property has no default value. It must include the exact file path. | 
-| workspace.root | Defaults to ../../ | 
-| login.user | The default value is appcenteradmin. | 
-| login.pass | The default value is admin. | 
-| force	The default value is true. | 
+| install.dir | デフォルトの ../../ になります。 | 
+| server.path | デフォルト値は http://localhost:9080 です。 | 
+| context.path | デフォルト値は applicationcenter です。 | 
+| upload.file | このプロパティーにはデフォルト値がありません。 正確なファイル・パスを含む必要があります。  | 
+| workspace.root | デフォルトの ../../ になります。 | 
+| login.user | デフォルト値は appcenteradmin です。 | 
+| login.pass | デフォルト値は admin です。 | 
+| force	デフォルト値は true です。 | 
 
-To specify these parameters by command line when you call Ant, add -D before the property name. For example:
+Ant の呼び出し時にこれらのパラメーターをコマンド・ラインで指定するには、プロパティー名の前に -D を追加してください。例えば、次のとおりです。 
 
 ```xml
 -Dserver.path=http://localhost:8888/

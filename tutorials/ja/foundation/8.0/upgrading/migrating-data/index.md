@@ -1,95 +1,94 @@
 ---
 layout: tutorial
-title: Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK
-breadcrumb_title: Migrating apps storing mobile data
+title: IMFData または Cloudant SDK を使用して Cloudant にモバイル・データを保管するアプリケーションのマイグレーション
+breadcrumb_title: モバイル・データを保管するアプリケーションのマイグレーション
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
+モバイル・アプリケーションのデータを Cloudant データベースに保管できます。Cloudant は、JSON データ、フルテキスト・データ、および地理情報データなどの幅広い種類のデータ・タイプの処理が可能な、拡張 NoSQL データベースです。Java™ 、Objective-C、および Swift 用の SDK があります。
 
-> CloudantToolkit and IMFData frameworks are discontinued in {{ site.data.keys.product_full }} v8.0.
+> CloudantToolkit および IMFData のフレームワークは {{site.data.keys.product_full }} v8.0 で非推奨になりました
 
-* For iOS, use the [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK as a replacement for CloudantToolkit and IMFData frameworks.
-* For Android, Use the [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) as a replacement for CloudantToolkit and IMFData frameworks. With Cloudant Sync, you can persist data locally and replicate with a remote data store.
+* iOS の場合は、CloudantToolkit フレームワークおよび IMFData フレームワークの代わりに [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK を使用します。
+* Android の場合は、CloudantToolkit フレームワークおよび IMFData フレームワークの代わりに [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) を使用します。Cloudant Sync を使用すると、データをローカル側で永続化させ、リモート・データ・ストアで複製することができます。
 
-If you want to access remote stores directly, use REST calls in your application and refer to the [Cloudant API Reference](https://docs.cloudant.com/api.html).
+リモート・ストアに直接アクセスしたい場合は、アプリケーションで REST 呼び出しを使用し、「[Cloudant API Reference](https://docs.cloudant.com/api.html)」を参照してください。
 
-### Cloudant versus JSONStore
+### Cloudant か JSONStore か
 {: #cloudant-versus-jsonstore }
-You might consider using JSONStore instead of Cloudant in the following scenarios:
+以下のシナリオでは、Cloudant の代わりに JSONStore を使用することを検討することをお勧めします。
 
-* When you are storing data on the mobile device that must be stored in a FIPS 140-2 compliant manner.
-* When you need to synchronize data between the device and the enterprise.
-* When you are developing a hybrid application.
+* FIPS 140-2 準拠方式で保管される必要があるデータをモバイル・デバイスに保管している場合。
+* デバイスとエンタープライズ間でデータを同期する必要がある場合。
+* ハイブリッド・アプリケーションを開発している場合。
 
-For more information about JSONStore, see [JSONStore](../../application-development/jsonstore).
+JSONStore について詳しくは、『[JSONStore](../../application-development/jsonstore)』を参照してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Integrating {{ site.data.keys.product_adj }} and Cloudant security](#integrating-mobilefirst-and-cloudant-security)
-* [Creating databases](#creating-databases)
-* [Encrypting data on the device](#encrypting-data-on-the-device)
-* [Setting user permissions](#setting-user-permissions)
-* [Modeling data](#modeling-data)
-* [Performing CRUD operations](#performing-crud-operations)
-* [Creating indexes](#creating-indexes)
-* [Querying data](#querying-data)
-* [Supporting offline storage and synchronization](#supporting-offline-storage-and-synchronization)
+* [{{site.data.keys.product_adj }} と Cloudant のセキュリティーの統合](#integrating-mobilefirst-and-cloudant-security)
+* [データベースの作成](#creating-databases)
+* [デバイスのデータの暗号化](#encrypting-data-on-the-device)
+* [ユーザー・アクセス権の設定](#setting-user-permissions)
+* [データのモデル化](#modeling-data)
+* [CRUD 操作の実行](#performing-crud-operations)
+* [索引の作成](#creating-indexes)
+* [データの照会](#querying-data)
+* [オフライン・ストレージおよび同期のサポート](#supporting-offline-storage-and-synchronization)
 
-## Integrating {{ site.data.keys.product_adj }} and Cloudant security
+## {{site.data.keys.product_adj }} と Cloudant のセキュリティーの統合
 {: #integrating-mobilefirst-and-cloudant-security }
-### Adapter sample
+### アダプター・サンプル
 {: #adapter-sample }
-To download the sample, see Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise).
+サンプルをダウンロードするには、「Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise)」を参照してください。
 
-To understand the adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security).
+Bluelist サンプルに含まれるアダプターを理解するには、[Cloudant セキュリティー](https://cloudant.com/for-developers/faq/auth/)と [{{site.data.keys.product_adj }} セキュリティー・フレームワーク](../../authentication-and-security)の両方を理解する必要があります。
 
-The Bluelist adapter sample has two primary functions:
+Bluelist アダプター・サンプルには以下の 2 つの主要な機能があります。
 
-* Exchange {{ site.data.keys.product_adj }} OAuth tokens for Cloudant session cookies
-* Perform the required admin requests to Cloudant from the Bluelist sample.
+* {{site.data.keys.product_adj }} OAuth トークンを Cloudant セッション Cookie と交換する。
+* Bluelist サンプルから、Cloudant への必要な admin 要求を実行する。
 
-The sample demonstrates how to perform API requests that require admin access on the server where it is secure. While it is possible to place your admin credentials on the mobile device, it is a better practice to restrict access from mobile devices.
+サンプルでは、サーバー上で admin 権限を求める API 要求を実行する方法を示します (そのようにすることがセキュアである場合)。自分の admin 資格情報をモバイル・デバイスに配置することは可能ですが、モバイル・デバイスからのアクセスを制限することをお勧めします。
 
-The Bluelist sample integrates {{ site.data.keys.product_adj }} security with Cloudant security. The adapter sample maps a {{ site.data.keys.product_adj }} identity to a Cloudant identity. The mobile device receives a Cloudant session cookie to perform non-admin API requests. The sample uses the Couch Security model.
+Bluelist のサンプルでは、{{site.data.keys.product_adj }} のセキュリティーと Cloudant のセキュリティーを統合します。アダプターのサンプルでは、{{site.data.keys.product_adj }} ID を Cloudant ID にマップします。モバイル・デバイスは、Cloudant セッション Cookie を受け取って、非 admin API 要求を実行します。このサンプルでは、Couch セキュリティー・モデルを使用します。
 
-### Enroll REST endpoint
+### REST エンドポイントの登録
 {: #enroll-rest-endpoint }
-The following diagram illustrates the integration performed by the Bluelist adapter sample **/enroll** endpoint.
+以下の図は、Bluelist アダプター・サンプルの **/enroll** エンドポイントによって実行される統合を示したものです。
+![サンプル統合図](SecurityIntegration.jpg)
 
-![sample integration diagram](SecurityIntegration.jpg)
+1. モバイル・デバイスが、{{site.data.keys.product_adj }} OAuth トークンを {{site.data.keys.mf_server }} から取得します。
+2. モバイル・デバイスは、 アダプターで **/enroll** でエンドポイントを呼び出します。
+3.  アダプター・サンプルが {{site.data.keys.mf_server }} を使用して {{site.data.keys.product_adj }} OAuth トークンを検証します。
+4. 有効である場合は、Cloudant への admin API 要求を実行します。サンプルは、**_users** データベースで既存の Cloudant ユーザーをチェックします。
+    * そのユーザーが存在する場合は、**_users** データベースで Cloudant ユーザー資格情報を検索します。
+    * 新規ユーザーが渡された場合は、 Cloudant 管理者資格情報を使用し、新規 Cloudant ユーザーを作成し、**_users** データベースに保管します。
+    * ユーザーに固有のデータベース名を作成し、Cloudant 上にその名前を持つリモート・データベースを作成します。
+    * Cloudant ユーザーに、新しく作成したデータベースの読み取り/書き込み権限を付与します。
+    * Bluelist アプリケーションに必要な索引を作成します。
+5. 新規の Cloudant セッション Cookie を要求します。
+6. アダプター・サンプルが、Cloudant セッション Cookie、リモート・データベース名、および Cloudant URL をモバイル・デバイスに返します。
+7. セッション Cookie の有効期限が切れるまで、モバイル・デバイスが、Cloudant に対して直接要求を行います。
 
-1. Mobile device obtains the {{ site.data.keys.product_adj }} OAuth token from the {{ site.data.keys.mf_server }}.
-2. Mobile device calls the **/enroll** endpoint on the adapter.
-3. The adapter sample validates the {{ site.data.keys.product_adj }} OAuth token with the {{ site.data.keys.mf_server }}.
-4. If valid, performs admin API requests to Cloudant . The sample checks for an existing Cloudant user in the **_users** database.
-    * If the user exists, look up Cloudant user credentials in the **_users** database.
-    * If a new user is passed, use the Cloudant admin credentials, create a new Cloudant user and store in the **_users** database.
-    * Generate a unique database name for the user and create a remote database on Cloudant with that name.
-    * Give the Cloudant user permissions to read/write the newly created database.
-    * Create the required indexes for the Bluelist application.
-5. Request a new Cloudant session cookie.
-6. The adapter sample returns a Cloudant session cookie, remote database name, and Cloudant URL to the mobile device.
-7. Mobile device makes requests directly to Cloudant until the session cookie expires.
-
-### sessioncookie REST Endpoint
+### セッション Cookie REST エンドポイント
 {: #sessioncookie-rest-endpoint }
-In the case of an expired session cookie, the mobile device can exchange a valid {{ site.data.keys.product_adj }} OAuth token for a Cloudant session cookie with the **/sessioncookie** endpoint.
+セッション Cookie の有効期限が切れた場合、モバイル・デバイスは Cloudant セッション cookie と {{site.data.keys.product_adj }} OAuth トークンを **/sessioncookie** エンドポイントで交換できます。
 
-## Creating databases
+## データベースの作成
 {: #creating-databases }
-### Accessing local data stores
+### ローカル・データ・ストアへのアクセス
 {: #accessing-local-data-stores }
-You can use a local data store to store data on the client device for fast access, even when offline.  
-To create Store objects to access a local database, supply a name for the data store.
+ローカル・データ・ストアを使用して、オフラインの場合でも、高速にアクセスできるように、クライアント・デバイス上にデータを保管できます。  
+ローカル・データベースにアクセスするための Store オブジェクトを作成するには、データ・ストアの名前を指定します。
 
-> **Important:** The database name must be in lowercase.
+> **重要:** データベース名は小文字でなければなりません。
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imdata-cloudanttoolkit }
 
 **Objective-C**  
@@ -116,7 +115,7 @@ do {
 }
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
 
 **Objective-C**  
@@ -149,7 +148,7 @@ do{
 
 #### Android
 {: #android }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: before-with-imfdata-cloudanttoolkit }
 
 ```java
@@ -174,7 +173,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
 ```java
 // Create DatastoreManager
@@ -186,13 +185,13 @@ storeTask.continueWith(new Continuation<Store, Void>() {
        Datastore datastore = manager.openDatastore(name);
 ```
 
-### Creating remote data stores
+### リモート・データ・ストアの作成
 {: #creating-remote-data-stores }
-To save data in the remote store, supply the data store name.
+リモート・ストアにデータを保存するために、データ・ストア名を指定します。
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-c**
@@ -229,7 +228,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 })
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
 **Objective-c**
 
@@ -243,49 +242,47 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 
 #### Android
 {: #android }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 
-```java
-```
+```java```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
-```java
-```
+```java```
 
-## Encrypting data on the device
+## デバイスのデータの暗号化
 {: #encrypting-data-on-the-device }
-To enable the encryption of local data stores on mobile devices, you must make updates to your application to include encryption capabilities and create encrypted data stores.
+モバイル・デバイス上のローカル・データ・ストアの暗号化を有効にするには、アプリケーションを更新して暗号化機能を含むようにし、暗号化されたデータ・ストアを作成する必要があります。
 
-### Encrypting data on iOS devices
+### iOS デバイスのデータの暗号化
 {: #encrypting-data-on-ios-devices }
-1. Obtain the encryption capabilities with CocoaPods.
-   * Open your Podfile and add the following line:
+1. CocoaPods を使用して暗号化機能を取得します。
+   * Podfile を開き、以下の行を追加します。
         
-   ##### Before (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: # before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
         
-   ##### After (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: after-with-cloudant-sync }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
         
-   For more information, see the [CDTDatastore encryption documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md).
+   詳しくは、[CDTDatastore の暗号化に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)を参照してください。
     
-   * Run the following command to add the dependencies to your application.
+   * 以下のコマンドを実行して、アプリケーションに依存関係を追加します。
 
      ```bash
      pod install
      ```
 
-2. To use the encryption feature within a Swift application, add the following imports to the associated bridging header for the application: 
+2. Swift アプリケーション内で暗号化機能を使用するには、アプリケーションの関連ブリッジング・ヘッダーに以下の import を追加します。 
     
-   ##### Before (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit}
    ```objc
    #import <CloudantSync.h>
@@ -294,18 +291,18 @@ To enable the encryption of local data stores on mobile devices, you must make u
    #import <IMFData/IMFData.h>
    ```
     
-   ##### After (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    ```
         
-3. Initialize your local store for encryption with a key provider.
+3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
 
-   > **Warning:** If you change the password after creating the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database has been encrypted. You must delete the database to change passwords.
+   > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -337,7 +334,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
    }
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }
    **Objective-C**
 
@@ -371,9 +368,9 @@ To enable the encryption of local data stores on mobile devices, you must make u
    }
    ```
     
-4. When you are replicating data with an encrypted local store, you must initialize the CDTPullReplication and CDTPushReplication methods with a key provider.
+4. 暗号化されたローカル・ストアを使用してデータを複製する場合、CDTPullReplication メソッドおよび CDTPushReplication メソッドを鍵プロバイダーと共に初期化する必要があります。
 
-   ##### BEFORE (with IMFData/CloudantToolkit):   
+   ##### 変更前 (IMFData/CloudantToolkit を使用):   
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -409,17 +406,17 @@ To enable the encryption of local data stores on mobile devices, you must make u
    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }
-   Replication with an encrypted database requires no changes from replication with an unencrypted database.
+暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
-### Encrypting data on Android devices
+### Android デバイスのデータの暗号化
 {: #encrypting-data-on-android-devices }
-To encrypt data on an Android device, obtain encryption capabilities by including the correct libraries in your application. Then, you can initialize your local store for encryption and replicate data.
+Android デバイス上のデータを暗号化するには、アプリケーションに正しいライブラリーを組み込むことによって暗号化機能を取得します。その後、暗号化用のローカル・ストアを初期化し、データを複製できます。
 
-1. Add the Cloudant Toolkit library as a dependency in your build.gradle file:
+1. build.gradle ファイル内で Cloudant Toolkit ライブラリーを依存関係として追加します。
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit }
    ```xml
    repositories {
@@ -427,35 +424,35 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    }
 
    dependencies {
-       compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
+compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
    }
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }
     ```xml
-    repositories {
-        mavenLocal()
+   repositories {
+   mavenLocal()
         maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
         mavenCentral()
     }
 
     dependencies {
-        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
-        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
-        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
+compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
+compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
+compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
     }
     ```
     
-2. Download the [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) **.jar** and **.so** binary files and include them in your application in the appropriate folders within your app structure:
-    * Add libraries. Add the shared library files and SQLCipher archive to the **jniLibs** folder under your Android app directory.
-    * Add the required ICU compressed file to the assets folder in your app.
-    * Add **sqlcipher.jar** as a file dependency. From the app folder menu in Android studio, select the **Dependencies** tab under **Open Module Settings**.
-3. Initialize your local store for encryption with a key provider.
+2. [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) の **.jar** および **.so** バイナリー・ファイルをダウンロードし、それらのファイルを、アプリケーション構造内の適切なフォルダー内でアプリケーションに組み込みます。
+    * ライブラリーを追加します。共有ライブラリー・ファイルおよび SQLCipher アーカイブを、Android アプリケーション・ディレクトリーの **jniLibs** フォルダーに追加します。
+    * 必要な ICU 圧縮ファイルをアプリケーションの assets フォルダーに追加します。
+    * **sqlcipher.jar** をファイル依存関係として追加します。Android Studio のアプリケーション・フォルダーのメニューから、**「モジュール設定を開く」**の下の**「依存関係」**タブを選択します。
+3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
     
-   > **Warning:** If you change the password after you create the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database is encrypted. You must delete the database to change passwords.
+   > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    // Get reference to DataManager
@@ -481,7 +478,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    });
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }   
    ```java
    // Load SQLCipher libs
@@ -498,9 +495,9 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    Datastore datastore = manager.openDatastore(name, keyProvider);
    ```
 
-4. When you are replicating data with an encrypted local store, you must pass a KeyProvider object into the `pullReplicationForStore()` or `pushReplicationForStore()` method.
+4. 暗号化されたローカル・ストアを使用してデータを複製する場合、KeyProvider オブジェクトを `pullReplicationForStore()` メソッドまたは `pushReplicationForStore()` メソッドに渡す必要があります。
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    //Get reference to data manager
@@ -517,15 +514,15 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
    ```
 
-   ##### AFTER (with Cloudant Sync):
+   ##### 変更後 (Cloudant Sync を使用):
    {: #after-with-cloudant-sync }
-   Replication with an encrypted database requires no changes from replication with an unencrypted database.
+暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
-## Setting user permissions
+## ユーザー・アクセス権の設定
 {: #setting-user-permissions }
-You can set user permissions on remote databases.
+リモート・データベースに対するユーザー・アクセス権を設定できます。
 
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 **Objective-C**
 
@@ -565,7 +562,7 @@ manager.setCurrentUserPermissions(DB_ACCESS_GROUP_MEMBERS, forStoreName: "automo
 Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "automobiledb");
 
 permissionsTask.continueWith(new Continuation<Boolean, Object>() {
-    @Override
+@Override
     public Object then(Task<Boolean> task) throws Exception {
         if(task.isFaulted()){
             // Handle error
@@ -577,27 +574,27 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
-You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate {{ site.data.keys.product_adj }} OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
+モバイル・デバイスからユーザー・アクセス権を設定することはできません。Cloudant ダッシュボードまたはサーバー・サイド・コードを使用してアクセス権を設定する必要があります。{{site.data.keys.product_adj }} OAuth のトークンと Cloudant のセキュリティーとの統合方法のサンプルについては、[Bluelist サンプル](https://github.ibm.com/MFPSamples/BlueList-On-Premise)を参照してください。
 
-## Modeling data
+## データのモデル化
 {: #modeling-data }
-Cloudant  stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.
+Cloudant はデータを JSON ドキュメントとして保管します。アプリケーションでオブジェクトとしてデータを保管するには、ネイティブ・オブジェクトを基盤の JSON ドキュメント形式にマップする、付属のデータ・オブジェクト・マッパー・クラスを使用します。
 
-* iOS: Cloudant stores data as JSON documents. The CloudantToolkit framework provided an object mapper to map between native objects and JSON documents. The CDTDatastore API does not provide this feature. The snippets in the following sections demonstrate how to use CDTDatastore objects to accomplish the same operations.
-* Android: AndroidCloudant stores data as JSON documents. The CloudantToolkit API provided an object mapper to map between native objects and JSON documents. Cloudant Sync does not provide this feature. The snippets in the following sections demonstrate how to use DocumentRevision objects to accomplish the same operations.
+* iOS: Cloudant はデータを JSON ドキュメントとして保管します。CloudantToolkit フレームワークは、ネイティブ・オブジェクトと JSON ドキュメントの間でマッピングを行うためのオブジェクト・マッパーを備えていました。CDTDatastore API には、この機能はありません。以降のセクションにおけるスニペットでは、CDTDatastore オブジェクトを使用して同じ操作を実現する方法を示します。
+* Android: AndroidCloudant はデータを JSON ドキュメントとして保管します。CloudantToolkit API は、ネイティブ・オブジェクトと JSON ドキュメントの間でマッピングを行うためのオブジェクト・マッパーを備えていました。Cloudant Sync には、この機能はありません。以降のセクションにおけるスニペットでは、DocumentRevision オブジェクトを使用して同じ操作を実現する方法を示します。
 
-## Performing CRUD operations
+## CRUD 操作の実行
 {: #performing-crud-operations }
-You can modify the content of a data store.
+データ・ストアの内容を変更できます。
 
-* For more details on `create`, `retrieve`, `update`, and `delete` (CRUD) operations, see [CDTDatastore CRUD documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md).
-* For `create`, `retrieve`, `update`, and `delete` (CRUD) operations on a remote store, see the [Cloudant  Document API](https://docs.cloudant.com/document.html).
+* `create`、`retrieve`、 `update`、および `delete` (CRUD) の操作について詳しくは、[CDTDatastore の CRUD の資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md)を参照してください。
+* リモート・ストアでの `create`、`retrieve`、`update`、および `delete` (CRUD) の操作については、[Cloudant 文書 API](https://docs.cloudant.com/document.html) を参照してください。
 
-### Creating data
+### データの作成
 {: #creating-data }
-##### BEFORE
+##### 変更前
 {: #before }
 
 **Objective-C**
@@ -664,7 +661,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 ```objc
 // Use an existing store
@@ -678,7 +675,7 @@ NSError *error = nil;
 CDTDocumentRevision *createdRevision = [datastore createDocumentFromRevision:revision error:&error];
 
 if (error) {
-    // save was not successful, handler received an error
+// save was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", createdRevision);
@@ -725,9 +722,9 @@ revision.body = DocumentBodyFactory.create(body);
 DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 ```
 
-### Reading data
+### データの読み取り
 {: #reading-data }
-##### BEFORE
+##### 変更前
 {: #before }
 
 **Objective-C**
@@ -739,7 +736,7 @@ NSString *automobileId = existingAutomobileId;
 // Fetch Autombile from Store
 [store fetchById:automobileId completionHandler:^(id object, NSError *error) {
     if (error) {
-        // fetch was not successful, handler received an error
+// fetch was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = object;
@@ -790,7 +787,7 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 **Objective-C**
 
@@ -804,7 +801,7 @@ NSError *error = nil;
 CDTDocumentRevision *fetchedRevision = [datastore getDocumentWithId:documentId error:&error];
 
 if (error) {
-    // fetch was not successful, handler received an error
+// fetch was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", fetchedRevision);
@@ -838,9 +835,9 @@ String documentId = existingDocumentId;
 DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 ```
 
-### Updating data
+### データの更新
 {: #updating-data }
-##### BEFORE
+##### 変更前
 {: #before }
 
 **Objective-C**
@@ -856,7 +853,7 @@ automobile.year = 2015;
 // Save Autombile to the store
 [store save:automobile completionHandler:^(id savedObject, NSError *error) {
     if (error) {
-        // sasve was not successful, handler received an error
+// sasve was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = savedObject;
@@ -913,7 +910,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 **Objective-C**
 
@@ -973,11 +970,12 @@ revision.body = DocumentBodyFactory.create(body);
 DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 ```
 
-### Deleting data
+### データの削除
 {: #deleting-data }
-To delete an object, pass the object that you want to delete to the store.
+オブジェクトを削除するには、削除するオブジェクトをストアに渡します。
 
-##### BEFORE
+
+##### 変更前
 {: #before }
 **Objective-C**
 
@@ -989,7 +987,7 @@ Automobile *automobile = existingAutomobile;
 // Delete the Automobile object from the store
 [store delete:automobile completionHandler:^(NSString *deletedObjectId, NSString *deletedRevisionId, NSError *error) {
     if (error) {
-        // delete was not successful, handler received an error
+// delete was not successful, handler received an error
     } else {
         // use the result
         NSLog(@"deleted Automobile doc-%@-rev-%@", deletedObjectId, deletedRevisionId);
@@ -1038,7 +1036,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 **Objective-C**
 
@@ -1085,16 +1083,16 @@ BasicDocumentRevision documentRevision = (BasicDocumentRevision) existingDocumen
 DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(documentRevision);
 ```
 
-## Creating indexes
+## 索引の作成
 {: #creating-indexes }
-To perform queries, you must create an index.
+照会を実行するには、索引を作成する必要があります。
 
-* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md). For query operations on a remote store, see the [Cloudant  Query API](https://docs.cloudant.com/cloudant_query.html).
-* Android: For more details, see [Cloudant Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md). For CRUD operations on a remote store, see [Cloudant's Query API](https://docs.cloudant.com/cloudant_query.html).
+* iOS: 詳しくは、[CDTDatastore の照会に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)を参照してください。リモート・ストアでの照会操作については、[Cloudant 照会 API](https://docs.cloudant.com/cloudant_query.html) を参照してください。
+* Android: 詳しくは、[Cloudant Sync の照会に関する資料](https://github.com/cloudant/sync-android/blob/master/doc/query.md)を参照してください。リモート・ストアでの CRUD 操作については、[Cloudant の照会 API](https://docs.cloudant.com/cloudant_query.html) を参照してください。
 
-1. Create an index that includes the data type. Indexing with the data type is useful when an object mapper is set on the data store.
+1. データ型が含まれている索引を作成します。データ型が含まれた索引作成は、オブジェクト・マッパーがストアで設定されている場合に役立ちます。
 
-   ##### BEFORE
+   ##### 変更前
    {: #before }
    **Objective-C**
     
@@ -1108,10 +1106,10 @@ To perform queries, you must create an index.
    // Create the index
    [store createIndexWithDataType:dataType fields:@[@"year", @"make"] completionHandler:^(NSError *error) {
        if(error){
-           // Handle error
-       }else{
-           // Continue application flow
-       }
+            // Handle error
+        }else{
+            // Continue application flow
+        }
    }];
    ```
     
@@ -1163,7 +1161,7 @@ To perform queries, you must create an index.
    });
    ```
     
-   ##### AFTER
+   ##### 変更後
    {: #after }
    **Objective-C**
     
@@ -1209,9 +1207,9 @@ To perform queries, you must create an index.
    indexManager.ensureIndexed(indexFields, "automobile_index");
    ```
     
-2. Delete indexes.
+2. 索引を削除します。
 
-   ##### BEFORE
+   ##### 変更前
    {: #before }
    **Objective-C**
 
@@ -1271,7 +1269,7 @@ To perform queries, you must create an index.
    });
    ```
 
-   ##### AFTER
+   ##### 変更後
    {: #after }
    **Objective-C**
 
@@ -1313,17 +1311,17 @@ To perform queries, you must create an index.
    indexManager.deleteIndexNamed(indexName);
    ```
 
-## Querying data
+## データの照会
 {: #querying-data }
-After you create an index, you can query the data in your database.
+索引を作成した後、データベース内のデータを照会できます。
 
-* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md).
-* Android: For more details, see [Cloudant  Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md).
-* For query operations on a remote store, see the [Cloudant Query API](https://docs.cloudant.com/cloudant_query.html).
+* iOS: 詳しくは、[CDTDatastore の照会に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)を参照してください。
+* Android: 詳しくは、[Cloudant Sync の照会に関する資料](https://github.com/cloudant/sync-android/blob/master/doc/query.md)を参照してください。
+* リモート・ストアでの照会操作については、[Cloudant 照会 API](https://docs.cloudant.com/cloudant_query.html) を参照してください。
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-C**
@@ -1362,7 +1360,7 @@ store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSEr
 })
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
 **Objective-C**
 
@@ -1388,9 +1386,9 @@ if(results == nil){
 
 #### Android
 {: #android }
-To run a query for objects, create a Cloudant query with the query filters on data type. Run the query against a Store object.
+オブジェクトの照会を実行するには、データ・タイプに対して照会フィルターを使用して Cloudant 照会を作成します。Store オブジェクトに対して照会を実行します。
 
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 ```java
 // Use an existing store
@@ -1440,7 +1438,7 @@ queryTask.continueWith(new Continuation<List, Object>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
 ```java
 // Use an existing store
@@ -1473,16 +1471,16 @@ selectorMap.put("$and", andPredicates);
 QueryResult result = indexManager.find(selectorMap);
 ```
 
-## Supporting offline storage and synchronization
+## オフライン・ストレージおよび同期のサポート
 {: #supporting-offline-storage-and-synchronization }
-You can synchronize the data on a mobile device with a remote database instance. You can either pull updates from a remote database to the local database on the mobile device, or push local database updates to a remote database.
+モバイル・デバイス上のデータをリモート・データベース・インスタンスと同期できます。リモート・データベースの更新をモバイル・デバイス上のローカル・データベースにプルするか、ローカル・データベースの更新をリモート・データベースにプッシュできます。
 
-* iOS: For more details, see [CDTDatastore Replication documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md).
-* Android For more details, see [Cloudant  Sync Replication documentation](https://github.com/cloudant/sync-android/blob/master/doc/replication.md). For CRUD operations on a remote store, see the [Cloudant Replication API](https://docs.cloudant.com/replication.html).
+* iOS: 詳しくは、[CDTDatastore 複製の資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md)を参照してください。
+* Android: 詳しくは、[Cloudant Sync 複製の資料](https://github.com/cloudant/sync-android/blob/master/doc/replication.md)を参照してください。リモート・ストアでの CRUD 操作については、[Cloudant 複製 API](https://docs.cloudant.com/replication.html) を参照してください。
 
-### Running pull replication
+### プル複製の実行
 {: #running-pull-replication }
-##### BEFORE
+##### 変更前
 {: #before }
 
 **Objective-C**
@@ -1525,7 +1523,7 @@ do {
     
     // start replication
     try replicator.start()
-
+    
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
@@ -1562,7 +1560,7 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 **Objective-C**
 
@@ -1610,7 +1608,7 @@ do {
     let replicatorFactory = CDTReplicatorFactory(datastoreManager: datastoreManager)
     let pull:CDTPullReplication = CDTPullReplication(source: remoteStoreUrl, target: datastore)
     let replicator:CDTReplicator = try replicatorFactory.oneWay(pull)
-    
+
     // start replication
     try replicator.start()
 
@@ -1655,9 +1653,9 @@ replicator.getEventBus().register(new Object() {
 replicator.start();
 ```
 
-### Running push replication
+### プッシュ複製の実行
 {: #running-push-replication }
-##### BEFORE
+##### 変更前
 {: #before }
 
 **Objective-C**
@@ -1736,7 +1734,7 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 });
 ```
 
-##### AFTER
+##### 変更後
 {: #after }
 **Objective-C**
 
@@ -1793,7 +1791,7 @@ do {
         NSThread.sleepForTimeInterval(1.0)
         print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
     }
-    
+
 } catch let error as NSError {
     // Handle error
 }

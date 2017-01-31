@@ -1,115 +1,115 @@
 ---
 layout: tutorial
-title: Migrating from Earlier Releases
-weight: 12
+title: 以前のリリースからのマイグレーション
+weight: 11
 ---
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} v8.0 introduces new concepts for application development and deployment, and some API changes. Learn about these changes to prepare and plan for the migration of your MobileFirst applications.
+{{site.data.keys.product_full }} v8.0 では、アプリケーション開発とデプロイメントの新概念、およびいくつかの API の変更が導入されています。MobileFirst アプリケーションのマイグレーションについて準備し計画を立てるために、これらの変更について学びます。
 
-> [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
+> [マイグレーションの手引きを検討](migration-cookbook)して、手早くマイグレーション・プロセスを開始します。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Changes in the development and deployment process](#changes-in-the-development-and-deployment-process)
-* [Migrating a Cordova or hybrid application](#migrating-a-cordova-or-hybrid-application)
-* [Migrating a native application](#migrating-a-native-application)
-* [Migrating adapters and security](#migrating-adapters-and-security)
-* [Migrating push notifications support](#migrating-push-notifications-support)
-* [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
-* [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
-* [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
+* [開発およびデプロイメント・プロセスの変更](#changes-in-the-development-and-deployment-process)
+* [Cordova アプリケーションまたはハイブリッド・アプリケーションのマイグレーション](#migrating-a-cordova-or-hybrid-application)
+* [ネイティブ・アプリケーションのマイグレーション](#migrating-a-native-application)
+* [アダプターおよびセキュリティーのマイグレーション](#migrating-adapters-and-security)
+* [プッシュ通知サポートのマイグレーション](#migrating-push-notifications-support)
+* [サーバー・データベースおよびサーバー構造の変更](#changes-in-the-server-databases-and-in-the-server-structure)
+* [Cloudant でのモバイル・データの保管](#storing-mobile-data-in-cloudant)
+* [フィックスパックの {{site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server) への適用
 
-## Changes in the development and deployment process
+## 開発およびデプロイメント・プロセスの変更
 {: #changes-in-the-development-and-deployment-process }
-> For a quick hands-on experience of the development process with {{ site.data.keys.product }} V8.0.0, you can review the [Quick Start tutorials](../quick-start).
+> {{site.data.keys.product }} V8.0.0 を使用した開発プロセスのクイック・ハンズオン体験については、[クイック・スタート・チュートリアル](../quick-start)を検討することができます。
 
-In this version of the product, you no longer create a project WAR file that needs to be installed in the application server that is running {{ site.data.keys.mf_server }} before you can upload your apps. Instead, {{ site.data.keys.mf_server }} is installed once, and you upload the server-side **configuration** of your apps, of the resource security, or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}. You can also upload a new **configuration file** for your apps by using a command-line tool or the server REST API.
+製品のこのバージョンでは、アプリケーションをアップロードする前に、{{site.data.keys.mf_server }} を実行しているアプリケーション・サーバーにインストールする必要があるプロジェクト WAR ファイルの作成は行わなくなりました。代わりに、{{site.data.keys.mf_server }} は 1 回インストールされ、ユーザーはアプリケーション、リソース・セキュリティー、またはプッシュ・サービスのサーバー・サイド**構成**をサーバーにアップロードします。{{site.data.keys.mf_console }} を使用してアプリケーションの構成を変更できます。また、コマンド・ライン・ツールまたはサーバー REST API を使用してアプリケーションの新規**構成ファイル**をアップロードすることもできます。
 
-MobileFirst projects no longer exist. Instead, you develop your mobile app with the development environment of your choice. You develop the server-side of your application separately, in Java™ or in JavaScript. You can develop adapters with Apache Maven or a Maven enabled IDE such as Eclipse, IntelliJ, and others.
+MobileFirst プロジェクトは、存在しなくなりました。代わりに、任意の開発環境でモバイル・アプリケーションを開発します。アプリケーションのサーバー・サイドは、Java™ または JavaScript で別個に開発します。アダプターの開発は、Apache Maven を使用するか、Eclipse および IntelliJ などの Maven 対応 IDE を使用して行うことができます。
 
-In previous versions, applications were deployed to the server by uploading a .wlapp file. The file contained data that described the application and for hybrid applications, the web resources. In v8.0, the .wlapp file is replaced by an application descriptor JSON file for registering an app to the server. For Cordova applications that use Direct Update, instead of uploading a new version of the .wlapp, you now upload a web resource archive to the server.
+以前のバージョンでは、アプリケーションは、.wlapp ファイルをアップロードすることによってサーバーにデプロイされました。このファイルには、アプリケーションを記述したデータと、ハイブリッド・アプリケーションの場合は Web リソースを記述したデータも含まれていました。v8.0 では、.wlapp ファイルは、アプリケーションをサーバーに登録するためのアプリケーション記述子 JSON ファイルに置き換えられました。ダイレクト・アップデートを使用する Cordova アプリケーションでは、新しいバージョンの .wlapp をアップロードする代わりに、Web リソース・アーカイブをサーバーにアップロードするようになりました。
 
-When you develop your app, you use the {{ site.data.keys.mf_cli }} for many tasks, such as registering an app to its target server or uploading its server-side configuration.
+アプリケーションの開発時には、ターゲット・サーバーへのアプリケーションの登録やサーバー・サイド構成のアップロードなどの多くのタスクに {{site.data.keys.mf_cli }} を使用します。
 
-### Discontinued features and replacement path
+### 使用が中止されたフィーチャーと置換パス
 {: #discontinued-features-and-replacement-path}
-{{ site.data.keys.product }} V8.0.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0.
+{{site.data.keys.product }} V8.0.0 は、以前のバージョンと比較して徹底的に簡素化されています。この簡素化の結果、V7.1 で使用可能だったフィーチャーの一部は V8.0 で使用が中止されています。
 
-> For more information about discontinued features and replacement path, see [Features that are discontinued in v8.0 and features that are not included in v8.0](../product-overview/release-notes/deprecated-discontinued).
+> 使用が中止されたフィーチャーおよび置換パスについて詳しくは、[V8.0 で廃止された機能および V8.0 に含まれない機能](../product-overview/release-notes/deprecated-discontinued)を参照してください。
 
-## Migrating a Cordova or hybrid application
+## Cordova アプリケーションまたはハイブリッド・アプリケーションのマイグレーション
 {: #migrating-a-cordova-or-hybrid-application }
-You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
+Apache Cordova コマンド・ライン・ツール、または Visual Studio Code、Eclipse、IntelliJ などの Cordova 対応 IDE を使用して Cordova アプリケーションの開発を開始します。
 
-Add support for the {{ site.data.keys.product_adj }} features by adding the {{ site.data.keys.product_adj }} plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before).
+アプリケーションに {{site.data.keys.product_adj }} プラグインを追加することで、{{site.data.keys.product_adj }} 機能のサポートを追加します。V7.1 の Cordova アプリケーションまたはハイブリッド・アプリケーションと V8.0 の Cordova アプリケーションの違いについて詳しくは、[V8.0 を使用して開発した Cordova アプリケーションと V7.1 以前を使用して開発した Cordova アプリケーションの比較](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)を参照してください。
 
-To migrate a Cordova or hybrid app, you need to
+Cordova アプリケーションまたはハイブリッド・アプリケーションをマイグレーションするには、以下を実行する必要があります。
 
-* For planning purposes, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* Replace the client-side APIs that are discontinued or not in V8.0.0. For a list of API changes, see [Upgrading the WebView](migrating-client-applications/cordova/#upgrading-the-webview).
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API instead of `WL.Client.invokeProcedure`, which is deprecated.
-* If you use Direct Update, review [Migrating Direct Update](migrating-client-applications/cordova/#migrating-direct-update).
-* For more information about migrating Cordova or hybrid apps, see [Migrating existing Cordova and hybrid applications](migrating-client-applications/cordova).
+* 計画を立てるため、マイグレーション・アシスト・ツールを既存のプロジェクトで実行します。生成されたレポートを検討し、マイグレーションに必要な作業を評価します。詳しくは、[マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool)を参照してください。
+* 使用が中止された、または V8.0.0 に含まれていないクライアント・サイド API を置き換えます。API の変更のリストについては、[WebView のアップグレード](migrating-client-applications/cordova/#upgrading-the-webview)を参照してください。
+* クラシック・セキュリティー・モデルを使用するクライアント・リソースへの呼び出しを変更します。例えば、非推奨の `WL.Client.invokeProcedure` の代わりに、`WLResourceRequest` API を使用します。
+* ダイレクト・アップデートを使用する場合は、[ダイレクト・アップデートのマイグレーション](migrating-client-applications/cordova/#migrating-direct-update)を検討してください。
+* Cordova アプリケーションおよびハイブリッド・アプリケーションのマイグレーションについて詳しくは、[既存の Cordova アプリケーションおよびハイブリッド・アプリケーションのマイグレーション](migrating-client-applications/cordova)を参照してください。
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in Migrating push notification support.
+> **注:** プッシュ通知サポートのマイグレーションには、クライアント・サイドとサーバー・サイドの変更が必要です。これについては、後述の『プッシュ通知サポートのマイグレーション』に説明があります。
 
-## Migrating a native application
+## ネイティブ・アプリケーションのマイグレーション
 {: #migrating-a-native-application }
-To migrate native application, you need to follow these steps:
+ネイティブ・アプリケーションをマイグレーションするには、以下のステップを実行する必要があります。
 
-* For planning purpose, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration.
-* Update your project to use the SDK from {{ site.data.keys.product }} v8.0
-* Replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API, instead of `invokeProcedure`, which is deprecated.
-    * For more information about migrating native iOS apps, see [Migrating existing native iOS applications](migrating-client-applications/ios).
-    * For more information about migrating native Android apps, see [Migrating existing native Android applications](migrating-client-applications/android).
-    * For more information about migrating native Windows apps, see [Migrating existing native Windows applications](migrating-client-applications/windows).
+* 計画の目的のために、マイグレーション・アシスト・ツールを既存のプロジェクトで実行します。生成されたレポートを検討し、マイグレーションに必要な作業を評価します。
+* {{site.data.keys.product }} v8.0 の SDK を使用するようにプロジェクトを更新します。
+* 使用が中止された、または v8.0 に含まれていないクライアント・サイド API を置き換えます。マイグレーション・アシスト・ツールはコードをスキャンし、置き換える API のレポートを生成できます。
+* クラシック・セキュリティー・モデルを使用するクライアント・リソースへの呼び出しを変更します。例えば、非推奨の `invokeProcedure` の代わりに、`WLResourceRequest` API を使用します。
+    * ネイティブ iOS アプリケーションのマイグレーションについて詳しくは、[既存のネイティブ iOS アプリケーションのマイグレーション](migrating-client-applications/ios)を参照してください。
+    * ネイティブ Android アプリケーションのマイグレーションについて詳しくは、[既存のネイティブ Android アプリケーションのマイグレーション](migrating-client-applications/android)を参照してください。
+    * ネイティブ Windows アプリケーションのマイグレーションについて詳しくは、[既存のネイティブ Windows アプリケーションのマイグレーション](migrating-client-applications/windows)を参照してください。
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in [Migrating push notification support](#migrating-push-notifications-support).
+> **注:** プッシュ通知サポートのマイグレーションには、クライアント・サイドとサーバー・サイドの変更が必要です。これについては、後述の[プッシュ通知サポートのマイグレーション](#migrating-push-notifications-support)に説明があります。
 
-## Migrating adapters and security
+## アダプターおよびセキュリティーのマイグレーション
 {: #migrating-adapters-and-security }
-Starting with v8.0, adapters are Maven projects. The {{ site.data.keys.product_adj }} security framework is based on OAuth, security scopes, and security checks. Security scopes define the security requirements to access a resource. Security checks define how a security requirement is verified. Security checks are written as Java adapters. For a hands-on experience with adapters and security, see the tutorials for [Creating Java and JavaScript Adapters](../adapters/creating-adapters) and [Authorization concepts](../authentication-and-security).
+v8.0 以降、アダプターは Maven プロジェクトになりました。{{site.data.keys.product_adj }} セキュリティー・フレームワークは、OAuth、セキュリティー・スコープ、およびセキュリティー検査に基づきます。セキュリティー・スコープは、リソースにアクセスするためのセキュリティー要件を定義します。セキュリティー検査は、セキュリティー要件の検査方法を定義します。セキュリティー検査は、Java アダプターとして作成されます。アダプターおよびセキュリティーのハンズオン体験については、[Java アダプターおよび JavaScript アダプターの作成](../adapters/creating-adapters)および[許可の概念](../authentication-and-security)のチュートリアルを参照してください。
 
-{{ site.data.keys.mf_server }} operates only in session-independent mode and adapters should not store a state locally to a Java virtual machine (JVM).
+{{site.data.keys.mf_server }} はセッション独立モードでのみ作動します。また、アダプターは Java仮想マシン (JVM) に対してローカルに状態を保管すべきではありません。
 
-You can externalize adapter properties to configure adapters for the context where they run, for example a test server or a production server. But the values of these properties are no longer included in a property file of a project WAR file. Instead, you define them from the {{ site.data.keys.mf_console }}, or by using a command-line tool or the server REST API.
+アダプターのプロパティーを外部化して、実行されるコンテキスト (例えば、テスト・サーバーまたは実動サーバー) 用にアダプターを構成することができます。ただし、これらのプロパティーの値は、プロジェクト WAR ファイルのプロパティー・ファイルには含まれないようになりました。代わりに、{{site.data.keys.mf_console }} から、またはコマンド・ライン・ツールやサーバー REST API を使用してそれらを定義します。
 
-* For more information about migrating adapters, see [Migrating existing adapters](migrating-adapters) to work under {{ site.data.keys.mf_server }} v8.0.
-* For more information about server-side API changes, see [Server-side API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) changes in v8.0.
-* For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
-* For more information on migrating authentication and security see [Migrating Authentication and Security](migrating-security) to {{ site.data.keys.product_adj }} v8.0.
+* アダプターのマイグレーションについて詳しくは、{{site.data.keys.mf_server }} V8.0 で動作するようにするための[既存のアダプターのマイグレーション](migrating-adapters)を参照してください。
+* サーバー・サイド API の変更について詳しくは、v8.0 での[サーバー・サイド API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) の変更を参照してください。
+* アダプターを開発するために使用される Apache Maven の概要については、『[Apache Maven プロジェクトとしてのアダプター](../adapters)』を参照してください。
+* 認証とセキュリティーのマイグレーションについて詳しくは、{{site.data.keys.product_adj }} v8.0 への[認証とセキュリティーのマイグレーション](migrating-security)を参照してください。
 
-## Migrating push notifications support
+## プッシュ通知サポートのマイグレーション
 {: #migrating-push-notifications-support }
-The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#migration-scenarios).
+イベント・ソース・ベースのモデルはサポートされなくなりました。代わりに、タグ・ベースの通知を使用してください。クライアント・アプリケーションおよびサーバー・サイド・コンポーネント用のプッシュ通知のマイグレーションについて詳しくは、イベント・ソース・ベースの通知からの[プッシュ通知のマイグレーション](migrating-push-notifications)と、[マイグレーション・シナリオ](migrating-push-notifications/#migration-scenarios)を参照してください。
 
-Starting with v8.0, you configure the push service on the server side. The push certificates are stored on the server. You can set them from the {{ site.data.keys.mf_console }} or you can automate certificate uploads by using a command-line tool or the push service REST API. You can also send push notifications from the {{ site.data.keys.mf_console }}.
+v8.0 以降、プッシュ・サービスはサーバー・サイドで構成します。プッシュ証明書はサーバーに保管されます。それらの設定は、{{site.data.keys.mf_console }} から行うことができます。または、コマンド・ライン・ツールやプッシュ・サービス REST API を使用して、証明書のアップロードを自動化することができます。{{site.data.keys.mf_console }} からプッシュ通知を送信することもできます。
 
-The push service is protected by the OAuth security model. You must configure server-side components that use the push service REST API must be configured as confidential clients of {{ site.data.keys.mf_server }}.
+プッシュ・サービスは、OAuth セキュリティー・モデルによって保護されています。プッシュ・サービス REST API を使用するサーバー・サイド・コンポーネントは、{{site.data.keys.mf_server }} の機密クライアントとして構成する必要があります。
 
-### Push notifications data migration tool
+### プッシュ通知データ・マイグレーション・ツール
 {: #push-notifications-data-migration-tool }
-Also available is a migration tool for push notifications data. The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.
+プッシュ通知データ用のマイグレーション・ツールも使用できます。マイグレーション・ツールは、MobileFirst Platform Foundation 7.1 のプッシュ・データ (デバイス、ユーザーのサブスクリプション、資格情報、およびタグ) を {{site.data.keys.product }} 8.0 にマイグレーションする際に役立ちます。
 
-> [Learn more about the migration tool](migrating-push-notifications/#migration-tool).
+> [マイグレーション・ツールについてもっとよく知る](migrating-push-notifications/#migration-tool)。
 
-## Changes in the server databases and in the server structure
+## サーバー・データベースおよびサーバー構造の変更
 {: #changes-in-the-server-databases-and-in-the-server-structure }
-{{ site.data.keys.mf_server }} enables changes to app security, connectivity and push without code change, app rebuild or redeployment. But these changes imply changes in the database schemas, the data stored in the database, and the installation process.
+{{site.data.keys.mf_server }} は、アプリケーション・セキュリティーの変更、コード変更なしの接続およびプッシュ、アプリケーションの再ビルドまたは再デプロイメントを可能にします。ただし、これらの変更は、データベース・スキーマ、データベースに保管されたデータ、およびインストール・プロセスの変更を暗黙に示しています。
 
-Because of these changes, {{ site.data.keys.product }} does not include automated scripts to migrate your databases from earlier versions to V8.0.0 or to upgrade an existing server installation. To move new versions of your apps to V8.0.0, install a new server that you can run side by side with your previous server. Then, upgrade your apps and adapters to V8.0.0 and deploy them to the new server.
+これらの変更のため、{{site.data.keys.product }} には、データベースを以前のバージョンから V8.0.0 にマイグレーションしたり、既存のサーバー・インストール済み環境をアップグレードしたりするための自動化スクリプトは含まれていません。アプリケーションの新しいバージョンを V8.0.0 に移行するには、以前のサーバーと横並びで実行できる新しいサーバーをインストールします。次に、アプリケーションおよびアダプターを V8.0.0 にアップグレードし、新しいサーバーにそれらをデプロイします。
 
-## Storing mobile data in Cloudant
+## Cloudant でのモバイル・データの保管
 {: #storing-mobile-data-in-cloudant }
-Storing mobile data in Cloudant  with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
+IMFData フレームワークまたは CloudantToolkit を使用した Cloudant でのモバイル・データの保管は、サポートされなくなっています。代替 API については、[IMFData または Cloudant SDK を使用して Cloudant にモバイル・データを保管するアプリケーションのマイグレーション](migrating-data)を参照してください。
 
-## Applying a fix pack to {{ site.data.keys.mf_server }}
+## フィックスパックの {{site.data.keys.mf_server }} への適用
 {: #applying-a-fix-pack-to-mobilefirst-server }
-Find out how to use the Server Configuration Tool to upgrade {{ site.data.keys.mf_server }} V8.0.0 to a fix pack or an interim fix. Alternatively, if you installed {{ site.data.keys.mf_server }} with Ant tasks, you can also use Ant tasks to apply the fix pack or interim fix.
+サーバー構成ツールを使用して {{site.data.keys.mf_server }} V8.0.0 をフィックスパックまたは暫定修正にアップグレードする方法を紹介します。または、Ant タスクを使用して {{site.data.keys.mf_server }} をインストールした場合は、Ant タスクを使用してフィックスパックまたは暫定修正を適用することもできます。
 
-To apply an interim fix or fix pack on {{ site.data.keys.mf_server }}, choose one of the following topics based on your initial installation method:
+{{site.data.keys.mf_server }} にフィックスパックまたは暫定修正を適用するには、初期インストール方式に基づいて、以下のいずれかのトピックを選択してください。
 
-* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [サーバー構成ツールを使用したフィックスパックまたは暫定修正の適用](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Ant ファイルを使用したフィックスパックの適用](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)

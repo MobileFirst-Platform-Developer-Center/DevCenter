@@ -1,131 +1,131 @@
 ---
 layout: tutorial
-title: Migrating existing Android applications
+title: 既存の Android アプリケーションのマイグレーション
 breadcrumb_title: Android
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-To migrate an existing native Android project that was created with IBM MobileFirst Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+IBM MobileFirst Platform Foundation バージョン 6.2.0 以降で作成された既存のネイティブ Android プロジェクトをマイグレーションするには、現行バージョンの SDK を使用するようにプロジェクトを変更する必要があります。次に、v8.0 で使用が中止された、または v8.0 に含まれていないクライアント・サイド API を置き換えます。マイグレーション・アシスト・ツールはコードをスキャンし、置き換える API のレポートを生成できます。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Scanning existing {{ site.data.keys.product_adj }} native Android apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade)
-* [Migrating an Android project with Gradle](#migrating-an-android-project-with-gradle)
-* [Updating the Android code](#updating-the-android-code)
+* [バージョンアップの前準備として既存の{{site.data.keys.product_adj }} ネイティブ Android アプリケーションをスキャン](#scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade)
+* [Gradle を使用した Android プロジェクトのマイグレーション](#migrating-an-android-project-with-gradle)
+* [Android コードの更新](#updating-the-android-code)
 
-## Scanning existing {{ site.data.keys.product_adj }} native Android apps to prepare for a version upgrade
+## バージョンアップの前準備として既存の {{site.data.keys.product_adj }} ネイティブ Android アプリケーションをスキャン
 {: #scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade }
-The migration assistance tool helps you prepare your apps that were created with a previous version of {{ site.data.keys.product_full }} for migration by scanning the sources of the native Android app and generating a report of APIs that are deprecated or discontinued in V8.0.
+マイグレーション・アシスト・ツールは、ネイティブ Android アプリケーションのソースをスキャンし、V8.0 で非推奨または使用中止となった API のレポートを生成することにより、{{site.data.keys.product_full }} の以前のバージョンで作成されたアプリケーションのマイグレーションの準備を支援します。
 
-The following information is important to know before you use the migration assistance tool:
+マイグレーション・アシスト・ツールを使用する前に、以下の情報を知っておくことが重要です。
 
-* You must have an existing {{ site.data.keys.product }} native Android application.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
-* Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
+* 既存の {{site.data.keys.product }} ネイティブ・アプリケーションがある必要があります。
+* インターネット・アクセスが必要です。
+* node.js バージョン 4.0.0 以降がインストールされている必要があります。
+* マイグレーション・プロセスの制限についてよく読み、理解します。詳しくは、[以前のリリースからのアプリケーションのマイグレーション](../)を参照してください。
 
-Apps that were created with previous versions of {{ site.data.keys.product }} are not supported in V8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing app and identifies APIs that are deprecated, no longer supported, or modified in V8.0.
+以前のバージョンの {{site.data.keys.product }} で作成されたアプリケーションは、一部変更を行わないと V8.0 ではサポートされません。マイグレーション・アシスト・ツールは、既存のアプリケーションのソース・ファイルをスキャンすることによりこのプロセスを簡素化し、V8.0 で非推奨となった API、非サポート対象となった API、または変更された API を識別します。
 
-The migration assistance tool does not modify or move any developer code or comments of your app.
+マイグレーション・アシスト・ツールでは、アプリケーションの開発者コードおよびコメントの変更や移動は行いません。
 
-1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
-2. Install the migration assistance tool.
-    * Change to the directory where you downloaded the tool.
-    * Use NPM to install the tool by entering the following command:
+1. 以下のいずれかの方法を使用してマイグレーション・アシスト・ツールをダウンロードします。
+    * [Jazzhub リポジトリー](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)から .tgz ファイルをダウンロードします。
+    * {{site.data.keys.mf_console }} から {{site.data.keys.mf_dev_kit }} をダウンロードします。これには、mfpmigrate-cli.tgz という名前のファイルとしてマイグレーション・アシスト・ツールが含まれています。
+2. マイグレーション・アシスト・ツールをインストールします。
+    * ツールをダウンロードしたディレクトリーに移動します。
+    * 以下のコマンドを入力することにより、NPM を使用してツールをインストールします。
 
    ```bash
    npm install -g
    ```
     
-3. Scan the {{ site.data.keys.product }} app by entering the following command:
+3. 以下のコマンドを入力して、{{site.data.keys.product }} アプリケーションをスキャンします。
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type android
    ```
     
    **source_directory**  
-   The current location of the project.
+プロジェクトの現在のロケーション。
 
    **destination_directory**  
-   The directory where the report is created.
+レポートが作成されるディレクトリー。
     
-   When it is used with the scan command, the migration assistance tool identifies APIs in the existing {{ site.data.keys.product }} app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
+   マイグレーション・アシスト・ツールを scan コマンドと共に使用した場合、このツールは、既存の {{site.data.keys.product }} アプリケーション内にある、V8.0 で削除された API、非推奨となった API、または変更された API を識別し、識別された宛先ディレクトリーにそれらを保存します。
 
-## Migrating an Android project with Gradle
+## Gradle を使用した Android プロジェクトのマイグレーション
 {: #migrating-an-android-project-with-gradle }
-Migrate your Android application with {{ site.data.keys.product_adj }} SDK using Gradle.
+Gradle を使用して、{{site.data.keys.product_adj }} SDK が追加された Android アプリケーションをマイグレーションします。
 
-Ensure that your Android Studio and the Android SDK are set up properly. For more information about how to set up your system, see [Android Studio Overview](http://developer.android.com/tools/studio/index.html). Your project must conform to the Android Studio/Gradle setup and compile without errors before you upgrade to {{ site.data.keys.product }}.
+Android Studio および Android SDK が適切にセットアップされていることを確認します。システムのセットアップ方法について詳しくは、[Android Studio 概要](http://developer.android.com/tools/studio/index.html)を参照してください。プロジェクトは、Android Studio/Gradle セットアップに準拠していて、{{site.data.keys.product }} にアップグレードする前にエラーなしでコンパイルされる必要があります。
 
-> **Note:** This task assumes that the Android project is created with Android Studio and that the {{ site.data.keys.product_adj }} SDK is added with as described in [Adding the {{ site.data.keys.product }} SDK to a new or existing application with Android Studio (7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html).
+> **注:** このタスクでは、Android プロジェクトが Android Studio を使用して作成されていること、および [Android Studio (7.1) の使用による新規アプリケーションまたは既存アプリケーションへの {{site.data.keys.product }} SDK の追加](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)で述べられているように、{{site.data.keys.product_adj }} SDK が追加されていることを想定しています。
 
-If your Android Studio project was set up to add a previous version of {{ site.data.keys.product_adj }} SDK, remove the **compile** group from the **build.gradle** dependencies enclosure. For example, if you are upgrading from 7.1, remove this group:
+Android Studio プロジェクトが、{{site.data.keys.product_adj }} SDK の以前のバージョンを追加するようにセットアップされている場合は、**build.gradle** 依存関係エンクロージャーから **compile** グループを削除します。例えば、7.1 からアップグレードする場合は、以下のグループを削除します。
 
 ```xml
-compile group: 'com.ibm.mobile.foundation', 
-            name:'ibmmobilefirstplatformfoundation', 
-            version:'7.1.0.0', 
-            ext: 'aar', 
+compile group: 'com.ibm.mobile.foundation',
+            name:'ibmmobilefirstplatformfoundation',
+            version:'7.1.0.0',
+            ext: 'aar',
             transitive: true
 ```
 
-You can now add the V8.0.0 SDK and configuration, by using local or remote SDK files. See [Adding the {{ site.data.keys.product_adj }} SDK to Android applications](../../../application-development/sdk/android).
+これで、ローカルまたはリモートの SDK ファイルを使用して V8.0.0 の SDK と構成を追加できるようになりました。[Android アプリケーションへの {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/android)を参照してください。
 
-> Note: After you import the new SDK, you need to import the Javadoc files manually. See [Registering Javadocs to an Android Studio Gradle project](../../../application-development/sdk/android/additional-information).
+> 注: 新しい SDK をインポートした後は、Javadoc ファイルを手動でインポートする必要があります。『[Android Studio Gradle プロジェクトへの Javadoc の登録](../../../application-development/sdk/android/additional-information)』を参照してください。
 
-You can now start developing your native Android application with the {{ site.data.keys.product_adj }} SDK. You might need to adapt your code to changes in the V8.0.0 API (see [Updating the Android code](#updating-the-android-code)).
+これで、{{site.data.keys.product_adj }} SDK を使用してネイティブ Android アプリケーションの開発を始めることができます。V8.0.0 での API の変更にコードを適合させる必要がある場合があります ([Android コードの更新](#updating-the-android-code)を参照)。
 
-#### What to do next
+#### 次の作業
 {: #what-to-do-next }
-Replace the client-side APIs that are discontinued or not in V8.0.
+使用が中止された、または V8.0 に含まれていないクライアント・サイド API を置き換えます。
 
-## Updating the Android code
+## Android コードの更新
 {: #updating-the-android-code }
-{{ site.data.keys.product_full }} V8.0 introduces a number of changes to the Android SDK that might require changes to apps developed in earlier versions.  
-The tables below list changes in the {{ site.data.keys.product_adj }} Android SDK.
+{{site.data.keys.product_full }} V8.0 では、Android SDK に対する多くの変更が導入されています。これにより、以前のバージョンで開発されたアプリケーションの変更が必要になる可能性があります。  
+以下の表では、{{site.data.keys.product_adj }} Android SDK の変更をリストします。
 
-#### Discontinued Android API elements
+#### 使用が中止された Android API エレメント
 {: #discontinued-android-api-elements }
-| API element | Migration path | 
+| API エレメント | マイグレーション・パス | 
 |-------------|----------------|
-| `WLConfig WLClient.getConfig()` | No replacement. | 
-| {::nomarkdown}<ul><li><code>WLDevice WLClient.getWLDevice()</code></li><li><code>WLClient.transmitEvent(org.json.JSONObject event)</code></li><li><code>WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)</code></li><li><code>WLClient.purgeEventTransmissionBuffer()</code></li></ul>{:/} | Use Android API or third-party packages for GeoLocation. | 
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement | 
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement | 
-| `WLClient.checkForNotifications()` | Use [`WLAuthorizationManager.obtainAccessToken("", listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) to check connectivity to the server and apply application management rules. | 
-| {::nomarkdown}<ul><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Use [`AuthorizationManager.login()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#login(java.lang.String,%20org.json.JSONObject,%20com.worklight.wlclient.api.WLLoginResponseListener)) | 
-| {::nomarkdown}<ul><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Use [`AuthorizationManager.logout()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#logout(java.lang.String,%20com.worklight.wlclient.api.WLLogoutResponseListener)). | 
-| `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | Use [`WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) to check connectivity to the server and apply application management rules. | 
-| {::nomarkdown}<ul><li><code>WLClient.getLastAccessToken()</code></li><li><code>WLClient.getLastAccessToken(java.lang.String scope)</code></li></ul>{:/} | Use [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc). | 
-| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | Use [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc). | 
-| `WLClient.logActivity(java.lang.String activityType)` | Use [`com.worklight.common.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/Logger.html?view=kc) | 
-| `WLAuthorizationPersistencePolicy` | No replacement. To implement authorization persistence, store the authorization token in the application code and create custom HTTP requests. For more information, see [Java™ custom resource-request implementation sample](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid). | 
-| {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | Use the Android APIs to share tokens across applications. |
-| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | No replacement | 
-| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc). | 
-| `ChallengeHandler` | For custom gateway challenges, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenges, use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). | 
-| `WLChallengeHandler` | Use [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). |
-| `ChallengeHandler.isCustomResponse()` | Use [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). | 
+| `WLConfig WLClient.getConfig()` | 代替はありません。 | 
+| {::nomarkdown}<ul><li><code>WLDevice WLClient.getWLDevice()</code></li><li><code>WLClient.transmitEvent(org.json.JSONObject event) </code></li><li><code>WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy) </code></li><li><code>WLClient.purgeEventTransmissionBuffer() </code></li></ul>{:/} | GeoLocation 用の Android API またはサード・パーティー・パッケージを使用してください。 | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | 代替はありません。 | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | 代替はありません。 | 
+| `WLClient.checkForNotifications()` | [`WLAuthorizationManager.obtainAccessToken("", listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) を使用して、サーバーへの接続を確認し、アプリケーション管理ルールを適用してください。 | 
+| {::nomarkdown}<ul><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | [`AuthorizationManager.login()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#login(java.lang.String,%20org.json.JSONObject,%20com.worklight.wlclient.api.WLLoginResponseListener))を使用します。 | 
+| {::nomarkdown}<ul><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | [`AuthorizationManager.logout()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#logout(java.lang.String,%20com.worklight.wlclient.api.WLLogoutResponseListener))を使用します。 | 
+| `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | [`WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener)) を使用して、サーバーへの接続を確認し、アプリケーション管理ルールを適用してください。 | 
+| {::nomarkdown}<ul><li><code>WLClient.getLastAccessToken()</code></li><li><code>WLClient.getLastAccessToken(java.lang.String scope) </code></li></ul>{:/} | [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc)を使用してください。 | 
+| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc)を使用してください。 | 
+| `WLClient.logActivity(java.lang.String activityType)` | [`com.worklight.common.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/Logger.html?view=kc)を使用してください。 | 
+| `WLAuthorizationPersistencePolicy` | 代替はありません。許可パーシスタンスを実装するには、許可トークンをアプリケーション・コードに保管し、カスタム HTTP 要求を作成します。詳しくは、[Java™ カスタム・リソース要求実装サンプル](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid)を参照してください。 | 
+| {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | Android API を使用して、アプリケーション間でトークンを共有してください。 |
+| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 代替はありません。 | 
+| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc) を使用します。 | 
+| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、[GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc) を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、[SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 
+| `WLChallengeHandler` | [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc) を使用します。 |
+| `ChallengeHandler.isCustomResponse()` | [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc) を使用します。 | 
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、[GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc) を使用します。 | 
 
-#### Android APIs depending on the legacy `org.apach.http` APIs are no longer supported
+#### サポートされなくなった、レガシー `org.apach.http` API に依存している Android API
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
-| API element | Migration path | 
+| API エレメント | マイグレーション・パス | 
 |-------------|----------------|
-| `org.apache.http.Header[]` is now deprecated. Therefore, the following methods are removed: | |
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Use instead the new `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API. | 
-| `WLResourceRequest.addHeader(org.apache.http.Header header)` | Use instead the new `WLResourceRequest.addHeader(String name, String value)` API. | 
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Use instead the new `List<String> WLResourceRequest.getHeaders(String headerName)` API. |
-| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use instead the new `WLResourceRequest.getHeaders(String headerName)` API. | 
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Instead, use the new `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API. | 
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Replaced with `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
-| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | No replacement. MFP Client allows circular redirects. | 
-| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>, all methods that take <code>WLHttpResponseListener</code>:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | Removed due to deprecated Apache HTTP Client dependencies. Create your own request to have full control over the request and response. |
+| `org.apache.http.Header[]` は非推奨になっています。そのため、以下のメソッドは削除されました。 | |
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 代わりに、新しい `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API を使用してください。 | 
+| `WLResourceRequest.addHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.addHeader(String name, String value)` API を使用してください。 | 
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 代わりに、新しい `List<String> WLResourceRequest.getHeaders(String headerName)` API を使用してください。 |
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 代わりに、新しい `WLResourceRequest.getHeaders(String headerName)` API を使用してください。 | 
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` に置き換えられました。 |
+| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 代替はありません。MFP クライアントでは、サーキュラー・リダイレクトが許可されます。 | 
+| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>、<code>WLHttpResponseListener</code> を取る以下のすべてのメソッド: <ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | 非推奨になった Apache HTTP クライアント依存関係のために削除されました。要求および応答を完全に制御できる独自の要求を作成してください。 |
 
 
 

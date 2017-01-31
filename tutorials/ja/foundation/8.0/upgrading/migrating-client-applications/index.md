@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Migrating client applications
+title: クライアント・アプリケーションのマイグレーション
 weight: 2
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Migrate your existing client applications to {{ site.data.keys.product_full }} V8.0.0.
+既存のクライアント・アプリケーションを {{site.data.keys.product_full }} V8.0.0 にマイグレーションします。
 
-Read the following topics to learn how to migrate your client application from IBM MobileFirst Platform Foundation v7.1 to v8.0. To learn more about changes in the development process, in the {{ site.data.keys.product_adj }} security framework and push service, and more, see [Migrating apps from earlier releases](../).
+以下のトピックでは、クライアント・アプリケーションを IBM MobileFirst Platform Foundation v7.1 から v8.0 にマイグレーションする方法について説明します。{{site.data.keys.product_adj }} のセキュリティー・フレームワークおよびプッシュ・サービスにおける開発プロセスの変更点などについて詳しくは、[以前のリリースからのアプリケーションのマイグレーション](../)を参照してください。
 
-### Select a platform to migrate from
+### マイグレーション元のプラットフォームを選択
 {: #select-a-platform-to-migrate-from }

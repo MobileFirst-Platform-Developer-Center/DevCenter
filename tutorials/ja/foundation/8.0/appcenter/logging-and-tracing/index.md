@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: Setting logging and tracing for Application Center on the application server
-breadcrumb_title: Setting up logging and tracing
+title: アプリケーション・サーバー上での Application Center のロギングおよびトレースの設定
+breadcrumb_title: ロギングおよびトレースのセットアップ
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
+特定のアプリケーション・サーバーについてロギングとトレース用のパラメーターを設定できるだけでなく、JNDI プロパティーを使用して、サポートされているすべてアプリケーション・サーバーで出力を制御することができます。
 
-You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, {{ site.data.keys.product_full }} provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
+アプリケーション・サーバーごとに特定の方法で、Application Center のトレース・オペレーションにロギング・レベルと出力ファイルを設定できます。また、{{site.data.keys.product_full }} には、トレース出力のフォーマットやリダイレクトを制御したり、生成される SQL ステートメントを出力したりするための Java™ Naming and Directory Interface (JNDI) プロパティーが用意されています。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Enabling logging and tracing in WebSphere Application Server full profile](#logging-in-websphere)
-* [Enabling logging and tracing in WebSphere Application Server Liberty](#logging-in-liberty)
-* [Enabling logging and tracing in Apache Tomcat](#logging-in-tomcat)
-* [JNDI properties for controlling trace output](#jndi-properties-for-controlling-trace-output)
+* [WebSphere Application Server フル・プロファイルでのロギングとトレースの有効化](#logging-in-websphere)
+* [WebSphere Application Server Liberty でのロギングとトレースの有効化](#logging-in-liberty)
+* [Apache Tomcat でのロギングとトレースの有効化](#logging-in-tomcat)
+* [トレース出力を制御する JNDI プロパティー](#jndi-properties-for-controlling-trace-output)
 
-## Enabling logging and tracing in WebSphere Application Server full profile
+## WebSphere Application Server フル・プロファイルでのロギングとトレースの有効化
 {: #logging-in-websphere }
-You can set the logging levels and the output file for tracing operations on the application server.
+アプリケーション・サーバーでのトレース・オペレーションに、ロギング・レベルと出力ファイルを設定することができます。
 
-When you try to diagnose problems in the Application Center (or other components of {{ site.data.keys.product }}), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
+Application Center (または、{{site.data.keys.product }} の他のコンポーネント) で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を Java™ 仮想マシン (JVM) のプロパティーとして指定する必要があります。
 
-1. Open the WebSphere  Application Server administrative console.
-2. Select **Troubleshooting → Logs and Trace**.
-3. In **Logging and tracing**, select the appropriate application server and then select **Change log detail levels**.
-4. Select the packages and their corresponding detail level. This example enables logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**).
+1. WebSphere Application Server 管理コンソールを開きます。
+2. **「トラブルシューティング (Troubleshooting)」→「ログおよびトレース (Logs and Trace)」**を選択します。
+3. **「ロギングおよびトレース (Logging and tracing)」で**、適切なアプリケーション・サーバーを選択し、**「ログ詳細レベルの変更 (Change log detail levels)」**を選択します。
+4. パッケージと、それに対応する詳細レベルを選択します。この例は、Application Center を含む {{site.data.keys.product }} に対し、**FINEST** レベル (**ALL** と同等) のロギングを有効にします。
 
 ```xml
 com.ibm.puremeap.*=all
@@ -36,38 +36,39 @@ com.ibm.worklight.*=all
 com.worklight.*=all
 ```
 
-Where:
+各部の意味は次のとおりです。
 
-* **com.ibm.puremeap.*** is for Application Center.
-* **com.ibm.worklight.*** and **com.worklight.*** are for other {{ site.data.keys.product_adj }} components.
+* **com.ibm.puremeap.*** は Application Center 用です。
+* **com.ibm.worklight.*** および **com.worklight.*** は、他の {{site.data.keys.product_adj }} コンポーネント用です。
 
-The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
+トレースは **trace.log** というファイルに送信されます。**SystemOut.log** や **SystemErr.log** には送信されません。
 
-## Enabling logging and tracing in WebSphere Application Server Liberty
+## WebSphere Application Server Liberty でのロギングとトレースの有効化
 {: #logging-in-liberty }
-You can set the logging levels and the output file for tracing operations for Application Center on the Liberty application server.
+Liberty アプリケーション・サーバー上の Application Center のトレース・オペレーションに、ロギング・レベルと出力ファイルを設定することができます。
 
-When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
+Application Center で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を指定する必要があります。
 
-To enable logging for {{ site.data.keys.product }}, including Application Center, with level FINEST(equivalent to ALL), add a line to the server.xml file. For example:
+Application Center を含む {{site.data.keys.product }} に対し FINEST レベル (ALL と同等) のロギングを有効にするには、server.xml に 1 つの行を追加します。例えば、次のとおりです。
+
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
-In this example, multiple entries of a package and its logging level are separated by a colon (:).
+この例では、パッケージの複数の項目とそのロギング・レベルは、それぞれをコロン (:) で区切ります。
 
-The traces are sent to a file called **trace.log**, not to **messages.log** or to **console.log**.
+トレースは **trace.log** というファイルに送信されます。**messages.log** や **console.log** には送信されません。
 
-For more information, see [Liberty profile: Logging and Trace](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc).
+詳しくは、[Libertyプロファイル: ロギングとトレース (Liberty profile: Logging and Trace)](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc) を参照してください。
 
-## Enabling logging and tracing in Apache Tomcat
+## Apache Tomcat でのロギングとトレースの有効化
 {: #logging-in-tomcat }
-You can set the logging levels and the output file for tracing operations undertaken on the Apache Tomcat application server.
+Apache Tomcat アプリケーション・サーバーで実行されるトレース・オペレーションに、ロギング・レベルと出力ファイルを設定することができます。
 
-When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
+Application Center で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を指定する必要があります。
 
-To enable logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**), edit the **conf/logging.properties** file. For example, add lines similar to these lines:
+Application Center を含む {{site.data.keys.product }} に対し ** FINEST** レベル (**ALL** と同等) のロギングを有効にするには、**conf/logging.properties** ファイルを編集します。例えば、以下のような行を追加します。
 
 ```xml
 com.ibm.puremeap.level = ALL
@@ -75,16 +76,16 @@ com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
 
-For more information, see [Logging in Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html).
+詳しくは、[Tomcat でのロギング (Logging in Tomcat)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html) を参照してください。
 
-## JNDI properties for controlling trace output
+## トレース出力を制御する JNDI プロパティー
 {: #jndi-properties-for-controlling-trace-output }
-On all supported platforms, you can use Java™ Naming and Directory Interface (JNDI) properties to format and redirect trace output for Application Center and to print generated SQL statements.
+サポートされているすべてのプラットフォームで、Java™ Naming and Directory Interface (JNDI) プロパティーを使用して、Application Center のトレース出力のフォーマットやリダイレクトを行ったり、生成される SQL ステートメントを出力したりすることができます。
 
-The following JNDI properties are applicable to the web application for Application Center services (**applicationcenter.war**).
+以下の JNDI プロパティーが、Application Center サービス (**applicationcenter.war**) 用の Web アプリケーションに適用されます。
 
-| Property settings | Setting | Description | 
+| プロパティーの設定 | 設定 | 説明 | 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | By default, this property is set to false. Set it to true to format JSON output with blank spaces, for easier reading in log files. | 
-| ibm.appcenter.logging.tosystemerror | true | By default, this property is set to false. Set it to true to print all log messages to system error in log files. Use the property to turn on logging globally. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | This setting prints all the generated SQL statements to the log files. | 
+| ibm.appcenter.logging.formatjson | true | デフォルトでは、このプロパティーは false に設定されます。ログ・ファイル内で読みやすくするために JSON 出力をブランク・スペースでフォーマットするには、この値を true に設定してください。 | 
+| ibm.appcenter.logging.tosystemerror | true | デフォルトでは、このプロパティーは false に設定されます。システム・エラーへのすべてのログ・メッセージをログ・ファイルに出力するには、この値を true に設定してください。このプロパティーを使用すると、グローバルなロギングをオンにすることができます。 | 
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE | この設定は、生成されるすべての SQL ステートメントをログ・ファイルに出力します。 | 

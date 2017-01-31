@@ -1,61 +1,63 @@
 ---
 layout: tutorial
-title: Migrating Authentication and Security Concepts
-breadcrumb_title: Migrating authentication concepts
+title: 認証およびセキュリティーのマイグレーションの概念
+breadcrumb_title: 認証のマイグレーションの概念
 downloads:
-  - name: Download migration sample
+  - name: マイグレーション・サンプルのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
-## Overview
+## 概説
 {: #overview }
-The security framework of {{ site.data.keys.product_full }} has undergone some major changes in version 8.0, to improve and simplify security development and administration tasks. In particular, the security building blocks have changed – In 8.0, OAuth security scopes and security checks replace the security tests, realms and login modules of previous versions.
+セキュリティー開発およびセキュリティー管理のタスクを改善し簡素化するため、バージョン 8.0 では {{site.data.keys.product_full }} のセキュリティー・フレームワークに大きな変更がいくつか加えられました。特に、セキュリティー・ビルディング・ブロックが変更されていて、8.0 では、OAuth のセキュリティー・スコープとセキュリティー検査が、以前のバージョンのセキュリティー・テスト、セキュリティー・レルム、およびセキュリティー・ログイン・モジュールに取って代わっています。
 
-This tutorial guides you through the steps required for migrating the security code of your application. We will use a sample 7.1 application as a starting point, and describe the complete process that will take us from the 7.1 sample application to a 8.0 application, with the same security protection. Both the 7.1 sample app and the migrated application are attached here.
+このチュートリアルには、アプリケーションのセキュリティー・コードをマイグレーションするのに必要な手順が示されています。開始点として 7.1 のサンプル・アプリケーションを使用し、この 7.1 のサンプル・アプリケーションを、同じセキュリティー保護が適用された 8.0 アプリケーションとするまでの完全なプロセスを説明します。7.1 サンプル・アプリケーションと、マイグレーション後のアプリケーションの両方が添付されています。
 
-The migration steps that we will describe below are:
-*	Migrating the resource adapter to 8.0, and maintaining the protection of the resources
-*	Migrating the client app
-*	Creating security checks to replace the authentication realms of the 7.1 app
-*	Modifying the challenge handlers on the client-side to use the new challenge handler API.
+以降で説明するマイグレーション手順は、次のとおりです。
+*	8.0 へのリソース・アダプターのマイグレーションと、リソース保護の維持
+*	クライアント・アプリケーションのマイグレーション
+*	7.1 アプリケーションの認証レルムに代わるセキュリティー検査の作成
+*	新しいチャレンジ・ハンドラー API が使用されるようにするためのクライアント・サイドのチャレンジ・ハンドラーの変更
 
-In the [second part](#migrating-other-types-of-authentication-realms) of this tutorial, we will address additional migration issues that are not demonstrated in the migration of the sample app:
-*	Migrating other types of authorization realms, beyond form-based authentication and adapter-based authentication that are demonstrated in the sample.
-*	Access token expiration
-*	Application-level protection (application security test)
-*	Security configuration settings in 7.1 that are no longer required in the simpler security model of 8.0, such as the user identity realm and the device identity realm
+このチュートリアルの [2 番目のパート](#migrating-other-types-of-authentication-realms)では、サンプル・アプリケーションのマイグレーションには示されていない、次のようなマイグレーション関連のその他の問題への対処を行います。
+*	サンプルに示されているフォーム・ベースの認証とアダプター・ベースの認証以外の、他のタイプの許可レルムのマイグレーション
+*	アクセス・トークンの有効期限
+*	アプリケーション・レベルの保護 (アプリケーション・セキュリティー・テスト)
+*	8.0 の簡素化されたセキュリティー・モデルで不要となった、7.1 のセキュリティー構成設定 (ユーザー ID レルムや、デバイス ID レルムなど)
 
-> Before you start the migration you are advised to go through the [migration cookbook](../migration-cookbook). See also the [Authentication and Security tutorial](../../authentication-and-security) to learn about the basic concepts of the new security framework.
+> マイグレーションを開始する前に、[マイグレーションの手引き](../migration-cookbook)をひととおり検討することを推奨します。また、[認証とセキュリティーのチュートリアル](../../authentication-and-security)を参照して、新しいセキュリティー・フレームワークの基本概念についても学んでください。
 
-## The sample application
+## サンプル・アプリケーション
 {: #the-sample-application }
-Our starting point is a sample 7.1 hybrid application. The application accesses a Java adapter protected with OAuth. The adapter has two methods – the `getBalance` method, which is protected with a form-based authentication realm (login by user name and password), and the `transferMoney` method, protected with an adapter-based authentication realm, requiring the user to provide a pin code. The source code of the 7.1 sample application and the source code of the same application after it has been migrated to 8.0 are available for [download](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample).
+サンプルの 7.1 ハイブリッド・アプリケーションを開始点とします。このアプリケーションは、OAuth で保護された Java アダプターにアクセスします。このアダプターには 2 つのメソッドが使用されています。1 つは、`getBalance` メソッドで、これはフォーム・ベースの認証レルム (ユーザー名とパスワードによるログイン) で保護されています。もう 1 つは、`transferMoney` メソッドで、これはアダプター・ベースの認証レルムで保護されており、ユーザーに PIN コードの入力を要求します。7.1 サンプル・アプリケーションのソース・コードと、8.0 にマイグレーションした後の同アプリケーションのソース・コードを、[ダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample)できます。
 
-## Migrating the resource adapter
+## リソース・アダプターのマイグレーション
 {: #migrating-the-resource-adapter }
-We will start the migration process with the resource adapter. In {{ site.data.keys.product }} 8.0 adapters are developed as separate Maven projects, unlike in 7.1 where adapters were part of the project. This means that we can migrate the resource adapter, build and deploy it, independently of the client app. The same is true for the client app itself and the security checks (which are actually also deployed as adapters). This leaves us the freedom to migrate these parts in the order of our choice. In this tutorial, we will migrate the resource adapter first so that we can introduce the OAuth security scope elements by which the resources are protected.
+まずはリソース・アダプターから、マイグレーション・プロセスを開始します。アダプターがプロジェクトの一部であった 7.1 とは異なり、{{site.data.keys.product }} 8.0 では、アダプターを個別の Maven プロジェクトとして開発します。つまり、クライアント・アプリケーションとは独立して、リソース・アダプターをマイグレーションしたり、ビルドしてデプロイしたりすることができます。同じことが、クライアント・アプリケーションそのものと、セキュリティー検査 (これも実際にはアダプターとしてデプロイされる) についても当てはまります。これにより、ユーザーは任意の順序でこれらの部品をマイグレーションできます。このチュートリアルでは、リソースを保護する OAuth セキュリティー・スコープ・エレメントを導入できるように、まず最初にリソース・アダプターをマイグレーションします。
 
-Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a {{ site.data.keys.product }} 8.0 security check.
+これからリソース・アダプター `AccountAdapter` をマイグレーションしますが、もう 1 つのアダプターである、アダプター・ベースの認証に使用される `PinCodeAdapter` はマイグレーションの必要がないことに注意してください。これは、8.0 でアダプター・ベースの認証がサポートされなくなったためです。以降の手順の 1 つで、このアダプターを {{site.data.keys.product }} 8.0 セキュリティー検査に置き換えます。
 
-> For instructions on migrating adapters to 8.0 see the [migration cookbook](../migration-cookbook).
+> 8.0 へのアダプターのマイグレーション手順については、[マイグレーションの手引き](../migration-cookbook)を参照してください。
 
-The methods of `AccountAdpter` in the 7.1 sample are already protected with the `@OAuthSecurity` annotation. The same annotation is used in version 8.0. The only difference is that in 7.1 the scope elements `UserLoginRealm` and `PinCodeRealm` refer to security realms that are defined in the authenticationConfig.xml file. In 8.0, on the other hand, scope elements are mapped to security checks deployed on the server. We could keep the code unchanged with the same names of the scope elements, but let’s rename the scope elements to `UserLogin` and `PinCode` because the term “realm” is no longer used in MFP 8.0:
+7.1 サンプル内の `AccountAdpter` のメソッドは、既に`@OAuthSecurity` アノテーションによって保護されています。8.0 でも同じアノテーションを使用します。唯一の違いは、7.1 ではスコープ・エレメント `UserLoginRealm` および `PinCodeRealm` は、authenticationConfig.xml ファイルに定義されているセキュリティー・レルムを参照します。これに対し 8.0 では、スコープ・エレメントはサーバーにデプロイされたセキュリティー検査にマップされます。同じスコープ・エレメント名を使用して、コードを変更せずにそのままにすることもできますが、MFP 8.0で「レルム」という用語はもう使用されないため、ここでは次のようにスコープ・エレメントを `UserLogin` および `PinCode` に名前変更しましょう 。
 
 ```java
 @OAuthSecurity(scope="UserLogin")
+
 @OAuthSecurity(scope="PinCode")
 ```
 
-### Use the new API for getting the user identity
+### ユーザー IDを取得するための新規 API の使用
 {: #use-the-new-api-for-getting-the-user-identity }
-Our resource adapter uses the server-side security API to obtain the identity of the authenticated user. This API has changed in 8.0, so we need to fix it. Replace the following 7.1 code:
+サンプルのリソース・アダプターは、サーバー・サイド・セキュリティー API を使用して認証ユーザーの ID を取得します。この API は 8.0 で変更されています。そのため、修正が必要です。7.1 の以下のコードを置き換えます。
 
 ```java
 WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
 api.getSecurityAPI().getSecurityContext().getUserIdentity();
 ```
 
-with the new API in 8.0:
+上記を、以下の、8.0 の新規 API に置き換えます。
+
 
 ```java
 // Inject the security context
@@ -66,25 +68,25 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}.
+Maven か {{site.data.keys.mf_cli }} のいずれかを使用して、[アダプターをビルドし、これをサーバーにデプロイします](../../adapters/creating-adapters/#build-and-deploy-adapters)。
 
-## Migrating the client application
+## クライアント・アプリケーションのマイグレーション
 {: #migrating-the-client-application }
-Next, we will migrate the client application. Refer to the migration cookbook for client application migration instructions.
-For the time being, comment out the code of the challenge handlers. We will fix the challenge handlers later. In the main HTML file of the app, index.html, put a comment around the lines that import the challenge handlers code.
+次は、クライアント・アプリケーションのマイグレーションです。クライアント・アプリケーションのマイグレーション手順については、マイグレーションの手引きを参照してください。
+現時点では、チャレンジ・ハンドラーのコードをコメント化しておきます。これらのチャレンジ・ハンドラーは、後で修正します。アプリケーションのメイン HTML ファイルである index.html の、チャレンジ・ハンドラー・コードのインポートを実行するための行の周囲に、コメント行を置きます。
 
-```html 
+```html
 <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
  -->
 ```
 
-### Change to the new client API for logout
+### ログアウト用の新規クライアント API への変更
 {: #change-to-the-new-client-api-for-logout }
-As part of the client migration, you need to handle changes in the client-side APIs of MobileFirst 8.0. For a list of client API changes, see [Upgrading the WebView](../migrating-client-applications/cordova/#upgrading-the-webview).
-In our sample application, there is one client API change related to security – the API for logging out. The method `WL.Client.logout` of 7.1 is not supported in 8.0. Instead, use `WLAuthorizationManager.logout`, and pass the name of the security check that replaces the authorization realm of 7.1.
-The Logout button in our sample app logs the user out from both the `UserLogin` security check and the `PinCode` security check:
+クライアント・マイグレーションの一部として、MobileFirst 8.0 のクライアント・サイド API の変更に対処する必要があります。クライアント API の変更のリストについては、[WebView のアップグレード](../migrating-client-applications/cordova/#upgrading-the-webview)を参照してください。
+サンプル・アプリケーションには、セキュリティーに関連したクライアント API の変更が 1 つ含まれています。それはログアウト用の API です。7.1 のメソッド `WL.Client.logout` は、8.0 ではサポートされていません。代わりに、`WLAuthorizationManager.logout` を使用して、7.1 の認証レルムに代わるセキュリティー検査の名前を渡します。
+サンプル・アプリケーションの「ログアウト」ボタンは、次のように、`UserLogin` セキュリティー検査および `PinCode` セキュリティー検査の両方からユーザーをログアウトさせます。
 
 ```javascript
 function logout() {
@@ -104,18 +106,18 @@ function logout() {
 }
 ```
 
-After finishing the steps for migrating the app, build the application, and register it on your {{ site.data.keys.mf_server }} using the command `mfpdev app register`. You should now see the application listed in the {{ site.data.keys.mf_console }}.
+アプリケーションのマイグレーション手順が終わったら、アプリケーションをビルドし、コマンド `mfpdev app register` を使用してアプリケーションを {{site.data.keys.mf_server }} に登録します。これで、{{site.data.keys.mf_console }} にアプリケーションがリストされるはずです。
 
-## Migrating the form-based authentication realm
+## フォーム・ベースの認証レルムのマイグレーション
 {: #migrating-the-form-based-authentication-realm }
-At this stage we already have the client application and the resource adapter migrated and deployed. However if we try to run the application now, it will not be able to access the resources. This is because the application is expected to present an access token that contains the scope elements required by the resource adapter methods (“UserLogin” or “PinCode”), but since we haven’t created the security checks yet, the application cannot obtain an access token and the application is not authorized to access the protected resources.
+この段階では、既にクライアント・アプリケーションとリソース・アダプターのマイグレーションとデプロイが済んでいます。ただし、この時点でアプリケーションの実行を試行しても、アプリケーションがリソースにアクセスできません。これは、リソース・アダプター・メソッド (「UserLogin」または「PinCode」) が要求するスコープ・エレメントを含んだアクセス・トークンをアプリケーションが提示することが予期されているが、ユーザーがまだセキュリティー検査を作成していないため、アプリケーションがアクセス・トークンを取得できず、アプリケーションが保護リソースへのアクセスを許可されていないためです。
 
-We will now create an 8.0 security check named “UserLogin” in replacement for the 7.1 form-based authentication realm “UserLoginRealm”. The security check will perform the same authentication steps that were previously implemented by the form-based authenticator and the custom login module – sending a challenge to the client, collecting the credential from the challenge response, validating the credentials and creating a user identity. As you will see below, creating the security check is quite straightforward, and what remain for you is to copy the code for validating the credentials from the 7.1 custom login module to the new security check.
+それではここで、7.1 のフォーム・ベースの認証レルム「UserLoginRealm」に代わる、8.0 の「UserLogin」という名前のセキュリティー検査を作成します。このセキュリティー検査が実行する認証手順は、以前にフォーム・ベースのオーセンティケーターとカスタム・ログイン・モジュールによって実装されていたものと同じです。つまり、チャレンジをクライアントに送信し、チャレンジ応答から資格情報を収集し、資格情報を検証して、ユーザー ID を作成します。以下に示すように、セキュリティー検査の作成は極めて簡単であり、ユーザーが行うのは、資格情報を検証するためのコードを 7.1 のカスタム・ログイン・モジュールから新しいセキュリティー検査にコピーすることのみです。
 
-Security checks are implemented as adapters, and therefore we start by [creating a new Java adapter](../../adapters/creating-adapters) named `UserLogin`.
+セキュリティー検査はアダプターとして実装します。したがって、`UserLogin` という [新しい Java アダプターを作成する](../../adapters/creating-adapters)ところから始めます。
 
-When creating a Java adapter, the default template assumes that the adapter will serve resources. The same adapter can be used both for serving resources and for packaging a security test, but in this case we use the new adapter just for the security check. Therefore, we will remove the default resource implementation: delete the files UserLoginApplication.java and UserLoginResource.java. Remove the <JAXRSApplicationClass> element from adapter.xml, too.
-In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+Java アダプターの作成時、デフォルト・テンプレートは、そのアダプターがリソースを提供すると想定します。同じアダプターをリソースの提供用とセキュリティー・テストのパッケージ化用の両方に使用できますが、この事例では、新規アダプターを単にセキュリティー検査用として使用します。そのため、デフォルトのリソース実装を除去するため、ファイル UserLoginApplication.java および UserLoginResource.java を削除します。また、adapter.xml から <JAXRSApplicationClass> エレメントも削除します。
+Java アダプターの adapter.xml ファイルに、`securityCheckDefinition` という XML エレメントを追加します。以下に例を示します。
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -123,21 +125,21 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 </securityCheckDefinition>
 ```
 
-* The name attribute is the name of your security check.
-* The class attribute specifies the implementation Java class of the security check. We will create this class in the next step.
-* The property successStateExpirationSec is equivalent to the expirationInSeconds property of 7.1 login modules. It indicates the interval in seconds during which successful login to this security check holds. The default value of these properties is 3600 seconds in both 7.1 and 8.0. If the 7.1 login module was configured with a different value, you should put the same value here.
+* name 属性は、セキュリティー検査の名前です。
+* class 属性は、セキュリティー検査の実装 Java クラスを指定します。次のステップでこのクラスを作成します。
+* successStateExpirationSec プロパティーは、7.1 ログイン・モジュールの expirationInSeconds プロパティーと等価です。これは、このセキュリティー検査への正常なログインが保持される時間間隔 (秒) です。これらのプロパティーのデフォルト値は、7.1 と 8.0 のどちらも 3600 秒です。7.1 ログイン・モジュールが別の値で構成されていた場合は、ここに同じ値を入力しなければなりません。
 
-For the purpose of this tutorial we’re only defining the `successStateExpirationSec` property. There is actually much more you can do with [security check configuration](../../authentication-and-security/creating-a-security-check/#security-check-configuration). In particular, you can configure your security check to use some advanced features such as blocked state expiration, multiple attempts and “remember me”. You can add custom configuration properties, and modify the configuration properties in runtime from the MFP console.
+このチュートリアルの目的上、ここでは `successStateExpirationSec` プロパティーだけを定義します。実際には、[セキュリティー検査構成](../../authentication-and-security/creating-a-security-check/#security-check-configuration)で行えることは、もっとたくさんあります。特に、セキュリティー検査を構成することで、ブロック状態の有効期限、複数回試行、「記憶する」といった拡張機能を使用できます。カスタム構成プロパティーを追加し、その構成プロパティーを MFP コンソールからランタイムで変更できます。
 
-### Creating the security check Java class
+### セキュリティー検査 Java クラスの作成
 {: #creating-the-security-check-java-class }
-Create a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck` and add it to the adapter. Next, we override the default implementation of the three methods, `createChallenge`, `validateCredentials` and `createUser`.
+`UserAuthenticationSecurityCheck` を拡張した `UserLogin` という名前の Java クラスを作成し、これをアダプターに追加します。次に、`createChallenge`、`validateCredentials`、および `createUser` という 3 つのメソッドのデフォルト実装をオーバーライドします。
 
-* The method `validateCredentials` is where we put the authentication logic. Copy the authentication logic code – the code that validates the username and the password – from the 7.1 login module and put it here. In this case the logic is very simple – we just test that the password is the same as the user name.
-* In the method `createChallenge` we create the challenge message (hash map) to be sent to the client. In general, a security check can put here a challenge phrase or some other kind of challenge object that will be used to validate the client’s response. This security check does not require a challenge phrase so all we need to put in the challenge message is the error message (if an error was found).
-* The `createUser` method is the equivalent of the `createIdentity` method in the 7.1 login module.
+* メソッド `validateCredentials` には、認証ロジックを記述します。認証ロジック・コード (ユーザー名とパスワードを検証するコード) を 7.1 ログイン・モジュールからコピーして、ここに入れます。この事例では、非常にシンプルなロジックであり、パスワードがユーザー名と同じであることをテストするだけです。
+* メソッド `createChallenge` では、クライアントに送信されるチャレンジ・メッセージ (ハッシュ・マップ) を作成します。一般に、セキュリティー検査では、ここにチャレンジ・フレーズまたはその他の種類の、クライアントからの応答の検証に使用されるチャレンジ・オブジェクトを入れることができます。このセキュリティー検査ではチャレンジ・フレーズは必要ないため、チャレンジ・メッセージに入れる必要があるのはエラー・メッセージだけです (エラーが検出された場合)。
+* `createUser` メソッドは、7.1 ログイン・モジュールの `createIdentity` メソッドと等価です。
 
-The complete class is shown below.
+クラス全体を以下に示します。
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -161,8 +163,8 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
             } else {
                 errorMsg = "Wrong Credentials";
             }
-        } else {
-            errorMsg = "Credentials not set properly";
+        } else {             
+errorMsg = "Credentials not set properly";
         }
         return false;
     }
@@ -181,17 +183,17 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}. In the {{ site.data.keys.mf_console }} you should see the new adapter UserLogin in the list of adapters
+Maven か {{site.data.keys.mf_cli }} のいずれかを使用して、[アダプターをビルドし、これをサーバーにデプロイします](../../adapters/creating-adapters/#build-and-deploy-adapters)。{{site.data.keys.mf_console }} のアダプター・リストに、新規アダプター UserLogin が表示されるはずです。
 
-## Migrating the pin code realm
+## PIN コード・レルムのマイグレーション
 {: #migrating-the-pin-code-realm }
-The pin code realm in our sample is implemented with adapter-based authentication, which is no longer supported in 8.0. We will replace this realm with a new security check.
+このサンプルの PIN コード・レルムは、8.0 ではサポートされなくなったアダプター・ベースの認証を使用して実装されています。このレルムを、新しいセキュリティー検査で置き換えます。
 
-Create a new Java adapter named `PinCode`. Create a Java class named `PinCode` that extends `CredentialsValidationSecurityCheck` and add it to the adapter. Note that this time we use `CredentialsValidationSecurityCheck` as the base class, and not `UserAuthenticationSecurityCheck`, which we used for the UserLogin security check. This is because the pin code security check only needs to validate the credentials (the pin code) but it doesn’t assign a user identity.
+`PinCode` という名前の新しい Java アダプターを作成します。`CredentialsValidationSecurityCheck` を拡張した `PinCode` という名前の Java クラスを作成し、これをアダプターに追加します。ここでは、基本クラスとして `CredentialsValidationSecurityCheck` を使用することに注意してください。UserLogin セキュリティー検査の場合に使用した `UserAuthenticationSecurityCheck` ではありません。これは、PIN コード・セキュリティー検査で必要なのは資格情報 (PIN コード) の検証だけですが、ユーザー ID の割り当ては行わないからです。
 
-To create a security check that extends `CredentialsValidationSecurityCheck` we need to implement two methods: `createChallenge` and `validateCredentials`.
+`CredentialsValidationSecurityCheck` を拡張したセキュリティー検査を作成するには、`createChallenge` および `validateCredentials` という 2 つのメソッドを実装する必要があります。
 
-Similar to the `UserLogin` security check, the `PinCode` security check does not have any special information to send to the client as part of the challenge. The `createChallenge` method only puts the error message (if exists) inside the challenge message.
+`UserLogin` セキュリティー検査と同様、`PinCode` セキュリティー検査には、チャレンジの一部としてクライアントに送信する特殊情報は何もありません。`createChallenge` メソッドは、チャレンジ・メッセージ内にエラー・メッセージを入れるだけです (エラー・メッセージが存在する場合)。
 
 ```java
     @Override
@@ -202,7 +204,7 @@ Similar to the `UserLogin` security check, the `PinCode` security check does not
     }
 ```
 
-The `validateCredentials` method validates the pin code. In this case, the validation code consists of one line of code, but in general you can copy the validation code from the 7.1 authentication adapter into the `validateCredentials` method.
+`validateCredentials` メソッドは、PIN コードを検証します。この事例では、検証コードは 1 行のコードで構成されていますが、一般には、7.1 の認証アダプターから `validateCredentials` メソッドに検証コードをコピーできます。
 
 ```java
 @Override
@@ -214,40 +216,40 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
         } else {
             errorMsg = "Pin code is not valid.";
         }
-    } else {
-        errorMsg = "Pin code was not provided";
+    } else {             
+errorMsg = "Pin code was not provided";
     }
     return false;
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters).
+[アダプターをビルドし、これをサーバーにデプロイします。](../../adapters/creating-adapters/#build-and-deploy-adapters)
 
-## Migrating the challenge handlers
+## チャレンジ・ハンドラーのマイグレーション
 {: #migrating-the-challenge-handlers }
-We’re almost there – we have the client app migrated, the resource adapter and the security checks to protect the resources. The only part missing are the challenge handlers on the client side that allow the client to respond to the challenges and send the credentials to the security check. Remember that when we migrated the client app, we commented out the lines that include the challenge handlers. Now is the time to uncomment these lines, and migrate the challenge handlers to 8.0.
+ゴールまであと少しです。クライアント・アプリケーションをマイグレーションし、リソース・アダプターと、リソースを保護するためのセキュリティー検査を準備しました。唯一欠落している部分は、クライアントがチャレンジに応答し、資格情報をセキュリティー検査に送信できるようにする、クライアント・サイドのチャレンジ・ハンドラーです。クライアント・アプリケーションをマイグレーションしたときに、チャレンジ・ハンドラーが含まれている行をコメント化したことを思い出してください。ようやくここで、それらの行のコメントを外し、チャレンジ・ハンドラーを 8.0 にマイグレーションします。
 
-We will start with the user login challenge handler. This challenge handler performs the same functions in 8.0 as it does in 7.1 – it’s responsible for presenting the login form to the user upon receiving a challenge, and sending the user name and password to the server. However, the client API for challenge handlers has been changed and simplified, so we need to make the following changes:
+ユーザー・ログインのチャレンジ・ハンドラーから開始します。チャレンジ・ハンドラーは、7.1 の場合と同じ機能を 8.0 でも実行します。チャレンジ・ハンドラーの役割は、チャレンジを受信した時点でログイン・フォームをユーザーに提示し、ユーザー名とパスワードをサーバーに送信することです。ただし、チャレンジ・ハンドラー用のクライアント API が変更され簡素化されました。そのため、以下の変更を行う必要があります。
 
-* Replace the call for creating challenge handler with:
+* チャレンジ・ハンドラーを作成するための呼び出しを、次のコードで置き換えます。
 
 ```javascript
 var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
 ```
 
-The method `createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges sent by a {{ site.data.keys.product_adj }} security check. In most cases, you should use this method in replacement for either the method `createWLChallengeHandler` or the method `createChallengeHandler` of the 7.1 client API. The only exception is challenge handlers that are designed to handle challenges sent by a third party gateway. This type of challenge handlers, called gateway challenge handlers in 8.0, are created with the method `WL.Client.createGatewayChallengeHandler(). For example, if your resource is protected by a reverse proxy such as DataPower, which sends a custom login form to the client, you should use a gateway challenge handler to handle the challenge. For more information on gateway challenge handlers see the article [Quick Review of Challenge Handlers](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/).
+メソッド `createSecurityCheckChallengeHandler` は、{{site.data.keys.product_adj }} セキュリティー検査によって送信されたチャレンジを処理するチャレンジ・ハンドラーを作成します。ほとんどの場合、7.1 クライアント API のメソッド `createWLChallengeHandler` またはメソッド`createChallengeHandler` のどちらの代替としても、このメソッドを使用すべきです。唯一の例外は、サード・パーティーのゲートウェイによって送信されたチャレンジを処理するように設計されたチャレンジ・ハンドラーです。このタイプのチャレンジ・ハンドラー (8.0 ではゲートウェイ・チャレンジ・ハンドラーと呼ばれる) は、メソッド  `WL.Client.createGatewayChallengeHandler() によって作成されます。例えば、カスタム・ログイン・フォームをクライアントに送信する DataPower のようなリバース・プロキシーによってリソースが保護されている場合は、ゲートウェイ・チャレンジ・ハンドラーを使用してチャレンジを処理する必要があります。ゲートウェイ・チャレンジ・ハンドラーについて詳しくは、記事[チャレンジ・ハンドラーのクイック・レビュー](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/)を参照してください。
 
-* Remove the method `isCustomResponse`. It is no longer needed for security check challenge handlers.
-* Replace the method `handleChallenge` with the three methods that a challenge handler must implement – `handleChallenge()`, `handleSuccess()` and `handleFailure`. In 8.0 the challenge handler no longer has to check the response in order to find if the response carries a challenge, success or error. The framework takes care for that, and calls the appropriate method.
-* Remove the call to `submitSuccess`. The framework handles the success response automatically.
-* Replace the call to `submitFailure` with `userLoginChallengeHandler.cancel`.
-* Replace the call to `submitLoginForm` with:
+* メソッド `isCustomResponse` を削除します。これはもう、セキュリティー検査のチャレンジ・ハンドラー用として必要ありません。
+* メソッド `handleChallenge` を、チャレンジ・ハンドラーが実装する必要のある 3 つのメソッド `handleChallenge()`、`handleSuccess()`、および `handleFailure` で置き換えます. 8.0 では、チャレンジに対する応答であるかどうかや、成功かエラーかを知るためにチャレンジ・ハンドラーが応答を検査する必要はなくなりました。フレームワークがそうしたことを担当し、適切なメソッドを呼び出します。
+* `submitSuccess` の呼び出しを削除します。フレームワークが正常応答を自動的に処理します。
+* `submitFailure` の呼び出しを、`userLoginChallengeHandler.cancel` で置き換えます。
+* `submitLoginForm` の呼び出しを、次のコードで置き換えます。
 
 ```javascript
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
 ```
 
-The complete code of the challenge handler after applying these changes is shown below.
+上記の変更を適用した後、チャレンジ・ハンドラーのコード全体は以下のようになります。
 
 ```javascript
 function createUserLoginChallengeHandler() {
@@ -283,7 +285,7 @@ function createUserLoginChallengeHandler() {
             {'username':username, 'password':password});});
 
     $('#AuthCancelButton').bind('click', function () {
-        userLoginChallengeHandler.cancel();
+userLoginChallengeHandler.cancel();
         hideLoginDiv();
     });
 
@@ -291,63 +293,62 @@ function createUserLoginChallengeHandler() {
  }
 ```
 
-The migration of the pin code challenge handler is very similar to the migration of the user login challenge handler, and therefore we will not show the details here. See the code of the migrated challenge handler in the attached 8.0 sample.
-This completes the migration of the app. You can now rebuild the application, deploy it to the server, test that it works, and test that access to the resources is protected as expected.
+PIN コードのチャレンジ・ハンドラーのマイグレーションは、ユーザー・ログインのチャレンジ・ハンドラーのマイグレーションと非常によく似ています。そのため、ここでは詳細を示しません。添付の 8.0 サンプル内にある、マイグレーション後のチャレンジ・ハンドラーのコードを参照してください。これで、アプリケーションのマイグレーションは完了です。アプリケーションを再ビルドしてサーバーにデプロイし、正常に機能することをテストし、リソースへのアクセスが予期したとおりに保護されていることをテストできるようになりました。
 
-## Migrating other types of authentication realms
+## その他のタイプの認証レルムのマイグレーション
 {: #migrating-other-types-of-authentication-realms }
-In the sections above we described the process for migrating form-based authentication realms and adapter-based authentication realms. Your 7.1 application might include other types of realms, including realms that were explicitly added to the application security test, or included by default in a `mobileSecurityTest` or a `webSecurityTest`. See below guidelines for migrating other types of realms to 8.0.
+ここまでのセクションでは、フォーム・ベースの認証レルムとアダプター・ベースの認証レルムをマイグレーションするためのプロセスを説明してきました。7.1 アプリケーションには、例えばアプリケーション・セキュリティー・テストに明示的に追加されたレルムや、`mobileSecurityTest` または `webSecurityTest` にデフォルトで組み込まれているレルムなど、ほかのタイプのレルムが組み込まれている可能性があります。 ほかのタイプのレルムを 8.0 にマイグレーションする際の以下のガイドラインを参照してください。
 
-### Application authenticity
+### アプリケーションの認証性
 {: #application-authenticity }
-Application authenticity is provided as a predefined security check in 8.0. By default, this security check is run during the application's runtime registration with {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. However, as with any {{ site.data.keys.product_adj }} security check, you can also include this predefined check in custom security scopes.
+アプリケーションの認証性は、8.0 では事前定義されたセキュリティー検査として提供されています。デフォルトでは、このセキュリティー検査は、{{site.data.keys.mf_server }} へのアプリケーションのランタイムの登録時に実行されます。これは、アプリケーションのインスタンスが初めてサーバーに接続しようとしたときに行われます。ただし、すべての {{site.data.keys.product_adj }} セキュリティー検査と同様に、この事前定義された検査をカスタム・セキュリティー・スコープに含めることもできます。
 
-### LTPA realm
+### LTPA レルム
 {: #ltpa-realm }
-Use the predefined 8.0 security check, `LtpaBasedSSO`. For more information, see the tutorial [Protecting {{ site.data.keys.product_adj }} 8.0 application traffic using IBM DataPower]({{ site.baseurl }}/blog/2016/06/17/datapower-integration/).
+事前定義された 8.0 のセキュリティー検査 `LtpaBasedSSO` を使用します。詳しくは、チュートリアル [IBM DataPower を使用した {{site.data.keys.product_adj }} 8.0 アプリケーション・トラフィックの保護]({{ site.baseurl }}/blog/2016/06/17/datapower-integration/)を参照してください。
 
-### Device provisioning
+### デバイスのプロビジョニング
 {: #device-provisioning }
-The client registration process in 8.0 replaces device provisioning of 7.1. In {{ site.data.keys.product_adj }} 8.0, a client (an instance of an application) registers itself with {{ site.data.keys.mf_server }} on the first attempt to access the server. As part of the registration, the client provides a public key that will be used for authenticating its identity. This protection mechanism is always enabled, and there is no need for you to migrate the device-provisioning realm to 8.0.
+7.1 のデバイス・プロビジョニングは、8.0 のクライアント登録プロセスに置き換えられています。{{site.data.keys.product_adj }} 8.0 では、クライアント (アプリケーションのインスタンス) はサーバーへの初回アクセス試行時に自身を {{site.data.keys.mf_server }} に登録します。登録の一部として、クライアントはその ID の認証に使用される公開鍵を提供します。この保護メカニズムは常に有効になっているため、ユーザーがデバイス・プロビジョニングのレルムを 8.0 にマイグレーションする必要はありません。
 
-### Anti-cross site request forgery (anti-XSRF) realm
+### クロスサイト・リクエスト・フォージェリー対策 (anti-XSRF) レルム
 {: #anti-cross-site-request-forgery-anti-xsrf-realm }
-Anti-XSRF is no longer relevant in the OAuth-based security framework of 8.0.
+anti-XSRF は、8.0 の OAuth ベースのセキュリティー・フレームワークにおいては、もう関連がありません。
 
-### Direct Update realm
+### ダイレクト・アップデート・レルム
 {: #direct-update-realm }
-There is no need to migrate the Direct Update realm to 8.0. The Direct Update feature is supported in {{ site.data.keys.product_adj }} 8.0, but it does not require a security check, such as the Direct Update realm that was required in previous versions. Note however that the steps to deliver updates by using the Direct Update feature have changed. For more information see the [Migrating Direct Update](../migrating-client-applications/cordova/#migrating-direct-update) documentation topic.
+ダイレクト・アップデート・レルムを 8.0 にマイグレーションする必要はありません。ダイレクト・アップデート・フィーチャーは {{site.data.keys.product_adj }} 8.0 でサポートされていますが、以前のバージョンで必要だったダイレクト・アップデート・レルムのようなセキュリティー検査は必要ありません。ただし、ダイレクト・アップデート・フィーチャーを使用した更新の配信手順が変更になっていることに注意してください。詳しくは、資料トピック[ダイレクト・アップデートのマイグレーション](../migrating-client-applications/cordova/#migrating-direct-update)を参照してください。
 
-### Remote disable realm
+### リモート無効化レルム
 {: #remote-disable-realm }
-There is no need to migrate the Remote Disable realm to 8.0. The remote disable feature in {{ site.data.keys.product_adj }} 8.0 does not require a security check.
+リモート無効化レルムを 8.0 にマイグレーションする必要はありません。{{site.data.keys.product_adj }} 8.0 リモート無効化フィーチャーには、セキュリティー検査は必要ありません。
 
-### Custom authenticators and login modules
+### カスタム・オーセンティケーターおよびログイン・モジュール
 {: #custom-authenticators-and-login-modules }
-Create a new security check as described above. Use either of the base classes `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck`. Although you cannot migrate the authenticator class or the login module class directly, you may copy relevant code pieces into the security check, such as code for generating the challenge, extracting credentials from the response, and validating the credentials.
+上述の手順に従って新しいセキュリティー検査を作成します。基本クラスである `UserAuthenticationSecurityCheck` または `CredentialsValidationSecurityCheck` のいずれかを使用します。 オーセンティケーター・クラスやログイン・モジュール・クラスを直接マイグレーションすることはできませんが、チャレンジを生成するためのコード、応答から資格情報を抽出するためのコード、資格情報を検証するためのコードなど、該当するコードをセキュリティー検査にコピーすることができます。
 
-## Migrating additional security configurations of 7.1
+## 7.1 のその他のセキュリティー構成のマイグレーション
 {: #migrating-additional-security-configurations-of-71 }
-### The application security test
+### アプリケーション・セキュリティー・テスト
 {: #the-application-security-test }
-In addition to the OAuth scopes that are used to protect the resource adapter, our 7.1 sample application is also protected by an application-level security test. This sample does not have the application security test defined in the application-descriptor.xml file, and hence it is protected with the default security test. The default security test for mobile applications in 7.1 consists of realms that either irrelevant in 8.0 (anti-XSRF) or do not require explicit migration (Direct Update, remote disable). Therefore in this case no migration is required for the application security test.
+リソース・アダプターを保護するために使用されている OAuth スコープに加えて、ここで使用した 7.1 サンプル・アプリケーションはアプリケーション・レベルのセキュリティー・テストによっても保護されています。このサンプルには、application-descriptor.xml ファイルに定義されたアプリケーション・セキュリティー・テストはありません。したがって、デフォルトのセキュリティー・テストで保護されています。7.1 のモバイル・アプリケーション用のデフォルト・セキュリティー・テストを構成しているレルムは、8.0 では無関係 (anti-XSRF) であるか、または明示的なマイグレーション (ダイレクト・アップデート、リモート無効化) を必要としません。そのため、この事例では、アプリケーション・セキュリティー・テストに関連したマイグレーションは必要ありません。
 
-If your application has an application security test that includes checks (realms) that you still want to keep at the application level after the migration to 8.0, you can configure a mandatory scope for the application. When an application tries to access a protected resource, it has to pass the security checks that are mapped to the mandatory scope in addition to the checks mapped to the scope protecting the resource.
+アプリケーションを 8.0 にマイグレーションした後も、そのアプリケーションのアプリケーション・セキュリティー・テストに組み込まれている検査 (レルム) をアプリケーション・レベルのまま保持しておきたい場合は、そのアプリケーション用の必須スコープを構成できます。保護リソースへのアクセスを試行したアプリケーションは、リソースを保護しているスコープにマップされている検査に加え、必須スコープにマップされているセキュリティー検査にも合格する必要があります。
 
-To define a mandatory scope for an application, select the application version in the {{ site.data.keys.mf_console }}, select the Security tab and click the Add to Scope button. You can include in the scope any predefined or custom security checks, or mapped scope elements.
+アプリケーション用の必須スコープを定義するには、{{site.data.keys.mf_console }} でアプリケーションのバージョンを選択し、「セキュリティー」タブを選択して、「スコープに追加」ボタンをクリックします。定義済みセキュリティー検査やカスタム・セキュリティー検査、またはマップされたスコープ・エレメントをこのスコープに含めることができます。
 
-### Access token expiration
+### アクセス・トークンの有効期限
 {: #access-token-expiration }
-Check the value of the Access Token Expiration property in application-descriptor.xml file. The default value in both version 7.1 and version 8.0 is 3600 seconds, so unless your application has a different value defined in the application descriptor file, you don’t have to change anything. To set the expiration value in 8.0, navigate to the application version page in the {{ site.data.keys.mf_console }}, select the security tab, and enter the value in the Maximum Token-expiration Period field.
+application-descriptor.xml ファイル内の Access Token Expiration プロパティーの値を確認します。デフォルト値は、バージョン 7.1 とバージョン 8.0 のどちらも 3600 秒です。そのため、アプリケーション記述子ファイル内で別の値が定義されている場合を除き、何も変更する必要はありません。8.0 で有効期限の値を設定するには、 {{site.data.keys.mf_console }} でアプリケーション・バージョンのページに移動し、「セキュリティー」タブを選択して、「トークンの最大有効期間」フィールドに値を入力します。
 
-### User identity realm
+### ユーザー ID レルム
 {: #user-identity-realm }
-In MobileFirst 7.1, authentication realms may be configured as user identity realms. Applications that use OAuth authentication flow use the `userIdentityRealms` property in the application descriptor file to define an ordered list of user identity realms. In applications that use the classic Worklight authentication flow (non OAuth), the attribute `isInternalUserId` indicates whether the realm is a user identity realm. These configurations are no longer needed in {{ site.data.keys.product_adj }} 8.0. In {{ site.data.keys.product_adj }} 8.0, the active user identity is set by the last security check that called the `setActiveUser` method. If your security check extends the abstract base class `UserAuthenticationSecurityCheck`, like the UserLogin security check in our sample application, the base class takes care for setting the active user.
+MobileFirst 7.1 では、認証レルムを ユーザー ID レルムとして構成できます。OAuth の認証フローを使用するアプリケーションは、アプリケーション記述子ファイル内の `userIdentityRealms` プロパティーを使用して、ユーザー ID レルムの番号付きリストを定義します。クラシック Worklight 認証フロー (OAuth ではない) を使用するアプリケーションでは、属性 `isInternalUserId` が、レルムがユーザー ID レルムであるかどうかを示します。これらの構成は {{site.data.keys.product_adj }} 8.0 ではもう必要ありません。{{site.data.keys.product_adj }} 8.0 では、`setActiveUser` メソッドを呼び出した直前のセキュリティー検査によって、アクティブ・ユーザー ID が設定されます。サンプル・アプリケーションの UserLogin セキュリティー検査のように、抽象基底クラス `UserAuthenticationSecurityCheck` を拡張したセキュリティー検査の場合は、この基底クラスが、アクティブ・ユーザーの設定を担当します。
 
-### Device identity realm
+### デバイス ID レルム
 {: #device-identity-realm }
-In 7.1 applications there must be a realm that is defined as a device identity realm. No migration is needed for this configuration in 8.0. In {{ site.data.keys.product_adj }} 8.0, the device identity isn’t associated with a security check. The device information is registered as part of the client registration flow, which occurs on the first time the client attempts to access a protected resource.
+7.1 アプリケーションでは、デバイス ID レルムとして定義されたレルムが存在している必要があります。8.0 では、この構成のためのマイグレーションは必要ありません。{{site.data.keys.product_adj }} 8.0 では、デバイス ID にセキュリティー検査は関連付けられていません。デバイス情報は、クライアント登録フローの一部として登録されます。これは、クライアントが初めて保護リソースにアクセスしようとしたときに行われます。
 
-## Summary
+## 要約
 {: #summary }
-In this tutorial we covered only the basic steps required to migrate the security artifacts of existing applications from previous versions. We encourage you to [learn more about the new security framework](../../authentication-and-security/) and take advantage of additional features that were not covered here.
+このチュートリアルでは、既存のアプリケーションのセキュリティー成果物を以前のバージョンからマイグレーションするために必要な、基本的な手順のみを説明しました。[新しいセキュリティー・フレームワークについてより詳しく学ぶ](../../authentication-and-security/)ことで、ここには記載されていないフィーチャーも是非活用してください。

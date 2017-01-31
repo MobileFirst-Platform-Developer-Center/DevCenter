@@ -1,92 +1,92 @@
 ---
 layout: tutorial
-title: Migrating existing Windows applications
+title: 既存の Windows アプリケーションのマイグレーション
 breadcrumb_title: Windows
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+IBM MobileFirst™ Platform Foundation バージョン 6.2.0 以降で作成された既存のネイティブ Windows プロジェクトをマイグレーションするには、現行バージョンの SDK を使用するようにプロジェクトを変更する必要があります。次に、v8.0 で使用が中止された、または v8.0 に含まれていないクライアント・サイド API を置き換えます。マイグレーション・アシスト・ツールはコードをスキャンし、置き換える API のレポートを生成できます。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
-* [Migrating a Windows project](#migrating-a-windows-project)
-* [Updating the Windows code](#updating-the-windows-code)
+* [バージョンアップの前準備として既存の{{site.data.keys.product_adj }} ネイティブ Windows アプリケーションをスキャン](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
+* [Windows プロジェクトのマイグレーション](#migrating-a-windows-project)
+* [Windows コードの更新](#updating-the-windows-code)
 
-## Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade
+## バージョンアップの前準備として既存の {{site.data.keys.product_adj }} ネイティブ Windows アプリケーションをスキャン
 {: #scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade }
-The migration assistance tool helps you prepare your apps that were created with earlier versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Windows app and generating a report of APIs that are deprecated or discontinued in V8.0.
+マイグレーション・アシスト・ツールは、ネイティブ Windows アプリケーションのソースをスキャンし、V8.0 で非推奨または使用中止となった API のレポートを生成することにより、以前のバージョンの IBM MobileFirst™ Platform Foundation で作成されたアプリケーションのマイグレーションの準備を支援します。
 
-The following information is important to know before you use the migration assistance tool:
+マイグレーション・アシスト・ツールを使用する前に、以下の情報を知っておくことが重要です。
 
-* You must have an existing IBM MobileFirst Platform Foundation native Windows application.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
-* Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
+* 既存の IBM MobileFirst Platform Foundation ネイティブ Windows アプリケーションがある必要があります。
+* インターネット・アクセスが必要です。
+* node.js バージョン 4.0.0 以降がインストールされている必要があります。
+* マイグレーション・プロセスの制限についてよく読み、理解します。詳しくは、[以前のリリースからのアプリケーションのマイグレーション](../)を参照してください。
 
-Apps that were created with earlier versions of IBM MobileFirst Platform Foundation are not supported in V8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing native Windows app and identifies APIs that are deprecated, no longer supported, or modified in V8.0.
+以前のバージョンの IBM MobileFirst Platform Foundation で作成されたアプリケーションは、一部変更を行わないと V8.0 ではサポートされません。マイグレーション・アシスト・ツールは、既存のネイティブ Windows アプリケーションのソース・ファイルをスキャンすることによりこのプロセスを簡素化し、V8.0 で非推奨となった API、非サポート対象となった API、または変更された API を識別します。
 
-The migration assistance tool does not modify or move any developer code or comments of your app.
+マイグレーション・アシスト・ツールでは、アプリケーションの開発者コードおよびコメントの変更や移動は行いません。
 
-1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
-2. Install the migration assistance tool.
-    * Change to the directory where you downloaded the tool.
-    * Use NPM to install the tool by entering the following command:
+1. 以下のいずれかの方法を使用してマイグレーション・アシスト・ツールをダウンロードします。
+    * [Jazzhub リポジトリー](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)から .tgz ファイルをダウンロードします。
+    * {{site.data.keys.mf_console }} から {{site.data.keys.mf_dev_kit }} をダウンロードします。これには、mfpmigrate-cli.tgz という名前のファイルとしてマイグレーション・アシスト・ツールが含まれています。
+2. マイグレーション・アシスト・ツールをインストールします。
+    * ツールをダウンロードしたディレクトリーに移動します。
+    * 以下のコマンドを入力することにより、NPM を使用してツールをインストールします。
 
    ```bash
    npm install -g
    ```
     
-3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
+3. 以下のコマンドを入力して、IBM MobileFirst Platform Foundation アプリケーションをスキャンします。
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type windows
    ```
     
    **source_directory**  
-   The current location of the project.
+プロジェクトの現在のロケーション。
 
    **destination_directory**  
-   The directory where the report is created.
+レポートが作成されるディレクトリー。
 
-   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
+   マイグレーション・アシスト・ツールを scan コマンドと共に使用すると、ツールは、既存の IBM MobileFirst Platform Foundation アプリケーション内にある、V8.0 で削除された API、非推奨となった API、または変更された API を識別し、識別された宛先ディレクトリーにそれらを保存します。
     
-## Migrating a Windows project
+## Windows プロジェクトのマイグレーション
 {: #migrating-a-windows-project }
-To work with existing native Windows project that was created with IBM MobileFirst™ Platform Foundation V6.2.0 or later, you must modify the project.
+IBM MobileFirst™ Platform Foundation V6.2.0 以降で作成された既存のネイティブ Windows プロジェクトを使用して作業するには、プロジェクトを変更する必要があります。
 
-MobileFirst V8.0 only supports Windows Universal environments, that is Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal (Desktop and Phone). Windows Phone 8 Silverlight is not supported.
+MobileFirst V8.0 では、Windows Universal 環境 (つまり、Windows 10 Universal Windows Platform (UWP) および Windows 8 Universal (Desktop および Phone)) のみがサポートされます。Windows Phone 8 Silverlight はサポートされません。
 
-You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.product_adj }} V8.0 introduces a number of changes to the Visual Studio SDK that may require changes to apps developed in earlier versions. For information on the API's that have changed, see [Updating the Windows code](#updating-the-windows-code).
+Visual Studio プロジェクトを V8.0 に手動でアップグレードできます。{{site.data.keys.product_adj }} V8.0 では、以前のバージョンで開発されたアプリケーションを変更する必要が生じる可能性がある、Visual Studio SDK に対する多くの変更が導入されています。変更された API については、[Windows コードの更新](#updating-the-windows-code)を参照してください。
 
-1. Update your {{ site.data.keys.product_adj }} SDK to V8.0.
-    * Remove the MobileFirst SDK packages manually. This includes the **wlclient.properties** file, as well as the following references:
+1. {{site.data.keys.product_adj }} SDK を V8.0 に更新します。
+    * MobileFirst SDK パッケージを手動で削除します。これには、**wlclient.properties** ファイル、および以下の参照が含まれます。
+
         * Newtonsoft.Json
         * SharpCompress
         * worklight-windows8
 
-        > **Note:** If your app uses the application authenticity or extended authenticity feature, you must add either Microsoft Visual C++ 2013 Runtime Package for Windows or Microsoft Visual C++ 2013 Runtime Package for Windows Phone as a reference to your app. To so do, in Visual Studio, right-click on the references of your native project and complete one of the following choices depending on which environment you added to your native API app:
-        
-        * For Windows desktops and tablets: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows → OK**.
-        * For Windows Phone 8 Universal: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK**.
-        * For Windows 10 Universal Windows Platform (UWP): Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → OK**.
-    * Add the {{ site.data.keys.product_adj }} V8.0.0 SDK packages through NuGet. See [Adding the {{ site.data.keys.product_adj }} SDK by using NuGet](../../../application-development/sdk/windows-8-10).
-2. Updating your application code to use {{ site.data.keys.product_adj }} V8.0.0 API's.
-    * For earlier releases, the Windows API's were part of the **IBM.Worklight.namespace**. These API's are now obsolete and have been replaced by equivalent **WorklightNamespace** API in the. You need to modify the app to replace all references to the **IBM.Worklight.namespace** with the corresponding equivalent in the **WorklightNamespace**.
+        > **注:** アプリケーションでアプリケーション認証性フィーチャーまたは拡張認証性フィーチャーを使用している場合、Microsoft Visual C++ 2013 Runtime Package for Windows または Microsoft Visual C++ 2013 Runtime Package for Windows Phone のいずれかを参照としてアプリケーションに追加する必要があります。そうするには、Visual Studio で、ネイティブ・プロジェクトの参照を右クリックし、ネイティブ API アプリケーションに追加した環境に応じて以下のいずれかを行います。        
+        * Windows デスクトップおよびタブレットの場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows」→「OK」**の順に右クリックして選択します。
+        * Windows Phone 8 Universal の場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows Phone」→「OK」**の順に右クリックして選択します。
+        * Windows 10 Universal Windows Platform (UWP) の場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows Universal」→「OK」**の順に右クリックして選択します。
+    * NuGet を使用して {{site.data.keys.product_adj }} V8.0.0 SDK パッケージを追加します。『[NuGet を使用した {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)』を参照してください。
+2. {{site.data.keys.product_adj }} V8.0.0 API を使用するようにアプリケーション・コードを更新します。
+    * 以前のリリースの場合、Windows API は、**IBM.Worklight.namespace** の一部でした。これらの API は現在、廃止され、同等の **WorklightNamespace** API に置き換えられています。**IBM.Worklight.namespace** へのすべての参照を、**WorklightNamespace** の対応する同等の参照に置き換えるようにアプリケーションを変更する必要があります。
 
-   For example, the following snippet is an example of using the
+   例えば、以下のようなスニペットを使用します。
 
    ```csharp
    WLResourceRequest request = new WLResourceRequest
-                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted"); 
-                            request.send(listener); 
+                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted");
+                            request.send(listener);
    ```
     
-   The snippet updated with the new API would be:
+   新しい API で更新したスニペットは、以下のようになります。
     
    ```csharp
    WorklightResourceRequest request = newClient.ResourceRequest
@@ -94,43 +94,43 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
                             WorklightResponse response = await request.Send();
    ```
     
-    * All methods that performed asynchronous operations previously used a Response listener call back model. These have been replaced by the **await/async** model.
+    * 非同期操作を実行するすべてのメソッドは以前、応答リスナー・コールバック・モデルを使用していました。これらは、**await/async** モデルに置き換えられています。
 
-You can now start developing your native Windows application with the {{ site.data.keys.product_adj }} SDK. You might need to update your code to reflect the changes for {{ site.data.keys.product_adj }} V8.0.0 API.
+これで、{{site.data.keys.product_adj }} SDK を使用してネイティブ Windows アプリケーションの開発を始めることができます。{{site.data.keys.product_adj }} V8.0.0 での API の変更を反映するため、コードの更新が必要になる場合があります。
 
-#### What to do next
+#### 次の作業
 {: #what-to-do-next }
-Replace the client-side APIs that are discontinued or not in V8.0.
+使用が中止された、または V8.0 に含まれていないクライアント・サイド API を置き換えます。
 
-## Updating the Windows code
+## Windows コードの更新
 {: #updating-the-windows-code }
-{{ site.data.keys.product }} V8.0 introduces a number of changes to the Windows SDK that might require changes to apps developed in earlier versions.
+{{site.data.keys.product }} V8.0 では、Windows SDK に対する多くの変更が導入されています。これにより、以前のバージョンで開発されたアプリケーションの変更が必要になる可能性があります。
 
-#### Deprecated Windows C# API Classes
+#### 非推奨となった Windows C# API クラス
 {: #deprecated-windows-c-api-classes }
-| Category | Description | Recommended action | 
+| カテゴリー | 説明 | 推奨処置 | 
 |----------|-------------|--------------------|
-| `ChallengeHandler`  | For custom gateway challenges, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenges, use `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Use `GatewayChallengeHandler.canHandleResponse().` | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler`. | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager` instead. | 
-| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`.  | 
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLClient` | 	Use `WorklightClient` instead. | 
-| `WLErrorCode` | 	Not supported. | 
-| `WLFailResponse` | 	Use `WorklightResponse` instead. | 
-| `WLResponse` | Use `WorklightResponse` instead. | 
-| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData` instead. | 
-| `WLProcedureInvocationFailResponse` | 	Not supported. | 
-| `WLProcedureInvocationResult` | 	Not supported. | 
-| `WLRequestOptions` | 	Not supported. | 
-| `WLResourceRequest` | 	Use `WorklightResourceRequest` instead. | 
+| `ChallengeHandler`  | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler`, `isCustomResponse()`  | `GatewayChallengeHandler.canHandleResponse() を使用します。` | 
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 | 
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler.Shouldcancel()` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 | 
+| `WLAuthorizationManager` | 代わりに、`WorklightClient.WorklightAuthorizationManager` を使用してください。 | 
+| `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。  | 
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 | 
+| `WLClient` | 	代わりに、`WorklightClient` を使用してください。 | 
+| `WLErrorCode` | 	サポートされません。 | 
+| `WLFailResponse ` | 	代わりに、`WorklightResponse` を使用してください。 | 
+| `WLResponse` | 代わりに、`WorklightResponse` を使用してください。 | 
+| `WLProcedureInvocationData` | 代わりに、`WorklightProcedureInvocationData` を使用してください。 | 
+| `WLProcedureInvocationFailResponse` | 	サポートされません。 | 
+| `WLProcedureInvocationResult` | 	サポートされません。 | 
+| `WLRequestOptions` | 	サポートされません。 | 
+| `WLResourceRequest` | 	代わりに、`WorklightResourceRequest` を使用してください。 | 
 
-#### Deprecated Windows C# API Interfaces
+#### 非推奨となった Windows C# API インターフェース
 {: #deprecated-windows-c-api-interfaces }
-| Category | Description | Recommended action | 
+| カテゴリー | 説明 | 推奨処置 | 
 |----------|-------------|--------------------|
-| `WLHttpResponseListener` | Not supported. | 
-| `WLResponseListener` | The response will be available as a `WorklightResponse` object | 
-| `WLAuthorizationPersistencePolicy` | Not supported. | 
+| `WLHttpResponseListener` | サポートされません。 | 
+| `WLResponseListener` | 応答は `WorklightResponse` オブジェクトとして使用可能です。 | 
+| `WLAuthorizationPersistencePolicy` | サポートされません。 | 

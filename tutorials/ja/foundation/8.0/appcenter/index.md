@@ -3,182 +3,207 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 13
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
+{{site.data.keys.mf_app_center_full }} について説明します。具体的には、Application Center の目的、さまざまなコンポーネントと機能、およびコンソールとクライアントの使用法について説明します。
 
-The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
-The Application Center is a tool to make sharing mobile applications within an organization easier.
+現在、モバイル・デバイスの売れ行きはパーソナル・コンピューターを上回っています。その結果、モバイル・アプリケーションがビジネスに不可欠な要素となっています。  
+Application Center は、組織内におけるモバイル・アプリケーションの共有をより容易にするツールです。
 
-You can use the Application Center as an enterprise application store. With the Application Center, you can target some mobile applications to particular groups of users within the company.
+Application Center をエンタープライズ・アプリケーション・ストアとして使用することができます。Application Center を使用して、一部のモバイル・アプリケーションのターゲットを社内の特定のユーザー・グループに絞ることができます。
 
-A development team can also use the Application Center during the development phase of an application to share applications with testers, designers, or executives in the company. In such a scenario, it makes collaboration easier between all the people who are involved in the development process.
+また、開発チームは、アプリケーションの開発フェーズで Application Center を使用して、アプリケーションを社内のテスター、設計者、または幹部と共有することができます。このようなシナリオでは、これにより、開発プロセスに携わるすべての人のコラボレーションが容易になります。
 
-> You can also review [the Application Center tutorial](app-center-tutorial).
+> [Application Center チュートリアル](app-center-tutorial)を検討することもできます。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Concept of Application Center](#concept-of-application-center)
-* [Specific platform requirements](#specific-platform-requirements)
-* [General architecture](#general-architecture)
-* [Preliminary information](#preliminary-information)
-* [What's next](#whats-next)
+* [Application Center の概念](#concept-of-application-center)
+* [特定のプラットフォーム要件](#specific-platform-requirements)
+* [アーキテクチャーの概要](#general-architecture)
+* [準備情報](#preliminary-information)
+* [次のステップ](#whats-next)
 
-## Concept of Application Center
+## Application Center の概念
 {: #concept-of-application-center }
-Application Center can be used as an Enterprise application store and is a means of sharing information among different team members within a company.
+Application Center はエンタープライズ・アプリケーションとして使用でき、社内のさまざまなチームのメンバー間で情報を共有するための手段となります。
 
-The concept of Application Center is similar to the concept of the Apple public App Store or the Android Market, except that it targets only private usage within a company.
+Application Center の概念は、その目的が社内のプライベート使用のみであることを除けば、Apple の公開 App Store や Android マーケットの概念と同様です。
 
-By using Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.
+Application Center を使用することにより、同じ企業や組織に属するユーザーは、モバイル・アプリケーションのリポジトリーとして機能する単一の場所から携帯電話やタブレットにアプリケーションをダウンロードします。
 
-Application Center targets mobile applications that are installed on the device itself. Those applications can be native applications that are built by using the device SDK or hybrid applications that mix native and web content. Application Center does not target mobile web applications; such applications are delivered to the mobile device web browser through a URL like a website.
+Application Center の対象は、デバイス自体にインストールされるモバイル・アプリケーションです。それらのアプリケーションとして可能なのは、デバイス SDK を使用して作成されるネイティブ・アプリケーションや、ネイティブ・コンテンツと Web コンテンツが混在するハイブリッド・アプリケーションです。
+モバイル Web アプリケーションは Application Center の対象ではありません。そのようなアプリケーションは、Web サイトなどの URL を通じてモバイル・デバイスの Web ブラウザーに配布されます。
 
-In the current version, Application Center supports applications that are built for the Google Android platform, the Apple iOS platform, the Windows Phone 8 platform, and the Windows 8 platform.
+現行バージョンでは、Application Center は、Google Android プラットフォーム、Apple iOS プラットフォーム、Windows Phone 8 プラットフォーム、および Windows 8 プラットフォームを対象に作成されたアプリケーションをサポートします。
 
-For Windows Phone, only the Windows Phone application package (.xap) file format is currently supported, not the app package (.appx) file format (universal app format). For Windows Store (Desktop applications), the app package (.appx) file format is supported.
+Windows Phone の場合、現在、Windows Phone アプリケーション・パッケージ (.xap) ファイル・フォーマットのみサポートされており、アプリ・パッケージ (.appx) ファイル・フォーマット (ユニバーサル・アプリ・フォーマット) はサポートされていません。Windows ストア (デスクトップ・アプリケーション) の場合は、アプリ・パッケージ (.appx) ファイル・フォーマットがサポートされます。
 
-Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
+Windows Phone 7 および Windows RT、および BlackBerry OS は、現行バージョンの Application Center ではサポートされません。
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
+Application Center は、モバイル・アプリケーションを管理し、Android、iOS、Windows Phone 8、および Windows 8 のあらゆる種類のアプリケーション ({{site.data.keys.product }} 上に作成されるアプリケーションを含む) をサポートします。
 
-You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
+Application Center をアプリケーションの開発プロセスの一環として使用することができます。Application Center の典型的なシナリオはモバイル・アプリケーションを作成するチームです。開発チームは新しいバージョンの Android、iOS、Windows Phone、または Windows 8 のアプリケーションを作成します。開発チームは、この新しいバージョンの検討とテストを拡張チームにお願いします。
+開発者は Application Center コンソールを使用して、この新しいアプリケーション・バージョンを Application Center にアップロードします。開発者は、このプロセスの一環として、アプリケーション・バージョンの説明を入力することができます。
+例えば、この説明では、開発チームが旧バージョン対して追加したり修正したりした部分に言及することがあります。
+これで、チームの他のメンバーがアプリケーションの新しいバージョンを使用できるようになります。
 
-Another person, for example, a beta tester, can launch Application Center installer application, the mobile client, to locate this new version of a mobile application in the list of available applications and install it on his mobile device. After testing the new version, the beta tester can rate the application and submit feedback. The feedback is visible to the developer from the Application Center console.
 
-Application Center is a convenient way to share mobile applications within a company or a group; it is a means of sharing information among team members.
+別の担当者、例えばベータ版テスターは、Application Center インストーラー・アプリケーション (モバイル・クライアント) を起動して、使用可能なアプリケーションのリストからモバイル・アプリケーションのこの新しいバージョンを見つけ、それを自分のモバイル・デバイスにインストールすることができます。新バージョンのテストが終わったら、ベータ版テスターはアプリケーションを評価して、フィードバックを送信することができます。
+開発者はこのフィードバックを Application Center コンソールから見ることができます。
 
-## Specific platform requirements
+Application Center は社内やグループ内でモバイル・アプリケーションを共有する便利な方法であり、またチーム・メンバー間で情報を共有する手段でもあります。
+
+## 特定のプラットフォーム要件
 {: #specific-platform-requirements }
-Different operating systems impose specific requirements for deploying, installing, or using applications on the appropriate mobile devices.
+オペレーティング・システムごとに、該当するモバイル・デバイスに対してアプリケーションのデプロイメント、インストール、または使用に関する特定の要件があります。
 
 ### Android
 {: #android }
-The mobile device must be configured for installation from unknown sources. The corresponding toggle can be found in the Android Settings. See [User Opt-in for apps from unknown sources for details](http://developer.android.com/distribute/open.html#unknown-sources).  
+不明なソースからのインストール用にモバイル・デバイスを構成する必要があります。
+対応する切り替えが Android 設定にあります。
+詳しくは、[『その他の配布方法』](http://developer.android.com/distribute/open.html#unknown-sources)を参照してください。  
 
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is only used as an informative display string. For Android applications, the internal version is the android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) from the application manifest, and it must be an integer.
+Application Center では、アプリケーションに内部バージョン番号と商用バージョン番号があります。内部バージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。これに対して、商用バージョンは情報提供用の表示ストリングとしてのみ使用されます。Android アプリケーションの場合、内部バージョンは、アプリケーション・マニフェストからの android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) で、整数である必要があります。
 
 ### iOS
 {: #ios }
-All applications that are managed through Application Center must be packaged for "Ad Hoc Distribution". With an iOS developer account, you can share your application with up to 100 iOS devices. With an iOS enterprise account, you can share your in-house application with an unlimited number of iOS devices. See [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) and [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/) for details.
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is used only as an informative display string. For iOS applications, the internal version is the CFBundleVersion from the application manifest **Info.plist**. The version number must have the following format: `a`, or `a.b`, or `a.b.c`, where `a`, `b`, `c` are non-negative integers, and `a` is not `0`.
+Application Center を使用して管理されるすべてのアプリケーションを、「Ad Hoc 配布」用にパッケージ化する必要があります。iOS デベロッパー・アカウントを使用すれば、アプリケーションを最大 100 台の iOS デバイスと共有することができます。
+iOS エンタープライズ・アカウントを使用すれば、社内アプリケーションを台数に制限なく iOS デバイスと共有することができます。
+詳しくは、[iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) および [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/) を参照してください。
+Application Center では、アプリケーションに内部バージョン番号と商用バージョン番号があります。内部バージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。これに対して、商用バージョンは情報提供用の表示ストリングとしてのみ使用されます。iOS アプリケーションの場合、内部バージョンは、アプリケーション・マニフェスト **Info.plist** からの CFBundleVersion です。バージョン番号の形式は `a` または `a.b` または `a.b.c` でなければなりません。ここで、`a`、`b`、`c` は負でない整数であり、`a` は `0` ではありません。
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-Applications are not installed from the Windows Store, but from Application Center, which acts as what Microsoft documentation calls a **Company Hub**. See [Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx) for details.
-To use a company hub, Windows Phone requires you to register a company account with Microsoft and to sign all applications, including the Application Center client, with the company certificate. Only signed applications can be managed through Application Center.
+アプリケーションは、Windows Store からではなく、(Microsoft の資料で **Company Hub** と呼ばれるものとして機能する) Application Center からインストールされます。詳しくは、[Windows Phone 用の自社アプリの配布](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx)を参照してください。Company Hub を使用するために、Windows Phone は、企業アカウントを Microsoft に登録し、企業の証明書を使用して、Application Center クライアントを含むすべてのアプリケーションに署名することをユーザーに要求します。Application Center を使用して管理できるのは、署名済みのアプリケーションのみになります。
 
-You must enroll all mobile devices through an application enrollment token that is associated with your company account.
+企業アカウントと関連付けられたアプリケーション登録トークンを使用して、すべてのモバイル・デバイスを登録する必要があります。
 
-Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
+Application Center は、アプリケーション登録トークンを配布するための機能を通じてデバイスの登録を支援します。詳しくは、[『Windows 8 Universal のアプリケーション登録トークン』](appcenter-console/#application-enrollment-tokens-in-windows-8-universal)を参照してください。
 
-Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
+Application Center は、Microsoft Windows Phone 8.0 および Microsoft Windows Phone 8.1 用の Windows Phone アプリケーション・パッケージ (.xap) としてのアプリケーションの配布をサポートします。Microsoft Windows Phone 8.1 では、 Microsoft は、Windows Phone 用のアプリ・パッケージ (.appx) ファイルという新しいユニバーサル・フォーマットを導入しました。現在、Application Center は Microsoft Windows Phone 8.1 用のアプリ・パッケージ (.appx) ファイルの配布はサポートしておらず、Windows Phone アプリケーション・パッケージ (.xap) ファイルのみに制限しています。
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows Phone 8 applications, the version number is in the **Version** field in the **WMAppManifest.xml** file. This version number must have the following format: `a.b.c.d` where `a`, `b`, `c`, `d` are non-negative integers.
+Application Center では、アプリケーションにはバージョン番号が 1 つしかありません。このバージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。Windows Phone 8 アプリケーションの場合、バージョン番号は **WMAppManifest.xml** ファイルの **Version** フィールドに入っています。このバージョン番号の形式は `a.b.c.d` でなければなりません。ここで、`a`、`b`、`c`、`d` は負でない整数です。
 
 ### Windows 8
 {: #windows-8 }
-The Application Center mobile client is provided as a normal desktop executable file (.exe). Use it to install on the device Windows Store applications, which are packaged as .appx files.
-Installing a file of type appx on your device without using Windows Store is called sideloading an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading store apps to Windows 8.1 devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+Application Center モバイル・クライアントは、通常のデスクトップ用実行可能ファイル (.exe) として提供されます。このファイルを使用して、.appx ファイルとしてパッケージされている Windows Store アプリケーションをデバイスにインストールすることができます。Windows Store を使用せずに、タイプ appx のファイルをデバイスにインストールすることは、アプリケーションのサイドローディングと呼ばれます。アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](http://technet.microsoft.com/fr-fr/library/dn613842.aspx) の前提条件に従う必要があります。Windows 8.1 アップデートによって、サイドローディングの前提条件が単純化されています。詳しくは、[『Sideloading store apps to Windows 8.1 devices』](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)を参照してください。
 
-Files of type .exe cannot be executed on ARM-based tablets, so Application Center does not support Windows RT; only Windows 8 and Windows 8.1 are supported.
+タイプ .exe のファイルは、ARM ベースのタブレットでは実行できません。そのため、Application Center では、Windows RT はサポートされていません。Windows 8 および  Windows 8.1 のみがサポートされています。
 
-The device user needs administrator rights on the device to execute the Application Center client.
+デバイス・ユーザーが Application Center クライアントを実行するには、そのデバイスでの管理者権限が必要です。
 
-Application Center does not provide any predefined way of distributing the mobile client.
+Application Center は、モバイル・クライアントを配布するための定義済みの方法を提供していません。
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows 8 applications, the version number is in the Version field in the AppxManifest.xml file. This version number must have the following format: a.b.c.d, where a, b, c, d are non-negative integers.
+Application Center では、アプリケーションにはバージョン番号が 1 つしかありません。このバージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。Windows 8 アプリケーションの場合、バージョン番号は AppxManifest.xml ファイルの Version フィールドに入っています。このバージョン番号の形式は、a.b.c.d でなければなりません。ここで、a、b、c、d は負でない整数です。
 
-## General architecture
+## アーキテクチャーの概要
 {: #general-architecture }
-The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
+Application Center の主要構成要素は、サーバー・サイド・コンポーネント、リポジトリー、管理コンソール、およびモバイル・クライアント・アプリケーションです。
 
-### Server-side component
+### サーバー・サイド・コンポーネント
+
 {: #server-side-component }
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
+サーバー・サイド・コンポーネントは、IBM WebSphere や Apache Tomcat などの Web アプリケーション・サーバーにデプロイしなければならない Java™ Enterprise アプリケーションです。
 
-The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
+サーバー・サイド・コンポーネントは管理コンソールとモバイル・アプリケーションで構成されます。
+このモバイル・アプリケーションは、クライアント・サイド・コンポーネントが使用できるモバイル・アプリケーションをインストールします。
 
-The web console and the installer application communicate through REST services with the server component.
 
-Several services compose the Application Center server-side component; for example, a service that lists available applications, a service that delivers the application binary files to the mobile device, or a service that registers feedback and ratings.
+Web コンソールとインストーラー・アプリケーションは、REST サービスを通じてサーバー・コンポーネントと通信します。
 
-### Repository
+
+いくつかのサービスが Application Center サーバー・サイド・コンポーネントを構成しています。例えば、使用可能なアプリケーションをリストするサービス、アプリケーション・バイナリー・ファイルをモバイル・デバイスに配布するサービス、フィードバックと評価を登録するサービスなどです。
+
+### リポジトリー
+
 {: #repository }
-A database that stores information such as which application is installed on which devices, the feedback about applications, and the mobile application binary files. The Application Center application is associated with the database when you configure the Application Center for a particular web application server and a supported database.
+どのアプリケーションがどのデバイスにインストールされているかなどの情報、アプリケーションに関するフィードバック、およびモバイル・アプリケーション・バイナリー・ファイルを保管するデータベース。
+特定の Web アプリケーション・サーバーおよびサポートされるデータベースが組み込まれるように Application Center を構成したときに、Application Center アプリケーションがこのデータベースに関連付けられます。
 
-### Administration console
+### 管理コンソール
+
 {: #administration-console }
-A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console](appcenter-console).
+これは Web コンソールです。管理者はこれを使用して、アプリケーション、アプリケーションをインストールするユーザー・アクセス権限、モバイル・アプリケーションに関するユーザー・フィードバック、およびデバイスにインストールされているアプリケーションの詳細を管理することができます。
+[Application Center コンソール](appcenter-console)を参照してください。
 
-### Mobile client application
+### モバイル・クライアント・アプリケーション
+
 {: #mobile-client-application }
-You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client](mobile-client).
+モバイル・クライアントを使用して、モバイル・デバイスにアプリケーションをインストールしたり、アプリケーションに関するフィードバックをサーバーに送信したりします。
+[モバイル・クライアント](mobile-client)を参照してください。
 
-The following figure shows an overview of the architecture.
+次の図はアーキテクチャーの概要を示しています。
 
-![Application Center architecture](ac_arch.jpg)
 
-From the Application Center console, you can take the following actions:
+![Application Center のアーキテクチャー](ac_arch.jpg)
 
-* Upload different versions of mobile applications.
-* Remove unwanted applications.
-* Control access to applications: Each application is associated with the list of people who can install the application.
-* View feedback that mobile users have sent about an application.
-* Obtain information about applications installed on a device.
-* Make an application inactive so that it is not visible in the available applications for download.
+Application Center コンソールから、以下のアクションを実行できます。
 
-From the mobile client, you can take the following actions:
+* バージョンの異なるモバイル・アプリケーションをアップロードする。
+* 不要なアプリケーションを削除する。
+* アプリケーションへのアクセスを制御する。各アプリケーションは、そのアプリケーションをインストールできる個人のリストに関連付けられます。
+* モバイル・ユーザーが送信した、アプリケーションに関するフィードバックを表示する。
+* デバイスにインストールされているアプリケーションに関する情報を取得する。
+* アプリケーションを非アクティブにして、それがダウンロードのために使用可能なアプリケーションのリストに表示されないようにする。
 
-* List available mobile applications.
-* Install a new application on a device.
-* Send feedback about an application.
 
-The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
+モバイル・クライアントから、以下のアクションを実行できます。
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+* 使用可能なモバイル・アプリケーションをリストする。
+* 新しいアプリケーションをデバイスにインストールする。
+* アプリケーションに関するフィードバックを送信する。
 
-## Preliminary information
+
+Application Center は、Android、iOS、Windows Phone 8、および Windows 8 デバイス用のアプリケーションをサポートします。したがって、モバイル・クライアントには Android、iOS、Windows Phone 8、および Windows 8 用の個別のバージョンがあります。
+
+Android、iOS、および Windows Phone 8 のモバイル・クライアントは、{{site.data.keys.product }} 上に構築されます。製品をインストールした後の、さまざまな Java アプリケーション・サーバーでの Application Center のサーバー・サイド・コンポーネントの構成方法、および Application Centerクライアント用の {{site.data.keys.product_adj }} アプリケーションの構築方法については、[インストール後の Application Center の構成](../installation-configuration/production/appcenter)を参照してください。
+
+## 準備情報
 {: #preliminary-information }
-To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
+Application Center を使用するためには、セキュリティー設定を構成し、{{site.data.keys.product }} がインストールされている Web アプリケーション・サーバーを始動し、Application Center コンソールを開始し、そしてログインする必要があります。
 
-When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
+{{site.data.keys.product }} をインストールすると、指定されたアプリケーション・サーバーに Application Center が自動的にインストールされます。
 
-If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
+Application Center を WebSphere Application Server Liberty プロファイルにインストールした場合は、サーバーが作成されて **installation-directory/server** に置かれます。
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
+インストールが完了したならば、アプリケーションのセキュリティー設定を構成する必要があります。
+[Application Center のユーザー認証の構成](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center)を参照してください。また、LDAP 認証を使用している場合は、[LDAPによるユーザーの管理](../installation-configuration/production/appcenter/#managing-users-with-ldap)を参照してください。
 
-### Example: starting the server and the Application Center console on Liberty profile
+### 例: Liberty プロファイルでのサーバーおよび Application Center コンソールの始動
 {: #example-starting-the-server-and-the-application-center-console-on-liberty-profile}
 
-1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
+1. **installation-directory/server/wlp/bin** ディレクトリーにある **server** コマンドを使用して、Liberty サーバーを始動します。
 
    ```bash
    server start worklightServer
    ```
     
-2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
-3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:
-    * **demo** with password **demo**
-    * **appcenteradmin** with password **admin**
+2. サーバーが稼働しているときに、ブラウザーで次のアドレスを入力して Application Center コンソールを開始します。`http://localhost:9080/appcenterconsole/`
+3. ログインします。デフォルトでは、Apache Tomcat または WebSphere Application Server Liberty プロファイルで Application Center をインストールするためのユーザーとして、次の 2 つが定義されています。
+    * **demo** (パスワード **demo**)
+    * **「appcenteradmin」** (パスワード **admin**)
 
-### For more information
+
+### 詳細情報
 {: #for-more-information }
-To use the Application Center console, refer to [The Application Center console](appcenter-console).
+Application Center コンソールを使用するには、[Application Center コンソール](appcenter-console)を参照してください。
 
-To install and run the mobile client on the following operating systems, see:
+以下の各オペレーティング・システムでモバイル・クライアントをインストールして実行するには、以下を参照してください。
 
-* Android: See [Installing the client on an Android mobile device](mobile-client/#installing-an-application-on-an-android-device).
-* iOS operating system: See [Installing the client on an iOS mobile device](mobile-client/#installing-an-application-on-an-ios-device).
-* Windows Phone 8: See [Installing the client on Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
-* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project](preparations/#microsoft-windows-8-building-the-project).
+* Android: [Android モバイル・デバイスへのクライアントのインストール](mobile-client/#installing-an-application-on-an-android-device)を参照してください。
+* iOS オペレーティング・システム: [iOS モバイル・デバイスへのクライアントのインストール](mobile-client/#installing-an-application-on-an-ios-device)を参照してください。
+* Windows Phone 8: [Windows 8 Universal へのクライアントのインストール](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)を参照してください。
+* Windows 8: Windows 8 用のモバイル・クライアントは、後で配布するために Application Center にデプロイすることを意図していません。[Microsoft Windows 8: プロジェクトのビルド](preparations/#microsoft-windows-8-building-the-project)を参照してください。
 
-## What's next
+## 次のステップ
 {: #whats-next }
-Follow these topics to use the appcenter mobile client; send notifications to installed applications; learn about the appcenter console, command-line tool, the mobile client; and setting log levels.
+次のトピックに従って、AppCenter モバイル・クライアントを使用します。インストール済みアプリケーションへの通知の送信、AppCenter コンソール、コマンド・ライン・ツール、モバイル・クライアントについての説明、およびログ・レベルの設定。
+
+
 
 
 
