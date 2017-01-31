@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Developing for Cordova
+title: Développement pour Cordova
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -9,46 +9,48 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Develop your Cordova applications by following the tutorials bellow: set-up your development environment, experience the product and add value by integrating with {{ site.data.keys.product }} 8.0 offerings.<br/><br/>
+Développez vos applications Cordova en suivant les tutoriels ci-après : configurez
+votre environnement de développement, découvrez le produit et complétez-le en intégrant
+des offres {{ site.data.keys.product }} 8.0. <br/><br/>
 
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Zone de recherche intégrée" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="Search for..." name="q">
+                    <input style="width: 206px" id="search-input" aria-label="Zone de recherche " type="text" class="form-control" placeholder="Rechercher... " name="q">
                 </div>
             </form>
 
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
-                        Start Here
+                        <img alt="Image de navigation dans les tutoriels"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        Pour commencer
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#get-sdk-and-apis">
                     <div class="categoryBox-sdk hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
-                        Use SDKs &amp; APIs
-                    </div>
+                        <img alt="Image de navigation dans les tutoriels"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        Logiciels SDK et API
+</div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#implement-authentication-and-security">
                     <div class="categoryBox-security hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
-                        Add Security
+                        <img alt="Image de navigation dans les tutoriels"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        Ajout de sécurité
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#measure-and-engage">
                     <div class="categoryBox-more hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
-                        Measure &amp; Engage
+                        <img alt="Image de navigation dans les tutoriels"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        Mesure et engagement
                     </div>
                 </a>
             </div>
@@ -59,49 +61,53 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
 <div id="tutorials-list">
     <hr/>
 
-    <h2><a href="../product-overview/">Product Overview</a></h2>
-    Learn about the {{ site.data.keys.product }} offering.
+    <h2><a href="../product-overview/">Présentation du produit</a></h2>
+    Découvrez l'offre {{ site.data.keys.product }}.
 
     <ul>
-        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
-        <li><a href="../product-overview/components">Product Components</a></li>
-        <li><a href="../product-overview/requirements">System Requirements</a></li>
-        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
-        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
-        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
-        <li><a href="../product-overview/release-notes">Release Notes</a></li>
+        <li><a href="../product-overview/capabilities">Fonctions principales du produit</a></li>
+        <li><a href="../product-overview/components">Composants du produit</a></li>
+        <li><a href="../product-overview/requirements">Configuration requise</a></li>
+        <li><a href="../product-overview/licensing">Octroi de licence dans {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matrice de fonctions et plateformes</a></li>
+        <li><a href="../product-overview/accessibility">Fonctions
+d'accessibilité pour {{
+site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Notes sur l'édition</a></li>
     </ul>
 
-    <h2><a href="../installation-configuration">Installation and Configuration</a></h2>
-    Set up your development environment to work with {{ site.data.keys.product_full }}.
-
+    <h2><a href="../installation-configuration">Installation et configuration</a></h2>
+    Configurez votre environnement de développement pour utiliser {{ site.data.keys.product_full }}.
     <ul>
-        <li><a href="../installation-configuration/development/mobilefirst/">Setting up the {{ site.data.keys.product_adj }} development environment</a></li>
-        <li><a href="../installation-configuration/development/cordova/">Setting up the Cordova development environment</a></li>
-        <li><a href="../product-overview/components/console/">Using the {{ site.data.keys.mf_console }}</a></li>
+        <li><a href="../installation-configuration/development/mobilefirst/">Configuration
+de l'environnement de développement {{ site.data.keys.product_adj }}</a></li>
+        <li><a href="../installation-configuration/development/cordova/">Configuration
+de l'environnement de développement Cordova</a></li>
+        <li><a href="../product-overview/components/console/">Utilisation de {{ site.data.keys.mf_console }}</a></li>
     </ul>
 
     <hr id="start-here"/>
-    <h2><a href="../quick-start/">Quick Start</a></h2>
-    Get a feel of {{ site.data.keys.product }}.
+    <h2><a href="../quick-start/">Démarrage rapide</a></h2>
+    Découvrez {{ site.data.keys.product }}.
 
-    <ul>
-        <li><a href="../quick-start/cordova/">Quick Start with Cordova</a></li>
+<ul>
+        <li><a href="../quick-start/cordova/">Cordova - Démonstration de bout en bout</a></li>
     </ul>
 
-    <h2><a href="../application-development/sdk">Adding the {{ site.data.keys.product_adj }} SDK</a></h2>
-    Add the {{ site.data.keys.product }} SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
-
-    <ul>
+    <h2><a href="../application-development/sdk">Ajout du logiciel SDK de {{ site.data.keys.product_adj }}</a></h2>
+    Ajoutez le logiciel SDK de {{ site.data.keys.product }} à votre application Cordova, iOS native, Android, Windows 8.1 Universal ou Windows 10 UWP.
+<ul>
         <li><a href="../application-development/sdk/cordova/">Adding the {{ site.data.keys.product }} SDK to Cordova applications</a></li>
     </ul>
 
     <hr id="get-sdk-and-apis"/>
 
-    <h2><a href="../application-development">Developing Applications</a></h2>
-    Learn to use {{ site.data.keys.product_adj }} APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
-
-    <ul>
+    <h2><a href="../application-development">Développement d'applications</a></h2>
+    Apprenez à utiliser les API de {{ site.data.keys.product_adj }} : mise à jour
+direct, JSONStore,
+WLResourceRequest, traduction côté client, débogage d'applications, interface de
+ligne de commande de développement, etc.
+<ul>
         <li><a href="../application-development/cordova-apps/">{{ site.data.keys.product }} SDK development in Cordova applications</a>
             <ul>
                 <li><a href="../application-development/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
@@ -114,8 +120,7 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="../application-development/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
         <li><a href="../application-development/jsonstore/security-utilities/">JSONStore security utilities</a></li>
         <li><a href="../application-development/jsonstore/code-examples/">JSONStore code examples</a></li>
-        <li>Client-side log collection
-            <ul>
+        <li>Collection de journaux côté client <ul>
                 <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
                 <li><a href="../application-development/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
             </ul>
@@ -131,10 +136,9 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
     </ul>
 
-    <h2><a href="../adapters/">Developing Adapters</a></h2>
-    Develop server-side code to integrate with enterprise back-end systems and cloud services.
-
-    <ul>
+    <h2><a href="../adapters/">Développement d'adaptateurs</a></h2>
+    Développez un code côté serveur à intégrer aux systèmes de back end d'entreprise et aux
+services de cloud. <ul>
         <li><a href="../adapters/">Adapters overview</a></li>
         <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
         <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
@@ -156,8 +160,8 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         </li>
         <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
         <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
-            <ul>
+        <li>Collection de journaux côté serveur
+<ul>
                 <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
                 <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
                 <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
@@ -169,8 +173,8 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
 
     <hr id="implement-authentication-and-security"/>
 
-    <h2><a href="../authentication-and-security">Authentication and Security</a></h2>
-    Add various layers of protection to your applications.
+    <h2><a href="../authentication-and-security">Authentification et sécurité</a></h2>
+    Ajoutez diverses couches de protection à vos applications.
 
     <ul>
         <li><a href="../authentication-and-security/">Authorization concepts</a></li>
@@ -213,7 +217,7 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
     <hr id="measure-and-engage"/>
 
     <h2><a href="../notifications">Notifications</a></h2>
-    Send notifications with {{ site.data.keys.product_full }}.
+    Envoyez des notifications avec {{ site.data.keys.product_full }}.
 
     <ul>
         <li><a href="../notifications/">Notifications Overview</a></li>
@@ -230,9 +234,9 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
     </ul>
 
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-    Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.
-
-    <ul>
+    Surveillez les applications et les adaptateurs déployés, obtenez des informations sur
+l'utilisation des applications, détectez les erreurs, etc.
+<ul>
         <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
         <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
@@ -245,8 +249,8 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
     </ul>
 
-    <h2><a href="../bluemix">Foundation on Bluemix</a></h2>
-    Deploy {{ site.data.keys.product }} to the cloud using Bluemix.
+    <h2><a href="../bluemix">Foundation dans Bluemix</a></h2>
+    Déployez {{ site.data.keys.product }} dans le cloud à l'aide de Bluemix.
 
     <ul>
         <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on Bluemix</a></li>
@@ -266,20 +270,21 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         </li>
     </ul>
 
-    <h2><a href="../troubleshooting/">Troubleshooting common problems</a></h2>
-    Frequently asked questions and answers.
+    <h2><a href="../troubleshooting/">Traitement des incidents courants</a></h2>
+    Questions posées fréquemment et réponses.
 
-    <ul>
+<ul>
         <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>
 
-    <h2><a href="../../../product-integration/8.0">Product integration</a></h2>
-    Integrate {{ site.data.keys.product }} 8.0 apps with other IBM products
+    <h2><a href="../../../product-integration/8.0">Intégration de produit</a></h2>
+    Intégrez des applications {{ site.data.keys.product }} 8.0 à d'autres produits IBM.
 
     <ul>
-        <li><a href="../../../product-integration/8.0">List of available product integrations</a></li>
+        <li><a href="../../../product-integration/8.0">Liste des intégrations de produit
+disponibles</a></li>
     </ul>
     <br/>
 </div>
