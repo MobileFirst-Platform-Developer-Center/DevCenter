@@ -224,6 +224,29 @@ body {
 			position: initial;
 		}
 		
+		#index_getstarted_icons {
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+	}
+	
+	#index_help {
+		text-align: center;
+		width: 50%;
+		height: 200px;
+		margin-bottom: 94px;
+		
+		.help-icons {
+			margin-top: 50px;
+			img {
+				height: 82px;
+				margin-right: 45px;
+				margin-left: 45px;
+			}
+		}
+	}
+	
+	#index_help, #index_getstarted {
 		img {
     		-webkit-transition: all 1s ease; /* Safari and Chrome */
 		   -moz-transition: all 1s ease; /* Firefox */
@@ -238,11 +261,6 @@ body {
 			   -o-transform:scale(1.25); /* Opera */
 			   transform:scale(1.25);
 			}
-		}
-		
-		#index_getstarted_icons {
-			margin-left: 100px;
-			margin-right: 100px;
 		}
 	}
 }
