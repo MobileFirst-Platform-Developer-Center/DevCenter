@@ -244,9 +244,9 @@ Located at the root of the project, this file defines the client-side properties
 
 | Property            | Description                                                         | Example values |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
+| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
+| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 
