@@ -92,10 +92,10 @@ body {
 		margin-top: 3px;
 		
 		a {	
-			color: white;
+			color: #0B2B40;
 			
 			&:visited {
-				color: white;
+				color: #0B2B40;
 			}
 		}
 	}
@@ -115,20 +115,24 @@ body {
 	
 	hr {
 		border: 1px solid #DDD !important;
-		margin: 90px 13% 70px 15%;
+		margin: 70px 13% 70px 15%;
 	}
 	
 	#index_overview {
 		text-align: center;
-		#index_overview_icons {	
+      
+      .section_text {
+         margin-bottom: 30px;
+         font-size: 18px;
+      }
+      
+      #index_overview_text {	
+         //margin-bottom: 74.5px;
+      }
+		#index_overview_icons, #index_overview_text {	
 			p {
-				margin-top: 10px;
+				margin-top: 0;
 				font-family: arial;
-			}
-			
-			.section_text {
-				margin-bottom: 35px;
-				font-size: 18px;
 			}
 			
 			.index-item {
@@ -143,7 +147,8 @@ body {
 		}
       
       .feature-indicators {
-         margin-bottom: 35px;
+         margin-bottom: 15px;
+         margin-top: 15px;
       }
 		
 		a.read-more {
