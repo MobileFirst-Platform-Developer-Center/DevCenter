@@ -1,7 +1,7 @@
 ---
-レイアウト: チュートリアル
-表題: 新機能
-ウェイト: 1
+layout: default
+title: 新機能
+weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
