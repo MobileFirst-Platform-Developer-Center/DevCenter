@@ -1,4 +1,5 @@
 .carousel {
+	font-family: HelvNeuRomanForIBM;
 	background-color: #28536f;
 	background-image: url(../assets/front-page/carousel-background.png);
 	height: 527px;
@@ -37,7 +38,6 @@
 		
 		.carousel-caption {
 			z-index: 10;
-			font-family: arial;
 			color: white;
 			
 			h1 {
@@ -51,7 +51,6 @@
 			.caption-text {
 				line-height: 23px;
 				font-size: 16px;
-				font-family: sans-serif;
 				font-weight: 300;
 				text-align: left;
 				margin-bottom: 40px;

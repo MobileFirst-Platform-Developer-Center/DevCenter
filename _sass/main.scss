@@ -11,6 +11,16 @@ $font_8: DejaVu Sans Mono;
 $font_9: Bitstream Vera Sans Mono;
 $font_10: Courier New;
 
+@font-face {
+   font-family: HelvNeuLightForIBM;
+   src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueLightforIBM.otf);
+}
+
+@font-face {
+   font-family: HelvNeuRomanForIBM;
+   src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueRomanforIBM.otf);
+}
+
 html {
 	height: 100%;
 }
@@ -48,6 +58,7 @@ body {
 
 #blogPosts {
 	background-color: #5AAAFA;
+	font-family: HelvNeuLightForIBM;
 	color: white;
 	width: 100%;
 	padding: 10px 0 10px 0;
@@ -78,7 +89,7 @@ body {
 	.more-posts {
 		font-size: 85%;
 		float: right;
-		margin-top: 2px;
+		margin-top: 3px;
 		
 		a {	
 			color: white;
@@ -93,10 +104,11 @@ body {
 #index_sections {
 	margin-top: 50px;
 	font-size: 112.5%;
+   font-family: HelvNeuRomanForIBM;
 	
 	h1 {
 		font-size: 230%;
-		font-family: "Helvetica Neue Light","Helvetica Neue","Open Sans",Helvetica,Arial,Lucida Grande,sans-serif;
+		font-family: HelvNeuLightForIBM;
 		color: #4A4A4A;
 		margin-bottom: 20px;
 	} 
@@ -108,7 +120,6 @@ body {
 	
 	#index_overview {
 		text-align: center;
-	
 		#index_overview_icons {	
 			p {
 				margin-top: 10px;
@@ -117,6 +128,7 @@ body {
 			
 			.section_text {
 				margin-bottom: 35px;
+				font-size: 18px;
 			}
 			
 			.index-item {
